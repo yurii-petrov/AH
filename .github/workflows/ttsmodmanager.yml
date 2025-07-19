@@ -1,0 +1,35 @@
+name: Run TTSModManager with config version
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  run-ttsmodmanager:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install jq (JSON parser)
+        run: sudo apt-get update && sudo apt-get install -y jq
+
+      - name: Read version from config.json
+        id: version
+        run: |
+          VERSION=$(jq -r '.SaveName' public/config.json)
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Download TTSModManager
+        run: |
+          curl -L -o ttsmodmanager.zip https://github.com/argonui/TTSModManager/releases/latest/download/TTSModManager-linux.zip
+          unzip ttsmodmanager.zip -d ./TTSModManager
+          chmod +x ./TTSModManager/TTSModManager
+
+      - name: Run TTSModManager
+        run: |
+          ./TTSModManager/TTSModManager \
+            --moddir="public/objects" \
+            --modfile="public/AH ${{ steps.version.outputs.version }}.json"
