@@ -1,0 +1,53 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.46226,
+    "g": 0.46226,
+    "r": 0.46226
+  },
+  "CustomAssetbundle": {
+    "AssetbundleSecondaryURL": "",
+    "AssetbundleURL": "https://steamusercontent-a.akamaihd.net/ugc/1811020692182300783/D1353FE7E5727082F43C59EA6FCD388439FB5F6A/",
+    "LoopingEffectIndex": 0,
+    "MaterialIndex": 0,
+    "TypeIndex": 1
+  },
+  "Description": "\"The Urchin\"",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "ed5d30",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Memo": "Wendy Adams",
+  "Name": "Custom_Assetbundle",
+  "Nickname": "Wendy Adams",
+  "Snap": true,
+  "Sticky": false,
+  "Tooltip": true,
+  "Transform": {
+    "posX": 9.685,
+    "posY": 4.045,
+    "posZ": 74.71,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 0.83,
+    "scaleY": 0.83,
+    "scaleZ": 0.83
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

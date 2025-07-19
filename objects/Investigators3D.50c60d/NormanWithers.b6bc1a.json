@@ -1,0 +1,53 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.20754,
+    "g": 0.20754,
+    "r": 0.20754
+  },
+  "CustomAssetbundle": {
+    "AssetbundleSecondaryURL": "",
+    "AssetbundleURL": "https://steamusercontent-a.akamaihd.net/ugc/1698403597538910237/DBD9FB7B1E701C543430DCA1E6D1927AEF8DABB9/",
+    "LoopingEffectIndex": 0,
+    "MaterialIndex": 0,
+    "TypeIndex": 1
+  },
+  "Description": "\"The Astronomer\"",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "b6bc1a",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Memo": "Norman Withers",
+  "Name": "Custom_Assetbundle",
+  "Nickname": "Norman Withers",
+  "Snap": true,
+  "Sticky": false,
+  "Tooltip": true,
+  "Transform": {
+    "posX": 12.18,
+    "posY": 4.04,
+    "posZ": 77.114,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 0.9,
+    "scaleY": 0.9,
+    "scaleZ": 0.9
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

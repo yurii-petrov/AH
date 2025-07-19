@@ -1,0 +1,64 @@
+<panel
+  id="success"
+  active="false"
+  width="12"
+  height="14"
+  position="28.5 14 -11"
+  rotation="0 0 180">
+  <button
+    onClick="success"
+    color="clear"/>
+  <image
+    id="success_img"
+    scale="0.8 0.8 0.8"/>
+</panel>
+<panel
+  id="discard"
+  active="false"
+  width="12"
+  height="14"
+  position="28.5 30 -11"
+  rotation="0 0 180">
+  <button
+    onClick="discard"
+    color="clear"/>
+  <image
+    id="discard_img"
+    scale="0.8 0.8 0.8"/>
+</panel>
+<panel
+  id="fail"
+  active="false"
+  width="12"
+  height="14"
+  position="28.5 46 -11"
+  rotation="0 0 180">
+  <button
+    onClick="fail"
+    color="clear"/>
+  <image
+    id="fail_img"
+    scale="0.8 0.8 0.8"/>
+</panel>
+<button
+  id="myth"
+  onClick=""
+  width="20"
+  height="7"
+  position="24 95 -11"
+  color="clear"
+  />
+<button
+  id="encounter"
+  onClick=""
+  width="20"
+  height="7"
+  position="4 95 -11"
+  color="clear"
+  />
+<image
+  id="myth_slots"
+  width="26"
+  height="69"
+  position="1.2 72 -11"
+  scale="0.54 0.54 1"/>

@@ -1,0 +1,49 @@
+function onLoad()
+	self.UI.setCustomAssets({
+		{
+			name = "success_icon",
+			url = "https://drive.google.com/uc?export=view&id=1TBSY-0NPCBdWWfWnsX3wdA0E_XyyZT-P"
+		},
+		{
+			name = "discard_icon",
+			url = "https://drive.google.com/uc?export=view&id=1L5IRVmKLkshXaBoRDIDmZtX-4zOi4f6-"
+		},
+		{
+			name = "fail_icon",
+			url = "https://drive.google.com/uc?export=view&id=1pwW68kYHr_bYN9EsFVgR5j8E5XNt2g4o"
+		},
+		{
+			name = "myth_slots",
+			url = "https://drive.google.com/uc?export=view&id=1bnd0sj5zPQGDZhnvDkv4Gr169gBwPr2T"
+		},
+	})
+	self.UI.setAttribute("success_img", "image", "success_icon")
+	self.UI.setAttribute("discard_img", "image", "discard_icon")
+	self.UI.setAttribute("fail_img", "image", "fail_icon")
+	self.UI.setAttribute("myth_slots", "image", "myth_slots")
+setButtons({type = "empty"})
+end
+function success(player, alt, id)
+	Global.call("mythosTileSuccessAction", {c=player.color})
+end
+function discard(player, alt, id)
+	Global.call("mythosTileCancelAction", {c=player.color})
+end
+function fail(player, alt, id)
+	Global.call("mythosTileFailedAction", {c=player.color})
+end
+function setButtons(d)
+	if d.type == "event" then
+		self.UI.setAttribute("success", "active", true)
+		self.UI.setAttribute("discard", "active", false)
+		self.UI.setAttribute("fail", "active", true)
+	elseif d.type == "empty" then
+		self.UI.setAttribute("success", "active", false)
+		self.UI.setAttribute("discard", "active", false)
+		self.UI.setAttribute("fail", "active", false)
+	else
+		self.UI.setAttribute("success", "active", false)
+		self.UI.setAttribute("discard", "active", true)
+		self.UI.setAttribute("fail", "active", false)
+	end
+end

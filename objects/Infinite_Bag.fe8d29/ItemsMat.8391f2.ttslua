@@ -1,0 +1,117 @@
+serpent = require("serpent")
+
+local itemData = {
+ maxRows = 5,
+ index = 1,
+ isActive = false,
+ isSpawned = false
+}
+
+function onLoad(savedData)
+	local parsedSaveData = parseJson(savedData)
+  if parsedSaveData then
+    itemData = parsedSaveData
+		if itemData.index > 1 then
+			self.setLock(true)
+			self.interactable = false
+			self.drag_selectable = false
+			self.gizmo_selectable = false
+		end
+  end
+
+	setIndex(itemData.index)
+end
+
+function onSave()
+  local saveData = JSON.encode(itemData)
+  return saveData
+end
+
+function row(player, alt, id)
+	if (alt == "-1" or alt == -1) and itemData.index < itemData.maxRows then
+		spawnObj(itemData.index+1)
+		itemData.isActive = false
+	elseif (alt == "-2" or alt == -2) and itemData.index > 1 then
+		local foundItemsMat = nil
+		local objs = upCast(self, 0.2, nil, 0.1, "top")
+		for i, obj in pairs(objs) do
+			foundItemsMat = obj
+		end
+
+		if not foundItemsMat then return end
+		itemData.isActive = false
+		foundItemsMat.call("setIndex", itemData.index-1)
+		self.destruct()
+	end
+
+	self.UI.setAttribute("rowBtn", "active", itemData.isActive)
+end
+
+function spawnObj(value)
+	local data = self.getData()
+	data.Transform.posZ = data.Transform.posZ - self.getBoundsNormalized().size.z
+	local object = spawnObjectData({
+    data = data,
+    callback_function = function(spawned_object)
+		spawned_object.call("setIndex", itemData.index+1)
+		spawned_object.setLock(true)
+    spawned_object.interactable = false
+    spawned_object.drag_selectable = false
+    spawned_object.gizmo_selectable = false
+    end
+})
+end
+
+function setIndex(value)
+	itemData.index = value
+	itemData.isActive = itemData.index <= itemData.maxRows and itemData.index >= 1
+	self.UI.setAttribute("rowBtn", "active", itemData.isActive)
+end
+
+function upCast(obj, dist, offset, multi, add)
+  if obj == nil then
+    return
+  end -- object to cast up from
+  local dist = dist or 1 -- distance to cast in Y world units
+  local offset = offset or 0 -- distance above the surface of obj to begin the cast
+  local multi = multi or 1 -- multiplier of the X and Z world units of the object
+  local oPos = obj.getPosition()
+  local oBounds = obj.getBoundsNormalized()
+  local oRot = obj.getRotation()
+	oPos[3] = oPos[3] + (add == "bottom" and -oBounds.size.z or oBounds.size.z)
+  local orig = {oPos[1], oPos[2] + dist / 2 + oBounds.size.y / 2 + offset, oPos[3]}
+  local siz = {oBounds.size.x * multi, dist, oBounds.size.z * multi}
+  local orient = {oRot[1], oRot[2], oRot[3]}
+  local hits = Physics.cast({
+    origin = orig,
+    direction = {0, 1, 0},
+    type = 3,
+    size = siz,
+    orientation = orient,
+    max_distance = 0,
+    debug = false -- set this to false once you're happy with the result
+  })
+  local hitObjects = {}
+  for i, v in pairs(hits) do
+    if v.hit_object ~= obj then
+      table.insert(hitObjects, v.hit_object)
+    end
+  end
+  return hitObjects
+end
+
+function parseJson(memo)
+  if not memo or type(memo) ~= "string" then
+    return nil
+  end
+
+  local success, result = pcall(function()
+    return JSON.decode(memo)
+  end)
+
+  if success then
+    return result
+  else
+    return nil
+  end
+end

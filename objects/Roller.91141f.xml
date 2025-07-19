@@ -1,0 +1,332 @@
+<defaults>
+	<text font="Fonts/AdonisC" />
+	<button font="Fonts/AdonisC" />
+</defaults>
+<button
+	id="help"
+	onClick="Global/showHelp"
+	width="400"
+	height="400"
+	position="540 -52 -22"
+	rotation="0 0 180"
+	scale="0.115 0.115 1"
+	color="clear"
+	text=""/>
+<panel
+	interactable="false"
+	id="results"
+	width="170"
+	height="160"
+	position="430 0 -22"
+	rotation="0 0 180"
+    onMouseEnter="hoverResultsEnter"
+    onMouseExit="hoverResultsExit">
+    <Panel id="results_default" active="true">
+		<text
+			id="success"
+			width="640"
+			height="640"
+			position="0 -25 0"
+			scale="0.35 0.35 1"
+			color="#a29c90"
+			font="Fonts/AdonisC"
+			fontSize="1000"
+			text="?"/>
+    </Panel>
+    <Panel id="results_hover" active="false">
+		<Text text="успіхів" fontSize="30" color="#a29c90" position="-40 5 0" />
+		<Text id="success_additional" text="?" fontSize="90" color="#a29c90" position="35 20 0" />
+		<Text text="перекидів всього" fontSize="16" color="#a29c90" position="-40 -30 0" />
+		<Text id="reroll" text="0" fontSize="22" color="#a29c90"  position="40 -30 0" />
+		<Text text="перекинуто кубів" fontSize="16" color="#a29c90" position="-40 -60 0" />
+		<Text id="rerolled_dices" text="0" fontSize="22" color="#a29c90" position="40 -60 0" />
+    </Panel>
+</panel>
+<button
+	id="dice_1"
+	onClick="dice_btn"
+	width="640"
+	height="640"
+	position="306 42 -22"
+	rotation="0 0 180"
+	scale="0.115 0.115 1"
+	textColor="#4d4a44"
+	color="clear"
+	font="Fonts/AdonisC"
+	fontSize="800"
+	padding="0 0 80 0"
+	text="1"/>
+<image
+	id="icon_dice_1"
+    active="false"
+	image="reeoll_icon"
+	width="500"
+	height="500"
+	position="306 42 -22"
+	rotation="0 0 180"
+	scale="0.115 0.115 1"
+/>
+<button
+	id="dice_2"
+	onClick="dice_btn"
+	width="640"
+	height="640"
+	position="231 42 -22"
+	rotation="0 0 180"
+	scale="0.115 0.115 1"
+	textColor="#4d4a44"
+	color="clear"
+	font="Fonts/AdonisC"
+	fontSize="800"
+	padding="0 0 80 0"
+	text="2"/>
+<image
+	id="icon_dice_2"
+    active="false"
+	image="reeoll_icon"
+	width="500"
+	height="500"
+	position="231 42 -22"
+	rotation="0 0 180"
+	scale="0.115 0.115 1"
+/>
+<button
+	id="dice_3"
+	onClick="dice_btn"
+	width="640"
+	height="640"
+	position="157 42 -22"
+	rotation="0 0 180"
+	scale="0.115 0.115 1"
+	textColor="#4d4a44"
+	color="clear"
+	font="Fonts/AdonisC"
+	fontSize="800"
+	padding="0 0 80 0"
+	text="3"/>
+<image
+	id="icon_dice_3"
+    active="false"
+	image="reeoll_icon"
+	width="500"
+	height="500"
+	position="157 42 -22"
+	rotation="0 0 180"
+	scale="0.115 0.115 1"
+/>
+<button
+	id="dice_4"
+	onClick="dice_btn"
+	width="640"
+	height="640"
+	position="82 42 -22"
+	rotation="0 0 180"
+	scale="0.115 0.115 1"
+	textColor="#4d4a44"
+	color="clear"
+	font="Fonts/AdonisC"
+	fontSize="800"
+	padding="0 0 80 0"
+	text="4"/>
+<image
+	id="icon_dice_4"
+    active="false"
+	image="reeoll_icon"
+	width="500"
+	height="500"
+	position="82 42 -22"
+	rotation="0 0 180"
+	scale="0.115 0.115 1"
+/>
+<button
+	id="dice_5"
+	onClick="dice_btn"
+	width="640"
+	height="640"
+	position="7 42 -22"
+	rotation="0 0 180"
+	scale="0.115 0.115 1"
+	textColor="#4d4a44"
+	color="clear"
+	font="Fonts/AdonisC"
+	fontSize="800"
+	padding="0 0 80 0"
+	text="5"/>
+<image
+	id="icon_dice_5"
+    active="false"
+	image="reeoll_icon"
+	width="500"
+	height="500"
+	position="7 42 -22"
+	rotation="0 0 180"
+	scale="0.115 0.115 1"
+/>
+<button
+	id="dice_6"
+	onClick="dice_btn"
+	width="640"
+	height="640"
+	position="-67 42 -22"
+	rotation="0 0 180"
+	scale="0.115 0.115 1"
+	textColor="#4d4a44"
+	color="clear"
+	font="Fonts/AdonisC"
+	fontSize="800"
+	padding="0 0 80 0"
+	text="6"/>
+<image
+	id="icon_dice_6"
+    active="false"
+	image="reeoll_icon"
+	width="500"
+	height="500"
+	position="-67 42 -22"
+	rotation="0 0 180"
+	scale="0.115 0.115 1"
+/>
+<button
+	id="dice_7"
+	onClick="dice_btn"
+	width="640"
+	height="640"
+	position="-142 42 -22"
+	rotation="0 0 180"
+	scale="0.115 0.115 1"
+	textColor="#4d4a44"
+	color="clear"
+	font="Fonts/AdonisC"
+	fontSize="800"
+	padding="0 0 80 0"
+	text="7"/>
+<image
+	id="icon_dice_7"
+    active="false"
+	image="reeoll_icon"
+	width="500"
+	height="500"
+	position="-142 42 -22"
+	rotation="0 0 180"
+	scale="0.115 0.115 1"
+/>
+<button
+	id="dice_8"
+	onClick="dice_btn"
+	width="640"
+	height="640"
+	position="-216 42 -22"
+	rotation="0 0 180"
+	scale="0.115 0.115 1"
+	textColor="#4d4a44"
+	color="clear"
+	font="Fonts/AdonisC"
+	fontSize="800"
+	padding="0 0 80 0"
+	text="8"/>
+<image
+	id="icon_dice_8"
+    active="false"
+	image="reeoll_icon"
+	width="500"
+	height="500"
+	position="-216 42 -22"
+	rotation="0 0 180"
+	scale="0.115 0.115 1"
+/>
+<button
+	id="dice_9"
+	onClick="dice_btn"
+	width="640"
+	height="640"
+	position="-291 42 -22"
+	rotation="0 0 180"
+	scale="0.115 0.115 1"
+	textColor="#4d4a44"
+	color="clear"
+	font="Fonts/AdonisC"
+	fontSize="800"
+	padding="0 0 80 0"
+	text="9"/>
+<image
+	id="icon_dice_9"
+    active="false"
+	image="reeoll_icon"
+	width="500"
+	height="500"
+	position="-291 42 -22"
+	rotation="0 0 180"
+	scale="0.115 0.115 1"
+/>
+<button
+	id="dice_10"
+	onClick="dice_btn"
+	width="640"
+	height="640"
+	position="-366 42 -22"
+	rotation="0 0 180"
+	scale="0.115 0.115 1"
+	textColor="#4d4a44"
+	color="clear"
+	font="Fonts/AdonisC"
+	fontSize="800"
+	padding="0 0 80 0"
+	text="10"/>
+<image
+	id="icon_dice_10"
+    active="false"
+	image="reeoll_icon"
+	width="500"
+	height="500"
+	position="-366 42 -22"
+	rotation="0 0 180"
+	scale="0.115 0.115 1"
+/>
+<button
+	id="dice_11"
+	onClick="dice_btn"
+	width="640"
+	height="640"
+	position="-440 42 -22"
+	rotation="0 0 180"
+	scale="0.115 0.115 1"
+	textColor="#4d4a44"
+	color="clear"
+	font="Fonts/AdonisC"
+	fontSize="800"
+	padding="0 0 80 0"
+	text="11"/>
+<image
+	id="icon_dice_11"
+    active="false"
+	image="reeoll_icon"
+	width="500"
+	height="500"
+	position="-440 42 -22"
+	rotation="0 0 180"
+	scale="0.115 0.115 1"
+/>
+<button
+	id="dice_12"
+	onClick="dice_btn"
+	width="640"
+	height="640"
+	position="-515 42 -22"
+	rotation="0 0 180"
+	scale="0.115 0.115 1"
+	textColor="#4d4a44"
+	color="clear"
+	font="Fonts/AdonisC"
+	fontSize="800"
+	padding="0 0 80 0"
+	text="12"/>
+<image
+	id="icon_dice_12"
+    active="false"
+	image="reeoll_icon"
+	width="500"
+	height="500"
+	position="-515 42 -22"
+	rotation="0 0 180"
+	scale="0.115 0.115 1"
+/>

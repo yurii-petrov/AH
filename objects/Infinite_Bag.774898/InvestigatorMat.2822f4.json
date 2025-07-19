@@ -1,0 +1,151 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "AttachedSnapPoints": [
+    {
+      "Position": {
+        "x": 0.316,
+        "y": 0.2,
+        "z": 0.344
+      }
+    },
+    {
+      "Position": {
+        "x": 0.958,
+        "y": 0.2,
+        "z": -0.58
+      },
+      "Tags": [
+        "monster_mat"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.317,
+        "y": 0.2,
+        "z": -0.581
+      },
+      "Tags": [
+        "monster_mat"
+      ]
+    },
+    {
+      "Position": {
+        "x": -0.315,
+        "y": 0.2,
+        "z": -0.581
+      },
+      "Tags": [
+        "monster_mat"
+      ]
+    },
+    {
+      "Position": {
+        "x": -0.957,
+        "y": 0.2,
+        "z": -0.581
+      },
+      "Tags": [
+        "monster_mat"
+      ]
+    },
+    {
+      "Position": {
+        "x": -1.105,
+        "y": 0.2,
+        "z": 0.196
+      }
+    },
+    {
+      "Position": {
+        "x": 0.199,
+        "y": 0.2,
+        "z": 0.86
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Tags": [
+        "activation_snap"
+      ]
+    },
+    {
+      "Position": {
+        "x": -0.083,
+        "y": 0.2,
+        "z": 0.86
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Tags": [
+        "activation_snap"
+      ]
+    }
+  ],
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.24999,
+    "g": 0.24999,
+    "r": 0.24999
+  },
+  "CustomImage": {
+    "CustomTile": {
+      "Stackable": false,
+      "Stretch": true,
+      "Thickness": 0.2,
+      "Type": 0
+    },
+    "ImageScalar": 1,
+    "ImageSecondaryURL": "",
+    "ImageURL": "https://drive.google.com/uc?export=view\u0026id=11eETwmhQqRpeNxWmgEZylp9948Nh0ZL8",
+    "WidthScale": 0
+  },
+  "CustomUIAssets": [
+    {
+      "Name": "Fonts",
+      "Type": 1,
+      "URL": "https://drive.google.com/uc?export=view\u0026id=18_lFlnSaOFlbNVfE-G-LFqqfptMMkKFS"
+    }
+  ],
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "2822f4",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScriptState_path": "Infinite_Bag.774898/InvestigatorMat.2822f4.luascriptstate",
+  "LuaScript_path": "Infinite_Bag.774898/InvestigatorMat.2822f4.ttslua",
+  "MeasureMovement": false,
+  "Memo": "Investigator Mat",
+  "Name": "Custom_Tile",
+  "Nickname": "Investigator Mat",
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": 86.454,
+    "posY": 4.053,
+    "posZ": 64.048,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 1,
+    "scaleX": 5,
+    "scaleY": 1,
+    "scaleZ": 5
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

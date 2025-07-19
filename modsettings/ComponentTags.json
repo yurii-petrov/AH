@@ -1,0 +1,180 @@
+{
+  "labels": [
+    {
+      "displayed": "mythos_token",
+      "normalized": "mythos_token"
+    },
+    {
+      "displayed": "bless_curse",
+      "normalized": "bless_curse"
+    },
+    {
+      "displayed": "neighborhood",
+      "normalized": "neighborhood"
+    },
+    {
+      "displayed": "university",
+      "normalized": "university"
+    },
+    {
+      "displayed": "anomaly",
+      "normalized": "anomaly"
+    },
+    {
+      "displayed": "shore",
+      "normalized": "shore"
+    },
+    {
+      "displayed": "devil_reef",
+      "normalized": "devil_reef"
+    },
+    {
+      "displayed": "high_house",
+      "normalized": "high_house"
+    },
+    {
+      "displayed": "northside",
+      "normalized": "northside"
+    },
+    {
+      "displayed": "rivertown",
+      "normalized": "rivertown"
+    },
+    {
+      "displayed": "easttown",
+      "normalized": "easttown"
+    },
+    {
+      "displayed": "the_streets",
+      "normalized": "the_streets"
+    },
+    {
+      "displayed": "merchant",
+      "normalized": "merchant"
+    },
+    {
+      "displayed": "southside",
+      "normalized": "southside"
+    },
+    {
+      "displayed": "central",
+      "normalized": "central"
+    },
+    {
+      "displayed": "harbor",
+      "normalized": "harbor"
+    },
+    {
+      "displayed": "downtown",
+      "normalized": "downtown"
+    },
+    {
+      "displayed": "uptown",
+      "normalized": "uptown"
+    },
+    {
+      "displayed": "travel",
+      "normalized": "travel"
+    },
+    {
+      "displayed": "village",
+      "normalized": "village"
+    },
+    {
+      "displayed": "spell",
+      "normalized": "spell"
+    },
+    {
+      "displayed": "item",
+      "normalized": "item"
+    },
+    {
+      "displayed": "special",
+      "normalized": "special"
+    },
+    {
+      "displayed": "ally",
+      "normalized": "ally"
+    },
+    {
+      "displayed": "dark_pact",
+      "normalized": "dark_pact"
+    },
+    {
+      "displayed": "dice_down",
+      "normalized": "dice_down"
+    },
+    {
+      "displayed": "dice",
+      "normalized": "dice"
+    },
+    {
+      "displayed": "interact",
+      "normalized": "interact"
+    },
+    {
+      "displayed": "scenario",
+      "normalized": "scenario"
+    },
+    {
+      "displayed": "univer",
+      "normalized": "univer"
+    },
+    {
+      "displayed": "CleanUpHelper_ignore",
+      "normalized": "cleanuphelper_ignore"
+    },
+    {
+      "displayed": "displacement_excluded",
+      "normalized": "displacement_excluded"
+    },
+    {
+      "displayed": "to_delete",
+      "normalized": "to_delete"
+    },
+    {
+      "displayed": "headline",
+      "normalized": "headline"
+    },
+    {
+      "displayed": "spawned_die",
+      "normalized": "spawned_die"
+    },
+    {
+      "displayed": "item_mat",
+      "normalized": "item_mat"
+    },
+    {
+      "displayed": "item_magnet",
+      "normalized": "item_magnet"
+    },
+    {
+      "displayed": "anomaly_snap",
+      "normalized": "anomaly_snap"
+    },
+    {
+      "displayed": "activation_snap",
+      "normalized": "activation_snap"
+    },
+    {
+      "displayed": "doom_scenario",
+      "normalized": "doom_scenario"
+    },
+    {
+      "displayed": "clue_scenario",
+      "normalized": "clue_scenario"
+    },
+    {
+      "displayed": "scenario_mat",
+      "normalized": "scenario_mat"
+    },
+    {
+      "displayed": "monster_mat",
+      "normalized": "monster_mat"
+    },
+    {
+      "displayed": "codex",
+      "normalized": "codex"
+    }
+  ]
+}

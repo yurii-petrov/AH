@@ -1,0 +1,32 @@
+<button
+	id="clue"
+	onClick="clue_process"
+	width="130"
+	height="160"
+	position="225 0 -22"
+	color="clear"
+	text=""/>
+<button
+	id="doom"
+	onClick="doom_process"
+	width="130"
+	height="160"
+	position="75 0 -22"
+	color="clear"
+	text=""/>
+<button
+	id="monster"
+	onClick="monster_process"
+	width="130"
+	height="160"
+	position="-75 0 -22"
+	color="clear"
+	text=""/>
+<button
+	id="gate"
+	onClick="gate_process"
+	width="130"
+	height="160"
+	position="-225 0 -22"
+	color="clear"
+	text=""/>

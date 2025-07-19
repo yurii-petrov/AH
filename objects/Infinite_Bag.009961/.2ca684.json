@@ -1,0 +1,61 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.3433,
+    "g": 0.06604,
+    "r": 0.44599
+  },
+  "CustomImage": {
+    "CustomTile": {
+      "Stackable": false,
+      "Stretch": true,
+      "Thickness": 0.1,
+      "Type": 2
+    },
+    "ImageScalar": 1,
+    "ImageSecondaryURL": "",
+    "ImageURL": "https://drive.google.com/uc?export=view\u0026id=1U8M_EatIrfWgbl2J1sGGoNnUfw-mvMum",
+    "WidthScale": 0
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "2ca684",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Memo": "Anomaly Token",
+  "Name": "Custom_Tile",
+  "Nickname": "Аномалия",
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "anomaly_snap"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": 20.888,
+    "posY": 4.031,
+    "posZ": 37.85,
+    "rotX": 2,
+    "rotY": 180,
+    "rotZ": 358,
+    "scaleX": 1.53,
+    "scaleY": 1,
+    "scaleZ": 1.53
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

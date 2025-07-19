@@ -1,0 +1,53 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.22641,
+    "g": 0.22641,
+    "r": 0.22641
+  },
+  "CustomAssetbundle": {
+    "AssetbundleSecondaryURL": "",
+    "AssetbundleURL": "https://steamusercontent-a.akamaihd.net/ugc/1698402701139074953/B99AA40E79AFB95642F4518FF7B2DAD2498198D4/",
+    "LoopingEffectIndex": 0,
+    "MaterialIndex": 0,
+    "TypeIndex": 1
+  },
+  "Description": "\"The Reporter\"",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "adfed3",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Memo": "Rex Murphy",
+  "Name": "Custom_Assetbundle",
+  "Nickname": "Rex Murphy",
+  "Snap": true,
+  "Sticky": false,
+  "Tooltip": true,
+  "Transform": {
+    "posX": 9.566,
+    "posY": 4.033,
+    "posZ": 77.007,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 0.93,
+    "scaleY": 0.93,
+    "scaleZ": 0.93
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

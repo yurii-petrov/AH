@@ -1,0 +1,53 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "CustomAssetbundle": {
+    "AssetbundleSecondaryURL": "",
+    "AssetbundleURL": "https://steamusercontent-a.akamaihd.net/ugc/1693904088612102709/DED74596937C5F3C8EC3E98591B07CE9E45E27CB/",
+    "LoopingEffectIndex": 0,
+    "MaterialIndex": 0,
+    "TypeIndex": 1
+  },
+  "Description": "\"The Haunted\"",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "c2120f",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Memo": "Calvin Wright",
+  "Name": "Custom_Assetbundle",
+  "Nickname": "Calvin Wright",
+  "Snap": true,
+  "Sticky": false,
+  "Tooltip": true,
+  "Transform": {
+    "posX": 16.496,
+    "posY": 4.036,
+    "posZ": 71.869,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 0.63,
+    "scaleY": 0.63,
+    "scaleZ": 0.63
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

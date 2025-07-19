@@ -1,0 +1,160 @@
+serpent = require("serpent")
+
+local data = {}
+
+
+function setTop(d)
+	local type_txt = ""
+	if not d.types then
+		data["market_"..d.id].types = {}
+		self.UI.setAttribute("market_txt_"..d.id, "text", "")
+		return 
+	end
+
+	for i, type in pairs(d.types) do
+		if type == "common" then type_txt = type_txt .. ""
+		elseif type == "curio" then type_txt = type_txt .. "" end
+		if type_txt ~= "" and #d.types > 1 then type_txt = type_txt .. " " end
+	end
+	self.UI.setAttribute("market_txt_"..d.id, "text", type_txt)
+	if data["market_"..d.id] then
+		data["market_"..d.id].types = d.types
+	end
+end
+
+function setBottom(d)
+	local buy_txt = ""
+
+	if not d.price or not d.guid then
+		data["market_"..d.id] = nil
+		self.UI.setAttribute("market_"..d.id, "text", buy_txt)
+		return
+	end
+
+	if d.price == 0 then buy_txt = "Отримати за $0"
+	elseif d.price > 0 then buy_txt = "Купити за $" .. d.price end
+    data["market_"..d.id] = d
+	local color = self.UI.getAttribute("market_"..d.id, "textColor")
+	self.UI.setAttribute("market_"..d.id, "text", buy_txt)
+	self.UI.setAttribute("market_"..d.id, "textColor", color)
+end
+
+function onLoad(savedData)
+	local sData = parseJson(savedData)
+	if sData then
+	  	data = sData
+			for i, d in pairs(data) do
+				Wait.time(function()
+					setTop(d)
+					setBottom(d)
+				end, 1)
+				
+			end
+	end
+
+	-- for i, d in pairs(data) do
+	-- 	setTop(d)
+	-- 	setBottom(d)
+	-- end
+	-- setTop({
+	-- 	id = 1,
+	-- 	types = {
+	-- 		"common",
+	-- 		"curio"
+	-- 	}
+	-- })
+	-- setTop({
+	-- 	id = 2,
+	-- 	types = {
+	-- 		"common"
+	-- 	}
+	-- })
+	-- setTop({
+	-- 	id = 3,
+	-- 	types = {
+	-- 		"curio"
+	-- 	}
+	-- })
+	-- setTop({
+	-- 	id = 4,
+	-- 	types = {
+	-- 		"common",
+	-- 		"curio"
+	-- 	}
+	-- })
+	-- setTop({
+	-- 	id = 5,
+	-- 	types = {
+	-- 		"common"
+	-- 	}
+	-- })
+	-- setBottom({
+	-- 	id = 1,
+	-- 	price = 0
+	-- })
+	-- setBottom({
+	-- 	id = 2,
+	-- 	price = 1
+	-- })
+	-- setBottom({
+	-- 	id = 3,
+	-- 	price = 22
+	-- })
+	-- setBottom({
+	-- 	id = 4,
+	-- 	price = 3
+	-- })
+	-- setBottom({
+	-- 	id = 5,
+	-- 	price = 4
+	-- })
+	-- setBottom({
+	-- 	id = 6,
+	-- 	price = 5
+	-- })
+	-- setBottom({
+	-- 	id = 7,
+	-- 	price = 6
+	-- })
+	-- setBottom({
+	-- 	id = 8,
+	-- 	price = 0
+	-- })
+end
+
+function onSave()
+	local saveData = JSON.encode(data)
+	return saveData
+end
+-- XML має id на кнопці і тексту
+function market_btn(player, alt, id)
+	if alt ~= "-1" and alt ~= -1 then return end
+	local d = data[id]
+	if not d then return end
+  d.color = player.color
+    Global.call("onClickMarket", d)
+end
+
+function find_common(player, alt)
+	if alt ~= "-1" and alt ~= -1 then return end
+	Global.call("onClickFindItem", {type = "common"})
+end
+
+function find_curio(player, alt)
+	if alt ~= "-1" and alt ~= -1 then return end
+	Global.call("onClickFindItem", {type = "curio"})
+end
+
+function parseJson(memo)
+	if not memo or type(memo) ~= "string" then
+	  return nil
+	end
+	local success, result = pcall(function()
+	  return JSON.decode(memo)
+	end)
+	if success then
+	  return result
+	else
+	  return nil
+	end
+end

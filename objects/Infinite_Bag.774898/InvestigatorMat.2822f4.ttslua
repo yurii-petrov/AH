@@ -1,0 +1,617 @@
+serpent = require("serpent")
+local isTestMode = true 
+
+local data = {
+      hp = 0,
+      hpMax = 0,
+      sanity = 0,
+      sanityMax = 0,
+    money = 0,
+    remnant = 0,
+    clue = 0,
+    name = "",
+    skill = {
+        lore = 0,
+        influence = 0,
+        observation = 0,
+        strength = 0,
+        will = 0
+    },
+    focus = {
+        lore = 0,
+        influence = 0,
+        observation = 0,
+        strength = 0,
+        will = 0
+    }
+}
+
+function getAttributes()
+    return {
+        width = "250",
+        height = "230",
+        scale = "0.1 0.1 1",
+        textColor = "#a29c90",
+        fontSize = "120",
+        fontStyle = "Bold",
+        rotation="0 0 180",
+        font = "Fonts/AdonisC"
+    }
+end
+
+function getButton()
+    local attributes = getAttributes()
+    attributes.color = "clear"
+    return {
+      tag = "Button",
+      attributes = attributes
+    }
+end
+
+function getSkillButton()
+    local button = getButton()
+    button.attributes.textAlignment="MiddleLeft"
+    button.attributes.padding = "100 0 0 0"
+    button.attributes.width = "400"
+    return button
+end
+
+function getLifeButton()
+  local button = getButton()
+  button.attributes.width = "550"
+  button.attributes.height = "300"
+  button.attributes.fontSize="200"
+  button.attributes.padding = "0 80 0 0"
+  button.attributes.textAlignment="MiddleRight"
+  return button
+end
+
+function getVerticalButton()
+  local button = getButton()
+  button.attributes.height = "450"
+  button.attributes.padding = "0 0 0 50"
+  button.attributes.textAlignment="LowerCenter"
+  return button
+end
+
+function getFocusText()
+    local attributes = getAttributes()
+    attributes.fontSize = "50"
+    attributes.rotation = nil
+    return {
+        tag = "Text",
+        attributes = attributes
+    }
+end
+
+function getMechanicButtons()
+  return {
+  {
+    attributes = {
+      color = "#ffffff",
+      font = "Fonts/AdonisC",
+      fontSize = "95",
+      fontStyle = "Bold",
+      position = "0 -55 -22",
+      rotation = "0 0 180",
+      scale = "0.1 0.1 0.1",
+      text = "В    О    Р    О    Г    И"
+    },
+    tag = "text"
+  },
+  {
+    attributes = {
+      color = "#ffffff",
+      font = "Fonts/AdonisC",
+      fontSize = "60",
+      fontStyle = "Bold",
+      position = "-110 20 -22",
+      rotation = "0 0 180",
+      scale = "0.1 0.1 0.1",
+      text = "С К И Д"
+    },
+    tag = "text"
+  },
+  {
+    attributes = {
+      height = "120",
+      position = "-110 43 -22",
+      rotation = "0 0 180",
+      scale = "0.1 0.1 0.1",
+      width = "350"
+    },
+    children = {
+      {
+        attributes = {
+          color = "#a2a2a2",
+          font = "Fonts/AdonisC",
+          fontSize = "26",
+          fontStyle = "Bold",
+          text = "Покладіть сюди карту, вона опиниться у своїй колоді"
+        },
+        children = {},
+        tag = "text"
+      }
+    },
+    tag = "panel"
+  },
+  {
+    attributes = {
+      color = "clear",
+      font = "Fonts/AdonisC",
+      fontSize = "40",
+      fontStyle = "Bold",
+      height = "120",
+      id = "death",
+      onClick = "clickDeath",
+      padding = "90 0 0 0",
+      position = "78 95 -22",
+      rotation = "0 0 180",
+      scale = "0.1 0.1 0.1",
+      text = "Смерть",
+      textColor = "#ffffff",
+      width = "226"
+    },
+    tag = "button"
+  },
+  {
+    attributes = {
+      color = "clear",
+      font = "Fonts/AdonisC",
+      fontSize = "40",
+      fontStyle = "Bold",
+      height = "120",
+      id = "bio",
+      onClick = "clickBio",
+      padding = "90 0 0 0",
+      position = "50 95 -22",
+      rotation = "0 0 180",
+      scale = "0.1 0.1 0.1",
+      text = "Біографія",
+      textColor = "#ffffff",
+      width = "280"
+    },
+    tag = "button"
+  }
+}
+end
+
+function onLoad(savedData)
+
+  local sData = parseJson(savedData)
+  if sData then
+    data = sData 
+  end
+
+   local skills = {
+    {
+        onClick = "clickLore",
+        text = data.skill.lore
+    },
+    {
+        onClick = "clickInfluence",
+        text = data.skill.influence
+    },
+    {
+        onClick = "clickObservation",
+        text = data.skill.observation
+    },
+    {
+        onClick = "clickStrength",
+        text = data.skill.strength
+    },
+    {
+        onClick = "clickWill",
+        text = data.skill.will
+    }
+  }
+
+  local startPos = -3
+  for i = 1, #skills do
+    local button = getSkillButton()
+    button.attributes.id=skills[i].onClick
+    button.attributes.onClick=skills[i].onClick
+    button.attributes.text = skills[i].text
+    button.attributes.position = "115 "..startPos.." -21"
+    skills[i] = button
+      startPos=startPos+22.5
+  end
+
+  local focuses = {
+    {
+        id = "focusLore",
+        text = data.focus.lore,
+        color = "#382c52",
+        image = "https://drive.google.com/uc?export=view&id=1Aq7R2-Kn4pe9yuyoIZV8naOhq6YrMT8R"
+    },
+    {
+        id = "focusInfluence",
+        text = data.focus.influence,
+        color = "#62280f",
+        image = "https://drive.google.com/uc?export=view&id=10SIQclth2ivBx6Djk-lh823F6Qe3SCEY"
+    },
+    {
+        id = "focusObservation",
+        text = data.focus.observation,
+        color = "#233c14",
+        image = "https://drive.google.com/uc?export=view&id=19hQ8ski6BMqvThDkDC1YKEsyeqwI8eBF"
+    }, 
+    {
+        id = "focusStrength",
+        text = data.focus.strength,
+        color = "#582410",
+        image = "https://drive.google.com/uc?export=view&id=14jdG30fw691zUYlpcCh5gE4OThSdoY8j"
+    },
+    {
+        id = "focusWill",
+        text = data.focus.will,
+        color = "#333c4f",
+        image = "https://drive.google.com/uc?export=view&id=1UsLCEiQw_xPXWf8ToTVhrUA_lyHJ4Wpe"
+    }
+  }
+
+    local startPos = -5
+  for i = 1, #focuses do
+      local image = {
+  tag = "Image",
+  attributes = {
+    width = "18",
+    height = "18",
+    position = "107 -5 -21",
+    rotation="0 0 180",
+    active=focuses[i].text>0
+  },
+}
+
+    image.attributes.id = focuses[i].id
+    image.attributes.image = focuses[i].image
+
+    local focus = getFocusText()
+    focus.attributes.id=focuses[i].id.."Text"
+    focus.attributes.color=focuses[i].color
+    focus.attributes.text = focuses[i].text
+    focus.attributes.position = "-5 -5.3 0"
+    focus.attributes.color = "#382c52"
+
+    image.attributes.position = "107 "..startPos.." -21"
+    image.children = focus
+    startPos=startPos+22.5
+    
+    table.insert(skills, image)
+  end
+
+  local hp = getLifeButton()
+  hp.attributes.id="clickHP"
+  hp.attributes.onClick = "clickHP"
+  hp.attributes.text=data.hp
+  hp.attributes.position="-60 3 -21"
+  table.insert(skills, hp)
+
+local sanity = getLifeButton()
+  sanity.attributes.id="clickSanity"
+  sanity.attributes.onClick = "clickSanity"
+  sanity.attributes.text=data.sanity
+  sanity.attributes.position="-60 37 -21"
+  table.insert(skills, sanity)
+
+  local money = getVerticalButton()
+  money.attributes.id="clickMoney"
+  money.attributes.onClick = "clickMoney"
+  money.attributes.text= data.money
+  money.attributes.position="-50.5 78 -21"
+  table.insert(skills, money)
+
+   local remnant = getVerticalButton()
+  remnant.attributes.id="clickRemnant"
+  remnant.attributes.onClick = "clickRemnant"
+  remnant.attributes.text= data.remnant
+  remnant.attributes.position="-80 78 -21"
+  table.insert(skills, remnant)
+
+  local clue = getVerticalButton()
+  clue.attributes.id="clickClue"
+  clue.attributes.onClick = "clickClue"
+  clue.attributes.text= data.clue
+  clue.attributes.padding = "0 0 0 70"
+  clue.attributes.position="-112.5 78 -21"
+  table.insert(skills, clue)
+
+  local mechanicButtons = getMechanicButtons()
+  self.UI.setXmlTable(mechanicButtons)
+  for i = 1, #mechanicButtons do
+    table.insert(skills, mechanicButtons[i])
+  end
+
+  self.UI.setXmlTable(skills)
+end
+
+function onSave()
+  local saveData = JSON.encode(data)
+  return saveData
+end
+
+function setMemo(objectMemo)
+  if not objectMemo then
+    objectMemo = {}
+     objectMemo.hp = 0
+     objectMemo.sanity = 0
+     objectMemo.skill = {}
+     objectMemo.skill.lore = 0
+     objectMemo.skill.influence = 0
+     objectMemo.skill.observation = 0
+     objectMemo.skill.strength = 0
+     objectMemo.skill.will = 0
+     objectMemo.money = 0
+     objectMemo.remnant = 0
+     objectMemo.clue = 0
+
+     data.hp = 0
+     data.sanity = 0
+     data.focus = {}
+     data.focus.lore = 0
+     data.focus.influence = 0
+     data.focus.observation = 0
+     data.focus.strength = 0
+     data.focus.will = 0
+
+     data.guid = nil
+   else
+
+    if data.guid and data.guid == objectMemo.guid then
+      return
+    end
+
+    data.guid = objectMemo.guid
+  end
+
+    data.hpMax = objectMemo.hp
+    self.UI.setAttribute("clickHP", "text", data.hp)
+    self.UI.setAttribute("clickHP", "textColor", data.hp > 0 and "#fff5e2" or "#a29c90")
+
+    data.sanityMax = objectMemo.sanity
+    self.UI.setAttribute("clickSanity", "text", data.sanity)
+    self.UI.setAttribute("clickSanity", "textColor", data.sanity > 0 and "#fff5e2" or "#a29c90")
+
+    data.skill.lore = objectMemo.skill.lore
+    self.UI.setAttribute("clickLore", "text", data.skill.lore)
+    self.UI.setAttribute("clickLore", "textColor", "#a29c90")
+
+    data.skill.influence = objectMemo.skill.influence
+    self.UI.setAttribute("clickInfluence", "text", data.skill.influence)
+    self.UI.setAttribute("clickInfluence", "textColor", "#a29c90")
+
+    data.skill.observation = objectMemo.skill.observation
+    self.UI.setAttribute("clickObservation", "text", data.skill.observation)
+    self.UI.setAttribute("clickObservation", "textColor", "#a29c90")
+
+    data.skill.strength = objectMemo.skill.strength
+    self.UI.setAttribute("clickStrength", "text", data.skill.strength)
+    self.UI.setAttribute("clickStrength", "textColor", "#a29c90")
+
+    data.skill.will = objectMemo.skill.will
+    self.UI.setAttribute("clickWill", "text", data.skill.will)
+    self.UI.setAttribute("clickWill", "textColor", "#a29c90")
+
+    data.money = objectMemo.money
+    self.UI.setAttribute("clickMoney", "text", data.money)
+    self.UI.setAttribute("clickMoney", "textColor", data.money > 0 and "#fff5e2" or "#a29c90")
+
+    data.remnant = 0
+    self.UI.setAttribute("clickRemnant", "text", data.remnant)
+    self.UI.setAttribute("clickRemnant", "textColor", data.remnant > 0 and "#fff5e2" or "#a29c90")
+
+    data.clue = 0
+    self.UI.setAttribute("clickClue", "text", data.clue)
+    self.UI.setAttribute("clickClue", "textColor", data.clue > 0 and "#fff5e2" or "#a29c90")
+
+    self.UI.setAttribute("focusLoreText", "text","+"..data.focus.lore)
+    self.UI.setAttribute("focusLoreText", "textColor", "#382c52")
+    self.UI.setAttribute("focusLore", "active", false)
+
+    self.UI.setAttribute("focusInfluenceText", "text","+"..data.focus.influence)
+    self.UI.setAttribute("focusInfluenceText", "textColor", "#62280f")
+    self.UI.setAttribute("focusInfluence", "active", false)
+
+    self.UI.setAttribute("focusObservationText", "text","+"..data.focus.observation)
+    self.UI.setAttribute("focusObservationText", "textColor", "#a29c90")
+    self.UI.setAttribute("focusObservation", "active", false)
+
+    self.UI.setAttribute("focusStrengthText", "text","+"..data.focus.strength)
+    self.UI.setAttribute("focusStrengthText", "textColor", "#a29c90")
+    self.UI.setAttribute("focusStrength", "active", false)
+
+    self.UI.setAttribute("focusWillText", "text","+"..data.focus.will)
+    self.UI.setAttribute("focusWillText", "textColor", "#a29c90")
+    self.UI.setAttribute("focusWill", "active", false)
+end
+
+function clickLore(player, alt_click)
+  data.focus.lore = alt_click == "-1" and data.focus.lore+1 or (data.focus.lore > 0 and data.focus.lore-1 or 0)
+    self.UI.setAttribute("clickLore", "text", data.skill.lore+data.focus.lore)
+    self.UI.setAttribute("clickLore", "textColor", data.focus.lore > 0 and "#fff5e2" or "#a29c90")
+
+    self.UI.setAttribute("focusLoreText", "text","+"..data.focus.lore)
+    self.UI.setAttribute("focusLoreText", "textColor", "#382c52")
+    self.UI.setAttribute("focusLore", "active", data.focus.lore > 0)
+end
+
+function clickInfluence(player, alt_click)
+    data.focus.influence = alt_click == "-1" and data.focus.influence+1 or (data.focus.influence > 0 and data.focus.influence-1 or 0)
+    self.UI.setAttribute("clickInfluence", "text", data.skill.influence+data.focus.influence)
+    self.UI.setAttribute("clickInfluence", "textColor", data.focus.influence > 0 and "#fff5e2" or "#a29c90")
+
+    self.UI.setAttribute("focusInfluenceText", "text","+"..data.focus.influence)
+    self.UI.setAttribute("focusLoreText", "textColor", "#62280f")
+    self.UI.setAttribute("focusInfluence", "active", data.focus.influence > 0)
+end
+
+function clickObservation(player, alt_click)
+    data.focus.observation = alt_click == "-1" and data.focus.observation+1 or (data.focus.observation > 0 and data.focus.observation-1 or 0)
+    self.UI.setAttribute("clickObservation", "text", data.skill.observation+data.focus.observation)
+    self.UI.setAttribute("clickObservation", "textColor", data.focus.observation > 0 and "#fff5e2" or "#a29c90")
+
+    self.UI.setAttribute("focusObservationText", "text","+"..data.focus.observation)
+    self.UI.setAttribute("focusLoreText", "textColor", "#233c14")
+    self.UI.setAttribute("focusObservation", "active", data.focus.observation > 0)
+end
+
+function clickStrength(player, alt_click)
+    data.focus.strength = alt_click == "-1" and data.focus.strength+1 or (data.focus.strength > 0 and data.focus.strength-1 or 0)
+    self.UI.setAttribute("clickStrength", "text", data.skill.strength+data.focus.strength)
+    self.UI.setAttribute("clickStrength", "textColor", data.focus.strength > 0 and "#fff5e2" or "#a29c90")
+
+    self.UI.setAttribute("focusStrengthText", "text","+"..data.focus.strength)
+    self.UI.setAttribute("focusLoreText", "textColor", "#582410")
+    self.UI.setAttribute("focusStrength", "active", data.focus.strength > 0)
+end
+
+function clickWill(player, alt_click)
+    data.focus.will = alt_click == "-1" and data.focus.will+1 or (data.focus.will > 0 and data.focus.will-1 or 0)
+    self.UI.setAttribute("clickWill", "text", data.skill.will+data.focus.will)
+    self.UI.setAttribute("clickWill", "textColor", data.focus.will > 0 and "#fff5e2" or "#a29c90")
+
+    self.UI.setAttribute("focusWillText", "text","+"..data.focus.will)
+    self.UI.setAttribute("focusLoreText", "textColor", "#333c4f")
+    self.UI.setAttribute("focusWill", "active", data.focus.will > 0)
+end
+
+function clickHP(player, alt_click)
+    data.hp = alt_click == "-1" and (data.hp < data.hpMax and data.hp+1 or data.hp) or (data.hp > 0 and data.hp-1 or 0)
+    
+    self.UI.setAttribute("clickHP", "text", data.hp)
+    self.UI.setAttribute("clickHP", "textColor", data.hp > 0 and "#fff5e2" or "#a29c90")
+end
+
+function clickSanity(player, alt_click)
+    data.sanity = alt_click == "-1" and (data.sanity < data.sanityMax and data.sanity+1 or data.sanity) or (data.sanity > 0 and data.sanity-1 or 0)
+    
+    self.UI.setAttribute("clickSanity", "text", data.sanity)
+    self.UI.setAttribute("clickSanity", "textColor", data.sanity > 0 and "#fff5e2" or "#a29c90")
+end
+
+function clickMoney(player, alt_click)
+    data.money = alt_click == "-1" and data.money+1 or (data.money>0 and data.money-1 or data.money)
+    
+    self.UI.setAttribute("clickMoney", "text", data.money)
+    self.UI.setAttribute("clickMoney", "textColor", data.money > 0 and "#fff5e2" or "#a29c90")
+end
+
+function clickRemnant(player, alt_click)
+    data.remnant = alt_click == "-1" and data.remnant+1 or (data.remnant>0 and data.remnant-1 or data.remnant)
+    
+    self.UI.setAttribute("clickRemnant", "text", data.remnant)
+    self.UI.setAttribute("clickRemnant", "textColor", data.remnant > 0 and "#fff5e2" or "#a29c90")
+end
+
+function clickClue(player, alt_click)
+  if alt_click ~= "-1" and data.clue > 0 then
+      Global.call("onPlayerClickRemoveClue", self)
+    end
+
+    data.clue = alt_click == "-1" and data.clue+1 or (data.clue>0 and data.clue-1 or data.clue)
+    
+    self.UI.setAttribute("clickClue", "text", data.clue)
+    self.UI.setAttribute("clickClue", "textColor", data.clue > 0 and "#fff5e2" or "#a29c90")
+end
+
+function clickDeath(player, alt_click)
+  Global.call("onPlayerClickDeath", {mat = self, player = player})
+end
+
+function clickBio(player, alt_click)
+  Global.call("onPlayerClickBio", {mat = self})
+end
+
+function addClue()
+  clickClue(nil, "-1")
+end
+
+function updateMoney(value)
+  local newValue = data.money+value
+  if newValue < 0 then
+    return false
+  end
+
+  data.money = data.money+value
+  self.UI.setAttribute("clickMoney", "text", data.money)
+  self.UI.setAttribute("clickMoney", "textColor", data.money > 0 and "#fff5e2" or "#a29c90")
+  return true
+end
+
+function parseJson(memo)
+  if not memo or type(memo) ~= "string" then
+    return nil
+  end
+
+  local success, result = pcall(function()
+    return JSON.decode(memo)
+  end)
+
+  if success then
+    return result
+  else
+    return nil
+  end
+end
+
+function upCast(obj, dist, offset, multi)
+  if obj == nil then
+    return
+  end -- object to cast up from
+  local dist = dist or 1 -- distance to cast in Y world units
+  local offset = offset or 0 -- distance above the surface of obj to begin the cast
+  local multi = multi or 1 -- multiplier of the X and Z world units of the object
+  local oPos = obj.getPosition()
+  local oBounds = obj.getBoundsNormalized()
+  local oRot = obj.getRotation()
+  local orig = {oPos[1], oPos[2] + dist / 2 + oBounds.size.y / 2 + offset, oPos[3]}
+  local siz = {oBounds.size.x * multi, dist, oBounds.size.z * multi}
+  local orient = {oRot[1], oRot[2], oRot[3]}
+  local hits = Physics.cast({
+    origin = orig,
+    direction = {0, 1, 0},
+    type = 3,
+    size = siz,
+    orientation = orient,
+    max_distance = 0,
+    debug = isTestMode -- set this to false once you're happy with the result
+  })
+  local hitObjects = {}
+  for i, v in pairs(hits) do
+    if v.hit_object ~= obj then
+      table.insert(hitObjects, v.hit_object)
+    end
+  end
+  return hitObjects
+end
+
+function downCast(obj, dist, offset, multi)
+  if obj == nil then
+    return
+  end
+  local dist = dist or 1
+  local offset = offset or 0
+  local multi = multi or 1
+  local oPos = obj.getPosition()
+  local oBounds = obj.getBoundsNormalized()
+  local oRot = obj.getRotation()
+  local orig = {oPos[1], oPos[2] - dist / 2 - oBounds.size.y / 2 - offset, oPos[3]}
+  local siz = {oBounds.size.x * multi, dist, oBounds.size.z * multi}
+  local orient = {oRot[1], oRot[2], oRot[3]}
+  local hits = Physics.cast({
+    origin = orig,
+    direction = {0, 1, 0},
+    type = 3,
+    size = siz,
+    orientation = orient,
+    max_distance = 0,
+    debug = isTestMode
+  })
+  local hitObjects = {}
+  for i, v in pairs(hits) do
+    if v.hit_object ~= obj then
+      table.insert(hitObjects, v.hit_object)
+    end
+  end
+  return hitObjects
+end

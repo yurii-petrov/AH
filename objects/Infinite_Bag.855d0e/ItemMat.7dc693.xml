@@ -1,0 +1,102 @@
+<panel
+	id="damage"
+	active="false"
+	width="500"
+	height="300"
+	scale="0.1 0.1 0"
+	position="30 85 -11"
+	rotation="0 0 180">
+	<button
+		id="damage_btn"
+		onClick="damage"
+		width="500"
+		height="300"
+		position="0 -40 0"
+		padding="0 300 10 0"
+		fontSize="290"
+		fontStyle="Bold"
+		font="Fonts/AdonisC"
+		textColor="#e9543b"
+		color="clear"
+		text="0"/>
+	<text
+		id="damage_txt"
+		position="150 78 0"
+		fontSize="70"
+		fontStyle="Bold"
+		font="Fonts/AdonisC"
+		color="#fff5e2"
+		text="ПОРАНЕННЯ"/>
+</panel>
+<panel
+	id="damage_cls"
+	active="false"
+	width="500"
+	height="300"
+	scale="0.1 0.1 0"
+	position="30 85 -11"
+	rotation="0 0 180">
+	<button
+		onClick="ItemMatDestruct"
+		width="500"
+		height="300"
+		position="0 -40 0"
+		padding="0 300 10 0"
+		fontSize="290"
+		fontStyle="Bold"
+		font="Fonts/AdonisC"
+		textColor="#e9543b"
+		color="clear"
+		text="X"/>
+</panel>
+<panel
+	id="horror"
+	active="false"
+	width="500"
+	height="300"
+	scale="0.1 0.1 0"
+	position="-30 85 -11"
+	rotation="0 0 180">
+	<button
+		id="horror_btn"
+		onClick="horror"
+		width="500"
+		height="300"
+		position="0 -40 0"
+		padding="300 0 10 0"
+		fontSize="290"
+		fontStyle="Bold"
+		font="Fonts/AdonisC"
+		textColor="#485cb3"
+		color="clear"
+		text="0"/>
+	<text
+		id="horror_txt"
+		position="-26 -93 -11"
+		fontSize="70"
+		fontStyle="Bold"
+		font="Fonts/AdonisC"
+		color="#fff5e2"
+		text="ЖАХ"/>
+</panel>
+<panel
+	id="horror_cls"
+	active="false"
+	width="500"
+	height="300"
+	scale="0.1 0.1 0"
+	position="-30 85 -11"
+	rotation="0 0 180">
+	<button
+		onClick="ItemMatDestruct"
+		width="500"
+		height="300"
+		position="0 -40 0"
+		padding="300 0 10 0"
+		fontSize="290"
+		fontStyle="Bold"
+		font="Fonts/AdonisC"
+		textColor="#e9543b"
+		color="clear"
+		text="X"/>
+</panel>

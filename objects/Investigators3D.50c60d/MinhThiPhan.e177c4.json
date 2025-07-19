@@ -1,0 +1,53 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "CustomAssetbundle": {
+    "AssetbundleSecondaryURL": "",
+    "AssetbundleURL": "https://steamusercontent-a.akamaihd.net/ugc/1626353262602913272/36E3950976451B4BC61A82350E588811E08A3AA0/",
+    "LoopingEffectIndex": 0,
+    "MaterialIndex": 0,
+    "TypeIndex": 1
+  },
+  "Description": "\"The Secretary\"",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "e177c4",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Memo": "Minh Thi Phan",
+  "Name": "Custom_Assetbundle",
+  "Nickname": "Minh Thi Phan",
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": 12.264,
+    "posY": 4.038,
+    "posZ": 74.706,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 0.83,
+    "scaleY": 0.83,
+    "scaleZ": 0.83
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

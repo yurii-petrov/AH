@@ -1,0 +1,81 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "AttachedSnapPoints": [
+    {
+      "Position": {
+        "x": 0,
+        "y": 0.1,
+        "z": -0.154
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      }
+    }
+  ],
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.25,
+    "g": 0.25,
+    "r": 0.25
+  },
+  "CustomImage": {
+    "CustomTile": {
+      "Stackable": false,
+      "Stretch": true,
+      "Thickness": 0.1,
+      "Type": 0
+    },
+    "ImageScalar": 1,
+    "ImageSecondaryURL": "",
+    "ImageURL": "https://drive.google.com/uc?export=view\u0026id=1M9zjFU49RgMqLWt4-C3kMPYpfoTtG8Li",
+    "WidthScale": 0
+  },
+  "CustomUIAssets": [
+    {
+      "Name": "Fonts",
+      "Type": 1,
+      "URL": "https://drive.google.com/uc?export=view\u0026id=18_lFlnSaOFlbNVfE-G-LFqqfptMMkKFS"
+    }
+  ],
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "f2ba55",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Name": "Custom_Tile",
+  "Nickname": "",
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "item_mat"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": 71.211,
+    "posY": 4.058,
+    "posZ": 72.84,
+    "rotX": 1,
+    "rotY": 180,
+    "rotZ": 3,
+    "scaleX": 1.8,
+    "scaleY": 1,
+    "scaleZ": 1.84
+  },
+  "Value": 0,
+  "XmlUI_path": "Infinite_Bag.f20e66/Custom_Tile.f2ba55.xml"
+}

@@ -1,0 +1,51 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.99528,
+    "g": 0.36468,
+    "r": 1
+  },
+  "ContainedObjects_order": [
+    "PromoteEveryone.045d8c"
+  ],
+  "ContainedObjects_path": "Draggedouttogetpromoted.c648e5",
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "c648e5",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": true,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MaterialIndex": -1,
+  "MeasureMovement": false,
+  "MeshIndex": -1,
+  "Name": "Infinite_Bag",
+  "Nickname": "Dragged out to get promoted",
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": -149.666,
+    "posY": 1.975,
+    "posZ": 99.299,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 0.5,
+    "scaleY": 0.5,
+    "scaleZ": 0.5
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

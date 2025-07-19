@@ -1,0 +1,17 @@
+<panel
+	id="rowBtn"
+	width="300"
+	height="300"
+	position="-300 120 -2"
+	rotation="0 0 180"
+	scale="0.1 0.1 1">
+	<button
+		onClick="row"
+		width="300"
+		height="300"
+		color="clear"/>
+	<image
+		width="300"
+		preserveAspect="true"
+		image="cards_icon"/>
+</panel>

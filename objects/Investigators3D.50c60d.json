@@ -1,0 +1,65 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "Bag": {
+    "Order": 0
+  },
+  "ColorDiffuse": {
+    "b": 0,
+    "g": 0.36652,
+    "r": 0.70588
+  },
+  "ContainedObjects_order": [
+    "TommyMuldoon.edfef0",
+    "DexterDrake.6d23fa",
+    "MichaelMcGlen.efee54",
+    "MinhThiPhan.e177c4",
+    "AgnesBaker.1b961a",
+    "RexMurphy.adfed3",
+    "NormanWithers.b6bc1a",
+    "CalvinWright.c2120f",
+    "DanielaReyes.833c80",
+    "MarieLambeau.588a0b",
+    "WendyAdams.ed5d30",
+    "JennyBarnes.57ba2d"
+  ],
+  "ContainedObjects_path": "Investigators3D.50c60d",
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "50c60d",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MaterialIndex": -1,
+  "MeasureMovement": false,
+  "MeshIndex": -1,
+  "Name": "Bag",
+  "Nickname": "Investigators 3D",
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": 52.039,
+    "posY": 1.815,
+    "posZ": 33.927,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 1,
+    "scaleY": 1,
+    "scaleZ": 1
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

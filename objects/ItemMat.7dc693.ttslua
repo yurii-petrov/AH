@@ -1,0 +1,99 @@
+--serpent = require("serpent")
+
+local data = {
+	hp = 0,
+	maxHp = nil,
+	sp = 0,
+	maxSp = nil,
+	unbreakable = false
+  }
+
+-- це все не працювало
+  function onLoad(savedData)
+	local sData = parseJson(savedData)
+	if sData then
+	  data = sData
+	end
+
+	prepareTile()
+  end
+
+  function onSave()
+	local saveData = JSON.encode(data)
+	return saveData
+  end
+
+function prepareTile() -- запустити під час аттачу щоб видалити зайвий каунтер
+	self.UI.setAttribute('damage', 'active', data.maxHp ~= nil) 
+	self.UI.setAttribute('horror', 'active', data.maxSp ~= nil) 
+end
+
+function damage(player, alt_click, id) -- обробка кліка по HP
+	if alt_click == "-1" then
+		if data.maxHp and data.hp < data.maxHp then data.hp = data.hp + 1 end
+	elseif alt_click == "-2" then
+		if data.hp > 0 then data.hp = data.hp - 1 end
+	end
+	updateTile()
+end
+
+function horror(player, alt_click, id) -- обробка кліка по SP
+	if alt_click == "-1" then
+		if data.maxSp and data.sp < data.maxSp then data.sp = data.sp + 1 end
+	elseif alt_click == "-2" then
+		if data.sp > 0 then data.sp = data.sp - 1 end
+	end
+	updateTile()
+end
+
+function setData(d)
+	data.hp = 0
+	data.sp = 0
+	data.maxHp = d.hp
+	data.maxSp = d.sp
+	data.unbreakable = d.unbreakable or false
+	prepareTile()
+end
+
+function updateTile() -- оновлення XML
+	local colorDamage = self.UI.getAttribute('damage_btn', 'textColor')
+	local colorHorror = self.UI.getAttribute('horror_btn', 'textColor')
+	if data.hp == data.maxHp and not data.unbreakable then
+		self.UI.setAttribute('horror', 'active', false)
+		self.UI.setAttribute('horror_cls', 'active', true)
+	else
+		self.UI.setAttribute('horror', 'active', true)
+		self.UI.setAttribute('horror_cls', 'active', false)
+	end
+	if data.sp == data.maxSp and not data.unbreakable then
+		self.UI.setAttribute('damage', 'active', false)
+		self.UI.setAttribute('damage_cls', 'active', true)
+	else
+		self.UI.setAttribute('damage', 'active', true)
+		self.UI.setAttribute('damage_cls', 'active', false)
+	end
+	self.UI.setAttribute('damage_btn', 'text', data.hp)
+	self.UI.setAttribute('horror_btn', 'text', data.sp)
+	self.UI.setAttribute('damage_btn', 'textColor', colorDamage)
+	self.UI.setAttribute('horror_btn', 'textColor', colorHorror)
+end
+
+function ItemMatDestruct() -- обробка кліку по Х
+	Global.call("onItemMatDestruct", self)
+end
+
+function parseJson(memo)
+  if not memo or type(memo) ~= "string" then
+    return nil
+  end
+
+  local success, result = pcall(function()
+    return JSON.decode(memo)
+  end)
+
+  if success then
+    return result
+  else
+    return nil
+  end
+end

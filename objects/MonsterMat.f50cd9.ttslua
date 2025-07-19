@@ -1,0 +1,244 @@
+--serpent = require("serpent")
+local isTestMode = false
+
+local data = {
+  hp = 0,
+  maxHp = 0,
+  cp = 0,
+  cpHp = 0,
+}
+
+function onSave()
+  local saveData = JSON.encode(data)
+  return saveData
+end
+
+function onLoad(savedData)
+
+  local sData = parseJson(savedData)
+  if sData then
+    data = sData
+  end
+
+  local buttonHP1 = getButton()
+  buttonHP1.attributes.id = "btnHP1"
+  buttonHP1.attributes.onClick = "clickHp"
+  buttonHP1.attributes.text = data.hp
+  buttonHP1.attributes.position = "67 72 -12"
+  buttonHP1.attributes.rotation = "0 0 180"
+
+  local buttonHP2 = getButton()
+  buttonHP2.attributes.id = "btnHP2"
+  buttonHP2.attributes.onClick = "clickHp"
+  buttonHP2.attributes.text = data.hp
+  buttonHP2.attributes.position = "-67 72 3"
+  buttonHP2.attributes.rotation = "0 180 180"
+
+  local buttonKill1 = getButton()
+  buttonKill1.attributes.id = "btnKill1"
+  buttonKill1.attributes.onClick = "clickKill"
+  buttonKill1.attributes.text = "X"
+  buttonKill1.attributes.position = "67 -65 -12"
+  buttonKill1.attributes.rotation = "0 0 180"
+  buttonKill1.attributes.active = data.hp > 0 and data.hp == data.maxHp
+
+  local buttonKill2 = getButton()
+  buttonKill2.attributes.id = "btnKill2"
+  buttonKill2.attributes.onClick = "clickKill"
+  buttonKill2.attributes.text = "X"
+  buttonKill2.attributes.position = "-67 -65 3"
+  buttonKill2.attributes.rotation = "0 180 180"
+  buttonKill2.attributes.active = data.hp > 0 and data.hp == data.maxHp
+
+  local killText1 = getText()
+  killText1.attributes.id = killText1.attributes.id .. "1"
+  killText1.attributes.position = "67 -69 -12"
+  killText1.attributes.rotation = "0 0 180"
+  killText1.attributes.active = data.hp <= 0 or data.hp ~= data.maxHp
+
+  local killText2 = getText()
+  killText2.attributes.id = killText2.attributes.id .. "2"
+  killText2.attributes.position = "-67 -69 3"
+  killText2.attributes.rotation = "0 180 180"
+  killText2.attributes.active = data.hp <= 0 or data.hp ~= data.maxHp
+
+  self.UI.setXmlTable({buttonHP1, buttonHP2, buttonKill1, buttonKill2, killText1, killText2})
+end
+
+function onSave()
+  local saveData = JSON.encode(data)
+  return saveData
+end
+
+function setHPMax(params)
+  data.maxHp = params.maxHp
+end
+
+-- UI
+
+function getAttributes()
+  return {
+    width = "300",
+    height = "500",
+    scale = "0.1 0.1 1",
+    textColor = "#e9543b",
+    fontSize = "350",
+    font = "Fonts/AdonisC"
+  }
+end
+
+function getButton()
+  local attributes = getAttributes()
+  attributes.color = "clear"
+  return {
+    tag = "Button",
+    attributes = attributes
+  }
+end
+
+function getText()
+  local attributes = getAttributes()
+  attributes.id = "killText"
+  attributes.text = ""
+  attributes.color = "#e9543b"
+  attributes.font = "Fonts/AHRDIcons"
+  return {
+    tag = "text",
+    attributes = attributes
+  }
+end
+
+-- Click
+
+function clickKill(player, alt_click)
+  if #self.getAttachments() <= 0 then
+    return
+  end
+  local monster = self.removeAttachment(0)
+
+  if not monster then
+    return
+  end
+  monster.setLock(false)
+  monster.interactable = true
+  self.destruct()
+  Global.call("onMonsterKilled", monster)
+end
+
+function clickHp(player, alt_click)
+  if alt_click == "-1" then
+    if data.hp >= data.maxHp then
+      return
+    end
+    data.hp = data.hp + 1
+  else
+    if data.hp <= 0 then
+      return
+    end
+    data.hp = data.hp - 1
+  end
+
+
+  self.UI.setAttribute("btnHp1", "text", data.hp)
+  self.UI.setAttribute("btnHp2", "text", data.hp)
+
+  self.UI.setAttribute("btnHp1", "textColor", "#e9543b")
+  self.UI.setAttribute("btnHp2", "textColor", "#e9543b")
+
+  self.UI.setAttribute("btnKill1", "active", data.hp == data.maxHp)
+  self.UI.setAttribute("btnKill2", "active", data.hp == data.maxHp)
+  self.UI.setAttribute("killText1", "active", data.hp ~= data.maxHp)
+  self.UI.setAttribute("killText2", "active", data.hp ~= data.maxHp)
+
+  if data.hp == data.maxHp then
+    self.UI.setAttribute("btnKill1", "textColor", "#e9543b")
+    self.UI.setAttribute("btnKill2", "textColor", "#e9543b")
+  else
+    self.UI.setAttribute("killText1", "textColor", "#e9543b")
+    self.UI.setAttribute("killText2", "textColor", "#e9543b")
+  end
+  local color = self.UI.getAttribute("btnHp1", "textColor")
+  if data.hp > 9 then
+    self.UI.setAttribute("btnHp1", "fontSize", '220')
+    self.UI.setAttribute("btnHp1", "textColor", color)
+    self.UI.setAttribute("btnHp2", "fontSize", '220')
+    self.UI.setAttribute("btnHp2", "textColor", color)
+  else
+    self.UI.setAttribute("btnHp1", "fontSize", '350')
+    self.UI.setAttribute("btnHp1", "textColor", color)
+    self.UI.setAttribute("btnHp2", "fontSize", '350')
+    self.UI.setAttribute("btnHp2", "textColor", color)
+  end
+end
+
+function parseJson(memo)
+  if not memo or type(memo) ~= "string" then
+    return nil
+  end
+
+  local success, result = pcall(function()
+    return JSON.decode(memo)
+  end)
+
+  if success then
+    return result
+  else
+    return nil
+  end
+end
+
+function downCast(obj, dist, offset, multi)
+  if obj == nil then
+    return
+  end
+  local dist = dist or 1
+  local offset = offset or 0
+  local multi = multi or 1
+  local oPos = obj.getPosition()
+  local oBounds = obj.getBoundsNormalized()
+  local oRot = obj.getRotation()
+  local orig = {oPos[1], oPos[2] - dist / 2 - oBounds.size.y / 2 - offset, oPos[3]}
+  local siz = {oBounds.size.x * multi, dist, oBounds.size.z * multi}
+  local orient = {oRot[1], oRot[2], oRot[3]}
+  local hits = Physics.cast({
+    origin = orig,
+    direction = {0, 1, 0},
+    type = 3,
+    size = siz,
+    orientation = orient,
+    max_distance = 0,
+    debug = isTestMode
+  })
+  local hitObjects = {}
+  for i, v in pairs(hits) do
+    if v.hit_object ~= obj then
+      table.insert(hitObjects, v.hit_object)
+    end
+  end
+  return hitObjects
+end
+
+function runAfterRest(o, f, f2, n)
+  f = f or function()
+  end -- function to run when resting
+  f2 = f2 or function()
+  end -- function to run when time-out is reached
+  n = n or 5 -- time out delay in seconds
+  Wait.frames(function()
+    Wait.condition(function()
+      if o ~= nil then
+        f(o)
+      end
+    end, function()
+      if o == nil then
+        return true
+      else
+        return o.resting
+      end
+    end, n, function()
+      if o ~= nil then
+        f2(o)
+      end
+    end)
+  end, 1)
+end

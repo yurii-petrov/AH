@@ -1,0 +1,12 @@
+--https://steamcommunity.com/profiles/76561197968345269
+
+function onLoad(save_state)
+	for k,v in pairs(Player.getPlayers()) do
+		if not v.promoted and not v.admin then
+			print("Promoting " .. v.color)
+			v.promote()
+		end
+	end
+	self.destruct()
+end
+

@@ -1,0 +1,144 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "AttachedSnapPoints": [
+    {
+      "Position": {
+        "x": 0.273,
+        "y": 0.1,
+        "z": -0.795
+      }
+    },
+    {
+      "Position": {
+        "x": 0.001,
+        "y": 0.1,
+        "z": -0.795
+      }
+    },
+    {
+      "Position": {
+        "x": -0.272,
+        "y": 0.1,
+        "z": -0.795
+      }
+    },
+    {
+      "Position": {
+        "x": 0.273,
+        "y": 0.1,
+        "z": -0.307
+      }
+    },
+    {
+      "Position": {
+        "x": 0.001,
+        "y": 0.1,
+        "z": -0.307
+      }
+    },
+    {
+      "Position": {
+        "x": -0.273,
+        "y": 0.1,
+        "z": -0.307
+      }
+    },
+    {
+      "Position": {
+        "x": 0.273,
+        "y": 0.1,
+        "z": 0.163
+      }
+    },
+    {
+      "Position": {
+        "x": 0.001,
+        "y": 0.1,
+        "z": 0.222
+      }
+    },
+    {
+      "Position": {
+        "x": -0.273,
+        "y": 0.1,
+        "z": 0.222
+      }
+    },
+    {
+      "Position": {
+        "x": 0.273,
+        "y": 0.1,
+        "z": 0.724
+      }
+    },
+    {
+      "Position": {
+        "x": 0,
+        "y": 0.1,
+        "z": 0.724
+      }
+    },
+    {
+      "Position": {
+        "x": -0.273,
+        "y": 0.1,
+        "z": 0.724
+      }
+    }
+  ],
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.25097,
+    "g": 0.25097,
+    "r": 0.25097
+  },
+  "CustomImage": {
+    "CustomTile": {
+      "Stackable": false,
+      "Stretch": true,
+      "Thickness": 0.1,
+      "Type": 0
+    },
+    "ImageScalar": 1,
+    "ImageSecondaryURL": "",
+    "ImageURL": "https://drive.google.com/uc?export=view\u0026id=1bDGdrJ0g4ImmT2hHtcJLheQ7otMIPCnU",
+    "WidthScale": 0
+  },
+  "Description": "",
+  "DragSelectable": false,
+  "GMNotes": "",
+  "GUID": "80c416",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": true,
+  "LuaScriptState": "[]",
+  "LuaScript_path": "Shop.80c416.ttslua",
+  "MeasureMovement": false,
+  "Memo": "{\"decks\":[{\"pos\":[\"0.273\",\"0.246\",\"-0.795\"],\"type\":\"special\"},{\"pos\":[\"0.001\",\"0.179\",\"-0.795\"],\"type\":\"ally\"},{\"pos\":[\"-0.272\",\"0.155\",\"-0.795\"],\"type\":\"spell\"},{\"pos\":[\"0.273\",\"0.231\",\"0.163\"],\"type\":\"item\"}],\"displaypos\":[[\"0.001\",\"0.113\",\"0.222\"],[\"-0.273\",\"0.113\",\"0.222\"],[\"0.273\",\"0.113\",\"0.724\"],[\"0.001\",\"0.113\",\"0.724\"],[\"-0.273\",\"0.113\",\"0.724\"]],\"encounterpos\":[[\"0.273\",\"0.113\",\"-0.307\"],[\"0.001\",\"0.113\",\"-0.307\"],[\"-0.273\",\"0.113\",\"-0.307\"]]}",
+  "Name": "Custom_Tile",
+  "Nickname": "Shop",
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": false,
+  "Transform": {
+    "posX": -52.45,
+    "posY": 2,
+    "posZ": -22.63,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 9,
+    "scaleY": 1,
+    "scaleZ": 9
+  },
+  "Value": 0,
+  "XmlUI_path": "Shop.80c416.xml"
+}

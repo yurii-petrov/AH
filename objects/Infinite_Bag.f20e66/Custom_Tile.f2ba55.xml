@@ -1,0 +1,36 @@
+<button
+	id="money"
+	onClick="money"
+	width="1100"
+	height="300"
+	position="0 88 -11"
+	rotation="0 0 180"
+	scale="0.1 0.1 0"
+	padding="200 0 10 0"
+	fontSize="290"
+	fontStyle="Bold"
+	font="Fonts/AdonisC"
+	textColor="#fff5e2"
+	color="clear"
+	text="0"
+	/>
+<text
+	position="30 85 -11"
+	rotation="0 0 180"
+	scale="0.1 0.1 0"
+	fontSize="70"
+	fontStyle="Bold"
+	font="Fonts/AdonisC"
+	color="#fff5e2"
+	text="СПАДОК"
+	/>
+<text
+	position="-40 85 -11"
+	rotation="0 0 180"
+	scale="0.1 0.1 0"
+	fontSize="220"
+	fontStyle="Bold"
+	font="Fonts/AHRDIcons"
+	color="#b6c72a"
+	text=""
+	/>

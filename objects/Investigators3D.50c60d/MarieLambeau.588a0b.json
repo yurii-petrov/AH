@@ -1,0 +1,53 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.54717,
+    "g": 0.54717,
+    "r": 0.54717
+  },
+  "CustomAssetbundle": {
+    "AssetbundleSecondaryURL": "",
+    "AssetbundleURL": "https://steamusercontent-a.akamaihd.net/ugc/1698403941769899958/DDB5C90BD02C476E91B8E89A52E44A2B6F06C9EB/",
+    "LoopingEffectIndex": 0,
+    "MaterialIndex": 0,
+    "TypeIndex": 1
+  },
+  "Description": "\"The Entertainer\"",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "588a0b",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Memo": "Marie Lambeau",
+  "Name": "Custom_Assetbundle",
+  "Nickname": "Marie Lambeau",
+  "Snap": true,
+  "Sticky": false,
+  "Tooltip": true,
+  "Transform": {
+    "posX": 13.86,
+    "posY": 4.042,
+    "posZ": 77.618,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 0.88,
+    "scaleY": 0.88,
+    "scaleZ": 0.88
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

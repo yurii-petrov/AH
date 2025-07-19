@@ -1,0 +1,53 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "CustomAssetbundle": {
+    "AssetbundleSecondaryURL": "",
+    "AssetbundleURL": "https://steamusercontent-a.akamaihd.net/ugc/1807610360373912251/A98E4C51CA54317C73FC04D3DF62F2B47A9653FD/",
+    "LoopingEffectIndex": 0,
+    "MaterialIndex": 0,
+    "TypeIndex": 1
+  },
+  "Description": "\"The Dilettante\"",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "57ba2d",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Memo": "Jenny Barnes",
+  "Name": "Custom_Assetbundle",
+  "Nickname": "Jenny Barnes",
+  "Snap": true,
+  "Sticky": false,
+  "Tooltip": true,
+  "Transform": {
+    "posX": 14.543,
+    "posY": 4.024,
+    "posZ": 72.205,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 0.87,
+    "scaleY": 0.87,
+    "scaleZ": 0.87
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

@@ -1,0 +1,7 @@
+function onLoad()
+  self.setLock(true)
+  self.setRotation(Vector(0,180,0))
+  self.interactable = false -- comment this out to interact
+  self.drag_selectable = false -- change to true to allow it to be drag selected (only if the above line is also true)
+  self.gizmo_selectable = false -- change this to true to allow the gizmo tool to interact with it
+end

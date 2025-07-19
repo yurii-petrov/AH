@@ -1,0 +1,31 @@
+function clue_process(player, alt_click)
+    if alt_click ~= "-1" then
+        return
+    end
+
+    Global.call("spawnClueByClick")
+end
+
+function doom_process(player, alt_click)
+    if alt_click ~= "-1" then
+        return
+    end
+
+    Global.call("spawnDoomsByClick")
+end
+
+function monster_process(player, alt_click)
+    if alt_click ~= "-1" then
+        return
+    end
+
+    Global.call("spawnMonterByClick")
+end
+
+function gate_process(player, alt_click)
+    if alt_click ~= "-1" then
+        return
+    end
+
+    Global.call("processGateBurstByClick")
+end

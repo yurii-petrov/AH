@@ -1,0 +1,249 @@
+<panel
+    id="phase"
+    active="false"
+    width="200"
+    height="264"
+    rectAlignment="LowerRight"
+    allowDragging="true"
+    returnToOriginalPositionWhenReleased="false">
+    <image
+        id="phase_img"
+        image="phase_action_image"
+        width="200"
+        preserveAspect="true"
+        rectAlignment="UpperCenter"/>
+    <button
+        id="phase_btn"
+        onClick="nextPhase"
+        width="200"
+        height="170"
+        rectAlignment="UpperCenter"
+        color="clear"/>
+    <button
+        id="phase_btn_encounter"
+        active="false"
+        onClick="encounterHudBtn"
+        width="200"
+        height="84"
+        rectAlignment="LowerCenter"
+        color="clear"/>
+    <button
+        id="phase_btn_myth"
+        active="false"
+        onClick="mythHudBtn"
+        width="200"
+        height="84"
+        rectAlignment="LowerCenter"
+        color="clear"/>
+</panel>
+
+<Panel id="help_panel" visibility="nobody" position="0 0 -50" width="700" height="340" rectAlignment="MiddleCenter" allowDragging="true" returnToOriginalPositionWhenReleased="false">
+	<Image image="help_bg" preserveAspect="true" width="700" />
+	<verticalLayout width="650" height="280">
+		<panel padding="0 0 0 20">
+			<text
+				fontSize="45"
+				font="fonts/AdonisC"
+				color="#ffffff">
+				Пояснення роботи роллера
+			</text>
+		</panel>
+		<text
+			fontSize="25"
+			font="fonts/AdonisC"
+			color="#ffffff">
+			Для <textcolor color="#88bbff">кидка</textcolor> певної кількості кубів натисніть на відповідне число <textcolor color="#88bbff">ЛКМ</textcolor>.
+		</text>
+		<text
+			fontSize="25"
+			font="fonts/AdonisC"
+			color="#ffffff">
+			Для <textcolor color="#88bbff">перекиду</textcolor> певних кубів натисніть на відповідні числа <textcolor color="#88bbff">ПКМ</textcolor> і зачекайте.
+		</text>
+	</verticalLayout>
+	<Button
+		id="close_help"
+		text="X"
+		onClick="hideHelp"
+		width="160"
+		height="160"
+		position="310 120 0"
+		fontSize="50"
+		font="fonts/AdonisC"
+		textColor="#ffffff"
+		color="clear"
+	/>
+</Panel>
+
+<defaults>
+  <text color="#FFFFFF" font="Fonts/AdonisC" alignment="UpperLeft" fontSize="30"/>
+  <button color="clear" textColor="#FFFFFF" fontSize="32" fontStyle="bold" font="Fonts/AdonisC" padding="0 0 8 0"/>
+</defaults>
+
+<panel id="main_menu" height="700" width="1000" position="0 0" rectAlignment="MiddleCenter" allowDragging="true" returnToOriginalPositionWhenReleased="false">
+    <Image image="hud_1" height="700" width="1000"/>
+    <Image id="scenarioImage" image="scenario1" width="440" preserveAspect="true" position="-233 118 "/>
+	<panel width="437" height="330" position="233 133" rectAlignment="MiddleCenter">
+		<VerticalLayout
+			contentSizeFitter="vertical" rectAlignment="UpperCenter" spacing="15">
+			<Text id="title" fontSize="40" fontStyle="bold" text="ПРИШЕСТЯ АЗАТОТА" />
+			<Text id="body" fontSize="28" text="Азатот дрімає в центрі нескінченності, заколисаний безперервним співом проклятих флейт. Утім, деякі смертні шукають невичерпної сили й руйнувань, які принесе Сліпий божевільний бог, водночас прирікаючи усе людство на загибель... "/>
+		</VerticalLayout>
+	</panel>
+	<panel
+		width="440"
+		height="92"
+		position="-233 -138">
+		<Button
+			id="changeScenario"
+			onClick="changeScenario"
+			width="440"
+			height="92"
+			color="clear"
+			text="ЗМІНИТИ СЦЕНАРІЙ"/>
+		<image
+			width="440"
+			height="92"
+			image="button_large"/>
+	</panel>
+	<text
+		childAlignment="MiddleCenter"
+		position="515 -394"
+		text="Кількість гравців:"
+		fontSize="32"
+		fontStyle="bold"/>
+    <HorizontalLayout
+		childAlignment="MiddleCenter"
+		width="440"
+		height="92"
+		position="233 -138"
+		spacing="4">
+		<panel>
+      		<Button id="players1" onClick="players" text="1" fontSize="46"/>
+			<image image="button_num"/>
+		</panel>
+		<panel>
+      		<Button id="players2" onClick="players" text="2" fontSize="46" color="#ffffff22"/>
+			<image image="button_num"/>
+		</panel>
+		<panel>
+      		<Button id="players3" onClick="players" text="3" fontSize="46"/>
+			<image image="button_num"/>
+		</panel>
+		<panel>
+      		<Button id="players4" onClick="players" text="4" fontSize="46"/>
+			<image image="button_num"/>
+		</panel>
+		<panel>
+      		<Button id="players5" onClick="players" text="5" fontSize="46"/>
+			<image image="button_num"/>
+		</panel>
+		<panel>
+      		<Button id="players6" onClick="players" text="6" fontSize="46"/>
+			<image image="button_num"/>
+		</panel>
+    </HorizontalLayout>
+	<HorizontalLayout
+			childAlignment="MiddleCenter"
+			width="910"
+			height="92"
+			position="0 -255"
+			spacing="30">
+		<panel>
+			<Button onClick="closeMenu" text="ЗГОРНУТИ" color="clear"/>
+			<image image="button_medium"/>
+		</panel>
+		<panel>
+			<Button id="addons" onClick="" text="ДОПОВНЕННЯ" color="clear" textColor="grey"/>
+			<image image="button_medium" color="gray"/>
+		</panel>
+		<panel>
+			<Button id="startGame" onClick="startGame" text="ПОЧАТИ ГРУ" color="clear"/>
+			<image image="button_medium"/>
+		</panel>
+	</HorizontalLayout>
+</panel>
+<panel
+	id="chooseScenario"
+	active="false"
+	height="700"
+	width="1000"
+	position="0 0"
+	rectAlignment="MiddleCenter"
+	allowDragging="true"
+	returnToOriginalPositionWhenReleased="false">
+    <Image image="hud_1" height="700" width="1000"/>
+	<panel
+		width="910"
+		height="610">
+		<VerticalLayout
+			contentSizeFitter="vertical"
+			height="610"
+			childAlignment="MiddleCenter"
+			rectAlignment="UpperCenter">
+			<panel minHeight="100">
+				<text text="Оберіть сценарій" fontSize="46" fontStyle="bold" alignment="MiddleCenter"/>
+			</panel>
+			<panel minHeight="410">
+				<HorizontalLayout
+						width="910"
+						height="250"
+						spacing="30">
+						<panel id="scenario_panel1" color='#ffffff22'>
+							<button id="scenario1" onClick="chooseScenario"/>
+							<image image="scenario1" width="180" preserveAspect="true" rectAlignment="UpperCenter" offsetXY="0 -10"/>
+							<text alignment="LowerCenter" text="Пришестя Азатота" offsetXY="0 10"/>
+						</panel>
+						<panel id="scenario_panel2">
+							<button id="scenario2" onClick="chooseScenario"/>
+							<image image="scenario2" width="180" preserveAspect="true" rectAlignment="UpperCenter" offsetXY="0 -10"/>
+							<text alignment="LowerCenter" text="Трапеза Умордота" offsetXY="0 10"/>
+						</panel>
+						<panel id="scenario_panel3">
+							<button id="scenario3" onClick="chooseScenario"/>
+							<image image="scenario3" width="180" preserveAspect="true" rectAlignment="UpperCenter" offsetXY="0 -10"/>
+							<text alignment="LowerCenter" text="Покров Сутінків" offsetXY="0 10"/>
+						</panel>
+						<panel id="scenario_panel4">
+							<button id="scenario4" onClick="chooseScenario"/>
+							<image image="scenario4" width="180" preserveAspect="true" rectAlignment="UpperCenter" offsetXY="0 -10"/>
+							<text alignment="LowerCenter" text="Відлуння Безодні" offsetXY="0 10"/>
+						</panel>
+				</HorizontalLayout>
+			</panel>
+			<panel minHeight="100">
+				<Button
+					id="submitScenario"
+					onClick="submitScenario"
+					width="440"
+					height="92"
+					color="clear"
+					text="ОБРАТИ СЦЕНАРІЙ"/>
+				<image
+					width="400" preserveAspect="true"
+					image="button_large"/>
+			</panel>
+		</VerticalLayout>
+	</panel>
+</panel>
+<panel id="restore"
+		active="false"
+		offsetXY="-30 20"
+		rectAlignment="LowerRight"
+		allowDragging="false"
+		color="#000000"
+		width="300"
+		height="109">
+	<Button
+		id="restoreBtn"
+		onClick="restore"
+		width="280"
+		height="89"
+		color="clear"
+		text="РОЗГОРНУТИ"/>
+		<image
+			width="280"
+			height="89"
+			preserveAspect="true"
+			image="button_medium"/>
+</panel>

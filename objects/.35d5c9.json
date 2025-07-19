@@ -1,0 +1,79 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "ContainedObjects_order": [
+    "Card.17bb40",
+    "Card.517a66",
+    "Card.126b7b",
+    "Card.b34b41",
+    "Card.ee4075",
+    "Card.2c09ad",
+    "Card.4e5c0a",
+    "Card.90f33e"
+  ],
+  "ContainedObjects_path": ".35d5c9",
+  "CustomDeck": {
+    "5727": {
+      "BackIsHidden": true,
+      "BackURL": "https://drive.google.com/uc?export=view\u0026id=1P41vS8WLNva8ESXeloiOiKeIrDvYnHOX",
+      "FaceURL": "https://drive.google.com/uc?export=view\u0026id=1w-ezzLn9tS9rH17KTqqGdQOWYVz6Icy7",
+      "NumHeight": 5,
+      "NumWidth": 8,
+      "Type": 0,
+      "UniqueBack": true
+    }
+  },
+  "DeckIDs": [
+    572713,
+    572708,
+    572714,
+    572715,
+    572711,
+    572712,
+    572709,
+    572710
+  ],
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "35d5c9",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Memo": "{\"name\": \"Rivertown\", \"type\": \"Encounter\"}",
+  "Name": "Deck",
+  "Nickname": "Зустрічі Набережна",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": -12.967,
+    "posY": 2.059,
+    "posZ": 49.739,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 180,
+    "scaleX": 1.5,
+    "scaleY": 1,
+    "scaleZ": 1.5
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

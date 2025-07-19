@@ -1,0 +1,74 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "AttachedSnapPoints": [
+    {
+      "Position": {
+        "x": -0.822,
+        "y": 0.1,
+        "z": 0.005
+      }
+    },
+    {
+      "Position": {
+        "x": 0.805,
+        "y": 0.1,
+        "z": 0.005
+      }
+    }
+  ],
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.25097,
+    "g": 0.25097,
+    "r": 0.25097
+  },
+  "CustomImage": {
+    "CustomTile": {
+      "Stackable": false,
+      "Stretch": true,
+      "Thickness": 0.1,
+      "Type": 0
+    },
+    "ImageScalar": 1,
+    "ImageSecondaryURL": "",
+    "ImageURL": "https://drive.google.com/uc?export=view\u0026id=1UmqorzYBqatHbYgppe_Tqufe_d5wtn9l",
+    "WidthScale": 0
+  },
+  "Description": "",
+  "DragSelectable": false,
+  "GMNotes": "",
+  "GUID": "f0624c",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": true,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Memo": "[[\"0.805\",\"0.113\",\"0.005\"],[\"-0.822\",\"0.113\",\"0.005\"]]",
+  "Name": "Custom_Tile",
+  "Nickname": "",
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": -52.453,
+    "posY": 2,
+    "posZ": -11.747,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 1.87,
+    "scaleY": 1,
+    "scaleZ": 1.87
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

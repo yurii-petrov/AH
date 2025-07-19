@@ -1,0 +1,53 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.26455,
+    "g": 0.33006,
+    "r": 0.38679
+  },
+  "CustomAssetbundle": {
+    "AssetbundleSecondaryURL": "",
+    "AssetbundleURL": "https://steamusercontent-a.akamaihd.net/ugc/1811021436411387289/9C8C21271767A524EF0D0BD8562417EDD92618FC/",
+    "LoopingEffectIndex": 0,
+    "MaterialIndex": 0,
+    "TypeIndex": 1
+  },
+  "Description": "\"The Mechanic\"",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "833c80",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Memo": "Daniela Reyes",
+  "Name": "Custom_Assetbundle",
+  "Nickname": "Daniela Reyes",
+  "Snap": true,
+  "Sticky": false,
+  "Tooltip": true,
+  "Transform": {
+    "posX": 16.555,
+    "posY": 4.05,
+    "posZ": 76.785,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 0.75,
+    "scaleY": 0.75,
+    "scaleZ": 0.75
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

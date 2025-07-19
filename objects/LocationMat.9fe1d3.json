@@ -1,0 +1,225 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "AttachedSnapPoints": [
+    {
+      "Position": {
+        "x": 0.95,
+        "y": 0.2,
+        "z": 0.248
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 180
+      }
+    },
+    {
+      "Position": {
+        "x": 0.938,
+        "y": 0.2,
+        "z": 0.369
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      }
+    },
+    {
+      "Position": {
+        "x": 0.846,
+        "y": 0.2,
+        "z": 0.369
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 180
+      }
+    },
+    {
+      "Position": {
+        "x": 0.755,
+        "y": 0.2,
+        "z": 0.369
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 180
+      }
+    },
+    {
+      "Position": {
+        "x": 0.852,
+        "y": 0.2,
+        "z": 0.557
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Tags": [
+        "scenario_mat"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.687,
+        "y": 0.2,
+        "z": 0.621
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 180
+      }
+    },
+    {
+      "Position": {
+        "x": 0.938,
+        "y": 0.2,
+        "z": 0.75
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Tags": [
+        "codex"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.846,
+        "y": 0.2,
+        "z": 0.75
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Tags": [
+        "codex"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.755,
+        "y": 0.2,
+        "z": 0.75
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Tags": [
+        "codex"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.663,
+        "y": 0.2,
+        "z": 0.75
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Tags": [
+        "codex"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.572,
+        "y": 0.2,
+        "z": 0.75
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Tags": [
+        "codex"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.48,
+        "y": 0.2,
+        "z": 0.75
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Tags": [
+        "codex"
+      ]
+    }
+  ],
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0,
+    "g": 0,
+    "r": 0
+  },
+  "CustomImage": {
+    "CustomTile": {
+      "Stackable": false,
+      "Stretch": true,
+      "Thickness": 0.2,
+      "Type": 0
+    },
+    "ImageScalar": 1,
+    "ImageSecondaryURL": "",
+    "ImageURL": "https://drive.google.com/uc?export=view\u0026id=1BXkQKiAnJ0hg89YRNjQTgR_XITK0iJD9",
+    "WidthScale": 0
+  },
+  "Description": "",
+  "DragSelectable": false,
+  "GMNotes": "",
+  "GUID": "9fe1d3",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": true,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Memo": "{\"archive\":[\"0.938\",\"0.38\",\"0.369\"],\"codex\":[[\"0.938\",\"0.214\",\"0.75\"],[\"0.846\",\"0.214\",\"0.75\"],[\"0.755\",\"0.214\",\"0.75\"],[\"0.663\",\"0.214\",\"0.75\"],[\"0.572\",\"0.214\",\"0.75\"],[\"0.48\",\"0.214\",\"0.75\"]],\"headline\":[\"0.846\",\"0.38\",\"0.369\"],\"headlinedis\":[\"0.755\",\"0.214\",\"0.369\"],\"monster\":[\"0.687\",\"0.38\",\"0.622\"],\"scenraiomat\":[\"0.852\",\"0.214\",\"0.557\"],\"setaside\":[\"0.95\",\"0.214\",\"0.248\"]}",
+  "Name": "Custom_Tile",
+  "Nickname": "Location Mat",
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": false,
+  "Transform": {
+    "posX": 0.336,
+    "posY": 2,
+    "posZ": 0.158,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 38.2,
+    "scaleY": 1,
+    "scaleZ": 35
+  },
+  "Value": 0,
+  "XmlUI": ""
+}
