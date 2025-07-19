@@ -24,9 +24,11 @@ jobs:
 
       - name: Download TTSModManager
         run: |
-          curl -L -o ttsmodmanager.zip https://github.com/argonui/TTSModManager/releases/latest/download/TTSModManager-linux.zip
-          unzip ttsmodmanager.zip -d ./TTSModManager
+          mkdir -p ./TTSModManager
+          curl -L -o ./TTSModManager/TTSModManager \
+            https://github.com/argonui/TTSModManager/releases/download/v1.3/TTSModManager-Linux
           chmod +x ./TTSModManager/TTSModManager
+
 
       - name: Run TTSModManager
         run: |
