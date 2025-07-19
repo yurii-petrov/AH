@@ -108,6 +108,13 @@
     "ImageURL": "https://drive.google.com/uc?export=view\u0026id=1bDGdrJ0g4ImmT2hHtcJLheQ7otMIPCnU",
     "WidthScale": 0
   },
+  "CustomUIAssets": [
+    {
+      "Name": "Fonts",
+      "Type": 1,
+      "URL": "https://drive.google.com/uc?export=view\u0026id=18_lFlnSaOFlbNVfE-G-LFqqfptMMkKFS"
+    }
+  ],
   "Description": "",
   "DragSelectable": false,
   "GMNotes": "",
