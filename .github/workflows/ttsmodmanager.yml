@@ -33,5 +33,6 @@ jobs:
       - name: Run TTSModManager
         run: |
           ./TTSModManager/TTSModManager \
-            --moddir="objects" \
+            --moddir="." \
             --modfile="saves/AH ${{ steps.version.outputs.version }}.json"
+
