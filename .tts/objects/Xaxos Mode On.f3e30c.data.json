@@ -1,0 +1,60 @@
+{
+  "GUID": "f3e30c",
+  "Name": "Custom_Token",
+  "Transform": {
+    "posX": 0.1322815,
+    "posY": 2.82080221,
+    "posZ": -5.59956264,
+    "rotX": 30.9751644,
+    "rotY": 180.047882,
+    "rotZ": 0.09315602,
+    "scaleX": 1,
+    "scaleY": 1,
+    "scaleZ": 1
+  },
+  "Nickname": "Xaxos Mode On?",
+  "Description": "Is this game using Xaxos: Outcast or not?",
+  "GMNotes": "",
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "ColorDiffuse": {
+    "r": 1,
+    "g": 0.6,
+    "b": 0.8
+  },
+  "Tags": [
+    "setup"
+  ],
+  "LayoutGroupSortIndex": 0,
+  "Value": 0,
+  "Locked": true,
+  "Grid": true,
+  "Snap": true,
+  "IgnoreFoW": false,
+  "MeasureMovement": false,
+  "DragSelectable": true,
+  "Autoraise": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "GridProjection": false,
+  "HideWhenFaceDown": false,
+  "Hands": false,
+  "CustomImage": {
+    "ImageURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819475215/1F01DF607984A43D89C19C61C13D854FE2812A19/",
+    "ImageSecondaryURL": "",
+    "ImageScalar": 1,
+    "WidthScale": 0,
+    "CustomToken": {
+      "Thickness": 0.2,
+      "MergeDistancePixels": 15,
+      "StandUp": false,
+      "Stackable": false
+    }
+  },
+  "LuaScript": "nemBoard = 'b9111a'\r\n\r\nfunction onLoad()\r\n  self.setLock(true)\r\n  params = {\r\n       click_function = \"offR\",\r\n       function_owner = self,\r\n       label          = \"Xaxos\\nOutcast\\n[b](OFF)[/b]\",\r\n       position       = {0, 0.125, 0},\r\n       rotation       = {0, 0, 0},\r\n       width          = 2200,\r\n       height         = 900,\r\n       font_size      = 260,\r\n       color          = {0.5,0,0.1},\r\n       font_color     = {1, 1, 1},\r\n       tooltip        = \"If OFF, then Xaxos and his board will be removed when finalisaing game setup above.\",\r\n   }\r\n   self.createButton(params)\r\n   self.setColorTint({r = 1, g = 0.6, b = 0.8})\r\nend\r\n\r\nfunction onR()\r\n  getObjectFromGUID(nemBoard).setVar('xaxos',false)\r\n  params = {index = 0, click_function = \"offR\", label = \"Xaxos\\nOutcast\\n[b](OFF)[/b]\",\r\n  color = {0.5,0,0.1}\r\n}\r\n  self.editButton(params)\r\n\r\nend\r\n\r\nfunction offR()\r\n  getObjectFromGUID(nemBoard).setVar('xaxos',true)\r\n  params = {index = 0, click_function = \"onR\", label = \"Xaxos\\nOutcast\\n[b](ON)[/b]\",\r\n  color = {0, 0.5, 0}\r\n}\r\n  self.editButton(params)\r\nend",
+  "LuaScriptState": "",
+  "XmlUI": ""
+}

@@ -1,0 +1,47 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Generate TTS Mod (macOS/Linux)",
+      "type": "shell",
+      "command": "./generateMac.sh",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": [],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "os": "linux"  // Linux
+    },
+    {
+      "label": "Generate TTS Mod (macOS)",
+      "type": "shell",
+      "command": "./generateMac.sh",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": [],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "os": "mac"  // macOS
+    },
+    {
+      "label": "Generate TTS Mod (Windows)",
+      "type": "shell",
+      "command": "generateWin.bat",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": [],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "os": "windows"
+    }
+  ]
+}

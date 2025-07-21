@@ -1,0 +1,69 @@
+{
+  "GUID": "95a21b",
+  "Name": "Custom_Tile",
+  "Transform": {
+    "posX": 43.75731,
+    "posY": 1.41760576,
+    "posZ": -9.852461,
+    "rotX": 0.0168768615,
+    "rotY": 179.9964,
+    "rotZ": 0.0798754543,
+    "scaleX": 7.760598,
+    "scaleY": 1,
+    "scaleZ": 7.760598
+  },
+  "Nickname": "Friend",
+  "Description": "2aca67",
+  "GMNotes": "",
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "ColorDiffuse": {
+    "r": 0,
+    "g": 0,
+    "b": 0
+  },
+  "Tags": [
+    "friend"
+  ],
+  "LayoutGroupSortIndex": 0,
+  "Value": 0,
+  "Locked": true,
+  "Grid": true,
+  "Snap": true,
+  "IgnoreFoW": false,
+  "MeasureMovement": false,
+  "DragSelectable": true,
+  "Autoraise": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "GridProjection": false,
+  "HideWhenFaceDown": false,
+  "Hands": false,
+  "CustomImage": {
+    "ImageURL": "https://steamusercontent-a.akamaihd.net/ugc/54708874925427468/D1058C5ABB072382D43864DF8E667F3020FEC0DC/",
+    "ImageSecondaryURL": "https://steamusercontent-a.akamaihd.net/ugc/54708874925427468/D1058C5ABB072382D43864DF8E667F3020FEC0DC/",
+    "ImageScalar": 1,
+    "WidthScale": 0,
+    "CustomTile": {
+      "Type": 0,
+      "Thickness": 0.1,
+      "Stackable": false,
+      "Stretch": true
+    }
+  },
+  "LuaScript": "info = {}\r\nobj_GUID = {}\r\nme = {}\r\nmePos = {}\r\nbagNum = 1\r\nzone_GUID = ''\r\nmyPlayer = ''\r\nmainBoardStore = {}\r\nphoenixStore = {}\r\nfriendBagDeck = '6d8d24'\r\nfriendDeck = 'd91a46'\r\nclear_setup = 'b9111a'\r\nfriend_off_button = 'cbe10f'\r\n\r\n\r\n\r\nfunction onCollisionEnter(info)\r\n\r\n\r\nend\r\n\r\nfunction onObjectEnterScriptingZone(zone, info)\r\n    --print(info.getGUID())\r\n    if (zone.getGUID() == zone_GUID) then\r\n      obj_GUID = info.getGUID()\r\n\r\n      -- print(tostring(info) .. \" collided with \" .. tostring(self))\r\n      obj_GUID = getObjectFromGUID(info.guid)\r\n      if (info.getDescription() == \"Friend\" and info.type == \"Bag\") then\r\n\r\n        if getObjectFromGUID(friend_off_button)~= nil  and getObjectFromGUID(clear_setup)~= nil  then\r\n          getObjectFromGUID(friend_off_button).call(\"offR\")\r\n          getObjectFromGUID(clear_setup).setVar('friend',true)\r\n        end\r\n        broadcastToAll(\"Don't forget to include Banner Cards in your starting deck\", {r=0,b=0,g=1})\r\n        -- print(\"Is a bag\")\r\n        bagNum = info.getQuantity()\r\n        --print(tostring(bagNum))\r\n        pullItems(info,bagNum)\r\n          -- print(\"Is not a bag\")\r\n          local myPos2 = getObjectFromGUID('d089df').getPosition()\r\n        print(\"Setting up \" .. info.getName())\r\n        --searchDeck(getObjectFromGUID('e922d3'),info.getName(),myPos2 + vector(0,8,0),{0,180,0},'Name')\r\n        friend_turn_card = getObjectFromGUID('f990f0')\r\n        friend_turn_card.setPosition({17.25, 2, -7.01})\r\n        friend_turn_card.setRotation({0,180,180})\r\n        Wait.time(function()\r\n          zone = getObjectFromGUID('d3724a')\r\n          turn_order_deck = findDecksInZone(zone)\r\n          if turn_order_deck ~= nil then\r\n            turn_order_deck.shuffle()\r\n          end\r\n        end,0.5)\r\n      end\r\n      if (info.type == \"Card\" and info.getGMNotes() == 'FriendRandomiser') then\r\n        info.drop()\r\n        getFriendBag(info)\r\n        --local getBag = getObjectFromGUID(info.getDescription())\r\n        --getBag.setPositionSmooth(mePos + vector(0,5,-5))\r\n        --local myPos2 = getObjectFromGUID('d089df').getPosition()\r\n        --info.setPositionSmooth(myPos2 + vector(0,8,0))\r\n        local myPos2 = getObjectFromGUID('d089df').getPosition()\r\n        info.setPositionSmooth(myPos2 + vector(0,6,0))\r\n      end\r\n    end\r\nend\r\n\r\nfunction getFriendBag(card)\r\n  --print(mageBagDeck .. \" / \" .. card.getName())\r\n  local getBag = searchDeck(getObjectFromGUID(friendBagDeck),card.getName(),vector(-55.42, 0.35, 13.44),{0,180,0},'Name','Friend Bag does not exist in box.')\r\n  getBag.setPositionSmooth(mePos + vector(0,5,0))\r\n\r\nend\r\n\r\n\r\nfunction searchDeck(deck, charName,pos,rot,nameOrDes,error)\r\n\r\n    for _, card in pairs(deck.getObjects()) do\r\n      if (nameOrDes == \"Des\" and card.description == charName) or (nameOrDes == \"Name\" and card.name == charName) then\r\n        return(deck.takeObject({guid = card.guid, position = pos, rotation = rot}))\r\n      end\r\n    end\r\n    local myError = error or ''\r\n    if (myError ~= '') then\r\n      broadcastToAll(error,{r = 1, g = 0, b = 0})\r\n    end\r\nend\r\n\r\n\r\nfunction pullItems(obj,num)\r\n  local params = {}\r\n  params = {\r\n    position = mePos + vector(0,5,-5),\r\n    smooth = false,\r\n    callback_function = function(obj) takeCallback(obj) end\r\n    }\r\n\r\n  for j = 1, num do\r\n      obj.takeObject(params)\r\n  end\r\n  destroyObject(obj)\r\nend\r\n\r\n\r\nfunction onLoad()\r\n  me = getObjectFromGUID(self.guid)\r\n  mePos = me.getPosition()\r\n  zone_GUID = me.getDescription()\r\n  myPlayer = me.getName()\r\nend\r\n\r\n\r\nfunction takeCallback(obj_spawned)\r\n  local myDes = obj_spawned.getDescription()\r\n  local myName = obj_spawned.getName()\r\n  local myDeck = '986585'\r\n  local myDiscard = 'c72ff9'\r\n  --print(tostring(myDes) .. tostring(myName))\r\n  if (myDes == \"Main Board\") then\r\n    obj_spawned.setPositionSmooth(mePos+vector(0, 1, 0))\r\n    obj_spawned.setRotation({0,180,0})\r\n  end\r\n  if (myDes == \"Minor Deck Shuffled\") then\r\n    obj_spawned.setPositionSmooth(mePos+vector(18.28, 1, -0.52))\r\n    obj_spawned.setRotation({0.00, 180.00, 180.00})\r\n    obj_spawned.shuffle()\r\n  end\r\n  if (myDes == \"Minor Deck\") then\r\n    obj_spawned.setPositionSmooth(mePos+vector(18.28, 1, -0.52))\r\n    obj_spawned.setRotation({0.00, 180.00, 0.00})\r\n  end\r\n  if (myDes == \"Friend Deck\") then\r\n    obj_spawned.setPositionSmooth(mePos+vector(-8.88, 1, -0.51))\r\n    obj_spawned.setRotation({0.00, 180.00, 180.00})\r\n    obj_spawned.shuffle()\r\n    local button =  getObjectFromGUID(\"3eaeec\")\r\n    Wait.time(function()\r\n      button.call('nextTurn',nil)\r\n    end, 1)\r\n\r\n    if(myName== \"Myrna Deck\") then\r\n      local counter = getObjectFromGUID(\"aa372c\")\r\n      counter.call('setVal',2)\r\n    end\r\n  end\r\nend\r\nfunction findDecksInZone(zone)\r\n    local objectsInZone = zone.getObjects()\r\n    local decksFound = {}\r\n    for i, object in ipairs(objectsInZone) do\r\n        if object.type == \"Deck\" then\r\n            return getObjectFromGUID(object.guid)\r\n        end\r\n    end\r\n    if #decksFound > 0 then\r\n        return decksFound\r\n    else\r\n        return nil\r\n    end\r\nend",
+  "LuaScriptState": "",
+  "XmlUI": "",
+  "AttachedSnapPoints": [
+    {
+      "Position": {
+        "x": -0.000007974956,
+        "y": 0.09987957,
+        "z": -0.37323156
+      }
+    }
+  ]
+}

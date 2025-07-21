@@ -1,0 +1,11 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "MoonSharp Attach",
+      "type": "moonsharp-debug",
+      "debugServer": 41912,
+      "request": "attach"
+    }
+  ]
+}

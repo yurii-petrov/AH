@@ -1,0 +1,60 @@
+{
+  "GUID": "1fd7af",
+  "Name": "Custom_Token",
+  "Transform": {
+    "posX": 0.2237799,
+    "posY": 2.952044,
+    "posZ": -13.744,
+    "rotX": 359.1612,
+    "rotY": 179.975647,
+    "rotZ": 0.0802946761,
+    "scaleX": 0.8,
+    "scaleY": 1,
+    "scaleZ": 0.8
+  },
+  "Nickname": "Activate Xaxos",
+  "Description": "",
+  "GMNotes": "",
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "ColorDiffuse": {
+    "r": 0.95993036,
+    "g": 0.47164613,
+    "b": 0.466586351
+  },
+  "Tags": [
+    "xaxs"
+  ],
+  "LayoutGroupSortIndex": 0,
+  "Value": 0,
+  "Locked": true,
+  "Grid": true,
+  "Snap": true,
+  "IgnoreFoW": false,
+  "MeasureMovement": false,
+  "DragSelectable": true,
+  "Autoraise": true,
+  "Sticky": true,
+  "Tooltip": false,
+  "GridProjection": false,
+  "HideWhenFaceDown": false,
+  "Hands": false,
+  "CustomImage": {
+    "ImageURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819366954/7D4F7DA49B63F3A1D5132E9966F6AD2F6A4569D3/",
+    "ImageSecondaryURL": "",
+    "ImageScalar": 1,
+    "WidthScale": 0,
+    "CustomToken": {
+      "Thickness": 0.2,
+      "MergeDistancePixels": 15,
+      "StandUp": false,
+      "Stackable": false
+    }
+  },
+  "LuaScript": "myDeck = '695bba'\r\nmyDiscard = '2ff5f0'\r\nmyBag = 'dd9a90'\r\nmyTokens = '0b7ea6'\r\nmyTimer = ''\r\ncanContinue = true\r\nfunction onLoad()\r\n  button = {click_function = 'nextTurn',\r\n                                function_owner = self,\r\n                                label = 'Activate\\nXaxos',\r\n                                position = {0,0.1,0},\r\n                                rotation = {0,0,0},\r\n                                width = 2000,\r\n                                height = 750,\r\n                                font_size = 200,\r\n                                tooltip = \"Flip a Xaxos spell card. Flips and shuffles automatically if deck is empty.\",\r\n                                color = {r=0.5,b=0.5,g=1}\r\n\r\n          }  -- body...\r\n    self.createButton(button)\r\n    self.setLock(true)\r\nend\r\n\r\nfunction nextTurn()\r\n  if (canContinue == false) then\r\n    return(nil)\r\n  end\r\n  deckObject = getObjectFromGUID(myDeck)\r\n  discardObject = getObjectFromGUID(myDiscard)\r\n  tokenObject = getObjectFromGUID(myTokens)\r\n  findDeck = findDecksInZone(deckObject)\r\n  findDiscard = findDecksInZone(discardObject)\r\n  if findDeck == nil and findDiscard == nil then\r\n    broadcastToAll(\"There is no Xaxos deck or discard pile!\", {r = 1, g = 0, b = 0})\r\n    return(nil)\r\n  end\r\n\r\n  local pos = discardObject.getPosition() + vector(0,2,0)\r\n  local rot = {0,180,0}\r\n  deckParam = {position = pos,rotation = rot, smooth = true}\r\n  if findDeck ~= nil then\r\n    if (findDeck.tag == \"Deck\") then\r\n      findDeck.takeObject(deckParam)\r\n    elseif (findDeck.tag == \"Card\") then\r\n      findDeck.setPositionSmooth(pos)\r\n      findDeck.setRotationSmooth(rot)\r\n    end\r\n    findTokensInZone(tokenObject)\r\n    canContinue = false\r\n    Wait.time(flipBool,1)\r\n  else\r\n    if (findDiscard ~= nil) then\r\n      findDiscard.setPositionSmooth(deckObject.getPosition() + vector(0,3,0))\r\n      findDiscard.setRotation({0,180,180})\r\n      findDiscard.shuffle()\r\n      findDiscard.setName(\"Xaxos Spell Deck\")\r\n      canContinue = false\r\n      Wait.time(flipBool,1.4)\r\n      Wait.time(nextTurn,1.5)\r\n    else\r\n      broadcastToAll(\"There is no Xaxos deck or discard pile!\", {r = 1, g = 0, b = 0})\r\n      return(nil)\r\n    end\r\n\r\n  end\r\nend\r\n\r\nfunction flipBool()\r\n  canContinue = true\r\nend\r\n\r\nfunction findDecksInZone(zone)\r\n    local objectsInZone = zone.getObjects()\r\n    local decksFound = {}\r\n    for i, object in ipairs(objectsInZone) do\r\n        if object.tag == \"Deck\" or object.tag == \"Card\" then\r\n            return getObjectFromGUID(object.guid)\r\n        end\r\n    end\r\n    if #decksFound > 0 then\r\n        return decksFound\r\n    else\r\n        return nil\r\n    end\r\nend\r\n\r\nfunction findTokensInZone(zone)\r\n    local objectsInZone = zone.getObjects()\r\n    local decksFound = {}\r\n    local locBag = getObjectFromGUID(myBag)\r\n    for i, object in ipairs(objectsInZone) do\r\n        if object.getName() == \"Charge Token\" then\r\n            object.setPositionSmooth(locBag.getPosition() + vector(0,i*2,0), false, false)\r\n        end\r\n    end\r\nend",
+  "LuaScriptState": "",
+  "XmlUI": ""
+}

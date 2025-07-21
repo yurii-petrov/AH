@@ -1,0 +1,66 @@
+{
+  "GUID": "c871f5",
+  "Name": "Custom_Tile",
+  "Transform": {
+    "posX": -38.80249,
+    "posY": 1.54274392,
+    "posZ": 24.2460136,
+    "rotX": 0.0168665461,
+    "rotY": 180.003479,
+    "rotZ": 0.07987797,
+    "scaleX": 4.78110647,
+    "scaleY": 1,
+    "scaleZ": 4.78110647
+  },
+  "Nickname": "Curse Deck Scripting",
+  "Description": "",
+  "GMNotes": "",
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "ColorDiffuse": {
+    "r": 0.627,
+    "g": 0.12496575,
+    "b": 0.941
+  },
+  "LayoutGroupSortIndex": 0,
+  "Value": 0,
+  "Locked": true,
+  "Grid": true,
+  "Snap": true,
+  "IgnoreFoW": false,
+  "MeasureMovement": false,
+  "DragSelectable": true,
+  "Autoraise": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "GridProjection": false,
+  "HideWhenFaceDown": false,
+  "Hands": false,
+  "CustomImage": {
+    "ImageURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819370186/DCB532CBE7938C7D2533B631B928C5A0EA4CE17D/",
+    "ImageSecondaryURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819370186/DCB532CBE7938C7D2533B631B928C5A0EA4CE17D/",
+    "ImageScalar": 1,
+    "WidthScale": 0,
+    "CustomTile": {
+      "Type": 3,
+      "Thickness": 0.2,
+      "Stackable": false,
+      "Stretch": true
+    }
+  },
+  "LuaScript": "myDeck = 'ea1713'\r\nplayerBoardGUID = {\r\n  [1] = '5ebb47',\r\n  [2] = 'e87d81',\r\n  [3] = '7ff2e6',\r\n  [4] = 'c3c58d'\r\n}\r\n\r\nfunction onLoad()\r\n  button1 = {click_function = 'rot',\r\n                                function_owner = self,\r\n                                label = 'Curse of Rot',\r\n                                position = {0,0.2,-0.7},\r\n                                rotation = {0,0,0},\r\n                                width = 500,\r\n                                height = 170,\r\n                                font_size = 50,\r\n                                tooltip = \"The player who clicks this gains Curse of Rot\",\r\n                                color = {r=0.65,b=0,g=0.6}\r\n\r\n          }  -- body...\r\n    button2 = {click_function = 'shard',\r\n                                        function_owner = self,\r\n                                        label = 'Cursed Shard',\r\n                                        position = {0,0.2,-0.35},\r\n                                        rotation = {0,0,0},\r\n                                        width = 500,\r\n                                        height = 170,\r\n                                        font_size = 50,\r\n                                        tooltip = \"The player who clicks this gains a Cursed Shard\",\r\n                                        color = {r=0.75,b=0.65,g=0}\r\n\r\n                  }\r\n      button3 = {click_function = 'manacle',\r\n                                          function_owner = self,\r\n                                          label = 'Cursed Manacles',\r\n                                          position = {0,0.2,0},\r\n                                          rotation = {0,0,0},\r\n                                          width = 500,\r\n                                          height = 170,\r\n                                          font_size = 50,\r\n                                          tooltip = \"The player who clicks this gains a Cursed Manacles\",\r\n                                          color = {r=0.15,b=0.95,g=0.1}\r\n\r\n                    }\r\n      button4 = {click_function = 'bolt',\r\n                                          function_owner = self,\r\n                                          label = 'Cursed Bolts',\r\n                                          position = {0,0.2,0.35},\r\n                                          rotation = {0,0,0},\r\n                                          width = 500,\r\n                                          height = 170,\r\n                                          font_size = 50,\r\n                                          tooltip = \"The player who clicks this gains a Cursed Bolt\",\r\n                                          color = {r=0.75,b=0.05,g=0.8}\r\n                    }\r\n  button5 = {click_function = 'pearl',\r\n                      function_owner = self,\r\n                      label = 'Scorched Pearl',\r\n                      position = {0,0.2,0.7},\r\n                      rotation = {0,0,0},\r\n                      width = 500,\r\n                      height = 170,\r\n                      font_size = 50,\r\n                      tooltip = \"The player who clicks this gains a Scorched Pearl\",\r\n                      color = {r=0,b=0,g=1}\r\n\r\n            }  -- body...\r\n    self.createButton(button1)\r\n    self.createButton(button2)\r\n    self.createButton(button3)\r\n    self.createButton(button4)\r\n    self.createButton(button5)\r\n    self.setLock(true)\r\n    self.setName(\"Curse Deck Scripting\")\r\nend\r\n\r\nfunction rot(obj,playcolor)\r\n  grabCard(playcolor,\"Curse of Rot\",\"There's no Curse of Rot in the Curse Deck.\")\r\nend\r\n\r\nfunction shard(obj,playcolor)\r\n  grabCard(playcolor,\"Cursed Shard\",\"There are no Cursed Shards in the Curse Deck.\")\r\nend\r\n\r\nfunction manacle(obj,playcolor)\r\n  grabCard(playcolor,\"Cursed Manacles\",\"There are no Cursed Manacles in the Curse Deck.\")\r\nend\r\n\r\nfunction bolt(obj,playcolor)\r\n  grabCard(playcolor,\"Cursed Bolt\",\"There are no Cursed Bolts in the Curse Deck.\")\r\nend\r\n\r\nfunction pearl(obj,playcolor)\r\n  grabCard(playcolor,\"Scorched Pearl\",\"There are no Scorched Pearls in the Curse Deck.\")\r\nend\r\n\r\nfunction grabCard(color,myName,error)\r\n  deckObj = findDecksInZone(getObjectFromGUID(myDeck))\r\n  if deckObj == nil then\r\n    broadcastToAll(error,{r = 1, g= 0, b = 0})\r\n    return(nil)\r\n  end\r\n  if color == \"White\" then\r\n    myBoard = playerBoardGUID[1]\r\n  elseif color == \"Orange\" then\r\n    myBoard = playerBoardGUID[2]\r\n  elseif color == \"Blue\" then\r\n    myBoard = playerBoardGUID[3]\r\n  elseif color == \"Purple\" then\r\n    myBoard = playerBoardGUID[4]\r\n  end\r\n  local boardPos = getObjectFromGUID(myBoard)\r\n  if deckObj.tag == \"Card\" then\r\n    if deckObj.getName() == myName then\r\n      deckObj.setPositionSmooth(boardPos.getPosition() + vector(14,3,-6.4))\r\n      deckObj.setRotationSmooth({0.00, 180.00, 0.00})\r\n    else\r\n      broadcastToAll(error,{r = 1, g= 0, b = 0})\r\n    end\r\n  else\r\n    searchDeck(deckObj, myName, boardPos.getPosition() + vector(14,3,-6.4), {0.00, 180.00, 0.00},error)\r\n  end\r\nend\r\n\r\nfunction takeObjectSafe(container, params, error)\r\n    if params.guid ~= nil then\r\n        for _, item in pairs(container.getObjects()) do\r\n            if item.guid == params.guid then\r\n                return container.takeObject(params)\r\n            end\r\n        end\r\n    else\r\n        return container.takeObject(params)\r\n    end\r\n    broadcastToAll(error,{r = 1, g= 0, b = 0})\r\nend\r\n\r\nfunction searchDeck(deck, charName,pos,rot,error)\r\n\r\n    for _, card in pairs(deck.getObjects()) do\r\n      if card.name == charName then\r\n        return(deck.takeObject({guid = card.guid, position = pos, rotation = rot}))\r\n      end\r\n    end\r\n    broadcastToAll(error,{r = 1, g = 0, b = 0})\r\nend\r\n\r\nfunction findDecksInZone(zone)\r\n    local objectsInZone = zone.getObjects()\r\n    local decksFound = {}\r\n    for i, object in ipairs(objectsInZone) do\r\n        if object.tag == \"Deck\" or object.tag == \"Card\" then\r\n            return getObjectFromGUID(object.guid)\r\n        end\r\n    end\r\n    if #decksFound > 0 then\r\n        return decksFound\r\n    else\r\n        return nil\r\n    end\r\nend",
+  "LuaScriptState": "",
+  "XmlUI": "",
+  "AttachedSnapPoints": [
+    {
+      "Position": {
+        "x": 0.000026357633,
+        "y": 0.00009577989,
+        "z": 0.000005690738
+      }
+    }
+  ]
+}

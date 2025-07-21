@@ -1,0 +1,244 @@
+{
+  "GUID": "d3fa17",
+  "Name": "Custom_Tile",
+  "Transform": {
+    "posX": -0.00003864162,
+    "posY": 1.48664248,
+    "posZ": 18.3707676,
+    "rotX": 0.01660018,
+    "rotY": 179.985046,
+    "rotZ": 0.07997928,
+    "scaleX": 20.31477,
+    "scaleY": 1,
+    "scaleZ": 20.31477
+  },
+  "Nickname": "Nemesis Board",
+  "Description": "",
+  "GMNotes": "",
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "ColorDiffuse": {
+    "r": 0.02684565,
+    "g": 0.131911725,
+    "b": 0.252578765
+  },
+  "Tags": [
+    "Nemesis Board"
+  ],
+  "LayoutGroupSortIndex": 0,
+  "Value": 0,
+  "Locked": true,
+  "Grid": true,
+  "Snap": true,
+  "IgnoreFoW": false,
+  "MeasureMovement": false,
+  "DragSelectable": true,
+  "Autoraise": true,
+  "Sticky": true,
+  "Tooltip": false,
+  "GridProjection": false,
+  "HideWhenFaceDown": false,
+  "Hands": false,
+  "CustomImage": {
+    "ImageURL": "https://steamusercontent-a.akamaihd.net/ugc/54712126536545670/90F0B0C469941B68EF203A4F1E78A1831CE51D49/",
+    "ImageSecondaryURL": "",
+    "ImageScalar": 1,
+    "WidthScale": 0,
+    "CustomTile": {
+      "Type": 3,
+      "Thickness": 0.2,
+      "Stackable": false,
+      "Stretch": true
+    }
+  },
+  "LuaScript": "nemDiscard = 'f93722'\r\nnemSpefDiscard = '68d849'\r\n\r\n\r\nbags = {\r\n  ['Nemesis Token'] = '3a7b1b',\r\n  ['Monster Health'] = '613a0f',\r\n  ['Monster Shields'] = 'd5d9f1',\r\n  ['Shield Token'] = 'cadf8d',\r\n  ['Power Token'] = 'a1dccd',\r\n  ['5 Health'] = '1e0235',\r\n  ['1 Health'] = 'e8f3ff',\r\n  ['[B0C4DE]Silence Token[-]']= '5985ad',\r\n  ['Venom Token'] ='3ee330',\r\n  ['Electrify Token'] ='121b13',\r\n  ['Immolate Token'] ='bfef0c'\r\n}\r\nremoveTokens = true\r\naddMe = 0\r\n\r\n\r\nfunction onObjectEnterScriptingZone(zone, info)\r\n  if removeTokens == false then\r\n    return(nil)\r\n  else\r\n    if (zone.getGUID() == nemDiscard) or (zone.getGUID() == nemSpefDiscard) then\r\n      --print(\"Find\")\r\n      local myName = info.getName()\r\n      --print(myName)\r\n        if myName == \"Monster Health\" then\r\n        info.destruct()\r\n        elseif myName == \"Monster Shields\" then\r\n        info.destruct()\r\n        elseif myName == \"Health Counter\" then\r\n          info.destruct()\r\n        elseif myName == \"Power Counter\" then\r\n          info.destruct()\r\n        elseif myName == \"Shield Counter\" then\r\n          info.destruct()\r\n      elseif bags[myName] ~= nil then\r\n        local myBag = getObjectFromGUID(bags[myName])\r\n        local myObj = getObjectFromGUID(info.getGUID())\r\n        myObj.setPositionSmooth(myBag.getPosition() + vector(0,4 + addMe*0.25,0),false,true)\r\n        myObj.setRotationSmooth({0,180,0},false,true)\r\n        addMe = addMe + 1\r\n        Wait.time(rest,2)\r\n      end\r\n    end\r\n  end\r\n  --place counter for nemesis card--\r\n  for i, guid in ipairs(card_zones) do\r\n    local p_val, h_val, s_val = nil, nil, nil\r\n    if zone.getGUID() == guid then\r\n        local counter_zone = getObjectFromGUID(counter_zones[i])\r\n        local existing_counter = getCounterInZone(counter_zone)\r\n\r\n        local desc = info.getDescription()\r\n        if desc == \"\" or desc:match(\"^%d+$\") then\r\n          return\r\n        end\r\n\r\n        h_val, s_val = desc:match(\"^H(%d+)S(%d+)$\")  -- 新增结束符$确保全字匹配\r\n\r\n        if not (h_val and s_val) then\r\n            p_val = desc:match(\"^P(%d+)$\")  -- 严格匹配P开头纯数字\r\n            h_val = desc:match(\"^H(%d+)$\")  -- 严格匹配H开头纯数字\r\n        end\r\n        if (h_val ==nil and p_val==nil and s_val==nil)then\r\n          return\r\n        end\r\n\r\n        counter_type = nil\r\n        if p_val then\r\n            counter_type = \"P\"\r\n        elseif h_val then\r\n            counter_type = \"H\"\r\n        end\r\n\r\n        counter_value = h_val or p_val  -- 保留原有逻辑兼容性\r\n\r\n        if p_val then\r\n          counter_type = \"P\"\r\n        end\r\n        if h_val then\r\n          counter_type = \"H\"\r\n        end\r\n\r\n        if existing_counter then\r\n            existing_counter.destruct()\r\n        end\r\n        spawnCounter(counter_zone, counter_type, counter_value)\r\n        if s_val then\r\n            local shield_pos = zone.getPosition() + vector(0, 3, 1)\r\n              shield_bag.takeObject({\r\n                  position = shield_pos,\r\n                  rotation = {0,180,0},\r\n                  callback_function = function(o) -- ��������������������������里开始回调函数\r\n                  -- o.setLock(true)\r\n                  o.call(\"setValue\", tonumber(s_val))\r\n                  o.setVar(\"val\",tonumber(s_val))\r\n                  -- Wait.time(function() o.setLock(false) end, 1)\r\n                  end\r\n              })\r\n        end\r\n\r\n\r\n        info.setDescription(\"\")\r\n    end\r\nend\r\nend\r\n\r\nfunction rest()\r\n  addMe = 0\r\nend\r\n\r\nfunction tableContains(table, element)\r\n  for _, value in pairs(table) do\r\n    if value == element then\r\n\r\n      print(toString(value) .. ' true')\r\n      return true\r\n    end\r\n  end\r\n  print(toString(value) .. ' false')\r\n  return false\r\nend\r\n\r\nfunction onLoad()\r\n  self.setName(\"Nemesis Board\")\r\n  card_zones = {\r\n      \"78801d\", \"8aabc9\", \"b04ec4\", \"64ca97\", \"0238fa\", \"b3a9df\"\r\n  }\r\n  counter_zones = {\r\n      \"5026e7\", \"04f1f6\", \"649cde\", \"b26e18\", \"86234d\", \"67e177\"\r\n  }\r\n\r\n  power_bag = getObjectFromGUID(\"e941e9\")\r\n  health_bag = getObjectFromGUID(\"90aabe\")\r\n  shield_bag = getObjectFromGUID(\"07aac2\")\r\n  draw_nemesis_deck_params = {\r\n    click_function = \"drawNem\",\r\n    function_owner = self,\r\n    label = \"Draw Nemesis Card\",\r\n    position = {-0.8, 0.2 , 0.3},\r\n    rotation = {0,0,0},\r\n    width = 1500,\r\n    height = 500,\r\n    scale = {0.1,0.1,0.1},\r\n    color = {0.5,1,0.5},\r\n    font_color = {0,0,0},\r\n    font_size = 150\r\n  }\r\n  self.createButton(draw_nemesis_deck_params)\r\nend\r\n\r\nfunction getCounterInZone(zone)\r\n    local objects = zone.getObjects()\r\n    for _, o in ipairs(objects) do\r\n        if o.getName():find(\"Counter\") then\r\n            return o\r\n        end\r\n    end\r\nend\r\n\r\n\r\nfunction spawnCounter(zone, type, value)\r\n    if type == \"P\" then\r\n      target_bag = power_bag\r\n    else\r\n      target_bag = health_bag\r\n    end\r\n\r\n    target_bag.takeObject({\r\n        position = zone.getPosition(),\r\n        rotation = {0, 180, 0},\r\n        smooth = false,\r\n        callback_function = function(o)\r\n            -- 正确调用方式\r\n            o.call(\"setValue\", tonumber(value))\r\n            o.setVar(\"val\",tonumber(value))\r\n        end\r\n    })\r\nend\r\n\r\nfunction drawNem()\r\n    local source_guid = \"71a6e1\"\r\n    local card_zones = {\r\n        \"78801d\", \"8aabc9\", \"b04ec4\", \"64ca97\", \"0238fa\", \"b3a9df\"\r\n    }\r\n    local counter_zones = {\r\n        \"5026e7\", \"04f1f6\", \"649cde\", \"b26e18\", \"86234d\", \"67e177\"\r\n    }\r\n    -- 简化有效性检测为卡牌类型判断\r\n\r\n\r\n    -- 阶段1：精确检测卡牌位置（只识别卡牌对象）\r\n    local occupied = {}\r\n    for i, guid in ipairs(card_zones) do\r\n        local zone = getObjectFromGUID(guid)\r\n        if zone then\r\n            for _, obj in ipairs(zone.getObjects()) do\r\n                -- 严格过滤条件：有效对象且是卡牌类型且不是区域本身\r\n                if obj ~= zone and isValidObject(obj) and obj.type == \"Card\" then\r\n                    table.insert(occupied, i)\r\n                    break  -- 每个区域只记录一次\r\n                end\r\n            end\r\n        end\r\n    end\r\n    table.sort(occupied)  -- 确保升序排列\r\n\r\n    -- 阶段2：改进型填补逻辑\r\n    local original_max = #occupied > 0 and math.max(unpack(occupied)) or 0\r\n    local actual_max_index = 0\r\n    -- 预清理阶段：清除所有空位的计数器\r\n    for pos = 1, 6 do\r\n        if not tableContains(occupied, pos) then  -- 判��是否原本是空位\r\n            local counter_zone = getObjectFromGUID(counter_zones[pos])\r\n            if counter_zone then\r\n                clearZoneContents(counter_zone, true)  -- 只清理计数器区域\r\n            end\r\n        end\r\n    end\r\n\r\n    -- 执行填补\r\n    for i = #occupied, 1, -1 do\r\n        local old_pos = occupied[i]\r\n        local new_pos = i\r\n\r\n        if old_pos > new_pos then\r\n            local card_src = getObjectFromGUID(card_zones[old_pos])\r\n            local card_dest = getObjectFromGUID(card_zones[new_pos])\r\n            local counter_src = getObjectFromGUID(counter_zones[old_pos])\r\n            local counter_dest = getObjectFromGUID(counter_zones[new_pos])\r\n\r\n            -- 卡牌移动（保持原有逻辑）\r\n            moveZoneContents(card_src, card_dest.getPosition()+vector(0,2,0))\r\n\r\n            -- 计数器迁移（目标已预清理）\r\n            moveCounter(counter_src, counter_dest)\r\n\r\n            actual_max_index = math.max(actual_max_index, new_pos)\r\n        end\r\n    end\r\n\r\n    -- 关键修正：处理未移动的情况\r\n    if actual_max_index == 0 and #occupied > 0 then\r\n        actual_max_index = original_max\r\n    end\r\n\r\n    -- 阶段4：精确计算目标位置\r\n    local target_index = actual_max_index + 1\r\n\r\n    local deck_zone = getObjectFromGUID(source_guid)\r\n    if deck_zone then\r\n        local decks = findDecksInZone(deck_zone)\r\n        if decks and #decks > 0 then\r\n          if target_index <= #card_zones then\r\n            local safe_height_pos = deck_zone.getPosition() + vector(0, 3, 0)\r\n            local target_pos = getObjectFromGUID(card_zones[target_index]).getPosition() + vector(0,2,0)\r\n            if decks[1].type == \"Card\" then  -- 直接处理单卡\r\n               decks[1].setRotation({0,180,0})\r\n               decks[1].setPositionSmooth(target_pos)\r\n            else  -- 原有卡组处理逻辑\r\n                decks[1].takeObject({\r\n                    position = safe_height_pos,\r\n                    flip= true,\r\n                    smooth =false,\r\n                    callback_function = function(card)\r\n                        card.setPositionSmooth(target_pos)\r\n                    end\r\n                })\r\n            end\r\n            else\r\n              -- 高空坠落特效加强版\r\n              local spawn_pos = deck_zone.getPosition() + vector(0, 5, 0)\r\n              decks[1].takeObject({\r\n                  position = spawn_pos,\r\n                  flip = true,\r\n                  rotation = {0, math.random(170,190), 0},\r\n                  callback_function = function(card)\r\n                      card.setVelocity(vector(0, -5, 0))\r\n                      card.setAngularVelocity(vector(math.random(-5,5),0,math.random(-5,5)))\r\n                  end\r\n              })\r\n              broadcastToAll(\"No space! Place manually!\", {1,0,0})\r\n            end\r\n        end\r\n    end\r\nend\r\n\r\nfunction findDecksInZone(zone)\r\n    local decksFound = {}\r\n    -- 使用更可靠的类型判断\r\n    for _, object in ipairs(zone.getObjects()) do\r\n        -- 修正为检查type而不是tag\r\n        if object.type == \"Deck\" or object.type == \"Card\" then\r\n            table.insert(decksFound, object)\r\n        end\r\n    end\r\n    return decksFound -- 始终返回table（可能为空）\r\nend\r\n\r\n\r\nfunction moveZoneContents(src_zone, dest_pos, rotation, callback)\r\n    local moved = false\r\n    local objs = src_zone.getObjects()\r\n\r\n    for _, obj in ipairs(objs) do\r\n        if obj ~= src_zone and isValidObject(obj) then\r\n            -- 物理特性重置\r\n            obj.setVelocity({0,0,0})\r\n            obj.setAngularVelocity({0,0,0})\r\n\r\n            -- 分步移动\r\n            if obj.getName() == \"Shield Counter\" then\r\n              dest_pos = dest_pos + vector(0,0,1)\r\n            end\r\n            obj.setPositionSmooth(dest_pos)\r\n\r\n            moved = true\r\n        end\r\n    end\r\n\r\n    -- 无对象移动时立即回调\r\n    if not moved and callback then\r\n        callback()\r\n    end\r\nend\r\n\r\nfunction isValidObject(obj)\r\n    return obj.type == \"Card\" or obj.getName() == \"Shield Counter\"\r\nend\r\n\r\nfunction moveCounter(src_zone, dest_zone)\r\n    if not src_zone or not dest_zone then return end\r\n\r\n    -- 精确识别并移动计数器\r\n    local valid_counters = {\r\n        [\"Health Counter\"] = true,\r\n        [\"Power Counter\"] = true\r\n    }\r\n\r\n    local objs = src_zone.getObjects()\r\n    for _, obj in ipairs(objs) do\r\n        -- 多重安全校验\r\n        if valid_counters[obj.getName()] then\r\n        obj.setPositionSmooth(dest_zone.getPosition()+vector(0, 2, 0))\r\n        end\r\n    end\r\nend\r\n\r\nfunction clearZoneContents(zone)\r\n    local objs = zone.getObjects()\r\n    for _, obj in ipairs(objs) do\r\n        -- 保留区域本身和有效计数器\r\n        if isCounter(obj) then\r\n            obj.destruct()\r\n        end\r\n    end\r\nend\r\n\r\nfunction isCounter(obj)\r\n    local valid_counters = {\r\n        [\"Health Counter\"] = true,\r\n        [\"Power Counter\"] = true\r\n    }\r\n    return valid_counters[obj.getName()]\r\nend\r\n\r\nfunction tableContains(tbl, item)\r\n    for _, v in ipairs(tbl) do\r\n        if v == item then return true end\r\n    end\r\n    return false\r\nend",
+  "LuaScriptState": "",
+  "XmlUI": "",
+  "AttachedSnapPoints": [
+    {
+      "Position": {
+        "x": -0.6723208,
+        "y": 0.20017077,
+        "z": -0.6925256
+      }
+    },
+    {
+      "Position": {
+        "x": 0.1532226,
+        "y": 0.205080539,
+        "z": -0.3135326
+      }
+    },
+    {
+      "Position": {
+        "x": 0.786627054,
+        "y": 0.1995434,
+        "z": -0.5841674
+      }
+    },
+    {
+      "Position": {
+        "x": 0.792333841,
+        "y": 0.199680835,
+        "z": 0.00765611464
+      }
+    },
+    {
+      "Position": {
+        "x": -0.505889058,
+        "y": 0.197829992,
+        "z": -0.104183242
+      }
+    },
+    {
+      "Position": {
+        "x": -0.9167847,
+        "y": 0.199500069,
+        "z": -0.104096323
+      }
+    },
+    {
+      "Position": {
+        "x": 0.5181219,
+        "y": 0.200895026,
+        "z": 0.246638328
+      }
+    },
+    {
+      "Position": {
+        "x": 0.3702499,
+        "y": 0.199687943,
+        "z": 0.246670023
+      }
+    },
+    {
+      "Position": {
+        "x": 0.22257483,
+        "y": 0.200683609,
+        "z": 0.246715933
+      }
+    },
+    {
+      "Position": {
+        "x": 0.07489782,
+        "y": 0.2006229,
+        "z": 0.246764243
+      }
+    },
+    {
+      "Position": {
+        "x": -0.07277618,
+        "y": 0.199806556,
+        "z": 0.248751789
+      }
+    },
+    {
+      "Position": {
+        "x": -0.220451728,
+        "y": 0.2003935,
+        "z": 0.248721749
+      }
+    },
+    {
+      "Position": {
+        "x": -0.368126571,
+        "y": 0.199529618,
+        "z": 0.24876973
+      }
+    },
+    {
+      "Position": {
+        "x": -0.515803337,
+        "y": 0.2003609,
+        "z": 0.248807847
+      }
+    },
+    {
+      "Position": {
+        "x": 0.8464336,
+        "y": 0.198268563,
+        "z": 0.9282031
+      }
+    },
+    {
+      "Position": {
+        "x": 0.526469767,
+        "y": 0.19870913,
+        "z": 0.9282864
+      }
+    },
+    {
+      "Position": {
+        "x": 0.20650512,
+        "y": 0.1984811,
+        "z": 0.928370059
+      }
+    },
+    {
+      "Position": {
+        "x": -0.113457449,
+        "y": 0.198567584,
+        "z": 0.9284536
+      }
+    },
+    {
+      "Position": {
+        "x": -0.4334214,
+        "y": 0.198341668,
+        "z": 0.9285369
+      }
+    },
+    {
+      "Position": {
+        "x": -0.75338614,
+        "y": 0.199439958,
+        "z": 0.928620636
+      }
+    },
+    {
+      "Position": {
+        "x": 0.8464879,
+        "y": 0.199274033,
+        "z": 0.6056701
+      }
+    },
+    {
+      "Position": {
+        "x": 0.5265233,
+        "y": 0.199854866,
+        "z": 0.605963349
+      }
+    },
+    {
+      "Position": {
+        "x": 0.206554592,
+        "y": 0.199898288,
+        "z": 0.605868638
+      }
+    },
+    {
+      "Position": {
+        "x": -0.113410063,
+        "y": 0.200066119,
+        "z": 0.6059676
+      }
+    },
+    {
+      "Position": {
+        "x": -0.433374852,
+        "y": 0.199743867,
+        "z": 0.606066
+      }
+    },
+    {
+      "Position": {
+        "x": -0.753339231,
+        "y": 0.199576348,
+        "z": 0.6061641
+      }
+    }
+  ]
+}

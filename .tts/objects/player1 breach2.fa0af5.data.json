@@ -1,0 +1,66 @@
+{
+  "GUID": "fa0af5",
+  "Name": "Custom_Tile",
+  "Transform": {
+    "posX": -28.5021572,
+    "posY": 1.61336732,
+    "posZ": -23.55996,
+    "rotX": 0.0168592874,
+    "rotY": 180.008087,
+    "rotZ": 0.0799405053,
+    "scaleX": 4.326887,
+    "scaleY": 1,
+    "scaleZ": 4.33
+  },
+  "Nickname": "player1 breach2",
+  "Description": "37cfb2",
+  "GMNotes": "",
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "ColorDiffuse": {
+    "r": 0,
+    "g": 0,
+    "b": 0
+  },
+  "LayoutGroupSortIndex": 0,
+  "Value": 0,
+  "Locked": true,
+  "Grid": true,
+  "Snap": true,
+  "IgnoreFoW": false,
+  "MeasureMovement": false,
+  "DragSelectable": true,
+  "Autoraise": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "GridProjection": false,
+  "HideWhenFaceDown": false,
+  "Hands": false,
+  "CustomImage": {
+    "ImageURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819372460/684757B4DBB365A0B8A9085C10DCD91EC3DF52EF/",
+    "ImageSecondaryURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819372460/684757B4DBB365A0B8A9085C10DCD91EC3DF52EF/",
+    "ImageScalar": 1,
+    "WidthScale": 0,
+    "CustomTile": {
+      "Type": 3,
+      "Thickness": 0.1,
+      "Stackable": false,
+      "Stretch": true
+    }
+  },
+  "LuaScript": "cube_GUID = '9872e1'\r\ncube = {}\r\nlocat_GUID = '64c906'\r\nlocat = {}\r\nme_GUID = '909b83'\r\nme = {}\r\nparams = {}\r\nzone_GUID = ''\r\ndiscard_zone = getObjectFromGUID('f6d8d7')\r\nfunction rotateBreach()\r\n\r\n    -- print error message and abort function if the bag somehow doesn't have any objects in it\r\n\r\n    local zoneObjects = getObjectFromGUID(zone_GUID).getObjects()\r\n    for k, obj in pairs(zoneObjects) do\r\n      if obj.tag == \"Generic\" then\r\n        local vR = obj.getRotation()\r\n        obj.setRotationSmooth(vR + {x=0, y=90, z=0},true, false)\r\n      end\r\n      if (obj.tag == \"Deck\" or obj.tag == \"Card\") then\r\n        local vP = obj.getPosition()\r\n        obj.setPositionSmooth(vP + {x=0, y=2.33, z=0},false, true)\r\n      end\r\n  end\r\nend\r\n\r\n\r\nfunction flipOver()\r\n\r\n      -- print error message and abort function if the bag somehow doesn't have any objects in it\r\n\r\n      local zoneObjects = getObjectFromGUID(zone_GUID).getObjects()\r\n      for k, obj in pairs(zoneObjects) do\r\n        if obj.tag == \"Generic\" then\r\n          obj.flip()\r\n          obj.setRotationSmooth({x=0, y=180, z=0},true, false)\r\n        end\r\n        if (obj.tag == \"Deck\" or obj.tag == \"Card\") then\r\n          local vP = obj.getPosition()\r\n          obj.setPositionSmooth(vP + {x=0, y=4.33, z=0},false, true)\r\n        end\r\n    end\r\n  end\r\n\r\n  function castSpell()\r\n      local zoneObjects = getObjectFromGUID(zone_GUID).getObjects()\r\n      for k, obj in pairs(zoneObjects) do\r\n        if (obj.type == \"Card\" and obj.hasTag('spellCard')) or (obj.type == \"Card\" and obj.getRotation().z > 179) then\r\n          obj.setPositionSmooth(discard_zone.getPosition()+ vector(0,1,0), false, true)\r\n          obj.setRotation({0,180,0})\r\n        end\r\n      end\r\n  end\r\n\r\n\r\nfunction onLoad()\r\ncube = getObjectFromGUID(cube_GUID)\r\nlocat = getObjectFromGUID(locat_GUID)\r\nme = getObjectFromGUID(self.guid)\r\nzone_GUID = me.getDescription()\r\n\r\n\r\n\r\nbuttonParameters = {\r\n  Open =\r\n  {\r\n    click_function = 'flipOver',\r\n    function_owner = self,\r\n    label = 'Open',\r\n    position = {-0.3, 0.1, 0.5},\r\n    rotation = {0, 0, 0},\r\n    scale = {0.5,0.5,0.5},\r\n    width = 550,\r\n    height = 280,\r\n    font_size = 130},\r\n  Focus =\r\n  {\r\n    click_function = 'rotateBreach',\r\n    function_owner = self,\r\n    label = 'Focus',\r\n    position = {0.3, 0.1, 0.5},\r\n    scale = {0.5,0.5,0.5},\r\n    width = 550,\r\n    height = 280,\r\n    font_size = 130\r\n  },\r\n  Cast =\r\n  {\r\n    click_function = 'castSpell',\r\n    function_owner = self,\r\n    label = 'Cast',\r\n    position = {0, 0.1, 0.8},\r\n    rotation = {0, 0, 0},\r\n    scale = {0.5,0.5,0.5},\r\n    width = 1100,\r\n    height = 280,\r\n    font_size = 130\r\n  }\r\n}\r\n  self.createButton(buttonParameters.Open)\r\n  self.createButton(buttonParameters.Focus)\r\n  self.createButton(buttonParameters.Cast)\r\n\r\nend",
+  "LuaScriptState": "",
+  "XmlUI": "",
+  "AttachedSnapPoints": [
+    {
+      "Position": {
+        "x": -0.00414102525,
+        "y": 0.100000277,
+        "z": -0.4100832
+      }
+    }
+  ]
+}

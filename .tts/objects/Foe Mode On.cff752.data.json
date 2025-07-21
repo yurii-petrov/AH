@@ -1,0 +1,60 @@
+{
+  "GUID": "cff752",
+  "Name": "Custom_Token",
+  "Transform": {
+    "posX": -42.00727,
+    "posY": 1.64904678,
+    "posZ": 30.4792633,
+    "rotX": 0.0168498475,
+    "rotY": 180.017227,
+    "rotZ": 0.07988135,
+    "scaleX": 1,
+    "scaleY": 1,
+    "scaleZ": 1
+  },
+  "Nickname": "Foe Mode On?",
+  "Description": "Is this game using Friend or not?",
+  "GMNotes": "",
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "ColorDiffuse": {
+    "r": 0.6,
+    "g": 0.62026006,
+    "b": 1
+  },
+  "Tags": [
+    "setup"
+  ],
+  "LayoutGroupSortIndex": 0,
+  "Value": 0,
+  "Locked": true,
+  "Grid": true,
+  "Snap": true,
+  "IgnoreFoW": false,
+  "MeasureMovement": false,
+  "DragSelectable": true,
+  "Autoraise": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "GridProjection": false,
+  "HideWhenFaceDown": false,
+  "Hands": false,
+  "CustomImage": {
+    "ImageURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819475215/1F01DF607984A43D89C19C61C13D854FE2812A19/",
+    "ImageSecondaryURL": "",
+    "ImageScalar": 1,
+    "WidthScale": 0,
+    "CustomToken": {
+      "Thickness": 0.2,
+      "MergeDistancePixels": 15,
+      "StandUp": false,
+      "Stackable": false
+    }
+  },
+  "LuaScript": "clear_setup = 'b9111a'\r\nfunction onLoad()\r\n  self.setLock(true)\r\n  params = {\r\n       click_function = \"offR\",\r\n       function_owner = self,\r\n       label          = \"Foe[b](OFF)[/b]\",\r\n       position       = {0, 0.125, 0},\r\n       rotation       = {0, 0, 0},\r\n       width          = 2200,\r\n       height         = 900,\r\n       font_size      = 260,\r\n       color          = {0.5,0,0.1},\r\n       font_color     = {1, 1, 1},\r\n       tooltip        = \"If OFF, then Foe board will be removed when finalisaing game setup above.\",\r\n   }\r\n   self.createButton(params)\r\nend\r\n\r\nfunction onR()\r\n  getObjectFromGUID(clear_setup).setVar('foe',false)\r\n  params = {index = 0, click_function = \"offR\", label = \"Foe[b](OFF)[/b]\",\r\n  color = {0.5,0,0.1}\r\n}\r\n  self.editButton(params)\r\n\r\nend\r\n\r\nfunction offR()\r\n  getObjectFromGUID(clear_setup).setVar('foe',true)\r\n  params = {index = 0, click_function = \"onR\", label = \"Foe\\n[b](ON)[/b]\",\r\n  color = {0, 0.5, 0}\r\n}\r\n  self.editButton(params)\r\nend",
+  "LuaScriptState": "",
+  "XmlUI": ""
+}

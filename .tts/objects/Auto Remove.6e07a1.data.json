@@ -1,0 +1,57 @@
+{
+  "GUID": "6e07a1",
+  "Name": "Custom_Token",
+  "Transform": {
+    "posX": 14.5907927,
+    "posY": 1.76480949,
+    "posZ": 13.3072777,
+    "rotX": 0.0165779423,
+    "rotY": 180,
+    "rotZ": 0.07998323,
+    "scaleX": 1,
+    "scaleY": 1,
+    "scaleZ": 1
+  },
+  "Nickname": "Auto Remove",
+  "Description": "Shall tokens be automatically removed from cards that get placed in Discard?",
+  "GMNotes": "",
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "ColorDiffuse": {
+    "r": 0.733449459,
+    "g": 0.83352983,
+    "b": 1
+  },
+  "LayoutGroupSortIndex": 0,
+  "Value": 0,
+  "Locked": true,
+  "Grid": true,
+  "Snap": true,
+  "IgnoreFoW": false,
+  "MeasureMovement": false,
+  "DragSelectable": true,
+  "Autoraise": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "GridProjection": false,
+  "HideWhenFaceDown": false,
+  "Hands": false,
+  "CustomImage": {
+    "ImageURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819475215/1F01DF607984A43D89C19C61C13D854FE2812A19/",
+    "ImageSecondaryURL": "",
+    "ImageScalar": 1,
+    "WidthScale": 0,
+    "CustomToken": {
+      "Thickness": 0.2,
+      "MergeDistancePixels": 15,
+      "StandUp": false,
+      "Stackable": false
+    }
+  },
+  "LuaScript": "nemBoard = 'd3fa17'\r\n\r\nfunction onLoad()\r\n  self.setLock(true)\r\n  params = {\r\n       click_function = \"onR\",\r\n       function_owner = self,\r\n       label          = \"Auto Remove\\nTokens\\n(ON)\",\r\n       position       = {0, 0.125, 0},\r\n       rotation       = {0, 0, 0},\r\n       width          = 2200,\r\n       height         = 900,\r\n       font_size      = 260,\r\n       color          = {0, 0.5, 0},\r\n       font_color     = {1, 1, 1},\r\n       tooltip        = \"Automatically remove tokens from cards that get placed in Discard?\",\r\n   }\r\n   self.createButton(params)\r\nend\r\n\r\nfunction onR()\r\n  getObjectFromGUID(nemBoard).setVar('removeTokens',false)\r\n  params = {index = 0, click_function = \"offR\", label = \"Auto Remove\\nTokens\\n(OFF)\",\r\n  color = {0.5,0,0.5}\r\n}\r\n  self.editButton(params)\r\nend\r\n\r\nfunction offR()\r\n  getObjectFromGUID(nemBoard).setVar('removeTokens',true)\r\n  params = {index = 0, click_function = \"onR\", label = \"Auto Remove\\nTokens\\n(ON)\",\r\n  color = {0, 0.5, 0}\r\n}\r\n  self.editButton(params)\r\nend",
+  "LuaScriptState": "",
+  "XmlUI": ""
+}

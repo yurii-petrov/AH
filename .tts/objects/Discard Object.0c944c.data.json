@@ -1,0 +1,60 @@
+{
+  "GUID": "0c944c",
+  "Name": "Custom_Token",
+  "Transform": {
+    "posX": -56.1196671,
+    "posY": 1.4,
+    "posZ": -29.63976,
+    "rotX": 0.0169239324,
+    "rotY": 179.9778,
+    "rotZ": 0.07987314,
+    "scaleX": 0.9942721,
+    "scaleY": 1,
+    "scaleZ": 0.9942721
+  },
+  "Nickname": "Discard Object",
+  "Description": "aa8a91",
+  "GMNotes": "",
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "ColorDiffuse": {
+    "r": 0.627,
+    "g": 0.124968641,
+    "b": 0.941
+  },
+  "Tags": [
+    "player4 mat"
+  ],
+  "LayoutGroupSortIndex": 0,
+  "Value": 0,
+  "Locked": true,
+  "Grid": true,
+  "Snap": true,
+  "IgnoreFoW": false,
+  "MeasureMovement": false,
+  "DragSelectable": true,
+  "Autoraise": true,
+  "Sticky": true,
+  "Tooltip": false,
+  "GridProjection": false,
+  "HideWhenFaceDown": false,
+  "Hands": false,
+  "CustomImage": {
+    "ImageURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819475215/1F01DF607984A43D89C19C61C13D854FE2812A19/",
+    "ImageSecondaryURL": "",
+    "ImageScalar": 1,
+    "WidthScale": 0,
+    "CustomToken": {
+      "Thickness": 0.2,
+      "MergeDistancePixels": 15,
+      "StandUp": false,
+      "Stackable": false
+    }
+  },
+  "LuaScript": "myPlayer = 'Purple'\r\nmyCount = 5\r\ncCard = 1\r\nloopCount = -1\r\nhandCount = 0\r\naltC = 0\r\nwaitFunct = {}\r\nfunction onLoad()\r\n  button = {click_function = 'sendHand',\r\n                                function_owner = self,\r\n                                label = 'Send Hand to Discard',\r\n                                position = {0,0.5,0},\r\n                                rotation = {0,0,0},\r\n                                width = 2200,\r\n                                height = 750,\r\n                                font_size = 200,\r\n                                tooltip = \"Sends your hand [b]except spells[/b] to the discard pile, in the current order its in. \\n[i](Left to right)[/i]\\n\\n[b]Right click[/b] to send all cards regardless of type.\",\r\n                                color = {r=0.5,b=0.5,g=1}\r\n\r\n          }  -- body...\r\n    self.createButton(button)\r\n    myDeck = self.getName()\r\n    myDiscard = self.getDescription()\r\n    self.setLock(true)\r\nend\r\n\r\nfunction sendHand(obj,color,alt_click)\r\n  local owner = Player[myPlayer]\r\n  altC = alt_click\r\n  handCount = #owner.getHandObjects()\r\n  if (#owner.getHandObjects() ~= 0) then\r\n    loopCount = #owner.getHandObjects()\r\n    waitFunct = Wait.time(moveCard,0.2,#owner.getHandObjects())\r\n    --print(tostring(waitFunct))\r\n  else\r\n    if (Player[myPlayer].seated) then\r\n      broadcastToColor(\"You have no hand.\", myPlayer, {r =1, g = 1, b = 0})\r\n    end\r\n  end\r\nend\r\n\r\nfunction moveCard()\r\n  local owner = Player[myPlayer]\r\n  handCount = #owner.getHandObjects()\r\n  loopCount = loopCount - 1\r\n  local deckPos = getObjectFromGUID(myDiscard)\r\n  local moveParam = deckPos.getPosition() + vector(0,1.4,0)\r\n\r\n\r\n  local hand = Player[myPlayer].getHandObjects(1)\r\n\r\n  for i, object in ipairs(hand) do\r\n    if (object.hasTag('tokenCard') == false) then\r\n      if object.type == \"Card\" and ((object.hasTag('spellCard') == false and  object.hasTag('nemesisDeckCard') == false) or altC == true) and i == cCard then\r\n        card = object\r\n      elseif object.type == \"Card\" and (object.hasTag('spellCard') == true or object.hasTag('nemesisDeckCard') == true) and i == cCard then\r\n        cCard = cCard + 1\r\n      end\r\n    elseif (object.hasTag('tokenCard') == true) then\r\n      object.destruct()\r\n      --cCard = cCard + 1\r\n    end\r\n--card = object\r\n      --print(tostring(cCard))\r\n\r\n\r\n  end\r\n  if (card ~= nil) then\r\n    card.setPosition(moveParam, false, true)\r\n    card.setRotation({0.00, 180.00, 0})\r\n  end\r\n  handCount = #owner.getHandObjects()\r\n  --printToAll(tostring(handCount),{r=1,g=0,b=0})\r\n\r\n  if loopCount <= 0 then --kill function early if needed\r\n    --print('kill function')\r\n    resetCount()\r\n    loopCount = -1\r\n    return(nil)\r\n  end\r\n\r\n\r\nend\r\n\r\nfunction resetCount()\r\n  cCard = 1\r\n  --print('debug')\r\nend\r\n\r\nfunction findDecksInZone(zone)\r\n    local objectsInZone = zone.getObjects()\r\n    local decksFound = {}\r\n    for i, object in ipairs(objectsInZone) do\r\n        if object.tag == \"Deck\" or object.tag == \"Card\" then\r\n            return getObjectFromGUID(object.guid)\r\n        end\r\n    end\r\n    if #decksFound > 0 then\r\n        return decksFound\r\n    else\r\n        return nil\r\n    end\r\nend",
+  "LuaScriptState": "",
+  "XmlUI": ""
+}

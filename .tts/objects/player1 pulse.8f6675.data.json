@@ -1,0 +1,57 @@
+{
+  "GUID": "8f6675",
+  "Name": "Custom_Token",
+  "Transform": {
+    "posX": -15.6710339,
+    "posY": 1.50428879,
+    "posZ": -38.6799355,
+    "rotX": 0.0168151148,
+    "rotY": 180.040176,
+    "rotZ": 0.0799536854,
+    "scaleX": 0.5936493,
+    "scaleY": 1,
+    "scaleZ": 0.5936493
+  },
+  "Nickname": "player1 pulse",
+  "Description": "",
+  "GMNotes": "",
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "ColorDiffuse": {
+    "r": 1,
+    "g": 1,
+    "b": 1
+  },
+  "LayoutGroupSortIndex": 0,
+  "Value": 0,
+  "Locked": true,
+  "Grid": true,
+  "Snap": true,
+  "IgnoreFoW": false,
+  "MeasureMovement": false,
+  "DragSelectable": true,
+  "Autoraise": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "GridProjection": false,
+  "HideWhenFaceDown": false,
+  "Hands": false,
+  "CustomImage": {
+    "ImageURL": "https://steamusercontent-a.akamaihd.net/ugc/54712126536548102/49E290E51DC3BC3A85BD42212C64931505D8FDAA/",
+    "ImageSecondaryURL": "",
+    "ImageScalar": 1,
+    "WidthScale": 0,
+    "CustomToken": {
+      "Thickness": 0.237500176,
+      "MergeDistancePixels": 15,
+      "StandUp": false,
+      "Stackable": false
+    }
+  },
+  "LuaScript": "val = 0\n\nfunction onSave()\n    local tableToSave = {};\n\n    if val then\n\n            tableToSave['val'] = val\n\n    end\n\n\n\n    saved_data = JSON.encode(tableToSave)\n    return saved_data\nend\n\nfunction onload(saved_data)\n\n\n    if saved_data != nil then\n        loaded_data = JSON.decode(saved_data)\n        if loaded_data != nil then\n            val = loaded_data['val']\n        else\n            val = 0\n        end\n    else\n        val = 0\n    end\n\n\n    buttonParameters =\n    {\n        Val =\n        {\n            index = 0,\n            label = tostring(val),\n            click_function = 'setVal',\n            function_owner = self,\n\n            -- Designer stuff\n        position = {0,0.2,0}, width = 700, height = 700, font_size = 700, color = {1,1,1}, font_color = {197/255,90/255,17/255}\n\n        },\n\n        Inc =\n        {\n            label = '+',\n            click_function = 'IncVal',\n            function_owner = self,\n\n            -- Designer stuff\n            position = {1.5,0.2,0},\n            width = 500,\n            height = 500,\n            font_size = 500\n        },\n        Dec =\n        {\n            label = '-', --Text to display\n            click_function = 'DecVal',\n            function_owner = self,\n\n            -- Designer stuff\n            position = {-1.5,0.2,0},\n            width = 500,\n            height = 500,\n            font_size = 500\n        }\n    }\n\n    for i, v in pairs(buttonParameters) do\n        self.createButton(v)\n    end\nend\n\nfunction setVal()\n  val = 0\n\n\n  -- update the charge 'button' label.\n  buttonParameters.Val.label = val\n  self.editButton(buttonParameters.Val)\nend\n\nfunction IncVal()\n    val = val+1\n\n\n    -- update the charge 'button' label.\n    buttonParameters.Val.label = val\n    self.editButton(buttonParameters.Val)\nend\n\nfunction DecVal()\n  if (val > 0) then\n    val = val-1\n  end\n\n\n    -- update the charge 'button' label.\n    buttonParameters.Val.label = val\n    self.editButton(buttonParameters.Val)\nend",
+  "LuaScriptState": "{\"val\":0}",
+  "XmlUI": ""
+}

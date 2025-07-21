@@ -1,0 +1,60 @@
+{
+  "GUID": "3eaeec",
+  "Name": "Custom_Token",
+  "Transform": {
+    "posX": 35.06879,
+    "posY": 1.53144717,
+    "posZ": -3.98072958,
+    "rotX": 0.0163828451,
+    "rotY": 180.349014,
+    "rotZ": 0.07997712,
+    "scaleX": 0.9942721,
+    "scaleY": 1,
+    "scaleZ": 0.9942721
+  },
+  "Nickname": "Turn Order",
+  "Description": "",
+  "GMNotes": "",
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "ColorDiffuse": {
+    "r": 0.5476362,
+    "g": 0.712397933,
+    "b": 0.900696933
+  },
+  "Tags": [
+    "friend"
+  ],
+  "LayoutGroupSortIndex": 0,
+  "Value": 0,
+  "Locked": true,
+  "Grid": true,
+  "Snap": true,
+  "IgnoreFoW": false,
+  "MeasureMovement": false,
+  "DragSelectable": true,
+  "Autoraise": true,
+  "Sticky": true,
+  "Tooltip": false,
+  "GridProjection": false,
+  "HideWhenFaceDown": false,
+  "Hands": false,
+  "CustomImage": {
+    "ImageURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819475215/1F01DF607984A43D89C19C61C13D854FE2812A19/",
+    "ImageSecondaryURL": "",
+    "ImageScalar": 1,
+    "WidthScale": 0,
+    "CustomToken": {
+      "Thickness": 0.2,
+      "MergeDistancePixels": 15,
+      "StandUp": false,
+      "Stackable": false
+    }
+  },
+  "LuaScript": "myDeck = '986585'\r\nmyDiscard = 'c72ff9'\r\ncanContinue = true\r\n\r\nfunction onLoad()\r\n  button = {click_function = 'nextTurn',\r\n            function_owner = self,\r\n            label = 'Resolve',\r\n            position = {0,0.1,0},\r\n            rotation = {0,0,0},\r\n            width = 2000,\r\n            height = 750,\r\n            font_size = 200,\r\n            tooltip = \"Resolve the top card and reveal the next card. The top card of this deck is always revealed.\",\r\n            color = {r=0.5,b=0.5,g=1}\r\n          }  -- body...\r\n    self.createButton(button)\r\n    self.setLock(true)\r\nend\r\n\r\n--多种情况\r\n--1. 抽牌堆和弃牌堆都为空，直接退出函数\r\n--2. 抽牌堆有卡片，背面朝上则翻开即可；正面朝上则置入弃牌区即可\r\n--3. 抽牌堆没有卡片，但是有牌堆，牌堆一定正面朝下，所以让��堆第一张翻面即可\r\n--4. 抽���堆为空��弃牌堆���������\r\nfunction nextTurn()\r\n  if (canContinue == false) then\r\n    return(nil)\r\n  end\r\n\r\n\tdeckObject = getObjectFromGUID(myDeck)\r\n\tCard_or_Deck = find_Card_or_Deck_InZone(deckObject)\r\n\r\n\tdiscardObject = getObjectFromGUID(myDiscard)\r\n\tfindDiscard = find_Card_or_Deck_InZone(discardObject)\r\n\r\n\r\n\t--情况1:抽牌堆和弃牌堆都为空，直接退出函数\r\n\tif Card_or_Deck == nil and findDiscard == nil then\r\n\t\tbroadcastToAll(\"There is no Friend deck or discard pile!\", {r = 1, g = 0, b = 0})\r\n\t\treturn\r\n\tend\r\n  --情况4：抽牌堆为空，弃牌堆非空\r\n    if Card_or_Deck == nil and findDiscard ~= nil then\r\n      -- broadcastToAll(\"Shuffle!\", {r = 1, g = 0, b = 0})\r\n      findDiscard.setPosition(deckObject.getPosition() + vector(0,1,0))\r\n      findDiscard.setRotation({0,180,180})\r\n      findDiscard.shuffle()\r\n      Wait.time(nextTurn, 0.6)\r\n      return\r\n  end\r\n\r\n\t--情况2:抽牌堆有卡片\r\n\tif Card_or_Deck.tag == \"Card\" then\r\n\t\tlocal card_rotation = Card_or_Deck.getRotation()\r\n\t\t--情况2.1：卡片正面朝上，将该卡片置入弃牌区即可\r\n\t\tif(card_rotation.z >= 0 and card_rotation.z <1) then\r\n\t\t\tlocal discardPos = discardObject.getPosition() + vector(0,1,0)\r\n\t\t\tlocal discardRot = {0,180,0}\r\n\t\t\tCard_or_Deck.setPositionSmooth(discardPos)\r\n\t\t\tCard_or_Deck.setRotationSmooth(discardRot)\r\n      --置入弃牌区后再执行一次这个函数（即翻面顶牌）,如果抽牌堆为空，不需要再执行\r\n      local new_Card_or_Deck = nil\r\n      Wait.time(function()\r\n          new_Card_or_Deck = find_Card_or_Deck_InZone(deckObject)\r\n      end, 0.5)\r\n      Wait.time(function()\r\n          if new_Card_or_Deck ~= nil then\r\n              nextTurn()\r\n          end\r\n      end, 0.6)\r\n\t\t--情况2.2：卡片背面朝上，将该卡片翻面即可\r\n\t\telse\r\n\t\t\tCard_or_Deck.flip()\r\n\t\t\tcanContinue = false\r\n\t\t\tWait.time(flipBool,0.5)\r\n\t\t\treturn\r\n\t\tend\r\n\t--情况3：抽牌堆没有卡片（Card_or_Deck.tag == \"Deck\"）\r\n  elseif Card_or_Deck.tag == \"Deck\" then\r\n    deck_rotation = Card_or_Deck.getRotation()\r\n        --情况3.1：抽牌堆为正��向上���牌堆，将牌堆顶的牌直接置入弃牌堆\r\n        if deck_rotation.z >=0 and deck_rotation.z <1 then\r\n          local deck_pos = Card_or_Deck.getPosition()\r\n          local TopCardPositionParam = {position = deck_pos + vector(20.46,1,0), smooth = true, top=true}\r\n          Card_or_Deck.takeObject(TopCardPositionParam)\r\n\t\t  return\r\n        --情况3.2：抽牌堆为背面向上的牌堆，将牌堆顶的牌翻面\r\n        else\r\n          local deck_pos = Card_or_Deck.getPosition()\r\n          local TopCardPositionParam = {position = deck_pos + vector(0,1,0), smooth = true, top=true, flip=true}\r\n          Card_or_Deck.takeObject(TopCardPositionParam)\r\n          canContinue = false\r\n          Wait.time(flipBool,0.5)\r\n\t\t\treturn\r\n        end\r\n\tend\r\nend\r\n\r\n--检查抽牌堆有无卡牌或牌堆，有则优先返回卡牌对象\r\nfunction find_Card_or_Deck_InZone(zone)\r\n    local objectsInZone = zone.getObjects()\r\n\t--优先检查是否有顶牌��有���优先返回卡牌对象\r\n\tbottom_card = nil\r\n    for i, object in ipairs(objectsInZone) do\r\n        if object.tag == \"Card\" then\r\n\t\t\t--特殊情况：一张正面朝上��另一张背面朝上，则忽略背面朝上的卡牌，返回正面朝上的卡牌\r\n\t\t\t--判断逻辑：如果检测到的卡牌背面朝上，则继续检测，保证正面朝上卡牌对象的优先返回\r\n\t\t\tlocal rotation = object.getRotation()\r\n\r\n\t\t\tif rotation.z > 179 then\r\n\t\t\t\t-- broadcastToAll(\"this card is bottom\")\r\n\t\t\t\tbottom_card = object\r\n\t\t\telse\r\n\t\t\t\t-- broadcastToAll(\"this card is top\")\r\n\t\t\t\treturn getObjectFromGUID(object.guid)\r\n\t\t\tend\r\n\r\n\r\n        end\r\n    end\r\n\tif(bottom_card ~= nil) then\r\n\t\treturn getObjectFromGUID(bottom_card.guid)\r\n\tend\r\n\t--无卡�����则再检查是否有��堆，有则�������牌堆对象\r\n    for i, object in ipairs(objectsInZone) do\r\n        if object.tag == \"Deck\" then\r\n            return getObjectFromGUID(object.guid)\r\n        end\r\n    end\r\n\t--如果都没有\r\n    return nil\r\nend\r\n\r\n--翻牌时需要短暂禁止使用按钮\r\nfunction flipBool()\r\n  canContinue = true\r\nend",
+  "LuaScriptState": "",
+  "XmlUI": ""
+}

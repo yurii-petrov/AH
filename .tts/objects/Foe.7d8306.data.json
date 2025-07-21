@@ -1,0 +1,60 @@
+{
+  "GUID": "7d8306",
+  "Name": "Custom_Tile",
+  "Transform": {
+    "posX": -29.7383213,
+    "posY": 1.52009988,
+    "posZ": -9.739134,
+    "rotX": 0.0168717038,
+    "rotY": 179.999954,
+    "rotZ": 0.0798765048,
+    "scaleX": 7.760598,
+    "scaleY": 1,
+    "scaleZ": 7.760598
+  },
+  "Nickname": "Foe",
+  "Description": "581265",
+  "GMNotes": "",
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "ColorDiffuse": {
+    "r": 0,
+    "g": 0,
+    "b": 0
+  },
+  "Tags": [
+    "foe"
+  ],
+  "LayoutGroupSortIndex": 0,
+  "Value": 0,
+  "Locked": true,
+  "Grid": true,
+  "Snap": true,
+  "IgnoreFoW": false,
+  "MeasureMovement": false,
+  "DragSelectable": true,
+  "Autoraise": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "GridProjection": false,
+  "HideWhenFaceDown": false,
+  "Hands": false,
+  "CustomImage": {
+    "ImageURL": "https://steamusercontent-a.akamaihd.net/ugc/54708874925427354/E9AAC6577B847D41753E263B215B7F57C69CC6A8/",
+    "ImageSecondaryURL": "https://steamusercontent-a.akamaihd.net/ugc/54708874925427354/E9AAC6577B847D41753E263B215B7F57C69CC6A8/",
+    "ImageScalar": 1,
+    "WidthScale": 0,
+    "CustomTile": {
+      "Type": 3,
+      "Thickness": 0.1,
+      "Stackable": false,
+      "Stretch": true
+    }
+  },
+  "LuaScript": "info = {}\r\nobj_GUID = {}\r\nme = {}\r\nmePos = {}\r\nbagNum = 1\r\nzone_GUID = ''\r\nmyPlayer = ''\r\nmainBoardStore = {}\r\nphoenixStore = {}\r\nfoeBagDeck = 'cba0e3'\r\nclear_setup = 'b9111a'\r\nfoe_off_button = 'cff752'\r\n\r\n\r\n\r\nfunction onCollisionEnter(info)\r\n\r\n\r\nend\r\n\r\nfunction onObjectEnterScriptingZone(zone, info)\r\n    --print(info.getGUID())\r\n\r\n    if (zone.getGUID() == zone_GUID) then\r\n      obj_GUID = info.getGUID()\r\n\r\n\r\n      -- print(tostring(info) .. \" collided with \" .. tostring(self))\r\n      obj_GUID = getObjectFromGUID(info.guid)\r\n      if (info.getDescription() == \"Foe\" and info.type == \"Bag\") then\r\n        if getObjectFromGUID(foe_off_button)~= nil and getObjectFromGUID(clear_setup)~= nil then\r\n          getObjectFromGUID(foe_off_button).call(\"offR\")\r\n          getObjectFromGUID(clear_setup).setVar('foe',true)\r\n        end\r\n        broadcastToAll(\"Don't forget to include Banner Cards in your starting deck\", {r=0,b=0,g=1})\r\n        -- print(\"Is a bag\")\r\n        bagNum = info.getQuantity()\r\n        --print(tostring(bagNum))\r\n        pullItems(info,bagNum)\r\n          -- print(\"Is not a bag\")\r\n          local myPos2 = getObjectFromGUID('d089df').getPosition()\r\n        print(\"Setting up \" .. info.getName())\r\n        --searchDeck(getObjectFromGUID('e922d3'),info.getName(),myPos2 + vector(0,8,0),{0,180,0},'Name')\r\n        foe_turn_card = getObjectFromGUID('72f523')\r\n        foe_turn_card.setPosition({17.25, 2, -7.01})\r\n        foe_turn_card.setRotation({0,180,180})\r\n        Wait.time(function()\r\n          zone = getObjectFromGUID('d3724a')\r\n          turn_order_deck = findDecksInZone(zone)\r\n          if turn_order_deck ~= nil then\r\n            turn_order_deck.shuffle()\r\n          end\r\n        end,0.5)\r\n      end\r\n      if (info.type == \"Card\" and info.getGMNotes() == 'FoeRandomiser') then\r\n        info.drop()\r\n        getFoeBag(info)\r\n        --local getBag = getObjectFromGUID(info.getDescription())\r\n        --getBag.setPositionSmooth(mePos + vector(0,5,-5))\r\n        --local myPos2 = getObjectFromGUID('d089df').getPosition()\r\n        --info.setPositionSmooth(myPos2 + vector(0,8,0))\r\n        local myPos2 = getObjectFromGUID('d089df').getPosition()\r\n        info.setPositionSmooth(myPos2 + vector(0,6,0))\r\n      end\r\n    end\r\nend\r\n\r\nfunction getFoeBag(card)\r\n  --print(mageBagDeck .. \" / \" .. card.getName())\r\n  local getBag = searchDeck(getObjectFromGUID(foeBagDeck),card.getName(),vector(-55.42, 0.35, 13.44),{0,180,0},'Name','Foe Bag does not exist in box.')\r\n  getBag.setPositionSmooth(mePos + vector(0,5,0))\r\n\r\nend\r\n\r\n\r\nfunction searchDeck(deck, charName,pos,rot,nameOrDes,error)\r\n\r\n    for _, card in pairs(deck.getObjects()) do\r\n      if (nameOrDes == \"Des\" and card.description == charName) or (nameOrDes == \"Name\" and card.name == charName) then\r\n        return(deck.takeObject({guid = card.guid, position = pos, rotation = rot}))\r\n      end\r\n    end\r\n    local myError = error or ''\r\n    if (myError ~= '') then\r\n      broadcastToAll(error,{r = 1, g = 0, b = 0})\r\n    end\r\nend\r\n\r\n\r\nfunction pullItems(obj,num)\r\n  local params = {}\r\n  params = {\r\n    position = mePos + vector(0,5,-5),\r\n    smooth = false,\r\n    callback_function = function(obj) takeCallback(obj) end\r\n    }\r\n\r\n  for j = 1, num do\r\n      obj.takeObject(params)\r\n  end\r\n  destroyObject(obj)\r\nend\r\n\r\n\r\nfunction onLoad()\r\n  me = getObjectFromGUID(self.guid)\r\n  mePos = me.getPosition()\r\n  zone_GUID = me.getDescription()\r\n  myPlayer = me.getName()\r\nend\r\n\r\n\r\nfunction takeCallback(obj_spawned)\r\n  local myDes = obj_spawned.getDescription()\r\n  local myName = obj_spawned.getName()\r\n  --print(tostring(myDes) .. tostring(myName))\r\n  if (myDes == \"Main Board\") then\r\n    obj_spawned.setPositionSmooth(mePos+vector(0, 1, 0))\r\n    if (myName == \"the Cultist\") then\r\n      obj_spawned.setRotation({0,180,180})\r\n    else\r\n      obj_spawned.setRotation({0,180,0})\r\n    end\r\n  end\r\n  if (myDes == \"Minor Deck Shuffled\") then\r\n    obj_spawned.setPositionSmooth(mePos+vector(-15.83, 1, -0.79))\r\n    obj_spawned.setRotation({0.00, 180.00, 180.00})\r\n    obj_spawned.shuffle()\r\n  end\r\n  if (myDes == \"Minor Deck\") then\r\n    obj_spawned.setPositionSmooth(mePos+vector(-15.83, 1, -0.79))\r\n    obj_spawned.setRotation({0.00, 180.00, 0.00})\r\n    if (myName == \"the Cultist Minor Deck\") then\r\n      broadcastToAll(\"Players should place the Volatile Pylon and Ritual of Flame cards into play\", {r = 1, g = 0, b = 0})\r\n    end\r\n  end\r\n  if (myDes == \"Foe Deck\") then\r\n    obj_spawned.setPositionSmooth({-38.47, 2, -10.53})\r\n    obj_spawned.setRotation({0.00, 180.00, 180.00})\r\n    obj_spawned.shuffle()\r\n    local button =  getObjectFromGUID(\"62322e\")\r\n    Wait.time(function()\r\n      button.call('nextTurn',nil)\r\n    end, 1)\r\n  end\r\nend\r\n\r\n\r\nfunction findDecksInZone(zone)\r\n    local objectsInZone = zone.getObjects()\r\n    local decksFound = {}\r\n    for i, object in ipairs(objectsInZone) do\r\n        if object.type == \"Deck\" then\r\n            return getObjectFromGUID(object.guid)\r\n        end\r\n    end\r\n    if #decksFound > 0 then\r\n        return decksFound\r\n    else\r\n        return nil\r\n    end\r\nend",
+  "LuaScriptState": "",
+  "XmlUI": ""
+}

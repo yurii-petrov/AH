@@ -1,0 +1,60 @@
+{
+  "GUID": "f946b9",
+  "Name": "Custom_Tile",
+  "Transform": {
+    "posX": -87.2025,
+    "posY": 1.61411107,
+    "posZ": 37.4641037,
+    "rotX": 0.0168406945,
+    "rotY": 180.022049,
+    "rotZ": 0.0798842758,
+    "scaleX": 5.53240871,
+    "scaleY": 1,
+    "scaleZ": 5.53240871
+  },
+  "Nickname": "Nemesis Randomizer Customization",
+  "Description": "Create Nemesis Selection Randomizer decks out of specific waves of content.\n\nWave 1 is the original Aeon's End release, Wave 6 is the latest: Legacy of Gravehold.\n\n[b]Not all Waves contain all 4 Tiers of Nemesis.[/b]\n\nThis means that you may need to add more than 1 Wave to create a full Expedition.",
+  "GMNotes": "",
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "ColorDiffuse": {
+    "r": 1,
+    "g": 1,
+    "b": 1
+  },
+  "Tags": [
+    "setup"
+  ],
+  "LayoutGroupSortIndex": 0,
+  "Value": 0,
+  "Locked": true,
+  "Grid": true,
+  "Snap": true,
+  "IgnoreFoW": false,
+  "MeasureMovement": false,
+  "DragSelectable": true,
+  "Autoraise": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "GridProjection": false,
+  "HideWhenFaceDown": false,
+  "Hands": false,
+  "CustomImage": {
+    "ImageURL": "https://steamusercontent-a.akamaihd.net/ugc/54707509765451938/7A8CCED1C00824DBF19FB152D3FC1A0C783E1DA9/",
+    "ImageSecondaryURL": "",
+    "ImageScalar": 1,
+    "WidthScale": 0,
+    "CustomTile": {
+      "Type": 0,
+      "Thickness": 0.1,
+      "Stackable": false,
+      "Stretch": true
+    }
+  },
+  "LuaScript": "isUsed = false\r\nmyBag = '9a2b7f'\r\ntierScript ={\r\n[1] = '480bec',\r\n[2] = '98363c',\r\n[3] = '216f08',\r\n[4] = '6599fa',\r\n}\r\n\r\nunknownDeck = false\r\n\r\nnemDeck ={\r\n[1] = 'a295f2',\r\n[2] = '00d19b',\r\n[3] = 'd8e1b9',\r\n[4] = '15bd92',\r\n}\r\n\r\ntier1 = {\r\n  [1] = 'Wave 1A',\r\n  [2] = 'Wave 2A',\r\n  [3] = 'Wave 3A',\r\n  [4] = 'Maggoth (Diff: 3)',\r\n  [5] = 'Experiment 153 (Diff: 3)',\r\n  [6] = 'Wave 6A',\r\n  [7] = 'No Deck Here Wave 7A',\r\n  [8] = 'The Infecter (Diff: 4)'\r\n}\r\n\r\ntier2 = {\r\n  [1] = 'Wave 1B',\r\n  [2] = 'Wave 2B',\r\n  [3] = 'Fungal Mesh (Diff: 4)',\r\n  [4] = 'Arachnos (Diff: 4)',\r\n  [5] = 'Wave 5B)',\r\n  [6] = 'Wave 6B',\r\n  [7] = 'Herald of the End (Diff: 4)',\r\n  [8] = 'The Coven (Diff: 5)'\r\n}\r\n\r\ntier3 = {\r\n  [1] = 'Wayward One (Diff: 7)',\r\n  [2] = 'Wave 2C',\r\n  [3] = 'No Deck Here Wave 3C',\r\n  [4] = 'Wave 4C',\r\n  [5] = 'Risen Thrall (Diff:5)',\r\n  [6] = 'Wave 6C',\r\n  [7] = 'Wave 7C',\r\n  [8] = 'Wave 8C'\r\n}\r\n\r\ntier4 = {\r\n  [1] = 'No Deck Here Wave 1D',\r\n  [2] = 'Wave 2D',\r\n  [3] = 'Wave 3D',\r\n  [4] = 'Wave 4D',\r\n  [5] = 'Wave 5D',\r\n  [6] = 'Wave 6D',\r\n  [7] = 'Wave 7D',\r\n  [8] = 'Wave 8D'\r\n}\r\n\r\ndestroyID = '2f91ae'\r\n\r\nfunction onLoad()\r\nbuttonParams = {\r\n  wv1 = {click_function = \"Wave1\", function_owner = self, label = \"Wave 1\",\r\n  position = {0, 0.2, -0.7}, scale = {0.15, 0.3, 0.15}, width = 1800, height = 600, font_size = 400,\r\n  color = {0.4616, 0.9159, 1, 1}, tooltip = \"[b]Aeon's End[/b] + \\nThe Depths, The Nameless\\n\\n[i]This Wave does not have a Tier 4 nemesis.[/i]\"},\r\n  wv2 = {click_function = \"Wave2\", function_owner = self, label = \"Wave 2\",\r\n  position = {0, 0.2, -0.5}, scale = {0.15, 0.3, 0.15}, width = 1800, height = 600, font_size = 400,\r\n  color = {0.4616, 0.9159, 1, 1}, tooltip = \"[b]War Eternal[/b] +\\nThe Void, The Outer Dark\"},\r\n  wv3 = {click_function = \"Wave3\", function_owner = self, label = \"Wave 3\",\r\n  position = {0, 0.2, -0.3}, scale = {0.15, 0.3, 0.15}, width = 1800, height = 600, font_size = 400,\r\n  color = {0.4616, 0.9159, 1, 1}, tooltip = \"[b]Legacy\\n[/b][i]\\nThis Wave does not have a Tier 3 nemesis.[/i]\"},\r\n  wv4 = {click_function = \"Wave4\", function_owner = self, label = \"Wave 4\",\r\n  position = {0, 0.2, -0.1}, scale = {0.15, 0.3, 0.15}, width = 1800, height = 600, font_size = 400,\r\n  color = {0.4616, 0.9159, 1, 1}, tooltip = \"[b]New Age[/b] +\\nShattered Dreams, The Ancients, Into the Wild\"},\r\n  wv5 = {click_function = \"Wave5\", function_owner = self, label = \"Wave 5\",\r\n  position = {0, 0.2, 0.1}, scale = {0.15, 0.3, 0.15}, width = 1800, height = 600, font_size = 400,\r\n  color = {0.4616, 0.9159, 1, 1}, tooltip = \"[b]Outcasts[/b] + \\nReturn to Gravehold, Southern Village\"},\r\n  wv6 = {click_function = \"Wave6\", function_owner = self, label = \"Wave 6\",\r\n  position = {0, 0.2, 0.3}, scale = {0.15, 0.3, 0.15}, width = 1800, height = 600, font_size = 400,\r\n  color = {0.4616, 0.9159, 1, 1}, tooltip = \"[b]Legacy of Gravehold[/b]\"},\r\n  wv7 = {click_function = \"Wave7\", function_owner = self, label = \"Wave 7\",\r\n  position = {0, 0.2, 0.5}, scale = {0.15, 0.3, 0.15}, width = 1800, height = 600, font_size = 400,\r\n  color = {0.4616, 0.9159, 1, 1}, tooltip = \"[b]Past and Future[/b] + \\nOrigins, Evolution\\n\\n[i]This Wave does not have a Tier 1 nemesis.[/i]\"},\r\n  wv8 = {click_function = \"Wave8\", function_owner = self, label = \"Wave 8\",\r\n  position = {0, 0.2, 0.7}, scale = {0.15, 0.3, 0.15}, width = 1800, height = 600, font_size = 400,\r\n  color = {0.4616, 0.9159, 1, 1}, tooltip = \"[b]Descent[/b] + \\nCaverns, Abyss\"},\r\n}\r\nbuttonCreateBatch()\r\n\r\nself.setDescription(\"Create Nemesis Selection Randomizer decks out of specific waves of content.\\n\\nWave 1 is the original Aeon's End release, Wave 6 is the latest: Legacy of Gravehold.\\n\\n[b]Not all Waves contain all 4 Tiers of Nemesis.[/b]\\n\\nThis means that you may need to add more than 1 Wave to create a full Expedition.\")\r\n\r\ngetObjectFromGUID(myBag).setName('Nemesis Randomizer Collection')\r\n\r\n\r\n\r\nend\r\n\r\nfunction Wave1()\r\n  turnOffButton(0)\r\n  grabDecks(1)\r\n  print(\"Adding Wave 1 Nemesis - Aeon's End, The Depths & The Nameless\")\r\nend\r\n\r\nfunction Wave2()\r\n  turnOffButton(1)\r\n  grabDecks(2)\r\n  print(\"Adding Wave 2 Nemesis - War Eternal, The Void, Outer Dark\")\r\nend\r\n\r\nfunction Wave3()\r\n  turnOffButton(2)\r\n  grabDecks(3)\r\n  print(\"Adding Wave 3 Nemesis - Legacy\")\r\nend\r\n\r\nfunction Wave4()\r\n  turnOffButton(3)\r\n  grabDecks(4)\r\n  print(\"Adding Wave 4 Nemesis - The New Age, The Ancients, Into the Wild & Shattered Dreams\")\r\nend\r\n\r\nfunction Wave5()\r\n  turnOffButton(4)\r\n  grabDecks(5)\r\n  print(\"Adding Wave 5 Nemesis - Outcasts, Return to Gravehold & Southern Village\")\r\nend\r\n\r\nfunction Wave6()\r\n  turnOffButton(5)\r\n  grabDecks(6)\r\n  print(\"Adding Wave 6 Nemesis - Legacy of Gravehold\")\r\nend\r\n\r\nfunction Wave7()\r\n  turnOffButton(6)\r\n  grabDecks(7)\r\n  print(\"Adding Wave 7 Nemesis - Past and Future, Origins & Evolution\")\r\nend\r\nfunction Wave8()\r\n  turnOffButton(7)\r\n  grabDecks(8)\r\n  print(\"Adding Wave 8 Nemesis - The Descent, The Caverns & The Abyss\")\r\nend\r\n\r\nfunction findDecksInZone(zone)\r\n    local objectsInZone = zone.getObjects()\r\n    local decksFound = {}\r\n    for i, object in ipairs(objectsInZone) do\r\n        if object.type == \"Deck\" or object.type == \"Card\" then\r\n            return getObjectFromGUID(object.guid)\r\n        end\r\n    end\r\n    if #decksFound > 0 then\r\n        return decksFound\r\n    else\r\n        return nil\r\n    end\r\nend\r\n\r\nfunction findActualDeck(zone)\r\n  local check = findDecksInZone(zone)\r\n  if check == 'No Deck' then\r\n    --print(\"shouldnt havbe fund\")\r\n    unknownDeck = true\r\n    return check\r\n  else\r\n    return check\r\n  end\r\nend\r\n\r\nfunction grabDecks(myWave)\r\n  if isUsed == false then\r\n      local destroyObj = getObjectFromGUID(destroyID)\r\n\r\n      local myDeck1 = findDecksInZone(getObjectFromGUID(tierScript[1]))\r\n      myDeck1.setPosition(destroyObj.getPosition() + vector(0,3,0))\r\n      local myDeck2 = findDecksInZone(getObjectFromGUID(tierScript[2]))\r\n      myDeck2.setPosition(destroyObj.getPosition() + vector(0,5,0))\r\n      local myDeck3 = findDecksInZone(getObjectFromGUID(tierScript[3]))\r\n      myDeck3.setPosition(destroyObj.getPosition() + vector(0,7,0))\r\n      local myDeck4 = findDecksInZone(getObjectFromGUID(tierScript[4]))\r\n      myDeck4.setPosition(destroyObj.getPosition() + vector(0,9,0))\r\n\r\n      isUsed = true\r\n\r\n    end\r\n    --search Nemesis\r\n    searchDeck(getObjectFromGUID(myBag ),tier1[myWave],getObjectFromGUID(tierScript[1]).getPosition() + vector(0,2,0),{0.00, 180.00, 180.00},\"Name\",'')\r\n    searchDeck(getObjectFromGUID(myBag ),tier2[myWave],getObjectFromGUID(tierScript[2]).getPosition() + vector(0,2,0),{0.00, 180.00, 180.00},\"Name\",'')\r\n    searchDeck(getObjectFromGUID(myBag ),tier3[myWave],getObjectFromGUID(tierScript[3]).getPosition() + vector(0,2,0),{0.00, 180.00, 180.00},\"Name\",'')\r\n    searchDeck(getObjectFromGUID(myBag ),tier4[myWave],getObjectFromGUID(tierScript[4]).getPosition() + vector(0,2,0),{0.00, 180.00, 180.00},\"Name\",'')\r\n\r\n    Wait.frames(renameDecks,40)\r\nend\r\n\r\n\r\nfunction searchDeck(deck, charName,pos,rot,nameOrDes,error)\r\n\r\n    for _, card in pairs(deck.getObjects()) do\r\n      if (nameOrDes == \"Des\" and card.description == charName) or (nameOrDes == \"Name\" and card.name == charName) then\r\n        if card.name == 'No Deck Here Wave 1D'  then\r\n          unknownDeck = 1\r\n          return nil\r\n        elseif card.name == 'No Deck Here Wave 7A' then\r\n          unknownDeck = 7\r\n          return nil\r\n        elseif  card.name == 'No Deck Here Wave 3C' then\r\n          unknownDeck = 3\r\n          return nil\r\n        else\r\n          return(deck.takeObject({guid = card.guid, position = pos, rotation = rot, smooth = false}))\r\n        end\r\n      end\r\n    end\r\n    local myError = error or ''\r\n    if (myError ~= '') then\r\n      broadcastToAll(error,{r = 1, g = 0, b = 0})\r\n    end\r\nend\r\n\r\nfunction setNemDeck(num)\r\n\r\n  --print(unknownDeck)\r\n  --print(num)\r\n  if unknownDeck == 1 and num == 4 then\r\n    unknownDeck = 0\r\n    return nil\r\n  elseif unknownDeck == 3 and num == 3 then\r\n    unknownDeck = 0\r\n    return nil\r\n  elseif unknownDeck == 7 and num == 1  then\r\n    unknownDeck = 7\r\n    return nil\r\n  elseif unknownDeck == 7 and num == 2  then\r\n    unknownDeck = 0\r\n    return nil\r\n  else\r\n    nemDeck[num] = findActualDeck(getObjectFromGUID(tierScript[num])).getGUID()\r\n    if getObjectFromGUID(nemDeck[num]).type == 'Deck' then\r\n      --print(\"just card found\")\r\n\r\n        getObjectFromGUID(nemDeck[num]).setName(\"Nemesis Randomizer Deck \".. tostring(num))\r\n        getObjectFromGUID(nemDeck[num]).setDescription(\"Drag one of these cards onto the Nemesis setup mat to set that Nemesis up.\")\r\n\r\n        shuffleNem(num)\r\n      end\r\n  end\r\nend\r\n\r\nfunction renameDecks()\r\n  setNemDeck(1)\r\n  setNemDeck(2)\r\n  setNemDeck(3)\r\n  setNemDeck(4)\r\nend\r\n\r\nfunction pickA()\r\n  broadcastToAll(\"Already added.\", {r = 0.6,g = 0, b = 0.4})\r\nend\r\n\r\n\r\nfunction shuffleNem(num)\r\n findDecksInZone(getObjectFromGUID(tierScript[num])).shuffle()\r\nend\r\n\r\nfunction turnOffButton(inN)\r\n  self.editButton({\r\n    index = inN,\r\n    color = {r = 0, g = 0, b = 0},\r\n    click_function = 'pickA'\r\n  })\r\nend\r\n\r\nfunction buttonCreateBatch()\r\n   for i, v in pairs(buttonParams) do\r\n      self.createButton(v)\r\n   end\r\nend",
+  "LuaScriptState": "",
+  "XmlUI": ""
+}

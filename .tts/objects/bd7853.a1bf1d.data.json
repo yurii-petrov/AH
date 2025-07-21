@@ -1,0 +1,60 @@
+{
+  "GUID": "a1bf1d",
+  "Name": "Custom_Token",
+  "Transform": {
+    "posX": -84.06549,
+    "posY": 1.21132433,
+    "posZ": -29.6398258,
+    "rotX": 0.0169257727,
+    "rotY": 179.977646,
+    "rotZ": 0.07987314,
+    "scaleX": 0.9942721,
+    "scaleY": 1,
+    "scaleZ": 0.9942721
+  },
+  "Nickname": "bd7853",
+  "Description": "aa8a91",
+  "GMNotes": "",
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "ColorDiffuse": {
+    "r": 0.627,
+    "g": 0.124968641,
+    "b": 0.941
+  },
+  "Tags": [
+    "player4 mat"
+  ],
+  "LayoutGroupSortIndex": 0,
+  "Value": 0,
+  "Locked": true,
+  "Grid": true,
+  "Snap": true,
+  "IgnoreFoW": false,
+  "MeasureMovement": false,
+  "DragSelectable": true,
+  "Autoraise": true,
+  "Sticky": true,
+  "Tooltip": false,
+  "GridProjection": false,
+  "HideWhenFaceDown": false,
+  "Hands": false,
+  "CustomImage": {
+    "ImageURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819475215/1F01DF607984A43D89C19C61C13D854FE2812A19/",
+    "ImageSecondaryURL": "",
+    "ImageScalar": 1,
+    "WidthScale": 0,
+    "CustomToken": {
+      "Thickness": 0.2,
+      "MergeDistancePixels": 15,
+      "StandUp": false,
+      "Stackable": false
+    }
+  },
+  "LuaScript": "myPlayer = 'Purple'\r\nmyCount = 5\r\n\r\nfunction onLoad()\r\n  button = {click_function = 'draw5',\r\n                                function_owner = self,\r\n                                label = 'Draw to 5\\nCards',\r\n                                position = {-1.5,0.5,0},\r\n                                rotation = {0,0,0},\r\n                                width = 1400,\r\n                                height = 750,\r\n                                font_size = 200,\r\n                                tooltip = \"Draw up to 5 cards in hand.\",\r\n                                color = {r=0.5,b=1,g=0.5}\r\n\r\n          }  -- body...\r\n    button2 = {click_function = 'draw1',\r\n                                        function_owner = self,\r\n                                        label = 'Draw 1\\nCard',\r\n                                        position = {1.5,0.5,0},\r\n                                        rotation = {0,0,0},\r\n                                        width = 1400,\r\n                                        height = 750,\r\n                                        font_size = 200,\r\n                                        tooltip = \"Draw 1 card.\",\r\n                                        color = {r=1,b=0.5,g=0.5}\r\n                  }  -- body...\r\n    self.createButton(button)\r\n    self.createButton(button2)\r\n    myDeck = self.getName()\r\n    myDiscard = self.getDescription()\r\nend\r\n\r\nfunction draw5()\r\n  local cDeck = findDecksInZone(getObjectFromGUID(myDeck))\r\n  local cDiscard = findDecksInZone(getObjectFromGUID(myDiscard))\r\n  local owner = Player[myPlayer]\r\n  local cCount = #owner.getHandObjects()\r\n  if cCount < myCount then\r\n    if cDeck ~= nil then\r\n      Wait.time(checkDeck, 50/60)\r\n    end\r\n    local drawX = myCount - cCount\r\n    for i = 1, drawX, 1 do\r\n      cDeck = findDecksInZone(getObjectFromGUID(myDeck))\r\n        if cDeck ~= nil then\r\n          cDeck.deal(1,myPlayer)\r\n        else\r\n          if cDiscard == nil then\r\n            if (Player[myPlayer].seated == true) then\r\n              printToColor(\"Cannot flip Discard Pile.\", myPlayer, {r=1,g=0,b=0})\r\n            end\r\n          return(nil)\r\n          end\r\n          flipDeck()\r\n          Wait.time(draw5, 0.5)\r\n          break\r\n        end\r\n    end\r\n  else\r\n    if (Player[myPlayer].seated == true) then\r\n      broadcastToColor(\"Your hand already has \" .. tostring(cCount) .. \" cards\", myPlayer, {r=1, g=1, b= 0})\r\n    end\r\n  end\r\nend\r\n\r\nfunction checkDeck()\r\n  local owner = Player[myPlayer]\r\n  local cCount = #owner.getHandObjects()\r\n  if cCount < myCount then\r\n    draw5()\r\n  end\r\nend\r\nfunction draw1()\r\n  local cDeck = findDecksInZone(getObjectFromGUID(myDeck))\r\n  local cDiscard = findDecksInZone(getObjectFromGUID(myDiscard))\r\n  local owner = Player[myPlayer]\r\n  if cDeck ~= nil then\r\n    cDeck.deal(1,myPlayer)\r\n  else\r\n    if cDiscard == nil then\r\n      if (Player[myPlayer].seated == true) then\r\n        printToColor(\"Cannot flip Discard Pile.\", myPlayer, {r=1,g=0,b=0})\r\n      end\r\n    return(nil)\r\n    end\r\n    flipDeck()\r\n    Wait.time(draw1, 0.5)\r\n  end\r\nend\r\n\r\nfunction flipDeck()\r\n  local cDiscard = findDecksInZone(getObjectFromGUID(myDiscard))\r\n  local deckPos = getObjectFromGUID(myDeck)\r\n  local owner = Player[myPlayer]\r\n  if cDiscard ~= nil then\r\n    local moveParam = deckPos.getPosition()\r\n    cDiscard.setPositionSmooth(moveParam)\r\n    cDiscard.setRotation({0.00, 180.00, 180.00})\r\n  else\r\n    if (#owner.seated == true) then\r\n    printToColor(\"Cannot flip Discard Pile.\", myPlayer, {r=1,g=0,b=0})\r\n    end\r\n  end\r\nend\r\n\r\nfunction findDecksInZone(zone)\r\n    local objectsInZone = zone.getObjects()\r\n    local decksFound = {}\r\n    for i, object in ipairs(objectsInZone) do\r\n        if object.tag == \"Deck\" or object.tag == \"Card\" then\r\n            return getObjectFromGUID(object.guid)\r\n        end\r\n    end\r\n    if #decksFound > 0 then\r\n        return decksFound\r\n    else\r\n        return nil\r\n    end\r\nend",
+  "LuaScriptState": "",
+  "XmlUI": ""
+}

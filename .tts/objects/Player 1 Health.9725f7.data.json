@@ -1,0 +1,57 @@
+{
+  "GUID": "9725f7",
+  "Name": "Custom_Token",
+  "Transform": {
+    "posX": -9.725075,
+    "posY": 1.63800335,
+    "posZ": -20.73,
+    "rotX": 0.0168645624,
+    "rotY": 180.002609,
+    "rotZ": 0.0799402446,
+    "scaleX": 0.6556373,
+    "scaleY": 1,
+    "scaleZ": 0.673674762
+  },
+  "Nickname": "Player 1 Health",
+  "Description": "10",
+  "GMNotes": "",
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "ColorDiffuse": {
+    "r": 1,
+    "g": 1,
+    "b": 1
+  },
+  "LayoutGroupSortIndex": 0,
+  "Value": 0,
+  "Locked": true,
+  "Grid": true,
+  "Snap": true,
+  "IgnoreFoW": false,
+  "MeasureMovement": false,
+  "DragSelectable": true,
+  "Autoraise": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "GridProjection": false,
+  "HideWhenFaceDown": false,
+  "Hands": false,
+  "CustomImage": {
+    "ImageURL": "https://www.dropbox.com/s/ww0h7s93vn1q5f8/1Token.png?raw=1",
+    "ImageSecondaryURL": "",
+    "ImageScalar": 1,
+    "WidthScale": 0,
+    "CustomToken": {
+      "Thickness": 0.1,
+      "MergeDistancePixels": 5,
+      "StandUp": false,
+      "Stackable": false
+    }
+  },
+  "LuaScript": "val = 0\r\n\r\nfunction onSave()\r\n    local tableToSave = {};\r\n\r\n    if val then\r\n\r\n            tableToSave['val'] = val\r\n\r\n    end\r\n\r\n\r\n\r\n    saved_data = JSON.encode(tableToSave)\r\n    return saved_data\r\nend\r\n\r\nfunction onload(saved_data)\r\n\r\n\r\n    if saved_data != nil then\r\n        loaded_data = JSON.decode(saved_data)\r\n        if loaded_data != nil then\r\n            val = loaded_data['val']\r\n        else\r\n            val = 0\r\n        end\r\n    else\r\n        val = 0\r\n    end\r\n\r\n\r\n    buttonParameters =\r\n    {\r\n        Val =\r\n        {\r\n            index = 0,\r\n            label = tostring(val),\r\n            click_function = 'setVal',\r\n            function_owner = self,\r\n\r\n            -- Designer stuff\r\n        position = {0,0.1,0}, width = 800, height = 800, font_size = 700, color = {0,0,0}, font_color = {0,1,0}\r\n\r\n        },\r\n\r\n        Inc =\r\n        {\r\n            label = '+',\r\n            click_function = 'IncVal',\r\n            function_owner = self,\r\n\r\n            -- Designer stuff\r\n            position = {1.2,0.05,1.2},\r\n            width = 500,\r\n            height = 500,\r\n            font_size = 400\r\n        },\r\n        Dec =\r\n        {\r\n            label = '-', --Text to display\r\n            click_function = 'DecVal',\r\n            function_owner = self,\r\n\r\n            -- Designer stuff\r\n            position = {-1.2,0.05,1.2},\r\n            width = 500,\r\n            height = 500,\r\n            font_size = 400\r\n        }\r\n    }\r\n\r\n    for i, v in pairs(buttonParameters) do\r\n        self.createButton(v)\r\n    end\r\nend\r\n\r\nfunction IncVal()\r\n    val =val+1\r\n\r\n\r\n    -- update the attack 'button' label.\r\n    buttonParameters.Val.label = val\r\n    self.editButton(buttonParameters.Val)\r\nend\r\n\r\nfunction setVal()\r\n    val = tonumber(self.getDescription())\r\n\r\n\r\n    -- update the attack 'button' label.\r\n    buttonParameters.Val.label = val\r\n    self.editButton(buttonParameters.Val)\r\nend\r\n\r\nfunction DecVal()\r\n    val =val-1\r\n\r\n\r\n    -- update the attack 'button' label.\r\n    buttonParameters.Val.label = val\r\n    self.editButton(buttonParameters.Val)\r\nend",
+  "LuaScriptState": "{\"val\":10}",
+  "XmlUI": ""
+}

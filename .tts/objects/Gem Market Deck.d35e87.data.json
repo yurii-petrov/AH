@@ -1,0 +1,6140 @@
+{
+  "GUID": "d35e87",
+  "Name": "Deck",
+  "Transform": {
+    "posX": 29.1074352,
+    "posY": 1.958387,
+    "posZ": 35.00334,
+    "rotX": 0.0169328842,
+    "rotY": 179.958038,
+    "rotZ": 180.079865,
+    "scaleX": 2.74,
+    "scaleY": 1,
+    "scaleZ": 2.74
+  },
+  "Nickname": "Gem Market Deck",
+  "Description": "Place a card into a market slot to draw that mini-deck.",
+  "GMNotes": "All",
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "ColorDiffuse": {
+    "r": 0.713235259,
+    "g": 0.713235259,
+    "b": 0.713235259
+  },
+  "LayoutGroupSortIndex": 0,
+  "Value": 0,
+  "Locked": false,
+  "Grid": true,
+  "Snap": true,
+  "IgnoreFoW": false,
+  "MeasureMovement": false,
+  "DragSelectable": true,
+  "Autoraise": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "GridProjection": false,
+  "HideWhenFaceDown": true,
+  "Hands": false,
+  "SidewaysCard": false,
+  "DeckIDs": [
+    41509,
+    34739,
+    41515,
+    34744,
+    34730,
+    36924,
+    34745,
+    42101,
+    34764,
+    34756,
+    41511,
+    41508,
+    34902,
+    41513,
+    72605,
+    34767,
+    34905,
+    34762,
+    34750,
+    72200,
+    36926,
+    72602,
+    36927,
+    34741,
+    72604,
+    42102,
+    34729,
+    34761,
+    34758,
+    36920,
+    34760,
+    34731,
+    34903,
+    41518,
+    34752,
+    34755,
+    50200,
+    72203,
+    36930,
+    34753,
+    42104,
+    41510,
+    72201,
+    34732,
+    41542,
+    72205,
+    43203,
+    34740,
+    34748,
+    34900,
+    72607,
+    43202,
+    34746,
+    34765,
+    36929,
+    34749,
+    34910,
+    34734,
+    41315,
+    34738,
+    41516,
+    72606,
+    72603,
+    36921,
+    41514,
+    72601,
+    41512,
+    36923,
+    34768,
+    34757,
+    34766,
+    34908,
+    34759,
+    43201,
+    34733,
+    72608,
+    72609,
+    72206,
+    34742,
+    34735,
+    34751,
+    36925,
+    36922,
+    34736,
+    42103,
+    34904,
+    34901,
+    34909,
+    34743,
+    34747,
+    34737,
+    72600,
+    34907,
+    34763,
+    42100,
+    34906,
+    41318,
+    41517,
+    72207,
+    36928,
+    34754
+  ],
+  "CustomDeck": {
+    "347": {
+      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819250483/1D868AAC7EA0620BB0EE66616788D0B2A32D900B/",
+      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+      "NumWidth": 10,
+      "NumHeight": 7,
+      "BackIsHidden": true,
+      "UniqueBack": false,
+      "Type": 0
+    },
+    "349": {
+      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819275873/9BEA112B38FDFB6E0E1DC72156A0289A22156288/",
+      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+      "NumWidth": 10,
+      "NumHeight": 6,
+      "BackIsHidden": true,
+      "UniqueBack": false,
+      "Type": 0
+    },
+    "369": {
+      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819292638/29340B6FFDAA85172415D05D02BC2E0321D582DA/",
+      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+      "NumWidth": 10,
+      "NumHeight": 7,
+      "BackIsHidden": true,
+      "UniqueBack": false,
+      "Type": 0
+    },
+    "413": {
+      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819292267/4FF78AC6C5C2E05ED08B8D6B12E4B3F2DE5CF4D3/",
+      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+      "NumWidth": 6,
+      "NumHeight": 6,
+      "BackIsHidden": true,
+      "UniqueBack": false,
+      "Type": 0
+    },
+    "415": {
+      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819251719/B4516958D8704ACCF2FB11E807239EAFC86EB56C/",
+      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+      "NumWidth": 9,
+      "NumHeight": 5,
+      "BackIsHidden": true,
+      "UniqueBack": false,
+      "Type": 0
+    },
+    "421": {
+      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819252065/151BC88A732FD6A8DD7547B0C16A74747DC13FE1/",
+      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+      "NumWidth": 7,
+      "NumHeight": 3,
+      "BackIsHidden": true,
+      "UniqueBack": false,
+      "Type": 0
+    },
+    "432": {
+      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819252673/8BD2711EBB702C61C7A072023C11984429EBE761/",
+      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+      "NumWidth": 6,
+      "NumHeight": 4,
+      "BackIsHidden": true,
+      "UniqueBack": false,
+      "Type": 0
+    },
+    "502": {
+      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819324344/1AC2D3B5673428DCBFDAAC3F934157EE2DE6904D/",
+      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+      "NumWidth": 1,
+      "NumHeight": 1,
+      "BackIsHidden": true,
+      "UniqueBack": false,
+      "Type": 0
+    },
+    "722": {
+      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819253011/14D432AF342DF94B4EE7BEFF74EC94627601AD8B/",
+      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+      "NumWidth": 6,
+      "NumHeight": 4,
+      "BackIsHidden": true,
+      "UniqueBack": false,
+      "Type": 0
+    },
+    "726": {
+      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/54707509761611234/0FA8E14FCF76EF3FEC1D6803F11EC1C14E63EED5/",
+      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/54707509761569125/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+      "NumWidth": 8,
+      "NumHeight": 5,
+      "BackIsHidden": false,
+      "UniqueBack": false,
+      "Type": 0
+    }
+  },
+  "LuaScript": "function onLoad()\r\n  self.shuffle()\r\nend",
+  "LuaScriptState": "",
+  "XmlUI": "",
+  "ContainedObjects": [
+    {
+      "GUID": "541f53",
+      "Name": "Card",
+      "Transform": {
+        "posX": 58.64629,
+        "posY": 1.504448,
+        "posZ": -72.5890961,
+        "rotX": 0.0190105941,
+        "rotY": 180.000854,
+        "rotZ": 0.0595387742,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "Starglass",
+      "Description": "Gem3",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "Tags": [
+        "Cost3"
+      ],
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 41509,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "415": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819251719/B4516958D8704ACCF2FB11E807239EAFC86EB56C/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 9,
+          "NumHeight": 5,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "1e7cb8",
+      "Name": "Card",
+      "Transform": {
+        "posX": 27.688633,
+        "posY": 2.48617244,
+        "posZ": 34.5586433,
+        "rotX": 0.0147227561,
+        "rotY": 180,
+        "rotZ": 180.063522,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "Leeching Agate",
+      "Description": "Gem3",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 34739,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "347": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819250483/1D868AAC7EA0620BB0EE66616788D0B2A32D900B/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 10,
+          "NumHeight": 7,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "73e8c2",
+      "Name": "Card",
+      "Transform": {
+        "posX": 61.4726524,
+        "posY": 1.4725554,
+        "posZ": -72.1824951,
+        "rotX": 0.014507602,
+        "rotY": 180.000809,
+        "rotZ": 0.06711782,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "Cobalt Clump",
+      "Description": "Gem4",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "Tags": [
+        "Cost4"
+      ],
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 41515,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "415": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819251719/B4516958D8704ACCF2FB11E807239EAFC86EB56C/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 9,
+          "NumHeight": 5,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "c69523",
+      "Name": "Card",
+      "Transform": {
+        "posX": 28.9034176,
+        "posY": 2.3847692,
+        "posZ": 35.9544525,
+        "rotX": 0.0172170866,
+        "rotY": 180.000046,
+        "rotZ": 180.095291,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "Sifter's Pearl",
+      "Description": "Gem3",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 34744,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "347": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819250483/1D868AAC7EA0620BB0EE66616788D0B2A32D900B/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 10,
+          "NumHeight": 7,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "14bd0d",
+      "Name": "Card",
+      "Transform": {
+        "posX": -84.86997,
+        "posY": 1.68433785,
+        "posZ": 50.8600044,
+        "rotX": 0.03363647,
+        "rotY": 179.999771,
+        "rotZ": 359.7777,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "Ancient Cyanolith",
+      "Description": "Gem3",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 34730,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "347": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819250483/1D868AAC7EA0620BB0EE66616788D0B2A32D900B/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 10,
+          "NumHeight": 7,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "cb8557",
+      "Name": "Card",
+      "Transform": {
+        "posX": -84.8700256,
+        "posY": 1.62015414,
+        "posZ": 50.8600121,
+        "rotX": 0.0452889055,
+        "rotY": 179.9998,
+        "rotZ": 359.851776,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "Galvanized Sapphire",
+      "Description": "Gem4",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 36924,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "369": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819292638/29340B6FFDAA85172415D05D02BC2E0321D582DA/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 10,
+          "NumHeight": 7,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "0b5768",
+      "Name": "Card",
+      "Transform": {
+        "posX": -84.86999,
+        "posY": 1.66430354,
+        "posZ": 50.86,
+        "rotX": 0.0177632812,
+        "rotY": 179.999863,
+        "rotZ": 359.795624,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "Soothing Torporene",
+      "Description": "Gem3",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 34745,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "347": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819250483/1D868AAC7EA0620BB0EE66616788D0B2A32D900B/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 10,
+          "NumHeight": 7,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "6b29c5",
+      "Name": "Card",
+      "Transform": {
+        "posX": 13.2242689,
+        "posY": 1.69579422,
+        "posZ": 5.95183659,
+        "rotX": 0.0168732014,
+        "rotY": 180.000183,
+        "rotZ": 0.4160063,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "Witchglass",
+      "Description": "Gem2",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 42101,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "399": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819252065/151BC88A732FD6A8DD7547B0C16A74747DC13FE1/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 7,
+          "NumHeight": 3,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "761e0d",
+      "Name": "Card",
+      "Transform": {
+        "posX": -84.87004,
+        "posY": 1.61844635,
+        "posZ": 50.8600159,
+        "rotX": 0.05155816,
+        "rotY": 179.999847,
+        "rotZ": 359.810974,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "Banishing Topaz",
+      "Description": "Gem5",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 34764,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "347": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819250483/1D868AAC7EA0620BB0EE66616788D0B2A32D900B/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 10,
+          "NumHeight": 7,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "5d8d41",
+      "Name": "Card",
+      "Transform": {
+        "posX": -84.86995,
+        "posY": 1.7033118,
+        "posZ": 50.8600044,
+        "rotX": 0.07375628,
+        "rotY": 179.999725,
+        "rotZ": 359.6222,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "Entangled Shard",
+      "Description": "Gem4",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 34756,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "347": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819250483/1D868AAC7EA0620BB0EE66616788D0B2A32D900B/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 10,
+          "NumHeight": 7,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "2e5b9e",
+      "Name": "Card",
+      "Transform": {
+        "posX": 60.0320244,
+        "posY": 1.49391508,
+        "posZ": -71.84115,
+        "rotX": 0.014109008,
+        "rotY": 180.000854,
+        "rotZ": 0.06727004,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "Scrying Sugilite",
+      "Description": "Gem3",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "Tags": [
+        "Cost3"
+      ],
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 41511,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "415": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819251719/B4516958D8704ACCF2FB11E807239EAFC86EB56C/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 9,
+          "NumHeight": 5,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "c3d38a",
+      "Name": "Card",
+      "Transform": {
+        "posX": 59.21479,
+        "posY": 1.51385963,
+        "posZ": -72.18335,
+        "rotX": 0.017074747,
+        "rotY": 180.0008,
+        "rotZ": 0.06399114,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "Nebula Shard",
+      "Description": "Gem3",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "Tags": [
+        "Cost3"
+      ],
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 41508,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "415": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819251719/B4516958D8704ACCF2FB11E807239EAFC86EB56C/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 9,
+          "NumHeight": 5,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "e272b3",
+      "Name": "Card",
+      "Transform": {
+        "posX": -12.0466661,
+        "posY": 1.71297109,
+        "posZ": 3.616369,
+        "rotX": 0.0168721154,
+        "rotY": 180,
+        "rotZ": 0.07987159,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "Refined Lumenium",
+      "Description": "Gem5",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 34902,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "349": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819275873/9BEA112B38FDFB6E0E1DC72156A0289A22156288/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 10,
+          "NumHeight": 6,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "3fe9b6",
+      "Name": "Card",
+      "Transform": {
+        "posX": 60.84991,
+        "posY": 1.48301458,
+        "posZ": -72.5544739,
+        "rotX": 0.014715421,
+        "rotY": 180.000824,
+        "rotZ": 0.0676389,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "Voidsteel Vein",
+      "Description": "Gem4",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "Tags": [
+        "Cost4"
+      ],
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 41513,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "415": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819251719/B4516958D8704ACCF2FB11E807239EAFC86EB56C/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 9,
+          "NumHeight": 5,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "97649e",
+      "Name": "Card",
+      "Transform": {
+        "posX": 59.63132,
+        "posY": 1.47560453,
+        "posZ": -63.27871,
+        "rotX": 0.0167712774,
+        "rotY": 180.000076,
+        "rotZ": 0.06638653,
+        "scaleX": 2.67430973,
+        "scaleY": 1,
+        "scaleZ": 2.67430973
+      },
+      "Nickname": "Infused Galvite",
+      "Description": "Gem3",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 72605,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "726": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/54707509761611234/0FA8E14FCF76EF3FEC1D6803F11EC1C14E63EED5/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/54707509761569125/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 8,
+          "NumHeight": 5,
+          "BackIsHidden": false,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "80aaf5",
+      "Name": "Card",
+      "Transform": {
+        "posX": -84.86998,
+        "posY": 1.65851867,
+        "posZ": 50.8600044,
+        "rotX": 0.03836404,
+        "rotY": 179.999817,
+        "rotZ": 359.738831,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "Energized Rubidium",
+      "Description": "Gem5",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 34767,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "347": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819250483/1D868AAC7EA0620BB0EE66616788D0B2A32D900B/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 10,
+          "NumHeight": 7,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "3208fb",
+      "Name": "Card",
+      "Transform": {
+        "posX": -84.8700256,
+        "posY": 1.62272191,
+        "posZ": 50.8600121,
+        "rotX": 0.03570344,
+        "rotY": 179.999908,
+        "rotZ": 359.916168,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "Fulmite Slab",
+      "Description": "Gem6",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 34905,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "349": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819275873/9BEA112B38FDFB6E0E1DC72156A0289A22156288/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 10,
+          "NumHeight": 6,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "5a0505",
+      "Name": "Card",
+      "Transform": {
+        "posX": -84.86997,
+        "posY": 1.67808414,
+        "posZ": 50.8600044,
+        "rotX": 0.0464376,
+        "rotY": 179.999832,
+        "rotZ": 359.684753,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "Triplite Core",
+      "Description": "Gem4",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 34762,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "347": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819250483/1D868AAC7EA0620BB0EE66616788D0B2A32D900B/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 10,
+          "NumHeight": 7,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "2c104e",
+      "Name": "Card",
+      "Transform": {
+        "posX": -84.86995,
+        "posY": 1.698258,
+        "posZ": 50.8600044,
+        "rotX": 0.07084076,
+        "rotY": 179.9997,
+        "rotZ": 359.6574,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "Arcing Silicate",
+      "Description": "Gem4",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 34750,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "347": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819250483/1D868AAC7EA0620BB0EE66616788D0B2A32D900B/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 10,
+          "NumHeight": 7,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "0b2e54",
+      "Name": "Card",
+      "Transform": {
+        "posX": -48.41305,
+        "posY": 1.58562386,
+        "posZ": -56.4268646,
+        "rotX": 0.00389708858,
+        "rotY": 180.000916,
+        "rotZ": 0.0282264911,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.71
+      },
+      "Nickname": "Splintered Garnet",
+      "Description": "Gem5",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 72200,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "722": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819253011/14D432AF342DF94B4EE7BEFF74EC94627601AD8B/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 6,
+          "NumHeight": 4,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "810f30",
+      "Name": "Card",
+      "Transform": {
+        "posX": -84.86996,
+        "posY": 1.69339478,
+        "posZ": 50.86001,
+        "rotX": 0.0313778259,
+        "rotY": 179.999771,
+        "rotZ": 359.723755,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "Petrified Phoenixium",
+      "Description": "Gem4",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 36926,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "369": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819292638/29340B6FFDAA85172415D05D02BC2E0321D582DA/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 10,
+          "NumHeight": 7,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "2c2465",
+      "Name": "Card",
+      "Transform": {
+        "posX": 59.28142,
+        "posY": 1.39364564,
+        "posZ": -63.91901,
+        "rotX": 0.0169049166,
+        "rotY": 180,
+        "rotZ": 0.07979157,
+        "scaleX": 2.67430973,
+        "scaleY": 1,
+        "scaleZ": 2.67430973
+      },
+      "Nickname": "Flamium",
+      "Description": "Gem3",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 72602,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "726": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/54707509761611234/0FA8E14FCF76EF3FEC1D6803F11EC1C14E63EED5/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/54707509761569125/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 8,
+          "NumHeight": 5,
+          "BackIsHidden": false,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "ebe6d4",
+      "Name": "Card",
+      "Transform": {
+        "posX": -84.86992,
+        "posY": 1.79783082,
+        "posZ": 50.8599968,
+        "rotX": 0.0435557738,
+        "rotY": 179.999741,
+        "rotZ": 359.5204,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "Elongated Looq",
+      "Description": "Gem4",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 36927,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "369": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819292638/29340B6FFDAA85172415D05D02BC2E0321D582DA/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 10,
+          "NumHeight": 7,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "53a2e0",
+      "Name": "Card",
+      "Transform": {
+        "posX": -84.8699341,
+        "posY": 1.7625339,
+        "posZ": 50.86,
+        "rotX": 0.04038818,
+        "rotY": 179.9997,
+        "rotZ": 359.620056,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "Olivinite",
+      "Description": "Gem3",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 34741,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "347": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819250483/1D868AAC7EA0620BB0EE66616788D0B2A32D900B/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 10,
+          "NumHeight": 7,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "734983",
+      "Name": "Card",
+      "Transform": {
+        "posX": 59.2491,
+        "posY": 1.46623719,
+        "posZ": -64.073204,
+        "rotX": 0.0118123516,
+        "rotY": 180,
+        "rotZ": 0.06791984,
+        "scaleX": 2.67430973,
+        "scaleY": 1,
+        "scaleZ": 2.67430973
+      },
+      "Nickname": "Hungry Avite",
+      "Description": "Gem6",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 72604,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "726": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/54707509761611234/0FA8E14FCF76EF3FEC1D6803F11EC1C14E63EED5/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/54707509761569125/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 8,
+          "NumHeight": 5,
+          "BackIsHidden": false,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "85aa42",
+      "Name": "Card",
+      "Transform": {
+        "posX": 8.589038,
+        "posY": 1.68427122,
+        "posZ": 3.858799,
+        "rotX": 0.0168900378,
+        "rotY": 179.999435,
+        "rotZ": 0.0797576,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "Allaying Shell",
+      "Description": "Gem5",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 42102,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "399": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819252065/151BC88A732FD6A8DD7547B0C16A74747DC13FE1/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 7,
+          "NumHeight": 3,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "239574",
+      "Name": "Card",
+      "Transform": {
+        "posX": -84.86997,
+        "posY": 1.68568885,
+        "posZ": 50.8600044,
+        "rotX": 0.0417014,
+        "rotY": 179.999786,
+        "rotZ": 359.7434,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "Jade",
+      "Description": "Gem2",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 34729,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "347": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819250483/1D868AAC7EA0620BB0EE66616788D0B2A32D900B/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 10,
+          "NumHeight": 7,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "27ff3b",
+      "Name": "Card",
+      "Transform": {
+        "posX": -84.87004,
+        "posY": 1.64622712,
+        "posZ": 50.86001,
+        "rotX": 0.0225312971,
+        "rotY": 179.999847,
+        "rotZ": 359.712372,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "Scoria Slag",
+      "Description": "Gem4",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 34761,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "347": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819250483/1D868AAC7EA0620BB0EE66616788D0B2A32D900B/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 10,
+          "NumHeight": 7,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "5b1156",
+      "Name": "Card",
+      "Transform": {
+        "posX": -84.86998,
+        "posY": 1.67354047,
+        "posZ": 50.86,
+        "rotX": 0.0241120011,
+        "rotY": 179.999863,
+        "rotZ": 359.771362,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "Phased Portalite",
+      "Description": "Gem4",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 34758,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "347": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819250483/1D868AAC7EA0620BB0EE66616788D0B2A32D900B/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 10,
+          "NumHeight": 7,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "b9729e",
+      "Name": "Card",
+      "Transform": {
+        "posX": -84.8699,
+        "posY": 1.72896469,
+        "posZ": 50.86,
+        "rotX": 0.0431501977,
+        "rotY": 179.999741,
+        "rotZ": 359.482635,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "Unstable Pyrite",
+      "Description": "Gem2",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 36920,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "369": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819292638/29340B6FFDAA85172415D05D02BC2E0321D582DA/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 10,
+          "NumHeight": 7,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "55cc5e",
+      "Name": "Card",
+      "Transform": {
+        "posX": 27.32152,
+        "posY": 2.31286168,
+        "posZ": 33.739872,
+        "rotX": 0.011575317,
+        "rotY": 179.999878,
+        "rotZ": 178.951324,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "Searing Ruby",
+      "Description": "Gem4",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 34760,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "347": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819250483/1D868AAC7EA0620BB0EE66616788D0B2A32D900B/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 10,
+          "NumHeight": 7,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "9d15db",
+      "Name": "Card",
+      "Transform": {
+        "posX": -84.86995,
+        "posY": 1.77340221,
+        "posZ": 50.86,
+        "rotX": 0.04247256,
+        "rotY": 179.999634,
+        "rotZ": 359.594543,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "Conductive Grit",
+      "Description": "Gem3",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 34731,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "347": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819250483/1D868AAC7EA0620BB0EE66616788D0B2A32D900B/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 10,
+          "NumHeight": 7,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "0c1e4c",
+      "Name": "Card",
+      "Transform": {
+        "posX": -84.87003,
+        "posY": 1.65428591,
+        "posZ": 50.8599968,
+        "rotX": 0.09573789,
+        "rotY": 179.999741,
+        "rotZ": 359.6857,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "Bloodstone Jewel",
+      "Description": "Gem6",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 34903,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "349": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819275873/9BEA112B38FDFB6E0E1DC72156A0289A22156288/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 10,
+          "NumHeight": 6,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "718b6d",
+      "Name": "Card",
+      "Transform": {
+        "posX": 29.3431683,
+        "posY": 2.53184652,
+        "posZ": 34.9294548,
+        "rotX": 0.0007429372,
+        "rotY": 179.993744,
+        "rotZ": 181.249084,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "Aether Dust",
+      "Description": "Gem5",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "Tags": [
+        "Cost5"
+      ],
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 41518,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "415": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819251719/B4516958D8704ACCF2FB11E807239EAFC86EB56C/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 9,
+          "NumHeight": 5,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "0c932b",
+      "Name": "Card",
+      "Transform": {
+        "posX": -84.86996,
+        "posY": 1.70877361,
+        "posZ": 50.86,
+        "rotX": 0.03789301,
+        "rotY": 179.999741,
+        "rotZ": 359.7315,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "Branching Radite",
+      "Description": "Gem4",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 34752,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "347": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819250483/1D868AAC7EA0620BB0EE66616788D0B2A32D900B/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 10,
+          "NumHeight": 7,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "71f95f",
+      "Name": "Card",
+      "Transform": {
+        "posX": -84.87002,
+        "posY": 1.62529075,
+        "posZ": 50.8600044,
+        "rotX": 0.0264519248,
+        "rotY": 179.999939,
+        "rotZ": 359.979034,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "Echo Stone",
+      "Description": "Gem4",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 34755,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "347": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819250483/1D868AAC7EA0620BB0EE66616788D0B2A32D900B/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 10,
+          "NumHeight": 7,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "dad0ad",
+      "Name": "CardCustom",
+      "Transform": {
+        "posX": 155.90332,
+        "posY": 16.9574966,
+        "posZ": 51.8336868,
+        "rotX": 0.0168725271,
+        "rotY": 179.999054,
+        "rotZ": 0.0798764,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "[FFA500]Galactum Cache[-]",
+      "Description": "Gem4",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 50200,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "502": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819324344/1AC2D3B5673428DCBFDAAC3F934157EE2DE6904D/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 1,
+          "NumHeight": 1,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "a82589",
+      "Name": "Card",
+      "Transform": {
+        "posX": -45.3309631,
+        "posY": 1.53864348,
+        "posZ": -64.7283,
+        "rotX": 0.0190251283,
+        "rotY": 180.0016,
+        "rotZ": 0.0651202053,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.71
+      },
+      "Nickname": "[0DBF0D]Fool's Gold[-]",
+      "Description": "Gem5",
+      "GMNotes": "Swap Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 72203,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "722": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819253011/14D432AF342DF94B4EE7BEFF74EC94627601AD8B/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 6,
+          "NumHeight": 4,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "8ee3a7",
+      "Name": "Card",
+      "Transform": {
+        "posX": -84.87002,
+        "posY": 1.63871944,
+        "posZ": 50.8600159,
+        "rotX": 359.981079,
+        "rotY": 179.9999,
+        "rotZ": 359.8986,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "Duplicating Sazite",
+      "Description": "Gem6",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 36930,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "369": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819292638/29340B6FFDAA85172415D05D02BC2E0321D582DA/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 10,
+          "NumHeight": 7,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "346cb2",
+      "Name": "Card",
+      "Transform": {
+        "posX": -84.8699341,
+        "posY": 1.71210086,
+        "posZ": 50.86001,
+        "rotX": 0.0479022227,
+        "rotY": 179.99968,
+        "rotZ": 359.6239,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "Cache Glass",
+      "Description": "Gem4",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 34753,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "347": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819250483/1D868AAC7EA0620BB0EE66616788D0B2A32D900B/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 10,
+          "NumHeight": 7,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "5b4041",
+      "Name": "Card",
+      "Transform": {
+        "posX": 2.30728531,
+        "posY": 1.69368136,
+        "posZ": 6.0615077,
+        "rotX": 0.0168720745,
+        "rotY": 180.000046,
+        "rotZ": 0.07987159,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "Rainbow Fluorite",
+      "Description": "Gem6",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 42104,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "399": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819252065/151BC88A732FD6A8DD7547B0C16A74747DC13FE1/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 7,
+          "NumHeight": 3,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "23a2b1",
+      "Name": "Card",
+      "Transform": {
+        "posX": 60.0058479,
+        "posY": 1.52261364,
+        "posZ": -72.38522,
+        "rotX": 0.0166358687,
+        "rotY": 180.00087,
+        "rotZ": 0.06693371,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "Sunken Onyx",
+      "Description": "Gem3",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "Tags": [
+        "Cost3"
+      ],
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 41510,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "415": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819251719/B4516958D8704ACCF2FB11E807239EAFC86EB56C/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 9,
+          "NumHeight": 5,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "a9cf23",
+      "Name": "Card",
+      "Transform": {
+        "posX": -45.23227,
+        "posY": 1.64089978,
+        "posZ": -64.20808,
+        "rotX": 0.020081209,
+        "rotY": 180.001251,
+        "rotZ": 0.0776429251,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.71
+      },
+      "Nickname": "[0DBF0D]Encased Fossil[-]",
+      "Description": "Gem4",
+      "GMNotes": "Swap Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 72201,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "722": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819253011/14D432AF342DF94B4EE7BEFF74EC94627601AD8B/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 6,
+          "NumHeight": 4,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "5261a7",
+      "Name": "Card",
+      "Transform": {
+        "posX": -84.86995,
+        "posY": 1.68636549,
+        "posZ": 50.86,
+        "rotX": 0.0443776622,
+        "rotY": 179.999786,
+        "rotZ": 359.6081,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "Dread Diamond",
+      "Description": "Gem3",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 34732,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "347": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819250483/1D868AAC7EA0620BB0EE66616788D0B2A32D900B/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 10,
+          "NumHeight": 7,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "4ede78",
+      "Name": "Card",
+      "Transform": {
+        "posX": 60.13827,
+        "posY": 1.46503365,
+        "posZ": -71.11455,
+        "rotX": 0.012201488,
+        "rotY": 180.0008,
+        "rotZ": 0.0692075938,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "[00BFFF]Talusoid Clod[-]",
+      "Description": "Gem4",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "Tags": [
+        "Cost4"
+      ],
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 41542,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "415": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819251719/B4516958D8704ACCF2FB11E807239EAFC86EB56C/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 9,
+          "NumHeight": 5,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "bd239b",
+      "Name": "Card",
+      "Transform": {
+        "posX": -47.0516167,
+        "posY": 1.62565076,
+        "posZ": -57.02444,
+        "rotX": 0.023968298,
+        "rotY": 179.999786,
+        "rotZ": 0.0798956752,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.71
+      },
+      "Nickname": "Mica Shard",
+      "Description": "Gem4",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 72205,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "722": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819253011/14D432AF342DF94B4EE7BEFF74EC94627601AD8B/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 6,
+          "NumHeight": 4,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "e3f42c",
+      "Name": "Card",
+      "Transform": {
+        "posX": -46.8539467,
+        "posY": 1.7361114,
+        "posZ": -46.410984,
+        "rotX": 1.41900814,
+        "rotY": 179.999008,
+        "rotZ": 0.07990478,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "Rhodonix",
+      "Description": "Gem6",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 43203,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "432": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819252673/8BD2711EBB702C61C7A072023C11984429EBE761/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 6,
+          "NumHeight": 4,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "ab20aa",
+      "Name": "Card",
+      "Transform": {
+        "posX": -84.86994,
+        "posY": 1.74051011,
+        "posZ": 50.85999,
+        "rotX": 0.032972727,
+        "rotY": 179.9998,
+        "rotZ": 359.630463,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "Lurking Sionite",
+      "Description": "Gem3",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 34740,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "347": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819250483/1D868AAC7EA0620BB0EE66616788D0B2A32D900B/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 10,
+          "NumHeight": 7,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "3c28ef",
+      "Name": "Card",
+      "Transform": {
+        "posX": -84.8699646,
+        "posY": 1.67989683,
+        "posZ": 50.86001,
+        "rotX": 0.03783939,
+        "rotY": 179.999771,
+        "rotZ": 359.732269,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "Voidium Spike",
+      "Description": "Gem3",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 34748,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "347": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819250483/1D868AAC7EA0620BB0EE66616788D0B2A32D900B/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 10,
+          "NumHeight": 7,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "ffe238",
+      "Name": "Card",
+      "Transform": {
+        "posX": -84.87004,
+        "posY": 1.65218115,
+        "posZ": 50.86001,
+        "rotX": 0.047072988,
+        "rotY": 179.999741,
+        "rotZ": 359.6366,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "Muted Lacosite",
+      "Description": "Gem5",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 34900,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "349": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819275873/9BEA112B38FDFB6E0E1DC72156A0289A22156288/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 10,
+          "NumHeight": 6,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "72dd38",
+      "Name": "Card",
+      "Transform": {
+        "posX": 81.42082,
+        "posY": 1.36245358,
+        "posZ": -65.03787,
+        "rotX": 0.0168717969,
+        "rotY": 179.999634,
+        "rotZ": 0.0798758045,
+        "scaleX": 2.67430973,
+        "scaleY": 1,
+        "scaleZ": 2.67430973
+      },
+      "Nickname": "Spirit Jewel",
+      "Description": "Gem4",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 72607,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "726": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/54707509761611234/0FA8E14FCF76EF3FEC1D6803F11EC1C14E63EED5/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/54707509761569125/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 8,
+          "NumHeight": 5,
+          "BackIsHidden": false,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "041688",
+      "Name": "Card",
+      "Transform": {
+        "posX": -46.35575,
+        "posY": 1.5831697,
+        "posZ": -46.9547234,
+        "rotX": 359.981232,
+        "rotY": 179.998474,
+        "rotZ": 0.09212834,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "Citrine Shrapnel",
+      "Description": "Gem3",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 43202,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "432": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819252673/8BD2711EBB702C61C7A072023C11984429EBE761/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 6,
+          "NumHeight": 4,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "61d1a6",
+      "Name": "Card",
+      "Transform": {
+        "posX": -84.86992,
+        "posY": 1.754742,
+        "posZ": 50.8599968,
+        "rotX": 0.019857496,
+        "rotY": 179.999863,
+        "rotZ": 359.542,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "V'riswood Amber",
+      "Description": "Gem3",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 34746,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "347": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819250483/1D868AAC7EA0620BB0EE66616788D0B2A32D900B/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 10,
+          "NumHeight": 7,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "ba9982",
+      "Name": "Card",
+      "Transform": {
+        "posX": -84.87004,
+        "posY": 1.64620793,
+        "posZ": 50.86001,
+        "rotX": 0.0219556317,
+        "rotY": 179.999847,
+        "rotZ": 359.713562,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "Crumbling Compound",
+      "Description": "Gem5",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 34765,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "347": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819250483/1D868AAC7EA0620BB0EE66616788D0B2A32D900B/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 10,
+          "NumHeight": 7,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "0002db",
+      "Name": "Card",
+      "Transform": {
+        "posX": 30.15413,
+        "posY": 2.50670075,
+        "posZ": 34.491478,
+        "rotX": 0.0135027133,
+        "rotY": 179.9999,
+        "rotZ": 179.557938,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "Jeweled Urup",
+      "Description": "Gem5",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 36929,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "369": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819292638/29340B6FFDAA85172415D05D02BC2E0321D582DA/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 10,
+          "NumHeight": 7,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "0562ad",
+      "Name": "Card",
+      "Transform": {
+        "posX": -84.87004,
+        "posY": 1.64903569,
+        "posZ": 50.8600121,
+        "rotX": 0.0221523456,
+        "rotY": 179.999771,
+        "rotZ": 359.658539,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "Alien Element",
+      "Description": "Gem4",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 34749,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "347": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819250483/1D868AAC7EA0620BB0EE66616788D0B2A32D900B/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 10,
+          "NumHeight": 7,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "ecd7b3",
+      "Name": "Card",
+      "Transform": {
+        "posX": -84.8699646,
+        "posY": 1.71067512,
+        "posZ": 50.8600044,
+        "rotX": 0.0127608,
+        "rotY": 179.999756,
+        "rotZ": 359.795776,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "Shining Fluorite",
+      "Description": "Gem7",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 34910,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "349": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819275873/9BEA112B38FDFB6E0E1DC72156A0289A22156288/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 10,
+          "NumHeight": 6,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "233809",
+      "Name": "Card",
+      "Transform": {
+        "posX": -84.8699341,
+        "posY": 1.76272249,
+        "posZ": 50.859993,
+        "rotX": 0.0302869342,
+        "rotY": 179.999786,
+        "rotZ": 359.635254,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "Frozen Magmite",
+      "Description": "Gem3",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 34734,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "347": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819250483/1D868AAC7EA0620BB0EE66616788D0B2A32D900B/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 10,
+          "NumHeight": 7,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "ce6a3e",
+      "Name": "Card",
+      "Transform": {
+        "posX": 60.1297073,
+        "posY": 1.39005113,
+        "posZ": -72.09322,
+        "rotX": 0.0169017669,
+        "rotY": 180.000839,
+        "rotZ": 0.0797055438,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "[B22222]Irradiated Jewel[-]",
+      "Description": "Gem4",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 41315,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "413": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819292267/4FF78AC6C5C2E05ED08B8D6B12E4B3F2DE5CF4D3/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 6,
+          "NumHeight": 6,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "878b9f",
+      "Name": "Card",
+      "Transform": {
+        "posX": -84.86995,
+        "posY": 1.720049,
+        "posZ": 50.86,
+        "rotX": 0.0389828719,
+        "rotY": 179.999832,
+        "rotZ": 359.661682,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "Jolting Crust",
+      "Description": "Gem3",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 34738,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "347": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819250483/1D868AAC7EA0620BB0EE66616788D0B2A32D900B/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 10,
+          "NumHeight": 7,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "08a057",
+      "Name": "Card",
+      "Transform": {
+        "posX": 61.1527939,
+        "posY": 1.56933033,
+        "posZ": -72.3538361,
+        "rotX": 0.0145609314,
+        "rotY": 180.001053,
+        "rotZ": 0.06787231,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "Frozen Light",
+      "Description": "Gem5",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "Tags": [
+        "Cost5"
+      ],
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 41516,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "415": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819251719/B4516958D8704ACCF2FB11E807239EAFC86EB56C/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 9,
+          "NumHeight": 5,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "4a39b1",
+      "Name": "Card",
+      "Transform": {
+        "posX": 72.39111,
+        "posY": 1.37385917,
+        "posZ": -69.0546646,
+        "rotX": 0.0168689229,
+        "rotY": 180.001984,
+        "rotZ": 0.07988015,
+        "scaleX": 2.67430973,
+        "scaleY": 1,
+        "scaleZ": 2.67430973
+      },
+      "Nickname": "Pulsing Garnet",
+      "Description": "Gem5",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 72606,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "726": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/54707509761611234/0FA8E14FCF76EF3FEC1D6803F11EC1C14E63EED5/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/54707509761569125/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 8,
+          "NumHeight": 5,
+          "BackIsHidden": false,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "c4d06f",
+      "Name": "Card",
+      "Transform": {
+        "posX": 58.7035332,
+        "posY": 1.43177676,
+        "posZ": -64.08033,
+        "rotX": 0.04115345,
+        "rotY": 180,
+        "rotZ": 0.02788214,
+        "scaleX": 2.67430973,
+        "scaleY": 1,
+        "scaleZ": 2.67430973
+      },
+      "Nickname": "Glutton's Jewel",
+      "Description": "Gem6",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 72603,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "726": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/54707509761611234/0FA8E14FCF76EF3FEC1D6803F11EC1C14E63EED5/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/54707509761569125/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 8,
+          "NumHeight": 5,
+          "BackIsHidden": false,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "198a6e",
+      "Name": "Card",
+      "Transform": {
+        "posX": -84.86998,
+        "posY": 1.6840694,
+        "posZ": 50.86,
+        "rotX": 0.0428203419,
+        "rotY": 179.999863,
+        "rotZ": 359.781616,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "Helix of Amber",
+      "Description": "Gem3",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 36921,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "369": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819292638/29340B6FFDAA85172415D05D02BC2E0321D582DA/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 10,
+          "NumHeight": 7,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "d9fbc5",
+      "Name": "Card",
+      "Transform": {
+        "posX": 59.9525948,
+        "posY": 1.43130529,
+        "posZ": -71.5421753,
+        "rotX": 0.013784864,
+        "rotY": 180.0008,
+        "rotZ": 0.06716032,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "[00BFFF]Glint Splinter[-]",
+      "Description": "Gem4",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "Tags": [
+        "Cost4"
+      ],
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 41514,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "415": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819251719/B4516958D8704ACCF2FB11E807239EAFC86EB56C/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 9,
+          "NumHeight": 5,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "936b5f",
+      "Name": "Card",
+      "Transform": {
+        "posX": 44.7115059,
+        "posY": 1.52646816,
+        "posZ": -57.71409,
+        "rotX": 0.0187442377,
+        "rotY": 180.001114,
+        "rotZ": 0.07758593,
+        "scaleX": 2.67430973,
+        "scaleY": 1,
+        "scaleZ": 2.67430973
+      },
+      "Nickname": "Electinium",
+      "Description": "Gem3",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 72601,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "726": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/54707509761611234/0FA8E14FCF76EF3FEC1D6803F11EC1C14E63EED5/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/54707509761569125/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 8,
+          "NumHeight": 5,
+          "BackIsHidden": false,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "c2e677",
+      "Name": "Card",
+      "Transform": {
+        "posX": 60.76162,
+        "posY": 1.53137743,
+        "posZ": -72.1317749,
+        "rotX": 0.0143241137,
+        "rotY": 180.000839,
+        "rotZ": 0.06751856,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "Darklite Sample",
+      "Description": "Gem3",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "Tags": [
+        "Cost3"
+      ],
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 41512,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "415": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819251719/B4516958D8704ACCF2FB11E807239EAFC86EB56C/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 9,
+          "NumHeight": 5,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "c9820a",
+      "Name": "Card",
+      "Transform": {
+        "posX": -84.86998,
+        "posY": 1.67341566,
+        "posZ": 50.8600044,
+        "rotX": 0.05996277,
+        "rotY": 179.999863,
+        "rotZ": 359.742279,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "Quickening Qitite",
+      "Description": "Gem3",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 36923,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "369": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819292638/29340B6FFDAA85172415D05D02BC2E0321D582DA/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 10,
+          "NumHeight": 7,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "d552fa",
+      "Name": "Card",
+      "Transform": {
+        "posX": -84.87,
+        "posY": 1.63121188,
+        "posZ": 50.86,
+        "rotX": 0.00460079638,
+        "rotY": 180.000092,
+        "rotZ": 0.124602824,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "Mentite Chunk",
+      "Description": "Gem5",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 34768,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "347": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819250483/1D868AAC7EA0620BB0EE66616788D0B2A32D900B/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 10,
+          "NumHeight": 7,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "8033f2",
+      "Name": "Card",
+      "Transform": {
+        "posX": -84.87001,
+        "posY": 1.62699211,
+        "posZ": 50.8600044,
+        "rotX": 0.0201448519,
+        "rotY": 179.999954,
+        "rotZ": 0.0209036227,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "Fractured Quartz",
+      "Description": "Gem4",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 34757,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "347": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819250483/1D868AAC7EA0620BB0EE66616788D0B2A32D900B/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 10,
+          "NumHeight": 7,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "ae5ee7",
+      "Name": "Card",
+      "Transform": {
+        "posX": 30.3131561,
+        "posY": 2.10070586,
+        "posZ": 35.2759438,
+        "rotX": 0.017390931,
+        "rotY": 179.996689,
+        "rotZ": 0.07952359,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "Erratic Ingot",
+      "Description": "Gem5",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 34766,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "347": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819250483/1D868AAC7EA0620BB0EE66616788D0B2A32D900B/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 10,
+          "NumHeight": 7,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "14fd94",
+      "Name": "Card",
+      "Transform": {
+        "posX": -84.86999,
+        "posY": 1.63028264,
+        "posZ": 50.8600044,
+        "rotX": 0.008405911,
+        "rotY": 179.999878,
+        "rotZ": 0.101240009,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "Shining Tetrite",
+      "Description": "Gem6",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 34908,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "349": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819275873/9BEA112B38FDFB6E0E1DC72156A0289A22156288/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 10,
+          "NumHeight": 6,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "9bce63",
+      "Name": "Card",
+      "Transform": {
+        "posX": 28.6731567,
+        "posY": 2.73919845,
+        "posZ": 35.61684,
+        "rotX": 0.019576367,
+        "rotY": 179.997955,
+        "rotZ": 174.283569,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "Recurring Jasper",
+      "Description": "Gem4",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 34759,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "347": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819250483/1D868AAC7EA0620BB0EE66616788D0B2A32D900B/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 10,
+          "NumHeight": 7,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "5a2799",
+      "Name": "Card",
+      "Transform": {
+        "posX": -46.722435,
+        "posY": 1.54564393,
+        "posZ": -47.6862564,
+        "rotX": 0.0190581437,
+        "rotY": 180.000519,
+        "rotZ": 0.065849416,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "Feeding Lichen",
+      "Description": "Gem5",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 43201,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "432": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819252673/8BD2711EBB702C61C7A072023C11984429EBE761/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 6,
+          "NumHeight": 4,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "025530",
+      "Name": "Card",
+      "Transform": {
+        "posX": -84.8699646,
+        "posY": 1.72027683,
+        "posZ": 50.8599968,
+        "rotX": 0.009621479,
+        "rotY": 179.999878,
+        "rotZ": 359.768036,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "Exogranite",
+      "Description": "Gem3",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 34733,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "347": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819250483/1D868AAC7EA0620BB0EE66616788D0B2A32D900B/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 10,
+          "NumHeight": 7,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "f73208",
+      "Name": "Card",
+      "Transform": {
+        "posX": 59.01614,
+        "posY": 1.49535668,
+        "posZ": -63.9633827,
+        "rotX": 0.01861413,
+        "rotY": 180.000214,
+        "rotZ": 0.06404641,
+        "scaleX": 2.67430973,
+        "scaleY": 1,
+        "scaleZ": 2.67430973
+      },
+      "Nickname": "Washium",
+      "Description": "Gem4",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 72608,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "726": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/54707509761611234/0FA8E14FCF76EF3FEC1D6803F11EC1C14E63EED5/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/54707509761569125/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 8,
+          "NumHeight": 5,
+          "BackIsHidden": false,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "b51274",
+      "Name": "Card",
+      "Transform": {
+        "posX": 67.76044,
+        "posY": 1.39551318,
+        "posZ": -75.2022,
+        "rotX": 0.0169215351,
+        "rotY": 180.00029,
+        "rotZ": 359.746765,
+        "scaleX": 2.67430973,
+        "scaleY": 1,
+        "scaleZ": 2.67430973
+      },
+      "Nickname": "Whisper of Amethyst",
+      "Description": "Gem6",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 72609,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "726": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/54707509761611234/0FA8E14FCF76EF3FEC1D6803F11EC1C14E63EED5/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/54707509761569125/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 8,
+          "NumHeight": 5,
+          "BackIsHidden": false,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "622b85",
+      "Name": "Card",
+      "Transform": {
+        "posX": -48.81961,
+        "posY": 1.64837456,
+        "posZ": -56.0610847,
+        "rotX": 0.02111235,
+        "rotY": 179.9994,
+        "rotZ": 0.0751728043,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.71
+      },
+      "Nickname": "Amplifying Calcite",
+      "Description": "Gem3",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 72206,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "722": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819253011/14D432AF342DF94B4EE7BEFF74EC94627601AD8B/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 6,
+          "NumHeight": 4,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "66edaa",
+      "Name": "Card",
+      "Transform": {
+        "posX": -84.86994,
+        "posY": 1.76235843,
+        "posZ": 50.8599968,
+        "rotX": 0.0352926366,
+        "rotY": 179.999786,
+        "rotZ": 359.627777,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "Resonant Pearl",
+      "Description": "Gem3",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 34742,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "347": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819250483/1D868AAC7EA0620BB0EE66616788D0B2A32D900B/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 10,
+          "NumHeight": 7,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "a200a2",
+      "Name": "Card",
+      "Transform": {
+        "posX": -84.86997,
+        "posY": 1.72592688,
+        "posZ": 50.8599968,
+        "rotX": 0.000666454434,
+        "rotY": 179.999786,
+        "rotZ": 359.8387,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "Fossilized Scarab",
+      "Description": "Gem3",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 34735,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "347": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819250483/1D868AAC7EA0620BB0EE66616788D0B2A32D900B/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 10,
+          "NumHeight": 7,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "dfff2e",
+      "Name": "Card",
+      "Transform": {
+        "posX": -83.8378754,
+        "posY": 2.26402831,
+        "posZ": 52.44484,
+        "rotX": 0.0170941036,
+        "rotY": 179.996735,
+        "rotZ": 0.07946664,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "Breach Ore",
+      "Description": "Gem4",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 34751,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "347": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819250483/1D868AAC7EA0620BB0EE66616788D0B2A32D900B/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 10,
+          "NumHeight": 7,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "c9160e",
+      "Name": "Card",
+      "Transform": {
+        "posX": -84.86988,
+        "posY": 1.7913692,
+        "posZ": 50.86,
+        "rotX": 0.100589514,
+        "rotY": 179.9994,
+        "rotZ": 359.342773,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "Coruscating Sapal",
+      "Description": "Gem4",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 36925,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "369": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819292638/29340B6FFDAA85172415D05D02BC2E0321D582DA/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 10,
+          "NumHeight": 7,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "0abcd3",
+      "Name": "Card",
+      "Transform": {
+        "posX": 28.9955883,
+        "posY": 2.50266051,
+        "posZ": 35.07064,
+        "rotX": 0.0101281181,
+        "rotY": 179.999664,
+        "rotZ": 182.209351,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "Molten Peridot",
+      "Description": "Gem3",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 36922,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "369": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819292638/29340B6FFDAA85172415D05D02BC2E0321D582DA/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 10,
+          "NumHeight": 7,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "d0d4da",
+      "Name": "Card",
+      "Transform": {
+        "posX": -84.86994,
+        "posY": 1.74121058,
+        "posZ": 50.8599968,
+        "rotX": 0.0271247718,
+        "rotY": 179.999878,
+        "rotZ": 359.655243,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "Haunted Berylite",
+      "Description": "Gem3",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 34736,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "347": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819250483/1D868AAC7EA0620BB0EE66616788D0B2A32D900B/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 10,
+          "NumHeight": 7,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "e831cf",
+      "Name": "Card",
+      "Transform": {
+        "posX": 28.27598,
+        "posY": 2.289676,
+        "posZ": 35.00012,
+        "rotX": 0.0167268477,
+        "rotY": 179.995926,
+        "rotZ": 180.08049,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "[00BFFF]Pulsyrium Globe[-]",
+      "Description": "Gem5",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "Tags": [
+        "gemCard"
+      ],
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 42103,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "421": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819252065/151BC88A732FD6A8DD7547B0C16A74747DC13FE1/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 7,
+          "NumHeight": 3,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "68697e",
+      "Name": "Card",
+      "Transform": {
+        "posX": -84.8699951,
+        "posY": 1.62993932,
+        "posZ": 50.86,
+        "rotX": 0.00961597,
+        "rotY": 179.999985,
+        "rotZ": 0.09287458,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "Clouded Sapphire",
+      "Description": "Gem6",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 34904,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "349": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819275873/9BEA112B38FDFB6E0E1DC72156A0289A22156288/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 10,
+          "NumHeight": 6,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "34ac37",
+      "Name": "Card",
+      "Transform": {
+        "posX": -84.86998,
+        "posY": 1.65752053,
+        "posZ": 50.86001,
+        "rotX": 0.0326838419,
+        "rotY": 179.999756,
+        "rotZ": 359.7785,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "Oblivium Resin",
+      "Description": "Gem5",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 34901,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "349": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819275873/9BEA112B38FDFB6E0E1DC72156A0289A22156288/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 10,
+          "NumHeight": 6,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "31248b",
+      "Name": "Card",
+      "Transform": {
+        "posX": -84.87003,
+        "posY": 1.64634407,
+        "posZ": 50.8600121,
+        "rotX": 0.019199742,
+        "rotY": 179.999817,
+        "rotZ": 359.714783,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "Unrefined Blaststone",
+      "Description": "Gem6",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 34909,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "349": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819275873/9BEA112B38FDFB6E0E1DC72156A0289A22156288/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 10,
+          "NumHeight": 6,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "bb4618",
+      "Name": "Card",
+      "Transform": {
+        "posX": -84.86995,
+        "posY": 1.71864974,
+        "posZ": 50.86,
+        "rotX": 0.03228438,
+        "rotY": 179.999741,
+        "rotZ": 359.75705,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "Summonite",
+      "Description": "Gem3",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 34743,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "347": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819250483/1D868AAC7EA0620BB0EE66616788D0B2A32D900B/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 10,
+          "NumHeight": 7,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "e2a5c8",
+      "Name": "Card",
+      "Transform": {
+        "posX": -84.8699951,
+        "posY": 1.63072717,
+        "posZ": 50.8600044,
+        "rotX": 0.0064740805,
+        "rotY": 179.999985,
+        "rotZ": 0.112569951,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "Volcanic Glass",
+      "Description": "Gem3",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 34747,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "347": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819250483/1D868AAC7EA0620BB0EE66616788D0B2A32D900B/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 10,
+          "NumHeight": 7,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "112c0a",
+      "Name": "Card",
+      "Transform": {
+        "posX": -84.87005,
+        "posY": 1.61600089,
+        "posZ": 50.8600159,
+        "rotX": 0.0603895448,
+        "rotY": 179.9998,
+        "rotZ": 359.751129,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "Jeweled Brain",
+      "Description": "Gem3",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 34737,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "347": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819250483/1D868AAC7EA0620BB0EE66616788D0B2A32D900B/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 10,
+          "NumHeight": 7,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "2001d2",
+      "Name": "Card",
+      "Transform": {
+        "posX": 60.1283,
+        "posY": 1.48452473,
+        "posZ": -63.70962,
+        "rotX": 0.0172117352,
+        "rotY": 180.0001,
+        "rotZ": 0.06747902,
+        "scaleX": 2.67430973,
+        "scaleY": 1,
+        "scaleZ": 2.67430973
+      },
+      "Nickname": "Acidic Flomite",
+      "Description": "Gem5",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 72600,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "726": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/54707509761611234/0FA8E14FCF76EF3FEC1D6803F11EC1C14E63EED5/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/54707509761569125/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 8,
+          "NumHeight": 5,
+          "BackIsHidden": false,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "66db78",
+      "Name": "Card",
+      "Transform": {
+        "posX": -84.87002,
+        "posY": 1.62394106,
+        "posZ": 50.86001,
+        "rotX": 0.0314273424,
+        "rotY": 179.9999,
+        "rotZ": 359.945831,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "Pain Stone",
+      "Description": "Gem6",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 34907,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "349": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819275873/9BEA112B38FDFB6E0E1DC72156A0289A22156288/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 10,
+          "NumHeight": 6,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "12fc3d",
+      "Name": "Card",
+      "Transform": {
+        "posX": -84.8699341,
+        "posY": 1.74561417,
+        "posZ": 50.8599968,
+        "rotX": 0.036822807,
+        "rotY": 179.999878,
+        "rotZ": 359.6046,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "Burning Opal",
+      "Description": "Gem5",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 34763,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "347": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819250483/1D868AAC7EA0620BB0EE66616788D0B2A32D900B/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 10,
+          "NumHeight": 7,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "e6d3bc",
+      "Name": "Card",
+      "Transform": {
+        "posX": -19.9172535,
+        "posY": 1.72485566,
+        "posZ": 6.716414,
+        "rotX": 0.0168722849,
+        "rotY": 179.9999,
+        "rotZ": 0.07987158,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "[00BFFF]Shimmerbead[-]",
+      "Description": "Gem3",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 42100,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "399": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819252065/151BC88A732FD6A8DD7547B0C16A74747DC13FE1/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 7,
+          "NumHeight": 3,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "e54ffa",
+      "Name": "Card",
+      "Transform": {
+        "posX": -84.86999,
+        "posY": 1.65825355,
+        "posZ": 50.8600044,
+        "rotX": 0.04276705,
+        "rotY": 179.999863,
+        "rotZ": 359.740356,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "Gilded Marble",
+      "Description": "Gem6",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 34906,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "349": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819275873/9BEA112B38FDFB6E0E1DC72156A0289A22156288/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 10,
+          "NumHeight": 6,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "528ed6",
+      "Name": "Card",
+      "Transform": {
+        "posX": 27.79309,
+        "posY": 2.31992865,
+        "posZ": 35.333683,
+        "rotX": 0.0085601015,
+        "rotY": 180.000015,
+        "rotZ": 180.069046,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "[FFA500]Leviathan Shell[-]",
+      "Description": "Gem5",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 41318,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "413": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819292267/4FF78AC6C5C2E05ED08B8D6B12E4B3F2DE5CF4D3/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 6,
+          "NumHeight": 6,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "6b0810",
+      "Name": "Card",
+      "Transform": {
+        "posX": 62.0263672,
+        "posY": 1.54876709,
+        "posZ": -71.87536,
+        "rotX": 0.0155388238,
+        "rotY": 180.001068,
+        "rotZ": 0.070771,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "Shattered Rupix",
+      "Description": "Gem5",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "Tags": [
+        "Cost5"
+      ],
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 41517,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "415": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819251719/B4516958D8704ACCF2FB11E807239EAFC86EB56C/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 9,
+          "NumHeight": 5,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "ff4fc2",
+      "Name": "Card",
+      "Transform": {
+        "posX": -46.75092,
+        "posY": 1.63130128,
+        "posZ": -65.18351,
+        "rotX": 0.03158824,
+        "rotY": 180.001358,
+        "rotZ": 0.041965194,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.71
+      },
+      "Nickname": "[0DBF0D]Glowstone[-]",
+      "Description": "Gem3",
+      "GMNotes": "Swap Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 72207,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "722": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819253011/14D432AF342DF94B4EE7BEFF74EC94627601AD8B/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 6,
+          "NumHeight": 4,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "731115",
+      "Name": "Card",
+      "Transform": {
+        "posX": -84.87002,
+        "posY": 1.62577748,
+        "posZ": 50.8600044,
+        "rotX": 0.0246274844,
+        "rotY": 179.999939,
+        "rotZ": 359.990662,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "Vigorous Sunstone",
+      "Description": "Gem5",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 36928,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "369": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819292638/29340B6FFDAA85172415D05D02BC2E0321D582DA/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 10,
+          "NumHeight": 7,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    },
+    {
+      "GUID": "1f7993",
+      "Name": "Card",
+      "Transform": {
+        "posX": -84.87002,
+        "posY": 1.62622213,
+        "posZ": 50.86001,
+        "rotX": 0.0229747053,
+        "rotY": 179.999969,
+        "rotZ": 0.00198859232,
+        "scaleX": 2.74,
+        "scaleY": 1,
+        "scaleZ": 2.74
+      },
+      "Nickname": "Diamond Cluster",
+      "Description": "Gem4",
+      "GMNotes": "Market Randomiser",
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "ColorDiffuse": {
+        "r": 0.713235259,
+        "g": 0.713235259,
+        "b": 0.713235259
+      },
+      "LayoutGroupSortIndex": 0,
+      "Value": 0,
+      "Locked": false,
+      "Grid": true,
+      "Snap": true,
+      "IgnoreFoW": false,
+      "MeasureMovement": false,
+      "DragSelectable": true,
+      "Autoraise": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "GridProjection": false,
+      "HideWhenFaceDown": true,
+      "Hands": true,
+      "CardID": 34754,
+      "SidewaysCard": false,
+      "CustomDeck": {
+        "347": {
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819250483/1D868AAC7EA0620BB0EE66616788D0B2A32D900B/",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/2064382397819277342/F060AC79D3E3CDCC84CEDE50FCF98818D672DFB3/",
+          "NumWidth": 10,
+          "NumHeight": 7,
+          "BackIsHidden": true,
+          "UniqueBack": false,
+          "Type": 0
+        }
+      },
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "XmlUI": ""
+    }
+  ]
+}
