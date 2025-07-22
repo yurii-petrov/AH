@@ -1,47 +1,120 @@
 {
   "version": "2.0.0",
   "tasks": [
+    // {
+    //   "label": "Generate TTS Mod (macOS)",
+    //   "type": "shell",
+    //   "command": "./generateMac.sh",
+    //   "group": {
+    //     "kind": "build",
+    //     "isDefault": true
+    //   },
+    //   "problemMatcher": [],
+    //   "options": {
+    //     "cwd": "${workspaceFolder}"
+    //   },
+    //   "os": "mac"  // macOS
+    // },
     {
-      "label": "Generate TTS Mod (macOS/Linux)",
+  "label": "Arkham Horror: Build (macOS)",
+  "type": "shell",
+  "command": "go",
+  "args": [
+    "run",
+    "main.go",
+    "-moddir",
+    "${workspaceFolder}",
+    "-modfile",
+    "${userHome}/Library/Tabletop Simulator/Saves/ArkhamHorror.json"
+  ],
+  "options": {
+    "cwd": "${env:HOME}/TTSModManager"
+  },
+  "problemMatcher": [],
+  "group": {
+    "kind": "build",
+    "isDefault": true
+  },
+  "os": "mac"
+},
+{
+  "label": "Arkham Horror: Decompose (macOS)",
+  "type": "shell",
+  "command": "go",
+  "args": [
+    "run",
+    "main.go",
+    "-moddir",
+    "${workspaceFolder}",
+    "-modfile",
+    "${userHome}/Library/Tabletop Simulator/Saves/ArkhamHorror.json",
+    "-reverse"
+  ],
+  "options": {
+    "cwd": "${env:HOME}/TTSModManager"
+  },
+  "problemMatcher": [],
+  "os": "mac"
+},
+    {
+      "label": "Arkham Horror: Build (Window)",
       "type": "shell",
-      "command": "./generateMac.sh",
+      "command": "go",
+      "windows": {
+        "args": [
+          "run",
+          "main.go",
+          "--moddir=${workspaceFolder}",
+          "--modfile=${env:USERPROFILE}\\Documents\\My Games\\Tabletop Simulator\\Saves\\ArkhamHorror.json"
+        ],
+      },
+      "osx":{
+        "args": [
+          "run",
+          "main.go",
+          "-moddir",
+          "${workspaceFolder}",
+          "-modfile",
+          "${userHome}/Library/Tabletop Simulator/Saves/ArkhamHorror.json"
+        ],
+      },
+      "options": {
+        "cwd": "${workspaceFolder}${pathSeparator}..${pathSeparator}TTSModManager"
+      },
+      "problemMatcher": [],
       "group": {
         "kind": "build",
         "isDefault": true
-      },
-      "problemMatcher": [],
-      "options": {
-        "cwd": "${workspaceFolder}"
-      },
-      "os": "linux"  // Linux
+      }
     },
     {
-      "label": "Generate TTS Mod (macOS)",
+      "label": "Arkham Horror: Decompose (Window)",
       "type": "shell",
-      "command": "./generateMac.sh",
-      "group": {
-        "kind": "build",
-        "isDefault": true
+      "command": "go",
+      "windows": {
+        "args": [
+          "run",
+          "main.go",
+          "--moddir=${workspaceFolder}",
+          "--modfile=${env:USERPROFILE}\\Documents\\My Games\\Tabletop Simulator\\Saves\\ArkhamHorror.json",
+          "--reverse"
+        ],
       },
-      "problemMatcher": [],
+      "osx":{
+        "args": [
+          "run",
+          "main.go",
+          "-moddir",
+          "${workspaceFolder}",
+          "-modfile",
+          "${userHome}/Library/Tabletop Simulator/Saves/ArkhamHorror.json",
+          "-reverse"
+        ],
+      },
       "options": {
-        "cwd": "${workspaceFolder}"
+        "cwd": "${workspaceFolder}${pathSeparator}..${pathSeparator}TTSModManager"
       },
-      "os": "mac"  // macOS
-    },
-    {
-      "label": "Generate TTS Mod (Windows)",
-      "type": "shell",
-      "command": "generateWin.bat",
-      "group": {
-        "kind": "build",
-        "isDefault": true
-      },
-      "problemMatcher": [],
-      "options": {
-        "cwd": "${workspaceFolder}"
-      },
-      "os": "windows"
+      "problemMatcher": []
     }
   ]
 }
