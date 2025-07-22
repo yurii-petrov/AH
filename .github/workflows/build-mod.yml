@@ -1,9 +1,10 @@
 name: build-mod
 
 on:
+  workflow_dispatch:
   release:
     types: [created]
-  workflow_dispatch:
+  pull_request:
 
 permissions:
   contents: write
@@ -12,11 +13,23 @@ permissions:
 jobs:
   build-the-mod:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout repo  # ✅ обов’язково
+      - name: 📥 Checkout repository
         uses: actions/checkout@v3
 
-      - name: Run local action
-        uses: ./.github/actions/TTSModManager  # ✅ відносний шлях
+      - name: 🧱 Run TTSModManager (local action)
+        uses: ./.github/actions/TTSModManager
         with:
+          moddir: .
+          config: ./modfile.json
           output-file: mod-${{ github.ref_name }}.json
+
+      - name: 📂 Show generated files
+        run: ls -lh
+
+      - name: 📤 Upload mod artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: tts-mod
+          path: mod-${{ github.ref_name }}.json

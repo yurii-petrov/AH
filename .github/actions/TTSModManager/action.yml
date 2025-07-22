@@ -1,50 +1,37 @@
-name: "Generate TTS Mod"
-description: "Use TTSModManager to generate a TTS mod"
+name: "TTSModManager Local Action"
+description: "Run TTSModManager with custom arguments"
 
 inputs:
-  specific-object:
-    description: "Do not build entire mod, only specific object"
-    required: false
   output-file:
-    description: "Filename to put result in"
+    description: "Output JSON file name for the mod"
     required: false
     default: "output.json"
 
-outputs:
-  mod:
-    description: "Built mod ready for TTS"
+  moddir:
+    description: "Directory containing objects, scripts, and UI"
+    required: false
+    default: "."
+
+  config:
+    description: "Path to mod configuration file"
+    required: false
+    default: ""
 
 runs:
   using: "composite"
   steps:
-    - uses: actions/checkout@v3
+    - shell: bash
+      run: |
+        echo "🏗️  Running TTSModManager"
+        echo "📁 moddir: ${{ inputs.moddir }}"
+        echo "⚙️ config: ${{ inputs.config }}"
+        echo "📝 output: ${{ inputs.output-file }}"
 
-    - name: Download TTSModManager
-      run: wget https://github.com/argonui/TTSModManager/releases/download/v1.1.0/TTSModManager-Linux
-      shell: bash
+        CMD="TTSModManager --moddir='${{ inputs.moddir }}' --output='${{ inputs.output-file }}'"
 
-    - name: Make it executable
-      run: chmod +x TTSModManager-Linux
-      shell: bash
+        if [ -n "${{ inputs.config }}" ]; then
+          CMD="$CMD --config='${{ inputs.config }}'"
+        fi
 
-    - name: Build full mod
-      if: inputs.specific-object == ''
-      run: ./TTSModManager-Linux -moddir="./" -modfile="./${{ inputs.output-file }}"
-      shell: bash
-
-    - name: Build specific object
-      if: inputs.specific-object != ''
-      run: ./TTSModManager-Linux -moddir="./" -objin="./${{ inputs.specific-object }}" -objout="./${{ inputs.output-file }}"
-      shell: bash
-
-    - name: Upload final config
-      uses: actions/upload-artifact@v4 # ✅ нова підтримувана версія
-      with:
-        name: TTSMod
-        path: ./${{ inputs.output-file }}
-
-    - name: Add to Release
-      uses: softprops/action-gh-release@v1 # 🔄 нова стабільна версія
-      if: startsWith(github.ref, 'refs/tags/')
-      with:
-        files: ./${{ inputs.output-file }}
+        echo "🔧 Command: $CMD"
+        eval $CMD
