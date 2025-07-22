@@ -1,0 +1,8 @@
+#
+msgid ""
+msgstr ""
+"Language-Team: Ukrainian\n"
+"Language: uk\n"
+
+msgid "Agnes Baker"
+msgstr "Агнес Бейкер"
