@@ -29,7 +29,7 @@ jobs:
         run: |
           if [ "${{ github.event_name }}" == "release" ]; then
             stripped_name=$(echo "${{ github.event.release.tag_name }}" | sed -E 's/^[Vv]ersion[ ]*//')
-            echo "filename=Arkham SCE ${stripped_name}.json" >> $GITHUB_ENV
+            echo "filename=Arkham Horror ${stripped_name}.json" >> $GITHUB_ENV
           elif [ "${{ github.event_name }}" == "pull_request" ]; then
             echo "filename=${{ github.head_ref }}.json" >> $GITHUB_ENV
           else
