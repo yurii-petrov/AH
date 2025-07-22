@@ -1,20 +1,6 @@
 {
   "version": "2.0.0",
   "tasks": [
-    // {
-    //   "label": "Generate TTS Mod (macOS)",
-    //   "type": "shell",
-    //   "command": "./generateMac.sh",
-    //   "group": {
-    //     "kind": "build",
-    //     "isDefault": true
-    //   },
-    //   "problemMatcher": [],
-    //   "options": {
-    //     "cwd": "${workspaceFolder}"
-    //   },
-    //   "os": "mac"  // macOS
-    // },
     {
   "label": "Arkham Horror: Build (macOS)",
   "type": "shell",
