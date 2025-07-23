@@ -91,23 +91,19 @@ local MythosCup = {
 -- │                Tile ids                      │
 -- ╰──────────────────────────────────────────────╯
 
-local scenarioEventTileId = "c6cea2"
-local scenarioEventDiscardTileId = "255c71"
-
-local headlineTileId = "0e2a8a"
 local mythosTileId = "3dbb4d"
-
 local scenarioMatId = "7b841f"
 local shopMatId = "80c416"
 local conditionMatId = "f0624c"
 local tableId = "f47e19"
+local tile4ActionsId = "d706d4"
+local locationMatId = "9fe1d3"
+local nastilo4kaId = "d75b3b"
 
 -- ╭──────────────────────────────────────────────╮
 -- │                Deck ids                      │
 -- ╰──────────────────────────────────────────────╯
 
-local monsterDeckId = "46cc77"
-local streetDeckId = "acb3ed"
 local referenceDeckId = "77f0b1"
 
 -- ╭──────────────────────────────────────────────╮
@@ -205,43 +201,27 @@ local scenarioSheetSetupLocation = {
   }
 }
 
-local locationMat = {
-  guid = "9fe1d3"
-}
-
 -- ╭────────────────────────────────────────────────╮
 -- │                MAP TILES                       │
 -- ╰────────────────────────────────────────────────╯
 
 local isDrawMythInProcess = false
 
-function lockObj(guid)
-  local locationMat = getObjectFromGUID(guid)
-  if locationMat then
-    locationMat.setLock(true)
-    locationMat.interactable = false
-    locationMat.drag_selectable = false
-    locationMat.gizmo_selectable = false
-  end
-end
-
 function onload(savedData)
-
-  getObjectFromGUID("8391f2").memo = "Items Mat"
 
   if isTestMode then
     --    testResolveDooms() 
   end
 
   lockObj(tableId)
-  lockObj("9fe1d3") -- Location Mat
+  lockObj(locationMatId)
   lockObj(scenarioMatId)
   lockObj(mythosTileId)
-  lockObj("d706d4")
+  lockObj(tile4ActionsId)
   -- lockObj(shopMatId)
   lockObj(conditionMatId)
   -- lockObj(mythosBagId)
-  lockObj("d75b3b")
+  lockObj(nastilo4kaId)
 
   local parsedSaveData = parseJson(savedData)
   if parsedSaveData then
@@ -269,11 +249,6 @@ function onload(savedData)
   if mythosBag then
     mythosBag.setName("Чаша міту")
     mythosBag.addContextMenuItem("Fix button", fixDrawMythosButton)
-  end
-
-  local clickButtons = getObjectFromGUID("d706d4")
-  if clickButtons then
-    clickButtons.addContextMenuItem("Fix button", fixDrawMythosButton)
   end
 
   local mythosTile = getObjectFromGUID(mythosTileId)
@@ -351,7 +326,7 @@ function mythosTileSuccessAction(d)
   eventCard.setRotation({0, 180, 0})
   eventCard.setPositionSmooth(eventDiscardPos:setAt("y", 3))
 
-  local locationMat = getObjectFromGUID(locationMat.guid)
+  local locationMat = getObjectFromGUID(locationMatId)
   if not locationMat then
     return
   end
@@ -464,7 +439,7 @@ function mythosTileCancelAction(d)
 
     foundObj.putObject(card)
   elseif cardData.type == "headline" then
-    local locationMat = getObjectFromGUID(locationMat.guid)
+    local locationMat = getObjectFromGUID(locationMatId)
     if not locationMat then
       return
     end
@@ -570,7 +545,7 @@ function onSave()
 end
 
 function discardMonster(o, objData)
-  local locationMat = getObjectFromGUID(locationMat.guid)
+  local locationMat = getObjectFromGUID(locationMatId)
   if not locationMat then
     return
   end
@@ -1145,7 +1120,7 @@ function onObjectDrop(colorName, object)
     for i, obj in ipairs(foundObjects) do
       if not isFoundNeighborhood and not isFoundScenarioSheet then
         if obj.memo then
-          if obj.guid == locationMat.guid then
+          if obj.guid == locationMatId then
             isFoundlocationMat = true
           else
             local objMemo = parseJson(obj.memo)
@@ -1540,7 +1515,7 @@ function onClickPrepareNumberOfPlayers()
     return
   end
 
-  local locationMat = getObjectFromGUID(locationMat.guid)
+  local locationMat = getObjectFromGUID(locationMatId)
   if not locationMat then
     return
   end
@@ -1829,7 +1804,7 @@ function onClickEncounter(obj, playerColor)
     return
   end
 
-  local locationMat = getObjectFromGUID(locationMat.guid)
+  local locationMat = getObjectFromGUID(locationMatId)
   if not locationMat then
     return
   end
@@ -2069,7 +2044,7 @@ function getObjectsInPlayerZone(playerColor)
     return {}
   end
 
-  local locationMat = getObjectFromGUID(locationMat.guid)
+  local locationMat = getObjectFromGUID(locationMatId)
   if not locationMat then
     return {}
   end
@@ -2116,7 +2091,7 @@ function getRollerType(player)
     return
   end
 
-  local locationMat = getObjectFromGUID(locationMat.guid)
+  local locationMat = getObjectFromGUID(locationMatId)
   if not locationMat then
     return
   end
@@ -2492,7 +2467,7 @@ function prepareScenarioMonsterDeck()
     return
   end
 
-  local locationMat = getObjectFromGUID(locationMat.guid)
+  local locationMat = getObjectFromGUID(locationMatId)
   if not locationMat then
     return
   end
@@ -2676,7 +2651,7 @@ function prepareScenarioDecks(scenarioData)
   --   return
   -- end
 
-  local locationMat = getObjectFromGUID(locationMat.guid)
+  local locationMat = getObjectFromGUID(locationMatId)
   if not locationMat then
     return
   end
@@ -2881,7 +2856,7 @@ function prepareScenarioDecks(scenarioData)
 end
 
 -- function getNeighborhoodTile(memo)
--- local locationMat = getObjectFromGUID(locationMat.guid)
+-- local locationMat = getObjectFromGUID(locationMatId)
 -- if not locationMat then
 --   return
 -- end
@@ -3357,7 +3332,7 @@ function spawnDooms(data, callBack)
     return
   end
 
-  local locationMat = getObjectFromGUID(locationMat.guid)
+  local locationMat = getObjectFromGUID(locationMatId)
   if not locationMat then
     callBack()
     return
@@ -3431,7 +3406,7 @@ function processSpawnDooms(data, neighborhoodInfo)
 end
 
 function getNeighborhoodTile(neighborhoodName)
-  local locationMat = getObjectFromGUID(locationMat.guid)
+  local locationMat = getObjectFromGUID(locationMatId)
   if not locationMat then
     return
   end
@@ -3675,7 +3650,7 @@ function takeCardsWithMemo(deck, targetMemo, params)
 end
 
 function lockSetupScenarioComponents(obj, scenarioTiles)
-  local locationMat = getObjectFromGUID(locationMat.guid)
+  local locationMat = getObjectFromGUID(locationMatId)
   if not locationMat then
     return
   end
@@ -3756,7 +3731,7 @@ function spawnScenarioTilesOnMat(scenarioData, callBack)
   moveObjectToPosition(scenarioSheet, scenarioSheetSetupLocation, function()
   end)
 
-  local locationMat = getObjectFromGUID(locationMat.guid)
+  local locationMat = getObjectFromGUID(locationMatId)
   if not locationMat then
     callBack()
     error("Мат для локацій не знайдено!");
@@ -3780,7 +3755,7 @@ function showScenarioComponentsOnMat(scenarioData, callBack)
     return
   end
 
-  local locationMat = getObjectFromGUID(locationMat.guid)
+  local locationMat = getObjectFromGUID(locationMatId)
   if not locationMat then
     error("Мат для локацій не знайдено!");
     callBack();
@@ -4166,7 +4141,7 @@ function processDrawMyth(currentMyth, obj, playerColor, callBack)
     return
   elseif currentMyth.memo == MythosCup.ReadHeadline then
 
-    local locationMat = getObjectFromGUID(locationMat.guid)
+    local locationMat = getObjectFromGUID(locationMatId)
     if not locationMat then
       return
     end
@@ -4279,7 +4254,7 @@ function processGateBurst(callBack)
 
   broadcastToAll("\n" .. data.neighborhood .. " прорив воріт! ", "Red")
 
-  local locationMat = getObjectFromGUID(locationMat.guid)
+  local locationMat = getObjectFromGUID(locationMatId)
   if not locationMat then
     return
   end
@@ -4369,7 +4344,7 @@ function spawnMonster(spawnPos, monster)
     return
   end
 
-  local locationMat = getObjectFromGUID(locationMat.guid)
+  local locationMat = getObjectFromGUID(locationMatId)
   if not locationMat then
     return
   end
@@ -4435,7 +4410,7 @@ end
 
 -- Draw Monster
 function drawMonster(spawnPos)
-  local locationMat = getObjectFromGUID(locationMat.guid)
+  local locationMat = getObjectFromGUID(locationMatId)
   if not locationMat then
     return
   end
@@ -4527,7 +4502,7 @@ function drawMonster(spawnPos)
 end
 
 function onMonsterKilled(monster)
-  local locationMat = getObjectFromGUID(locationMat.guid)
+  local locationMat = getObjectFromGUID(locationMatId)
   if not locationMat then
     return
   end
@@ -4569,10 +4544,6 @@ function onMonsterKilled(monster)
   monster.setRotation({0, 180, 180})
   monster.setPosition(locationMat.positionToWorld(locationData.monster):setAt("y", 3))
 end
-
--- function getEventDeck()
---   return findDeckOnTile(scenarioEventTileId)
--- end
 
 -- ╭──────────────────────────────────────────────╮
 -- │                Mythos                        │
@@ -4869,6 +4840,16 @@ function findObjsInRadius(pos, radius)
     end
   end
   return hitObjects
+end
+
+function lockObj(guid)
+  local o = getObjectFromGUID(guid)
+  if o then
+    o.setLock(true)
+    o.interactable = false
+    o.drag_selectable = false
+    o.gizmo_selectable = false
+  end
 end
 
 function upCast(obj, dist, offset, multi)

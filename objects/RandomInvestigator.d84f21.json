@@ -46,10 +46,10 @@
   "LayoutGroupSortIndex": 0,
   "Locked": false,
   "LuaScriptState": "",
-  "LuaScript_path": "CardCustom.d84f21.ttslua",
+  "LuaScript_path": "RandomInvestigator.d84f21.ttslua",
   "MeasureMovement": false,
   "Name": "CardCustom",
-  "Nickname": "",
+  "Nickname": "Random Investigator",
   "SidewaysCard": false,
   "Snap": true,
   "Sticky": true,
@@ -66,5 +66,5 @@
     "scaleZ": 1.5
   },
   "Value": 0,
-  "XmlUI_path": "CardCustom.d84f21.xml"
+  "XmlUI_path": "RandomInvestigator.d84f21.xml"
 }

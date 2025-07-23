@@ -6,26 +6,26 @@
   },
   "Autoraise": true,
   "ColorDiffuse": {
-    "b": 0,
-    "g": 0,
-    "r": 0
+    "b": 0.25097,
+    "g": 0.25097,
+    "r": 0.25097
   },
   "CustomImage": {
     "CustomTile": {
       "Stackable": false,
       "Stretch": true,
-      "Thickness": 0.2,
+      "Thickness": 0.1,
       "Type": 0
     },
     "ImageScalar": 1,
     "ImageSecondaryURL": "",
-    "ImageURL": "https://drive.google.com/uc?export=view\u0026id=1BXkQKiAnJ0hg89YRNjQTgR_XITK0iJD9",
+    "ImageURL": "https://drive.google.com/uc?export=view\u0026id=1jzgrMEoHar2_SFVw3fwFFsL7Th8E5PSR",
     "WidthScale": 0
   },
   "Description": "",
   "DragSelectable": false,
   "GMNotes": "",
-  "GUID": "b195b0",
+  "GUID": "d706d4",
   "Grid": true,
   "GridProjection": false,
   "Hands": false,
@@ -34,24 +34,24 @@
   "LayoutGroupSortIndex": 0,
   "Locked": true,
   "LuaScriptState": "",
-  "LuaScript_path": "Custom_Tile.b195b0.ttslua",
+  "LuaScript_path": "Tile4ActionButtons.d706d4.ttslua",
   "MeasureMovement": false,
   "Name": "Custom_Tile",
-  "Nickname": "",
+  "Nickname": "Tile4ActionButtons",
   "Snap": true,
   "Sticky": true,
   "Tooltip": true,
   "Transform": {
-    "posX": 0,
-    "posY": 1.611,
-    "posZ": 0,
+    "posX": -43.401,
+    "posY": 2,
+    "posZ": -33.287,
     "rotX": 0,
     "rotY": 180,
     "rotZ": 0,
-    "scaleX": 35,
+    "scaleX": 1.59,
     "scaleY": 1,
-    "scaleZ": 35
+    "scaleZ": 1.59
   },
   "Value": 0,
-  "XmlUI": ""
+  "XmlUI_path": "Tile4ActionButtons.d706d4.xml"
 }
