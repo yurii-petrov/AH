@@ -34,10 +34,10 @@
   "LayoutGroupSortIndex": 0,
   "Locked": true,
   "LuaScriptState": "",
-  "LuaScript_path": "Custom_Tile.d706d4.ttslua",
+  "LuaScript_path": "Tile4ActionButtons.d706d4.ttslua",
   "MeasureMovement": false,
   "Name": "Custom_Tile",
-  "Nickname": "",
+  "Nickname": "Tile4ActionButtons",
   "Snap": true,
   "Sticky": true,
   "Tooltip": true,
@@ -53,5 +53,5 @@
     "scaleZ": 1.59
   },
   "Value": 0,
-  "XmlUI_path": "Custom_Tile.d706d4.xml"
+  "XmlUI_path": "Tile4ActionButtons.d706d4.xml"
 }

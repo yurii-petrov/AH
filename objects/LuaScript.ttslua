@@ -101,6 +101,7 @@ local scenarioMatId = "7b841f"
 local shopMatId = "80c416"
 local conditionMatId = "f0624c"
 local tableId = "f47e19"
+local tile4ActionsId = "d706d4"
 
 -- ╭──────────────────────────────────────────────╮
 -- │                Deck ids                      │
@@ -237,7 +238,7 @@ function onload(savedData)
   lockObj("9fe1d3") -- Location Mat
   lockObj(scenarioMatId)
   lockObj(mythosTileId)
-  lockObj("d706d4")
+  lockObj(tile4ActionsId)
   -- lockObj(shopMatId)
   lockObj(conditionMatId)
   -- lockObj(mythosBagId)
@@ -269,11 +270,6 @@ function onload(savedData)
   if mythosBag then
     mythosBag.setName("Чаша міту")
     mythosBag.addContextMenuItem("Fix button", fixDrawMythosButton)
-  end
-
-  local clickButtons = getObjectFromGUID("d706d4")
-  if clickButtons then
-    clickButtons.addContextMenuItem("Fix button", fixDrawMythosButton)
   end
 
   local mythosTile = getObjectFromGUID(mythosTileId)
