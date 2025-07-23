@@ -1,0 +1,71 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "CardID": 577100,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "CustomDeck": {
+    "5771": {
+      "BackIsHidden": true,
+      "BackURL": "https://drive.google.com/uc?export=view\u0026id=1CWrOsj4iF5-HpJ79BkWTzXb3KQurMSSe",
+      "FaceURL": "https://drive.google.com/uc?export=view\u0026id=1CWrOsj4iF5-HpJ79BkWTzXb3KQurMSSe",
+      "NumHeight": 1,
+      "NumWidth": 1,
+      "Type": 1,
+      "UniqueBack": false
+    }
+  },
+  "CustomUIAssets": [
+    {
+      "Name": "button_large_i",
+      "Type": 0,
+      "URL": "https://drive.google.com/uc?export=view\u0026id=1qSV5W57Nqm3gjXES67d9y5U-pDV83skK"
+    },
+    {
+      "Name": "Fonts",
+      "Type": 1,
+      "URL": "https://drive.google.com/uc?export=view\u0026id=18_lFlnSaOFlbNVfE-G-LFqqfptMMkKFS"
+    }
+  ],
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "d84f21",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": true,
+  "HideWhenFaceDown": true,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScriptState": "",
+  "LuaScript_path": "Ukbag.69279c/RandomInvestigator.d84f21.ttslua",
+  "MeasureMovement": false,
+  "Memo": "{\"startPosition\":{\"x\":-0.426382064819336,\"y\":1.01360654830933,\"z\":-0.0360903851687908}}",
+  "Name": "CardCustom",
+  "Nickname": "Random Investigator",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": -28.119,
+    "posY": 4.071,
+    "posZ": 51.313,
+    "rotX": 1,
+    "rotY": 180,
+    "rotZ": 180,
+    "scaleX": 1.5,
+    "scaleY": 1,
+    "scaleZ": 1.5
+  },
+  "Value": 0,
+  "XmlUI_path": "Ukbag.69279c/RandomInvestigator.d84f21.xml"
+}

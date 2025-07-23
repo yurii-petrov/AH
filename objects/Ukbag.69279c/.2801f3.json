@@ -1,0 +1,87 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "ContainedObjects_order": [
+    "Card.c45372",
+    "Card.942e44",
+    "Card.c29edb",
+    "Card.5c92a8",
+    "Card.3bc101",
+    "Card.4421f9",
+    "Card.83945a",
+    "Card.10837e",
+    "Card.299a12",
+    "Card.2639ab",
+    "Card.218d52",
+    "Card.57aa1e"
+  ],
+  "ContainedObjects_path": ".2801f3",
+  "CustomDeck": {
+    "5795": {
+      "BackIsHidden": true,
+      "BackURL": "https://drive.google.com/uc?export=view\u0026id=1qCQXn7gNmyZRVy_e9mXr9qrVWldftbhY",
+      "FaceURL": "https://drive.google.com/uc?export=view\u0026id=1EbyslZQC5xaYdK3_HRQNcy76H8rpB1B1",
+      "NumHeight": 2,
+      "NumWidth": 6,
+      "Type": 0,
+      "UniqueBack": false
+    }
+  },
+  "DeckIDs": [
+    579504,
+    579503,
+    579502,
+    579501,
+    579500,
+    579505,
+    579507,
+    579508,
+    579506,
+    579510,
+    579509,
+    579511
+  ],
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "2801f3",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": true,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Memo": "{\"name\":\"FR\",\"startPosition\":{\"x\":0.300918757915497,\"y\":1.07870078086853,\"z\":-0.49929940700531},\"type\":\"anomaly\"}",
+  "Name": "DeckCustom",
+  "Nickname": "Аномалії Злам Реальності",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": -47.672,
+    "posY": 4.089,
+    "posZ": 50.309,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 180,
+    "scaleX": 1.5,
+    "scaleY": 1,
+    "scaleZ": 1.5
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

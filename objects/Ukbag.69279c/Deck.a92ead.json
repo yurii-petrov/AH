@@ -1,0 +1,79 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "ContainedObjects_order": [
+    "Card.69fe1d",
+    "Card.5b8320",
+    "Card.ae3393",
+    "Card.1179d5",
+    "Card.d6d7f3",
+    "Card.e63529",
+    "Card.fd3aa3",
+    "Card.991c33"
+  ],
+  "ContainedObjects_path": "Deck.a92ead",
+  "CustomDeck": {
+    "5746": {
+      "BackIsHidden": true,
+      "BackURL": "https://drive.google.com/uc?export=view\u0026id=1M6o0Hb-v6muU8jNDceGHN9gLZ96RfNui",
+      "FaceURL": "https://drive.google.com/uc?export=view\u0026id=1KRtB53oVoj6Y7pXdbSeK5-YOKxmQ31a5",
+      "NumHeight": 5,
+      "NumWidth": 8,
+      "Type": 0,
+      "UniqueBack": true
+    }
+  },
+  "DeckIDs": [
+    574639,
+    574635,
+    574638,
+    574637,
+    574636,
+    574633,
+    574634,
+    574632
+  ],
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "a92ead",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": true,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Memo": "{\"name\":\"Miskatonic University\",\"startPosition\":{\"x\":0.262506127357483,\"y\":1.05944466590881,\"z\":-0.432549923658371},\"type\":\"Encounter\"}",
+  "Name": "Deck",
+  "Nickname": "",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": -43.831,
+    "posY": 4.069,
+    "posZ": 43.634,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 180,
+    "scaleX": 1.5,
+    "scaleY": 1,
+    "scaleZ": 1.5
+  },
+  "Value": 0,
+  "XmlUI": ""
+}
