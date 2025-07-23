@@ -209,6 +209,8 @@ local isDrawMythInProcess = false
 
 function onload(savedData)
 
+  self.UI.setAttribute('main_menu', 'active', false)
+
   if isTestMode then
     --    testResolveDooms() 
   end
