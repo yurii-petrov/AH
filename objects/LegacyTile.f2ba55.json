@@ -58,7 +58,7 @@
   "LuaScriptState": "",
   "MeasureMovement": false,
   "Name": "Custom_Tile",
-  "Nickname": "",
+  "Nickname": "LegacyTile",
   "Snap": true,
   "Sticky": true,
   "Tags": [
@@ -77,5 +77,5 @@
     "scaleZ": 1.84
   },
   "Value": 0,
-  "XmlUI_path": "Custom_Tile.f2ba55.xml"
+  "XmlUI_path": "LegacyTile.f2ba55.xml"
 }
