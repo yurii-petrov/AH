@@ -209,15 +209,6 @@ local isDrawMythInProcess = false
 
 function onload(savedData)
 
-  -- self.UI.setAttribute('main_menu', 'active', false)
-
-  for _, o in ipairs(getObjects()) do
-    if o.type == "Bag" and o.memo and o.memo == "Uk bag" then
-      -- prepareLanguageBag(o)
-      break
-    end
-  end
-
   if isTestMode then
     --    testResolveDooms() 
   end
@@ -2395,6 +2386,35 @@ end
 -- ╭──────────────────────────────────────────────╮
 -- │                SELECT LANGUAGE               │
 -- ╰──────────────────────────────────────────────╯
+
+function clickOnEN()
+  gameData.language = "eng"
+  translationService.setCurrentLanguage(gameData.language)
+  broadcastToAll("English is not available yet. We're actively working on it. Thank you for your patience!", "Green")
+  -- self.UI.setAttribute("languages", "active", false)
+  -- self.UI.setAttribute("main_menu", "active", true)
+
+  -- for _, o in ipairs(getObjects()) do
+  --   if o.type == "Bag" and o.memo and o.memo == "Eng bag" then
+  --     prepareLanguageBag(o)
+  --     return
+  --   end
+  -- end
+end
+function clickOnUK()
+  gameData.language = "ukr"
+  translationService.setCurrentLanguage(gameData.language)
+
+  self.UI.setAttribute("languages", "active", false)
+  self.UI.setAttribute("main_menu", "active", true)
+
+  for _, o in ipairs(getObjects()) do
+    if o.type == "Bag" and o.memo and o.memo == "Uk bag" then
+      prepareLanguageBag(o)
+      return
+    end
+  end
+end
 
 function prepareLanguageBag(bag)
   if not bag then
