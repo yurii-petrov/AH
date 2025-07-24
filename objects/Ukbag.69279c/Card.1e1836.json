@@ -349,12 +349,12 @@
   ],
   "Tooltip": true,
   "Transform": {
-    "posX": -67.279,
-    "posY": 4.084,
-    "posZ": 52.926,
-    "rotX": 0,
+    "posX": -69.99,
+    "posY": 4.081,
+    "posZ": 58.341,
+    "rotX": 1,
     "rotY": 180,
-    "rotZ": 1,
+    "rotZ": 0,
     "scaleX": 2.5,
     "scaleY": 1,
     "scaleZ": 2.5

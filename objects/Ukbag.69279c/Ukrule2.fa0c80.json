@@ -5,18 +5,21 @@
     "z": 0
   },
   "Autoraise": true,
-  "Bag": {
-    "Order": 0
-  },
   "ColorDiffuse": {
-    "b": 0,
-    "g": 0.36652,
-    "r": 0.70588
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "CustomPDF": {
+    "PDFPage": 0,
+    "PDFPageOffset": 0,
+    "PDFPassword": "",
+    "PDFUrl": "https://drive.google.com/uc?export=view\u0026id=1O2fEpi0gEUmoO73yb7Mf2vnruh9r7Xc6"
   },
   "Description": "",
   "DragSelectable": true,
   "GMNotes": "",
-  "GUID": "49a7d7",
+  "GUID": "fa0c80",
   "Grid": true,
   "GridProjection": false,
   "Hands": false,
@@ -26,25 +29,23 @@
   "Locked": false,
   "LuaScript": "",
   "LuaScriptState": "",
-  "MaterialIndex": -1,
   "MeasureMovement": false,
-  "MeshIndex": -1,
-  "Name": "Bag",
-  "Nickname": "Коробка",
-  "Number": 0,
+  "Memo": "{\"startPosition\":{\"x\":-0.453059375286102,\"y\":1.00000214576721,\"z\":0.0707066133618355}}",
+  "Name": "Custom_PDF",
+  "Nickname": "Uk rule 2",
   "Snap": true,
   "Sticky": true,
   "Tooltip": true,
   "Transform": {
-    "posX": -32.418,
-    "posY": 1.815,
-    "posZ": 36.728,
+    "posX": -72.793,
+    "posY": 4.05,
+    "posZ": 61.082,
     "rotX": 0,
     "rotY": 180,
-    "rotZ": 0,
-    "scaleX": 1,
+    "rotZ": 359,
+    "scaleX": 3.64,
     "scaleY": 1,
-    "scaleZ": 1
+    "scaleZ": 3.64
   },
   "Value": 0,
   "XmlUI": ""

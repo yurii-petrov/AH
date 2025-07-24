@@ -68,12 +68,12 @@
   "Sticky": true,
   "Tooltip": true,
   "Transform": {
-    "posX": -57.116,
-    "posY": 4.01,
-    "posZ": 74.926,
+    "posX": -71.693,
+    "posY": 4.068,
+    "posZ": 59.224,
     "rotX": 0,
     "rotY": 180,
-    "rotZ": 0,
+    "rotZ": 359,
     "scaleX": 1.15,
     "scaleY": 1,
     "scaleZ": 1.15
