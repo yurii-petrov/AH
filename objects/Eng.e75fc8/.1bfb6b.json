@@ -1,0 +1,79 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "ContainedObjects_order": [
+    "Card.62d44f",
+    "Card.6c52e3",
+    "Card.17ad8d",
+    "Card.c70543",
+    "Card.9d750b",
+    "Card.912ce8",
+    "Card.5a9153",
+    "Card.b3c6ad"
+  ],
+  "ContainedObjects_path": ".1bfb6b",
+  "CustomDeck": {
+    "5760": {
+      "BackIsHidden": true,
+      "BackURL": "https://drive.google.com/uc?export=view\u0026id=1P41vS8WLNva8ESXeloiOiKeIrDvYnHOX",
+      "FaceURL": "https://drive.google.com/uc?export=view\u0026id=12RQJBtMt2Pe4nFv1AQBgTNTkx1mjkBxK",
+      "NumHeight": 5,
+      "NumWidth": 8,
+      "Type": 0,
+      "UniqueBack": true
+    }
+  },
+  "DeckIDs": [
+    576031,
+    576030,
+    576029,
+    576028,
+    576024,
+    576025,
+    576026,
+    576027
+  ],
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "1bfb6b",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Memo": "{\"name\":\"Uptown\",\"startPosition\":{\"x\":0.168624147772789,\"y\":1.05944466590881,\"z\":-0.432549953460693},\"type\":\"Encounter\"}",
+  "Name": "DeckCustom",
+  "Nickname": "Зустрічі Передмістя",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": 15.808,
+    "posY": 4.069,
+    "posZ": -52.683,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 180,
+    "scaleX": 1.5,
+    "scaleY": 1,
+    "scaleZ": 1.5
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

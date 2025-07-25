@@ -1,0 +1,59 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "CardID": 574902,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "CustomDeck": {
+    "5749": {
+      "BackIsHidden": true,
+      "BackURL": "https://drive.google.com/uc?export=view\u0026id=1STweawrUM_-MBQSBP7MDBEmi419w4L_X",
+      "FaceURL": "https://drive.google.com/uc?export=view\u0026id=1MQTA11qyUhrBUydnYmZif-adKQM4PTpP",
+      "NumHeight": 3,
+      "NumWidth": 4,
+      "Type": 1,
+      "UniqueBack": true
+    }
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "796268",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": true,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Memo": "{\"hp\":7,\"money\":3,\"name\":\"Daniela Reyes\",\"role\":[\"rogue\",\"survivor\"],\"sanity\":5,\"skill\":{\"influence\":3,\"lore\":3,\"observation\":1,\"strength\":3,\"will\":3},\"startPosition\":{\"x\":-0.525636374950409,\"y\":1.01360654830933,\"z\":-0.278417855501175},\"type\":\"Investigator\"}",
+  "Name": "Card",
+  "Nickname": "Daniela Reyes",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": 29.273,
+    "posY": 4.134,
+    "posZ": 52.057,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 1.5,
+    "scaleY": 1,
+    "scaleZ": 1.5
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

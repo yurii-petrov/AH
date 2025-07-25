@@ -49,7 +49,6 @@
     ".2f7335",
     "Shop.80c416",
     "Tile4ActionButtons.d706d4",
-    "Eng.95ed94",
     "Ukbag.69279c",
     "Infinite_Bag.2a2043",
     ".1a067e",
@@ -62,7 +61,8 @@
     "ItemsMat.8391f2",
     "Roller.91141f",
     "InvestigatorMat.2822f4",
-    "MonsterMat.f50cd9"
+    "MonsterMat.f50cd9",
+    "Eng.e75fc8"
   ],
   "PlayArea": 0.5,
   "PlayerCounts": [
