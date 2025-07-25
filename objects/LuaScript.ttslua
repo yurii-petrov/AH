@@ -101,12 +101,6 @@ local locationMatId = "9fe1d3"
 local nastilo4kaId = "d75b3b"
 
 -- ╭──────────────────────────────────────────────╮
--- │                Deck ids                      │
--- ╰──────────────────────────────────────────────╯
-
-local referenceDeckId = "77f0b1"
-
--- ╭──────────────────────────────────────────────╮
 -- │                Bags                          │
 -- ╰──────────────────────────────────────────────╯
 
@@ -1552,8 +1546,16 @@ function onClickPrepareNumberOfPlayers()
     return
   end
 
-  local referenceDeck = getObjectFromGUID(referenceDeckId)
+  local referenceDeck = nil
+  for _, obj in ipairs(getObjects()) do
+    if obj.type == "Deck" and obj.getName() == "Reference Cards" then
+      referenceDeck = obj
+      break
+    end
+  end
+
   if not referenceDeck then
+    error("Reference Cards not found")
     return
   end
 

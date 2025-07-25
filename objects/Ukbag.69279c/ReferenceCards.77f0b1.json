@@ -18,7 +18,7 @@
     "Card.b23271",
     "Card.79e9f6"
   ],
-  "ContainedObjects_path": "DeckCustom.4e65f3",
+  "ContainedObjects_path": "ReferenceCards.77f0b1",
   "CustomDeck": {
     "5776": {
       "BackIsHidden": true,
@@ -41,7 +41,7 @@
   "Description": "",
   "DragSelectable": true,
   "GMNotes": "",
-  "GUID": "4e65f3",
+  "GUID": "77f0b1",
   "Grid": true,
   "GridProjection": false,
   "Hands": false,
@@ -54,15 +54,15 @@
   "MeasureMovement": false,
   "Memo": "{\"startPosition\":{\"x\":0.131703302264214,\"y\":1.04981660842896,\"z\":-0.502225756645203}}",
   "Name": "DeckCustom",
-  "Nickname": "",
+  "Nickname": "Reference Cards",
   "SidewaysCard": false,
   "Snap": true,
   "Sticky": true,
   "Tooltip": true,
   "Transform": {
-    "posX": 19.5,
+    "posX": -58.203,
     "posY": 4.06,
-    "posZ": -45.715,
+    "posZ": 58.843,
     "rotX": 0,
     "rotY": 180,
     "rotZ": 180,
