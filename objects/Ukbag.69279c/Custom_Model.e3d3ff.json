@@ -1,0 +1,83 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "AttachedSnapPoints": [
+    {
+      "Position": {
+        "x": -0.037,
+        "y": 0.15,
+        "z": 0.045
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 180,
+        "z": 0
+      },
+      "Tags": [
+        "anomaly_snap"
+      ]
+    }
+  ],
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "CustomMesh": {
+    "CastShadows": true,
+    "ColliderURL": "https://steamusercontent-a.akamaihd.net/ugc/1735566544368129028/2A879D89402AB2F52469E10391D07E0CA1466FC5/",
+    "Convex": true,
+    "CustomShader": {
+      "FresnelStrength": 0,
+      "SpecularColor": {
+        "b": 1,
+        "g": 1,
+        "r": 1
+      },
+      "SpecularIntensity": 0,
+      "SpecularSharpness": 2
+    },
+    "DiffuseURL": "https://drive.google.com/uc?export=view\u0026id=1EGFEIpXewPdA6tVEicXolx_o1BoSo9-W",
+    "MaterialIndex": 3,
+    "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/1735566544368127960/4FB43A5260CCADD09C2F94112E854B4634EC0D75/",
+    "NormalURL": "",
+    "TypeIndex": 0
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "e3d3ff",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Memo": "{\"locations\":[\"Hangman's Hill\",\"St. Mary's Hospital\",\"Ye Olde Magick Shoppe\"],\"name\":\"Uptown\",\"startPosition\":{\"x\":-0.0897561684250832,\"y\":1.00000166893005,\"z\":-0.754606246948242},\"structureType\":\"2\",\"type\":\"Neighborhood\"}",
+  "Name": "Custom_Model",
+  "Nickname": "",
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": -47.5,
+    "posY": 4.01,
+    "posZ": 59.224,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 1.15,
+    "scaleY": 1,
+    "scaleZ": 1.15
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

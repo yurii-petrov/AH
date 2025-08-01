@@ -1,0 +1,72 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "ContainedObjects_order": [
+    "Card.4f1825",
+    "Card.ff0069",
+    "Card.4efdd9"
+  ],
+  "ContainedObjects_path": "Deck.573540",
+  "CustomDeck": {
+    "5790": {
+      "BackIsHidden": true,
+      "BackURL": "https://drive.google.com/uc?export=view\u0026id=1xw3K6qgdk-ofmsvbQ3ewqt-iCCWMKSnk",
+      "FaceURL": "https://drive.google.com/uc?export=view\u0026id=1NSIXwO9GMQjyHlUTIH8OuPWOfJBAIUTg",
+      "NumHeight": 6,
+      "NumWidth": 7,
+      "Type": 0,
+      "UniqueBack": true
+    }
+  },
+  "DeckIDs": [
+    579007,
+    579022,
+    579024
+  ],
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "573540",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": true,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Memo": "{\"name\":\"Agnes Baker\",\"startPosition\":{\"x\":-0.575636327266693,\"y\":1.03537440299988,\"z\":-0.231517866253853}}",
+  "Name": "Deck",
+  "Nickname": "",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "item_magnet"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": -60.536,
+    "posY": 4.045,
+    "posZ": 91.305,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 180,
+    "scaleX": 1,
+    "scaleY": 1,
+    "scaleZ": 1
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

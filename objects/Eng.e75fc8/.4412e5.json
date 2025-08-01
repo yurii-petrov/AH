@@ -1,0 +1,87 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "ContainedObjects_order": [
+    "Card.8d43e2",
+    "Card.972530",
+    "Card.d2495a",
+    "Card.394045",
+    "Card.5ede67",
+    "Card.797f4f",
+    "Card.d4acd8",
+    "Card.f59fa4",
+    "Card.bfdec6",
+    "Card.d0ba6b",
+    "Card.9719b2",
+    "Card.3fba1d"
+  ],
+  "ContainedObjects_path": ".4412e5",
+  "CustomDeck": {
+    "5797": {
+      "BackIsHidden": true,
+      "BackURL": "https://drive.google.com/uc?export=view\u0026id=1WOi5szemTW8Dg-dY7pimS9jAsDshP5NS",
+      "FaceURL": "https://drive.google.com/uc?export=view\u0026id=16NeWz_OC8rxxtGQFurw713T5-mblKtdD",
+      "NumHeight": 2,
+      "NumWidth": 6,
+      "Type": 0,
+      "UniqueBack": false
+    }
+  },
+  "DeckIDs": [
+    579711,
+    579710,
+    579709,
+    579707,
+    579706,
+    579708,
+    579701,
+    579700,
+    579702,
+    579703,
+    579704,
+    579705
+  ],
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "4412e5",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": true,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Memo": "{\"name\":\"TF\",\"startPosition\":{\"x\":0.238338753581047,\"y\":1.07870078086853,\"z\":-0.49929940700531},\"type\":\"anomaly\"}",
+  "Name": "DeckCustom",
+  "Nickname": "Аномалії Тріщина Часу",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": 8.836,
+    "posY": 4.089,
+    "posZ": -46.008,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 180,
+    "scaleX": 1.5,
+    "scaleY": 1,
+    "scaleZ": 1.5
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

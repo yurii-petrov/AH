@@ -1,0 +1,59 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "CardID": 575104,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "CustomDeck": {
+    "5751": {
+      "BackIsHidden": true,
+      "BackURL": "https://drive.google.com/uc?export=view\u0026id=15G4fIJAliYOybIME_U0u5oatpBNUZCxl",
+      "FaceURL": "https://drive.google.com/uc?export=view\u0026id=11VGlxnSeUew8KrGONZt7tA_GGOGOJqsA",
+      "NumHeight": 3,
+      "NumWidth": 4,
+      "Type": 1,
+      "UniqueBack": true
+    }
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "0d2ea5",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": true,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Memo": "{\"hp\":7,\"money\":5,\"name\":\"Jenny Barnes\",\"role\":[\"rogue\"],\"sanity\":5,\"skill\":{\"influence\":4,\"lore\":1,\"observation\":2,\"strength\":3,\"will\":3},\"startPosition\":{\"x\":-0.424963623285294,\"y\":1.01360654830933,\"z\":-0.18656587600708},\"type\":\"Investigator\"}",
+  "Name": "Card",
+  "Nickname": "Jenny Barnes",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": 5.757,
+    "posY": 4.134,
+    "posZ": 56.751,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 1.5,
+    "scaleY": 1,
+    "scaleZ": 1.5
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

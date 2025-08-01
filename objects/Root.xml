@@ -1,4 +1,42 @@
 <panel
+    id="languages"
+    width="1000"
+    height="482"
+    rectAligment="middleCenter"
+    allowDragging="true"
+    returnToOriginalPositionWhenReleased="false">
+    <image
+        image="languages"
+        width="1000"
+        height="482"/>
+        <button
+            id="en"
+            onClick="clickOnEN"
+            width="350"
+            height="300"
+            position="-220 0 0"
+            padding="0 0 230 0"
+            textColor="#ffffff"
+            font="Fonts/AdonisC"
+            fontStyle="Bold"
+            fontSize="30"
+            color="clear"
+            text="ENGLISH"/>
+        <button
+            id="ua"
+            onClick="clickOnUK"
+            width="350"
+            height="300"
+            position="220 0 0"
+            padding="0 0 230 0"
+            textColor="#ffffff"
+            font="Fonts/AdonisC"
+            fontStyle="Bold"
+            fontSize="30"
+            color="clear"
+            text="УКРАЇНСЬКА"/>
+</panel>
+<panel
     id="phase"
     active="false"
     width="200"
@@ -80,7 +118,7 @@
   <button color="clear" textColor="#FFFFFF" fontSize="32" fontStyle="bold" font="Fonts/AdonisC" padding="0 0 8 0"/>
 </defaults>
 
-<panel id="main_menu" height="700" width="1000" position="0 0" rectAlignment="MiddleCenter" allowDragging="true" returnToOriginalPositionWhenReleased="false">
+<panel id="main_menu" active="false" height="700" width="1000" position="0 0" rectAlignment="MiddleCenter" allowDragging="true" returnToOriginalPositionWhenReleased="false">
     <Image image="hud_1" height="700" width="1000"/>
     <Image id="scenarioImage" image="scenario1" width="440" preserveAspect="true" position="-233 118 "/>
 	<panel width="437" height="330" position="233 133" rectAlignment="MiddleCenter">

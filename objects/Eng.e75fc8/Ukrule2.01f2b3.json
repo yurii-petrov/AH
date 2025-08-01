@@ -1,0 +1,52 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "CustomPDF": {
+    "PDFPage": 0,
+    "PDFPageOffset": 0,
+    "PDFPassword": "",
+    "PDFUrl": "https://drive.google.com/uc?export=view\u0026id=1ZPj7LXlhZWMX1q2zs0to5TKEZPWb-ca2"
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "01f2b3",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Memo": "{\"startPosition\":{\"x\":-0.453059375286102,\"y\":1.00000214576721,\"z\":0.0707066133618355}}",
+  "Name": "Custom_PDF",
+  "Nickname": "Uk rule 2",
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": 2.258,
+    "posY": 4.089,
+    "posZ": -70.287,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 3.64,
+    "scaleY": 1,
+    "scaleZ": 3.64
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

@@ -125,7 +125,7 @@
   "HideWhenFaceDown": false,
   "IgnoreFoW": false,
   "LayoutGroupSortIndex": 0,
-  "Locked": false,
+  "Locked": true,
   "LuaScriptState_path": "InvestigatorMat.2822f4.luascriptstate",
   "LuaScript_path": "InvestigatorMat.2822f4.ttslua",
   "MeasureMovement": false,
@@ -136,9 +136,9 @@
   "Sticky": true,
   "Tooltip": true,
   "Transform": {
-    "posX": 91.55,
-    "posY": 2,
-    "posZ": 57.067,
+    "posX": 105.386,
+    "posY": 1,
+    "posZ": 90.242,
     "rotX": 0,
     "rotY": 180,
     "rotZ": 0,
@@ -146,6 +146,5 @@
     "scaleY": 1,
     "scaleZ": 5
   },
-  "Value": 0,
-  "XmlUI": ""
+  "Value": 0
 }

@@ -1,0 +1,62 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "CardID": 579936,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "CustomDeck": {
+    "5794": {
+      "BackIsHidden": true,
+      "BackURL": "https://drive.google.com/uc?export=view\u0026id=1_2vYyVfoE9Ery7QoeqSOGjzUifkusL-_",
+      "FaceURL": "https://drive.google.com/uc?export=view\u0026id=1VkxEH1BLBUkRmLiFvufL5pt9Vazq-cvw",
+      "NumHeight": 5,
+      "NumWidth": 8,
+      "Type": 0,
+      "UniqueBack": true
+    }
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "d7e270",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": true,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Memo": "{\"elite\":4,\"hp\":8,\"monstertype\":[\"Ancient One\"],\"name\":\"Umordhoth\",\"number\":19,\"remnant\":true,\"role\":\"Monster\",\"trait\":\"Massive\",\"type\":\"codex\"}",
+  "Name": "Card",
+  "Nickname": "19",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "codex"
+  ],
+  "Tooltip": false,
+  "Transform": {
+    "posX": 44.563,
+    "posY": 2.046,
+    "posZ": 56.898,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 1.5,
+    "scaleY": 1,
+    "scaleZ": 1.5
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

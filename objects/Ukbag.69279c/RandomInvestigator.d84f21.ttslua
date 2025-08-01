@@ -1,0 +1,12 @@
+type = "all_roles"
+
+function changeRole(player, alt, id)
+    local posStr = self.UI.getAttribute(id, "position")
+    local x, z, y = posStr:match("^(%-?%d+)%s+(%-?%d+)%s+(%-?%d+)$")
+    x, z, y = tonumber(x), tonumber(z), tonumber(y)
+    local newPosStr = string.format("%d %d %d", x, z + 20, y)
+    self.UI.setAttribute("btn_img", "position", newPosStr)
+    self.UI.setAttribute("btn_img1", "position", newPosStr)
+    local role = id:gsub("1$", "")
+    type = role
+end

@@ -39,7 +39,7 @@
   "HideWhenFaceDown": false,
   "IgnoreFoW": false,
   "LayoutGroupSortIndex": 0,
-  "Locked": false,
+  "Locked": true,
   "LuaScriptState": "{\"hp\":0,\"maxHp\":1}",
   "LuaScript_path": "MonsterMat.f50cd9.ttslua",
   "MeasureMovement": false,
@@ -53,9 +53,9 @@
   ],
   "Tooltip": true,
   "Transform": {
-    "posX": 80.312,
-    "posY": 2.1,
-    "posZ": 59.921,
+    "posX": 114.308,
+    "posY": 1,
+    "posZ": 86.634,
     "rotX": 0,
     "rotY": 180,
     "rotZ": 180,
@@ -63,6 +63,5 @@
     "scaleY": 1,
     "scaleZ": 1.7
   },
-  "Value": 0,
-  "XmlUI": ""
+  "Value": 0
 }

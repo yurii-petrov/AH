@@ -101,12 +101,6 @@ local locationMatId = "9fe1d3"
 local nastilo4kaId = "d75b3b"
 
 -- ╭──────────────────────────────────────────────╮
--- │                Deck ids                      │
--- ╰──────────────────────────────────────────────╯
-
-local referenceDeckId = "77f0b1"
-
--- ╭──────────────────────────────────────────────╮
 -- │                Bags                          │
 -- ╰──────────────────────────────────────────────╯
 
@@ -938,10 +932,10 @@ function tryGetItemIndex(shopMat, object, objectData)
   }}
 
   local pos = shopMat.positionToLocal(object.getPosition())
-  print(serpent.tts(pos))
+  -- print(serpent.tts(pos))
   for i, itemArea in ipairs(itemAreas) do
     if pos.x >= itemArea.minX and pos.x <= itemArea.maxX and pos.z >= itemArea.minZ and pos.z <= itemArea.maxZ then
-      print(i)
+      -- print(i)
       return i
     end
   end
@@ -1066,7 +1060,13 @@ function onRandomInvestigatorCardDrop(colorName, object)
     return
   end
 
-  object.setPositionSmooth({60, 3, -8})
+  local objectData = parseJson(object.memo)
+  local table = getObjectFromGUID(tableId)
+  if objectData and objectData.startPosition and table then
+    object.setPositionSmooth(table.positionToWorld(objectData.startPosition):setAt("y", 3))
+  else
+    object.setPositionSmooth({60, 3, -8})
+  end
     local investigatorCard = getObjectFromGUID(findInvestigatorData.guid)
   if investigatorCard then
     local cardPosition = investigatorMat.positionToWorld({0.316, 2.213, 0.344})
@@ -1232,7 +1232,8 @@ function onInvestigatorDrop(colorName, object, objectData, isIgnoreRandomCard)
     local optionalPosition = {0.958, 3, -0.58}
     for _, o in ipairs(getObjects()) do
 
-      if o.type == "Deck" and o.memo and string.lower(o.memo) == string.lower(objectData.name) then
+      local oData = parseJson(o.memo)
+      if o.type == "Deck" and oData and oData.name and string.lower(oData.name) == string.lower(objectData.name) then
         local p = object.getPosition():setAt("y", 3)
         local cards = o.spread()
 
@@ -1545,8 +1546,16 @@ function onClickPrepareNumberOfPlayers()
     return
   end
 
-  local referenceDeck = getObjectFromGUID(referenceDeckId)
+  local referenceDeck = nil
+  for _, obj in ipairs(getObjects()) do
+    if obj.type == "Deck" and obj.getName() == "Reference Cards" then
+      referenceDeck = obj
+      break
+    end
+  end
+
   if not referenceDeck then
+    error("Reference Cards not found")
     return
   end
 
@@ -2377,6 +2386,70 @@ function getScenarioData(n)
 end
 
 -- ╭──────────────────────────────────────────────╮
+-- │                SELECT LANGUAGE               │
+-- ╰──────────────────────────────────────────────╯
+
+function clickOnEN()
+  gameData.language = "eng"
+  translationService.setCurrentLanguage(gameData.language)
+  -- broadcastToAll("English is not available yet. We're actively working on it. Thank you for your patience!", "Green")
+  self.UI.setAttribute("languages", "active", false)
+  self.UI.setAttribute("main_menu", "active", true)
+
+  for _, o in ipairs(getObjects()) do
+    if o.type == "Bag" and o.memo and o.memo == "Eng bag" then
+      prepareLanguageBag(o)
+      return
+    end
+  end
+end
+function clickOnUK()
+  gameData.language = "ukr"
+  translationService.setCurrentLanguage(gameData.language)
+
+  self.UI.setAttribute("languages", "active", false)
+  self.UI.setAttribute("main_menu", "active", true)
+
+  for _, o in ipairs(getObjects()) do
+    if o.type == "Bag" and o.memo and o.memo == "Uk bag" then
+      prepareLanguageBag(o)
+      return
+    end
+  end
+end
+
+function prepareLanguageBag(bag)
+  if not bag then
+    return
+  end
+
+  local table = getObjectFromGUID(tableId)
+  if not table then
+    return
+  end
+
+   for i = #bag.getObjects(), 1, -1 do
+    local obj = bag.getObjects()[i]
+    local memoTable = parseJson(obj.memo)
+    if memoTable and memoTable.startPosition then
+      local o = bag.takeObject({
+        index = obj.index,
+        position = table.positionToWorld(memoTable.startPosition):setAt("y", 3),
+        rotation = {0, 180, 180},
+        smooth = false
+      })
+
+      runAfterRest(o, function(o)
+        if o.type == "Generic" or o.type == "Tile" or o.type == "Card" or (memoTable.type and (memoTable.type == "dark pact" or memoTable.type == "blessed cursed" or memoTable.type == "archive")) then
+          o.setRotation({0, 180, 0})
+        end
+      end)
+    end
+  end
+  -- print(bag.guid)
+end
+
+-- ╭──────────────────────────────────────────────╮
 -- │                SCENARIO SETUP                │
 -- ╰──────────────────────────────────────────────╯
 
@@ -2483,7 +2556,7 @@ function prepareScenarioMonsterDeck()
   for _, obj in ipairs(getObjects()) do
     if obj.type == "Deck" then
       local objData = parseJson(obj.memo)
-      if objData and string.lower(objData.type) == "monster" then
+      if objData and objData.type and string.lower(objData.type) == "monster" then
         monsterDeck = obj
       end
     end
@@ -5025,6 +5098,39 @@ function nPos(s, h)
     local rot = s.positionToLocal(h.getRotation())
     local formattedRot = {string.format("%.3f", rot[1]), string.format("%.3f", rot[2]), string.format("%.3f", rot[3])}
     log("location = " .. m.name .. ", \npos=" .. serpent.tts(formattedPos))
+  end
+end
+
+function setSPs(s, hs)
+  for _, h in pairs(hs) do
+    setSP(s, h)
+  end
+end
+
+function setSP(s, h)
+  if s and h then
+    
+    if not h.memo then
+      local p = s.positionToLocal(h.getPosition())
+      h.memo = JSON.encode({startPosition = p})
+      print("\nstartPosition = " .. serpent.tts(p) .. "\n" .. h.guid)
+    else
+      local data = parseJson(h.memo)
+      local p = s.positionToLocal(h.getPosition())
+      if data then
+        data.startPosition = p
+        h.memo = JSON.encode(data)
+        print("\nstartPosition = " .. serpent.tts(p) .. "\n" .. h.guid)
+      else
+        local p = s.positionToLocal(h.getPosition())
+        h.memo = JSON.encode({
+          name = h.memo,
+          startPosition = p
+        })
+        print("\nstartPosition = " .. serpent.tts(p) .. "\n" .. h.guid)
+        -- print("Looks like memo is not table: "..h.memo)
+      end
+    end
   end
 end
 
