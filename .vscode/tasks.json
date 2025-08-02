@@ -2,48 +2,7 @@
   "version": "2.0.0",
   "tasks": [
     {
-  "label": "Arkham Horror: Build (macOS)",
-  "type": "shell",
-  "command": "go",
-  "args": [
-    "run",
-    "main.go",
-    "-moddir",
-    "${workspaceFolder}",
-    "-modfile",
-    "${userHome}/Library/Tabletop Simulator/Saves/ArkhamHorror.json"
-  ],
-  "options": {
-    "cwd": "${env:HOME}/TTSModManager"
-  },
-  "problemMatcher": [],
-  "group": {
-    "kind": "build",
-    "isDefault": true
-  },
-  "os": "mac"
-},
-{
-  "label": "Arkham Horror: Decompose (macOS)",
-  "type": "shell",
-  "command": "go",
-  "args": [
-    "run",
-    "main.go",
-    "-moddir",
-    "${workspaceFolder}",
-    "-modfile",
-    "${userHome}/Library/Tabletop Simulator/Saves/ArkhamHorror.json",
-    "-reverse"
-  ],
-  "options": {
-    "cwd": "${env:HOME}/TTSModManager"
-  },
-  "problemMatcher": [],
-  "os": "mac"
-},
-    {
-      "label": "Arkham Horror: Build (Window)",
+      "label": "Arkham Horror: Build",
       "type": "shell",
       "command": "go",
       "windows": {
@@ -74,7 +33,7 @@
       }
     },
     {
-      "label": "Arkham Horror: Decompose (Window)",
+      "label": "Arkham Horror: Decompose",
       "type": "shell",
       "command": "go",
       "windows": {
