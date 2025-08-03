@@ -580,6 +580,21 @@ function onPlayerAction(player, action, targets)
 end
 
 function discardToShop(obj, objData)
+
+  local shopObj = getShopObj(objData.type)
+
+  if not shopObj then
+    return
+  end
+
+  obj.setRotation({0, 180, 180})
+  shopObj.setRotation({0, 180, 180})
+  Wait.time(function()
+      shopObj.putObject(obj)
+  end, 0.5)
+end
+
+function getShopObj(shopType)
   local shopMat = getObjectFromGUID(shopMatId)
   if not shopMat then
     return
@@ -591,31 +606,18 @@ function discardToShop(obj, objData)
   end
 
   for _, deckData in ipairs(shopMatData.decks) do
-    if string.lower(objData.type) == string.lower(deckData.type) and deckData.pos then
+    if string.lower(shopType) == string.lower(deckData.type) and deckData.pos then
       local p = shopMat.positionToWorld(deckData.pos)
       local objs = findObjsInRadius(p:setAt("y", 2.11))
       for _, o in ipairs(objs) do
         local oData = parseJson(o.memo)
         if oData and oData.type and string.lower(deckData.type) == string.lower(oData.type) then
-          obj.setRotation({0, 180, 0})
-          o.setRotation({0, 180, 0})
-          local deck = o.putObject(obj)
-          if o.type == "Card" then
-            deck.memo = JSON.encode({
-              type = oData.type
-            })
-            deck.setRotation({0, 180, 180})
-          else
-            o.setRotation({0, 180, 180})
-          end
-          break
+          return o
         end
       end
-      obj.setRotation({0, 180, 180})
-      obj.setPositionSmooth(p:setAt("y", 3))
-      break
     end
   end
+
 end
 
 function discardCondition(obj, objData)
