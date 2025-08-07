@@ -124,8 +124,8 @@
 	<panel width="437" height="330" position="233 133" rectAlignment="MiddleCenter">
 		<VerticalLayout
 			contentSizeFitter="vertical" rectAlignment="UpperCenter" spacing="15">
-			<Text id="title" fontSize="40" fontStyle="bold" text="ПРИШЕСТЯ АЗАТОТА" />
-			<Text id="body" fontSize="28" text="Азатот дрімає в центрі нескінченності, заколисаний безперервним співом проклятих флейт. Утім, деякі смертні шукають невичерпної сили й руйнувань, які принесе Сліпий божевільний бог, водночас прирікаючи усе людство на загибель... "/>
+			<Text id="title" fontSize="40" fontStyle="bold" text="" />
+			<Text id="body" fontSize="28" text=""/>
 		</VerticalLayout>
 	</panel>
 	<panel
@@ -133,21 +133,22 @@
 		height="92"
 		position="-233 -138">
 		<Button
-			id="changeScenario"
+			id="MM_change_scenario"
 			onClick="changeScenario"
 			width="440"
 			height="92"
 			color="clear"
-			text="ЗМІНИТИ СЦЕНАРІЙ"/>
+			text=""/>
 		<image
 			width="440"
 			height="92"
 			image="button_large"/>
 	</panel>
 	<text
+		id="MM_player_numbers"
 		childAlignment="MiddleCenter"
 		position="515 -394"
-		text="Кількість гравців:"
+		text=""
 		fontSize="32"
 		fontStyle="bold"/>
     <HorizontalLayout
@@ -188,15 +189,15 @@
 			position="0 -255"
 			spacing="30">
 		<panel>
-			<Button onClick="closeMenu" text="ЗГОРНУТИ" color="clear"/>
+			<Button id="MM_close" onClick="closeMenu" text="" color="clear"/>
 			<image image="button_medium"/>
 		</panel>
 		<panel>
-			<Button id="addons" onClick="" text="ДОПОВНЕННЯ" color="clear" textColor="grey"/>
+			<Button id="MM_expansions" onClick="" text="" color="clear" textColor="grey"/>
 			<image image="button_medium" color="gray"/>
 		</panel>
 		<panel>
-			<Button id="startGame" onClick="startGame" text="ПОЧАТИ ГРУ" color="clear"/>
+			<Button id="MM_start_game" onClick="startGame" text="" color="clear"/>
 			<image image="button_medium"/>
 		</panel>
 	</HorizontalLayout>
@@ -220,7 +221,7 @@
 			childAlignment="MiddleCenter"
 			rectAlignment="UpperCenter">
 			<panel minHeight="100">
-				<text text="Оберіть сценарій" fontSize="46" fontStyle="bold" alignment="MiddleCenter"/>
+				<text id="MM_choice_scenario" text="" fontSize="46" fontStyle="bold" alignment="MiddleCenter"/>
 			</panel>
 			<panel minHeight="410">
 				<HorizontalLayout
@@ -230,33 +231,33 @@
 						<panel id="scenario_panel1" color='#ffffff22'>
 							<button id="scenario1" onClick="chooseScenario"/>
 							<image image="scenario1" width="180" preserveAspect="true" rectAlignment="UpperCenter" offsetXY="0 -10"/>
-							<text alignment="LowerCenter" text="Пришестя Азатота" offsetXY="0 10"/>
+							<text id="MM_scenario1_name_text" alignment="LowerCenter" text="" offsetXY="0 10"/>
 						</panel>
 						<panel id="scenario_panel2">
 							<button id="scenario2" onClick="chooseScenario"/>
 							<image image="scenario2" width="180" preserveAspect="true" rectAlignment="UpperCenter" offsetXY="0 -10"/>
-							<text alignment="LowerCenter" text="Трапеза Умордота" offsetXY="0 10"/>
+							<text id="MM_scenario2_name" alignment="LowerCenter" text="" offsetXY="0 10"/>
 						</panel>
 						<panel id="scenario_panel3">
 							<button id="scenario3" onClick="chooseScenario"/>
 							<image image="scenario3" width="180" preserveAspect="true" rectAlignment="UpperCenter" offsetXY="0 -10"/>
-							<text alignment="LowerCenter" text="Покров Сутінків" offsetXY="0 10"/>
+							<text id="MM_scenario3_name" alignment="LowerCenter" text="" offsetXY="0 10"/>
 						</panel>
 						<panel id="scenario_panel4">
 							<button id="scenario4" onClick="chooseScenario"/>
 							<image image="scenario4" width="180" preserveAspect="true" rectAlignment="UpperCenter" offsetXY="0 -10"/>
-							<text alignment="LowerCenter" text="Відлуння Безодні" offsetXY="0 10"/>
+							<text id="MM_scenario4_name" alignment="LowerCenter" text="" offsetXY="0 10"/>
 						</panel>
 				</HorizontalLayout>
 			</panel>
 			<panel minHeight="100">
 				<Button
-					id="submitScenario"
+					id="MM_select_scenario"
 					onClick="submitScenario"
 					width="440"
 					height="92"
 					color="clear"
-					text="ОБРАТИ СЦЕНАРІЙ"/>
+					text=""/>
 				<image
 					width="400" preserveAspect="true"
 					image="button_large"/>
@@ -273,12 +274,12 @@
 		width="300"
 		height="109">
 	<Button
-		id="restoreBtn"
+		id="MM_open"
 		onClick="restore"
 		width="280"
 		height="89"
 		color="clear"
-		text="РОЗГОРНУТИ"/>
+		text=""/>
 		<image
 			width="280"
 			height="89"

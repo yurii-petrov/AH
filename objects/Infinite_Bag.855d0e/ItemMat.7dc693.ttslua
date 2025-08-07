@@ -1,4 +1,4 @@
---serpent = require("serpent")
+--serpent = require("util/serpent")
 
 local data = {
 	hp = 0,

@@ -27,7 +27,7 @@ i18n = {}
 ---@return string: The translated string or the id if no translation is found.
 function i18n.getStrById(id)
   if I18N_DATA[id] then
-    local val = I18N_DATA[id][optionPanel.uiLanguage]
+    local val = I18N_DATA[id][gameData.language]
     -- Check if the translation exists and is not an empty string.
     if val and val ~= "" then
       return val
@@ -44,13 +44,13 @@ end
 ---@param code? string Language code (e.g., "de", "en"). Defaults to the current UI language.
 ---@return string: The name of the font to use.
 function i18n.getFont(code)
-  code = code or optionPanel.uiLanguage
+  code = code or gameData.language
   for _, tbl in ipairs(LANGUAGES) do
     if tbl.code == code then
       return tbl.font
     end
   end
-  return "font_teutonic-arkham" -- Default fallback font.
+  return LANGUAGES[0].font
 end
 
 --- Determines if a special font should be applied to a UI element based on its ID.
@@ -87,7 +87,6 @@ function i18n.updateGlobalUiLanguage()
   local xmlTable = Global.UI.getXmlTable() or {}
   i18n.recursiveTranslate(xmlTable)
   updateGlobalXml(xmlTable)
-  updateOptionPanelState()
 end
 
 -- This helper function recursively translates the UI table.

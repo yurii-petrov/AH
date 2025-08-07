@@ -14,8 +14,32 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.6\n"
 
+msgid "MM_change_scenario"
+msgstr "CHANGE SCENARIO"
+
+msgid "MM_player_numbers"
+msgstr "Player numbers:"
+
+msgid "MM_open"
+msgstr "OPEN"
+
+msgid "MM_close"
+msgstr "CLOSE"
+
+msgid "MM_expansions"
+msgstr "EXPANSIONS"
+
+msgid "MM_start_game"
+msgstr "START GAME"
+
+msgid "MM_choice_scenario"
+msgstr "Choice Scenario"
+
+msgid "MM_select_scenario"
+msgstr "Select Scenario"
+
 # Scenario 1
-msgid "MM_scenario1_name"
+msgid "MM_scenario1_name_text"
 msgstr "APPROACH OF AZATHOTH"
 
 msgid "MM_scenario1_desc"
@@ -29,14 +53,14 @@ msgid "MM_scenario2_desc"
 msgstr "In his house at R'lyeh, dead Cthulbu waits dreaming. He slumbers and waits until the stars are right to bring R'lyeh back from its home beneath the waves and for the Great Old Ones to return. For that is not dead which can eternal lie, and with strange aeons even death may die."
 
 # Scenario 3
-msgid "MM_scenario3_title"
+msgid "MM_scenario3_name"
 msgstr "FEAST FOR UMÔRDHOTH"
 
 msgid "MM_scenario3_desc"
 msgstr "The ghouls that dwell beneath the earth hunger for the flesh of corpses, yet even they live in worshipful fear of the Devourer Below. But the ghouls are not the only worshipers of Umôrdhoth in Arkham..."
 
 # Scenario 4
-msgid "MM_scenario4_title"
+msgid "MM_scenario4_name"
 msgstr "VEIL OF TWILIGHT"
 
 msgid "MM_scenario4_desc"

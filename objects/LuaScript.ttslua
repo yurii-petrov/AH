@@ -1,8 +1,8 @@
 require("Global/i18n")
 require("Global/i18nData")
 
-serpent = require("serpent")
-local translationService = require("TranslationService")
+serpent = require("util/serpent")
+local translationService = require("util/TranslationService")
 isTestMode = false
 isLoadSaveData = false
 
@@ -142,24 +142,6 @@ local mythosTokenBagIds = {
 local currentSetup = {
   scenario = 1,
   players = 2
-}
-local scenarioInfo = {
-  [1] = {
-    name = "Пришестя Азатота",
-    description = "Азатот дрімає в центрі нескінченності, заколисаний безперервним співом проклятих флейт. Утім, деякі смертні шукають невичерпної сили й руйнувань, які принесе Сліпий божевільний бог, водночас прирікаючи усе людство на загибель..."
-  },
-  [2] = {
-    name = "Трапеза Умордота",
-    description = "Гулі, що живуть під землею, вічно прагнуть плоті трупів, але навіть вони бояться Пожирача з глибин. Однак гулі не єдині послідовники Умордота в Аркгемі..."
-  },
-  [3] = {
-    name = "Покров Сутінків",
-    description = "Щось чигає в холодній порожнечі між світами. Ховаючись під покровом, воно шепоче до тих, хто здатен звільнити його з вʼязниці. Одержимі ним здобувають велику силу, але її ціна жахливо висока. І день за днем його свобода стає все ближчою."
-  },
-  [4] = {
-    name = "Відлуння Безодні",
-    description = "У домі своєму, у Р'льєху, мертвий Ктулху чекає вві сні. Він дрімає і чекає, коли зірки стануть на свої місця і Р'льєх вирине з морських глибин, а Стародавні повернуться в цей світ. Бо не мертве те, що вічно пробуває, а з вічністю, бува, і смерть сама вмирає."
-  }
 }
 
 setupScenario = {
@@ -1432,11 +1414,12 @@ function chooseScenario(player, alt, id)
   self.UI.setAttribute('scenario_panel' .. id:match("%d+"), 'color', '#ffffff22')
   currentSetup.scenario = tonumber(id:match("%d+")) -- оновлюємо номер сценарію
 end
+
 function submitScenario()
   self.UI.setAttribute('chooseScenario', 'active', false)
+  self.UI.setAttribute('title', 'text', i18n.getStrById("MM_scenario"..currentSetup.scenario.."_name"))
+  self.UI.setAttribute('body', 'text', i18n.getStrById("MM_scenario"..currentSetup.scenario.."_desc"))
   self.UI.setAttribute('main_menu', 'active', true)
-  self.UI.setAttribute('title', 'text', scenarioInfo[currentSetup.scenario].name)
-  self.UI.setAttribute('body', 'text', scenarioInfo[currentSetup.scenario].description)
   self.UI.setAttribute('scenarioImage', 'image', 'scenario' .. currentSetup.scenario)
 end
 
@@ -2396,10 +2379,8 @@ end
 
 function clickOnEN()
   gameData.language = "eng"
+  i18n.updateGlobalUiLanguage()
   translationService.setCurrentLanguage(gameData.language)
-  -- broadcastToAll("English is not available yet. We're actively working on it. Thank you for your patience!", "Green")
-  self.UI.setAttribute("languages", "active", false)
-  self.UI.setAttribute("main_menu", "active", true)
 
   for _, o in ipairs(getObjects()) do
     if o.type == "Bag" and o.memo and o.memo == "Eng bag" then
@@ -2408,12 +2389,11 @@ function clickOnEN()
     end
   end
 end
-function clickOnUK()
-  gameData.language = "ukr"
-  translationService.setCurrentLanguage(gameData.language)
 
-  self.UI.setAttribute("languages", "active", false)
-  self.UI.setAttribute("main_menu", "active", true)
+function clickOnUK()
+  gameData.language = "uk"
+  i18n.updateGlobalUiLanguage()
+  translationService.setCurrentLanguage(gameData.language)
 
   for _, o in ipairs(getObjects()) do
     if o.type == "Bag" and o.memo and o.memo == "Uk bag" then
@@ -2422,6 +2402,32 @@ function clickOnUK()
     end
   end
 end
+
+function updateGlobalXml(newXml)
+  -- self.UI.setAttribute("languages", "active", false)
+  -- self.UI.setAttribute("main_menu", "active", true)
+  -- preserve visibility settings for these elements
+  local windowIdList = {
+    "languages",
+    "main_menu",
+  }
+
+  for _, windowId in ipairs(windowIdList) do
+    local element = getXmlTableElementById(newXml, windowId)
+    element.attributes.active = windowId == "main_menu" and "true" or "false"
+  end
+
+  print("newXml: "..serpent.tts(newXml))
+
+  self.UI.setXmlTable(newXml)
+end
+
+-- function updateGlobalXmlText()
+--   self.UI.setAttribute('MM_scenario1_name', 'text', i18n.getStrById("MM_scenario1_name"))
+--   self.UI.setAttribute('MM_scenario2_name', 'text', i18n.getStrById("MM_scenario2_name"))
+--   self.UI.setAttribute('MM_scenario3_name', 'text', i18n.getStrById("MM_scenario3_name"))
+--   self.UI.setAttribute('MM_scenario4_name', 'text', i18n.getStrById("MM_scenario4_name"))
+-- end
 
 function prepareLanguageBag(bag)
   if not bag then
@@ -5174,6 +5180,17 @@ end
 
 function mythHudBtn(player)
   onClickDrawMythos(nil, player.color)
+end
+
+function getXmlTableElementById(ui, id)
+  for _, obj in ipairs(ui) do
+    if obj.attributes and obj.attributes.id and obj.attributes.id == id then return obj end
+    if obj.children then
+      local result = getXmlTableElementById(obj.children, id)
+      if result then return result end
+    end
+  end
+  return nil
 end
 
 -- TESTS
