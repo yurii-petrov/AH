@@ -40,7 +40,7 @@ msgstr ""
 "загибель..."
 
 # Scenario 2
-msgid "MM_scenario2_name"
+msgid "MM_scenario2_name_text"
 msgstr "ВІДЛУННЯ БЕЗОДНІ"
 
 msgid "MM_scenario2_desc"
@@ -51,8 +51,8 @@ msgstr ""
 "вічністю, бува, і смерть сама вмирає"
 
 # Scenario 3
-msgid "MM_scenario3_name"
-msgstr "Трапеза Умордота"
+msgid "MM_scenario3_name_text"
+msgstr "ТРАПЕЗА УМОРДОТА"
 
 msgid "MM_scenario3_desc"
 msgstr ""
@@ -61,7 +61,7 @@ msgstr ""
 "Аркгемі..."
 
 # Scenario 4
-msgid "MM_scenario4_name"
+msgid "MM_scenario4_name_text"
 msgstr "ПОКРОВ СУТІНКІВ"
 
 msgid "MM_scenario4_desc"

@@ -236,17 +236,17 @@
 						<panel id="scenario_panel2">
 							<button id="scenario2" onClick="chooseScenario"/>
 							<image image="scenario2" width="180" preserveAspect="true" rectAlignment="UpperCenter" offsetXY="0 -10"/>
-							<text id="MM_scenario2_name" alignment="LowerCenter" text="" offsetXY="0 10"/>
+							<text id="MM_scenario2_name_text" alignment="LowerCenter" text="" offsetXY="0 10"/>
 						</panel>
 						<panel id="scenario_panel3">
 							<button id="scenario3" onClick="chooseScenario"/>
 							<image image="scenario3" width="180" preserveAspect="true" rectAlignment="UpperCenter" offsetXY="0 -10"/>
-							<text id="MM_scenario3_name" alignment="LowerCenter" text="" offsetXY="0 10"/>
+							<text id="MM_scenario3_name_text" alignment="LowerCenter" text="" offsetXY="0 10"/>
 						</panel>
 						<panel id="scenario_panel4">
 							<button id="scenario4" onClick="chooseScenario"/>
 							<image image="scenario4" width="180" preserveAspect="true" rectAlignment="UpperCenter" offsetXY="0 -10"/>
-							<text id="MM_scenario4_name" alignment="LowerCenter" text="" offsetXY="0 10"/>
+							<text id="MM_scenario4_name_text" alignment="LowerCenter" text="" offsetXY="0 10"/>
 						</panel>
 				</HorizontalLayout>
 			</panel>

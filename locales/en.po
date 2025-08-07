@@ -46,21 +46,21 @@ msgid "MM_scenario1_desc"
 msgstr "At the center of infinity slumbers Azathoth, lulled to sleep by the ceaseless piping of accursed flutes. Yet some mortals would seek to draw the infinite power and calamity of the Blind Idiot God to them, and thereby doom all of humanity..."
 
 # Scenario 2
-msgid "MM_scenario2_name"
+msgid "MM_scenario2_name_text"
 msgstr "ECHOES OF THE DEEP"
 
 msgid "MM_scenario2_desc"
 msgstr "In his house at R'lyeh, dead Cthulbu waits dreaming. He slumbers and waits until the stars are right to bring R'lyeh back from its home beneath the waves and for the Great Old Ones to return. For that is not dead which can eternal lie, and with strange aeons even death may die."
 
 # Scenario 3
-msgid "MM_scenario3_name"
+msgid "MM_scenario3_name_text"
 msgstr "FEAST FOR UMÔRDHOTH"
 
 msgid "MM_scenario3_desc"
 msgstr "The ghouls that dwell beneath the earth hunger for the flesh of corpses, yet even they live in worshipful fear of the Devourer Below. But the ghouls are not the only worshipers of Umôrdhoth in Arkham..."
 
 # Scenario 4
-msgid "MM_scenario4_name"
+msgid "MM_scenario4_name_text"
 msgstr "VEIL OF TWILIGHT"
 
 msgid "MM_scenario4_desc"

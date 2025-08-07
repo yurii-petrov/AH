@@ -50,7 +50,7 @@ function i18n.getFont(code)
       return tbl.font
     end
   end
-  return LANGUAGES[0].font
+  return LANGUAGES[1].font
 end
 
 --- Determines if a special font should be applied to a UI element based on its ID.

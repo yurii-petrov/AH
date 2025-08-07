@@ -1417,7 +1417,7 @@ end
 
 function submitScenario()
   self.UI.setAttribute('chooseScenario', 'active', false)
-  self.UI.setAttribute('title', 'text', i18n.getStrById("MM_scenario"..currentSetup.scenario.."_name"))
+  self.UI.setAttribute('title', 'text', i18n.getStrById("MM_scenario"..currentSetup.scenario.."_name_text"))
   self.UI.setAttribute('body', 'text', i18n.getStrById("MM_scenario"..currentSetup.scenario.."_desc"))
   self.UI.setAttribute('main_menu', 'active', true)
   self.UI.setAttribute('scenarioImage', 'image', 'scenario' .. currentSetup.scenario)
@@ -2404,9 +2404,6 @@ function clickOnUK()
 end
 
 function updateGlobalXml(newXml)
-  -- self.UI.setAttribute("languages", "active", false)
-  -- self.UI.setAttribute("main_menu", "active", true)
-  -- preserve visibility settings for these elements
   local windowIdList = {
     "languages",
     "main_menu",
@@ -2417,17 +2414,11 @@ function updateGlobalXml(newXml)
     element.attributes.active = windowId == "main_menu" and "true" or "false"
   end
 
-  print("newXml: "..serpent.tts(newXml))
+  self.UI.setAttribute('title', 'text', i18n.getStrById("MM_scenario1_name_text"))
+  self.UI.setAttribute('body', 'text', i18n.getStrById("MM_scenario1_desc"))
 
   self.UI.setXmlTable(newXml)
 end
-
--- function updateGlobalXmlText()
---   self.UI.setAttribute('MM_scenario1_name', 'text', i18n.getStrById("MM_scenario1_name"))
---   self.UI.setAttribute('MM_scenario2_name', 'text', i18n.getStrById("MM_scenario2_name"))
---   self.UI.setAttribute('MM_scenario3_name', 'text', i18n.getStrById("MM_scenario3_name"))
---   self.UI.setAttribute('MM_scenario4_name', 'text', i18n.getStrById("MM_scenario4_name"))
--- end
 
 function prepareLanguageBag(bag)
   if not bag then
