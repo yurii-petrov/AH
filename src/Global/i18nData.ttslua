@@ -2,11 +2,35 @@
 -- Do not edit it manually, as your changes will be overwritten.
 
 I18N_DATA = {
+  ["MM_change_scenario"] = {
+    ["en"] = "CHANGE SCENARIO",
+    ["uk"] = "ЗМІНИТИ СЦЕНАРІЙ",
+  },
+  ["MM_choice_scenario"] = {
+    ["en"] = "Choice Scenario",
+    ["uk"] = "Оберіть сценарій",
+  },
+  ["MM_close"] = {
+    ["en"] = "CLOSE",
+    ["uk"] = "ЗГОРНУТИ",
+  },
+  ["MM_expansions"] = {
+    ["en"] = "EXPANSIONS",
+    ["uk"] = "ДОПОВНЕННЯ",
+  },
+  ["MM_open"] = {
+    ["en"] = "OPEN",
+    ["uk"] = "РОЗГОРНУТИ",
+  },
+  ["MM_player_numbers"] = {
+    ["en"] = "Player numbers:",
+    ["uk"] = "Кількість гравців:",
+  },
   ["MM_scenario1_desc"] = {
     ["en"] = "At the center of infinity slumbers Azathoth, lulled to sleep by the ceaseless piping of accursed flutes. Yet some mortals would seek to draw the infinite power and calamity of the Blind Idiot God to them, and thereby doom all of humanity...",
     ["uk"] = "Азатот дрімає в центрі нескінченності, заколисаний безперервним співом проклятих флейт. Утім, деякі смертні шукають невичерпної сили й руйнувань, які принесе Сліпий божевільний бог, водночас прирікаючи усе людство на загибель...",
   },
-  ["MM_scenario1_name"] = {
+  ["MM_scenario1_name_text"] = {
     ["en"] = "APPROACH OF AZATHOTH",
     ["uk"] = "ПРИШЕСТЯ АЗАТОТА",
   },
@@ -14,24 +38,32 @@ I18N_DATA = {
     ["en"] = "In his house at R'lyeh, dead Cthulbu waits dreaming. He slumbers and waits until the stars are right to bring R'lyeh back from its home beneath the waves and for the Great Old Ones to return. For that is not dead which can eternal lie, and with strange aeons even death may die.",
     ["uk"] = "У домі своєму, у Р'льєху, мертвий Ктулху чекає вві сні. Він дрімає і чекає, коли зірки стануть на свої місця і Р'льєх вирине з морських глибин, а Стародавні повернуться в цей світ. Бо не мертве те, що вічно пробуває, а з вічністю, бува, і смерть сама вмирає",
   },
-  ["MM_scenario2_name"] = {
+  ["MM_scenario2_name_text"] = {
     ["en"] = "ECHOES OF THE DEEP",
-    ["uk"] = "ІДЛУННЯ БЕЗОДНІ",
+    ["uk"] = "ВІДЛУННЯ БЕЗОДНІ",
   },
   ["MM_scenario3_desc"] = {
     ["en"] = "The ghouls that dwell beneath the earth hunger for the flesh of corpses, yet even they live in worshipful fear of the Devourer Below. But the ghouls are not the only worshipers of Umôrdhoth in Arkham...",
     ["uk"] = "Гулі, що живуть під землею, вічно прагнуть плоті трупів, але навіть вони бояться Пожирача з Глибин. Однак гулі не єдині послідовники Умордота в Аркгемі...",
   },
-  ["MM_scenario3_title"] = {
+  ["MM_scenario3_name_text"] = {
     ["en"] = "FEAST FOR UMÔRDHOTH",
-    ["uk"] = "Трапеза Умордота",
+    ["uk"] = "ТРАПЕЗА УМОРДОТА",
   },
   ["MM_scenario4_desc"] = {
     ["en"] = "In the cold void between worlds, something lurks. Beyond the veil, it whispers, reaching out for those with the power to free it from its prison. Those who fall into its thrall gain great power, but at a terrible price. And each day, its freedom draws nearer.",
     ["uk"] = "Щось чигає в холодній порожнечі між світами. Ховаючись під покровом, воно шепоче до тих, хто здатен звільнити його з вʼязниці. Одержимі ним здобувають велику силу, але її ціна жахливо висока. І день за днем його свобода стає все ближчою.",
   },
-  ["MM_scenario4_title"] = {
+  ["MM_scenario4_name_text"] = {
     ["en"] = "VEIL OF TWILIGHT",
     ["uk"] = "ПОКРОВ СУТІНКІВ",
+  },
+  ["MM_select_scenario"] = {
+    ["en"] = "Select Scenario",
+    ["uk"] = "ОБРАТИ СЦЕНАРІЙ",
+  },
+  ["MM_start_game"] = {
+    ["en"] = "START GAME",
+    ["uk"] = "ПОЧАТИ ГРУ",
   },
 }
