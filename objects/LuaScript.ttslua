@@ -1,3 +1,6 @@
+require("Global/i18n")
+require("Global/i18nData")
+
 serpent = require("serpent")
 local translationService = require("TranslationService")
 isTestMode = false
