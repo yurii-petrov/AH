@@ -122,7 +122,7 @@
     <Image image="hud_1" height="700" width="1000"/>
     <Image id="scenarioImage" image="scenario1" width="440" preserveAspect="true" position="-233 118 "/>
     <Image id="scenarioMap" active="false" image="scenarioMap1" width="440" height="370" preserveAspect="true" position="-233 118"/>
-	<image image="map_button" position="-50 265" width="50" height="55"/>
+	<image image="map" position="-50 265" width="50" height="55"/>
 	<button onClick="mapToggle" position="-50 265" width="50" height="55" textColor="#ffffff" fontSize="14" text="МАПА" padding="0 0 1 0" fontStyle="regular"/>
 	<panel width="437" height="330" position="233 133" rectAlignment="MiddleCenter">
 		<VerticalLayout
@@ -196,7 +196,7 @@
 			<image image="button_medium"/>
 		</panel>
 		<panel>
-			<Button id="MM_expansions" onClick="" text="" color="clear"/>
+			<Button id="MM_expansions" onClick="addons" text="" color="clear"/>
 			<image image="button_medium"/>
 		</panel>
 		<panel>
