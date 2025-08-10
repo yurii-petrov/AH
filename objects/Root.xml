@@ -196,8 +196,8 @@
 			<image image="button_medium"/>
 		</panel>
 		<panel>
-			<Button id="MM_expansions" onClick="" text="" color="clear" textColor="grey"/>
-			<image image="button_medium" color="gray"/>
+			<Button id="MM_expansions" onClick="" text="" color="clear"/>
+			<image image="button_medium"/>
 		</panel>
 		<panel>
 			<Button id="MM_start_game" onClick="startGame" text="" color="clear"/>
