@@ -8,19 +8,15 @@ isLoadSaveData = false
 
 local phases = {{
   image = "phase_action_image",
-  name = "дій",
   color = {1, 1, 0.6}
 }, {
   image = "phase_monster_image",
-  name = "монстрів",
   color = {1, 0.6, 1}
 }, {
   image = "phase_encounter_image",
-  name = "зустрічей",
   color = {0.6, 1, 0.6}
 }, {
   image = "phase_myth_image",
-  name = "міту",
   color = {1, 0.6, 0.6}
 }}
 
@@ -1796,7 +1792,7 @@ end
 
 function onClickEncounter(obj, playerColor)
   if gameData.phase ~= 3 then
-    printToColor("Ця кнопка доступна тільки у фазу " .. phases[3].name, playerColor,
+    printToColor(i18n.getStrById("PB_myth_validate"), playerColor,
       {1, 0.2, 0.2})
     return
   end
@@ -2816,7 +2812,7 @@ function prepareScenarioDecks(scenarioData)
                       spawnClue(function()
                         spawnClue(function()
                           Global.UI.setAttribute("phase", "active", true)
-                          broadcastToAll("Настає фаза " .. phases[gameData.phase].name .. "!",
+                          broadcastToAll(i18n.getStrById("PB_next_phase").." " .. i18n.getStrById("PB_phase"..gameData.phase) .. "!",
                             phases[gameData.phase].color)
                           eventSpawnDooms(function()
                             isDrawMythInProcess = false
@@ -5146,7 +5142,7 @@ function nextPhase(player, value, id)
     gameData.phase = 1
   end
   Global.UI.setAttribute("phase_img", "image", phases[gameData.phase].image)
-  broadcastToAll("Настає фаза " .. phases[gameData.phase].name .. "!", phases[gameData.phase].color)
+broadcastToAll(i18n.getStrById("PB_next_phase").." " .. i18n.getStrById("PB_phase"..gameData.phase) .. "!", phases[gameData.phase].color)
 
   if gameData.phase == 1 then
     self.UI.setAttribute("phase_btn_myth", "active", false)

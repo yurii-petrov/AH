@@ -1,3 +1,5 @@
+require("Global/i18n")
+require("Global/i18nData")
 serpent = require("util/serpent")
 
 local data = {}
@@ -31,8 +33,9 @@ function setBottom(d)
 		return
 	end
 
-	if d.price == 0 then buy_txt = "Отримати за $0"
-	elseif d.price > 0 then buy_txt = "Купити за $" .. d.price end
+	print("S_get: "..i18n.getStrById("S_get"))
+	if d.price == 0 then buy_txt = i18n.getStrById("S_get")
+	elseif d.price > 0 then buy_txt = string.format(i18n.getStrById("S_buy"), d.price) end
     data["market_"..d.id] = d
 	local color = self.UI.getAttribute("market_"..d.id, "textColor")
 	self.UI.setAttribute("market_"..d.id, "text", buy_txt)

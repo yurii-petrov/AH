@@ -63,5 +63,32 @@ msgstr "The ghouls that dwell beneath the earth hunger for the flesh of corpses,
 msgid "MM_scenario4_name_text"
 msgstr "VEIL OF TWILIGHT"
 
+
 msgid "MM_scenario4_desc"
 msgstr "In the cold void between worlds, something lurks. Beyond the veil, it whispers, reaching out for those with the power to free it from its prison. Those who fall into its thrall gain great power, but at a terrible price. And each day, its freedom draws nearer."
+
+# Phases
+msgid "PB_phase1"
+msgstr "Action"
+
+msgid "PB_phase2"
+msgstr "Monster"
+
+msgid "PB_phase3"
+msgstr "Encounter"
+
+msgid "PB_phase4"
+msgstr "Mythos"
+
+msgid "PB_myth_validate"
+msgstr "This button is only available during the Mythos phase"
+
+msgid "PB_next_phase"
+msgstr "The phase begins"
+
+# Shop
+msgid "S_get"
+msgstr "Get for $0"
+
+msgid "S_buy"
+msgstr "Buy for $%s"

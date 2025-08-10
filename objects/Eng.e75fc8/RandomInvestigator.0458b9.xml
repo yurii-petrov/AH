@@ -15,14 +15,14 @@
 		fontStyle="Bold"
 		font="Fonts/AdonisC"
 		fontSize="143"
-		text="Випадковий"
+		text="Random"
 		color="#000000"/>
 	<text
 		position="0 1210 0"
 		fontStyle="Bold"
 		font="Fonts/AdonisC"
 		fontSize="95"
-		text="Дослідник"
+		text="Investigator"
 		color="#000000"/>
 	<text
 		position="80 820 0"
@@ -31,11 +31,11 @@
 		fontSize="95"
 		alignment="MiddleLeft"
 		color="#000000">
-		Якщо хочеш зіграти
-		випадковим дослідником,
-		обери роль нижче
-		(не обов'язково) та	поклади
-		цю карту на планшет	гравця.
+		If you want to play 
+		as a random investigator,
+		choose a role below 
+		(optional) and place this card 
+		on the player board.
 		</text>
 	<button
 		id="all_roles"
@@ -46,7 +46,7 @@
 		fontStyle="Bold"
 		font="Fonts/AdonisC"
 		fontSize="170"
-		text="Всі ролі"
+		text="All Roles"
 		textColor="#000000"
 		color="clear"/>
 	<button
@@ -58,7 +58,7 @@
 		fontStyle="Bold"
 		font="Fonts/AdonisC"
 		fontSize="170"
-		text="Містик"
+		text="Mystic"
 		textColor="#000000"
 		color="clear"/>
 	<button
@@ -70,7 +70,7 @@
 		fontStyle="Bold"
 		font="Fonts/AdonisC"
 		fontSize="170"
-		text="Захисник"
+		text="Guardian"
 		textColor="#000000"
 		color="clear"/>
 	<button
@@ -82,7 +82,7 @@
 		fontStyle="Bold"
 		font="Fonts/AdonisC"
 		fontSize="170"
-		text="Пройдисвіт"
+		text="Rogue"
 		textColor="#000000"
 		color="clear"/>
 	<button
@@ -94,7 +94,7 @@
 		fontStyle="Bold"
 		font="Fonts/AdonisC"
 		fontSize="170"
-		text="Загартований"
+		text="Survivor"
 		textColor="#000000"
 		color="clear"/>
 	<button
@@ -106,7 +106,7 @@
 		fontStyle="Bold"
 		font="Fonts/AdonisC"
 		fontSize="170"
-		text="Шукач"
+		text="Seeker"
 		textColor="#000000"
 		color="clear"/>
 </panel>
@@ -127,14 +127,14 @@
 		fontStyle="Bold"
 		font="Fonts/AdonisC"
 		fontSize="143"
-		text="Випадковий"
+		text="Random"
 		color="#000000"/>
 	<text
 		position="0 1210 0"
 		fontStyle="Bold"
 		font="Fonts/AdonisC"
 		fontSize="95"
-		text="Дослідник"
+		text="Investigator"
 		color="#000000"/>
 	<text
 		position="80 820 0"
@@ -143,11 +143,11 @@
 		fontSize="95"
 		alignment="MiddleLeft"
 		color="#000000">
-		Якщо хочеш зіграти
-		випадковим дослідником,
-		обери роль нижче
-		(не обов'язково) та	поклади
-		цю карту на планшет	гравця.
+		If you want to play 
+		as a random investigator,
+		choose a role below 
+		(optional) and place this card 
+		on the player board.
 		</text>
 	<button
 		id="all_roles1"
@@ -158,7 +158,7 @@
 		fontStyle="Bold"
 		font="Fonts/AdonisC"
 		fontSize="170"
-		text="Всі ролі"
+		text="All Roles"
 		textColor="#000000"
 		color="clear"/>
 	<button
@@ -170,7 +170,7 @@
 		fontStyle="Bold"
 		font="Fonts/AdonisC"
 		fontSize="170"
-		text="Містик"
+		text="Mystic"
 		textColor="#000000"
 		color="clear"/>
 	<button
@@ -182,7 +182,7 @@
 		fontStyle="Bold"
 		font="Fonts/AdonisC"
 		fontSize="170"
-		text="Захисник"
+		text="Guardian"
 		textColor="#000000"
 		color="clear"/>
 	<button
@@ -194,7 +194,7 @@
 		fontStyle="Bold"
 		font="Fonts/AdonisC"
 		fontSize="170"
-		text="Пройдисвіт"
+		text="Rogue"
 		textColor="#000000"
 		color="clear"/>
 	<button
@@ -206,7 +206,7 @@
 		fontStyle="Bold"
 		font="Fonts/AdonisC"
 		fontSize="170"
-		text="Загартований"
+		text="Survivor"
 		textColor="#000000"
 		color="clear"/>
 	<button
@@ -218,7 +218,7 @@
 		fontStyle="Bold"
 		font="Fonts/AdonisC"
 		fontSize="170"
-		text="Шукач"
+		text="Seeker"
 		textColor="#000000"
 		color="clear"/>
 </panel>

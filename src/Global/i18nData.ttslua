@@ -66,4 +66,36 @@ I18N_DATA = {
     ["en"] = "START GAME",
     ["uk"] = "ПОЧАТИ ГРУ",
   },
+  ["PB_myth_validate"] = {
+    ["en"] = "This button is only available during the Mythos phase",
+    ["uk"] = "Ця кнопка доступна тільки у фазу міту",
+  },
+  ["PB_next_phase"] = {
+    ["en"] = "The phase begins",
+    ["uk"] = "Настає фаза",
+  },
+  ["PB_phase1"] = {
+    ["en"] = "Action",
+    ["uk"] = "дій",
+  },
+  ["PB_phase2"] = {
+    ["en"] = "Monster",
+    ["uk"] = "монстрів",
+  },
+  ["PB_phase3"] = {
+    ["en"] = "Encounter",
+    ["uk"] = "зустрічей",
+  },
+  ["PB_phase4"] = {
+    ["en"] = "Mythos",
+    ["uk"] = "міту",
+  },
+  ["S_buy"] = {
+    ["en"] = "Buy for $%s",
+    ["uk"] = "Купити за $%s",
+  },
+  ["S_get"] = {
+    ["en"] = "Get for $0",
+    ["uk"] = "Отримати за $0",
+  },
 }

@@ -70,3 +70,29 @@ msgstr ""
 "шепоче до тих, хто здатен звільнити його з вʼязниці. Одержимі ним здобувають"
 " велику силу, але її ціна жахливо висока. І день за днем його свобода стає "
 "все ближчою."
+
+# Phases
+msgid "PB_phase1"
+msgstr "дій"
+
+msgid "PB_phase2"
+msgstr "монстрів"
+
+msgid "PB_phase3"
+msgstr "зустрічей"
+
+msgid "PB_phase4"
+msgstr "міту"
+
+msgid "PB_myth_validate"
+msgstr "Ця кнопка доступна тільки у фазу міту"
+
+msgid "PB_next_phase"
+msgstr "Настає фаза"
+
+# Shop
+msgid "S_get"
+msgstr "Отримати за $0"
+
+msgid "S_buy"
+msgstr "Купити за $%s"
