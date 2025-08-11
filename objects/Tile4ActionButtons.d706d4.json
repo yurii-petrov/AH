@@ -38,6 +38,9 @@
   "MeasureMovement": false,
   "Name": "Custom_Tile",
   "Nickname": "Tile4ActionButtons",
+  "Tags": [
+        "i18n_XML"
+      ],
   "Snap": true,
   "Sticky": true,
   "Tooltip": true,

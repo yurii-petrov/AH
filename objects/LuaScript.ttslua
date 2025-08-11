@@ -1358,6 +1358,15 @@ function onMonsterDrop(colorName, object, objectData)
   end)
 end
 
+-- ON OBJECT SPAWN
+function onObjectSpawn(obj)
+  if obj.hasTag("i18n_XML") then
+    print("onObjectSpawn!!!")
+    print("obj.guid: "..obj.guid)
+    Wait.time(function() i18n.updateObjectUiLanguage(obj) end, 1)
+  end
+end
+
 -- Mechanic scenario
 
 local map = false
@@ -2485,9 +2494,7 @@ end
 
 function updateXMLs()
   i18n.updateGlobalUiLanguage()
-  i18n.updateObjectUiLanguage(getObjectFromGUID(shopMatId))
-  i18n.updateObjectUiLanguage(getObjectFromGUID(tile4ActionsId))
-  i18n.updateObjectUiLanguage(getObjectFromGUID("2822f4")) -- investigator mat
+  i18n.updateAllObjectsUiLanguage()
 end
 
 function updateGlobalXml(newXml)
