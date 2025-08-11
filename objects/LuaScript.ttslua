@@ -2853,7 +2853,7 @@ function prepareScenarioDecks(scenarioData)
   end
 
   if #scenarioMatData.scenarios < scenarioData.number then
-    print("error: #scenarioMatData.scenarios < scenarioData.number")
+    print("error: #scenarioMatData.scenarios < scenarioData.number".."\n#scenarioMatData.scenarios: "..#scenarioMatData.scenarios.." scenarioData.number: "..scenarioData.number)
     return
   end
 
