@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"locations\":{\"Observatory\":{\"dooms\":1}},\"name\":\"VoT\",\"neighborhood\":\"Orne Library\",\"number\":4,\"type\":\"Event\"}",
+  "Memo": "{\"locations\":{\"Orne Library\":{\"dooms\":1}},\"name\":\"VoT\",\"neighborhood\":\"Miskatonic University\",\"number\":4,\"type\":\"Event\"}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,
