@@ -50,7 +50,6 @@ function onLoad(savedData)
 					setTop(d)
 					setBottom(d)
 				end, 1)
-				
 			end
 	end
 end

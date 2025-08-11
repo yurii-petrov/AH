@@ -32,7 +32,7 @@ msgstr "EXPANSIONS"
 msgid "MM_start_game"
 msgstr "START GAME"
 
-msgid "MM_choice_scenario"
+msgid "MM_choice_scenario_text"
 msgstr "Choice Scenario"
 
 msgid "MM_select_scenario"
@@ -87,8 +87,49 @@ msgid "PB_next_phase"
 msgstr "The phase begins"
 
 # Shop
+msgid "S_show_cards_text"
+msgstr "ПОДИВИТИСЬ КАРТИ(У)"
+
+msgid "S_return_cards"
+msgstr "ПОВЕРНУТИ В КОЛОДУ"
+
+msgid "S_find_common"
+msgstr "ЗВИЧАЙНИЙ"
+
+msgid "S_find_curio"
+msgstr "РІДКІСНИЙ"
+
 msgid "S_get"
 msgstr "Get for $0"
 
 msgid "S_buy"
 msgstr "Buy for $%s"
+
+# Tile 4 Action Buttons
+msgid "T4A_clue"
+msgstr "РОЗМІСТИТИ ЗАЧІПКУ"
+
+msgid "T4A_doom"
+msgstr "РОЗПОДІЛИТИ ПРИРЕЧЕНІСТЬ"
+
+msgid "T4A_monster"
+msgstr "РОЗМІСТИТИ МОНСТРА"
+
+msgid "T4A_gate"
+msgstr "ПРОРИВ ВОРІТ"
+
+# Investigator mat
+msgid "IM_enemy_text"
+msgstr "В    О    Р    О    Г    И"
+
+msgid "IM_discard_text"
+msgstr "С К И Д"
+
+msgid "IM_discard_desc_text"
+msgstr "Покладіть сюди карту, вона опиниться у своїй колоді"
+
+msgid "IM_death"
+msgstr "Смерть"
+
+msgid "IM_bio"
+msgstr "Біографія"

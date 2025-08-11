@@ -4,7 +4,6 @@ require("Global/i18nData")
 serpent = require("util/serpent")
 local translationService = require("util/TranslationService")
 isTestMode = false
-isLoadSaveData = false
 
 local phases = {{
   image = "phase_action_image",
@@ -2460,7 +2459,7 @@ end
 
 function clickOnEN()
   gameData.language = "eng"
-  i18n.updateGlobalUiLanguage()
+  updateXMLs()
   translationService.setCurrentLanguage(gameData.language)
 
   for _, o in ipairs(getObjects()) do
@@ -2473,7 +2472,7 @@ end
 
 function clickOnUK()
   gameData.language = "uk"
-  i18n.updateGlobalUiLanguage()
+  updateXMLs()
   translationService.setCurrentLanguage(gameData.language)
 
   for _, o in ipairs(getObjects()) do
@@ -2482,6 +2481,13 @@ function clickOnUK()
       return
     end
   end
+end
+
+function updateXMLs()
+  i18n.updateGlobalUiLanguage()
+  i18n.updateObjectUiLanguage(getObjectFromGUID(shopMatId))
+  i18n.updateObjectUiLanguage(getObjectFromGUID(tile4ActionsId))
+  i18n.updateObjectUiLanguage(getObjectFromGUID("2822f4")) -- investigator mat
 end
 
 function updateGlobalXml(newXml)
