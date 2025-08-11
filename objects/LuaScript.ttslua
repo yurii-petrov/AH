@@ -1361,8 +1361,6 @@ end
 -- ON OBJECT SPAWN
 function onObjectSpawn(obj)
   if obj.hasTag("i18n_XML") then
-    print("onObjectSpawn!!!")
-    print("obj.guid: "..obj.guid)
     Wait.time(function() i18n.updateObjectUiLanguage(obj) end, 1)
   end
 end
