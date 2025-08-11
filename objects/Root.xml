@@ -123,7 +123,7 @@
     <Image id="scenarioImage" image="scenario1" width="440" preserveAspect="true" position="-233 118 "/>
     <Image id="scenarioMap" active="false" image="scenarioMap1" width="440" height="370" preserveAspect="true" position="-233 118"/>
 	<image image="map" position="-50 265" width="50" height="55"/>
-	<button onClick="mapToggle" position="-50 265" width="50" height="55" textColor="#ffffff" fontSize="14" text="МАПА" padding="0 0 1 0" fontStyle="regular"/>
+	<button id="MM_map_text" onClick="mapToggle" position="-50 265" width="50" height="55" textColor="#ffffff" fontSize="14" text="" padding="0 0 1 0" fontStyle="regular"/>
 	<panel width="437" height="330" position="233 133" rectAlignment="MiddleCenter">
 		<VerticalLayout
 			contentSizeFitter="vertical" rectAlignment="UpperCenter" spacing="15">
@@ -268,12 +268,12 @@
 							<panel id="scenario_panel5">
 								<button id="scenario5" onClick="chooseScenario"/>
 								<image id="scenarioImage5" image="scenario5" width="180" preserveAspect="true" rectAlignment="UpperCenter" offsetXY="0 -10"/>
-								<text id="scenarioTitle5" alignment="LowerCenter" text="Постріли в Темряві" offsetXY="0 10"/>
+								<text id="MM_scenario5_name_text" alignment="LowerCenter" text="" offsetXY="0 10"/>
 							</panel>
 							<panel id="scenario_panel6">
 								<button id="scenario6" onClick="chooseScenario"/>
 								<image id="scenarioImage6" image="scenario6" width="180" preserveAspect="true" rectAlignment="UpperCenter" offsetXY="0 -10"/>
-								<text id="scenarioTitle6" alignment="LowerCenter" text="Мовчання Тсатгоґґуа" offsetXY="0 10"/>
+								<text id="MM_scenario6_name_text" alignment="LowerCenter" text="" offsetXY="0 10"/>
 							</panel>
 						</HorizontalLayout>
 					</VerticalLayout>
@@ -308,18 +308,14 @@
 	<panel width="850" height="610">
 		<VerticalLayout contentSizeFitter="vertical" height="610">
 			<panel minHeight="80">
-				<text id="addonTitle" text="Оберіть доповнення" fontSize="46" fontStyle="bold" alignment="MiddleCenter"/>
+				<text id="MM_addonTitle_text" text="" fontSize="46" fontStyle="bold" alignment="MiddleCenter"/>
 			</panel>
 			<HorizontalLayout spacing="50" childForceExpandWidth="false" contentSizeFitter="horizontal">
 				<panel minHeight="400" preferredWidth="400">
 					<verticalLayout spacing="30">
 						<HorizontalLayout preferredHeight="200" spacing="30" childForceExpandWidth="false" childAlignment="MiddleLeft" preferredWidth="400">
 							<image id="addonImage" image="addon1" preferredWidth="200" width="200" preserveAspect="true"/>
-							<text id="addonSummary" fontSize="20" alignment="middleLeft">• 2 нові сценарії
-
-							• 4 нові дослідники
-
-							• 238 нових карт</text>
+							<text id="MM_addonSummary_text" fontSize="20" alignment="middleLeft"/>
 						</HorizontalLayout>
 						<VerticalScrollView color="clear" preferredHeight="200"
 							verticalScrollbarVisibility="AutoHideAndExpandViewport"
@@ -327,23 +323,7 @@
 							raycastTarget="true"
 							scrollSensitivity="30">
 							<VerticalLayout contentSizeFitter="vertical">
-								<text id="addonDescription" fontSize="20" fontStyle="italic">У доповненні «Нічний морок» гравці досліджують ті закутки Аркгема, куди страшно сунутися навіть удень. У місті процвітає організована злочинність, потаємні культи намагаються догодити своїм темним володарям, химерний місяць висить у небі, а десь у нічному мороці чаяться незбагненні жахіття. Це доповнення містить два нові сценарії, нові зустрічі для кожної зони Аркгема, нових монстрів і нові аномалії, а також чотирьох нових дослідників, готових протистояти жахам з новими предметами, заклинаннями та союзниками.
-
-								• 2 сценарії
-								• 4 дослідники
-								• 7 карт заголовків
-								• 20 карт архіву
-								• 12 карт аномалій
-								• 48 карт подій
-								• 72 карти зустрічей
-								• 4 карти союзників
-								• 4 карти предметів
-								• 4 карти заклинань
-								• 28 спеціальних карт
-								• 12 початкових карт
-								• 6 карт стану розшукуваний
-								• 22 карти монстрів (тут питання напевно краще написати 15, бо 22 це з повторами) наприклад просто 
-								• 15 нових монстрів</text>
+								<text id="MM_addonDescription_text" fontSize="20" fontStyle="italic"/>
 							</VerticalLayout>
 						</VerticalScrollView>
 					</verticalLayout>
@@ -359,11 +339,11 @@
 						<VerticalLayout contentSizeFitter="vertical" width="380" spacing="10">
 							<panel id="addon_panel1" preferredHeight="50" color="#ffffff22">
 								<button id="addon1" onClick="chooseAddon"/>
-								<text id="text_addon1" alignment="MiddleCenter" text="Нічний Морок"/>
+								<text id="MM_text_addon1_text" alignment="MiddleCenter" text=""/>
 							</panel>
 							<panel id="addon_panel2" preferredHeight="50">
 								<button id="addon2" onClick="inProgress"/>
-								<text id="text_addon2" color="gray" alignment="MiddleCenter" text="Під Темними Хвилями"/>
+								<text id="MM_text_addon2_text" color="gray" alignment="MiddleCenter" text=""/>
 							</panel>
 							<!-- <panel id="addon_panel3" preferredHeight="50">
 								<button id="addon3" onClick="chooseAddon"/>
@@ -380,12 +360,12 @@
 			<panel minHeight="120">
 				<Button
 					rectAlignment="LowerLeft"
-					id="toggleAddon"
+					id="MM_toggleAddon_text"
 					onClick="toggleAddon"
 					width="400"
 					height="92"
 					color="clear"
-					text="ДОДАТИ / ВИЛУЧИТИ"/>
+					text=""/>
 				<image
 					rectAlignment="LowerLeft"
 					width="400" preserveAspect="true"
@@ -397,7 +377,7 @@
 					width="400"
 					height="92"
 					color="clear"
-					text="ОБРАТИ ДОПОВНЕННЯ"/>
+					text=""/>
 				<image
 					rectAlignment="LowerRight"
 					width="400" preserveAspect="true"

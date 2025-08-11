@@ -125,27 +125,29 @@
   "HideWhenFaceDown": false,
   "IgnoreFoW": false,
   "LayoutGroupSortIndex": 0,
-  "Locked": false,
-  "LuaScriptState_path": "Infinite_Bag.774898/InvestigatorMat.2822f4.luascriptstate",
-  "LuaScript_path": "Infinite_Bag.774898/InvestigatorMat.2822f4.ttslua",
+  "Locked": true,
+  "LuaScriptState_path": "InvestigatorMat.2822f4.luascriptstate",
+  "LuaScript_path": "InvestigatorMat.2822f4.ttslua",
   "MeasureMovement": false,
   "Memo": "Investigator Mat",
   "Name": "Custom_Tile",
   "Nickname": "Investigator Mat",
+  "Tags": [
+        "i18n_XML"
+      ],
   "Snap": true,
   "Sticky": true,
   "Tooltip": true,
   "Transform": {
-    "posX": 86.454,
-    "posY": 4.053,
-    "posZ": 64.048,
+    "posX": 105.386,
+    "posY": 1,
+    "posZ": 90.242,
     "rotX": 0,
     "rotY": 180,
-    "rotZ": 1,
+    "rotZ": 0,
     "scaleX": 5,
     "scaleY": 1,
     "scaleZ": 5
   },
-  "Value": 0,
-  "XmlUI": ""
+  "Value": 0
 }
