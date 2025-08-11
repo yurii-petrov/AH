@@ -88,6 +88,7 @@ function getMechanicButtons()
   return {
   {
     attributes = {
+      id = "IM_enemy_text",
       color = "#ffffff",
       font = "Fonts/AdonisC",
       fontSize = "95",
@@ -95,12 +96,13 @@ function getMechanicButtons()
       position = "0 -55 -22",
       rotation = "0 0 180",
       scale = "0.1 0.1 0.1",
-      text = "В    О    Р    О    Г    И"
+      text = ""
     },
     tag = "text"
   },
   {
     attributes = {
+      id = "IM_discard_text",
       color = "#ffffff",
       font = "Fonts/AdonisC",
       fontSize = "60",
@@ -108,7 +110,7 @@ function getMechanicButtons()
       position = "-110 20 -22",
       rotation = "0 0 180",
       scale = "0.1 0.1 0.1",
-      text = "С К И Д"
+      text = ""
     },
     tag = "text"
   },
@@ -123,11 +125,12 @@ function getMechanicButtons()
     children = {
       {
         attributes = {
+          id = "IM_discard_desc_text",
           color = "#a2a2a2",
           font = "Fonts/AdonisC",
           fontSize = "26",
           fontStyle = "Bold",
-          text = "Покладіть сюди карту, вона опиниться у своїй колоді"
+          text = ""
         },
         children = {},
         tag = "text"
@@ -142,13 +145,13 @@ function getMechanicButtons()
       fontSize = "40",
       fontStyle = "Bold",
       height = "120",
-      id = "death",
+      id = "IM_death",
       onClick = "clickDeath",
       padding = "90 0 0 0",
       position = "78 95 -22",
       rotation = "0 0 180",
       scale = "0.1 0.1 0.1",
-      text = "Смерть",
+      text = "",
       textColor = "#ffffff",
       width = "226"
     },
@@ -161,13 +164,13 @@ function getMechanicButtons()
       fontSize = "40",
       fontStyle = "Bold",
       height = "120",
-      id = "bio",
+      id = "IM_bio",
       onClick = "clickBio",
       padding = "90 0 0 0",
       position = "50 95 -22",
       rotation = "0 0 180",
       scale = "0.1 0.1 0.1",
-      text = "Біографія",
+      text = "",
       textColor = "#ffffff",
       width = "280"
     },

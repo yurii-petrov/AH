@@ -4,23 +4,18 @@ require("Global/i18nData")
 serpent = require("util/serpent")
 local translationService = require("util/TranslationService")
 isTestMode = false
-isLoadSaveData = false
 
 local phases = {{
   image = "phase_action_image",
-  name = "дій",
   color = {1, 1, 0.6}
 }, {
   image = "phase_monster_image",
-  name = "монстрів",
   color = {1, 0.6, 1}
 }, {
   image = "phase_encounter_image",
-  name = "зустрічей",
   color = {0.6, 1, 0.6}
 }, {
   image = "phase_myth_image",
-  name = "міту",
   color = {1, 0.6, 0.6}
 }}
 
@@ -1363,11 +1358,27 @@ function onMonsterDrop(colorName, object, objectData)
   end)
 end
 
+-- ON OBJECT SPAWN
+function onObjectSpawn(obj)
+  if obj.hasTag("i18n_XML") then
+    Wait.time(function() i18n.updateObjectUiLanguage(obj) end, 1)
+  end
+end
+
 -- Mechanic scenario
 
+local map = false
+function mapToggle(player, alt, id)
+    self.UI.setAttribute('scenarioImage', 'active', map)
+    map = not map
+    self.UI.setAttribute('scenarioMap', 'active', map)
+end
 function changeScenario(player, alt, id)
   self.UI.setAttribute('chooseScenario', 'active', true)
   self.UI.setAttribute('main_menu', 'active', false)
+  map = false
+  self.UI.setAttribute('scenarioImage', 'active', true)
+  self.UI.setAttribute('scenarioMap', 'active', false)
 end
 function players(player, alt, id)
   local color = self.UI.getAttribute('players1', 'textColor')
@@ -1382,13 +1393,20 @@ end
 function closeMenu(player, alt, id)
   self.UI.setAttribute('main_menu', 'active', false)
   self.UI.setAttribute('restore', 'active', true)
+  map = false
+  self.UI.setAttribute('scenarioImage', 'active', true)
+  self.UI.setAttribute('scenarioMap', 'active', false)
+end
+function addons(player, alt, id)
+    self.UI.setAttribute('chooseAddons', 'active', true)
+    self.UI.setAttribute('main_menu', 'active', false)
+    map = false
+    self.UI.setAttribute('scenarioImage', 'active', true)
+    self.UI.setAttribute('scenarioMap', 'active', false)
 end
 function restore(player, alt, id)
   self.UI.setAttribute('main_menu', 'active', true)
   self.UI.setAttribute('restore', 'active', false)
-end
-function addons(player, alt, id)
-  -- тут буде код для допів
 end
 function startGame(player, alt, id)
   local scenarioData = getScenarioData(currentSetup.scenario or 1)
@@ -1408,19 +1426,88 @@ function startGame(player, alt, id)
   self.UI.setAttribute('main_menu', 'active', false)
 end
 function chooseScenario(player, alt, id)
-  for i = 1, 4, 1 do
+  for i = 1, 6, 1 do
     self.UI.setAttribute('scenario_panel' .. i, 'color', 'clear')
   end
   self.UI.setAttribute('scenario_panel' .. id:match("%d+"), 'color', '#ffffff22')
   currentSetup.scenario = tonumber(id:match("%d+")) -- оновлюємо номер сценарію
 end
-
 function submitScenario()
   self.UI.setAttribute('chooseScenario', 'active', false)
+  self.UI.setAttribute('main_menu', 'active', true)
   self.UI.setAttribute('title', 'text', i18n.getStrById("MM_scenario"..currentSetup.scenario.."_name_text"))
   self.UI.setAttribute('body', 'text', i18n.getStrById("MM_scenario"..currentSetup.scenario.."_desc"))
-  self.UI.setAttribute('main_menu', 'active', true)
   self.UI.setAttribute('scenarioImage', 'image', 'scenario' .. currentSetup.scenario)
+  self.UI.setAttribute('scenarioMap', 'image', 'scenarioMap' .. currentSetup.scenario)
+end
+local addons = {
+    currentAddon = "addon1",
+    addon1 = {
+      include = true,
+      title = "Нічний Морок",
+      summary = "• 2 нові сценарії\n\n• 4 нові дослідники\n\n• 238 нових карт",
+      description = "У доповненні «Нічний морок» гравці досліджують ті закутки Аркгема, куди страшно сунутися навіть удень. У місті процвітає організована злочинність, потаємні культи намагаються догодити своїм темним володарям, химерний місяць висить у небі, а десь у нічному мороці чаяться незбагненні жахіття. Це доповнення містить два нові сценарії, нові зустрічі для кожної зони Аркгема, нових монстрів і нові аномалії, а також чотирьох нових дослідників, готових протистояти жахам з новими предметами, заклинаннями та союзниками.\n\n• 2 сценарії\n• 4 дослідники\n• 7 карт заголовків\n• 20 карт архіву\n• 12 карт аномалій\n• 48 карт подій\n• 72 карти зустрічей\n• 4 карти союзників\n• 4 карти предметів\n• 4 карти заклинань\n• 28 спеціальних карт\n• 12 початкових карт\n• 6 карт стану розшукуваний\n• 15 монстрів"
+    },
+    addon2 = {
+      include = false,
+      title = "Під Темними Хвилями",
+      summary = "2• 2 нові сценарії\n\n• 4 нові дослідники\n\n• 238 нових карт",
+      description = "2У доповненні «Нічний морок» гравці досліджують ті закутки Аркгема, куди страшно сунутися навіть удень. У місті процвітає організована злочинність, потаємні культи намагаються догодити своїм темним володарям, химерний місяць висить у небі, а десь у нічному мороці чаяться незбагненні жахіття. Це доповнення містить два нові сценарії, нові зустрічі для кожної зони Аркгема, нових монстрів і нові аномалії, а також чотирьох нових дослідників, готових протистояти жахам з новими предметами, заклинаннями та союзниками.\n\n• 2 сценарії\n• 4 дослідники\n• 7 карт заголовків\n• 20 карт архіву\n• 12 карт аномалій\n• 48 карт подій\n• 72 карти зустрічей\n• 4 карти союзників\n• 4 карти предметів\n• 4 карти заклинань\n• 28 спеціальних карт\n• 12 початкових карт\n• 6 карт стану розшукуваний\n• 15 монстрів"
+    },
+    addon3 = {
+      include = false,
+      title = "Таємниці Ордену",
+      summary = "3• 2 нові сценарії\n\n• 4 нові дослідники\n\n• 238 нових карт",
+      description = "3У доповненні «Нічний морок» гравці досліджують ті закутки Аркгема, куди страшно сунутися навіть удень. У місті процвітає організована злочинність, потаємні культи намагаються догодити своїм темним володарям, химерний місяць висить у небі, а десь у нічному мороці чаяться незбагненні жахіття. Це доповнення містить два нові сценарії, нові зустрічі для кожної зони Аркгема, нових монстрів і нові аномалії, а також чотирьох нових дослідників, готових протистояти жахам з новими предметами, заклинаннями та союзниками.\n\n• 2 сценарії\n• 4 дослідники\n• 7 карт заголовків\n• 20 карт архіву\n• 12 карт аномалій\n• 48 карт подій\n• 72 карти зустрічей\n• 4 карти союзників\n• 4 карти предметів\n• 4 карти заклинань\n• 28 спеціальних карт\n• 12 початкових карт\n• 6 карт стану розшукуваний\n• 15 монстрів"
+    },
+    addon4 = {
+      include = false,
+      title = "Відлуння Минулого",
+      summary = "4• 2 нові сценарії\n\n• 4 нові дослідники\n\n• 238 нових карт",
+      description = "4У доповненні «Нічний морок» гравці досліджують ті закутки Аркгема, куди страшно сунутися навіть удень. У місті процвітає організована злочинність, потаємні культи намагаються догодити своїм темним володарям, химерний місяць висить у небі, а десь у нічному мороці чаяться незбагненні жахіття. Це доповнення містить два нові сценарії, нові зустрічі для кожної зони Аркгема, нових монстрів і нові аномалії, а також чотирьох нових дослідників, готових протистояти жахам з новими предметами, заклинаннями та союзниками.\n\n• 2 сценарії\n• 4 дослідники\n• 7 карт заголовків\n• 20 карт архіву\n• 12 карт аномалій\n• 48 карт подій\n• 72 карти зустрічей\n• 4 карти союзників\n• 4 карти предметів\n• 4 карти заклинань\n• 28 спеціальних карт\n• 12 початкових карт\n• 6 карт стану розшукуваний\n• 15 монстрів"
+    }
+}
+function chooseAddon(player, alt, id)
+  addons.currentAddon = id
+  self.UI.setAttribute('addonTitle', 'text', addons[id].title)
+  self.UI.setAttribute('addonImage', 'image', id)
+  self.UI.setAttribute('addonSummary', 'text', addons[id].summary)
+  self.UI.setAttribute('addonDescription', 'text', addons[id].description)
+end
+function inProgress(player, alt, id)
+  broadcastToColor("Робота над цим доповненням ще триває.", player.color, {r=1, g=1, b=1})
+end
+function toggleAddon()
+  addons[addons.currentAddon].include = not addons[addons.currentAddon].include
+  if addons[addons.currentAddon].include then
+    if addons.currentAddon == "addon1" then
+      self.UI.setAttribute('scenarioImage5', 'color', 'white')
+      self.UI.setAttribute('scenarioTitle5', 'color', 'white')
+      self.UI.setAttribute('scenario5', 'onClick', 'chooseScenario')
+      self.UI.setAttribute('scenarioImage6', 'color', 'white')
+      self.UI.setAttribute('scenarioTitle6', 'color', 'white')
+      self.UI.setAttribute('scenario6', 'onClick', 'chooseScenario')
+    end
+    self.UI.setAttribute('addon_panel' .. addons.currentAddon:match("%d+"), 'color', '#ffffff22')
+  else
+    if addons.currentAddon == "addon1" then
+      if currentSetup.scenario == 5 or currentSetup.scenario == 6 then
+        broadcastToAll("Неможливо вимкнути доповнення, сценарій з якого обрано!", {r=1, g=0.5, b=0.5})
+        return
+      end
+      self.UI.setAttribute('scenarioImage5', 'color', 'gray')
+      self.UI.setAttribute('scenarioTitle5', 'color', 'gray')
+      self.UI.setAttribute('scenario5', 'onClick', '')
+      self.UI.setAttribute('scenarioImage6', 'color', 'gray')
+      self.UI.setAttribute('scenarioTitle6', 'color', 'gray')
+      self.UI.setAttribute('scenario6', 'onClick', '')
+    end
+    self.UI.setAttribute('addon_panel' .. addons.currentAddon:match("%d+"), 'color', 'clear')
+  end
+end
+function submitAddons()
+    self.UI.setAttribute('chooseAddons', 'active', false)
+    self.UI.setAttribute('main_menu', 'active', true)
 end
 
 -- ╭──────────────────��───────────────────────────╮
@@ -1796,7 +1883,7 @@ end
 
 function onClickEncounter(obj, playerColor)
   if gameData.phase ~= 3 then
-    printToColor("Ця кнопка доступна тільки у фазу " .. phases[3].name, playerColor,
+    printToColor(i18n.getStrById("PB_myth_validate"), playerColor,
       {1, 0.2, 0.2})
     return
   end
@@ -2379,7 +2466,7 @@ end
 
 function clickOnEN()
   gameData.language = "eng"
-  i18n.updateGlobalUiLanguage()
+  updateXMLs()
   translationService.setCurrentLanguage(gameData.language)
 
   for _, o in ipairs(getObjects()) do
@@ -2392,7 +2479,7 @@ end
 
 function clickOnUK()
   gameData.language = "uk"
-  i18n.updateGlobalUiLanguage()
+  updateXMLs()
   translationService.setCurrentLanguage(gameData.language)
 
   for _, o in ipairs(getObjects()) do
@@ -2401,6 +2488,11 @@ function clickOnUK()
       return
     end
   end
+end
+
+function updateXMLs()
+  i18n.updateGlobalUiLanguage()
+  i18n.updateAllObjectsUiLanguage()
 end
 
 function updateGlobalXml(newXml)
@@ -2816,7 +2908,7 @@ function prepareScenarioDecks(scenarioData)
                       spawnClue(function()
                         spawnClue(function()
                           Global.UI.setAttribute("phase", "active", true)
-                          broadcastToAll("Настає фаза " .. phases[gameData.phase].name .. "!",
+                          broadcastToAll(i18n.getStrById("PB_next_phase").." " .. i18n.getStrById("PB_phase"..gameData.phase) .. "!",
                             phases[gameData.phase].color)
                           eventSpawnDooms(function()
                             isDrawMythInProcess = false
@@ -5048,6 +5140,22 @@ function getHandsByPlayerColor(playerColor)
   return out
 end
 
+-- allows calling a function inside of a table
+function callTable(params)
+  local keys = params[1] or {}
+  local arg = params[2] or nil
+  local var = _G
+  for _, key in ipairs(keys) do
+    var = var[key]
+    if type(var) ~= "table" then break end
+  end
+  if type(var) ~= "function" then
+    log("resulting var was not a function " .. table.concat(keys, "->"))
+    return
+  end
+  return var(arg)
+end
+
 function getFormattedPos(t)
   local p = {tonumber(string.format("%.3f", t[1])), tonumber(string.format("%.3f", t[2])),
              tonumber(string.format("%.3f", t[3]))}
@@ -5146,7 +5254,7 @@ function nextPhase(player, value, id)
     gameData.phase = 1
   end
   Global.UI.setAttribute("phase_img", "image", phases[gameData.phase].image)
-  broadcastToAll("Настає фаза " .. phases[gameData.phase].name .. "!", phases[gameData.phase].color)
+broadcastToAll(i18n.getStrById("PB_next_phase").." " .. i18n.getStrById("PB_phase"..gameData.phase) .. "!", phases[gameData.phase].color)
 
   if gameData.phase == 1 then
     self.UI.setAttribute("phase_btn_myth", "active", false)

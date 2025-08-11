@@ -132,6 +132,9 @@
   "Memo": "Investigator Mat",
   "Name": "Custom_Tile",
   "Nickname": "Investigator Mat",
+  "Tags": [
+        "i18n_XML"
+      ],
   "Snap": true,
   "Sticky": true,
   "Tooltip": true,
