@@ -118,6 +118,9 @@ local activationTokenBagId = "2f7335"
 local activationLiderTokenBagId = "1a067e"
 local itemMatBagId = "855d0e"
 local whiteTokenBagId = "b84d40"
+local blueTokenBagId = "40bae0"
+local redTokenBagId = "fe6c51"
+local greenTokenBagId = "18c8c9"
 local anomalyBagId = "009961"
 
 local mythosTokenBagIds = {
@@ -3847,6 +3850,21 @@ function lockSetupScenarioComponents(obj, scenarioTiles)
     return
   end
 
+  local blueTokenBag = getObjectFromGUID(blueTokenBagId)
+  if not blueTokenBag then
+    return
+  end
+
+  local redTokenBag = getObjectFromGUID(redTokenBagId)
+  if not redTokenBag then
+    return
+  end
+
+  local greenTokenBag = getObjectFromGUID(greenTokenBagId)
+  if not greenTokenBag then
+    return
+  end
+
   local locationMatOld = getObjectFromGUID("b195b0")
   if not locationMatOld then
     error("Мат для локацій не знайдено!");
@@ -3880,6 +3898,21 @@ function lockSetupScenarioComponents(obj, scenarioTiles)
           index = 0,
           position = o.positionToWorld(tokenInfo.position):setAt("y", 3)
         }).highlightOn("White", 5)
+      elseif tokenInfo.type == "Blue Marker" then
+        blueTokenBag.takeObject({
+          index = 0,
+          position = o.positionToWorld(tokenInfo.position):setAt("y", 3)
+        }).highlightOn("Blue", 5)
+      elseif tokenInfo.type == "Red Marker" then
+        redTokenBag.takeObject({
+          index = 0,
+          position = o.positionToWorld(tokenInfo.position):setAt("y", 3)
+        }).highlightOn("Red", 5)
+      elseif tokenInfo.type == "Green Marker" then
+        greenTokenBag.takeObject({
+          index = 0,
+          position = o.positionToWorld(tokenInfo.position):setAt("y", 3)
+        }).highlightOn("Green", 5)
       end
     end
   end
