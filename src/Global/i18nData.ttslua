@@ -3,19 +3,19 @@
 
 I18N_DATA = {
   ["IM_bio"] = {
-    ["en"] = "Біографія",
+    ["en"] = "Bio",
     ["uk"] = "Біографія",
   },
   ["IM_death"] = {
-    ["en"] = "Смерть",
+    ["en"] = "Death",
     ["uk"] = "Смерть",
   },
   ["IM_discard_desc_text"] = {
-    ["en"] = "Покладіть сюди карту, вона опиниться у своїй колоді",
+    ["en"] = "Place the card here; it will go back to its deck.",
     ["uk"] = "Покладіть сюди карту, вона опиниться у своїй колоді",
   },
   ["IM_discard_text"] = {
-    ["en"] = "С К И Д",
+    ["en"] = "D I S C A R D",
     ["uk"] = "С К И Д",
   },
   ["IM_enemy_text"] = {
@@ -23,15 +23,15 @@ I18N_DATA = {
     ["uk"] = "В    О    Р    О    Г    И",
   },
   ["MM_addonDescription_text"] = {
-    ["en"] = "У доповненні «Нічний морок» гравці досліджують ті закутки Аркгема, куди страшно сунутися навіть удень. У місті процвітає організована злочинність, потаємні культи намагаються догодити своїм темним володарям, химерний місяць висить у небі, а десь у нічному мороці чаяться незбагненні жахіття. Це доповнення містить два нові сценарії, нові зустрічі для кожної зони Аркгема, нових монстрів і нові аномалії, а також чотирьох нових дослідників, готових протистояти жахам з новими предметами, заклинаннями та союзниками.\n• 2 сценарії\n• 4 дослідники\n• 7 карт заголовків\n• 20 карт архіву\n• 12 карт аномалій\n• 48 карт подій\n• 72 карти зустрічей\n• 4 карти союзників\n• 4 карти предметів\n• 4 карти заклинань\n• 28 спеціальних карт\n• 12 початкових карт\n• 6 карт стану розшукуваний\n• 22 карти монстрів (тут питання напевно краще написати 15, бо 22 це з повторами) наприклад просто\n• 15 нових монстрів",
-    ["uk"] = "У доповненні «Нічний морок» гравці досліджують ті закутки Аркгема, куди страшно сунутися навіть удень. У місті процвітає організована злочинність, потаємні культи намагаються догодити своїм темним володарям, химерний місяць висить у небі, а десь у нічному мороці чаяться незбагненні жахіття. Це доповнення містить два нові сценарії, нові зустрічі для кожної зони Аркгема, нових монстрів і нові аномалії, а також чотирьох нових дослідників, готових протистояти жахам з новими предметами, заклинаннями та союзниками.\n• 2 сценарії\n• 4 дослідники\n• 7 карт заголовків\n• 20 карт архіву\n• 12 карт аномалій\n• 48 карт подій\n• 72 карти зустрічей\n• 4 карти союзників\n• 4 карти предметів\n• 4 карти заклинань\n• 28 спеціальних карт\n• 12 початкових карт\n• 6 карт стану розшукуваний\n• 22 карти монстрів (тут питання напевно краще написати 15, бо 22 це з повторами) наприклад просто\n• 15 нових монстрів",
+    ["en"] = "In Dead of Night, investigators explore the facets of Arkham best left unseen in the light of day. Organized crime builds a strong foothold in the city, secret cults labor for a dark master, an alien moon hangs overhead, and unknowable horrors stalk the night. This expansion includes two all-new scenarios, new encounters for every location in Arkham, new monsters and anomalies, and four new investigators to face these fresh horrors, armed with new spells, items and allies.\n• 2 scenarios\n• 4 investigators\n• 7 headline cards\n• 20 archive cards\n• 12 anomaly cards\n• 48 event cards\n• 72 encounter cards\n• 4 ally cards\n• 4 item cards\n• 4 spell cards\n• 28 special cards\n• 12 starting cards\n• 6 wanted condition cards\n• 22 monster cards\n• 15 new monsters",
+    ["uk"] = "У доповненні «Нічний морок» гравці досліджують ті закутки Аркгема, куди страшно сунутися навіть удень. У місті процвітає організована злочинність, потаємні культи намагаються догодити своїм темним володарям, химерний місяць висить у небі, а десь у нічному мороці чаяться незбагненні жахіття. Це доповнення містить два нові сценарії, нові зустрічі для кожної зони Аркгема, нових монстрів і нові аномалії, а також чотирьох нових дослідників, готових протистояти жахам з новими предметами, заклинаннями та союзниками.\n• 2 сценарії\n• 4 дослідники\n• 7 карт заголовків\n• 20 карт архіву\n• 12 карт аномалій\n• 48 карт подій\n• 72 карти зустрічей\n• 4 карти союзників\n• 4 карти предметів\n• 4 карти заклинань\n• 28 спеціальних карт\n• 12 початкових карт\n• 6 карт стану розшукуваний\n• 22 карти монстрів\n• 15 нових монстрів",
   },
   ["MM_addonSummary_text"] = {
-    ["en"] = "• 2 нові сценарії\n• 4 нові дослідники\n• 238 нових карт",
+    ["en"] = "• 2 new scenarios\n• 4 new investigators\n• 238 new cards",
     ["uk"] = "• 2 нові сценарії\n• 4 нові дослідники\n• 238 нових карт",
   },
   ["MM_addonTitle_text"] = {
-    ["en"] = "Оберіть доповнення",
+    ["en"] = "Choose expansion",
     ["uk"] = "Оберіть доповнення",
   },
   ["MM_change_scenario"] = {
@@ -68,38 +68,46 @@ I18N_DATA = {
   },
   ["MM_scenario1_name_text"] = {
     ["en"] = "APPROACH OF AZATHOTH",
-    ["uk"] = "ПРИШЕСТЯ АЗАТОТА",
+    ["uk"] = "Пришестя Азатота",
   },
   ["MM_scenario2_desc"] = {
-    ["en"] = "In his house at R'lyeh, dead Cthulbu waits dreaming. He slumbers and waits until the stars are right to bring R'lyeh back from its home beneath the waves and for the Great Old Ones to return. For that is not dead which can eternal lie, and with strange aeons even death may die.",
-    ["uk"] = "У домі своєму, у Р'льєху, мертвий Ктулху чекає вві сні. Він дрімає і чекає, коли зірки стануть на свої місця і Р'льєх вирине з морських глибин, а Стародавні повернуться в цей світ. Бо не мертве те, що вічно пробуває, а з вічністю, бува, і смерть сама вмирає",
-  },
-  ["MM_scenario2_name_text"] = {
-    ["en"] = "ECHOES OF THE DEEP",
-    ["uk"] = "ВІДЛУННЯ БЕЗОДНІ",
-  },
-  ["MM_scenario3_desc"] = {
     ["en"] = "The ghouls that dwell beneath the earth hunger for the flesh of corpses, yet even they live in worshipful fear of the Devourer Below. But the ghouls are not the only worshipers of Umôrdhoth in Arkham...",
     ["uk"] = "Гулі, що живуть під землею, вічно прагнуть плоті трупів, але навіть вони бояться Пожирача з Глибин. Однак гулі не єдині послідовники Умордота в Аркгемі...",
   },
-  ["MM_scenario3_name_text"] = {
+  ["MM_scenario2_name_text"] = {
     ["en"] = "FEAST FOR UMÔRDHOTH",
-    ["uk"] = "ТРАПЕЗА УМОРДОТА",
+    ["uk"] = "Трапеза Умордота",
   },
-  ["MM_scenario4_desc"] = {
+  ["MM_scenario3_desc"] = {
     ["en"] = "In the cold void between worlds, something lurks. Beyond the veil, it whispers, reaching out for those with the power to free it from its prison. Those who fall into its thrall gain great power, but at a terrible price. And each day, its freedom draws nearer.",
     ["uk"] = "Щось чигає в холодній порожнечі між світами. Ховаючись під покровом, воно шепоче до тих, хто здатен звільнити його з вʼязниці. Одержимі ним здобувають велику силу, але її ціна жахливо висока. І день за днем його свобода стає все ближчою.",
   },
-  ["MM_scenario4_name_text"] = {
+  ["MM_scenario3_name_text"] = {
     ["en"] = "VEIL OF TWILIGHT",
-    ["uk"] = "ПОКРОВ СУТІНКІВ",
+    ["uk"] = "Покров\nСутінків",
+  },
+  ["MM_scenario4_desc"] = {
+    ["en"] = "In his house at R'lyeh, dead Cthulbu waits dreaming. He slumbers and waits until the stars are right to bring R'lyeh back from its home beneath the waves and for the Great Old Ones to return. For that is not dead which can eternal lie, and with strange aeons even death may die.",
+    ["uk"] = "У домі своєму, у Р'льєху, мертвий Ктулху чекає вві сні. Він дрімає і чекає, коли зірки стануть на свої місця і Р'льєх вирине з морських глибин, а Стародавні повернуться в цей світ. Бо не мертве те, що вічно пробуває, а з вічністю, бува, і смерть сама вмирає",
+  },
+  ["MM_scenario4_name_text"] = {
+    ["en"] = "ECHOES OF THE DEEP",
+    ["uk"] = "Відлуння\nБезодні",
+  },
+  ["MM_scenario5_desc"] = {
+    ["en"] = "The gangs of Arkham have a long history, and the peace between the O'Bannions and the Sheldons has always been tenuous at best. In the sweltering summer of 1926, a dark shadow pushes them into savage conflict.",
+    ["uk"] = "Банди Аркгему мають довгу історію, та мир між О'Бенніонами та Шелдонами був радше ілюзією, ніж реальністю. У задушливе літо 1926 року, темна тінь остаточно штовхає їх у дику, нещадну війну.",
   },
   ["MM_scenario5_name_text"] = {
-    ["en"] = "Постріли в Темряві",
+    ["en"] = "SHOTS IN THE DARK",
     ["uk"] = "Постріли в Темряві",
   },
+  ["MM_scenario6_desc"] = {
+    ["en"] = "The Beast of Voormithadreth slumbers, while the followers he abandoned on distant Yuggoth prepare offerings of supplication for his ravenous appetite. Should the toad-like Sleeper of N'Kai awaken, doom shall come for us all.",
+    ["uk"] = "Чудовисько з Вуормітхадрету ще спить. Але на далекому Юготі ті, кого він залишив, готують жертви, аби втамувати його жахливий голод. Та якщо жабоподібний Сплячий з Н’Каї прокинеться, світ зануриться в морок загибелі.",
+  },
   ["MM_scenario6_name_text"] = {
-    ["en"] = "Мовчання Тсатгоґґуа",
+    ["en"] = "SILENCE OF TSATHOGGUA",
     ["uk"] = "Мовчання Тсатгоґґуа",
   },
   ["MM_select_scenario"] = {
@@ -111,19 +119,19 @@ I18N_DATA = {
     ["uk"] = "ПОЧАТИ ГРУ",
   },
   ["MM_submitAddons_text"] = {
-    ["en"] = "ОБРАТИ ДОПОВНЕННЯ",
+    ["en"] = "Choose expansion",
     ["uk"] = "ОБРАТИ ДОПОВНЕННЯ",
   },
   ["MM_text_addon1_text"] = {
-    ["en"] = "Нічний Морок",
+    ["en"] = "Dead of Night",
     ["uk"] = "Нічний Морок",
   },
   ["MM_text_addon2_text"] = {
-    ["en"] = "Під Темними Хвилями",
+    ["en"] = "Under Dark Waves",
     ["uk"] = "Під Темними Хвилями",
   },
   ["MM_toggleAddon_text"] = {
-    ["en"] = "ДОДАТИ / ВИЛУЧИТИ",
+    ["en"] = "Add / Remove",
     ["uk"] = "ДОДАТИ / ВИЛУЧИТИ",
   },
   ["PB_myth_validate"] = {
@@ -155,11 +163,11 @@ I18N_DATA = {
     ["uk"] = "Купити за $%s",
   },
   ["S_find_common"] = {
-    ["en"] = "ЗВИЧАЙНИЙ",
+    ["en"] = "COMMON",
     ["uk"] = "ЗВИЧАЙНИЙ",
   },
   ["S_find_curio"] = {
-    ["en"] = "РІДКІСНИЙ",
+    ["en"] = "CURIO",
     ["uk"] = "РІДКІСНИЙ",
   },
   ["S_get"] = {
@@ -167,27 +175,27 @@ I18N_DATA = {
     ["uk"] = "Отримати за $0",
   },
   ["S_return_cards"] = {
-    ["en"] = "ПОВЕРНУТИ В КОЛОДУ",
+    ["en"] = "Return to the Deck",
     ["uk"] = "ПОВЕРНУТИ В КОЛОДУ",
   },
   ["S_show_cards_text"] = {
-    ["en"] = "ПОДИВИТИСЬ КАРТИ(У)",
+    ["en"] = "View the Card(s)",
     ["uk"] = "ПОДИВИТИСЬ КАРТИ(У)",
   },
   ["T4A_clue"] = {
-    ["en"] = "РОЗМІСТИТИ ЗАЧІПКУ",
+    ["en"] = "SPAWN CLUE",
     ["uk"] = "РОЗМІСТИТИ ЗАЧІПКУ",
   },
   ["T4A_doom"] = {
-    ["en"] = "РОЗПОДІЛИТИ ПРИРЕЧЕНІСТЬ",
+    ["en"] = "SPREAD DOOM",
     ["uk"] = "РОЗПОДІЛИТИ ПРИРЕЧЕНІСТЬ",
   },
   ["T4A_gate"] = {
-    ["en"] = "ПРОРИВ ВОРІТ",
+    ["en"] = "GATE BURST",
     ["uk"] = "ПРОРИВ ВОРІТ",
   },
   ["T4A_monster"] = {
-    ["en"] = "РОЗМІСТИТИ МОНСТРА",
+    ["en"] = "SPAWN MONSTER",
     ["uk"] = "РОЗМІСТИТИ МОНСТРА",
   },
 }
