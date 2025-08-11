@@ -1,0 +1,59 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "CardID": 580200,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "CustomDeck": {
+    "5802": {
+      "BackIsHidden": true,
+      "BackURL": "https://drive.google.com/uc?export=view\u0026id=15ZOSvEEC0VQgDYFDoAcRqi4iIsx4Lkcw",
+      "FaceURL": "https://drive.google.com/uc?export=view\u0026id=1ep-vd1g0UsstYeb_LXSu695neFYprj2_",
+      "NumHeight": 2,
+      "NumWidth": 2,
+      "Type": 1,
+      "UniqueBack": true
+    }
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "7eb83a",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": true,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Memo": "{\"archive\":[44,45,46,47,48,49,50,51,52],\"codex\":[1,41,42,43],\"monsterdeck\":[\"brawling riot\",\"ghoul acolyte\",\"ghoul acolyte\",\"Occult Ritualist\",\"Occult Ritualist\",\"vicious glutton\",\"vicious glutton\",\"Nightgaunt\"],\"monsterspawn\":{\"Feckless Agitator\":[{\"location\":\"Northside\",\"position\":{\"x\":-0.015,\"y\":0.164,\"z\":3.422},\"rotation\":{\"x\":0,\"y\":180,\"z\":180}}],\"Mouthy Raconteur\":[{\"location\":\"Rivertown\",\"position\":{\"x\":0.256,\"y\":0.164,\"z\":-3.364},\"rotation\":{\"x\":0,\"y\":180,\"z\":180}}]},\"mythosCups\":{\"Blank\":3,\"Gate Burst\":1,\"Read Headline\":2,\"Reckoning\":1,\"Spawn Clue\":2,\"Spawn Monster\":2,\"Spread Doom\":3},\"name\":\"SitD\",\"number\":5,\"setaside\":[\"Brutal Goons\",\"Brutal Goons\",\"Rough Bootlegger\",\"Rough Bootlegger\",\"Corben Bouchard\"],\"setaside2\":[\"Hit Squad\",\"Hit Squad\",\"Mob Enforcer\",\"Mob Enforcer\",\"Siobhan Riley\"],\"startPosition\":{\"x\":0.866999924182892,\"y\":1.01360654830933,\"z\":-0.149594411253929},\"tiles\":{\"Neighborhood\":{\"Downtown\":{\"position\":{\"x\":-0.022,\"y\":0.4,\"z\":-0.216},\"rotation\":{\"x\":0,\"y\":180,\"z\":0},\"tokens\":[{\"position\":[0.317,0.149,1.915],\"type\":\"Doom Token\"},{\"position\":[-3.648,0.149,0.804],\"type\":\"Red Marker\"}]},\"Easttown\":{\"position\":{\"x\":-0.22,\"y\":0.4,\"z\":0.163},\"rotation\":{\"x\":0,\"y\":180,\"z\":0},\"tokens\":[{\"position\":[-1.714,0.149,1.379],\"type\":\"Doom Token\"}]},\"Merchant District\":{\"position\":{\"x\":-0.018,\"y\":0.4,\"z\":0.541},\"rotation\":{\"x\":0,\"y\":180,\"z\":0},\"tokens\":[{\"position\":[1.583,0.149,1.293],\"type\":\"Doom Token\"},{\"position\":[2.599,0.149,-2.784],\"type\":\"Blue Marker\"}]},\"Northside\":{\"position\":{\"x\":0.18,\"y\":0.4,\"z\":0.162},\"rotation\":{\"x\":0,\"y\":180,\"z\":0},\"tokens\":[{\"position\":[1.632,0.149,-1.427],\"type\":\"Doom Token\"}]},\"Rivertown\":{\"position\":{\"x\":-0.419,\"y\":0.4,\"z\":0.542},\"rotation\":{\"x\":0,\"y\":180,\"z\":0},\"tokens\":[{\"position\":[-1.545,0.149,1.324],\"type\":\"Doom Token\"}]}},\"Street\":{\"Bridge1\":{\"position\":{\"x\":-0.119,\"y\":0.2,\"z\":0.352},\"rotation\":{\"x\":0,\"y\":120,\"z\":0}},\"Bridge2\":{\"position\":{\"x\":-0.319,\"y\":0.2,\"z\":0.353},\"rotation\":{\"x\":0,\"y\":240,\"z\":0}},\"Residential1\":{\"position\":{\"x\":-0.02,\"y\":0.2,\"z\":0.161},\"rotation\":{\"x\":0,\"y\":180,\"z\":0}},\"Residential2\":{\"position\":{\"x\":-0.122,\"y\":0.2,\"z\":-0.026},\"rotation\":{\"x\":0,\"y\":240,\"z\":0}},\"Scenic1\":{\"position\":{\"x\":0.078,\"y\":0.2,\"z\":-0.027},\"rotation\":{\"x\":0,\"y\":120,\"z\":0}},\"Scenic2\":{\"position\":{\"x\":-0.218,\"y\":0.2,\"z\":0.542},\"rotation\":{\"x\":0,\"y\":180,\"z\":0}}}},\"type\":\"Scenario\"}",
+  "Name": "Card",
+  "Nickname": "",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": -79.983,
+    "posY": 4.024,
+    "posZ": -34.077,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 2.5,
+    "scaleY": 1,
+    "scaleZ": 2.5
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

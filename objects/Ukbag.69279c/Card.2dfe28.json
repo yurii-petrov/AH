@@ -1,0 +1,59 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "CardID": 581001,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "CustomDeck": {
+    "5810": {
+      "BackIsHidden": true,
+      "BackURL": "https://drive.google.com/uc?export=view\u0026id=1_gY6ih7qIsJeAB1uNelCg7LWcQkdSDDm",
+      "FaceURL": "https://drive.google.com/uc?export=view\u0026id=1f0gzzxbWYUhHLHf5regi6-r5zvS6kwkB",
+      "NumHeight": 2,
+      "NumWidth": 2,
+      "Type": 1,
+      "UniqueBack": true
+    }
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "2dfe28",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": true,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Memo": "{\"hp\":5,\"money\":2,\"name\":\"Kate Winthrop\",\"role\":[\"seeker\"],\"sanity\":7,\"skill\":{\"influence\":2,\"lore\":3,\"observation\":4,\"strength\":2,\"will\":2},\"startPosition\":{\"x\":-0.627177357673645,\"y\":1.02848744392395,\"z\":-0.285375088453293},\"type\":\"Investigator\"}",
+  "Name": "Card",
+  "Nickname": "",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": 79.782,
+    "posY": 4.04,
+    "posZ": 29.764,
+    "rotX": 0,
+    "rotY": 90,
+    "rotZ": 180,
+    "scaleX": 1.5,
+    "scaleY": 1,
+    "scaleZ": 1.5
+  },
+  "Value": 0,
+  "XmlUI": ""
+}
