@@ -5129,6 +5129,22 @@ function getHandsByPlayerColor(playerColor)
   return out
 end
 
+-- allows calling a function inside of a table
+function callTable(params)
+  local keys = params[1] or {}
+  local arg = params[2] or nil
+  local var = _G
+  for _, key in ipairs(keys) do
+    var = var[key]
+    if type(var) ~= "table" then break end
+  end
+  if type(var) ~= "function" then
+    log("resulting var was not a function " .. table.concat(keys, "->"))
+    return
+  end
+  return var(arg)
+end
+
 function getFormattedPos(t)
   local p = {tonumber(string.format("%.3f", t[1])), tonumber(string.format("%.3f", t[2])),
              tonumber(string.format("%.3f", t[3]))}

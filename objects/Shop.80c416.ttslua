@@ -1,4 +1,4 @@
-require("Global/i18n")
+local i18nApi = require("Global/i18nApi")
 require("Global/i18nData")
 serpent = require("util/serpent")
 
@@ -33,9 +33,8 @@ function setBottom(d)
 		return
 	end
 
-	print("S_get: "..i18n.getStrById("S_get"))
-	if d.price == 0 then buy_txt = i18n.getStrById("S_get")
-	elseif d.price > 0 then buy_txt = string.format(i18n.getStrById("S_buy"), d.price) end
+	if d.price == 0 then buy_txt = i18nApi.getStrById("S_get")
+	elseif d.price > 0 then buy_txt = string.format(i18nApi.getStrById("S_buy"), d.price) end
     data["market_"..d.id] = d
 	local color = self.UI.getAttribute("market_"..d.id, "textColor")
 	self.UI.setAttribute("market_"..d.id, "text", buy_txt)
@@ -54,75 +53,6 @@ function onLoad(savedData)
 				
 			end
 	end
-
-	-- for i, d in pairs(data) do
-	-- 	setTop(d)
-	-- 	setBottom(d)
-	-- end
-	-- setTop({
-	-- 	id = 1,
-	-- 	types = {
-	-- 		"common",
-	-- 		"curio"
-	-- 	}
-	-- })
-	-- setTop({
-	-- 	id = 2,
-	-- 	types = {
-	-- 		"common"
-	-- 	}
-	-- })
-	-- setTop({
-	-- 	id = 3,
-	-- 	types = {
-	-- 		"curio"
-	-- 	}
-	-- })
-	-- setTop({
-	-- 	id = 4,
-	-- 	types = {
-	-- 		"common",
-	-- 		"curio"
-	-- 	}
-	-- })
-	-- setTop({
-	-- 	id = 5,
-	-- 	types = {
-	-- 		"common"
-	-- 	}
-	-- })
-	-- setBottom({
-	-- 	id = 1,
-	-- 	price = 0
-	-- })
-	-- setBottom({
-	-- 	id = 2,
-	-- 	price = 1
-	-- })
-	-- setBottom({
-	-- 	id = 3,
-	-- 	price = 22
-	-- })
-	-- setBottom({
-	-- 	id = 4,
-	-- 	price = 3
-	-- })
-	-- setBottom({
-	-- 	id = 5,
-	-- 	price = 4
-	-- })
-	-- setBottom({
-	-- 	id = 6,
-	-- 	price = 5
-	-- })
-	-- setBottom({
-	-- 	id = 7,
-	-- 	price = 6
-	-- })
-	-- setBottom({
-	-- 	id = 8,
-	-- 	price = 0
-	-- })
 end
 
 function onSave()
