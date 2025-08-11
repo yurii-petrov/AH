@@ -2825,42 +2825,52 @@ function prepareScenarioDecks(scenarioData)
 
   local locationData = parseJson(locationMat.memo)
   if not locationData then
+    print("locationData not found")
     return
   end
 
   local scenarioMat = getObjectFromGUID(scenarioMatId)
   if not scenarioMat then
+    print("scenarioMat not found")
     return
   end
 
+  print("scenarioMatId: "..scenarioMatId)
   local scenarioMatData = parseJson(scenarioMat.memo)
   if not scenarioMatData then
+    print("scenarioMatData not found")
     return
   end
 
   if not scenarioData.tiles then
+    print("scenarioData.tiles not found")
     return
   end
 
   if not scenarioMatData.positions and not scenarioMatData.scenarios then
+    print("error: not scenarioMatData.positions and not scenarioMatData.scenarios")
     return
   end
 
   if #scenarioMatData.scenarios < scenarioData.number then
+    print("error: #scenarioMatData.scenarios < scenarioData.number")
     return
   end
 
   local scenarioInstruction = scenarioMatData.scenarios[scenarioData.number]
   if scenarioData.number ~= scenarioInstruction.number or scenarioData.number ~= scenarioInstruction.number then
+    print("error: scenarioData.number ~= scenarioInstruction.number or scenarioData.number ~= scenarioInstruction.number")
     return
   end
 
   if not scenarioInstruction.decks then
+    print("scenarioInstruction.decks not found")
     return
   end
 
   local box = getObjectFromGUID(boxId)
   if not box then
+    print("box not found")
     return
   end
 
