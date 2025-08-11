@@ -38,11 +38,11 @@
   "MeasureMovement": false,
   "Name": "Custom_Tile",
   "Nickname": "Tile4ActionButtons",
-  "Tags": [
-        "i18n_XML"
-      ],
   "Snap": true,
   "Sticky": true,
+  "Tags": [
+    "i18n_XML"
+  ],
   "Tooltip": true,
   "Transform": {
     "posX": -43.401,

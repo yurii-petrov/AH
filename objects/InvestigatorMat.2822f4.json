@@ -132,11 +132,11 @@
   "Memo": "Investigator Mat",
   "Name": "Custom_Tile",
   "Nickname": "Investigator Mat",
-  "Tags": [
-        "i18n_XML"
-      ],
   "Snap": true,
   "Sticky": true,
+  "Tags": [
+    "i18n_XML"
+  ],
   "Tooltip": true,
   "Transform": {
     "posX": 105.386,
@@ -149,5 +149,6 @@
     "scaleY": 1,
     "scaleZ": 5
   },
-  "Value": 0
+  "Value": 0,
+  "XmlUI": ""
 }

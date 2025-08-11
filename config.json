@@ -1,9 +1,7 @@
 {
-  "CameraStates": [],
   "ComponentTags_path": "ComponentTags.json",
   "CustomUIAssets_path": "CustomUIAssets.json",
   "DecalPallet": [],
-  "Decals": [],
   "GameComplexity": "Medium Complexity",
   "GameMode": "Arkham Horror 3ed Complete [UA]",
   "GameType": "Game",
@@ -17,7 +15,6 @@
   "Lighting_path": "Lighting.json",
   "LuaScriptState_path": "LuaScriptState.luascriptstate",
   "LuaScript_path": "LuaScript.ttslua",
-  "MusicPlayer_path": "MusicPlayer.json",
   "Note": "",
   "ObjectStates_order": [
     "Custom_Tile.f47e19",
@@ -65,7 +62,8 @@
     "Roller.91141f",
     "InvestigatorMat.2822f4",
     "MonsterMat.f50cd9",
-    "Eng.e75fc8"
+    "Eng.e75fc8",
+    "1DoNMemo.09d447"
   ],
   "PlayArea": 0.5,
   "PlayerCounts": [
@@ -79,7 +77,6 @@
   "SaveName": "pub v1.0.8",
   "Sky": "Sky_Museum",
   "SkyURL": "https://steamusercontent-a.akamaihd.net/ugc/1004810215902243100/E890F03BD00542A575D66A7AD371A8571E67D921/",
-  "SnapPoints": [],
   "TabStates_path": "TabStates.json",
   "Table": "Table_None",
   "Tags": [

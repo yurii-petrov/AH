@@ -175,6 +175,10 @@
     {
       "displayed": "codex",
       "normalized": "codex"
+    },
+    {
+      "displayed": "i18n_XML",
+      "normalized": "i18n_xml"
     }
   ]
 }
