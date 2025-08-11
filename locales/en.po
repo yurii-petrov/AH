@@ -120,7 +120,7 @@ msgstr "ПРОРИВ ВОРІТ"
 
 # Investigator mat
 msgid "IM_enemy_text"
-msgstr "В    О    Р    О    Г    И"
+msgstr "E    N    E    M    I    E    S"
 
 msgid "IM_discard_text"
 msgstr "С К И Д"

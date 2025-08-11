@@ -224,7 +224,7 @@
 			childAlignment="MiddleCenter"
 			rectAlignment="UpperCenter">
 			<panel minHeight="100">
-				<text id="MM_choice_scenario" text="" fontSize="46" fontStyle="bold" alignment="MiddleCenter"/>
+				<text id="MM_choice_scenario_text" text="" fontSize="46" fontStyle="bold" alignment="MiddleCenter"/>
 			</panel>
 			<panel minHeight="410">
 				<VerticalScrollView color="clear"
