@@ -19,7 +19,7 @@ I18N_DATA = {
     ["uk"] = "С К И Д",
   },
   ["IM_enemy_text"] = {
-    ["en"] = "В    О    Р    О    Г    И",
+    ["en"] = "E    N    E    M    I    E    S",
     ["uk"] = "В    О    Р    О    Г    И",
   },
   ["MM_change_scenario"] = {
