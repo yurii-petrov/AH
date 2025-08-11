@@ -47,75 +47,74 @@ msgstr "At the center of infinity slumbers Azathoth, lulled to sleep by the ceas
 
 # Scenario 2
 msgid "MM_scenario2_name_text"
-msgstr "ECHOES OF THE DEEP"
+msgstr "FEAST FOR UMÔRDHOTH"
 
 msgid "MM_scenario2_desc"
-msgstr "In his house at R'lyeh, dead Cthulbu waits dreaming. He slumbers and waits until the stars are right to bring R'lyeh back from its home beneath the waves and for the Great Old Ones to return. For that is not dead which can eternal lie, and with strange aeons even death may die."
+msgstr "The ghouls that dwell beneath the earth hunger for the flesh of corpses, yet even they live in worshipful fear of the Devourer Below. But the ghouls are not the only worshipers of Umôrdhoth in Arkham..."
 
 # Scenario 3
 msgid "MM_scenario3_name_text"
-msgstr "FEAST FOR UMÔRDHOTH"
+msgstr "VEIL OF TWILIGHT"
 
 msgid "MM_scenario3_desc"
-msgstr "The ghouls that dwell beneath the earth hunger for the flesh of corpses, yet even they live in worshipful fear of the Devourer Below. But the ghouls are not the only worshipers of Umôrdhoth in Arkham..."
+msgstr "In the cold void between worlds, something lurks. Beyond the veil, it whispers, reaching out for those with the power to free it from its prison. Those who fall into its thrall gain great power, but at a terrible price. And each day, its freedom draws nearer."
 
 # Scenario 4
 msgid "MM_scenario4_name_text"
-msgstr "VEIL OF TWILIGHT"
+msgstr "ECHOES OF THE DEEP"
 
 msgid "MM_scenario4_desc"
-msgstr "In the cold void between worlds, something lurks. Beyond the veil, it whispers, reaching out for those with the power to free it from its prison. Those who fall into its thrall gain great power, but at a terrible price. And each day, its freedom draws nearer."
+msgstr "In his house at R'lyeh, dead Cthulbu waits dreaming. He slumbers and waits until the stars are right to bring R'lyeh back from its home beneath the waves and for the Great Old Ones to return. For that is not dead which can eternal lie, and with strange aeons even death may die."
 
 # Scenario 5
 msgid "MM_scenario5_name_text"
-msgstr "Постріли в Темряві"
+msgstr "SHOTS IN THE DARK"
 
 msgid "MM_scenario5_desc"
-msgstr ""
+msgstr "The gangs of Arkham have a long history, and the peace between the O'Bannions and the Sheldons has always been tenuous at best. In the sweltering summer of 1926, a dark shadow pushes them into savage conflict."
 
 # Scenario 6
 msgid "MM_scenario6_name_text"
-msgstr "Мовчання Тсатгоґґуа"
+msgstr "SILENCE OF TSATHOGGUA"
 
 msgid "MM_scenario6_desc"
-msgstr ""
+msgstr "The Beast of Voormithadreth slumbers, while the followers he abandoned on distant Yuggoth prepare offerings of supplication for his ravenous appetite. Should the toad-like Sleeper of N'Kai awaken, doom shall come for us all."
 
 msgid "MM_addonTitle_text"
-msgstr "Оберіть доповнення"
+msgstr "Choose expansion"
 
 msgid "MM_addonSummary_text"
-msgstr "• 2 нові сценарії\n• 4 нові дослідники\n• 238 нових карт"
+msgstr "• 2 new scenarios\n• 4 new investigators\n• 238 new cards"
 
 msgid "MM_addonDescription_text"
-msgstr ""
-"У доповненні «Нічний морок» гравці досліджують ті закутки Аркгема, куди страшно сунутися навіть удень. У місті процвітає організована злочинність, потаємні культи намагаються догодити своїм темним володарям, химерний місяць висить у небі, а десь у нічному мороці чаяться незбагненні жахіття. Це доповнення містить два нові сценарії, нові зустрічі для кожної зони Аркгема, нових монстрів і нові аномалії, а також чотирьох нових дослідників, готових протистояти жахам з новими предметами, заклинаннями та союзниками."
-"\n• 2 сценарії"
-								"\n• 4 дослідники"
-								"\n• 7 карт заголовків"
-								"\n• 20 карт архіву"
-								"\n• 12 карт аномалій"
-								"\n• 48 карт подій"
-								"\n• 72 карти зустрічей"
-								"\n• 4 карти союзників"
-								"\n• 4 карти предметів"
-								"\n• 4 карти заклинань"
-								"\n• 28 спеціальних карт"
-								"\n• 12 початкових карт"
-								"\n• 6 карт стану розшукуваний"
-								"\n• 22 карти монстрів (тут питання напевно краще написати 15, бо 22 це з повторами) наприклад просто" 
-								"\n• 15 нових монстрів"
+msgstr "In Dead of Night, investigators explore the facets of Arkham best left unseen in the light of day. Organized crime builds a strong foothold in the city, secret cults labor for a dark master, an alien moon hangs overhead, and unknowable horrors stalk the night. This expansion includes two all-new scenarios, new encounters for every location in Arkham, new monsters and anomalies, and four new investigators to face these fresh horrors, armed with new spells, items and allies."
+"\n• 2 scenarios"
+								"\n• 4 investigators"
+								"\n• 7 headline cards"
+								"\n• 20 archive cards"
+								"\n• 12 anomaly cards"
+								"\n• 48 event cards"
+								"\n• 72 encounter cards"
+								"\n• 4 ally cards"
+								"\n• 4 item cards"
+								"\n• 4 spell cards"
+								"\n• 28 special cards"
+								"\n• 12 starting cards"
+								"\n• 6 wanted condition cards"
+								"\n• 22 monster cards" 
+								"\n• 15 new monsters"
 
 msgid "MM_text_addon1_text"
-msgstr "Нічний Морок"
+msgstr "Dead of Night"
 
 msgid "MM_text_addon2_text"
-msgstr "Під Темними Хвилями"
+msgstr "Under Dark Waves"
 
 msgid "MM_toggleAddon_text"
-msgstr "ДОДАТИ / ВИЛУЧИТИ"
+msgstr "Add / Remove"
 
 msgid "MM_submitAddons_text"
-msgstr "ОБРАТИ ДОПОВНЕННЯ"
+msgstr "Choose expansion"
 
 msgid "MM_map_text"
 msgstr "MAP"
@@ -141,16 +140,16 @@ msgstr "The phase begins"
 
 # Shop
 msgid "S_show_cards_text"
-msgstr "ПОДИВИТИСЬ КАРТИ(У)"
+msgstr "View the Card(s)"
 
 msgid "S_return_cards"
-msgstr "ПОВЕРНУТИ В КОЛОДУ"
+msgstr "Return to the Deck"
 
 msgid "S_find_common"
-msgstr "ЗВИЧАЙНИЙ"
+msgstr "COMMON"
 
 msgid "S_find_curio"
-msgstr "РІДКІСНИЙ"
+msgstr "CURIO"
 
 msgid "S_get"
 msgstr "Get for $0"
@@ -160,29 +159,29 @@ msgstr "Buy for $%s"
 
 # Tile 4 Action Buttons
 msgid "T4A_clue"
-msgstr "РОЗМІСТИТИ ЗАЧІПКУ"
+msgstr "SPAWN CLUE"
 
 msgid "T4A_doom"
-msgstr "РОЗПОДІЛИТИ ПРИРЕЧЕНІСТЬ"
+msgstr "SPREAD DOOM"
 
 msgid "T4A_monster"
-msgstr "РОЗМІСТИТИ МОНСТРА"
+msgstr "SPAWN MONSTER"
 
 msgid "T4A_gate"
-msgstr "ПРОРИВ ВОРІТ"
+msgstr "GATE BURST"
 
 # Investigator mat
 msgid "IM_enemy_text"
 msgstr "E    N    E    M    I    E    S"
 
 msgid "IM_discard_text"
-msgstr "С К И Д"
+msgstr "D I S C A R D"
 
 msgid "IM_discard_desc_text"
-msgstr "Покладіть сюди карту, вона опиниться у своїй колоді"
+msgstr "Place the card here; it will go back to its deck."
 
 msgid "IM_death"
-msgstr "Смерть"
+msgstr "Death"
 
 msgid "IM_bio"
-msgstr "Біографія"
+msgstr "Bio"
