@@ -201,25 +201,25 @@ msgstr "Bio"
 # Mythos Mat
 
 msgid "MT_success"
-msgstr "УСПІХ"
+msgstr "PASS"
 
 msgid "MT_discard"
-msgstr "СКИД"
+msgstr "DISCARD"
 
 msgid "MT_fail"
-msgstr "ПРОВАЛ"
+msgstr "FAIL"
 
 msgid "MT_myth"
-msgstr "ТЯГНУТИ МІТ"
+msgstr "DRAW MYTH"
 
 msgid "MT_encounter"
-msgstr "ТЯГНУТИ ЗУСТРІЧ"
+msgstr "DRAW ENCONUNTER"
 
 msgid "MT_current_text"
-msgstr "ПОТОЧНА КАРТА"
+msgstr "CURRENT CARD"
 
 msgid "MT_event_text"
-msgstr "ПОДІЇ"
+msgstr "EVENT"
 
 msgid "MT_discard_text"
-msgstr "СКИД"
+msgstr "DISCARD"
