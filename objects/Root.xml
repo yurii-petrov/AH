@@ -384,11 +384,11 @@
 						scrollSensitivity="30">
 						<VerticalLayout contentSizeFitter="vertical" width="380" spacing="10">
 							<panel id="addon_panel1" preferredHeight="50" color="#ffffff22">
-								<button id="1" onClick="chooseAddon"/>
+								<button id="addon1" onClick="chooseAddon"/>
 								<text id="MM_text_addon1_text" alignment="MiddleCenter" text=""/>
 							</panel>
 							<panel id="addon_panel2" preferredHeight="50">
-								<button id="2" onClick="inProgress"/>
+								<button id="addon2" onClick="inProgress"/>
 								<text id="MM_text_addon2_text" color="gray" alignment="MiddleCenter" text=""/>
 							</panel>
 							<!-- <panel id="addon_panel3" preferredHeight="50">

@@ -1457,12 +1457,7 @@ function startGame(player, alt, id)
 
   for i, addon in pairs(addons) do
     gameData.addons[i] = addon.include
-    end
   end
-
-  --TODO: remove
-  print("gameData.addons: " .. serpent.tts(gameData.addons))
-    
 
   gameData.scenarioData = scenarioData
   onClickPrepareScenario()
@@ -1490,7 +1485,7 @@ function submitScenario()
 end
 
 function chooseAddon(player, alt, id)
-  local id = number(id)
+  local id = number(id:match("%d+"))
   currentAddon = id
   self.UI.setAttribute('addonTitle', 'text', addons[id].title)
   self.UI.setAttribute('addonImage', 'image', id)
@@ -3027,9 +3022,19 @@ function prepareScenarioDecks(scenarioData)
             -- prepare encounter and anomaly deck
           elseif string.lower(memo.type) == "encounter" or string.lower(memo.type) == "anomaly" then
 
-            local function containsDeck(tbl, name, type)
+            local function containsDeck(tbl, memo)
+
+              print(memo.set)
+              print(serpent.tts(gameData.addons))
+              print(gameData.addons[memo.set] == true)
+
               for _, v in pairs(tbl) do
-                if string.lower(v.name) == string.lower(name) and string.lower(v.type) == string.lower(type) then
+                local isName = v.name and memo.name and string.lower(v.name) == string.lower(memo.name)
+                local isType = v.type and memo.type and string.lower(v.type) == string.lower(memo.type)
+                local isSet = not memo.set or (memo.set and gameData.addons[memo.set] == true)
+                -- TODO: remove
+                print("isSet: "..serpent.tts(isSet))
+                if isName and isType and isSet then
                   return v
                 end
               end
@@ -3038,7 +3043,7 @@ function prepareScenarioDecks(scenarioData)
 
             local usedDecks = {}
 
-            local deckData = containsDeck(scenarioInstruction.decks, memo.name, memo.type)
+            local deckData = containsDeck(scenarioInstruction.decks, memo)
             if deckData then
               if not usedDecks[string.lower(memo.name)] then
                 usedDecks[string.lower(memo.name)] = true
