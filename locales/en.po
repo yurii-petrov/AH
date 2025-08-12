@@ -142,7 +142,7 @@ msgid "PB_phase_text"
 msgstr "PHASE"
 
 msgid "PB_phase_btn_btn_text"
-msgstr "PULL"
+msgstr "DRAW"
 
 msgid "PB_phase_btn_btn_encounter"
 msgstr "ENCOUNTER"

@@ -89,7 +89,7 @@
     	active="false"
 		offsetXY="0 -83"
 		font="Fonts/AdonisC"
-		fontSize="16"
+		fontSize="14"
 		color="#ffffff"
 		shadow="#000000"
 		shadowDistance="1 1"

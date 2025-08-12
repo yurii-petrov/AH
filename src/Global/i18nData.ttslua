@@ -167,7 +167,7 @@ I18N_DATA = {
     ["uk"] = "МІТ",
   },
   ["PB_phase_btn_btn_text"] = {
-    ["en"] = "PULL",
+    ["en"] = "DRAW",
     ["uk"] = "ТЯГНУТИ",
   },
   ["PB_phase_text"] = {

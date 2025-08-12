@@ -2473,7 +2473,7 @@ end
 -- ╰──────────────────────────────────────────────╯
 
 function clickOnEN()
-  gameData.language = "eng"
+  gameData.language = "en"
   updateXMLs()
   translationService.setCurrentLanguage(gameData.language)
 
@@ -2933,6 +2933,10 @@ function prepareScenarioDecks(scenarioData)
                           self.UI.setAttribute('phase_text', "text", i18n.getStrById("PB_phase1"))
                           broadcastToAll(i18n.getStrById("PB_next_phase").." " .. i18n.getStrById("PB_phase"..gameData.phase) .. "!",
                             phases[gameData.phase].color)
+                          if gameData.language == "en" then
+                            self.UI.setAttribute('PB_phase_text', 'offsetXY', '0 15')
+                            self.UI.setAttribute('phase_text', 'offsetXY', '0 35')
+                          end
                           eventSpawnDooms(function()
                             isDrawMythInProcess = false
                           end)
