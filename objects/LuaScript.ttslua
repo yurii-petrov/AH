@@ -157,7 +157,7 @@ gameData = {
   phase = 1,
   numberOfPlayers = 2,
   lockObjs = {},
-  language = translationService.getCurrentLanguage(),
+  language = nil,
   selectedInvestigators = {}
 }
 
@@ -190,7 +190,7 @@ function onload(savedData)
     --    testResolveDooms() 
   end
 
-  -- lockObj(tableId)
+  lockObj(tableId)
   lockObj(locationMatId)
   lockObj(scenarioMatId)
   lockObj(mythosTileId)
@@ -203,6 +203,10 @@ function onload(savedData)
   local parsedSaveData = parseJson(savedData)
   if parsedSaveData then
     gameData = parsedSaveData
+  end
+
+  if gameData.languages then
+      self.UI.setAttribute('languages', 'active', false)
   end
 
   if gameData.isStarted then
