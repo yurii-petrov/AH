@@ -38,6 +38,8 @@ local phases = {{
 -- /execute local c=Player.White;local s=c.getSelectedObjects()[1];local h=c.getHoverObject();if s and h then mPosRot(s, h) end
 -- /execute local c=Player.White;local s=c.getSelectedObjects()[1];local h=c.getHoverObject();if s and h then gPosRot(s, h) end
 
+-- /execute local c=Player.White;local s=c.getSelectedObjects();if s and h then addSet(n, s) end
+
 -- print(JSON.encode(JSON.encode({
 --   name = "AoA",
 --   type = "Event",
@@ -205,12 +207,11 @@ function onload(savedData)
     gameData = parsedSaveData
   end
 
-  if gameData.languages then
-      self.UI.setAttribute('languages', 'active', false)
-  end
+  Wait.time(function()
+    updateXMLs()
+  end, 1)
 
   if gameData.isStarted then
-    self.UI.setAttribute('main_menu', 'active', false)
     Global.UI.setAttribute("phase", "active", true)
     Global.UI.setAttribute("phase_img", "image", phases[gameData.phase].image)
   end
@@ -2510,7 +2511,11 @@ function updateGlobalXml(newXml)
 
   for _, windowId in ipairs(windowIdList) do
     local element = getXmlTableElementById(newXml, windowId)
-    element.attributes.active = windowId == "main_menu" and "true" or "false"
+    if windowId == "main_menu" then
+      element.attributes.active = gameData.language and not gameData.isStarted
+    elseif windowId == "languages" then
+      element.attributes.active = gameData.language == nil
+    end
   end
 
   self.UI.setAttribute('title', 'text', i18n.getStrById("MM_scenario1_name_text"))
@@ -5288,6 +5293,15 @@ function setSP(s, h)
         -- print("Looks like memo is not table: "..h.memo)
       end
     end
+  end
+end
+
+function addSet(n, s)
+  for _, o in pairs(s) do
+    local d = parseJson(o.memo)
+    d.set = n
+    o.memo = JSON.encode(d)
+    print(o.guid .. ": - set 1 added")
   end
 end
 
