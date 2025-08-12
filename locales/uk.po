@@ -51,7 +51,9 @@ msgstr ""
 
 # Scenario 3
 msgid "MM_scenario3_name_text"
-msgstr "Покров\nСутінків"
+msgstr ""
+"Покров\n"
+"Сутінків"
 
 msgid "MM_scenario3_desc"
 msgstr ""
@@ -62,7 +64,9 @@ msgstr ""
 
 # Scenario 4
 msgid "MM_scenario4_name_text"
-msgstr "Відлуння\nБезодні"
+msgstr ""
+"Відлуння\n"
+"Безодні"
 
 msgid "MM_scenario4_desc"
 msgstr ""
@@ -76,14 +80,20 @@ msgid "MM_scenario5_name_text"
 msgstr "Постріли в Темряві"
 
 msgid "MM_scenario5_desc"
-msgstr "Банди Аркгему мають довгу історію, та мир між О'Бенніонами та Шелдонами був радше ілюзією, ніж реальністю. У задушливе літо 1926 року, темна тінь остаточно штовхає їх у дику, нещадну війну."
+msgstr ""
+"Банди Аркгему мають довгу історію, та мир між О'Бенніонами та Шелдонами був "
+"радше ілюзією, ніж реальністю. У задушливе літо 1926 року, темна тінь "
+"остаточно штовхає їх у дику, нещадну війну."
 
 # Scenario 6
 msgid "MM_scenario6_name_text"
 msgstr "Мовчання Тсатгоґґуа"
 
 msgid "MM_scenario6_desc"
-msgstr "Чудовисько з Вуормітхадрету ще спить. Але на далекому Юготі ті, кого він залишив, готують жертви, аби втамувати його жахливий голод. Та якщо жабоподібний Сплячий з Н’Каї прокинеться, світ зануриться в морок загибелі."
+msgstr ""
+"Чудовисько з Вуормітхадрету ще спить. Але на далекому Юготі ті, кого він "
+"залишив, готують жертви, аби втамувати його жахливий голод. Та якщо "
+"жабоподібний Сплячий з Н’Каї прокинеться, світ зануриться в морок загибелі."
 
 msgid "MM_addonTitle_text"
 msgstr "Оберіть доповнення"
@@ -130,22 +140,34 @@ msgstr "МАПА"
 
 # Phases
 msgid "PB_phase1"
-msgstr "дій"
+msgstr "ДІЙ"
 
 msgid "PB_phase2"
-msgstr "монстрів"
+msgstr "МОНСТРІВ"
 
 msgid "PB_phase3"
-msgstr "зустрічей"
+msgstr "ЗУСТРІЧЕЙ"
 
 msgid "PB_phase4"
-msgstr "міту"
+msgstr "МІТУ"
 
 msgid "PB_myth_validate"
 msgstr "Ця кнопка доступна тільки у фазу міту"
 
 msgid "PB_next_phase"
 msgstr "Настає фаза"
+
+msgid "PB_phase_text"
+msgstr "ФАЗА"
+
+msgid "PB_phase_btn_btn_text"
+msgstr "ТЯГНУТИ"
+
+msgid "PB_phase_btn_btn_encounter"
+msgstr "ЗУСТРІЧ"
+
+msgid "PB_phase_btn_btn_mythos"
+msgstr "МІТ"
 
 # Shop
 msgid "S_show_cards_text"

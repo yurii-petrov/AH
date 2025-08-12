@@ -121,22 +121,34 @@ msgstr "MAP"
 
 # Phases
 msgid "PB_phase1"
-msgstr "Action"
+msgstr "ACTION"
 
 msgid "PB_phase2"
-msgstr "Monster"
+msgstr "MONSTER"
 
 msgid "PB_phase3"
-msgstr "Encounter"
+msgstr "ENCOUNTER"
 
 msgid "PB_phase4"
-msgstr "Mythos"
+msgstr "MYTHOS"
 
 msgid "PB_myth_validate"
 msgstr "This button is only available during the Mythos phase"
 
 msgid "PB_next_phase"
 msgstr "The phase begins"
+
+msgid "PB_phase_text"
+msgstr "PHASE"
+
+msgid "PB_phase_btn_btn_text"
+msgstr "PULL"
+
+msgid "PB_phase_btn_btn_encounter"
+msgstr "ENCOUNTER"
+
+msgid "PB_phase_btn_btn_mythos"
+msgstr "MYTHOS"
 
 # Shop
 msgid "S_show_cards_text"

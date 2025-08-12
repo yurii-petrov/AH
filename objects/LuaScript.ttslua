@@ -2930,6 +2930,7 @@ function prepareScenarioDecks(scenarioData)
                       spawnClue(function()
                         spawnClue(function()
                           Global.UI.setAttribute("phase", "active", true)
+                          self.UI.setAttribute('phase_text', "text", i18n.getStrById("PB_phase1"))
                           broadcastToAll(i18n.getStrById("PB_next_phase").." " .. i18n.getStrById("PB_phase"..gameData.phase) .. "!",
                             phases[gameData.phase].color)
                           eventSpawnDooms(function()
@@ -5317,8 +5318,12 @@ function nextPhase(player, value, id)
   Global.UI.setAttribute("phase_img", "image", phases[gameData.phase].image)
 broadcastToAll(i18n.getStrById("PB_next_phase").." " .. i18n.getStrById("PB_phase"..gameData.phase) .. "!", phases[gameData.phase].color)
 
+
+self.UI.setAttribute('phase_text', "text", i18n.getStrById("PB_phase"..gameData.phase))
   if gameData.phase == 1 then
     self.UI.setAttribute("phase_btn_myth", "active", false)
+    self.UI.setAttribute("phase_btn_text", "active", false)
+    self.UI.setAttribute("PB_phase_btn_btn_text", "active", false)
     for _, o in ipairs(getObjects()) do
       if o.type == "Tile" and o.memo and (o.memo == "Lider Aactivation Token" or o.memo == "Aactivation Token") then
         if o.is_face_down then
@@ -5328,10 +5333,15 @@ broadcastToAll(i18n.getStrById("PB_next_phase").." " .. i18n.getStrById("PB_phas
     end
   elseif gameData.phase == 3 then
     self.UI.setAttribute("phase_btn_encounter", "active", true)
+    self.UI.setAttribute("phase_btn_text", "text", i18n.getStrById("PB_phase_btn_btn_encounter"))
+    self.UI.setAttribute("phase_btn_text", "active", true)
+    self.UI.setAttribute("PB_phase_btn_btn_text", "active", true)
   elseif gameData.phase == 4 then
     self.UI.setAttribute("phase_btn_encounter", "active", false)
+    self.UI.setAttribute("phase_btn_text", "text", i18n.getStrById("PB_phase_btn_btn_mythos"))
     self.UI.setAttribute("phase_btn_myth", "active", true)
   end
+
 end
 
 function encounterHudBtn(player)

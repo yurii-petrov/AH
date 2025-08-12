@@ -143,20 +143,36 @@ I18N_DATA = {
     ["uk"] = "Настає фаза",
   },
   ["PB_phase1"] = {
-    ["en"] = "Action",
-    ["uk"] = "дій",
+    ["en"] = "ACTION",
+    ["uk"] = "ДІЙ",
   },
   ["PB_phase2"] = {
-    ["en"] = "Monster",
-    ["uk"] = "монстрів",
+    ["en"] = "MONSTER",
+    ["uk"] = "МОНСТРІВ",
   },
   ["PB_phase3"] = {
-    ["en"] = "Encounter",
-    ["uk"] = "зустрічей",
+    ["en"] = "ENCOUNTER",
+    ["uk"] = "ЗУСТРІЧЕЙ",
   },
   ["PB_phase4"] = {
-    ["en"] = "Mythos",
-    ["uk"] = "міту",
+    ["en"] = "MYTHOS",
+    ["uk"] = "МІТУ",
+  },
+  ["PB_phase_btn_btn_encounter"] = {
+    ["en"] = "ENCOUNTER",
+    ["uk"] = "ЗУСТРІЧ",
+  },
+  ["PB_phase_btn_btn_mythos"] = {
+    ["en"] = "MYTHOS",
+    ["uk"] = "МІТ",
+  },
+  ["PB_phase_btn_btn_text"] = {
+    ["en"] = "PULL",
+    ["uk"] = "ТЯГНУТИ",
+  },
+  ["PB_phase_text"] = {
+    ["en"] = "PHASE",
+    ["uk"] = "ФАЗА",
   },
   ["S_buy"] = {
     ["en"] = "Buy for $%s",

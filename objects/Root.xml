@@ -50,6 +50,52 @@
         width="200"
         preserveAspect="true"
         rectAlignment="UpperCenter"/>
+	<text
+		id="PB_phase_text"
+		offsetXY="0 45"
+		font="Fonts/AdonisC"
+		fontSize="12"
+		color="#ffffff"
+		shadow="#000000"
+		shadowDistance="1 1"
+		outline="#00000088"
+		outlineSize="2 2"
+		text=""/>
+	<text
+    id="phase_text"
+		offsetXY="0 25"
+		font="Fonts/AdonisC"
+		fontSize="16"
+		color="#ffffff"
+		shadow="#000000"
+		shadowDistance="1 1"
+		outline="#00000088"
+		outlineSize="2 2"
+		text=""/>
+	<text
+        id="PB_phase_btn_btn_text"
+    	active="false"
+		offsetXY="0 -68"
+		font="Fonts/AdonisC"
+		fontSize="12"
+		color="#ffffff"
+		shadow="#000000"
+		shadowDistance="1 1"
+		outline="#00000088"
+		outlineSize="2 2"
+		text=""/>
+	<text
+        id="phase_btn_text"
+    	active="false"
+		offsetXY="0 -83"
+		font="Fonts/AdonisC"
+		fontSize="16"
+		color="#ffffff"
+		shadow="#000000"
+		shadowDistance="1 1"
+		outline="#00000088"
+		outlineSize="2 2"
+		text=""/>
     <button
         id="phase_btn"
         onClick="nextPhase"
@@ -234,35 +280,35 @@
 					raycastTarget="true"
 					scrollSensitivity="30">
 					<VerticalLayout contentSizeFitter="vertical" spacing="30">
-						<HorizontalLayout
+				<HorizontalLayout
 							width="800"
 							preferredHeight="250"
 							verticalOverflow="Overflow"
-							spacing="30">
-							<panel id="scenario_panel1" color='#ffffff22'>
-								<button id="scenario1" onClick="chooseScenario"/>
-								<image image="scenario1" width="180" preserveAspect="true" rectAlignment="UpperCenter" offsetXY="0 -10"/>
+						spacing="30">
+						<panel id="scenario_panel1" color='#ffffff22'>
+							<button id="scenario1" onClick="chooseScenario"/>
+							<image image="scenario1" width="180" preserveAspect="true" rectAlignment="UpperCenter" offsetXY="0 -10"/>
 							<text id="MM_scenario1_name_text" alignment="LowerCenter" text="" offsetXY="0 10"/>
-							</panel>
-							<panel id="scenario_panel2">
-								<button id="scenario2" onClick="chooseScenario"/>
-								<image image="scenario2" width="180" preserveAspect="true" rectAlignment="UpperCenter" offsetXY="0 -10"/>
+						</panel>
+						<panel id="scenario_panel2">
+							<button id="scenario2" onClick="chooseScenario"/>
+							<image image="scenario2" width="180" preserveAspect="true" rectAlignment="UpperCenter" offsetXY="0 -10"/>
 							<text id="MM_scenario2_name_text" alignment="LowerCenter" text="" offsetXY="0 10"/>
-							</panel>
-							<panel id="scenario_panel3">
-								<button id="scenario3" onClick="chooseScenario"/>
-								<image image="scenario3" width="180" preserveAspect="true" rectAlignment="UpperCenter" offsetXY="0 -10"/>
+						</panel>
+						<panel id="scenario_panel3">
+							<button id="scenario3" onClick="chooseScenario"/>
+							<image image="scenario3" width="180" preserveAspect="true" rectAlignment="UpperCenter" offsetXY="0 -10"/>
 							<text id="MM_scenario3_name_text" alignment="LowerCenter" text="" offsetXY="0 10"/>
-							</panel>
+						</panel>
 						</HorizontalLayout>
 						<HorizontalLayout
 							width="800"
 							preferredHeight="250"
 							verticalOverflow="Overflow"
 							spacing="30">
-							<panel id="scenario_panel4">
-								<button id="scenario4" onClick="chooseScenario"/>
-								<image image="scenario4" width="180" preserveAspect="true" rectAlignment="UpperCenter" offsetXY="0 -10"/>
+						<panel id="scenario_panel4">
+							<button id="scenario4" onClick="chooseScenario"/>
+							<image image="scenario4" width="180" preserveAspect="true" rectAlignment="UpperCenter" offsetXY="0 -10"/>
 								<text id="MM_scenario4_name_text" alignment="LowerCenter" text="" offsetXY="0 10"/>
 							</panel>
 							<panel id="scenario_panel5">
@@ -274,8 +320,8 @@
 								<button id="scenario6" onClick="chooseScenario"/>
 								<image id="scenarioImage6" image="scenario6" width="180" preserveAspect="true" rectAlignment="UpperCenter" offsetXY="0 -10"/>
 								<text id="MM_scenario6_name_text" alignment="LowerCenter" text="" offsetXY="0 10"/>
-							</panel>
-						</HorizontalLayout>
+						</panel>
+				</HorizontalLayout>
 					</VerticalLayout>
 				</VerticalScrollView>
 			</panel>
