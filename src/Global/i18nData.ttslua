@@ -135,35 +135,35 @@ I18N_DATA = {
     ["uk"] = "ДОДАТИ / ВИЛУЧИТИ",
   },
   ["MT_current_text"] = {
-    ["en"] = "ПОТОЧНА КАРТА",
+    ["en"] = "CURRENT CARD",
     ["uk"] = "ПОТОЧНА КАРТА",
   },
   ["MT_discard"] = {
-    ["en"] = "СКИД",
+    ["en"] = "DISCARD",
     ["uk"] = "СКИД",
   },
   ["MT_discard_text"] = {
-    ["en"] = "СКИД",
+    ["en"] = "DISCARD",
     ["uk"] = "СКИД",
   },
   ["MT_encounter"] = {
-    ["en"] = "ТЯГНУТИ ЗУСТРІЧ",
+    ["en"] = "DRAW ENCONUNTER",
     ["uk"] = "ТЯГНУТИ ЗУСТРІЧ",
   },
   ["MT_event_text"] = {
-    ["en"] = "ПОДІЇ",
+    ["en"] = "EVENT",
     ["uk"] = "ПОДІЇ",
   },
   ["MT_fail"] = {
-    ["en"] = "ПРОВАЛ",
+    ["en"] = "FAIL",
     ["uk"] = "ПРОВАЛ",
   },
   ["MT_myth"] = {
-    ["en"] = "ТЯГНУТИ МІТ",
+    ["en"] = "DRAW MYTH",
     ["uk"] = "ТЯГНУТИ МІТ",
   },
   ["MT_success"] = {
-    ["en"] = "УСПІХ",
+    ["en"] = "PASS",
     ["uk"] = "success",
   },
   ["PB_myth_validate"] = {
