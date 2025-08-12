@@ -5,12 +5,22 @@
   height="14"
   position="28.5 14 -11"
   rotation="0 0 180">
-  <button
-    onClick="success"
-    color="clear"/>
   <image
     id="success_img"
     scale="0.8 0.8 0.8"/>
+  <button
+    id="MT_success"
+    onClick="success"
+    width="1200"
+    height="1400"
+    padding="0 0 1050 0"
+    scale="0.01 0.01 1"
+    color="clear"
+    textColor="#ffffff"
+    font="Fonts/AdonisC"
+    fontStyle="Bold"
+    fontSize="170"
+    text=""/>
 </panel>
 <panel
   id="discard"
@@ -19,12 +29,22 @@
   height="14"
   position="28.5 30 -11"
   rotation="0 0 180">
-  <button
-    onClick="discard"
-    color="clear"/>
   <image
     id="discard_img"
     scale="0.8 0.8 0.8"/>
+  <button
+    id="MT_discard"
+    onClick="discard"
+    width="1200"
+    height="1400"
+    padding="0 0 1000 0"
+    scale="0.01 0.01 1"
+    color="clear"
+    textColor="#ffffff"
+    font="Fonts/AdonisC"
+    fontStyle="Bold"
+    fontSize="170"
+    text=""/>
 </panel>
 <panel
   id="fail"
@@ -33,28 +53,85 @@
   height="14"
   position="28.5 46 -11"
   rotation="0 0 180">
-  <button
-    onClick="fail"
-    color="clear"/>
   <image
     id="fail_img"
     scale="0.8 0.8 0.8"/>
+  <button
+    id="MT_fail"
+    onClick="fail"
+    width="1200"
+    height="1400"
+    padding="0 0 1050 0"
+    scale="0.01 0.01 1"
+    color="clear"
+    textColor="#ffffff"
+    font="Fonts/AdonisC"
+    fontStyle="Bold"
+    fontSize="170"
+    text=""/>
 </panel>
 <button
-  id="myth"
+  id="MT_myth"
   onClick=""
-  width="20"
-  height="7"
-  position="24 95 -11"
+  width="1850"
+  height="500"
+  position="24.25 95 -11"
+	rotation="0 0 180"
+	scale="0.01 0.01 1"
   color="clear"
+	textColor="#ffffff"
+	font="Fonts/AdonisC"
+	fontStyle="Bold"
+	fontSize="170"
+	text=""
   />
 <button
-  id="encounter"
+  id="MT_encounter"
   onClick=""
-  width="20"
-  height="7"
-  position="4 95 -11"
+  width="1850"
+  height="500"
+  position="4.25 95 -11"
+	rotation="0 0 180"
+	scale="0.01 0.01 1"
   color="clear"
+	textColor="#ffffff"
+	font="Fonts/AdonisC"
+	fontStyle="Bold"
+	fontSize="170"
+	text=""
+  />
+<text
+  id="MT_current_text"
+  position="8.5 50.25 -11"
+	rotation="0 0 180"
+	scale="0.01 0.01 1"
+  color="#ffffff"
+	font="Fonts/AdonisC"
+	fontStyle="Bold"
+	fontSize="170"
+	text=""
+  />
+<text
+  id="MT_event_text"
+  position="-20 50.25 -11"
+	rotation="0 0 180"
+	scale="0.01 0.01 1"
+  color="#ffffff"
+	font="Fonts/AdonisC"
+	fontStyle="Bold"
+	fontSize="170"
+	text=""
+  />
+<text
+  id="MT_discard_text"
+  position="-20 96 -11"
+	rotation="0 0 180"
+	scale="0.01 0.01 1"
+  color="#ffffff"
+	font="Fonts/AdonisC"
+	fontStyle="Bold"
+	fontSize="170"
+	text=""
   />
 <image
   id="myth_slots"

@@ -134,6 +134,38 @@ I18N_DATA = {
     ["en"] = "Add / Remove",
     ["uk"] = "ДОДАТИ / ВИЛУЧИТИ",
   },
+  ["MT_current_text"] = {
+    ["en"] = "ПОТОЧНА КАРТА",
+    ["uk"] = "ПОТОЧНА КАРТА",
+  },
+  ["MT_discard"] = {
+    ["en"] = "СКИД",
+    ["uk"] = "СКИД",
+  },
+  ["MT_discard_text"] = {
+    ["en"] = "СКИД",
+    ["uk"] = "СКИД",
+  },
+  ["MT_encounter"] = {
+    ["en"] = "ТЯГНУТИ ЗУСТРІЧ",
+    ["uk"] = "ТЯГНУТИ ЗУСТРІЧ",
+  },
+  ["MT_event_text"] = {
+    ["en"] = "ПОДІЇ",
+    ["uk"] = "ПОДІЇ",
+  },
+  ["MT_fail"] = {
+    ["en"] = "ПРОВАЛ",
+    ["uk"] = "ПРОВАЛ",
+  },
+  ["MT_myth"] = {
+    ["en"] = "ТЯГНУТИ МІТ",
+    ["uk"] = "ТЯГНУТИ МІТ",
+  },
+  ["MT_success"] = {
+    ["en"] = "УСПІХ",
+    ["uk"] = "success",
+  },
   ["PB_myth_validate"] = {
     ["en"] = "This button is only available during the Mythos phase",
     ["uk"] = "Ця кнопка доступна тільки у фазу міту",

@@ -197,3 +197,29 @@ msgstr "Death"
 
 msgid "IM_bio"
 msgstr "Bio"
+
+# Mythos Mat
+
+msgid "MT_success"
+msgstr "УСПІХ"
+
+msgid "MT_discard"
+msgstr "СКИД"
+
+msgid "MT_fail"
+msgstr "ПРОВАЛ"
+
+msgid "MT_myth"
+msgstr "ТЯГНУТИ МІТ"
+
+msgid "MT_encounter"
+msgstr "ТЯГНУТИ ЗУСТРІЧ"
+
+msgid "MT_current_text"
+msgstr "ПОТОЧНА КАРТА"
+
+msgid "MT_event_text"
+msgstr "ПОДІЇ"
+
+msgid "MT_discard_text"
+msgstr "СКИД"

@@ -566,19 +566,19 @@
   },
   "CustomUIAssets": [
     {
-      "Name": "success_icon",
+      "Name": "success",
       "Type": 0,
-      "URL": "https://drive.google.com/uc?export=view\u0026id=1TBSY-0NPCBdWWfWnsX3wdA0E_XyyZT-P"
+      "URL": "https://drive.google.com/uc?export=download&id=1TBSY-0NPCBdWWfWnsX3wdA0E_XyyZT-P"
     },
     {
-      "Name": "discard_icon",
+      "Name": "discard",
       "Type": 0,
-      "URL": "https://drive.google.com/uc?export=view\u0026id=1L5IRVmKLkshXaBoRDIDmZtX-4zOi4f6-"
+      "URL": "https://drive.google.com/uc?export=download&id=1L5IRVmKLkshXaBoRDIDmZtX-4zOi4f6-"
     },
     {
-      "Name": "fail_icon",
+      "Name": "fail",
       "Type": 0,
-      "URL": "https://drive.google.com/uc?export=view\u0026id=1pwW68kYHr_bYN9EsFVgR5j8E5XNt2g4o"
+      "URL": "https://drive.google.com/uc?export=download&id=1pwW68kYHr_bYN9EsFVgR5j8E5XNt2g4o"
     },
     {
       "Name": "myth_slots",
@@ -605,6 +605,9 @@
   "Nickname": "MythosMat",
   "Snap": true,
   "Sticky": true,
+  "Tags": [
+    "i18n_XML"
+  ],
   "Tooltip": true,
   "Transform": {
     "posX": -43.4,
