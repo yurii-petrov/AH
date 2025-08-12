@@ -96,12 +96,12 @@
   "Sticky": true,
   "Tooltip": true,
   "Transform": {
-    "posX": -52.507,
-    "posY": 4.851,
-    "posZ": -24.585,
-    "rotX": 357,
-    "rotY": 187,
-    "rotZ": 179,
+    "posX": 16.365,
+    "posY": 4.346,
+    "posZ": 11.171,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 180,
     "scaleX": 1.5,
     "scaleY": 1,
     "scaleZ": 1.5

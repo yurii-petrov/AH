@@ -1,0 +1,59 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "CardID": 575205,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "CustomDeck": {
+    "5752": {
+      "BackIsHidden": true,
+      "BackURL": "https://drive.google.com/uc?export=view\u0026id=1Wi-HoYPhzQRaoDSGN-euNqsVbkkAHgzG",
+      "FaceURL": "https://drive.google.com/uc?export=view\u0026id=1ldeHlxr5jzjxvGi1a6NgvDhQsFIH-AOi",
+      "NumHeight": 3,
+      "NumWidth": 4,
+      "Type": 1,
+      "UniqueBack": true
+    }
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "c739a0",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": true,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Memo": "{\"hp\":5,\"money\":4,\"name\":\"Marie Lambeau\",\"role\":[\"mystic\",\"survivor\"],\"sanity\":7,\"skill\":{\"influence\":4,\"lore\":3,\"observation\":2,\"strength\":2,\"will\":2},\"startPosition\":{\"x\":-0.525636374950409,\"y\":1.01360654830933,\"z\":-0.325317829847336},\"type\":\"Investigator\"}",
+  "Name": "Card",
+  "Nickname": "",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": 52.564,
+    "posY": 2.014,
+    "posZ": 32.532,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 1.5,
+    "scaleY": 1,
+    "scaleZ": 1.5
+  },
+  "Value": 0,
+  "XmlUI": ""
+}
