@@ -5,6 +5,41 @@ serpent = require("util/serpent")
 local translationService = require("util/TranslationService")
 isTestMode = false
 
+-- /execute local c=Player.White;local s=c.getSelectedObjects()[1];local h=c.getHoverObject();if s and h then log("g="..h.getGUID().."\npos="..serpent.tts(s.positionToLocal(h.getPosition())).." rot="..serpent.tts(s.positionToLocal(h.getRotation()))) end
+-- /execute local c=Player.White;local h=c.getHoverObject();if h then log("g="..h.getGUID().."\npos="..serpent.tts(h.getPosition()).." rot="..serpent.tts(h.getRotation())) end
+-- /execute local c=Player.White;local h=c.getHoverObject();if h then h.setPosition({0, 2.4, 0}) end
+
+-- Prepare scenario
+-- /execute local c=Player.White;local h=c.getHoverObject();if h then h.memo = "Items Mat"; print("set: "..h.memo) end
+-- /execute local c=Player.White;local h=c.getHoverObject();if h then h.setGMNotes("Neighborhood"); print("set: "..h.getGMNotes()) end
+-- /execute local c=Player.White;local s=c.getSelectedObjects()[1];local h=c.getHoverObject();if s and h then log("["..s.memo.."] = {\npos="..serpent.tts(s.positionToLocal(h.getPosition())).." rot="..serpent.tts(s.positionToLocal(h.getRotation()))) end
+-- /execute local c=Player.White;local h=c.getHoverObject();if h then h.memo = "Remnant Token"; print("set: "..h.memo) end
+-- /execute local c=Player.White;local h=c.getHoverObject();if h then print("memo: "..h.memo) end -- якщо тільки текст
+-- /execute local c=Player.White;local h=c.getHoverObject();if h then print("memo: "..serpent.tts(parseJson(h.memo))) end -- якщо луа 
+-- /execute local c=Player.White;local h=c.getHoverObject();if h then print("guid: "..h.guid) end
+
+-- /execute local c=Player.White;local s=c.getSelectedObjects()[1];local h=c.getHoverObject();if s and h then mPos(s, h) end
+-- /execute local c=Player.White;local s=c.getSelectedObjects()[1];local h=c.getHoverObject();if s and h then gPos(s, h) end
+-- /execute local c=Player.White;local s=c.getSelectedObjects()[1];local h=c.getHoverObject();if s and h then mPosRot(s, h) end
+-- /execute local c=Player.White;local s=c.getSelectedObjects()[1];local h=c.getHoverObject();if s and h then gPosRot(s, h) end
+
+-- /execute local c=Player.White;local s=c.getSelectedObjects();if s then addSet(n, s) end
+
+-- /execute local c=Player.White;local h=c.getHoverObject();if h then print(serpent.tts(h)) end
+
+-- print(JSON.encode(JSON.encode({
+--   name = "AoA",
+--   type = "Event",
+--   locations = {
+--     ["Arkham Asylum"] = {
+--       dooms = 1
+--     },
+--     ["Hibb's Roadhouse"] = {
+--       dooms = 1
+--     }
+--   }
+-- })))
+
 -- Mechanic variables
 
 local phases = {{
@@ -22,66 +57,28 @@ local phases = {{
 }}
 
 local currentAddon = 1
-local addons = {
-  {
-      include = true,
-      title = "Нічний Морок",
-      summary = "• 2 нові сценарії\n\n• 4 нові дослідники\n\n• 238 нових карт",
-      description = "У доповненні «Нічний морок» гравці досліджують ті закутки Аркгема, куди страшно сунутися навіть удень. У місті процвітає організована злочинність, потаємні культи намагаються догодити своїм темним володарям, химерний місяць висить у небі, а десь у нічному мороці чаяться незбагненні жахіття. Це доповнення містить два нові сценарії, нові зустрічі для кожної зони Аркгема, нових монстрів і нові аномалії, а також чотирьох нових дослідників, готових протистояти жахам з новими предметами, заклинаннями та союзниками.\n\n• 2 сценарії\n• 4 дослідники\n• 7 карт заголовків\n• 20 карт архіву\n• 12 карт аномалій\n• 48 карт подій\n• 72 карти зустрічей\n• 4 карти союзників\n• 4 карти предметів\n• 4 карти заклинань\n• 28 спеціальних карт\n• 12 початкових карт\n• 6 карт стану розшукуваний\n• 15 монстрів"
-    },
-    {
-      include = false,
-      title = "Під Темними Хвилями",
-      summary = "2• 2 нові сценарії\n\n• 4 нові дослідники\n\n• 238 нових карт",
-      description = "2У доповненні «Нічний морок» гравці досліджують ті закутки Аркгема, куди страшно сунутися навіть удень. У місті процвітає організована злочинність, потаємні культи намагаються догодити своїм темним володарям, химерний місяць висить у небі, а десь у нічному мороці чаяться незбагненні жахіття. Це доповнення містить два нові сценарії, нові зустрічі для кожної зони Аркгема, нових монстрів і нові аномалії, а також чотирьох нових дослідників, готових протистояти жахам з новими предметами, заклинаннями та союзниками.\n\n• 2 сценарії\n• 4 дослідники\n• 7 карт заголовків\n• 20 карт архіву\n• 12 карт аномалій\n• 48 карт подій\n• 72 карти зустрічей\n• 4 карти союзників\n• 4 карти предметів\n• 4 карти заклинань\n• 28 спеціальних карт\n• 12 початкових карт\n• 6 карт стану розшукуваний\n• 15 монстрів"
-    },
-    {
-      include = false,
-      title = "Таємниці Ордену",
-      summary = "3• 2 нові сценарії\n\n• 4 нові дослідники\n\n• 238 нових карт",
-      description = "3У доповненні «Нічний морок» гравці досліджують ті закутки Аркгема, куди страшно сунутися навіть удень. У місті процвітає організована злочинність, потаємні культи намагаються догодити своїм темним володарям, химерний місяць висить у небі, а десь у нічному мороці чаяться незбагненні жахіття. Це доповнення містить два нові сценарії, нові зустрічі для кожної зони Аркгема, нових монстрів і нові аномалії, а також чотирьох нових дослідників, готових протистояти жахам з новими предметами, заклинаннями та союзниками.\n\n• 2 сценарії\n• 4 дослідники\n• 7 карт заголовків\n• 20 карт архіву\n• 12 карт аномалій\n• 48 карт подій\n• 72 карти зустрічей\n• 4 карти союзників\n• 4 карти предметів\n• 4 карти заклинань\n• 28 спеціальних карт\n• 12 початкових карт\n• 6 карт стану розшукуваний\n• 15 монстрів"
-    },
-    {
-      include = false,
-      title = "Відлуння Минулого",
-      summary = "4• 2 нові сценарії\n\n• 4 нові дослідники\n\n• 238 нових карт",
-      description = "4У доповненні «Нічний морок» гравці досліджують ті закутки Аркгема, куди страшно сунутися навіть удень. У місті процвітає організована злочинність, потаємні культи намагаються догодити своїм темним володарям, химерний місяць висить у небі, а десь у нічному мороці чаяться незбагненні жахіття. Це доповнення містить два нові сценарії, нові зустрічі для кожної зони Аркгема, нових монстрів і нові аномалії, а також чотирьох нових дослідників, готових протистояти жахам з новими предметами, заклинаннями та союзниками.\n\n• 2 сценарії\n• 4 дослідники\n• 7 карт заголовків\n• 20 карт архіву\n• 12 карт аномалій\n• 48 карт подій\n• 72 карти зустрічей\n• 4 карти союзників\n• 4 карти предметів\n• 4 карти заклинань\n• 28 спеціальних карт\n• 12 початкових карт\n• 6 карт стану розшукуваний\n• 15 монстрів"
-    }
-}
+local addons = {{
+  include = true,
+  title = "Нічний Морок",
+  summary = "• 2 нові сценарії\n\n• 4 нові дослідники\n\n• 238 нових карт",
+  description = "У доповненні «Нічний морок» гравці досліджують ті закутки Аркгема, куди страшно сунутися навіть удень. У місті процвітає організована злочинність, потаємні культи намагаються догодити своїм темним володарям, химерний місяць висить у небі, а десь у нічному мороці чаяться незбагненні жахіття. Це доповнення містить два нові сценарії, нові зустрічі для кожної зони Аркгема, нових монстрів і нові аномалії, а також чотирьох нових дослідників, готових протистояти жахам з новими предметами, заклинаннями та союзниками.\n\n• 2 сценарії\n• 4 дослідники\n• 7 карт заголовків\n• 20 карт архіву\n• 12 карт аномалій\n• 48 карт подій\n• 72 карти зустрічей\n• 4 карти союзників\n• 4 карти предметів\n• 4 карти заклинань\n• 28 спеціальних карт\n• 12 початкових карт\n• 6 карт стану розшукуваний\n• 15 монстрів"
+}, {
+  include = false,
+  title = "Під Темними Хвилями",
+  summary = "2• 2 нові сценарії\n\n• 4 нові дослідники\n\n• 238 нових карт",
+  description = "2У доповненні «Нічний морок» гравці досліджують ті закутки Аркгема, куди страшно сунутися навіть удень. У місті процвітає організована злочинність, потаємні культи намагаються догодити своїм темним володарям, химерний місяць висить у небі, а десь у нічному мороці чаяться незбагненні жахіття. Це доповнення містить два нові сценарії, нові зустрічі для кожної зони Аркгема, нових монстрів і нові аномалії, а також чотирьох нових дослідників, готових протистояти жахам з новими предметами, заклинаннями та союзниками.\n\n• 2 сценарії\n• 4 дослідники\n• 7 карт заголовків\n• 20 карт архіву\n• 12 карт аномалій\n• 48 карт подій\n• 72 карти зустрічей\n• 4 карти союзників\n• 4 карти предметів\n• 4 карти заклинань\n• 28 спеціальних карт\n• 12 початкових карт\n• 6 карт стану розшукуваний\n• 15 монстрів"
+}, {
+  include = false,
+  title = "Таємниці Ордену",
+  summary = "3• 2 нові сценарії\n\n• 4 нові дослідники\n\n• 238 нових карт",
+  description = "3У доповненні «Нічний морок» гравці досліджують ті закутки Аркгема, куди страшно сунутися навіть удень. У місті процвітає організована злочинність, потаємні культи намагаються догодити своїм темним володарям, химерний місяць висить у небі, а десь у нічному мороці чаяться незбагненні жахіття. Це доповнення містить два нові сценарії, нові зустрічі для кожної зони Аркгема, нових монстрів і нові аномалії, а також чотирьох нових дослідників, готових протистояти жахам з новими предметами, заклинаннями та союзниками.\n\n• 2 сценарії\n• 4 дослідники\n• 7 карт заголовків\n• 20 карт архіву\n• 12 карт аномалій\n• 48 карт подій\n• 72 карти зустрічей\n• 4 карти союзників\n• 4 карти предметів\n• 4 карти заклинань\n• 28 спеціальних карт\n• 12 початкових карт\n• 6 карт стану розшукуваний\n• 15 монстрів"
+}, {
+  include = false,
+  title = "Відлуння Минулого",
+  summary = "4• 2 нові сценарії\n\n• 4 нові дослідники\n\n• 238 нових карт",
+  description = "4У доповненні «Нічний морок» гравці досліджують ті закутки Аркгема, куди страшно сунутися навіть удень. У місті процвітає організована злочинність, потаємні культи намагаються догодити своїм темним володарям, химерний місяць висить у небі, а десь у нічному мороці чаяться незбагненні жахіття. Це доповнення містить два нові сценарії, нові зустрічі для кожної зони Аркгема, нових монстрів і нові аномалії, а також чотирьох нових дослідників, готових протистояти жахам з новими предметами, заклинаннями та союзниками.\n\n• 2 сценарії\n• 4 дослідники\n• 7 карт заголовків\n• 20 карт архіву\n• 12 карт аномалій\n• 48 карт подій\n• 72 карти зустрічей\n• 4 карти союзників\n• 4 карти предметів\n• 4 карти заклинань\n• 28 спеціальних карт\n• 12 початкових карт\n• 6 карт стану розшукуваний\n• 15 монстрів"
+}}
 
--- /execute local c=Player.White;local s=c.getSelectedObjects()[1];local h=c.getHoverObject();if s and h then log("g="..h.getGUID().."\npos="..serpent.tts(s.positionToLocal(h.getPosition())).." rot="..serpent.tts(s.positionToLocal(h.getRotation()))) end
--- /execute local c=Player.White;local h=c.getHoverObject();if h then log("g="..h.getGUID().."\npos="..serpent.tts(h.getPosition()).." rot="..serpent.tts(h.getRotation())) end
--- /execute local c=Player.White;local h=c.getHoverObject();if h then h.setPosition({0, 2.4, 0}) end
-
--- Prepare scenario
--- /execute local c=Player.White;local h=c.getHoverObject();if h then h.memo = "Items Mat"; print("set: "..h.memo) end
--- /execute local c=Player.White;local h=c.getHoverObject();if h then h.setGMNotes("Neighborhood"); print("set: "..h.getGMNotes()) end
--- /execute local c=Player.White;local s=c.getSelectedObjects()[1];local h=c.getHoverObject();if s and h then log("["..s.memo.."] = {\npos="..serpent.tts(s.positionToLocal(h.getPosition())).." rot="..serpent.tts(s.positionToLocal(h.getRotation()))) end
--- /execute local c=Player.White;local h=c.getHoverObject();if h then h.memo = "Remnant Token"; print("set: "..h.memo) end
--- /execute local c=Player.White;local h=c.getHoverObject();if h then print("memo: "..h.memo) end -- якщо тільки текст
--- /execute local c=Player.White;local h=c.getHoverObject();if h then print("memo: "..serpent.tts(parseJson(h.memo))) end -- якщо луа 
--- /execute local c=Player.White;local h=c.getHoverObject();if h then print("guid: "..h.guid) end
--- /execute local c=Player.White;local h=c.getHoverObject();if h then print(serpent.tts(h.getVar("data"))) end
-
--- /execute local c=Player.White;local s=c.getSelectedObjects()[1];local h=c.getHoverObject();if s and h then mPos(s, h) end
--- /execute local c=Player.White;local s=c.getSelectedObjects()[1];local h=c.getHoverObject();if s and h then gPos(s, h) end
--- /execute local c=Player.White;local s=c.getSelectedObjects()[1];local h=c.getHoverObject();if s and h then mPosRot(s, h) end
--- /execute local c=Player.White;local s=c.getSelectedObjects()[1];local h=c.getHoverObject();if s and h then gPosRot(s, h) end
-
--- /execute local c=Player.White;local s=c.getSelectedObjects();if s and h then addSet(n, s) end
-
--- print(JSON.encode(JSON.encode({
---   name = "AoA",
---   type = "Event",
---   locations = {
---     ["Arkham Asylum"] = {
---       dooms = 1
---     },
---     ["Hibb's Roadhouse"] = {
---       dooms = 1
---     }
---   }
--- })))
 -- ╭──────────────────────────────────────────────╮
 -- │                 TAG DEFINITIONS              │
 -- ╰──────────────────────────────────────────────╯
@@ -228,7 +225,7 @@ function onload(savedData)
   lockObj(scenarioMatId)
   lockObj(mythosTileId)
   lockObj(tile4ActionsId)
-  -- lockObj(shopMatId)
+  lockObj(shopMatId)
   lockObj(conditionMatId)
   -- lockObj(mythosBagId)
   lockObj(nastilo4kaId)
@@ -249,6 +246,11 @@ function onload(savedData)
 
   for guid, _ in pairs(gameData.lockObjs) do
     lockObj(guid)
+
+    local memo = parseJson(getObjectFromGUID(guid).memo)
+    if memo and memo.name == "ConditionMat2" then
+      conditionMat2Id = guid
+    end
   end
 
   if not gameData.scenarioData then
@@ -573,17 +575,14 @@ function discardMonster(o, objData)
 end
 
 function onPlayerAction(player, action, targets)
-    if action == Player.Action.FlipOver
-        or action == Player.Action.FlipIncrementalLeft
-        or action == Player.Action.FlipIncrementalRight
-        or action == Player.Action.RotateIncrementalLeft
-        or action == Player.Action.RotateIncrementalRight
-    then
-      local isFlip = true
-      for _, t in pairs(targets) do
-        if t.type == "Figurine" and t.getData().Name == "Custom_Model" then
-          isFlip = false
-          runOnceAfterRest(t, function(t)
+  if action == Player.Action.FlipOver or action == Player.Action.FlipIncrementalLeft or action ==
+    Player.Action.FlipIncrementalRight or action == Player.Action.RotateIncrementalLeft or action ==
+    Player.Action.RotateIncrementalRight then
+    local isFlip = true
+    for _, t in pairs(targets) do
+      if t.type == "Figurine" and t.getData().Name == "Custom_Model" then
+        isFlip = false
+        runOnceAfterRest(t, function(t)
           local p = t.getPosition()
           if t.getRotation().x == 90 then
             t.setRotationSmooth({0, 0, 0})
@@ -591,11 +590,11 @@ function onPlayerAction(player, action, targets)
             t.setPosition(t.getPosition():setAt("y", p.y + 0.7))
             t.setRotationSmooth({90, 0, 0})
           end
-          end)
-        end
+        end)
       end
-        return isFlip
     end
+    return isFlip
+  end
 end
 
 function discardToShop(obj, objData)
@@ -609,7 +608,7 @@ function discardToShop(obj, objData)
   obj.setRotation({0, 180, 180})
   shopObj.setRotation({0, 180, 180})
   Wait.time(function()
-      shopObj.putObject(obj)
+    shopObj.putObject(obj)
   end, 0.5)
 end
 
@@ -1038,7 +1037,7 @@ function onRandomInvestigatorCardDrop(colorName, object)
       local oData = parseJson(o.memo)
       if oData and oData.type and oData.name and string.lower(oData.type) == "investigator" and
         not gameData.selectedInvestigators[oData.name] then
-          oData.guid = o.guid
+        oData.guid = o.guid
         table.insert(availableInvestigators, oData)
       end
     end
@@ -1077,7 +1076,7 @@ function onRandomInvestigatorCardDrop(colorName, object)
   end
 
   if not findInvestigatorData then
-    print("Дослідник не знайдений для ролі: "..selectedType)
+    print("Дослідник не знайдений для ролі: " .. selectedType)
     return
   end
 
@@ -1088,7 +1087,7 @@ function onRandomInvestigatorCardDrop(colorName, object)
   else
     object.setPositionSmooth({60, 3, -8})
   end
-    local investigatorCard = getObjectFromGUID(findInvestigatorData.guid)
+  local investigatorCard = getObjectFromGUID(findInvestigatorData.guid)
   if investigatorCard then
     local cardPosition = investigatorMat.positionToWorld({0.316, 2.213, 0.344})
     investigatorCard.setPosition(cardPosition)
@@ -1400,7 +1399,9 @@ end
 -- ON OBJECT SPAWN
 function onObjectSpawn(obj)
   if obj.hasTag("i18n_XML") then
-    Wait.time(function() i18n.updateObjectUiLanguage(obj) end, 1)
+    Wait.time(function()
+      i18n.updateObjectUiLanguage(obj)
+    end, 1)
   end
 end
 
@@ -1408,9 +1409,9 @@ end
 
 local map = false
 function mapToggle(player, alt, id)
-    self.UI.setAttribute('scenarioImage', 'active', map)
-    map = not map
-    self.UI.setAttribute('scenarioMap', 'active', map)
+  self.UI.setAttribute('scenarioImage', 'active', map)
+  map = not map
+  self.UI.setAttribute('scenarioMap', 'active', map)
 end
 function changeScenario(player, alt, id)
   self.UI.setAttribute('chooseScenario', 'active', true)
@@ -1437,11 +1438,11 @@ function closeMenu(player, alt, id)
   self.UI.setAttribute('scenarioMap', 'active', false)
 end
 function onClickAddons(player, alt, id)
-    self.UI.setAttribute('chooseAddons', 'active', true)
-    self.UI.setAttribute('main_menu', 'active', false)
-    map = false
-    self.UI.setAttribute('scenarioImage', 'active', true)
-    self.UI.setAttribute('scenarioMap', 'active', false)
+  self.UI.setAttribute('chooseAddons', 'active', true)
+  self.UI.setAttribute('main_menu', 'active', false)
+  map = false
+  self.UI.setAttribute('scenarioImage', 'active', true)
+  self.UI.setAttribute('scenarioMap', 'active', false)
 end
 function restore(player, alt, id)
   self.UI.setAttribute('main_menu', 'active', true)
@@ -1458,6 +1459,8 @@ function startGame(player, alt, id)
   for i, addon in pairs(addons) do
     gameData.addons[i] = addon.include
   end
+
+  addAdditionalCompoents()
 
   gameData.scenarioData = scenarioData
   onClickPrepareScenario()
@@ -1478,8 +1481,8 @@ end
 function submitScenario()
   self.UI.setAttribute('chooseScenario', 'active', false)
   self.UI.setAttribute('main_menu', 'active', true)
-  self.UI.setAttribute('title', 'text', i18n.getStrById("MM_scenario"..currentSetup.scenario.."_name_text"))
-  self.UI.setAttribute('body', 'text', i18n.getStrById("MM_scenario"..currentSetup.scenario.."_desc"))
+  self.UI.setAttribute('title', 'text', i18n.getStrById("MM_scenario" .. currentSetup.scenario .. "_name_text"))
+  self.UI.setAttribute('body', 'text', i18n.getStrById("MM_scenario" .. currentSetup.scenario .. "_desc"))
   self.UI.setAttribute('scenarioImage', 'image', 'scenario' .. currentSetup.scenario)
   self.UI.setAttribute('scenarioMap', 'image', 'scenarioMap' .. currentSetup.scenario)
 end
@@ -1493,7 +1496,11 @@ function chooseAddon(player, alt, id)
   self.UI.setAttribute('addonDescription', 'text', addons[id].description)
 end
 function inProgress(player, alt, id)
-  broadcastToColor("Робота над цим доповненням ще триває.", player.color, {r=1, g=1, b=1})
+  broadcastToColor("Робота над цим доповненням ще триває.", player.color, {
+    r = 1,
+    g = 1,
+    b = 1
+  })
 end
 function toggleAddon()
   addons[currentAddon].include = not addons[currentAddon].include
@@ -1510,7 +1517,12 @@ function toggleAddon()
   else
     if currentAddon == 1 then
       if currentSetup.scenario == 5 or currentSetup.scenario == 6 then
-        broadcastToAll("Неможливо вимкнути доповнення, сценарій з якого обрано!", {r=1, g=0.5, b=0.5})
+        broadcastToAll(
+          "Неможливо вимкнути доповнення, сценарій з якого обрано!", {
+            r = 1,
+            g = 0.5,
+            b = 0.5
+          })
         return
       end
       self.UI.setAttribute('scenarioImage5', 'color', 'gray')
@@ -1524,8 +1536,8 @@ function toggleAddon()
   end
 end
 function submitAddons()
-    self.UI.setAttribute('chooseAddons', 'active', false)
-    self.UI.setAttribute('main_menu', 'active', true)
+  self.UI.setAttribute('chooseAddons', 'active', false)
+  self.UI.setAttribute('main_menu', 'active', true)
 end
 
 -- ╭──────────────────��───────────────────────────╮
@@ -1539,7 +1551,7 @@ function showHelp(player, _)
   else
     UI.setAttribute("help_panel", "visibility", vis .. "|" .. player.color)
   end
---  print(UI.getAttribute("help_panel", "visibility"))
+  --  print(UI.getAttribute("help_panel", "visibility"))
 end
 
 function hideHelp(player, _)
@@ -1550,7 +1562,7 @@ function hideHelp(player, _)
     vis = "nobody"
   end
   UI.setAttribute("help_panel", "visibility", vis)
---  print(UI.getAttribute("help_panel", "visibility"))
+  --  print(UI.getAttribute("help_panel", "visibility"))
 end
 
 function onClickScenario(n)
@@ -1824,66 +1836,64 @@ function onPlayerClickRemoveClue(obj)
 end
 
 function onPlayerClickDeath(d)
-  d.player.showConfirmDialog("Підтвердіть смерть дослідника",
-            function()
-             local box = getObjectFromGUID(boxId)
+  d.player.showConfirmDialog("Підтвердіть смерть дослідника", function()
+    local box = getObjectFromGUID(boxId)
     if not box then
       return
     end
 
-  local cardPosition = d.mat.positionToWorld({0.316, 2.213, 0.344})
-  local objs = findObjsInRadius(cardPosition:setAt("y", 2.2))
+    local cardPosition = d.mat.positionToWorld({0.316, 2.213, 0.344})
+    local objs = findObjsInRadius(cardPosition:setAt("y", 2.2))
 
-  for _, obj in ipairs(objs) do
-    local objData = parseJson(obj.memo)
-    if d.mat.guid ~= obj.guid and tableId ~= obj.guid then
-      d.mat.call("setMemo")
-      obj.setLock(false)
-      box.putObject(obj)
-    end
-  end
-
-  local itemsMatPosition = {0,0, 1.4}
-  for i=1,5 do
-    local objs = findObjsInRadius(d.mat.positionToWorld(itemsMatPosition):setAt("y", 2.2))
-    local itemsMatFound = false
     for _, obj in ipairs(objs) do
-      if obj.memo and obj.memo == "Items Mat" then
-        itemsMatFound = true
-        local cards = upCast(obj, 1, nil, 1)
-        for _, card in pairs(cards) do
-          local cardData = parseJson(card.memo)
-          if cardData then
-            if card.type == "Tile" then
-              discardTile(d.player.color, card, cardData)
-            elseif card.type == "Card" then
-              discardCard(d.player.color, card, cardData)
-            elseif card.type == "Figurine" then
-              local box = getObjectFromGUID(boxId)
-              if box then
-                box.putObject(card)
+      local objData = parseJson(obj.memo)
+      if d.mat.guid ~= obj.guid and tableId ~= obj.guid then
+        d.mat.call("setMemo")
+        obj.setLock(false)
+        box.putObject(obj)
+      end
+    end
+
+    local itemsMatPosition = {0, 0, 1.4}
+    for i = 1, 5 do
+      local objs = findObjsInRadius(d.mat.positionToWorld(itemsMatPosition):setAt("y", 2.2))
+      local itemsMatFound = false
+      for _, obj in ipairs(objs) do
+        if obj.memo and obj.memo == "Items Mat" then
+          itemsMatFound = true
+          local cards = upCast(obj, 1, nil, 1)
+          for _, card in pairs(cards) do
+            local cardData = parseJson(card.memo)
+            if cardData then
+              if card.type == "Tile" then
+                discardTile(d.player.color, card, cardData)
+              elseif card.type == "Card" then
+                discardCard(d.player.color, card, cardData)
+              elseif card.type == "Figurine" then
+                local box = getObjectFromGUID(boxId)
+                if box then
+                  box.putObject(card)
+                end
               end
             end
           end
         end
       end
+
+      if not itemsMatFound then
+        return
+      end
+
+      itemsMatPosition[3] = itemsMatPosition[3] + 1.2
     end
 
-    if not itemsMatFound then
-      return
+    for _, obj in ipairs(objs) do
+      local objData = parseJson(obj.memo)
+      if d.mat.guid ~= obj.guid and tableId ~= obj.guid then
+        box.putObject(obj)
+      end
     end
-
-    itemsMatPosition[3] = itemsMatPosition[3] + 1.2
-  end
-
-  for _, obj in ipairs(objs) do
-    local objData = parseJson(obj.memo)
-    if d.mat.guid ~= obj.guid and tableId ~= obj.guid then
-      box.putObject(obj)
-    end
-  end          
-            end
-            )
+  end)
 end
 
 function onPlayerClickBio(d)
@@ -1893,7 +1903,7 @@ function onPlayerClickBio(d)
   for _, obj in ipairs(objs) do
     local objData = parseJson(obj.memo)
     if d.mat.guid ~= obj.guid and tableId ~= obj.guid and objData and objData.type == "Investigator" then
-      obj.setRotation({0, 180, obj.is_face_down and 0 or 180}) 
+      obj.setRotation({0, 180, obj.is_face_down and 0 or 180})
       return
     end
   end
@@ -1901,8 +1911,7 @@ end
 
 function onClickEncounter(obj, playerColor)
   if gameData.phase ~= 3 then
-    printToColor(i18n.getStrById("PB_myth_validate"), playerColor,
-      {1, 0.2, 0.2})
+    printToColor(i18n.getStrById("PB_myth_validate"), playerColor, {1, 0.2, 0.2})
     return
   end
 
@@ -2485,6 +2494,7 @@ end
 function clickOnEN()
   gameData.language = "en"
   updateXMLs()
+  -- TODO: remove
   translationService.setCurrentLanguage(gameData.language)
 
   for _, o in ipairs(getObjects()) do
@@ -2498,6 +2508,7 @@ end
 function clickOnUK()
   gameData.language = "uk"
   updateXMLs()
+  -- TODO: remove
   translationService.setCurrentLanguage(gameData.language)
 
   for _, o in ipairs(getObjects()) do
@@ -2508,16 +2519,17 @@ function clickOnUK()
   end
 end
 
+-- ╭──────────────────────────────────────────────╮
+-- │                UPDATE XMLS                   │
+-- ╰──────────────────────────────────────────────╯
+
 function updateXMLs()
   i18n.updateGlobalUiLanguage()
   i18n.updateAllObjectsUiLanguage()
 end
 
 function updateGlobalXml(newXml)
-  local windowIdList = {
-    "languages",
-    "main_menu",
-  }
+  local windowIdList = {"languages", "main_menu"}
 
   for _, windowId in ipairs(windowIdList) do
     local element = getXmlTableElementById(newXml, windowId)
@@ -2534,6 +2546,65 @@ function updateGlobalXml(newXml)
   self.UI.setXmlTable(newXml)
 end
 
+
+-- ╭──────────────────────────────────────────────╮
+-- │          ADD ADDITIONAL COMPONENTS           │
+-- ╰──────────────────────────────────────────────╯
+function addAdditionalCompoents()
+  addConditionMat2()
+end
+
+-- ╭──────────────────────────────────────────────╮
+-- │                ADD CONDITION                 │
+-- ╰──────────────────────────────────────────────╯
+
+function addConditionMat2()
+  if gameData.addons[1] == true then
+    local conditionMat = getObjectFromGUID(conditionMatId)
+    if not conditionMat then
+      log("addConditionMat2 - conditionMat not found")
+      return
+    end
+
+    local snps = {{
+      Position = {
+        x = 1.27,
+        y = 0.10,
+        z = 0.00
+      }
+    }, {
+      Position = {
+        x = -0.030,
+        y = 0.100,
+        z = 0.004
+      }
+    }, {
+      Position = {
+        x = -1.29,
+        y = 0.100,
+        z = 0.004
+      }
+    }}
+
+    local conditionMatData = conditionMat.getData()
+    conditionMatData.Transform.posZ = conditionMat.positionToWorld({0, 0, -2.032})[3]
+    conditionMatData.AttachedSnapPoints = snps
+    conditionMatData.Memo = JSON.encode({name = "ConditionMat2", snps = snps})
+
+    local conditionMat2 = spawnObjectData({
+      data = conditionMatData
+    })
+
+    conditionMat2Id = conditionMat2.guid
+    gameData.lockObjs[conditionMat2Id] = true
+    Wait.time(function()
+      lockObj(conditionMat2)
+    end, 2)
+  else
+    log(gameData.addons[1])
+  end
+end
+
 function prepareLanguageBag(bag)
   if not bag then
     return
@@ -2544,7 +2615,7 @@ function prepareLanguageBag(bag)
     return
   end
 
-   for i = #bag.getObjects(), 1, -1 do
+  for i = #bag.getObjects(), 1, -1 do
     local obj = bag.getObjects()[i]
     local memoTable = parseJson(obj.memo)
     if memoTable and memoTable.startPosition then
@@ -2556,7 +2627,9 @@ function prepareLanguageBag(bag)
       })
 
       runAfterRest(o, function(o)
-        if o.type == "Generic" or o.type == "Tile" or o.type == "Card" or (memoTable.type and (memoTable.type == "dark pact" or memoTable.type == "blessed cursed" or memoTable.type == "archive")) then
+        if o.type == "Generic" or o.type == "Tile" or o.type == "Card" or
+          (memoTable.type and
+            (memoTable.type == "dark pact" or memoTable.type == "blessed cursed" or memoTable.type == "archive")) then
           o.setRotation({0, 180, 0})
         end
       end)
@@ -2592,6 +2665,7 @@ function prepareShopMat()
 
   local isFoundDarkPack = false
   local isFoundBlessedCursed = false
+  local isFoundWanted = false
   for _, deckData in ipairs(shopMatData.decks) do
     for _, o in ipairs(getObjects()) do
       local oData = parseJson(o.memo)
@@ -2645,6 +2719,29 @@ function prepareShopMat()
           runAfterRest(o, function(o)
             o.shuffle()
           end)
+        elseif string.lower(oData.type) == "wanted" and not isFoundWanted then
+          if oData.set and gameData.addons[oData.set] == true then
+            local conditionMat2 = getObjectFromGUID(conditionMat2Id)
+            if not conditionMat2 then
+              return
+            end
+
+            local conditionMat2Data = parseJson(conditionMat2.memo)
+            if not conditionMat2Data then
+              return
+            end
+
+            if conditionMat2Data and conditionMat2Data.snps and conditionMat2Data.snps[oData.set] then
+              local p = conditionMat2Data.snps[oData.set].Position
+              o.setPosition(conditionMat2.positionToWorld(p):setAt("y", 3))
+              isFoundWanted = true
+            end
+          else
+            local box = getObjectFromGUID(boxId)
+            if box then
+              box.putObject(o)
+            end
+          end
         end
       end
     end
@@ -2672,8 +2769,14 @@ function prepareScenarioMonsterDeck()
   for _, obj in ipairs(getObjects()) do
     if obj.type == "Deck" then
       local objData = parseJson(obj.memo)
-      if objData and objData.type and string.lower(objData.type) == "monster" then
-        monsterDeck = obj
+      local isSet = objData and (not objData.set or (objData.set and gameData.addons[objData.set] == true))
+      if objData and objData.type and string.lower(objData.type) == "monster" and isSet then
+        if monsterDeck then
+          monsterDeck.putObject(obj)
+          monsterDeck.memo = obj.memo
+        else
+          monsterDeck = obj
+        end
       end
     end
   end
@@ -2857,7 +2960,6 @@ function prepareScenarioDecks(scenarioData)
     return
   end
 
-  print("scenarioMatId: "..scenarioMatId)
   local scenarioMatData = parseJson(scenarioMat.memo)
   if not scenarioMatData then
     print("scenarioMatData not found")
@@ -2875,13 +2977,15 @@ function prepareScenarioDecks(scenarioData)
   end
 
   if #scenarioMatData.scenarios < scenarioData.number then
-    print("error: #scenarioMatData.scenarios < scenarioData.number".."\n#scenarioMatData.scenarios: "..#scenarioMatData.scenarios.." scenarioData.number: "..scenarioData.number)
+    print("error: #scenarioMatData.scenarios < scenarioData.number" .. "\n#scenarioMatData.scenarios: " ..
+            #scenarioMatData.scenarios .. " scenarioData.number: " .. scenarioData.number)
     return
   end
 
   local scenarioInstruction = scenarioMatData.scenarios[scenarioData.number]
   if scenarioData.number ~= scenarioInstruction.number or scenarioData.number ~= scenarioInstruction.number then
-    print("error: scenarioData.number ~= scenarioInstruction.number or scenarioData.number ~= scenarioInstruction.number")
+    print(
+      "error: scenarioData.number ~= scenarioInstruction.number or scenarioData.number ~= scenarioInstruction.number")
     return
   end
 
@@ -2941,7 +3045,8 @@ function prepareScenarioDecks(scenarioData)
                         spawnClue(function()
                           Global.UI.setAttribute("phase", "active", true)
                           self.UI.setAttribute('phase_text', "text", i18n.getStrById("PB_phase1"))
-                          broadcastToAll(i18n.getStrById("PB_next_phase").." " .. i18n.getStrById("PB_phase"..gameData.phase) .. "!",
+                          broadcastToAll(i18n.getStrById("PB_next_phase") .. " " ..
+                                           i18n.getStrById("PB_phase" .. gameData.phase) .. "!",
                             phases[gameData.phase].color)
                           if gameData.language == "en" then
                             self.UI.setAttribute('PB_phase_text', 'offsetXY', '0 15')
@@ -3024,16 +3129,10 @@ function prepareScenarioDecks(scenarioData)
 
             local function containsDeck(tbl, memo)
 
-              print(memo.set)
-              print(serpent.tts(gameData.addons))
-              print(gameData.addons[memo.set] == true)
-
               for _, v in pairs(tbl) do
                 local isName = v.name and memo.name and string.lower(v.name) == string.lower(memo.name)
                 local isType = v.type and memo.type and string.lower(v.type) == string.lower(memo.type)
                 local isSet = not memo.set or (memo.set and gameData.addons[memo.set] == true)
-                -- TODO: remove
-                print("isSet: "..serpent.tts(isSet))
                 if isName and isType and isSet then
                   return v
                 end
@@ -3045,7 +3144,7 @@ function prepareScenarioDecks(scenarioData)
 
             local deckData = containsDeck(scenarioInstruction.decks, memo)
             if deckData then
-              if not usedDecks[string.lower(memo.name)] then
+              if memo.name and not usedDecks[string.lower(memo.name)] and deckData.pos and scenarioMatData.positions[deckData.pos] then
                 usedDecks[string.lower(memo.name)] = true
                 obj.setPositionSmooth(scenarioMat.positionToWorld(scenarioMatData.positions[deckData.pos]):setAt("y", 3))
               end
@@ -5224,7 +5323,9 @@ function callTable(params)
   local var = _G
   for _, key in ipairs(keys) do
     var = var[key]
-    if type(var) ~= "table" then break end
+    if type(var) ~= "table" then
+      break
+    end
   end
   if type(var) ~= "function" then
     log("resulting var was not a function " .. table.concat(keys, "->"))
@@ -5296,10 +5397,12 @@ end
 
 function setSP(s, h)
   if s and h then
-    
+
     if not h.memo then
       local p = s.positionToLocal(h.getPosition())
-      h.memo = JSON.encode({startPosition = p})
+      h.memo = JSON.encode({
+        startPosition = p
+      })
       print("\nstartPosition = " .. serpent.tts(p) .. "\n" .. h.guid)
     else
       local data = parseJson(h.memo)
@@ -5340,10 +5443,10 @@ function nextPhase(player, value, id)
     gameData.phase = 1
   end
   Global.UI.setAttribute("phase_img", "image", phases[gameData.phase].image)
-broadcastToAll(i18n.getStrById("PB_next_phase").." " .. i18n.getStrById("PB_phase"..gameData.phase) .. "!", phases[gameData.phase].color)
+  broadcastToAll(i18n.getStrById("PB_next_phase") .. " " .. i18n.getStrById("PB_phase" .. gameData.phase) .. "!",
+    phases[gameData.phase].color)
 
-
-self.UI.setAttribute('phase_text', "text", i18n.getStrById("PB_phase"..gameData.phase))
+  self.UI.setAttribute('phase_text', "text", i18n.getStrById("PB_phase" .. gameData.phase))
   if gameData.phase == 1 then
     self.UI.setAttribute("phase_btn_myth", "active", false)
     self.UI.setAttribute("phase_btn_text", "active", false)
@@ -5378,10 +5481,14 @@ end
 
 function getXmlTableElementById(ui, id)
   for _, obj in ipairs(ui) do
-    if obj.attributes and obj.attributes.id and obj.attributes.id == id then return obj end
+    if obj.attributes and obj.attributes.id and obj.attributes.id == id then
+      return obj
+    end
     if obj.children then
       local result = getXmlTableElementById(obj.children, id)
-      if result then return result end
+      if result then
+        return result
+      end
     end
   end
   return nil
