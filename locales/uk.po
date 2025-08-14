@@ -242,3 +242,133 @@ msgstr "ПОДІЇ"
 
 msgid "MT_discard_text"
 msgstr "СКИД"
+
+# Neighborhoods
+msgid "Downtown"
+msgstr "Downtown"
+
+msgid "Easttown"
+msgstr "Easttown"
+
+msgid "Merchant_District"
+msgstr "Merchant District"
+
+msgid "Miskatonic_University"
+msgstr "Miskatonic University"
+
+msgid "Northside"
+msgstr "Northside"
+
+msgid "Rivertown"
+msgstr "Rivertown"
+
+msgid "Southside"
+msgstr "Southside"
+
+msgid "Uptown"
+msgstr "Uptown"
+
+msgid "The_streets"
+msgstr "The streets"
+
+# Neighborhood spaces
+msgid "Arkham_Asylum"
+msgstr "Arkham Asylum"
+
+msgid "Independence_Square"
+msgstr "Independence Square"
+
+msgid "La_Bella_Luna"
+msgstr "La Bella Luna"
+
+msgid "Hibb's_Roadhouse"
+msgstr "Hibb's Roadhouse"
+
+msgid "Police_Station"
+msgstr "Police Station"
+
+msgid "Velma's_Diner"
+msgstr "Velma's Diner"
+
+msgid "River_Docks"
+msgstr "River Docks"
+
+msgid "Tick_Tock_Club"
+msgstr "Tick-Tock Club"
+
+msgid "Unvisited_Isle"
+msgstr "Unvisited Isle"
+
+msgid "Observatory"
+msgstr "Observatory"
+
+msgid "Orne_Library"
+msgstr "Orne Library"
+
+msgid "Science_Building"
+msgstr "Science Building"
+
+msgid "Arkham_Advertiser"
+msgstr "Arkham Advertiser"
+
+msgid "Curiositie_Shoppe"
+msgstr "Curiositie Shoppe"
+
+msgid "Train_Station"
+msgstr "Train Station"
+
+msgid "Black_Cave"
+msgstr "Black Cave"
+
+msgid "General_Store"
+msgstr "General Store"
+
+msgid "Graveyard"
+msgstr "Graveyard"
+
+msgid "Historical_Society"
+msgstr "Historical Society"
+
+msgid "Ma's_Boarding_House"
+msgstr "Ma's Boarding House"
+
+msgid "South_Church"
+msgstr "South Church"
+
+msgid "Hangman's_Hill"
+msgstr "Hangman's Hill"
+
+msgid "St_Mary's_Hospital"
+msgstr "St. Mary's Hospital"
+
+msgid "Ye_Olde_Magick_Shoppe"
+msgstr "Ye Olde Magick Shoppe"
+
+msgid "Residential"
+msgstr "Residential"
+
+msgid "Bridge"
+msgstr "Bridge"
+
+msgid "Scenic"
+msgstr "Scenic"
+
+# Change of phase
+msgid "action_start"
+msgstr "Start of Action Phase"
+
+msgid "monster_start"
+msgstr "Start of Monster Phase"
+
+msgid "encounter_start"
+msgstr "Start of Encounter Phase"
+
+msgid "mythos_start"
+msgstr "Start of Mythos Phase"
+
+# Log info
+msgid "LOG_doom_added"
+msgstr "doom added"
+
+msgid "LOG_clue_spawn"
+msgstr "clue spawn"
