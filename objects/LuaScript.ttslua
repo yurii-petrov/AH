@@ -188,7 +188,8 @@ gameData = {
   numberOfPlayers = 2,
   lockObjs = {},
   language = nil,
-  selectedInvestigators = {}
+  selectedInvestigators = {},
+  areAllComponentsTaken = false
 }
 
 -- ╭──────────────────────────────────────────────╮
@@ -1448,7 +1449,13 @@ function restore(player, alt, id)
   self.UI.setAttribute('main_menu', 'active', true)
   self.UI.setAttribute('restore', 'active', false)
 end
+
 function startGame(player, alt, id)
+  if gameData.areAllComponentsTaken == false then
+    broadcastToAll("Wait until all components are drawn from language bag", "White")
+    return
+  end
+
   local scenarioData = getScenarioData(currentSetup.scenario or 1)
   if not scenarioData then
     broadcastToAll("Компоненти сценарія " .. currentSetup.scenario .. " не знайдено",
@@ -2494,29 +2501,33 @@ end
 function clickOnEN()
   gameData.language = "en"
   updateXMLs()
-  -- TODO: remove
-  translationService.setCurrentLanguage(gameData.language)
+  Wait.time(function()
+    -- TODO: remove
+    translationService.setCurrentLanguage(gameData.language)
 
-  for _, o in ipairs(getObjects()) do
-    if o.type == "Bag" and o.memo and o.memo == "Eng bag" then
-      prepareLanguageBag(o)
-      return
+    for _, o in ipairs(getObjects()) do
+      if o.type == "Bag" and o.memo and o.memo == "Eng bag" then
+        prepareLanguageBag(o)
+        return
+      end
     end
-  end
+  end, 3)
 end
 
 function clickOnUK()
   gameData.language = "uk"
   updateXMLs()
-  -- TODO: remove
-  translationService.setCurrentLanguage(gameData.language)
+  Wait.time(function()
+    -- TODO: remove
+    translationService.setCurrentLanguage(gameData.language)
 
-  for _, o in ipairs(getObjects()) do
-    if o.type == "Bag" and o.memo and o.memo == "Uk bag" then
-      prepareLanguageBag(o)
-      return
+    for _, o in ipairs(getObjects()) do
+      if o.type == "Bag" and o.memo and o.memo == "Uk bag" then
+        prepareLanguageBag(o)
+        return
+      end
     end
-  end
+  end, 3)
 end
 
 -- ╭──────────────────────────────────────────────╮
@@ -2541,11 +2552,9 @@ function updateGlobalXml(newXml)
   end
 
   self.UI.setAttribute('title', 'text', i18n.getStrById("MM_scenario1_name_text"))
-  self.UI.setAttribute('body', 'text', i18n.getStrById("MM_scenario1_desc"))
-
+  self.UI.setAttribute('body', 'text', i18n.getStrById("MM_scenario1_desc_text"))
   self.UI.setXmlTable(newXml)
 end
-
 
 -- ╭──────────────────────────────────────────────╮
 -- │          ADD ADDITIONAL COMPONENTS           │
@@ -2589,7 +2598,10 @@ function addConditionMat2()
     local conditionMatData = conditionMat.getData()
     conditionMatData.Transform.posZ = conditionMat.positionToWorld({0, 0, -2.032})[3]
     conditionMatData.AttachedSnapPoints = snps
-    conditionMatData.Memo = JSON.encode({name = "ConditionMat2", snps = snps})
+    conditionMatData.Memo = JSON.encode({
+      name = "ConditionMat2",
+      snps = snps
+    })
 
     local conditionMat2 = spawnObjectData({
       data = conditionMatData
@@ -2610,32 +2622,53 @@ function prepareLanguageBag(bag)
     return
   end
 
-  local table = getObjectFromGUID(tableId)
-  if not table then
+  local tableObj = getObjectFromGUID(tableId)
+  if not tableObj then
     return
   end
 
-  for i = #bag.getObjects(), 1, -1 do
-    local obj = bag.getObjects()[i]
-    local memoTable = parseJson(obj.memo)
-    if memoTable and memoTable.startPosition then
-      local o = bag.takeObject({
-        index = obj.index,
-        position = table.positionToWorld(memoTable.startPosition):setAt("y", 3),
-        rotation = {0, 180, 180},
-        smooth = false
-      })
+  local objs = bag.getObjects()
+  local pendingTakes = 0
 
-      runAfterRest(o, function(o)
-        if o.type == "Generic" or o.type == "Tile" or o.type == "Card" or
-          (memoTable.type and
-            (memoTable.type == "dark pact" or memoTable.type == "blessed cursed" or memoTable.type == "archive")) then
-          o.setRotation({0, 180, 0})
-        end
-      end)
+  for i = 1, #objs do
+    local memo = parseJson(objs[i].memo)
+    if memo and memo.startPosition then
+      pendingTakes = pendingTakes + 1
     end
   end
-  -- print(bag.guid)
+
+  if pendingTakes == 0 then
+    gameData.areAllComponentsTaken = true
+    return
+  end
+
+  for i = #objs, 1, -1 do
+    local obj = objs[i]
+    local memo = parseJson(obj.memo)
+    if memo and memo.startPosition then
+      local delay = (#objs - i) / 20
+      Wait.time(function()
+        local o = bag.takeObject({
+          index = obj.index,
+          position = tableObj.positionToWorld(memo.startPosition):setAt("y", 3),
+          rotation = {0, 180, 180},
+          smooth = false
+        })
+
+        runAfterRest(o, function(o2)
+          if o2.type == "Generic" or o2.type == "Tile" or o2.type == "Card" or
+            (memo.type and (memo.type == "dark pact" or memo.type == "blessed cursed" or memo.type == "archive")) then
+            o2.setRotation({0, 180, 0})
+          end
+
+          pendingTakes = pendingTakes - 1
+          if pendingTakes == 0 then
+            gameData.areAllComponentsTaken = true
+          end
+        end)
+      end, delay)
+    end
+  end
 end
 
 -- ╭──────────────────────────────────────────────╮
@@ -3011,20 +3044,26 @@ function prepareScenarioDecks(scenarioData)
     end)
   end
 
+  local moveObj = {
+    toBox = {},
+    toPosition = {}
+  }
+
+  local eventDeck = nil
+
   for _, obj in ipairs(getObjects()) do
     local memo = parseJson(obj.memo)
     if memo then
       -- prepare Scenario
       if memo.type == "Scenario" then
         if scenarioData.name == memo.name then
-          obj.setPositionSmooth(locationMat.positionToWorld(locationData.scenraiomat):setAt("y", 2.21))
-          runAfterRest(obj, function(obj)
-            obj.setLock(true)
-          end)
+          table.insert(moveObj.toPosition, {
+            guids = {obj.getGUID()},
+            p = locationMat.positionToWorld(locationData.scenraiomat):setAt("y", 2.21),
+            l = true
+          })
         else
-          if box then
-            box.putObject(obj)
-          end
+          table.insert(moveObj.toBox, obj.getGUID())
         end
       elseif memo.type == "Neighborhood" or memo.type == "Street" then
         lockSetupScenarioComponents(obj, scenarioData.tiles)
@@ -3034,37 +3073,9 @@ function prepareScenarioDecks(scenarioData)
         if memo.type then
           if string.lower(memo.type) == "event" then
             if memo.name == scenarioData.name then
-              local mythosTile = getObjectFromGUID(mythosTileId)
-              if mythosTile then
-                local eventDeckPos = mythosTile.positionToWorld({-0.198, 0.236, 0.278}):setAt("y", 3)
-                moveDeckToPosition(obj, eventDeckPos, function(eventDeck)
-                  Wait.time(function()
-                    isDrawMythInProcess = true
-                    spawnClue(function()
-                      spawnClue(function()
-                        spawnClue(function()
-                          Global.UI.setAttribute("phase", "active", true)
-                          self.UI.setAttribute('phase_text', "text", i18n.getStrById("PB_phase1"))
-                          broadcastToAll(i18n.getStrById("PB_next_phase") .. " " ..
-                                           i18n.getStrById("PB_phase" .. gameData.phase) .. "!",
-                            phases[gameData.phase].color)
-                          if gameData.language == "en" then
-                            self.UI.setAttribute('PB_phase_text', 'offsetXY', '0 15')
-                            self.UI.setAttribute('phase_text', 'offsetXY', '0 35')
-                          end
-                          eventSpawnDooms(function()
-                            isDrawMythInProcess = false
-                          end)
-                        end)
-                      end)
-                    end)
-                  end, 2)
-                end)
-              end
+              eventDeck = obj
             else
-              if box then
-                box.putObject(obj)
-              end
+              table.insert(moveObj.toBox, obj.getGUID())
             end
             -- prepare headline deck
           elseif string.lower(memo.type) == "headline" then
@@ -3090,9 +3101,7 @@ function prepareScenarioDecks(scenarioData)
                 headlineDeck.shuffle()
               end
 
-              if box then
-                box.putObject(obj)
-              end
+              table.insert(moveObj.toBox, obj.getGUID())
             end, 2)
 
             -- prepare archive deck
@@ -3144,14 +3153,30 @@ function prepareScenarioDecks(scenarioData)
 
             local deckData = containsDeck(scenarioInstruction.decks, memo)
             if deckData then
-              if memo.name and not usedDecks[string.lower(memo.name)] and deckData.pos and scenarioMatData.positions[deckData.pos] then
+              if memo.name and not usedDecks[string.lower(memo.name)] and deckData.pos and
+                scenarioMatData.positions[deckData.pos] then
                 usedDecks[string.lower(memo.name)] = true
-                obj.setPositionSmooth(scenarioMat.positionToWorld(scenarioMatData.positions[deckData.pos]):setAt("y", 3))
+
+                local isTFound = false
+                local isSet = not memo.set or (memo.set and gameData.addons[memo.set] == true)
+                for _, t in pairs(moveObj.toPosition) do
+                  if t.p == scenarioMat.positionToWorld(scenarioMatData.positions[deckData.pos]):setAt("y", 3) then
+                    isTFound = true
+                    table.insert(t.guids, obj.getGUID())
+                    break
+                  end
+                end
+
+                if isTFound == false then
+                  table.insert(moveObj.toPosition, {
+                    guids = {obj.getGUID()},
+                    p = scenarioMat.positionToWorld(scenarioMatData.positions[deckData.pos]):setAt("y", 3),
+                    l = false
+                  })
+                end
               end
             else
-              if box then
-                box.putObject(obj)
-              end
+              table.insert(moveObj.toBox, obj.getGUID())
             end
           end
         end
@@ -3159,32 +3184,194 @@ function prepareScenarioDecks(scenarioData)
     end
   end
 
+  local time = 0
+  local timeStep = 0.1
+  if box then
+    for i, guid in ipairs(moveObj.toBox) do
+      time = time + timeStep
+      local o = getObjectFromGUID(guid)
+      if o then
+        Wait.time(function()
+          if box and o then
+            box.putObject(o)
+          end
+        end, time)
+      end
+    end
+  end
+
+  for i, data in pairs(moveObj.toPosition) do
+    time = time + timeStep
+    Wait.time(function()
+      if #data.guids == 0 then
+        
+      end
+      local o = getObjectFromGUID(data.guids)
+      if o then
+        o.setPosition(data.p)
+        Wait.time(function()
+          local u = getObjectFromGUID(data.guid)
+          if u then
+            if u.type == "Deck" then
+              u.shuffle()
+            end
+            if data.l and data.l == true then
+              u.setLock(data.l)
+            end
+          end
+        end, 0.5)
+      end
+    end, time)
+  end
+
+  prepareScenarioEventDeck(eventDeck, moveObj.toPosition, time + 1)
+
   Wait.time(function()
     prepareShopMat()
-  end, 2)
+  end, time + timeStep + 2)
 
   Wait.time(function()
     prepareScenarioMonsterDeck()
-  end, 3)
+  end, time + timeStep + 3)
 end
 
--- function getNeighborhoodTile(memo)
--- local locationMat = getObjectFromGUID(locationMatId)
--- if not locationMat then
---   return
--- end
+function prepareScenarioEventDeck(eventDeck, decks, time)
+  local mythosTile = getObjectFromGUID(mythosTileId)
+  if not eventDeck or not mythosTile then
+    return
+  end
 
--- local objs = upCast(locationMat, 1, nil, 1)
--- if not objs then
---   return
--- end
+  local function takeRandomCards(deck, count)
+    local p = deck.getPosition()
+    local takenCards = {}
+    for i = 1, count do
+      local randIndex = math.random(deck.getQuantity()) - 1
+      p.z = p.z + 5
+      local card = deck.takeObject({
+        index = randIndex,
+        position = p,
+        smooth = false
+      })
+      table.insert(takenCards, card)
+    end
+    return takenCards
+  end
 
--- for _, o in pairs(objs) do
---   if o.getGMNotes() == "Neighborhood" and o.memo == memo then
---     return o
---   end
--- end
--- end
+  -- eventCard (Card) + 2 top з targetDeck -> shuffle -> покласти ТРИ зверху по одній
+function mergeEventOnTopAtEventPos(eventCard, targetDeck, done)
+  if not eventCard or not targetDeck then if done then done() end return end
+
+  local deckPos   = targetDeck.getPosition()
+  local eventPos  = eventCard.getPosition()
+  local startQty  = targetDeck.getQuantity()
+  local dropNear  = { x = deckPos.x,  y = deckPos.y + 2,  z = deckPos.z }
+  
+  local c1 = targetDeck.takeObject()
+  local c2 = targetDeck.takeObject()
+  local newDeck = eventCard.putObject(c1)
+  newDeck.putObject(c2)
+  newDeck.shuffle()
+
+  targetDeck.setRotation({0, 180, 0})
+  targetDeck.putObject(newDeck)
+  targetDeck.setRotation({0, 180, 180})
+  -- targetDeck.setRotation({0, 180, 180})
+  -- Wait.frames(function()
+  --   local c2 = targetDeck.takeObject({ position = liftEvent, smooth = false })
+
+  --   -- Збираємо тріо: Card -> Deck x2 -> Deck x3
+  --   eventCard.putObject(c1)
+  --   Wait.condition(function()
+  --       eventCard.putObject(c2)
+  --       Wait.condition(function()
+  --           -- Тепер eventCard — deck з 3 картами: shuffle
+  --           eventCard.shuffle()
+
+  --           -- Повертаємо ТРИ карти по одній на верх базової колоди
+  --           local function drop(n)
+  --             if n == 0 then
+  --               -- Після всіх трьох: qty має зрости на +1 (зняли 2, додали 3)
+  --               Wait.condition(function() if done then done() end end,
+  --                 function() return targetDeck.getQuantity() == startQty + 1 end)
+  --               return
+  --             end
+  --             local t = eventCard.takeObject({ index = 0, position = dropNear, smooth = false })
+  --             Wait.frames(function()
+  --               targetDeck.putObject(t)
+  --               Wait.frames(function() drop(n - 1) end, 1)
+  --             end, 1)
+  --           end
+  --           drop(3)
+  --         end, function() return eventCard and eventCard.type == "Deck" and eventCard.getQuantity() == 3 end)
+  --     end, function() return eventCard and eventCard.type == "Deck" and eventCard.getQuantity() == 2 end)
+  -- end, 1)
+end
+
+
+
+  local function processCard(index, cards)
+    if index > #cards then
+      return
+    end
+
+    local card = cards[index]
+    local data = parseJson(card.memo)
+    if data and data.neighborhood then
+      for _, deckData in pairs(decks) do
+        local deck = getObjectFromGUID(deckData.guid)
+        if deck then
+          local deckMemo = parseJson(deck.memo)
+          if deckMemo and deckMemo.name and string.lower(deckMemo.name) == string.lower(data.neighborhood) then
+            mergeEventOnTopAtEventPos(card, deck, function()
+              spawnClueToken(data.neighborhood)
+            end)
+            return
+          end
+        end
+      end
+    end
+
+    -- processCard(index + 1, cards)
+  end
+
+  Wait.time(function()
+    local randomEventCards = takeRandomCards(eventDeck, 3)
+    processCard(1, randomEventCards)
+
+    local eventDeckPos = mythosTile.positionToWorld({-0.198, 0.236, 0.278}):setAt("y", 3)
+    eventDeck.setPosition(eventDeckPos)
+    eventDeck.shuffle()
+  end, time)
+end
+
+-- Wait.time(function()
+--   local eventDeckPos = mythosTile.positionToWorld({-0.198, 0.236, 0.278}):setAt("y", 3)
+--   eventDeck.setPosition(eventDeckPos)
+--   runAfterRest(eventDeck, function(eventDeck)
+--     eventDeck.shuffle()
+--     Wait.time(function()
+--       isDrawMythInProcess = true
+--       spawnClue(function()
+--         spawnClue(function()
+--           spawnClue(function()
+--             Global.UI.setAttribute("phase", "active", true)
+--             self.UI.setAttribute('phase_text', "text", i18n.getStrById("PB_phase1"))
+--             broadcastToAll(
+--               i18n.getStrById("PB_next_phase") .. " " .. i18n.getStrById("PB_phase" .. gameData.phase) .. "!",
+--               phases[gameData.phase].color)
+--             if gameData.language == "en" then
+--               self.UI.setAttribute('PB_phase_text', 'offsetXY', '0 15')
+--               self.UI.setAttribute('phase_text', 'offsetXY', '0 35')
+--             end
+--             eventSpawnDooms(function()
+--               isDrawMythInProcess = false
+--             end)
+--           end)
+--         end)
+--       end)
+--     end, 2)
+--   end)
+-- end, time)
 
 function generateArcPositionsFromAngle(center, radius, startAngleDeg, stepAngleDeg, count, y)
   local positions = {}
@@ -3586,8 +3773,8 @@ function spawnDoomTokenInLocation(locationName, doomCount, neighborhoodInfo)
         doomToken.highlightOn("Red", 5)
       end
 
-      print(neighborhoodInfo.data.name .. " (" .. locationName .. ") - " .. doomCount ..
-              " приреченості додано")
+      printToAll(i18n.getStrById(neighborhoodInfo.data.name) .. " (" .. i18n.getStrById(locationName) .. ") - " ..
+                   doomCount .. " " .. i18n.getStrById("LOG_doom_added"), "Red")
     end
     return
   end
@@ -3791,6 +3978,27 @@ function processGateBurstByClick()
   end)
 end
 
+function spawnClueToken(neighborhoodName)
+  local neighborhoodTile = getNeighborhoodTile(neighborhoodName)
+  if not neighborhoodTile then
+    return
+  end
+
+  local clueBag = getObjectFromGUID(clueBagId)
+  if not clueBag then
+    return
+  end
+
+  local pos = neighborhoodTile.getPosition()
+  pos:setAt("y", 3):setAt("z", pos.z + 1)
+  local clue = clueBag.takeObject({
+    index = 0,
+    position = pos
+  }).highlightOn("Green", 5)
+
+  printToAll(i18n.getStrById(neighborhoodName) .. " - " .. i18n.getStrById("LOG_clue_spawn"), "Green")
+end
+
 function spawnClue(callBack)
   local mythosTile = getObjectFromGUID(mythosTileId)
   if not mythosTile then
@@ -3834,27 +4042,6 @@ function spawnClue(callBack)
   if not data.neighborhood then
     callBack()
     return
-  end
-
-  local function spawnClueToken(neighborhoodName)
-    local neighborhoodTile = getNeighborhoodTile(neighborhoodName)
-    if not neighborhoodTile then
-      return
-    end
-
-    local clueBag = getObjectFromGUID(clueBagId)
-    if not clueBag then
-      return
-    end
-
-    local pos = neighborhoodTile.getPosition()
-    pos:setAt("y", 3):setAt("z", pos.z + 1)
-    local clue = clueBag.takeObject({
-      index = 0,
-      position = pos
-    }).highlightOn("Green", 5)
-
-    print(neighborhoodName .. " - підказку додано")
   end
 
   spawnClueToken(data.neighborhood)
@@ -4024,8 +4211,7 @@ function lockSetupScenarioComponents(obj, scenarioTiles)
           position = o.positionToWorld(tokenInfo.position):setAt("y", 3)
         }).highlightOn("Red", 5)
 
-        -- print( translationService.getText(name) .. " - приреченість додано")
-        print(translationService.getDoomAddText(name))
+        printToAll(i18n.getStrById(name) .. " - " .. i18n.getStrById("LOG_doom_added"), "Red")
       elseif tokenInfo.type == "White Marker" then
         whiteTokenBag.takeObject({
           index = 0,

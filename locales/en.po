@@ -42,7 +42,7 @@ msgstr "Select Scenario"
 msgid "MM_scenario1_name_text"
 msgstr "APPROACH OF AZATHOTH"
 
-msgid "MM_scenario1_desc"
+msgid "MM_scenario1_desc_text"
 msgstr "At the center of infinity slumbers Azathoth, lulled to sleep by the ceaseless piping of accursed flutes. Yet some mortals would seek to draw the infinite power and calamity of the Blind Idiot God to them, and thereby doom all of humanity..."
 
 # Scenario 2

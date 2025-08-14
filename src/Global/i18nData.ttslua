@@ -2,6 +2,54 @@
 -- Do not edit it manually, as your changes will be overwritten.
 
 I18N_DATA = {
+  ["Arkham_Advertiser"] = {
+    ["en"] = "Arkham Advertiser",
+    ["uk"] = "Arkham Advertiser",
+  },
+  ["Arkham_Asylum"] = {
+    ["en"] = "Arkham Asylum",
+    ["uk"] = "Arkham Asylum",
+  },
+  ["Black_Cave"] = {
+    ["en"] = "Black Cave",
+    ["uk"] = "Black Cave",
+  },
+  ["Bridge"] = {
+    ["en"] = "Bridge",
+    ["uk"] = "Bridge",
+  },
+  ["Curiositie_Shoppe"] = {
+    ["en"] = "Curiositie Shoppe",
+    ["uk"] = "Curiositie Shoppe",
+  },
+  ["Downtown"] = {
+    ["en"] = "Downtown",
+    ["uk"] = "Downtown",
+  },
+  ["Easttown"] = {
+    ["en"] = "Easttown",
+    ["uk"] = "Easttown",
+  },
+  ["General_Store"] = {
+    ["en"] = "General Store",
+    ["uk"] = "General Store",
+  },
+  ["Graveyard"] = {
+    ["en"] = "Graveyard",
+    ["uk"] = "Graveyard",
+  },
+  ["Hangman's_Hill"] = {
+    ["en"] = "Hangman's Hill",
+    ["uk"] = "Hangman's Hill",
+  },
+  ["Hibb's_Roadhouse"] = {
+    ["en"] = "Hibb's Roadhouse",
+    ["uk"] = "Hibb's Roadhouse",
+  },
+  ["Historical_Society"] = {
+    ["en"] = "Historical Society",
+    ["uk"] = "Historical Society",
+  },
   ["IM_bio"] = {
     ["en"] = "Bio",
     ["uk"] = "Біографія",
@@ -21,6 +69,22 @@ I18N_DATA = {
   ["IM_enemy_text"] = {
     ["en"] = "E    N    E    M    I    E    S",
     ["uk"] = "В    О    Р    О    Г    И",
+  },
+  ["Independence_Square"] = {
+    ["en"] = "Independence Square",
+    ["uk"] = "Independence Square",
+  },
+  ["LOG_clue_spawn"] = {
+    ["en"] = "clue spawn",
+    ["uk"] = "clue spawn",
+  },
+  ["LOG_doom_added"] = {
+    ["en"] = "doom added",
+    ["uk"] = "doom added",
+  },
+  ["La_Bella_Luna"] = {
+    ["en"] = "La Bella Luna",
+    ["uk"] = "La Bella Luna",
   },
   ["MM_addonDescription_text"] = {
     ["en"] = "In Dead of Night, investigators explore the facets of Arkham best left unseen in the light of day. Organized crime builds a strong foothold in the city, secret cults labor for a dark master, an alien moon hangs overhead, and unknowable horrors stalk the night. This expansion includes two all-new scenarios, new encounters for every location in Arkham, new monsters and anomalies, and four new investigators to face these fresh horrors, armed with new spells, items and allies.\n• 2 scenarios\n• 4 investigators\n• 7 headline cards\n• 20 archive cards\n• 12 anomaly cards\n• 48 event cards\n• 72 encounter cards\n• 4 ally cards\n• 4 item cards\n• 4 spell cards\n• 28 special cards\n• 12 starting cards\n• 6 wanted condition cards\n• 22 monster cards\n• 15 new monsters",
@@ -62,7 +126,7 @@ I18N_DATA = {
     ["en"] = "Player numbers:",
     ["uk"] = "Кількість гравців:",
   },
-  ["MM_scenario1_desc"] = {
+  ["MM_scenario1_desc_text"] = {
     ["en"] = "At the center of infinity slumbers Azathoth, lulled to sleep by the ceaseless piping of accursed flutes. Yet some mortals would seek to draw the infinite power and calamity of the Blind Idiot God to them, and thereby doom all of humanity...",
     ["uk"] = "Азатот дрімає в центрі нескінченності, заколисаний безперервним співом проклятих флейт. Утім, деякі смертні шукають невичерпної сили й руйнувань, які принесе Сліпий божевільний бог, водночас прирікаючи усе людство на загибель...",
   },
@@ -166,6 +230,30 @@ I18N_DATA = {
     ["en"] = "PASS",
     ["uk"] = "success",
   },
+  ["Ma's_Boarding_House"] = {
+    ["en"] = "Ma's Boarding House",
+    ["uk"] = "Ma's Boarding House",
+  },
+  ["Merchant_District"] = {
+    ["en"] = "Merchant District",
+    ["uk"] = "Merchant District",
+  },
+  ["Miskatonic_University"] = {
+    ["en"] = "Miskatonic University",
+    ["uk"] = "Miskatonic University",
+  },
+  ["Northside"] = {
+    ["en"] = "Northside",
+    ["uk"] = "Northside",
+  },
+  ["Observatory"] = {
+    ["en"] = "Observatory",
+    ["uk"] = "Observatory",
+  },
+  ["Orne_Library"] = {
+    ["en"] = "Orne Library",
+    ["uk"] = "Orne Library",
+  },
   ["PB_myth_validate"] = {
     ["en"] = "This button is only available during the Mythos phase",
     ["uk"] = "Ця кнопка доступна тільки у фазу міту",
@@ -206,6 +294,22 @@ I18N_DATA = {
     ["en"] = "PHASE",
     ["uk"] = "ФАЗА",
   },
+  ["Police_Station"] = {
+    ["en"] = "Police Station",
+    ["uk"] = "Police Station",
+  },
+  ["Residential"] = {
+    ["en"] = "Residential",
+    ["uk"] = "Residential",
+  },
+  ["River_Docks"] = {
+    ["en"] = "River Docks",
+    ["uk"] = "River Docks",
+  },
+  ["Rivertown"] = {
+    ["en"] = "Rivertown",
+    ["uk"] = "Rivertown",
+  },
   ["S_buy"] = {
     ["en"] = "Buy for $%s",
     ["uk"] = "Купити за $%s",
@@ -230,6 +334,26 @@ I18N_DATA = {
     ["en"] = "View the Card(s)",
     ["uk"] = "ПОДИВИТИСЬ КАРТИ(У)",
   },
+  ["Scenic"] = {
+    ["en"] = "Scenic",
+    ["uk"] = "Scenic",
+  },
+  ["Science_Building"] = {
+    ["en"] = "Science Building",
+    ["uk"] = "Science Building",
+  },
+  ["South_Church"] = {
+    ["en"] = "South Church",
+    ["uk"] = "South Church",
+  },
+  ["Southside"] = {
+    ["en"] = "Southside",
+    ["uk"] = "Southside",
+  },
+  ["St_Mary's_Hospital"] = {
+    ["en"] = "St. Mary's Hospital",
+    ["uk"] = "St. Mary's Hospital",
+  },
   ["T4A_clue"] = {
     ["en"] = "SPAWN CLUE",
     ["uk"] = "РОЗМІСТИТИ ЗАЧІПКУ",
@@ -245,5 +369,49 @@ I18N_DATA = {
   ["T4A_monster"] = {
     ["en"] = "SPAWN MONSTER",
     ["uk"] = "РОЗМІСТИТИ МОНСТРА",
+  },
+  ["The_streets"] = {
+    ["en"] = "The streets",
+    ["uk"] = "The streets",
+  },
+  ["Tick_Tock_Club"] = {
+    ["en"] = "Tick-Tock Club",
+    ["uk"] = "Tick-Tock Club",
+  },
+  ["Train_Station"] = {
+    ["en"] = "Train Station",
+    ["uk"] = "Train Station",
+  },
+  ["Unvisited_Isle"] = {
+    ["en"] = "Unvisited Isle",
+    ["uk"] = "Unvisited Isle",
+  },
+  ["Uptown"] = {
+    ["en"] = "Uptown",
+    ["uk"] = "Uptown",
+  },
+  ["Velma's_Diner"] = {
+    ["en"] = "Velma's Diner",
+    ["uk"] = "Velma's Diner",
+  },
+  ["Ye_Olde_Magick_Shoppe"] = {
+    ["en"] = "Ye Olde Magick Shoppe",
+    ["uk"] = "Ye Olde Magick Shoppe",
+  },
+  ["action_start"] = {
+    ["en"] = "Start of Action Phase",
+    ["uk"] = "Start of Action Phase",
+  },
+  ["encounter_start"] = {
+    ["en"] = "Start of Encounter Phase",
+    ["uk"] = "Start of Encounter Phase",
+  },
+  ["monster_start"] = {
+    ["en"] = "Start of Monster Phase",
+    ["uk"] = "Start of Monster Phase",
+  },
+  ["mythos_start"] = {
+    ["en"] = "Start of Mythos Phase",
+    ["uk"] = "Start of Mythos Phase",
   },
 }
