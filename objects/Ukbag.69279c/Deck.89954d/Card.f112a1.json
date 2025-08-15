@@ -36,12 +36,15 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"hp \":2,\"sp \":2,\"guaranteed \":true,\"investigator\":\"Skids O'Toole\",\"type\":\"starting\"}",
+  "Memo": "{\"hp\":2,\"sp\":2,\"guaranteed\":true,\"investigator\":\"Skids O'Toole\",\"type\":\"starting\"}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,
   "Snap": true,
   "Sticky": true,
+  "Tags": [
+    "item_magnet"
+  ],
   "Tooltip": true,
   "Transform": {
     "posX": 2.01,
