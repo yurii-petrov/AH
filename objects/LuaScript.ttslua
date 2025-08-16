@@ -3276,6 +3276,19 @@ function prepareScenarioDecks(scenarioData)
   Wait.time(function()
     prepareScenarioMonsterDeck()
   end, time + timeStep + 4)
+
+  Wait.time(function()
+    Global.UI.setAttribute("phase", "active", true)
+    self.UI.setAttribute('phase_text', "text", i18n.getStrById("PB_phase1"))
+    broadcastToAll(i18n.getStrById("PB_next_phase") .. " " ..
+                      i18n.getStrById("PB_phase" .. gameData.phase) .. "!",
+      phases[gameData.phase].color)
+    if gameData.language == "en" then
+      self.UI.setAttribute('PB_phase_text', 'offsetXY', '0 15')
+      self.UI.setAttribute('phase_text', 'offsetXY', '0 35')
+    end
+    eventSpawnDooms()
+  end, time + timeStep + 5)
 end
 
 function prepareScenarioEventDeck(eventDeck, decks, time)
