@@ -36,12 +36,15 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"guaranteed \":true,\"investigator\":\"Kate Winthrop\",\"type\":\"starting\"}",
+  "Memo": "{\"guaranteed\":true,\"investigator\":\"Kate Winthrop\",\"type\":\"starting\"}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,
   "Snap": true,
   "Sticky": true,
+  "Tags": [
+    "item_magnet"
+  ],
   "Tooltip": true,
   "Transform": {
     "posX": -2.65,

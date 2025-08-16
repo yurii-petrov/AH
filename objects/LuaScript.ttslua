@@ -1121,7 +1121,7 @@ function onObjectDrop(colorName, object)
     return
   end
 
-  if objectData.type == "Monster" or (objectData.type == "codex" and objectData.role and objectData.role == "Monster") then
+  if objectData.type == "Monster" or (objectData.role and objectData.role == "Monster") then
     onMonsterDrop(colorName, object, objectData)
     return
   elseif objectData.type == "Investigator" then

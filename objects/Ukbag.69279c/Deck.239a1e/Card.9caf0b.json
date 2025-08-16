@@ -42,6 +42,9 @@
   "SidewaysCard": false,
   "Snap": true,
   "Sticky": true,
+  "Tags": [
+    "item_magnet"
+  ],
   "Tooltip": true,
   "Transform": {
     "posX": -3.157,
