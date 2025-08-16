@@ -1489,7 +1489,7 @@ function submitScenario()
   self.UI.setAttribute('chooseScenario', 'active', false)
   self.UI.setAttribute('main_menu', 'active', true)
   self.UI.setAttribute('title', 'text', i18n.getStrById("MM_scenario" .. currentSetup.scenario .. "_name_text"))
-  self.UI.setAttribute('body', 'text', i18n.getStrById("MM_scenario" .. currentSetup.scenario .. "_desc"))
+  self.UI.setAttribute('body', 'text', i18n.getStrById("MM_scenario" .. currentSetup.scenario .. "_desc_text"))
   self.UI.setAttribute('scenarioImage', 'image', 'scenario' .. currentSetup.scenario)
   self.UI.setAttribute('scenarioMap', 'image', 'scenarioMap' .. currentSetup.scenario)
 end
@@ -3045,11 +3045,40 @@ function prepareScenarioDecks(scenarioData)
   end
 
   local moveObj = {
+    toPosition = {},
     toBox = {},
-    toPosition = {}
+    toMerge = {}
   }
 
+  local function addToMoveObj(moveObj, nSet, key, guid, p)
+
+    key = string.lower(key)
+
+    moveObj.toMerge[key] = moveObj.toMerge[key] or {
+      targetGuid = nil,
+      sources = {}
+    }
+
+    if nSet then
+      if gameData.addons[nSet] == true then
+        table.insert(moveObj.toMerge[key].sources, guid)
+      else
+        table.insert(moveObj.toBox, guid)
+      end
+    else
+      table.insert(moveObj.toPosition, {
+        guid = guid,
+        name = key,
+        p = p,
+        l = false,
+      })
+      moveObj.toMerge[key].targetGuid = moveObj.toMerge[key].targetGuid or guid
+    end
+  end
+
+
   local eventDeck = nil
+  local foundArchive = nil
 
   for _, obj in ipairs(getObjects()) do
     local memo = parseJson(obj.memo)
@@ -3058,7 +3087,7 @@ function prepareScenarioDecks(scenarioData)
       if memo.type == "Scenario" then
         if scenarioData.name == memo.name then
           table.insert(moveObj.toPosition, {
-            guids = {obj.getGUID()},
+            guid = obj.getGUID(),
             p = locationMat.positionToWorld(locationData.scenraiomat):setAt("y", 2.21),
             l = true
           })
@@ -3106,36 +3135,10 @@ function prepareScenarioDecks(scenarioData)
 
             -- prepare archive deck
           elseif string.lower(memo.type) == "archive" then
-            obj.setPositionSmooth(locationMat.positionToWorld(locationData.archive):setAt("y", 3))
-            Wait.time(function()
-
-              local function containsNumber(tbl, target)
-                for i, v in pairs(tbl) do
-                  if v == target then
-                    return i
-                  end
-                end
-              end
-
-              for i = #obj.getObjects(), 1, -1 do
-                local codex = obj.getObjects()[i]
-                local codexData = parseJson(codex.memo)
-
-                if codexData and codexData.number and string.lower(codexData.type) == "codex" then
-                  local index = containsNumber(scenarioData.codex, codexData.number)
-                  if index then
-                    obj.takeObject({
-                      index = codex.index,
-                      position = locationMat.positionToWorld(locationData.codex[index]):setAt("y", 3)
-                    })
-                  end
-                end
-              end
-            end, 2)
-
+            local p = locationMat.positionToWorld(locationData.archive):setAt("y", 3)
+            addToMoveObj(moveObj, memo.set, memo.type, obj.guid, p)
             -- prepare encounter and anomaly deck
           elseif string.lower(memo.type) == "encounter" or string.lower(memo.type) == "anomaly" then
-
             local function containsDeck(tbl, memo)
 
               for _, v in pairs(tbl) do
@@ -3157,24 +3160,31 @@ function prepareScenarioDecks(scenarioData)
                 scenarioMatData.positions[deckData.pos] then
                 usedDecks[string.lower(memo.name)] = true
 
-                local isTFound = false
-                local isSet = not memo.set or (memo.set and gameData.addons[memo.set] == true)
-                for _, t in pairs(moveObj.toPosition) do
-                  if t.p == scenarioMat.positionToWorld(scenarioMatData.positions[deckData.pos]):setAt("y", 3) then
-                    isTFound = true
-                    table.insert(t.guids, obj.getGUID())
-                    break
-                  end
-                end
+                local p = scenarioMat.positionToWorld(scenarioMatData.positions[deckData.pos]):setAt("y", 3)
+                addToMoveObj(moveObj, memo.set, memo.name, obj.guid, p)
+                -- local isExpansion = memo.set and gameData.addons[memo.set] == true
 
-                if isTFound == false then
-                  table.insert(moveObj.toPosition, {
-                    guids = {obj.getGUID()},
-                    p = scenarioMat.positionToWorld(scenarioMatData.positions[deckData.pos]):setAt("y", 3),
-                    l = false
-                  })
+                -- local key = string.lower(memo.name)
+                -- if isExpansion then
+                --   moveObj.toMerge[key] = moveObj.toMerge[key] or {
+                --     targetGuid = nil,
+                --     sources = {}
+                --   }
+                --   table.insert(moveObj.toMerge[key].sources, obj.getGUID())
+                -- else
+                --   table.insert(moveObj.toPosition, {
+                --     guid = obj.getGUID(),
+                --     name = key,
+                --     p = scenarioMat.positionToWorld(scenarioMatData.positions[deckData.pos]):setAt("y", 3),
+                --     l = false
+                --   })
+                --   moveObj.toMerge[key] = moveObj.toMerge[key] or {
+                --     targetGuid = nil,
+                --     sources = {}
+                --   }
+                --   moveObj.toMerge[key].targetGuid = moveObj.toMerge[key].targetGuid or obj.getGUID()
                 end
-              end
+              -- end
             else
               table.insert(moveObj.toBox, obj.getGUID())
             end
@@ -3200,39 +3210,72 @@ function prepareScenarioDecks(scenarioData)
     end
   end
 
+  -- print(serpent.tts(moveObj.toMerge))
+
   for i, data in pairs(moveObj.toPosition) do
     time = time + timeStep
     Wait.time(function()
-      if #data.guids == 0 then
-        
-      end
-      local o = getObjectFromGUID(data.guids)
+      local o = getObjectFromGUID(data.guid)
       if o then
-        o.setPosition(data.p)
-        Wait.time(function()
-          local u = getObjectFromGUID(data.guid)
-          if u then
-            if u.type == "Deck" then
-              u.shuffle()
-            end
-            if data.l and data.l == true then
-              u.setLock(data.l)
+        if moveObj.toMerge[data.name] then
+          for _, guid in pairs(moveObj.toMerge[data.name].sources) do
+            local m = getObjectFromGUID(guid)
+            if m then
+              o.putObject(m)
             end
           end
-        end, 0.5)
+        end
+        o.setPosition(data.p)
+        if o.type == "Deck" and (data.name and data.name ~= "archive") then
+          o.shuffle()
+        end
+
+        if data.l and data.l == true then
+          runAfterRest(o, function(o)
+            o.setLock(data.l)
+          end)
+        end
       end
     end, time)
   end
 
   prepareScenarioEventDeck(eventDeck, moveObj.toPosition, time + 1)
 
+  if foundArchive then
+    Wait.time(function()
+
+    local function containsNumber(tbl, target)
+      for i, v in pairs(tbl) do
+        if v == target then
+          return i
+        end
+      end
+    end
+
+    for i = #foundArchive.getObjects(), 1, -1 do
+      local codex = foundArchive.getObjects()[i]
+      local codexData = parseJson(codex.memo)
+
+      if codexData and codexData.number and string.lower(codexData.type) == "codex" then
+        local index = containsNumber(scenarioData.codex, codexData.number)
+        if index then
+          foundArchive.takeObject({
+            index = codex.index,
+            position = locationMat.positionToWorld(locationData.codex[index]):setAt("y", 3)
+          })
+        end
+      end
+    end
+  end, 2)
+  end
+
   Wait.time(function()
     prepareShopMat()
-  end, time + timeStep + 2)
+  end, time + timeStep + 3)
 
   Wait.time(function()
     prepareScenarioMonsterDeck()
-  end, time + timeStep + 3)
+  end, time + timeStep + 4)
 end
 
 function prepareScenarioEventDeck(eventDeck, decks, time)
@@ -3257,57 +3300,36 @@ function prepareScenarioEventDeck(eventDeck, decks, time)
     return takenCards
   end
 
-  -- eventCard (Card) + 2 top з targetDeck -> shuffle -> покласти ТРИ зверху по одній
-function mergeEventOnTopAtEventPos(eventCard, targetDeck, done)
-  if not eventCard or not targetDeck then if done then done() end return end
+  function mergeEventOnTopAtEventPos(eventCard, targetDeck, done)
+    if not eventCard or not targetDeck then
+      if done then
+        done()
+      end
+      return
+    end
 
-  local deckPos   = targetDeck.getPosition()
-  local eventPos  = eventCard.getPosition()
-  local startQty  = targetDeck.getQuantity()
-  local dropNear  = { x = deckPos.x,  y = deckPos.y + 2,  z = deckPos.z }
-  
-  local c1 = targetDeck.takeObject()
-  local c2 = targetDeck.takeObject()
-  local newDeck = eventCard.putObject(c1)
-  newDeck.putObject(c2)
-  newDeck.shuffle()
+    local deckPos = targetDeck.getPosition()
+    local eventPos = eventCard.getPosition()
+    local startQty = targetDeck.getQuantity()
+    local dropNear = {
+      x = deckPos.x,
+      y = deckPos.y + 2,
+      z = deckPos.z
+    }
 
-  targetDeck.setRotation({0, 180, 0})
-  targetDeck.putObject(newDeck)
-  targetDeck.setRotation({0, 180, 180})
-  -- targetDeck.setRotation({0, 180, 180})
-  -- Wait.frames(function()
-  --   local c2 = targetDeck.takeObject({ position = liftEvent, smooth = false })
+    local c1 = targetDeck.takeObject()
+    local c2 = targetDeck.takeObject()
+    local newDeck = eventCard.putObject(c1)
+    newDeck.putObject(c2)
+    newDeck.shuffle()
 
-  --   -- Збираємо тріо: Card -> Deck x2 -> Deck x3
-  --   eventCard.putObject(c1)
-  --   Wait.condition(function()
-  --       eventCard.putObject(c2)
-  --       Wait.condition(function()
-  --           -- Тепер eventCard — deck з 3 картами: shuffle
-  --           eventCard.shuffle()
-
-  --           -- Повертаємо ТРИ карти по одній на верх базової колоди
-  --           local function drop(n)
-  --             if n == 0 then
-  --               -- Після всіх трьох: qty має зрости на +1 (зняли 2, додали 3)
-  --               Wait.condition(function() if done then done() end end,
-  --                 function() return targetDeck.getQuantity() == startQty + 1 end)
-  --               return
-  --             end
-  --             local t = eventCard.takeObject({ index = 0, position = dropNear, smooth = false })
-  --             Wait.frames(function()
-  --               targetDeck.putObject(t)
-  --               Wait.frames(function() drop(n - 1) end, 1)
-  --             end, 1)
-  --           end
-  --           drop(3)
-  --         end, function() return eventCard and eventCard.type == "Deck" and eventCard.getQuantity() == 3 end)
-  --     end, function() return eventCard and eventCard.type == "Deck" and eventCard.getQuantity() == 2 end)
-  -- end, 1)
-end
-
-
+    targetDeck.setRotation({0, 180, 0})
+    targetDeck.putObject(newDeck)
+    targetDeck.setRotation({0, 180, 180})
+    runAfterRest(targetDeck, function(targetDeck)
+      done()
+    end)
+  end
 
   local function processCard(index, cards)
     if index > #cards then
@@ -3324,14 +3346,13 @@ end
           if deckMemo and deckMemo.name and string.lower(deckMemo.name) == string.lower(data.neighborhood) then
             mergeEventOnTopAtEventPos(card, deck, function()
               spawnClueToken(data.neighborhood)
+              processCard(index + 1, cards)
             end)
             return
           end
         end
       end
     end
-
-    -- processCard(index + 1, cards)
   end
 
   Wait.time(function()

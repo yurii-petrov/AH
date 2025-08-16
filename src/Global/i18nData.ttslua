@@ -134,7 +134,7 @@ I18N_DATA = {
     ["en"] = "APPROACH OF AZATHOTH",
     ["uk"] = "Пришестя Азатота",
   },
-  ["MM_scenario2_desc"] = {
+  ["MM_scenario2_desc_text"] = {
     ["en"] = "The ghouls that dwell beneath the earth hunger for the flesh of corpses, yet even they live in worshipful fear of the Devourer Below. But the ghouls are not the only worshipers of Umôrdhoth in Arkham...",
     ["uk"] = "Гулі, що живуть під землею, вічно прагнуть плоті трупів, але навіть вони бояться Пожирача з Глибин. Однак гулі не єдині послідовники Умордота в Аркгемі...",
   },
@@ -142,7 +142,7 @@ I18N_DATA = {
     ["en"] = "FEAST FOR UMÔRDHOTH",
     ["uk"] = "Трапеза Умордота",
   },
-  ["MM_scenario3_desc"] = {
+  ["MM_scenario3_desc_text"] = {
     ["en"] = "In the cold void between worlds, something lurks. Beyond the veil, it whispers, reaching out for those with the power to free it from its prison. Those who fall into its thrall gain great power, but at a terrible price. And each day, its freedom draws nearer.",
     ["uk"] = "Щось чигає в холодній порожнечі між світами. Ховаючись під покровом, воно шепоче до тих, хто здатен звільнити його з вʼязниці. Одержимі ним здобувають велику силу, але її ціна жахливо висока. І день за днем його свобода стає все ближчою.",
   },
@@ -150,7 +150,7 @@ I18N_DATA = {
     ["en"] = "VEIL OF TWILIGHT",
     ["uk"] = "Покров\nСутінків",
   },
-  ["MM_scenario4_desc"] = {
+  ["MM_scenario4_desc_text"] = {
     ["en"] = "In his house at R'lyeh, dead Cthulbu waits dreaming. He slumbers and waits until the stars are right to bring R'lyeh back from its home beneath the waves and for the Great Old Ones to return. For that is not dead which can eternal lie, and with strange aeons even death may die.",
     ["uk"] = "У домі своєму, у Р'льєху, мертвий Ктулху чекає вві сні. Він дрімає і чекає, коли зірки стануть на свої місця і Р'льєх вирине з морських глибин, а Стародавні повернуться в цей світ. Бо не мертве те, що вічно пробуває, а з вічністю, бува, і смерть сама вмирає",
   },
@@ -158,7 +158,7 @@ I18N_DATA = {
     ["en"] = "ECHOES OF THE DEEP",
     ["uk"] = "Відлуння\nБезодні",
   },
-  ["MM_scenario5_desc"] = {
+  ["MM_scenario5_desc_text"] = {
     ["en"] = "The gangs of Arkham have a long history, and the peace between the O'Bannions and the Sheldons has always been tenuous at best. In the sweltering summer of 1926, a dark shadow pushes them into savage conflict.",
     ["uk"] = "Банди Аркгему мають довгу історію, та мир між О'Бенніонами та Шелдонами був радше ілюзією, ніж реальністю. У задушливе літо 1926 року, темна тінь остаточно штовхає їх у дику, нещадну війну.",
   },
@@ -166,7 +166,7 @@ I18N_DATA = {
     ["en"] = "SHOTS IN THE DARK",
     ["uk"] = "Постріли в Темряві",
   },
-  ["MM_scenario6_desc"] = {
+  ["MM_scenario6_desc_text"] = {
     ["en"] = "The Beast of Voormithadreth slumbers, while the followers he abandoned on distant Yuggoth prepare offerings of supplication for his ravenous appetite. Should the toad-like Sleeper of N'Kai awaken, doom shall come for us all.",
     ["uk"] = "Чудовисько з Вуормітхадрету ще спить. Але на далекому Юготі ті, кого він залишив, готують жертви, аби втамувати його жахливий голод. Та якщо жабоподібний Сплячий з Н’Каї прокинеться, світ зануриться в морок загибелі.",
   },
