@@ -245,130 +245,130 @@ msgstr "СКИД"
 
 # Neighborhoods
 msgid "Downtown"
-msgstr "Downtown"
+msgstr "Центр"
 
 msgid "Easttown"
-msgstr "Easttown"
+msgstr "Східний Квартал"
 
 msgid "Merchant_District"
-msgstr "Merchant District"
+msgstr "Базар"
 
 msgid "Miskatonic_University"
-msgstr "Miskatonic University"
+msgstr "Міскатонікський університет"
 
 msgid "Northside"
-msgstr "Northside"
+msgstr "Північний Квартал"
 
 msgid "Rivertown"
-msgstr "Rivertown"
+msgstr "Набережна"
 
 msgid "Southside"
-msgstr "Southside"
+msgstr "Південний Квартал"
 
 msgid "Uptown"
-msgstr "Uptown"
+msgstr "Передмістя"
 
 msgid "The_streets"
-msgstr "The streets"
+msgstr "Вулиці"
 
 # Neighborhood spaces
 msgid "Arkham_Asylum"
-msgstr "Arkham Asylum"
+msgstr "Психлікарня Аркгему"
 
 msgid "Independence_Square"
-msgstr "Independence Square"
+msgstr "Площа Незалежності"
 
 msgid "La_Bella_Luna"
-msgstr "La Bella Luna"
+msgstr "Ла Белла Луна"
 
 msgid "Hibb's_Roadhouse"
-msgstr "Hibb's Roadhouse"
+msgstr "Шинок Гібба"
 
 msgid "Police_Station"
-msgstr "Police Station"
+msgstr "Поліцейський відділок"
 
 msgid "Velma's_Diner"
-msgstr "Velma's Diner"
+msgstr "Їдальня Велми"
 
 msgid "River_Docks"
-msgstr "River Docks"
+msgstr "Доки"
 
 msgid "Tick_Tock_Club"
-msgstr "Tick-Tock Club"
+msgstr "Клуб \"Тік-Так\""
 
 msgid "Unvisited_Isle"
-msgstr "Unvisited Isle"
+msgstr "Безлюдний острів"
 
 msgid "Observatory"
-msgstr "Observatory"
+msgstr "Обсерваторія"
 
 msgid "Orne_Library"
-msgstr "Orne Library"
+msgstr "Бібліотека Орна"
 
 msgid "Science_Building"
-msgstr "Science Building"
+msgstr "Науковий Корпус"
 
 msgid "Arkham_Advertiser"
-msgstr "Arkham Advertiser"
+msgstr "Аркгемський Вісник"
 
 msgid "Curiositie_Shoppe"
-msgstr "Curiositie Shoppe"
+msgstr "Крамничка Диковинок"
 
 msgid "Train_Station"
-msgstr "Train Station"
+msgstr "Залізничний Вокзал"
 
 msgid "Black_Cave"
-msgstr "Black Cave"
+msgstr "Чорна Печера"
 
 msgid "General_Store"
-msgstr "General Store"
+msgstr "Універмаг"
 
 msgid "Graveyard"
-msgstr "Graveyard"
+msgstr "Кладовище"
 
 msgid "Historical_Society"
-msgstr "Historical Society"
+msgstr "Історичне Товариство"
 
 msgid "Ma's_Boarding_House"
-msgstr "Ma's Boarding House"
+msgstr "Пансіонат Мамуні"
 
 msgid "South_Church"
-msgstr "South Church"
+msgstr "Південна Церква"
 
 msgid "Hangman's_Hill"
-msgstr "Hangman's Hill"
+msgstr "Пагорб Повішеника"
 
 msgid "St_Mary's_Hospital"
-msgstr "St. Mary's Hospital"
+msgstr "Лікарня св. Марії"
 
 msgid "Ye_Olde_Magick_Shoppe"
-msgstr "Ye Olde Magick Shoppe"
+msgstr "Крамниця Чарів"
 
 msgid "Residential"
-msgstr "Residential"
+msgstr "Житлові Будинки"
 
 msgid "Bridge"
-msgstr "Bridge"
+msgstr "Міст"
 
 msgid "Scenic"
-msgstr "Scenic"
+msgstr "Парк"
 
 # Change of phase
 msgid "action_start"
-msgstr "Start of Action Phase"
+msgstr "Настає фаза Дій"
 
 msgid "monster_start"
-msgstr "Start of Monster Phase"
+msgstr "Настає фаза Монстрів"
 
 msgid "encounter_start"
-msgstr "Start of Encounter Phase"
+msgstr "Настає фаза Зустрічей"
 
 msgid "mythos_start"
-msgstr "Start of Mythos Phase"
+msgstr "Настає фаза Мітів"
 
 # Log info
 msgid "LOG_doom_added"
-msgstr "doom added"
+msgstr "Приреченість додано"
 
 msgid "LOG_clue_spawn"
-msgstr "clue spawn"
+msgstr "Зачіпка розміщена"
