@@ -221,13 +221,6 @@ function onload(savedData)
     --    testResolveDooms() 
   end
 
-  --TODO: remove
-  local locationMatOld = getObjectFromGUID("b195b0")
-  local locationMat = getObjectFromGUID(locationMatId)
-  local p = locationMat.getPosition()
-  p.y = p.y+0.1
-  locationMatOld.setPosition(p)
-
   lockObj(tableId)
   lockObj(locationMatId)
   lockObj(scenarioMatId)
@@ -5413,14 +5406,13 @@ function findObjsInRadius(pos, radius)
 end
 
 function lockObj(guid)
-    --TODO: uncommit
-  -- local o = getObjectFromGUID(guid)
-  -- if o then
-  --   o.setLock(true)
-  --   o.interactable = false
-  --   o.drag_selectable = false
-  --   o.gizmo_selectable = false
-  -- end
+  local o = getObjectFromGUID(guid)
+  if o then
+    o.setLock(true)
+    o.interactable = false
+    o.drag_selectable = false
+    o.gizmo_selectable = false
+  end
 end
 
 function upCast(obj, dist, offset, multi)
