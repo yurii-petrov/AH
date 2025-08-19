@@ -4,51 +4,51 @@
 I18N_DATA = {
   ["Arkham_Advertiser"] = {
     ["en"] = "Arkham Advertiser",
-    ["uk"] = "Arkham Advertiser",
+    ["uk"] = "Аркгемський Вісник",
   },
   ["Arkham_Asylum"] = {
     ["en"] = "Arkham Asylum",
-    ["uk"] = "Arkham Asylum",
+    ["uk"] = "Психлікарня Аркгему",
   },
   ["Black_Cave"] = {
     ["en"] = "Black Cave",
-    ["uk"] = "Black Cave",
+    ["uk"] = "Чорна Печера",
   },
   ["Bridge"] = {
     ["en"] = "Bridge",
-    ["uk"] = "Bridge",
+    ["uk"] = "Міст",
   },
   ["Curiositie_Shoppe"] = {
     ["en"] = "Curiositie Shoppe",
-    ["uk"] = "Curiositie Shoppe",
+    ["uk"] = "Крамничка Диковинок",
   },
   ["Downtown"] = {
     ["en"] = "Downtown",
-    ["uk"] = "Downtown",
+    ["uk"] = "Центр",
   },
   ["Easttown"] = {
     ["en"] = "Easttown",
-    ["uk"] = "Easttown",
+    ["uk"] = "Східний Квартал",
   },
   ["General_Store"] = {
     ["en"] = "General Store",
-    ["uk"] = "General Store",
+    ["uk"] = "Універмаг",
   },
   ["Graveyard"] = {
     ["en"] = "Graveyard",
-    ["uk"] = "Graveyard",
+    ["uk"] = "Кладовище",
   },
   ["Hangman's_Hill"] = {
     ["en"] = "Hangman's Hill",
-    ["uk"] = "Hangman's Hill",
+    ["uk"] = "Пагорб Повішеника",
   },
   ["Hibb's_Roadhouse"] = {
     ["en"] = "Hibb's Roadhouse",
-    ["uk"] = "Hibb's Roadhouse",
+    ["uk"] = "Шинок Гібба",
   },
   ["Historical_Society"] = {
     ["en"] = "Historical Society",
-    ["uk"] = "Historical Society",
+    ["uk"] = "Історичне Товариство",
   },
   ["IM_bio"] = {
     ["en"] = "Bio",
@@ -72,19 +72,19 @@ I18N_DATA = {
   },
   ["Independence_Square"] = {
     ["en"] = "Independence Square",
-    ["uk"] = "Independence Square",
+    ["uk"] = "Площа Незалежності",
   },
   ["LOG_clue_spawn"] = {
     ["en"] = "clue spawn",
-    ["uk"] = "clue spawn",
+    ["uk"] = "Зачіпка розміщена",
   },
   ["LOG_doom_added"] = {
     ["en"] = "doom added",
-    ["uk"] = "doom added",
+    ["uk"] = "Приреченість додано",
   },
   ["La_Bella_Luna"] = {
     ["en"] = "La Bella Luna",
-    ["uk"] = "La Bella Luna",
+    ["uk"] = "Ла Белла Луна",
   },
   ["MM_addonDescription_text"] = {
     ["en"] = "In Dead of Night, investigators explore the facets of Arkham best left unseen in the light of day. Organized crime builds a strong foothold in the city, secret cults labor for a dark master, an alien moon hangs overhead, and unknowable horrors stalk the night. This expansion includes two all-new scenarios, new encounters for every location in Arkham, new monsters and anomalies, and four new investigators to face these fresh horrors, armed with new spells, items and allies.\n• 2 scenarios\n• 4 investigators\n• 7 headline cards\n• 20 archive cards\n• 12 anomaly cards\n• 48 event cards\n• 72 encounter cards\n• 4 ally cards\n• 4 item cards\n• 4 spell cards\n• 28 special cards\n• 12 starting cards\n• 6 wanted condition cards\n• 22 monster cards\n• 15 new monsters",
@@ -232,27 +232,27 @@ I18N_DATA = {
   },
   ["Ma's_Boarding_House"] = {
     ["en"] = "Ma's Boarding House",
-    ["uk"] = "Ma's Boarding House",
+    ["uk"] = "Пансіонат Мамуні",
   },
   ["Merchant_District"] = {
     ["en"] = "Merchant District",
-    ["uk"] = "Merchant District",
+    ["uk"] = "Базар",
   },
   ["Miskatonic_University"] = {
     ["en"] = "Miskatonic University",
-    ["uk"] = "Miskatonic University",
+    ["uk"] = "Міскатонікський університет",
   },
   ["Northside"] = {
     ["en"] = "Northside",
-    ["uk"] = "Northside",
+    ["uk"] = "Північний Квартал",
   },
   ["Observatory"] = {
     ["en"] = "Observatory",
-    ["uk"] = "Observatory",
+    ["uk"] = "Обсерваторія",
   },
   ["Orne_Library"] = {
     ["en"] = "Orne Library",
-    ["uk"] = "Orne Library",
+    ["uk"] = "Бібліотека Орна",
   },
   ["PB_myth_validate"] = {
     ["en"] = "This button is only available during the Mythos phase",
@@ -296,19 +296,19 @@ I18N_DATA = {
   },
   ["Police_Station"] = {
     ["en"] = "Police Station",
-    ["uk"] = "Police Station",
+    ["uk"] = "Поліцейський відділок",
   },
   ["Residential"] = {
     ["en"] = "Residential",
-    ["uk"] = "Residential",
+    ["uk"] = "Житлові Будинки",
   },
   ["River_Docks"] = {
     ["en"] = "River Docks",
-    ["uk"] = "River Docks",
+    ["uk"] = "Доки",
   },
   ["Rivertown"] = {
     ["en"] = "Rivertown",
-    ["uk"] = "Rivertown",
+    ["uk"] = "Набережна",
   },
   ["S_buy"] = {
     ["en"] = "Buy for $%s",
@@ -336,23 +336,23 @@ I18N_DATA = {
   },
   ["Scenic"] = {
     ["en"] = "Scenic",
-    ["uk"] = "Scenic",
+    ["uk"] = "Парк",
   },
   ["Science_Building"] = {
     ["en"] = "Science Building",
-    ["uk"] = "Science Building",
+    ["uk"] = "Науковий Корпус",
   },
   ["South_Church"] = {
     ["en"] = "South Church",
-    ["uk"] = "South Church",
+    ["uk"] = "Південна Церква",
   },
   ["Southside"] = {
     ["en"] = "Southside",
-    ["uk"] = "Southside",
+    ["uk"] = "Південний Квартал",
   },
   ["St_Mary's_Hospital"] = {
     ["en"] = "St. Mary's Hospital",
-    ["uk"] = "St. Mary's Hospital",
+    ["uk"] = "Лікарня св. Марії",
   },
   ["T4A_clue"] = {
     ["en"] = "SPAWN CLUE",
@@ -372,46 +372,46 @@ I18N_DATA = {
   },
   ["The_streets"] = {
     ["en"] = "The streets",
-    ["uk"] = "The streets",
+    ["uk"] = "Вулиці",
   },
   ["Tick_Tock_Club"] = {
     ["en"] = "Tick-Tock Club",
-    ["uk"] = "Tick-Tock Club",
+    ["uk"] = "Клуб \"Тік-Так\"",
   },
   ["Train_Station"] = {
     ["en"] = "Train Station",
-    ["uk"] = "Train Station",
+    ["uk"] = "Залізничний Вокзал",
   },
   ["Unvisited_Isle"] = {
     ["en"] = "Unvisited Isle",
-    ["uk"] = "Unvisited Isle",
+    ["uk"] = "Безлюдний острів",
   },
   ["Uptown"] = {
     ["en"] = "Uptown",
-    ["uk"] = "Uptown",
+    ["uk"] = "Передмістя",
   },
   ["Velma's_Diner"] = {
     ["en"] = "Velma's Diner",
-    ["uk"] = "Velma's Diner",
+    ["uk"] = "Їдальня Велми",
   },
   ["Ye_Olde_Magick_Shoppe"] = {
     ["en"] = "Ye Olde Magick Shoppe",
-    ["uk"] = "Ye Olde Magick Shoppe",
+    ["uk"] = "Крамниця Чарів",
   },
   ["action_start"] = {
     ["en"] = "Start of Action Phase",
-    ["uk"] = "Start of Action Phase",
+    ["uk"] = "Настає фаза Дій",
   },
   ["encounter_start"] = {
     ["en"] = "Start of Encounter Phase",
-    ["uk"] = "Start of Encounter Phase",
+    ["uk"] = "Настає фаза Зустрічей",
   },
   ["monster_start"] = {
     ["en"] = "Start of Monster Phase",
-    ["uk"] = "Start of Monster Phase",
+    ["uk"] = "Настає фаза Монстрів",
   },
   ["mythos_start"] = {
     ["en"] = "Start of Mythos Phase",
-    ["uk"] = "Start of Mythos Phase",
+    ["uk"] = "Настає фаза Мітів",
   },
 }
