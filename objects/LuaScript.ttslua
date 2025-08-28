@@ -1495,7 +1495,7 @@ function submitScenario()
 end
 
 function chooseAddon(player, alt, id)
-  local id = number(id:match("%d+"))
+  local id = tonumber(id:match("%d+"))
   currentAddon = id
   self.UI.setAttribute('addonTitle', 'text', addons[id].title)
   self.UI.setAttribute('addonImage', 'image', id)
