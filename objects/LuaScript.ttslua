@@ -2798,21 +2798,34 @@ function prepareScenarioMonsterDeck()
 
   local monsterPos = locationMat.positionToWorld(locationData.monster):setAt("y", 3)
 
-  local monsterDeck = nil
-  for _, obj in ipairs(getObjects()) do
-    if obj.type == "Deck" then
-      local objData = parseJson(obj.memo)
-      local isSet = objData and (not objData.set or (objData.set and gameData.addons[objData.set] == true))
-      if objData and objData.type and string.lower(objData.type) == "monster" and isSet then
-        if monsterDeck then
-          monsterDeck.putObject(obj)
-          monsterDeck.memo = obj.memo
-        else
-          monsterDeck = obj
-        end
+  local monsterDecks = {}
+for _, obj in ipairs(getObjects()) do
+  if obj.type == "Deck" then
+    local objData = parseJson(obj.memo)
+    if objData and objData.type and string.lower(objData.type) == "monster" then
+      local includeDeck = false
+      if not objData.set then
+        includeDeck = true
+      elseif gameData.addons[objData.set] == true then
+        includeDeck = true
+      end
+
+      if includeDeck then
+        table.insert(monsterDecks, obj)
       end
     end
   end
+end
+
+local monsterDeck = nil
+if #monsterDecks > 0 then
+  monsterDeck = monsterDecks[1]
+  for i = 2, #monsterDecks do
+    monsterDeck.putObject(monsterDecks[i])
+  end
+end
+
+
 
   if not monsterDeck then
     return
@@ -2832,6 +2845,14 @@ function prepareScenarioMonsterDeck()
     end
   end
 
+  local setaside2Count = {}
+  if gameData.scenarioData.setaside2 then
+    for _, n in ipairs(gameData.scenarioData.setaside2) do
+      local name = string.lower(n)
+      setaside2Count[name] = (setaside2Count[name] or 0) + 1
+    end
+  end
+
   local spawnCount = {}
   for n, spawnsData in pairs(gameData.scenarioData.monsterspawn) do
     local name = string.lower(n)
@@ -2848,6 +2869,7 @@ function prepareScenarioMonsterDeck()
   local objectsToTake = {}
 
   local setasideP = locationMat.positionToWorld(locationData.setaside):setAt("y", 3)
+  local setaside2P = locationMat.positionToWorld(locationData.setaside2):setAt("y", 3)
 
   for i, monster in ipairs(monsterDeck.getObjects()) do
     local monsterData = parseJson(monster.memo)
@@ -2866,6 +2888,13 @@ function prepareScenarioMonsterDeck()
           p = setasideP
         })
         setasideCount[name] = setasideCount[name] - 1
+      elseif setaside2Count[name] and setaside2Count[name] > 0 then
+      table.insert(objectsToTake, {
+        index = monster.index,
+        name = name,
+        p = setaside2P
+      })
+      setaside2Count[name] = setaside2Count[name] - 1
       elseif monsterData.monstertype then
         for _, t in pairs(monsterData.monstertype) do
           local type = string.lower(t)
@@ -2882,6 +2911,13 @@ function prepareScenarioMonsterDeck()
               p = setasideP
             })
             break
+          elseif setaside2Count[type] then
+          table.insert(objectsToTake, {
+            index = monster.index,
+            name = name,
+            p = setaside2P
+          })
+          break
           end
         end
       end
@@ -2951,6 +2987,19 @@ function prepareScenarioMonsterDeck()
     end
 
     local objs = findObjsInRadius(setasideP:setAt("y", 2.2))
+    for _, obj in ipairs(objs) do
+      if obj.type == "Deck" then
+        obj.shuffle()
+        runAfterRest(obj, function(obj)
+          obj.memo = JSON.encode({
+            type = "monster"
+          })
+        end)
+        break
+      end
+    end
+
+    local objs = findObjsInRadius(setaside2P:setAt("y", 2.2))
     for _, obj in ipairs(objs) do
       if obj.type == "Deck" then
         obj.shuffle()
