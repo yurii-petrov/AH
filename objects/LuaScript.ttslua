@@ -2576,6 +2576,7 @@ function addConditionMat2()
     end
 
     local snps = {{
+      type = "wanted",
       Position = {
         x = 1.27,
         y = 0.10,
@@ -2675,112 +2676,6 @@ end
 -- │                SCENARIO SETUP                │
 -- ╰──────────────────────────────────────────────╯
 
-function prepareShopMat()
-  local shopMat = getObjectFromGUID(shopMatId)
-  if not shopMat then
-    return
-  end
-
-  local shopMatData = parseJson(shopMat.memo)
-  if not shopMatData then
-    return
-  end
-
-  local conditionMat = getObjectFromGUID(conditionMatId)
-  if not conditionMat then
-    return
-  end
-
-  local conditionMatData = parseJson(conditionMat.memo)
-  if not conditionMatData then
-    return
-  end
-
-  local isFoundDarkPack = false
-  local isFoundBlessedCursed = false
-  local isFoundWanted = false
-  for _, deckData in ipairs(shopMatData.decks) do
-    for _, o in ipairs(getObjects()) do
-      local oData = parseJson(o.memo)
-      if o.type == "Deck" and oData and oData.type then
-        if string.lower(oData.type) == string.lower(deckData.type) and deckData.pos then
-          o.setPositionSmooth(shopMat.positionToWorld(deckData.pos):setAt("y", 3))
-          runAfterRest(o, function(o)
-            o.shuffle()
-            if string.lower(oData.type) == "item" and shopMatData.displaypos then
-              runAfterRest(o, function(o)
-                Wait.time(function()
-                  for i, cardPos in ipairs(shopMatData.displaypos) do
-                    local itemCard = o.takeObject({
-                      index = 0,
-                      rotation = {0, 180, 0},
-                      position = shopMat.positionToWorld(cardPos):setAt("y", 3)
-                    })
-
-                    local itemData = parseJson(itemCard.memo)
-                    if itemData then
-                      local types = {}
-                      if itemData.common then
-                        table.insert(types, "common")
-                      end
-
-                      if itemData.curio then
-                        table.insert(types, "curio")
-                      end
-
-                      shopMat.call("setBottom", {
-                        id = i,
-                        price = itemData.price or 0,
-                        guid = itemCard.guid
-                      })
-                      shopMat.call("setTop", {
-                        id = i,
-                        types = types
-                      })
-                    end
-                  end
-                end, 0.5)
-              end)
-            end
-          end)
-        elseif string.lower(oData.type) == "blessed cursed" and not isFoundDarkPack then
-          isFoundDarkPack = true
-          o.setPositionSmooth(conditionMat.positionToWorld(conditionMatData[1]):setAt("y", 3))
-        elseif string.lower(oData.type) == "dark pact" and not isFoundBlessedCursed then
-          isFoundBlessedCursed = true
-          o.setPositionSmooth(conditionMat.positionToWorld(conditionMatData[2]):setAt("y", 3))
-          runAfterRest(o, function(o)
-            o.shuffle()
-          end)
-        elseif string.lower(oData.type) == "wanted" and not isFoundWanted then
-          if oData.set and gameData.addons[oData.set] == true then
-            local conditionMat2 = getObjectFromGUID(conditionMat2Id)
-            if not conditionMat2 then
-              return
-            end
-
-            local conditionMat2Data = parseJson(conditionMat2.memo)
-            if not conditionMat2Data then
-              return
-            end
-
-            if conditionMat2Data and conditionMat2Data.snps and conditionMat2Data.snps[oData.set] then
-              local p = conditionMat2Data.snps[oData.set].Position
-              o.setPosition(conditionMat2.positionToWorld(p):setAt("y", 3))
-              isFoundWanted = true
-            end
-          else
-            local box = getObjectFromGUID(boxId)
-            if box then
-              box.putObject(o)
-            end
-          end
-        end
-      end
-    end
-  end
-end
-
 function prepareScenarioMonsterDeck()
   if not gameData.scenarioData.monsterdeck then
     return
@@ -2808,6 +2703,11 @@ for _, obj in ipairs(getObjects()) do
         includeDeck = true
       elseif gameData.addons[objData.set] == true then
         includeDeck = true
+      elseif gameData.addons[objData.set] == false then
+        local box = getObjectFromGUID(boxId)
+        if box then
+          box.putObject(obj)
+        end
       end
 
       if includeDeck then
@@ -3030,6 +2930,66 @@ function prepareScenarioDecks(scenarioData)
     return
   end
 
+  local shopMat = getObjectFromGUID(shopMatId);           if not shopMat then return end
+  local shopMatData = parseJson(shopMat.memo);            if not shopMatData then return end
+
+  local conditionMat = getObjectFromGUID(conditionMatId); if not conditionMat then return end
+  local conditionMatData = parseJson(conditionMat.memo);  if not conditionMatData then return end
+
+  local conditionMat2 = gameData.addons[1] and getObjectFromGUID(conditionMat2Id)
+  local conditionMat2Data = conditionMat2 and parseJson(conditionMat2.memo)
+
+
+local validTypes = {}
+
+local decksByType = {}
+local function addDeck(d)
+  if not d then
+    print("addDeck: d is nil")
+    return
+  end
+
+  if not d.type then
+    print("addDeck: d.type is nil")
+    return 
+  end
+
+  local t = string.lower(d.type)
+  local n = d.name and string.lower(d.name)
+  if n then
+    decksByType[t] = decksByType[t] or {}
+    decksByType[t].names = decksByType[t].names or {}
+    decksByType[t].names[n] = d
+  elseif decksByType[t] then
+    error("Dublicate types without name!")
+  else
+    decksByType[t] = {data = d}
+  end
+end
+
+local function selectDeckByTypeSetName(memo)
+  if not memo then return nil end
+
+  local typeStr = memo.type
+  local name = memo.name
+  if not typeStr then return nil end
+
+  local bucket = decksByType[string.lower(typeStr)]
+  if not bucket or #bucket == 0 then return nil end
+
+  if name and name ~= "" then
+    local nameKey = string.lower(name)
+    for _, d in ipairs(bucket) do
+      if d.name and string.lower(d.name) == nameKey then
+        return d
+      end
+    end
+
+    return bucket[1]
+  end
+end
+
+
   local locationData = parseJson(locationMat.memo)
   if not locationData then
     print("locationData not found")
@@ -3071,10 +3031,69 @@ function prepareScenarioDecks(scenarioData)
     return
   end
 
-  if not scenarioInstruction.decks then
+  if locationData.headline then
+    addDeck({
+      type = "headline",
+      pos = locationMat.positionToWorld(locationData.headline):setAt("y", 3)
+    })
+  end
+
+  if scenarioInstruction.decks then
+    for _, d in ipairs(scenarioInstruction.decks) do
+      if scenarioMatData.positions[d.pos] then
+        d.pos = scenarioMat.positionToWorld(scenarioMatData.positions[d.pos]):setAt("y", 3)
+      else
+        return
+      end
+      addDeck(d)
+    end
+  else
     print("scenarioInstruction.decks not found")
     return
   end
+  
+  if shopMatData.decks then
+    for _, d in ipairs(shopMatData.decks) do
+      if d.pos then
+        d.pos = shopMat.positionToWorld(d.pos):setAt("y", 3)
+      else
+        print(d.type.." d.pos not found")
+        return
+      end
+      addDeck(d)
+    end
+  else
+    print("shopMatData.decks not found")
+    return
+  end
+
+  addDeck({
+    type = "blessed cursed",
+    pos = conditionMat.positionToWorld(conditionMatData[1]):setAt("y", 3)
+  })
+
+  addDeck({
+    type = "dark pact",
+    pos = conditionMat.positionToWorld(conditionMatData[2]):setAt("y", 3)
+  })
+
+  if conditionMat2 and conditionMat2Data then
+    addDeck({
+      type = "wanted",
+      pos = conditionMat2.positionToWorld(conditionMat2Data.snps[1].Position):setAt("y", 3)
+    })
+  else
+    local box = getObjectFromGUID(boxId)
+    if box then
+      addDeck({
+      type = "wanted",
+      pos = box.getPosition():setAt("y", 3)
+    })
+    end
+  end
+
+  -- print(serpent.tts(decksByType))
+  
 
   local box = getObjectFromGUID(boxId)
   if not box then
@@ -3099,31 +3118,33 @@ function prepareScenarioDecks(scenarioData)
     toMerge = {}
   }
 
-  local function addToMoveObj(moveObj, nSet, key, guid, p)
+  local function addToMoveObj(moveObj, args)
+  local guid = args.guid
+  local nSet = args.set
+  local onlySet = args.onlySet
+  local key  = args.name and string.lower(args.name) or nil
+  local p    = args.position
+  local l    = args.lock
 
-    key = string.lower(key)
-
-    moveObj.toMerge[key] = moveObj.toMerge[key] or {
-      targetGuid = nil,
-      sources = {}
-    }
-
-    if nSet then
-      if gameData.addons[nSet] == true then
-        table.insert(moveObj.toMerge[key].sources, guid)
-      else
-        table.insert(moveObj.toBox, guid)
-      end
-    else
-      table.insert(moveObj.toPosition, {
-        guid = guid,
-        name = key,
-        p = p,
-        l = false,
-      })
-      moveObj.toMerge[key].targetGuid = moveObj.toMerge[key].targetGuid or guid
-    end
+  if not p or not key then
+    table.insert(moveObj.toBox, guid)
+    return
   end
+
+  moveObj.toMerge[key] = moveObj.toMerge[key] or { targetGuid = nil, sources = {} }
+
+  local newData = { guid = guid, name = key, p = p, l = l or false }
+  if nSet and not onlySet then
+    if gameData.addons[nSet] == true then
+      table.insert(moveObj.toMerge[key].sources, newData)
+    else
+      table.insert(moveObj.toBox, guid)
+    end
+  else
+    table.insert(moveObj.toPosition, newData)
+    moveObj.toMerge[key].targetGuid = moveObj.toMerge[key].targetGuid or guid
+  end
+end
 
 
   local eventDeck = nil
@@ -3132,6 +3153,7 @@ function prepareScenarioDecks(scenarioData)
   for _, obj in ipairs(getObjects()) do
     local memo = parseJson(obj.memo)
     if memo then
+      local deckInfo = memo.type and decksByType[string.lower(memo.type)]
       -- prepare Scenario
       if memo.type == "Scenario" then
         if scenarioData.name == memo.name then
@@ -3155,93 +3177,55 @@ function prepareScenarioDecks(scenarioData)
             else
               table.insert(moveObj.toBox, obj.getGUID())
             end
-            -- prepare headline deck
-          elseif string.lower(memo.type) == "headline" then
-            obj.shuffle()
-            for i = 1, 13 do
-              obj.takeObject({
-                position = locationMat.positionToWorld(locationData.headline):setAt("y", 3),
-                smooth = true
-              })
-            end
-            Wait.time(function()
-              local headlineDeck = nil
-              local objs = findObjsInRadius(locationMat.positionToWorld(locationData.headline):setAt("y", 2.2))
-              for _, o in ipairs(objs) do
-                if o.type == "Deck" then
-                  headlineDeck = o
-                  break
-                end
-              end
-
-              if headlineDeck then
-                headlineDeck.memo = obj.memo
-                headlineDeck.shuffle()
-              end
-
-              table.insert(moveObj.toBox, obj.getGUID())
-            end, 2)
-
-            -- prepare archive deck
           elseif string.lower(memo.type) == "archive" then
-            local p = locationMat.positionToWorld(locationData.archive):setAt("y", 3)
-            addToMoveObj(moveObj, memo.set, memo.type, obj.guid, p)
-            -- prepare encounter and anomaly deck
-          elseif string.lower(memo.type) == "encounter" or string.lower(memo.type) == "anomaly" then
-            local function containsDeck(tbl, memo)
-
-              for _, v in pairs(tbl) do
-                local isName = v.name and memo.name and string.lower(v.name) == string.lower(memo.name)
-                local isType = v.type and memo.type and string.lower(v.type) == string.lower(memo.type)
-                local isSet = not memo.set or (memo.set and gameData.addons[memo.set] == true)
-                if isName and isType and isSet then
-                  return v
-                end
-              end
-              return false
-            end
-
-            local usedDecks = {}
-
-            local deckData = containsDeck(scenarioInstruction.decks, memo)
-            if deckData then
-              if memo.name and not usedDecks[string.lower(memo.name)] and deckData.pos and
-                scenarioMatData.positions[deckData.pos] then
-                usedDecks[string.lower(memo.name)] = true
-
-                local p = scenarioMat.positionToWorld(scenarioMatData.positions[deckData.pos]):setAt("y", 3)
-                addToMoveObj(moveObj, memo.set, memo.name, obj.guid, p)
-                -- local isExpansion = memo.set and gameData.addons[memo.set] == true
-
-                -- local key = string.lower(memo.name)
-                -- if isExpansion then
-                --   moveObj.toMerge[key] = moveObj.toMerge[key] or {
-                --     targetGuid = nil,
-                --     sources = {}
-                --   }
-                --   table.insert(moveObj.toMerge[key].sources, obj.getGUID())
-                -- else
-                --   table.insert(moveObj.toPosition, {
-                --     guid = obj.getGUID(),
-                --     name = key,
-                --     p = scenarioMat.positionToWorld(scenarioMatData.positions[deckData.pos]):setAt("y", 3),
-                --     l = false
-                --   })
-                --   moveObj.toMerge[key] = moveObj.toMerge[key] or {
-                --     targetGuid = nil,
-                --     sources = {}
-                --   }
-                --   moveObj.toMerge[key].targetGuid = moveObj.toMerge[key].targetGuid or obj.getGUID()
-                end
-              -- end
+            addToMoveObj(moveObj, {
+              guid = obj.guid,
+              set = memo.set,
+              name = memo.type,
+              position = locationMat.positionToWorld(locationData.archive):setAt("y", 3),
+              lock = false
+            })
+          elseif deckInfo then
+            local d = nil
+            if memo.name then
+              d = deckInfo.names[string.lower(memo.name)]
             else
-              table.insert(moveObj.toBox, obj.getGUID())
+              d = deckInfo.data
             end
+
+            local name = nil
+            local position = nil
+            if d then
+              name = d.name or d.type
+              position = d.pos
+            end
+            
+            addToMoveObj(moveObj, {
+              guid = obj.guid,
+              set = memo.set,
+              name = name,
+              position = position,
+              lock = false
+            })
           end
         end
       end
     end
   end
+
+  -- if new type of deck bring from set, do set as base
+  for name, data in pairs(moveObj.toMerge) do
+    for _, source in pairs(data.sources) do
+      if not data.targetGuid then
+        local firstSourceData = data.sources[1]
+        table.remove(data.sources, 1)
+        data.targetGuid = firstSourceData.guid
+        table.insert(moveObj.toPosition, firstSourceData)
+      end
+    end
+  end
+
+  -- print(serpent.tts(moveObj))
 
   local time = 0
   local timeStep = 0.1
@@ -3259,7 +3243,7 @@ function prepareScenarioDecks(scenarioData)
     end
   end
 
-  -- print(serpent.tts(moveObj.toMerge))
+  -- print(serpent.tts(moveObj))
 
   for i, data in pairs(moveObj.toPosition) do
     time = time + timeStep
@@ -3267,8 +3251,8 @@ function prepareScenarioDecks(scenarioData)
       local o = getObjectFromGUID(data.guid)
       if o then
         if moveObj.toMerge[data.name] then
-          for _, guid in pairs(moveObj.toMerge[data.name].sources) do
-            local m = getObjectFromGUID(guid)
+          for _, data in pairs(moveObj.toMerge[data.name].sources) do
+            local m = getObjectFromGUID(data.guid)
             if m then
               o.putObject(m)
             end
@@ -3279,6 +3263,58 @@ function prepareScenarioDecks(scenarioData)
           o.shuffle()
         end
 
+        local oData = parseJson(o.memo)
+        if oData then
+          if oData.type then
+            if oData.type == "item" and shopMatData.displaypos then
+              Wait.time(function()
+                for i, cardPos in ipairs(shopMatData.displaypos) do
+                  local itemCard = o.takeObject({
+                    index = 0,
+                    rotation = {0, 180, 0},
+                    position = shopMat.positionToWorld(cardPos):setAt("y", 3)
+                  })
+
+                  local itemData = parseJson(itemCard.memo)
+                  if itemData then
+                    local types = {}
+                    if itemData.common then
+                      table.insert(types, "common")
+                    end
+
+                    if itemData.curio then
+                      table.insert(types, "curio")
+                    end
+
+                    shopMat.call("setBottom", {
+                      id = i,
+                      price = itemData.price or 0,
+                      guid = itemCard.guid
+                    })
+                    shopMat.call("setTop", {
+                      id = i,
+                      types = types
+                    })
+                  end
+                end
+              end, 2)
+            elseif oData.type == "headline" then
+              Wait.time(function()
+                local objs = o.getObjects()
+                local extra = #objs - 13
+                if box and extra > 0 then
+                  for i = 1, extra do
+                    o.takeObject({
+                    index = 0,
+                    position = box.getPosition():setAt("y", 3),
+                    smooth = false
+                  })
+                  end
+                end 
+              end, 2)
+            end
+          end
+        end
         if data.l and data.l == true then
           runAfterRest(o, function(o)
             o.setLock(data.l)
@@ -3319,10 +3355,6 @@ function prepareScenarioDecks(scenarioData)
   end
 
   Wait.time(function()
-    prepareShopMat()
-  end, time + timeStep + 3)
-
-  Wait.time(function()
     prepareScenarioMonsterDeck()
   end, time + timeStep + 4)
 
@@ -3336,7 +3368,6 @@ function prepareScenarioDecks(scenarioData)
       self.UI.setAttribute('PB_phase_text', 'offsetXY', '0 15')
       self.UI.setAttribute('phase_text', 'offsetXY', '0 35')
     end
-    eventSpawnDooms()
   end, time + timeStep + 5)
 end
 
