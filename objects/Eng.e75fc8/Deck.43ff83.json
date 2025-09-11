@@ -48,12 +48,12 @@
   "CustomDeck": {
     "5781": {
       "BackIsHidden": true,
-      "BackURL": "https://drive.google.com/uc?export=view\u0026id=1jc6P3sMP8ImsoYvqpyPi4r7CaohD93Zo",
+      "BackURL": "https://drive.google.com/uc?export=view\u0026id=1X6oWRHrAUxMk1vAae0oo_q-j9tn1Z6Uo",
       "FaceURL": "https://drive.google.com/uc?export=view\u0026id=1ufZcrYO4jEziY2OIA14MRfU0lFQR4Oeu",
       "NumHeight": 4,
       "NumWidth": 8,
       "Type": 0,
-      "UniqueBack": true
+      "UniqueBack": false
     }
   },
   "DeckIDs": [

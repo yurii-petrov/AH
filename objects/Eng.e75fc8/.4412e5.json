@@ -29,7 +29,7 @@
     "5797": {
       "BackIsHidden": true,
       "BackURL": "https://drive.google.com/uc?export=view\u0026id=1WOi5szemTW8Dg-dY7pimS9jAsDshP5NS",
-      "FaceURL": "https://drive.google.com/uc?export=view\u0026id=16NeWz_OC8rxxtGQFurw713T5-mblKtdD",
+      "FaceURL": "https://drive.google.com/uc?export=view\u0026id=1Wyd2vbcNvelyGE1eXgqooiRVMuwzPQfk",
       "NumHeight": 2,
       "NumWidth": 6,
       "Type": 0,
@@ -66,7 +66,7 @@
   "MeasureMovement": false,
   "Memo": "{\"name\":\"TF\",\"startPosition\":{\"x\":0.238338753581047,\"y\":1.07870078086853,\"z\":-0.49929940700531},\"type\":\"anomaly\"}",
   "Name": "DeckCustom",
-  "Nickname": "Аномалії Тріщина Часу",
+  "Nickname": "Temporal Fissure",
   "SidewaysCard": false,
   "Snap": true,
   "Sticky": true,

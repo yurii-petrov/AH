@@ -29,7 +29,7 @@
     "5795": {
       "BackIsHidden": true,
       "BackURL": "https://drive.google.com/uc?export=view\u0026id=1qCQXn7gNmyZRVy_e9mXr9qrVWldftbhY",
-      "FaceURL": "https://drive.google.com/uc?export=view\u0026id=1XH0YuSN_nsfYVpYyLB0v4zQUKARm4qKR",
+      "FaceURL": "https://drive.google.com/uc?export=view\u0026id=1Aj6CMvK_9f8WpjhNzKI9XJIfQP9V4KA5",
       "NumHeight": 2,
       "NumWidth": 6,
       "Type": 0,
@@ -66,7 +66,7 @@
   "MeasureMovement": false,
   "Memo": "{\"name\":\"FR\",\"startPosition\":{\"x\":0.300918757915497,\"y\":1.07870078086853,\"z\":-0.49929940700531},\"type\":\"anomaly\"}",
   "Name": "DeckCustom",
-  "Nickname": "Аномалії Злам Реальності",
+  "Nickname": "Fractured Reality",
   "SidewaysCard": false,
   "Snap": true,
   "Sticky": true,
