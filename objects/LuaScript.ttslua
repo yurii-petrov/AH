@@ -3359,6 +3359,7 @@ end
   end, time + timeStep + 4)
 
   Wait.time(function()
+    spawnDoomsByClick()
     Global.UI.setAttribute("phase", "active", true)
     self.UI.setAttribute('phase_text', "text", i18n.getStrById("PB_phase1"))
     broadcastToAll(i18n.getStrById("PB_next_phase") .. " " ..
