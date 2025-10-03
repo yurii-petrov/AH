@@ -3148,7 +3148,6 @@ end
 
 
   local eventDeck = nil
-  local foundArchive = nil
 
   for _, obj in ipairs(getObjects()) do
     local memo = parseJson(obj.memo)
@@ -3312,6 +3311,33 @@ end
                   end
                 end 
               end, 2)
+            elseif oData.type == "archive" then
+              local foundArchive = o
+                Wait.time(function()
+
+                local function containsNumber(tbl, target)
+                  for i, v in pairs(tbl) do
+                    if v == target then
+                      return i
+                    end
+                  end
+                end
+
+                for i = #foundArchive.getObjects(), 1, -1 do
+                  local codex = foundArchive.getObjects()[i]
+                  local codexData = parseJson(codex.memo)
+
+                  if codexData and codexData.number and string.lower(codexData.type) == "codex" then
+                    local index = containsNumber(scenarioData.codex, codexData.number)
+                    if index then
+                      foundArchive.takeObject({
+                        index = codex.index,
+                        position = locationMat.positionToWorld(locationData.codex[index]):setAt("y", 3)
+                      })
+                    end
+                  end
+                end
+              end, 2)
             end
           end
         end
@@ -3325,34 +3351,6 @@ end
   end
 
   prepareScenarioEventDeck(eventDeck, moveObj.toPosition, time + 1)
-
-  if foundArchive then
-    Wait.time(function()
-
-    local function containsNumber(tbl, target)
-      for i, v in pairs(tbl) do
-        if v == target then
-          return i
-        end
-      end
-    end
-
-    for i = #foundArchive.getObjects(), 1, -1 do
-      local codex = foundArchive.getObjects()[i]
-      local codexData = parseJson(codex.memo)
-
-      if codexData and codexData.number and string.lower(codexData.type) == "codex" then
-        local index = containsNumber(scenarioData.codex, codexData.number)
-        if index then
-          foundArchive.takeObject({
-            index = codex.index,
-            position = locationMat.positionToWorld(locationData.codex[index]):setAt("y", 3)
-          })
-        end
-      end
-    end
-  end, 2)
-  end
 
   Wait.time(function()
     prepareScenarioMonsterDeck()
