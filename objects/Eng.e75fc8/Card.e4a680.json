@@ -1,0 +1,59 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "CardID": 581000,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "CustomDeck": {
+    "5810": {
+      "BackIsHidden": true,
+      "BackURL": "https://drive.google.com/uc?export=view\u0026id=14RrBcUPODnJRrJxgAFGYdP3OLaxdPOdm",
+      "FaceURL": "https://drive.google.com/uc?export=view\u0026id=1GebGIIEb9L3CWzRl2tiQ8uuIfhFlwQHc",
+      "NumHeight": 2,
+      "NumWidth": 2,
+      "Type": 1,
+      "UniqueBack": true
+    }
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "e4a680",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": true,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Memo": "{\"hp\":7,\"money\":2,\"name\":\"Diana Stanley\",\"role\":[\"mystic\",\"guardian\"],\"sanity\":5,\"skill\":{\"influence\":2,\"lore\":4,\"observation\":3,\"strength\":3,\"will\":1},\"startPosition\":{\"x\":-0.626198887825012,\"y\":1.01360058784485,\"z\":-0.327301025390625},\"type\":\"Investigator\"}",
+  "Name": "Card",
+  "Nickname": "",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": -0.708,
+    "posY": 4.08,
+    "posZ": 98.282,
+    "rotX": 359,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 1.5,
+    "scaleY": 1,
+    "scaleZ": 1.5
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

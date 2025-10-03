@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"hp\":5,\"money\":1,\"name\":\"Norman Withers\",\"role\":[\"seeker\",\"mystic\"],\"sanity\":7,\"skill\":{\"influence\":1,\"lore\":3,\"observation\":3,\"strength\":2,\"will\":4},\"startPosition\":{\"x\":-0.424973607063293,\"y\":1.01360654830933,\"z\":-0.280365854501724},\"type\":\"Investigator\"}",
+  "Memo": "{\"hp\":5,\"money\":1,\"name\":\"Norman Withers\",\"role\":[\"seeker\",\"mystic\"],\"sanity\":7,\"skill\":{\"influence\":1,\"lore\":3,\"observation\":3,\"strength\":2,\"will\":4},\"startPosition\":{\"x\":-0.424963593482971,\"y\":1.01360654830933,\"z\":-0.233505874872208},\"type\":\"Investigator\"}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,

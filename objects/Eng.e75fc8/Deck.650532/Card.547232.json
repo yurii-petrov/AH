@@ -1,0 +1,59 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "CardID": 582405,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "CustomDeck": {
+    "5824": {
+      "BackIsHidden": true,
+      "BackURL": "https://drive.google.com/uc?export=view\u0026id=1bkER0qo7AbO5csfjV_ajfKBK4hrB_DSf",
+      "FaceURL": "https://drive.google.com/uc?export=view\u0026id=1AlgPKm5idfjwtO4mQeyvFgbiJ986Zp4f",
+      "NumHeight": 2,
+      "NumWidth": 6,
+      "Type": 0,
+      "UniqueBack": false
+    }
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "547232",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": true,
+  "HideWhenFaceDown": true,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Memo": "{\"type\":\"anomaly\"}",
+  "Name": "Card",
+  "Nickname": "",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": 43.593,
+    "posY": 2.014,
+    "posZ": -67.86,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 180,
+    "scaleX": 1.5,
+    "scaleY": 1,
+    "scaleZ": 1.5
+  },
+  "Value": 0,
+  "XmlUI": ""
+}
