@@ -1,0 +1,77 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "ContainedObjects_order": [
+    "Card.9d1630",
+    "Card.5d94df",
+    "Card.bce531",
+    "Card.845051",
+    "Card.efdfda",
+    "Card.ac0acc",
+    "Card.5ce558"
+  ],
+  "ContainedObjects_path": "Deck.a1ed99",
+  "CustomDeck": {
+    "5811": {
+      "BackIsHidden": true,
+      "BackURL": "https://drive.google.com/uc?export=view\u0026id=1X6oWRHrAUxMk1vAae0oo_q-j9tn1Z6Uo",
+      "FaceURL": "https://drive.google.com/uc?export=view\u0026id=1jige0Rm6s1LB3EHA71A5t_3_ezPYFt0j",
+      "NumHeight": 2,
+      "NumWidth": 4,
+      "Type": 0,
+      "UniqueBack": false
+    }
+  },
+  "DeckIDs": [
+    581104,
+    581100,
+    581101,
+    581102,
+    581103,
+    581105,
+    581106
+  ],
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "a1ed99",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": true,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Memo": "{\"set\":1,\"startPosition\":{\"x\":0.352441936731339,\"y\":1.05463051795959,\"z\":-0.54854679107666},\"type\":\"headline\"}",
+  "Name": "Deck",
+  "Nickname": "",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": -0.608,
+    "posY": 4.128,
+    "posZ": 97.589,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 180,
+    "scaleX": 1.5,
+    "scaleY": 1,
+    "scaleZ": 1.5
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

@@ -1,0 +1,69 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "ContainedObjects_order": [
+    "Card.b9f734",
+    "Card.9d46d9",
+    "Card.9caf0b"
+  ],
+  "ContainedObjects_path": "Deck.ac7a09",
+  "CustomDeck": {
+    "5808": {
+      "BackIsHidden": true,
+      "BackURL": "https://drive.google.com/uc?export=view\u0026id=1JB7jGMKw5mV0if5myhzAvg4Bj0NpvUD6",
+      "FaceURL": "https://drive.google.com/uc?export=view\u0026id=17deQqVYfHbJg4N_iKWGps4eKfnkGmsgY",
+      "NumHeight": 3,
+      "NumWidth": 4,
+      "Type": 0,
+      "UniqueBack": true
+    }
+  },
+  "DeckIDs": [
+    580809,
+    580802,
+    580808
+  ],
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "ac7a09",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Memo": "{\"name\":\"Kate Winthrop\",\"startPosition\":{\"x\":-0.676200032234192,\"y\":1.03537440299988,\"z\":-0.280400067567825}}",
+  "Name": "Deck",
+  "Nickname": "",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": -0.154,
+    "posY": 4.09,
+    "posZ": 97.585,
+    "rotX": 1,
+    "rotY": 180,
+    "rotZ": 183,
+    "scaleX": 1,
+    "scaleY": 1,
+    "scaleZ": 1
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

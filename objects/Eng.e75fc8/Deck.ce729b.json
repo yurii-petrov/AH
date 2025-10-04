@@ -1,0 +1,69 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "ContainedObjects_order": [
+    "Card.3a2985",
+    "Card.0930f2",
+    "Card.5b1d11"
+  ],
+  "ContainedObjects_path": "Deck.ce729b",
+  "CustomDeck": {
+    "5807": {
+      "BackIsHidden": true,
+      "BackURL": "https://drive.google.com/uc?export=view\u0026id=1JB7jGMKw5mV0if5myhzAvg4Bj0NpvUD6",
+      "FaceURL": "https://drive.google.com/uc?export=view\u0026id=17deQqVYfHbJg4N_iKWGps4eKfnkGmsgY",
+      "NumHeight": 3,
+      "NumWidth": 4,
+      "Type": 0,
+      "UniqueBack": true
+    }
+  },
+  "DeckIDs": [
+    580710,
+    580703,
+    580704
+  ],
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "ce729b",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": true,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Memo": "{\"name\":\"Roland Banks\",\"startPosition\":{\"x\":-0.676200032234192,\"y\":1.03537440299988,\"z\":-0.233500048518181}}",
+  "Name": "Deck",
+  "Nickname": "",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": -0.395,
+    "posY": 4.096,
+    "posZ": 97.353,
+    "rotX": 2,
+    "rotY": 180,
+    "rotZ": 181,
+    "scaleX": 1,
+    "scaleY": 1,
+    "scaleZ": 1
+  },
+  "Value": 0,
+  "XmlUI": ""
+}
