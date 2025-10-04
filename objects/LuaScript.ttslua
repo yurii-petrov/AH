@@ -10,6 +10,7 @@ isTestMode = false
 -- /execute local c=Player.White;local h=c.getHoverObject();if h then h.setPosition({0, 2.4, 0}) end
 
 -- Prepare scenario
+
 -- /execute local c=Player.White;local h=c.getHoverObject();if h then h.memo = "Items Mat"; print("set: "..h.memo) end
 -- /execute local c=Player.White;local h=c.getHoverObject();if h then h.setGMNotes("Neighborhood"); print("set: "..h.getGMNotes()) end
 -- /execute local c=Player.White;local s=c.getSelectedObjects()[1];local h=c.getHoverObject();if s and h then log("["..s.memo.."] = {\npos="..serpent.tts(s.positionToLocal(h.getPosition())).." rot="..serpent.tts(s.positionToLocal(h.getRotation()))) end
@@ -598,19 +599,21 @@ function onPlayerAction(player, action, targets)
   end
 end
 
-function discardToShop(obj, objData)
+function discardToShop(obj, shopType, isHovering)
 
-  local shopObj = getShopObj(objData.type)
+  local shopObj = getShopObj(shopType)
 
   if not shopObj then
     return
   end
 
-  obj.setRotation({0, 180, 180})
-  shopObj.setRotation({0, 180, 180})
-  Wait.time(function()
-    shopObj.putObject(obj)
-  end, 0.5)
+  if isHovering == true then
+    shopObj.setRotation({0, 180, 0})
+  end
+  shopObj.putObject(obj)
+  if isHovering == true then
+    shopObj.setRotation({0, 180, 180})
+  end
 end
 
 function getShopObj(shopType)
@@ -694,7 +697,8 @@ function discardCondition(obj, objData)
   obj.setPositionSmooth(conditionMat.positionToWorld(conditionMatData[2]):setAt("y", 3))
 end
 
-function discardCard(colorName, object, objectData)
+function discardCard(colorName, object, objectData, isHovering)
+    local isHovering = isHovering or false
   if objectData.type == "Monster" then
     discardMonster(object, objectData)
   elseif objectData.type == "starting" then
@@ -704,13 +708,14 @@ function discardCard(colorName, object, objectData)
     end
   elseif objectData.type == "item" or objectData.type == "spell" or objectData.type == "ally" or objectData.type ==
     "special" then
-    discardToShop(object, objectData)
+    discardToShop(object, objectData.type, isHovering)
   elseif objectData.type == "blessed cursed" or objectData.type == "dark pact" then
     discardCondition(object, objectData)
   end
 end
 
-function discardTile(colorName, o, objData)
+function discardTile(colorName, o, objData, isHovering)
+    local isHovering = isHovering or false
   if objData.type ~= "Monster Mat" and objData.type ~= "Item Mat" and objData.type ~= "Clue" and objData.type ~=
     "Remnant Token" then
     return
@@ -735,7 +740,7 @@ function discardTile(colorName, o, objData)
   elseif objData.type == "Item Mat" then
     local rData = parseJson(r.memo)
     if rData then
-      discardCard(colorName, r, rData)
+      discardCard(colorName, r, rData, isHovering)
     end
   end
 
@@ -824,9 +829,9 @@ function onObjectDropOnDiscard(colorName, object, objectData, investigatorMat)
   end
 
   if object.type == "Tile" then
-    discardTile(colorName, object, objectData)
+    discardTile(colorName, object, objectData, true)
   elseif object.type == "Card" then
-    discardCard(colorName, object, objectData)
+    discardCard(colorName, object, objectData, true)
   elseif object.type == "Figurine" then
     local box = getObjectFromGUID(boxId)
     if box then
@@ -1872,10 +1877,10 @@ function onPlayerClickDeath(d)
           for _, card in pairs(cards) do
             local cardData = parseJson(card.memo)
             if cardData then
-              if card.type == "Tile" then
-                discardTile(d.player.color, card, cardData)
+                if card.type == "Tile" then
+                discardTile(d.player.color, card, cardData, true)
               elseif card.type == "Card" then
-                discardCard(d.player.color, card, cardData)
+                discardCard(d.player.color, card, cardData, false)
               elseif card.type == "Figurine" then
                 local box = getObjectFromGUID(boxId)
                 if box then
@@ -1888,7 +1893,7 @@ function onPlayerClickDeath(d)
       end
 
       if not itemsMatFound then
-        return
+        break
       end
 
       itemsMatPosition[3] = itemsMatPosition[3] + 1.2
@@ -2694,38 +2699,36 @@ function prepareScenarioMonsterDeck()
   local monsterPos = locationMat.positionToWorld(locationData.monster):setAt("y", 3)
 
   local monsterDecks = {}
-for _, obj in ipairs(getObjects()) do
-  if obj.type == "Deck" then
-    local objData = parseJson(obj.memo)
-    if objData and objData.type and string.lower(objData.type) == "monster" then
-      local includeDeck = false
-      if not objData.set then
-        includeDeck = true
-      elseif gameData.addons[objData.set] == true then
-        includeDeck = true
-      elseif gameData.addons[objData.set] == false then
-        local box = getObjectFromGUID(boxId)
-        if box then
-          box.putObject(obj)
+  for _, obj in ipairs(getObjects()) do
+    if obj.type == "Deck" then
+      local objData = parseJson(obj.memo)
+      if objData and objData.type and string.lower(objData.type) == "monster" then
+        local includeDeck = false
+        if not objData.set then
+          includeDeck = true
+        elseif gameData.addons[objData.set] == true then
+          includeDeck = true
+        elseif gameData.addons[objData.set] == false then
+          local box = getObjectFromGUID(boxId)
+          if box then
+            box.putObject(obj)
+          end
         end
-      end
 
-      if includeDeck then
-        table.insert(monsterDecks, obj)
+        if includeDeck then
+          table.insert(monsterDecks, obj)
+        end
       end
     end
   end
-end
 
-local monsterDeck = nil
-if #monsterDecks > 0 then
-  monsterDeck = monsterDecks[1]
-  for i = 2, #monsterDecks do
-    monsterDeck.putObject(monsterDecks[i])
+  local monsterDeck = nil
+  if #monsterDecks > 0 then
+    monsterDeck = monsterDecks[1]
+    for i = 2, #monsterDecks do
+      monsterDeck.putObject(monsterDecks[i])
+    end
   end
-end
-
-
 
   if not monsterDeck then
     return
@@ -2789,12 +2792,12 @@ end
         })
         setasideCount[name] = setasideCount[name] - 1
       elseif setaside2Count[name] and setaside2Count[name] > 0 then
-      table.insert(objectsToTake, {
-        index = monster.index,
-        name = name,
-        p = setaside2P
-      })
-      setaside2Count[name] = setaside2Count[name] - 1
+        table.insert(objectsToTake, {
+          index = monster.index,
+          name = name,
+          p = setaside2P
+        })
+        setaside2Count[name] = setaside2Count[name] - 1
       elseif monsterData.monstertype then
         for _, t in pairs(monsterData.monstertype) do
           local type = string.lower(t)
@@ -2812,12 +2815,12 @@ end
             })
             break
           elseif setaside2Count[type] then
-          table.insert(objectsToTake, {
-            index = monster.index,
-            name = name,
-            p = setaside2P
-          })
-          break
+            table.insert(objectsToTake, {
+              index = monster.index,
+              name = name,
+              p = setaside2P
+            })
+            break
           end
         end
       end
@@ -2930,65 +2933,83 @@ function prepareScenarioDecks(scenarioData)
     return
   end
 
-  local shopMat = getObjectFromGUID(shopMatId);           if not shopMat then return end
-  local shopMatData = parseJson(shopMat.memo);            if not shopMatData then return end
+  local shopMat = getObjectFromGUID(shopMatId);
+  if not shopMat then
+    return
+  end
+  local shopMatData = parseJson(shopMat.memo);
+  if not shopMatData then
+    return
+  end
 
-  local conditionMat = getObjectFromGUID(conditionMatId); if not conditionMat then return end
-  local conditionMatData = parseJson(conditionMat.memo);  if not conditionMatData then return end
+  local conditionMat = getObjectFromGUID(conditionMatId);
+  if not conditionMat then
+    return
+  end
+  local conditionMatData = parseJson(conditionMat.memo);
+  if not conditionMatData then
+    return
+  end
 
   local conditionMat2 = gameData.addons[1] and getObjectFromGUID(conditionMat2Id)
   local conditionMat2Data = conditionMat2 and parseJson(conditionMat2.memo)
 
+  local validTypes = {}
 
-local validTypes = {}
-
-local decksByType = {}
-local function addDeck(d)
-  if not d then
-    print("addDeck: d is nil")
-    return
-  end
-
-  if not d.type then
-    print("addDeck: d.type is nil")
-    return 
-  end
-
-  local t = string.lower(d.type)
-  local n = d.name and string.lower(d.name)
-  if n then
-    decksByType[t] = decksByType[t] or {}
-    decksByType[t].names = decksByType[t].names or {}
-    decksByType[t].names[n] = d
-  elseif decksByType[t] then
-    error("Dublicate types without name!")
-  else
-    decksByType[t] = {data = d}
-  end
-end
-
-local function selectDeckByTypeSetName(memo)
-  if not memo then return nil end
-
-  local typeStr = memo.type
-  local name = memo.name
-  if not typeStr then return nil end
-
-  local bucket = decksByType[string.lower(typeStr)]
-  if not bucket or #bucket == 0 then return nil end
-
-  if name and name ~= "" then
-    local nameKey = string.lower(name)
-    for _, d in ipairs(bucket) do
-      if d.name and string.lower(d.name) == nameKey then
-        return d
-      end
+  local decksByType = {}
+  local function addDeck(d)
+    if not d then
+      print("addDeck: d is nil")
+      return
     end
 
-    return bucket[1]
-  end
-end
+    if not d.type then
+      print("addDeck: d.type is nil")
+      return
+    end
 
+    local t = string.lower(d.type)
+    local n = d.name and string.lower(d.name)
+    if n then
+      decksByType[t] = decksByType[t] or {}
+      decksByType[t].names = decksByType[t].names or {}
+      decksByType[t].names[n] = d
+    elseif decksByType[t] then
+      error("Dublicate types without name!")
+    else
+      decksByType[t] = {
+        data = d
+      }
+    end
+  end
+
+  local function selectDeckByTypeSetName(memo)
+    if not memo then
+      return nil
+    end
+
+    local typeStr = memo.type
+    local name = memo.name
+    if not typeStr then
+      return nil
+    end
+
+    local bucket = decksByType[string.lower(typeStr)]
+    if not bucket or #bucket == 0 then
+      return nil
+    end
+
+    if name and name ~= "" then
+      local nameKey = string.lower(name)
+      for _, d in ipairs(bucket) do
+        if d.name and string.lower(d.name) == nameKey then
+          return d
+        end
+      end
+
+      return bucket[1]
+    end
+  end
 
   local locationData = parseJson(locationMat.memo)
   if not locationData then
@@ -3051,13 +3072,13 @@ end
     print("scenarioInstruction.decks not found")
     return
   end
-  
+
   if shopMatData.decks then
     for _, d in ipairs(shopMatData.decks) do
       if d.pos then
         d.pos = shopMat.positionToWorld(d.pos):setAt("y", 3)
       else
-        print(d.type.." d.pos not found")
+        print(d.type .. " d.pos not found")
         return
       end
       addDeck(d)
@@ -3086,14 +3107,13 @@ end
     local box = getObjectFromGUID(boxId)
     if box then
       addDeck({
-      type = "wanted",
-      pos = box.getPosition():setAt("y", 3)
-    })
+        type = "wanted",
+        pos = box.getPosition():setAt("y", 3)
+      })
     end
   end
 
   -- print(serpent.tts(decksByType))
-  
 
   local box = getObjectFromGUID(boxId)
   if not box then
@@ -3119,33 +3139,40 @@ end
   }
 
   local function addToMoveObj(moveObj, args)
-  local guid = args.guid
-  local nSet = args.set
-  local onlySet = args.onlySet
-  local key  = args.name and string.lower(args.name) or nil
-  local p    = args.position
-  local l    = args.lock
+    local guid = args.guid
+    local nSet = args.set
+    local onlySet = args.onlySet
+    local key = args.name and string.lower(args.name) or nil
+    local p = args.position
+    local l = args.lock
 
-  if not p or not key then
-    table.insert(moveObj.toBox, guid)
-    return
-  end
-
-  moveObj.toMerge[key] = moveObj.toMerge[key] or { targetGuid = nil, sources = {} }
-
-  local newData = { guid = guid, name = key, p = p, l = l or false }
-  if nSet and not onlySet then
-    if gameData.addons[nSet] == true then
-      table.insert(moveObj.toMerge[key].sources, newData)
-    else
+    if not p or not key then
       table.insert(moveObj.toBox, guid)
+      return
     end
-  else
-    table.insert(moveObj.toPosition, newData)
-    moveObj.toMerge[key].targetGuid = moveObj.toMerge[key].targetGuid or guid
-  end
-end
 
+    moveObj.toMerge[key] = moveObj.toMerge[key] or {
+      targetGuid = nil,
+      sources = {}
+    }
+
+    local newData = {
+      guid = guid,
+      name = key,
+      p = p,
+      l = l or false
+    }
+    if nSet and not onlySet then
+      if gameData.addons[nSet] == true then
+        table.insert(moveObj.toMerge[key].sources, newData)
+      else
+        table.insert(moveObj.toBox, guid)
+      end
+    else
+      table.insert(moveObj.toPosition, newData)
+      moveObj.toMerge[key].targetGuid = moveObj.toMerge[key].targetGuid or guid
+    end
+  end
 
   local eventDeck = nil
 
@@ -3198,7 +3225,7 @@ end
               name = d.name or d.type
               position = d.pos
             end
-            
+
             addToMoveObj(moveObj, {
               guid = obj.guid,
               set = memo.set,
@@ -3304,16 +3331,16 @@ end
                 if box and extra > 0 then
                   for i = 1, extra do
                     o.takeObject({
-                    index = 0,
-                    position = box.getPosition():setAt("y", 3),
-                    smooth = false
-                  })
+                      index = 0,
+                      position = box.getPosition():setAt("y", 3),
+                      smooth = false
+                    })
                   end
-                end 
+                end
               end, 2)
             elseif oData.type == "archive" then
               local foundArchive = o
-                Wait.time(function()
+              Wait.time(function()
 
                 local function containsNumber(tbl, target)
                   for i, v in pairs(tbl) do
@@ -3360,8 +3387,7 @@ end
     spawnDoomsByClick()
     Global.UI.setAttribute("phase", "active", true)
     self.UI.setAttribute('phase_text', "text", i18n.getStrById("PB_phase1"))
-    broadcastToAll(i18n.getStrById("PB_next_phase") .. " " ..
-                      i18n.getStrById("PB_phase" .. gameData.phase) .. "!",
+    broadcastToAll(i18n.getStrById("PB_next_phase") .. " " .. i18n.getStrById("PB_phase" .. gameData.phase) .. "!",
       phases[gameData.phase].color)
     if gameData.language == "en" then
       self.UI.setAttribute('PB_phase_text', 'offsetXY', '0 15')
