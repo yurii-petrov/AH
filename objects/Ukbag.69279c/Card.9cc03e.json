@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"hp\":6,\"money\":3,\"name\":\"Minh Thi Phan\",\"role\":[\"survivor\",\"seeker\"],\"sanity\":6,\"skill\":{\"influence\":3,\"lore\":3,\"observation\":3,\"strength\":2,\"will\":2},\"startPosition\":{\"x\":-0.525636374950409,\"y\":1.01360654830933,\"z\":-0.137677893042564},\"type\":\"Investigator\"}",
+  "Memo": "{\"hp\":6,\"money\":3,\"name\":\"Minh Thi Phan\",\"role\":[\"survivor\",\"seeker\"],\"sanity\":6,\"skill\":{\"influence\":3,\"lore\":3,\"observation\":3,\"strength\":2,\"will\":2},\"startPosition\":{\"x\":-0.525636374950409,\"y\":1.01360654830933,\"z\":-0.325317829847336},\"type\":\"Investigator\"}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,
