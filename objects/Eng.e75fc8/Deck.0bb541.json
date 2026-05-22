@@ -1,0 +1,69 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "ContainedObjects_order": [
+    "Card.afe5bf",
+    "Card.993397",
+    "Card.b79f93"
+  ],
+  "ContainedObjects_path": "Deck.0bb541",
+  "CustomDeck": {
+    "5831": {
+      "BackIsHidden": true,
+      "BackURL": "https://drive.google.com/uc?export=view\u0026id=15ccsXXUzCPKDVfE44W_o8OGxFDgzSgbN",
+      "FaceURL": "https://drive.google.com/uc?export=view\u0026id=18vKEpm2gH_pV5CvsBarQFmXixwjXlDrH",
+      "NumHeight": 3,
+      "NumWidth": 4,
+      "Type": 0,
+      "UniqueBack": true
+    }
+  },
+  "DeckIDs": [
+    583105,
+    583103,
+    583104
+  ],
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "0bb541",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Memo": "{\"name\":\"Rex Murphy alt\",\"startPosition\":{\"x\":-0.4858735891819,\"y\":1.03537440299988,\"z\":-0.280365854501724}}",
+  "Name": "Deck",
+  "Nickname": "",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": 50.466,
+    "posY": 3.234,
+    "posZ": 64.037,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 180,
+    "scaleX": 1,
+    "scaleY": 1,
+    "scaleZ": 1
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

@@ -1,0 +1,69 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "ContainedObjects_order": [
+    "Card.edc6ea",
+    "Card.3aef3b",
+    "Card.55175c"
+  ],
+  "ContainedObjects_path": "Deck.cf72f8",
+  "CustomDeck": {
+    "5831": {
+      "BackIsHidden": true,
+      "BackURL": "https://drive.google.com/uc?export=view\u0026id=15ccsXXUzCPKDVfE44W_o8OGxFDgzSgbN",
+      "FaceURL": "https://drive.google.com/uc?export=view\u0026id=18vKEpm2gH_pV5CvsBarQFmXixwjXlDrH",
+      "NumHeight": 3,
+      "NumWidth": 4,
+      "Type": 0,
+      "UniqueBack": true
+    }
+  },
+  "DeckIDs": [
+    583106,
+    583107,
+    583108
+  ],
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "cf72f8",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Memo": "{\"name\":\"Wendy Adams alt\",\"startPosition\":{\"x\":-0.586536327266693,\"y\":1.03537440299988,\"z\":-0.280365854501724}}",
+  "Name": "Deck",
+  "Nickname": "",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": 55.667,
+    "posY": 3.234,
+    "posZ": 56.724,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 180,
+    "scaleX": 1,
+    "scaleY": 1,
+    "scaleZ": 1
+  },
+  "Value": 0,
+  "XmlUI": ""
+}
