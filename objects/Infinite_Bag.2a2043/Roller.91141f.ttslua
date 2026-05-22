@@ -5,6 +5,8 @@ local rollerData = {
   lastType = 1
 }
 
+local diceY = 2.6
+
 function onLoad()
   self.interactable = true
 
@@ -95,7 +97,7 @@ function dice_btn(playerColor, alt_click, id)
     local total = 0
     for i = 1, 12 do
 
-      local p = self.positionToWorld(sps[i].position):setAt("y", 2.7)
+      local p = self.positionToWorld(sps[i].position):setAt("y", diceY)
       local s = 0.2
       local hits = Physics.cast({
         origin = p,
@@ -135,7 +137,7 @@ function dice_btn(playerColor, alt_click, id)
 
         if not obj then
           obj = spawnObjectData({
-            data = getDiceData(p:setAt("y", 1 + 0.523))
+            data = getDiceData(p:setAt("y", diceY))
           })
         end
 
@@ -225,7 +227,7 @@ function dice_btn(playerColor, alt_click, id)
           if self.UI.getAttribute("icon_dice_" .. i, "active") == "true" then
 
             local sps = self.getSnapPoints()
-            local p = self.positionToWorld(sps[i].position):setAt("y", 2.7)
+            local p = self.positionToWorld(sps[i].position):setAt("y", diceY)
             local s = 0.5
             local hits = Physics.cast({
               origin = p,
@@ -261,7 +263,7 @@ function dice_btn(playerColor, alt_click, id)
 
             if not obj then
               obj = spawnObjectData({
-                data = getDiceData(p:setAt("y", 1 + 0.523))
+                data = getDiceData(p:setAt("y", diceY))
               })
             end
 

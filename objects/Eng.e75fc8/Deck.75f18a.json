@@ -1,0 +1,79 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "ContainedObjects_order": [
+    "Card.1f00de",
+    "Card.6b06a4",
+    "Card.d8d89e",
+    "Card.200003",
+    "Card.24b458",
+    "Card.092020",
+    "Card.11760d",
+    "Card.04f010"
+  ],
+  "ContainedObjects_path": "Deck.75f18a",
+  "CustomDeck": {
+    "5821": {
+      "BackIsHidden": true,
+      "BackURL": "https://drive.google.com/uc?export=view\u0026id=1-Q8hjvLtb0bG-Yz6NR_1rpvdiVTE_7R4",
+      "FaceURL": "https://drive.google.com/uc?export=view\u0026id=1uXNfT5bvYUgkuLe-3QUWxjz9dMqsXQqZ",
+      "NumHeight": 5,
+      "NumWidth": 8,
+      "Type": 0,
+      "UniqueBack": true
+    }
+  },
+  "DeckIDs": [
+    582109,
+    582113,
+    582110,
+    582114,
+    582111,
+    582112,
+    582115,
+    582108
+  ],
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "75f18a",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": true,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Memo": "{\"name\":\"Easttown\",\"set\":1,\"startPosition\":{\"x\":0.01225112285465,\"y\":1.05944466590881,\"z\":-0.434592723846436},\"type\":\"encounter\"}",
+  "Name": "Deck",
+  "Nickname": "",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": -0.828,
+    "posY": 4.116,
+    "posZ": 98.419,
+    "rotX": 359,
+    "rotY": 180,
+    "rotZ": 179,
+    "scaleX": 1.5,
+    "scaleY": 1,
+    "scaleZ": 1.5
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

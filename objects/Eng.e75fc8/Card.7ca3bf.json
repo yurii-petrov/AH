@@ -1,0 +1,59 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "CardID": 581003,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "CustomDeck": {
+    "5810": {
+      "BackIsHidden": true,
+      "BackURL": "https://drive.google.com/uc?export=view\u0026id=14RrBcUPODnJRrJxgAFGYdP3OLaxdPOdm",
+      "FaceURL": "https://drive.google.com/uc?export=view\u0026id=1GebGIIEb9L3CWzRl2tiQ8uuIfhFlwQHc",
+      "NumHeight": 2,
+      "NumWidth": 2,
+      "Type": 1,
+      "UniqueBack": true
+    }
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "7ca3bf",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": true,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Memo": "{\"hp\":6,\"money\":2,\"name\":\"Skids O'Toole\",\"role\":[\"rogue\",\"survivor\"],\"sanity\":6,\"skill\":{\"influence\":1,\"lore\":2,\"observation\":3,\"strength\":3,\"will\":4},\"startPosition\":{\"x\":-0.626199960708618,\"y\":1.01360654830933,\"z\":-0.186600044369698},\"type\":\"Investigator\"}",
+  "Name": "Card",
+  "Nickname": "",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": -0.937,
+    "posY": 4.085,
+    "posZ": 97.771,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 359,
+    "scaleX": 1.5,
+    "scaleY": 1,
+    "scaleZ": 1.5
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

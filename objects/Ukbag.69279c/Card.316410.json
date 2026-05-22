@@ -11,6 +11,7 @@
     "g": 0.71324,
     "r": 0.71324
   },
+  "ContainedObjects_path": "Card.316410",
   "CustomDeck": {
     "5755": {
       "BackIsHidden": true,
@@ -41,15 +42,18 @@
   "Nickname": "",
   "SidewaysCard": false,
   "Snap": true,
+  "States_path": {
+    "2": "Card.99e4d1"
+  },
   "Sticky": true,
   "Tooltip": true,
   "Transform": {
-    "posX": 33.549,
-    "posY": 4.024,
-    "posZ": 81.35,
-    "rotX": 0,
-    "rotY": 180,
-    "rotZ": 0,
+    "posX": -5.972,
+    "posY": 4.016,
+    "posZ": 97.471,
+    "rotX": 334,
+    "rotY": 186,
+    "rotZ": 346,
     "scaleX": 1.5,
     "scaleY": 1,
     "scaleZ": 1.5

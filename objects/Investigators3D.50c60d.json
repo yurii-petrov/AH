@@ -29,7 +29,11 @@
     "DianaStanley.971a20",
     "KateWinthrop.b2f002",
     "RolandBanks.232e29",
-    "SkidsOToole.e45918"
+    "SkidsOToole.e45918",
+    "MinhThiPhan.e177c4",
+    "RexMurphy.adfed3",
+    "WendyAdams.ed5d30",
+    "DexterDrake.6d23fa"
   ],
   "ContainedObjects_path": "Investigators3D.50c60d",
   "Description": "",
@@ -54,9 +58,9 @@
   "Sticky": true,
   "Tooltip": true,
   "Transform": {
-    "posX": 36.193,
+    "posX": 36.174,
     "posY": 1.815,
-    "posZ": 37.085,
+    "posZ": 37.092,
     "rotX": 0,
     "rotY": 180,
     "rotZ": 0,

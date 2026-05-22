@@ -1,0 +1,87 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "ContainedObjects_order": [
+    "Card.35abc3",
+    "Card.d27d0e",
+    "Card.f3c1a0",
+    "Card.0b4dd1",
+    "Card.bba678",
+    "Card.d99f14",
+    "Card.08ee63",
+    "Card.dcdaa9",
+    "Card.e07cc9",
+    "Card.81b008",
+    "Card.bb1f9f",
+    "Card.68e851"
+  ],
+  "ContainedObjects_path": "NightmareBreach.c91c1d",
+  "CustomDeck": {
+    "5796": {
+      "BackIsHidden": true,
+      "BackURL": "https://drive.google.com/uc?export=view\u0026id=17RvqZ4PKhmHVWqSSI9KDFtmo4ddHvIlx",
+      "FaceURL": "https://drive.google.com/uc?export=view\u0026id=1fztY3IiejYlqAJRvT4Kdywue0CKXso2a",
+      "NumHeight": 2,
+      "NumWidth": 6,
+      "Type": 0,
+      "UniqueBack": false
+    }
+  },
+  "DeckIDs": [
+    579608,
+    579606,
+    579607,
+    579611,
+    579610,
+    579609,
+    579601,
+    579602,
+    579600,
+    579603,
+    579604,
+    579605
+  ],
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "c91c1d",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": true,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Memo": "{\"name\":\"NB\",\"startPosition\":{\"x\":0.269628763198853,\"y\":1.07870078086853,\"z\":-0.49929940700531},\"type\":\"anomaly\"}",
+  "Name": "DeckCustom",
+  "Nickname": "Nightmare Breach",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": 5.707,
+    "posY": 4.089,
+    "posZ": -46.008,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 180,
+    "scaleX": 1.5,
+    "scaleY": 1,
+    "scaleZ": 1.5
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

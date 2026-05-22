@@ -1,0 +1,79 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "ContainedObjects_order": [
+    "Card.3798b8",
+    "Card.59b650",
+    "Card.e728cb",
+    "Card.40d0b4",
+    "Card.e87aac",
+    "Card.201c29",
+    "Card.e3982d",
+    "Card.2d9311"
+  ],
+  "ContainedObjects_path": "Deck.861d5e",
+  "CustomDeck": {
+    "5822": {
+      "BackIsHidden": true,
+      "BackURL": "https://drive.google.com/uc?export=view\u0026id=1-Q8hjvLtb0bG-Yz6NR_1rpvdiVTE_7R4",
+      "FaceURL": "https://drive.google.com/uc?export=view\u0026id=1uXNfT5bvYUgkuLe-3QUWxjz9dMqsXQqZ",
+      "NumHeight": 5,
+      "NumWidth": 8,
+      "Type": 0,
+      "UniqueBack": true
+    }
+  },
+  "DeckIDs": [
+    582200,
+    582204,
+    582201,
+    582205,
+    582202,
+    582203,
+    582206,
+    582207
+  ],
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "861d5e",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": true,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Memo": "{\"name\":\"Downtown\",\"set\":1,\"startPosition\":{\"x\":-0.0503369085490704,\"y\":1.05944466590881,\"z\":-0.434592723846436},\"type\":\"encounter\"}",
+  "Name": "Deck",
+  "Nickname": "",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": -0.888,
+    "posY": 4.118,
+    "posZ": 98.262,
+    "rotX": 359,
+    "rotY": 180,
+    "rotZ": 179,
+    "scaleX": 1.5,
+    "scaleY": 1,
+    "scaleZ": 1.5
+  },
+  "Value": 0,
+  "XmlUI": ""
+}
