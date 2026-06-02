@@ -1,0 +1,53 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "CustomAssetbundle": {
+    "AssetbundleSecondaryURL": "",
+    "AssetbundleURL": "https://steamusercontent-a.akamaihd.net/ugc/1740071314870270469/7C27513F2C91C4A964C11E8D98E70FE9FF7F8DD5/",
+    "LoopingEffectIndex": 0,
+    "MaterialIndex": 0,
+    "TypeIndex": 1
+  },
+  "Description": "\"The Butler\"",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "f6e481",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Memo": "Carson Sinclair",
+  "Name": "Custom_Assetbundle",
+  "Nickname": "Carson Sinclair",
+  "Snap": true,
+  "Sticky": false,
+  "Tooltip": true,
+  "Transform": {
+    "posX": 35.869,
+    "posY": 4.064,
+    "posZ": 36.884,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 0.95,
+    "scaleY": 0.95,
+    "scaleZ": 0.95
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

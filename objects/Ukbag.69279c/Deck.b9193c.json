@@ -1,0 +1,69 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "ContainedObjects_order": [
+    "Card.c41ba8",
+    "Card.a79953",
+    "Card.090357"
+  ],
+  "ContainedObjects_path": "Deck.b9193c",
+  "CustomDeck": {
+    "5840": {
+      "BackIsHidden": true,
+      "BackURL": "https://drive.google.com/uc?export=view\u0026id=1PSz38dsneVc8qf6sOzdvqyWv0yHDuHhs",
+      "FaceURL": "https://drive.google.com/uc?export=view\u0026id=11VJ46ODF83H9o9Xl2zPLSa9ihxezS4Kq",
+      "NumHeight": 4,
+      "NumWidth": 7,
+      "Type": 0,
+      "UniqueBack": true
+    }
+  },
+  "DeckIDs": [
+    584024,
+    584022,
+    584021
+  ],
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "b9193c",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Memo": "{\"name\":\"Zoey Samaras\",\"startPosition\":{\"x\":-0.776761400699615,\"y\":1.03537440299988,\"z\":-0.0927658528089523}}",
+  "Name": "Deck",
+  "Nickname": "",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": -4.784,
+    "posY": 4.103,
+    "posZ": 97.85,
+    "rotX": 359,
+    "rotY": 180,
+    "rotZ": 179,
+    "scaleX": 1,
+    "scaleY": 1,
+    "scaleZ": 1
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

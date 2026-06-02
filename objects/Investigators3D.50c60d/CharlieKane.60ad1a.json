@@ -1,0 +1,53 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "CustomAssetbundle": {
+    "AssetbundleSecondaryURL": "",
+    "AssetbundleURL": "https://steamusercontent-a.akamaihd.net/ugc/1691654041388028254/0B8F4D17A609BA9CB955964C61B988DBBCFCA049/",
+    "LoopingEffectIndex": 0,
+    "MaterialIndex": 0,
+    "TypeIndex": 1
+  },
+  "Description": "\"The Politician\"",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "60ad1a",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Memo": "Charlie Kane",
+  "Name": "Custom_Assetbundle",
+  "Nickname": "Charlie Kane",
+  "Snap": true,
+  "Sticky": false,
+  "Tooltip": true,
+  "Transform": {
+    "posX": 38.463,
+    "posY": 4.07,
+    "posZ": 37.472,
+    "rotX": 0,
+    "rotY": 270,
+    "rotZ": 359,
+    "scaleX": 0.88,
+    "scaleY": 0.88,
+    "scaleZ": 0.88
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

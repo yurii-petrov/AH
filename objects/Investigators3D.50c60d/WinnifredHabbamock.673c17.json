@@ -1,0 +1,53 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "CustomAssetbundle": {
+    "AssetbundleSecondaryURL": "",
+    "AssetbundleURL": "https://steamusercontent-a.akamaihd.net/ugc/2042982245664635665/5F469EA786143859B59CDE129F03CADAE82FAD9E/",
+    "LoopingEffectIndex": 0,
+    "MaterialIndex": 0,
+    "TypeIndex": 1
+  },
+  "Description": "\"The Aviatrix\"",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "673c17",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Memo": "Winnifred Habbamock",
+  "Name": "Custom_Assetbundle",
+  "Nickname": "Winnifred Habbamock",
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": 35.884,
+    "posY": 4.09,
+    "posZ": 36.962,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 359,
+    "scaleX": 0.93,
+    "scaleY": 0.93,
+    "scaleZ": 0.93
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

@@ -1,0 +1,53 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "CustomAssetbundle": {
+    "AssetbundleSecondaryURL": "",
+    "AssetbundleURL": "https://steamusercontent-a.akamaihd.net/ugc/1825645452880556651/3A6BD69F300CF86062F738C715C8BA8B98DB7D38/",
+    "LoopingEffectIndex": 0,
+    "MaterialIndex": 0,
+    "TypeIndex": 1
+  },
+  "Description": "\"The Drifter\"",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "09da71",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Memo": "Ashcan Pete",
+  "Name": "Custom_Assetbundle",
+  "Nickname": "\"Ashcan\" Pete",
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": 49.108,
+    "posY": 4.038,
+    "posZ": 39.326,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 0.85,
+    "scaleY": 0.85,
+    "scaleZ": 0.85
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

@@ -1456,15 +1456,43 @@ function restore(player, alt, id)
 end
 
 function startGame(player, alt, id)
-  if gameData.areAllComponentsTaken == false then
-    broadcastToAll("Wait until all components are drawn from language bag", "White")
+  self.UI.setAttribute('main_menu', 'active', false)
+  if gameData.areAllComponentsTaken == true then
+    proceedStartGame()
     return
   end
 
+  broadcastToAll("Waiting for components to be drawn from language bag...", "White")
+
+  waitForComponentsReady(0)
+end
+
+function waitForComponentsReady(attempt)
+  attempt = attempt or 0
+
+  -- safety timeout (optional)
+  if attempt > 120 then -- ~2 minutes if 1 sec interval
+    broadcastToAll("Timeout waiting for components", "Red")
+    return
+  end
+
+  if gameData.areAllComponentsTaken == true then
+    proceedStartGame()
+    return
+  end
+
+  Wait.time(function()
+    waitForComponentsReady(attempt + 1)
+  end, 1)
+end
+
+function proceedStartGame()
   local scenarioData = getScenarioData(currentSetup.scenario or 1)
   if not scenarioData then
-    broadcastToAll("Компоненти сценарія " .. currentSetup.scenario .. " не знайдено",
-      "White")
+    broadcastToAll(
+      "Компоненти сценарія " .. (currentSetup.scenario or "?") .. " не знайдено",
+      "White"
+    )
     return
   end
 
@@ -1483,6 +1511,7 @@ function startGame(player, alt, id)
   gameData.isStarted = true
   self.UI.setAttribute('main_menu', 'active', false)
 end
+
 function chooseScenario(player, alt, id)
   for i = 1, 6, 1 do
     self.UI.setAttribute('scenario_panel' .. i, 'color', 'clear')
@@ -2623,6 +2652,14 @@ function addConditionMat2()
   end
 end
 
+function tableLength(t)
+  local count = 0
+  for _ in pairs(t) do
+    count = count + 1
+  end
+  return count
+end
+
 function prepareLanguageBag(bag)
   if not bag then
     return
@@ -2634,16 +2671,27 @@ function prepareLanguageBag(bag)
   end
 
   local objs = bag.getObjects()
-  local pendingTakes = 0
+
+  local pendingTakes = {}
 
   for i = 1, #objs do
     local memo = parseJson(objs[i].memo)
+
     if memo and memo.startPosition then
-      pendingTakes = pendingTakes + 1
+      pendingTakes[objs[i].guid] = {
+        guid = objs[i].guid,
+        name = objs[i].name,
+        index = objs[i].index,
+        memoType = memo.type,
+        state = "Scheduled",
+        spawnedGuid = nil
+      }
     end
   end
 
-  if pendingTakes == 0 then
+  -- log("Initial pendingTakes: " .. tableLength(pendingTakes))
+
+  if tableLength(pendingTakes) == 0 then
     gameData.areAllComponentsTaken = true
     return
   end
@@ -2651,9 +2699,19 @@ function prepareLanguageBag(bag)
   for i = #objs, 1, -1 do
     local obj = objs[i]
     local memo = parseJson(obj.memo)
+
     if memo and memo.startPosition then
       local delay = (#objs - i) / 20
+
       Wait.time(function()
+
+        -- log(string.format(
+        --   "[TAKING] expectedGuid=%s name=%s index=%s",
+        --   obj.guid or "nil",
+        --   obj.name or "nil",
+        --   tostring(obj.index)
+        -- ))
+
         local o = bag.takeObject({
           index = obj.index,
           position = tableObj.positionToWorld(memo.startPosition):setAt("y", 3),
@@ -2661,20 +2719,143 @@ function prepareLanguageBag(bag)
           smooth = false
         })
 
-        runAfterRest(o, function(o2)
-          if o2.type == "Generic" or o2.type == "Tile" or o2.type == "Card" or
-            (memo.type and (memo.type == "dark pact" or memo.type == "blessed cursed" or memo.type == "archive")) then
-            o2.setRotation({0, 180, 0})
+        if not o then
+          -- log(string.format(
+          --   "[FAILED] takeObject returned nil. expectedGuid=%s",
+          --   obj.guid or "nil"
+          -- ))
+
+          if pendingTakes[obj.guid] then
+            pendingTakes[obj.guid].state = "takeObject=nil"
           end
 
-          pendingTakes = pendingTakes - 1
-          if pendingTakes == 0 then
-            gameData.areAllComponentsTaken = true
-          end
-        end)
+          return
+        end
+
+        local spawnedGuid = o.getGUID()
+
+        -- log(string.format(
+        --   "[TAKEN] expectedGuid=%s actualGuid=%s type=%s",
+        --   obj.guid,
+        --   spawnedGuid,
+        --   o.type or "nil"
+        -- ))
+
+        if pendingTakes[obj.guid] then
+          pendingTakes[obj.guid].state = "Taken"
+          pendingTakes[obj.guid].spawnedGuid = spawnedGuid
+        end
+
+
+        runAfterRest(o,
+          function(o2)
+            -- log(string.format(
+            --   "[READY] expectedGuid=%s actualGuid=%s",
+            --   obj.guid,
+            --   o2.getGUID()
+            -- ))
+
+            if o2.type == "Generic"
+              or o2.type == "Tile"
+              or o2.type == "Card"
+              or (memo.type and (
+                memo.type == "dark pact"
+                or memo.type == "blessed cursed"
+                or memo.type == "archive"
+              ))
+            then
+              o2.setRotation({0, 180, 0})
+            end
+
+            pendingTakes[obj.guid] = nil
+
+            local remaining = tableLength(pendingTakes)
+
+            -- log(string.format(
+            --   "[COMPLETED] expectedGuid=%s remaining=%s",
+            --   obj.guid,
+            --   remaining
+            -- ))
+
+            if remaining == 0 then
+              gameData.areAllComponentsTaken = true
+              -- log("[SUCCESS] All components taken")
+            end
+          end,
+
+          function(o2)
+            -- log(string.format(
+            --   "[TIMEOUT] runAfterRest failed for guid=%s type=%s pos=%s",
+            --   obj.guid,
+            --   o2 and o2.type or "nil",
+            --   tostring(o2 and o2.getPosition())
+            -- ))
+
+             if o2.type == "Generic"
+              or o2.type == "Tile"
+              or o2.type == "Card"
+              or (memo.type and (
+                memo.type == "dark pact"
+                or memo.type == "blessed cursed"
+                or memo.type == "archive"
+              ))
+            then
+              o2.setRotation({0, 180, 0})
+            end
+
+            pendingTakes[obj.guid] = nil
+
+            local remaining = tableLength(pendingTakes)
+
+            -- log(string.format(
+            --   "[FAILED-COMPLETED] expectedGuid=%s remaining=%s",
+            --   obj.guid,
+            --   remaining
+            -- ))
+
+            if remaining == 0 then
+              gameData.areAllComponentsTaken = true
+              -- log("[SUCCESS] All components processed (with failures)")
+            end
+          end,
+
+          5
+        )
       end, delay)
+    else
+      log(string.format(
+        "[SKIPPED] No startPosition in memo. guid=%s name=%s index=%s",
+        obj.guid or "nil",
+        obj.name or "nil",
+        tostring(obj.index)
+      ))
     end
   end
+
+  -- Wait.time(function()
+  --   local remaining = tableLength(pendingTakes)
+
+  --   if remaining > 0 then
+  --     log("")
+  --     log("========== TIMEOUT CHECK ==========")
+  --     log("Still pending: " .. remaining)
+
+  --     for guid, data in pairs(pendingTakes) do
+  --       log(string.format(
+  --         "guid=%s state=%s spawnedGuid=%s name=%s index=%s type=%s",
+  --         guid,
+  --         data.state or "nil",
+  --         data.spawnedGuid or "nil",
+  --         data.name or "nil",
+  --         tostring(data.index),
+  --         data.memoType or "nil"
+  --       ))
+  --     end
+
+  --     log("===================================")
+  --     log("")
+  --   end
+  -- end, 30)
 end
 
 -- ╭──────────────────────────────────────────────╮
