@@ -80,6 +80,55 @@ msgstr "SILENCE OF TSATHOGGUA"
 msgid "MM_scenario6_desc_text"
 msgstr "The Beast of Voormithadreth slumbers, while the followers he abandoned on distant Yuggoth prepare offerings of supplication for his ravenous appetite. Should the toad-like Sleeper of N'Kai awaken, doom shall come for us all."
 
+# Scenario 7
+msgid "MM_scenario7_name_text"
+msgstr "TYRANTS OF RUIN"
+
+msgid "MM_scenario7_desc_text"
+msgstr "Deep beneath Devil Reef, the tyrants of Y'ha-nthlei rule the dark waves, yearning to surpass their ancient, mortal frames. They stir below the water, sending their Deep One progeny to corrupt the surface world."
+
+# Scenario 8
+msgid "MM_scenario8_name_text"
+msgstr "THE PALE LANTERN"
+
+msgid "MM_scenario8_desc_text"
+msgstr "In the mist-shrouded town of Kingsport, the elite prosper within a newly founded social group called the Lantern Club. In the alleys and gutters, people once reported missing reappear, bereft of their memories and mere shadows of their former selves."
+
+# Scenario 9
+msgid "MM_scenario9_name_text"
+msgstr "ITHAQUA'S CHILDREN"
+
+msgid "MM_scenario9_desc_text"
+msgstr "Ithaqua the Wind-Walker lurks in the frozen north. He is the cold wind that creeps into the soul, and the hungry ice that entombs the unwary. Forsaken and alone, Ithaqua spreads his influence in the cruel hope that he might beget a terrible progeny - a new scion that could overcome even the elder gods."
+
+# Scenario 10
+msgid "MM_scenario10_name_text"
+msgstr "DREAMS OF R'LYEH"
+
+msgid "MM_scenario10_desc_text"
+msgstr "An unearthly melody floats through the crisp autumn air, all but imperceptible to the waking mind. In dreams, you visit a fantastical undersea city and revel in the glory of something massive, just beyond your sight."
+
+# Scenario 11
+msgid "MM_scenario11_name_text"
+msgstr "BOUND TO SERVE"
+
+msgid "MM_scenario11_desc_text"
+msgstr "A plague of unquiet spirits washes over Arkham, creating a psychic disturbance that cannot be ignored. Trapped by an ancient pact, these lost souls must be freed from the ancient evil that binds them for eternity."
+
+# Scenario 12
+msgid "MM_scenario12_name_text"
+msgstr "THE DEAD CRY OUT"
+
+msgid "MM_scenario12_desc_text"
+msgstr "Ancient magic has torn through the veil that protects Arkham from the worlds beyond. Terrible creatures erupt from the Underworld to threaten all that you hold dear."
+
+# Scenario 13
+msgid "MM_scenario13_name_text"
+msgstr "THE KEY AND THE GATE"
+
+msgid "MM_scenario13_desc_text"
+msgstr "For eons, Yog-Sothoth has observed the universe from beyond time and beyond space. Content no longer simply to watch and wait, the Lurker at the Threshold stirs. Countless thralls labor to open the gate that locks the Ancient One outside of our universe."
+
 msgid "MM_addonTitle_text"
 msgstr "Choose expansion"
 
@@ -104,11 +153,94 @@ msgstr "In Dead of Night, investigators explore the facets of Arkham best left u
 								"\n• 22 monster cards" 
 								"\n• 15 new monsters"
 
+msgid "MM_addonSummary1_text"
+msgstr "• 2 new scenarios\n• 4 new investigators\n• 238 new cards"
+
+msgid "MM_addonDescription1_text"
+msgstr "In Dead of Night, investigators explore the facets of Arkham best left unseen in the light of day. Organized crime builds a strong foothold in the city, secret cults labor for a dark master, an alien moon hangs overhead, and unknowable horrors stalk the night. This expansion includes two all-new scenarios, new encounters for every location in Arkham, new monsters and anomalies, and four new investigators to face these fresh horrors, armed with new spells, items and allies."
+"\n• 2 scenarios"
+								"\n• 4 investigators"
+								"\n• 7 headline cards"
+								"\n• 20 archive cards"
+								"\n• 12 anomaly cards"
+								"\n• 48 event cards"
+								"\n• 72 encounter cards"
+								"\n• 4 ally cards"
+								"\n• 4 item cards"
+								"\n• 4 spell cards"
+								"\n• 28 special cards"
+								"\n• 12 starting cards"
+								"\n• 6 wanted condition cards"
+								"\n• 22 monster cards" 
+								"\n• 15 new monsters"
+
+msgid "MM_addonSummary2_text"
+msgstr "• 4 new scenarios\n• 8 new investigators\n• 364 new cards"
+
+msgid "MM_addonDescription2_text"
+msgstr "Under Dark Waves is an expansion to Arkham Horror that takes the investigators beyond Arkham's city limits to research strange happenings in the coastal towns of Innsmouth and Kingsport. They face new threats and are joined by new investigators, bolstered with additional tools and allies to help them overcome the ever-escalating plots that threaten their world."
+"\n• 4 scenarios"
+								"\n• 8 investigators"
+								"\n• 4 new neighborhoods"
+								"\n• 8 travel route tiles"
+								"\n• 2 Mystery tiles"
+								"\n• 4 headline cards"
+								"\n• 60 archive cards"
+								"\n• 12 anomaly cards"
+								"\n• 24 terror cards"
+								"\n• 104 event cards"
+								"\n• 72 encounter cards"
+								"\n• 2 ally cards"
+								"\n• 4 item cards"
+								"\n• 2 spell cards"
+								"\n• 14 special cards"
+								"\n• 25 starting cards"
+								"\n• 8 condition cards"
+								"\n• 21 monster cards" 
+
+msgid "MM_addonSummary3_text"
+msgstr "• 3 new scenarios\n• 4 new investigators\n• 260 new cards"
+
+msgid "MM_addonDescription3_text"
+msgstr "Secrets of the Order is an expansion to Arkham Horror that brings the investigation back to the classic neighborhood of French Hill and beyond our reality to the terrifying Underworld. As one of Arkham's oldest areas, French Hill is home to ancient secrets, potential allies, and mysterious threats. Meanwhile, in the deepest layer of the Dreamlands, beyond the veil of the waking world, the Underworld is a realm of monsters and madness, where only the very desperate dare to roam."
+"\n• 3 scenarios"
+								"\n• 4 investigators"
+								"\n• 2 new neighborhoods"
+								"\n• 2 threshold tiles"
+								"\n• 2 Mystery tiles"
+								"\n• 4 headline cards"
+								"\n• 45 archive cards"
+								"\n• 12 anomaly cards"
+								"\n• 80 event cards"
+								"\n• 54 encounter cards"
+								"\n• 3 ally cards"
+								"\n• 3 item cards"
+								"\n• 2 spell cards"
+								"\n• 18 special cards"
+								"\n• 12 starting cards"
+								"\n• 6 condition cards"
+								"\n• 20 monster cards" 
+
+msgid "MM_addonSummary4_text"
+msgstr "• 4 variations for base investigators"
+
+msgid "MM_addonDescription4_text"
+msgstr ""
+"Recursive Echoes is a print-and-play expansion for Arkham Horror that "
+"re-imagines four familiar investigators from the board game's core set. "
+"These \"echo\" investigators have been re-designed..."
+
 msgid "MM_text_addon1_text"
 msgstr "Dead of Night"
 
 msgid "MM_text_addon2_text"
 msgstr "Under Dark Waves"
+
+msgid "MM_text_addon3_text"
+msgstr "Secrets of the Order"
+
+msgid "MM_text_addon4_text"
+msgstr "Recursive Echoes"
 
 msgid "MM_toggleAddon_text"
 msgstr "Add / Remove"

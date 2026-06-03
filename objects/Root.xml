@@ -280,7 +280,7 @@
 					raycastTarget="true"
 					scrollSensitivity="30">
 					<VerticalLayout contentSizeFitter="vertical" spacing="30">
-				<HorizontalLayout
+					<HorizontalLayout
 							width="800"
 							preferredHeight="250"
 							verticalOverflow="Overflow"
@@ -300,8 +300,8 @@
 							<image image="scenario3" width="180" preserveAspect="true" rectAlignment="UpperCenter" offsetXY="0 -10"/>
 							<text id="MM_scenario3_name_text" alignment="LowerCenter" text="" offsetXY="0 10"/>
 						</panel>
-						</HorizontalLayout>
-						<HorizontalLayout
+					</HorizontalLayout>
+					<HorizontalLayout
 							width="800"
 							preferredHeight="250"
 							verticalOverflow="Overflow"
@@ -321,7 +321,60 @@
 								<image id="scenarioImage6" image="scenario6" width="180" preserveAspect="true" rectAlignment="UpperCenter" offsetXY="0 -10"/>
 								<text id="MM_scenario6_name_text" alignment="LowerCenter" text="" offsetXY="0 10"/>
 						</panel>
-				</HorizontalLayout>
+					</HorizontalLayout>
+					<HorizontalLayout
+							width="800"
+							preferredHeight="250"
+							verticalOverflow="Overflow"
+							spacing="30">
+						<panel id="scenario_panel7">
+							<button id="scenario7" onClick="chooseScenario"/>
+							<image image="scenario7" width="180" preserveAspect="true" rectAlignment="UpperCenter" offsetXY="0 -10"/>
+								<text id="MM_scenario7_name_text" alignment="LowerCenter" text="" offsetXY="0 10"/>
+							</panel>
+							<panel id="scenario_panel8">
+								<button id="scenario8" onClick="chooseScenario"/>
+								<image id="scenarioImage8" image="scenario8" width="180" preserveAspect="true" rectAlignment="UpperCenter" offsetXY="0 -10"/>
+								<text id="MM_scenario8_name_text" alignment="LowerCenter" text="" offsetXY="0 10"/>
+							</panel>
+							<panel id="scenario_panel9">
+								<button id="scenario9" onClick="chooseScenario"/>
+								<image id="scenarioImage9" image="scenario9" width="180" preserveAspect="true" rectAlignment="UpperCenter" offsetXY="0 -10"/>
+								<text id="MM_scenario9_name_text" alignment="LowerCenter" text="" offsetXY="0 10"/>
+						</panel>
+					</HorizontalLayout>
+					<HorizontalLayout
+							width="800"
+							preferredHeight="250"
+							verticalOverflow="Overflow"
+							spacing="30">
+						<panel id="scenario_panel10">
+							<button id="scenario10" onClick="chooseScenario"/>
+							<image image="scenario10" width="180" preserveAspect="true" rectAlignment="UpperCenter" offsetXY="0 -10"/>
+								<text id="MM_scenario10_name_text" alignment="LowerCenter" text="" offsetXY="0 10"/>
+							</panel>
+							<panel id="scenario_panel11">
+								<button id="scenario11" onClick="chooseScenario"/>
+								<image id="scenarioImage11" image="scenario11" width="180" preserveAspect="true" rectAlignment="UpperCenter" offsetXY="0 -10"/>
+								<text id="MM_scenario11_name_text" alignment="LowerCenter" text="" offsetXY="0 10"/>
+							</panel>
+							<panel id="scenario_panel12">
+								<button id="scenario12" onClick="chooseScenario"/>
+								<image id="scenarioImage12" image="scenario12" width="180" preserveAspect="true" rectAlignment="UpperCenter" offsetXY="0 -10"/>
+								<text id="MM_scenario12_name_text" alignment="LowerCenter" text="" offsetXY="0 10"/>
+							</panel>
+					</HorizontalLayout>
+					<HorizontalLayout
+							width="800"
+							preferredHeight="250"
+							verticalOverflow="Overflow"
+							spacing="30">
+						<panel id="scenario_panel13">
+							<button id="scenario13" onClick="chooseScenario"/>
+							<image image="scenario13" width="180" preserveAspect="true" rectAlignment="UpperCenter" offsetXY="0 -10"/>
+								<text id="MM_scenario13_name_text" alignment="LowerCenter" text="" offsetXY="0 10"/>
+							</panel>
+					</HorizontalLayout>
 					</VerticalLayout>
 				</VerticalScrollView>
 			</panel>
@@ -395,10 +448,10 @@
 								<button id="addon3" onClick="chooseAddon"/>
 								<text id="MM_text_addon3_text" alignment="MiddleCenter" text=""/>
 							</panel>
-							<!--<panel id="addon_panel4" preferredHeight="50">
+							<panel id="addon_panel4" preferredHeight="50">
 								<button id="addon4" onClick="chooseAddon"/>
-								<text id="text_addon4" alignment="MiddleCenter" text="Відлуння Минулого"/>
-							</panel> -->
+								<text id="MM_text_addon4_text" alignment="MiddleCenter" text=""/>
+							</panel>
 						</VerticalLayout>
 					</VerticalScrollView>
 				</panel>
