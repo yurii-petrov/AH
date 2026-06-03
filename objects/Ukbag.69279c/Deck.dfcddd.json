@@ -64,7 +64,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"name\":\"YE\",\"set\":1,\"startPosition\":{\"x\":0.301283210515976,\"y\":1.07870078086853,\"z\":-0.5484858751297},\"type\":\"anomaly\"}",
+  "Memo": "{\"name\":\"YE\",\"set\":1,\"startPosition\":{\"x\":0.251283210515976,\"y\":1.07870078086853,\"z\":-0.5484858751297},\"type\":\"anomaly\"}",
   "Name": "Deck",
   "Nickname": "",
   "SidewaysCard": false,

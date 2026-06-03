@@ -1,0 +1,59 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "CardID": 583205,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "CustomDeck": {
+    "5832": {
+      "BackIsHidden": true,
+      "BackURL": "https://drive.google.com/uc?export=view\u0026id=1tWr2ZRT-VaE1t-qJMXFTlJPXmhnaQ36a",
+      "FaceURL": "https://drive.google.com/uc?export=view\u0026id=11SBndPQCk1mdyad4Y_ag6Ch7aEyMBvvw",
+      "NumHeight": 3,
+      "NumWidth": 3,
+      "Type": 1,
+      "UniqueBack": true
+    }
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "c774dd",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": true,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Memo": "{\"hp\":8,\"money\":3,\"name\":\"Silas Marsh\",\"role\":[\"survivor\",\"rogue\"],\"sanity\":4,\"skill\":{\"influence\":3,\"lore\":1,\"observation\":3,\"strength\":3,\"will\":3},\"startPosition\":{\"x\":-0.525636374950409,\"y\":1.01360654830933,\"z\":-0.0927658528089523},\"type\":\"Investigator\"}",
+  "Name": "Card",
+  "Nickname": "",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": -17.594,
+    "posY": 2.784,
+    "posZ": 97.153,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 1.5,
+    "scaleY": 1,
+    "scaleZ": 1.5
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

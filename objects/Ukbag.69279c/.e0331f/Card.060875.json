@@ -36,6 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
+  "Memo": "{\"neighborhood\":\"the streets\",\"type\":\"encounter\"}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,

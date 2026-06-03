@@ -1,0 +1,53 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.05425,
+    "g": 0.3217,
+    "r": 0.5
+  },
+  "CustomAssetbundle": {
+    "AssetbundleSecondaryURL": "",
+    "AssetbundleURL": "https://steamusercontent-a.akamaihd.net/ugc/1809896946455457610/305FF9FB7E6CA3E1C9F02E82F0F5B052536B72C7/",
+    "LoopingEffectIndex": 0,
+    "MaterialIndex": 0,
+    "TypeIndex": 1
+  },
+  "Description": "\"The Sailor\" V2",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "6eb793",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Memo": "Silas Marsh",
+  "Name": "Custom_Assetbundle",
+  "Nickname": "Silas Marsh",
+  "Snap": true,
+  "Sticky": false,
+  "Tooltip": true,
+  "Transform": {
+    "posX": 41.027,
+    "posY": 3.996,
+    "posZ": 37.319,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 0.98,
+    "scaleY": 0.98,
+    "scaleZ": 0.98
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

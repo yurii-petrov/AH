@@ -1,0 +1,79 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "ContainedObjects_order": [
+    "Card.25d45b",
+    "Card.939d7d",
+    "Card.bb296a",
+    "Card.ab95d8",
+    "Card.ffdbd4",
+    "Card.f6d13a",
+    "Card.1a0066",
+    "Card.47f836"
+  ],
+  "ContainedObjects_path": "Deck.683066",
+  "CustomDeck": {
+    "5856": {
+      "BackIsHidden": true,
+      "BackURL": "https://drive.google.com/uc?export=view\u0026id=10JYBl6rEmJAMu6zAurN3nWQO586gM5Tx",
+      "FaceURL": "https://drive.google.com/uc?export=view\u0026id=1Wb48DaEPaA8y5_dfIbaOzr_t4CoOduDB",
+      "NumHeight": 5,
+      "NumWidth": 8,
+      "Type": 0,
+      "UniqueBack": true
+    }
+  },
+  "DeckIDs": [
+    585623,
+    585622,
+    585621,
+    585620,
+    585619,
+    585618,
+    585617,
+    585616
+  ],
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "683066",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Memo": "{\"name\":\"Central Kingsport\",\"set\":2,\"startPosition\":{\"x\":-0.0816309452056885,\"y\":1.05944466590881,\"z\":-0.499919474124908},\"type\":\"encounter\"}",
+  "Name": "Deck",
+  "Nickname": "",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": 43.195,
+    "posY": 3.258,
+    "posZ": 61.756,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 180,
+    "scaleX": 1.5,
+    "scaleY": 1,
+    "scaleZ": 1.5
+  },
+  "Value": 0,
+  "XmlUI": ""
+}
