@@ -36,11 +36,15 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
+  "Memo": "{\"hp\":2,\"investigator\":\"Charlie Kane\",\"sp\":3,\"type\":\"starting\"}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,
   "Snap": true,
   "Sticky": true,
+  "Tags": [
+    "item_magnet"
+  ],
   "Tooltip": true,
   "Transform": {
     "posX": 21.904,

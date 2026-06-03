@@ -36,11 +36,15 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
+  "Memo": "{\"investigator\":\"Agatha Crane\",\"type\":\"starting\"}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,
   "Snap": true,
   "Sticky": true,
+  "Tags": [
+    "item_magnet"
+  ],
   "Tooltip": true,
   "Transform": {
     "posX": 28.459,

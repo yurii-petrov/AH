@@ -1,0 +1,79 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "ContainedObjects_order": [
+    "Card.0fa36a",
+    "Card.8bbe00",
+    "Card.94cbab",
+    "Card.bd5a8a",
+    "Card.d94050",
+    "Card.209037",
+    "Card.f3753f",
+    "Card.ba05db"
+  ],
+  "ContainedObjects_path": "Deck.1385db",
+  "CustomDeck": {
+    "5856": {
+      "BackIsHidden": true,
+      "BackURL": "https://drive.google.com/uc?export=view\u0026id=10JYBl6rEmJAMu6zAurN3nWQO586gM5Tx",
+      "FaceURL": "https://drive.google.com/uc?export=view\u0026id=1Wb48DaEPaA8y5_dfIbaOzr_t4CoOduDB",
+      "NumHeight": 5,
+      "NumWidth": 8,
+      "Type": 0,
+      "UniqueBack": true
+    }
+  },
+  "DeckIDs": [
+    585639,
+    585638,
+    585637,
+    585636,
+    585635,
+    585634,
+    585633,
+    585632
+  ],
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "1385db",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Memo": "{\"name\":\"Innsmouth Village\",\"set\":2,\"startPosition\":{\"x\":-0.144524963235855,\"y\":1.05944466590881,\"z\":-0.499919474124908},\"type\":\"encounter\"}",
+  "Name": "Deck",
+  "Nickname": "",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": 44.929,
+    "posY": 3.258,
+    "posZ": 62.516,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 180,
+    "scaleX": 1.5,
+    "scaleY": 1,
+    "scaleZ": 1.5
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

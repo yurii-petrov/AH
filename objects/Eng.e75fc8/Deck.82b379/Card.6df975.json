@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"locations\":{\"Unvisited Isle\":{\"dooms\":1}},\"name\":\"SoT\",\"neighborhood\":\"Merchant District\",\"number\":4.,\"type\":\"Event\"}",
+  "Memo": "{\"locations\":{\"Unvisited Isle\":{\"dooms\":1}},\"name\":\"SoT\",\"neighborhood\":\"Merchant District\",\"number\":4,\"type\":\"Event\"}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,

@@ -63,5 +63,6 @@
     "scaleY": 1,
     "scaleZ": 1.7
   },
-  "Value": 0
+  "Value": 0,
+  "XmlUI": ""
 }

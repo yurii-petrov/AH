@@ -64,7 +64,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"name\":\"TF\",\"startPosition\":{\"x\":0.238338753581047,\"y\":1.07870078086853,\"z\":-0.49929940700531},\"type\":\"anomaly\"}",
+  "Memo": "{\"name\":\"TF\",\"startPosition\":{\"x\":0.188338753581047,\"y\":1.07870078086853,\"z\":-0.49929940700531},\"type\":\"anomaly\"}",
   "Name": "DeckCustom",
   "Nickname": "Temporal Fissure",
   "SidewaysCard": false,
