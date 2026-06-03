@@ -86,9 +86,41 @@ I18N_DATA = {
     ["en"] = "La Bella Luna",
     ["uk"] = "Ла Белла Луна",
   },
+  ["MM_addonDescription1_text"] = {
+    ["en"] = "In Dead of Night, investigators explore the facets of Arkham best left unseen in the light of day. Organized crime builds a strong foothold in the city, secret cults labor for a dark master, an alien moon hangs overhead, and unknowable horrors stalk the night. This expansion includes two all-new scenarios, new encounters for every location in Arkham, new monsters and anomalies, and four new investigators to face these fresh horrors, armed with new spells, items and allies.\n• 2 scenarios\n• 4 investigators\n• 7 headline cards\n• 20 archive cards\n• 12 anomaly cards\n• 48 event cards\n• 72 encounter cards\n• 4 ally cards\n• 4 item cards\n• 4 spell cards\n• 28 special cards\n• 12 starting cards\n• 6 wanted condition cards\n• 22 monster cards\n• 15 new monsters",
+    ["uk"] = "У доповненні «Нічний морок» гравці досліджують ті закутки Аркгема, куди страшно сунутися навіть удень. У місті процвітає організована злочинність, потаємні культи намагаються догодити своїм темним володарям, химерний місяць висить у небі, а десь у нічному мороці чаяться незбагненні жахіття. Це доповнення містить два нові сценарії, нові зустрічі для кожної зони Аркгема, нових монстрів і нові аномалії, а також чотирьох нових дослідників, готових протистояти жахам з новими предметами, заклинаннями та союзниками.\n• 2 сценарії\n• 4 дослідники\n• 7 карт заголовків\n• 20 карт архіву\n• 12 карт аномалій\n• 48 карт подій\n• 72 карти зустрічей\n• 4 карти союзників\n• 4 карти предметів\n• 4 карти заклинань\n• 28 спеціальних карт\n• 12 початкових карт\n• 6 карт стану розшукуваний\n• 22 карти монстрів\n• 15 нових монстрів",
+  },
+  ["MM_addonDescription2_text"] = {
+    ["en"] = "Under Dark Waves is an expansion to Arkham Horror that takes the investigators beyond Arkham's city limits to research strange happenings in the coastal towns of Innsmouth and Kingsport. They face new threats and are joined by new investigators, bolstered with additional tools and allies to help them overcome the ever-escalating plots that threaten their world.\n• 4 scenarios\n• 8 investigators\n• 4 new neighborhoods\n• 8 travel route tiles\n• 2 Mystery tiles\n• 4 headline cards\n• 60 archive cards\n• 12 anomaly cards\n• 24 terror cards\n• 104 event cards\n• 72 encounter cards\n• 2 ally cards\n• 4 item cards\n• 2 spell cards\n• 14 special cards\n• 25 starting cards\n• 8 condition cards\n• 21 monster cards",
+    ["uk"] = "«Під Темними Хвилями» — це доповнення, що веде дослідників за межі Аркгема, аби розслідувати моторошні події в прибережних містечках Інсмут і Кінгспорт. Там на них чатують нові загрози, а до боротьби долучаються нові дослідники, озброєні додатковими інструментами та союзниками, які допоможуть протистояти дедалі небезпечнішим змовам, що загрожують усьому світу.\n• 4 сценарії\n• 8 дослідники\n• 4 нові райони\n• 8 шляхів мандрів\n• 2 таємниці\n• 4 карт заголовків\n• 60 карт архіву\n• 12 карт аномалій\n• 24 карт мороку\n• 104 карт подій\n• 72 карти зустрічей\n• 2 карти союзників\n• 4 карти предметів\n• 2 карти заклинань\n• 14 спеціальних карт\n• 25 початкових карт\n• 8 карт стану\n• 21 карти монстрів\n",
+  },
+  ["MM_addonDescription3_text"] = {
+    ["en"] = "Secrets of the Order is an expansion to Arkham Horror that brings the investigation back to the classic neighborhood of French Hill and beyond our reality to the terrifying Underworld. As one of Arkham's oldest areas, French Hill is home to ancient secrets, potential allies, and mysterious threats. Meanwhile, in the deepest layer of the Dreamlands, beyond the veil of the waking world, the Underworld is a realm of monsters and madness, where only the very desperate dare to roam.\n• 3 scenarios\n• 4 investigators\n• 2 new neighborhoods\n• 2 threshold tiles\n• 2 Mystery tiles\n• 4 headline cards\n• 45 archive cards\n• 12 anomaly cards\n• 80 event cards\n• 54 encounter cards\n• 3 ally cards\n• 3 item cards\n• 2 spell cards\n• 18 special cards\n• 12 starting cards\n• 6 condition cards\n• 20 monster cards",
+    ["uk"] = "«Таємниці Ордену» — це доповнення, що повертає розслідування до класичного району Френч Хілл і веде ще далі — за межі нашої реальності, у страхітливий Підземний Світ. Один із найдавніших районів Аркгема, Френч Хілл приховує прадавні таємниці, можливих союзників і загадкові загрози. Тим часом у найглибшому шарі Країни Снів, по той бік завіси світу яви, лежить Підземний Світ — царство чудовиськ і безумства, куди наважуються ступити лише ті, кого штовхає відчай.\n• 3 сценарії\n• 4 дослідники\n• 2 нові райони\n• 2 пороги\n• 2 таємниці\n• 4 карт заголовків\n• 45 карт архіву\n• 12 карт аномалій\n• 80 карт подій\n• 54 карти зустрічей\n• 3 карти союзників\n• 3 карти предметів\n• 2 карти заклинань\n• 18 спеціальних карт\n• 12 початкових карт\n• 6 карт стану\n• 20 карти монстрів\n",
+  },
+  ["MM_addonDescription4_text"] = {
+    ["en"] = "Recursive Echoes is a print-and-play expansion for Arkham Horror that re-imagines four familiar investigators from the board game's core set. These \"echo\" investigators have been re-designed...",
+    ["uk"] = "Відлуння Минулого - це доповнення формату print-and-play, що по-новому переосмислює чотирьох знайомих дослідників із базового набору гри. Ці «відлуння» були заново переосмислені й отримали нові особливості, відкриваючи інший погляд на вже знайомих героїв…",
+  },
   ["MM_addonDescription_text"] = {
     ["en"] = "In Dead of Night, investigators explore the facets of Arkham best left unseen in the light of day. Organized crime builds a strong foothold in the city, secret cults labor for a dark master, an alien moon hangs overhead, and unknowable horrors stalk the night. This expansion includes two all-new scenarios, new encounters for every location in Arkham, new monsters and anomalies, and four new investigators to face these fresh horrors, armed with new spells, items and allies.\n• 2 scenarios\n• 4 investigators\n• 7 headline cards\n• 20 archive cards\n• 12 anomaly cards\n• 48 event cards\n• 72 encounter cards\n• 4 ally cards\n• 4 item cards\n• 4 spell cards\n• 28 special cards\n• 12 starting cards\n• 6 wanted condition cards\n• 22 monster cards\n• 15 new monsters",
     ["uk"] = "У доповненні «Нічний морок» гравці досліджують ті закутки Аркгема, куди страшно сунутися навіть удень. У місті процвітає організована злочинність, потаємні культи намагаються догодити своїм темним володарям, химерний місяць висить у небі, а десь у нічному мороці чаяться незбагненні жахіття. Це доповнення містить два нові сценарії, нові зустрічі для кожної зони Аркгема, нових монстрів і нові аномалії, а також чотирьох нових дослідників, готових протистояти жахам з новими предметами, заклинаннями та союзниками.\n• 2 сценарії\n• 4 дослідники\n• 7 карт заголовків\n• 20 карт архіву\n• 12 карт аномалій\n• 48 карт подій\n• 72 карти зустрічей\n• 4 карти союзників\n• 4 карти предметів\n• 4 карти заклинань\n• 28 спеціальних карт\n• 12 початкових карт\n• 6 карт стану розшукуваний\n• 22 карти монстрів\n• 15 нових монстрів",
+  },
+  ["MM_addonSummary1_text"] = {
+    ["en"] = "• 2 new scenarios\n• 4 new investigators\n• 238 new cards",
+    ["uk"] = "• 2 нові сценарії\n• 4 нові дослідники\n• 238 нових карт",
+  },
+  ["MM_addonSummary2_text"] = {
+    ["en"] = "• 4 new scenarios\n• 8 new investigators\n• 364 new cards",
+    ["uk"] = "• 4 нові сценарії\n• 8 нові дослідники\n• 364 нових карт",
+  },
+  ["MM_addonSummary3_text"] = {
+    ["en"] = "• 3 new scenarios\n• 4 new investigators\n• 260 new cards",
+    ["uk"] = "• 3 нові сценарії\n• 4 нові дослідники\n• 260 нових карт",
+  },
+  ["MM_addonSummary4_text"] = {
+    ["en"] = "• 4 variations for base investigators",
+    ["uk"] = "• 4 варіації для базових дослідників",
   },
   ["MM_addonSummary_text"] = {
     ["en"] = "• 2 new scenarios\n• 4 new investigators\n• 238 new cards",
@@ -125,6 +157,38 @@ I18N_DATA = {
   ["MM_player_numbers"] = {
     ["en"] = "Player numbers:",
     ["uk"] = "Кількість гравців:",
+  },
+  ["MM_scenario10_desc_text"] = {
+    ["en"] = "An unearthly melody floats through the crisp autumn air, all but imperceptible to the waking mind. In dreams, you visit a fantastical undersea city and revel in the glory of something massive, just beyond your sight.",
+    ["uk"] = "Неземна мелодія линe крізь прозоре осіннє повітря, майже непомітна для пробудженої свідомості. У снах ти відвідуєш фантастичне підводне місто й захоплено тішишся величчю чогось грандіозного — та прихованого за межею твого зору.",
+  },
+  ["MM_scenario10_name_text"] = {
+    ["en"] = "DREAMS OF R'LYEH",
+    ["uk"] = "Марення Р’льєху",
+  },
+  ["MM_scenario11_desc_text"] = {
+    ["en"] = "A plague of unquiet spirits washes over Arkham, creating a psychic disturbance that cannot be ignored. Trapped by an ancient pact, these lost souls must be freed from the ancient evil that binds them for eternity.",
+    ["uk"] = "Чума неприкаяних душ накриває Аркгем, породжуючи психічний розлад, який неможливо ігнорувати. Зв’язані древнім договором, ці загублені душі мають бути звільнені від зла, що тримає їх у вічному полоні.",
+  },
+  ["MM_scenario11_name_text"] = {
+    ["en"] = "BOUND TO SERVE",
+    ["uk"] = "Зв’язані Служити",
+  },
+  ["MM_scenario12_desc_text"] = {
+    ["en"] = "Ancient magic has torn through the veil that protects Arkham from the worlds beyond. Terrible creatures erupt from the Underworld to threaten all that you hold dear.",
+    ["uk"] = "Стародавня магія розірвала завісу, що захищала Аркгем від інших світів. Жахливі створіння вириваються з Підземного Cвіту, загрожуючи всьому, що тобі дороге.",
+  },
+  ["MM_scenario12_name_text"] = {
+    ["en"] = "THE DEAD CRY OUT",
+    ["uk"] = "Поклик Мертвих",
+  },
+  ["MM_scenario13_desc_text"] = {
+    ["en"] = "For eons, Yog-Sothoth has observed the universe from beyond time and beyond space. Content no longer simply to watch and wait, the Lurker at the Threshold stirs. Countless thralls labor to open the gate that locks the Ancient One outside of our universe.",
+    ["uk"] = "Протягом віків Йог-Сотот споглядав всесвіт з-за меж простору й часу. Але більше він не задовольняється спостереженням. Тінь за Порогом, прокидається. Безліч одержимих трудяться, щоб відчинити браму, яка стримує Прадавнього поза нашим всесвітом.",
+  },
+  ["MM_scenario13_name_text"] = {
+    ["en"] = "THE KEY AND THE GATE",
+    ["uk"] = "Ключ і Брама",
   },
   ["MM_scenario1_desc_text"] = {
     ["en"] = "At the center of infinity slumbers Azathoth, lulled to sleep by the ceaseless piping of accursed flutes. Yet some mortals would seek to draw the infinite power and calamity of the Blind Idiot God to them, and thereby doom all of humanity...",
@@ -174,6 +238,30 @@ I18N_DATA = {
     ["en"] = "SILENCE OF TSATHOGGUA",
     ["uk"] = "Мовчання Тсатгоґґуа",
   },
+  ["MM_scenario7_desc_text"] = {
+    ["en"] = "Deep beneath Devil Reef, the tyrants of Y'ha-nthlei rule the dark waves, yearning to surpass their ancient, mortal frames. They stir below the water, sending their Deep One progeny to corrupt the surface world.",
+    ["uk"] = "Глибоко під Рифом Диявола Тирани з Й’а-нтлея правлять темними хвилями, прагнучи перевершити свої давні, смертні оболонки. Вони ворушаться під водою, посилаючи своїх нащадків — Глибоководних — щоб занапастити світ на поверхні.",
+  },
+  ["MM_scenario7_name_text"] = {
+    ["en"] = "TYRANTS OF RUIN",
+    ["uk"] = "Тирани Загибелі",
+  },
+  ["MM_scenario8_desc_text"] = {
+    ["en"] = "In the mist-shrouded town of Kingsport, the elite prosper within a newly founded social group called the Lantern Club. In the alleys and gutters, people once reported missing reappear, bereft of their memories and mere shadows of their former selves.",
+    ["uk"] = "У вкритому туманом Кінгспорті еліта процвітає в новоствореному товаристві під назвою Клуб Ліхтаря. Тим часом у провулках і канавках знову з’являються люди, колись зниклі безвісти, — без спогадів і лише як тіні самих себе.",
+  },
+  ["MM_scenario8_name_text"] = {
+    ["en"] = "THE PALE LANTERN",
+    ["uk"] = "Блідий Ліхтар",
+  },
+  ["MM_scenario9_desc_text"] = {
+    ["en"] = "Ithaqua the Wind-Walker lurks in the frozen north. He is the cold wind that creeps into the soul, and the hungry ice that entombs the unwary. Forsaken and alone, Ithaqua spreads his influence in the cruel hope that he might beget a terrible progeny - a new scion that could overcome even the elder gods.",
+    ["uk"] = "Ітаква, той, що блукає вітрами, у крижаній півночі. Він — холодний подих, що просочується в душу, і ненаситна крига, що ховає необачних у крижаній могилі. Забутий і самотній, Ітаква поширює свій вплив у жорстокій надії породити жахливе потомство — нового нащадка, здатного перевершити навіть  давніх богів.",
+  },
+  ["MM_scenario9_name_text"] = {
+    ["en"] = "ITHAQUA'S CHILDREN",
+    ["uk"] = "Діти Ітакви",
+  },
   ["MM_select_scenario"] = {
     ["en"] = "Select Scenario",
     ["uk"] = "ОБРАТИ СЦЕНАРІЙ",
@@ -193,6 +281,14 @@ I18N_DATA = {
   ["MM_text_addon2_text"] = {
     ["en"] = "Under Dark Waves",
     ["uk"] = "Під Темними Хвилями",
+  },
+  ["MM_text_addon3_text"] = {
+    ["en"] = "Secrets of the Order",
+    ["uk"] = "Таємниці Ордену",
+  },
+  ["MM_text_addon4_text"] = {
+    ["en"] = "Recursive Echoes",
+    ["uk"] = "Відлуння Минулого",
   },
   ["MM_toggleAddon_text"] = {
     ["en"] = "Add / Remove",

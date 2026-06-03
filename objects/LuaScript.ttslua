@@ -4,6 +4,7 @@ require("Global/i18nData")
 serpent = require("util/serpent")
 local translationService = require("util/TranslationService")
 isTestMode = false
+local scenarioNumbers = 13
 
 -- /execute local c=Player.White;local s=c.getSelectedObjects()[1];local h=c.getHoverObject();if s and h then log("g="..h.getGUID().."\npos="..serpent.tts(s.positionToLocal(h.getPosition())).." rot="..serpent.tts(s.positionToLocal(h.getRotation()))) end
 -- /execute local c=Player.White;local h=c.getHoverObject();if h then log("g="..h.getGUID().."\npos="..serpent.tts(h.getPosition()).." rot="..serpent.tts(h.getRotation())) end
@@ -1513,7 +1514,7 @@ function proceedStartGame()
 end
 
 function chooseScenario(player, alt, id)
-  for i = 1, 6, 1 do
+  for i = 1, scenarioNumbers, 1 do
     self.UI.setAttribute('scenario_panel' .. i, 'color', 'clear')
   end
   self.UI.setAttribute('scenario_panel' .. id:match("%d+"), 'color', '#ffffff22')
@@ -1532,9 +1533,9 @@ function chooseAddon(player, alt, id)
   local id = tonumber(id:match("%d+"))
   currentAddon = id
   self.UI.setAttribute('addonTitle', 'text', addons[id].title)
-  self.UI.setAttribute('addonImage', 'image', id)
-  self.UI.setAttribute('addonSummary', 'text', addons[id].summary)
-  self.UI.setAttribute('addonDescription', 'text', addons[id].description)
+  self.UI.setAttribute('addonImage', 'image', "addon"..id)
+  self.UI.setAttribute('MM_addonSummary_text', 'text', i18n.getStrById("MM_addonSummary" .. id .. "_text"))
+  self.UI.setAttribute('MM_addonDescription_text', 'text', i18n.getStrById("MM_addonDescription" .. id .. "_text"))
 end
 
 function inProgress(player, alt, id)
