@@ -61,7 +61,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"locations\":[\"Marsh Refinery\",\"Falcon Point\",\"Gilman House\"],\"name\":\"Innsmouth Shore\",\"startPosition\":{\"x\":0.2782117952853441,\"y\":1.00000190734863,\"z\":-0.8864626288414},\"structureType\":\"2\",\"type\":\"Neighborhood\"}",
+  "Memo": "{\"locations\":[\"Esoteric Order of Dagon\",\"First National Grocery\",\"Innsmouth Jail\"],\"name\":\"Innsmouth Village\",\"startPosition\":{\"x\":0.2782117952853441,\"y\":1.00000190734863,\"z\":-0.754606246948242},\"structureType\":\"1\",\"type\":\"Neighborhood\"}",
   "Name": "Custom_Model",
   "Nickname": "",
   "Snap": true,
