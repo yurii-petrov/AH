@@ -3,6 +3,7 @@ import sys
 from pathlib import Path
 from slpp import slpp as lua
 
+OUTPUT_DIR = Path("result")
 RESULT_JSON = "result.json"
 RESULT_LUA = "result.lua"
 
@@ -60,16 +61,21 @@ def detect_json(text):
     except:
         return False
 
+def get_guid(obj):
+    return obj.get("GUID", "unknown")
 
 def process_json(file_path):
     obj = json.loads(read(file_path))
 
+    guid = get_guid(obj)
+
     memo = json.loads(obj["Memo"])
 
-    lua = "memo = " + to_lua(memo)
+    lua = "memo=" + to_lua(memo)
 
-    write(RESULT_LUA, lua)
-    print("JSON → Lua (Memo only)")
+    output_file = OUTPUT_DIR / f"{guid}.lua"
+    write(output_file, lua)
+    print(f"JSON → Lua ({guid})")
 
 def process_lua(file_path):
     lua_raw = read(file_path)
