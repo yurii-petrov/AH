@@ -3361,6 +3361,14 @@ function prepareScenarioDecks(scenarioData)
 
   local eventDeck = nil
 
+  local allowedCustomModelTypes = {
+    ["Neighborhood"] = true,
+    ["Street"] = true,
+    ["Travel Routes"] = true,
+    ["Threshold"] = true,
+    ["Mystery"] = true
+  }
+
   for _, obj in ipairs(getObjects()) do
     local memo = parseJson(obj.memo)
     if memo then
@@ -3376,7 +3384,7 @@ function prepareScenarioDecks(scenarioData)
         else
           table.insert(moveObj.toBox, obj.getGUID())
         end
-      elseif memo.type == "Neighborhood" or memo.type == "Street" then
+      elseif allowedCustomModelTypes[memo.type] then
         lockSetupScenarioComponents(obj, scenarioData.tiles)
         -- scenarioData.tiles
       elseif obj.type == "Deck" then
