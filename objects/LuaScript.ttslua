@@ -161,7 +161,8 @@ local mythosTokenBagIds = {
   [MythosCup.ReadHeadline] = "c2adec",
   [MythosCup.GateBurst] = "3a385c",
   [MythosCup.Reckoning] = "2fb57a",
-  [MythosCup.Blank] = "3a847f"
+  [MythosCup.Blank] = "3a847f",
+  [MythosCup.Terror] = "77ae04"
 }
 
 -- ╭──────────────────────────────────────────────╮
@@ -2038,8 +2039,8 @@ function onClickEncounter(obj, playerColor)
     local currentCardPos = mythosTile.positionToWorld({0.084, 0.113, 0.278})
 
     local deck = nil
-    if string.lower(data.type) == "street" then
-      deck = getDeckFromScenarioMat("Encounter", "The streets", true)
+    if string.lower(data.type) == "street" or string.lower(data.type) == "mystery" then
+      deck = getDeckFromScenarioMat("Encounter", string.lower(data.type) == "street" and "The streets" or data.name, true)
       if data.name then
         local txt = string.gsub(data.name, "%d+", "")
         broadcastToAll("\n" .. txt, "White")
@@ -2113,7 +2114,7 @@ function onClickEncounter(obj, playerColor)
           break
         end
 
-      elseif data.type == "Street" then
+      elseif data.type == "Street" or data.type == "Mystery" then
         showCardInActiveSpace(data, o)
         return
       end
@@ -2195,7 +2196,7 @@ function onItemMatDestruct(o)
   if not oData then
     return
   end
-  discardTile(nil, o, oData)
+  discardTile(nil, o, oData, true)
 end
 
 function getObjectsInPlayerZone(playerColor)
@@ -2771,6 +2772,8 @@ function prepareLanguageBag(bag)
                 memo.type == "dark pact"
                 or memo.type == "blessed cursed"
                 or memo.type == "archive"
+                or memo.type == "driven fatigued"
+                or memo.type == "tainted"
               ))
             then
               o2.setRotation({0, 180, 0})
