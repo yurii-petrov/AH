@@ -1,0 +1,61 @@
+--serpent = require("util/serpent")
+
+local data = {
+	money = 0,
+	maxMoney = 99
+}
+
+-- це все не працювало
+function onLoad(savedData)
+	local sData = parseJson(savedData)
+	if sData then
+	  data = sData
+	end
+
+	updateTile()
+  end
+
+  function onSave()
+	local saveData = JSON.encode(data)
+	return saveData
+  end
+
+function money(player, alt_click, id)
+	if alt_click == "-1" then
+		if data.maxMoney and data.money < data.maxMoney then data.money = data.money + 1 end
+	elseif alt_click == "-2" then
+		if data.money > 0 then data.money = data.money - 1 end
+	end
+	updateTile()
+end
+
+function setData(d)
+	data.money = 0
+	data.maxMoney = 99
+	updateTile()
+end
+
+function updateTile()
+	self.UI.setAttribute('money', 'text', data.money)
+	self.UI.setAttribute('money', 'textColor', '#fff5e2')
+end
+
+function ItemMatDestruct()
+	Global.call("onItemMatDestruct", self)
+end
+
+function parseJson(memo)
+  if not memo or type(memo) ~= "string" then
+    return nil
+  end
+
+  local success, result = pcall(function()
+    return JSON.decode(memo)
+  end)
+
+  if success then
+    return result
+  else
+    return nil
+  end
+end

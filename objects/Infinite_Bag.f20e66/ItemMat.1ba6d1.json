@@ -46,7 +46,7 @@
   "Description": "",
   "DragSelectable": true,
   "GMNotes": "",
-  "GUID": "f2ba55",
+  "GUID": "1ba6d1",
   "Grid": true,
   "GridProjection": false,
   "Hands": false,
@@ -54,11 +54,11 @@
   "IgnoreFoW": false,
   "LayoutGroupSortIndex": 0,
   "Locked": false,
-  "LuaScript": "",
-  "LuaScriptState": "",
+  "LuaScriptState": "{\"maxMoney\":99,\"money\":0}",
+  "LuaScript_path": "Infinite_Bag.f20e66/ItemMat.1ba6d1.ttslua",
   "MeasureMovement": false,
   "Name": "Custom_Tile",
-  "Nickname": "",
+  "Nickname": "Item Mat",
   "Snap": true,
   "Sticky": true,
   "Tags": [
@@ -66,16 +66,16 @@
   ],
   "Tooltip": true,
   "Transform": {
-    "posX": 71.211,
-    "posY": 4.058,
-    "posZ": 72.84,
-    "rotX": 1,
-    "rotY": 180,
-    "rotZ": 3,
+    "posX": -16.97,
+    "posY": 4.071,
+    "posZ": 36.981,
+    "rotX": 359,
+    "rotY": 0,
+    "rotZ": 358,
     "scaleX": 1.8,
     "scaleY": 1,
     "scaleZ": 1.84
   },
   "Value": 0,
-  "XmlUI_path": "Infinite_Bag.f20e66/Custom_Tile.f2ba55.xml"
+  "XmlUI_path": "Infinite_Bag.f20e66/ItemMat.1ba6d1.xml"
 }

@@ -148,6 +148,7 @@ local figure3dBagId = "50c60d"
 local activationTokenBagId = "2f7335"
 local activationLiderTokenBagId = "1a067e"
 local itemMatBagId = "855d0e"
+local itemMatBag2Id = "f20e66"
 local whiteTokenBagId = "b84d40"
 local blueTokenBagId = "40bae0"
 local redTokenBagId = "fe6c51"
@@ -1275,56 +1276,66 @@ if objData.number == 59 and gameData.isStarted and gameData.scenarioData.name ==
 end
 
 function onItemDrop(colorName, object, objectData)
-  if not objectData.hp and not objectData.sp then
-    return
-  end
 
-  local foundObjects = downCast(object, 10, nil, 1)
-  local itemsMat = nil
-  for _, obj in pairs(foundObjects) do
-    if obj.memo then
-      if obj.memo == "Items Mat" then
-        itemsMat = obj
-        break
+  local function attachItemToMat(object, objectData, bagId)
+    local foundObjects = downCast(object, 10, nil, 1)
+    local itemsMat = nil
+    for _, obj in pairs(foundObjects) do
+      if obj.memo then
+        if obj.memo == "Items Mat" then
+          itemsMat = obj
+          break
+        end
       end
     end
-  end
 
-  if not itemsMat then
-    return
-  end
+    if not itemsMat then
+      return
+    end
 
-  local itemMatBag = getObjectFromGUID(itemMatBagId)
+    local itemMatBag = getObjectFromGUID(bagId)
 
-  if not itemMatBag then
-    return
-  end
+    if not itemMatBag then
+      return
+    end
 
-  local itemMatP = itemsMat.positionToWorld({0.540, 0.200, -0.034})
-  local itemMat = itemMatBag.takeObject({
-    index = 0,
-    position = object.getPosition():setAt("y", 2.21):setAt("z", itemMatP.z),
-    rotation = {0, 180, 0},
-    smooth = false
-  })
+    local itemMatP = itemsMat.positionToWorld({0.540, 0.200, -0.034})
+    local itemMat = itemMatBag.takeObject({
+      index = 0,
+      position = object.getPosition():setAt("y", 2.21):setAt("z", itemMatP.z),
+      rotation = {0, 180, 0},
+      smooth = false
+    })
 
-  object.setLock(true)
-  object.setRotation({0, 180, 0})
-  object.setPosition(itemMat.positionToWorld({0, 0, -0.154}):setAt("y", 2.31))
+    object.setLock(true)
+    object.setRotation({0, 180, 0})
+    object.setPosition(itemMat.positionToWorld({0, 0, -0.154}):setAt("y", 2.31))
 
-  itemMat.addAttachment(object)
-  itemMat.memo = JSON.encode({
-    type = "Item Mat"
-  })
+    itemMat.addAttachment(object)
+    itemMat.memo = JSON.encode({
+      type = "Item Mat"
+    })
 
-  runAfterRest(itemMat, function(itemMat)
-    Wait.time(function()
-      itemMat.call("setData", objectData)
+    runAfterRest(itemMat, function(itemMat)
       Wait.time(function()
         itemMat.call("setData", objectData)
+        Wait.time(function()
+          itemMat.call("setData", objectData)
+        end, 0.2)
       end, 0.2)
-    end, 0.2)
-  end)
+    end)
+  end
+
+  if not objectData.hp and not objectData.sp then
+
+      if objectData.guaranteed and objectData.guaranteed == true and objectData.investigator and objectData.investigator == "Preston Fairmont" then
+        attachItemToMat(object, objectData, itemMatBag2Id)
+      end
+
+    return
+  end
+
+  attachItemToMat(object, objectData, itemMatBagId)
 end
 
 function onInvestigatorDrop(colorName, object, objectData, isIgnoreRandomCard)
