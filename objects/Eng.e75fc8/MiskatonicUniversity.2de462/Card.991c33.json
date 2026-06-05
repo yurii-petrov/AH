@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"neighborhood\": \"Miskatonic University\", \"type\": \"encounter\"}",
+  "Memo": "{\"neighborhood\":\"Miskatonic University\",\"type\":\"encounter\"}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,

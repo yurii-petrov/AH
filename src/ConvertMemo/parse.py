@@ -4,9 +4,6 @@ from pathlib import Path
 from slpp import slpp as lua
 
 OUTPUT_DIR = Path("result")
-RESULT_JSON = "result.json"
-RESULT_LUA = "result.lua"
-
 
 def read(path):
     return Path(path).read_text(encoding="utf-8")
@@ -65,37 +62,29 @@ def get_guid(obj):
     return obj.get("GUID", "unknown")
 
 def process_json(file_path):
-    obj = json.loads(read(file_path))
+    try:
+        obj = json.loads(read(file_path))
 
-    guid = get_guid(obj)
+        memo_raw = obj.get("Memo")
+        if not memo_raw:
+            print(f"Skip (no Memo): {file_path.name}")
+            return
 
-    memo = json.loads(obj["Memo"])
+        guid = get_guid(obj)
 
-    lua = "memo=" + to_lua(memo)
+        memo = json.loads(memo_raw)
 
-    output_file = OUTPUT_DIR / f"{guid}.lua"
-    write(output_file, lua)
-    print(f"JSON → Lua ({guid})")
+        lua_content = "memo=" + to_lua(memo)
 
-def process_lua(file_path):
-    lua_raw = read(file_path)
+        output_file = OUTPUT_DIR / f"{file_path.stem}.lua"
+        
+        write(output_file, lua_content)
 
-    lua_clean = strip_memo_prefix(lua_raw)
+        print(f"JSON → Lua ({guid})")
 
-    memo_obj = lua.decode(lua_clean)
-
-    memo_str = json.dumps(
-        memo_obj,
-        ensure_ascii=False,
-        separators=(",", ":")  # optional minify
-    )
-
-    obj = {
-        "Memo": memo_str
-    }
-
-    write(RESULT_JSON, json.dumps(obj, indent=2, ensure_ascii=False))
-    print("Lua → JSON (Memo only)")
+    except Exception as e:
+        print(f"Failed: {file_path.name}")
+        print(e)
 
 def strip_memo_prefix(lua_text):
     import re
@@ -139,14 +128,21 @@ def minify_lua(lua_text):
     return "".join(result)
 
 def main():
-    file_path = sys.argv[1]
-    raw = read(file_path)
+    print("SCRIPT STARTED")
 
-    if detect_json(raw):
-        process_json(file_path)
-    else:
-        process_lua(file_path)
+    OUTPUT_DIR.mkdir(exist_ok=True)
 
+    current_dir = Path.cwd()
+    project_root = current_dir.parents[2]
 
+    objects_dir = project_root / "AH/objects"
+
+    json_files = sorted(objects_dir.rglob("*.json"))
+
+    print(f"Found {len(json_files)} json file(s)\n")
+
+    for json_file in json_files:
+        process_json(json_file)
+        
 if __name__ == "__main__":
     main()

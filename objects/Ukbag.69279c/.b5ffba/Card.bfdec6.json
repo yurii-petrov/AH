@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"type\": \"anomaly\"}",
+  "Memo": "{\"type\":\"anomaly\"}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,

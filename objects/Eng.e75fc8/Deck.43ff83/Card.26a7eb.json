@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"type\": \"headline\"}",
+  "Memo": "{\"type\":\"headline\"}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,

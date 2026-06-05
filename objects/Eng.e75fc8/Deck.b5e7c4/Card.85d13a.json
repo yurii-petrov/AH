@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"investigator\": \"Dexter Drake\", \"type\": \"starting\", \"guaranteed\": true}",
+  "Memo": "{\"investigator\":\"Dexter Drake\",\"type\":\"starting\",\"guaranteed\":true}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,

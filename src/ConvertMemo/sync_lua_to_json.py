@@ -45,10 +45,10 @@ def get_guid(lua_path: Path) -> str:
     return lua_path.stem
 
 
-def find_object(guid: str, objects_dir: Path):
+def find_object(name: str, objects_dir: Path):
     return [
-        f for f in objects_dir.glob("*.json")
-        if f".{guid}." in f.name
+        f for f in objects_dir.rglob("*.json")
+        if f.stem == name
     ]
 
 
@@ -64,17 +64,17 @@ def main():
     print(f"Found {len(lua_files)} lua file(s)\n")
 
     for lua_file in lua_files:
-        guid = get_guid(lua_file)
-        matches = find_object(guid, objects_dir)
+        name = lua_file.stem
+        matches = find_object(name, objects_dir)
 
-        print(f"[{lua_file.name}] -> GUID: {guid}")
+        print(f"[{lua_file.name}] -> NAME: {name}")
 
         if not matches:
             print("  ❌ No match\n")
             continue
 
         for m in matches:
-            print(f"  ✅ {m.name}")
+            # print(f"  ✅ {m.name}")
             update_memo_in_json(m, lua_file)
 
         print()

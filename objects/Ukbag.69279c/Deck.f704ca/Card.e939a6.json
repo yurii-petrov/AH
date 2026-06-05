@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"investigator\": \"Calvin Wright\", \"type\": \"starting\", \"guaranteed\": true, \"hp\": 2, \"sp\": 2, \"unbreakable\": true}",
+  "Memo": "{\"investigator\":\"Calvin Wright\",\"type\":\"starting\",\"guaranteed\":true,\"hp\":2,\"sp\":2,\"unbreakable\":true}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,

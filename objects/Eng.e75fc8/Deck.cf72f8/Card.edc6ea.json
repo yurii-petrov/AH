@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"hp\":2,\"investigator\":\"Wendy Adams alt\",\"sp\":2,\"type\":\"starting\", \"guaranteed\": true}",
+  "Memo": "{\"hp\":2,\"investigator\":\"Wendy Adams alt\",\"sp\":2,\"type\":\"starting\",\"guaranteed\":true}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,
