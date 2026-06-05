@@ -1157,6 +1157,9 @@ function onObjectDrop(colorName, object)
             elseif objMemo and objMemo.type and string.lower(objMemo.type) == string.lower("Scenario") then
               isFoundScenarioSheet = true
               break
+            elseif objMemo and objMemo.type and string.lower(objMemo.type) == string.lower("Mystery") then
+              isFoundScenarioSheet = true
+              break
             end
           end
         end
@@ -2622,11 +2625,13 @@ function addConditionMat2()
       }
     }, {
       Position = {
+        type = "tainted",
         x = -0.030,
         y = 0.100,
         z = 0.004
       }
     }, {
+      type = "driven fatigued",
       Position = {
         x = -1.29,
         y = 0.100,
@@ -3288,6 +3293,16 @@ function prepareScenarioDecks(scenarioData)
       type = "wanted",
       pos = conditionMat2.positionToWorld(conditionMat2Data.snps[1].Position):setAt("y", 3)
     })
+
+    addDeck({
+      type = "tainted",
+      pos = conditionMat2.positionToWorld(conditionMat2Data.snps[2].Position):setAt("y", 3)
+    })
+
+    addDeck({
+      type = "driven fatigued",
+      pos = conditionMat2.positionToWorld(conditionMat2Data.snps[3].Position):setAt("y", 3)
+    })
   else
     local box = getObjectFromGUID(boxId)
     if box then
@@ -3362,11 +3377,11 @@ function prepareScenarioDecks(scenarioData)
   local eventDeck = nil
 
   local allowedCustomModelTypes = {
-    ["Neighborhood"] = true,
-    ["Street"] = true,
-    ["Travel Routes"] = true,
-    ["Threshold"] = true,
-    ["Mystery"] = true
+    ["neighborhood"] = true,
+    ["street"] = true,
+    ["travel routes"] = true,
+    ["threshold"] = true,
+    ["mystery"] = true
   }
 
   for _, obj in ipairs(getObjects()) do
@@ -3384,7 +3399,7 @@ function prepareScenarioDecks(scenarioData)
         else
           table.insert(moveObj.toBox, obj.getGUID())
         end
-      elseif allowedCustomModelTypes[memo.type] then
+      elseif memo.type and allowedCustomModelTypes[string.lower(memo.type)] then
         lockSetupScenarioComponents(obj, scenarioData.tiles)
         -- scenarioData.tiles
       elseif obj.type == "Deck" then
@@ -3426,6 +3441,10 @@ function prepareScenarioDecks(scenarioData)
               position = position,
               lock = false
             })
+          else
+            if scenarioMatData.supportedDeckTypes[memo.type] then
+              table.insert(moveObj.toBox, obj.guid)
+            end
           end
         end
       end
@@ -4578,6 +4597,8 @@ function lockSetupScenarioComponents(obj, scenarioTiles)
       else
         box.putObject(obj)
       end
+    else
+        box.putObject(obj)
     end
   end
 end
