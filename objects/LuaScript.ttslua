@@ -1173,6 +1173,107 @@ function onObjectDrop(colorName, object)
   end
 end
 
+function onObjectLeaveContainer(container, object)
+    local objectData = parseJson(object.memo)
+    if object.memo and not objectData then
+      objectData = {
+        type = object.memo
+      }
+    end
+
+    if not objectData then
+      return
+    end
+    
+    if objectData.type == "codex" then
+    handleCardContextType(object, objectData)
+    end
+end
+
+function context59ReturnBridge(obj, player_color)
+
+  obj.clearButtons()
+
+  local locationMat = getObjectFromGUID(locationMatId)
+  if not locationMat then
+    return
+  end
+
+  local objs = upCast(locationMat, 1, nil, 1)
+  if not objs then
+    return
+  end
+
+  local bridge = nil
+  for _, o in ipairs(objs) do
+    local data = parseJson(o.memo)
+    if data and data.name == "Bridge2" and data.type == "Street" then
+      bridge = o
+      break
+    end
+  end
+
+  if not bridge then
+    print("It looks like the bridge is already returned.")
+    return 
+  end
+
+  bridge.setLock(false)
+  bridge.interactable = true
+  bridge.drag_selectable = true
+  bridge.gizmo_selectable = true
+
+  bridge.highlightOn("Red", 1.5)
+
+  Wait.time(function()
+    local box = getObjectFromGUID(boxId)
+    if not box then
+      return
+    end
+
+    box.putObject(bridge)
+    
+  end, 1.5)
+
+end
+
+function handleCardContextType(obj, objData)
+if objData.number == 59 and gameData.isStarted and gameData.scenarioData.name == "SoT" then
+    local locationMat = getObjectFromGUID(locationMatId)
+    if not locationMat then
+      return
+    end
+
+    local objs = upCast(locationMat, 1, nil, 1)
+    if not objs then
+      return
+    end
+
+    local bridge = nil
+    for _, o in ipairs(objs) do
+      local data = parseJson(o.memo)
+      if data and data.name == "Bridge2" and data.type == "Street" then
+        bridge = o
+        break
+      end
+    end
+
+    if not bridge then
+      return 
+    end
+
+    obj.createButton({
+      label = "Повернути міст",
+      click_function = "context59ReturnBridge",
+      function_owner = self,
+      position = {0, 0.3, 2},
+      width = 1000,
+      height = 300,
+      font_size = 120
+    })
+  end
+end
+
 function onItemDrop(colorName, object, objectData)
   if not objectData.hp and not objectData.sp then
     return
