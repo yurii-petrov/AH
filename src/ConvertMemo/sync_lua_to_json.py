@@ -1,83 +1,101 @@
 import re
 import json
 from pathlib import Path
+from collections import defaultdict
 from slpp import slpp as lua
 
 
-def strip_memo_prefix(lua_text: str) -> str:
-    return re.sub(r'^\s*[Mm]emo\s*=\s*', '', lua_text).strip()
+# ---------- PATHS ----------
+PROJECT_ROOT = Path.cwd().parents[2]
+OBJECTS_DIR = PROJECT_ROOT / "AH" / "objects"
+LUA_DIR = PROJECT_ROOT / "AH" / "src" / "ConvertMemo" / "objects"
+
+
+# ---------- HELPERS ----------
+def strip_data_prefix(lua_text: str) -> str:
+    return re.sub(r'^\s*data\s*=\s*', '', lua_text).strip()
 
 
 def escape_for_json_string(s: str) -> str:
     return s.replace('\\', '\\\\').replace('"', '\\"')
 
 
+# ---------- BUILD INDEX (IMPORTANT SPEED OPTIMIZATION) ----------
+def build_json_index(objects_dir: Path):
+    index = defaultdict(list)
+
+    for f in objects_dir.rglob("*.json"):
+        index[f.stem].append(f)
+
+    return index
+
+
+# ---------- CORE UPDATE ----------
 def update_memo_in_json(json_path: Path, lua_file: Path):
-    lua_raw = lua_file.read_text(encoding="utf-8")
-    lua_clean = strip_memo_prefix(lua_raw)
+    try:
+        lua_raw = lua_file.read_text(encoding="utf-8")
+        lua_clean = strip_data_prefix(lua_raw)
 
-    memo_obj = lua.decode(lua_clean)
+        data_obj = lua.decode(lua_clean)
+        memo_obj = data_obj.get("memo")
 
-    # правильний JSON string (як у TTS)
-    memo_json = json.dumps(
-        memo_obj,
-        ensure_ascii=False,
-        separators=(",", ":")
-    )
+        if memo_obj is None:
+            return
 
-    # важливо: escape для JSON FIELD STRING
-    memo_json_escaped = escape_for_json_string(memo_json)
+        memo_json = json.dumps(
+            memo_obj,
+            ensure_ascii=False,
+            separators=(",", ":")
+        )
 
-    text = json_path.read_text(encoding="utf-8")
+        memo_json_escaped = escape_for_json_string(memo_json)
 
-    updated_text = re.sub(
-        r'("Memo"\s*:\s*")((?:\\.|[^"\\])*)(")',
-        lambda m: m.group(1) + memo_json_escaped + m.group(3),
-        text
-    )
+        text = json_path.read_text(encoding="utf-8")
 
-    json_path.write_text(updated_text, encoding="utf-8")
+        updated_text = re.sub(
+            r'("Memo"\s*:\s*")((?:\\.|[^"\\])*)(")',
+            lambda m: m.group(1) + memo_json_escaped + m.group(3),
+            text
+        )
 
-    print(f"Updated Memo → {json_path.name}")
+        json_path.write_text(updated_text, encoding="utf-8")
 
+        print(f"Updated → {json_path.name}")
 
-def get_guid(lua_path: Path) -> str:
-    return lua_path.stem
-
-
-def find_object(name: str, objects_dir: Path):
-    return [
-        f for f in objects_dir.rglob("*.json")
-        if f.stem == name
-    ]
+    except Exception as e:
+        print(f"FAILED {json_path.name}: {e}")
 
 
+# ---------- MAIN ----------
 def main():
-    current_dir = Path.cwd()
-    project_root = current_dir.parents[2]
+    print("SCRIPT START")
 
-    objects_dir = project_root / "AH/objects"
-    lua_dir = Path("result")
+    LUA_DIR.mkdir(parents=True, exist_ok=True)
 
-    lua_files = list(lua_dir.glob("*.lua"))
+    lua_files = list(LUA_DIR.rglob("*.lua"))
+    print(f"Lua files: {len(lua_files)}")
 
-    print(f"Found {len(lua_files)} lua file(s)\n")
+    print("Indexing JSON files...")
+    json_index = build_json_index(OBJECTS_DIR)
+    print(f"Indexed keys: {len(json_index)}")
 
     for lua_file in lua_files:
         name = lua_file.stem
-        matches = find_object(name, objects_dir)
 
-        print(f"[{lua_file.name}] -> NAME: {name}")
+        matches = json_index.get(name, [])
+
+        print(f"[{lua_file.name}] -> {name}")
 
         if not matches:
-            print("  ❌ No match\n")
+            print("  ❌ No match")
             continue
 
-        for m in matches:
-            # print(f"  ✅ {m.name}")
-            update_memo_in_json(m, lua_file)
+        for json_file in matches:
+            update_memo_in_json(json_file, lua_file)
 
         print()
+
+    print("DONE")
 
 
 if __name__ == "__main__":

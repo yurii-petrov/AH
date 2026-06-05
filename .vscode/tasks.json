@@ -11,9 +11,9 @@
           "main.go",
           "--moddir=${workspaceFolder}",
           "--modfile=${env:USERPROFILE}\\Documents\\My Games\\Tabletop Simulator\\Saves\\ArkhamHorror.json"
-        ],
+        ]
       },
-      "osx":{
+      "osx": {
         "args": [
           "run",
           "main.go",
@@ -21,7 +21,7 @@
           "${workspaceFolder}",
           "-modfile",
           "${userHome}/Library/Tabletop Simulator/Saves/ArkhamHorror.json"
-        ],
+        ]
       },
       "options": {
         "cwd": "${workspaceFolder}${pathSeparator}..${pathSeparator}TTSModManager"
@@ -32,6 +32,7 @@
         "isDefault": true
       }
     },
+
     {
       "label": "Arkham Horror: Decompose",
       "type": "shell",
@@ -43,9 +44,9 @@
           "--moddir=${workspaceFolder}",
           "--modfile=${env:USERPROFILE}\\Documents\\My Games\\Tabletop Simulator\\Saves\\ArkhamHorror.json",
           "--reverse"
-        ],
+        ]
       },
-      "osx":{
+      "osx": {
         "args": [
           "run",
           "main.go",
@@ -54,11 +55,61 @@
           "-modfile",
           "${userHome}/Library/Tabletop Simulator/Saves/ArkhamHorror.json",
           "-reverse"
-        ],
+        ]
       },
       "options": {
         "cwd": "${workspaceFolder}${pathSeparator}..${pathSeparator}TTSModManager"
       },
+      "problemMatcher": []
+    },
+
+    {
+      "label": "Arkham Horror: Sync Lua → JSON",
+      "type": "shell",
+
+      "windows": {
+        "command": "${workspaceFolder}\\.venv\\Scripts\\python.exe",
+        "args": [
+          "${workspaceFolder}\\src\\ConvertMemo\\sync_lua_to_json.py"
+        ]
+      },
+
+      "osx": {
+        "command": "${workspaceFolder}/.venv/bin/python",
+        "args": [
+          "${workspaceFolder}/src/ConvertMemo/sync_lua_to_json.py"
+        ]
+      },
+
+      "options": {
+        "cwd": "${workspaceFolder}/src/ConvertMemo"
+      },
+
+      "problemMatcher": []
+    },
+
+    {
+      "label": "Arkham Horror: Parse Memo",
+      "type": "shell",
+
+      "windows": {
+        "command": "${workspaceFolder}\\.venv\\Scripts\\python.exe",
+        "args": [
+          "${workspaceFolder}\\src\\ConvertMemo\\parse.py"
+        ]
+      },
+
+      "osx": {
+        "command": "${workspaceFolder}/.venv/bin/python",
+        "args": [
+          "${workspaceFolder}/src/ConvertMemo/parse.py"
+        ]
+      },
+
+      "options": {
+        "cwd": "${workspaceFolder}/src/ConvertMemo"
+      },
+
       "problemMatcher": []
     }
   ]

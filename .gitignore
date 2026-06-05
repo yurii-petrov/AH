@@ -1,4 +1,4 @@
 .tts/
 TTSModManager.exe
 .venv/
-result/
+src/ConvertMemo/objects/
