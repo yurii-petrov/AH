@@ -68,7 +68,7 @@
       "type": "shell",
 
       "windows": {
-        "command": "${workspaceFolder}\\.venv\\Scripts\\python.exe",
+        "command": "py",
         "args": [
           "${workspaceFolder}\\src\\ConvertMemo\\sync_lua_to_json.py"
         ]
@@ -93,7 +93,7 @@
       "type": "shell",
 
       "windows": {
-        "command": "${workspaceFolder}\\.venv\\Scripts\\python.exe",
+        "command": "py",
         "args": [
           "${workspaceFolder}\\src\\ConvertMemo\\parse.py"
         ]
