@@ -13,7 +13,7 @@
   "ContainedObjects_order": [
     "MonsterMat.f50cd9"
   ],
-  "ContainedObjects_path": "Infinite_Bag.d96088",
+  "ContainedObjects_path": "Monster.d96088",
   "Description": "",
   "DragSelectable": true,
   "GMNotes": "",
@@ -31,7 +31,7 @@
   "MeasureMovement": false,
   "MeshIndex": -1,
   "Name": "Infinite_Bag",
-  "Nickname": "",
+  "Nickname": "Monster",
   "Snap": true,
   "Sticky": true,
   "Tooltip": true,

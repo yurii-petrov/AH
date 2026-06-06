@@ -139,6 +139,7 @@ local clueBagId = "5e5b58"
 local mythosBagId = "106418"
 local reckoningBagId = "2fb57a"
 local monsterMatBagId = "d96088"
+local doubleSidedMatBagId = "5ed3b3"
 local remnantBagId = "5ab73d"
 local investigatorMatBagId = "774898"
 local cardMatBagId = "fe8d29"
@@ -1132,6 +1133,8 @@ function onObjectDrop(colorName, object)
   if objectData.type == "Monster" or (objectData.role and objectData.role == "Monster") then
     onMonsterDrop(colorName, object, objectData)
     return
+  elseif objectData.type == "DoubleSided" then
+    onDoubleSidedDrop(colorName, object, objectData)
   elseif objectData.type == "Investigator" then
     onInvestigatorDrop(colorName, object, objectData)
   elseif objectData.type == "item" or objectData.type == "spell" or objectData.type == "ally" or objectData.type ==
@@ -1458,6 +1461,67 @@ function onInvestigatorDrop(colorName, object, objectData, isIgnoreRandomCard)
     end
     --   end
   end)
+end
+
+function onDoubleSidedDrop(colorName, object, objectData)
+  local foundObjects = downCast(object, 10, nil, 1)
+  local doubleSidedMat = nil
+  for _, obj in pairs(foundObjects) do
+    if obj.memo then
+      if obj.memo == "Double Sided Mat" and #obj.getAttachments() <= 0 then
+        doubleSidedMat = obj
+        break
+      end
+    end
+  end
+
+  if not doubleSidedMat or not objectData.front then
+    return
+  end
+
+  object.interactable = false
+  doubleSidedMat.setLock(true)
+  object.setLock(true)
+  doubleSidedMat.setRotation({0, 180, 180})
+  local bounds = doubleSidedMat.getBounds()
+  local height = bounds.size.y
+  local pos = doubleSidedMat.getPosition()
+  pos.y = pos.y + height
+  doubleSidedMat.setPosition(pos)
+  object.setRotation({0, 180, 180})
+  local pos = doubleSidedMat.positionToWorld({0.16, 0, 0})
+  object.setPosition(pos:setAt("y", pos.y - height + 0.12))
+
+  local oData = object.getData()
+  oData.Transform.rotZ = object.is_face_down and 180 or 0
+  oData.Transform.posY = oData.Transform.posY + 0.06
+  doubleSidedMat.addAttachment(object)
+
+  local oData = object.getData()
+  oData.Transform.posX = doubleSidedMat.positionToWorld({-0.16, 0, 0}).x
+  oData.Transform.posY = pos.y - height - 0.04
+  local clone = spawnObjectData({
+    data = oData
+  })
+
+  clone.setRotation({0, 180, 0})
+  doubleSidedMat.addAttachment(clone)
+  doubleSidedMat.setLock(false)
+
+  runAfterRest(doubleSidedMat, function(doubleSidedMat)
+    doubleSidedMat.call("setFrontData", objectData.front)
+  end)
+
+end
+
+function onRevealDoubleSided(res)
+  print(serpent.tts(res))
+  if not res.frontData or not res.frontData.type then return end
+  if res.frontData.type == "Monster" then
+    attachMonsterCard(res.doubleSided, res.frontData, res.doubleSided.getPosition())
+  elseif res.frontData.type == "Ally" then
+    attachAllyCard(res.doubleSided, res.frontData, res.doubleSided.getPosition())
+  end
 end
 
 function onMonsterDrop(colorName, object, objectData)
@@ -5405,25 +5469,44 @@ function spawnMonster(spawnPos, monster)
   end)
 end
 
--- Draw Monster
-function drawMonster(spawnPos)
-  local locationMat = getObjectFromGUID(locationMatId)
-  if not locationMat then
+function attachAllyCard(ally, allyMemo, spawnPos)
+  local itemMatBag = getObjectFromGUID(itemMatBagId)
+  if not itemMatBag then
     return
   end
+  
+  local itemMat = itemMatBag.takeObject({
+    index = 0,
+    position = ally.getPosition():setAt("y", 2.21):setAt("z", spawnPos.z),
+    rotation = {0, 180, 0},
+    smooth = false
+  })
 
-  local locationData = parseJson(locationMat.memo)
-  if not locationData then
-    return
-  end
+  ally.setLock(true)
+  ally.setRotation({0, 180, 0})
+  ally.setPosition(itemMat.positionToWorld({0, 0, -0.154}):setAt("y", 2.31))
 
+  itemMat.addAttachment(ally)
+  itemMat.memo = JSON.encode({
+    type = "Item Mat"
+  })
+
+  runAfterRest(itemMat, function(itemMat)
+    Wait.time(function()
+      itemMat.call("setData", allyMemo)
+      Wait.time(function()
+        itemMat.call("setData", allyMemo)
+      end, 0.2)
+    end, 0.2)
+  end)
+end
+
+function attachMonsterCard(monster, objectMemo, spawnPos)
   local monsterMatBag = getObjectFromGUID(monsterMatBagId)
   if not monsterMatBag then
     return
   end
 
-  -- local position = spawnObject.getPosition()
-  -- position.y = position.y + spawnObject.getBounds().size.y
   local monsterMat = monsterMatBag.takeObject({
     index = 0,
     position = spawnPos,
@@ -5435,38 +5518,9 @@ function drawMonster(spawnPos)
     return
   end
 
-  local pos = monsterMat.positionToWorld({0.16, 0, 0})
-
-  local monster = nil
-  local objs = findObjsInRadius(locationMat.positionToWorld(locationData.monster):setAt("y", 2.2))
-  for _, obj in ipairs(objs) do
-    local deckData = parseJson(obj.memo)
-    if deckData and deckData.type and string.lower(deckData.type) == "monster" then
-      if obj.type == "Deck" then
-        local count = #obj.getObjects()
-        if count > 0 then
-          monster = obj.takeObject({
-            index = count - 1,
-            position = pos,
-            smooth = false
-          })
-        end
-      else
-        monster = obj
-        monster.setPosition(pos)
-      end
-      break
-    end
-  end
-
-  if not monster then
-    return
-  end
-
-  local objectMemo = parseJson(monster.memo)
-  if not objectMemo or objectMemo.type ~= "Monster" then
-    return
-  end
+  local pos = spawnPos
+  pos.x = pos.x + 0.271
+  monster.setPosition(pos)
 
   local height = monsterMat.getBounds().size.y
 
@@ -5496,6 +5550,103 @@ function drawMonster(spawnPos)
   runAfterRest(monsterMat, function(monsterMat)
     monsterMat.call("setHPMax", params)
   end)
+end
+
+function attachDoubleSidedCard(monster, objectMemo, spawnPos)
+  local doubleSidedMatBag = getObjectFromGUID(doubleSidedMatBagId)
+  if not doubleSidedMatBag then
+    return
+  end
+
+  local doubleSidedMat = doubleSidedMatBag.takeObject({
+    index = 0,
+    position = spawnPos,
+    rotation = {0, 180, 180},
+    smooth = false
+  })
+
+  if not doubleSidedMat then
+    return
+  end
+
+  local pos = spawnPos
+  pos.x = pos.x + 0.271
+  monster.setPosition(pos)
+
+  local height = doubleSidedMat.getBounds().size.y
+
+  monster.interactable = false
+
+  local oData = monster.getData()
+  oData.Transform.rotZ = monster.is_face_down and 180 or 0
+  oData.Transform.posY = oData.Transform.posY + 0.06
+  doubleSidedMat.addAttachment(monster)
+
+  local oData = monster.getData()
+  oData.Transform.rotZ = monster.is_face_down and 180 or 0
+  oData.Transform.posX = doubleSidedMat.positionToWorld({-0.16, 0, 0}).x
+  oData.Transform.posY = pos.y - height - 0.10
+  local clone = spawnObjectData({
+    data = oData
+  })
+  doubleSidedMat.addAttachment(clone)
+
+  runAfterRest(doubleSidedMat, function(doubleSidedMat)
+    doubleSidedMat.call("setFrontData", objectMemo.front)
+  end)
+end
+
+-- Draw Monster
+function drawMonster(spawnPos)
+  local function getMonsterCard()
+
+    local locationMat = getObjectFromGUID(locationMatId)
+    if not locationMat then
+      return
+    end
+
+    local locationData = parseJson(locationMat.memo)
+    if not locationData then
+      return
+    end
+
+    local objs = findObjsInRadius(locationMat.positionToWorld(locationData.monster):setAt("y", 2.2))
+    for _, obj in ipairs(objs) do
+      local deckData = parseJson(obj.memo)
+      if deckData and deckData.type and string.lower(deckData.type) == "monster" then
+        if obj.type == "Deck" then
+          local count = #obj.getObjects()
+          if count > 0 then
+            return obj.takeObject({
+              index = count - 1,
+              smooth = false
+            })
+          end
+        else
+          return obj
+        end
+        break
+      end
+    end
+  end
+
+  local monster = getMonsterCard()
+  if not monster then
+    return
+  end
+
+  local objectMemo = parseJson(monster.memo)
+  if not objectMemo or not objectMemo.type then
+    return
+  end
+
+  if objectMemo.type == "Monster" then
+      attachMonsterCard(monster, objectMemo, spawnPos)
+  elseif objectMemo.type == "DoubleSided" and objectMemo.front then
+      attachDoubleSidedCard(monster, objectMemo, spawnPos)
+  else
+      return
+  end
 end
 
 function onMonsterKilled(monster)

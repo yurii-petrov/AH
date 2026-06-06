@@ -1,0 +1,68 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.24868,
+    "g": 0.24868,
+    "r": 0.24912
+  },
+  "CustomImage": {
+    "CustomTile": {
+      "Stackable": false,
+      "Stretch": true,
+      "Thickness": 0.1,
+      "Type": 0
+    },
+    "ImageScalar": 1,
+    "ImageSecondaryURL": "",
+    "ImageURL": "https://drive.google.com/uc?export=view\u0026id=1Y4ZG4efiK6zPck2l9sTduxUg8sU-BBtb",
+    "WidthScale": 0
+  },
+  "CustomUIAssets": [
+    {
+      "Name": "Fonts",
+      "Type": 1,
+      "URL": "https://drive.google.com/uc?export=view\u0026id=18_lFlnSaOFlbNVfE-G-LFqqfptMMkKFS"
+    }
+  ],
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "576afa",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScriptState": "",
+  "LuaScript_path": "DoubleSided.5ed3b3/DoubleSidedMat.576afa.ttslua",
+  "MeasureMovement": false,
+  "Memo": "Double Sided Mat",
+  "Name": "Custom_Tile",
+  "Nickname": "Double Sided Mat",
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "monster_mat"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": -36.946,
+    "posY": 4.335,
+    "posZ": -0.526,
+    "rotX": 359,
+    "rotY": 180,
+    "rotZ": 178,
+    "scaleX": 1.7,
+    "scaleY": 1,
+    "scaleZ": 1.7
+  },
+  "Value": 0,
+  "XmlUI": ""
+}
