@@ -4,6 +4,308 @@
     "y": 0,
     "z": 0
   },
+  "AttachedSnapPoints": [
+    {
+      "Position": {
+        "x": 0.885,
+        "y": 0.211,
+        "z": -1.184
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Tags": [
+        "doom_scenario"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.599,
+        "y": 0.21,
+        "z": -1.184
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Tags": [
+        "doom_scenario"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.313,
+        "y": 0.21,
+        "z": -1.184
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Tags": [
+        "doom_scenario"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.027,
+        "y": 0.21,
+        "z": -1.184
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Tags": [
+        "doom_scenario"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.885,
+        "y": 0.21,
+        "z": -0.668
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Tags": [
+        "doom_scenario"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.599,
+        "y": 0.21,
+        "z": -0.668
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Tags": [
+        "doom_scenario"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.313,
+        "y": 0.21,
+        "z": -0.668
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Tags": [
+        "doom_scenario"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.027,
+        "y": 0.21,
+        "z": -0.668
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Tags": [
+        "doom_scenario"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.885,
+        "y": 0.21,
+        "z": -0.153
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Tags": [
+        "doom_scenario"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.599,
+        "y": 0.21,
+        "z": -0.153
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Tags": [
+        "doom_scenario"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.313,
+        "y": 0.21,
+        "z": -0.153
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Tags": [
+        "doom_scenario"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.027,
+        "y": 0.209,
+        "z": -0.153
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Tags": [
+        "doom_scenario"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.879,
+        "y": 0.21,
+        "z": 1.229
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Tags": [
+        "clue_scenario"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.593,
+        "y": 0.21,
+        "z": 1.229
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Tags": [
+        "clue_scenario"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.307,
+        "y": 0.21,
+        "z": 1.229
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Tags": [
+        "clue_scenario"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.021,
+        "y": 0.21,
+        "z": 1.229
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Tags": [
+        "clue_scenario"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.879,
+        "y": 0.21,
+        "z": 0.714
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Tags": [
+        "clue_scenario"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.593,
+        "y": 0.21,
+        "z": 0.714
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Tags": [
+        "clue_scenario"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.307,
+        "y": 0.21,
+        "z": 0.714
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Tags": [
+        "clue_scenario"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.021,
+        "y": 0.21,
+        "z": 0.714
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Tags": [
+        "clue_scenario"
+      ]
+    }
+  ],
   "Autoraise": true,
   "CardID": 586603,
   "ColorDiffuse": {
