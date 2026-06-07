@@ -1265,8 +1265,172 @@ function context59ReturnBridge(obj, player_color)
 
 end
 
+function getContextSetup(number)
+  if not gameData or not gameData.scenarioData or not gameData.scenarioData.contextSetup then
+    return
+  end
+  local setup = gameData.scenarioData.contextSetup[tostring(number)]
+  if not setup or not setup.tiles then
+    return
+  end
+  return setup
+end
+
+local function handleContextSetup(number)
+  local function waitAll(tasks, onAllDone)
+    local remaining = #tasks
+    if remaining == 0 then
+      onAllDone()
+      return
+    end
+
+    for _, task in ipairs(tasks) do
+      task(function()
+        remaining = remaining - 1
+        if remaining == 0 then
+          onAllDone()
+        end
+      end)
+    end
+  end
+
+  local setup = getContextSetup(number)
+  if not setup then
+    return
+  end
+
+  gameData.scenarioData.contextSetup = nil
+
+  local locationMat = getObjectFromGUID(locationMatId)
+  if not locationMat then
+    return
+  end
+
+  local box = getObjectFromGUID(boxId)
+  if not box then
+    return
+  end
+
+  local locationMatOld = getObjectFromGUID("b195b0")
+  if not locationMatOld then
+    return
+  end
+
+  local scenarioMat = getObjectFromGUID(scenarioMatId)
+  if not scenarioMat then
+    return
+  end
+
+  local scenarioMatData = parseJson(scenarioMat.memo)
+  if not scenarioMatData then
+    return
+  end
+
+  local scenarioInstruction = nil
+  for _, s in ipairs(scenarioMatData.scenarios) do
+    if s.number == gameData.scenarioData.number then
+      scenarioInstruction = s
+      break
+    end
+  end
+
+  if not scenarioInstruction then
+    return
+  end
+
+  local deferredLookup = {}
+  if scenarioInstruction.deferredDecks then
+    for _, d in ipairs(scenarioInstruction.deferredDecks) do
+      if scenarioMatData.positions[d.pos] then
+        local key = string.lower(d.type) .. "|" .. string.lower(d.name)
+        deferredLookup[key] = scenarioMat.positionToWorld(scenarioMatData.positions[d.pos]):setAt("y", 3)
+      end
+    end
+  end
+
+  local allTasks = {}
+
+  for _, obj in ipairs(box.getObjects()) do
+    local memo = parseJson(obj.memo)
+    if memo and memo.type and memo.name then
+      local objGuid = obj.guid
+      local memoName = memo.name
+      local memoType = memo.type
+
+      if setup.tiles then
+        local types = setup.tiles[memoType]
+        if types then
+          local tileInfo = types[memoName]
+          if tileInfo then
+            table.insert(allTasks, function(done)
+              local spawnedObj = box.takeObject({
+                guid = objGuid,
+                position = locationMat.positionToWorld(tileInfo.position):setAt("y", 3),
+                rotation = tileInfo.rotation,
+                smooth = true
+              })
+              runAfterRest(spawnedObj, function(o)
+                processSetupTile(o, memoName, tileInfo, locationMatOld)
+                done()
+              end)
+            end)
+          end
+        end
+      end
+
+      local key = string.lower(memoType) .. "|" .. string.lower(memoName)
+      local deckPos = deferredLookup[key]
+      if deckPos then
+        table.insert(allTasks, function(done)
+          local spawnedObj = box.takeObject({
+            guid = objGuid,
+            position = deckPos,
+            rotation = {0, 180, 180},
+            smooth = true
+          })
+          runAfterRest(spawnedObj, function(o)
+            if o.type == "Deck" then
+              o.shuffle()
+            end
+            done()
+          end)
+        end)
+      end
+    end
+  end
+
+  waitAll(allTasks, function() end)
+end
+
+function contextDor117Setup(obj, player_color)
+  obj.clearButtons()
+  handleContextSetup(117)
+end
+
+function contextDor118Setup(obj, player_color)
+  obj.clearButtons()
+  handleContextSetup(118)
+end
+
+function contextDor119Setup(obj, player_color)
+  obj.clearButtons()
+  handleContextSetup(119)
+end
+
+function contextDor120Setup(obj, player_color)
+  obj.clearButtons()
+  handleContextSetup(120)
+end
+
 function handleCardContextType(obj, objData)
-if objData.number == 59 and gameData.isStarted and gameData.scenarioData.name == "SoT" then
+  local DOR_NUMBERS = {
+    [117] = "contextDor117Setup",
+    [118] = "contextDor118Setup",
+    [119] = "contextDor119Setup",
+    [120] = "contextDor120Setup",
+  }
+
+  if objData.number == 59 and gameData.isStarted and gameData.scenarioData.name == "SoT" then
     local locationMat = getObjectFromGUID(locationMatId)
     if not locationMat then
       return
@@ -1287,12 +1451,22 @@ if objData.number == 59 and gameData.isStarted and gameData.scenarioData.name ==
     end
 
     if not bridge then
-      return 
+      return
     end
 
     obj.createButton({
       label = "Повернути міст",
       click_function = "context59ReturnBridge",
+      function_owner = self,
+      position = {0, 0.3, 2},
+      width = 1000,
+      height = 300,
+      font_size = 120
+    })
+  elseif gameData.scenarioData.name == "DoR" and DOR_NUMBERS[objData.number] and getContextSetup(objData.number) then
+    obj.createButton({
+      label = "Розставити",
+      click_function = DOR_NUMBERS[objData.number],
       function_owner = self,
       position = {0, 0.3, 2},
       width = 1000,
@@ -4818,6 +4992,60 @@ function takeCardsWithMemo(deck, targetMemo, params)
   end
 end
 
+function processSetupTile(o, name, setupTileInfo, locationMatOld)
+  local doomBag = getObjectFromGUID(doomBagId)
+  local whiteTokenBag = getObjectFromGUID(whiteTokenBagId)
+  local blueTokenBag = getObjectFromGUID(blueTokenBagId)
+  local redTokenBag = getObjectFromGUID(redTokenBagId)
+  local greenTokenBag = getObjectFromGUID(greenTokenBagId)
+
+  local locationMat = getObjectFromGUID(locationMatId)
+  if not locationMat then
+    return
+  end
+
+  local y = locationMat.getPosition().y + locationMat.getBoundsNormalized().size.y
+
+  gameData.lockObjs[o.guid] = true
+  lockObj(o.guid)
+  o.setRotation(setupTileInfo.rotation)
+  o.setPosition(locationMatOld.positionToWorld(setupTileInfo.position):setAt("y", y))
+
+  if not setupTileInfo.tokens then
+    return
+  end
+
+  for _, tokenInfo in ipairs(setupTileInfo.tokens) do
+    if tokenInfo.type == "Doom Token" and doomBag then
+      doomBag.takeObject({
+        index = 0,
+        position = o.positionToWorld(tokenInfo.position):setAt("y", 3)
+      }).highlightOn("Red", 5)
+      printToAll(i18n.getStrById(name) .. " - " .. i18n.getStrById("LOG_doom_added"), "Red")
+    elseif tokenInfo.type == "White Marker" and whiteTokenBag then
+      whiteTokenBag.takeObject({
+        index = 0,
+        position = o.positionToWorld(tokenInfo.position):setAt("y", 3)
+      }).highlightOn("White", 5)
+    elseif tokenInfo.type == "Blue Marker" and blueTokenBag then
+      blueTokenBag.takeObject({
+        index = 0,
+        position = o.positionToWorld(tokenInfo.position):setAt("y", 3)
+      }).highlightOn("Blue", 5)
+    elseif tokenInfo.type == "Red Marker" and redTokenBag then
+      redTokenBag.takeObject({
+        index = 0,
+        position = o.positionToWorld(tokenInfo.position):setAt("y", 3)
+      }).highlightOn("Red", 5)
+    elseif tokenInfo.type == "Green Marker" and greenTokenBag then
+      greenTokenBag.takeObject({
+        index = 0,
+        position = o.positionToWorld(tokenInfo.position):setAt("y", 3)
+      }).highlightOn("Green", 5)
+    end
+  end
+end
+
 function lockSetupScenarioComponents(obj, scenarioTiles)
   local locationMat = getObjectFromGUID(locationMatId)
   if not locationMat then
@@ -4862,56 +5090,13 @@ function lockSetupScenarioComponents(obj, scenarioTiles)
   end
 
   local y = locationMat.getPosition().y + locationMat.getBoundsNormalized().size.y
-
-  function processSetupTile(o, name, setupTileInfo)
-    gameData.lockObjs[o.guid] = true
-    lockObj(o.guid)
-    o.setRotation(setupTileInfo.rotation)
-    o.setPosition(locationMatOld.positionToWorld(setupTileInfo.position):setAt("y", y))
-
-    if not setupTileInfo.tokens then
-      return
-    end
-
-    for _, tokenInfo in ipairs(setupTileInfo.tokens) do
-      if tokenInfo.type == "Doom Token" then
-        doomBag.takeObject({
-          index = 0,
-          position = o.positionToWorld(tokenInfo.position):setAt("y", 3)
-        }).highlightOn("Red", 5)
-
-        printToAll(i18n.getStrById(name) .. " - " .. i18n.getStrById("LOG_doom_added"), "Red")
-      elseif tokenInfo.type == "White Marker" then
-        whiteTokenBag.takeObject({
-          index = 0,
-          position = o.positionToWorld(tokenInfo.position):setAt("y", 3)
-        }).highlightOn("White", 5)
-      elseif tokenInfo.type == "Blue Marker" then
-        blueTokenBag.takeObject({
-          index = 0,
-          position = o.positionToWorld(tokenInfo.position):setAt("y", 3)
-        }).highlightOn("Blue", 5)
-      elseif tokenInfo.type == "Red Marker" then
-        redTokenBag.takeObject({
-          index = 0,
-          position = o.positionToWorld(tokenInfo.position):setAt("y", 3)
-        }).highlightOn("Red", 5)
-      elseif tokenInfo.type == "Green Marker" then
-        greenTokenBag.takeObject({
-          index = 0,
-          position = o.positionToWorld(tokenInfo.position):setAt("y", 3)
-        }).highlightOn("Green", 5)
-      end
-    end
-  end
-
   local memo = parseJson(obj.memo)
   if obj.type == "Generic" and memo and memo.type and memo.name then
     local types = scenarioTiles[memo.type]
     if types then
       local tileInfo = types[memo.name]
       if tileInfo then
-        processSetupTile(obj, memo.name, tileInfo)
+        processSetupTile(obj, memo.name, tileInfo, locationMatOld)
       else
         box.putObject(obj)
       end
