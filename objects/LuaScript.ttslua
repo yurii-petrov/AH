@@ -120,6 +120,7 @@ local STREET_LIKE_TYPES = {
   street = true,
   mystery = true,
   ["travel route"] = true,
+  ["travel routes"] = true,
   threshold = true,
 }
 
@@ -709,18 +710,28 @@ function discardCondition(obj, objData)
 end
 
 function discardCard(colorName, object, objectData, isHovering)
-    local isHovering = isHovering or false
-  if objectData.type == "Monster" then
+  local isHovering = isHovering or false
+  local objType = objectData.type and string.lower(objectData.type) or nil
+
+  if not objType then return end
+
+  local rawType = (objType == "doublesided" and objectData.back and objectData.back.type)
+    or objectData.type
+
+  if not rawType then return end
+
+  local effectiveType = string.lower(rawType)
+
+  if effectiveType == "monster" then
     discardMonster(object, objectData)
-  elseif objectData.type == "starting" then
+  elseif effectiveType == "starting" then
     local box = getObjectFromGUID(boxId)
     if box then
       box.putObject(object)
     end
-  elseif objectData.type == "item" or objectData.type == "spell" or objectData.type == "ally" or objectData.type ==
-    "special" then
-    discardToShop(object, objectData.type, isHovering)
-  elseif objectData.type == "blessed cursed" or objectData.type == "dark pact" then
+  elseif effectiveType == "item" or effectiveType == "spell" or effectiveType == "ally" or effectiveType == "special" then
+    discardToShop(object, effectiveType, isHovering)
+  elseif effectiveType == "blessed cursed" or effectiveType == "dark pact" then
     discardCondition(object, objectData)
   end
 end
