@@ -116,6 +116,13 @@ local MythosCup = {
   Terror = "Terror"
 }
 
+local STREET_LIKE_TYPES = {
+  street = true,
+  mystery = true,
+  ["travel route"] = true,
+  threshold = true,
+}
+
 -- ╭──────────────────────────────────────────────╮
 -- │                Tile ids                      │
 -- ╰──────────────────────────────────────────────╯
@@ -2215,16 +2222,17 @@ function onClickEncounter(obj, playerColor)
     local currentCardPos = mythosTile.positionToWorld({0.084, 0.113, 0.278})
 
     local deck = nil
-    if string.lower(data.type) == "street" or string.lower(data.type) == "mystery" then
+    local typeLower = string.lower(data.type)
+    if STREET_LIKE_TYPES[typeLower] then
       deck = getDeckFromScenarioMat("Encounter", string.lower(data.type) == "street" and "The streets" or data.name, true)
       if data.name then
         local txt = string.gsub(data.name, "%d+", "")
         broadcastToAll("\n" .. txt, "White")
         print("Зустріч для " .. investigatorData.name .. " у клітинці " .. txt)
       end
-    elseif string.lower(data.type) == "neighborhood" then
+    elseif typeLower == "neighborhood" then
       deck = getDeckFromScenarioMat("Encounter", data.name, true)
-    elseif string.lower(data.type) == "anomaly" then
+    elseif typeLower == "anomaly" then
       deck = getDeckFromScenarioMat("anomaly", data.name, true)
     end
 
@@ -2289,8 +2297,7 @@ function onClickEncounter(obj, playerColor)
         if neighborhood and neighborhoodData and anomaly then
           break
         end
-
-      elseif data.type == "Street" or data.type == "Mystery" then
+      elseif STREET_LIKE_TYPES[string.lower(data.type)] then
         showCardInActiveSpace(data, o)
         return
       end
