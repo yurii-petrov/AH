@@ -24,7 +24,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"hp\":3,\"monstertype\":[\"Hostile Spirit\"],\"name\":\"Stalking Wraith\",\"remnant\":true,\"type\":\"Monster\"}",
+  "Memo": "{\"type\":\"DoubleSided\",\"back\":{\"name\":\"Stalking Wraith\",\"monstertype\":[\"Hostile Spirit\"],\"type\":\"Monster\"},\"front\":{\"hp\":3,\"monstertype\":[\"Troubled Spirit\"],\"name\":\"Vomitous Wraith\",\"remnant\":true,\"type\":\"Monster\"}}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,
