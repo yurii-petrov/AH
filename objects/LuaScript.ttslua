@@ -3287,30 +3287,23 @@ function prepareArchiveDecks(archiveCollection, moveObj, locationMat, locationDa
   end)
 
   local archiveTarget = nil
-  local archiveSources = {}
-  local archiveBase = nil
+  local numberedSources = {}
 
   for _, archive in ipairs(archiveCollection) do
     local isActive = archive.set == nil or gameData.addons[archive.set] == true
     if isActive then
       if archive.set == nil then
-        archiveBase = archive
-      elseif not archiveTarget then
         archiveTarget = archive
       else
-        table.insert(archiveSources, 1, archive) -- вставляємо на початок
+        table.insert(numberedSources, archive)
       end
     else
       table.insert(moveObj.toBox, archive.guid)
     end
   end
 
-  if archiveBase then
-    table.insert(archiveSources, archiveBase)
-  end
-
   if not archiveTarget then
-    archiveTarget = table.remove(archiveSources, 1)
+    archiveTarget = table.remove(numberedSources, 1)
   end
 
   if not archiveTarget then
@@ -3324,7 +3317,7 @@ function prepareArchiveDecks(archiveCollection, moveObj, locationMat, locationDa
     sources = {}
   }
 
-  for _, src in ipairs(archiveSources) do
+  for _, src in ipairs(numberedSources) do
     table.insert(moveObj.toMerge["archive"].sources, {
       guid = src.guid,
       name = "archive",
@@ -3782,19 +3775,14 @@ function prepareScenarioDecks(scenarioData)
   local function mergeDeckToPosition(o, data, moveObj)
     if data.name == "archive" and moveObj.toMerge[data.name] then
       local sources = moveObj.toMerge[data.name].sources
-      local reversed = {}
-      for i = #sources, 1, -1 do
-        table.insert(reversed, sources[i])
-      end
 
-      print("=== archive merge ===")
-      print("target guid=" .. tostring(data.guid))
-      for i, s in ipairs(reversed) do
-        print("putObject["..i.."] guid=" .. tostring(s.guid))
+      local ordered = {}
+      for _, sourceData in ipairs(sources) do
+        table.insert(ordered, sourceData)
       end
 
       local mergeTime = 0
-      for _, sourceData in ipairs(reversed) do
+      for _, sourceData in ipairs(ordered) do
         mergeTime = mergeTime + 0.3
         local srcGuid = sourceData.guid
         Wait.time(function()
