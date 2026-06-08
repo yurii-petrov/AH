@@ -22,12 +22,12 @@
   "CustomDeck": {
     "5800": {
       "BackIsHidden": true,
-      "BackURL": "https://drive.google.com/uc?export=view\u0026id=1WQCt4O5CQ2cPQvVDyD5drGwM3C7jL0Wp",
-      "FaceURL": "https://drive.google.com/uc?export=view\u0026id=1vhv1xOsvaBQUm4VnQtO5widIgGXaWwXg",
+      "BackURL": "https://drive.google.com/uc?export=view\u0026id=1vhv1xOsvaBQUm4VnQtO5widIgGXaWwXg",
+      "FaceURL": "https://drive.google.com/uc?export=view\u0026id=1uuaRLZMmiv-bvhDMSDLQ-bkqEh0Pruo4",
       "NumHeight": 2,
       "NumWidth": 3,
       "Type": 0,
-      "UniqueBack": false
+      "UniqueBack": true
     }
   },
   "DeckIDs": [
