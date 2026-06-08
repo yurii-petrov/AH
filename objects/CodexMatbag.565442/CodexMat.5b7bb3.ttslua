@@ -83,7 +83,7 @@ function buildCodexUI()
 		if action.title then
 			table.insert(xml, getCodexButton(
 				i,
-				action.title,
+				"♦ "..action.title,
 				positions[i]
     	))
 		end
