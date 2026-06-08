@@ -171,6 +171,7 @@ local blueTokenBagId = "40bae0"
 local redTokenBagId = "fe6c51"
 local greenTokenBagId = "18c8c9"
 local anomalyBagId = "009961"
+local terrorBagId = "c19def"
 
 local mythosTokenBagIds = {
   [MythosCup.SpreadDoom] = "829038",
@@ -487,6 +488,13 @@ function mythosTileCancelAction(d)
     end
 
     card.setPositionSmooth(locationMat.positionToWorld(locationData.headlinedis):setAt("y", 3))
+  elseif string.lower(cardData.type) == "terror" then
+    local terrorDeck = getTerrorDeck()
+    if terrorDeck then
+      terrorDeck.putObject(card)
+    end
+
+    onClickEncounter(nil, gameData.encounterColor)
   end
 end
 
@@ -898,7 +906,7 @@ function onObjectDropOnMythosMat(colorName, object, objectData)
       end
       local t = cardData.type and string.lower(cardData.type) or ""
       return {
-        type = ((t == "event" or t == "encounter" or t == "anomaly" or t == "headline") and t or "empty")
+        type = ((t == "event" or t == "encounter" or t == "anomaly" or t == "headline" or t == "terror") and t or "empty")
       }
     end
     mythosTile.call("setButtons", getUIType(parseJson(object.memo)))
@@ -1916,7 +1924,7 @@ function chooseAddon(player, alt, id)
 end
 
 function inProgress(player, alt, id)
-  broadcastToColor("Робота над цим доповненням ще триває.", player.color, {
+  broadcastToColor("Робота над цим доповнен��ям ще триває.", player.color, {
     r = 1,
     g = 1,
     b = 1
@@ -2410,7 +2418,6 @@ function onClickEncounter(obj, playerColor)
     end
 
     local currentCardPos = mythosTile.positionToWorld({0.084, 0.113, 0.278})
-
     local deck = nil
     local typeLower = string.lower(data.type)
     if STREET_LIKE_TYPES[typeLower] then
@@ -2443,14 +2450,28 @@ function onClickEncounter(obj, playerColor)
       end
       local t = cardData.type and string.lower(cardData.type) or ""
       return {
-        type = ((t == "event" or t == "encounter" or t == "anomaly" or t == "headline") and t or "empty")
+        type = ((t == "event" or t == "encounter" or t == "anomaly" or t == "headline" or t == "terror") and t or "empty")
       }
     end
 
-    local card = takeCardFromTop(deck, true)
+    local skipTypes = nil
+    if gameData.encounterType and string.lower(gameData.encounterType) == "terror" then
+      skipTypes = {"terror"}
+    end
+
+    local card = takeCardFromTop(deck, true, skipTypes)
     if card then
       mythosTile.call("setButtons", getUIType(parseJson(card.memo)))
       gameData.encounterColor = playerColor
+      local cardData = parseJson(card.memo)
+      if cardData then
+        local t = cardData.type and string.lower(cardData.type) or ""
+        gameData.encounterType = t
+
+        if not t then
+          print("the card: "..card.guid.." has no type")
+        end
+      end
       card.setPositionSmooth(currentCardPos:setAt("y", 3))
     end
   end
@@ -5513,6 +5534,86 @@ function drawMythos(obj, playerColor)
   end
 end
 
+function getTerrorDeck()
+  local scenarioMat = getObjectFromGUID(scenarioMatId)
+  if not scenarioMat then return end
+
+  local objs = upCast(scenarioMat, 1, nil, 1)
+  for _, obj in pairs(objs) do
+    local objData = parseJson(obj.memo)
+    if objData and string.lower(objData.type) == "terror" and obj.type == "Deck" then
+      return obj
+    end
+  end
+end
+
+function processTerror(callBack)
+
+  local neighborhoodName = nil
+
+  local eventDiscard = getObjFromMythosTile({-0.199, 0.113, 0.731})
+  if eventDiscard then
+    local topCardMemo = nil
+    if eventDiscard.type == "Deck" then
+      local objs = eventDiscard.getObjects()
+       if #objs > 0 then
+        topCardMemo = parseJson(objs[#objs].memo)
+      end
+    elseif eventDiscard.type == "Card" then
+      topCardMemo = parseJson(eventDiscard.memo)
+    end
+
+    if topCardMemo and topCardMemo.neighborhood then
+      neighborhoodName = topCardMemo.neighborhood
+    end
+  end
+
+  if not neighborhoodName then
+    local terrorspawn = gameData.scenarioData and gameData.scenarioData.terrorspawn
+    neighborhoodName = terrorspawn and terrorspawn.location
+  end
+
+  if not neighborhoodName then
+    callBack()
+    return
+  end
+
+  local neighborhoodTile = getNeighborhoodTile(neighborhoodName)
+  if not neighborhoodTile then
+    callBack()
+    return
+  end
+
+  local terrorBag = getObjectFromGUID(terrorBagId)
+  if not terrorBag then
+    callBack()
+    return
+  end
+
+  terrorBag.takeObject({
+    index = 0,
+    position = neighborhoodTile.getPosition():setAt("y", 3),
+    rotation = {0, 180, 0}
+  }).highlightOn("Orange", 5)
+
+  local terrorDeck = getTerrorDeck()
+  if terrorDeck then
+    local encounterDeck = getDeckFromScenarioMat("Encounter", neighborhoodName, true)
+    if encounterDeck then
+      local card = takeCardFromTop(terrorDeck, true)
+      if card then
+        local deckPos = encounterDeck.getPosition()
+        card.setPosition({deckPos.x, deckPos.y + 5, deckPos.z})
+        Wait.time(function()
+          encounterDeck.putObject(card)
+        end, 0.3)
+      end
+    end
+  end
+
+  callBack()
+end
+
 function processDrawMyth(currentMyth, obj, playerColor, callBack)
   broadcastToAll("\n" .. currentMyth.memo .. " - " .. playerColor .. " гравець", "White")
 
@@ -5587,6 +5688,11 @@ function processDrawMyth(currentMyth, obj, playerColor, callBack)
     end)
     return
   elseif currentMyth.memo == MythosCup.Reckoning then
+  elseif currentMyth.memo == MythosCup.Terror then
+    processTerror(function()
+      callBack()
+    end)
+    return
   elseif currentMyth.memo == MythosCup.Blank then
     -- drawMythos(obj, playerColor)
   end
@@ -6102,17 +6208,45 @@ function findDeckOnTile(tileId)
   end
 end
 
-function takeCardFromTop(obj, isBack)
+function takeCardFromTop(obj, isBack, skipTypes)
   if not obj or obj.type ~= "Deck" then
     return
   end
 
   local rotation = isBack and {0, 180, 180} or {0, 180, 0}
 
-  return obj.takeObject({
-    index = 0,
-    rotation = rotation
-  })
+  local function isSkipped(data)
+    if not skipTypes or not data then
+      return false
+    end
+
+    local t = string.lower(data.type or "")
+
+    for _, skip in ipairs(skipTypes) do
+      if t == string.lower(skip) then
+        return true
+      end
+    end
+
+    return false
+  end
+
+  local objects = obj.getObjects()
+
+  for i = 1, #objects do
+    local o = objects[i]
+    local data = parseJson(o.memo)
+
+    if not isSkipped(data) then
+      return obj.takeObject({
+        index = i - 1,
+        rotation = rotation,
+        smooth = false
+      })
+    end
+  end
+
+  return nil
 end
 
 function takeCardFromBottom(obj, isBack)
