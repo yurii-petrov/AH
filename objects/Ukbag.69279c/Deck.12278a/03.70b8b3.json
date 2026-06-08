@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"number\":3,\"type\":\"codex\"}",
+  "Memo": "{\"number\":3,\"type\":\"codex\",\"front\":{\"actions\":[{\"title\":\"Front Дія 1\",\"description\":\"даний опис для тесту\",\"steps\":[{\"type\":\"takeCard\",\"card\":{\"source\":{\"deck\":\"archive\",\"board\":\"LocationMat\"},\"query\":[{\"field\":\"number\",\"op\":\"eq\",\"value\":4},{\"field\":\"cardType\",\"op\":\"eq\",\"value\":\"codex\"}]},\"placement\":{\"type\":\"place\",\"selector\":{\"board\":\"locationMat\",\"snapTag\":\"Codex\",\"rule\":\"firstFreeRight\"}}}]}]},\"back\":{\"actions\":[{\"title\":\"Back Дія 1\",\"description\":\"даний опис для тесту\"}]}}",
   "Name": "Card",
   "Nickname": "03",
   "SidewaysCard": false,

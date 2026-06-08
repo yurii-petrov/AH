@@ -4147,9 +4147,10 @@ function attachCodexCard(card, spawnPos)
   if not codexMat then
     return
   end
+  codexMat.tooltip = false
 
   local pos = spawnPos
-  pos.z = pos.z + 0.9
+  pos.z = pos.z + 0.95
   card.setPosition(pos)
 
   card.interactable = false
@@ -6323,6 +6324,129 @@ function getPositionByGUID(guid)
   end
 
   return obj.getPosition()
+end
+
+-- ╭──────────────────────────────────────────────╮
+-- │                 Steps                        │
+-- ╰──────────────────────────────────────────────╯
+
+function processSteps(steps)
+  if not steps then
+    log("No steps to process")
+    return
+  end
+
+  for i = 1, #steps do
+    processStep(steps[i])
+  end
+end
+
+function processStep(step)
+  -- local context = resolveStepContext(step)
+  -- print(serpent.tts(context))
+  -- return executeStep(step, context)
+end
+
+function resolveStepContext(step)
+
+  local function findBoard(type)
+    for _, obj in ipairs(getObjects()) do
+      if obj.memo then
+        local data = parseJson(obj.memo)
+        if data and data.type == type then
+          print(obj.type)
+          return obj
+        end
+      end
+    end
+    log("Board not found: " .. type)
+  end
+
+  local function findDeckOnBoard(boardId, deckType)
+    local board = getObjectFromGUID(boardId)
+    if not board then
+      return
+    end
+
+    local objs = upCast(board, 1, nil, 1)
+    if #objs <= 0 then
+      return
+    end
+
+    for _, o in pairs(objs) do
+      if o.type == "Deck" and o.memo then
+        local data = parseJson(o.memo)
+        if data and data.type == "deckType" then
+          return o
+        end
+      end
+    end
+  end
+
+  local function matchCard(cardData, query)
+    for _, condition in ipairs(query) do
+      local field = condition.field
+      local op = condition.op
+      local value = condition.value
+
+      if op == "eq" then
+        if card[field] ~= value then
+          return false
+        end
+      elseif op == "neq" then
+        if card[field] == value then
+          return false
+        end
+      elseif op == "contains" then
+        if not string.find(card[field] or "", value) then
+          return false
+        end
+      end
+    end
+
+    return true
+  end
+
+  local function findCardInDeck(deck, query)
+    for i = 1, #deck.cards do
+      local card = deck.cards[i]
+
+      if matchCard(card, query) then
+        return card.guid
+      end
+    end
+
+    return nil
+  end
+
+  local board = findBoard(step.card.source.board)
+  if not board then
+    error("Board not found: " .. tostring(step.card.source.board))
+  end
+
+  local deck = findDeckOnBoard(board, step.from.deck)
+  if not deck then
+    error("Deck not found: " .. tostring(step.card.source.deck))
+  end
+
+  local cardId = findCardInDeck(deck, step.card.query)
+
+  if not cardId then
+    error("Card not found in deck: " .. step.card.source.deck)
+  end
+
+  -- local snapPoints = findSnapPoints(step.placement.selector.board,
+  --                                    step.placement.selector.snapTag)
+
+  -- local targetSlot = resolveSnapRule(snapPoints,
+  --                                    step.placement.selector.rule)
+
+  return {
+    cardId = cardId,
+    fromDeck = deck,
+    board = board,
+    -- placementSlot = targetSlot
+  }
 end
 
 function parseJson(memo)

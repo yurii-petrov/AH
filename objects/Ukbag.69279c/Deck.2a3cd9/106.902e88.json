@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"number\":106,\"type\":\"codex\",\"actions\":[{\"title\":\"Дія 1\",\"description\":\"даний опис для тесту\"}]}",
+  "Memo": "{\"number\":106,\"type\":\"codex\",\"front\":{\"actions\":[{\"title\":\"Front Дія 1\",\"description\":\"даний опис для тесту\",\"steps\":{}}]},\"back\":{\"actions\":[{\"title\":\"Back Дія 1\",\"description\":\"даний опис для тесту\"}]}}",
   "Name": "Card",
   "Nickname": "106",
   "SidewaysCard": false,
