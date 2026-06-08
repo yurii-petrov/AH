@@ -1,0 +1,82 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "AttachedSnapPoints": [
+    {
+      "Position": {
+        "x": 0,
+        "y": 0.1,
+        "z": -0.154
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      }
+    }
+  ],
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.25,
+    "g": 0.25,
+    "r": 0.25
+  },
+  "CustomImage": {
+    "CustomTile": {
+      "Stackable": false,
+      "Stretch": true,
+      "Thickness": 0.1,
+      "Type": 3
+    },
+    "ImageScalar": 1,
+    "ImageSecondaryURL": "",
+    "ImageURL": "https://drive.google.com/uc?export=view\u0026id=1t-2KvuZnKki3IE5k8-ybQeUHrTG5f9gX",
+    "WidthScale": 0
+  },
+  "CustomUIAssets": [
+    {
+      "Name": "Fonts",
+      "Type": 1,
+      "URL": "https://drive.google.com/uc?export=view\u0026id=18_lFlnSaOFlbNVfE-G-LFqqfptMMkKFS"
+    }
+  ],
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "5b7bb3",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScriptState": "",
+  "LuaScript_path": "CodexMatbag.565442/CodexMat.5b7bb3.ttslua",
+  "MeasureMovement": false,
+  "Memo": "{\"type\":\"Codex Mat\"}",
+  "Name": "Custom_Tile",
+  "Nickname": "Codex Mat",
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "codex_mat"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": -10.854,
+    "posY": 4.072,
+    "posZ": 36.987,
+    "rotX": 359,
+    "rotY": 0,
+    "rotZ": 2,
+    "scaleX": 3.23,
+    "scaleY": 1,
+    "scaleZ": 3.31
+  },
+  "Value": 0,
+  "XmlUI_path": "CodexMatbag.565442/CodexMat.5b7bb3.xml"
+}

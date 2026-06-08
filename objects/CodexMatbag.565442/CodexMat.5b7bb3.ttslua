@@ -1,0 +1,125 @@
+serpent = require("util/serpent")
+
+local data = {}
+
+local function getAttributes()
+  return {
+    width = "900",
+    height = "150",
+    scale = "0.1 0.1 0.1",
+    fontSize = "100",
+    font = "Fonts/AdonisC",
+		textColor = "#fff5e2",
+    textAlignment = "MiddleLeft",
+    color = "clear"
+  }
+end
+
+local function getCodexButton(index, text, position)
+  local attributes = getAttributes()
+
+  attributes.id = index
+  attributes.onClick = "clickAction"
+  attributes.text = text
+  attributes.position = position
+  attributes.rotation = "0 0 180"
+  attributes.fontSize = "100"
+  attributes.textAlignment = "MiddleLeft"
+  attributes.color = "clear"
+
+  return {
+    tag = "Button",
+    attributes = attributes
+  }
+end
+
+local positions = {
+    "0 56 -21",
+    "0 73 -21",
+    "0 90 -21"
+}
+
+function onLoad(savedData)
+  local sData = parseJson(savedData)
+  if sData then data = sData end
+
+	buildCodexUI()
+end
+
+function onSave()
+  local saveData = JSON.encode(data)
+  return saveData
+end
+
+function setCodexData(codexData)
+  data = {codex = codexData}
+	buildCodexUI()
+end
+
+function buildCodexUI()
+	local xml = {}
+  if not data or not data.codex or not data.codex.actions then
+    -- local fallback = {
+		-- 	{ title = "Action 1", description = "Description 1" },
+		-- 	{ title = "Action 2", description = "Description 2" },
+		-- 	{ title = "Action 3", description = "Description 3" }
+		-- }
+
+		-- data.codex = {actions=fallback}
+
+    -- for i, action in ipairs(fallback) do
+    --   table.insert(xml, getCodexButton(
+    --     i,
+    --     action.title,
+    --     positions[i]
+    --   ))
+    -- end
+
+    -- self.UI.setXmlTable(xml)
+    return
+  end
+
+  for i, action in ipairs(data.codex.actions) do
+		if action.title then
+			table.insert(xml, getCodexButton(
+				i,
+				action.title,
+				positions[i]
+    	))
+		end
+  end
+
+  self.UI.setXmlTable(xml)
+end
+
+function clickAction(player, alt_click, id)
+	local index = tonumber(id)
+  if not index then return end
+
+	if not data or not data.codex or not data.codex.actions or index < 1 or index > #data.codex.actions then
+		return
+	end
+
+
+	local action = data.codex.actions[index]
+
+	if action.description then
+		print("опис дії: "..action.description)
+	end
+end
+
+function parseJson(memo)
+  if not memo or type(memo) ~= "string" then
+    return nil
+  end
+
+  local success, result = pcall(function()
+    return JSON.decode(memo)
+  end)
+
+  if success then
+    return result
+  else
+    return nil
+  end
+end

@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"number\":106,\"type\":\"codex\"}",
+  "Memo": "{\"number\":106,\"type\":\"codex\",\"actions\":[{\"title\":\"Дія 1\",\"description\":\"даний опис для тесту\"}]}",
   "Name": "Card",
   "Nickname": "106",
   "SidewaysCard": false,
