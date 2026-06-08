@@ -344,6 +344,9 @@
   "SidewaysCard": false,
   "Snap": true,
   "Sticky": true,
+  "Tags": [
+    "scenario_mat"
+  ],
   "Tooltip": true,
   "Transform": {
     "posX": -80.893,

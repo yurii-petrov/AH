@@ -30,6 +30,9 @@
   "SidewaysCard": false,
   "Snap": true,
   "Sticky": true,
+  "Tags": [
+    "codex"
+  ],
   "Tooltip": true,
   "Transform": {
     "posX": -8.106,
