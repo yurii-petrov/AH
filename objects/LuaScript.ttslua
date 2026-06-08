@@ -2414,12 +2414,19 @@ function onClickEncounter(obj, playerColor)
     local deck = nil
     local typeLower = string.lower(data.type)
     if STREET_LIKE_TYPES[typeLower] then
-      deck = getDeckFromScenarioMat("Encounter", string.lower(data.type) == "street" and "The streets" or data.name, true)
-      if data.name then
-        local txt = string.gsub(data.name, "%d+", "")
-        broadcastToAll("\n" .. txt, "White")
-        print("Зустріч для " .. investigatorData.name .. " у клітинці " .. txt)
+      local deckName
+      if typeLower == "street" then
+        deckName = "The streets"
+      elseif typeLower == "travel routes" or typeLower == "travel route" then
+        deckName = "Travel Routes"
+      elseif typeLower == "threshold" then
+        deckName = "Threshold"
+      elseif typeLower == "mystery" then
+        deckName = data.name
+      else
+        deckName = data.name
       end
+      deck = getDeckFromScenarioMat("Encounter", deckName, true)
     elseif typeLower == "neighborhood" then
       deck = getDeckFromScenarioMat("Encounter", data.name, true)
     elseif typeLower == "anomaly" then
@@ -3842,6 +3849,7 @@ function prepareScenarioDecks(scenarioData)
     ["neighborhood"] = true,
     ["street"] = true,
     ["travel routes"] = true,
+    ["travel route"] = true,
     ["threshold"] = true,
     ["mystery"] = true
   }
