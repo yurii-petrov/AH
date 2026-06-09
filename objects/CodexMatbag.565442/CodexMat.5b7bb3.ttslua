@@ -208,7 +208,8 @@ function clickAction(player, alt_click, id)
         steps = action.steps, 
         context = {
           playerColor = player.color,
-          codexMat    = self
+          codexMat    = self,
+          data = data
         }
       }
     )
