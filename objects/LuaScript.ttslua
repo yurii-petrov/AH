@@ -4273,7 +4273,6 @@ function prepareScenarioEventDeck(eventDeck, decks, time)
       return
     end
 
-    local card = cards[index]
     local data = parseJson(card.memo)
     if data and data.neighborhood then
       for _, deckData in pairs(decks) do
@@ -4635,112 +4634,6 @@ function resolveDooms(info, locations)
   return res
 end
 
-function spawnDoomTokenInLocation(locationName, doomCount, neighborhoodInfo)
-  local function getIndex(locationName, locationNames)
-    for i, lName in pairs(locationNames) do
-      if lName == locationName then
-        return i
-      end
-    end
-  end
-
-  local function getEmptySpaces(o, startIndex, structureType, neededCount, isCheck2Line, depth, foundSoFar)
-    depth = depth or 0
-    foundSoFar = foundSoFar or {}
-
-    if depth > 1 then
-      return foundSoFar
-    end
-
-    local isCheck2Line = isCheck2Line or false
-    local center = {0.049, 0.150, -0.056}
-    local radius = isCheck2Line and 3.25 or 2.1
-    local startAngleDeg = 205
-    local stepAngleDeg = isCheck2Line and 25 or 35
-    local count = isCheck2Line and 4 or 3
-    local y = 0.150
-
-    if startIndex == 2 then
-      startAngleDeg = 85
-    elseif startIndex == 3 then
-      startAngleDeg = 325
-    end
-
-    if structureType == 2 or structureType == "2" then
-      startAngleDeg = startAngleDeg + 60
-    end
-
-    if isCheck2Line then
-      startAngleDeg = startAngleDeg - 10
-    end
-
-    local arcPositions = generateArcPositionsFromAngle(center, radius, startAngleDeg, stepAngleDeg, count, y)
-    local foundPositions = {}
-
-    for _, pos in ipairs(arcPositions) do
-      local worldPos = o.positionToWorld(pos)
-      local hits = Physics.cast({
-        origin = worldPos,
-        direction = {0, 1, 0},
-        type = 3,
-        size = {1.188 / 2, 1 / 2, 1.188 / 2},
-        max_distance = 0,
-        debug = isTestMode
-      })
-
-      local hasDoom = false
-      for _, v in ipairs(hits) do
-        local obj = v.hit_object
-        if obj and obj.memo == "Doom Token" then
-          hasDoom = true
-          break
-        end
-      end
-
-      if not hasDoom then
-        table.insert(foundSoFar, worldPos)
-        if #foundSoFar >= neededCount then
-          return foundSoFar
-        end
-      end
-    end
-
-    if not isCheck2Line then
-      return getEmptySpaces(o, startIndex, structureType, neededCount, true, depth + 1, foundSoFar)
-    end
-
-    return foundSoFar
-  end
-
-  local index = getIndex(locationName, neighborhoodInfo.data.locations)
-  if index and neighborhoodInfo.data.structureType then
-    local emptySpots = getEmptySpaces(neighborhoodInfo.obj, index, neighborhoodInfo.data.structureType, doomCount)
-
-    local doomBag = getObjectFromGUID(doomBagId)
-    if not doomBag then
-      return
-    end
-
-    for i, emptySpot in ipairs(emptySpots) do
-      if emptySpot then
-        local doomToken = doomBag.takeObject({
-          index = 0,
-          position = emptySpot:setAt("y", 3)
-        })
-
-        doomToken.highlightOn("Red", 5)
-      end
-
-      printToAll(i18n.getStrById(neighborhoodInfo.data.name) .. " (" .. i18n.getStrById(locationName) .. ") - " ..
-                   doomCount .. " " .. i18n.getStrById("LOG_doom_added"), "Red")
-    end
-    return
-  end
-
-  printToAll(locationName .. " - " .. doomCount .. " приреченості додайте самостійно",
-    "Red")
-end
-
 function eventSpawnDooms(callBack)
   local mythosTile = getObjectFromGUID(mythosTileId)
   if not mythosTile then
@@ -4785,7 +4678,7 @@ function eventSpawnDooms(callBack)
 end
 
 function spawnDooms(data, callBack)
-  if not data.locations or not data.neighborhood then
+  if not data.neighborhood then
     callBack()
     return
   end
@@ -4802,15 +4695,20 @@ function spawnDooms(data, callBack)
     return
   end
 
+  local isMystery = data.neighborhoodType and string.lower(data.neighborhoodType) == "mystery"
+
   local neighborhoodInfo = nil
   for _, o in pairs(objs) do
     local oData = parseJson(o.memo)
-    if oData and string.lower(oData.type) == "neighborhood" and oData.locations and oData.name == data.neighborhood then
-      neighborhoodInfo = {
-        obj = o,
-        data = oData
-      }
-      break
+    if oData and oData.name == data.neighborhood then
+      local oType = string.lower(oData.type)
+      if isMystery and oType == "mystery" then
+        neighborhoodInfo = { obj = o, data = oData }
+        break
+      elseif not isMystery and oType == "neighborhood" and oData.locations then
+        neighborhoodInfo = { obj = o, data = oData }
+        break
+      end
     end
   end
 
@@ -4824,7 +4722,11 @@ function spawnDooms(data, callBack)
 end
 
 function processSpawnDooms(data, neighborhoodInfo)
-  if gameData.scenarioData.anomaly then
+  local isMystery = data.neighborhoodType and string.lower(data.neighborhoodType) == "mystery"
+
+  if isMystery then
+    processMysterySpawnDooms(data, neighborhoodInfo)
+  elseif gameData.scenarioData.anomaly then
     local totalDooms = 0
     for locationName, location in pairs(data.locations) do
       if location.dooms then
@@ -4863,7 +4765,199 @@ function processSpawnDooms(data, neighborhoodInfo)
   end
 end
 
-function getNeighborhoodTile(neighborhoodName)
+function processMysterySpawnDooms(data, neighborhoodInfo)
+  if data.dooms and data.dooms > 0 then
+    spawnDoomTokenOnTile(neighborhoodInfo.obj, data.dooms)
+  end
+end
+
+function getEmptyDoomSpaces(o, neededCount, startIndex, structureType)
+  local function scan(isCheck2Line, depth, foundSoFar)
+    depth = depth or 0
+    foundSoFar = foundSoFar or {}
+
+    if depth > 1 then
+      return foundSoFar
+    end
+
+    local center = {0.049, 0.150, -0.056}
+    local radius = isCheck2Line and 3.25 or 2.1
+    local startAngleDeg = 205
+    local stepAngleDeg = isCheck2Line and 25 or 35
+    local count = isCheck2Line and 4 or 3
+    local y = 0.150
+
+    if startIndex == 2 then
+      startAngleDeg = 85
+    elseif startIndex == 3 then
+      startAngleDeg = 325
+    end
+
+    if structureType == 2 or structureType == "2" then
+      startAngleDeg = startAngleDeg + 60
+    end
+
+    if isCheck2Line then
+      startAngleDeg = startAngleDeg - 10
+    end
+
+    local arcPositions = generateArcPositionsFromAngle(center, radius, startAngleDeg, stepAngleDeg, count, y)
+
+    for _, pos in ipairs(arcPositions) do
+      local worldPos = o.positionToWorld(pos)
+      local hits = Physics.cast({
+        origin = worldPos,
+        direction = {0, 1, 0},
+        type = 3,
+        size = {1.188 / 2, 1 / 2, 1.188 / 2},
+        max_distance = 0,
+        debug = isTestMode
+      })
+
+      local hasDoom = false
+      for _, v in ipairs(hits) do
+        if v.hit_object and v.hit_object.memo == "Doom Token" then
+          hasDoom = true
+          break
+        end
+      end
+
+      if not hasDoom then
+        table.insert(foundSoFar, worldPos)
+        if #foundSoFar >= neededCount then
+          return foundSoFar
+        end
+      end
+    end
+
+    if not isCheck2Line then
+      return scan(true, depth + 1, foundSoFar)
+    end
+
+    return foundSoFar
+  end
+
+  return scan(false)
+end
+
+function getEmptyDoomSpacesOnTile(o, neededCount)
+  local bounds = o.getBoundsNormalized()
+  local scale = o.getScale()
+  local w = bounds.size.x * scale.x
+  local d = bounds.size.z * scale.z
+  local y = 0.150
+
+  local cols = 3
+  local rows = 3
+  local stepX = w / (cols - 1) * 0.6
+  local stepZ = d / (rows - 1) * 0.6
+
+  local offsetX = -(cols - 1) * stepX / 2
+  local offsetZ = -(rows - 1) * stepZ / 2
+
+  local foundSoFar = {}
+
+  for row = 0, rows - 1 do
+    for col = 0, cols - 1 do
+      local localPos = {
+        (offsetX + col * stepX) / scale.x,
+        y,
+        (offsetZ + row * stepZ) / scale.z
+      }
+      local worldPos = o.positionToWorld(localPos)
+      local hits = Physics.cast({
+        origin = worldPos,
+        direction = {0, 1, 0},
+        type = 3,
+        size = {1.188 / 2, 1 / 2, 1.188 / 2},
+        max_distance = 0,
+        debug = isTestMode
+      })
+
+      local hasDoom = false
+      for _, v in ipairs(hits) do
+        if v.hit_object and v.hit_object.memo == "Doom Token" then
+          hasDoom = true
+          break
+        end
+      end
+
+      if not hasDoom then
+        table.insert(foundSoFar, worldPos)
+        if #foundSoFar >= neededCount then
+          return foundSoFar
+        end
+      end
+    end
+  end
+
+  return foundSoFar
+end
+
+function spawnDoomTokenInLocation(locationName, doomCount, neighborhoodInfo)
+  local function getIndex(locationName, locationNames)
+    for i, lName in pairs(locationNames) do
+      if lName == locationName then
+        return i
+      end
+    end
+  end
+
+  local index = getIndex(locationName, neighborhoodInfo.data.locations)
+  if index and neighborhoodInfo.data.structureType then
+    local emptySpots = getEmptyDoomSpaces(neighborhoodInfo.obj, doomCount, index, neighborhoodInfo.data.structureType)
+
+    local doomBag = getObjectFromGUID(doomBagId)
+    if not doomBag then
+      return
+    end
+
+    for i, emptySpot in ipairs(emptySpots) do
+      if emptySpot then
+        local doomToken = doomBag.takeObject({
+          index = 0,
+          position = emptySpot:setAt("y", 3)
+        })
+        doomToken.highlightOn("Red", 5)
+      end
+
+      printToAll(i18n.getStrById(neighborhoodInfo.data.name) .. " (" .. i18n.getStrById(locationName) .. ") - " ..
+        doomCount .. " " .. i18n.getStrById("LOG_doom_added"), "Red")
+    end
+    return
+  end
+
+  printToAll(locationName .. " - " .. doomCount .. " приреченості додайте самостійно", "Red")
+end
+
+function spawnDoomTokenOnTile(tileObj, doomCount)
+  local tileData = parseJson(tileObj.memo)
+  if not tileData then
+    return
+  end
+
+  local emptySpots = getEmptyDoomSpacesOnTile(tileObj, doomCount)
+
+  local doomBag = getObjectFromGUID(doomBagId)
+  if not doomBag then
+    return
+  end
+
+  for i, emptySpot in ipairs(emptySpots) do
+    if emptySpot then
+      local doomToken = doomBag.takeObject({
+        index = 0,
+        position = emptySpot:setAt("y", 3)
+      })
+      doomToken.highlightOn("Red", 5)
+    end
+
+    printToAll(i18n.getStrById(tileData.name) .. " - " .. doomCount .. " " .. i18n.getStrById("LOG_doom_added"), "Red")
+  end
+end
+
+function getNeighborhoodTile(neighborhoodName, tileType)
+  tileType = tileType or "neighborhood"
   local locationMat = getObjectFromGUID(locationMatId)
   if not locationMat then
     return
@@ -4876,10 +4970,8 @@ function getNeighborhoodTile(neighborhoodName)
 
   for _, o in pairs(objs) do
     local data = parseJson(o.memo)
-    if data then
-      if string.lower(data.type) == "neighborhood" and data.name == neighborhoodName then
-        return o
-      end
+    if data and string.lower(data.type) == tileType and data.name == neighborhoodName then
+      return o
     end
   end
 end
@@ -4957,6 +5049,24 @@ function spawnClueToken(neighborhoodName)
   printToAll(i18n.getStrById(neighborhoodName) .. " - " .. i18n.getStrById("LOG_clue_spawn"), "Green")
 end
 
+function spawnClueTokenOnTile(tileObj)
+  local clueBag = getObjectFromGUID(clueBagId)
+  if not clueBag then
+    return
+  end
+
+  local pos = tileObj.getPosition()
+  pos:setAt("y", 3):setAt("z", pos.z + 1)
+  local clue = clueBag.takeObject({
+    index = 0,
+    position = pos
+  }).highlightOn("Green", 5)
+
+  local tileData = parseJson(tileObj.memo)
+  local name = tileData and tileData.name or "?"
+  printToAll(i18n.getStrById(name) .. " - " .. i18n.getStrById("LOG_clue_spawn"), "Green")
+end
+
 function spawnClue(callBack)
   local mythosTile = getObjectFromGUID(mythosTileId)
   if not mythosTile then
@@ -5002,9 +5112,19 @@ function spawnClue(callBack)
     return
   end
 
-  spawnClueToken(data.neighborhood)
+  local isMystery = data.neighborhoodType and string.lower(data.neighborhoodType) == "mystery"
+
+  if isMystery then
+    local mysteryTile = getNeighborhoodTile(data.neighborhood, "mystery")
+    if mysteryTile then
+      spawnClueTokenOnTile(mysteryTile)
+    end
+  else
+    spawnClueToken(data.neighborhood)
+  end
 
   local encounterDeck = getDeckFromScenarioMat("Encounter", data.neighborhood, true)
+
   if not encounterDeck then
     callBack()
     return
