@@ -1,6 +1,40 @@
 serpent = require("util/serpent")
 
 local data = {}
+
+-- Test data
+-- local data = {
+--   codex = {
+--     front = {
+--       actions = {
+--         {
+--           title = "Front Action 1"
+--         },
+--         {
+--           title = "Front Action 2"
+--         },
+--         {
+--           title = "Front Action 3"
+--         }
+--       }
+--     },
+
+--     back = {
+--       actions = {
+--         {
+--           title = "Back Action 1"
+--         },
+--         {
+--           title = "Back Action 2"
+--         },
+--         {
+--           title = "Back Action 3"
+--         }
+--       }
+--     }
+--   }
+-- }
+
 local pendingConfirm = nil
 
 local frontPositions = {
@@ -79,7 +113,7 @@ function buildCodexUI()
       if action.title then
         table.insert(xml, getCodexButton(
           "front_"..i,
-          "♦ "..action.title,
+          "○ "..action.title,
           frontPositions[i],
           "0 180 180"
         ))
@@ -92,7 +126,7 @@ function buildCodexUI()
       if action.title then
         table.insert(xml, getCodexButton(
           "back_"..i,
-          "♦ "..action.title,
+          "○ "..action.title,
           backPositions[i],
           "0 0 180"
         ))
@@ -125,18 +159,32 @@ end
 local function getOriginalText(side, index)
   local action = getAction(side, index)
   if action and action.title then
-    return "♦ "..action.title
+    return "○ "..action.title
+  end
+  return ""
+end
+
+local function getHoverEnterText(side, index)
+  local action = getAction(side, index)
+  if action and action.title then
+    return "● "..action.title
   end
   return ""
 end
 
 function hoverEnter(player, alt_click, id)
   if pendingConfirm == id then return end
+  local side, index = parseButtonId(id)
+  if not side or not index then return end
+  self.UI.setAttribute(id, "text", getHoverEnterText(side, index))
   self.UI.setAttribute(id, "textColor", "#FFD700")
 end
 
 function hoverExit(player, alt_click, id)
   if pendingConfirm == id then return end
+  local side, index = parseButtonId(id)
+  if not side or not index then return end
+  self.UI.setAttribute(id, "text", getOriginalText(side, index))
   self.UI.setAttribute(id, "textColor", "#fff5e2")
 end
 
@@ -156,7 +204,14 @@ function clickAction(player, alt_click, id)
     self.UI.setAttribute(id, "textColor", "#FFD700")
     pendingConfirm = nil
 
-		Global.call("processSteps", action.steps)
+		Global.call("processSteps", {
+        steps = action.steps, 
+        context = {
+          playerColor = player.color,
+          codexMat    = self
+        }
+      }
+    )
   else
     if pendingConfirm then
       local pSide, pIndex = parseButtonId(pendingConfirm)

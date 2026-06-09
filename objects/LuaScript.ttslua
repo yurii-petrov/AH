@@ -1210,22 +1210,22 @@ function onObjectDrop(colorName, object)
   end
 end
 
-function onObjectLeaveContainer(container, object)
-    local objectData = parseJson(object.memo)
-    if object.memo and not objectData then
-      objectData = {
-        type = object.memo
-      }
-    end
+-- function onObjectLeaveContainer(container, object)
+    -- local objectData = parseJson(object.memo)
+    -- if object.memo and not objectData then
+    --   objectData = {
+    --     type = object.memo
+    --   }
+    -- end
 
-    if not objectData then
-      return
-    end
+    -- if not objectData then
+    --   return
+    -- end
     
-    if objectData.type == "codex" then
-    handleCardContextType(object, objectData)
-    end
-end
+    -- if objectData.type == "codex" then
+    -- handleCardContextType(object, objectData)
+    -- end
+-- end
 
 function context59ReturnBridge(obj, player_color)
 
@@ -4084,21 +4084,47 @@ function prepareScenarioDecks(scenarioData)
                   end
                 end
 
+                local codexDeckCards = {}
+
                 for i = #foundArchive.getObjects(), 1, -1 do
                   local codex = foundArchive.getObjects()[i]
                   local codexData = parseJson(codex.memo)
 
                   if codexData and codexData.number and string.lower(codexData.type) == "codex" then
+                    
                     local index = containsNumber(scenarioData.codex, codexData.number)
                     if index then
-                      local codex = foundArchive.takeObject({
+                      local takenCodex = foundArchive.takeObject({
                         index = codex.index,
                       })
-                      attachCodexCard(codex, locationMat.positionToWorld(locationData.codex[index]):setAt("y", 3))
-                      
+                      attachCodexCard(takenCodex, locationMat.positionToWorld(locationData.codex[index]):setAt("y", 3))
+
+                    elseif scenarioData.codexDeck and containsNumber(scenarioData.codexDeck, codexData.number) then
+                      local takenCodex = foundArchive.takeObject({
+                        index = codex.index,
+                        position = locationMat.positionToWorld(locationData.codexDeck):setAt("y", 3),
+                        rotation = {0, 180, 180},
+                        smooth = false
+                      })
+                      table.insert(codexDeckCards, takenCodex)
                     end
                   end
                 end
+
+                if #codexDeckCards > 0 then
+                  Wait.time(function()
+                    local objs = findObjsInRadius(locationMat.positionToWorld(locationData.codexDeck):setAt("y", 2.2))
+                    for _, obj in ipairs(objs) do
+                      if obj.type == "Deck" or obj.type == "Card" then
+                        if obj.type == "Deck" then
+                          obj.shuffle()
+                        end
+                        break
+                      end
+                    end
+                  end, 1)
+                end
+
               end, 2)
             end
           end
@@ -4182,8 +4208,10 @@ function attachCodexCard(card, spawnPos)
       return
     end
     runAfterRest(codexMat, function(codexMat)
-    codexMat.call("setCodexData", params)
-  end)
+      codexMat.call("setCodexData", params)
+      -- TODO: Remove
+      handleCardContextType(codexMat, params)
+    end)
   end
 end
 
@@ -6334,123 +6362,424 @@ end
 -- │                 Steps                        │
 -- ╰──────────────────────────────────────────────╯
 
-function processSteps(steps)
-  if not steps then
+
+function processSteps(data)
+  if not data.steps then
     log("No steps to process")
     return
   end
-
-  for i = 1, #steps do
-    processStep(steps[i])
+ 
+  for i = 1, #data.steps do
+    processStep(data.steps[i], data.context)
   end
 end
 
-function processStep(step)
-  -- local context = resolveStepContext(step)
-  -- print(serpent.tts(context))
-  -- return executeStep(step, context)
+function processStep(step, context)
+  if not step or not step.type then
+    log("[processStep] step.type is nil")
+    return
+  end
+
+  local stepType = string.lower(step.type)
+
+  if stepType == "removetoken" then
+    processStepRemoveToken(step, context)
+  elseif stepType == "takecard" then
+    processStepTakeCard(step, context)
+  else
+    log("[processStep] Unknown step type: " .. stepType)
+  end
 end
 
-function resolveStepContext(step)
+-- ╭──────────────────────────────────────────────╮
+-- │           STEP: removeToken                  │
+-- ╰──────────────────────────────────────────────╯
 
-  local function findBoard(type)
-    for _, obj in ipairs(getObjects()) do
-      if obj.memo then
-        local data = parseJson(obj.memo)
-        if data and data.type == type then
-          print(obj.type)
-          return obj
-        end
-      end
-    end
-    log("Board not found: " .. type)
+function processStepRemoveToken(step, context)
+  if not step.token or not step.token.type then
+    log("[removeToken] token.type is nil")
+    return
   end
 
-  local function findDeckOnBoard(boardId, deckType)
-    local board = getObjectFromGUID(boardId)
-    if not board then
+  local tokenType = step.token.type
+  local placementType = step.placement and step.placement.type
+
+  if placementType == "playerLocation" then
+    if not context or not context.playerColor then
+      log("[removeToken] context.playerColor is nil")
       return
     end
 
-    local objs = upCast(board, 1, nil, 1)
-    if #objs <= 0 then
+    local neighborhoodTile = getPlayerNeighborhoodTile(context.playerColor)
+    if not neighborhoodTile then
+      log("[removeToken] neighborhood tile not found for player: " .. context.playerColor)
       return
     end
 
-    for _, o in pairs(objs) do
-      if o.type == "Deck" and o.memo then
-        local data = parseJson(o.memo)
-        if data and data.type == "deckType" then
-          return o
+    local objs = upCast(neighborhoodTile, 1, nil, 1)
+    for _, o in ipairs(objs) do
+      if o.type == "Tile" and o.memo == tokenType then
+        local tokenBagId = getTokenBagIdByType(tokenType)
+        if tokenBagId then
+          local bag = getObjectFromGUID(tokenBagId)
+          if bag then
+            bag.putObject(o)
+            print("Токен '" .. tokenType .. "' успішно видалено з клітинки")
+            return
+          end
         end
-      end
-    end
-  end
-
-  local function matchCard(cardData, query)
-    for _, condition in ipairs(query) do
-      local field = condition.field
-      local op = condition.op
-      local value = condition.value
-
-      if op == "eq" then
-        if card[field] ~= value then
-          return false
-        end
-      elseif op == "neq" then
-        if card[field] == value then
-          return false
-        end
-      elseif op == "contains" then
-        if not string.find(card[field] or "", value) then
-          return false
-        end
+        o.destruct()
+        print("Токен '" .. tokenType .. "' успішно видалено з клітинки")
+        return
       end
     end
 
-    return true
+    log("[removeToken] token '" .. tokenType .. "' not found on player location")
   end
+end
 
-  local function findCardInDeck(deck, query)
-    for i = 1, #deck.cards do
-      local card = deck.cards[i]
-
-      if matchCard(card, query) then
-        return card.guid
-      end
-    end
-
-    return nil
-  end
-
-  local board = findBoard(step.card.source.board)
-  if not board then
-    error("Board not found: " .. tostring(step.card.source.board))
-  end
-
-  local deck = findDeckOnBoard(board, step.from.deck)
-  if not deck then
-    error("Deck not found: " .. tostring(step.card.source.deck))
-  end
-
-  local cardId = findCardInDeck(deck, step.card.query)
-
-  if not cardId then
-    error("Card not found in deck: " .. step.card.source.deck)
-  end
-
-  -- local snapPoints = findSnapPoints(step.placement.selector.board,
-  --                                    step.placement.selector.snapTag)
-
-  -- local targetSlot = resolveSnapRule(snapPoints,
-  --                                    step.placement.selector.rule)
-
-  return {
-    cardId = cardId,
-    fromDeck = deck,
-    board = board,
-    -- placementSlot = targetSlot
+function getTokenBagIdByType(tokenType)
+  local tokenBagMap = {
+    ["White Marker"] = whiteTokenBagId,
+    ["Blue Marker"]  = blueTokenBagId,
+    ["Red Marker"]   = redTokenBagId,
+    ["Green Marker"] = greenTokenBagId,
+    ["Doom Token"]   = doomBagId,
+    ["Clue"]         = clueBagId,
   }
+  return tokenBagMap[tokenType]
+end
+
+function getPlayerNeighborhoodTile(playerColor)
+  local locationMat = getObjectFromGUID(locationMatId)
+  if not locationMat then return end
+
+  local objs = getObjectsInPlayerZone(playerColor)
+  for _, o in ipairs(objs) do
+    if o.type == "Card" then
+      local oData = parseJson(o.memo)
+      if oData and oData.type == "Investigator" and oData.name then
+        local boardObjs = upCast(locationMat, 1, nil, 1)
+        for _, b in ipairs(boardObjs) do
+          if b.memo and b.memo == oData.name and b.type == "Figurine" then
+            local hits = downCast(b, 10, -2, 1 / 5)
+            for _, h in ipairs(hits) do
+              local hData = parseJson(h.memo)
+              if hData and hData.type and string.lower(hData.type) == "neighborhood" then
+                return h
+              end
+            end
+          end
+        end
+      end
+    end
+  end
+end
+
+-- ╭──────────────────────────────────────────────╮
+-- │           STEP: takeCard                     │
+-- ╰──────────────────────────────────────────────╯
+
+function processStepTakeCard(step, context)
+  if not step.card or not step.card.source then
+    log("[takeCard] card.source is nil")
+    return
+  end
+
+  local source = step.card.source
+  local placement = step.placement
+
+  local sourceMat = findBoardByQuery(source.board and source.board.query)
+  if not sourceMat then
+    log("[takeCard] source board not found")
+    return
+  end
+
+  local deck = findDeckOnBoardByType(sourceMat, source.deck)
+  if not deck then
+    log("[takeCard] deck '" .. tostring(source.deck) .. "' not found on board")
+    return
+  end
+
+  local function doTakeAndPlace(card)
+    if not card then
+      log("[takeCard] card not found")
+      return
+    end
+    placeCard(card, placement, context)
+  end
+
+  if step.card.random or not step.card.query or #step.card.query == 0 then
+    local remaining = deck.type == "Deck" and deck.getQuantity() or 1
+
+    deck.shuffle()
+    Wait.time(function()
+      local card = takeCardFromTop(deck, false)
+      if not card then return end
+
+      if remaining == 2 then
+        doTakeAndPlace(card)
+        handleLastCodexDeckCard(deck, card, context)
+        return
+      end
+
+      doTakeAndPlace(card)
+    end, 0.5)
+    return
+  end
+
+  local card = takeCardByQuery(deck, step.card.query)
+  doTakeAndPlace(card)
+end
+
+function handleLastCodexDeckCard(remainingDeckOrCard, takenCard, context)
+  
+  if not context or not context.codexMat then
+    log("[handleLastCodexDeckCard] context.codexMat is nil")
+    return
+  end
+
+  local locationMat = getObjectFromGUID(locationMatId)
+  if not locationMat then return end
+
+  local locationData = parseJson(locationMat.memo)
+  if not locationData then return end
+
+  local lastCard = nil
+  print("remainingDeckOrCard: "..remainingDeckOrCard.type)
+  if remainingDeckOrCard and remainingDeckOrCard.type == "Deck" then
+    lastCard = remainingDeckOrCard.takeObject({
+      index = 0,
+      rotation = {0, 180, 0},
+      smooth = false
+    })
+  elseif remainingDeckOrCard and remainingDeckOrCard.type == "Card" then
+    lastCard = remainingDeckOrCard
+  end
+
+  if not lastCard then
+    log("[handleLastCodexDeckCard] last card not found")
+    return
+  end
+
+  local codexMat = context.codexMat
+  local codexPos = codexMat.getPosition()
+
+  local attachments = codexMat.getAttachments()
+  local cardToArchive = nil
+
+  for i, att in ipairs(attachments) do
+    local attData = parseJson(att.memo)
+    if attData and attData.type and string.lower(attData.type) == "codex" then
+      cardToArchive = codexMat.removeAttachment(att.index)
+      break
+    end
+  end
+
+  Wait.time(function()
+    codexMat.destruct()
+  end, 0.3)
+
+  if cardToArchive then
+    local archive = findDeckOnBoardByType(
+      findBoardByQuery({{field = "type", op = "eq", value = "locationMat"}}),
+      "archive"
+    )
+    if archive then
+      Wait.time(function()
+        cardToArchive.setRotation({0, 180, 180})
+        archive.putObject(cardToArchive)
+      end, 0.5)
+    end
+  end
+
+  -- local archive = findDeckOnBoardByType(
+  --   findBoardByQuery({{field = "type", op = "eq", value = "locationMat"}}),
+  --   "archive"
+  -- )
+  -- if archive and takenCard then
+  --   Wait.time(function()
+  --     takenCard.setRotation({0, 180, 180})
+  --     archive.putObject(takenCard)
+  --   end, 0.8)
+  -- end
+
+  Wait.time(function()
+    codexPos.y = codexPos.y + 2
+    attachCodexCard(lastCard, codexPos)
+  end, 1.5)
+end
+
+function placeCard(card, placement, context)
+  if not placement then
+    log("[placeCard] placement is nil")
+    return
+  end
+
+  local placementType = string.lower(placement.type)
+
+  if placementType == "deck" then
+    local targetMat = findBoardByQuery(placement.board and placement.board.query)
+    if not targetMat then
+      log("[placeCard] target board not found")
+      return
+    end
+
+    local targetDeck = findDeckOnBoardByType(targetMat, placement.deck)
+    if not targetDeck then
+      log("[placeCard] target deck '" .. tostring(placement.deck) .. "' not found")
+      return
+    end
+
+    card.setRotation({0, 180, 180})
+    targetDeck.putObject(card)
+
+  elseif placementType == "firstfreesnap" then
+    local snapBoard = placement.board == "self" and context and context.codexMat or nil
+    if not snapBoard then
+      log("[placeCard] snap board not found")
+      return
+    end
+
+    local snaps = snapBoard.getSnapPoints()
+    if not snaps then return end
+
+    for _, snp in ipairs(snaps) do
+      if snp.tags then
+        for _, tag in ipairs(snp.tags) do
+          if tag == placement.snapTag then
+            local worldPos = snapBoard.positionToWorld(snp.position)
+            local objs = findObjsInRadius(worldPos:setAt("y", 2.2))
+            local isEmpty = true
+            for _, o in ipairs(objs) do
+              if o.type == "Card" then
+                isEmpty = false
+                break
+              end
+            end
+            if isEmpty then
+              card.setPositionSmooth(worldPos:setAt("y", 3))
+              return
+            end
+          end
+        end
+      end
+    end
+
+    log("[placeCard] no free snap point with tag: " .. tostring(placement.snapTag))
+  end
+end
+
+-- ╭──────────────────────────────────────────────╮
+-- │           HELPERS                            │
+-- ╰──────────────────────────────────────────────╯
+
+function findBoardByQuery(query)
+  if not query then return end
+
+  for _, o in ipairs(getObjects()) do
+    local oData = parseJson(o.memo)
+    if oData then
+      local match = true
+      for _, condition in ipairs(query) do
+        local field = condition.field
+        local op    = condition.op
+        local value = condition.value
+        local actual = oData[field]
+
+        if op == "eq" then
+          if type(value) == "string" then
+            if string.lower(tostring(actual or "")) ~= string.lower(tostring(value)) then
+              match = false
+              break
+            end
+          else
+            if actual ~= value then
+              match = false
+              break
+            end
+          end
+        end
+      end
+      if match then return o end
+    end
+  end
+end
+
+function findDeckOnBoardByType(board, deckType)
+  if not board or not deckType then return end
+
+  local boardData = parseJson(board.memo)
+
+  if boardData and boardData[deckType] then
+    local pos = board.positionToWorld(boardData[deckType]):setAt("y", 2.2)
+    local objs = findObjsInRadius(pos)
+    for _, o in ipairs(objs) do
+      if o.type == "Deck" or o.type == "Card" then
+        return o
+      end
+    end
+  end
+
+  local objs = upCast(board, 1, nil, 1)
+  for _, o in ipairs(objs) do
+    if o.type == "Deck" or o.type == "Card" then
+      local oData = parseJson(o.memo)
+      if oData and oData.type and string.lower(oData.type) == string.lower(deckType) then
+        return o
+      end
+    end
+  end
+end
+
+function takeCardByQuery(deck, query)
+  if not deck or not query then return end
+
+  local objects = deck.type == "Deck" and deck.getObjects() or {deck}
+
+  for _, entry in ipairs(objects) do
+    local entryData = parseJson(entry.memo)
+    if entryData then
+      local match = true
+      for _, condition in ipairs(query) do
+        local field  = condition.field
+        local op     = condition.op
+        local value  = condition.value
+        local actual = entryData[field]
+
+        if op == "eq" then
+          if type(value) == "string" then
+            if string.lower(tostring(actual or "")) ~= string.lower(tostring(value)) then
+              match = false
+              break
+            end
+          else
+            if actual ~= value then
+              match = false
+              break
+            end
+          end
+        elseif op == "neq" then
+          if actual == value then
+            match = false
+            break
+          end
+        end
+      end
+
+      if match then
+        if deck.type == "Deck" then
+          return deck.takeObject({
+            guid     = entry.guid,
+            rotation = {0, 180, 0},
+            smooth   = false
+          })
+        else
+          return deck
+        end
+      end
+    end
+  end
 end
 
 -- ╭──────────────────────────────────────────────╮
