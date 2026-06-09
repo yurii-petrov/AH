@@ -169,6 +169,21 @@
       "Tags": [
         "codex"
       ]
+    },
+    {
+      "Position": {
+        "x": 0.61,
+        "y": 0.2,
+        "z": 0.6
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Tags": [
+        "codex"
+      ]
     }
   ],
   "Autoraise": true,
