@@ -4273,17 +4273,36 @@ function prepareScenarioEventDeck(eventDeck, decks, time)
       return
     end
 
+    local card = cards[index]
+    if not card then
+      log ("card not found at index " .. index)
+      return
+    end
+
     local data = parseJson(card.memo)
     if data and data.neighborhood then
       for _, deckData in pairs(decks) do
         local deck = getObjectFromGUID(deckData.guid)
+
         if deck then
           local deckMemo = parseJson(deck.memo)
+
           if deckMemo and deckMemo.name and string.lower(deckMemo.name) == string.lower(data.neighborhood) then
             mergeEventOnTopAtEventPos(card, deck, function()
-              spawnClueToken(data.neighborhood)
+              local isMystery = data.neighborhoodType and string.lower(data.neighborhoodType) == "mystery"
+
+              if isMystery then
+                local mysteryTile = getNeighborhoodTile(data.neighborhood, "mystery")
+                if mysteryTile then
+                  spawnClueTokenOnTile(mysteryTile)
+                end
+              else
+                spawnClueToken(data.neighborhood)
+              end
+
               processCard(index + 1, cards)
             end)
+
             return
           end
         end
