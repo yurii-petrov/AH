@@ -24,7 +24,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"locations\":{\"The Witch House\":{\"dooms\":1}},\"name\":\"BtS\",\"neighborhood\":\"French Hill\",\"number\":23,\"type\":\"Event\"}",
+  "Memo": "{\"dooms\":1,\"neighborhood\":\"The Witch House\",\"neighborhoodType\":\"Mystery\",\"name\":\"BtS\",\"number\":23,\"type\":\"Event\"}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,

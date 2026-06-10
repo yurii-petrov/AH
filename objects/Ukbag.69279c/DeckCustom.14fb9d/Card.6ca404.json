@@ -24,7 +24,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"locations\":{\"The Unnamable\":{\"dooms\":1}},\"name\":\"TKaTG\",\"neighborhood\":\"Merchant District\",\"number\":27,\"type\":\"Event\"}",
+  "Memo": "{\"dooms\":1,\"neighborhood\":\"The Unnamable\",\"neighborhoodType\":\"Mystery\",\"name\":\"TKaTG\",\"number\":27,\"type\":\"Event\"}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,
