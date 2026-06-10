@@ -6282,9 +6282,82 @@ function processStep(step, context)
     processStepCycleTokenLayout(step, context)
   elseif stepType == "contextsetup" then
     processStepContextSetup(step, context)
+  elseif stepType == "takecodexfromarchive" then
+    processStepTakeCodexFromArchive(step, context)
   else
     log("[processStep] Unknown step type: " .. stepType)
   end
+end
+
+-- ╭──────────────────────────────────────────────╮
+-- │            STEP: Take Codex                  │
+-- ╰──────────────────────────────────────────────╯
+
+function processStepTakeCodexFromArchive(step, context)
+  if not step.number then
+    log("[takeCodexFromArchive] number is nil")
+    return
+  end
+
+  local sourceMat = findBoardByQuery({{
+    field = "type",
+    op    = "eq",
+    value = "locationMat"
+  }})
+  if not sourceMat then
+    log("[takeCodexFromArchive] locationMat not found")
+    return
+  end
+
+  local archive = findDeckOnBoardByType(sourceMat, "archive")
+  if not archive then
+    log("[takeCodexFromArchive] archive not found")
+    return
+  end
+
+  local codexMat = context.codexMat
+  if not codexMat then
+    log("[takeCodexFromArchive] codexMat is nil")
+    return
+  end
+
+  local freePos = findNextFreeCodexSnapPos(sourceMat)
+  if not freePos then
+    log("[takeCodexFromArchive] no free codex snap")
+    return
+  end
+
+  local card = takeCardByQuery(archive, {{
+    field = "number",
+    op    = "eq",
+    value = step.number
+  }})
+
+  if not card then
+    log("[takeCodexFromArchive] card with number " .. step.number .. " not found")
+    return
+  end
+
+  card.setPositionSmooth(freePos:setAt("y", 3))
+  runAfterRest(card, function(c)
+    attachCodexCard(c, freePos)
+
+    if context.removeAfterUse and not step.destructSelf then
+      codexMat.call("onActionSuccess", context.removeAfterUse)
+    end
+
+    if step.destructSelf then
+      local attachments = codexMat.getAttachments()
+      for _, att in ipairs(attachments) do
+        local attData = parseJson(att.memo)
+        if attData and attData.type and string.lower(attData.type) == "codex" then
+          codexMat.removeAttachment(att.index)
+          break
+        end
+      end
+      codexMat.destruct()
+    end
+  end)
 end
 
 -- ╭──────────────────────────────────────────────╮
@@ -7088,6 +7161,55 @@ function lockObj(guid)
     o.drag_selectable = false
     o.gizmo_selectable = false
   end
+end
+
+function findNextFreeCodexSnapPos(locationMat)
+  local codexSnaps = {}
+  for _, snp in ipairs(locationMat.getSnapPoints()) do
+    if snp.tags then
+      for _, tag in ipairs(snp.tags) do
+        if tag == "codex_mat" then
+          table.insert(codexSnaps, snp)
+          break
+        end
+      end
+    end
+  end
+
+  table.sort(codexSnaps, function(a, b)
+    return a.position.x > b.position.x
+  end)
+
+  for _, snp in ipairs(codexSnaps) do
+    local worldPos = locationMat.positionToWorld(snp.position)
+    local objs = upCast_pos(worldPos, 0.5)
+    local isOccupied = false
+    for _, o in ipairs(objs) do
+      if o.getGUID() ~= locationMat.getGUID() and o.type == "Tile" then
+        isOccupied = true
+        break
+      end
+    end
+    if not isOccupied then
+      return worldPos
+    end
+  end
+end
+
+function upCast_pos(worldPos, dist)
+  local hits = Physics.cast({
+    origin = { worldPos.x, worldPos.y + dist / 2, worldPos.z },
+    direction = { 0, 1, 0 },
+    type = 3,
+    size = { 1, dist, 1 },
+    max_distance = 0,
+    debug = isTestMode
+  })
+  local result = {}
+  for _, v in ipairs(hits) do
+    table.insert(result, v.hit_object)
+  end
+  return result
 end
 
 function upCast(obj, dist, offset, multi)

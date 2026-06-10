@@ -35,6 +35,21 @@ local data = {}
 --   }
 -- }
 
+local buttonStyle = {
+  default = {
+    symbol = "○",
+    color  = "#fff5e2"
+  },
+  hover = {
+    symbol = "●",
+    color  = "#FFD700"
+  },
+  confirm = {
+    text  = "✔ Підтвердити",
+    color = "#22af4c"
+  }
+}
+
 local pendingConfirm = nil
 
 local frontPositions = {
@@ -159,7 +174,7 @@ end
 local function getOriginalText(side, index)
   local action = getAction(side, index)
   if action and action.title then
-    return "○ "..action.title
+    return buttonStyle.default.symbol .. " " .. action.title
   end
   return ""
 end
@@ -167,7 +182,7 @@ end
 local function getHoverEnterText(side, index)
   local action = getAction(side, index)
   if action and action.title then
-    return "● "..action.title
+    return buttonStyle.hover.symbol .. " " .. action.title
   end
   return ""
 end
@@ -177,7 +192,7 @@ function hoverEnter(player, alt_click, id)
   local side, index = parseButtonId(id)
   if not side or not index then return end
   self.UI.setAttribute(id, "text", getHoverEnterText(side, index))
-  self.UI.setAttribute(id, "textColor", "#FFD700")
+  self.UI.setAttribute(id, "textColor", buttonStyle.hover.color)
 end
 
 function hoverExit(player, alt_click, id)
@@ -185,7 +200,7 @@ function hoverExit(player, alt_click, id)
   local side, index = parseButtonId(id)
   if not side or not index then return end
   self.UI.setAttribute(id, "text", getOriginalText(side, index))
-  self.UI.setAttribute(id, "textColor", "#fff5e2")
+  self.UI.setAttribute(id, "textColor", buttonStyle.default.color)
 end
 
 function clickAction(player, alt_click, id)
@@ -197,35 +212,44 @@ function clickAction(player, alt_click, id)
 
   if pendingConfirm == id then
     if action.description then
-      print("опис дії: "..action.description)
+      print("опис дії: " .. action.description)
     end
 
     self.UI.setAttribute(id, "text", getOriginalText(side, index))
-    self.UI.setAttribute(id, "textColor", "#FFD700")
+    self.UI.setAttribute(id, "textColor", buttonStyle.hover.color)
     pendingConfirm = nil
 
-		Global.call("processSteps", {
-        steps = action.steps, 
-        context = {
-          playerColor = player.color,
-          codexMat    = self,
-          data = data
-        }
+    Global.call("processSteps", {
+      steps = action.steps,
+      context = {
+        playerColor    = player.color,
+        codexMat       = self,
+        data           = data,
+        removeAfterUse = action.removeAfterUse and { side = side, index = index } or nil
       }
-    )
+    })
   else
     if pendingConfirm then
       local pSide, pIndex = parseButtonId(pendingConfirm)
       if pSide and pIndex then
         self.UI.setAttribute(pendingConfirm, "text", getOriginalText(pSide, pIndex))
-        self.UI.setAttribute(pendingConfirm, "textColor", "#fff5e2")
+        self.UI.setAttribute(pendingConfirm, "textColor", buttonStyle.default.color)
       end
     end
 
     pendingConfirm = id
-    self.UI.setAttribute(id, "text", "✔ Підтвердити")
-    self.UI.setAttribute(id, "textColor", "#22af4c")
+    self.UI.setAttribute(id, "text", buttonStyle.confirm.text)
+    self.UI.setAttribute(id, "textColor", buttonStyle.confirm.color)
   end
+end
+
+function onActionSuccess(params)
+  if not params or not params.side or not params.index then return end
+  local sideData = data and data.codex and data.codex[params.side]
+  if not sideData or not sideData.actions then return end
+  table.remove(sideData.actions, params.index)
+  pendingConfirm = nil
+  buildCodexUI()
 end
 
 function parseJson(memo)
