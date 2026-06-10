@@ -1,0 +1,983 @@
+-- ╭──────────────────────────────────────────────╮
+-- │            OBJECT DROP / DISCARD             │
+-- ╰──────────────────────────────────────────────╯
+
+function discardMonster(o, objData)
+  local locationMat = getObjectFromGUID(locationMatId)
+  if not locationMat then
+    return
+  end
+
+  local locationData = parseJson(locationMat.memo)
+  if not locationData then
+    return
+  end
+
+  o.setRotation({0, 180, 180})
+  o.setPosition(locationMat.positionToWorld(locationData.monster):setAt("y", 3))
+end
+
+function onPlayerAction(player, action, targets)
+  if action == Player.Action.FlipOver or action == Player.Action.FlipIncrementalLeft or action ==
+    Player.Action.FlipIncrementalRight or action == Player.Action.RotateIncrementalLeft or action ==
+    Player.Action.RotateIncrementalRight then
+    local isFlip = true
+    for _, t in pairs(targets) do
+      if t.type == "Figurine" and t.getData().Name == "Custom_Model" then
+        isFlip = false
+        runOnceAfterRest(t, function(t)
+          local p = t.getPosition()
+          if t.getRotation().x == 90 then
+            t.setRotationSmooth({0, 0, 0})
+          else
+            t.setPosition(t.getPosition():setAt("y", p.y + 0.7))
+            t.setRotationSmooth({90, 0, 0})
+          end
+        end)
+      end
+    end
+    return isFlip
+  end
+end
+
+function discardToShop(obj, shopType, isHovering)
+
+  local shopObj = getShopObj(shopType)
+
+  if not shopObj then
+    return
+  end
+
+  if isHovering == true then
+    shopObj.setRotation({0, 180, 0})
+  end
+  shopObj.putObject(obj)
+  if isHovering == true then
+    shopObj.setRotation({0, 180, 180})
+  end
+end
+
+function getShopObj(shopType)
+  local shopMat = getObjectFromGUID(shopMatId)
+  if not shopMat then
+    return
+  end
+
+  local shopMatData = parseJson(shopMat.memo)
+  if not shopMatData then
+    return
+  end
+
+  for _, deckData in ipairs(shopMatData.decks) do
+    if string.lower(shopType) == string.lower(deckData.type) and deckData.pos then
+      local p = shopMat.positionToWorld(deckData.pos)
+      local objs = findObjsInRadius(p:setAt("y", 2.11))
+      for _, o in ipairs(objs) do
+        local oData = parseJson(o.memo)
+        if oData and oData.type and string.lower(deckData.type) == string.lower(oData.type) then
+          return o
+        end
+      end
+    end
+  end
+
+end
+
+function discardCondition(obj, objData)
+  local effectiveType = string.lower(objData.type)
+
+  local function tryDiscard(mat, positions)
+    for _, pos in ipairs(positions) do
+      local p = mat.positionToWorld(pos):setAt("y", 2.11)
+      local objs = findObjsInRadius(p)
+      for _, o in ipairs(objs) do
+        local oData = parseJson(o.memo)
+        if oData and oData.type and effectiveType == string.lower(oData.type) then
+          obj.setRotation({0, 180, 180})
+          o.setRotation({0, 180, 180})
+          local deck = o.putObject(obj)
+          if o.type == "Card" then
+            deck.memo = JSON.encode({type = oData.type})
+            deck.setRotation({0, 180, 0})
+          else
+            o.setRotation({0, 180, 0})
+          end
+          return true
+        end
+      end
+    end
+    return false
+  end
+
+  local conditionMat = getObjectFromGUID(conditionMatId)
+  if not conditionMat then return end
+  local conditionMatData = parseJson(conditionMat.memo)
+  if not conditionMatData then return end
+
+  if tryDiscard(conditionMat, {conditionMatData[1], conditionMatData[2]}) then
+    return
+  end
+
+  local conditionMat2 = getObjectFromGUID(conditionMat2Id)
+  if conditionMat2 then
+    local conditionMat2Data = parseJson(conditionMat2.memo)
+    if conditionMat2Data and conditionMat2Data.snps then
+      local positions = {}
+      for _, snp in ipairs(conditionMat2Data.snps) do
+        table.insert(positions, snp.Position)
+      end
+      if tryDiscard(conditionMat2, positions) then
+        return
+      end
+    end
+  end
+
+  obj.setRotation({0, 180, 0})
+  obj.setPositionSmooth(conditionMat.positionToWorld(conditionMatData[2]):setAt("y", 3))
+end
+
+function discardCard(colorName, object, objectData, isHovering)
+  local isHovering = isHovering or false
+  local objType = objectData.type and string.lower(objectData.type) or nil
+
+  if not objType then return end
+
+  local rawType = (objType == "doublesided" and objectData.back and objectData.back.type)
+    or objectData.type
+
+  if not rawType then return end
+
+  local effectiveType = string.lower(rawType)
+
+  if effectiveType == "monster" then
+    discardMonster(object, objectData)
+  elseif effectiveType == "starting" then
+    local box = getObjectFromGUID(boxId)
+    if box then
+      box.putObject(object)
+    end
+  elseif effectiveType == "item" or effectiveType == "spell" or effectiveType == "ally" or effectiveType == "special" then
+    discardToShop(object, effectiveType, isHovering)
+  elseif CONDITION_TYPES[effectiveType] then
+    discardCondition(object, objectData)
+  end
+end
+
+function discardTile(colorName, o, objData, isHovering)
+    local isHovering = isHovering or false
+  if objData.type ~= "Monster Mat" and objData.type ~= "Item Mat" and objData.type ~= "Clue" and objData.type ~=
+    "Remnant Token" then
+    return
+  end
+
+  if #o.getAttachments() <= 0 then
+    o.destruct()
+    return
+  end
+
+  local r = o.removeAttachment(0)
+  if not r then
+    return
+  end
+
+  r.setLock(false)
+  r.interactable = true
+  o.destruct()
+
+  if objData.type == "Monster Mat" then
+    onMonsterKilled(r)
+  elseif objData.type == "Item Mat" then
+    local rData = parseJson(r.memo)
+    if rData then
+      discardCard(colorName, r, rData, isHovering)
+    end
+  end
+
+  return true
+end
+
+function onObjectPickUpMythos(colorName, object, mythosTile)
+  local activeArea = {
+    minX = 0,
+    maxX = 0.17,
+    minZ = 0.130,
+    maxZ = 0.420
+  }
+
+  local pos = mythosTile.positionToLocal(object.getPosition())
+  if pos.x > activeArea.minX and pos.x < activeArea.maxX and pos.z > activeArea.minZ and pos.z < activeArea.maxZ then
+    mythosTile.call("setButtons", {
+      type = "empty"
+    })
+  end
+end
+
+function onObjectPickUpShop(colorName, object, shopMat)
+  local objectData = parseJson(object.memo)
+
+  if not objectData then
+    return
+  end
+
+  if object.type ~= "Card" or not objectData.type or objectData.type ~= "item" then
+    return
+  end
+
+  local itemIndex = tryGetItemIndex(shopMat, object, objectData)
+
+  if not itemIndex then
+    return
+  end
+
+  local types = {}
+  if objectData.common then
+    table.insert(types, "common")
+  end
+
+  if objectData.curio then
+    table.insert(types, "curio")
+  end
+
+  shopMat.call("setBottom", {
+    id = itemIndex
+  })
+  shopMat.call("setTop", {
+    id = itemIndex,
+    types = {}
+  })
+end
+
+function onObjectPickUp(colorName, object)
+
+  -- print(serpent.tts(object.call("updateMoney", 5)))
+  -- print(serpent.tts(object.call("updateMoney", -6)))
+
+  local foundObjects = downCast(object, 10, nil, 1)
+
+  for _, obj in pairs(foundObjects) do
+    if obj.guid == mythosTileId then
+      onObjectPickUpMythos(colorName, object, obj)
+    elseif obj.guid == shopMatId then
+      onObjectPickUpShop(colorName, object, obj)
+    end
+  end
+end
+
+function onObjectDropOnDiscard(colorName, object, objectData, investigatorMat)
+
+  local discardArea = {
+    minX = -1.26,
+    maxX = -0.92,
+    minZ = -0.06,
+    maxZ = 0.42
+  }
+
+  local pos = investigatorMat.positionToLocal(object.getPosition())
+  if pos.x < discardArea.minX or pos.x > discardArea.maxX or pos.z < discardArea.minZ or pos.z > discardArea.maxZ then
+    return
+  end
+
+  if object.type == "Tile" then
+    discardTile(colorName, object, objectData, true)
+  elseif object.type == "Card" then
+    discardCard(colorName, object, objectData, true)
+  elseif object.type == "Figurine" then
+    local box = getObjectFromGUID(boxId)
+    if box then
+      box.putObject(object)
+    end
+  end
+  return true
+end
+
+function onObjectDropOnMythosMat(colorName, object, objectData)
+  local foundObjects = downCast(object, 10, nil, 1)
+  local mythosTile = nil
+  for i, obj in ipairs(foundObjects) do
+    if obj.guid == mythosTileId then
+      mythosTile = obj
+      break
+    end
+  end
+
+  if not mythosTile then
+    return
+  end
+
+  local activeArea = {
+    minX = 0,
+    maxX = 0.17,
+    minZ = 0.130,
+    maxZ = 0.420
+  }
+
+  local pos = mythosTile.positionToLocal(object.getPosition())
+  if pos.x > activeArea.minX and pos.x < activeArea.maxX and pos.z > activeArea.minZ and pos.z < activeArea.maxZ then
+    local function getUIType(cardData)
+      if not cardData then
+        return
+      end
+      local t = cardData.type and string.lower(cardData.type) or ""
+      return {
+        type = ((t == "event" or t == "encounter" or t == "anomaly" or t == "headline" or t == "terror") and t or "empty")
+      }
+    end
+    mythosTile.call("setButtons", getUIType(parseJson(object.memo)))
+  end
+end
+
+function onObjectDropOnInvestigatorMat(colorName, object, objectData)
+  local investigatorMat = nil
+  local foundObjects = downCast(object, 10, nil, 1)
+  if #foundObjects == 2 then
+    for i, obj in ipairs(foundObjects) do
+      if obj.memo == "Investigator Mat" then
+        investigatorMat = obj
+        break
+      end
+    end
+  end
+
+  if not investigatorMat then
+    return
+  end
+
+  if onObjectDropOnDiscard(colorName, object, objectData, investigatorMat) then
+    return true
+  end
+
+  local clueArea = {
+    minX = -1.23,
+    maxX = -1,
+    minZ = 0.58,
+    maxZ = 0.88
+  }
+
+  if investigatorMat then
+    local pos = investigatorMat.positionToLocal(object.getPosition())
+    if pos.x >= clueArea.minX and pos.x <= clueArea.maxX and pos.z >= clueArea.minZ and pos.z <= clueArea.maxZ then
+      object.destruct()
+      investigatorMat.call("addClue")
+      return true
+    end
+  end
+end
+
+function tryGetItemIndex(shopMat, object, objectData)
+  local itemAreas = {{
+    minX = -0.023,
+    maxX = 0.028,
+    minZ = 0.204,
+    maxZ = 0.255
+  }, {
+    minX = -0.3,
+    maxX = -0.2,
+    minZ = 0.1,
+    maxZ = 0.3
+  }, {
+    minX = 0.2,
+    maxX = 0.3,
+    minZ = 0.6,
+    maxZ = 0.8
+  }, {
+    minX = -0.07,
+    maxX = 0.7,
+    minZ = 0.6,
+    maxZ = 0.8
+  }, {
+    minX = -0.3,
+    maxX = -0.2,
+    minZ = 0.6,
+    maxZ = 0.8
+  }, {
+    minX = 0.246,
+    maxX = 0.295,
+    minZ = -0.315,
+    maxZ = -0.267
+  }, {
+    minX = -0.023,
+    maxX = 0.028,
+    minZ = -0.315,
+    maxZ = -0.267
+  }, {
+    minX = -0.3,
+    maxX = -0.2,
+    minZ = -0.315,
+    maxZ = -0.267
+  }}
+
+  local pos = shopMat.positionToLocal(object.getPosition())
+  -- print(serpent.tts(pos))
+  for i, itemArea in ipairs(itemAreas) do
+    if pos.x >= itemArea.minX and pos.x <= itemArea.maxX and pos.z >= itemArea.minZ and pos.z <= itemArea.maxZ then
+      -- print(i)
+      return i
+    end
+  end
+end
+
+function onObjectDropOnShop(colorName, object, objectData)
+  if object.is_face_down == true or object.type ~= "Card" or not objectData.type or objectData.type ~= "item" then
+    return
+  end
+
+  runOnceAfterRest(object, function(object)
+    local shopMat = nil
+    local foundObjects = downCast(object, 10, nil, 1)
+    if #foundObjects == 2 then
+      for i, obj in ipairs(foundObjects) do
+        if obj.guid == shopMatId then
+          shopMat = obj
+          break
+        end
+      end
+    end
+
+    if not shopMat then
+      return
+    end
+
+    local itemIndex = tryGetItemIndex(shopMat, object, objectData)
+
+    if not itemIndex or itemIndex > 5 then
+      return
+    end
+
+    local types = {}
+    if objectData.common then
+      table.insert(types, "common")
+    end
+
+    if objectData.curio then
+      table.insert(types, "curio")
+    end
+
+    shopMat.call("setBottom", {
+      id = itemIndex,
+      price = objectData.price or 0,
+      guid = object.guid
+    })
+    shopMat.call("setTop", {
+      id = itemIndex,
+      types = types
+    })
+  end)
+
+end
+
+function onRandomInvestigatorCardDrop(colorName, object)
+  local foundObjects = downCast(object, 10, nil, 1)
+  local investigatorMat = nil
+  for _, obj in pairs(foundObjects) do
+    if obj.memo then
+      if obj.memo == "Investigator Mat" then
+        investigatorMat = obj
+      else
+        local objData = parseJson(obj.memo)
+        if objData and objData.type == "Investigator" then
+          object.setRotation({0, 90, 180})
+          return
+        end
+      end
+    end
+  end
+
+  if not investigatorMat then
+    return
+  end
+
+  local availableInvestigators = {}
+  for _, o in ipairs(getObjects()) do
+    if o.type == "Card" then
+      local oData = parseJson(o.memo)
+      if oData and oData.type and oData.name and string.lower(oData.type) == "investigator" and
+        not gameData.selectedInvestigators[oData.name] then
+        oData.guid = o.guid
+        table.insert(availableInvestigators, oData)
+      end
+    end
+  end
+
+  local function shuffle(tbl)
+    local n = #tbl
+    for i = n, 2, -1 do
+      local j = math.random(1, i)
+      tbl[i], tbl[j] = tbl[j], tbl[i]
+    end
+  end
+
+  -- print("availableInvestigators: "..serpent.tts(availableInvestigators[1]))
+  shuffle(availableInvestigators)
+  -- print("shuffle: "..serpent.tts(availableInvestigators[1]))
+
+  local selectedType = object.getVar("type")
+  local findInvestigatorData = nil
+  for _, investigatorData in ipairs(availableInvestigators) do
+    if findInvestigatorData then
+      break
+    elseif selectedType == "all_roles" then
+      findInvestigatorData = investigatorData
+      break
+    else
+      if investigatorData.role then
+        for _, type in pairs(investigatorData.role) do
+          if string.lower(type) == string.lower(selectedType) then
+            findInvestigatorData = investigatorData
+            break
+          end
+        end
+      end
+    end
+  end
+
+  if not findInvestigatorData then
+    print("Дослідник не знайдений для ролі: " .. selectedType)
+    return
+  end
+
+  local objectData = parseJson(object.memo)
+  local table = getObjectFromGUID(tableId)
+  if objectData and objectData.startPosition and table then
+    object.setPositionSmooth(table.positionToWorld(objectData.startPosition):setAt("y", 3))
+  else
+    object.setPositionSmooth({60, 3, -8})
+  end
+  local investigatorCard = getObjectFromGUID(findInvestigatorData.guid)
+  if investigatorCard then
+    local cardPosition = investigatorMat.positionToWorld({0.316, 2.213, 0.344})
+    investigatorCard.setPosition(cardPosition)
+    onInvestigatorDrop(colorName, investigatorCard, findInvestigatorData, true)
+  end
+end
+
+function onObjectDrop(colorName, object)
+  if object.guid == "d84f21" then
+    onRandomInvestigatorCardDrop(colorName, object)
+    return
+  end
+
+  local objectData = parseJson(object.memo)
+  if object.memo and not objectData then
+    objectData = {
+      type = object.memo
+    }
+  end
+
+  if not objectData then
+    return
+  end
+
+  if onObjectDropOnInvestigatorMat(colorName, object, objectData) then
+    return
+  elseif onObjectDropOnMythosMat(colorName, object, objectData) then
+    return
+  elseif onObjectDropOnShop(colorName, object, objectData) then
+    return
+  end
+
+  if objectData.type == "Monster" or (objectData.role and objectData.role == "Monster") then
+    onMonsterDrop(colorName, object, objectData)
+    return
+  elseif objectData.type == "DoubleSided" then
+    onDoubleSidedDrop(colorName, object, objectData)
+  elseif objectData.type == "Investigator" then
+    onInvestigatorDrop(colorName, object, objectData)
+  elseif objectData.type == "item" or objectData.type == "spell" or objectData.type == "ally" or objectData.type ==
+    "starting" or objectData.type == "special" then
+    runOnceAfterRest(object, function(object)
+      onItemDrop(colorName, object, objectData)
+    end)
+  end
+
+  local isFoundlocationMat = false
+  local isFoundNeighborhood = false
+  local isFoundScenarioSheet = false
+  if objectData.type == Tag.DoomToken or objectData.type == Tag.AnomalyToken then
+    local foundObjects = downCast(object, 10, nil, 1)
+    for i, obj in ipairs(foundObjects) do
+      if not isFoundNeighborhood and not isFoundScenarioSheet then
+        if obj.memo then
+          if obj.guid == locationMatId then
+            isFoundlocationMat = true
+          else
+            local objMemo = parseJson(obj.memo)
+            if objMemo and objMemo.type and string.lower(objMemo.type) == string.lower("Neighborhood") then
+              isFoundNeighborhood = true
+              break
+            elseif objMemo and objMemo.type and string.lower(objMemo.type) == string.lower("Scenario") then
+              isFoundScenarioSheet = true
+              break
+            elseif objMemo and objMemo.type and string.lower(objMemo.type) == string.lower("Mystery") then
+              isFoundScenarioSheet = true
+              break
+            end
+          end
+        end
+      end
+    end
+  end
+
+  if isFoundlocationMat and not isFoundNeighborhood and not isFoundScenarioSheet then
+    object.destruct()
+  end
+end
+
+function context59ReturnBridge(obj, player_color)
+
+  obj.clearButtons()
+
+  local locationMat = getObjectFromGUID(locationMatId)
+  if not locationMat then
+    return
+  end
+
+  local objs = upCast(locationMat, 1, nil, 1)
+  if not objs then
+    return
+  end
+
+  local bridge = nil
+  for _, o in ipairs(objs) do
+    local data = parseJson(o.memo)
+    if data and data.name == "Bridge2" and data.type == "Street" then
+      bridge = o
+      break
+    end
+  end
+
+  if not bridge then
+    print("It looks like the bridge is already returned.")
+    return 
+  end
+
+  bridge.setLock(false)
+  bridge.interactable = true
+  bridge.drag_selectable = true
+  bridge.gizmo_selectable = true
+
+  bridge.highlightOn("Red", 1.5)
+
+  Wait.time(function()
+    local box = getObjectFromGUID(boxId)
+    if not box then
+      return
+    end
+
+    box.putObject(bridge)
+    
+  end, 1.5)
+
+end
+
+function onItemDrop(colorName, object, objectData)
+
+  local function attachItemToMat(object, objectData, bagId)
+    local foundObjects = downCast(object, 10, nil, 1)
+    local itemsMat = nil
+    for _, obj in pairs(foundObjects) do
+      if obj.memo then
+        if obj.memo == "Items Mat" then
+          itemsMat = obj
+          break
+        end
+      end
+    end
+
+    if not itemsMat then
+      return
+    end
+
+    local itemMatBag = getObjectFromGUID(bagId)
+
+    if not itemMatBag then
+      return
+    end
+
+    local itemMatP = itemsMat.positionToWorld({0.540, 0.200, -0.034})
+    local itemMat = itemMatBag.takeObject({
+      index = 0,
+      position = object.getPosition():setAt("y", 2.21):setAt("z", itemMatP.z),
+      rotation = {0, 180, 0},
+      smooth = false
+    })
+
+    object.setLock(true)
+    object.setRotation({0, 180, 0})
+    object.setPosition(itemMat.positionToWorld({0, 0, -0.154}):setAt("y", 2.31))
+
+    itemMat.addAttachment(object)
+    itemMat.memo = JSON.encode({
+      type = "Item Mat"
+    })
+
+    runAfterRest(itemMat, function(itemMat)
+      Wait.time(function()
+        itemMat.call("setData", objectData)
+        Wait.time(function()
+          itemMat.call("setData", objectData)
+        end, 0.2)
+      end, 0.2)
+    end)
+  end
+
+  if not objectData.hp and not objectData.sp then
+
+      if objectData.guaranteed and objectData.guaranteed == true and objectData.investigator and objectData.investigator == "Preston Fairmont" then
+        attachItemToMat(object, objectData, itemMatBag2Id)
+      end
+
+    return
+  end
+
+  attachItemToMat(object, objectData, itemMatBagId)
+end
+
+function onInvestigatorDrop(colorName, object, objectData, isIgnoreRandomCard)
+  local isIgnoreRandomCard = isIgnoreRandomCard or false
+  local foundObjects = downCast(object, 10, nil, 1)
+  local investigatorMat = nil
+  local investigatorCard = nil
+  for _, obj in pairs(foundObjects) do
+    if obj.memo then
+      if obj.memo == "Investigator Mat" and not investigatorMat then
+        investigatorMat = obj
+      else
+        local objData = parseJson(obj.memo)
+        if objData and objData.type == "Investigator" then
+          investigatorCard = obj
+          object.setRotation({0, 90, 180})
+          return
+        end
+      end
+    elseif obj.guid == "d84f21" and not isIgnoreRandomCard then
+      investigatorCard = obj
+      object.setRotation({0, 90, 180})
+      return
+    end
+  end
+
+  if not investigatorMat then
+    return
+  end
+
+  gameData.selectedInvestigators[objectData.name] = objectData
+  -- print(serpent.tts(gameData.selectedInvestigators))
+  investigatorMat.call("setMemo", objectData)
+  runAfterRest(investigatorMat, function(obj)
+
+    local guaranteedPosition = {1.086, 0, 1.346}
+    local optionalPosition = {0.958, 3, -0.58}
+    for _, o in ipairs(getObjects()) do
+
+      local oData = parseJson(o.memo)
+      if o.type == "Deck" and oData and oData.name and string.lower(oData.name) == string.lower(objectData.name) then
+        local p = object.getPosition():setAt("y", 3)
+        local cards = o.spread()
+
+        for _, card in pairs(cards) do
+          local cardData = parseJson(card.memo)
+          if cardData then
+            if cardData.guaranteed then
+              card.setPositionSmooth(obj.positionToWorld(guaranteedPosition):setAt("y", 3))
+              runAfterRest(card, function(card)
+                onItemDrop(colorName, card, cardData)
+              end)
+              guaranteedPosition[1] = guaranteedPosition[1] - 0.436
+            else
+              card.setPositionSmooth(obj.positionToWorld(optionalPosition):setAt("y", 3))
+              optionalPosition[1] = optionalPosition[1] - 0.436
+            end
+          end
+        end
+
+        Wait.time(function()
+          local figureBag = getObjectFromGUID(figureBagId)
+          if figureBag then
+            for _, figure in pairs(figureBag.getObjects()) do
+              if figure.memo and figure.memo == objectData.name then
+                local takenObject = figureBag.takeObject({
+                  guid = figure.guid,
+                  position = p:setAt("x", p.x - 1),
+                  rotation = {0, 180, 0},
+                  smooth = true
+                })
+                takenObject.setName(translationService.getText(objectData.name))
+                takenObject.setColorTint(colorName)
+                break
+              end
+            end
+          end
+
+          local figureBag = getObjectFromGUID(figure3dBagId)
+          if figureBag then
+            for _, figure in pairs(figureBag.getObjects()) do
+              if figure.memo and figure.memo == objectData.name then
+                local takenObject = figureBag.takeObject({
+                  guid = figure.guid,
+                  position = p:setAt("x", p.x + 2),
+                  rotation = {0, 180, 0},
+                  smooth = true
+                })
+                takenObject.setName(translationService.getText(objectData.name))
+                takenObject.setColorTint(colorName)
+                break
+              end
+            end
+          end
+
+          object.setPosition(investigatorMat.positionToWorld({0.316, 2.213, 0.344}):setAt("y", 2.21))
+          object.setRotation({0, 180, 0})
+          runAfterRest(object, function(object)
+            object.setLock(true)
+            object.setPosition(investigatorMat.positionToWorld({0.316, 2.213, 0.344}):setAt("y", 2.21))
+          end)
+        end, 1)
+      elseif o.type == "Card" then
+        local cardData = parseJson(o.memo)
+        if cardData and cardData.investigator and string.lower(cardData.investigator) == string.lower(objectData.name) then
+          if cardData.guaranteed then
+            o.setRotation({0, 180, 0})
+            o.setPositionSmooth(obj.positionToWorld(guaranteedPosition):setAt("y", 3))
+            runAfterRest(o, function(o)
+              onItemDrop(colorName, o, cardData)
+            end)
+            guaranteedPosition[1] = guaranteedPosition[1] - 0.436
+          else
+            o.setRotation({0, 180, 0})
+            o.setPositionSmooth(obj.positionToWorld(optionalPosition):setAt("y", 3))
+            optionalPosition[1] = optionalPosition[1] - 0.436
+          end
+        end
+      end
+    end
+    --   end
+  end)
+end
+
+function onDoubleSidedDrop(colorName, object, objectData)
+  local foundObjects = downCast(object, 10, nil, 1)
+  local doubleSidedMat = nil
+  for _, obj in pairs(foundObjects) do
+    if obj.memo then
+      if obj.memo == "Double Sided Mat" and #obj.getAttachments() <= 0 then
+        doubleSidedMat = obj
+        break
+      end
+    end
+  end
+
+  if not doubleSidedMat or not objectData.front then
+    return
+  end
+
+  object.interactable = false
+  doubleSidedMat.setLock(true)
+  object.setLock(true)
+  doubleSidedMat.setRotation({0, 180, 180})
+  local bounds = doubleSidedMat.getBounds()
+  local height = bounds.size.y
+  local pos = doubleSidedMat.getPosition()
+  pos.y = pos.y + height
+  doubleSidedMat.setPosition(pos)
+  object.setRotation({0, 180, 180})
+  local pos = doubleSidedMat.positionToWorld({0.16, 0, 0})
+  object.setPosition(pos:setAt("y", pos.y - height + 0.12))
+
+  local oData = object.getData()
+  oData.Transform.rotZ = object.is_face_down and 180 or 0
+  oData.Transform.posY = oData.Transform.posY + 0.06
+  doubleSidedMat.addAttachment(object)
+
+  local oData = object.getData()
+  oData.Transform.posX = doubleSidedMat.positionToWorld({-0.16, 0, 0}).x
+  oData.Transform.posY = pos.y - height - 0.04
+  local clone = spawnObjectData({
+    data = oData
+  })
+
+  clone.setRotation({0, 180, 0})
+  doubleSidedMat.addAttachment(clone)
+  doubleSidedMat.setLock(false)
+
+  runAfterRest(doubleSidedMat, function(doubleSidedMat)
+    doubleSidedMat.call("setFrontData", objectData.front)
+  end)
+
+end
+
+function onRevealDoubleSided(res)
+  if not res.frontData or not res.frontData.type then return end
+  if res.frontData.type == "Monster" then
+    attachMonsterCard(res.doubleSided, res.frontData, res.doubleSided.getPosition())
+  elseif res.frontData.type == "Ally" then
+    attachAllyCard(res.doubleSided, res.frontData, res.doubleSided.getPosition())
+  end
+end
+
+function onMonsterDrop(colorName, object, objectData)
+
+  local foundObjects = downCast(object, 10, nil, 1)
+  local monsterMat = nil
+  for _, obj in pairs(foundObjects) do
+    if obj.memo then
+      if obj.memo == "Monster Mat" and #obj.getAttachments() <= 0 then
+        monsterMat = obj
+        break
+      end
+    end
+  end
+
+  if not monsterMat or not objectData.hp and (monsterMat.guid ~= self.guid) then
+    return
+  end
+
+  if (objectData.type == "codex" and objectData.role and objectData.role == "Monster") then
+    monsterMat.setScale({2.42, 1, 2.42})
+  end
+
+  object.interactable = false
+  monsterMat.setLock(true)
+  object.setLock(true)
+  monsterMat.setRotation({0, 180, 180})
+  local bounds = monsterMat.getBounds()
+  local height = bounds.size.y
+  local pos = monsterMat.getPosition()
+  pos.y = pos.y + height
+  monsterMat.setPosition(pos)
+  object.setRotation({0, 180, 180})
+  local pos = monsterMat.positionToWorld({0.16, 0, 0})
+  object.setPosition(pos:setAt("y", pos.y - height + 0.12))
+
+  local oData = object.getData()
+  oData.Transform.rotZ = object.is_face_down and 180 or 0
+  oData.Transform.posY = oData.Transform.posY + 0.06
+  monsterMat.addAttachment(object)
+
+  local oData = object.getData()
+  oData.Transform.posX = monsterMat.positionToWorld({-0.16, 0, 0}).x
+  oData.Transform.posY = pos.y - height - 0.04
+  local clone = spawnObjectData({
+    data = oData
+  })
+  monsterMat.addAttachment(clone)
+  monsterMat.setLock(false)
+
+  runAfterRest(monsterMat, function(monsterMat)
+    if objectData.elite then
+      objectData.hp = objectData.hp + gameData.numberOfPlayers * objectData.elite
+    end
+
+    monsterMat.call("setHPMax", {
+      maxHp = objectData.hp
+    })
+  end)
+end
+
+-- ON OBJECT SPAWN
+function onObjectSpawn(obj)
+  if obj.hasTag("i18n_XML") then
+    Wait.time(function()
+      i18n.updateObjectUiLanguage(obj)
+    end, 1)
+  end
+end

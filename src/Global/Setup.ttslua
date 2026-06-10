@@ -1,0 +1,1737 @@
+-- ╭──────────────────────────────────────────────╮
+-- │            SCENARIO SETUP / PREPARATION      │
+-- ╰──────────────────────────────────────────────╯
+
+function getScenarioData(n)
+  for _, obj in ipairs(getObjects()) do
+    local memo = parseJson(obj.memo)
+    if memo and memo.type == "Scenario" and memo.number == n then
+      memo.guid = obj.guid
+      return memo
+    end
+  end
+end
+
+-- ╭──────────────────────────────────────────────╮
+-- │                SELECT LANGUAGE               │
+-- ╰──────────────────────────────────────────────╯
+
+function clickOnEN()
+  gameData.language = "en"
+  updateXMLs()
+  Wait.time(function()
+    -- TODO: remove
+    translationService.setCurrentLanguage(gameData.language)
+
+    for _, o in ipairs(getObjects()) do
+      if o.type == "Bag" and o.memo and o.memo == "Eng bag" then
+        prepareLanguageBag(o)
+        return
+      end
+    end
+  end, 3)
+end
+
+function clickOnUK()
+  gameData.language = "uk"
+  updateXMLs()
+  Wait.time(function()
+    -- TODO: remove
+    translationService.setCurrentLanguage(gameData.language)
+
+    for _, o in ipairs(getObjects()) do
+      if o.type == "Bag" and o.memo and o.memo == "Uk bag" then
+        prepareLanguageBag(o)
+        return
+      end
+    end
+  end, 3)
+end
+
+-- ╭──────────────────────────────────────────────╮
+-- │                UPDATE XMLS                   │
+-- ╰──────────────────────────────────────────────╯
+
+function updateXMLs()
+  i18n.updateGlobalUiLanguage()
+  i18n.updateAllObjectsUiLanguage()
+end
+
+function updateGlobalXml(newXml)
+  local windowIdList = {"languages", "main_menu"}
+
+  for _, windowId in ipairs(windowIdList) do
+    local element = getXmlTableElementById(newXml, windowId)
+    if windowId == "main_menu" then
+      element.attributes.active = gameData.language and not gameData.isStarted
+    elseif windowId == "languages" then
+      element.attributes.active = gameData.language == nil
+    end
+  end
+
+  self.UI.setAttribute('title', 'text', i18n.getStrById("MM_scenario1_name_text"))
+  self.UI.setAttribute('body', 'text', i18n.getStrById("MM_scenario1_desc_text"))
+  self.UI.setXmlTable(newXml)
+end
+
+-- ╭──────────────────────────────────────────────╮
+-- │          ADD ADDITIONAL COMPONENTS           │
+-- ╰──────────────────────────────────────────────╯
+function addAdditionalCompoents()
+  addConditionMat2()
+end
+
+-- ╭──────────────────────────────────────────────╮
+-- │                ADD CONDITION                 │
+-- ╰──────────────────────────────────────────────╯
+
+function addConditionMat2()
+  if gameData.addons[1] == true then
+    local conditionMat = getObjectFromGUID(conditionMatId)
+    if not conditionMat then
+      log("addConditionMat2 - conditionMat not found")
+      return
+    end
+
+    local snps = {{
+      type = "wanted",
+      Position = {
+        x = 1.27,
+        y = 0.10,
+        z = 0.00
+      }
+    }, {
+      Position = {
+        type = "tainted",
+        x = -0.030,
+        y = 0.100,
+        z = 0.004
+      }
+    }, {
+      type = "driven fatigued",
+      Position = {
+        x = -1.29,
+        y = 0.100,
+        z = 0.004
+      }
+    }}
+
+    local conditionMatData = conditionMat.getData()
+    conditionMatData.Transform.posZ = conditionMat.positionToWorld({0, 0, -2.032})[3]
+    conditionMatData.AttachedSnapPoints = snps
+    conditionMatData.Memo = JSON.encode({
+      name = "ConditionMat2",
+      snps = snps
+    })
+
+    local conditionMat2 = spawnObjectData({
+      data = conditionMatData
+    })
+
+    conditionMat2Id = conditionMat2.guid
+    gameData.lockObjs[conditionMat2Id] = true
+    Wait.time(function()
+      lockObj(conditionMat2)
+    end, 2)
+  else
+    log(gameData.addons[1])
+  end
+end
+
+function tableLength(t)
+  local count = 0
+  for _ in pairs(t) do
+    count = count + 1
+  end
+  return count
+end
+
+function prepareLanguageBag(bag)
+  if not bag then
+    return
+  end
+
+  local tableObj = getObjectFromGUID(tableId)
+  if not tableObj then
+    return
+  end
+
+  local objs = bag.getObjects()
+
+  local pendingTakes = {}
+
+  for i = 1, #objs do
+    local memo = parseJson(objs[i].memo)
+
+    if memo and memo.startPosition then
+      pendingTakes[objs[i].guid] = {
+        guid = objs[i].guid,
+        name = objs[i].name,
+        index = objs[i].index,
+        memoType = memo.type,
+        state = "Scheduled",
+        spawnedGuid = nil
+      }
+    end
+  end
+
+  -- log("Initial pendingTakes: " .. tableLength(pendingTakes))
+
+  if tableLength(pendingTakes) == 0 then
+    gameData.areAllComponentsTaken = true
+    return
+  end
+
+  for i = #objs, 1, -1 do
+    local obj = objs[i]
+    local memo = parseJson(obj.memo)
+
+    if memo and memo.startPosition then
+      local delay = (#objs - i) / 20
+
+      Wait.time(function()
+
+        -- log(string.format(
+        --   "[TAKING] expectedGuid=%s name=%s index=%s",
+        --   obj.guid or "nil",
+        --   obj.name or "nil",
+        --   tostring(obj.index)
+        -- ))
+
+        local o = bag.takeObject({
+          index = obj.index,
+          position = tableObj.positionToWorld(memo.startPosition):setAt("y", 3),
+          rotation = {0, 180, 180},
+          smooth = false
+        })
+
+        if not o then
+          -- log(string.format(
+          --   "[FAILED] takeObject returned nil. expectedGuid=%s",
+          --   obj.guid or "nil"
+          -- ))
+
+          if pendingTakes[obj.guid] then
+            pendingTakes[obj.guid].state = "takeObject=nil"
+          end
+
+          return
+        end
+
+        local spawnedGuid = o.getGUID()
+
+        -- log(string.format(
+        --   "[TAKEN] expectedGuid=%s actualGuid=%s type=%s",
+        --   obj.guid,
+        --   spawnedGuid,
+        --   o.type or "nil"
+        -- ))
+
+        if pendingTakes[obj.guid] then
+          pendingTakes[obj.guid].state = "Taken"
+          pendingTakes[obj.guid].spawnedGuid = spawnedGuid
+        end
+
+
+        runAfterRest(o,
+          function(o2)
+            -- log(string.format(
+            --   "[READY] expectedGuid=%s actualGuid=%s",
+            --   obj.guid,
+            --   o2.getGUID()
+            -- ))
+
+            if o2.type == "Generic"
+              or o2.type == "Tile"
+              or o2.type == "Card"
+              or (memo.type and (
+                memo.type == "dark pact"
+                or memo.type == "blessed cursed"
+                or memo.type == "archive"
+                or memo.type == "driven fatigued"
+                or memo.type == "tainted"
+              ))
+            then
+              o2.setRotation({0, 180, 0})
+            end
+
+            pendingTakes[obj.guid] = nil
+
+            local remaining = tableLength(pendingTakes)
+
+            -- log(string.format(
+            --   "[COMPLETED] expectedGuid=%s remaining=%s",
+            --   obj.guid,
+            --   remaining
+            -- ))
+
+            if remaining == 0 then
+              gameData.areAllComponentsTaken = true
+              -- log("[SUCCESS] All components taken")
+            end
+          end,
+
+          function(o2)
+            -- log(string.format(
+            --   "[TIMEOUT] runAfterRest failed for guid=%s type=%s pos=%s",
+            --   obj.guid,
+            --   o2 and o2.type or "nil",
+            --   tostring(o2 and o2.getPosition())
+            -- ))
+
+             if o2.type == "Generic"
+              or o2.type == "Tile"
+              or o2.type == "Card"
+              or (memo.type and (
+                memo.type == "dark pact"
+                or memo.type == "blessed cursed"
+                or memo.type == "archive"
+                or memo.type == "driven fatigued"
+                or memo.type == "tainted"
+              ))
+            then
+              o2.setRotation({0, 180, 0})
+            end
+
+            pendingTakes[obj.guid] = nil
+
+            local remaining = tableLength(pendingTakes)
+
+            -- log(string.format(
+            --   "[FAILED-COMPLETED] expectedGuid=%s remaining=%s",
+            --   obj.guid,
+            --   remaining
+            -- ))
+
+            if remaining == 0 then
+              gameData.areAllComponentsTaken = true
+              -- log("[SUCCESS] All components processed (with failures)")
+            end
+          end,
+
+          5
+        )
+      end, delay)
+    else
+      log(string.format(
+        "[SKIPPED] No startPosition in memo. guid=%s name=%s index=%s",
+        obj.guid or "nil",
+        obj.name or "nil",
+        tostring(obj.index)
+      ))
+    end
+  end
+
+  -- Wait.time(function()
+  --   local remaining = tableLength(pendingTakes)
+
+  --   if remaining > 0 then
+  --     log("")
+  --     log("========== TIMEOUT CHECK ==========")
+  --     log("Still pending: " .. remaining)
+
+  --     for guid, data in pairs(pendingTakes) do
+  --       log(string.format(
+  --         "guid=%s state=%s spawnedGuid=%s name=%s index=%s type=%s",
+  --         guid,
+  --         data.state or "nil",
+  --         data.spawnedGuid or "nil",
+  --         data.name or "nil",
+  --         tostring(data.index),
+  --         data.memoType or "nil"
+  --       ))
+  --     end
+
+  --     log("===================================")
+  --     log("")
+  --   end
+  -- end, 30)
+end
+
+-- ╭──────────────────────────────────────────────╮
+-- │                SCENARIO SETUP                │
+-- ╰──────────────────────────────────────────────╯
+
+
+-- ╭──────────────────────────────────────────────╮
+-- │            MONSTER DECK SETUP                │
+-- ╰──────────────────────────────────────────────╯
+
+function tryCollectMonsterDeck(obj, memo, monsterDecks, box)
+  if obj.type ~= "Deck" then return end
+  if not (memo.type and string.lower(memo.type) == "monster") then return end
+
+  local addonState = memo.set and gameData.addons[memo.set]
+  if addonState == false then
+    if box then box.putObject(obj) end
+  elseif not memo.set or addonState == true then
+    table.insert(monsterDecks, obj)
+  end
+end
+
+function buildMonsterDeckSelectionCounters(scenarioData)
+  local counters = {
+    needed   = {},
+    setaside  = {},
+    setaside2 = {},
+    spawn     = {}
+  }
+
+  for _, name in ipairs(scenarioData.monsterdeck or {}) do
+    local n = string.lower(name)
+    counters.needed[n] = (counters.needed[n] or 0) + 1
+  end
+
+  for _, name in ipairs(scenarioData.setaside or {}) do
+    local n = string.lower(name)
+    counters.setaside[n] = (counters.setaside[n] or 0) + 1
+  end
+
+  for _, name in ipairs(scenarioData.setaside2 or {}) do
+    local n = string.lower(name)
+    counters.setaside2[n] = (counters.setaside2[n] or 0) + 1
+  end
+
+  for name, spawnsData in pairs(scenarioData.monsterspawn or {}) do
+    local n = string.lower(name)
+    counters.needed[n] = (counters.needed[n] or 0) + #spawnsData
+    counters.spawn[n] = {}
+    for _, sData in ipairs(spawnsData) do
+      table.insert(counters.spawn[n], {
+        l = sData.location,
+        p = sData.position
+      })
+    end
+  end
+
+  return counters
+end
+
+function buildMonsterObjectsToTake(monsterDeck, counters, positions)
+
+  function getMonsterName(monsterData)
+    if monsterData.name then
+      return string.lower(monsterData.name)
+    elseif monsterData.back and monsterData.back.name then
+      return string.lower(monsterData.back.name)
+    end
+    return nil
+  end
+
+  function getMonsterType(monsterData)
+    if monsterData.monstertype then
+      return monsterData.monstertype
+    elseif monsterData.back and monsterData.back.monstertype then
+      return monsterData.back.monstertype
+    end
+    return nil
+  end
+
+  function tryMatchByName(name, index, counters, positions)
+    if counters.needed[name] and counters.needed[name] > 0 then
+      counters.needed[name] = counters.needed[name] - 1
+      return { index = index, name = name }
+    elseif counters.setaside[name] and counters.setaside[name] > 0 then
+      counters.setaside[name] = counters.setaside[name] - 1
+      return { index = index, name = name, p = positions.setaside }
+    elseif counters.setaside2[name] and counters.setaside2[name] > 0 then
+      counters.setaside2[name] = counters.setaside2[name] - 1
+      return { index = index, name = name, p = positions.setaside2 }
+    end
+    return nil
+  end
+
+  function tryMatchByType(monsterType, index, counters, positions)
+    for _, t in pairs(monsterType) do
+      local type = string.lower(t)
+      if counters.needed[type] then
+        return { index = index, name = type }
+      elseif counters.setaside[type] then
+        return { index = index, name = type, p = positions.setaside }
+      elseif counters.setaside2[type] then
+        return { index = index, name = type, p = positions.setaside2 }
+      end
+    end
+    return nil
+  end
+
+  local objectsToTake = {}
+  for _, monster in ipairs(monsterDeck.getObjects()) do
+    local monsterData = parseJson(monster.memo)
+    if monsterData then
+      local name = getMonsterName(monsterData)
+      local monsterType = getMonsterType(monsterData)
+
+      if name then
+        local entry = tryMatchByName(name, monster.index, counters, positions)
+        if not entry and monsterType then
+          entry = tryMatchByType(monsterType, monster.index, counters, positions)
+        end
+
+        if entry then
+          table.insert(objectsToTake, entry)
+        else
+          -- print("NO MATCH: name=" .. name .. " type=" .. serpent.tts(monsterType))
+        end
+      else
+        -- print("NO NAME: memo=" .. tostring(monster.memo))
+      end
+    end
+  end
+
+  table.sort(objectsToTake, function(a, b)
+    return a.index > b.index
+  end)
+
+  return objectsToTake
+end
+
+function takeAndPlaceMonsterCard(monsterDeck, data, spawnCount, positions)
+
+  local function tryGetSpawnData(name, spawnCount)
+    if not spawnCount then return nil end
+    local spawns = spawnCount[name]
+    if spawns and #spawns > 0 then
+      return table.remove(spawns, 1)
+    end
+    return nil
+  end
+
+  local spData = tryGetSpawnData(data.name, spawnCount)
+
+  if spData then
+    local tile = getNeighborhoodTile(spData.l)
+    if tile then
+      local p = tile.positionToWorld(spData.p):setAt("y", 3)
+      spawnMonster(p, monsterDeck.takeObject({
+        index    = data.index,
+        rotation = {0, 180, 180},
+        smooth   = false
+      }))
+      return
+    end
+  end
+
+  monsterDeck.takeObject({
+    index    = data.index,
+    position = data.p or positions.main,
+    smooth   = false
+  })
+end
+
+function finalizeMonsterDecks(positions, monsterDeck)
+
+  local function shuffleDeckAtPosition(pos, memoData)
+    local objs = findObjsInRadius(pos:setAt("y", 2.2))
+    for _, obj in ipairs(objs) do
+      if obj.type == "Deck" then
+        obj.shuffle()
+        runAfterRest(obj, function(o)
+          o.memo = JSON.encode(memoData)
+        end)
+        break
+      end
+    end
+  end
+
+  shuffleDeckAtPosition(positions.main,     { type = "monster" })
+  shuffleDeckAtPosition(positions.setaside,  { type = "monster" })
+  shuffleDeckAtPosition(positions.setaside2, { type = "monster" })
+
+  local box = getObjectFromGUID(boxId)
+  if box then
+    box.putObject(monsterDeck)
+  end
+end
+
+function prepareArchiveDecks(archiveCollection, moveObj, locationMat, locationData)
+  local function stableSort(arr, comp)
+    for i = 2, #arr do
+      local key = arr[i]
+      local j = i - 1
+      while j > 0 and comp(key, arr[j]) do
+        arr[j + 1] = arr[j]
+        j = j - 1
+      end
+      arr[j + 1] = key
+    end
+  end
+
+  stableSort(archiveCollection, function(a, b)
+    local setA = a.set or math.huge
+    local setB = b.set or math.huge
+    return setA < setB
+  end)
+
+  local archiveTarget = nil
+  local numberedSources = {}
+
+  for _, archive in ipairs(archiveCollection) do
+    local isActive = archive.set == nil or gameData.addons[archive.set] == true
+    if isActive then
+      if archive.set == nil then
+        archiveTarget = archive
+      else
+        table.insert(numberedSources, archive)
+      end
+    else
+      table.insert(moveObj.toBox, archive.guid)
+    end
+  end
+
+  if not archiveTarget then
+    archiveTarget = table.remove(numberedSources, 1)
+  end
+
+  if not archiveTarget then
+    return
+  end
+
+  local p = locationMat.positionToWorld(locationData.archive):setAt("y", 3)
+
+  moveObj.toMerge["archive"] = {
+    targetGuid = archiveTarget.guid,
+    sources = {}
+  }
+
+  for _, src in ipairs(numberedSources) do
+    table.insert(moveObj.toMerge["archive"].sources, {
+      guid = src.guid,
+      name = "archive",
+      p = p,
+      l = false
+    })
+  end
+
+  table.insert(moveObj.toPosition, {
+    guid = archiveTarget.guid,
+    name = "archive",
+    p = p,
+    l = false
+  })
+end
+
+function prepareScenarioMonsterDeck()
+  if not gameData.scenarioData.monsterdeck then
+    return
+  end
+
+  local locationMat = getObjectFromGUID(locationMatId)
+  if not locationMat then
+    return
+  end
+
+  local locationData = parseJson(locationMat.memo)
+  if not locationData then
+    return
+  end
+
+  local monsterPos = locationMat.positionToWorld(locationData.monster):setAt("y", 3)
+
+  local monsterDecks = {}
+  local box = getObjectFromGUID(boxId)
+  for _, obj in ipairs(getObjects()) do
+    local memo = parseJson(obj.memo)
+    if memo then
+      tryCollectMonsterDeck(obj, memo, monsterDecks, box)
+    end
+  end
+
+  local function mergeDecks(decks)
+    if #decks == 0 then return nil end
+    if #decks == 1 then return decks[1] end
+
+    local main = decks[1]
+    for i = 2, #decks do
+      main.putObject(decks[i])
+    end
+
+    return main
+  end
+
+  local monsterDeck = mergeDecks(monsterDecks)
+  if not monsterDeck then
+    return
+  end
+
+  local counters = buildMonsterDeckSelectionCounters(gameData.scenarioData)
+
+  local positions = {
+    main      = locationMat.positionToWorld(locationData.monster):setAt("y", 3),
+    setaside  = locationMat.positionToWorld(locationData.setaside):setAt("y", 3),
+    setaside2 = locationMat.positionToWorld(locationData.setaside2):setAt("y", 3)
+  }
+  
+  local objectsToTake = buildMonsterObjectsToTake(monsterDeck, counters, positions)
+
+  for _, data in ipairs(objectsToTake) do
+    takeAndPlaceMonsterCard(monsterDeck, data, counters.spawn, positions)
+  end
+
+  Wait.time(function()
+    finalizeMonsterDecks(positions, monsterDeck)
+  end, 2)
+end
+
+-- ╭──────────────────────────────────────────────╮
+-- │           PREPARE SCENARIO DECKS             │
+-- ╰──────────────────────────────────────────────╯
+
+function prepareScenarioDecks(scenarioData)
+  -- local scenarioSheet = getObjectFromGUID(scenarioData.guid)
+  -- if not scenarioSheet then
+  --   return
+  -- end
+
+  local locationMat = getObjectFromGUID(locationMatId)
+  if not locationMat then
+    return
+  end
+
+  local shopMat = getObjectFromGUID(shopMatId);
+  if not shopMat then
+    return
+  end
+  local shopMatData = parseJson(shopMat.memo);
+  if not shopMatData then
+    return
+  end
+
+  local conditionMat = getObjectFromGUID(conditionMatId);
+  if not conditionMat then
+    return
+  end
+  local conditionMatData = parseJson(conditionMat.memo);
+  if not conditionMatData then
+    return
+  end
+
+  local conditionMat2 = gameData.addons[1] and getObjectFromGUID(conditionMat2Id)
+  local conditionMat2Data = conditionMat2 and parseJson(conditionMat2.memo)
+
+  local validTypes = {}
+
+  local decksByType = {}
+  local function addDeck(d)
+    if not d then
+      print("addDeck: d is nil")
+      return
+    end
+
+    if not d.type then
+      print("addDeck: d.type is nil")
+      return
+    end
+
+    local t = string.lower(d.type)
+    local n = d.name and string.lower(d.name)
+    if n then
+      decksByType[t] = decksByType[t] or {}
+      decksByType[t].names = decksByType[t].names or {}
+      decksByType[t].names[n] = d
+    elseif decksByType[t] then
+      error("Dublicate types without name!")
+    else
+      decksByType[t] = {
+        data = d
+      }
+    end
+  end
+
+  local function selectDeckByTypeSetName(memo)
+    if not memo then
+      return nil
+    end
+
+    local typeStr = memo.type
+    local name = memo.name
+    if not typeStr then
+      return nil
+    end
+
+    local bucket = decksByType[string.lower(typeStr)]
+    if not bucket or #bucket == 0 then
+      return nil
+    end
+
+    if name and name ~= "" then
+      local nameKey = string.lower(name)
+      for _, d in ipairs(bucket) do
+        if d.name and string.lower(d.name) == nameKey then
+          return d
+        end
+      end
+
+      return bucket[1]
+    end
+  end
+
+  local locationData = parseJson(locationMat.memo)
+  if not locationData then
+    print("locationData not found")
+    return
+  end
+
+  local scenarioMat = getObjectFromGUID(scenarioMatId)
+  if not scenarioMat then
+    print("scenarioMat not found")
+    return
+  end
+
+  local scenarioMatData = parseJson(scenarioMat.memo)
+  if not scenarioMatData then
+    print("scenarioMatData not found")
+    return
+  end
+
+  if not scenarioData.tiles then
+    print("scenarioData.tiles not found")
+    return
+  end
+
+  if not scenarioMatData.positions and not scenarioMatData.scenarios then
+    print("error: not scenarioMatData.positions and not scenarioMatData.scenarios")
+    return
+  end
+
+  if #scenarioMatData.scenarios < scenarioData.number then
+    print("error: #scenarioMatData.scenarios < scenarioData.number" .. "\n#scenarioMatData.scenarios: " ..
+            #scenarioMatData.scenarios .. " scenarioData.number: " .. scenarioData.number)
+    return
+  end
+
+  local scenarioInstruction = scenarioMatData.scenarios[scenarioData.number]
+  if scenarioData.number ~= scenarioInstruction.number or scenarioData.number ~= scenarioInstruction.number then
+    print(
+      "error: scenarioData.number ~= scenarioInstruction.number or scenarioData.number ~= scenarioInstruction.number")
+    return
+  end
+
+  if locationData.headline then
+    addDeck({
+      type = "headline",
+      pos = locationMat.positionToWorld(locationData.headline):setAt("y", 3)
+    })
+  end
+
+  if scenarioInstruction.decks then
+    for _, d in ipairs(scenarioInstruction.decks) do
+      if scenarioMatData.positions[d.pos] then
+        d.pos = scenarioMat.positionToWorld(scenarioMatData.positions[d.pos]):setAt("y", 3)
+      else
+        return
+      end
+      addDeck(d)
+    end
+  else
+    print("scenarioInstruction.decks not found")
+    return
+  end
+
+  if shopMatData.decks then
+    for _, d in ipairs(shopMatData.decks) do
+      if d.pos then
+        d.pos = shopMat.positionToWorld(d.pos):setAt("y", 3)
+      else
+        print(d.type .. " d.pos not found")
+        return
+      end
+      addDeck(d)
+    end
+  else
+    print("shopMatData.decks not found")
+    return
+  end
+
+  addDeck({
+    type = "blessed cursed",
+    pos = conditionMat.positionToWorld(conditionMatData[1]):setAt("y", 3)
+  })
+
+  addDeck({
+    type = "dark pact",
+    pos = conditionMat.positionToWorld(conditionMatData[2]):setAt("y", 3)
+  })
+
+  if conditionMat2 and conditionMat2Data then
+    addDeck({
+      type = "wanted",
+      pos = conditionMat2.positionToWorld(conditionMat2Data.snps[1].Position):setAt("y", 3)
+    })
+
+    addDeck({
+      type = "tainted",
+      pos = conditionMat2.positionToWorld(conditionMat2Data.snps[2].Position):setAt("y", 3)
+    })
+
+    addDeck({
+      type = "driven fatigued",
+      pos = conditionMat2.positionToWorld(conditionMat2Data.snps[3].Position):setAt("y", 3)
+    })
+  else
+    local box = getObjectFromGUID(boxId)
+    if box then
+      addDeck({
+        type = "wanted",
+        pos = box.getPosition():setAt("y", 3)
+      })
+    end
+  end
+
+  -- print(serpent.tts(decksByType))
+
+  local box = getObjectFromGUID(boxId)
+  if not box then
+    print("box not found")
+    return
+  end
+
+  local function moveDeckToPosition(deck, p, callBack)
+    local params = {
+      position = p,
+      rotation = {0, 180, 180}
+    }
+    moveObjectToPosition(deck, params, function(deck)
+      deck.shuffle()
+      callBack(deck)
+    end)
+  end
+
+  local moveObj = {
+    toPosition = {},
+    toBox = {},
+    toMerge = {}
+  }
+
+  local function addToMoveObj(moveObj, args)
+    local guid = args.guid
+    local nSet = args.set
+    local onlySet = args.onlySet
+    local key = args.name and string.lower(args.name) or nil
+    local p = args.position
+    local l = args.lock
+
+    if not p or not key then
+      table.insert(moveObj.toBox, guid)
+      return
+    end
+
+    moveObj.toMerge[key] = moveObj.toMerge[key] or {
+      targetGuid = nil,
+      sources = {}
+    }
+
+    local newData = {
+      guid = guid,
+      name = key,
+      p = p,
+      l = l or false
+    }
+    if nSet and not onlySet then
+      if gameData.addons[nSet] == true then
+        table.insert(moveObj.toMerge[key].sources, newData)
+      else
+        table.insert(moveObj.toBox, guid)
+      end
+    else
+      table.insert(moveObj.toPosition, newData)
+      moveObj.toMerge[key].targetGuid = moveObj.toMerge[key].targetGuid or guid
+    end
+  end
+
+  local eventDeck = nil
+
+  local allowedCustomModelTypes = {
+    ["neighborhood"] = true,
+    ["street"] = true,
+    ["travel routes"] = true,
+    ["travel route"] = true,
+    ["threshold"] = true,
+    ["mystery"] = true
+  }
+
+  local archiveCollection = {}
+  for _, obj in ipairs(getObjects()) do
+    local memo = parseJson(obj.memo)
+    if memo then
+      local deckInfo = memo.type and decksByType[string.lower(memo.type)]
+      -- prepare Scenario
+      if memo.type == "Scenario" then
+        if scenarioData.name == memo.name then
+          table.insert(moveObj.toPosition, {
+            guid = obj.getGUID(),
+            p = locationMat.positionToWorld(locationData.scenraiomat):setAt("y", 2.21),
+            l = true
+          })
+        else
+          table.insert(moveObj.toBox, obj.getGUID())
+        end
+      elseif memo.type and allowedCustomModelTypes[string.lower(memo.type)] then
+        lockSetupScenarioComponents(obj, scenarioData.tiles)
+        -- scenarioData.tiles
+      elseif obj.type == "Deck" then
+        -- prepare Event deck
+        if memo.type then
+          if string.lower(memo.type) == "event" then
+            if memo.name == scenarioData.name then
+              eventDeck = obj
+            else
+              table.insert(moveObj.toBox, obj.getGUID())
+            end
+          elseif string.lower(memo.type) == "archive" then
+            table.insert(archiveCollection, {
+              guid = obj.getGUID(),
+              set = memo.set,
+              memo = memo
+            })
+          elseif deckInfo then
+            local d = nil
+            if memo.name then
+              d = deckInfo.names[string.lower(memo.name)]
+            else
+              d = deckInfo.data
+            end
+
+            local name = nil
+            local position = nil
+            if d then
+              name = d.name or d.type
+              position = d.pos
+            end
+
+            addToMoveObj(moveObj, {
+              guid = obj.guid,
+              set = memo.set,
+              name = name,
+              position = position,
+              lock = false
+            })
+          else
+            if scenarioMatData.supportedDeckTypes[memo.type] then
+              table.insert(moveObj.toBox, obj.guid)
+            end
+          end
+        end
+      end
+    end
+  end
+
+  prepareArchiveDecks(archiveCollection, moveObj, locationMat, locationData)
+
+  -- if new type of deck bring from set, do set as base
+  for name, data in pairs(moveObj.toMerge) do
+    for _, source in pairs(data.sources) do
+      if not data.targetGuid then
+        local firstSourceData = data.sources[1]
+        table.remove(data.sources, 1)
+        data.targetGuid = firstSourceData.guid
+        table.insert(moveObj.toPosition, firstSourceData)
+      end
+    end
+  end
+
+  -- print(serpent.tts(moveObj))
+
+  local time = 0
+  local timeStep = 0.1
+  if box then
+    for i, guid in ipairs(moveObj.toBox) do
+      time = time + timeStep
+      local o = getObjectFromGUID(guid)
+      if o then
+        Wait.time(function()
+          if box and o then
+            box.putObject(o)
+          end
+        end, time)
+      end
+    end
+  end
+
+  -- print(serpent.tts(moveObj))
+
+  local function mergeDeckToPosition(o, data, moveObj)
+    if data.name == "archive" and moveObj.toMerge[data.name] then
+      local sources = moveObj.toMerge[data.name].sources
+
+      local ordered = {}
+      for _, sourceData in ipairs(sources) do
+        table.insert(ordered, sourceData)
+      end
+
+      local mergeTime = 0
+      for _, sourceData in ipairs(ordered) do
+        mergeTime = mergeTime + 0.3
+        local srcGuid = sourceData.guid
+        Wait.time(function()
+          local m = getObjectFromGUID(srcGuid)
+          if m and o then
+            o.putObject(m)
+          end
+        end, mergeTime)
+      end
+      Wait.time(function()
+        o.setPosition(data.p)
+      end, mergeTime + 0.3)
+    else
+      if moveObj.toMerge[data.name] then
+        for _, sourceData in ipairs(moveObj.toMerge[data.name].sources) do
+          local m = getObjectFromGUID(sourceData.guid)
+          if m then
+            o.putObject(m)
+          end
+        end
+      end
+      o.setPosition(data.p)
+    end
+  end
+
+  for i, data in pairs(moveObj.toPosition) do
+    time = time + timeStep
+    Wait.time(function()
+      local o = getObjectFromGUID(data.guid)
+      if o then
+        mergeDeckToPosition(o, data, moveObj)
+
+        if o.type == "Deck" and (data.name and data.name ~= "archive") then
+          o.shuffle()
+        end
+
+        local oData = parseJson(o.memo)
+        if oData then
+          if oData.type then
+            if oData.type == "item" and shopMatData.displaypos then
+              Wait.time(function()
+                for i, cardPos in ipairs(shopMatData.displaypos) do
+                  local itemCard = o.takeObject({
+                    index = 0,
+                    rotation = {0, 180, 0},
+                    position = shopMat.positionToWorld(cardPos):setAt("y", 3)
+                  })
+
+                  local itemData = parseJson(itemCard.memo)
+                  if itemData then
+                    local types = {}
+                    if itemData.common then
+                      table.insert(types, "common")
+                    end
+
+                    if itemData.curio then
+                      table.insert(types, "curio")
+                    end
+
+                    shopMat.call("setBottom", {
+                      id = i,
+                      price = itemData.price or 0,
+                      guid = itemCard.guid
+                    })
+                    shopMat.call("setTop", {
+                      id = i,
+                      types = types
+                    })
+                  end
+                end
+              end, 2)
+            elseif oData.type == "headline" then
+              Wait.time(function()
+                local objs = o.getObjects()
+                local extra = #objs - 13
+                if box and extra > 0 then
+                  for i = 1, extra do
+                    o.takeObject({
+                      index = 0,
+                      position = box.getPosition():setAt("y", 3),
+                      smooth = false
+                    })
+                  end
+                end
+              end, 2)
+            elseif oData.type == "archive" then
+              local foundArchive = o
+              Wait.time(function()
+
+                local function containsNumber(tbl, target)
+                  for i, v in pairs(tbl) do
+                    if v == target then
+                      return i
+                    end
+                  end
+                end
+
+                local codexDeckCards = {}
+
+                for i = #foundArchive.getObjects(), 1, -1 do
+                  local codex = foundArchive.getObjects()[i]
+                  local codexData = parseJson(codex.memo)
+
+                  if codexData and codexData.number and string.lower(codexData.type) == "codex" then
+                    
+                    local index = containsNumber(scenarioData.codex, codexData.number)
+                    if index then
+                      local takenCodex = foundArchive.takeObject({
+                        index = codex.index,
+                      })
+                      attachCodexCard(takenCodex, locationMat.positionToWorld(locationData.codex[index]):setAt("y", 3))
+
+                    elseif scenarioData.codexDeck and containsNumber(scenarioData.codexDeck, codexData.number) then
+                      local takenCodex = foundArchive.takeObject({
+                        index = codex.index,
+                        position = locationMat.positionToWorld(locationData.codexDeck):setAt("y", 3),
+                        rotation = {0, 180, 0},
+                        smooth = false
+                      })
+                      table.insert(codexDeckCards, takenCodex)
+                    end
+                  end
+                end
+
+                if #codexDeckCards > 0 then
+                  Wait.time(function()
+                    local objs = findObjsInRadius(locationMat.positionToWorld(locationData.codexDeck):setAt("y", 2.2))
+                    for _, obj in ipairs(objs) do
+                      if obj.type == "Deck" or obj.type == "Card" then
+                        if obj.type == "Deck" then
+                          obj.shuffle()
+                        end
+                        break
+                      end
+                    end
+                  end, 1)
+                end
+
+              end, 2)
+            end
+          end
+        end
+        if data.l and data.l == true then
+          runAfterRest(o, function(o)
+            o.setLock(data.l)
+          end)
+        end
+      end
+    end, time)
+  end
+
+  prepareScenarioEventDeck(eventDeck, moveObj.toPosition, time + 1)
+
+  Wait.time(function()
+    prepareScenarioMonsterDeck()
+  end, time + timeStep + 4)
+
+  Wait.time(function()
+    prepareAllySpawn(scenarioData)
+  end, time + timeStep + 1)
+
+  Wait.time(function()
+    spawnDoomsByClick()
+    Global.UI.setAttribute("phase", "active", true)
+    self.UI.setAttribute('phase_text', "text", i18n.getStrById("PB_phase1"))
+    broadcastToAll(i18n.getStrById("PB_next_phase") .. " " .. i18n.getStrById("PB_phase" .. gameData.phase) .. "!",
+      phases[gameData.phase].color)
+    if gameData.language == "en" then
+      self.UI.setAttribute('PB_phase_text', 'offsetXY', '0 15')
+      self.UI.setAttribute('phase_text', 'offsetXY', '0 35')
+    end
+  end, time + timeStep + 5)
+end
+
+function attachCodexCard(card, spawnPos)
+  local codexMatBag = getObjectFromGUID(codexMatBagId)
+  if not codexMatBag then
+    return
+  end
+
+  local codexMat = codexMatBag.takeObject({
+    index = 0,
+    position = spawnPos,
+    rotation = {0, 180, 180},
+    smooth = false
+  })
+
+  if not codexMat then
+    return
+  end
+  codexMat.tooltip = false
+
+  local pos = spawnPos
+  pos.z = pos.z + 0.95
+  card.setPosition(pos)
+
+  card.interactable = false
+
+  local oData = card.getData()
+  oData.Transform.rotZ = card.is_face_down and 180 or 0
+
+  codexMat.addAttachment(card)
+
+  local cloneData = card.getData()
+  cloneData.Transform.posX = codexMat.positionToWorld({0, 0, 0}).x
+
+  local height = codexMat.getBounds().size.y
+  cloneData.Transform.posY = pos.y - height - 0.10
+
+  local clone = spawnObjectData({
+    data = cloneData
+  })
+
+  codexMat.addAttachment(clone)
+  
+  if card.memo then
+    local params = parseJson(card.memo)
+    if not params then
+      return
+    end
+    runAfterRest(codexMat, function(codexMat)
+      codexMat.call("setCodexData", params)
+    end)
+  end
+end
+
+function prepareScenarioEventDeck(eventDeck, decks, time)
+  local mythosTile = getObjectFromGUID(mythosTileId)
+  if not eventDeck or not mythosTile then
+    return
+  end
+
+  local function takeRandomCards(deck, count)
+    local p = deck.getPosition()
+    local takenCards = {}
+    for i = 1, count do
+      local randIndex = math.random(deck.getQuantity()) - 1
+      p.z = p.z + 5
+      local card = deck.takeObject({
+        index = randIndex,
+        position = p,
+        smooth = false
+      })
+      table.insert(takenCards, card)
+    end
+    return takenCards
+  end
+
+  function mergeEventOnTopAtEventPos(eventCard, targetDeck, done)
+    if not eventCard or not targetDeck then
+      if done then
+        done()
+      end
+      return
+    end
+
+    local deckPos = targetDeck.getPosition()
+    local eventPos = eventCard.getPosition()
+    local startQty = targetDeck.getQuantity()
+    local dropNear = {
+      x = deckPos.x,
+      y = deckPos.y + 2,
+      z = deckPos.z
+    }
+
+    local c1 = targetDeck.takeObject()
+    local c2 = targetDeck.takeObject()
+    local newDeck = eventCard.putObject(c1)
+    newDeck.putObject(c2)
+    newDeck.shuffle()
+
+    targetDeck.setRotation({0, 180, 0})
+    targetDeck.putObject(newDeck)
+    targetDeck.setRotation({0, 180, 180})
+    runAfterRest(targetDeck, function(targetDeck)
+      done()
+    end)
+  end
+
+  local function processCard(index, cards)
+    if index > #cards then
+      return
+    end
+
+    local card = cards[index]
+    if not card then
+      log ("card not found at index " .. index)
+      return
+    end
+
+    local data = parseJson(card.memo)
+    if data and data.neighborhood then
+      for _, deckData in pairs(decks) do
+        local deck = getObjectFromGUID(deckData.guid)
+
+        if deck then
+          local deckMemo = parseJson(deck.memo)
+
+          if deckMemo and deckMemo.name and string.lower(deckMemo.name) == string.lower(data.neighborhood) then
+            mergeEventOnTopAtEventPos(card, deck, function()
+              local isMystery = data.neighborhoodType and string.lower(data.neighborhoodType) == "mystery"
+
+              if isMystery then
+                local mysteryTile = getNeighborhoodTile(data.neighborhood, "mystery")
+                if mysteryTile then
+                  spawnClueTokenOnTile(mysteryTile)
+                end
+              else
+                spawnClueToken(data.neighborhood)
+              end
+
+              processCard(index + 1, cards)
+            end)
+
+            return
+          end
+        end
+      end
+    end
+  end
+
+  Wait.time(function()
+    local randomEventCards = takeRandomCards(eventDeck, 3)
+    processCard(1, randomEventCards)
+
+    local eventDeckPos = mythosTile.positionToWorld({-0.198, 0.236, 0.278}):setAt("y", 3)
+    eventDeck.setPosition(eventDeckPos)
+    eventDeck.shuffle()
+  end, time)
+end
+
+-- Wait.time(function()
+--   local eventDeckPos = mythosTile.positionToWorld({-0.198, 0.236, 0.278}):setAt("y", 3)
+--   eventDeck.setPosition(eventDeckPos)
+--   runAfterRest(eventDeck, function(eventDeck)
+--     eventDeck.shuffle()
+--     Wait.time(function()
+--       isDrawMythInProcess = true
+--       spawnClue(function()
+--         spawnClue(function()
+--           spawnClue(function()
+--             Global.UI.setAttribute("phase", "active", true)
+--             self.UI.setAttribute('phase_text', "text", i18n.getStrById("PB_phase1"))
+--             broadcastToAll(
+--               i18n.getStrById("PB_next_phase") .. " " .. i18n.getStrById("PB_phase" .. gameData.phase) .. "!",
+--               phases[gameData.phase].color)
+--             if gameData.language == "en" then
+--               self.UI.setAttribute('PB_phase_text', 'offsetXY', '0 15')
+--               self.UI.setAttribute('phase_text', 'offsetXY', '0 35')
+--             end
+--             eventSpawnDooms(function()
+--               isDrawMythInProcess = false
+--             end)
+--           end)
+--         end)
+--       end)
+--     end, 2)
+--   end)
+-- end, time)
+
+function prepareMarkers()
+  -- local whiteTokenBag = getObjectFromGUID(whiteTokenBagId)
+  -- if not whiteTokenBag then
+  --   return
+  -- end
+
+end
+
+function prepareMythosTokens(mythosCups)
+  if not mythosCups then
+    return
+  end
+  local mythosBag = getObjectFromGUID(mythosBagId)
+  if not mythosBag then
+    return
+  end
+
+  for type, count in pairs(mythosCups) do
+    local bagGuid = mythosTokenBagIds[type]
+    local bag = getObjectFromGUID(bagGuid)
+
+    if bag and count > 0 then
+      for i = 1, count do
+        mythosBag.putObject(bag.takeObject({
+          index = 0
+        }))
+      end
+    else
+      log("[ERROR] Missing bag for type: " .. tostring(type))
+    end
+  end
+
+  mythosBag.shuffle()
+end
+
+function takeCardsWithMemo(deck, targetMemo, params)
+  local cards = deck.getObjects()
+
+  for i = #cards, 1, -1 do
+    local card = cards[i]
+    if card.memo == targetMemo then
+      deck.takeObject({
+        index = card.index,
+        position = params.position,
+        rotation = params.rotation,
+        smooth = true
+      })
+    end
+  end
+end
+
+function processSetupTile(o, name, setupTileInfo, locationMatOld)
+  local doomBag = getObjectFromGUID(doomBagId)
+  local whiteTokenBag = getObjectFromGUID(whiteTokenBagId)
+  local blueTokenBag = getObjectFromGUID(blueTokenBagId)
+  local redTokenBag = getObjectFromGUID(redTokenBagId)
+  local greenTokenBag = getObjectFromGUID(greenTokenBagId)
+
+  local locationMat = getObjectFromGUID(locationMatId)
+  if not locationMat then
+    return
+  end
+
+  local y = locationMat.getPosition().y + locationMat.getBoundsNormalized().size.y
+
+  gameData.lockObjs[o.guid] = true
+  lockObj(o.guid)
+  o.setRotation(setupTileInfo.rotation)
+  o.setPosition(locationMatOld.positionToWorld(setupTileInfo.position):setAt("y", y))
+
+  if not setupTileInfo.tokens then
+    return
+  end
+
+  for _, tokenInfo in ipairs(setupTileInfo.tokens) do
+    if tokenInfo.type == "Doom Token" and doomBag then
+      doomBag.takeObject({
+        index = 0,
+        position = o.positionToWorld(tokenInfo.position):setAt("y", 3)
+      }).highlightOn("Red", 5)
+      printToAll(i18n.getStrById(name) .. " - " .. i18n.getStrById("LOG_doom_added"), "Red")
+    elseif tokenInfo.type == "White Marker" and whiteTokenBag then
+      whiteTokenBag.takeObject({
+        index = 0,
+        position = o.positionToWorld(tokenInfo.position):setAt("y", 3)
+      }).highlightOn("White", 5)
+    elseif tokenInfo.type == "Blue Marker" and blueTokenBag then
+      blueTokenBag.takeObject({
+        index = 0,
+        position = o.positionToWorld(tokenInfo.position):setAt("y", 3)
+      }).highlightOn("Blue", 5)
+    elseif tokenInfo.type == "Red Marker" and redTokenBag then
+      redTokenBag.takeObject({
+        index = 0,
+        position = o.positionToWorld(tokenInfo.position):setAt("y", 3)
+      }).highlightOn("Red", 5)
+    elseif tokenInfo.type == "Green Marker" and greenTokenBag then
+      greenTokenBag.takeObject({
+        index = 0,
+        position = o.positionToWorld(tokenInfo.position):setAt("y", 3)
+      }).highlightOn("Green", 5)
+    end
+  end
+end
+
+function lockSetupScenarioComponents(obj, scenarioTiles)
+  local locationMat = getObjectFromGUID(locationMatId)
+  if not locationMat then
+    return
+  end
+
+  local box = getObjectFromGUID(boxId)
+  if not box then
+    return
+  end
+
+  local doomBag = getObjectFromGUID(doomBagId)
+  if not doomBag then
+    return
+  end
+
+  local whiteTokenBag = getObjectFromGUID(whiteTokenBagId)
+  if not whiteTokenBag then
+    return
+  end
+
+  local blueTokenBag = getObjectFromGUID(blueTokenBagId)
+  if not blueTokenBag then
+    return
+  end
+
+  local redTokenBag = getObjectFromGUID(redTokenBagId)
+  if not redTokenBag then
+    return
+  end
+
+  local greenTokenBag = getObjectFromGUID(greenTokenBagId)
+  if not greenTokenBag then
+    return
+  end
+
+  local locationMatOld = getObjectFromGUID("b195b0")
+  if not locationMatOld then
+    error("Мат для локацій не знайдено!");
+    callBack();
+    return
+  end
+
+  local y = locationMat.getPosition().y + locationMat.getBoundsNormalized().size.y
+  local memo = parseJson(obj.memo)
+  if obj.type == "Generic" and memo and memo.type and memo.name then
+    local types = scenarioTiles[memo.type]
+    if types then
+      local tileInfo = types[memo.name]
+      if tileInfo then
+        processSetupTile(obj, memo.name, tileInfo, locationMatOld)
+      else
+        box.putObject(obj)
+      end
+    else
+        box.putObject(obj)
+    end
+  end
+end
+
+function spawnScenarioTilesOnMat(scenarioData, callBack)
+  local scenarioSheet = getObjectFromGUID(scenarioData.guid)
+  if not scenarioSheet then
+    callBack()
+    return
+  end
+
+  moveObjectToPosition(scenarioSheet, scenarioSheetSetupLocation, function()
+  end)
+
+  local locationMat = getObjectFromGUID(locationMatId)
+  if not locationMat then
+    callBack()
+    error("Мат для локацій не знайдено!");
+    return
+  end
+
+  showScenarioComponentsOnMat(scenarioData, callBack)
+end
+
+function showScenarioComponentsOnMat(scenarioData, callBack)
+
+  local tableTile = getObjectFromGUID(tableId)
+  if not tableTile then
+    callBack()
+    return
+  end
+
+  local tableTileData = parseJson(tableTile.memo)
+  if not tableTileData then
+    callBack()
+    return
+  end
+
+  local locationMat = getObjectFromGUID(locationMatId)
+  if not locationMat then
+    error("Мат для локацій не знайдено!");
+    callBack();
+    return
+  end
+
+  local locationMatOld = getObjectFromGUID("b195b0")
+  if not locationMatOld then
+    callBack();
+    return
+  end
+
+  if not scenarioData.tiles then
+    callBack()
+    return
+  end
+
+  local allTasks = {}
+
+  for _, obj in ipairs(getObjects()) do
+    local memo = parseJson(obj.memo)
+    if obj.type == "Generic" and memo and memo.type and memo.name then
+      local types = scenarioData.tiles[memo.type]
+      if types then
+        local tileInfo = types[memo.name]
+        if tileInfo then
+          table.insert(allTasks, function(done)
+            obj.setRotation(tileInfo.rotation)
+            obj.setPositionSmooth(locationMatOld.positionToWorld(tileInfo.position):setAt("y", 3))
+            runAfterRest(obj, function(obj)
+              done()
+            end)
+          end)
+        else
+          local tileStartInfo = tableTileData.startPosition.tiles[memo.type][memo.name]
+          table.insert(allTasks, function(done)
+            obj.setRotation(tileStartInfo.r)
+            obj.setPositionSmooth(tableTile.positionToWorld(tileStartInfo.p):setAt("y", 3))
+            runAfterRest(obj, function(obj)
+              done()
+            end)
+          end)
+        end
+      end
+    end
+  end
+
+  -- for _, obj in ipairs(getObjects()) do
+  --   local memo = parseJson(obj.memo)
+  --   if memo then
+  --     if obj.type == "Generic" and memo and memo.type and memo.name then
+  --       for tileTypeIndex, tile in ipairs(tiles) do
+  --         if tile.type and tile.type == memo.type and tile.list then
+  --           local isFound = false
+  --           for i, tileInfo in ipairs(tile.list) do
+  --             if tileInfo.name and tileInfo.name == memo.name then
+  --               table.insert(allTasks, function(done)
+  --                 obj.setRotation(tileInfo.rotation)
+  --                 obj.setPositionSmooth(locationMatOld.positionToWorld(tileInfo.position):setAt("y", 3))
+  --                 runAfterRest(obj, function(obj)
+  --                   done()
+  --                 end)
+  --               end)
+  --               isFound = true
+  --               break
+  --             end
+  --           end
+  --           if not isFound then
+  --             local tileStartInfo = tableTileData.startPosition.tiles[tile.type][memo.name]
+  --             table.insert(allTasks, function(done)
+  --               obj.setRotation(tileStartInfo.r)
+  --               obj.setPositionSmooth(tableTile.positionToWorld(tileStartInfo.p):setAt("y", 3))
+  --               runAfterRest(obj, function(obj)
+  --                 done()
+  --               end)
+  --             end)
+  --           end
+  --         end
+  --       end
+  --     end
+  --   end
+  -- end
+
+  waitAll(allTasks, callBack)
+end
+
+function moveObjectToPosition(obj, layoutData, callBack)
+  if not obj or not layoutData then
+    log("[ERROR] Invalid input for moveObjectToPosition")
+    if callBack then
+      callBack()
+    end
+    return
+  end
+
+  local pos = layoutData.position
+  pos.y = 4
+
+  if layoutData.rotation then
+    obj.setRotation(layoutData.rotation)
+  end
+
+  obj.setPositionSmooth(pos)
+  runOnceAfterRest(obj, function(obj)
+    if callBack then
+      callBack(obj)
+    end
+  end)
+end
+
+-- ╭──────────────────────────────────────────────╮
+-- │                Mythos                        │
+-- ╰──────────────────────────────────────────────╯
+
