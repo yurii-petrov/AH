@@ -6284,6 +6284,8 @@ function processStep(step, context)
     processStepContextSetup(step, context)
   elseif stepType == "takecodexfromarchive" then
     processStepTakeCodexFromArchive(step, context)
+  elseif stepType == "returncodextoarchive" then
+    processStepReturnCodexToArchive(step, context)
   else
     log("[processStep] Unknown step type: " .. stepType)
   end
@@ -6358,6 +6360,59 @@ function processStepTakeCodexFromArchive(step, context)
       codexMat.destruct()
     end
   end)
+end
+
+-- ╭──────────────────────────────────────────────╮
+-- │          STEP: Return Codex To Archive       │
+-- ╰──────────────────────────────────────────────╯
+
+function processStepReturnCodexToArchive(step, context)
+  local codexMat = context.codexMat
+  if not codexMat then
+    log("[returnCodexToArchive] codexMat is nil")
+    return
+  end
+
+  local sourceMat = findBoardByQuery({{
+    field = "type",
+    op    = "eq",
+    value = "locationMat"
+  }})
+  if not sourceMat then
+    log("[returnCodexToArchive] locationMat not found")
+    return
+  end
+
+  local archive = findDeckOnBoardByType(sourceMat, "archive")
+  if not archive then
+    log("[returnCodexToArchive] archive not found")
+    return
+  end
+
+  local codexIndex = nil
+  for _, att in ipairs(codexMat.getAttachments()) do
+    local attData = parseJson(att.memo)
+    if attData and attData.type and string.lower(attData.type) == "codex" then
+      codexIndex = att.index
+      break
+    end
+  end
+
+  if not codexIndex then
+    log("[returnCodexToArchive] codex card not found in attachments")
+    return
+  end
+
+  local codexCard = codexMat.removeAttachment(codexIndex)
+  if not codexCard then
+    log("[returnCodexToArchive] failed to remove codex card")
+    return
+  end
+
+  codexCard.interactable = true
+  codexCard.setRotation({0, 180, 180})
+  archive.putObject(codexCard)
+  codexMat.destruct()
 end
 
 -- ╭──────────────────────────────────────────────╮
