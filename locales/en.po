@@ -314,6 +314,24 @@ msgstr "SPAWN MONSTER"
 msgid "T4A_gate"
 msgstr "GATE BURST"
 
+msgid "T4A_terror"
+msgstr "TERROR"
+
+msgid "T4A_clue_text"
+msgstr "SPAWN CLUE"
+
+msgid "T4A_doom_text"
+msgstr "SPREAD DOOM"
+
+msgid "T4A_monster_text"
+msgstr "SPAWN MONSTER"
+
+msgid "T4A_gate_text"
+msgstr "GATE BURST"
+
+msgid "T4A_terror_text"
+msgstr "TERROR"
+
 # Investigator mat
 msgid "IM_enemy_text"
 msgstr "E    N    E    M    I    E    S"

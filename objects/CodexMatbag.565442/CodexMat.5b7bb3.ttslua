@@ -42,7 +42,7 @@ local buttonStyle = {
   },
   hover = {
     symbol = "●",
-    color  = "#FFD700"
+    color  = "#ffd8ab"
   },
   confirm = {
     text  = "✔ Підтвердити",

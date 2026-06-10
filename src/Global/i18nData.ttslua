@@ -454,7 +454,15 @@ I18N_DATA = {
     ["en"] = "SPAWN CLUE",
     ["uk"] = "РОЗМІСТИТИ ЗАЧІПКУ",
   },
+  ["T4A_clue_text"] = {
+    ["en"] = "SPAWN CLUE",
+    ["uk"] = "РОЗМІСТИТИ ЗАЧІПКУ",
+  },
   ["T4A_doom"] = {
+    ["en"] = "SPREAD DOOM",
+    ["uk"] = "РОЗПОДІЛИТИ ПРИРЕЧЕНІСТЬ",
+  },
+  ["T4A_doom_text"] = {
     ["en"] = "SPREAD DOOM",
     ["uk"] = "РОЗПОДІЛИТИ ПРИРЕЧЕНІСТЬ",
   },
@@ -462,9 +470,25 @@ I18N_DATA = {
     ["en"] = "GATE BURST",
     ["uk"] = "ПРОРИВ ВОРІТ",
   },
+  ["T4A_gate_text"] = {
+    ["en"] = "GATE BURST",
+    ["uk"] = "ПРОРИВ\nВОРІТ",
+  },
   ["T4A_monster"] = {
     ["en"] = "SPAWN MONSTER",
     ["uk"] = "РОЗМІСТИТИ МОНСТРА",
+  },
+  ["T4A_monster_text"] = {
+    ["en"] = "SPAWN MONSTER",
+    ["uk"] = "РОЗМІСТИТИ МОНСТРА",
+  },
+  ["T4A_terror"] = {
+    ["en"] = "TERROR",
+    ["uk"] = "РОЗПОДІЛИТИ МОРОК",
+  },
+  ["T4A_terror_text"] = {
+    ["en"] = "TERROR",
+    ["uk"] = "РОЗПОДІЛИТИ МОРОК",
   },
   ["The_streets"] = {
     ["en"] = "The streets",

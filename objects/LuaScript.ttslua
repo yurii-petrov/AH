@@ -1662,6 +1662,19 @@ function proceedStartGame()
   addAdditionalCompoents()
 
   gameData.scenarioData = scenarioData
+
+  if gameData.scenarioData.terror then
+    local tile4Actions = getObjectFromGUID(tile4ActionsId)
+    if tile4Actions then
+      tile4Actions.call("setButtonTerrorEnabled")
+      if tile4Actions.hasTag("i18n_XML") then
+        Wait.time(function()
+          i18n.updateObjectUiLanguage(tile4Actions)
+        end, 1)
+      end
+    end
+  end
+
   onClickPrepareScenario()
 
   gameData.numberOfPlayers = currentSetup.players or 2
@@ -4817,6 +4830,17 @@ function processGateBurstByClick()
   end)
 end
 
+function processTerrorByClick()
+  if isDrawMythInProcess then
+    return
+  end
+
+  isDrawMythInProcess = true
+  processTerror(function()
+      isDrawMythInProcess = false
+    end)
+end
+
 function spawnClueToken(neighborhoodName)
   local neighborhoodTile = getNeighborhoodTile(neighborhoodName)
   if not neighborhoodTile then
@@ -4859,12 +4883,14 @@ end
 function spawnClue(callBack)
   local mythosTile = getObjectFromGUID(mythosTileId)
   if not mythosTile then
+    log("[spawnClue] mythosTile not found")
     callBack()
     return
   end
 
   local eventObj = getEventObj()
   if not eventObj then
+    log("[spawnClue] eventObj not found")
     callBack()
     return
   end
@@ -4877,6 +4903,7 @@ function spawnClue(callBack)
   end
 
   if not eventCard then
+    log("[spawnClue] eventCard not found")
     callBack()
     return
   end
@@ -4892,11 +4919,13 @@ function spawnClue(callBack)
 
   local data = parseJson(eventCard.memo)
   if not data then
+    log("[spawnClue] data not found")
     callBack()
     return
   end
 
   if not data.neighborhood then
+    log("[spawnClue] neighborhood not found")
     callBack()
     return
   end
@@ -4915,12 +4944,14 @@ function spawnClue(callBack)
   local encounterDeck = getDeckFromScenarioMat("Encounter", data.neighborhood, true)
 
   if not encounterDeck then
+    log("[spawnClue] encounterDeck not found")
     callBack()
     return
   end
 
   local neighborhoodCards = {takeCardFromTop(encounterDeck, true), takeCardFromTop(encounterDeck, true)}
   if not neighborhoodCards or #neighborhoodCards <= 0 then
+    log("[spawnClue] neighborhoodCards not found")
     callBack()
     return
   end

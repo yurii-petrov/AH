@@ -1,31 +1,182 @@
-function clue_process(player, alt_click)
-    if alt_click ~= "-1" then
-        return
-    end
+local buttonDefs = {
+  { id = "clue",    label = "Підказка",  position = "300 0 -11",   onClick = "clue_process",    image = "https://drive.google.com/uc?export=view&id=1Muxb5-td9ayvSRto02B5DIlRoWkyM4Op",  imageHover = "https://drive.google.com/uc?export=view&id=1Tz2_Pj2A2tSq8PoCjnpiP1byVOJyhEQq" },
+  { id = "doom",    label = "Загибель",  position = "150 0 -11",   onClick = "doom_process",    image = "https://drive.google.com/uc?export=view&id=1evqiJTx9JKJ8LLxXV77ua-eptdeZ4liH",  imageHover = "https://drive.google.com/uc?export=view&id=1c87UT-jjwzT8HTe6M1qYACRMKo298ASf" },
+  { id = "monster", label = "Монстр",    position = "0 0 -11",     onClick = "monster_process", image = "https://drive.google.com/uc?export=view&id=1dgeevtKAVcc_FLWnVUiSTEUfzbQAI2RW",  imageHover = "https://drive.google.com/uc?export=view&id=1nD2sGK5GhakVDs94LRE1T1zAPEgvdElH" },
+  { id = "gate",    label = "Портал",    position = "-150 0 -11",  onClick = "gate_process",    image = "https://drive.google.com/uc?export=view&id=13qSYeFgVOoONVb1gF6f_l5MgiD2UXk5b",  imageHover = "https://drive.google.com/uc?export=view&id=1XxN5Q4F8-AHhI1GYVaKOZLmD-MOWLHj4" },
+  { id = "terror",  label = "Жах",       position = "-300 0 -11",  onClick = "terror_process",  image = "https://drive.google.com/uc?export=view&id=1_hWznoT2dz_4VfDCfFyHfA4nurtRkaSw",  imageHover = "https://drive.google.com/uc?export=view&id=1em0nkMgejMKFNX9JHNWRXbi3-q9-QObv" },
+}
 
-    Global.call("spawnClueByClick")
+local style = {
+  active   = { imageColor = "#ffffff", textColor = "#ffffff" },
+  hover    = {                         textColor = "#ffd8ab" },
+  disabled = { imageColor = "#555555", textColor = "#666666" },
+}
+
+local buttonEnabled = {
+  clue     = true,
+  doom     = true,
+  monster  = true,
+  gate     = true,
+  terror   = false,
+}
+
+local function makeContentPanel(id, text_id, image, label, textColor, imageColor, active)
+  return {
+    tag = "Panel",
+    attributes = {
+      id     = id,
+      active = active and "true" or "false",
+      width  = "1300",
+      height = "1500",
+      color  = "clear",
+    },
+    children = {
+      {
+        tag = "image",
+        attributes = {
+          image          = image,
+          width          = "1100",
+          height         = "1100",
+          rectAlignment  = "UpperCenter",
+          preserveAspect = "true",
+          color          = imageColor or "#ffffff",
+        }
+      },
+      {
+        tag = "text",
+        attributes = {
+          id = text_id,
+         -- text      = label,
+          font      = "Fonts/AdonisC",
+          fontSize  = "140",
+          color     = textColor,
+          alignment = "LowerCenter",
+        }
+      },
+    }
+  }
+end
+
+local function buildButtonXml(btn)
+  local enabled = buttonEnabled[btn.id]
+  local s       = enabled and style.active or style.disabled
+  local fid     = "T4A_" .. btn.id
+
+  local overlayAttrs = {
+    id     = fid,
+    width  = "1300",
+    height = "1500",
+    color  = "clear",
+    text   = "",
+  }
+  if enabled then
+    overlayAttrs.onClick      = btn.onClick
+    overlayAttrs.onMouseEnter = "hoverEnter"
+    overlayAttrs.onMouseExit  = "hoverExit"
+  end
+
+  local children = {
+    { tag = "Button", attributes = overlayAttrs },
+    makeContentPanel("norm_"..fid, fid.."_text", btn.image,      btn.label, s.textColor,          s.imageColor, true),
+  }
+  if enabled then
+    table.insert(children, makeContentPanel("hov_"..fid, fid.."_text", btn.imageHover, btn.label, style.hover.textColor, nil, false))
+  end
+
+  return {
+    tag = "Panel",
+    attributes = {
+      position = btn.position,
+      rotation = "0 0 180",
+      scale    = "0.1 0.1 1",
+      width    = "1300",
+      height   = "1500",
+      color    = "clear",
+    },
+    children = children
+  }
+end
+
+local function buildUI()
+  local xml = {}
+  for _, btn in ipairs(buttonDefs) do
+    table.insert(xml, buildButtonXml(btn))
+  end
+  self.UI.setXmlTable(xml)
+end
+
+function onLoad(savedData)
+  local sData = parseJson(savedData)
+  if sData then buttonEnabled = sData end
+  Wait.time(buildUI, 0.5)
+end
+
+function onSave()
+  return JSON.encode(buttonEnabled)
+end
+
+function hoverEnter(player, alt_click, id)
+  local btnId = id:match("T4A_(.+)")
+  if not btnId or not buttonEnabled[btnId] then return end
+  self.UI.setAttribute("norm_" .. id, "active", "false")
+  self.UI.setAttribute("hov_"  .. id, "active", "true")
+end
+
+function hoverExit(player, alt_click, id)
+  local btnId = id:match("T4A_(.+)")
+  if not btnId or not buttonEnabled[btnId] then return end
+  self.UI.setAttribute("norm_" .. id, "active", "true")
+  self.UI.setAttribute("hov_"  .. id, "active", "false")
+end
+
+function setButtonTerrorEnabled()
+  buttonEnabled = {
+    clue     = true,
+    doom     = true,
+    monster  = true,
+    gate     = true,
+    terror   = true,
+  }
+  buildUI()
+end
+
+function clue_process(player, alt_click)
+  if alt_click ~= "-1" then return end
+  Global.call("spawnClueByClick")
 end
 
 function doom_process(player, alt_click)
-    if alt_click ~= "-1" then
-        return
-    end
-
-    Global.call("spawnDoomsByClick")
+  if alt_click ~= "-1" then return end
+  Global.call("spawnDoomsByClick")
 end
 
 function monster_process(player, alt_click)
-    if alt_click ~= "-1" then
-        return
-    end
-
-    Global.call("spawnMonterByClick")
+  if alt_click ~= "-1" then return end
+  Global.call("spawnMonterByClick")
 end
 
 function gate_process(player, alt_click)
-    if alt_click ~= "-1" then
-        return
-    end
+  if alt_click ~= "-1" then return end
+  Global.call("processGateBurstByClick")
+end
 
-    Global.call("processGateBurstByClick")
+function terror_process(player, alt_click)
+  if alt_click ~= "-1" then return end
+  Global.call("processTerrorByClick")
+end
+
+function parseJson(memo)
+  if not memo or type(memo) ~= "string" then
+    return nil
+  end
+
+  local success, result = pcall(function()
+    return JSON.decode(memo)
+  end)
+
+  if success then
+    return result
+  else
+    return nil
+  end
 end
