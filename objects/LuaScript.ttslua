@@ -6297,14 +6297,11 @@ function processStepContextSetup(step, context)
     return
   end
 
-  local locationMat = getObjectFromGUID(locationMatId)
+  local locationMat = getObjectFromGUID("b195b0")
   if not locationMat then return end
 
   local box = getObjectFromGUID(boxId)
   if not box then return end
-
-  local locationMatOld = getObjectFromGUID("b195b0")
-  if not locationMatOld then return end
 
   local allTasks = {}
 
@@ -6318,6 +6315,7 @@ function processStepContextSetup(step, context)
     end
   end
 
+  local heightByPos = {}
   for _, obj in ipairs(box.getObjects()) do
     local memo = parseJson(obj.memo)
     if memo and memo.type and memo.name then
@@ -6329,15 +6327,20 @@ function processStepContextSetup(step, context)
       if types then
         local tileInfo = types[memoName]
         if tileInfo then
+          local posKey = tileInfo.position.x .. "|" .. tileInfo.position.z
+          heightByPos[posKey] = (heightByPos[posKey] or 3)
+          local spawnY = heightByPos[posKey]
+          heightByPos[posKey] = heightByPos[posKey] + 0.2
+
           table.insert(allTasks, function(done)
             local spawnedObj = box.takeObject({
               guid = objGuid,
-              position = locationMat.positionToWorld(tileInfo.position):setAt("y", 3),
+              position = locationMat.positionToWorld(tileInfo.position):setAt("y", spawnY),
               rotation = tileInfo.rotation,
               smooth = true
             })
             runAfterRest(spawnedObj, function(o)
-              processSetupTile(o, memoName, tileInfo, locationMatOld)
+              processSetupTile(o, memoName, tileInfo, locationMat)
               done()
             end)
           end)
