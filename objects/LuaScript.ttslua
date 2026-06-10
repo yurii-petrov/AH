@@ -1210,23 +1210,6 @@ function onObjectDrop(colorName, object)
   end
 end
 
--- function onObjectLeaveContainer(container, object)
-    -- local objectData = parseJson(object.memo)
-    -- if object.memo and not objectData then
-    --   objectData = {
-    --     type = object.memo
-    --   }
-    -- end
-
-    -- if not objectData then
-    --   return
-    -- end
-    
-    -- if objectData.type == "codex" then
-    -- handleCardContextType(object, objectData)
-    -- end
--- end
-
 function context59ReturnBridge(obj, player_color)
 
   obj.clearButtons()
@@ -1272,217 +1255,6 @@ function context59ReturnBridge(obj, player_color)
     
   end, 1.5)
 
-end
-
-function getContextSetup(number)
-  if not gameData or not gameData.scenarioData or not gameData.scenarioData.contextSetup then
-    return
-  end
-  local setup = gameData.scenarioData.contextSetup[tostring(number)]
-  if not setup or not setup.tiles then
-    return
-  end
-  return setup
-end
-
-local function handleContextSetup(number)
-  local function waitAll(tasks, onAllDone)
-    local remaining = #tasks
-    if remaining == 0 then
-      onAllDone()
-      return
-    end
-
-    for _, task in ipairs(tasks) do
-      task(function()
-        remaining = remaining - 1
-        if remaining == 0 then
-          onAllDone()
-        end
-      end)
-    end
-  end
-
-  local setup = getContextSetup(number)
-  if not setup then
-    return
-  end
-
-  gameData.scenarioData.contextSetup = nil
-
-  local locationMat = getObjectFromGUID(locationMatId)
-  if not locationMat then
-    return
-  end
-
-  local box = getObjectFromGUID(boxId)
-  if not box then
-    return
-  end
-
-  local locationMatOld = getObjectFromGUID("b195b0")
-  if not locationMatOld then
-    return
-  end
-
-  local scenarioMat = getObjectFromGUID(scenarioMatId)
-  if not scenarioMat then
-    return
-  end
-
-  local scenarioMatData = parseJson(scenarioMat.memo)
-  if not scenarioMatData then
-    return
-  end
-
-  local scenarioInstruction = nil
-  for _, s in ipairs(scenarioMatData.scenarios) do
-    if s.number == gameData.scenarioData.number then
-      scenarioInstruction = s
-      break
-    end
-  end
-
-  if not scenarioInstruction then
-    return
-  end
-
-  local deferredLookup = {}
-  if scenarioInstruction.deferredDecks then
-    for _, d in ipairs(scenarioInstruction.deferredDecks) do
-      if scenarioMatData.positions[d.pos] then
-        local key = string.lower(d.type) .. "|" .. string.lower(d.name)
-        deferredLookup[key] = scenarioMat.positionToWorld(scenarioMatData.positions[d.pos]):setAt("y", 3)
-      end
-    end
-  end
-
-  local allTasks = {}
-
-  for _, obj in ipairs(box.getObjects()) do
-    local memo = parseJson(obj.memo)
-    if memo and memo.type and memo.name then
-      local objGuid = obj.guid
-      local memoName = memo.name
-      local memoType = memo.type
-
-      if setup.tiles then
-        local types = setup.tiles[memoType]
-        if types then
-          local tileInfo = types[memoName]
-          if tileInfo then
-            table.insert(allTasks, function(done)
-              local spawnedObj = box.takeObject({
-                guid = objGuid,
-                position = locationMat.positionToWorld(tileInfo.position):setAt("y", 3),
-                rotation = tileInfo.rotation,
-                smooth = true
-              })
-              runAfterRest(spawnedObj, function(o)
-                processSetupTile(o, memoName, tileInfo, locationMatOld)
-                done()
-              end)
-            end)
-          end
-        end
-      end
-
-      local key = string.lower(memoType) .. "|" .. string.lower(memoName)
-      local deckPos = deferredLookup[key]
-      if deckPos then
-        table.insert(allTasks, function(done)
-          local spawnedObj = box.takeObject({
-            guid = objGuid,
-            position = deckPos,
-            rotation = {0, 180, 180},
-            smooth = true
-          })
-          runAfterRest(spawnedObj, function(o)
-            if o.type == "Deck" then
-              o.shuffle()
-            end
-            done()
-          end)
-        end)
-      end
-    end
-  end
-
-  waitAll(allTasks, function() end)
-end
-
-function contextDor117Setup(obj, player_color)
-  obj.clearButtons()
-  handleContextSetup(117)
-end
-
-function contextDor118Setup(obj, player_color)
-  obj.clearButtons()
-  handleContextSetup(118)
-end
-
-function contextDor119Setup(obj, player_color)
-  obj.clearButtons()
-  handleContextSetup(119)
-end
-
-function contextDor120Setup(obj, player_color)
-  obj.clearButtons()
-  handleContextSetup(120)
-end
-
-function handleCardContextType(obj, objData)
-  local DOR_NUMBERS = {
-    [117] = "contextDor117Setup",
-    [118] = "contextDor118Setup",
-    [119] = "contextDor119Setup",
-    [120] = "contextDor120Setup",
-  }
-
-  if objData.number == 59 and gameData.isStarted and gameData.scenarioData.name == "SoT" then
-    local locationMat = getObjectFromGUID(locationMatId)
-    if not locationMat then
-      return
-    end
-
-    local objs = upCast(locationMat, 1, nil, 1)
-    if not objs then
-      return
-    end
-
-    local bridge = nil
-    for _, o in ipairs(objs) do
-      local data = parseJson(o.memo)
-      if data and data.name == "Bridge2" and data.type == "Street" then
-        bridge = o
-        break
-      end
-    end
-
-    if not bridge then
-      return
-    end
-
-    obj.createButton({
-      label = "Повернути міст",
-      click_function = "context59ReturnBridge",
-      function_owner = self,
-      position = {0, 0.3, 2},
-      width = 1000,
-      height = 300,
-      font_size = 120
-    })
-  elseif gameData.scenarioData.name == "DoR" and DOR_NUMBERS[objData.number] and getContextSetup(objData.number) then
-    obj.createButton({
-      label = "Розставити",
-      click_function = DOR_NUMBERS[objData.number],
-      function_owner = self,
-      position = {0, 0.3, 2},
-      width = 1000,
-      height = 300,
-      font_size = 120
-    })
-  end
 end
 
 function onItemDrop(colorName, object, objectData)
@@ -4103,7 +3875,7 @@ function prepareScenarioDecks(scenarioData)
                       local takenCodex = foundArchive.takeObject({
                         index = codex.index,
                         position = locationMat.positionToWorld(locationData.codexDeck):setAt("y", 3),
-                        rotation = {0, 180, 180},
+                        rotation = {0, 180, 0},
                         smooth = false
                       })
                       table.insert(codexDeckCards, takenCodex)
@@ -4209,8 +3981,6 @@ function attachCodexCard(card, spawnPos)
     end
     runAfterRest(codexMat, function(codexMat)
       codexMat.call("setCodexData", params)
-      -- TODO: Remove
-      handleCardContextType(codexMat, params)
     end)
   end
 end
@@ -5407,23 +5177,6 @@ function showScenarioComponentsOnMat(scenarioData, callBack)
     return
   end
 
-  function waitAll(tasks, onAllDone)
-    local remaining = #tasks
-    if remaining == 0 then
-      onAllDone()
-      return
-    end
-
-    for _, task in ipairs(tasks) do
-      task(function()
-        remaining = remaining - 1
-        if remaining == 0 then
-          onAllDone()
-        end
-      end)
-    end
-  end
-
   if not scenarioData.tiles then
     callBack()
     return
@@ -6527,13 +6280,77 @@ function processStep(step, context)
     processStepTakeCard(step, context)
   elseif stepType == "cycletokenlayout" then
     processStepCycleTokenLayout(step, context)
+  elseif stepType == "contextsetup" then
+    processStepContextSetup(step, context)
   else
     log("[processStep] Unknown step type: " .. stepType)
   end
 end
 
 -- ╭──────────────────────────────────────────────╮
--- │                 Cycle Token Layout           │
+-- │           STEP: contextSetup                 │
+-- ╰──────────────────────────────────────────────╯
+
+function processStepContextSetup(step, context)
+  if not step.tiles then
+    log("[processStepContextSetup] tiles is nil")
+    return
+  end
+
+  local locationMat = getObjectFromGUID(locationMatId)
+  if not locationMat then return end
+
+  local box = getObjectFromGUID(boxId)
+  if not box then return end
+
+  local locationMatOld = getObjectFromGUID("b195b0")
+  if not locationMatOld then return end
+
+  local allTasks = {}
+
+  local attachments = context.codexMat.getAttachments()
+  for i, att in ipairs(attachments) do
+    local attData = parseJson(att.memo)
+    if attData and attData.type and string.lower(attData.type) == "codex" then
+      context.codexMat.removeAttachment(att.index)
+      context.codexMat.destruct()
+      break
+    end
+  end
+
+  for _, obj in ipairs(box.getObjects()) do
+    local memo = parseJson(obj.memo)
+    if memo and memo.type and memo.name then
+      local objGuid = obj.guid
+      local memoName = memo.name
+      local memoType = memo.type
+
+      local types = step.tiles[memoType]
+      if types then
+        local tileInfo = types[memoName]
+        if tileInfo then
+          table.insert(allTasks, function(done)
+            local spawnedObj = box.takeObject({
+              guid = objGuid,
+              position = locationMat.positionToWorld(tileInfo.position):setAt("y", 3),
+              rotation = tileInfo.rotation,
+              smooth = true
+            })
+            runAfterRest(spawnedObj, function(o)
+              processSetupTile(o, memoName, tileInfo, locationMatOld)
+              done()
+            end)
+          end)
+        end
+      end
+    end
+  end
+
+  waitAll(allTasks, function() end)
+end
+
+-- ╭──────────────────────────────────────────────╮
+-- │           STEP: cycleTokenLayout             │
 -- ╰──────────────────────────────────────────────╯
 
 local function normalizeNumericKeys(t)
@@ -6848,35 +6665,36 @@ function handleLastCodexDeckCard(remainingDeckOrCard, takenCard, context)
   end
 
   local codexMat = context.codexMat
-  local codexPos = codexMat.getPosition()
+  -- local codexPos = codexMat.getPosition()
 
   local attachments = codexMat.getAttachments()
-  local cardToArchive = nil
+  -- local cardToArchive = nil
 
   for i, att in ipairs(attachments) do
     local attData = parseJson(att.memo)
     if attData and attData.type and string.lower(attData.type) == "codex" then
-      cardToArchive = codexMat.removeAttachment(att.index)
+      codexMat.removeAttachment(att.index)
+      codexMat.destruct()
       break
     end
   end
 
-  Wait.time(function()
-    codexMat.destruct()
-  end, 0.3)
+  -- Wait.time(function()
+    -- codexMat.destruct()
+  -- end, 0.3)
 
-  if cardToArchive then
-    local archive = findDeckOnBoardByType(
-      findBoardByQuery({{field = "type", op = "eq", value = "locationMat"}}),
-      "archive"
-    )
-    if archive then
-      Wait.time(function()
-        cardToArchive.setRotation({0, 180, 180})
-        archive.putObject(cardToArchive)
-      end, 0.5)
-    end
-  end
+  -- if cardToArchive then
+    -- local archive = findDeckOnBoardByType(
+    --   findBoardByQuery({{field = "type", op = "eq", value = "locationMat"}}),
+    --   "archive"
+    -- )
+    -- if archive then
+    --   Wait.time(function()
+    --     cardToArchive.setRotation({0, 180, 180})
+    --     archive.putObject(cardToArchive)
+    --   end, 0.5)
+    -- end
+  -- end
 
   -- local archive = findDeckOnBoardByType(
   --   findBoardByQuery({{field = "type", op = "eq", value = "locationMat"}}),
@@ -6890,8 +6708,8 @@ function handleLastCodexDeckCard(remainingDeckOrCard, takenCard, context)
   -- end
 
   Wait.time(function()
-    codexPos.y = codexPos.y + 2
-    attachCodexCard(lastCard, codexPos)
+    -- codexPos.y = codexPos.y + 2
+    attachCodexCard(lastCard, lastCard.getPosition():setAt("y", 3))
   end, 1.5)
 end
 
@@ -7388,6 +7206,23 @@ function getHandsByPlayerColor(playerColor)
     end
   end
   return out
+end
+
+function waitAll(tasks, onAllDone)
+  local remaining = #tasks
+  if remaining == 0 then
+    onAllDone()
+    return
+  end
+
+  for _, task in ipairs(tasks) do
+    task(function()
+      remaining = remaining - 1
+      if remaining == 0 then
+        onAllDone()
+      end
+    end)
+  end
 end
 
 -- allows calling a function inside of a table
