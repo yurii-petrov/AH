@@ -1,0 +1,868 @@
+-- ╭──────────────────────────────────────────────╮
+-- │          DOOM / CLUE / SPAWN                 │
+-- ╰──────────────────────────────────────────────╯
+
+function generateArcPositionsFromAngle(center, radius, startAngleDeg, stepAngleDeg, count, y)
+  local positions = {}
+  for i = 0, count - 1 do
+    local angleRad = math.rad(startAngleDeg + i * stepAngleDeg)
+    local x = center[1] + radius * math.cos(angleRad)
+    local z = center[3] + radius * math.sin(angleRad)
+    table.insert(positions, {x, y, z})
+  end
+  return positions
+end
+
+function spawnDoomTokensInMiddleOfNeighborhood(data)
+  local doomBag = getObjectFromGUID(doomBagId)
+  if not doomBag then
+    return
+  end
+
+  if not data.neighborhoodTile or not data.doomCount then
+    return
+  end
+
+  if data.doomCount < 1 then
+    return
+  end
+
+  local p1 = {"0.780", "0.150", "0.001"}
+  local p2 = {"-0.781", "0.150", "-0.001"}
+  local p3 = {"0.000", "0.150", "0.783"}
+
+  local tokens = {}
+  if data.doomCount == 1 then
+    table.insert(tokens, doomBag.takeObject({
+      index = 0,
+      position = data.neighborhoodTile.getPosition():setAt("y", 3)
+    }))
+  elseif data.doomCount == 2 then
+    table.insert(tokens, doomBag.takeObject({
+      index = 0,
+      position = data.neighborhoodTile.positionToWorld(p1):setAt("y", 3)
+    }))
+    table.insert(tokens, doomBag.takeObject({
+      index = 0,
+      position = data.neighborhoodTile.positionToWorld(p2):setAt("y", 3)
+    }))
+  elseif data.doomCount == 3 then
+    table.insert(tokens, doomBag.takeObject({
+      index = 0,
+      position = data.neighborhoodTile.positionToWorld(p1):setAt("y", 3)
+    }))
+    table.insert(tokens, doomBag.takeObject({
+      index = 0,
+      position = data.neighborhoodTile.positionToWorld(p2):setAt("y", 3)
+    }))
+    table.insert(tokens, doomBag.takeObject({
+      index = 0,
+      position = data.neighborhoodTile.positionToWorld(p3):setAt("y", 3)
+    }))
+  end
+
+  for _, token in pairs(tokens) do
+    token.highlightOn("Red", 5)
+  end
+
+  local nData = parseJson(data.neighborhoodTile.memo)
+
+  print((nData.name or "") .. " - " .. data.doomCount ..
+          " приреченості додано в центр району, гравці вирішують як їх розмістити")
+end
+
+function spawnAnomalyAndDoomTokens(data)
+
+  if not data.neighborhoodTile then
+    return
+  end
+
+  local p = data.neighborhoodTile.getPosition():setAt("y", 3)
+
+  local function spawnAnomalyToken(callBack)
+    if data.isSpawnAnomaly then
+      local anomalyBag = getObjectFromGUID(anomalyBagId)
+      if not anomalyBag then
+        callBack()
+        return
+      end
+      local anomalyToken = anomalyBag.takeObject({
+        index = 0,
+        position = p
+      })
+      runAfterRest(anomalyToken, function(anomalyToken)
+        anomalyToken.highlightOn("Red", 5)
+        local nData = parseJson(data.neighborhoodTile.memo)
+        printToAll((nData.name or "") .. " - Додано аномалію.", "Red")
+        callBack()
+      end)
+    else
+      callBack()
+    end
+  end
+
+  spawnAnomalyToken(function()
+    spawnDoomTokensInMiddleOfNeighborhood({
+      neighborhoodTile = data.neighborhoodTile,
+      doomCount = data.redirectToAnomaly
+    })
+  end)
+end
+
+function spawnDoomTokensOnScenarioSheet(doomCount)
+  if doomCount < 1 then
+    return
+  end
+  local doomBag = getObjectFromGUID(doomBagId)
+  if not doomBag then
+    return
+  end
+
+  local scenarioSheet = getObjectFromGUID(gameData.scenarioData.guid)
+  if not scenarioSheet then
+    return
+  end
+
+  local p = scenarioSheet.getPosition():setAt("y", 3)
+  for i = 1, doomCount do
+    local doomToken = doomBag.takeObject({
+      index = 0,
+      position = p
+    })
+    doomToken.highlightOn("Red", 5)
+    p:setAt("x", p.x + 1.5)
+  end
+
+  print("Сценарій - " .. doomCount .. " приреченості додано")
+  return true
+end
+
+function checkAndAddDoomsOnAnomaly(neighborhoodObj, doomCount)
+  local doomBag = getObjectFromGUID(doomBagId)
+  if not doomBag then
+    return
+  end
+
+  if not gameData.scenarioData.anomaly then
+    return
+  end
+
+  local nObjs = upCast(neighborhoodObj, 1, nil, 1)
+
+  for _, nObj in pairs(nObjs) do
+    if nObj.memo == "Anomaly Token" then
+      if spawnDoomTokensOnScenarioSheet(doomCount) then
+        return true
+      end
+    end
+  end
+end
+
+function getLocationIndex(localPos, structureType)
+  local startAngleDeg = (structureType == 1 or structureType == "1") and 60 or 0
+  local x = localPos[1]
+  local z = localPos[3]
+
+  local angleDeg = math.deg(math.atan2(-z, x))
+  if angleDeg < 0 then
+    angleDeg = angleDeg + 360
+  end
+
+  local relativeAngle = angleDeg - startAngleDeg
+  if relativeAngle < 0 then
+    relativeAngle = relativeAngle + 360
+  end
+
+  local sector = math.floor(relativeAngle / 120) + 1
+  return sector
+end
+
+function getNeighborhoodDoomInfo(neighborhood)
+  if not neighborhood then
+    return
+  end
+
+  local neighborhoodData = parseJson(neighborhood.memo)
+  if not neighborhoodData and not neighborhoodData.locations then
+    return
+  end
+
+  local data = {
+    total = 0,
+    locations = {}
+  }
+
+  for i = 1, #neighborhoodData.locations do
+    local locationName = neighborhoodData.locations[i]
+    data.locations[locationName] = 0
+  end
+
+  local objs = upCast(neighborhood, 1, nil, 1)
+
+  local doomTokens = {}
+  for _, obj in pairs(objs) do
+    if obj.memo and obj.memo == "Doom Token" then
+      table.insert(doomTokens, obj)
+    end
+  end
+
+  for _, token in pairs(doomTokens) do
+    local localPos = neighborhood.positionToLocal(token.getPosition())
+    if not localPos then
+      return
+    end
+
+    local index = getLocationIndex(localPos, neighborhoodData.structureType)
+
+    if index <= #neighborhoodData.locations then
+      local locationName = neighborhoodData.locations[index]
+      data.locations[locationName] = data.locations[locationName] + 1
+      data.total = data.total + 1
+    end
+  end
+
+  return data
+end
+
+function resolveDooms(info, locations)
+
+  local updatedInfo = {}
+  updatedInfo.total = info.total
+  updatedInfo.locations = {}
+  for l, v in pairs(info.locations) do
+    updatedInfo.locations[l] = v
+  end
+
+  local redirectedToScenario = 0
+  local appliedLocations = {}
+
+  local function checkAnomaly(doomInfo)
+    if doomInfo.total >= 5 then
+      return true
+    end
+
+    for loc, dooms in pairs(doomInfo.locations) do
+      if dooms >= 3 then
+        return true
+      end
+    end
+
+    return false
+  end
+
+  local isAddAnomaly = false
+  for loc, data in pairs(locations) do
+    for i = 1, data.dooms do
+
+      if not isAddAnomaly then
+        isAddAnomaly = checkAnomaly(updatedInfo)
+      end
+
+      if isAddAnomaly then
+        redirectedToScenario = redirectedToScenario + 1
+      else
+        updatedInfo.locations[loc] = (updatedInfo.locations[loc] or 0) + 1
+        updatedInfo.total = (updatedInfo.total or 0) + 1
+
+        if not appliedLocations[loc] then
+          appliedLocations[loc] = {
+            dooms = 0
+          }
+        end
+        appliedLocations[loc].dooms = appliedLocations[loc].dooms + 1
+      end
+    end
+  end
+
+  local function getCount(t)
+    local count = 0
+    for _, v in pairs(t) do
+      count = count + 1
+    end
+
+    return count
+  end
+
+  local redirectToAnomaly = getCount(locations) > getCount(appliedLocations) and getCount(locations) or 0
+  if redirectToAnomaly > 0 then
+    appliedLocations = {}
+    redirectedToScenario = 0
+  end
+
+  local res = {
+    isSpawnAnomaly = checkAnomaly(updatedInfo),
+    locations = appliedLocations,
+    redirectToAnomaly = redirectToAnomaly,
+    redirectedToScenario = redirectedToScenario
+  }
+
+  if isTestMode then
+    print("\nneighborhoodData: " .. serpent.tts(info) .. ("\neventData: " .. serpent.tts(locations)) ..
+            "\nupdatedNeighborhoodData: " .. serpent.tts(updatedInfo) .. "\nEvent locations number: " ..
+            getCount(locations) .. "\napplied Event locations number: " .. getCount(appliedLocations) .. "\n\nres: " ..
+            serpent.tts(res))
+  end
+
+  return res
+end
+
+function eventSpawnDooms(callBack)
+  local mythosTile = getObjectFromGUID(mythosTileId)
+  if not mythosTile then
+    callBack()
+    return
+  end
+
+  local eventObj = getEventObj()
+  if not eventObj then
+    return
+  end
+
+  local eventCard = nil
+  if eventObj.type == "Deck" then
+    eventCard = takeCardFromBottom(eventObj, true)
+  elseif eventObj.type == "Card" then
+    eventCard = eventObj
+  end
+
+  if not eventCard then
+    callBack()
+    return
+  end
+
+  local eventDiscardPos = mythosTile.positionToWorld({-0.199, 0.113, 0.731})
+  eventCard.setRotation({0, 180, 0})
+  eventCard.setPositionSmooth(eventDiscardPos:setAt("y", 3))
+
+  if not eventCard.memo then
+    printToAll("Додайте приреченість самостійно", "Red")
+    callBack()
+    return
+  end
+
+  local eventData = parseJson(eventCard.memo)
+  if not eventData then
+    callBack()
+    return
+  end
+
+  spawnDooms(eventData, callBack)
+end
+
+function spawnDooms(data, callBack)
+  if not data.neighborhood then
+    callBack()
+    return
+  end
+
+  local locationMat = getObjectFromGUID(locationMatId)
+  if not locationMat then
+    callBack()
+    return
+  end
+
+  local objs = upCast(locationMat, 1, nil, 1)
+  if not objs then
+    callBack()
+    return
+  end
+
+  local isMystery = data.neighborhoodType and string.lower(data.neighborhoodType) == "mystery"
+
+  local neighborhoodInfo = nil
+  for _, o in pairs(objs) do
+    local oData = parseJson(o.memo)
+    if oData and oData.name == data.neighborhood then
+      local oType = string.lower(oData.type)
+      if isMystery and oType == "mystery" then
+        neighborhoodInfo = { obj = o, data = oData }
+        break
+      elseif not isMystery and oType == "neighborhood" and oData.locations then
+        neighborhoodInfo = { obj = o, data = oData }
+        break
+      end
+    end
+  end
+
+  if not neighborhoodInfo then
+    callBack()
+    return
+  end
+
+  processSpawnDooms(data, neighborhoodInfo)
+  callBack()
+end
+
+function processSpawnDooms(data, neighborhoodInfo)
+  local isMystery = data.neighborhoodType and string.lower(data.neighborhoodType) == "mystery"
+
+  if isMystery then
+    processMysterySpawnDooms(data, neighborhoodInfo)
+  elseif gameData.scenarioData.anomaly then
+    local totalDooms = 0
+    for locationName, location in pairs(data.locations) do
+      if location.dooms then
+        totalDooms = totalDooms + location.dooms
+      end
+    end
+
+    if checkAndAddDoomsOnAnomaly(neighborhoodInfo.obj, totalDooms) then
+      return
+    end
+
+    local doomInfo = getNeighborhoodDoomInfo(neighborhoodInfo.obj)
+    if doomInfo then
+      local res = resolveDooms(doomInfo, data.locations)
+
+      spawnAnomalyAndDoomTokens({
+        isSpawnAnomaly = res.isSpawnAnomaly,
+        redirectToAnomaly = res.redirectToAnomaly,
+        neighborhoodTile = neighborhoodInfo.obj
+      })
+
+      spawnDoomTokensOnScenarioSheet(res.redirectedToScenario)
+
+      for locationName, location in pairs(res.locations) do
+        if location.dooms then
+          spawnDoomTokenInLocation(locationName, location.dooms, neighborhoodInfo)
+        end
+      end
+    end
+  else
+    for locationName, location in pairs(data.locations) do
+      if location.dooms then
+        spawnDoomTokenInLocation(locationName, location.dooms, neighborhoodInfo)
+      end
+    end
+  end
+end
+
+function processMysterySpawnDooms(data, neighborhoodInfo)
+  if data.dooms and data.dooms > 0 then
+    spawnDoomTokenOnTile(neighborhoodInfo.obj, data.dooms)
+  end
+end
+
+function getEmptyDoomSpaces(o, neededCount, startIndex, structureType)
+  local function scan(isCheck2Line, depth, foundSoFar)
+    depth = depth or 0
+    foundSoFar = foundSoFar or {}
+
+    if depth > 1 then
+      return foundSoFar
+    end
+
+    local center = {0.049, 0.150, -0.056}
+    local radius = isCheck2Line and 3.25 or 2.1
+    local startAngleDeg = 205
+    local stepAngleDeg = isCheck2Line and 25 or 35
+    local count = isCheck2Line and 4 or 3
+    local y = 0.150
+
+    if startIndex == 2 then
+      startAngleDeg = 85
+    elseif startIndex == 3 then
+      startAngleDeg = 325
+    end
+
+    if structureType == 2 or structureType == "2" then
+      startAngleDeg = startAngleDeg + 60
+    end
+
+    if isCheck2Line then
+      startAngleDeg = startAngleDeg - 10
+    end
+
+    local arcPositions = generateArcPositionsFromAngle(center, radius, startAngleDeg, stepAngleDeg, count, y)
+
+    for _, pos in ipairs(arcPositions) do
+      local worldPos = o.positionToWorld(pos)
+      local hits = Physics.cast({
+        origin = worldPos,
+        direction = {0, 1, 0},
+        type = 3,
+        size = {1.188 / 2, 1 / 2, 1.188 / 2},
+        max_distance = 0,
+        debug = isTestMode
+      })
+
+      local hasDoom = false
+      for _, v in ipairs(hits) do
+        if v.hit_object and v.hit_object.memo == "Doom Token" then
+          hasDoom = true
+          break
+        end
+      end
+
+      if not hasDoom then
+        table.insert(foundSoFar, worldPos)
+        if #foundSoFar >= neededCount then
+          return foundSoFar
+        end
+      end
+    end
+
+    if not isCheck2Line then
+      return scan(true, depth + 1, foundSoFar)
+    end
+
+    return foundSoFar
+  end
+
+  return scan(false)
+end
+
+function getEmptyDoomSpacesOnTile(o, neededCount)
+  local bounds = o.getBoundsNormalized()
+  local scale = o.getScale()
+  local w = bounds.size.x * scale.x
+  local d = bounds.size.z * scale.z
+  local y = 0.150
+
+  local cols = 3
+  local rows = 3
+  local stepX = w / (cols - 1) * 0.6
+  local stepZ = d / (rows - 1) * 0.6
+
+  local offsetX = -(cols - 1) * stepX / 2
+  local offsetZ = -(rows - 1) * stepZ / 2
+
+  local foundSoFar = {}
+
+  for row = 0, rows - 1 do
+    for col = 0, cols - 1 do
+      local localPos = {
+        (offsetX + col * stepX) / scale.x,
+        y,
+        (offsetZ + row * stepZ) / scale.z
+      }
+      local worldPos = o.positionToWorld(localPos)
+      local hits = Physics.cast({
+        origin = worldPos,
+        direction = {0, 1, 0},
+        type = 3,
+        size = {1.188 / 2, 1 / 2, 1.188 / 2},
+        max_distance = 0,
+        debug = isTestMode
+      })
+
+      local hasDoom = false
+      for _, v in ipairs(hits) do
+        if v.hit_object and v.hit_object.memo == "Doom Token" then
+          hasDoom = true
+          break
+        end
+      end
+
+      if not hasDoom then
+        table.insert(foundSoFar, worldPos)
+        if #foundSoFar >= neededCount then
+          return foundSoFar
+        end
+      end
+    end
+  end
+
+  return foundSoFar
+end
+
+function spawnDoomTokenInLocation(locationName, doomCount, neighborhoodInfo)
+  local function getIndex(locationName, locationNames)
+    for i, lName in pairs(locationNames) do
+      if lName == locationName then
+        return i
+      end
+    end
+  end
+
+  local index = getIndex(locationName, neighborhoodInfo.data.locations)
+  if index and neighborhoodInfo.data.structureType then
+    local emptySpots = getEmptyDoomSpaces(neighborhoodInfo.obj, doomCount, index, neighborhoodInfo.data.structureType)
+
+    local doomBag = getObjectFromGUID(doomBagId)
+    if not doomBag then
+      return
+    end
+
+    for i, emptySpot in ipairs(emptySpots) do
+      if emptySpot then
+        local doomToken = doomBag.takeObject({
+          index = 0,
+          position = emptySpot:setAt("y", 3)
+        })
+        doomToken.highlightOn("Red", 5)
+      end
+
+      printToAll(i18n.getStrById(neighborhoodInfo.data.name) .. " (" .. i18n.getStrById(locationName) .. ") - " ..
+        doomCount .. " " .. i18n.getStrById("LOG_doom_added"), "Red")
+    end
+    return
+  end
+
+  printToAll(locationName .. " - " .. doomCount .. " приреченості додайте самостійно", "Red")
+end
+
+function spawnDoomTokenOnTile(tileObj, doomCount)
+  local tileData = parseJson(tileObj.memo)
+  if not tileData then
+    return
+  end
+
+  local emptySpots = getEmptyDoomSpacesOnTile(tileObj, doomCount)
+
+  local doomBag = getObjectFromGUID(doomBagId)
+  if not doomBag then
+    return
+  end
+
+  for i, emptySpot in ipairs(emptySpots) do
+    if emptySpot then
+      local doomToken = doomBag.takeObject({
+        index = 0,
+        position = emptySpot:setAt("y", 3)
+      })
+      doomToken.highlightOn("Red", 5)
+    end
+
+    printToAll(i18n.getStrById(tileData.name) .. " - " .. doomCount .. " " .. i18n.getStrById("LOG_doom_added"), "Red")
+  end
+end
+
+function getNeighborhoodTile(neighborhoodName, tileType)
+  tileType = tileType or "neighborhood"
+  local locationMat = getObjectFromGUID(locationMatId)
+  if not locationMat then
+    return
+  end
+
+  local objs = upCast(locationMat, 1, nil, 1)
+  if not objs then
+    return
+  end
+
+  for _, o in pairs(objs) do
+    local data = parseJson(o.memo)
+    if data and string.lower(data.type) == tileType and data.name == neighborhoodName then
+      return o
+    end
+  end
+end
+
+function spawnClueByClick()
+  if isDrawMythInProcess then
+    return
+  end
+
+  isDrawMythInProcess = true
+
+  spawnClue(function()
+    isDrawMythInProcess = false
+  end)
+end
+
+function spawnDoomsByClick()
+  if isDrawMythInProcess then
+    return
+  end
+
+  isDrawMythInProcess = true
+
+  eventSpawnDooms(function()
+    isDrawMythInProcess = false
+  end)
+end
+
+function spawnMonterByClick()
+  if isDrawMythInProcess then
+    return
+  end
+
+  local mythosTile = getObjectFromGUID(mythosTileId)
+  if not mythosTile then
+    return
+  end
+
+  isDrawMythInProcess = true
+
+  local currentCardPos = mythosTile.positionToWorld({0.084, 0.113, 0.278}):setAt("y", 3)
+  drawMonster(currentCardPos)
+  isDrawMythInProcess = false
+end
+
+function processGateBurstByClick()
+  if isDrawMythInProcess then
+    return
+  end
+
+  isDrawMythInProcess = true
+  processGateBurst(function()
+    isDrawMythInProcess = false
+  end)
+end
+
+function processTerrorByClick()
+  if isDrawMythInProcess then
+    return
+  end
+
+  isDrawMythInProcess = true
+  processTerror(function()
+      isDrawMythInProcess = false
+    end)
+end
+
+function spawnClueToken(neighborhoodName)
+  local neighborhoodTile = getNeighborhoodTile(neighborhoodName)
+  if not neighborhoodTile then
+    return
+  end
+
+  local clueBag = getObjectFromGUID(clueBagId)
+  if not clueBag then
+    return
+  end
+
+  local pos = neighborhoodTile.getPosition()
+  pos:setAt("y", 3):setAt("z", pos.z + 1)
+  local clue = clueBag.takeObject({
+    index = 0,
+    position = pos
+  }).highlightOn("Green", 5)
+
+  printToAll(i18n.getStrById(neighborhoodName) .. " - " .. i18n.getStrById("LOG_clue_spawn"), "Green")
+end
+
+function spawnClueTokenOnTile(tileObj)
+  local clueBag = getObjectFromGUID(clueBagId)
+  if not clueBag then
+    return
+  end
+
+  local pos = tileObj.getPosition()
+  pos:setAt("y", 3):setAt("z", pos.z + 1)
+  local clue = clueBag.takeObject({
+    index = 0,
+    position = pos
+  }).highlightOn("Green", 5)
+
+  local tileData = parseJson(tileObj.memo)
+  local name = tileData and tileData.name or "?"
+  printToAll(i18n.getStrById(name) .. " - " .. i18n.getStrById("LOG_clue_spawn"), "Green")
+end
+
+function spawnClue(callBack)
+  local mythosTile = getObjectFromGUID(mythosTileId)
+  if not mythosTile then
+    log("[spawnClue] mythosTile not found")
+    callBack()
+    return
+  end
+
+  local eventObj = getEventObj()
+  if not eventObj then
+    log("[spawnClue] eventObj not found")
+    callBack()
+    return
+  end
+
+  local eventCard = nil
+  if eventObj.type == "Deck" then
+    eventCard = takeCardFromTop(eventObj, true)
+  elseif eventObj.type == "Card" then
+    eventCard = eventObj
+  end
+
+  if not eventCard then
+    log("[spawnClue] eventCard not found")
+    callBack()
+    return
+  end
+
+  local currentCardPos = mythosTile.positionToWorld({0.084, 0.113, 0.278})
+  eventCard.setPositionSmooth(currentCardPos:setAt("y", 3))
+
+  if not eventCard.memo then
+    printToAll("Додайте підказку самостійно", "Red")
+    callBack()
+    return
+  end
+
+  local data = parseJson(eventCard.memo)
+  if not data then
+    log("[spawnClue] data not found")
+    callBack()
+    return
+  end
+
+  if not data.neighborhood then
+    log("[spawnClue] neighborhood not found")
+    callBack()
+    return
+  end
+
+  local isMystery = data.neighborhoodType and string.lower(data.neighborhoodType) == "mystery"
+
+  if isMystery then
+    local mysteryTile = getNeighborhoodTile(data.neighborhood, "mystery")
+    if mysteryTile then
+      spawnClueTokenOnTile(mysteryTile)
+    end
+  else
+    spawnClueToken(data.neighborhood)
+  end
+
+  local encounterDeck = getDeckFromScenarioMat("Encounter", data.neighborhood, true)
+
+  if not encounterDeck then
+    log("[spawnClue] encounterDeck not found")
+    callBack()
+    return
+  end
+
+  local neighborhoodCards = {takeCardFromTop(encounterDeck, true), takeCardFromTop(encounterDeck, true)}
+  if not neighborhoodCards or #neighborhoodCards <= 0 then
+    log("[spawnClue] neighborhoodCards not found")
+    callBack()
+    return
+  end
+
+  neighborhoodCards[1].interactable = false
+  neighborhoodCards[1].drag_selectable = false
+  neighborhoodCards[1].gizmo_selectable = false
+
+  neighborhoodCards[2].interactable = false
+  neighborhoodCards[2].drag_selectable = false
+  neighborhoodCards[2].gizmo_selectable = false
+
+  neighborhoodCards[1].setPositionSmooth(currentCardPos:setAt("y", 3.5))
+  neighborhoodCards[2].setPositionSmooth(currentCardPos:setAt("y", 4))
+
+  local foundDeck = nil
+  Wait.time(function()
+    Wait.condition(function()
+      Wait.time(function()
+        foundDeck.shuffle()
+        Wait.time(function()
+          foundDeck.setPositionSmooth(encounterDeck.getPosition():setAt("y", 3))
+          callBack()
+        end, 0.7)
+
+      end, 1)
+    end, function()
+      local y = mythosTile.getPosition().y + mythosTile.getBounds().size.y
+      local objs = findObjsInRadius(currentCardPos:setAt("y", y))
+      if not objs then
+        return false
+      end
+
+      for _, o in pairs(objs) do
+        if o.type == "Deck" then
+          foundDeck = o
+          return true
+        end
+      end
+      return false
+    end)
+  end, 1.5)
+end
+

@@ -1,0 +1,224 @@
+-- ╭──────────────────────────────────────────────╮
+-- │          DECK / TILE HELPERS                 │
+-- ╰──────────────────────────────────────────────╯
+
+function getDeckFromScenarioMat(typeDeck, nameDeck, isBack)
+  if not nameDeck or not typeDeck then
+    return
+  end
+  local scenarioMat = getObjectFromGUID(scenarioMatId)
+  if not scenarioMat then
+    return
+  end
+
+  local objs = upCast(scenarioMat, 1, nil, 1)
+  for _, obj in pairs(objs) do
+    local objData = parseJson(obj.memo)
+    if objData and string.lower(objData.type) == string.lower(typeDeck) and string.lower(objData.name) ==
+      string.lower(nameDeck) then
+      if obj.type == "Deck" then
+        return obj
+      end
+    end
+  end
+end
+
+function takeTop2CardsFromScenarioMat(typeDeck, nameDeck, isBack)
+  local scenarioMat = getObjectFromGUID(scenarioMatId)
+  if not scenarioMat then
+    return
+  end
+
+  local objs = upCast(scenarioMat, 1, nil, 1)
+  for _, obj in pairs(objs) do
+    local objData = parseJson(obj.memo)
+    if objData and objData.type == typeDeck and objData.name == nameDeck then
+      if obj.type == "Deck" then
+        return {takeCardFromTop(obj, isBack), takeCardFromTop(obj, isBack)}
+      end
+    end
+  end
+end
+
+function takeTopCardFromScenarioMat(typeDeck, nameDeck, isBack)
+  local scenarioMat = getObjectFromGUID(scenarioMatId)
+  if not scenarioMat then
+    return
+  end
+
+  local objs = upCast(scenarioMat, 1, nil, 1)
+  for _, obj in pairs(objs) do
+    local ogjData = parseJson(obj.memo)
+    if ogjData and memo.type == typeDeck and memo.name == nameDeck then
+      if obj.type == "Deck" then
+        return takeCardFromTop(obj, true)
+      elseif obj.type == "Card" then
+        return obj
+      end
+    end
+  end
+end
+
+function take2TopCardFromTile(id, isBack)
+  local obj = findObjectOnTile(id)
+  if not obj then
+    return
+  end
+
+  if obj.type == "Card" then
+    return obj
+  elseif obj.type == "Deck" then
+    return {takeCardFromTop(obj, isBack), takeCardFromTop(obj, isBack)}
+  end
+end
+
+function takeTopCardFromTile(id, isBack)
+  local obj = findObjectOnTile(id)
+  if not obj then
+    return
+  end
+
+  if obj.type == "Card" then
+    return obj
+  elseif obj.type == "Deck" then
+    return takeCardFromTop(obj, isBack)
+  end
+end
+
+function takeBottomCardFromTile(id, isBack)
+  local obj = findObjectOnTile(id)
+  if not obj then
+    return
+  end
+
+  if obj.type == "Card" then
+    return obj
+  elseif obj.type == "Deck" then
+    return takeCardFromBottom(obj, isBack)
+  end
+end
+
+function getEventObj()
+  return getObjFromMythosTile({-0.198, 0.236, 0.278})
+end
+
+function getObjFromMythosTile(pos)
+  local mythosTile = getObjectFromGUID(mythosTileId)
+  if not mythosTile then
+    return
+  end
+
+  local y = mythosTile.getPosition().y + mythosTile.getBounds().size.y
+  local objs = findObjsInRadius(mythosTile.positionToWorld(pos):setAt("y", y))
+  for _, o in pairs(objs) do
+    if o.type == "Deck" or o.type == "Card" then
+      return o
+    end
+  end
+end
+
+function findObjectOnTile(tileId)
+  local tile = getObjectFromGUID(tileId)
+  if not tile then
+    return
+  end
+
+  local objs = upCast(tile, 1, nil, 1)
+  if #objs <= 0 then
+    return
+  end
+
+  for _, o in pairs(objs) do
+    if o.type == "Deck" or o.type == "Card" then
+      return o
+    end
+  end
+end
+
+function findDeckOnTile(tileId)
+  local tile = getObjectFromGUID(tileId)
+  if not tile then
+    return
+  end
+
+  local objs = upCast(tile, 1, nil, 1)
+  if #objs <= 0 then
+    return
+  end
+
+  for _, o in pairs(objs) do
+    if o.type == "Deck" then
+      return o
+    end
+  end
+end
+
+function takeCardFromTop(obj, isBack, skipTypes)
+  if not obj or obj.type ~= "Deck" then
+    return
+  end
+
+  local rotation = isBack and {0, 180, 180} or {0, 180, 0}
+
+  local function isSkipped(data)
+    if not skipTypes or not data then
+      return false
+    end
+
+    local t = string.lower(data.type or "")
+
+    for _, skip in ipairs(skipTypes) do
+      if t == string.lower(skip) then
+        return true
+      end
+    end
+
+    return false
+  end
+
+  local objects = obj.getObjects()
+
+  for i = 1, #objects do
+    local o = objects[i]
+    local data = parseJson(o.memo)
+
+    if not isSkipped(data) then
+      return obj.takeObject({
+        index = i - 1,
+        rotation = rotation,
+        smooth = false
+      })
+    end
+  end
+
+  return nil
+end
+
+function takeCardFromBottom(obj, isBack)
+  if not obj or obj.type ~= "Deck" then
+    return
+  end
+
+  local rotation = isBack and {0, 180, 180} or {0, 180, 0}
+
+  local count = #obj.getObjects()
+  return obj.takeObject({
+    index = count - 1,
+    rotation = rotation
+  })
+end
+
+function getPositionByGUID(guid)
+  local obj = getObjectFromGUID(guid)
+  if not obj then
+    return
+  end
+
+  return obj.getPosition()
+end
+
+-- ╭──────────────────────────────────────────────╮
+-- │                 Steps                        │
+-- ╰──────────────────────────────────────────────╯
+
+
