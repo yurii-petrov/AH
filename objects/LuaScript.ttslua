@@ -6286,6 +6286,8 @@ function processStep(step, context)
     processStepTakeCodexFromArchive(step, context)
   elseif stepType == "returncodextoarchive" then
     processStepReturnCodexToArchive(step, context)
+  elseif stepType == "returnbridge" then
+    processStepReturnBridge(step, context)
   else
     log("[processStep] Unknown step type: " .. stepType)
   end
@@ -6413,6 +6415,50 @@ function processStepReturnCodexToArchive(step, context)
   codexCard.setRotation({0, 180, 180})
   archive.putObject(codexCard)
   codexMat.destruct()
+end
+
+-- ╭──────────────────────────────────────────────╮
+-- │           STEP: Return Bridge                │
+-- ╰──────────────────────────────────────────────╯
+
+function processStepReturnBridge(step, context)
+  local locationMat = getObjectFromGUID(locationMatId)
+  if not locationMat then
+    log("[returnBridge] locationMat not found")
+    return
+  end
+
+  local objs = upCast(locationMat, 1, nil, 1)
+  if not objs then
+    log("[returnBridge] no objects on locationMat")
+    return
+  end
+
+  local bridge = nil
+  for _, o in ipairs(objs) do
+    local data = parseJson(o.memo)
+    if data and data.name == "Bridge2" and data.type == "Street" then
+      bridge = o
+      break
+    end
+  end
+
+  if not bridge then
+    print("Схоже, міст вже повернуто.")
+    return
+  end
+
+  bridge.setLock(false)
+  bridge.interactable = true
+  bridge.drag_selectable = true
+  bridge.gizmo_selectable = true
+  bridge.highlightOn("Red", 1.5)
+
+  Wait.time(function()
+    local box = getObjectFromGUID(boxId)
+    if not box then return end
+    box.putObject(bridge)
+  end, 1.5)
 end
 
 -- ╭──────────────────────────────────────────────╮
