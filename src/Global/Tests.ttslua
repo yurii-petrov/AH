@@ -1,0 +1,531 @@
+-- TESTS
+
+function testResolveDooms()
+  local eventCase1 = {
+    ["Black Cave"] = {
+      dooms = 1
+    }
+  }
+
+  local eventCase2 = {
+    ["Black Cave"] = {
+      dooms = 2
+    }
+  }
+
+  local eventCase3 = {
+    ["Black Cave"] = {
+      dooms = 1
+    },
+    Graveyard = {
+      dooms = 1
+    }
+  }
+
+  local gateBurstCase = {
+    ["Black Cave"] = {
+      dooms = 1
+    },
+    ["General Store"] = {
+      dooms = 1
+    },
+    ["Graveyard"] = {
+      dooms = 1
+    }
+
+  }
+
+  local neighborhoodCase1 = {
+    locations = {
+      ["Black Cave"] = 2,
+      ["General Store"] = 0,
+      Graveyard = 1
+    },
+    total = 3
+  }
+
+  local neighborhoodCase2 = {
+    locations = {
+      ["Black Cave"] = 1,
+      ["General Store"] = 1,
+      Graveyard = 2
+    },
+    total = 4
+  }
+
+  local neighborhoodCase3 = {
+    locations = {
+      ["Black Cave"] = 1,
+      ["General Store"] = 1,
+      Graveyard = 1
+    },
+    total = 3
+  }
+
+  local neighborhoodCase4 = {
+    locations = {
+      ["Black Cave"] = 0,
+      ["General Store"] = 1,
+      Graveyard = 0
+    },
+    total = 1
+  }
+
+  local function test_eventCase1_neighborhoodCase1()
+    local actual = resolveDooms(neighborhoodCase1, eventCase1)
+    local expected = {
+      isSpawnAnomaly = true,
+      redirectedToScenario = 0,
+      redirectToAnomaly = 0,
+      locations = {
+        ["Black Cave"] = {
+          dooms = 1
+        }
+      }
+    }
+
+    if actual.isSpawnAnomaly ~= expected.isSpawnAnomaly then
+      error("actual.isSpawnAnomaly ~= expected.isSpawnAnomaly")
+    end
+
+    if actual.redirectedToScenario ~= expected.redirectedToScenario then
+      error("actual.redirectedToScenario ~= expected.redirectedToScenario")
+    end
+
+    if actual.redirectToAnomaly ~= expected.redirectToAnomaly then
+      error("actual.redirectToAnomaly ~= expected.redirectToAnomaly")
+    end
+
+    for exL, exDooms in pairs(expected.locations) do
+      if actual.locations[exL].dooms ~= expected.locations[exL].dooms then
+        error("actual.locations[exL].dooms ~= expected[exL].dooms")
+      end
+    end
+  end
+
+  local function test_eventCase1_neighborhoodCase2()
+    local actual = resolveDooms(neighborhoodCase2, eventCase1)
+    local expected = {
+      isSpawnAnomaly = true,
+      redirectedToScenario = 0,
+      redirectToAnomaly = 0,
+      locations = {
+        ["Black Cave"] = {
+          dooms = 1
+        }
+      }
+    }
+
+    if actual.isSpawnAnomaly ~= expected.isSpawnAnomaly then
+      error("actual.isSpawnAnomaly ~= expected.isSpawnAnomaly")
+    end
+
+    if actual.redirectedToScenario ~= expected.redirectedToScenario then
+      error("actual.redirectedToScenario ~= expected.redirectedToScenario")
+    end
+
+    if actual.redirectToAnomaly ~= expected.redirectToAnomaly then
+      error("actual.redirectToAnomaly ~= expected.redirectToAnomaly")
+    end
+
+    for exL, exDooms in pairs(expected.locations) do
+      if actual.locations[exL].dooms ~= expected.locations[exL].dooms then
+        error("actual.locations[exL].dooms ~= expected[exL].dooms")
+      end
+    end
+  end
+
+  local function test_eventCase1_neighborhoodCase3()
+    local actual = resolveDooms(neighborhoodCase3, eventCase1)
+    local expected = {
+      isSpawnAnomaly = false,
+      redirectedToScenario = 0,
+      redirectToAnomaly = 0,
+      locations = {
+        ["Black Cave"] = {
+          dooms = 1
+        }
+      }
+    }
+
+    if actual.isSpawnAnomaly ~= expected.isSpawnAnomaly then
+      error("actual.isSpawnAnomaly ~= expected.isSpawnAnomaly")
+    end
+
+    if actual.redirectedToScenario ~= expected.redirectedToScenario then
+      error("actual.redirectedToScenario ~= expected.redirectedToScenario")
+    end
+
+    if actual.redirectToAnomaly ~= expected.redirectToAnomaly then
+      error("actual.redirectToAnomaly ~= expected.redirectToAnomaly")
+    end
+
+    for exL, exDooms in pairs(expected.locations) do
+      if actual.locations[exL].dooms ~= expected.locations[exL].dooms then
+        error("actual.locations[exL].dooms ~= expected[exL].dooms")
+      end
+    end
+  end
+
+  local function test_eventCase2_neighborhoodCase1()
+    local actual = resolveDooms(neighborhoodCase1, eventCase2)
+    local expected = {
+      isSpawnAnomaly = true,
+      redirectedToScenario = 1,
+      redirectToAnomaly = 0,
+      locations = {
+        ["Black Cave"] = {
+          dooms = 1
+        }
+      }
+    }
+
+    if actual.isSpawnAnomaly ~= expected.isSpawnAnomaly then
+      error("actual.isSpawnAnomaly ~= expected.isSpawnAnomaly")
+    end
+
+    if actual.redirectedToScenario ~= expected.redirectedToScenario then
+      error("actual.redirectedToScenario ~= expected.redirectedToScenario")
+    end
+
+    if actual.redirectToAnomaly ~= expected.redirectToAnomaly then
+      error("actual.redirectToAnomaly ~= expected.redirectToAnomaly")
+    end
+
+    for exL, exDooms in pairs(expected.locations) do
+      if actual.locations[exL].dooms ~= expected.locations[exL].dooms then
+        error("actual.locations[exL].dooms ~= expected[exL].dooms")
+      end
+    end
+  end
+
+  local function test_eventCase2_neighborhoodCase2()
+    local actual = resolveDooms(neighborhoodCase2, eventCase2)
+    local expected = {
+      isSpawnAnomaly = true,
+      redirectedToScenario = 1,
+      redirectToAnomaly = 0,
+      locations = {
+        ["Black Cave"] = {
+          dooms = 1
+        }
+      }
+    }
+
+    if actual.isSpawnAnomaly ~= expected.isSpawnAnomaly then
+      error("actual.isSpawnAnomaly ~= expected.isSpawnAnomaly")
+    end
+
+    if actual.redirectedToScenario ~= expected.redirectedToScenario then
+      error("actual.redirectedToScenario ~= expected.redirectedToScenario")
+    end
+
+    if actual.redirectToAnomaly ~= expected.redirectToAnomaly then
+      error("actual.redirectToAnomaly ~= expected.redirectToAnomaly")
+    end
+
+    for exL, exDooms in pairs(expected.locations) do
+      if actual.locations[exL].dooms ~= expected.locations[exL].dooms then
+        error("actual.locations[exL].dooms ~= expected[exL].dooms")
+      end
+    end
+  end
+
+  local function test_eventCase2_neighborhoodCase3()
+    local actual = resolveDooms(neighborhoodCase3, eventCase2)
+    local expected = {
+      isSpawnAnomaly = true,
+      redirectedToScenario = 0,
+      redirectToAnomaly = 0,
+      locations = {
+        ["Black Cave"] = {
+          dooms = 2
+        }
+      }
+    }
+
+    if actual.isSpawnAnomaly ~= expected.isSpawnAnomaly then
+      error("actual.isSpawnAnomaly ~= expected.isSpawnAnomaly")
+    end
+
+    if actual.redirectedToScenario ~= expected.redirectedToScenario then
+      error("actual.redirectedToScenario ~= expected.redirectedToScenario")
+    end
+
+    if actual.redirectToAnomaly ~= expected.redirectToAnomaly then
+      error("actual.redirectToAnomaly ~= expected.redirectToAnomaly")
+    end
+
+    for exL, exDooms in pairs(expected.locations) do
+      if actual.locations[exL].dooms ~= expected.locations[exL].dooms then
+        error("actual.locations[exL].dooms ~= expected[exL].dooms")
+      end
+    end
+  end
+
+  local function test_eventCase3_neighborhoodCase1()
+    local actual = resolveDooms(neighborhoodCase1, eventCase3)
+    local expected = {
+      isSpawnAnomaly = true,
+      redirectedToScenario = 0,
+      redirectToAnomaly = 2,
+      locations = {}
+    }
+
+    if actual.isSpawnAnomaly ~= expected.isSpawnAnomaly then
+      error("actual.isSpawnAnomaly ~= expected.isSpawnAnomaly")
+    end
+
+    if actual.redirectedToScenario ~= expected.redirectedToScenario then
+      error("actual.redirectedToScenario ~= expected.redirectedToScenario")
+    end
+
+    if actual.redirectToAnomaly ~= expected.redirectToAnomaly then
+      error("actual.redirectToAnomaly ~= expected.redirectToAnomaly")
+    end
+
+    for exL, exDooms in pairs(expected.locations) do
+      if actual.locations[exL].dooms ~= expected.locations[exL].dooms then
+        error("actual.locations[exL].dooms ~= expected[exL].dooms")
+      end
+    end
+  end
+
+  local function test_eventCase3_neighborhoodCase2()
+    local actual = resolveDooms(neighborhoodCase2, eventCase3)
+    local expected = {
+      isSpawnAnomaly = true,
+      redirectedToScenario = 0,
+      redirectToAnomaly = 2,
+      locations = {}
+    }
+
+    if actual.isSpawnAnomaly ~= expected.isSpawnAnomaly then
+      error("actual.isSpawnAnomaly ~= expected.isSpawnAnomaly")
+    end
+
+    if actual.redirectedToScenario ~= expected.redirectedToScenario then
+      error("actual.redirectedToScenario ~= expected.redirectedToScenario")
+    end
+
+    if actual.redirectToAnomaly ~= expected.redirectToAnomaly then
+      error("actual.redirectToAnomaly ~= expected.redirectToAnomaly")
+    end
+
+    for exL, exDooms in pairs(expected.locations) do
+      if actual.locations[exL].dooms ~= expected.locations[exL].dooms then
+        error("actual.locations[exL].dooms ~= expected[exL].dooms")
+      end
+    end
+  end
+
+  local function test_eventCase3_neighborhoodCase3()
+    local actual = resolveDooms(neighborhoodCase3, eventCase3)
+    local expected = {
+      isSpawnAnomaly = true,
+      redirectedToScenario = 0,
+      redirectToAnomaly = 0,
+      locations = {
+        ["Black Cave"] = {
+          dooms = 1
+        },
+        Graveyard = {
+          dooms = 1
+        }
+      }
+    }
+
+    if actual.isSpawnAnomaly ~= expected.isSpawnAnomaly then
+      error("actual.isSpawnAnomaly ~= expected.isSpawnAnomaly")
+    end
+
+    if actual.redirectedToScenario ~= expected.redirectedToScenario then
+      error("actual.redirectedToScenario ~= expected.redirectedToScenario")
+    end
+
+    if actual.redirectToAnomaly ~= expected.redirectToAnomaly then
+      error("actual.redirectToAnomaly ~= expected.redirectToAnomaly")
+    end
+
+    for exL, exDooms in pairs(expected.locations) do
+      if actual.locations[exL].dooms ~= expected.locations[exL].dooms then
+        error("actual.locations[exL].dooms ~= expected[exL].dooms")
+      end
+    end
+  end
+
+  local function test_eventCase3_neighborhoodCase4()
+    local actual = resolveDooms(neighborhoodCase4, eventCase3)
+    local expected = {
+      isSpawnAnomaly = false,
+      redirectedToScenario = 0,
+      redirectToAnomaly = 0,
+      locations = {
+        ["Black Cave"] = {
+          dooms = 1
+        },
+        Graveyard = {
+          dooms = 1
+        }
+      }
+    }
+
+    if actual.isSpawnAnomaly ~= expected.isSpawnAnomaly then
+      error("actual.isSpawnAnomaly ~= expected.isSpawnAnomaly")
+    end
+
+    if actual.redirectedToScenario ~= expected.redirectedToScenario then
+      error("actual.redirectedToScenario ~= expected.redirectedToScenario")
+    end
+
+    if actual.redirectToAnomaly ~= expected.redirectToAnomaly then
+      error("actual.redirectToAnomaly ~= expected.redirectToAnomaly")
+    end
+
+    for exL, exDooms in pairs(expected.locations) do
+      if actual.locations[exL].dooms ~= expected.locations[exL].dooms then
+        error("actual.locations[exL].dooms ~= expected[exL].dooms")
+      end
+    end
+  end
+
+  local function test_gateBurstCase_neighborhoodCase1()
+    local actual = resolveDooms(neighborhoodCase1, gateBurstCase)
+    local expected = {
+      isSpawnAnomaly = true,
+      redirectedToScenario = 0,
+      redirectToAnomaly = 3,
+      locations = {}
+    }
+
+    if actual.isSpawnAnomaly ~= expected.isSpawnAnomaly then
+      error("actual.isSpawnAnomaly ~= expected.isSpawnAnomaly")
+    end
+
+    if actual.redirectedToScenario ~= expected.redirectedToScenario then
+      error("actual.redirectedToScenario ~= expected.redirectedToScenario")
+    end
+
+    if actual.redirectToAnomaly ~= expected.redirectToAnomaly then
+      error("actual.redirectToAnomaly ~= expected.redirectToAnomaly")
+    end
+
+    for exL, exDooms in pairs(expected.locations) do
+      if actual.locations[exL].dooms ~= expected.locations[exL].dooms then
+        error("actual.locations[exL].dooms ~= expected[exL].dooms")
+      end
+    end
+  end
+
+  local function test_gateBurstCase_neighborhoodCase2()
+    local actual = resolveDooms(neighborhoodCase2, gateBurstCase)
+    local expected = {
+      isSpawnAnomaly = true,
+      redirectedToScenario = 0,
+      redirectToAnomaly = 3,
+      locations = {}
+    }
+
+    if actual.isSpawnAnomaly ~= expected.isSpawnAnomaly then
+      error("actual.isSpawnAnomaly ~= expected.isSpawnAnomaly")
+    end
+
+    if actual.redirectedToScenario ~= expected.redirectedToScenario then
+      error("actual.redirectedToScenario ~= expected.redirectedToScenario")
+    end
+
+    if actual.redirectToAnomaly ~= expected.redirectToAnomaly then
+      error("actual.redirectToAnomaly ~= expected.redirectToAnomaly")
+    end
+
+    for exL, exDooms in pairs(expected.locations) do
+      if actual.locations[exL].dooms ~= expected.locations[exL].dooms then
+        error("actual.locations[exL].dooms ~= expected[exL].dooms")
+      end
+    end
+  end
+
+  local function test_gateBurstCase_neighborhoodCase3()
+    local actual = resolveDooms(neighborhoodCase3, gateBurstCase)
+    local expected = {
+      isSpawnAnomaly = true,
+      redirectedToScenario = 0,
+      redirectToAnomaly = 3,
+      locations = {}
+    }
+
+    if actual.isSpawnAnomaly ~= expected.isSpawnAnomaly then
+      error("actual.isSpawnAnomaly ~= expected.isSpawnAnomaly")
+    end
+
+    if actual.redirectedToScenario ~= expected.redirectedToScenario then
+      error("actual.redirectedToScenario ~= expected.redirectedToScenario")
+    end
+
+    if actual.redirectToAnomaly ~= expected.redirectToAnomaly then
+      error("actual.redirectToAnomaly ~= expected.redirectToAnomaly")
+    end
+
+    for exL, exDooms in pairs(expected.locations) do
+      if actual.locations[exL].dooms ~= expected.locations[exL].dooms then
+        error("actual.locations[exL].dooms ~= expected[exL].dooms")
+      end
+    end
+  end
+
+  local function test_gateBurstCase_neighborhoodCase4()
+    local actual = resolveDooms(neighborhoodCase4, gateBurstCase)
+    local expected = {
+      isSpawnAnomaly = false,
+      redirectedToScenario = 0,
+      redirectToAnomaly = 0,
+      locations = {
+        ["Black Cave"] = {
+          dooms = 1
+        },
+        ["General Store"] = {
+          dooms = 1
+        },
+        Graveyard = {
+          dooms = 1
+        }
+      }
+    }
+
+    if actual.isSpawnAnomaly ~= expected.isSpawnAnomaly then
+      error("actual.isSpawnAnomaly ~= expected.isSpawnAnomaly")
+    end
+
+    if actual.redirectedToScenario ~= expected.redirectedToScenario then
+      error("actual.redirectedToScenario ~= expected.redirectedToScenario")
+    end
+
+    if actual.redirectToAnomaly ~= expected.redirectToAnomaly then
+      error("actual.redirectToAnomaly ~= expected.redirectToAnomaly")
+    end
+
+    for exL, exDooms in pairs(expected.locations) do
+      if actual.locations[exL].dooms ~= expected.locations[exL].dooms then
+        error("actual.locations[exL].dooms ~= expected[exL].dooms")
+      end
+    end
+  end
+
+  test_eventCase1_neighborhoodCase1()
+  test_eventCase1_neighborhoodCase2()
+  test_eventCase1_neighborhoodCase3()
+
+  test_eventCase2_neighborhoodCase1()
+  test_eventCase2_neighborhoodCase2()
+  test_eventCase2_neighborhoodCase3()
+
+  test_eventCase3_neighborhoodCase1()
+  test_eventCase3_neighborhoodCase2()
+  test_eventCase3_neighborhoodCase3()
+  test_eventCase3_neighborhoodCase4()
+
+  test_gateBurstCase_neighborhoodCase1()
+  test_gateBurstCase_neighborhoodCase2()
+  test_gateBurstCase_neighborhoodCase3()
+  test_gateBurstCase_neighborhoodCase4()
+end
