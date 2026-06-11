@@ -16,7 +16,6 @@ require("Global/Tests")
 serpent = require("util/serpent")
 translationService = require("util/TranslationService")
 isTestMode = false
-scenarioNumbers = 13
 
 -- /execute local c=Player.White;local s=c.getSelectedObjects()[1];local h=c.getHoverObject();if s and h then log("g="..h.getGUID().."\npos="..serpent.tts(s.positionToLocal(h.getPosition())).." rot="..serpent.tts(s.positionToLocal(h.getRotation()))) end
 -- /execute local c=Player.White;local h=c.getHoverObject();if h then log("g="..h.getGUID().."\npos="..serpent.tts(h.getPosition()).." rot="..serpent.tts(h.getRotation())) end

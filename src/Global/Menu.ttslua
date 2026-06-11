@@ -115,7 +115,18 @@ function proceedStartGame()
 end
 
 function chooseScenario(player, alt, id)
-  for i = 1, scenarioNumbers, 1 do
+
+  local scenarioMat = getObjectFromGUID(scenarioMatId)
+  if not scenarioMat then
+    return
+  end
+
+  local scenarioMatData = parseJson(scenarioMat.memo)
+  if not scenarioMatData or not scenarioMatData.scenarios then
+    return
+  end
+
+  for i = 1, scenarioMatData.scenarios, 1 do
     self.UI.setAttribute('scenario_panel' .. i, 'color', 'clear')
   end
   self.UI.setAttribute('scenario_panel' .. id:match("%d+"), 'color', '#ffffff22')
