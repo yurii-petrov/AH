@@ -1,4 +1,5 @@
 --serpent = require("util/serpent")
+local i18n = require("Global/i18nApi")
 
 local rollerData = {
   type = 1,
@@ -10,28 +11,120 @@ local diceY = 2.6
 function onLoad()
   self.interactable = true
 
-  --   position = {
-  --   x = 3.0608136653900146,
-  --   y = 0.20000040531158447,
-  --   z = -0.29565337300300598
-  -- },
-
   local sps = self.getSnapPoints()
-
   for i, sp in pairs(sps) do
     sp.tags = {"Dice"}
     sp.rotation = {0, 180, 0}
     sp.position = sp.position:setAt("y", 0):setAt("z", -0.295)
   end
-
   self.setSnapPoints(sps)
 
-  --  print(serpent.tts(self.getSnapPoints()))
+  buildRollerUI()
+end
 
-  --  print(serpent.tts(oData))
-  --   local clone = spawnObjectData({
-  --     data = oData
-  --   })
+function buildRollerUI()
+  local xml = {}
+
+  -- Help button
+  table.insert(xml, {
+    tag = "Button",
+    attributes = {
+      id       = "help",
+      onClick  = "Global/showHelp",
+      width    = "400", height   = "400",
+      position = "540 -52 -22",
+      rotation = "0 0 180",
+      scale    = "0.115 0.115 1",
+      color    = "clear",
+      text     = ""
+    }
+  })
+
+  -- Results panel
+  table.insert(xml, {
+    tag = "Panel",
+    attributes = {
+      interactable  = "false",
+      id            = "results",
+      width         = "170", height = "160",
+      position      = "430 0 -22",
+      rotation      = "0 0 180",
+      onMouseEnter  = "hoverResultsEnter",
+      onMouseExit   = "hoverResultsExit"
+    },
+    children = {
+      {
+        tag = "Panel",
+        attributes = { id = "results_default", active = "true" },
+        children = {
+          {
+            tag = "Text",
+            attributes = {
+              id       = "success",
+              width    = "640", height = "640",
+              position = "0 -25 0",
+              scale    = "0.35 0.35 1",
+              color    = "#a29c90",
+              font     = "Fonts/AdonisC",
+              fontSize = "1000",
+              text     = "?"
+            }
+          }
+        }
+      },
+      {
+        tag = "Panel",
+        attributes = { id = "results_hover", active = "false" },
+        children = {
+          { tag = "Text", attributes = { id = "ROLLER_success_text",      text = i18n.getStrById("ROLLER_success_text"),      fontSize = "30", color = "#a29c90", position = "-40 5 0"   } },
+          { tag = "Text", attributes = { id = "success_additional",        text = "?",                                           fontSize = "90", color = "#a29c90", position = "35 20 0"   } },
+          { tag = "Text", attributes = { id = "ROLLER_reroll_total_text", text = i18n.getStrById("ROLLER_reroll_total_text"), fontSize = "16", color = "#a29c90", position = "-40 -30 0" } },
+          { tag = "Text", attributes = { id = "reroll",                    text = "0",                                           fontSize = "22", color = "#a29c90", position = "40 -30 0"  } },
+          { tag = "Text", attributes = { id = "ROLLER_rerolled_dice_text",text = i18n.getStrById("ROLLER_rerolled_dice_text"),fontSize = "16", color = "#a29c90", position = "-40 -60 0" } },
+          { tag = "Text", attributes = { id = "rerolled_dices",            text = "0",                                           fontSize = "22", color = "#a29c90", position = "40 -60 0"  } },
+        }
+      }
+    }
+  })
+
+  -- 12 dice buttons + reroll icons
+  for i = 1, 12 do
+    local xPos = 306 - (i - 1) * 75
+    local pos = xPos .. " 42 -22"
+
+    table.insert(xml, {
+      tag = "Button",
+      attributes = {
+        id        = "dice_" .. i,
+        onClick   = "dice_btn",
+        width     = "640", height    = "640",
+        position  = pos,
+        rotation  = "0 0 180",
+        scale     = "0.115 0.115 1",
+        textColor = "#4d4a44",
+        color     = "clear",
+        font      = "Fonts/AdonisC",
+        fontSize  = "800",
+        padding   = "0 0 80 0",
+        text      = tostring(i)
+      }
+    })
+
+    table.insert(xml, {
+      tag = "Image",
+      attributes = {
+        id       = "icon_dice_" .. i,
+        active   = "false",
+        image    = "reeoll_icon",
+        width    = "500", height = "500",
+        position = pos,
+        rotation = "0 0 180",
+        scale    = "0.115 0.115 1"
+      }
+    })
+  end
+
+  self.UI.setXmlTable(xml)
 end
 
 function hoverResultsEnter(_, _, _)
@@ -327,13 +420,13 @@ end
 
 function setSucess(value, playerColor)
   if value == 0 then
-    broadcastToAll(playerColor.steam_name .. " провалив перевірку! ", "Red")
+    broadcastToAll(playerColor.steam_name .. " " .. i18n.getStrById("ROLLER_fail"), "Red")
   elseif value == 1 then
-    broadcastToAll(playerColor.steam_name .. " має " .. value.." успіх!", "Green")
+    broadcastToAll(string.format(playerColor.steam_name .. " " .. i18n.getStrById("ROLLER_success_1"), value), "Green")
   elseif value < 5 then
-    broadcastToAll(playerColor.steam_name .. " має " .. value.." успіхи!", "Green")
+    broadcastToAll(string.format(playerColor.steam_name .. " " .. i18n.getStrById("ROLLER_success_few"), value), "Green")
   else
-    broadcastToAll(playerColor.steam_name .. " має " .. value.." успіхів!", "Green")
+    broadcastToAll(string.format(playerColor.steam_name .. " " .. i18n.getStrById("ROLLER_success_many"), value), "Green")
   end
   local success_color = "#a29c90"
   if value > 0 then

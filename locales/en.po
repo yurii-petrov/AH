@@ -672,3 +672,35 @@ msgstr "Agatha Crane"
 
 msgid "Clue"
 msgstr "Clue"
+
+# Roller
+msgid "ROLLER_fail"
+msgstr "failed the check!"
+
+msgid "ROLLER_success_1"
+msgstr "has %s success!"
+
+msgid "ROLLER_success_few"
+msgstr "has %s successes!"
+
+msgid "ROLLER_success_many"
+msgstr "has %s successes!"
+
+msgid "ROLLER_success_text"
+msgstr "successes"
+
+msgid "ROLLER_reroll_total_text"
+msgstr "total rerolls"
+
+msgid "ROLLER_rerolled_dice_text"
+msgstr "dice rerolled"
+
+# Roller help panel
+msgid "ROLLER_help_title_text"
+msgstr "How the roller works"
+
+msgid "ROLLER_help_lmb_text"
+msgstr "To roll a number of dice, click the corresponding number with LMB."
+
+msgid "ROLLER_help_rmb_text"
+msgstr "To reroll specific dice, right-click the corresponding numbers with RMB and wait."

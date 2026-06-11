@@ -126,23 +126,23 @@
 	<verticalLayout width="650" height="280">
 		<panel padding="0 0 0 20">
 			<text
+				id="ROLLER_help_title_text"
 				fontSize="45"
 				font="fonts/AdonisC"
 				color="#ffffff">
-				Пояснення роботи роллера
 			</text>
 		</panel>
 		<text
+			id="ROLLER_help_lmb_text"
 			fontSize="25"
 			font="fonts/AdonisC"
 			color="#ffffff">
-			Для <textcolor color="#88bbff">кидка</textcolor> певної кількості кубів натисніть на відповідне число <textcolor color="#88bbff">ЛКМ</textcolor>.
 		</text>
 		<text
+			id="ROLLER_help_rmb_text"
 			fontSize="25"
 			font="fonts/AdonisC"
 			color="#ffffff">
-			Для <textcolor color="#88bbff">перекиду</textcolor> певних кубів натисніть на відповідні числа <textcolor color="#88bbff">ПКМ</textcolor> і зачекайте.
 		</text>
 	</verticalLayout>
 	<Button

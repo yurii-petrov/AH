@@ -219,7 +219,7 @@
   "Description": "",
   "DragSelectable": true,
   "GMNotes": "",
-  "GUID": "91141f",
+  "GUID": "911411",
   "Grid": true,
   "GridProjection": false,
   "Hands": false,
@@ -228,7 +228,7 @@
   "LayoutGroupSortIndex": 0,
   "Locked": true,
   "LuaScriptState": "",
-  "LuaScript_path": "Roller.91141f.ttslua",
+  "LuaScript_path": "Roller.911411.ttslua",
   "MeasureMovement": false,
   "Memo": "ah_roller",
   "Name": "Custom_Tile",
@@ -248,5 +248,5 @@
     "scaleZ": 1.15
   },
   "Value": 0,
-  "XmlUI_path": "Roller.91141f.xml"
+  "XmlUI_path": "Roller.911411.xml"
 }

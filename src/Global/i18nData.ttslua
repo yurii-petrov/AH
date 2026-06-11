@@ -570,6 +570,46 @@ I18N_DATA = {
     ["en"] = "Preston Fairmont",
     ["uk"] = "Престон Фермонт",
   },
+  ["ROLLER_fail"] = {
+    ["en"] = "failed the check!",
+    ["uk"] = "провалив перевірку!",
+  },
+  ["ROLLER_help_lmb_text"] = {
+    ["en"] = "To roll a number of dice, click the corresponding number with LMB.",
+    ["uk"] = "Для кидка певної кількості кубів натисніть на відповідне число ЛКМ.",
+  },
+  ["ROLLER_help_rmb_text"] = {
+    ["en"] = "To reroll specific dice, right-click the corresponding numbers with RMB and wait.",
+    ["uk"] = "Для перекиду певних кубів натисніть на відповідні числа ПКМ і зачекайте.",
+  },
+  ["ROLLER_help_title_text"] = {
+    ["en"] = "How the roller works",
+    ["uk"] = "Пояснення роботи роллера",
+  },
+  ["ROLLER_reroll_total_text"] = {
+    ["en"] = "total rerolls",
+    ["uk"] = "перекидів всього",
+  },
+  ["ROLLER_rerolled_dice_text"] = {
+    ["en"] = "dice rerolled",
+    ["uk"] = "перекинуто кубів",
+  },
+  ["ROLLER_success_1"] = {
+    ["en"] = "has %s success!",
+    ["uk"] = "має %s успіх!",
+  },
+  ["ROLLER_success_few"] = {
+    ["en"] = "has %s successes!",
+    ["uk"] = "має %s успіхи!",
+  },
+  ["ROLLER_success_many"] = {
+    ["en"] = "has %s successes!",
+    ["uk"] = "має %s успіхів!",
+  },
+  ["ROLLER_success_text"] = {
+    ["en"] = "successes",
+    ["uk"] = "успіхів",
+  },
   ["Residential"] = {
     ["en"] = "Residential",
     ["uk"] = "Житлові Будинки",

@@ -736,3 +736,36 @@ msgstr "Агата Крейн"
 
 msgid "Clue"
 msgstr "Підказка"
+
+# Roller
+msgid "ROLLER_fail"
+msgstr "провалив перевірку!"
+
+msgid "ROLLER_success_1"
+msgstr "має %s успіх!"
+
+msgid "ROLLER_success_few"
+msgstr "має %s успіхи!"
+
+msgid "ROLLER_success_many"
+msgstr "має %s успіхів!"
+
+msgid "ROLLER_success_text"
+msgstr "успіхів"
+
+msgid "ROLLER_reroll_total_text"
+msgstr "перекидів всього"
+
+msgid "ROLLER_rerolled_dice_text"
+msgstr "перекинуто кубів"
+
+# Roller help panel
+msgid "ROLLER_help_title_text"
+msgstr "Пояснення роботи роллера"
+
+msgid "ROLLER_help_lmb_text"
+msgstr "Для кидка певної кількості кубів натисніть на відповідне число ЛКМ."
+
+msgid "ROLLER_help_rmb_text"
+msgstr ""
+"Для перекиду певних кубів натисніть на відповідні числа ПКМ і зачекайте."
