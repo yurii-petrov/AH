@@ -386,7 +386,9 @@ msgid "T4A_monster_text"
 msgstr "РОЗМІСТИТИ МОНСТРА"
 
 msgid "T4A_gate_text"
-msgstr "ПРОРИВ\nВОРІТ"
+msgstr ""
+"ПРОРИВ\n"
+"ВОРІТ"
 
 msgid "T4A_terror_text"
 msgstr "РОЗПОДІЛИТИ МОРОК"
@@ -409,7 +411,7 @@ msgstr "Біографія"
 
 # Mythos Mat
 msgid "MT_success"
-msgstr "success"
+msgstr "Успіх"
 
 msgid "MT_discard"
 msgstr "СКИД"
@@ -561,3 +563,72 @@ msgstr "Приреченість додано"
 
 msgid "LOG_clue_spawn"
 msgstr "Зачіпка розміщена"
+
+msgid "LOG_bridge_returned"
+msgstr "Схоже, міст уже повернено."
+
+msgid "LOG_token_removed"
+msgstr "Токен '%s' успішно видалено з клітинки"
+
+msgid "LOG_add_clue_manually"
+msgstr "Додати зачіпку вручну"
+
+msgid "LOG_add_doom_manually"
+msgstr "Додати приреченість вручну"
+
+msgid "LOG_myth_draw"
+msgstr ""
+"\n"
+"%s - %s гравець"
+
+msgid "LOG_gate_burst"
+msgstr ""
+"\n"
+"%s прорив воріт!"
+
+msgid "LOG_doom_added_center"
+msgstr ""
+"%s - додано %s приреченості в центр району, гравці вирішують, як їх розмістити"
+
+msgid "LOG_anomaly_added"
+msgstr "%s - додано аномалію."
+
+msgid "LOG_scenario_doom_added"
+msgstr "Сценарій - додано %s приреченості"
+
+msgid "LOG_waiting_components"
+msgstr "Очікування витягування компонентів із мовного мішка..."
+
+msgid "LOG_timeout_components"
+msgstr "Перевищено час очікування компонентів"
+
+msgid "LOG_scenario_not_found"
+msgstr "Компоненти сценарію %s не знайдено"
+
+msgid "LOG_addon_in_progress"
+msgstr "Робота над цим доповненням ще триває."
+
+msgid "LOG_cannot_disable_addon"
+msgstr "Неможливо вимкнути доповнення, обрано сценарій з нього!"
+
+msgid "LOG_figurine_not_at_location"
+msgstr ""
+"Фігурка гравця не знаходиться в локації. Також на столі має бути лише 1 фігурка для слідчого — приберіть інші, якщо цього ще не зроблено."
+
+msgid "LOG_anomaly_count"
+msgstr "%s Аномалія (%s)"
+
+msgid "LOG_encounter_for"
+msgstr "Зустріч для %s у клітинці %s (%s)"
+
+msgid "LOG_not_enough_money"
+msgstr "%s - недостатньо $"
+
+msgid "LOG_spends_money"
+msgstr "%s - витрачає %s $"
+
+msgid "LOG_investigator_not_found"
+msgstr "Слідчого не знайдено для ролі: %s"
+
+msgid "LOG_confirm_death"
+msgstr "Підтвердити загибель слідчого"

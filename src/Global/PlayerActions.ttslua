@@ -39,7 +39,7 @@ function onClickScenario(n)
 
   local scenarioData = getScenarioData(n)
   if not scenarioData then
-    broadcastToAll("Компоненти сценарія " .. n .. " не знайдено", "White")
+    broadcastToAll(string.format(i18n.getStrById("LOG_scenario_not_found"), n), "White")
     return
   end
 
@@ -294,7 +294,7 @@ function onPlayerClickRemoveClue(obj)
 end
 
 function onPlayerClickDeath(d)
-  d.player.showConfirmDialog("Підтвердіть смерть дослідника", function()
+  d.player.showConfirmDialog(i18n.getStrById("LOG_confirm_death"), function()
     local box = getObjectFromGUID(boxId)
     if not box then
       return
@@ -551,9 +551,7 @@ function onClickEncounter(obj, playerColor)
   end
 
   if not neighborhood then
-    printToAll(
-      "Фігурка гравця не знаходиться на локації. Також на столі повина бути присутня лише 1 для дослідника, скиньте іншу якщо ви цього не зробили раніше.",
-      "Orange")
+    printToAll(i18n.getStrById("LOG_figurine_not_at_location"), "Orange")
     figurine.highlightOn("Red", 5)
     return
   end
@@ -608,15 +606,14 @@ function onClickEncounter(obj, playerColor)
             gameData.scenarioData.anomaly,
           doomNumber = count
         }, gameData.scenarioData.anomaly)
-        broadcastToAll(playerColor .. " Анамолія (" .. count .. ")", "White")
+        broadcastToAll(string.format(i18n.getStrById("LOG_anomaly_count"), playerColor, count), "White")
       end
     end
     return
   else
     showCardInActiveSpace(neighborhoodData, neighborhood)
     broadcastToAll("\n" .. neighborhoodData.locations[index], "White")
-    print("Зустріч для " .. investigatorData.name .. " у клітинці " ..
-            neighborhoodData.locations[index] .. " (" .. neighborhoodData.name .. ")")
+    print(string.format(i18n.getStrById("LOG_encounter_for"), investigatorData.name, neighborhoodData.locations[index], neighborhoodData.name))
   end
 end
 
@@ -778,11 +775,11 @@ function onClickMarket(d)
   end
 
   if not canAffordToBuy then
-    printToAll(d.color .. " - не достатньо $", "Orange")
+    printToAll(string.format(i18n.getStrById("LOG_not_enough_money"), d.color), "Orange")
     return
   end
 
-  printToAll(d.color .. " - витрачає " .. d.price .. " $", "Green")
+  printToAll(string.format(i18n.getStrById("LOG_spends_money"), d.color, d.price), "Green")
   item.setPositionSmooth(hand.getPosition():setAt("y", 3))
 
   if d.id > #shopData.displaypos then

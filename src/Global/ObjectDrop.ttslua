@@ -531,7 +531,7 @@ function onRandomInvestigatorCardDrop(colorName, object)
   end
 
   if not findInvestigatorData then
-    print("Дослідник не знайдений для ролі: " .. selectedType)
+    print(string.format(i18n.getStrById("LOG_investigator_not_found"), selectedType))
     return
   end
 
@@ -646,7 +646,7 @@ function context59ReturnBridge(obj, player_color)
   end
 
   if not bridge then
-    print("It looks like the bridge is already returned.")
+    print(i18n.getStrById("LOG_bridge_returned"))
     return 
   end
 

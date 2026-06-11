@@ -14,7 +14,7 @@ require("Global/Tests")
 
 
 serpent = require("util/serpent")
-local translationService = require("util/TranslationService")
+translationService = require("util/TranslationService")
 isTestMode = false
 scenarioNumbers = 13
 

@@ -67,8 +67,7 @@ function spawnDoomTokensInMiddleOfNeighborhood(data)
 
   local nData = parseJson(data.neighborhoodTile.memo)
 
-  print((nData.name or "") .. " - " .. data.doomCount ..
-          " приреченості додано в центр району, гравці вирішують як їх розмістити")
+  print(string.format(i18n.getStrById("LOG_doom_added_center"), i18n.getStrById(nData.name or ""), data.doomCount))
 end
 
 function spawnAnomalyAndDoomTokens(data)
@@ -93,7 +92,7 @@ function spawnAnomalyAndDoomTokens(data)
       runAfterRest(anomalyToken, function(anomalyToken)
         anomalyToken.highlightOn("Red", 5)
         local nData = parseJson(data.neighborhoodTile.memo)
-        printToAll((nData.name or "") .. " - Додано аномалію.", "Red")
+        printToAll(string.format(i18n.getStrById("LOG_anomaly_added"), i18n.getStrById(nData.name or "")), "Red")
         callBack()
       end)
     else
@@ -133,7 +132,7 @@ function spawnDoomTokensOnScenarioSheet(doomCount)
     p:setAt("x", p.x + 1.5)
   end
 
-  print("Сценарій - " .. doomCount .. " приреченості додано")
+  print(string.format(i18n.getStrById("LOG_scenario_doom_added"), doomCount))
   return true
 end
 
@@ -335,7 +334,7 @@ function eventSpawnDooms(callBack)
   eventCard.setPositionSmooth(eventDiscardPos:setAt("y", 3))
 
   if not eventCard.memo then
-    printToAll("Додайте приреченість самостійно", "Red")
+    printToAll(i18n.getStrById("LOG_add_doom_manually"), "Red")
     callBack()
     return
   end
@@ -599,7 +598,7 @@ function spawnDoomTokenInLocation(locationName, doomCount, neighborhoodInfo)
     return
   end
 
-  printToAll(locationName .. " - " .. doomCount .. " приреченості додайте самостійно", "Red")
+  printToAll(i18n.getStrById(locationName) .. " - " .. doomCount .. " " .. i18n.getStrById("LOG_add_doom_manually"), "Red")
 end
 
 function spawnDoomTokenOnTile(tileObj, doomCount)
@@ -782,7 +781,7 @@ function spawnClue(callBack)
   eventCard.setPositionSmooth(currentCardPos:setAt("y", 3))
 
   if not eventCard.memo then
-    printToAll("Додайте підказку самостійно", "Red")
+    printToAll(i18n.getStrById("LOG_add_clue_manually"), "Red")
     callBack()
     return
   end

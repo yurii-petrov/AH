@@ -74,13 +74,97 @@ I18N_DATA = {
     ["en"] = "Independence Square",
     ["uk"] = "Площа Незалежності",
   },
+  ["LOG_add_clue_manually"] = {
+    ["en"] = "Add a clue manually",
+    ["uk"] = "Додати зачіпку вручну",
+  },
+  ["LOG_add_doom_manually"] = {
+    ["en"] = "Add doom manually",
+    ["uk"] = "Додати приреченість вручну",
+  },
+  ["LOG_addon_in_progress"] = {
+    ["en"] = "Work on this expansion is still in progress.",
+    ["uk"] = "Робота над цим доповненням ще триває.",
+  },
+  ["LOG_anomaly_added"] = {
+    ["en"] = "%s - Anomaly added.",
+    ["uk"] = "%s - додано аномалію.",
+  },
+  ["LOG_anomaly_count"] = {
+    ["en"] = "%s Anomaly (%s)",
+    ["uk"] = "%s Аномалія (%s)",
+  },
+  ["LOG_bridge_returned"] = {
+    ["en"] = "It looks like the bridge is already returned.",
+    ["uk"] = "Схоже, міст уже повернено.",
+  },
+  ["LOG_cannot_disable_addon"] = {
+    ["en"] = "Cannot disable the expansion, a scenario from it is selected!",
+    ["uk"] = "Неможливо вимкнути доповнення, обрано сценарій з нього!",
+  },
   ["LOG_clue_spawn"] = {
     ["en"] = "clue spawn",
     ["uk"] = "Зачіпка розміщена",
   },
+  ["LOG_confirm_death"] = {
+    ["en"] = "Confirm investigator death",
+    ["uk"] = "Підтвердити загибель слідчого",
+  },
   ["LOG_doom_added"] = {
     ["en"] = "doom added",
     ["uk"] = "Приреченість додано",
+  },
+  ["LOG_doom_added_center"] = {
+    ["en"] = "%s - %s doom added to the center of the neighborhood, players decide how to place them",
+    ["uk"] = "%s - додано %s приреченості в центр району, гравці вирішують, як їх розмістити",
+  },
+  ["LOG_encounter_for"] = {
+    ["en"] = "Encounter for %s at cell %s (%s)",
+    ["uk"] = "Зустріч для %s у клітинці %s (%s)",
+  },
+  ["LOG_figurine_not_at_location"] = {
+    ["en"] = "Player figurine is not at a location. Also, there should be only 1 on the table for the investigator, discard the other if you haven't already.",
+    ["uk"] = "Фігурка гравця не знаходиться в локації. Також на столі має бути лише 1 фігурка для слідчого — приберіть інші, якщо цього ще не зроблено.",
+  },
+  ["LOG_gate_burst"] = {
+    ["en"] = "\n%s gate burst!",
+    ["uk"] = "\n%s прорив воріт!",
+  },
+  ["LOG_investigator_not_found"] = {
+    ["en"] = "Investigator not found for role: %s",
+    ["uk"] = "Слідчого не знайдено для ролі: %s",
+  },
+  ["LOG_myth_draw"] = {
+    ["en"] = "\n%s - %s player",
+    ["uk"] = "\n%s - %s гравець",
+  },
+  ["LOG_not_enough_money"] = {
+    ["en"] = "%s - not enough $",
+    ["uk"] = "%s - недостатньо $",
+  },
+  ["LOG_scenario_doom_added"] = {
+    ["en"] = "Scenario - %s doom added",
+    ["uk"] = "Сценарій - додано %s приреченості",
+  },
+  ["LOG_scenario_not_found"] = {
+    ["en"] = "Scenario components %s not found",
+    ["uk"] = "Компоненти сценарію %s не знайдено",
+  },
+  ["LOG_spends_money"] = {
+    ["en"] = "%s - spends %s $",
+    ["uk"] = "%s - витрачає %s $",
+  },
+  ["LOG_timeout_components"] = {
+    ["en"] = "Timeout waiting for components",
+    ["uk"] = "Перевищено час очікування компонентів",
+  },
+  ["LOG_token_removed"] = {
+    ["en"] = "Token '%s' successfully removed from cell",
+    ["uk"] = "Токен '%s' успішно видалено з клітинки",
+  },
+  ["LOG_waiting_components"] = {
+    ["en"] = "Waiting for components to be drawn from language bag...",
+    ["uk"] = "Очікування витягування компонентів із мовного мішка...",
   },
   ["La_Bella_Luna"] = {
     ["en"] = "La Bella Luna",
@@ -324,7 +408,7 @@ I18N_DATA = {
   },
   ["MT_success"] = {
     ["en"] = "PASS",
-    ["uk"] = "success",
+    ["uk"] = "Успіх",
   },
   ["Ma's_Boarding_House"] = {
     ["en"] = "Ma's Boarding House",

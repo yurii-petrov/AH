@@ -191,7 +191,7 @@ function processStepReturnBridge(step, context)
   end
 
   if not bridge then
-    print("Схоже, міст вже повернуто.")
+    print(i18n.getStrById("LOG_bridge_returned"))
     return
   end
 
@@ -450,12 +450,12 @@ function processStepRemoveToken(step, context)
           local bag = getObjectFromGUID(tokenBagId)
           if bag then
             bag.putObject(o)
-            print("Токен '" .. tokenType .. "' успішно видалено з клітинки")
+            print(string.format(i18n.getStrById("LOG_token_removed"), tokenType))
             return
           end
         end
         o.destruct()
-        print("Токен '" .. tokenType .. "' успішно видалено з клітинки")
+        print(string.format(i18n.getStrById("LOG_token_removed"), tokenType))
         return
       end
     end

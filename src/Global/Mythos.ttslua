@@ -585,7 +585,7 @@ function processTerror(callBack)
 end
 
 function processDrawMyth(currentMyth, obj, playerColor, callBack)
-  broadcastToAll("\n" .. currentMyth.memo .. " - " .. playerColor .. " гравець", "White")
+  broadcastToAll(string.format(i18n.getStrById("LOG_myth_draw"), currentMyth.memo, playerColor), "White")
 
   local mythosTile = getObjectFromGUID(mythosTileId)
   if not mythosTile then
@@ -705,7 +705,7 @@ function processGateBurst(callBack)
   --   eventCard.setPositionSmooth(currentCardPos:setAt("y", 3))
 
   if not eventCard.memo then
-    printToAll("Додайте підказку самостійно", "Red")
+    printToAll(i18n.getStrById("LOG_add_clue_manually"), "Red")
     callBack()
     return
   end
@@ -721,7 +721,7 @@ function processGateBurst(callBack)
     return
   end
 
-  broadcastToAll("\n" .. data.neighborhood .. " прорив воріт! ", "Red")
+  broadcastToAll(string.format(i18n.getStrById("LOG_gate_burst"), i18n.getStrById(data.neighborhood)), "Red")
 
   local locationMat = getObjectFromGUID(locationMatId)
   if not locationMat then

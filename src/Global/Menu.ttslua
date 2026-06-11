@@ -54,7 +54,7 @@ function startGame(player, alt, id)
     return
   end
 
-  broadcastToAll("Waiting for components to be drawn from language bag...", "White")
+  broadcastToAll(i18n.getStrById("LOG_waiting_components"), "White")
 
   waitForComponentsReady(0)
 end
@@ -64,7 +64,7 @@ function waitForComponentsReady(attempt)
 
   -- safety timeout (optional)
   if attempt > 120 then -- ~2 minutes if 1 sec interval
-    broadcastToAll("Timeout waiting for components", "Red")
+    broadcastToAll(i18n.getStrById("LOG_timeout_components"), "Red")
     return
   end
 
@@ -81,10 +81,7 @@ end
 function proceedStartGame()
   local scenarioData = getScenarioData(currentSetup.scenario or 1)
   if not scenarioData then
-    broadcastToAll(
-      "Компоненти сценарія " .. (currentSetup.scenario or "?") .. " не знайдено",
-      "White"
-    )
+    broadcastToAll(string.format(i18n.getStrById("LOG_scenario_not_found"), currentSetup.scenario or "?"), "White")
     return
   end
 
@@ -143,7 +140,7 @@ function chooseAddon(player, alt, id)
 end
 
 function inProgress(player, alt, id)
-  broadcastToColor("Робота над цим доповнен��ям ще триває.", player.color, {
+  broadcastToColor(i18n.getStrById("LOG_addon_in_progress"), player.color, {
     r = 1,
     g = 1,
     b = 1
@@ -165,8 +162,7 @@ function toggleAddon()
   else
     if currentAddon == 1 then
       if currentSetup.scenario == 5 or currentSetup.scenario == 6 then
-        broadcastToAll(
-          "Неможливо вимкнути доповнення, сценарій з якого обрано!", {
+        broadcastToAll(i18n.getStrById("LOG_cannot_disable_addon"), {
             r = 1,
             g = 0.5,
             b = 0.5
