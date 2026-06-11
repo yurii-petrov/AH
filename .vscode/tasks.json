@@ -88,21 +88,46 @@
       "problemMatcher": []
     },
 
+    // {
+    //   "label": "Arkham Horror: Sync PO Files",
+    //   "type": "shell",
+
+    //   "windows": {
+    //     "command": "py",
+    //     "args": [
+    //       "${workspaceFolder}\\locales\\_sync_po_files.py"
+    //     ]
+    //   },
+
+    //   "osx": {
+    //     "command": "${workspaceFolder}/.venv/bin/python",
+    //     "args": [
+    //       "${workspaceFolder}/locales/_sync_po_files.py"
+    //     ]
+    //   },
+
+    //   "options": {
+    //     "cwd": "${workspaceFolder}/locales"
+    //   },
+
+    //   "problemMatcher": []
+    // },
+
     {
-      "label": "Arkham Horror: Sync Translations",
+      "label": "Arkham Horror: Build Translations",
       "type": "shell",
 
       "windows": {
         "command": "py",
         "args": [
-          "${workspaceFolder}\\locales\\_sync_po_files.py"
+          "${workspaceFolder}\\locales\\_po_to_lua_converter.py"
         ]
       },
 
       "osx": {
         "command": "${workspaceFolder}/.venv/bin/python",
         "args": [
-          "${workspaceFolder}/locales/_sync_po_files.py"
+          "${workspaceFolder}/locales/_po_to_lua_converter.py"
         ]
       },
 
@@ -110,6 +135,8 @@
         "cwd": "${workspaceFolder}/locales"
       },
 
+      "dependsOn": ["Arkham Horror: Sync PO Files"],
+      "dependsOrder": "sequence",
       "problemMatcher": []
     },
 
