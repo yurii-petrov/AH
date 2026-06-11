@@ -570,3 +570,6 @@ msgstr "Investigator not found for role: %s"
 
 msgid "LOG_confirm_death"
 msgstr "Confirm investigator death"
+
+msgid "CODEX_return_to_archive"
+msgstr "Return to Archive"

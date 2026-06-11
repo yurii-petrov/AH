@@ -126,7 +126,7 @@ function chooseScenario(player, alt, id)
     return
   end
 
-  for i = 1, scenarioMatData.scenarios, 1 do
+  for i = 1, #scenarioMatData.scenarios, 1 do
     self.UI.setAttribute('scenario_panel' .. i, 'color', 'clear')
   end
   self.UI.setAttribute('scenario_panel' .. id:match("%d+"), 'color', '#ffffff22')

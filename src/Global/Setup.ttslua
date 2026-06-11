@@ -1248,6 +1248,30 @@ function attachCodexCard(card, spawnPos)
     if not params then
       return
     end
+
+    local returnToArchive = params.returnToArchive
+    if returnToArchive == nil then returnToArchive = true end
+  
+    if returnToArchive == true then
+      local function ensureSide(root, key)
+        root[key] = root[key] or {}
+        root[key].actions = root[key].actions or {}
+        return root[key]
+      end
+
+      local function addAction(side)
+        table.insert(side.actions, {
+          title = i18n.getStrById("CODEX_return_to_archive"),
+          steps = {
+            { type = "returnCodexToArchive" }
+          }
+        })
+      end
+
+      addAction(ensureSide(params, "front"))
+      addAction(ensureSide(params, "back"))
+    end
+
     runAfterRest(codexMat, function(codexMat)
       codexMat.call("setCodexData", params)
     end)

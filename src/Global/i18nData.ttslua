@@ -18,6 +18,10 @@ I18N_DATA = {
     ["en"] = "Bridge",
     ["uk"] = "Міст",
   },
+  ["CODEX_return_to_archive"] = {
+    ["en"] = "Return to Archive",
+    ["uk"] = "Повернути до архіву",
+  },
   ["Curiositie_Shoppe"] = {
     ["en"] = "Curiositie Shoppe",
     ["uk"] = "Крамничка Диковинок",
