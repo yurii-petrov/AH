@@ -721,7 +721,7 @@ function processGateBurst(callBack)
     return
   end
 
-  broadcastToAll(string.format(i18n.getStrById("LOG_gate_burst"), i18n.getStrById(data.neighborhood)), "Red")
+  broadcastToAll(string.format(i18n.getStrById("LOG_gate_burst"), i18n.getStrById(data.neighborhood:gsub(" ", "_"))), "Red")
 
   local locationMat = getObjectFromGUID(locationMatId)
   if not locationMat then

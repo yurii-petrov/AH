@@ -573,3 +573,99 @@ msgstr "Confirm investigator death"
 
 msgid "CODEX_return_to_archive"
 msgstr "Return to Archive"
+
+msgid "Patrice_Hathaway"
+msgstr "Patrice Hathaway"
+
+msgid "Dexter_Drake"
+msgstr "Dexter Drake"
+
+msgid "Dexter_Drake_alt"
+msgstr "Dexter Drake alt"
+
+msgid "Minh_Thi_Phan"
+msgstr "Minh Thi Phan"
+
+msgid "Agnes_Baker"
+msgstr "Agnes Baker"
+
+msgid "Calvin_Wright"
+msgstr "Calvin Wright"
+
+msgid "Minh_Thi_Phan_alt"
+msgstr "Minh Thi Phan alt"
+
+msgid "Michael_McGlen"
+msgstr "Michael McGlen"
+
+msgid "Marie_Lambeau"
+msgstr "Marie Lambeau"
+
+msgid "Rex_Murphy"
+msgstr "Rex Murphy"
+
+msgid "Daniela_Reyes"
+msgstr "Daniela Reyes"
+
+msgid "Norman_Withers"
+msgstr "Norman Withers"
+
+msgid "Kate_Winthrop"
+msgstr "Kate Winthrop"
+
+msgid "Diana_Stanley"
+msgstr "Diana Stanley"
+
+msgid "Roland_Banks"
+msgstr "Roland Banks"
+
+msgid "Rex_Murphy_alt"
+msgstr "Rex Murphy alt"
+
+msgid "Ashcan_Pete"
+msgstr "Ashcan Pete"
+
+msgid "Carson_Sinclair"
+msgstr "Carson Sinclair"
+
+msgid "Charlie_Kane"
+msgstr "Charlie Kane"
+
+msgid "Father_Mateo"
+msgstr "Father Mateo"
+
+msgid "Wendy_Adams"
+msgstr "Wendy Adams"
+
+msgid "Skids_O'Toole"
+msgstr "Skids O'Toole"
+
+msgid "Tommy_Muldoon"
+msgstr "Tommy Muldoon"
+
+msgid "Jenny_Barnes"
+msgstr "Jenny Barnes"
+
+msgid "Wendy_Adams_alt"
+msgstr "Wendy Adams alt"
+
+msgid "Stella_Clark"
+msgstr "Stella Clark"
+
+msgid "Silas_Marsh"
+msgstr "Silas Marsh"
+
+msgid "Zoey_Samaras"
+msgstr "Zoey Samaras"
+
+msgid "Mark_Harrigan"
+msgstr "Mark Harrigan"
+
+msgid "Preston_Fairmont"
+msgstr "Preston Fairmont"
+
+msgid "Winifred_Habbamock"
+msgstr "Winifred Habbamock"
+
+msgid "Agatha_Crane"
+msgstr "Agatha Crane"

@@ -67,7 +67,7 @@ function spawnDoomTokensInMiddleOfNeighborhood(data)
 
   local nData = parseJson(data.neighborhoodTile.memo)
 
-  print(string.format(i18n.getStrById("LOG_doom_added_center"), i18n.getStrById(nData.name or ""), data.doomCount))
+  print(string.format(i18n.getStrById("LOG_doom_added_center"), i18n.getStrById((nData.name or ""):gsub(" ", "_")), data.doomCount))
 end
 
 function spawnAnomalyAndDoomTokens(data)
@@ -92,7 +92,7 @@ function spawnAnomalyAndDoomTokens(data)
       runAfterRest(anomalyToken, function(anomalyToken)
         anomalyToken.highlightOn("Red", 5)
         local nData = parseJson(data.neighborhoodTile.memo)
-        printToAll(string.format(i18n.getStrById("LOG_anomaly_added"), i18n.getStrById(nData.name or "")), "Red")
+        printToAll(string.format(i18n.getStrById("LOG_anomaly_added"), i18n.getStrById((nData.name or ""):gsub(" ", "_"))), "Red")
         callBack()
       end)
     else
@@ -592,13 +592,13 @@ function spawnDoomTokenInLocation(locationName, doomCount, neighborhoodInfo)
         doomToken.highlightOn("Red", 5)
       end
 
-      printToAll(i18n.getStrById(neighborhoodInfo.data.name) .. " (" .. i18n.getStrById(locationName) .. ") - " ..
+      printToAll(i18n.getStrById(neighborhoodInfo.data.name:gsub(" ", "_")) .. " (" .. i18n.getStrById(locationName:gsub(" ", "_")) .. ") - " ..
         doomCount .. " " .. i18n.getStrById("LOG_doom_added"), "Red")
     end
     return
   end
 
-  printToAll(i18n.getStrById(locationName) .. " - " .. doomCount .. " " .. i18n.getStrById("LOG_add_doom_manually"), "Red")
+  printToAll(i18n.getStrById(locationName:gsub(" ", "_")) .. " - " .. doomCount .. " " .. i18n.getStrById("LOG_add_doom_manually"), "Red")
 end
 
 function spawnDoomTokenOnTile(tileObj, doomCount)
@@ -623,7 +623,7 @@ function spawnDoomTokenOnTile(tileObj, doomCount)
       doomToken.highlightOn("Red", 5)
     end
 
-    printToAll(i18n.getStrById(tileData.name) .. " - " .. doomCount .. " " .. i18n.getStrById("LOG_doom_added"), "Red")
+    printToAll(i18n.getStrById(tileData.name:gsub(" ", "_")) .. " - " .. doomCount .. " " .. i18n.getStrById("LOG_doom_added"), "Red")
   end
 end
 
@@ -728,7 +728,7 @@ function spawnClueToken(neighborhoodName)
     position = pos
   }).highlightOn("Green", 5)
 
-  printToAll(i18n.getStrById(neighborhoodName) .. " - " .. i18n.getStrById("LOG_clue_spawn"), "Green")
+  printToAll(i18n.getStrById(neighborhoodName:gsub(" ", "_")) .. " - " .. i18n.getStrById("LOG_clue_spawn"), "Green")
 end
 
 function spawnClueTokenOnTile(tileObj)
@@ -746,7 +746,7 @@ function spawnClueTokenOnTile(tileObj)
 
   local tileData = parseJson(tileObj.memo)
   local name = tileData and tileData.name or "?"
-  printToAll(i18n.getStrById(name) .. " - " .. i18n.getStrById("LOG_clue_spawn"), "Green")
+  printToAll(i18n.getStrById(name:gsub(" ", "_")) .. " - " .. i18n.getStrById("LOG_clue_spawn"), "Green")
 end
 
 function spawnClue(callBack)

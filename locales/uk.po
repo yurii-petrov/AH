@@ -637,3 +637,99 @@ msgstr "Підтвердити загибель слідчого"
 
 msgid "CODEX_return_to_archive"
 msgstr "Повернути до архіву"
+
+msgid "Patrice_Hathaway"
+msgstr "Патріс Гетевей"
+
+msgid "Dexter_Drake"
+msgstr "Декстер Дрейк"
+
+msgid "Dexter_Drake_alt"
+msgstr "Декстер Дрейк (альтернативний)"
+
+msgid "Minh_Thi_Phan"
+msgstr "Мінь Тхі Фан"
+
+msgid "Agnes_Baker"
+msgstr "Агнес Бейкер"
+
+msgid "Calvin_Wright"
+msgstr "Келвін Райт"
+
+msgid "Minh_Thi_Phan_alt"
+msgstr "Мінь Тхі Фан (альтернативна)"
+
+msgid "Michael_McGlen"
+msgstr "Майкл Макглен"
+
+msgid "Marie_Lambeau"
+msgstr "Марі Ламбо"
+
+msgid "Rex_Murphy"
+msgstr "Рекс Мерфі"
+
+msgid "Daniela_Reyes"
+msgstr "Даніела Рейєс"
+
+msgid "Norman_Withers"
+msgstr "Норман Візерс"
+
+msgid "Kate_Winthrop"
+msgstr "Кейт Вінтроп"
+
+msgid "Diana_Stanley"
+msgstr "Діана Стенлі"
+
+msgid "Roland_Banks"
+msgstr "Роланд Бенкс"
+
+msgid "Rex_Murphy_alt"
+msgstr "Рекс Мерфі (альтернативний)"
+
+msgid "Ashcan_Pete"
+msgstr "Піт «Сміттяр»"
+
+msgid "Carson_Sinclair"
+msgstr "Карсон Сінклер"
+
+msgid "Charlie_Kane"
+msgstr "Чарлі Кейн"
+
+msgid "Father_Mateo"
+msgstr "Отець Матео"
+
+msgid "Wendy_Adams"
+msgstr "Венді Адамс"
+
+msgid "Skids_O'Toole"
+msgstr "Скідс О'Тул"
+
+msgid "Tommy_Muldoon"
+msgstr "Томмі Малдун"
+
+msgid "Jenny_Barnes"
+msgstr "Дженні Барнс"
+
+msgid "Wendy_Adams_alt"
+msgstr "Венді Адамс (альтернативна)"
+
+msgid "Stella_Clark"
+msgstr "Стелла Кларк"
+
+msgid "Silas_Marsh"
+msgstr "Сайлас Марш"
+
+msgid "Zoey_Samaras"
+msgstr "Зої Самарас"
+
+msgid "Mark_Harrigan"
+msgstr "Марк Гарріган"
+
+msgid "Preston_Fairmont"
+msgstr "Престон Фермонт"
+
+msgid "Winifred_Habbamock"
+msgstr "Вініфред Габбамок"
+
+msgid "Agatha_Crane"
+msgstr "Агата Крейн"

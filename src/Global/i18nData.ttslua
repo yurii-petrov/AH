@@ -2,6 +2,14 @@
 -- Do not edit it manually, as your changes will be overwritten.
 
 I18N_DATA = {
+  ["Agatha_Crane"] = {
+    ["en"] = "Agatha Crane",
+    ["uk"] = "Агата Крейн",
+  },
+  ["Agnes_Baker"] = {
+    ["en"] = "Agnes Baker",
+    ["uk"] = "Агнес Бейкер",
+  },
   ["Arkham_Advertiser"] = {
     ["en"] = "Arkham Advertiser",
     ["uk"] = "Аркгемський Вісник",
@@ -9,6 +17,10 @@ I18N_DATA = {
   ["Arkham_Asylum"] = {
     ["en"] = "Arkham Asylum",
     ["uk"] = "Психлікарня Аркгему",
+  },
+  ["Ashcan_Pete"] = {
+    ["en"] = "Ashcan Pete",
+    ["uk"] = "Піт «Сміттяр»",
   },
   ["Black_Cave"] = {
     ["en"] = "Black Cave",
@@ -22,9 +34,37 @@ I18N_DATA = {
     ["en"] = "Return to Archive",
     ["uk"] = "Повернути до архіву",
   },
+  ["Calvin_Wright"] = {
+    ["en"] = "Calvin Wright",
+    ["uk"] = "Келвін Райт",
+  },
+  ["Carson_Sinclair"] = {
+    ["en"] = "Carson Sinclair",
+    ["uk"] = "Карсон Сінклер",
+  },
+  ["Charlie_Kane"] = {
+    ["en"] = "Charlie Kane",
+    ["uk"] = "Чарлі Кейн",
+  },
   ["Curiositie_Shoppe"] = {
     ["en"] = "Curiositie Shoppe",
     ["uk"] = "Крамничка Диковинок",
+  },
+  ["Daniela_Reyes"] = {
+    ["en"] = "Daniela Reyes",
+    ["uk"] = "Даніела Рейєс",
+  },
+  ["Dexter_Drake"] = {
+    ["en"] = "Dexter Drake",
+    ["uk"] = "Декстер Дрейк",
+  },
+  ["Dexter_Drake_alt"] = {
+    ["en"] = "Dexter Drake alt",
+    ["uk"] = "Декстер Дрейк (альтернативний)",
+  },
+  ["Diana_Stanley"] = {
+    ["en"] = "Diana Stanley",
+    ["uk"] = "Діана Стенлі",
   },
   ["Downtown"] = {
     ["en"] = "Downtown",
@@ -33,6 +73,10 @@ I18N_DATA = {
   ["Easttown"] = {
     ["en"] = "Easttown",
     ["uk"] = "Східний Квартал",
+  },
+  ["Father_Mateo"] = {
+    ["en"] = "Father Mateo",
+    ["uk"] = "Отець Матео",
   },
   ["General_Store"] = {
     ["en"] = "General Store",
@@ -77,6 +121,14 @@ I18N_DATA = {
   ["Independence_Square"] = {
     ["en"] = "Independence Square",
     ["uk"] = "Площа Незалежності",
+  },
+  ["Jenny_Barnes"] = {
+    ["en"] = "Jenny Barnes",
+    ["uk"] = "Дженні Барнс",
+  },
+  ["Kate_Winthrop"] = {
+    ["en"] = "Kate Winthrop",
+    ["uk"] = "Кейт Вінтроп",
   },
   ["LOG_add_clue_manually"] = {
     ["en"] = "Add a clue manually",
@@ -418,13 +470,37 @@ I18N_DATA = {
     ["en"] = "Ma's Boarding House",
     ["uk"] = "Пансіонат Мамуні",
   },
+  ["Marie_Lambeau"] = {
+    ["en"] = "Marie Lambeau",
+    ["uk"] = "Марі Ламбо",
+  },
+  ["Mark_Harrigan"] = {
+    ["en"] = "Mark Harrigan",
+    ["uk"] = "Марк Гарріган",
+  },
   ["Merchant_District"] = {
     ["en"] = "Merchant District",
     ["uk"] = "Базар",
   },
+  ["Michael_McGlen"] = {
+    ["en"] = "Michael McGlen",
+    ["uk"] = "Майкл Макглен",
+  },
+  ["Minh_Thi_Phan"] = {
+    ["en"] = "Minh Thi Phan",
+    ["uk"] = "Мінь Тхі Фан",
+  },
+  ["Minh_Thi_Phan_alt"] = {
+    ["en"] = "Minh Thi Phan alt",
+    ["uk"] = "Мінь Тхі Фан (альтернативна)",
+  },
   ["Miskatonic_University"] = {
     ["en"] = "Miskatonic University",
     ["uk"] = "Міскатонікський університет",
+  },
+  ["Norman_Withers"] = {
+    ["en"] = "Norman Withers",
+    ["uk"] = "Норман Візерс",
   },
   ["Northside"] = {
     ["en"] = "Northside",
@@ -478,13 +554,29 @@ I18N_DATA = {
     ["en"] = "PHASE",
     ["uk"] = "ФАЗА",
   },
+  ["Patrice_Hathaway"] = {
+    ["en"] = "Patrice Hathaway",
+    ["uk"] = "Патріс Гетевей",
+  },
   ["Police_Station"] = {
     ["en"] = "Police Station",
     ["uk"] = "Поліцейський відділок",
   },
+  ["Preston_Fairmont"] = {
+    ["en"] = "Preston Fairmont",
+    ["uk"] = "Престон Фермонт",
+  },
   ["Residential"] = {
     ["en"] = "Residential",
     ["uk"] = "Житлові Будинки",
+  },
+  ["Rex_Murphy"] = {
+    ["en"] = "Rex Murphy",
+    ["uk"] = "Рекс Мерфі",
+  },
+  ["Rex_Murphy_alt"] = {
+    ["en"] = "Rex Murphy alt",
+    ["uk"] = "Рекс Мерфі (альтернативний)",
   },
   ["River_Docks"] = {
     ["en"] = "River Docks",
@@ -493,6 +585,10 @@ I18N_DATA = {
   ["Rivertown"] = {
     ["en"] = "Rivertown",
     ["uk"] = "Набережна",
+  },
+  ["Roland_Banks"] = {
+    ["en"] = "Roland Banks",
+    ["uk"] = "Роланд Бенкс",
   },
   ["S_buy"] = {
     ["en"] = "Buy for $%s",
@@ -526,6 +622,14 @@ I18N_DATA = {
     ["en"] = "Science Building",
     ["uk"] = "Науковий Корпус",
   },
+  ["Silas_Marsh"] = {
+    ["en"] = "Silas Marsh",
+    ["uk"] = "Сайлас Марш",
+  },
+  ["Skids_O'Toole"] = {
+    ["en"] = "Skids O'Toole",
+    ["uk"] = "Скідс О'Тул",
+  },
   ["South_Church"] = {
     ["en"] = "South Church",
     ["uk"] = "Південна Церква",
@@ -537,6 +641,10 @@ I18N_DATA = {
   ["St_Mary's_Hospital"] = {
     ["en"] = "St. Mary's Hospital",
     ["uk"] = "Лікарня св. Марії",
+  },
+  ["Stella_Clark"] = {
+    ["en"] = "Stella Clark",
+    ["uk"] = "Стелла Кларк",
   },
   ["T4A_clue"] = {
     ["en"] = "SPAWN CLUE",
@@ -586,6 +694,10 @@ I18N_DATA = {
     ["en"] = "Tick-Tock Club",
     ["uk"] = "Клуб \"Тік-Так\"",
   },
+  ["Tommy_Muldoon"] = {
+    ["en"] = "Tommy Muldoon",
+    ["uk"] = "Томмі Малдун",
+  },
   ["Train_Station"] = {
     ["en"] = "Train Station",
     ["uk"] = "Залізничний Вокзал",
@@ -602,9 +714,25 @@ I18N_DATA = {
     ["en"] = "Velma's Diner",
     ["uk"] = "Їдальня Велми",
   },
+  ["Wendy_Adams"] = {
+    ["en"] = "Wendy Adams",
+    ["uk"] = "Венді Адамс",
+  },
+  ["Wendy_Adams_alt"] = {
+    ["en"] = "Wendy Adams alt",
+    ["uk"] = "Венді Адамс (альтернативна)",
+  },
+  ["Winifred_Habbamock"] = {
+    ["en"] = "Winifred Habbamock",
+    ["uk"] = "Вініфред Габбамок",
+  },
   ["Ye_Olde_Magick_Shoppe"] = {
     ["en"] = "Ye Olde Magick Shoppe",
     ["uk"] = "Крамниця Чарів",
+  },
+  ["Zoey_Samaras"] = {
+    ["en"] = "Zoey Samaras",
+    ["uk"] = "Зої Самарас",
   },
   ["action_start"] = {
     ["en"] = "Start of Action Phase",

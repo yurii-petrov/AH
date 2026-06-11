@@ -612,8 +612,13 @@ function onClickEncounter(obj, playerColor)
     return
   else
     showCardInActiveSpace(neighborhoodData, neighborhood)
-    broadcastToAll("\n" .. neighborhoodData.locations[index], "White")
-    print(string.format(i18n.getStrById("LOG_encounter_for"), investigatorData.name, neighborhoodData.locations[index], neighborhoodData.name))
+    local locationName = neighborhoodData.locations[index]
+    local neighborhoodName = neighborhoodData.name
+    broadcastToAll("\n" .. i18n.getStrById(locationName:gsub(" ", "_")), "White")
+    print(string.format(i18n.getStrById("LOG_encounter_for"),
+      i18n.getStrById(investigatorData.name:gsub(" ", "_")),
+      i18n.getStrById(locationName:gsub(" ", "_")),
+      i18n.getStrById(neighborhoodName:gsub(" ", "_"))))
   end
 end
 
