@@ -54,7 +54,7 @@ local pendingConfirm = nil
 
 local frontPositions = {
 	"0 56 11",
-  "10 73 11",
+  "0 73 11",
   "0 90 11"
 }
 
