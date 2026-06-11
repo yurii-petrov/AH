@@ -1,0 +1,884 @@
+-- ╭──────────────────────────────────────────────╮
+-- │              BUTTON ACTIONS                  │
+-- ╰──────────────────────────────────────────────╯
+
+function showHelp(player, _)
+  local vis = UI.getAttribute("help_panel", "visibility")
+  if vis == "nobody" then
+    UI.setAttribute("help_panel", "visibility", player.color)
+  else
+    UI.setAttribute("help_panel", "visibility", vis .. "|" .. player.color)
+  end
+  --  print(UI.getAttribute("help_panel", "visibility"))
+end
+
+function hideHelp(player, _)
+  local vis = UI.getAttribute("help_panel", "visibility")
+  vis = vis:gsub(player.color, "")
+  local cleanVis = vis:gsub("|", "")
+  if cleanVis == "" then
+    vis = "nobody"
+  end
+  UI.setAttribute("help_panel", "visibility", vis)
+  --  print(UI.getAttribute("help_panel", "visibility"))
+end
+
+function onClickScenario(n)
+
+  local tableTile = getObjectFromGUID(tableId)
+  if not tableTile then
+    callBack()
+    return
+  end
+
+  local tableTileData = parseJson(tableTile.memo)
+  if not tableTileData then
+    callBack()
+    return
+  end
+
+  local scenarioData = getScenarioData(n)
+  if not scenarioData then
+    broadcastToAll(string.format(i18n.getStrById("LOG_scenario_not_found"), n), "White")
+    return
+  end
+
+  setupScenario.isPreparing = true
+
+  local scenarioSheet = getObjectFromGUID(setupScenario.scenarioData.guid)
+  if scenarioSheet then
+    local p = tableTileData.startPosition.tiles[setupScenario.scenarioData.type][setupScenario.scenarioData.name].p
+    scenarioSheet.setPositionSmooth(tableTile.positionToWorld(p):setAt("y", 3))
+  end
+
+  -- Wait.time(function()
+  setupScenario.scenarioData = scenarioData
+  spawnScenarioTilesOnMat(scenarioData, function()
+    setupScenario.isPreparing = false
+  end)
+  -- end, 1)
+  -- end)
+end
+
+function onClickPrepareScenario()
+  Wait.time(function()
+    -- lockSetupScenarioComponents(gameData.scenarioData)
+    -- prepareMarkers()
+    prepareMythosTokens(gameData.scenarioData.mythosCups)
+    prepareScenarioDecks(gameData.scenarioData)
+  end, 1)
+end
+
+function onClickNumberOfPlayers(n)
+  gameData.numberOfPlayers = n
+end
+
+function onClickPrepareNumberOfPlayers()
+  local investigatorMatBag = getObjectFromGUID(investigatorMatBagId)
+  if not investigatorMatBag then
+    return
+  end
+
+  local locationMat = getObjectFromGUID(locationMatId)
+  if not locationMat then
+    return
+  end
+
+  local cardMatBag = getObjectFromGUID(cardMatBagId)
+  local rollerBag = getObjectFromGUID(rollerBagId)
+
+  local centerPos = locationMat.getPosition()
+  centerPos.z = centerPos.z - locationMat.getBoundsNormalized().size.z / 2
+
+  local spacing = 14.5
+  local numPlayers = gameData.numberOfPlayers or 1
+  local matsToPlace = math.min(numPlayers, 8)
+
+  local totalWidth = (matsToPlace - 1) * spacing
+  local startX = centerPos.x - totalWidth / 2
+
+  local colors = {"White", "Red", "Green", "Blue", "Yellow", "Purple"}
+  local activationTokenBag = getObjectFromGUID(activationTokenBagId)
+
+  if not activationTokenBag then
+    return
+  end
+
+  local activationLiderTokenBag = getObjectFromGUID(activationLiderTokenBagId)
+  if not activationLiderTokenBag then
+    return
+  end
+
+  local referenceDeck = nil
+  for _, obj in ipairs(getObjects()) do
+    if obj.type == "Deck" and obj.getName() == "Reference Cards" then
+      referenceDeck = obj
+      break
+    end
+  end
+
+  if not referenceDeck then
+    error("Reference Cards not found")
+    return
+  end
+
+  for i = 1, matsToPlace do
+
+    local xPos = startX + (i - 1) * spacing
+    local targetPosition = {
+      x = xPos,
+      y = centerPos.y + 2.1,
+      z = centerPos.z - 7.40
+    }
+
+    if rollerBag then
+      local roller = rollerBag.takeObject({
+        index = 0,
+        position = {targetPosition.x, targetPosition.y, centerPos.z - 1.2},
+        rotation = {0, 180, 0},
+        smooth = false
+      })
+      Wait.time(function()
+        gameData.lockObjs[roller.guid] = true
+        lockObj(roller.guid)
+      end, 2)
+    end
+
+    local mat = investigatorMatBag.takeObject({
+      index = 0,
+      position = targetPosition,
+      smooth = false,
+      callback_function = function(obj)
+        obj.setRotation({0, 180, 0})
+      end
+    })
+
+    local cardMatPosition = {targetPosition.x, targetPosition.y, targetPosition.z - 7.05}
+    if cardMatBag then
+      for i = 1, 1 do
+        local cardMat = cardMatBag.takeObject {
+          index = 0,
+          position = cardMatPosition,
+          smooth = false,
+          callback_function = function(obj)
+            obj.setRotation({0, 180, 0})
+          end
+        }
+
+        cardMatPosition[3] = cardMatPosition[3] - 4.05
+        Wait.time(function()
+          cardMat.memo = "Items Mat"
+          gameData.lockObjs[cardMat.guid] = true
+          lockObj(cardMat.guid)
+        end, 2)
+      end
+    end
+
+    Wait.time(function()
+      gameData.lockObjs[mat.guid] = true
+      lockObj(mat.guid)
+      local bag = i == 1 and activationLiderTokenBag or activationTokenBag
+      local p = mat.getPosition():setAt("y", 3)
+      p.z = p.z - 6
+      p.x = p.x + 2
+      local snps = mat.getSnapPoints()
+      if snps then
+        local function hasTag(tagList, target)
+          for _, tag in ipairs(tagList) do
+            if tag == target then
+              return true
+            end
+          end
+          return false
+        end
+
+        for _, snp in pairs(snps) do
+          if hasTag(snp.tags, "activation_snap") then
+            local token = bag.takeObject({
+              index = 0,
+              position = mat.positionToWorld(snp.position:setAt("y", 3))
+            })
+            token.memo = i == 1 and "Lider Aactivation Token" or "Aactivation Token"
+          end
+        end
+      end
+    end, 2)
+
+    local color = colors[i]
+    local data = getHandData(color)
+    if data then
+      local hand = spawnObjectData({
+        data = data
+      })
+      hand.setPosition({targetPosition.x, 3, -71})
+      referenceDeck.takeObject({
+        index = 0,
+        position = hand.getPosition()
+      })
+    end
+  end
+
+  Wait.time(function()
+    local box = getObjectFromGUID(boxId)
+    if box then
+      box.putObject(activationTokenBag)
+      box.putObject(activationLiderTokenBag)
+      if numPlayers < 6 then
+        box.putObject(referenceDeck)
+      end
+    end
+  end, 4)
+
+  reassignAllPlayersToAvailableColors()
+end
+
+function reassignAllPlayersToAvailableColors()
+  local availableColors = Player.getAvailableColors()
+  local players = Player.getPlayers()
+  local spectators = Player.getSpectators()
+
+  local allParticipants = {}
+  for _, p in ipairs(players) do
+    table.insert(allParticipants, p)
+  end
+  for _, s in ipairs(spectators) do
+    table.insert(allParticipants, s)
+  end
+
+  local usedColors = {}
+  local colorIndex = 1
+
+  for _, participant in ipairs(allParticipants) do
+    local targetColor = availableColors[colorIndex]
+    if not targetColor then
+      log("❌ Not enough available colors for all players/spectators.")
+      break
+    end
+
+    if participant.color ~= targetColor then
+      log("Reassigning " .. participant.steam_name .. " to " .. targetColor)
+      participant.changeColor(targetColor)
+    else
+      log(participant.steam_name .. " is already in correct color: " .. targetColor)
+    end
+
+    usedColors[targetColor] = true
+    colorIndex = colorIndex + 1
+
+    participant.promote()
+  end
+end
+
+function onClickDrawMythos(obj, playerColor)
+  local mythosBag = getObjectFromGUID(mythosBagId)
+  if mythosBag then
+    mythosBag.shuffle()
+    drawMythos(mythosBag, playerColor)
+  end
+end
+
+function onPlayerClickRemoveClue(obj)
+  local clueBag = getObjectFromGUID(clueBagId)
+  if not clueBag then
+    return
+  end
+
+  local pos = obj.getPosition()
+  pos.x = pos.x - 1.7
+  pos.z = pos.z - 1
+  clueBag.takeObject({
+    index = 0,
+    position = pos:setAt("y", 3),
+    smooth = false
+  })
+end
+
+function onPlayerClickDeath(d)
+  d.player.showConfirmDialog(i18n.getStrById("LOG_confirm_death"), function()
+    local box = getObjectFromGUID(boxId)
+    if not box then
+      return
+    end
+
+    local cardPosition = d.mat.positionToWorld({0.316, 2.213, 0.344})
+    local objs = findObjsInRadius(cardPosition:setAt("y", 2.2))
+
+    for _, obj in ipairs(objs) do
+      local objData = parseJson(obj.memo)
+      if d.mat.guid ~= obj.guid and tableId ~= obj.guid then
+        d.mat.call("setMemo")
+        obj.setLock(false)
+        box.putObject(obj)
+      end
+    end
+
+    local itemsMatPosition = {0, 0, 1.4}
+    for i = 1, 5 do
+      local objs = findObjsInRadius(d.mat.positionToWorld(itemsMatPosition):setAt("y", 2.2))
+      local itemsMatFound = false
+      for _, obj in ipairs(objs) do
+        if obj.memo and obj.memo == "Items Mat" then
+          itemsMatFound = true
+          local cards = upCast(obj, 1, nil, 1)
+          for _, card in pairs(cards) do
+            local cardData = parseJson(card.memo)
+            if cardData then
+                if card.type == "Tile" then
+                discardTile(d.player.color, card, cardData, true)
+              elseif card.type == "Card" then
+                discardCard(d.player.color, card, cardData, false)
+              elseif card.type == "Figurine" then
+                local box = getObjectFromGUID(boxId)
+                if box then
+                  box.putObject(card)
+                end
+              end
+            end
+          end
+        end
+      end
+
+      if not itemsMatFound then
+        break
+      end
+
+      itemsMatPosition[3] = itemsMatPosition[3] + 1.2
+    end
+
+    for _, obj in ipairs(objs) do
+      local objData = parseJson(obj.memo)
+      if d.mat.guid ~= obj.guid and tableId ~= obj.guid then
+        box.putObject(obj)
+      end
+    end
+  end)
+end
+
+function onPlayerClickBio(d)
+  local cardPosition = d.mat.positionToWorld({0.316, 2.213, 0.344})
+  local objs = findObjsInRadius(cardPosition:setAt("y", 2.2))
+
+  for _, obj in ipairs(objs) do
+    local objData = parseJson(obj.memo)
+    if d.mat.guid ~= obj.guid and tableId ~= obj.guid and objData and objData.type == "Investigator" then
+      obj.setRotation({0, 180, obj.is_face_down and 0 or 180})
+      return
+    end
+  end
+end
+
+function onClickEncounter(obj, playerColor)
+  if gameData.phase ~= 3 then
+    printToColor(i18n.getStrById("PB_myth_validate"), playerColor, {1, 0.2, 0.2})
+    return
+  end
+
+  local locationMat = getObjectFromGUID(locationMatId)
+  if not locationMat then
+    return
+  end
+
+  local hands = getHandsByPlayerColor(playerColor)
+
+  if #hands > 1 then
+    return
+  end
+
+  local hand = hands[1]
+
+  local oBounds = hand.getBoundsNormalized()
+  local multi = 1
+  local dist = 1
+  local siz = {oBounds.size.x * multi / 2, dist, oBounds.size.z * multi}
+  local pos = locationMat.getPosition()
+
+  pos.z = pos.z - locationMat.getBoundsNormalized().size.z / 2 - 6
+  pos.x = hand.getPosition().x - 1.5
+  local hits = Physics.cast({
+    origin = pos,
+    direction = {0, 1, 0},
+    type = 3,
+    size = siz,
+    max_distance = 0,
+    debug = isTestMode
+  })
+
+  local investigatorData = nil
+  for _, v in ipairs(hits) do
+    local obj = v.hit_object
+    local data = parseJson(obj.memo)
+    if data and data.type and data.type == "Investigator" and data.name then
+      investigatorData = data
+      break
+    end
+  end
+
+  if not investigatorData then
+    return
+  end
+
+  local objs = upCast(locationMat, 1, nil, 1)
+  if not objs then
+    return
+  end
+
+  local figurine = nil
+  for _, o in ipairs(objs) do
+    if o.memo and o.memo == investigatorData.name and o.type == "Figurine" then
+      figurine = o
+      break
+    end
+  end
+
+  if not figurine then
+    return
+  end
+
+  local objs = downCast(figurine, 10, -2, 1 / 5)
+  if not objs then
+    return
+  end
+
+  local function showCardInActiveSpace(data, obj)
+    local mythosTile = getObjectFromGUID(mythosTileId)
+    if not mythosTile then
+      return
+    end
+
+    local currentCardPos = mythosTile.positionToWorld({0.084, 0.113, 0.278})
+    local deck = nil
+    local typeLower = string.lower(data.type)
+    if STREET_LIKE_TYPES[typeLower] then
+      local deckName
+      if typeLower == "street" then
+        deckName = "The streets"
+      elseif typeLower == "travel routes" or typeLower == "travel route" then
+        deckName = "Travel Routes"
+      elseif typeLower == "threshold" then
+        deckName = "Threshold"
+      elseif typeLower == "mystery" then
+        deckName = data.name
+      else
+        deckName = data.name
+      end
+      deck = getDeckFromScenarioMat("Encounter", deckName, true)
+    elseif typeLower == "neighborhood" then
+      deck = getDeckFromScenarioMat("Encounter", data.name, true)
+    elseif typeLower == "anomaly" then
+      deck = getDeckFromScenarioMat("anomaly", data.name, true)
+    end
+
+    if not deck then
+      return
+    end
+
+    local function getUIType(cardData)
+      if not cardData then
+        return
+      end
+      local t = cardData.type and string.lower(cardData.type) or ""
+      return {
+        type = ((t == "event" or t == "encounter" or t == "anomaly" or t == "headline" or t == "terror") and t or "empty")
+      }
+    end
+
+    local skipTypes = nil
+    if gameData.encounterType and string.lower(gameData.encounterType) == "terror" then
+      skipTypes = {"terror"}
+    end
+
+    local card = takeCardFromTop(deck, true, skipTypes)
+    if card then
+      mythosTile.call("setButtons", getUIType(parseJson(card.memo)))
+      gameData.encounterColor = playerColor
+      local cardData = parseJson(card.memo)
+      if cardData then
+        local t = cardData.type and string.lower(cardData.type) or ""
+        gameData.encounterType = t
+
+        if not t then
+          print("the card: "..card.guid.." has no type")
+        end
+      end
+      card.setPositionSmooth(currentCardPos:setAt("y", 3))
+    end
+  end
+
+  local function isAnomalyTokenPresent(nh)
+    if not gameData.scenarioData.anomaly then
+      return
+    end
+    local doomCount = nil
+    local isAnomalyFound = false
+    local objs = upCast(nh, 1, nil, 1)
+    for _, o in pairs(objs) do
+      if o.memo and o.type == "Tile" and o.memo == "Anomaly Token" then
+        isAnomalyFound = true
+      elseif o.memo and o.type == "Tile" and o.memo == "Doom Token" then
+        doomCount = doomCount == nil and 1 or doomCount + 1
+      end
+    end
+
+    if isAnomalyFound then
+      return doomCount
+    end
+  end
+
+  local neighborhood = nil
+  local neighborhoodData = nil
+  local anomaly = nil
+  for _, o in ipairs(objs) do
+    local data = parseJson(o.memo)
+    if data and data.type then
+      if string.lower(data.type) == "neighborhood" then
+        local doomNumber = isAnomalyTokenPresent(o)
+        if doomNumber then
+          if gameData and gameData.scenarioData and gameData.scenarioData.anomaly then
+            anomaly = o
+          end
+        end
+        neighborhood = o
+        neighborhoodData = data
+
+        if neighborhood and neighborhoodData and anomaly then
+          break
+        end
+      elseif STREET_LIKE_TYPES[string.lower(data.type)] then
+        showCardInActiveSpace(data, o)
+        return
+      end
+    end
+  end
+
+  if not neighborhood then
+    printToAll(i18n.getStrById("LOG_figurine_not_at_location"), "Orange")
+    figurine.highlightOn("Red", 5)
+    return
+  end
+
+  if not neighborhoodData.locations then
+    return
+  end
+
+  local function getSector(localPos, structureType)
+    local startAngleDeg = (structureType == 1 or structureType == "1") and 60 or 0
+    local x = localPos[1]
+    local z = localPos[3]
+
+    local angleDeg = math.deg(math.atan2(-z, x))
+    if angleDeg < 0 then
+      angleDeg = angleDeg + 360
+    end
+
+    local relativeAngle = angleDeg - startAngleDeg
+    if relativeAngle < 0 then
+      relativeAngle = relativeAngle + 360
+    end
+
+    local sector = math.floor(relativeAngle / 120) + 1
+    return sector
+  end
+
+  local localPos = neighborhood.positionToLocal(figurine.getPosition())
+
+  if not localPos then
+    return
+  end
+
+  local index = getSector(localPos, neighborhoodData.structureType)
+
+  if not index then
+    return
+  end
+
+  if index > #neighborhoodData.locations then
+    return
+  end
+
+  if anomaly then
+    local doomInfo = getNeighborhoodDoomInfo(neighborhood)
+    if doomInfo then
+      local count = doomInfo.locations[neighborhoodData.locations[index]]
+      if count then
+        showCardInActiveSpace({
+          type = "Anomaly",
+          name = type(gameData.scenarioData.anomaly) == "table" and gameData.scenarioData.anomaly[1] or
+            gameData.scenarioData.anomaly,
+          doomNumber = count
+        }, gameData.scenarioData.anomaly)
+        broadcastToAll(string.format(i18n.getStrById("LOG_anomaly_count"), playerColor, count), "White")
+      end
+    end
+    return
+  else
+    showCardInActiveSpace(neighborhoodData, neighborhood)
+    broadcastToAll("\n" .. neighborhoodData.locations[index], "White")
+    print(string.format(i18n.getStrById("LOG_encounter_for"), investigatorData.name, neighborhoodData.locations[index], neighborhoodData.name))
+  end
+end
+
+function onItemMatDestruct(o)
+  local oData = parseJson(o.memo)
+  if not oData then
+    return
+  end
+  discardTile(nil, o, oData, true)
+end
+
+function getObjectsInPlayerZone(playerColor)
+  local hand, locationMat = getPlayerHand(playerColor)
+  if not hand then return {} end
+
+  local hitObjects = {}
+  for _, v in pairs(castPlayerZone(hand, locationMat)) do
+    if v.hit_object ~= locationMat and v.hit_object ~= hand then
+      table.insert(hitObjects, v.hit_object)
+    end
+  end
+  return hitObjects
+end
+
+function getRollerType(player)
+  local hand, locationMat = getPlayerHand(player.color)
+  if not hand then return end
+
+  for _, v in pairs(castPlayerZone(hand, locationMat)) do
+    if v.hit_object ~= locationMat and v.hit_object ~= hand then
+      local oData = parseJson(v.hit_object.memo)
+      if oData and oData.type == "blessed cursed" then
+        return v.hit_object.is_face_down and 3 or 2
+      end
+    end
+  end
+
+  return 1
+end
+
+function onClickMarket(d)
+  if not d.price then
+    return
+  end
+
+  local shopMat = getObjectFromGUID(shopMatId)
+  if not shopMat then
+    return
+  end
+
+  local shopData = parseJson(shopMat.memo)
+  if not shopData or not shopData.displaypos or d.id > #shopData.displaypos + #shopData.encounterpos then
+    return
+  end
+
+  local hands = getHandsByPlayerColor(d.color)
+
+  if #hands > 1 then
+    return
+  end
+
+  local hand = hands[1]
+
+  local item = nil
+  -- local objs = upCast(shopMat, 1, nil, 1)
+
+  local p = d.id <= #shopData.displaypos and shopData.displaypos[d.id] or
+              shopData.encounterpos[d.id - #shopData.displaypos]
+
+  local objs = findObjsInRadius(shopMat.positionToWorld(p):setAt("y", 2.2))
+  for _, o in ipairs(objs) do
+    if o.guid == d.guid then
+      item = o
+      break
+    end
+  end
+
+  if not item then
+    return
+  end
+
+  local canAffordToBuy = false
+  local objs = getObjectsInPlayerZone(d.color)
+  for _, o in pairs(objs) do
+    if o.memo and o.memo == "Investigator Mat" then
+      canAffordToBuy = o.call("updateMoney", -d.price)
+      break
+    end
+  end
+
+  if not canAffordToBuy then
+    printToAll(string.format(i18n.getStrById("LOG_not_enough_money"), d.color), "Orange")
+    return
+  end
+
+  printToAll(string.format(i18n.getStrById("LOG_spends_money"), d.color, d.price), "Green")
+  item.setPositionSmooth(hand.getPosition():setAt("y", 3))
+
+  if d.id > #shopData.displaypos then
+    return
+  end
+
+  local itemDeck = nil
+  for _, deckData in ipairs(shopData.decks) do
+    if "item" == string.lower(deckData.type) and deckData.pos then
+      local objs = findObjsInRadius(shopMat.positionToWorld(deckData.pos):setAt("y", 2.2))
+      for _, o in ipairs(objs) do
+        if o.type == "Deck" then
+          local oData = parseJson(o.memo)
+          if oData and oData.type == "item" then
+            itemDeck = o
+            break
+          end
+        end
+      end
+    end
+  end
+
+  if not itemDeck then
+    return
+  end
+
+  local itemCard = itemDeck.takeObject({
+    index = 0,
+    rotation = {0, 180, 0},
+    position = shopMat.positionToWorld(shopData.displaypos[d.id]):setAt("y", 3)
+  })
+
+  if not itemCard then
+    return
+  end
+
+  local itemData = parseJson(itemCard.memo)
+  if itemData then
+    local types = {}
+    if itemData.common then
+      table.insert(types, "common")
+    end
+
+    if itemData.curio then
+      table.insert(types, "curio")
+    end
+
+    shopMat.call("setBottom", {
+      id = d.id,
+      price = itemData.price or 0,
+      guid = itemCard.guid
+    })
+    shopMat.call("setTop", {
+      id = d.id,
+      types = types
+    })
+  end
+end
+
+function onClickFindItem(d)
+  local shopMat = getObjectFromGUID(shopMatId)
+  if not shopMat then
+    return
+  end
+
+  local shopData = parseJson(shopMat.memo)
+  if not shopData or not shopData.decks then
+    return
+  end
+
+  local itemDeckPos = nil
+  for _, deckData in ipairs(shopData.decks) do
+    if "item" == string.lower(deckData.type) and deckData.pos then
+      itemDeckPos = deckData.pos
+      break
+    end
+  end
+
+  if not itemDeckPos then
+    return
+  end
+
+  local foundPos = nil
+  local notFoundPos = nil
+
+  if shopData.encounterpos and #shopData.encounterpos >= 2 then
+    foundPos = shopMat.positionToWorld(shopData.encounterpos[1]):setAt("y", 3)
+    notFoundPos = shopMat.positionToWorld(shopData.encounterpos[2]):setAt("y", 3)
+  end
+
+  if not foundPos or not notFoundPos then
+    return
+  end
+
+  local itemDeck = nil
+  local objs = findObjsInRadius(shopMat.positionToWorld(itemDeckPos):setAt("y", 2.2))
+  for _, o in ipairs(objs) do
+    if o.type == "Deck" then
+      local oData = parseJson(o.memo)
+      if oData and oData.type == "item" then
+        itemDeck = o
+        break
+      end
+    end
+  end
+
+  if not itemDeck then
+    return
+  end
+
+  if d.type == "curio" then
+    d.curio = true
+  elseif d.type == "common" then
+    d.common = true
+  end
+
+  local count = #itemDeck.getObjects()
+  for i = 1, count do
+
+    local itemCard = itemDeck.takeObject({
+      index = 0,
+      rotation = {0, 180, 0}
+    })
+
+    local itemData = parseJson(itemCard.memo)
+    if itemData and itemData.curio and d.curio and itemData.curio == d.curio or itemData.common and d.common and
+      itemData.common == d.common then
+      itemCard.setPositionSmooth(foundPos)
+      shopMat.call("setBottom", {
+        id = 6,
+        price = 0,
+        guid = itemCard.guid
+      })
+      break
+    else
+      itemCard.setPositionSmooth(notFoundPos)
+    end
+  end
+end
+
+-- function updateHandPosition(d)
+--     local p = d.o.getPosition()
+--     p.z = p.z-2
+--     p.y = 1.5
+--   local hits = Physics.cast({
+--     origin = p,
+--     direction = {0, 1, 0},
+--     type = 3,
+--     size = {1, 1, 1},
+--     max_distance = 0,
+--     debug = true
+--   })
+
+--     -- local hasDoom = false
+--     print(#hits)
+--     for _, v in ipairs(hits) do
+--     local obj = v.hit_object
+--     if obj then
+--         print(obj.type)
+--         -- obj.setPosition(obj.getPosition()("z", {p[1], p[2], p.z}))
+--     end
+--     -- if obj and obj.memo == "Doom Token" then
+--     --     hasDoom = true
+--     --     break
+--     -- end
+--     end
+-- end
+
+-- ╭─────────────────────────────────────────────╮
+-- │                GET DATA                      │
+-- ╰──────────────────────────────────────────────╯
+

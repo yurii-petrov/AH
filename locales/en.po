@@ -507,3 +507,66 @@ msgstr "doom added"
 
 msgid "LOG_clue_spawn"
 msgstr "clue spawn"
+
+msgid "LOG_bridge_returned"
+msgstr "It looks like the bridge is already returned."
+
+msgid "LOG_token_removed"
+msgstr "Token '%s' successfully removed from cell"
+
+msgid "LOG_add_clue_manually"
+msgstr "Add a clue manually"
+
+msgid "LOG_add_doom_manually"
+msgstr "Add doom manually"
+
+msgid "LOG_myth_draw"
+msgstr "\n%s - %s player"
+
+msgid "LOG_gate_burst"
+msgstr "\n%s gate burst!"
+
+msgid "LOG_doom_added_center"
+msgstr "%s - %s doom added to the center of the neighborhood, players decide how to place them"
+
+msgid "LOG_anomaly_added"
+msgstr "%s - Anomaly added."
+
+msgid "LOG_scenario_doom_added"
+msgstr "Scenario - %s doom added"
+
+msgid "LOG_waiting_components"
+msgstr "Waiting for components to be drawn from language bag..."
+
+msgid "LOG_timeout_components"
+msgstr "Timeout waiting for components"
+
+msgid "LOG_scenario_not_found"
+msgstr "Scenario components %s not found"
+
+msgid "LOG_addon_in_progress"
+msgstr "Work on this expansion is still in progress."
+
+msgid "LOG_cannot_disable_addon"
+msgstr "Cannot disable the expansion, a scenario from it is selected!"
+
+msgid "LOG_figurine_not_at_location"
+msgstr "Player figurine is not at a location. Also, there should be only 1 on the table for the investigator, discard the other if you haven't already."
+
+msgid "LOG_anomaly_count"
+msgstr "%s Anomaly (%s)"
+
+msgid "LOG_encounter_for"
+msgstr "Encounter for %s at cell %s (%s)"
+
+msgid "LOG_not_enough_money"
+msgstr "%s - not enough $"
+
+msgid "LOG_spends_money"
+msgstr "%s - spends %s $"
+
+msgid "LOG_investigator_not_found"
+msgstr "Investigator not found for role: %s"
+
+msgid "LOG_confirm_death"
+msgstr "Confirm investigator death"

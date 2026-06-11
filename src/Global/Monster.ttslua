@@ -1,0 +1,223 @@
+-- ╭──────────────────────────────────────────────╮
+-- │          MONSTER SPAWN / ATTACH              │
+-- ╰──────────────────────────────────────────────╯
+
+function spawnMonster(spawnPos, monster)
+  if not monster then return end
+
+  local objectMemo = parseJson(monster.memo)
+  if not objectMemo or not objectMemo.type then return end
+
+  if objectMemo.type == "Monster" then
+    attachMonsterCard(monster, objectMemo, spawnPos)
+  elseif objectMemo.type == "DoubleSided" and objectMemo.front then
+    attachDoubleSidedCard(monster, objectMemo, spawnPos)
+  end
+end
+
+function attachAllyCard(ally, allyMemo, spawnPos)
+  local itemMatBag = getObjectFromGUID(itemMatBagId)
+  if not itemMatBag then
+    return
+  end
+  
+  local itemMat = itemMatBag.takeObject({
+    index = 0,
+    position = ally.getPosition():setAt("y", 2.21):setAt("z", spawnPos.z),
+    rotation = {0, 180, 0},
+    smooth = false
+  })
+
+  ally.setLock(true)
+  ally.setRotation({0, 180, 0})
+  ally.setPosition(itemMat.positionToWorld({0, 0, -0.154}):setAt("y", 2.31))
+
+  itemMat.addAttachment(ally)
+  itemMat.memo = JSON.encode({
+    type = "Item Mat"
+  })
+
+  runAfterRest(itemMat, function(itemMat)
+    Wait.time(function()
+      itemMat.call("setData", allyMemo)
+      Wait.time(function()
+        itemMat.call("setData", allyMemo)
+      end, 0.2)
+    end, 0.2)
+  end)
+end
+
+function attachMonsterCard(monster, objectMemo, spawnPos)
+  local monsterMatBag = getObjectFromGUID(monsterMatBagId)
+  if not monsterMatBag then
+    return
+  end
+
+  local monsterMat = monsterMatBag.takeObject({
+    index = 0,
+    position = spawnPos,
+    rotation = {0, 180, 180},
+    smooth = false
+  })
+
+  if not monsterMat then
+    return
+  end
+
+  local pos = spawnPos
+  pos.x = pos.x + 0.271
+  monster.setPosition(pos)
+
+  local height = monsterMat.getBounds().size.y
+
+  monster.interactable = false
+
+  local oData = monster.getData()
+  oData.Transform.rotZ = monster.is_face_down and 180 or 0
+  oData.Transform.posY = oData.Transform.posY + 0.06
+  monsterMat.addAttachment(monster)
+
+  local oData = monster.getData()
+  oData.Transform.posX = monsterMat.positionToWorld({-0.16, 0, 0}).x
+  oData.Transform.posY = pos.y - height - 0.10
+  local clone = spawnObjectData({
+    data = oData
+  })
+  monsterMat.addAttachment(clone)
+
+  if objectMemo.elite then
+    objectMemo.hp = objectMemo.hp + gameData.numberOfPlayers * objectMemo.elite
+  end
+
+  local params = {
+    maxHp = objectMemo.hp
+  }
+
+  runAfterRest(monsterMat, function(monsterMat)
+    monsterMat.call("setHPMax", params)
+  end)
+end
+
+function attachDoubleSidedCard(monster, objectMemo, spawnPos)
+  local doubleSidedMatBag = getObjectFromGUID(doubleSidedMatBagId)
+  if not doubleSidedMatBag then
+    return
+  end
+
+  local doubleSidedMat = doubleSidedMatBag.takeObject({
+    index = 0,
+    position = spawnPos,
+    rotation = {0, 180, 180},
+    smooth = false
+  })
+
+  if not doubleSidedMat then
+    return
+  end
+
+  local pos = spawnPos
+  pos.x = pos.x + 0.271
+  monster.setPosition(pos)
+
+  local height = doubleSidedMat.getBounds().size.y
+
+  monster.interactable = false
+
+  local oData = monster.getData()
+  oData.Transform.rotZ = monster.is_face_down and 180 or 0
+  oData.Transform.posY = oData.Transform.posY + 0.06
+  doubleSidedMat.addAttachment(monster)
+
+  local oData = monster.getData()
+  oData.Transform.rotZ = monster.is_face_down and 180 or 0
+  oData.Transform.posX = doubleSidedMat.positionToWorld({-0.16, 0, 0}).x
+  oData.Transform.posY = pos.y - height - 0.10
+  local clone = spawnObjectData({
+    data = oData
+  })
+  doubleSidedMat.addAttachment(clone)
+
+  runAfterRest(doubleSidedMat, function(doubleSidedMat)
+    doubleSidedMat.call("setFrontData", objectMemo.front)
+  end)
+end
+
+-- Draw Monster
+function drawMonster(spawnPos)
+  local function getMonsterCard()
+    local locationMat = getObjectFromGUID(locationMatId)
+    if not locationMat then return end
+
+    local locationData = parseJson(locationMat.memo)
+    if not locationData then return end
+
+    local objs = findObjsInRadius(locationMat.positionToWorld(locationData.monster):setAt("y", 2.2))
+    for _, obj in ipairs(objs) do
+      local deckData = parseJson(obj.memo)
+      if deckData and deckData.type and string.lower(deckData.type) == "monster" then
+        if obj.type == "Deck" then
+          local count = #obj.getObjects()
+          if count > 0 then
+            return obj.takeObject({ index = count - 1, smooth = false })
+          end
+        else
+          return obj
+        end
+        break
+      end
+    end
+  end
+
+  local monster = getMonsterCard()
+  if not monster then return end
+  spawnMonster(spawnPos, monster)
+end
+
+function onMonsterKilled(monster)
+  local locationMat = getObjectFromGUID(locationMatId)
+  if not locationMat then
+    return
+  end
+
+  local locationData = parseJson(locationMat.memo)
+  if not locationData then
+    return
+  end
+
+  -- local deck = nil
+  -- local objs = findObjsInRadius(locationMat.positionToWorld(locationData.monster))
+  --   for _, obj in ipairs(objs) do
+  --     if obj.type == "Deck" then
+  --       local deckData = parseJson(obj.memo)
+  --       if deckData and string.lower(deckData.type) == "monster" then
+  --         deck = obj
+  --         break
+  --       end
+  --     end
+  --   end
+
+  -- if not deck then
+  --   return
+  -- end
+
+  --   local mData = parseJson(monster.memo)
+  --   if mData and mData.remnant then
+  --     local remnantBag = getObjectFromGUID(remnantBagId)
+  --     if not remnantBag then
+  --       return
+  --     end
+  --     local remnant = remnantBag.takeObject({
+  --       index = 0,
+  --       position = monster.getPosition(),
+  --       rotation = {0, 180, 180},
+  --       smooth = false
+  --     })
+  --   end
+  monster.setRotation({0, 180, 180})
+  monster.setPosition(locationMat.positionToWorld(locationData.monster):setAt("y", 3))
+end
+
+-- ╭──────────────────────────────────────────────╮
+-- │                Mythos                        │
+-- ╰──────────────────────────────────────────────╯
+
