@@ -161,36 +161,41 @@ function inProgress(player, alt, id)
   })
 end
 
+local addonScenarios = {
+  [1] = {5, 6},
+  [2] = {7, 8, 9, 10},
+  [3] = {11, 12, 13},
+}
+
 function selectAddon(player, alt, id)
   local id = tonumber(id:match("%d+"))
   currentAddon = id
   addons[currentAddon].include = not addons[currentAddon].include
+
+  local scenarios = addonScenarios[currentAddon]
+
   if addons[currentAddon].include then
-    if currentAddon == 1 then
-      self.UI.setAttribute('scenarioImage5', 'color', 'white')
-      self.UI.setAttribute('scenarioTitle5', 'color', 'white')
-      self.UI.setAttribute('scenario5', 'onClick', 'chooseScenario')
-      self.UI.setAttribute('scenarioImage6', 'color', 'white')
-      self.UI.setAttribute('scenarioTitle6', 'color', 'white')
-      self.UI.setAttribute('scenario6', 'onClick', 'chooseScenario')
+    if scenarios then
+      for _, s in ipairs(scenarios) do
+        self.UI.setAttribute('scenarioImage' .. s, 'color', 'white')
+        self.UI.setAttribute('scenarioTitle' .. s, 'color', 'white')
+        self.UI.setAttribute('scenario' .. s, 'onClick', 'chooseScenario')
+      end
     end
     self.UI.setAttribute('addon_panel' .. currentAddon, 'color', '#ffffff22')
   else
-    if currentAddon == 1 then
-      if currentSetup.scenario == 5 or currentSetup.scenario == 6 then
-        broadcastToAll(i18n.getStrById("LOG_cannot_disable_addon"), {
-            r = 1,
-            g = 0.5,
-            b = 0.5
-          })
-        return
+    if scenarios then
+      for _, s in ipairs(scenarios) do
+        if currentSetup.scenario == s then
+          broadcastToAll(i18n.getStrById("LOG_cannot_disable_addon"), {r = 1, g = 0.5, b = 0.5})
+          return
+        end
       end
-      self.UI.setAttribute('scenarioImage5', 'color', 'gray')
-      self.UI.setAttribute('scenarioTitle5', 'color', 'gray')
-      self.UI.setAttribute('scenario5', 'onClick', '')
-      self.UI.setAttribute('scenarioImage6', 'color', 'gray')
-      self.UI.setAttribute('scenarioTitle6', 'color', 'gray')
-      self.UI.setAttribute('scenario6', 'onClick', '')
+      for _, s in ipairs(scenarios) do
+        self.UI.setAttribute('scenarioImage' .. s, 'color', 'gray')
+        self.UI.setAttribute('scenarioTitle' .. s, 'color', 'gray')
+        self.UI.setAttribute('scenario' .. s, 'onClick', '')
+      end
     end
     self.UI.setAttribute('addon_panel' .. currentAddon, 'color', 'clear')
   end
