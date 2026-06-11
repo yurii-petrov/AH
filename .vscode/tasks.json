@@ -4,24 +4,11 @@
     {
       "label": "Arkham Horror: Build",
       "type": "shell",
-      "command": "go",
       "windows": {
-        "args": [
-          "run",
-          "main.go",
-          "--moddir=${workspaceFolder}",
-          "--modfile=${env:USERPROFILE}\\Documents\\My Games\\Tabletop Simulator\\Saves\\ArkhamHorror.json"
-        ]
+        "command": "py \"${workspaceFolder}\\locales\\_sync_po_files.py\" && py \"${workspaceFolder}\\locales\\_po_to_lua_converter.py\" && go run main.go --moddir=\"${workspaceFolder}\" --modfile=\"${env:USERPROFILE}\\Documents\\My Games\\Tabletop Simulator\\Saves\\ArkhamHorror.json\""
       },
       "osx": {
-        "args": [
-          "run",
-          "main.go",
-          "-moddir",
-          "${workspaceFolder}",
-          "-modfile",
-          "${userHome}/Library/Tabletop Simulator/Saves/ArkhamHorror.json"
-        ]
+        "command": "\"${workspaceFolder}/.venv/bin/python\" \"${workspaceFolder}/locales/_sync_po_files.py\" && \"${workspaceFolder}/.venv/bin/python\" \"${workspaceFolder}/locales/_po_to_lua_converter.py\" && go run main.go -moddir \"${workspaceFolder}\" -modfile \"${userHome}/Library/Tabletop Simulator/Saves/ArkhamHorror.json\""
       },
       "options": {
         "cwd": "${workspaceFolder}${pathSeparator}..${pathSeparator}TTSModManager"
@@ -85,58 +72,6 @@
         "cwd": "${workspaceFolder}/src/ConvertMemo"
       },
 
-      "problemMatcher": []
-    },
-
-    // {
-    //   "label": "Arkham Horror: Sync PO Files",
-    //   "type": "shell",
-
-    //   "windows": {
-    //     "command": "py",
-    //     "args": [
-    //       "${workspaceFolder}\\locales\\_sync_po_files.py"
-    //     ]
-    //   },
-
-    //   "osx": {
-    //     "command": "${workspaceFolder}/.venv/bin/python",
-    //     "args": [
-    //       "${workspaceFolder}/locales/_sync_po_files.py"
-    //     ]
-    //   },
-
-    //   "options": {
-    //     "cwd": "${workspaceFolder}/locales"
-    //   },
-
-    //   "problemMatcher": []
-    // },
-
-    {
-      "label": "Arkham Horror: Build Translations",
-      "type": "shell",
-
-      "windows": {
-        "command": "py",
-        "args": [
-          "${workspaceFolder}\\locales\\_po_to_lua_converter.py"
-        ]
-      },
-
-      "osx": {
-        "command": "${workspaceFolder}/.venv/bin/python",
-        "args": [
-          "${workspaceFolder}/locales/_po_to_lua_converter.py"
-        ]
-      },
-
-      "options": {
-        "cwd": "${workspaceFolder}/locales"
-      },
-
-      "dependsOn": ["Arkham Horror: Sync PO Files"],
-      "dependsOrder": "sequence",
       "problemMatcher": []
     },
 
