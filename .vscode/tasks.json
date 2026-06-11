@@ -89,6 +89,31 @@
     },
 
     {
+      "label": "Arkham Horror: Sync Translations",
+      "type": "shell",
+
+      "windows": {
+        "command": "py",
+        "args": [
+          "${workspaceFolder}\\locales\\_sync_po_files.py"
+        ]
+      },
+
+      "osx": {
+        "command": "${workspaceFolder}/.venv/bin/python",
+        "args": [
+          "${workspaceFolder}/locales/_sync_po_files.py"
+        ]
+      },
+
+      "options": {
+        "cwd": "${workspaceFolder}/locales"
+      },
+
+      "problemMatcher": []
+    },
+
+    {
       "label": "Arkham Horror: Parse Memo",
       "type": "shell",
 
