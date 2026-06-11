@@ -191,7 +191,7 @@ function onClickPrepareNumberOfPlayers()
         })
         
         if clueBag then
-          clueBag.setName(i18n.getStrById("clue"))
+          clueBag.setName(i18n.getStrById("Clue"))
           clueBag.memo = JSON.encode({type = "player clue bag", color = colors[i]})
           clueBag.setLock(true)
         end

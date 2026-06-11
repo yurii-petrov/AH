@@ -546,6 +546,8 @@ end
 function onObjectEnterContainer(container, object)
   local memo = parseJson(container.memo)
   if not memo or memo.type ~= "player clue bag" then return end
+  if not object.memo or object.memo ~= "Clue" then return end
+  
   if isMatNearContainer(container) then
     addClue()
   end
@@ -554,6 +556,8 @@ end
 function onObjectLeaveContainer(container, object)
   local memo = parseJson(container.memo)
   if not memo or memo.type ~= "player clue bag" then return end
+  if not object.memo or object.memo ~= "Clue" then return end
+  
   if isMatNearContainer(container) then
     removeClue()
   end
