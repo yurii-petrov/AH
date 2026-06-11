@@ -403,87 +403,91 @@
 	rectAlignment="MiddleCenter"
 	allowDragging="true"
 	returnToOriginalPositionWhenReleased="false">
-    <Image image="hud_1" height="700" width="1000"/>
-	<panel width="850" height="610">
-		<VerticalLayout contentSizeFitter="vertical" height="610">
-			<panel minHeight="80">
+	<Image image="hud_1" height="700" width="1000"/>
+	<TableLayout width="850" height="610" rectAlignment="MiddleCenter" cellSpacing="0" cellPadding="0" columnWidths="400 50 400">
+		<!-- Тайтл -->
+		<Row preferredHeight="80">
+			<Cell columnSpan="3" dontUseTableCellBackground="true">
 				<text id="MM_addonTitle_text" text="" fontSize="46" fontStyle="bold" alignment="MiddleCenter"/>
-			</panel>
-			<HorizontalLayout spacing="50" childForceExpandWidth="false" contentSizeFitter="horizontal">
-				<panel minHeight="400" preferredWidth="400">
-					<verticalLayout spacing="30">
-						<HorizontalLayout preferredHeight="200" spacing="30" childForceExpandWidth="false" childAlignment="MiddleLeft" preferredWidth="400">
-							<image id="addonImage" image="addon1" preferredWidth="200" width="200" preserveAspect="true"/>
-							<text id="MM_addonSummary_text" fontSize="20" alignment="middleLeft"/>
-						</HorizontalLayout>
-						<VerticalScrollView color="clear" preferredHeight="200"
-							verticalScrollbarVisibility="AutoHideAndExpandViewport"
-							verticalScrollbarWidth="20"
-							raycastTarget="true"
-							scrollSensitivity="30">
-							<VerticalLayout contentSizeFitter="vertical">
-								<text id="MM_addonDescription_text" fontSize="20" fontStyle="italic"/>
-							</VerticalLayout>
-						</VerticalScrollView>
-					</verticalLayout>
+			</Cell>
+		</Row>
+		<!-- Контент: [left][spacer][right] висота 530px -->
+		<Row preferredHeight="530">
+			<!-- LEFT: картинка + резюме зверху, опис заповнює решту -->
+			<Cell dontUseTableCellBackground="true">
+				<panel width="400" height="530">
+					<HorizontalLayout
+						rectAlignment="UpperCenter"
+						width="400"
+						height="190"
+						spacing="20"
+						childForceExpandWidth="false"
+						childAlignment="MiddleLeft">
+						<image id="addonImage" image="addon1" width="180" preserveAspect="true"/>
+						<text id="MM_addonSummary_text" fontSize="20" alignment="MiddleLeft"/>
+					</HorizontalLayout>
+					<VerticalScrollView
+						rectAlignment="LowerCenter"
+						width="400"
+						height="330"
+						color="clear"
+						verticalScrollbarVisibility="AutoHideAndExpandViewport"
+						verticalScrollbarWidth="20"
+						raycastTarget="true"
+						scrollSensitivity="30">
+						<VerticalLayout contentSizeFitter="vertical">
+							<text id="MM_addonDescription_text" fontSize="20" fontStyle="italic"/>
+						</VerticalLayout>
+					</VerticalScrollView>
 				</panel>
-				<panel minHeight="400" preferredWidth="400">
-					<VerticalScrollView color="clear" width="400"
-						height="400"
-						padding="0 0 0 50"
+			</Cell>
+			<!-- SPACER -->
+			<Cell dontUseTableCellBackground="true"/>
+			<!-- RIGHT: список зверху, кнопка знизу -->
+			<Cell dontUseTableCellBackground="true">
+				<panel width="400" height="530">
+					<VerticalScrollView
+						rectAlignment="UpperCenter"
+						width="400"
+						height="428"
+						color="clear"
 						verticalScrollbarVisibility="AutoHideAndExpandViewport"
 						verticalScrollbarWidth="20"
 						raycastTarget="true"
 						scrollSensitivity="30">
 						<VerticalLayout contentSizeFitter="vertical" width="380" spacing="10">
 							<panel id="addon_panel1" preferredHeight="50" color="#ffffff22">
-								<button id="addon1" onClick="chooseAddon"/>
+								<button id="addon1" onClick="selectAddon" onMouseEnter="previewAddon"/>
 								<text id="MM_text_addon1_text" alignment="MiddleCenter" text=""/>
 							</panel>
 							<panel id="addon_panel2" preferredHeight="50">
-								<button id="addon2" onClick="chooseAddon"/>
+								<button id="addon2" onClick="selectAddon" onMouseEnter="previewAddon"/>
 								<text id="MM_text_addon2_text" alignment="MiddleCenter" text=""/>
 							</panel>
 							<panel id="addon_panel3" preferredHeight="50">
-								<button id="addon3" onClick="chooseAddon"/>
+								<button id="addon3" onClick="selectAddon" onMouseEnter="previewAddon"/>
 								<text id="MM_text_addon3_text" alignment="MiddleCenter" text=""/>
 							</panel>
 							<panel id="addon_panel4" preferredHeight="50">
-								<button id="addon4" onClick="chooseAddon"/>
+								<button id="addon4" onClick="selectAddon" onMouseEnter="previewAddon"/>
 								<text id="MM_text_addon4_text" alignment="MiddleCenter" text=""/>
 							</panel>
 						</VerticalLayout>
 					</VerticalScrollView>
+					<panel rectAlignment="LowerCenter" width="400" height="92">
+						<Button
+							id="MM_submitAddons_text"
+							onClick="submitAddons"
+							width="400"
+							height="92"
+							color="clear"
+							text=""/>
+						<image width="400" preserveAspect="true" image="button_large"/>
+					</panel>
 				</panel>
-			</HorizontalLayout>
-			<panel minHeight="120">
-				<Button
-					rectAlignment="LowerLeft"
-					id="MM_toggleAddon_text"
-					onClick="toggleAddon"
-					width="400"
-					height="92"
-					color="clear"
-					text=""/>
-				<image
-					rectAlignment="LowerLeft"
-					width="400" preserveAspect="true"
-					image="button_large"/>
-				<Button
-					rectAlignment="LowerRight"
-					id="MM_submitAddons_text"
-					onClick="submitAddons"
-					width="400"
-					height="92"
-					color="clear"
-					text=""/>
-				<image
-					rectAlignment="LowerRight"
-					width="400" preserveAspect="true"
-					image="button_large"/>
-			</panel>
-		</VerticalLayout>
-	</panel>
+			</Cell>
+		</Row>
+	</TableLayout>
 </panel>
 
 <panel id="restore"

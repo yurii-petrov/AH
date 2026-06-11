@@ -41,6 +41,9 @@ function onClickAddons(player, alt, id)
   map = false
   self.UI.setAttribute('scenarioImage', 'active', true)
   self.UI.setAttribute('scenarioMap', 'active', false)
+  for i, addon in ipairs(addons) do
+    self.UI.setAttribute('addon_panel' .. i, 'color', addon.include and '#ffffff22' or 'clear')
+  end
 end
 function restore(player, alt, id)
   self.UI.setAttribute('main_menu', 'active', true)
@@ -141,7 +144,7 @@ function submitScenario()
   self.UI.setAttribute('scenarioMap', 'image', 'scenarioMap' .. currentSetup.scenario)
 end
 
-function chooseAddon(player, alt, id)
+function previewAddon(player, alt, id)
   local id = tonumber(id:match("%d+"))
   currentAddon = id
   self.UI.setAttribute('addonTitle', 'text', addons[id].title)
@@ -158,7 +161,9 @@ function inProgress(player, alt, id)
   })
 end
 
-function toggleAddon()
+function selectAddon(player, alt, id)
+  local id = tonumber(id:match("%d+"))
+  currentAddon = id
   addons[currentAddon].include = not addons[currentAddon].include
   if addons[currentAddon].include then
     if currentAddon == 1 then
