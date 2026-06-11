@@ -574,13 +574,29 @@ I18N_DATA = {
     ["en"] = "failed the check!",
     ["uk"] = "провалив перевірку!",
   },
+  ["ROLLER_help_lmb_key"] = {
+    ["en"] = "LMB",
+    ["uk"] = "ЛКМ",
+  },
   ["ROLLER_help_lmb_text"] = {
-    ["en"] = "To roll a number of dice, click the corresponding number with LMB.",
-    ["uk"] = "Для кидка певної кількості кубів натисніть на відповідне число ЛКМ.",
+    ["en"] = "To %s a number of dice, click the corresponding number with %s.",
+    ["uk"] = "Для %s певної кількості кубів натисніть на відповідне число %s.",
+  },
+  ["ROLLER_help_lmb_word"] = {
+    ["en"] = "roll",
+    ["uk"] = "кидка",
+  },
+  ["ROLLER_help_rmb_key"] = {
+    ["en"] = "RMB",
+    ["uk"] = "ПКМ",
   },
   ["ROLLER_help_rmb_text"] = {
-    ["en"] = "To reroll specific dice, right-click the corresponding numbers with RMB and wait.",
-    ["uk"] = "Для перекиду певних кубів натисніть на відповідні числа ПКМ і зачекайте.",
+    ["en"] = "To %s specific dice, right-click the corresponding numbers with %s and wait.",
+    ["uk"] = "Для %s певних кубів натисніть на відповідні числа %s і зачекайте.",
+  },
+  ["ROLLER_help_rmb_word"] = {
+    ["en"] = "reroll",
+    ["uk"] = "перекиду",
   },
   ["ROLLER_help_title_text"] = {
     ["en"] = "How the roller works",

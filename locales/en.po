@@ -700,7 +700,19 @@ msgid "ROLLER_help_title_text"
 msgstr "How the roller works"
 
 msgid "ROLLER_help_lmb_text"
-msgstr "To roll a number of dice, click the corresponding number with LMB."
+msgstr "To %s a number of dice, click the corresponding number with %s."
+
+msgid "ROLLER_help_lmb_word"
+msgstr "roll"
+
+msgid "ROLLER_help_lmb_key"
+msgstr "LMB"
 
 msgid "ROLLER_help_rmb_text"
-msgstr "To reroll specific dice, right-click the corresponding numbers with RMB and wait."
+msgstr "To %s specific dice, right-click the corresponding numbers with %s and wait."
+
+msgid "ROLLER_help_rmb_word"
+msgstr "reroll"
+
+msgid "ROLLER_help_rmb_key"
+msgstr "RMB"

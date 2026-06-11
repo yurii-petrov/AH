@@ -22,109 +22,90 @@ function onLoad()
   buildRollerUI()
 end
 
+local function colored(text)
+  return '<textcolor color="#88bbff">' .. text .. '</textcolor>'
+end
+
 function buildRollerUI()
-  local xml = {}
+  local lmbText = string.format(
+    i18n.getStrById("ROLLER_help_lmb_text"),
+    colored(i18n.getStrById("ROLLER_help_lmb_word")),
+    colored(i18n.getStrById("ROLLER_help_lmb_key"))
+  )
+  local rmbText = string.format(
+    i18n.getStrById("ROLLER_help_rmb_text"),
+    colored(i18n.getStrById("ROLLER_help_rmb_word")),
+    colored(i18n.getStrById("ROLLER_help_rmb_key"))
+  )
 
-  -- Help button
-  table.insert(xml, {
-    tag = "Button",
-    attributes = {
-      id       = "help",
-      onClick  = "Global/showHelp",
-      width    = "400", height   = "400",
-      position = "540 -52 -22",
-      rotation = "0 0 180",
-      scale    = "0.115 0.115 1",
-      color    = "clear",
-      text     = ""
-    }
-  })
-
-  -- Results panel
-  table.insert(xml, {
-    tag = "Panel",
-    attributes = {
-      interactable  = "false",
-      id            = "results",
-      width         = "170", height = "160",
-      position      = "430 0 -22",
-      rotation      = "0 0 180",
-      onMouseEnter  = "hoverResultsEnter",
-      onMouseExit   = "hoverResultsExit"
-    },
-    children = {
-      {
-        tag = "Panel",
-        attributes = { id = "results_default", active = "true" },
-        children = {
-          {
-            tag = "Text",
-            attributes = {
-              id       = "success",
-              width    = "640", height = "640",
-              position = "0 -25 0",
-              scale    = "0.35 0.35 1",
-              color    = "#a29c90",
-              font     = "Fonts/AdonisC",
-              fontSize = "1000",
-              text     = "?"
-            }
-          }
-        }
-      },
-      {
-        tag = "Panel",
-        attributes = { id = "results_hover", active = "false" },
-        children = {
-          { tag = "Text", attributes = { id = "ROLLER_success_text",      text = i18n.getStrById("ROLLER_success_text"),      fontSize = "30", color = "#a29c90", position = "-40 5 0"   } },
-          { tag = "Text", attributes = { id = "success_additional",        text = "?",                                           fontSize = "90", color = "#a29c90", position = "35 20 0"   } },
-          { tag = "Text", attributes = { id = "ROLLER_reroll_total_text", text = i18n.getStrById("ROLLER_reroll_total_text"), fontSize = "16", color = "#a29c90", position = "-40 -30 0" } },
-          { tag = "Text", attributes = { id = "reroll",                    text = "0",                                           fontSize = "22", color = "#a29c90", position = "40 -30 0"  } },
-          { tag = "Text", attributes = { id = "ROLLER_rerolled_dice_text",text = i18n.getStrById("ROLLER_rerolled_dice_text"),fontSize = "16", color = "#a29c90", position = "-40 -60 0" } },
-          { tag = "Text", attributes = { id = "rerolled_dices",            text = "0",                                           fontSize = "22", color = "#a29c90", position = "40 -60 0"  } },
-        }
-      }
-    }
-  })
-
-  -- 12 dice buttons + reroll icons
+  local diceButtons = {}
   for i = 1, 12 do
     local xPos = 306 - (i - 1) * 75
     local pos = xPos .. " 42 -22"
-
-    table.insert(xml, {
-      tag = "Button",
-      attributes = {
-        id        = "dice_" .. i,
-        onClick   = "dice_btn",
-        width     = "640", height    = "640",
-        position  = pos,
-        rotation  = "0 0 180",
-        scale     = "0.115 0.115 1",
-        textColor = "#4d4a44",
-        color     = "clear",
-        font      = "Fonts/AdonisC",
-        fontSize  = "800",
-        padding   = "0 0 80 0",
-        text      = tostring(i)
-      }
-    })
-
-    table.insert(xml, {
-      tag = "Image",
-      attributes = {
-        id       = "icon_dice_" .. i,
-        active   = "false",
-        image    = "reeoll_icon",
-        width    = "500", height = "500",
-        position = pos,
-        rotation = "0 0 180",
-        scale    = "0.115 0.115 1"
-      }
-    })
+    diceButtons[#diceButtons + 1] = string.format([[
+      <Button id="dice_%d" onClick="dice_btn" width="640" height="640"
+        position="%s" rotation="0 0 180" scale="0.115 0.115 1"
+        textColor="#4d4a44" color="clear" font="Fonts/AdonisC"
+        fontSize="800" padding="0 0 80 0">%d</Button>
+      <Image id="icon_dice_%d" active="false" image="reeoll_icon"
+        width="500" height="500" position="%s" rotation="0 0 180" scale="0.115 0.115 1"/>
+    ]], i, pos, i, i, pos)
   end
 
-  self.UI.setXmlTable(xml)
+  local xml = string.format([[
+    <Button id="help" onClick="toggleHelp" width="400" height="400"
+      position="540 -52 -22" rotation="0 0 180" scale="0.115 0.115 1"
+      color="clear" text="" font="Fonts/AdonisC"/>
+
+    <Panel id="help_panel" active="false" width="700" height="340"
+      position="0 -300 -30" rotation="0 0 180" allowDragging="true" returnToOriginalPositionWhenReleased="false">
+      <Image image="help_bg" preserveAspect="true" width="700"/>
+      <VerticalLayout width="650" height="280">
+        <Panel padding="0 0 0 20">
+          <Text id="ROLLER_help_title_text" fontSize="45" font="fonts/AdonisC" color="#ffffff">%s</Text>
+        </Panel>
+        <Text id="ROLLER_help_lmb_text" fontSize="25" font="fonts/AdonisC" color="#ffffff">%s</Text>
+        <Text id="ROLLER_help_rmb_text" fontSize="25" font="fonts/AdonisC" color="#ffffff">%s</Text>
+      </VerticalLayout>
+      <Button id="close_help" onClick="toggleHelp" width="160" height="160"
+        position="310 120 0" fontSize="50" font="fonts/AdonisC"
+        textColor="#ffffff" color="clear">X</Button>
+    </Panel>
+
+    <Panel interactable="false" id="results" width="170" height="160"
+      position="430 0 -22" rotation="0 0 180"
+      onMouseEnter="hoverResultsEnter" onMouseExit="hoverResultsExit">
+      <Panel id="results_default" active="true">
+        <Text id="success" width="640" height="640" position="0 -25 0"
+          scale="0.35 0.35 1" color="#a29c90" font="Fonts/AdonisC" fontSize="1000">?</Text>
+      </Panel>
+      <Panel id="results_hover" active="false">
+        <Text id="ROLLER_success_text" fontSize="30" color="#a29c90" position="-40 5 0">%s</Text>
+        <Text id="success_additional" fontSize="90" color="#a29c90" position="35 20 0">?</Text>
+        <Text id="ROLLER_reroll_total_text" fontSize="16" color="#a29c90" position="-40 -30 0">%s</Text>
+        <Text id="reroll" fontSize="22" color="#a29c90" position="40 -30 0">0</Text>
+        <Text id="ROLLER_rerolled_dice_text" fontSize="16" color="#a29c90" position="-40 -60 0">%s</Text>
+        <Text id="rerolled_dices" fontSize="22" color="#a29c90" position="40 -60 0">0</Text>
+      </Panel>
+    </Panel>
+
+    %s
+  ]],
+    i18n.getStrById("ROLLER_help_title_text"),
+    lmbText,
+    rmbText,
+    i18n.getStrById("ROLLER_success_text"),
+    i18n.getStrById("ROLLER_reroll_total_text"),
+    i18n.getStrById("ROLLER_rerolled_dice_text"),
+    table.concat(diceButtons)
+  )
+
+  self.UI.setXml(xml)
+end
+
+function toggleHelp()
+  local active = self.UI.getAttribute("help_panel", "active")
+  self.UI.setAttribute("help_panel", "active", active == "true" and "false" or "true")
 end
 
 function hoverResultsEnter(_, _, _)

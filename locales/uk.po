@@ -764,8 +764,19 @@ msgid "ROLLER_help_title_text"
 msgstr "Пояснення роботи роллера"
 
 msgid "ROLLER_help_lmb_text"
-msgstr "Для кидка певної кількості кубів натисніть на відповідне число ЛКМ."
+msgstr "Для %s певної кількості кубів натисніть на відповідне число %s."
+
+msgid "ROLLER_help_lmb_word"
+msgstr "кидка"
+
+msgid "ROLLER_help_lmb_key"
+msgstr "ЛКМ"
 
 msgid "ROLLER_help_rmb_text"
-msgstr ""
-"Для перекиду певних кубів натисніть на відповідні числа ПКМ і зачекайте."
+msgstr "Для %s певних кубів натисніть на відповідні числа %s і зачекайте."
+
+msgid "ROLLER_help_rmb_word"
+msgstr "перекиду"
+
+msgid "ROLLER_help_rmb_key"
+msgstr "ПКМ"
