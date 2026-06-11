@@ -5,7 +5,11 @@
       "label": "Arkham Horror: Build",
       "type": "shell",
       "windows": {
-        "command": "py \"${workspaceFolder}\\locales\\_sync_po_files.py\" && py \"${workspaceFolder}\\locales\\_po_to_lua_converter.py\" && go run main.go --moddir=\"${workspaceFolder}\" --modfile=\"${env:USERPROFILE}\\Documents\\My Games\\Tabletop Simulator\\Saves\\ArkhamHorror.json\""
+        "command": "cmd",
+        "args": [
+          "/c",
+          "py \"${workspaceFolder}\\locales\\_sync_po_files.py\" && py \"${workspaceFolder}\\locales\\_po_to_lua_converter.py\" && go run main.go --moddir=\"${workspaceFolder}\" --modfile=\"${env:USERPROFILE}\\Documents\\My Games\\Tabletop Simulator\\Saves\\ArkhamHorror.json\""
+        ]
       },
       "osx": {
         "command": "\"${workspaceFolder}/.venv/bin/python\" \"${workspaceFolder}/locales/_sync_po_files.py\" && \"${workspaceFolder}/.venv/bin/python\" \"${workspaceFolder}/locales/_po_to_lua_converter.py\" && go run main.go -moddir \"${workspaceFolder}\" -modfile \"${userHome}/Library/Tabletop Simulator/Saves/ArkhamHorror.json\""
