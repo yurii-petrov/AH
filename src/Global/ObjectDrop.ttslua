@@ -627,6 +627,45 @@ function context59ReturnBridge(obj, player_color)
   returnBridgeToBox()
 end
 
+-- Shared helper: spawn an Item Mat at targetPos, attach object to it, call setData.
+-- targetPos is a world position Vector. Card y = targetPos.y + 0.1.
+-- Returns the spawned itemMat, or nil on failure.
+function attachItemToItemsMat(object, objectData, targetPos, bagId)
+  local itemMatBag = getObjectFromGUID(bagId)
+  if not itemMatBag then
+    return nil
+  end
+
+  local itemMat = itemMatBag.takeObject({
+    index    = 0,
+    position = targetPos,
+    rotation = {0, 180, 0},
+    smooth   = false
+  })
+
+  if not itemMat then
+    return nil
+  end
+
+  object.setLock(true)
+  object.setRotation({0, 180, 0})
+  object.setPosition(itemMat.positionToWorld({0, 0, -0.154}):setAt("y", targetPos.y + 0.1))
+
+  itemMat.addAttachment(object)
+  itemMat.memo = JSON.encode({type = "Item Mat"})
+
+  runAfterRest(itemMat, function(itemMat)
+    Wait.time(function()
+      itemMat.call("setData", objectData)
+      Wait.time(function()
+        itemMat.call("setData", objectData)
+      end, 0.2)
+    end, 0.2)
+  end)
+
+  return itemMat
+end
+
 function onItemDrop(colorName, object, objectData)
 
   local function attachItemToMat(object, objectData, bagId)
@@ -645,37 +684,9 @@ function onItemDrop(colorName, object, objectData)
       return
     end
 
-    local itemMatBag = getObjectFromGUID(bagId)
-
-    if not itemMatBag then
-      return
-    end
-
     local itemMatP = itemsMat.positionToWorld({0.540, 0.200, -0.034})
-    local itemMat = itemMatBag.takeObject({
-      index = 0,
-      position = object.getPosition():setAt("y", 2.21):setAt("z", itemMatP.z),
-      rotation = {0, 180, 0},
-      smooth = false
-    })
-
-    object.setLock(true)
-    object.setRotation({0, 180, 0})
-    object.setPosition(itemMat.positionToWorld({0, 0, -0.154}):setAt("y", 2.31))
-
-    itemMat.addAttachment(object)
-    itemMat.memo = JSON.encode({
-      type = "Item Mat"
-    })
-
-    runAfterRest(itemMat, function(itemMat)
-      Wait.time(function()
-        itemMat.call("setData", objectData)
-        Wait.time(function()
-          itemMat.call("setData", objectData)
-        end, 0.2)
-      end, 0.2)
-    end)
+    local targetPos = object.getPosition():setAt("y", 2.21):setAt("z", itemMatP.z)
+    attachItemToItemsMat(object, objectData, targetPos, bagId)
   end
 
   if not objectData.hp and not objectData.sp then

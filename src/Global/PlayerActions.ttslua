@@ -679,6 +679,91 @@ function getRollerType(player)
   return 1
 end
 
+local ITEM_SNAP_TYPES = { Card = true, Tile = true }
+
+local function findFreeSnapOnItemsMat(itemsMat)
+  local snps = itemsMat.getSnapPoints()
+  if not snps or #snps == 0 then
+    log("[placeItem] itemsMat " .. itemsMat.guid .. " has no snap points")
+    return nil
+  end
+  for i, snp in ipairs(snps) do
+    local worldPos = itemsMat.positionToWorld(snp.position)
+    local hits = Physics.cast({
+      origin       = worldPos,
+      direction    = {0, 1, 0},
+      type         = 2,
+      size         = {0.3, 0.3, 0.3},
+      max_distance = 1,
+    })
+    local occupant = nil
+    for _, v in ipairs(hits) do
+      local o = v.hit_object
+      if o ~= itemsMat and ITEM_SNAP_TYPES[o.type] then
+        occupant = o
+        break
+      end
+    end
+    if not occupant then
+      log("[placeItem] snap " .. i .. " is free on " .. itemsMat.guid)
+      return worldPos
+    else
+      -- log("[placeItem] snap " .. i .. " occupied by guid=" .. occupant.guid .. " type=" .. occupant.type .. " memo=" .. tostring(occupant.memo):sub(1, 60))
+    end
+  end
+  -- log("[placeItem] all " .. #snps .. " snaps occupied on " .. itemsMat.guid)
+  return nil
+end
+
+local function placeItemOnPlayerMat(item, playerColor, retried)
+  local itemData = parseJson(item.memo)
+  if not itemData then
+    log("[placeItem] item " .. item.guid .. " has no parseable memo")
+    return false
+  end
+
+  local objs = getObjectsInPlayerZone(playerColor)
+  log("[placeItem] zone size=" .. #objs .. " color=" .. playerColor)
+  local lastItemsMat = nil
+  for _, o in ipairs(objs) do
+    if o.memo == "Items Mat" then
+      lastItemsMat = o
+      local freePos = findFreeSnapOnItemsMat(o)
+      if freePos then
+        local targetPos = freePos:setAt("y", freePos.y + 0.1)
+        local itemMat = attachItemToItemsMat(item, itemData, targetPos, itemMatBagId)
+        if itemMat then
+          log("[placeItem] placed item " .. item.guid .. " via itemMat " .. itemMat.guid .. " on " .. o.guid)
+          return true
+        end
+        log("[placeItem] attachItemToItemsMat failed for snap on " .. o.guid)
+        return false
+      end
+    end
+  end
+
+  if not lastItemsMat then
+    log("[placeItem] no Items Mat found in zone for " .. playerColor)
+    return false
+  end
+
+  if retried then
+    log("[placeItem] all rows full even after addRow for " .. playerColor)
+    return false
+  end
+
+  if lastItemsMat.call("addRow", {}) then
+    log("[placeItem] added new row on " .. lastItemsMat.guid .. ", retrying placement")
+    Wait.time(function()
+      placeItemOnPlayerMat(item, playerColor, true)
+    end, 0.5)
+    return true
+  end
+
+  log("[placeItem] addRow returned false (maxRows reached) for " .. playerColor)
+  return false
+end
+
 function onClickMarket(d)
   if not d.price then
     return
@@ -735,7 +820,10 @@ function onClickMarket(d)
   end
 
   printToAll(string.format(i18n.getStrById("LOG_spends_money"), d.color, d.price), "Green")
-  item.setPositionSmooth(hand.getPosition():setAt("y", 3))
+  if not placeItemOnPlayerMat(item, d.color) then
+    log("[onClickMarket] fallback to hand for " .. d.color)
+    item.setPositionSmooth(hand.getPosition():setAt("y", 3))
+  end
 
   if d.id > #shopData.displaypos then
     return

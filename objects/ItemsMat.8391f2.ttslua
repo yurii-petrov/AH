@@ -28,9 +28,12 @@ function onSave()
 end
 
 function row(player, alt, id)
+  print("index: "..itemData.index)
 	if (alt == "-1" or alt == -1) and itemData.index < itemData.maxRows then
 		spawnObj(itemData.index+1)
 		itemData.isActive = false
+		self.UI.setAttribute("rowBtn", "active", itemData.isActive)
+		return true
 	elseif (alt == "-2" or alt == -2) and itemData.index > 1 then
 		local foundItemsMat = nil
 		local objs = upCast(self, 0.2, nil, 0.1, "top")
@@ -38,13 +41,19 @@ function row(player, alt, id)
 			foundItemsMat = obj
 		end
 
-		if not foundItemsMat then return end
+		if not foundItemsMat then return false end
 		itemData.isActive = false
 		foundItemsMat.call("setIndex", itemData.index-1)
 		self.destruct()
 	end
 
 	self.UI.setAttribute("rowBtn", "active", itemData.isActive)
+	return false
+end
+
+function addRow(params)
+  print("addRow called")
+	return row(nil, -1, nil)
 end
 
 function spawnObj(value)
@@ -67,6 +76,7 @@ function setIndex(value)
 	itemData.isActive = itemData.index <= itemData.maxRows and itemData.index >= 1
 	self.UI.setAttribute("rowBtn", "active", itemData.isActive)
 end
+
 
 function upCast(obj, dist, offset, multi, add)
   if obj == nil then
