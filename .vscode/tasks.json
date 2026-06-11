@@ -3,25 +3,69 @@
   "tasks": [
     {
       "label": "Arkham Horror: Build",
-      "type": "shell",
-      "windows": {
-        "command": "cmd",
-        "args": [
-          "/c",
-          "py \"${workspaceFolder}\\locales\\_sync_po_files.py\" && py \"${workspaceFolder}\\locales\\_po_to_lua_converter.py\" && go run main.go --moddir=\"${workspaceFolder}\" --modfile=\"${env:USERPROFILE}\\Documents\\My Games\\Tabletop Simulator\\Saves\\ArkhamHorror.json\""
-        ]
-      },
-      "osx": {
-        "command": "\"${workspaceFolder}/.venv/bin/python\" \"${workspaceFolder}/locales/_sync_po_files.py\" && \"${workspaceFolder}/.venv/bin/python\" \"${workspaceFolder}/locales/_po_to_lua_converter.py\" && go run main.go -moddir \"${workspaceFolder}\" -modfile \"${userHome}/Library/Tabletop Simulator/Saves/ArkhamHorror.json\""
-      },
-      "options": {
-        "cwd": "${workspaceFolder}${pathSeparator}..${pathSeparator}TTSModManager"
-      },
+      "dependsOn": ["_sync_po", "_convert_po", "_go_build"],
+      "dependsOrder": "sequence",
       "problemMatcher": [],
       "group": {
         "kind": "build",
         "isDefault": true
       }
+    },
+
+    {
+      "label": "_sync_po",
+      "type": "shell",
+      "windows": {
+        "command": "py",
+        "args": ["${workspaceFolder}\\locales\\_sync_po_files.py"]
+      },
+      "osx": {
+        "command": "${workspaceFolder}/.venv/bin/python",
+        "args": ["${workspaceFolder}/locales/_sync_po_files.py"]
+      },
+      "problemMatcher": []
+    },
+
+    {
+      "label": "_convert_po",
+      "type": "shell",
+      "windows": {
+        "command": "py",
+        "args": ["${workspaceFolder}\\locales\\_po_to_lua_converter.py"]
+      },
+      "osx": {
+        "command": "${workspaceFolder}/.venv/bin/python",
+        "args": ["${workspaceFolder}/locales/_po_to_lua_converter.py"]
+      },
+      "problemMatcher": []
+    },
+
+    {
+      "label": "_go_build",
+      "type": "shell",
+      "command": "go",
+      "windows": {
+        "args": [
+          "run",
+          "main.go",
+          "--moddir=${workspaceFolder}",
+          "--modfile=${env:USERPROFILE}\\Documents\\My Games\\Tabletop Simulator\\Saves\\ArkhamHorror.json"
+        ]
+      },
+      "osx": {
+        "args": [
+          "run",
+          "main.go",
+          "-moddir",
+          "${workspaceFolder}",
+          "-modfile",
+          "${userHome}/Library/Tabletop Simulator/Saves/ArkhamHorror.json"
+        ]
+      },
+      "options": {
+        "cwd": "${workspaceFolder}${pathSeparator}..${pathSeparator}TTSModManager"
+      },
+      "problemMatcher": []
     },
 
     {
@@ -57,50 +101,34 @@
     {
       "label": "Arkham Horror: Sync Lua → JSON",
       "type": "shell",
-
       "windows": {
         "command": "py",
-        "args": [
-          "${workspaceFolder}\\src\\ConvertMemo\\sync_lua_to_json.py"
-        ]
+        "args": ["${workspaceFolder}\\src\\ConvertMemo\\sync_lua_to_json.py"]
       },
-
       "osx": {
         "command": "${workspaceFolder}/.venv/bin/python",
-        "args": [
-          "${workspaceFolder}/src/ConvertMemo/sync_lua_to_json.py"
-        ]
+        "args": ["${workspaceFolder}/src/ConvertMemo/sync_lua_to_json.py"]
       },
-
       "options": {
         "cwd": "${workspaceFolder}/src/ConvertMemo"
       },
-
       "problemMatcher": []
     },
 
     {
       "label": "Arkham Horror: Parse Memo",
       "type": "shell",
-
       "windows": {
         "command": "py",
-        "args": [
-          "${workspaceFolder}\\src\\ConvertMemo\\parse.py"
-        ]
+        "args": ["${workspaceFolder}\\src\\ConvertMemo\\parse.py"]
       },
-
       "osx": {
         "command": "${workspaceFolder}/.venv/bin/python",
-        "args": [
-          "${workspaceFolder}/src/ConvertMemo/parse.py"
-        ]
+        "args": ["${workspaceFolder}/src/ConvertMemo/parse.py"]
       },
-
       "options": {
         "cwd": "${workspaceFolder}/src/ConvertMemo"
       },
-
       "problemMatcher": []
     }
   ]
