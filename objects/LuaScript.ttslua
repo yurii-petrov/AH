@@ -383,5 +383,3 @@ end
 function mythHudBtn(player)
   onClickDrawMythos(nil, player.color)
 end
-
-

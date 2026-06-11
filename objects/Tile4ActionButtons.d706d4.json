@@ -33,7 +33,7 @@
   "IgnoreFoW": false,
   "LayoutGroupSortIndex": 0,
   "Locked": true,
-  "LuaScriptState": "",
+  "LuaScriptState": "{\"clue\":true,\"doom\":true,\"gate\":true,\"monster\":true,\"terror\":false}",
   "LuaScript_path": "Tile4ActionButtons.d706d4.ttslua",
   "MeasureMovement": false,
   "Name": "Custom_Tile",
@@ -56,5 +56,5 @@
     "scaleZ": 1.59
   },
   "Value": 0,
-  "XmlUI_path": "Tile4ActionButtons.d706d4.xml"
+  "XmlUI": ""
 }

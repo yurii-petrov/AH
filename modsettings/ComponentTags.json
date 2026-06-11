@@ -179,6 +179,14 @@
     {
       "displayed": "i18n_XML",
       "normalized": "i18n_xml"
+    },
+    {
+      "displayed": "codex_mat",
+      "normalized": "codex_mat"
+    },
+    {
+      "displayed": "codex deck",
+      "normalized": "codex_deck"
     }
   ]
 }
