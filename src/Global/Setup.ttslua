@@ -1317,18 +1317,19 @@ function prepareScenarioEventDeck(eventDeck, decks, time)
       z = deckPos.z
     }
 
-    local c1 = targetDeck.takeObject()
-    local c2 = targetDeck.takeObject()
+    local c1 = targetDeck.takeObject({index = 0, smooth = false, rotation = {0, 180, 180}})
+    local c2 = targetDeck.takeObject({index = 0, smooth = false, rotation = {0, 180, 180}})
+    eventCard.setRotation({0, 180, 180})
     local newDeck = eventCard.putObject(c1)
     newDeck.putObject(c2)
     newDeck.shuffle()
 
-    targetDeck.setRotation({0, 180, 0})
-    targetDeck.putObject(newDeck)
-    targetDeck.setRotation({0, 180, 180})
-    runAfterRest(targetDeck, function(targetDeck)
-      done()
-    end)
+    Wait.time(function()
+      targetDeck.putObject(newDeck)
+      runAfterRest(targetDeck, function(targetDeck)
+        done()
+      end)
+    end, 0.3)
   end
 
   local function processCard(index, cards)
