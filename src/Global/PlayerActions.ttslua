@@ -626,97 +626,27 @@ function onItemMatDestruct(o)
 end
 
 function getObjectsInPlayerZone(playerColor)
-  if not playerColor then
-    return {}
-  end
-
-  local locationMat = getObjectFromGUID(locationMatId)
-  if not locationMat then
-    return {}
-  end
-
-  local hands = getHandsByPlayerColor(playerColor)
-
-  if #hands > 1 then
-    return {}
-  end
-
-  local hand = hands[1]
-
-  if not hand then
-    return {}
-  end
-
-  local lP = locationMat.getPosition()
-  local lB = locationMat.getBoundsNormalized()
-  local hP = hand.getPosition()
-  local hB = hand.getBoundsNormalized()
-  local sizeZ = 40
-
-  local hits = Physics.cast({
-    origin = {hP.x, 2.20, (lP.z - lB.size.z / 2) - sizeZ / 2},
-    direction = {0, 1, 0},
-    type = 3,
-    size = {hB.size.x + 2, 0.2, sizeZ},
-    max_distance = 0,
-    debug = isTestMode
-  })
+  local hand, locationMat = getPlayerHand(playerColor)
+  if not hand then return {} end
 
   local hitObjects = {}
-  for i, v in pairs(hits) do
+  for _, v in pairs(castPlayerZone(hand, locationMat)) do
     if v.hit_object ~= locationMat and v.hit_object ~= hand then
       table.insert(hitObjects, v.hit_object)
     end
   end
-
   return hitObjects
 end
 
 function getRollerType(player)
-  if not player.color then
-    return
-  end
+  local hand, locationMat = getPlayerHand(player.color)
+  if not hand then return end
 
-  local locationMat = getObjectFromGUID(locationMatId)
-  if not locationMat then
-    return
-  end
-
-  local hands = getHandsByPlayerColor(player.color)
-
-  if #hands > 1 then
-    return
-  end
-
-  local hand = hands[1]
-
-  if not hand then
-    return
-  end
-
-  local lP = locationMat.getPosition()
-  local lB = locationMat.getBoundsNormalized()
-  local hP = hand.getPosition()
-  local hB = hand.getBoundsNormalized()
-  local sizeZ = 40
-
-  local hits = Physics.cast({
-    origin = {hP.x, 2.20, (lP.z - lB.size.z / 2) - sizeZ / 2},
-    direction = {0, 1, 0},
-    type = 3,
-    size = {hB.size.x + 2, 0.2, sizeZ},
-    max_distance = 0,
-    debug = isTestMode
-  })
-
-  local hitObjects = {}
-  for i, v in pairs(hits) do
+  for _, v in pairs(castPlayerZone(hand, locationMat)) do
     if v.hit_object ~= locationMat and v.hit_object ~= hand then
       local oData = parseJson(v.hit_object.memo)
-      if oData then
-        if oData.type == "blessed cursed" then
-          return v.hit_object.is_face_down and 3 or 2
-        end
+      if oData and oData.type == "blessed cursed" then
+        return v.hit_object.is_face_down and 3 or 2
       end
     end
   end

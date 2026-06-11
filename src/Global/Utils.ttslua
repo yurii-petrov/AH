@@ -288,6 +288,86 @@ function getHandsByPlayerColor(playerColor)
   return out
 end
 
+-- Returns the single hand trigger and locationMat for a player, or nil, nil on failure.
+function getPlayerHand(playerColor)
+  if not playerColor then return nil, nil end
+  local locationMat = getObjectFromGUID(locationMatId)
+  if not locationMat then return nil, nil end
+  local hands = getHandsByPlayerColor(playerColor)
+  if #hands ~= 1 then return nil, nil end
+  return hands[1], locationMat
+end
+
+-- Physics.cast covering a player's zone (between their hand and the location mat).
+function castPlayerZone(hand, locationMat)
+  local lP = locationMat.getPosition()
+  local lB = locationMat.getBoundsNormalized()
+  local hP = hand.getPosition()
+  local hB = hand.getBoundsNormalized()
+  return Physics.cast({
+    origin    = {hP.x, 2.20, (lP.z - lB.size.z / 2) - 20},
+    direction = {0, 1, 0},
+    type      = 3,
+    size      = {hB.size.x + 2, 0.2, 40},
+    max_distance = 0,
+    debug     = isTestMode,
+  })
+end
+
+-- Finds the bridge on the location mat and returns it to the box.
+-- Prints LOG_bridge_returned and returns false when the bridge is absent.
+function returnBridgeToBox()
+  local locationMat = getObjectFromGUID(locationMatId)
+  if not locationMat then return false end
+
+  local objs = upCast(locationMat, 1, nil, 1)
+  if not objs then return false end
+
+  for _, o in ipairs(objs) do
+    local data = parseJson(o.memo)
+    if data and data.name == "Bridge2" and data.type == "Street" then
+      o.setLock(false)
+      o.interactable    = true
+      o.drag_selectable  = true
+      o.gizmo_selectable = true
+      o.highlightOn("Red", 1.5)
+      Wait.time(function()
+        local box = getObjectFromGUID(boxId)
+        if box then box.putObject(o) end
+      end, 1.5)
+      return true
+    end
+  end
+
+  print(i18n.getStrById("LOG_bridge_returned"))
+  return false
+end
+
+-- Attaches `object` to `mat` face-down with its mirrored clone on the back.
+-- Returns the clone object for further configuration by the caller.
+function attachCardToMat(object, mat)
+  object.interactable = false
+  mat.setLock(true)
+  object.setLock(true)
+  mat.setRotation({0, 180, 180})
+  local height   = mat.getBounds().size.y
+  local matPos   = mat.getPosition()
+  matPos.y       = matPos.y + height
+  mat.setPosition(matPos)
+  object.setRotation({0, 180, 180})
+  local frontPos = mat.positionToWorld({0.16, 0, 0})
+  object.setPosition(frontPos:setAt("y", frontPos.y - height + 0.12))
+  local oData             = object.getData()
+  oData.Transform.rotZ    = object.is_face_down and 180 or 0
+  oData.Transform.posY    = oData.Transform.posY + 0.06
+  mat.addAttachment(object)
+  local backData          = object.getData()
+  backData.Transform.posX = mat.positionToWorld({-0.16, 0, 0}).x
+  backData.Transform.posY = frontPos.y - height - 0.04
+  local clone = spawnObjectData({data = backData})
+  return clone
+end
+
 function waitAll(tasks, onAllDone)
   local remaining = #tasks
   if remaining == 0 then

@@ -16,15 +16,13 @@ end
 -- │                SELECT LANGUAGE               │
 -- ╰──────────────────────────────────────────────╯
 
-function clickOnEN()
-  gameData.language = "en"
+local function selectLanguage(lang, bagMemo)
+  gameData.language = lang
   updateXMLs()
   Wait.time(function()
-    -- TODO: remove
     translationService.setCurrentLanguage(gameData.language)
-
     for _, o in ipairs(getObjects()) do
-      if o.type == "Bag" and o.memo and o.memo == "Eng bag" then
+      if o.type == "Bag" and o.memo == bagMemo then
         prepareLanguageBag(o)
         return
       end
@@ -32,21 +30,8 @@ function clickOnEN()
   end, 3)
 end
 
-function clickOnUK()
-  gameData.language = "uk"
-  updateXMLs()
-  Wait.time(function()
-    -- TODO: remove
-    translationService.setCurrentLanguage(gameData.language)
-
-    for _, o in ipairs(getObjects()) do
-      if o.type == "Bag" and o.memo and o.memo == "Uk bag" then
-        prepareLanguageBag(o)
-        return
-      end
-    end
-  end, 3)
-end
+function clickOnEN() selectLanguage("en", "Eng bag") end
+function clickOnUK() selectLanguage("uk", "Uk bag") end
 
 -- ╭──────────────────────────────────────────────╮
 -- │                UPDATE XMLS                   │
@@ -146,6 +131,22 @@ function tableLength(t)
   return count
 end
 
+local FACE_UP_MEMO_TYPES = {
+  ["dark pact"]      = true,
+  ["blessed cursed"] = true,
+  ["archive"]        = true,
+  ["driven fatigued"]= true,
+  ["tainted"]        = true,
+  ["wanted"]         = true,
+}
+
+local function shouldSetFaceUp(obj, memoType)
+  return obj.type == "Generic"
+    or obj.type == "Tile"
+    or obj.type == "Card"
+    or (memoType and FACE_UP_MEMO_TYPES[memoType])
+end
+
 function prepareLanguageBag(bag)
   if not bag then
     return
@@ -241,18 +242,7 @@ function prepareLanguageBag(bag)
             --   o2.getGUID()
             -- ))
 
-            if o2.type == "Generic"
-              or o2.type == "Tile"
-              or o2.type == "Card"
-              or (memo.type and (
-                memo.type == "dark pact"
-                or memo.type == "blessed cursed"
-                or memo.type == "archive"
-                or memo.type == "driven fatigued"
-                or memo.type == "tainted"
-                or memo.type == "wanted"
-              ))
-            then
+            if shouldSetFaceUp(o2, memo.type) then
               o2.setRotation({0, 180, 0})
             end
 
@@ -260,38 +250,13 @@ function prepareLanguageBag(bag)
 
             local remaining = tableLength(pendingTakes)
 
-            -- log(string.format(
-            --   "[COMPLETED] expectedGuid=%s remaining=%s",
-            --   obj.guid,
-            --   remaining
-            -- ))
-
             if remaining == 0 then
               gameData.areAllComponentsTaken = true
-              -- log("[SUCCESS] All components taken")
             end
           end,
 
           function(o2)
-            -- log(string.format(
-            --   "[TIMEOUT] runAfterRest failed for guid=%s type=%s pos=%s",
-            --   obj.guid,
-            --   o2 and o2.type or "nil",
-            --   tostring(o2 and o2.getPosition())
-            -- ))
-
-             if o2.type == "Generic"
-              or o2.type == "Tile"
-              or o2.type == "Card"
-              or (memo.type and (
-                memo.type == "dark pact"
-                or memo.type == "blessed cursed"
-                or memo.type == "archive"
-                or memo.type == "driven fatigued"
-                or memo.type == "tainted"
-                or memo.type == "wanted"
-              ))
-            then
+            if shouldSetFaceUp(o2, memo.type) then
               o2.setRotation({0, 180, 0})
             end
 
