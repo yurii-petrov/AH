@@ -250,6 +250,7 @@ function prepareLanguageBag(bag)
                 or memo.type == "archive"
                 or memo.type == "driven fatigued"
                 or memo.type == "tainted"
+                or memo.type == "wanted"
               ))
             then
               o2.setRotation({0, 180, 0})
@@ -288,6 +289,7 @@ function prepareLanguageBag(bag)
                 or memo.type == "archive"
                 or memo.type == "driven fatigued"
                 or memo.type == "tainted"
+                or memo.type == "wanted"
               ))
             then
               o2.setRotation({0, 180, 0})
