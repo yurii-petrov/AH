@@ -669,3 +669,6 @@ msgstr "Winifred Habbamock"
 
 msgid "Agatha_Crane"
 msgstr "Agatha Crane"
+
+msgid "Clue"
+msgstr "Clue"

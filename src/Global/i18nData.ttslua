@@ -46,6 +46,10 @@ I18N_DATA = {
     ["en"] = "Charlie Kane",
     ["uk"] = "Чарлі Кейн",
   },
+  ["Clue"] = {
+    ["en"] = "Clue",
+    ["uk"] = "Підказка",
+  },
   ["Curiositie_Shoppe"] = {
     ["en"] = "Curiositie Shoppe",
     ["uk"] = "Крамничка Диковинок",

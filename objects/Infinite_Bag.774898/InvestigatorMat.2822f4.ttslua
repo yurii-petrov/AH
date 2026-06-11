@@ -1,5 +1,5 @@
 serpent = require("util/serpent")
-local isTestMode = true 
+local isTestMode = false 
 
 local data = {
       hp = 0,
@@ -311,13 +311,24 @@ local sanity = getLifeButton()
   remnant.attributes.position="-80 78 -21"
   table.insert(skills, remnant)
 
-  local clue = getVerticalButton()
-  clue.attributes.id="clickClue"
-  clue.attributes.onClick = "clickClue"
-  clue.attributes.text= data.clue
-  clue.attributes.padding = "0 0 0 70"
-  clue.attributes.position="-112.5 78 -21"
-  table.insert(skills, clue)
+  local clueText = {
+    tag = "Text",
+    attributes = {
+      id        = "clueText",
+      text      = data.clue,
+      color     = data.clue > 0 and "#fff5e2" or "#a29c90",
+      font      = "Fonts/AdonisC",
+      fontSize  = "120",
+      fontStyle = "Bold",
+      width     = "250",
+      height    = "450",
+      scale     = "0.1 0.1 1",
+      rotation  = "0 0 180",
+      alignment = "LowerCenter",
+      position  = "-112.5 70 -21"
+    }
+  }
+  table.insert(skills, clueText)
 
   local mechanicButtons = getMechanicButtons()
   self.UI.setXmlTable(mechanicButtons)
@@ -404,8 +415,6 @@ function setMemo(objectMemo)
     self.UI.setAttribute("clickRemnant", "textColor", data.remnant > 0 and "#fff5e2" or "#a29c90")
 
     data.clue = 0
-    self.UI.setAttribute("clickClue", "text", data.clue)
-    self.UI.setAttribute("clickClue", "textColor", data.clue > 0 and "#fff5e2" or "#a29c90")
 
     self.UI.setAttribute("focusLoreText", "text","+"..data.focus.lore)
     self.UI.setAttribute("focusLoreText", "textColor", "#382c52")
@@ -506,17 +515,6 @@ function clickRemnant(player, alt_click)
     self.UI.setAttribute("clickRemnant", "textColor", data.remnant > 0 and "#fff5e2" or "#a29c90")
 end
 
-function clickClue(player, alt_click)
-  if alt_click ~= "-1" and data.clue > 0 then
-      Global.call("onPlayerClickRemoveClue", self)
-    end
-
-    data.clue = alt_click == "-1" and data.clue+1 or (data.clue>0 and data.clue-1 or data.clue)
-    
-    self.UI.setAttribute("clickClue", "text", data.clue)
-    self.UI.setAttribute("clickClue", "textColor", data.clue > 0 and "#fff5e2" or "#a29c90")
-end
-
 function clickDeath(player, alt_click)
   Global.call("onPlayerClickDeath", {mat = self, player = player})
 end
@@ -526,7 +524,39 @@ function clickBio(player, alt_click)
 end
 
 function addClue()
-  clickClue(nil, "-1")
+  data.clue = data.clue + 1
+  self.UI.setAttribute("clueText", "text", data.clue)
+  self.UI.setAttribute("clueText", "color", "#fff5e2")
+end
+
+function removeClue()
+  data.clue = math.max(0, data.clue - 1)
+  self.UI.setAttribute("clueText", "text", data.clue)
+  self.UI.setAttribute("clueText", "color", data.clue > 0 and "#fff5e2" or "#a29c90")
+end
+
+function isMatNearContainer(container)
+  local nearby = downCast(container, 2, 0, 2)
+  for _, obj in ipairs(nearby) do
+    if obj == self then return true end
+  end
+  return false
+end
+
+function onObjectEnterContainer(container, object)
+  local memo = parseJson(container.memo)
+  if not memo or memo.type ~= "player clue bag" then return end
+  if isMatNearContainer(container) then
+    addClue()
+  end
+end
+
+function onObjectLeaveContainer(container, object)
+  local memo = parseJson(container.memo)
+  if not memo or memo.type ~= "player clue bag" then return end
+  if isMatNearContainer(container) then
+    removeClue()
+  end
 end
 
 function updateMoney(value)

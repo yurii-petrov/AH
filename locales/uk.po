@@ -733,3 +733,6 @@ msgstr "Вініфред Габбамок"
 
 msgid "Agatha_Crane"
 msgstr "Агата Крейн"
+
+msgid "Clue"
+msgstr "Підказка"

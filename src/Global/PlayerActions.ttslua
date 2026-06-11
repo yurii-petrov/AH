@@ -177,6 +177,26 @@ function onClickPrepareNumberOfPlayers()
     Wait.time(function()
       gameData.lockObjs[mat.guid] = true
       lockObj(mat.guid)
+
+      local clueBagTemplate = getObjectFromGUID("cfa4b0")
+      local clueBagPos = { x = -1.128, y = 0.209, z = 0.749 } 
+      local clueBagRot = {x = 0, y = 270, z = 0 }
+      
+      if clueBagTemplate then
+        local clueBag = clueBagTemplate.takeObject({
+          index    = 0,
+          position = mat.positionToWorld(clueBagPos):setAt("y", 2.3),
+          rotation = clueBagRot,
+          smooth   = false
+        })
+        
+        if clueBag then
+          clueBag.setName(i18n.getStrById("clue"))
+          clueBag.memo = JSON.encode({type = "player clue bag", color = colors[i]})
+          clueBag.setLock(true)
+        end
+      end
+
       local bag = i == 1 and activationLiderTokenBag or activationTokenBag
       local p = mat.getPosition():setAt("y", 3)
       p.z = p.z - 6
