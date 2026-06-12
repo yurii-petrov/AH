@@ -41,6 +41,8 @@ function processStep(step, context)
     processStepReturnCodexToArchive(step, context)
   elseif stepType == "returnbridge" then
     processStepReturnBridge(step, context)
+  elseif stepType == "findmonsterbytype" then
+    processStepFindMonsterByType(step, context)
   else
     log("[processStep] Unknown step type: " .. stepType)
   end
@@ -940,6 +942,160 @@ function placeCard(card, placement, context)
 
     log("[placeCard] no free snap point with tag: " .. tostring(placement.snapTag))
   end
+end
+
+-- ╭──────────────────────────────────────────────╮
+-- │        STEP: findMonsterByType               │
+-- ╰──────────────────────────────────────────────╯
+
+-- checks if a card's monstertype list contains any entry from the search list
+local function matchesMonsterTypes(entryData, searchTypes)
+  local mt = entryData and (entryData.monstertype or (entryData.back and entryData.back.monstertype))
+  if not mt then return false end
+  local cardTypes = type(mt) == "table" and mt or {mt}
+  for _, cardType in ipairs(cardTypes) do
+    for _, searchType in ipairs(searchTypes) do
+      if string.lower(tostring(cardType)) == string.lower(tostring(searchType)) then
+        return true
+      end
+    end
+  end
+  return false
+end
+
+local FIND_MONSTER_REVEAL_DURATION = 4
+
+function processStepFindMonsterByType(step, context)
+  if not step.monsterType then
+    log("[findMonsterByType] monsterType is nil")
+    return
+  end
+
+  -- monsterType is an array of type strings to match against
+  local searchTypes = type(step.monsterType) == "table" and step.monsterType or {step.monsterType}
+
+  local codexMat = context.codexMat
+  if not codexMat then
+    log("[findMonsterByType] codexMat is nil")
+    return
+  end
+
+  local locationMat = findBoardByQuery({{
+    field = "type",
+    op    = "eq",
+    value = "locationMat"
+  }})
+  if not locationMat then
+    log("[findMonsterByType] locationMat not found")
+    return
+  end
+
+  local deckType    = step.deckType or "monster"
+  local monsterDeck = findDeckOnBoardByType(locationMat, deckType)
+  if not monsterDeck then
+    log("[findMonsterByType] monster deck not found")
+    return
+  end
+
+  -- single-card edge case
+  if monsterDeck.type == "Card" then
+    local cardData = parseJson(monsterDeck.memo)
+    if matchesMonsterTypes(cardData, searchTypes) then
+      monsterDeck.setRotation({0, 180, 0})
+      monsterDeck.setPositionSmooth(codexMat.positionToWorld({0, 0.5, 4}):setAt("y", 3))
+    else
+      log("[findMonsterByType] single card does not match")
+    end
+    return
+  end
+
+  -- inspect from bottom; collect reveal order (first revealed = leftmost) up to and including target
+  local objects     = monsterDeck.getObjects()
+  local revealList  = {}
+  local foundTarget = false
+
+  for i = #objects, 1, -1 do
+    local entry     = objects[i]
+    local entryData = parseJson(entry.memo)
+    local isTarget  = matchesMonsterTypes(entryData, searchTypes)
+    table.insert(revealList, { guid = entry.guid, isTarget = isTarget })
+    if isTarget then
+      foundTarget = true
+      break
+    end
+  end
+
+  if not foundTarget then
+    log("[findMonsterByType] no card matching monsterType found")
+    return
+  end
+
+  -- first card spawns directly below codex {0,0.5,4}, each next card steps right (+x)
+  local cardSpacing = 0.9
+  local revealCards = {}
+
+  for i, entry in ipairs(revealList) do
+    local worldPos = codexMat.positionToWorld({ (i - 1) * cardSpacing, 0.5, 1.5 }):setAt("y", 3)
+    local card = monsterDeck.takeObject({
+      guid     = entry.guid,
+      position = worldPos,
+      rotation = {0, 180, 180},
+      smooth   = true
+    })
+    if card then
+      table.insert(revealCards, { obj = card, isTarget = entry.isTarget })
+      card.highlightOn(entry.isTarget and "Green" or "Red", 5)
+      card.interactable = false
+    end
+  end
+
+  -- after reveal: pile non-target cards at a temp spot, shuffle, then put on top of monster deck
+  Wait.time(function()
+    local returnCards = {}
+    for _, entry in ipairs(revealCards) do
+      if not entry.isTarget then
+        table.insert(returnCards, entry.obj)
+      end
+    end
+
+    if #returnCards == 0 then return end
+
+    local locationData = parseJson(locationMat.memo)
+    if not locationData or not locationData.monster then return end
+
+    local monsterPos = locationMat.positionToWorld(locationData.monster)
+    -- temp pile position: above the monster deck slot so it doesn't collide
+    local tempPos = Vector(monsterPos.x, monsterPos.y + 8, monsterPos.z)
+
+    for _, c in ipairs(returnCards) do
+      c.setRotation({0, 180, 180})
+      c.setPosition(tempPos)
+    end
+
+    -- wait for pile to form into a deck, then shuffle, then drop onto monster deck
+    Wait.time(function()
+      local pile = nil
+      for _, o in ipairs(findObjsInRadius(tempPos, 2)) do
+        if o.type == "Deck" or o.type == "Card" then
+          pile = o
+          break
+        end
+      end
+      if not pile then return end
+
+      if pile.type == "Deck" then pile.shuffle() end
+
+      Wait.time(function()
+        local currentDeck = findDeckOnBoardByType(locationMat, deckType)
+        if currentDeck then
+          currentDeck.putObject(pile)
+        else
+          pile.setPositionSmooth(monsterPos:setAt("y", 3))
+          pile.memo = JSON.encode({ type = "monster" })
+        end
+      end, 0.5)
+    end, 0.5)
+  end, FIND_MONSTER_REVEAL_DURATION)
 end
 
 -- ╭──────────────────────────────────────────────╮
