@@ -133,17 +133,18 @@ function processStepFindMonsterByType(step, context)
     if anotherCount == 1 then
       local obj = getObjectFromGUID(revealResult.anotherGuids[1])
       if obj then
-        obj.setRotation({0, 180, 180})
-        local currentDeck = findDeckOnBoardByType(locationMat, deckType)
-        if currentDeck then
-          currentDeck.putObject(obj)
-        else
-          obj.setPositionSmooth(monsterPos:setAt("y", 3))
-          obj.memo = JSON.encode({ type = deckType })
-        end
+        obj.setPositionSmooth(monsterPos:setAt("y", 3))
+
+        Wait.time(function()
+          local foundCard = getObjectFromGUID(revealResult.foundGuid)
+          if foundCard then
+            foundCard.setPositionSmooth(codexMat.positionToWorld({0, 0.5, 1.7 }):setAt("y", 3))
+            foundCard.interactable = true
+          end
+        end, 0.5)
       end
     else
-      local tempPos = Vector(monsterPos.x, monsterPos.y + 8, monsterPos.z)
+      local tempPos = Vector(monsterPos.x-1, monsterPos.y, monsterPos.z)
       for _, guid in ipairs(revealResult.anotherGuids) do
         local obj = getObjectFromGUID(guid)
         if obj then
@@ -162,13 +163,14 @@ function processStepFindMonsterByType(step, context)
         if not pile then return end
         if pile.type == "Deck" then pile.shuffle() end
         Wait.time(function()
-          local currentDeck = findDeckOnBoardByType(locationMat, deckType)
-          if currentDeck then
-            currentDeck.putObject(pile)
-          else
             pile.setPositionSmooth(monsterPos:setAt("y", 3))
-            pile.memo = JSON.encode({ type = deckType })
-          end
+            Wait.time(function()
+              local foundCard = getObjectFromGUID(revealResult.foundGuid)
+              if foundCard then
+                foundCard.setPositionSmooth(codexMat.positionToWorld({0, 0.5, 1.7 }):setAt("y", 3))
+                foundCard.interactable = true
+              end
+            end, 0.5)
         end, 0.5)
       end, 0.5)
     end
