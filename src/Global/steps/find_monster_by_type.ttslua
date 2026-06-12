@@ -96,7 +96,15 @@ function processStepFindMonsterByType(step, context)
   local targetGuid   = nil
 
   for i, entry in ipairs(revealList) do
-    local worldPos = codexMat.positionToWorld({ (i - 1) * cardSpacing, 0.5, 1.7 }):setAt("y", 3)
+    local localPos = Vector({ (i - 1) * cardSpacing, 0.5, 1.7 })
+    local worldPos = codexMat.positionToWorld(localPos):setAt("y", 3)
+    for _, o in ipairs(downCast_pos(worldPos, 2)) do
+      if o.type == "Card" or o.type == "Deck" then
+        -- localPos[3] = localPos[3] + 1
+        o.setPosition(codexMat.positionToWorld(localPos:setAt("z", localPos.z + 1)):setAt("y", 3))
+        break
+      end
+    end
     local card = monsterDeck.takeObject({
       guid     = entry.guid,
       position = worldPos,
