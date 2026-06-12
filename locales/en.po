@@ -874,3 +874,24 @@ msgstr "Byakhee"
 
 msgid "type_Nightgaunt"
 msgstr "Nightgaunt"
+
+msgid "type_Aberration"
+msgstr "Aberration"
+
+msgid "type_Thrall"
+msgstr "Thrall"
+
+msgid "type_Ghoul"
+msgstr "Ghoul"
+
+msgid "type_Deep_One"
+msgstr "Deep One"
+
+msgid "type_Lodge"
+msgstr "Lodge"
+
+msgid "type_Star_Spawn"
+msgstr "Star Spawn"
+
+msgid "type_Beast"
+msgstr "Beast"

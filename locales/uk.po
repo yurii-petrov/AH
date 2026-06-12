@@ -885,43 +885,43 @@ msgid "Robed_Figure"
 msgstr "Фігура в Рясі"
 
 msgid "Ruth_Turner"
-msgstr "Ruth Turner"
+msgstr "Рут Тернер"
 
 msgid "Sea_Singer"
-msgstr "Sea Singer"
+msgstr "Голос Глибин"
 
 msgid "Shallows_Predator"
-msgstr "Shallows Predator"
+msgstr "Хижак Мілководдя"
 
 msgid "Shoreline_Brute"
-msgstr "Shoreline Brute"
+msgstr "Береговий Громила"
 
 msgid "Simon_Carter"
-msgstr "Simon Carter"
+msgstr "Саймон Картер"
 
 msgid "Swift_Byakhee"
-msgstr "Swift Byakhee"
+msgstr "Стрімкий Бьякхі"
 
 msgid "Tindalos_Alpha"
-msgstr "Tindalos Alpha"
+msgstr "Альфа Тіндалоса"
 
 msgid "Twilight_Supplicant"
-msgstr "Twilight Supplicant"
+msgstr "Прислужник Сутінків"
 
 msgid "Vicious_Glutton"
-msgstr "Vicious Glutton"
+msgstr "Люте Ненажерство"
 
 msgid "Void_Touched"
-msgstr "Void Touched"
+msgstr "Уражений Безоднею"
 
 msgid "Wake_Titan"
-msgstr "Wake Titan"
+msgstr "Пробуджений Титан"
 
 msgid "Whippoorwill"
-msgstr "Whippoorwill"
+msgstr "Дрімлюга"
 
 msgid "Wolf_Man_Drew"
-msgstr "Wolf-Man Drew"
+msgstr "Людина-Вовк Дрю"
 
 # Monster types
 msgid "type_Human"
@@ -934,7 +934,28 @@ msgid "type_Hound_of_Tindalos"
 msgstr "Гончий Тіндалоса"
 
 msgid "type_Byakhee"
-msgstr "Б'які"
+msgstr "Бьякхі"
 
 msgid "type_Nightgaunt"
-msgstr "Нічний ґонт"
+msgstr "Тінь Ночі"
+
+msgid "type_Aberration"
+msgstr "Потвора"
+
+msgid "type_Thrall"
+msgstr "Одержимий"
+
+msgid "type_Ghoul"
+msgstr "Гуль"
+
+msgid "type_Deep_One"
+msgstr "Глибоководний"
+
+msgid "type_Lodge"
+msgstr "Член Ложі"
+
+msgid "type_Star_Spawn"
+msgstr "Породження Зірок"
+
+msgid "type_Beast"
+msgstr "Звір"
