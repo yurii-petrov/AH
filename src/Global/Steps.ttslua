@@ -1035,7 +1035,7 @@ function processStepFindMonsterByType(step, context)
   local revealCards = {}
 
   for i, entry in ipairs(revealList) do
-    local worldPos = codexMat.positionToWorld({ (i - 1) * cardSpacing, 0.5, 1.5 }):setAt("y", 3)
+    local worldPos = codexMat.positionToWorld({ (i - 1) * cardSpacing, 0.5, 1.7 }):setAt("y", 3)
     local card = monsterDeck.takeObject({
       guid     = entry.guid,
       position = worldPos,
@@ -1043,7 +1043,7 @@ function processStepFindMonsterByType(step, context)
       smooth   = true
     })
     if card then
-      table.insert(revealCards, { obj = card, isTarget = entry.isTarget })
+      table.insert(revealCards, { guid = card.guid, isTarget = entry.isTarget })
       card.highlightOn(entry.isTarget and "Green" or "Red", 5)
       card.interactable = false
     end
@@ -1051,28 +1051,28 @@ function processStepFindMonsterByType(step, context)
 
   -- after reveal: pile non-target cards at a temp spot, shuffle, then put on top of monster deck
   Wait.time(function()
-    local returnCards = {}
-    for _, entry in ipairs(revealCards) do
-      if not entry.isTarget then
-        table.insert(returnCards, entry.obj)
-      end
-    end
-
-    if #returnCards == 0 then return end
-
     local locationData = parseJson(locationMat.memo)
     if not locationData or not locationData.monster then return end
 
     local monsterPos = locationMat.positionToWorld(locationData.monster)
-    -- temp pile position: above the monster deck slot so it doesn't collide
+    -- temp pile: high above the monster slot so it won't collide with anything
     local tempPos = Vector(monsterPos.x, monsterPos.y + 8, monsterPos.z)
 
-    for _, c in ipairs(returnCards) do
-      c.setRotation({0, 180, 180})
-      c.setPosition(tempPos)
+    local moved = 0
+    for _, entry in ipairs(revealCards) do
+      if not entry.isTarget then
+        local obj = getObjectFromGUID(entry.guid)
+        if obj then
+          obj.setRotation({0, 180, 180})
+          obj.setPosition(tempPos)
+          moved = moved + 1
+        end
+      end
     end
 
-    -- wait for pile to form into a deck, then shuffle, then drop onto monster deck
+    if moved == 0 then return end
+
+    -- wait for the pile to form, shuffle it, then place on top of monster deck
     Wait.time(function()
       local pile = nil
       for _, o in ipairs(findObjsInRadius(tempPos, 2)) do
