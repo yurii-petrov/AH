@@ -32,7 +32,7 @@ end
 -- Returns the first Tile on locationMat whose memo matches name directly
 -- (memo.name) or contains it in memo.locations (for Neighborhood tiles).
 -- For Neighborhood tiles also returns tileData and the 1-based locationIndex.
-local function findLocationTileByName(locationMat, name)
+function findLocationTileByName(locationMat, name)
   local nameLower = string.lower(name)
   local objs = upCast(locationMat, 1, nil, 1)
   for _, o in ipairs(objs) do

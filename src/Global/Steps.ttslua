@@ -32,6 +32,7 @@ require("Global/steps/return_codex_to_archive")
 require("Global/steps/return_bridge")
 require("Global/steps/find_monster_by_type")
 require("Global/steps/place_tokens_on_locations")
+require("Global/steps/flip_token_on_location")
 
 -- Dispatch table: lowercased step.type -> handler.
 -- Handlers are global functions defined by the required step modules above.
@@ -48,6 +49,7 @@ local STEP_HANDLERS = {
   returnbridge         = processStepReturnBridge,
   findmonsterbytype          = processStepFindMonsterByType,
   placetokensonlocations     = processStepPlaceTokensOnLocations,
+  fliptokenonlocation        = processStepFlipTokenOnLocation,
 }
 
 function processSteps(data)

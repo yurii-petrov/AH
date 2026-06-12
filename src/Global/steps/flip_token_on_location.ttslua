@@ -1,0 +1,73 @@
+-- ╭──────────────────────────────────────────────╮
+-- │      STEP: flipTokenOnLocation               │
+-- ╰──────────────────────────────────────────────╯
+--
+-- Searches all location tiles on the location mat for the first token of
+-- step.token.type, flips it, and prints which location it was found in.
+-- Works for both direct locations and Neighborhood sub-locations.
+--
+-- Example step JSON:
+--   {
+--     "type": "flipTokenOnLocation",
+--     "token": { "type": "Blue Marker" }
+--   }
+
+-- Iterates all Generic tiles on locationMat, returns the first token of
+-- tokenType found above any tile, plus the display name of that location.
+local function findTokenOnAnyLocation(locationMat, tokenType)
+  local objs = upCast(locationMat, 1, nil, 1)
+  for _, tile in ipairs(objs) do
+    if tile.type == "Generic" then
+      local data = parseJson(tile.memo)
+      if data then
+        local locationName
+        if data.name then
+          locationName = data.name
+        end
+        local tokens = upCast(tile, 1, nil, 1)
+        for _, o in ipairs(tokens) do
+          if o.type == "Tile" and o.memo == tokenType then
+            return o, locationName or "?"
+          end
+        end
+      end
+    end
+  end
+end
+
+function processStepFlipTokenOnLocation(step, context, onDone)
+  if not step.token or not step.token.type then
+    log("[flipTokenOnLocation] token.type is nil")
+    if onDone then onDone() end
+    return
+  end
+
+  local locationMat = getObjectFromGUID(locationMatId)
+  if not locationMat then
+    log("[flipTokenOnLocation] locationMat not found")
+    if onDone then onDone() end
+    return
+  end
+
+  local tokenType = step.token.type
+
+  local token, locationName = findTokenOnAnyLocation(locationMat, tokenType)
+  if not token then
+    log("[flipTokenOnLocation] token '" .. tokenType .. "' not found on any location")
+    if onDone then onDone() end
+    return
+  end
+
+  if token.memo == "Blue Marker" then
+    token.highlightOn("Blue", 5)
+  end
+  token.setRotationSmooth({0, 180, 0})
+
+
+  local tokenKey  = tokenType:gsub(" ", "_")
+  local locKey    = locationName:gsub(" ", "_")
+  local tokenStr  = i18n.getStrById(tokenKey):gsub(" ", "_")
+  print(tokenStr .. " found in - " .. locStr)
+
+  if onDone then onDone() end
+end
