@@ -1,0 +1,141 @@
+-- ╭──────────────────────────────────────────────╮
+-- │      STEP: placeTokensOnLocations            │
+-- ╰──────────────────────────────────────────────╯
+--
+-- Builds a pool of tokens from step.tokens (each entry: { type, count }),
+-- shuffles the pool with Fisher-Yates, then places one token per location
+-- from step.locations in shuffled order.
+--
+-- Locations are matched by name against tiles on the location mat:
+--   1. tile memo.name == location name  (direct match)
+--   2. tile memo.type == "Neighborhood" and location name is in memo.locations
+--
+-- Example step JSON:
+--   {
+--     "type": "placeTokensOnLocations",
+--     "locations": ["Arkham Advertiser", "Black Cave", "Independence Square",
+--                   "Unvisited Isle", "Velma's Diner"],
+--     "tokens": [
+--       { "type": "White Marker", "count": 3 },
+--       { "type": "Red Marker",   "count": 1 },
+--       { "type": "Blue Marker",  "count": 1 }
+--     ]
+--   }
+
+local function shufflePool(t)
+  for i = #t, 2, -1 do
+    local j = math.random(i)
+    t[i], t[j] = t[j], t[i]
+  end
+end
+
+-- Returns the first Tile on locationMat whose memo matches name directly
+-- (memo.name) or contains it in memo.locations (for Neighborhood tiles).
+-- For Neighborhood tiles also returns tileData and the 1-based locationIndex.
+local function findLocationTileByName(locationMat, name)
+  local nameLower = string.lower(name)
+  local objs = upCast(locationMat, 1, nil, 1)
+  for _, o in ipairs(objs) do
+    if o.type == "Generic" then
+      local data = parseJson(o.memo)
+      if data then
+        if iEquals(data.name, name) then
+          return o, data, nil
+        end
+        if data.type and string.lower(data.type) == "neighborhood" and data.locations then
+          for i, loc in ipairs(data.locations) do
+            if string.lower(loc) == nameLower then
+              return o, data, i
+            end
+          end
+        end
+      end
+    end
+  end
+end
+
+-- Returns a world position inside the location sector of a Neighborhood tile.
+-- Uses the same arc geometry as getEmptyDoomSpaces in Doom.ttslua.
+local function getNeighborhoodLocationPosition(tile, locationIndex, structureType)
+  local center      = { 0.049, 0.150, -0.056 }
+  local radius      = 2.1
+  local stepAngleDeg = 35
+  local startAngleDeg = 205
+  if locationIndex == 2 then
+    startAngleDeg = 85
+  elseif locationIndex == 3 then
+    startAngleDeg = 325
+  end
+  if structureType == 2 or structureType == "2" then
+    startAngleDeg = startAngleDeg + 60
+  end
+  -- middle of the 3-slot arc for this sector
+  local angleDeg = startAngleDeg + stepAngleDeg
+  local angleRad = math.rad(angleDeg)
+  local localPos  = {
+    center[1] + radius * math.cos(angleRad),
+    center[2],
+    center[3] + radius * math.sin(angleRad)
+  }
+  return tile.positionToWorld(localPos)
+end
+
+function processStepPlaceTokensOnLocations(step, context, onDone)
+  if not step.locations or #step.locations == 0 then
+    log("[placeTokensOnLocations] locations is nil or empty")
+    if onDone then onDone() end
+    return
+  end
+
+  if not step.tokens or #step.tokens == 0 then
+    log("[placeTokensOnLocations] tokens is nil or empty")
+    if onDone then onDone() end
+    return
+  end
+
+  local locationMat = getObjectFromGUID(locationMatId)
+  if not locationMat then
+    log("[placeTokensOnLocations] locationMat not found")
+    if onDone then onDone() end
+    return
+  end
+
+  -- Build flat token pool and shuffle it
+  local pool = {}
+  for _, entry in ipairs(step.tokens) do
+    for _ = 1, (entry.count or 1) do
+      table.insert(pool, entry.type)
+    end
+  end
+  shufflePool(pool)
+
+  -- Place one token per location
+  for i, locationName in ipairs(step.locations) do
+    local tokenType = pool[i]
+    if not tokenType then
+      log("[placeTokensOnLocations] pool exhausted at location: " .. locationName)
+      break
+    end
+
+    local tile, tileData, locationIndex = findLocationTileByName(locationMat, locationName)
+    if not tile then
+      log("[placeTokensOnLocations] tile not found for: " .. locationName)
+    else
+      local bagId = getTokenBagIdByType(tokenType)
+      local bag   = bagId and getObjectFromGUID(bagId)
+      if bag then
+        local pos
+        if locationIndex and tileData and tileData.structureType then
+          pos = getNeighborhoodLocationPosition(tile, locationIndex, tileData.structureType):setAt("y", 3)
+        else
+          pos = tile.getPosition():setAt("y", 3)
+        end
+        bag.takeObject({ index = 0, position = pos, rotation = {0, 180, 180} }).highlightOn("Yellow", 5)
+      else
+        log("[placeTokensOnLocations] bag not found for token type: " .. tokenType)
+      end
+    end
+  end
+
+  if onDone then onDone() end
+end
