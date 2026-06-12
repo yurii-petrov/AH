@@ -80,13 +80,7 @@ function processStepTakeCodexFromArchive(step, context, onDone)
   if step.rotationFromCodex then
     local refCard = findCodexCardOnSnapPoints(sourceMat, step.rotationFromCodex)
     if refCard then
-      local refRotY = refCard.getRotation().y
-      local cardRotY = card.getRotation().y
-      local refFlipped = math.abs(refRotY - 180) < 10
-      local cardFlipped = math.abs(cardRotY - 180) < 10
-      if refFlipped ~= cardFlipped then
-        card.flip()
-      end
+      card.setRotation(refCard.getRotation())
     end
   end
 
