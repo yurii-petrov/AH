@@ -214,6 +214,10 @@ I18N_DATA = {
     ["en"] = "Revealed monster cards:",
     ["uk"] = "Відкриті карти монстрів:",
   },
+  ["LOG_find_monster_not_found"] = {
+    ["en"] = "%s type - not found",
+    ["uk"] = "%s тип - не знайдено",
+  },
   ["LOG_find_monster_row"] = {
     ["en"] = "%d - %s - %s",
     ["uk"] = "%d - %s - %s",

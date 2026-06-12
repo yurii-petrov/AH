@@ -580,6 +580,9 @@ msgstr "%d - %s - %s"
 msgid "LOG_find_monster_row_found"
 msgstr "%d - %s - %s [FOUND]"
 
+msgid "LOG_find_monster_not_found"
+msgstr "%s type - not found"
+
 msgid "CODEX_return_to_archive"
 msgstr "Return to Archive"
 

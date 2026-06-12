@@ -88,7 +88,12 @@ function processStepFindMonsterByType(step, context)
   end
 
   if not foundTarget then
-    log("[findMonsterByType] no card matching monsterType found")
+    local typeParts = {}
+    for _, t in ipairs(searchTypes) do
+      table.insert(typeParts, i18n.getStrById("type_" .. t))
+    end
+    print(string.format(i18n.getStrById("LOG_find_monster_not_found"), table.concat(typeParts, "/")))
+    monsterDeck.highlightOn("Red", 5)
     return
   end
 
