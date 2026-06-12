@@ -140,10 +140,22 @@ function processStepFindMonsterByType(step, context)
     print(table.concat(lines, "\n"))
   end
 
+  local finalFoundPos = codexMat.positionToWorld({0, 0.5, 1.7}):setAt("y", 3)
+
+  local function spawnFoundCard()
+    local foundCard = getObjectFromGUID(revealResult.foundGuid)
+    if not foundCard then return end
+    foundCard.interactable = true
+    spawnMonster(finalFoundPos, foundCard)
+  end
+
   -- after reveal: return non-target cards to the monster deck
   Wait.time(function()
     local anotherCount = #revealResult.anotherGuids
-    if anotherCount == 0 then return end
+    if anotherCount == 0 then
+      spawnFoundCard()
+      return
+    end
 
     local locationData = parseJson(locationMat.memo)
     if not locationData or not locationData.monster then return end
@@ -157,9 +169,9 @@ function processStepFindMonsterByType(step, context)
         Wait.time(function()
           local foundCard = getObjectFromGUID(revealResult.foundGuid)
           if foundCard then
-            foundCard.setPositionSmooth(codexMat.positionToWorld({0, 0.5, 1.7 }):setAt("y", 3))
-            foundCard.interactable = true
+            foundCard.setPositionSmooth(finalFoundPos)
           end
+          Wait.time(spawnFoundCard, 0.5)
         end, 0.5)
       end
     else
@@ -186,9 +198,9 @@ function processStepFindMonsterByType(step, context)
             Wait.time(function()
               local foundCard = getObjectFromGUID(revealResult.foundGuid)
               if foundCard then
-                foundCard.setPositionSmooth(codexMat.positionToWorld({0, 0.5, 1.7 }):setAt("y", 3))
-                foundCard.interactable = true
+                foundCard.setPositionSmooth(finalFoundPos)
               end
+              Wait.time(spawnFoundCard, 0.5)
             end, 0.5)
         end, 0.5)
       end, 0.5)
