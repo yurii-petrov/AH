@@ -430,6 +430,10 @@ I18N_DATA = {
     ["en"] = "Timeout waiting for components",
     ["uk"] = "Перевищено час очікування компонентів",
   },
+  ["LOG_token_found"] = {
+    ["en"] = "%s found in - %s",
+    ["uk"] = "%s знайдено в - %s",
+  },
   ["LOG_token_removed"] = {
     ["en"] = "Token '%s' successfully removed from cell",
     ["uk"] = "Токен '%s' успішно видалено з клітинки",

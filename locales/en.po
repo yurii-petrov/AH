@@ -1099,3 +1099,6 @@ msgstr "Angry Spirit"
 
 msgid "type_Hostile_Spirit"
 msgstr "Hostile Spirit"
+
+msgid "LOG_token_found"
+msgstr "%s found in - %s"

@@ -66,8 +66,9 @@ function processStepFlipTokenOnLocation(step, context, onDone)
 
   local tokenKey  = tokenType:gsub(" ", "_")
   local locKey    = locationName:gsub(" ", "_")
-  local tokenStr  = i18n.getStrById(tokenKey):gsub(" ", "_")
-  print(tokenStr .. " found in - " .. locStr)
+  local tokenStr  = i18n.getStrById(tokenType)
+  local locStr    = i18n.getStrById(locationName)
+  print(string.format(i18n.getStrById("LOG_token_found"), tokenStr, locStr))
 
   if onDone then onDone() end
 end
