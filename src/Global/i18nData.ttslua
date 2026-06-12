@@ -212,7 +212,7 @@ I18N_DATA = {
   },
   ["LOG_find_monster_header"] = {
     ["en"] = "Revealed monster cards:",
-    ["uk"] = "Revealed monster cards:",
+    ["uk"] = "Відкриті карти монстрів:",
   },
   ["LOG_find_monster_row"] = {
     ["en"] = "%d - %s - %s",
@@ -220,7 +220,7 @@ I18N_DATA = {
   },
   ["LOG_find_monster_row_found"] = {
     ["en"] = "%d - %s - %s [FOUND]",
-    ["uk"] = "%d - %s - %s [FOUND]",
+    ["uk"] = "%d - %s - %s [ЗНАЙДЕНО]",
   },
   ["LOG_gate_burst"] = {
     ["en"] = "\n%s gate burst!",

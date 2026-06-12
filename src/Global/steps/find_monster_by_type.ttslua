@@ -126,10 +126,16 @@ function processStepFindMonsterByType(step, context)
 
   -- print reveal summary: non-targets first, found card last
   do
-    local lines = {i18n.getStrById("LOG_find_monster_header")}
+    local lines = {"\n"..i18n.getStrById("LOG_find_monster_header")}
     for i, entry in ipairs(revealList) do
-      local fmtId = entry.isTarget and "LOG_find_monster_row_found" or "LOG_find_monster_row"
-      lines[#lines + 1] = string.format(i18n.getStrById(fmtId), i, i18n.getStrById(entry.name or ""):gsub(" ", "_"), i18n.getStrById(entry.cardType or ""):gsub(" ", "_"))
+      local fmtId    = entry.isTarget and "LOG_find_monster_row_found" or "LOG_find_monster_row"
+      local nameKey  = (entry.name or ""):gsub(" ", "_")
+      local typeParts = {}
+      for part in (entry.cardType or ""):gmatch("[^/]+") do
+        table.insert(typeParts, i18n.getStrById("type_" .. part))
+      end
+      local typeStr = table.concat(typeParts, "/")
+      lines[#lines + 1] = string.format(i18n.getStrById(fmtId), i, i18n.getStrById(nameKey), typeStr)
     end
     print(table.concat(lines, "\n"))
   end
