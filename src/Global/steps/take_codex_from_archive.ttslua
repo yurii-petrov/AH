@@ -5,6 +5,33 @@
 -- Draws a codex card (by number) from the archive on the location mat and
 -- attaches it to the codex mat at the next free codex snap point.
 
+local function findCodexCardOnSnapPoints(locationMat, number)
+  for _, snp in ipairs(locationMat.getSnapPoints()) do
+    if snp.tags then
+      for _, tag in ipairs(snp.tags) do
+        if tag == "codex_mat" then
+          local worldPos = locationMat.positionToWorld(snp.position)
+          local objs = upCast_pos(worldPos, 0.5)
+          for _, o in ipairs(objs) do
+            if o.type == "Tile" then
+              for _, att in ipairs(o.getAttachments()) do
+                local obj = getObjectFromGUID(att.guid)
+                if obj then
+                  local data = parseJson(obj.memo)
+                  if data and data.number == number then
+                    return obj
+                  end
+                end
+              end
+            end
+          end
+          break
+        end
+      end
+    end
+  end
+end
+
 function processStepTakeCodexFromArchive(step, context, onDone)
   if not step.number then
     log("[takeCodexFromArchive] number is nil")
@@ -48,6 +75,19 @@ function processStepTakeCodexFromArchive(step, context, onDone)
   if not card then
     log("[takeCodexFromArchive] card with number " .. step.number .. " not found")
     return
+  end
+
+  if step.rotationFromCodex then
+    local refCard = findCodexCardOnSnapPoints(sourceMat, step.rotationFromCodex)
+    if refCard then
+      local refRotY = refCard.getRotation().y
+      local cardRotY = card.getRotation().y
+      local refFlipped = math.abs(refRotY - 180) < 10
+      local cardFlipped = math.abs(cardRotY - 180) < 10
+      if refFlipped ~= cardFlipped then
+        card.flip()
+      end
+    end
   end
 
   card.setPositionSmooth(freePos:setAt("y", 3))

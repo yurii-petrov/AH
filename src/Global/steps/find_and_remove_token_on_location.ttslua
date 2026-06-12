@@ -1,0 +1,81 @@
+-- ╭──────────────────────────────────────────────╮
+-- │   STEP: findAndRemoveTokenOnLocation         │
+-- ╰──────────────────────────────────────────────╯
+--
+-- Searches all location tiles on the location mat for the first token of
+-- step.token.type and removes it, with rotation-aware feedback:
+--   - not found → print LOG_token_not_found_any_location
+--   - found but rotation Y≈0 (face down) → print LOG_token_face_down
+--   - found and rotation Y≈180 → print LOG_token_found_removed, remove it
+--
+-- Example step JSON:
+--   {
+--     "type": "findAndRemoveTokenOnLocation",
+--     "token": { "type": "Blue Marker" }
+--   }
+
+local function findTokenOnAnyLocationWithName(locationMat, tokenType)
+  local objs = upCast(locationMat, 1, nil, 1)
+  for _, tile in ipairs(objs) do
+    if tile.type == "Generic" then
+      local data = parseJson(tile.memo)
+      if data then
+        local locationName = data.name or "?"
+        local tokens = upCast(tile, 1, nil, 1)
+        for _, o in ipairs(tokens) do
+          if o.type == "Tile" and o.memo == tokenType then
+            return o, locationName
+          end
+        end
+      end
+    end
+  end
+end
+
+function processStepFindAndRemoveTokenOnLocation(step, context, onDone)
+  if not step.token or not step.token.type then
+    log("[findAndRemoveTokenOnLocation] token.type is nil")
+    if onDone then onDone() end
+    return
+  end
+
+  local locationMat = getObjectFromGUID(locationMatId)
+  if not locationMat then
+    log("[findAndRemoveTokenOnLocation] locationMat not found")
+    if onDone then onDone() end
+    return
+  end
+
+  local tokenType = step.token.type
+  local tokenStr  = i18n.getStrById(tokenType)
+
+  local token, locationName = findTokenOnAnyLocationWithName(locationMat, tokenType)
+
+  if not token then
+    print(string.format(i18n.getStrById("LOG_token_not_found_any_location"), tokenStr))
+    if onDone then onDone() end
+    return
+  end
+
+  local rotY = token.getRotation().y
+  if math.abs(rotY) < 10 or math.abs(rotY - 360) < 10 then
+    print(string.format(i18n.getStrById("LOG_token_face_down"), tokenStr))
+    if onDone then onDone() end
+    return
+  end
+
+  local locStr = i18n.getStrById(locationName)
+  print(string.format(i18n.getStrById("LOG_token_found_removed"), tokenStr, locStr))
+
+  local tokenBagId = getTokenBagIdByType(tokenType)
+  if tokenBagId then
+    local bag = getObjectFromGUID(tokenBagId)
+    if bag then
+      bag.putObject(token)
+      if onDone then onDone() end
+      return
+    end
+  end
+  token.destruct()
+  if onDone then onDone() end
+end
