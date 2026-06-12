@@ -1,0 +1,81 @@
+-- ╭──────────────────────────────────────────────╮
+-- │                 ALLY SPAWN                   │
+-- ╰──────────────────────────────────────────────╯
+--
+-- Scenario ally spawning. Driven from Setup.ttslua (prepareAllySpawn).
+-- Not part of the codex step engine, but historically lived alongside it.
+
+require("Global/core/queries")
+
+local function getDeckFromShopMat(boardGuid, deckType)
+  local mat = getObjectFromGUID(boardGuid)
+  if not mat then return end
+
+  local matData = parseJson(mat.memo)
+  if not matData or not matData.decks then return end
+
+  for _, slot in ipairs(matData.decks) do
+    if string.lower(slot.type) == string.lower(deckType) and slot.pos then
+      local worldPos = mat.positionToWorld(slot.pos):setAt("y", 2.11)
+      local objs = findObjsInRadius(worldPos)
+      for _, o in ipairs(objs) do
+        local oData = parseJson(o.memo)
+        if o.type == "Deck" and oData and oData.type and
+           string.lower(oData.type) == string.lower(deckType) then
+          return o
+        end
+      end
+    end
+  end
+end
+
+function processAllySpawn(spawnData)
+  local source = spawnData.source
+  local targets = spawnData.targets
+  local count = spawnData.count or #targets
+
+  local mat = nil
+  for _, o in ipairs(getObjects()) do
+    local oData = parseJson(o.memo)
+    if oData and matchesMemoMap(oData, source.boardMemo) then
+      mat = o
+      break
+    end
+  end
+
+  if not mat then
+    log("[allyspawn] Board not found: " .. serpent.tts(source.boardMemo))
+    return
+  end
+
+  local deck = getDeckFromShopMat(mat.guid, source.deckType)
+  if not deck then
+    log("[allyspawn] Deck not found for type: " .. source.deckType)
+    return
+  end
+
+  local taken = math.min(#targets, deck.getQuantity())
+  for i = 1, taken do
+    local target = targets[i]
+    local tile = getNeighborhoodTile(target.location)
+    if not tile then
+      log("[allyspawn] Location not found: " .. target.location)
+      break
+    end
+
+    deck.takeObject({
+      index = 0,
+      position = tile.positionToWorld(target.position):setAt("y", 3),
+      rotation = target.rotation,
+      smooth = true
+    })
+  end
+end
+
+function prepareAllySpawn(scenarioData)
+  if not scenarioData.allyspawn then return end
+
+  for _, spawnData in ipairs(scenarioData.allyspawn) do
+    processAllySpawn(spawnData)
+  end
+end

@@ -1,0 +1,114 @@
+-- ╭──────────────────────────────────────────────╮
+-- │        CORE: Object / Memo Queries           │
+-- ╰──────────────────────────────────────────────╯
+--
+-- Shared predicate + lookup helpers used by every step that needs to
+-- find a board, a deck on a board, or a card inside a deck by its memo.
+-- Extracted from the formerly-duplicated matching loops in Steps.ttslua.
+
+-- Case-insensitive equality, nil-safe on both sides.
+function iEquals(a, b)
+  return string.lower(tostring(a or "")) == string.lower(tostring(b or ""))
+end
+
+-- Evaluates a single { field, op, value } condition against a memo value.
+-- Supported ops: "eq" (case-insensitive for strings, raw otherwise) and "neq".
+-- Any unknown op is treated as a pass (matches the original behaviour where
+-- unrecognised ops never set match=false).
+local function matchesCondition(actual, op, value)
+  if op == "eq" then
+    if type(value) == "string" then
+      return iEquals(actual, value)
+    else
+      return actual == value
+    end
+  elseif op == "neq" then
+    return actual ~= value
+  end
+  return true
+end
+
+-- Matches a parsed memo table against a query (array of conditions).
+function matchesQuery(data, query)
+  for _, condition in ipairs(query) do
+    if not matchesCondition(data[condition.field], condition.op, condition.value) then
+      return false
+    end
+  end
+  return true
+end
+
+-- Matches a parsed memo table against a plain { field = value } map
+-- (case-insensitive). Used by board lookups that carry a memo map rather
+-- than a condition list.
+function matchesMemoMap(data, map)
+  for k, v in pairs(map) do
+    if not iEquals(data[k], v) then
+      return false
+    end
+  end
+  return true
+end
+
+-- Finds the first object on the table whose memo matches the query.
+function findBoardByQuery(query)
+  if not query then return end
+
+  for _, o in ipairs(getObjects()) do
+    local oData = parseJson(o.memo)
+    if oData and matchesQuery(oData, query) then
+      return o
+    end
+  end
+end
+
+-- Finds a Deck/Card sitting on a board, identified by the board memo's
+-- typed position first, then by an upcast fallback matching memo.type.
+function findDeckOnBoardByType(board, deckType)
+  if not board or not deckType then return end
+
+  local boardData = parseJson(board.memo)
+
+  if boardData and boardData[deckType] then
+    local pos = board.positionToWorld(boardData[deckType]):setAt("y", 2.2)
+    local objs = findObjsInRadius(pos)
+    for _, o in ipairs(objs) do
+      if o.type == "Deck" or o.type == "Card" then
+        return o
+      end
+    end
+  end
+
+  local objs = upCast(board, 1, nil, 1)
+  for _, o in ipairs(objs) do
+    if o.type == "Deck" or o.type == "Card" then
+      local oData = parseJson(o.memo)
+      if oData and oData.type and iEquals(oData.type, deckType) then
+        return o
+      end
+    end
+  end
+end
+
+-- Takes the first card matching the query out of a deck (or returns the
+-- single card if `deck` is itself a Card and it matches).
+function takeCardByQuery(deck, query)
+  if not deck or not query then return end
+
+  local objects = deck.type == "Deck" and deck.getObjects() or {deck}
+
+  for _, entry in ipairs(objects) do
+    local entryData = parseJson(entry.memo)
+    if entryData and matchesQuery(entryData, query) then
+      if deck.type == "Deck" then
+        return deck.takeObject({
+          guid     = entry.guid,
+          rotation = {0, 180, 0},
+          smooth   = false
+        })
+      else
+        return deck
+      end
+    end
+  end
+end

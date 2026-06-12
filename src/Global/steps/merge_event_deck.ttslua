@@ -1,0 +1,66 @@
+-- ╭──────────────────────────────────────────────╮
+-- │          STEP: mergeEventDeck                │
+-- ╰──────────────────────────────────────────────╯
+--
+-- Takes a new event deck from the box and merges it (plus the current
+-- discard) into the current event deck, then shuffles. If there is no
+-- current event deck, simply places the new one on the deck slot.
+
+function processStepMergeEventDeck(step, context)
+  if not step.deck then
+    log("[mergeEventDeck] deck is nil")
+    return
+  end
+
+  local mythosTile = getObjectFromGUID(mythosTileId)
+  if not mythosTile then
+    log("[mergeEventDeck] mythosTile not found")
+    return
+  end
+
+  local box = getObjectFromGUID(boxId)
+  if not box then return end
+
+  local newDeckGuid = findEventDeckInBox(step.deck.type, step.deck.name)
+  if not newDeckGuid then
+    log("[mergeEventDeck] deck not found in box: " .. tostring(step.deck.name))
+    return
+  end
+
+  local eventDeckPos  = getEventDeckWorldPos(mythosTile)
+  local currentDeck   = getEventObj()
+
+  local newDeck = box.takeObject({
+    guid     = newDeckGuid,
+    position = eventDeckPos:setAt("y", 5),
+    smooth   = false
+  })
+
+  if not newDeck then
+    log("[mergeEventDeck] failed to take deck from box")
+    return
+  end
+
+  runAfterRest(newDeck, function(nd)
+    if currentDeck then
+      -- merge discard into current deck first
+      local discard = getEventDiscardObj()
+      if discard then
+        mergeObjIntoDeck(discard, currentDeck)
+      end
+
+      -- merge new deck into current deck
+      mergeObjIntoDeck(nd, currentDeck)
+
+      Wait.time(function()
+        local merged = getEventObj()
+        if merged and merged.type == "Deck" then
+          merged.shuffle()
+        end
+      end, 0.3)
+    else
+      -- no current deck — just place the new one
+      nd.setPositionSmooth(eventDeckPos:setAt("y", 3))
+    end
+  end)
+end

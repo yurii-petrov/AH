@@ -1,0 +1,26 @@
+-- ╭──────────────────────────────────────────────╮
+-- │           CORE: Codex Attachments            │
+-- ╰──────────────────────────────────────────────╯
+--
+-- The codex mat keeps the active codex card as an attachment whose memo
+-- has type == "codex". Several steps need to locate or detach it; this is
+-- the single source of truth for that lookup.
+
+-- Returns the attachment index of the codex card on `codexMat`, or nil.
+function findCodexAttachmentIndex(codexMat)
+  for _, att in ipairs(codexMat.getAttachments()) do
+    local attData = parseJson(att.memo)
+    if attData and attData.type and string.lower(attData.type) == "codex" then
+      return att.index
+    end
+  end
+end
+
+-- Detaches the codex card from `codexMat` and returns the freed object,
+-- or nil if there was no codex attachment. Does NOT destruct the mat —
+-- callers decide whether/when to do that, preserving their original logs.
+function removeCodexAttachment(codexMat)
+  local index = findCodexAttachmentIndex(codexMat)
+  if not index then return nil end
+  return codexMat.removeAttachment(index)
+end

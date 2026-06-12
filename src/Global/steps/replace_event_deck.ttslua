@@ -1,0 +1,141 @@
+-- ╭──────────────────────────────────────────────╮
+-- │         STEP: replaceEventDeck               │
+-- ╰──────────────────────────────────────────────╯
+--
+-- Returns the top N cards of the current event deck to the box, draws a
+-- replacement deck, shuffles and splits it in half: one half becomes the
+-- new event deck (face-down), the other becomes the event discard (face-up).
+
+function processStepReplaceEventDeck(step, context)
+  if not step.deck then
+    log("[replaceEventDeck] deck is nil")
+    return
+  end
+
+  local removeCount = step.removeFromTop or 0
+
+  local mythosTile = getObjectFromGUID(mythosTileId)
+  if not mythosTile then
+    log("[replaceEventDeck] mythosTile not found")
+    return
+  end
+
+  local box = getObjectFromGUID(boxId)
+  if not box then return end
+
+  local eventDeckPos    = getEventDeckWorldPos(mythosTile)
+  local eventDiscardPos = getEventDiscardWorldPos(mythosTile)
+
+  -- Step 1: return top N cards from current event deck → box
+  local currentDeck = getEventObj()
+  if currentDeck and removeCount > 0 then
+    if currentDeck.type == "Deck" then
+      for i = 1, removeCount do
+        local card = currentDeck.takeObject({index = 0, smooth = false, rotation = {0, 180, 180}})
+        if card then box.putObject(card) end
+      end
+    elseif currentDeck.type == "Card" then
+      box.putObject(currentDeck)
+    end
+  end
+
+  -- Step 2: take new deck from box (with delay to let box settle)
+  Wait.time(function()
+    local newDeckGuid = findEventDeckInBox(step.deck.type, step.deck.name)
+    if not newDeckGuid then
+      log("[replaceEventDeck] deck not found in box: " .. tostring(step.deck.name))
+      return
+    end
+
+    local newDeck = box.takeObject({
+      guid     = newDeckGuid,
+      position = eventDeckPos:setAt("y", 5),
+      rotation = {0, 180, 180},
+      smooth   = false
+    })
+
+    if not newDeck then
+      log("[replaceEventDeck] failed to take deck from box")
+      return
+    end
+
+    -- Step 3: place new deck below box (z - 10), then split into 2 halves
+    local boxPos   = box.getPosition()
+    local deckPos  = Vector(boxPos.x, boxPos.y + 1, boxPos.z - 10)
+    newDeck.setPositionSmooth(deckPos)
+    newDeck.setRotation({0, 180, 180})
+
+    runAfterRest(newDeck, function(nd)
+      if nd.type ~= "Deck" then return end
+
+      nd.shuffle()
+
+      Wait.time(function()
+        local total = nd.getQuantity()
+        local half  = math.floor(total / 2)
+        local pos1  = Vector(deckPos.x - 5, deckPos.y, deckPos.z)
+        local pos2  = Vector(deckPos.x + 5, deckPos.y, deckPos.z)
+
+        for i = 1, half do
+          if nd.type == "Deck" then
+            nd.takeObject({index = 0, position = pos1, rotation = {0, 180, 180}, smooth = false})
+          elseif nd.type == "Card" then
+            nd.setRotation({0, 180, 180})
+            nd.setPosition(pos1)
+            break
+          end
+        end
+
+        if nd and nd.type ~= nil then
+          nd.setRotation({0, 180, 0})
+          nd.setPosition(pos2)
+        end
+
+        -- wait for piles to form, then place them
+        Wait.time(function()
+          local firstHalf = nil
+          for _, o in ipairs(findObjsInRadius(pos1, 2)) do
+            if o.type == "Deck" or o.type == "Card" then firstHalf = o break end
+          end
+
+          local secondHalf = nil
+          for _, o in ipairs(findObjsInRadius(pos2, 2)) do
+            if o.type == "Deck" or o.type == "Card" then secondHalf = o break end
+          end
+
+          -- first half → event deck (face-down)
+          local cur = getEventObj()
+          if firstHalf and cur then
+            if firstHalf.type == "Deck" then
+              local qty = firstHalf.getQuantity()
+              for i = 1, qty do
+                if firstHalf.type == "Deck" then
+                  local card = firstHalf.takeObject({index = 0, smooth = false, rotation = {0, 180, 180}})
+                  if card then cur.putObject(card) end
+                elseif firstHalf.type == "Card" then
+                  firstHalf.setRotation({0, 180, 180})
+                  cur.putObject(firstHalf)
+                  break
+                end
+              end
+            elseif firstHalf.type == "Card" then
+              firstHalf.setRotation({0, 180, 180})
+              cur.putObject(firstHalf)
+            end
+
+            Wait.time(function()
+              local merged = getEventObj()
+              if merged and merged.type == "Deck" then merged.shuffle() end
+            end, 0.4)
+          end
+
+          -- second half → event discard (face-up)
+          if secondHalf then
+            secondHalf.setRotation({0, 180, 0})
+            secondHalf.setPositionSmooth(eventDiscardPos:setAt("y", 3))
+          end
+        end, 0.5)
+      end, 0.3)
+    end)
+  end, 0.3)
+end

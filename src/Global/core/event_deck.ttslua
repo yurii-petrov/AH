@@ -1,0 +1,50 @@
+-- ╭──────────────────────────────────────────────╮
+-- │            CORE: Event Deck                  │
+-- ╰──────────────────────────────────────────────╯
+--
+-- Shared positions and object helpers for the mythos-tile event deck,
+-- used by both the mergeEventDeck and replaceEventDeck steps.
+
+-- Local positions on the mythos tile.
+EVENT_DECK_LOCAL_POS    = {-0.198, 0.236, 0.278}
+EVENT_DISCARD_LOCAL_POS = {-0.199, 0.113, 0.731}
+
+-- World position of the event deck / discard slots for a given mythos tile.
+function getEventDeckWorldPos(mythosTile)
+  return mythosTile.positionToWorld(EVENT_DECK_LOCAL_POS)
+end
+
+function getEventDiscardWorldPos(mythosTile)
+  return mythosTile.positionToWorld(EVENT_DISCARD_LOCAL_POS)
+end
+
+-- The object currently in the event discard slot (Deck/Card), or nil.
+function getEventDiscardObj()
+  return getObjFromMythosTile(EVENT_DISCARD_LOCAL_POS)
+end
+
+-- Finds the guid of a deck in the box matching the given type + name.
+function findEventDeckInBox(deckType, deckName)
+  local box = getObjectFromGUID(boxId)
+  if not box then return nil end
+  for _, obj in ipairs(box.getObjects()) do
+    local memo = parseJson(obj.memo)
+    if memo and iEquals(memo.type, deckType) and iEquals(memo.name, deckName) then
+      return obj.guid
+    end
+  end
+end
+
+-- Moves every card of `src` (a Deck or a single Card) into `targetDeck`.
+function mergeObjIntoDeck(src, targetDeck)
+  if not src then return end
+  if src.type == "Deck" then
+    local cards = src.getObjects()
+    for i = #cards, 1, -1 do
+      local card = src.takeObject({index = 0, smooth = false})
+      if card then targetDeck.putObject(card) end
+    end
+  elseif src.type == "Card" then
+    targetDeck.putObject(src)
+  end
+end

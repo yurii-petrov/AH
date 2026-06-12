@@ -1,0 +1,66 @@
+-- ╭──────────────────────────────────────────────╮
+-- │            STEP: Take Codex                  │
+-- ╰──────────────────────────────────────────────╯
+--
+-- Draws a codex card (by number) from the archive on the location mat and
+-- attaches it to the codex mat at the next free codex snap point.
+
+function processStepTakeCodexFromArchive(step, context)
+  if not step.number then
+    log("[takeCodexFromArchive] number is nil")
+    return
+  end
+
+  local sourceMat = findBoardByQuery({{
+    field = "type",
+    op    = "eq",
+    value = "locationMat"
+  }})
+  if not sourceMat then
+    log("[takeCodexFromArchive] locationMat not found")
+    return
+  end
+
+  local archive = findDeckOnBoardByType(sourceMat, "archive")
+  if not archive then
+    log("[takeCodexFromArchive] archive not found")
+    return
+  end
+
+  local codexMat = context.codexMat
+  if not codexMat then
+    log("[takeCodexFromArchive] codexMat is nil")
+    return
+  end
+
+  local freePos = findNextFreeCodexSnapPos(sourceMat)
+  if not freePos then
+    log("[takeCodexFromArchive] no free codex snap")
+    return
+  end
+
+  local card = takeCardByQuery(archive, {{
+    field = "number",
+    op    = "eq",
+    value = step.number
+  }})
+
+  if not card then
+    log("[takeCodexFromArchive] card with number " .. step.number .. " not found")
+    return
+  end
+
+  card.setPositionSmooth(freePos:setAt("y", 3))
+  runAfterRest(card, function(c)
+    attachCodexCard(c, freePos)
+
+    if context.removeAfterUse and not step.destructSelf then
+      codexMat.call("onActionSuccess", context.removeAfterUse)
+    end
+
+    if step.destructSelf then
+      removeCodexAttachment(codexMat)
+      codexMat.destruct()
+    end
+  end)
+end

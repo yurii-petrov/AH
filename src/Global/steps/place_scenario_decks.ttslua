@@ -1,0 +1,74 @@
+-- ╭──────────────────────────────────────────────╮
+-- │        STEP: placeScenarioDecks              │
+-- ╰──────────────────────────────────────────────╯
+--
+-- Pulls the scenario's decks out of the box and places each at its mapped
+-- position on the scenario mat, shuffling decks once they come to rest.
+
+function processStepPlaceScenarioDecks(step, context)
+  if not step.decks or #step.decks == 0 then
+    log("[placeScenarioDecks] decks is nil or empty")
+    return
+  end
+
+  local scenarioMat = getObjectFromGUID(scenarioMatId)
+  if not scenarioMat then
+    log("[placeScenarioDecks] scenarioMat not found")
+    return
+  end
+
+  local scenarioMatData = parseJson(scenarioMat.memo)
+  if not scenarioMatData or not scenarioMatData.positions then
+    log("[placeScenarioDecks] scenarioMatData or positions not found")
+    return
+  end
+
+  local box = getObjectFromGUID(boxId)
+  if not box then
+    log("[placeScenarioDecks] box not found")
+    return
+  end
+
+  local lookup = {}
+  for _, d in ipairs(step.decks) do
+    local key = string.lower(d.type) .. "|" .. string.lower(d.name)
+    local posEntry = scenarioMatData.positions[d.pos]
+    if posEntry then
+      lookup[key] = scenarioMat.positionToWorld({
+        tonumber(posEntry[1]),
+        tonumber(posEntry[2]),
+        tonumber(posEntry[3])
+      }):setAt("y", 3)
+    else
+      log("[placeScenarioDecks] position index " .. tostring(d.pos) .. " not found for " .. d.name)
+    end
+  end
+
+  local allTasks = {}
+  for _, obj in ipairs(box.getObjects()) do
+    local memo = parseJson(obj.memo)
+    if memo and memo.type and memo.name then
+      local key = string.lower(memo.type) .. "|" .. string.lower(memo.name)
+      local targetPos = lookup[key]
+      if targetPos then
+        local objGuid = obj.guid
+        table.insert(allTasks, function(done)
+          local spawnedObj = box.takeObject({
+            guid     = objGuid,
+            position = targetPos,
+            rotation = {0, 180, 180},
+            smooth   = true
+          })
+          runAfterRest(spawnedObj, function(o)
+            if o.type == "Deck" then
+              o.shuffle()
+            end
+            done()
+          end)
+        end)
+      end
+    end
+  end
+
+  waitAll(allTasks, function() end)
+end

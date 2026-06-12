@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"number\":3,\"type\":\"codex\",\"front\":{\"actions\":[{\"title\":\"4\",\"description\":\"\",\"removeAfterUse\":true,\"steps\":[{\"type\":\"takeCodexFromArchive\",\"number\":4}]},{\"title\":\"Find Cultist\",\"description\":\"\",\"steps\":[{\"type\":\"findMonsterByType\",\"monsterType\":\"Cultist\",\"deckType\":\"monster\",\"placement\":{\"type\":\"firstFreeSnap\",\"board\":\"self\",\"snapTag\":\"monster\"}}]}]},\"back\":{\"actions\":[{\"title\":\"5\",\"description\":\"\",\"removeAfterUse\":true,\"steps\":[{\"type\":\"takeCodexFromArchive\",\"number\":5}]}]}}",
+  "Memo": "{\"number\":3,\"type\":\"codex\",\"front\":{\"actions\":[{\"title\":\"4\",\"description\":\"\",\"removeAfterUse\":true,\"steps\":[{\"type\":\"takeCodexFromArchive\",\"number\":4}]},{\"title\":\"Find Cultist\",\"description\":\"\",\"steps\":[{\"type\":\"findMonsterByType\",\"monsterType\":[\"Cultist\"],\"deckType\":\"monster\"}]}]},\"back\":{\"actions\":[{\"title\":\"5\",\"description\":\"\",\"removeAfterUse\":true,\"steps\":[{\"type\":\"takeCodexFromArchive\",\"number\":5}]}]}}",
   "Name": "Card",
   "Nickname": "03",
   "SidewaysCard": false,

@@ -1,0 +1,87 @@
+-- ╭──────────────────────────────────────────────╮
+-- │           STEP: removeToken                  │
+-- ╰──────────────────────────────────────────────╯
+--
+-- Removes a token of a given type from the active player's neighbourhood
+-- location, returning it to its bag when one exists (otherwise destructing).
+
+function processStepRemoveToken(step, context)
+  if not step.token or not step.token.type then
+    log("[removeToken] token.type is nil")
+    return
+  end
+
+  local tokenType = step.token.type
+  local placementType = step.placement and step.placement.type
+
+  if placementType == "playerLocation" then
+    if not context or not context.playerColor then
+      log("[removeToken] context.playerColor is nil")
+      return
+    end
+
+    local neighborhoodTile = getPlayerNeighborhoodTile(context.playerColor)
+    if not neighborhoodTile then
+      log("[removeToken] neighborhood tile not found for player: " .. context.playerColor)
+      return
+    end
+
+    local objs = upCast(neighborhoodTile, 1, nil, 1)
+    for _, o in ipairs(objs) do
+      if o.type == "Tile" and o.memo == tokenType then
+        local tokenBagId = getTokenBagIdByType(tokenType)
+        if tokenBagId then
+          local bag = getObjectFromGUID(tokenBagId)
+          if bag then
+            bag.putObject(o)
+            print(string.format(i18n.getStrById("LOG_token_removed"), tokenType))
+            return
+          end
+        end
+        o.destruct()
+        print(string.format(i18n.getStrById("LOG_token_removed"), tokenType))
+        return
+      end
+    end
+
+    log("[removeToken] token '" .. tokenType .. "' not found on player location")
+  end
+end
+
+function getTokenBagIdByType(tokenType)
+  local tokenBagMap = {
+    ["White Marker"] = whiteTokenBagId,
+    ["Blue Marker"]  = blueTokenBagId,
+    ["Red Marker"]   = redTokenBagId,
+    ["Green Marker"] = greenTokenBagId,
+    ["Doom Token"]   = doomBagId,
+    ["Clue"]         = clueBagId,
+  }
+  return tokenBagMap[tokenType]
+end
+
+function getPlayerNeighborhoodTile(playerColor)
+  local locationMat = getObjectFromGUID(locationMatId)
+  if not locationMat then return end
+
+  local objs = getObjectsInPlayerZone(playerColor)
+  for _, o in ipairs(objs) do
+    if o.type == "Card" then
+      local oData = parseJson(o.memo)
+      if oData and oData.type == "Investigator" and oData.name then
+        local boardObjs = upCast(locationMat, 1, nil, 1)
+        for _, b in ipairs(boardObjs) do
+          if b.memo and b.memo == oData.name and b.type == "Figurine" then
+            local hits = downCast(b, 10, -2, 1 / 5)
+            for _, h in ipairs(hits) do
+              local hData = parseJson(h.memo)
+              if hData and hData.type and string.lower(hData.type) == "neighborhood" then
+                return h
+              end
+            end
+          end
+        end
+      end
+    end
+  end
+end

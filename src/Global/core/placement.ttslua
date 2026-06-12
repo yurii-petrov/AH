@@ -1,0 +1,66 @@
+-- ╭──────────────────────────────────────────────╮
+-- │            CORE: Card Placement              │
+-- ╰──────────────────────────────────────────────╯
+--
+-- Reusable card placement dispatcher. Given a card and a placement spec,
+-- routes it either into a target deck or onto the first free snap point.
+
+function placeCard(card, placement, context)
+  if not placement then
+    log("[placeCard] placement is nil")
+    return
+  end
+
+  local placementType = string.lower(placement.type)
+
+  if placementType == "deck" then
+    local targetMat = findBoardByQuery(placement.board and placement.board.query)
+    if not targetMat then
+      log("[placeCard] target board not found")
+      return
+    end
+
+    local targetDeck = findDeckOnBoardByType(targetMat, placement.deck)
+    if not targetDeck then
+      log("[placeCard] target deck '" .. tostring(placement.deck) .. "' not found")
+      return
+    end
+
+    card.setRotation({0, 180, 180})
+    targetDeck.putObject(card)
+
+  elseif placementType == "firstfreesnap" then
+    local snapBoard = placement.board == "self" and context and context.codexMat or nil
+    if not snapBoard then
+      log("[placeCard] snap board not found")
+      return
+    end
+
+    local snaps = snapBoard.getSnapPoints()
+    if not snaps then return end
+
+    for _, snp in ipairs(snaps) do
+      if snp.tags then
+        for _, tag in ipairs(snp.tags) do
+          if tag == placement.snapTag then
+            local worldPos = snapBoard.positionToWorld(snp.position)
+            local objs = findObjsInRadius(worldPos:setAt("y", 2.2))
+            local isEmpty = true
+            for _, o in ipairs(objs) do
+              if o.type == "Card" then
+                isEmpty = false
+                break
+              end
+            end
+            if isEmpty then
+              card.setPositionSmooth(worldPos:setAt("y", 3))
+              return
+            end
+          end
+        end
+      end
+    end
+
+    log("[placeCard] no free snap point with tag: " .. tostring(placement.snapTag))
+  end
+end

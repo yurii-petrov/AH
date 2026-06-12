@@ -1,0 +1,47 @@
+-- ╭──────────────────────────────────────────────╮
+-- │          STEP: Return Codex To Archive       │
+-- ╰──────────────────────────────────────────────╯
+--
+-- Detaches the codex card from the codex mat, returns it (face-down) into
+-- the archive deck on the location mat, then destructs the codex mat.
+
+function processStepReturnCodexToArchive(step, context)
+  local codexMat = context.codexMat
+  if not codexMat then
+    log("[returnCodexToArchive] codexMat is nil")
+    return
+  end
+
+  local sourceMat = findBoardByQuery({{
+    field = "type",
+    op    = "eq",
+    value = "locationMat"
+  }})
+  if not sourceMat then
+    log("[returnCodexToArchive] locationMat not found")
+    return
+  end
+
+  local archive = findDeckOnBoardByType(sourceMat, "archive")
+  if not archive then
+    log("[returnCodexToArchive] archive not found")
+    return
+  end
+
+  local codexIndex = findCodexAttachmentIndex(codexMat)
+  if not codexIndex then
+    log("[returnCodexToArchive] codex card not found in attachments")
+    return
+  end
+
+  local codexCard = codexMat.removeAttachment(codexIndex)
+  if not codexCard then
+    log("[returnCodexToArchive] failed to remove codex card")
+    return
+  end
+
+  codexCard.interactable = true
+  codexCard.setRotation({0, 180, 180})
+  archive.putObject(codexCard)
+  codexMat.destruct()
+end

@@ -1,0 +1,148 @@
+-- ╭──────────────────────────────────────────────╮
+-- │           STEP: cycleTokenLayout             │
+-- ╰──────────────────────────────────────────────╯
+--
+-- Advances the codex token to its next layout position and a random
+-- rotation, animating the move (lift the stack, slide, spin, drop). The
+-- layout state is persisted back onto the codex mat between frames.
+
+-- JSON object keys arrive as strings; restore numeric keys recursively so
+-- that array-style layout tables index correctly.
+local function normalizeNumericKeys(t)
+  if type(t) ~= "table" then return t end
+  local result = {}
+  for k, v in pairs(t) do
+    local nk = tonumber(k)
+    result[nk or k] = normalizeNumericKeys(v)
+  end
+  return result
+end
+
+function processStepCycleTokenLayout(step, context)
+  local codexMat = context.codexMat
+  if not codexMat then
+    log("[processStepCycleTokenLayout] codexMat is nil")
+    return
+  end
+
+  local memo = context.data.codex
+  if not memo or not memo.tokenLayout then
+    log("[processStepCycleTokenLayout] tokenLayout not found in memo")
+    return
+  end
+
+  local layout = normalizeNumericKeys(memo.tokenLayout)
+
+  if layout.isAnimating then
+    log("[processStepCycleTokenLayout] animation in progress, skipping")
+    return
+  end
+
+  layout.posIndex = (layout.posIndex % #layout.positions) + 1
+
+  local rotList = layout.rotationByPos[layout.posIndex]
+  if not rotList then
+    log("[processStepCycleTokenLayout] rotList is nil for posIndex: " .. tostring(layout.posIndex))
+    return
+  end
+
+  local rotIndex = math.random(1, #rotList)
+  if rotIndex == layout.lastRotIndex then
+    rotIndex = (rotIndex % #rotList) + 1
+  end
+  layout.lastRotIndex = rotIndex
+
+  layout.isAnimating = true
+  memo.tokenLayout = layout
+  codexMat.call("setCodexData", memo)
+
+  applyTokenLayout(layout, function()
+    local freshMemo = context.data.codex
+    if freshMemo and freshMemo.tokenLayout then
+      freshMemo.tokenLayout.isAnimating = false
+      codexMat.call("setCodexData", freshMemo)
+    end
+  end)
+end
+
+function applyTokenLayout(layout, onComplete)
+  local locationMatOld = getObjectFromGUID("b195b0")
+  if not locationMatOld then
+    return
+  end
+
+  local obj = getObjectFromGUID(layout.tokenGUID)
+  if not obj then
+    log("[applyTokenLayout] token object not found")
+    if onComplete then onComplete() end
+    return
+  end
+
+  local stackedObjs = upCast(obj, 0.5, nil, 0.8)
+  local stackedPositions = {}
+  for _, o in ipairs(stackedObjs) do
+    if o.type == "Figurine" or o.type == "Tile" then
+      table.insert(stackedPositions, {
+        obj = o,
+        localPos = obj.positionToLocal(o.getPosition())
+      })
+      o.setPositionSmooth(o.getPosition():setAt("y", o.getPosition().y + 3))
+    end
+  end
+
+  local posIndex = layout.posIndex
+  local pos = layout.positions[posIndex]
+  local rotList = layout.rotationByPos[posIndex]
+  local rotY = rotList[layout.lastRotIndex]
+
+  local rot = obj.getRotation():setAt("z", posIndex % 2 ~= 0 and 0 or 180)
+  local newPos = locationMatOld.positionToWorld(pos)
+
+  obj.setPositionSmooth(newPos:setAt("y", 3))
+  runAfterRest(obj, function(obj)
+    obj.setRotationSmooth(rot)
+    runAfterRest(obj, function(obj)
+
+      local spinTurns    = 3
+      local stepsPerTurn = 20
+      local totalSteps   = spinTurns * stepsPerTurn
+      local interval     = 0.03
+      local step         = 0
+
+      local startY = obj.getRotation().y
+      local diff   = ((rotY - startY + 180) % 360) - 180
+      local spinDir = diff >= 0 and 1 or -1
+
+      Wait.time(function()
+        step = step + 1
+
+        if step < totalSteps then
+          local angle = (startY + spinDir * (360 * step / stepsPerTurn)) % 360
+          obj.setRotation(rot:setAt("y", angle))
+        else
+          obj.setRotationSmooth(rot:setAt("y", rotY))
+          runAfterRest(obj, function(obj)
+            obj.setPositionSmooth(newPos:setAt("y", posIndex % 2 ~= 0 and 2.2 or 2.31))
+            runAfterRest(obj, function(obj)
+              if #stackedObjs > 0 then
+                for _, entry in ipairs(stackedPositions) do
+                  local worldPos = obj.positionToWorld(entry.localPos):setAt("y", 3)
+                  entry.obj.setPositionSmooth(worldPos)
+                end
+                local lastObj = stackedObjs[#stackedObjs]
+                runAfterRest(lastObj, function()
+                  if onComplete then onComplete() end
+                end)
+              else
+                if onComplete then onComplete() end
+              end
+            end)
+          end)
+          return false
+        end
+
+      end, interval, totalSteps + 1)
+
+    end)
+  end)
+end
