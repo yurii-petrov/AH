@@ -571,6 +571,15 @@ msgstr "Investigator not found for role: %s"
 msgid "LOG_confirm_death"
 msgstr "Confirm investigator death"
 
+msgid "LOG_find_monster_header"
+msgstr "Revealed monster cards:"
+
+msgid "LOG_find_monster_row"
+msgstr "%d - %s - %s"
+
+msgid "LOG_find_monster_row_found"
+msgstr "%d - %s - %s [FOUND]"
+
 msgid "CODEX_return_to_archive"
 msgstr "Return to Archive"
 
@@ -716,3 +725,53 @@ msgstr "reroll"
 
 msgid "ROLLER_help_rmb_key"
 msgstr "RMB"
+
+# Monster names
+msgid "Hooded_Stalker"
+msgstr "Hooded Stalker"
+
+msgid "High_Priest"
+msgstr "High Priest"
+
+msgid "Robed_Figure"
+msgstr "Robed Figure"
+
+msgid "Occult_Ritualist"
+msgstr "Occult Ritualist"
+
+msgid "Ravenous_Predator"
+msgstr "Ravenous Predator"
+
+msgid "Swift_Byakhee"
+msgstr "Swift Byakhee"
+
+msgid "Tindalos_Alpha"
+msgstr "Tindalos Alpha"
+
+msgid "Abyssal_Servant"
+msgstr "Abyssal Servant"
+
+msgid "Coursing_Hound"
+msgstr "Coursing Hound"
+
+msgid "Keening_Hound"
+msgstr "Keening Hound"
+
+msgid "Eyeless_Watcher"
+msgstr "Eyeless Watcher"
+
+# Monster types
+msgid "type_Human"
+msgstr "Human"
+
+msgid "type_Cultist"
+msgstr "Cultist"
+
+msgid "type_Hound_of_Tindalos"
+msgstr "Hound of Tindalos"
+
+msgid "type_Byakhee"
+msgstr "Byakhee"
+
+msgid "type_Nightgaunt"
+msgstr "Nightgaunt"

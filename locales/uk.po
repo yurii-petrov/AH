@@ -635,6 +635,15 @@ msgstr "Слідчого не знайдено для ролі: %s"
 msgid "LOG_confirm_death"
 msgstr "Підтвердити загибель слідчого"
 
+msgid "LOG_find_monster_header"
+msgstr "Revealed monster cards:"
+
+msgid "LOG_find_monster_row"
+msgstr "%d - %s - %s"
+
+msgid "LOG_find_monster_row_found"
+msgstr "%d - %s - %s [FOUND]"
+
 msgid "CODEX_return_to_archive"
 msgstr "Повернути до архіву"
 
@@ -780,3 +789,71 @@ msgstr "перекиду"
 
 msgid "ROLLER_help_rmb_key"
 msgstr "ПКМ"
+
+# Monster names
+
+msgid "Hooded_Stalker"
+
+msgstr "Сталкер у капюшоні"
+
+msgid "High_Priest"
+
+msgstr "Верховний жрець"
+
+msgid "Robed_Figure"
+
+msgstr "Постать у мантії"
+
+msgid "Occult_Ritualist"
+
+msgstr "Окультний ритуаліст"
+
+msgid "Ravenous_Predator"
+
+msgstr "Ненажерливий хижак"
+
+msgid "Swift_Byakhee"
+
+msgstr "Швидкий Б'які"
+
+msgid "Tindalos_Alpha"
+
+msgstr "Альфа Тіндалоса"
+
+msgid "Abyssal_Servant"
+
+msgstr "Безодній слуга"
+
+msgid "Coursing_Hound"
+
+msgstr "Гончий пес"
+
+msgid "Keening_Hound"
+
+msgstr "Скиглячий пес"
+
+msgid "Eyeless_Watcher"
+
+msgstr "Безокий спостерігач"
+
+# Monster types
+
+msgid "type_Human"
+
+msgstr "Людина"
+
+msgid "type_Cultist"
+
+msgstr "Культист"
+
+msgid "type_Hound_of_Tindalos"
+
+msgstr "Гончий Тіндалоса"
+
+msgid "type_Byakhee"
+
+msgstr "Б'які"
+
+msgid "type_Nightgaunt"
+
+msgstr "Нічний ґонт"

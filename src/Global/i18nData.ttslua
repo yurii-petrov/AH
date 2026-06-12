@@ -2,6 +2,10 @@
 -- Do not edit it manually, as your changes will be overwritten.
 
 I18N_DATA = {
+  ["Abyssal_Servant"] = {
+    ["en"] = "Abyssal Servant",
+    ["uk"] = "Безодній слуга",
+  },
   ["Agatha_Crane"] = {
     ["en"] = "Agatha Crane",
     ["uk"] = "Агата Крейн",
@@ -50,6 +54,10 @@ I18N_DATA = {
     ["en"] = "Clue",
     ["uk"] = "Підказка",
   },
+  ["Coursing_Hound"] = {
+    ["en"] = "Coursing Hound",
+    ["uk"] = "Гончий пес",
+  },
   ["Curiositie_Shoppe"] = {
     ["en"] = "Curiositie Shoppe",
     ["uk"] = "Крамничка Диковинок",
@@ -78,6 +86,10 @@ I18N_DATA = {
     ["en"] = "Easttown",
     ["uk"] = "Східний Квартал",
   },
+  ["Eyeless_Watcher"] = {
+    ["en"] = "Eyeless Watcher",
+    ["uk"] = "Безокий спостерігач",
+  },
   ["Father_Mateo"] = {
     ["en"] = "Father Mateo",
     ["uk"] = "Отець Матео",
@@ -98,9 +110,17 @@ I18N_DATA = {
     ["en"] = "Hibb's Roadhouse",
     ["uk"] = "Шинок Гібба",
   },
+  ["High_Priest"] = {
+    ["en"] = "High Priest",
+    ["uk"] = "Верховний жрець",
+  },
   ["Historical_Society"] = {
     ["en"] = "Historical Society",
     ["uk"] = "Історичне Товариство",
+  },
+  ["Hooded_Stalker"] = {
+    ["en"] = "Hooded Stalker",
+    ["uk"] = "Сталкер у капюшоні",
   },
   ["IM_bio"] = {
     ["en"] = "Bio",
@@ -133,6 +153,10 @@ I18N_DATA = {
   ["Kate_Winthrop"] = {
     ["en"] = "Kate Winthrop",
     ["uk"] = "Кейт Вінтроп",
+  },
+  ["Keening_Hound"] = {
+    ["en"] = "Keening Hound",
+    ["uk"] = "Скиглячий пес",
   },
   ["LOG_add_clue_manually"] = {
     ["en"] = "Add a clue manually",
@@ -185,6 +209,18 @@ I18N_DATA = {
   ["LOG_figurine_not_at_location"] = {
     ["en"] = "Player figurine is not at a location. Also, there should be only 1 on the table for the investigator, discard the other if you haven't already.",
     ["uk"] = "Фігурка гравця не знаходиться в локації. Також на столі має бути лише 1 фігурка для слідчого — приберіть інші, якщо цього ще не зроблено.",
+  },
+  ["LOG_find_monster_header"] = {
+    ["en"] = "Revealed monster cards:",
+    ["uk"] = "Revealed monster cards:",
+  },
+  ["LOG_find_monster_row"] = {
+    ["en"] = "%d - %s - %s",
+    ["uk"] = "%d - %s - %s",
+  },
+  ["LOG_find_monster_row_found"] = {
+    ["en"] = "%d - %s - %s [FOUND]",
+    ["uk"] = "%d - %s - %s [FOUND]",
   },
   ["LOG_gate_burst"] = {
     ["en"] = "\n%s gate burst!",
@@ -514,6 +550,10 @@ I18N_DATA = {
     ["en"] = "Observatory",
     ["uk"] = "Обсерваторія",
   },
+  ["Occult_Ritualist"] = {
+    ["en"] = "Occult Ritualist",
+    ["uk"] = "Окультний ритуаліст",
+  },
   ["Orne_Library"] = {
     ["en"] = "Orne Library",
     ["uk"] = "Бібліотека Орна",
@@ -626,6 +666,10 @@ I18N_DATA = {
     ["en"] = "successes",
     ["uk"] = "успіхів",
   },
+  ["Ravenous_Predator"] = {
+    ["en"] = "Ravenous Predator",
+    ["uk"] = "Ненажерливий хижак",
+  },
   ["Residential"] = {
     ["en"] = "Residential",
     ["uk"] = "Житлові Будинки",
@@ -645,6 +689,10 @@ I18N_DATA = {
   ["Rivertown"] = {
     ["en"] = "Rivertown",
     ["uk"] = "Набережна",
+  },
+  ["Robed_Figure"] = {
+    ["en"] = "Robed Figure",
+    ["uk"] = "Постать у мантії",
   },
   ["Roland_Banks"] = {
     ["en"] = "Roland Banks",
@@ -706,6 +754,10 @@ I18N_DATA = {
     ["en"] = "Stella Clark",
     ["uk"] = "Стелла Кларк",
   },
+  ["Swift_Byakhee"] = {
+    ["en"] = "Swift Byakhee",
+    ["uk"] = "Швидкий Б'які",
+  },
   ["T4A_clue"] = {
     ["en"] = "SPAWN CLUE",
     ["uk"] = "РОЗМІСТИТИ ЗАЧІПКУ",
@@ -753,6 +805,10 @@ I18N_DATA = {
   ["Tick_Tock_Club"] = {
     ["en"] = "Tick-Tock Club",
     ["uk"] = "Клуб \"Тік-Так\"",
+  },
+  ["Tindalos_Alpha"] = {
+    ["en"] = "Tindalos Alpha",
+    ["uk"] = "Альфа Тіндалоса",
   },
   ["Tommy_Muldoon"] = {
     ["en"] = "Tommy Muldoon",
@@ -809,5 +865,25 @@ I18N_DATA = {
   ["mythos_start"] = {
     ["en"] = "Start of Mythos Phase",
     ["uk"] = "Настає фаза Мітів",
+  },
+  ["type_Byakhee"] = {
+    ["en"] = "Byakhee",
+    ["uk"] = "Б'які",
+  },
+  ["type_Cultist"] = {
+    ["en"] = "Cultist",
+    ["uk"] = "Культист",
+  },
+  ["type_Hound_of_Tindalos"] = {
+    ["en"] = "Hound of Tindalos",
+    ["uk"] = "Гончий Тіндалоса",
+  },
+  ["type_Human"] = {
+    ["en"] = "Human",
+    ["uk"] = "Людина",
+  },
+  ["type_Nightgaunt"] = {
+    ["en"] = "Nightgaunt",
+    ["uk"] = "Нічний ґонт",
   },
 }
