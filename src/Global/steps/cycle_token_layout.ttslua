@@ -18,7 +18,7 @@ local function normalizeNumericKeys(t)
   return result
 end
 
-function processStepCycleTokenLayout(step, context)
+function processStepCycleTokenLayout(step, context, onDone)
   local codexMat = context.codexMat
   if not codexMat then
     log("[processStepCycleTokenLayout] codexMat is nil")
@@ -62,6 +62,7 @@ function processStepCycleTokenLayout(step, context)
       freshMemo.tokenLayout.isAnimating = false
       codexMat.call("setCodexData", freshMemo)
     end
+    if onDone then onDone() end
   end)
 end
 

@@ -5,7 +5,7 @@
 -- Removes a token of a given type from the active player's neighbourhood
 -- location, returning it to its bag when one exists (otherwise destructing).
 
-function processStepRemoveToken(step, context)
+function processStepRemoveToken(step, context, onDone)
   if not step.token or not step.token.type then
     log("[removeToken] token.type is nil")
     return
@@ -46,6 +46,7 @@ function processStepRemoveToken(step, context)
 
     log("[removeToken] token '" .. tokenType .. "' not found on player location")
   end
+  if onDone then onDone() end
 end
 
 function getTokenBagIdByType(tokenType)

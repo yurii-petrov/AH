@@ -24,7 +24,7 @@ end
 
 local FIND_MONSTER_REVEAL_DURATION = 4
 
-function processStepFindMonsterByType(step, context)
+function processStepFindMonsterByType(step, context, onDone)
   if not step.monsterType then
     log("[findMonsterByType] monsterType is nil")
     return
@@ -149,9 +149,13 @@ function processStepFindMonsterByType(step, context)
 
   local function spawnFoundCard()
     local foundCard = getObjectFromGUID(revealResult.foundGuid)
-    if not foundCard then return end
+    if not foundCard then
+      if onDone then onDone() end
+      return
+    end
     foundCard.interactable = true
     spawnMonster(finalFoundPos, foundCard)
+    if onDone then onDone() end
   end
 
   -- after reveal: return non-target cards to the monster deck

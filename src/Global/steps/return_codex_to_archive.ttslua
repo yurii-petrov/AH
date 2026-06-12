@@ -5,7 +5,7 @@
 -- Detaches the codex card from the codex mat, returns it (face-down) into
 -- the archive deck on the location mat, then destructs the codex mat.
 
-function processStepReturnCodexToArchive(step, context)
+function processStepReturnCodexToArchive(step, context, onDone)
   local codexMat = context.codexMat
   if not codexMat then
     log("[returnCodexToArchive] codexMat is nil")
@@ -44,4 +44,5 @@ function processStepReturnCodexToArchive(step, context)
   codexCard.setRotation({0, 180, 180})
   archive.putObject(codexCard)
   codexMat.destruct()
+  if onDone then onDone() end
 end

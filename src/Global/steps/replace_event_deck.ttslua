@@ -6,7 +6,7 @@
 -- replacement deck, shuffles and splits it in half: one half becomes the
 -- new event deck (face-down), the other becomes the event discard (face-up).
 
-function processStepReplaceEventDeck(step, context)
+function processStepReplaceEventDeck(step, context, onDone)
   if not step.deck then
     log("[replaceEventDeck] deck is nil")
     return
@@ -134,6 +134,7 @@ function processStepReplaceEventDeck(step, context)
             secondHalf.setRotation({0, 180, 0})
             secondHalf.setPositionSmooth(eventDiscardPos:setAt("y", 3))
           end
+          if onDone then onDone() end
         end, 0.5)
       end, 0.3)
     end)

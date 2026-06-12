@@ -5,7 +5,7 @@
 -- Pulls the scenario's decks out of the box and places each at its mapped
 -- position on the scenario mat, shuffling decks once they come to rest.
 
-function processStepPlaceScenarioDecks(step, context)
+function processStepPlaceScenarioDecks(step, context, onDone)
   if not step.decks or #step.decks == 0 then
     log("[placeScenarioDecks] decks is nil or empty")
     return
@@ -70,5 +70,7 @@ function processStepPlaceScenarioDecks(step, context)
     end
   end
 
-  waitAll(allTasks, function() end)
+  waitAll(allTasks, function()
+    if onDone then onDone() end
+  end)
 end

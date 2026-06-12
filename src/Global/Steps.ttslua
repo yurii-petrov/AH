@@ -54,14 +54,20 @@ function processSteps(data)
     return
   end
 
-  for i = 1, #data.steps do
-    processStep(data.steps[i], data.context)
+  local function runStep(i)
+    if i > #data.steps then return end
+    processStep(data.steps[i], data.context, function()
+      runStep(i + 1)
+    end)
   end
+
+  runStep(1)
 end
 
-function processStep(step, context)
+function processStep(step, context, onDone)
   if not step or not step.type then
     log("[processStep] step.type is nil")
+    if onDone then onDone() end
     return
   end
 
@@ -69,8 +75,9 @@ function processStep(step, context)
   local handler = STEP_HANDLERS[stepType]
 
   if handler then
-    handler(step, context)
+    handler(step, context, onDone)
   else
     log("[processStep] Unknown step type: " .. stepType)
+    if onDone then onDone() end
   end
 end

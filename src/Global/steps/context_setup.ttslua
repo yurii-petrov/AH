@@ -6,7 +6,7 @@
 -- after removing the spent codex card. Tiles sharing a position are
 -- stacked with a small vertical offset, and each is processed once at rest.
 
-function processStepContextSetup(step, context)
+function processStepContextSetup(step, context, onDone)
   if not step.tiles then
     log("[processStepContextSetup] tiles is nil")
     return
@@ -58,5 +58,7 @@ function processStepContextSetup(step, context)
     end
   end
 
-  waitAll(allTasks, function() end)
+  waitAll(allTasks, function()
+    if onDone then onDone() end
+  end)
 end

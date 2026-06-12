@@ -5,6 +5,7 @@
 -- Returns the bridge tile to the box. Thin wrapper around the shared
 -- returnBridgeToBox helper (defined in Utils).
 
-function processStepReturnBridge(step, context)
+function processStepReturnBridge(step, context, onDone)
   returnBridgeToBox()
+  if onDone then onDone() end
 end

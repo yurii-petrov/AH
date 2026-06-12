@@ -5,7 +5,7 @@
 -- Draws a codex card (by number) from the archive on the location mat and
 -- attaches it to the codex mat at the next free codex snap point.
 
-function processStepTakeCodexFromArchive(step, context)
+function processStepTakeCodexFromArchive(step, context, onDone)
   if not step.number then
     log("[takeCodexFromArchive] number is nil")
     return
@@ -62,5 +62,7 @@ function processStepTakeCodexFromArchive(step, context)
       removeCodexAttachment(codexMat)
       codexMat.destruct()
     end
+
+    if onDone then onDone() end
   end)
 end

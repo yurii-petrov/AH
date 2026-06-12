@@ -6,7 +6,7 @@
 -- discard) into the current event deck, then shuffles. If there is no
 -- current event deck, simply places the new one on the deck slot.
 
-function processStepMergeEventDeck(step, context)
+function processStepMergeEventDeck(step, context, onDone)
   if not step.deck then
     log("[mergeEventDeck] deck is nil")
     return
@@ -57,10 +57,12 @@ function processStepMergeEventDeck(step, context)
         if merged and merged.type == "Deck" then
           merged.shuffle()
         end
+        if onDone then onDone() end
       end, 0.3)
     else
       -- no current deck — just place the new one
       nd.setPositionSmooth(eventDeckPos:setAt("y", 3))
+      if onDone then onDone() end
     end
   end)
 end

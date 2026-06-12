@@ -6,7 +6,7 @@
 -- via the shared placeCard helper. The random branch has a special case
 -- for drawing the second-to-last card of a codex deck.
 
-function processStepTakeCard(step, context)
+function processStepTakeCard(step, context, onDone)
   if not step.card or not step.card.source then
     log("[takeCard] card.source is nil")
     return
@@ -33,6 +33,7 @@ function processStepTakeCard(step, context)
       return
     end
     placeCard(card, placement, context)
+    if onDone then onDone() end
   end
 
   if step.card.random or not step.card.query or #step.card.query == 0 then
