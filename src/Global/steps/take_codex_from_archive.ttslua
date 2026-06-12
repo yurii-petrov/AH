@@ -63,6 +63,8 @@ function processStepTakeCodexFromArchive(step, context, onDone)
       codexMat.destruct()
     end
 
-    if onDone then onDone() end
+    Wait.time(function()
+      if onDone then onDone() end
+    end, 0.2)
   end)
 end
