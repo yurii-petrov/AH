@@ -53,14 +53,11 @@ function processStepFindAndRemoveTokenOnLocation(step, context, onDone)
 
   if not token then
     print(string.format(i18n.getStrById("LOG_token_not_found_any_location"), tokenStr))
-    if onDone then onDone() end
     return
   end
 
-  local rotY = token.getRotation().y
-  if math.abs(rotY) < 10 or math.abs(rotY - 360) < 10 then
+  if token.is_face_down == true then
     print(string.format(i18n.getStrById("LOG_token_face_down"), tokenStr))
-    if onDone then onDone() end
     return
   end
 

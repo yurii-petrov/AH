@@ -211,8 +211,10 @@ function clickAction(player, alt_click, id)
   if not action then return end
 
   if pendingConfirm == id then
-    if action.description then
-      print("опис дії: " .. action.description)
+    if action.description and action.description ~= "" then
+      print("\nопис дії: " .. action.description)
+    else
+      print("\n")
     end
 
     self.UI.setAttribute(id, "text", getOriginalText(side, index))
