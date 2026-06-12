@@ -110,6 +110,9 @@ function processStepPlaceTokensOnLocations(step, context, onDone)
   shufflePool(pool)
 
   -- Place one token per location
+  local logLines = { "\n" .. i18n.getStrById("LOG_place_tokens_header") }
+  local tokenWord = i18n.getStrById("token"):gsub(" ", "_")
+
   for i, locationName in ipairs(step.locations) do
     local tokenType = pool[i]
     if not tokenType then
@@ -131,11 +134,16 @@ function processStepPlaceTokensOnLocations(step, context, onDone)
           pos = tile.getPosition():setAt("y", 3)
         end
         bag.takeObject({ index = 0, position = pos, rotation = {0, 180, 180} }).highlightOn("Yellow", 5)
+        local locKey = locationName:gsub(" ", "_")
+        local locStr = i18n.getStrById(locKey)
+        table.insert(logLines, locStr .. " - " .. tokenWord .. " 1")
       else
         log("[placeTokensOnLocations] bag not found for token type: " .. tokenType)
       end
     end
   end
+
+  print(table.concat(logLines, "\n"))
 
   if onDone then onDone() end
 end

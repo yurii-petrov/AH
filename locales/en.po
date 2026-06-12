@@ -514,6 +514,12 @@ msgstr "It looks like the bridge is already returned."
 msgid "LOG_token_removed"
 msgstr "Token '%s' successfully removed from cell"
 
+msgid "LOG_place_tokens_header"
+msgstr "Tokens placed on locations:"
+
+msgid "token"
+msgstr "token"
+
 msgid "LOG_add_clue_manually"
 msgstr "Add a clue manually"
 

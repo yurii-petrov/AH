@@ -570,6 +570,12 @@ msgstr "Схоже, міст уже повернено."
 msgid "LOG_token_removed"
 msgstr "Токен '%s' успішно видалено з клітинки"
 
+msgid "LOG_place_tokens_header"
+msgstr "Жетони розміщено на локаціях:"
+
+msgid "token"
+msgstr "жетон"
+
 msgid "LOG_add_clue_manually"
 msgstr "Додати зачіпку вручну"
 
