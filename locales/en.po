@@ -730,20 +730,110 @@ msgid "ROLLER_help_rmb_key"
 msgstr "RMB"
 
 # Monster names
-msgid "Hooded_Stalker"
-msgstr "Hooded Stalker"
+msgid "Abyssal_Servant"
+msgstr "Abyssal Servant"
+
+msgid "Alma_Hill"
+msgstr "Alma Hill"
+
+msgid "Altered_Beast"
+msgstr "Altered Beast"
+
+msgid "Altered_Servant"
+msgstr "Altered Servant"
+
+msgid "Avian_Thrall"
+msgstr "Avian Thrall"
+
+msgid "Billy_Cooper"
+msgstr "Billy Cooper"
+
+msgid "Corpse_Taker"
+msgstr "Corpse-Taker"
+
+msgid "Creeping_Ghoul"
+msgstr "Creeping Ghoul"
+
+msgid "Eyeless_Watcher"
+msgstr "Eyeless Watcher"
+
+msgid "Flesh_Eater"
+msgstr "Flesh-Eater"
+
+msgid "Ghoul_Acolyte"
+msgstr "Ghoul Acolyte"
+
+msgid "Ghoul_Priest"
+msgstr "Ghoul Priest"
+
+msgid "Herman_Collins"
+msgstr "Herman Collins"
 
 msgid "High_Priest"
 msgstr "High Priest"
 
-msgid "Robed_Figure"
-msgstr "Robed Figure"
+msgid "Hooded_Stalker"
+msgstr "Hooded Stalker"
+
+msgid "Hulking_Thrall"
+msgstr "Hulking Thrall"
+
+msgid "Hybrid_Thug"
+msgstr "Hybrid Thug"
+
+msgid "Keening_Hound"
+msgstr "Keening Hound"
+
+msgid "Lodge_Enforcer"
+msgstr "Lodge Enforcer"
+
+msgid "Lodge_Loyalist"
+msgstr "Lodge Loyalist"
+
+msgid "Lupine_Thrall"
+msgstr "Lupine Thrall"
+
+msgid "Masked_Hunter"
+msgstr "Masked Hunter"
+
+msgid "Masked_Ones"
+msgstr "Masked Ones"
+
+msgid "Nightmarish_Fiend"
+msgstr "Nightmarish Fiend"
 
 msgid "Occult_Ritualist"
 msgstr "Occult Ritualist"
 
+msgid "Ocean_Scion"
+msgstr "Ocean Scion"
+
 msgid "Ravenous_Predator"
 msgstr "Ravenous Predator"
+
+msgid "River_Skulk"
+msgstr "River Skulk"
+
+msgid "R'lyeh_Guardian"
+msgstr "R'lyeh Guardian"
+
+msgid "Robed_Figure"
+msgstr "Robed Figure"
+
+msgid "Ruth_Turner"
+msgstr "Ruth Turner"
+
+msgid "Sea_Singer"
+msgstr "Sea Singer"
+
+msgid "Shallows_Predator"
+msgstr "Shallows Predator"
+
+msgid "Shoreline_Brute"
+msgstr "Shoreline Brute"
+
+msgid "Simon_Carter"
+msgstr "Simon Carter"
 
 msgid "Swift_Byakhee"
 msgstr "Swift Byakhee"
@@ -751,17 +841,23 @@ msgstr "Swift Byakhee"
 msgid "Tindalos_Alpha"
 msgstr "Tindalos Alpha"
 
-msgid "Abyssal_Servant"
-msgstr "Abyssal Servant"
+msgid "Twilight_Supplicant"
+msgstr "Twilight Supplicant"
 
-msgid "Coursing_Hound"
-msgstr "Coursing Hound"
+msgid "Vicious_Glutton"
+msgstr "Vicious Glutton"
 
-msgid "Keening_Hound"
-msgstr "Keening Hound"
+msgid "Void_Touched"
+msgstr "Void Touched"
 
-msgid "Eyeless_Watcher"
-msgstr "Eyeless Watcher"
+msgid "Wake_Titan"
+msgstr "Wake Titan"
+
+msgid "Whippoorwill"
+msgstr "Whippoorwill"
+
+msgid "Wolf_Man_Drew"
+msgstr "Wolf-Man Drew"
 
 # Monster types
 msgid "type_Human"

@@ -4,7 +4,7 @@
 I18N_DATA = {
   ["Abyssal_Servant"] = {
     ["en"] = "Abyssal Servant",
-    ["uk"] = "Безодній слуга",
+    ["uk"] = "Слуга Безодні",
   },
   ["Agatha_Crane"] = {
     ["en"] = "Agatha Crane",
@@ -13,6 +13,18 @@ I18N_DATA = {
   ["Agnes_Baker"] = {
     ["en"] = "Agnes Baker",
     ["uk"] = "Агнес Бейкер",
+  },
+  ["Alma_Hill"] = {
+    ["en"] = "Alma Hill",
+    ["uk"] = "Алма Гілл",
+  },
+  ["Altered_Beast"] = {
+    ["en"] = "Altered Beast",
+    ["uk"] = "Мутований Звір",
+  },
+  ["Altered_Servant"] = {
+    ["en"] = "Altered Servant",
+    ["uk"] = "Мутований Слуга",
   },
   ["Arkham_Advertiser"] = {
     ["en"] = "Arkham Advertiser",
@@ -24,7 +36,15 @@ I18N_DATA = {
   },
   ["Ashcan_Pete"] = {
     ["en"] = "Ashcan Pete",
-    ["uk"] = "Піт «Сміттяр»",
+    ["uk"] = "Сміттяр Піт",
+  },
+  ["Avian_Thrall"] = {
+    ["en"] = "Avian Thrall",
+    ["uk"] = "Одержимий Птах",
+  },
+  ["Billy_Cooper"] = {
+    ["en"] = "Billy Cooper",
+    ["uk"] = "Біллі Купер",
   },
   ["Black_Cave"] = {
     ["en"] = "Black Cave",
@@ -54,9 +74,13 @@ I18N_DATA = {
     ["en"] = "Clue",
     ["uk"] = "Підказка",
   },
-  ["Coursing_Hound"] = {
-    ["en"] = "Coursing Hound",
-    ["uk"] = "Гончий пес",
+  ["Corpse_Taker"] = {
+    ["en"] = "Corpse-Taker",
+    ["uk"] = "Труполов",
+  },
+  ["Creeping_Ghoul"] = {
+    ["en"] = "Creeping Ghoul",
+    ["uk"] = "Повзучий Гуль",
   },
   ["Curiositie_Shoppe"] = {
     ["en"] = "Curiositie Shoppe",
@@ -64,7 +88,7 @@ I18N_DATA = {
   },
   ["Daniela_Reyes"] = {
     ["en"] = "Daniela Reyes",
-    ["uk"] = "Даніела Рейєс",
+    ["uk"] = "Даніела Реєс",
   },
   ["Dexter_Drake"] = {
     ["en"] = "Dexter Drake",
@@ -72,7 +96,7 @@ I18N_DATA = {
   },
   ["Dexter_Drake_alt"] = {
     ["en"] = "Dexter Drake alt",
-    ["uk"] = "Декстер Дрейк (альтернативний)",
+    ["uk"] = "Декстер Дрейк відлуння",
   },
   ["Diana_Stanley"] = {
     ["en"] = "Diana Stanley",
@@ -88,15 +112,27 @@ I18N_DATA = {
   },
   ["Eyeless_Watcher"] = {
     ["en"] = "Eyeless Watcher",
-    ["uk"] = "Безокий спостерігач",
+    ["uk"] = "Безокий Спостерігач",
   },
   ["Father_Mateo"] = {
     ["en"] = "Father Mateo",
     ["uk"] = "Отець Матео",
   },
+  ["Flesh_Eater"] = {
+    ["en"] = "Flesh-Eater",
+    ["uk"] = "Пожирач Плоті",
+  },
   ["General_Store"] = {
     ["en"] = "General Store",
     ["uk"] = "Універмаг",
+  },
+  ["Ghoul_Acolyte"] = {
+    ["en"] = "Ghoul Acolyte",
+    ["uk"] = "Гуль Послушник",
+  },
+  ["Ghoul_Priest"] = {
+    ["en"] = "Ghoul Priest",
+    ["uk"] = "Гуль Священник",
   },
   ["Graveyard"] = {
     ["en"] = "Graveyard",
@@ -106,13 +142,17 @@ I18N_DATA = {
     ["en"] = "Hangman's Hill",
     ["uk"] = "Пагорб Повішеника",
   },
+  ["Herman_Collins"] = {
+    ["en"] = "Herman Collins",
+    ["uk"] = "Герман Коллінз",
+  },
   ["Hibb's_Roadhouse"] = {
     ["en"] = "Hibb's Roadhouse",
     ["uk"] = "Шинок Гібба",
   },
   ["High_Priest"] = {
     ["en"] = "High Priest",
-    ["uk"] = "Верховний жрець",
+    ["uk"] = "Верховний Жрець",
   },
   ["Historical_Society"] = {
     ["en"] = "Historical Society",
@@ -120,7 +160,15 @@ I18N_DATA = {
   },
   ["Hooded_Stalker"] = {
     ["en"] = "Hooded Stalker",
-    ["uk"] = "Сталкер у капюшоні",
+    ["uk"] = "Переслідувач у Каптурі",
+  },
+  ["Hulking_Thrall"] = {
+    ["en"] = "Hulking Thrall",
+    ["uk"] = "Громіздкий Одержимий",
+  },
+  ["Hybrid_Thug"] = {
+    ["en"] = "Hybrid Thug",
+    ["uk"] = "Бандит-Напівкровка",
   },
   ["IM_bio"] = {
     ["en"] = "Bio",
@@ -156,7 +204,7 @@ I18N_DATA = {
   },
   ["Keening_Hound"] = {
     ["en"] = "Keening Hound",
-    ["uk"] = "Скиглячий пес",
+    ["uk"] = "Виюча Гонча",
   },
   ["LOG_add_clue_manually"] = {
     ["en"] = "Add a clue manually",
@@ -269,6 +317,18 @@ I18N_DATA = {
   ["La_Bella_Luna"] = {
     ["en"] = "La Bella Luna",
     ["uk"] = "Ла Белла Луна",
+  },
+  ["Lodge_Enforcer"] = {
+    ["en"] = "Lodge Enforcer",
+    ["uk"] = "Каральник Ложі",
+  },
+  ["Lodge_Loyalist"] = {
+    ["en"] = "Lodge Loyalist",
+    ["uk"] = "Вірний Ложі",
+  },
+  ["Lupine_Thrall"] = {
+    ["en"] = "Lupine Thrall",
+    ["uk"] = "Одержимий Вовк",
   },
   ["MM_addonDescription1_text"] = {
     ["en"] = "In Dead of Night, investigators explore the facets of Arkham best left unseen in the light of day. Organized crime builds a strong foothold in the city, secret cults labor for a dark master, an alien moon hangs overhead, and unknowable horrors stalk the night. This expansion includes two all-new scenarios, new encounters for every location in Arkham, new monsters and anomalies, and four new investigators to face these fresh horrors, armed with new spells, items and allies.\n• 2 scenarios\n• 4 investigators\n• 7 headline cards\n• 20 archive cards\n• 12 anomaly cards\n• 48 event cards\n• 72 encounter cards\n• 4 ally cards\n• 4 item cards\n• 4 spell cards\n• 28 special cards\n• 12 starting cards\n• 6 wanted condition cards\n• 22 monster cards\n• 15 new monsters",
@@ -522,25 +582,37 @@ I18N_DATA = {
     ["en"] = "Mark Harrigan",
     ["uk"] = "Марк Гарріган",
   },
+  ["Masked_Hunter"] = {
+    ["en"] = "Masked Hunter",
+    ["uk"] = "Мисливець у Масці",
+  },
+  ["Masked_Ones"] = {
+    ["en"] = "Masked Ones",
+    ["uk"] = "Приховані Обличчя",
+  },
   ["Merchant_District"] = {
     ["en"] = "Merchant District",
     ["uk"] = "Базар",
   },
   ["Michael_McGlen"] = {
     ["en"] = "Michael McGlen",
-    ["uk"] = "Майкл Макглен",
+    ["uk"] = "Майкл МакГлен",
   },
   ["Minh_Thi_Phan"] = {
     ["en"] = "Minh Thi Phan",
-    ["uk"] = "Мінь Тхі Фан",
+    ["uk"] = "Мін Ті Фан",
   },
   ["Minh_Thi_Phan_alt"] = {
     ["en"] = "Minh Thi Phan alt",
-    ["uk"] = "Мінь Тхі Фан (альтернативна)",
+    ["uk"] = "Мін Ті Фан відлуння",
   },
   ["Miskatonic_University"] = {
     ["en"] = "Miskatonic University",
     ["uk"] = "Міскатонікський університет",
+  },
+  ["Nightmarish_Fiend"] = {
+    ["en"] = "Nightmarish Fiend",
+    ["uk"] = "Потвора з Кошмару",
   },
   ["Norman_Withers"] = {
     ["en"] = "Norman Withers",
@@ -556,7 +628,11 @@ I18N_DATA = {
   },
   ["Occult_Ritualist"] = {
     ["en"] = "Occult Ritualist",
-    ["uk"] = "Окультний ритуаліст",
+    ["uk"] = "Окультний Жрець",
+  },
+  ["Ocean_Scion"] = {
+    ["en"] = "Ocean Scion",
+    ["uk"] = "Породження Океану",
   },
   ["Orne_Library"] = {
     ["en"] = "Orne Library",
@@ -612,7 +688,11 @@ I18N_DATA = {
   },
   ["Preston_Fairmont"] = {
     ["en"] = "Preston Fairmont",
-    ["uk"] = "Престон Фермонт",
+    ["uk"] = "Престон Фейрмонт",
+  },
+  ["R'lyeh_Guardian"] = {
+    ["en"] = "R'lyeh Guardian",
+    ["uk"] = "Страж Р'льєху",
   },
   ["ROLLER_fail"] = {
     ["en"] = "failed the check!",
@@ -672,7 +752,7 @@ I18N_DATA = {
   },
   ["Ravenous_Predator"] = {
     ["en"] = "Ravenous Predator",
-    ["uk"] = "Ненажерливий хижак",
+    ["uk"] = "Ненаситний Хижак",
   },
   ["Residential"] = {
     ["en"] = "Residential",
@@ -684,11 +764,15 @@ I18N_DATA = {
   },
   ["Rex_Murphy_alt"] = {
     ["en"] = "Rex Murphy alt",
-    ["uk"] = "Рекс Мерфі (альтернативний)",
+    ["uk"] = "Рекс Мерфі відлуння",
   },
   ["River_Docks"] = {
     ["en"] = "River Docks",
     ["uk"] = "Доки",
+  },
+  ["River_Skulk"] = {
+    ["en"] = "River Skulk",
+    ["uk"] = "Річковий Нишпорка",
   },
   ["Rivertown"] = {
     ["en"] = "Rivertown",
@@ -696,11 +780,15 @@ I18N_DATA = {
   },
   ["Robed_Figure"] = {
     ["en"] = "Robed Figure",
-    ["uk"] = "Постать у мантії",
+    ["uk"] = "Фігура в Рясі",
   },
   ["Roland_Banks"] = {
     ["en"] = "Roland Banks",
     ["uk"] = "Роланд Бенкс",
+  },
+  ["Ruth_Turner"] = {
+    ["en"] = "Ruth Turner",
+    ["uk"] = "Ruth Turner",
   },
   ["S_buy"] = {
     ["en"] = "Buy for $%s",
@@ -734,13 +822,29 @@ I18N_DATA = {
     ["en"] = "Science Building",
     ["uk"] = "Науковий Корпус",
   },
+  ["Sea_Singer"] = {
+    ["en"] = "Sea Singer",
+    ["uk"] = "Sea Singer",
+  },
+  ["Shallows_Predator"] = {
+    ["en"] = "Shallows Predator",
+    ["uk"] = "Shallows Predator",
+  },
+  ["Shoreline_Brute"] = {
+    ["en"] = "Shoreline Brute",
+    ["uk"] = "Shoreline Brute",
+  },
   ["Silas_Marsh"] = {
     ["en"] = "Silas Marsh",
     ["uk"] = "Сайлас Марш",
   },
+  ["Simon_Carter"] = {
+    ["en"] = "Simon Carter",
+    ["uk"] = "Simon Carter",
+  },
   ["Skids_O'Toole"] = {
     ["en"] = "Skids O'Toole",
-    ["uk"] = "Скідс О'Тул",
+    ["uk"] = "Скідз О'Тул",
   },
   ["South_Church"] = {
     ["en"] = "South Church",
@@ -760,7 +864,7 @@ I18N_DATA = {
   },
   ["Swift_Byakhee"] = {
     ["en"] = "Swift Byakhee",
-    ["uk"] = "Швидкий Б'які",
+    ["uk"] = "Swift Byakhee",
   },
   ["T4A_clue"] = {
     ["en"] = "SPAWN CLUE",
@@ -812,7 +916,7 @@ I18N_DATA = {
   },
   ["Tindalos_Alpha"] = {
     ["en"] = "Tindalos Alpha",
-    ["uk"] = "Альфа Тіндалоса",
+    ["uk"] = "Tindalos Alpha",
   },
   ["Tommy_Muldoon"] = {
     ["en"] = "Tommy Muldoon",
@@ -821,6 +925,10 @@ I18N_DATA = {
   ["Train_Station"] = {
     ["en"] = "Train Station",
     ["uk"] = "Залізничний Вокзал",
+  },
+  ["Twilight_Supplicant"] = {
+    ["en"] = "Twilight Supplicant",
+    ["uk"] = "Twilight Supplicant",
   },
   ["Unvisited_Isle"] = {
     ["en"] = "Unvisited Isle",
@@ -834,17 +942,37 @@ I18N_DATA = {
     ["en"] = "Velma's Diner",
     ["uk"] = "Їдальня Велми",
   },
+  ["Vicious_Glutton"] = {
+    ["en"] = "Vicious Glutton",
+    ["uk"] = "Vicious Glutton",
+  },
+  ["Void_Touched"] = {
+    ["en"] = "Void Touched",
+    ["uk"] = "Void Touched",
+  },
+  ["Wake_Titan"] = {
+    ["en"] = "Wake Titan",
+    ["uk"] = "Wake Titan",
+  },
   ["Wendy_Adams"] = {
     ["en"] = "Wendy Adams",
     ["uk"] = "Венді Адамс",
   },
   ["Wendy_Adams_alt"] = {
     ["en"] = "Wendy Adams alt",
-    ["uk"] = "Венді Адамс (альтернативна)",
+    ["uk"] = "Венді Адамс відлуння",
+  },
+  ["Whippoorwill"] = {
+    ["en"] = "Whippoorwill",
+    ["uk"] = "Whippoorwill",
   },
   ["Winifred_Habbamock"] = {
     ["en"] = "Winifred Habbamock",
     ["uk"] = "Вініфред Габбамок",
+  },
+  ["Wolf_Man_Drew"] = {
+    ["en"] = "Wolf-Man Drew",
+    ["uk"] = "Wolf-Man Drew",
   },
   ["Ye_Olde_Magick_Shoppe"] = {
     ["en"] = "Ye Olde Magick Shoppe",

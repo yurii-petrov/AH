@@ -657,10 +657,10 @@ msgid "Dexter_Drake"
 msgstr "Декстер Дрейк"
 
 msgid "Dexter_Drake_alt"
-msgstr "Декстер Дрейк (альтернативний)"
+msgstr "Декстер Дрейк відлуння"
 
 msgid "Minh_Thi_Phan"
-msgstr "Мінь Тхі Фан"
+msgstr "Мін Ті Фан"
 
 msgid "Agnes_Baker"
 msgstr "Агнес Бейкер"
@@ -669,10 +669,10 @@ msgid "Calvin_Wright"
 msgstr "Келвін Райт"
 
 msgid "Minh_Thi_Phan_alt"
-msgstr "Мінь Тхі Фан (альтернативна)"
+msgstr "Мін Ті Фан відлуння"
 
 msgid "Michael_McGlen"
-msgstr "Майкл Макглен"
+msgstr "Майкл МакГлен"
 
 msgid "Marie_Lambeau"
 msgstr "Марі Ламбо"
@@ -681,7 +681,7 @@ msgid "Rex_Murphy"
 msgstr "Рекс Мерфі"
 
 msgid "Daniela_Reyes"
-msgstr "Даніела Рейєс"
+msgstr "Даніела Реєс"
 
 msgid "Norman_Withers"
 msgstr "Норман Візерс"
@@ -696,10 +696,10 @@ msgid "Roland_Banks"
 msgstr "Роланд Бенкс"
 
 msgid "Rex_Murphy_alt"
-msgstr "Рекс Мерфі (альтернативний)"
+msgstr "Рекс Мерфі відлуння"
 
 msgid "Ashcan_Pete"
-msgstr "Піт «Сміттяр»"
+msgstr "Сміттяр Піт"
 
 msgid "Carson_Sinclair"
 msgstr "Карсон Сінклер"
@@ -714,7 +714,7 @@ msgid "Wendy_Adams"
 msgstr "Венді Адамс"
 
 msgid "Skids_O'Toole"
-msgstr "Скідс О'Тул"
+msgstr "Скідз О'Тул"
 
 msgid "Tommy_Muldoon"
 msgstr "Томмі Малдун"
@@ -723,7 +723,7 @@ msgid "Jenny_Barnes"
 msgstr "Дженні Барнс"
 
 msgid "Wendy_Adams_alt"
-msgstr "Венді Адамс (альтернативна)"
+msgstr "Венді Адамс відлуння"
 
 msgid "Stella_Clark"
 msgstr "Стелла Кларк"
@@ -738,7 +738,7 @@ msgid "Mark_Harrigan"
 msgstr "Марк Гарріган"
 
 msgid "Preston_Fairmont"
-msgstr "Престон Фермонт"
+msgstr "Престон Фейрмонт"
 
 msgid "Winifred_Habbamock"
 msgstr "Вініфред Габбамок"
@@ -794,38 +794,134 @@ msgid "ROLLER_help_rmb_key"
 msgstr "ПКМ"
 
 # Monster names
-msgid "Hooded_Stalker"
-msgstr "Сталкер у капюшоні"
-
-msgid "High_Priest"
-msgstr "Верховний жрець"
-
-msgid "Robed_Figure"
-msgstr "Постать у мантії"
-
-msgid "Occult_Ritualist"
-msgstr "Окультний ритуаліст"
-
-msgid "Ravenous_Predator"
-msgstr "Ненажерливий хижак"
-
-msgid "Swift_Byakhee"
-msgstr "Швидкий Б'які"
-
-msgid "Tindalos_Alpha"
-msgstr "Альфа Тіндалоса"
-
 msgid "Abyssal_Servant"
-msgstr "Безодній слуга"
+msgstr "Слуга Безодні"
 
-msgid "Coursing_Hound"
-msgstr "Гончий пес"
+msgid "Alma_Hill"
+msgstr "Алма Гілл"
 
-msgid "Keening_Hound"
-msgstr "Скиглячий пес"
+msgid "Altered_Beast"
+msgstr "Мутований Звір"
+
+msgid "Altered_Servant"
+msgstr "Мутований Слуга"
+
+msgid "Avian_Thrall"
+msgstr "Одержимий Птах"
+
+msgid "Billy_Cooper"
+msgstr "Біллі Купер"
+
+msgid "Corpse_Taker"
+msgstr "Труполов"
+
+msgid "Creeping_Ghoul"
+msgstr "Повзучий Гуль"
 
 msgid "Eyeless_Watcher"
-msgstr "Безокий спостерігач"
+msgstr "Безокий Спостерігач"
+
+msgid "Flesh_Eater"
+msgstr "Пожирач Плоті"
+
+msgid "Ghoul_Acolyte"
+msgstr "Гуль Послушник"
+
+msgid "Ghoul_Priest"
+msgstr "Гуль Священник"
+
+msgid "Herman_Collins"
+msgstr "Герман Коллінз"
+
+msgid "High_Priest"
+msgstr "Верховний Жрець"
+
+msgid "Hooded_Stalker"
+msgstr "Переслідувач у Каптурі"
+
+msgid "Hulking_Thrall"
+msgstr "Громіздкий Одержимий"
+
+msgid "Hybrid_Thug"
+msgstr "Бандит-Напівкровка"
+
+msgid "Keening_Hound"
+msgstr "Виюча Гонча"
+
+msgid "Lodge_Enforcer"
+msgstr "Каральник Ложі"
+
+msgid "Lodge_Loyalist"
+msgstr "Вірний Ложі"
+
+msgid "Lupine_Thrall"
+msgstr "Одержимий Вовк"
+
+msgid "Masked_Hunter"
+msgstr "Мисливець у Масці"
+
+msgid "Masked_Ones"
+msgstr "Приховані Обличчя"
+
+msgid "Nightmarish_Fiend"
+msgstr "Потвора з Кошмару"
+
+msgid "Occult_Ritualist"
+msgstr "Окультний Жрець"
+
+msgid "Ocean_Scion"
+msgstr "Породження Океану"
+
+msgid "Ravenous_Predator"
+msgstr "Ненаситний Хижак"
+
+msgid "River_Skulk"
+msgstr "Річковий Нишпорка"
+
+msgid "R'lyeh_Guardian"
+msgstr "Страж Р'льєху"
+
+msgid "Robed_Figure"
+msgstr "Фігура в Рясі"
+
+msgid "Ruth_Turner"
+msgstr "Ruth Turner"
+
+msgid "Sea_Singer"
+msgstr "Sea Singer"
+
+msgid "Shallows_Predator"
+msgstr "Shallows Predator"
+
+msgid "Shoreline_Brute"
+msgstr "Shoreline Brute"
+
+msgid "Simon_Carter"
+msgstr "Simon Carter"
+
+msgid "Swift_Byakhee"
+msgstr "Swift Byakhee"
+
+msgid "Tindalos_Alpha"
+msgstr "Tindalos Alpha"
+
+msgid "Twilight_Supplicant"
+msgstr "Twilight Supplicant"
+
+msgid "Vicious_Glutton"
+msgstr "Vicious Glutton"
+
+msgid "Void_Touched"
+msgstr "Void Touched"
+
+msgid "Wake_Titan"
+msgstr "Wake Titan"
+
+msgid "Whippoorwill"
+msgstr "Whippoorwill"
+
+msgid "Wolf_Man_Drew"
+msgstr "Wolf-Man Drew"
 
 # Monster types
 msgid "type_Human"
