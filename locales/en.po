@@ -859,6 +859,162 @@ msgstr "Whippoorwill"
 msgid "Wolf_Man_Drew"
 msgstr "Wolf-Man Drew"
 
+msgid "Brawling_Riot"
+msgstr "Brawling Riot"
+
+msgid "Brutal_Goons"
+msgstr "Brutal Goons"
+
+msgid "Capricious_Stalker"
+msgstr "Capricious Stalker"
+
+msgid "Cerebral_Extractor"
+msgstr "Cerebral Extractor"
+
+msgid "Corben_Bouchard"
+msgstr "Corben Bouchard"
+
+msgid "Crawling_One"
+msgstr "Crawling One"
+
+msgid "Feckless_Agitator"
+msgstr "Feckless Agitator"
+
+msgid "Grasping_Fungus"
+msgstr "Grasping Fungus"
+
+msgid "Hit_Squad"
+msgstr "Hit Squad"
+
+msgid "Mob_Enforcer"
+msgstr "Mob Enforcer"
+
+msgid "Morphic_Terror"
+msgstr "Morphic Terror"
+
+msgid "Mouthy_Raconteur"
+msgstr "Mouthy Raconteur"
+
+msgid "Rough_Bootlegger"
+msgstr "Rough Bootlegger"
+
+msgid "Siobhan_Riley"
+msgstr "Siobhan Riley"
+
+msgid "Undulating_Mass"
+msgstr "Undulating Mass"
+
+msgid "Accursed_Somnambulist"
+msgstr "Accursed Somnambulist"
+
+msgid "Cantor_of_R'lyeh"
+msgstr "Cantor of R'lyeh"
+
+msgid "Cruel_Slaver"
+msgstr "Cruel Slaver"
+
+msgid "Declan_Pearce"
+msgstr "Declan Pearce"
+
+msgid "Dread_Shadow"
+msgstr "Dread Shadow"
+
+msgid "Enraged_Dreamer"
+msgstr "Enraged Dreamer"
+
+msgid "Entraced_Hybrid"
+msgstr "Entraced Hybrid"
+
+msgid "Feasting_Master"
+msgstr "Feasting Master"
+
+msgid "Frenzied_Hunter"
+msgstr "Frenzied Hunter"
+
+msgid "Guardian_Beast"
+msgstr "Guardian Beast"
+
+msgid "Hovering_Byakhee"
+msgstr "Hovering Byakhee"
+
+msgid "Icebound_Captive"
+msgstr "Icebound Captive"
+
+msgid "Pale_Lord"
+msgstr "Pale Lord"
+
+msgid "Prowling_Abductor"
+msgstr "Prowling Abductor"
+
+msgid "Swooping_Scavenger"
+msgstr "Swooping Scavenger"
+
+msgid "Terrified_Wanderer"
+msgstr "Terrified Wanderer"
+
+msgid "Bloody_Titan"
+msgstr "Bloody Titan"
+
+msgid "Coursing_Hound"
+msgstr "Coursing Hound"
+
+msgid "Crazed_Fiend"
+msgstr "Crazed Fiend"
+
+msgid "Gluttonous_Giant"
+msgstr "Gluttonous Giant"
+
+msgid "Haunting_Dead"
+msgstr "Haunting Dead"
+
+msgid "Cacophonous_Haunt"
+msgstr "Cacophonous Haunt"
+
+msgid "Screaming_Haunt"
+msgstr "Screaming Haunt"
+
+msgid "Weeping_Haunt"
+msgstr "Weeping Haunt"
+
+msgid "Lodge_Guardian"
+msgstr "Lodge Guardian"
+
+msgid "Lodge_Seer"
+msgstr "Lodge Seer"
+
+msgid "Menacing_Bulk"
+msgstr "Menacing Bulk"
+
+msgid "Raging_Poltergeist"
+msgstr "Raging Poltergeist"
+
+msgid "Commanding_Specter"
+msgstr "Commanding Specter"
+
+msgid "Confounding_Specter"
+msgstr "Confounding Specter"
+
+msgid "Crashing_Specter"
+msgstr "Crashing Specter"
+
+msgid "Stalking_Wraith"
+msgstr "Stalking Wraith"
+
+msgid "Sanguinous_Wraith"
+msgstr "Sanguinous Wraith"
+
+msgid "Vomitous_Wraith"
+msgstr "Vomitous Wraith"
+
+msgid "Taloned_Cannibal"
+msgstr "Taloned Cannibal"
+
+msgid "Tunneling_Dhole"
+msgstr "Tunneling Dhole"
+
+msgid "Twilight_Sentry"
+msgstr "Twilight Sentry"
+
 # Monster types
 msgid "type_Human"
 msgstr "Human"
@@ -874,3 +1030,66 @@ msgstr "Byakhee"
 
 msgid "type_Nightgaunt"
 msgstr "Nightgaunt"
+
+msgid "type_Aberration"
+msgstr "Aberration"
+
+msgid "type_Thrall"
+msgstr "Thrall"
+
+msgid "type_Ghoul"
+msgstr "Ghoul"
+
+msgid "type_Deep_One"
+msgstr "Deep One"
+
+msgid "type_Lodge"
+msgstr "Lodge"
+
+msgid "type_Star_Spawn"
+msgstr "Star Spawn"
+
+msgid "type_Beast"
+msgstr "Beast"
+
+msgid "type_Mob"
+msgstr "Mob"
+
+msgid "type_Sheldon"
+msgstr "Sheldon"
+
+msgid "type_Mi_Go"
+msgstr "Mi-Go"
+
+msgid "type_Servitor"
+msgstr "Servitor"
+
+msgid "type_O'Bannion"
+msgstr "O'Bannion"
+
+msgid "type_Formless_Spawn"
+msgstr "Formless Spawn"
+
+msgid "type_Dreaming"
+msgstr "Dreaming"
+
+msgid "type_Moon_Beast"
+msgstr "Moon-Beast"
+
+msgid "type_Shantak"
+msgstr "Shantak"
+
+msgid "type_Gug"
+msgstr "Gug"
+
+msgid "type_Ghast"
+msgstr "Ghast"
+
+msgid "type_Troubled_Spirit"
+msgstr "Troubled Spirit"
+
+msgid "type_Angry_Spirit"
+msgstr "Angry Spirit"
+
+msgid "type_Hostile_Spirit"
+msgstr "Hostile Spirit"
