@@ -90,17 +90,15 @@ function processStepFindMonsterByType(step, context)
   end
 
   -- first card spawns directly below codex {0,0.5,1.7}, each next card steps right (+x)
-  local cardSpacing  = 0.9
+  local cardSpacing    = 0.9
   local firstRevealPos = codexMat.positionToWorld({0, 0.5, 1.7}):setAt("y", 3)
-  local revealCards  = {}
-  local targetGuid   = nil
+  local revealResult   = { foundGuid = nil, anotherGuids = {} }
 
   for i, entry in ipairs(revealList) do
     local localPos = Vector({ (i - 1) * cardSpacing, 0.5, 1.7 })
     local worldPos = codexMat.positionToWorld(localPos):setAt("y", 3)
     for _, o in ipairs(downCast_pos(worldPos, 2)) do
       if o.type == "Card" or o.type == "Deck" then
-        -- localPos[3] = localPos[3] + 1
         o.setPosition(codexMat.positionToWorld(localPos:setAt("z", localPos.z + 1)):setAt("y", 3))
         break
       end
@@ -112,38 +110,47 @@ function processStepFindMonsterByType(step, context)
       smooth   = true
     })
     if card then
-      table.insert(revealCards, { guid = card.guid, isTarget = entry.isTarget })
       card.highlightOn(entry.isTarget and "Green" or "Red", 5)
-      card.interactable = false
       if entry.isTarget then
-        targetGuid = card.guid
+        revealResult.foundGuid = card.guid
+        if #revealList > 1 then card.interactable = false end
+      else
+        card.interactable = false
+        table.insert(revealResult.anotherGuids, card.guid)
       end
     end
   end
 
-  -- after reveal: pile non-target cards at a temp spot, shuffle, put on top of monster deck,
-  -- then slide the found card to the first reveal position
+  -- after reveal: return non-target cards to the monster deck
   Wait.time(function()
+    local anotherCount = #revealResult.anotherGuids
+    if anotherCount == 0 then return end
+
     local locationData = parseJson(locationMat.memo)
     if not locationData or not locationData.monster then return end
-
     local monsterPos = locationMat.positionToWorld(locationData.monster)
-    local tempPos    = Vector(monsterPos.x, monsterPos.y + 8, monsterPos.z)
 
-    local moved = 0
-    for _, entry in ipairs(revealCards) do
-      if not entry.isTarget then
-        local obj = getObjectFromGUID(entry.guid)
+    if anotherCount == 1 then
+      local obj = getObjectFromGUID(revealResult.anotherGuids[1])
+      if obj then
+        obj.setRotation({0, 180, 180})
+        local currentDeck = findDeckOnBoardByType(locationMat, deckType)
+        if currentDeck then
+          currentDeck.putObject(obj)
+        else
+          obj.setPositionSmooth(monsterPos:setAt("y", 3))
+          obj.memo = JSON.encode({ type = deckType })
+        end
+      end
+    else
+      local tempPos = Vector(monsterPos.x, monsterPos.y + 8, monsterPos.z)
+      for _, guid in ipairs(revealResult.anotherGuids) do
+        local obj = getObjectFromGUID(guid)
         if obj then
           obj.setRotation({0, 180, 180})
           obj.setPosition(tempPos)
-          moved = moved + 1
         end
       end
-    end
-
-    -- wait for the pile to form, shuffle it, then place on top of monster deck
-    local function returnPileToMonsterDeck()
       Wait.time(function()
         local pile = nil
         for _, o in ipairs(findObjsInRadius(tempPos, 2)) do
@@ -153,31 +160,17 @@ function processStepFindMonsterByType(step, context)
           end
         end
         if not pile then return end
-
         if pile.type == "Deck" then pile.shuffle() end
-
         Wait.time(function()
           local currentDeck = findDeckOnBoardByType(locationMat, deckType)
           if currentDeck then
             currentDeck.putObject(pile)
           else
             pile.setPositionSmooth(monsterPos:setAt("y", 3))
-            pile.memo = JSON.encode({ type = "monster" })
-          end
-
-          if moved > 0 and targetGuid then
-            local targetObj = getObjectFromGUID(targetGuid)
-            if targetObj then
-              targetObj.interactable = true
-              targetObj.setPositionSmooth(firstRevealPos)
-            end
+            pile.memo = JSON.encode({ type = deckType })
           end
         end, 0.5)
       end, 0.5)
-    end
-
-    if moved > 0 then
-      returnPileToMonsterDeck()
     end
   end, FIND_MONSTER_REVEAL_DURATION)
 end

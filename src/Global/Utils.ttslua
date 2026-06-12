@@ -167,6 +167,22 @@ function upCast_pos(worldPos, dist)
   return result
 end
 
+function downCast_pos(worldPos, dist)
+  local hits = Physics.cast({
+    origin = { worldPos.x, worldPos.y - dist / 2, worldPos.z },
+    direction = { 0, -1, 0 },
+    type = 3,
+    size = { 1, dist, 1 },
+    max_distance = 0,
+    debug = isTestMode
+  })
+  local result = {}
+  for _, v in ipairs(hits) do
+    table.insert(result, v.hit_object)
+  end
+  return result
+end
+
 function upCast(obj, dist, offset, multi)
   if obj == nil then
     return
