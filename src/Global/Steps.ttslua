@@ -1030,9 +1030,11 @@ function processStepFindMonsterByType(step, context)
     return
   end
 
-  -- first card spawns directly below codex {0,0.5,4}, each next card steps right (+x)
-  local cardSpacing = 0.9
-  local revealCards = {}
+  -- first card spawns directly below codex {0,0.5,1.7}, each next card steps right (+x)
+  local cardSpacing  = 0.9
+  local firstRevealPos = codexMat.positionToWorld({0, 0.5, 1.7}):setAt("y", 3)
+  local revealCards  = {}
+  local targetGuid   = nil
 
   for i, entry in ipairs(revealList) do
     local worldPos = codexMat.positionToWorld({ (i - 1) * cardSpacing, 0.5, 1.7 }):setAt("y", 3)
@@ -1046,17 +1048,20 @@ function processStepFindMonsterByType(step, context)
       table.insert(revealCards, { guid = card.guid, isTarget = entry.isTarget })
       card.highlightOn(entry.isTarget and "Green" or "Red", 5)
       card.interactable = false
+      if entry.isTarget then
+        targetGuid = card.guid
+      end
     end
   end
 
-  -- after reveal: pile non-target cards at a temp spot, shuffle, then put on top of monster deck
+  -- after reveal: pile non-target cards at a temp spot, shuffle, put on top of monster deck,
+  -- then slide the found card to the first reveal position
   Wait.time(function()
     local locationData = parseJson(locationMat.memo)
     if not locationData or not locationData.monster then return end
 
     local monsterPos = locationMat.positionToWorld(locationData.monster)
-    -- temp pile: high above the monster slot so it won't collide with anything
-    local tempPos = Vector(monsterPos.x, monsterPos.y + 8, monsterPos.z)
+    local tempPos    = Vector(monsterPos.x, monsterPos.y + 8, monsterPos.z)
 
     local moved = 0
     for _, entry in ipairs(revealCards) do
@@ -1070,31 +1075,43 @@ function processStepFindMonsterByType(step, context)
       end
     end
 
-    if moved == 0 then return end
-
     -- wait for the pile to form, shuffle it, then place on top of monster deck
-    Wait.time(function()
-      local pile = nil
-      for _, o in ipairs(findObjsInRadius(tempPos, 2)) do
-        if o.type == "Deck" or o.type == "Card" then
-          pile = o
-          break
-        end
-      end
-      if not pile then return end
-
-      if pile.type == "Deck" then pile.shuffle() end
-
+    local function returnPileToMonsterDeck()
       Wait.time(function()
-        local currentDeck = findDeckOnBoardByType(locationMat, deckType)
-        if currentDeck then
-          currentDeck.putObject(pile)
-        else
-          pile.setPositionSmooth(monsterPos:setAt("y", 3))
-          pile.memo = JSON.encode({ type = "monster" })
+        local pile = nil
+        for _, o in ipairs(findObjsInRadius(tempPos, 2)) do
+          if o.type == "Deck" or o.type == "Card" then
+            pile = o
+            break
+          end
         end
+        if not pile then return end
+
+        if pile.type == "Deck" then pile.shuffle() end
+
+        Wait.time(function()
+          local currentDeck = findDeckOnBoardByType(locationMat, deckType)
+          if currentDeck then
+            currentDeck.putObject(pile)
+          else
+            pile.setPositionSmooth(monsterPos:setAt("y", 3))
+            pile.memo = JSON.encode({ type = "monster" })
+          end
+
+          -- if the target wasn't already the first card, move it to the first reveal position
+          if moved > 0 and targetGuid then
+            local targetObj = getObjectFromGUID(targetGuid)
+            if targetObj then
+              targetObj.setPositionSmooth(firstRevealPos)
+            end
+          end
+        end, 0.5)
       end, 0.5)
-    end, 0.5)
+    end
+
+    if moved > 0 then
+      returnPileToMonsterDeck()
+    end
   end, FIND_MONSTER_REVEAL_DURATION)
 end
 
