@@ -16,7 +16,12 @@ end
 -- │                SELECT LANGUAGE               │
 -- ╰──────────────────────────────────────────────╯
 
+local languageReady = false
+Wait.time(function() languageReady = true end, 1.5)
+
 local function selectLanguage(lang, bagMemo)
+  if not languageReady then return end
+  languageReady = false
   gameData.language = lang
   updateXMLs()
   Wait.time(function()
