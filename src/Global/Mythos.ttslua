@@ -560,11 +560,17 @@ function processTerror(callBack)
     return
   end
 
-  terrorBag.takeObject({
+  local terrorToken = terrorBag.takeObject({
     index = 0,
     position = neighborhoodTile.getPosition():setAt("y", 3),
     rotation = {0, 180, 0}
-  }).highlightOn("Orange", 5)
+  })
+
+  terrorToken.highlightOn("Orange", 5)
+
+  local neighborhoodTileData = parseJson(neighborhoodTile.memo)
+  local nameKey = (neighborhoodTileData and neighborhoodTileData.name or neighborhoodName):gsub(" ", "_")
+  printToAll(i18n.getStrById(nameKey) .. " - 1 " .. i18n.getStrById("LOG_terror_added"), "Orange")
 
   local terrorDeck = getTerrorDeck()
   if terrorDeck then
