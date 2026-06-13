@@ -62,36 +62,28 @@ function processStepTakeCodexFromArchive(step, context, onDone)
     return
   end
 
-  local rotation
+  local rotation = { 0, 180, 0 }
   if step.rotationFromCodex then
     local refMat = findCodexMatOnSnapPoints(sourceMat, step.rotationFromCodex)
     if refMat then
-      rotation = refMat.getRotation()
+      rotation = refMat.is_face_down and {0, 180, 180} or {0, 180, 0}
       log("[takeCodexFromArchive] refMat (codex "..step.rotationFromCodex..") rotation: "..serpent.tts(rotation))
     else
       log("[takeCodexFromArchive] refMat for codex "..step.rotationFromCodex.." not found")
     end
   end
 
-  local faceDown
-  if step.faceFromCodex ~= nil then
+  if step.faceFromCodex then
     local refMat = findCodexMatOnSnapPoints(sourceMat, step.faceFromCodex)
     if refMat then
-      local rot = refMat.getRotation()
-      local refFaceUp = math.abs(rot.z) < 90
-      faceDown = not refFaceUp
-      log("[takeCodexFromArchive] faceFromCodex "..step.faceFromCodex.." is "..(refFaceUp and "face up" or "face down").." → new card "..(faceDown and "face down" or "face up"))
+      rotation = refMat.is_face_down and {0, 180, 180} or {0, 180, 0}
+      log("[takeCodexFromArchive] faceFromCodex "..step.faceFromCodex.." is "..(refMat.is_face_down and "face down" or "face up"))
     else
-      faceDown = true
       log("[takeCodexFromArchive] faceFromCodex "..step.faceFromCodex.." not found, defaulting face down")
     end
-  elseif step.face_down ~= nil then
-    faceDown = step.face_down
-  else
-    faceDown = true
+  elseif step.face_down then
+    rotation = step.face_down and {0, 180, 180} or {0, 180, 0}
   end
-  local rotZ = rotation and (math.abs(rotation.z) > 90 and 180 or 0) or (faceDown and 180 or 0)
-  local rotY = rotation and rotation.y or 180
 
   local card = takeCardByQuery(archive, {{
     field = "number",
@@ -99,7 +91,7 @@ function processStepTakeCodexFromArchive(step, context, onDone)
     value = step.number
   }}, {
     position = freePos:setAt("y", 3),
-    rotation = {0, rotY, rotZ},
+    rotation = rotation,
     smooth   = true
   })
 

@@ -1213,14 +1213,12 @@ function attachCodexCard(card, spawnPos, rotation)
     return
   end
 
-  local faceDown = card.is_face_down
-  local rotY = rotation and rotation.y or 180
-  local rotZ = faceDown and 180 or 0
+  rotation = rotation or card.is_face_down and {0, 180, 180} or {0, 180, 0}
 
   local codexMat = codexMatBag.takeObject({
     index = 0,
     position = spawnPos,
-    rotation = {0, rotY, rotZ},
+    rotation = rotation,
     smooth = false
   })
 
