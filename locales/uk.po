@@ -717,6 +717,18 @@ msgstr "Очікування витягування компонентів із 
 msgid "LOG_timeout_components"
 msgstr "Перевищено час очікування компонентів"
 
+msgid "LOG_preparing_investigators"
+msgstr "Триває підготовка місць дослідників..."
+
+msgid "LOG_investigators_prepared"
+msgstr "Місця для дослідників підготовлені"
+
+msgid "LOG_preparing_scenario"
+msgstr "Триває підготовка сценарію..."
+
+msgid "LOG_scenario_prepared"
+msgstr "Підготовку сценарію успішно завершено. Гравці можуть обирати дослідників, за яких бажають грати"
+
 msgid "LOG_scenario_not_found"
 msgstr "Компоненти сценарію %s не знайдено"
 

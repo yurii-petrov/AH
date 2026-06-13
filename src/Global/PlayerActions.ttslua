@@ -60,12 +60,15 @@ function onClickScenario(n)
   -- end)
 end
 
-function onClickPrepareScenario()
+function onClickPrepareScenario(onComplete)
   Wait.time(function()
     -- lockSetupScenarioComponents(gameData.scenarioData)
     -- prepareMarkers()
     prepareMythosTokens(gameData.scenarioData.mythosCups)
     prepareScenarioDecks(gameData.scenarioData)
+    if onComplete then
+      onComplete()
+    end
   end, 1)
 end
 
@@ -73,7 +76,7 @@ function onClickNumberOfPlayers(n)
   gameData.numberOfPlayers = n
 end
 
-function onClickPrepareNumberOfPlayers()
+function onClickPrepareNumberOfPlayers(onComplete)
   local investigatorMatBag = getObjectFromGUID(investigatorMatBagId)
   if not investigatorMatBag then
     return
@@ -246,6 +249,9 @@ function onClickPrepareNumberOfPlayers()
       if numPlayers < 6 then
         box.putObject(referenceDeck)
       end
+    end
+    if onComplete then
+      onComplete()
     end
   end, 4)
 

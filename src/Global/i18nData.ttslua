@@ -482,6 +482,10 @@ I18N_DATA = {
     ["en"] = "Investigator not found for role: %s",
     ["uk"] = "Слідчого не знайдено для ролі: %s",
   },
+  ["LOG_investigators_prepared"] = {
+    ["en"] = "Investigator places are prepared",
+    ["uk"] = "Місця для дослідників підготовлені",
+  },
   ["LOG_myth_draw"] = {
     ["en"] = "\n%s - %s player",
     ["uk"] = "\n%s - %s гравець",
@@ -494,6 +498,14 @@ I18N_DATA = {
     ["en"] = "Tokens placed on locations:",
     ["uk"] = "Жетони розміщено на локаціях:",
   },
+  ["LOG_preparing_investigators"] = {
+    ["en"] = "Preparing investigator places...",
+    ["uk"] = "Триває підготовка місць дослідників...",
+  },
+  ["LOG_preparing_scenario"] = {
+    ["en"] = "Preparing scenario...",
+    ["uk"] = "Триває підготовка сценарію...",
+  },
   ["LOG_scenario_doom_added"] = {
     ["en"] = "Scenario - %s doom added",
     ["uk"] = "Сценарій - додано %s приреченості",
@@ -501,6 +513,10 @@ I18N_DATA = {
   ["LOG_scenario_not_found"] = {
     ["en"] = "Scenario components %s not found",
     ["uk"] = "Компоненти сценарію %s не знайдено",
+  },
+  ["LOG_scenario_prepared"] = {
+    ["en"] = "Scenario preparation completed successfully. Players can choose the investigators they want to play",
+    ["uk"] = "Підготовку сценарію успішно завершено. Гравці можуть обирати дослідників, за яких бажають грати",
   },
   ["LOG_spends_money"] = {
     ["en"] = "%s - spends %s $",

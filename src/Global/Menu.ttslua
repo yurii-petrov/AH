@@ -108,10 +108,17 @@ function proceedStartGame()
     end
   end
 
-  onClickPrepareScenario()
-
   gameData.numberOfPlayers = currentSetup.players or 2
-  onClickPrepareNumberOfPlayers()
+
+  broadcastToAll(i18n.getStrById("LOG_preparing_investigators"), "White")
+  onClickPrepareNumberOfPlayers(function()
+    -- print(i18n.getStrById("LOG_investigators_prepared"))
+
+    broadcastToAll(i18n.getStrById("LOG_preparing_scenario"), "White")
+    onClickPrepareScenario(function()
+      -- print(i18n.getStrById("LOG_scenario_prepared"))
+    end)
+  end)
 
   gameData.isStarted = true
   self.UI.setAttribute('main_menu', 'active', false)

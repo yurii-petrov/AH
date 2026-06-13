@@ -655,6 +655,18 @@ msgstr "Waiting for components to be drawn from language bag..."
 msgid "LOG_timeout_components"
 msgstr "Timeout waiting for components"
 
+msgid "LOG_preparing_investigators"
+msgstr "Preparing investigator places..."
+
+msgid "LOG_investigators_prepared"
+msgstr "Investigator places are prepared"
+
+msgid "LOG_preparing_scenario"
+msgstr "Preparing scenario..."
+
+msgid "LOG_scenario_prepared"
+msgstr "Scenario preparation completed successfully. Players can choose the investigators they want to play"
+
 msgid "LOG_scenario_not_found"
 msgstr "Scenario components %s not found"
 
