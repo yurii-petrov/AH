@@ -8,10 +8,13 @@
 --   - found but rotation Y≈0 (face down) → print LOG_token_face_down
 --   - found and rotation Y≈180 → print LOG_token_found_removed, remove it
 --
+-- Optional: set step.removeToken = false to find without removing.
+--
 -- Example step JSON:
 --   {
 --     "type": "findAndRemoveTokenOnLocation",
---     "token": { "type": "Blue Marker" }
+--     "token": { "type": "Blue Marker" },
+--     "removeToken": false
 --   }
 
 local function findTokenOnAnyLocationWithName(locationMat, tokenType)
@@ -62,6 +65,13 @@ function processStepFindAndRemoveTokenOnLocation(step, context, onDone)
   end
 
   local locStr = i18n.getStrById(locationName)
+
+  if step.removeToken == false then
+    print(string.format(i18n.getStrById("LOG_token_found"), tokenStr, locStr))
+    if onDone then onDone() end
+    return
+  end
+
   print(string.format(i18n.getStrById("LOG_token_found_removed"), tokenStr, locStr))
 
   local tokenBagId = getTokenBagIdByType(tokenType)

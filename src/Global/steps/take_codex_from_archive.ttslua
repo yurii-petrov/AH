@@ -83,18 +83,25 @@ function processStepTakeCodexFromArchive(step, context, onDone)
     end
   end
 
+  local faceDown = step.face_down
+  if faceDown == nil then faceDown = true end
+  local rotZ = faceDown and 180 or 0
+  local rotY = rotation and rotation.y or 180
+
   local card = takeCardByQuery(archive, {{
     field = "number",
     op    = "eq",
     value = step.number
-  }})
+  }}, {
+    position = freePos:setAt("y", 3),
+    rotation = {0, rotY, rotZ},
+    smooth   = true
+  })
 
   if not card then
     log("[takeCodexFromArchive] card with number " .. step.number .. " not found")
     return
   end
-
-  card.setPositionSmooth(freePos:setAt("y", 3))
   runAfterRest(card, function(c)
     attachCodexCard(c, freePos, rotation)
 

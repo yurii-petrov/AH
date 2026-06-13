@@ -1213,11 +1213,14 @@ function attachCodexCard(card, spawnPos, rotation)
     return
   end
 
+  local faceDown = card.is_face_down
   local rotY = rotation and rotation.y or 180
+  local rotZ = faceDown and 180 or 0
+
   local codexMat = codexMatBag.takeObject({
     index = 0,
     position = spawnPos,
-    rotation = {0, rotY, 180},
+    rotation = {0, rotY, rotZ},
     smooth = false
   })
 
@@ -1226,29 +1229,30 @@ function attachCodexCard(card, spawnPos, rotation)
   end
   codexMat.tooltip = false
 
-  local pos = spawnPos
-  pos.z = pos.z + 0.95
-  card.setPosition(pos)
+  local CARD_OFFSET = 0.11
+
+  local height = codexMat.getBounds().size.y
+  local baseY = spawnPos.y
+
+  card.setPosition({
+    x = spawnPos.x,
+    y = baseY + height + CARD_OFFSET,
+    z = spawnPos.z + 0.95
+  })
 
   card.interactable = false
-
-  local oData = card.getData()
-  oData.Transform.rotZ = card.is_face_down and 180 or 0
-
   codexMat.addAttachment(card)
 
   local cloneData = card.getData()
   cloneData.Transform.posX = codexMat.positionToWorld({0, 0, 0}).x
-
-  local height = codexMat.getBounds().size.y
-  cloneData.Transform.posY = pos.y - height - 0.10
+  cloneData.Transform.posY = baseY - height - CARD_OFFSET + (CARD_OFFSET-0.01)
 
   local clone = spawnObjectData({
     data = cloneData
   })
 
   codexMat.addAttachment(clone)
-  
+
   if card.memo then
     local params = parseJson(card.memo)
     if not params then

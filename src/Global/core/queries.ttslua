@@ -92,7 +92,7 @@ end
 
 -- Takes the first card matching the query out of a deck (or returns the
 -- single card if `deck` is itself a Card and it matches).
-function takeCardByQuery(deck, query)
+function takeCardByQuery(deck, query, params)
   if not deck or not query then return end
 
   local objects = deck.type == "Deck" and deck.getObjects() or {deck}
@@ -101,11 +101,15 @@ function takeCardByQuery(deck, query)
     local entryData = parseJson(entry.memo)
     if entryData and matchesQuery(entryData, query) then
       if deck.type == "Deck" then
-        return deck.takeObject({
+        local takeParams = {
           guid     = entry.guid,
-          rotation = {0, 180, 0},
-          smooth   = false
-        })
+          rotation = (params and params.rotation) or {0, 180, 0},
+          smooth   = params and params.smooth or false
+        }
+        if params and params.position then
+          takeParams.position = params.position
+        end
+        return deck.takeObject(takeParams)
       else
         return deck
       end
