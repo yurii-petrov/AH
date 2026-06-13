@@ -506,6 +506,10 @@ I18N_DATA = {
     ["en"] = "%s - spends %s $",
     ["uk"] = "%s - витрачає %s $",
   },
+  ["LOG_terror_count"] = {
+    ["en"] = "Terror (%s) - %s",
+    ["uk"] = "Жах (%s) - %s",
+  },
   ["LOG_timeout_components"] = {
     ["en"] = "Timeout waiting for components",
     ["uk"] = "Перевищено час очікування компонентів",

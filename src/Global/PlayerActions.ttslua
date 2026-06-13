@@ -640,11 +640,22 @@ function onClickEncounter(obj, playerColor)
     showCardInActiveSpace(neighborhoodData, neighborhood)
     local locationName = neighborhoodData.locations[index]
     local neighborhoodName = neighborhoodData.name
-    broadcastToAll("\n" .. i18n.getStrById(locationName:gsub(" ", "_")), "White")
-    print(string.format(i18n.getStrById("LOG_encounter_for"),
-      i18n.getStrById(investigatorData.name:gsub(" ", "_")),
-      i18n.getStrById(locationName:gsub(" ", "_")),
-      i18n.getStrById(neighborhoodName:gsub(" ", "_"))))
+    if gameData.encounterType == "terror" then
+      local terrorCount = 0
+      local neighborhoodObjs = upCast(neighborhood, 1, nil, 1)
+      for _, o in pairs(neighborhoodObjs) do
+        if o.type == "Tile" and o.memo == "Terror Token" then
+          terrorCount = terrorCount + 1
+        end
+      end
+      broadcastToAll(string.format(i18n.getStrById("LOG_terror_count"), terrorCount, ""..neighborhoodName:gsub(" ", "_").." ("..i18n.getStrById(investigatorData.name:gsub(" ", "_"))..")"), "Orange")
+    else
+      broadcastToAll("\n" .. i18n.getStrById(locationName:gsub(" ", "_")), "White")
+      print(string.format(i18n.getStrById("LOG_encounter_for"),
+        i18n.getStrById(investigatorData.name:gsub(" ", "_")),
+        i18n.getStrById(locationName:gsub(" ", "_")),
+        i18n.getStrById(neighborhoodName:gsub(" ", "_"))))
+    end
   end
 end
 

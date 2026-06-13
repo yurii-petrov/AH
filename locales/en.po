@@ -1210,3 +1210,6 @@ msgstr "Hostile Spirit"
 
 msgid "LOG_token_found"
 msgstr "%s found in - %s"
+
+msgid "LOG_terror_count"
+msgstr "Terror (%s) - %s"
