@@ -46,6 +46,10 @@ I18N_DATA = {
     ["en"] = "Avian Thrall",
     ["uk"] = "Одержимий Птах",
   },
+  ["Bayfriar_Gardens"] = {
+    ["en"] = "Bayfriar Gardens",
+    ["uk"] = "Сади Затоки Ченця",
+  },
   ["Billy_Cooper"] = {
     ["en"] = "Billy Cooper",
     ["uk"] = "Біллі Купер",
@@ -94,6 +98,10 @@ I18N_DATA = {
     ["en"] = "Carson Sinclair",
     ["uk"] = "Карсон Сінклер",
   },
+  ["Central_Kingsport"] = {
+    ["en"] = "Central Kingsport",
+    ["uk"] = "Центр Кінгспорту",
+  },
   ["Cerebral_Extractor"] = {
     ["en"] = "Cerebral Extractor",
     ["uk"] = "Витягувач Мозку",
@@ -101,6 +109,10 @@ I18N_DATA = {
   ["Charlie_Kane"] = {
     ["en"] = "Charlie Kane",
     ["uk"] = "Чарлі Кейн",
+  },
+  ["City-of_the_Gugs"] = {
+    ["en"] = "City of the Gugs",
+    ["uk"] = "Місто Гугів",
   },
   ["Clue"] = {
     ["en"] = "Clue",
@@ -114,6 +126,10 @@ I18N_DATA = {
     ["en"] = "Confounding Specter",
     ["uk"] = "Оманливий Дух",
   },
+  ["Congregational_Hospital"] = {
+    ["en"] = "Congregational Hospital",
+    ["uk"] = "Конгрегаційна Лікарня",
+  },
   ["Corben_Bouchard"] = {
     ["en"] = "Corben Bouchard",
     ["uk"] = "Корбен Бушар",
@@ -121,6 +137,10 @@ I18N_DATA = {
   ["Corpse_Taker"] = {
     ["en"] = "Corpse-Taker",
     ["uk"] = "Труполов",
+  },
+  ["Country_Road"] = {
+    ["en"] = "Country Road",
+    ["uk"] = "Ґрунтова Дорога",
   },
   ["Coursing_Hound"] = {
     ["en"] = "Coursing Hound",
@@ -158,6 +178,14 @@ I18N_DATA = {
     ["en"] = "Declan Pearce",
     ["uk"] = "Деклан Пірс",
   },
+  ["Derelict_Portal"] = {
+    ["en"] = "Derelict Portal",
+    ["uk"] = "Занедбаний Портал",
+  },
+  ["Devil_Reef"] = {
+    ["en"] = "Devil Reef",
+    ["uk"] = "Риф Диявола",
+  },
   ["Dexter_Drake"] = {
     ["en"] = "Dexter Drake",
     ["uk"] = "Декстер Дрейк",
@@ -178,6 +206,10 @@ I18N_DATA = {
     ["en"] = "Dread Shadow",
     ["uk"] = "Жахлива Тінь",
   },
+  ["Duterte_Funeral_Home"] = {
+    ["en"] = "Duterte Funeral Home",
+    ["uk"] = "Похоронне Бюро Дютерт",
+  },
   ["Easttown"] = {
     ["en"] = "Easttown",
     ["uk"] = "Східний Квартал",
@@ -190,9 +222,17 @@ I18N_DATA = {
     ["en"] = "Entraced Hybrid",
     ["uk"] = "Зачарований Гібрид",
   },
+  ["Esoteric_Order_of_Dagon"] = {
+    ["en"] = "Esoteric Order of Dagon",
+    ["uk"] = "Таємний Орден Дагона",
+  },
   ["Eyeless_Watcher"] = {
     ["en"] = "Eyeless Watcher",
     ["uk"] = "Безокий Спостерігач",
+  },
+  ["Falcon_Point"] = {
+    ["en"] = "Falcon Point",
+    ["uk"] = "Мис Сокола",
   },
   ["Father_Mateo"] = {
     ["en"] = "Father Mateo",
@@ -206,9 +246,21 @@ I18N_DATA = {
     ["en"] = "Feckless Agitator",
     ["uk"] = "Порожній Крикун",
   },
+  ["Ferry_Terminal"] = {
+    ["en"] = "Ferry Terminal",
+    ["uk"] = "Паромний Термінал",
+  },
+  ["First_National_Grocery"] = {
+    ["en"] = "First National Grocery",
+    ["uk"] = "Перша Національна Крамниця",
+  },
   ["Flesh_Eater"] = {
     ["en"] = "Flesh-Eater",
     ["uk"] = "Пожирач Плоті",
+  },
+  ["French_Hill"] = {
+    ["en"] = "French Hill",
+    ["uk"] = "Френч Хілл",
   },
   ["Frenzied_Hunter"] = {
     ["en"] = "Frenzied Hunter",
@@ -226,6 +278,10 @@ I18N_DATA = {
     ["en"] = "Ghoul Priest",
     ["uk"] = "Гуль Священник",
   },
+  ["Gilman_House"] = {
+    ["en"] = "Gilman House",
+    ["uk"] = "Готель Гілман",
+  },
   ["Gluttonous_Giant"] = {
     ["en"] = "Gluttonous Giant",
     ["uk"] = "Ненажерливий Велетень",
@@ -242,6 +298,10 @@ I18N_DATA = {
     ["en"] = "Guardian Beast",
     ["uk"] = "Вартовий Звір",
   },
+  ["Hall_School"] = {
+    ["en"] = "Hall School",
+    ["uk"] = "Школа Голла",
+  },
   ["Hangman's_Hill"] = {
     ["en"] = "Hangman's Hill",
     ["uk"] = "Пагорб Повішеника",
@@ -257,6 +317,10 @@ I18N_DATA = {
   ["Hibb's_Roadhouse"] = {
     ["en"] = "Hibb's Roadhouse",
     ["uk"] = "Шинок Гібба",
+  },
+  ["Hidden_Path"] = {
+    ["en"] = "Hidden Path",
+    ["uk"] = "Прихована Стежка",
   },
   ["High_Priest"] = {
     ["en"] = "High Priest",
@@ -314,6 +378,18 @@ I18N_DATA = {
     ["en"] = "Independence Square",
     ["uk"] = "Площа Незалежності",
   },
+  ["Innsmouth_Jail"] = {
+    ["en"] = "Innsmouth Jail",
+    ["uk"] = "В’язниця Інсмуту",
+  },
+  ["Innsmouth_Shore"] = {
+    ["en"] = "Innsmouth Shore",
+    ["uk"] = "Узбережжя Інсмуту",
+  },
+  ["Innsmouth_Village"] = {
+    ["en"] = "Innsmouth Village",
+    ["uk"] = "Старий Інсмут",
+  },
   ["Jenny_Barnes"] = {
     ["en"] = "Jenny Barnes",
     ["uk"] = "Дженні Барнс",
@@ -325,6 +401,10 @@ I18N_DATA = {
   ["Keening_Hound"] = {
     ["en"] = "Keening Hound",
     ["uk"] = "Виюча Гонча",
+  },
+  ["Kingsport_Harbor"] = {
+    ["en"] = "Kingsport Harbor",
+    ["uk"] = "Гавань Кінгспорту",
   },
   ["LOG_add_clue_manually"] = {
     ["en"] = "Add a clue manually",
@@ -718,6 +798,10 @@ I18N_DATA = {
     ["en"] = "Mark Harrigan",
     ["uk"] = "Марк Гарріган",
   },
+  ["Marsh_Refinery"] = {
+    ["en"] = "Marsh Refinery",
+    ["uk"] = "Завод Маршів",
+  },
   ["Masked_Hunter"] = {
     ["en"] = "Masked Hunter",
     ["uk"] = "Мисливець у Масці",
@@ -762,6 +846,10 @@ I18N_DATA = {
     ["en"] = "Mouthy Raconteur",
     ["uk"] = "Язикатий Пліткар",
   },
+  ["Neil's_Curiosity_Shop"] = {
+    ["en"] = "Neil's Curiosity Shop",
+    ["uk"] = "Крамничка Диковинок Ніла",
+  },
   ["Nightmarish_Fiend"] = {
     ["en"] = "Nightmarish Fiend",
     ["uk"] = "Потвора з Кошмару",
@@ -769,6 +857,10 @@ I18N_DATA = {
   ["Norman_Withers"] = {
     ["en"] = "Norman Withers",
     ["uk"] = "Норман Візерс",
+  },
+  ["North_Point_Lighthouse"] = {
+    ["en"] = "North Point Lighthouse",
+    ["uk"] = "Північний Маяк",
   },
   ["Northside"] = {
     ["en"] = "Northside",
@@ -1014,6 +1106,10 @@ I18N_DATA = {
     ["en"] = "Silas Marsh",
     ["uk"] = "Сайлас Марш",
   },
+  ["Silver_Twilight_Lodge"] = {
+    ["en"] = "Silver Twilight Lodge",
+    ["uk"] = "Ложа Срібного Сутінку",
+  },
   ["Simon_Carter"] = {
     ["en"] = "Simon Carter",
     ["uk"] = "Саймон Картер",
@@ -1034,6 +1130,10 @@ I18N_DATA = {
     ["en"] = "Southside",
     ["uk"] = "Південний Квартал",
   },
+  ["St._Erasmus's_Home"] = {
+    ["en"] = "St. Erasmus's Home",
+    ["uk"] = "Притулок св. Еразма",
+  },
   ["St_Mary's_Hospital"] = {
     ["en"] = "St. Mary's Hospital",
     ["uk"] = "Лікарня св. Марії",
@@ -1045,6 +1145,10 @@ I18N_DATA = {
   ["Stella_Clark"] = {
     ["en"] = "Stella Clark",
     ["uk"] = "Стелла Кларк",
+  },
+  ["Strange_High_House"] = {
+    ["en"] = "Strange High House",
+    ["uk"] = "Дім Таємниць",
   },
   ["Swift_Byakhee"] = {
     ["en"] = "Swift Byakhee",
@@ -1102,9 +1206,21 @@ I18N_DATA = {
     ["en"] = "Terrified Wanderer",
     ["uk"] = "Переляканий Блукалець",
   },
+  ["The_Rope_and_Anchor"] = {
+    ["en"] = "The Rope and Anchor",
+    ["uk"] = "Канат і Якір",
+  },
+  ["The_Underworld"] = {
+    ["en"] = "The Underworld",
+    ["uk"] = "Підземний Світ",
+  },
   ["The_streets"] = {
     ["en"] = "The streets",
     ["uk"] = "Вулиці",
+  },
+  ["Threshold"] = {
+    ["en"] = "Threshold",
+    ["uk"] = "Поріг",
   },
   ["Tick_Tock_Club"] = {
     ["en"] = "Tick-Tock Club",
@@ -1117,6 +1233,10 @@ I18N_DATA = {
   ["Tommy_Muldoon"] = {
     ["en"] = "Tommy Muldoon",
     ["uk"] = "Томмі Малдун",
+  },
+  ["Train_Platform"] = {
+    ["en"] = "Train Platform",
+    ["uk"] = "Залізнична Платформа",
   },
   ["Train_Station"] = {
     ["en"] = "Train Station",
@@ -1145,6 +1265,14 @@ I18N_DATA = {
   ["Uptown"] = {
     ["en"] = "Uptown",
     ["uk"] = "Передмістя",
+  },
+  ["Vale_of_Pnath"] = {
+    ["en"] = "Vale of Pnath",
+    ["uk"] = "Яруга Пнат",
+  },
+  ["Vaults_of_Zin"] = {
+    ["en"] = "Vaults of Zin",
+    ["uk"] = "Катакомби Зін",
   },
   ["Velma's_Diner"] = {
     ["en"] = "Velma's Diner",
@@ -1182,6 +1310,10 @@ I18N_DATA = {
     ["en"] = "Whippoorwill",
     ["uk"] = "Дрімлюга",
   },
+  ["Wild_Gateway"] = {
+    ["en"] = "Wild Gateway",
+    ["uk"] = "Ворота Хаосу",
+  },
   ["Winifred_Habbamock"] = {
     ["en"] = "Winifred Habbamock",
     ["uk"] = "Вініфред Габбамок",
@@ -1214,9 +1346,21 @@ I18N_DATA = {
     ["en"] = "Start of Mythos Phase",
     ["uk"] = "Настає фаза Мітів",
   },
+  ["the_unnamable"] = {
+    ["en"] = "The Unnamable",
+    ["uk"] = "Невимовне",
+  },
+  ["the_witch_house"] = {
+    ["en"] = "The Witch House",
+    ["uk"] = "Відьомський Дім",
+  },
   ["token"] = {
     ["en"] = "token",
     ["uk"] = "жетон",
+  },
+  ["travel_route"] = {
+    ["en"] = "Travel Route",
+    ["uk"] = "Шляхи Мандрів",
   },
   ["type_Aberration"] = {
     ["en"] = "Aberration",

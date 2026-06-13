@@ -403,6 +403,30 @@ msgstr "Uptown"
 msgid "The_streets"
 msgstr "The streets"
 
+msgid "Central_Kingsport"
+msgstr "Central Kingsport"
+
+msgid "Innsmouth_Shore"
+msgstr "Innsmouth Shore"
+
+msgid "Innsmouth_Village"
+msgstr "Innsmouth Village"
+
+msgid "Kingsport_Harbor"
+msgstr "Kingsport Harbor"
+
+msgid "travel_route"
+msgstr "Travel Route"
+
+msgid "French_Hill"
+msgstr "French Hill"
+
+msgid "The_Underworld"
+msgstr "The Underworld"
+
+msgid "Threshold"
+msgstr "Threshold"
+
 # Neighborhood spaces
 
 msgid "Arkham_Asylum"
@@ -485,6 +509,90 @@ msgstr "Bridge"
 
 msgid "Scenic"
 msgstr "Scenic"
+
+msgid "Congregational_Hospital"
+msgstr "Congregational Hospital"
+
+msgid "Hall_School"
+msgstr "Hall School"
+
+msgid "Neil's_Curiosity_Shop"
+msgstr "Neil's Curiosity Shop"
+
+msgid "Falcon_Point"
+msgstr "Falcon Point"
+
+msgid "Gilman_House"
+msgstr "Gilman House"
+
+msgid "Marsh_Refinery"
+msgstr "Marsh Refinery"
+
+msgid "Esoteric_Order_of_Dagon"
+msgstr "Esoteric Order of Dagon"
+
+msgid "First_National_Grocery"
+msgstr "First National Grocery"
+
+msgid "Innsmouth_Jail"
+msgstr "Innsmouth Jail"
+
+msgid "North_Point_Lighthouse"
+msgstr "North Point Lighthouse"
+
+msgid "The_Rope_and_Anchor"
+msgstr "The Rope and Anchor"
+
+msgid "St._Erasmus's_Home"
+msgstr "St. Erasmus's Home"
+
+msgid "Country_Road"
+msgstr "Country Road"
+
+msgid "Ferry_Terminal"
+msgstr "Ferry Terminal"
+
+msgid "Train_Platform"
+msgstr "Train Platform"
+
+msgid "Bayfriar_Gardens"
+msgstr "Bayfriar Gardens"
+
+msgid "Duterte_Funeral_Home"
+msgstr "Duterte Funeral Home"
+
+msgid "Silver_Twilight_Lodge"
+msgstr "Silver Twilight Lodge"
+
+msgid "City-of_the_Gugs"
+msgstr "City of the Gugs"
+
+msgid "Vale_of_Pnath"
+msgstr "Vale of Pnath"
+
+msgid "Vaults_of_Zin"
+msgstr "Vaults of Zin"
+
+msgid "Derelict_Portal"
+msgstr "Derelict Portal"
+
+msgid "Hidden_Path"
+msgstr "Hidden Path"
+
+msgid "Wild_Gateway"
+msgstr "Wild Gateway"
+
+msgid "Devil_Reef"
+msgstr "Devil Reef"
+
+msgid "Strange_High_House"
+msgstr "Strange High House"
+
+msgid "the_unnamable"
+msgstr "The Unnamable"
+
+msgid "the_witch_house"
+msgstr "The Witch House"
 
 # Change of phase
 
