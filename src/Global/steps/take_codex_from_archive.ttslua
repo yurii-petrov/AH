@@ -6,25 +6,16 @@
 -- attaches it to the codex mat at the next free codex snap point.
 
 local function findCodexMatOnSnapPoints(locationMat, number)
-  local snapCount = 0
-  local codexSnapCount = 0
   for _, snp in ipairs(locationMat.getSnapPoints()) do
-    snapCount = snapCount + 1
     if snp.tags then
       for _, tag in ipairs(snp.tags) do
         if tag == "codex_mat" then
-          codexSnapCount = codexSnapCount + 1
           local worldPos = locationMat.positionToWorld(snp.position)
           local objs = upCast_pos(worldPos, 1)
-          log("[findCodexMat] snap #"..codexSnapCount.." worldPos: "..serpent.tts(worldPos).." objs found: "..#objs)
           for _, o in ipairs(objs) do
-            log("[findCodexMat] found obj type: "..tostring(o.type).." name: "..tostring(o.getName()))
             if o.type == "Tile" then
-              local atts = o.getAttachments()
-              log("[findCodexMat] Tile attachments count: "..#atts)
-              for _, att in ipairs(atts) do
+              for _, att in ipairs(o.getAttachments()) do
                 local data = parseJson(att.memo)
-                log("[findCodexMat] att memo: "..serpent.tts(data))
                 if data and string.lower(tostring(data.type or "")) == "codex" and data.number == number then
                   return o
                 end
@@ -35,7 +26,6 @@ local function findCodexMatOnSnapPoints(locationMat, number)
       end
     end
   end
-  log("[findCodexMat] total snaps: "..snapCount.." codex_mat snaps: "..codexSnapCount)
 end
 
 function processStepTakeCodexFromArchive(step, context, onDone)
@@ -85,7 +75,7 @@ function processStepTakeCodexFromArchive(step, context, onDone)
 
   local faceDown = step.face_down
   if faceDown == nil then faceDown = true end
-  local rotZ = faceDown and 180 or 0
+  local rotZ = rotation and (math.abs(rotation.z) > 90 and 180 or 0) or (faceDown and 180 or 0)
   local rotY = rotation and rotation.y or 180
 
   local card = takeCardByQuery(archive, {{
@@ -103,6 +93,7 @@ function processStepTakeCodexFromArchive(step, context, onDone)
     return
   end
   runAfterRest(card, function(c)
+    -- log("[takeCodexFromArchive] codex "..step.number.." rotation: "..serpent.tts(c.getRotation()))
     attachCodexCard(c, freePos, rotation)
 
     if step.destructSelf then
