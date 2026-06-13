@@ -61,7 +61,13 @@ function processSteps(data)
   end
 
   local function runStep(i)
-    if i > #data.steps then return end
+    if i > #data.steps then
+      local ctx = data.context
+      if ctx and ctx.removeAfterUse and ctx.codexMat then
+        ctx.codexMat.call("onActionSuccess", ctx.removeAfterUse)
+      end
+      return
+    end
     processStep(data.steps[i], data.context, function()
       runStep(i + 1)
     end)

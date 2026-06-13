@@ -248,6 +248,11 @@ function onObjectPickUpShop(colorName, object, shopMat)
 end
 
 function onObjectPickUp(colorName, object)
+  for _, player in ipairs(Player.getPlayers()) do
+    if player.lift_height <= 0.3 then
+      player.lift_height = 0.3
+    end
+  end
 
   -- print(serpent.tts(object.call("updateMoney", 5)))
   -- print(serpent.tts(object.call("updateMoney", -6)))

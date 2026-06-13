@@ -98,11 +98,8 @@ function processStepTakeCodexFromArchive(step, context, onDone)
   runAfterRest(card, function(c)
     attachCodexCard(c, freePos, rotation)
 
-    if context.removeAfterUse and not step.destructSelf then
-      codexMat.call("onActionSuccess", context.removeAfterUse)
-    end
-
     if step.destructSelf then
+      context.removeAfterUse = nil
       removeCodexAttachment(codexMat)
       codexMat.destruct()
     end

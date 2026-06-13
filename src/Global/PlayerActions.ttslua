@@ -285,7 +285,9 @@ function reassignAllPlayersToAvailableColors()
     usedColors[targetColor] = true
     colorIndex = colorIndex + 1
 
-    participant.promote()
+    if not participant.host then
+      participant.promote()
+    end
   end
 end
 
