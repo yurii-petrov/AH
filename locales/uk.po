@@ -462,6 +462,30 @@ msgstr "Передмістя"
 msgid "The_streets"
 msgstr "Вулиці"
 
+msgid "Central_Kingsport"
+msgstr "Центр Кінгспорту"
+
+msgid "Innsmouth_Shore"
+msgstr "Узбережжя Інсмуту"
+
+msgid "Innsmouth_Village"
+msgstr "Старий Інсмут"
+
+msgid "Kingsport_Harbor"
+msgstr "Гавань Кінгспорту"
+
+msgid "travel_route"
+msgstr "Шляхи Мандрів"
+
+msgid "French_Hill"
+msgstr "Френч Хілл"
+
+msgid "The_Underworld"
+msgstr "Підземний Світ"
+
+msgid "Threshold"
+msgstr "Поріг"
+
 # Neighborhood spaces
 msgid "Arkham_Asylum"
 msgstr "Психлікарня Аркгему"
@@ -543,6 +567,90 @@ msgstr "Міст"
 
 msgid "Scenic"
 msgstr "Парк"
+
+msgid "Congregational_Hospital"
+msgstr "Конгрегаційна Лікарня"
+
+msgid "Hall_School"
+msgstr "Школа Голла"
+
+msgid "Neil's_Curiosity_Shop"
+msgstr "Крамничка Диковинок Ніла"
+
+msgid "Falcon_Point"
+msgstr "Мис Сокола"
+
+msgid "Gilman_House"
+msgstr "Готель Гілман"
+
+msgid "Marsh_Refinery"
+msgstr "Завод Маршів"
+
+msgid "Esoteric_Order_of_Dagon"
+msgstr "Таємний Орден Дагона"
+
+msgid "First_National_Grocery"
+msgstr "Перша Національна Крамниця"
+
+msgid "Innsmouth_Jail"
+msgstr "В’язниця Інсмуту"
+
+msgid "North_Point_Lighthouse"
+msgstr "Північний Маяк"
+
+msgid "The_Rope_and_Anchor"
+msgstr "Канат і Якір"
+
+msgid "St._Erasmus's_Home"
+msgstr "Притулок св. Еразма"
+
+msgid "Country_Road"
+msgstr "Ґрунтова Дорога"
+
+msgid "Ferry_Terminal"
+msgstr "Паромний Термінал"
+
+msgid "Train_Platform"
+msgstr "Залізнична Платформа"
+
+msgid "Bayfriar_Gardens"
+msgstr "Сади Затоки Ченця"
+
+msgid "Duterte_Funeral_Home"
+msgstr "Похоронне Бюро Дютерт"
+
+msgid "Silver_Twilight_Lodge"
+msgstr "Ложа Срібного Сутінку"
+
+msgid "City-of_the_Gugs"
+msgstr "Місто Гугів"
+
+msgid "Vale_of_Pnath"
+msgstr "Яруга Пнат"
+
+msgid "Vaults_of_Zin"
+msgstr "Катакомби Зін"
+
+msgid "Derelict_Portal"
+msgstr "Занедбаний Портал"
+
+msgid "Hidden_Path"
+msgstr "Прихована Стежка"
+
+msgid "Wild_Gateway"
+msgstr "Ворота Хаосу"
+
+msgid "Devil_Reef"
+msgstr "Риф Диявола"
+
+msgid "Strange_High_House"
+msgstr "Дім Таємниць"
+
+msgid "the_unnamable"
+msgstr "Невимовне"
+
+msgid "the_witch_house"
+msgstr "Відьомський Дім"
 
 # Change of phase
 msgid "action_start"
