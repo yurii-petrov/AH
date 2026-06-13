@@ -73,8 +73,23 @@ function processStepTakeCodexFromArchive(step, context, onDone)
     end
   end
 
-  local faceDown = step.face_down
-  if faceDown == nil then faceDown = true end
+  local faceDown
+  if step.faceFromCodex ~= nil then
+    local refMat = findCodexMatOnSnapPoints(sourceMat, step.faceFromCodex)
+    if refMat then
+      local rot = refMat.getRotation()
+      local refFaceUp = math.abs(rot.z) < 90
+      faceDown = not refFaceUp
+      log("[takeCodexFromArchive] faceFromCodex "..step.faceFromCodex.." is "..(refFaceUp and "face up" or "face down").." → new card "..(faceDown and "face down" or "face up"))
+    else
+      faceDown = true
+      log("[takeCodexFromArchive] faceFromCodex "..step.faceFromCodex.." not found, defaulting face down")
+    end
+  elseif step.face_down ~= nil then
+    faceDown = step.face_down
+  else
+    faceDown = true
+  end
   local rotZ = rotation and (math.abs(rotation.z) > 90 and 180 or 0) or (faceDown and 180 or 0)
   local rotY = rotation and rotation.y or 180
 
