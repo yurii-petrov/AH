@@ -5,31 +5,37 @@
 -- Draws a codex card (by number) from the archive on the location mat and
 -- attaches it to the codex mat at the next free codex snap point.
 
-local function findCodexCardOnSnapPoints(locationMat, number)
+local function findCodexMatOnSnapPoints(locationMat, number)
+  local snapCount = 0
+  local codexSnapCount = 0
   for _, snp in ipairs(locationMat.getSnapPoints()) do
+    snapCount = snapCount + 1
     if snp.tags then
       for _, tag in ipairs(snp.tags) do
         if tag == "codex_mat" then
+          codexSnapCount = codexSnapCount + 1
           local worldPos = locationMat.positionToWorld(snp.position)
-          local objs = upCast_pos(worldPos, 0.5)
+          local objs = upCast_pos(worldPos, 1)
+          log("[findCodexMat] snap #"..codexSnapCount.." worldPos: "..serpent.tts(worldPos).." objs found: "..#objs)
           for _, o in ipairs(objs) do
+            log("[findCodexMat] found obj type: "..tostring(o.type).." name: "..tostring(o.getName()))
             if o.type == "Tile" then
-              for _, att in ipairs(o.getAttachments()) do
-                local obj = getObjectFromGUID(att.guid)
-                if obj then
-                  local data = parseJson(obj.memo)
-                  if data and data.number == number then
-                    return obj
-                  end
+              local atts = o.getAttachments()
+              log("[findCodexMat] Tile attachments count: "..#atts)
+              for _, att in ipairs(atts) do
+                local data = parseJson(att.memo)
+                log("[findCodexMat] att memo: "..serpent.tts(data))
+                if data and string.lower(tostring(data.type or "")) == "codex" and data.number == number then
+                  return o
                 end
               end
             end
           end
-          break
         end
       end
     end
   end
+  log("[findCodexMat] total snaps: "..snapCount.." codex_mat snaps: "..codexSnapCount)
 end
 
 function processStepTakeCodexFromArchive(step, context, onDone)
@@ -66,6 +72,17 @@ function processStepTakeCodexFromArchive(step, context, onDone)
     return
   end
 
+  local rotation
+  if step.rotationFromCodex then
+    local refMat = findCodexMatOnSnapPoints(sourceMat, step.rotationFromCodex)
+    if refMat then
+      rotation = refMat.getRotation()
+      log("[takeCodexFromArchive] refMat (codex "..step.rotationFromCodex..") rotation: "..serpent.tts(rotation))
+    else
+      log("[takeCodexFromArchive] refMat for codex "..step.rotationFromCodex.." not found")
+    end
+  end
+
   local card = takeCardByQuery(archive, {{
     field = "number",
     op    = "eq",
@@ -77,16 +94,9 @@ function processStepTakeCodexFromArchive(step, context, onDone)
     return
   end
 
-  if step.rotationFromCodex then
-    local refCard = findCodexCardOnSnapPoints(sourceMat, step.rotationFromCodex)
-    if refCard then
-      card.setRotation(refCard.getRotation())
-    end
-  end
-
   card.setPositionSmooth(freePos:setAt("y", 3))
   runAfterRest(card, function(c)
-    attachCodexCard(c, freePos)
+    attachCodexCard(c, freePos, rotation)
 
     if context.removeAfterUse and not step.destructSelf then
       codexMat.call("onActionSuccess", context.removeAfterUse)

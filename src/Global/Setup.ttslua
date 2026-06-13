@@ -1207,16 +1207,17 @@ function prepareScenarioDecks(scenarioData)
   end, time + timeStep + 5)
 end
 
-function attachCodexCard(card, spawnPos)
+function attachCodexCard(card, spawnPos, rotation)
   local codexMatBag = getObjectFromGUID(codexMatBagId)
   if not codexMatBag then
     return
   end
 
+  local rotY = rotation and rotation.y or 180
   local codexMat = codexMatBag.takeObject({
     index = 0,
     position = spawnPos,
-    rotation = {0, 180, 180},
+    rotation = {0, rotY, 180},
     smooth = false
   })
 
