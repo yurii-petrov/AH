@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"number\":8,\"type\":\"codex\"}",
+  "Memo": "{\"number\":8,\"type\":\"codex\",\"front\":{\"actions\":[{\"title\":\"Activate\",\"description\":\"\",\"steps\":[{\"type\":\"addMythosToken\",\"token\":{\"type\":\"Spread Doom\"}},{\"type\":\"addMythosToken\",\"token\":{\"type\":\"Gate Burst\"}},{\"type\":\"clearMarkersOnLocations\"}]}]}}",
   "Name": "Card",
   "Nickname": "08",
   "SidewaysCard": false,

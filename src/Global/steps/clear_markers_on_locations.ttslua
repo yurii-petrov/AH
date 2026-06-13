@@ -1,0 +1,74 @@
+-- ╭──────────────────────────────────────────────╮
+-- │      STEP: clearMarkersOnLocations           │
+-- ╰──────────────────────────────────────────────╯
+--
+-- Scans every location tile on the location mat and removes all markers,
+-- returning each to its bag (White / Blue / Green). The Red Marker is always
+-- ignored (kept in place). If no Red Marker is found on any location, a new
+-- one is spawned at the scenario start position
+-- (gameData.scenarioData.startPosition, resolved on the location mat).
+--
+-- Example step JSON:
+--   {
+--     "type": "clearMarkersOnLocations"
+--   }
+
+local MARKER_TYPES = {
+  ["White Marker"] = true,
+  ["Blue Marker"]  = true,
+  ["Green Marker"] = true,
+  ["Red Marker"]   = true,
+}
+
+function processStepClearMarkersOnLocations(step, context, onDone)
+  local locationMat = getObjectFromGUID(locationMatId)
+  if not locationMat then
+    log("[clearMarkersOnLocations] locationMat not found")
+    if onDone then onDone() end
+    return
+  end
+
+  local redFound = false
+
+  local tiles = upCast(locationMat, 1, nil, 1)
+  for _, tile in ipairs(tiles) do
+    if tile.type == "Generic" then
+      local tokens = upCast(tile, 1, nil, 1)
+      for _, o in ipairs(tokens) do
+        if o.type == "Tile" and MARKER_TYPES[o.memo] then
+          if o.memo == "Red Marker" then
+            redFound = true
+          else
+            local bagId = getTokenBagIdByType(o.memo)
+            local bag = bagId and getObjectFromGUID(bagId)
+            if bag then
+              bag.putObject(o)
+            else
+              o.destruct()
+            end
+          end
+        end
+      end
+    end
+  end
+
+  print(i18n.getStrById("LOG_markers_cleared"))
+
+  if not redFound then
+    local redBag = getObjectFromGUID(redTokenBagId)
+    local startPos = gameData.scenarioData and gameData.scenarioData.startPosition
+    if redBag and startPos then
+      local pos = locationMat.positionToWorld(startPos):setAt("y", 3)
+      redBag.takeObject({
+        index    = 0,
+        position = pos,
+        rotation = {0, 180, 180}
+      }).highlightOn("Red", 5)
+      print(i18n.getStrById("LOG_red_marker_respawned"))
+    else
+      log("[clearMarkersOnLocations] cannot spawn Red Marker (redBag or scenario startPosition missing)")
+    end
+  end
+
+  if onDone then onDone() end
+end

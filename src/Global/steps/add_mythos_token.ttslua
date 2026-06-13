@@ -1,0 +1,44 @@
+-- ╭──────────────────────────────────────────────╮
+-- │           STEP: addMythosToken               │
+-- ╰──────────────────────────────────────────────╯
+--
+-- Takes one token of step.token.type from its source bag (mythosTokenBagIds)
+-- and drops it into the Mythos Cup, then reshuffles the cup. Mirrors the logic
+-- of prepareMythosTokens for a single token.
+--
+-- Example step JSON:
+--   {
+--     "type": "addMythosToken",
+--     "token": { "type": "Spread Doom" }
+--   }
+
+function processStepAddMythosToken(step, context, onDone)
+  if not step.token or not step.token.type then
+    log("[addMythosToken] token.type is nil")
+    if onDone then onDone() end
+    return
+  end
+
+  local mythosBag = getObjectFromGUID(mythosBagId)
+  if not mythosBag then
+    log("[addMythosToken] mythosBag not found")
+    if onDone then onDone() end
+    return
+  end
+
+  local tokenType = step.token.type
+  local bagId = mythosTokenBagIds[tokenType]
+  local bag = bagId and getObjectFromGUID(bagId)
+  if not bag then
+    log("[addMythosToken] source bag not found for type: " .. tostring(tokenType))
+    if onDone then onDone() end
+    return
+  end
+
+  mythosBag.putObject(bag.takeObject({ index = 0 }))
+  mythosBag.shuffle()
+
+  print(string.format(i18n.getStrById("LOG_mythos_token_added"), i18n.getStrById(tokenType)))
+
+  if onDone then onDone() end
+end
