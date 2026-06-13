@@ -1213,11 +1213,13 @@ function attachCodexCard(card, spawnPos, rotation)
     return
   end
 
-  rotation = rotation or card.is_face_down and {0, 180, 180} or {0, 180, 0}
+  local rotation = rotation or card.is_face_down and {0, 180, 180} or {0, 180, 0}
+
+  local codexMatPosition = spawnPos
 
   local codexMat = codexMatBag.takeObject({
     index = 0,
-    position = spawnPos,
+    position = codexMatPosition,
     rotation = rotation,
     smooth = false
   })
@@ -1232,18 +1234,27 @@ function attachCodexCard(card, spawnPos, rotation)
   local height = codexMat.getBounds().size.y
   local baseY = spawnPos.y
 
-  card.setPosition({
+  local cardOriginalY = card.is_face_down and baseY - height - CARD_OFFSET or baseY + height + CARD_OFFSET
+  local cardCopyY = card.is_face_down and cardOriginalY + 0.12 or cardOriginalY - 0.12
+  local cardPosition = {
     x = spawnPos.x,
-    y = baseY + height + CARD_OFFSET,
+    y = cardOriginalY,
     z = spawnPos.z + 0.95
-  })
+  }
+
+  local clonePosition = {
+    x = spawnPos.x,
+    y = cardCopyY
+  }
+
+  card.setPosition(cardPosition)
 
   card.interactable = false
   codexMat.addAttachment(card)
 
   local cloneData = card.getData()
-  cloneData.Transform.posX = codexMat.positionToWorld({0, 0, 0}).x
-  cloneData.Transform.posY = baseY - height - CARD_OFFSET + (CARD_OFFSET-0.01)
+  cloneData.Transform.posX = clonePosition.x
+  cloneData.Transform.posY = clonePosition.y
 
   local clone = spawnObjectData({
     data = cloneData
