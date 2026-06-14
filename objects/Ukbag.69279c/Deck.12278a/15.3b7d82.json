@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"number\":15,\"type\":\"codex\"}",
+  "Memo": "{\"number\":15,\"type\":\"codex\",\"encounter\":{\"neighborhood\":\"Rivertown\",\"type\":\"encounter\"}}",
   "Name": "Card",
   "Nickname": "15",
   "SidewaysCard": false,

@@ -1,0 +1,166 @@
+local SEED_REVEAL_SPACING = 0.9
+local SEED_REVEAL_Z = 1.7
+
+local function placeNeighborhoodToken(locationMat, neighborhood, tokenType)
+  local tile = findLocationTileByName(locationMat, neighborhood)
+  if not tile then
+    log("[seedCodexEncounters] neighborhood tile not found: " .. tostring(neighborhood))
+    return
+  end
+
+  local bagId = getTokenBagIdByType(tokenType)
+  local bag = bagId and getObjectFromGUID(bagId)
+  if not bag then
+    log("[seedCodexEncounters] token bag not found for: " .. tostring(tokenType))
+    return
+  end
+
+  bag.takeObject({
+    index = 0,
+    position = tile.getPosition():setAt("y", 3),
+    rotation = {0, 180, 180}
+  }).highlightOn("White", 5)
+end
+
+local function assembleCodexDeck(codexCard, neighborhood, onDone)
+  local nbDeck = getDeckFromScenarioMat("encounter", neighborhood)
+  if not nbDeck then
+    log("[seedCodexEncounters] encounter deck not found for: " .. tostring(neighborhood))
+    if onDone then onDone() end
+    return
+  end
+
+  local deckPos = nbDeck.getPosition()
+  local stackPos = codexCard.getPosition()
+
+  local taken = {}
+  for _ = 1, 2 do
+    local c = takeCardFromTop(nbDeck, true)
+    if c then table.insert(taken, c) end
+  end
+
+  codexCard.setRotation({0, 180, 180})
+  for i, c in ipairs(taken) do
+    c.setRotation({0, 180, 180})
+    c.setPosition(Vector(stackPos.x, stackPos.y + 0.3 * i, stackPos.z))
+  end
+
+  Wait.time(function()
+    local pile = nil
+    for _, o in ipairs(findObjsInRadius(stackPos, 1)) do
+      if o.type == "Deck" then
+        pile = o
+        break
+      end
+    end
+    if not pile then
+      if onDone then onDone() end
+      return
+    end
+
+    pile.shuffle()
+    Wait.time(function()
+      pile.setRotation({0, 180, 180})
+      pile.setPositionSmooth(deckPos:setAt("y", 3))
+      Wait.time(function()
+        if onDone then onDone() end
+      end, 0.5)
+    end, 0.5)
+  end, 0.8)
+end
+
+function processStepSeedCodexEncounters(step, context, onDone)
+  local numbers = step.numbers
+  if not numbers or #numbers == 0 then
+    log("[seedCodexEncounters] numbers is nil/empty")
+    if onDone then onDone() end
+    return
+  end
+
+  local tokenType = step.token or "White Marker"
+
+  local codexMat = context and context.codexMat
+  if not codexMat then
+    log("[seedCodexEncounters] codexMat is nil")
+    if onDone then onDone() end
+    return
+  end
+
+  local locationMat = findBoardByQuery({{
+    field = "type",
+    op    = "eq",
+    value = "locationMat"
+  }})
+  if not locationMat then
+    log("[seedCodexEncounters] locationMat not found")
+    if onDone then onDone() end
+    return
+  end
+
+  local archive = findDeckOnBoardByType(locationMat, "archive")
+  if not archive then
+    log("[seedCodexEncounters] archive not found")
+    if onDone then onDone() end
+    return
+  end
+
+  local entries = {}
+  local spawnTasks = {}
+  for i, number in ipairs(numbers) do
+    table.insert(spawnTasks, function(done)
+      local localPos = Vector({ (i - 1) * SEED_REVEAL_SPACING, 0.5, SEED_REVEAL_Z })
+      local worldPos = codexMat.positionToWorld(localPos):setAt("y", 3)
+
+      for _, o in ipairs(downCast_pos(worldPos, 2)) do
+        if (o.type == "Card" or o.type == "Deck" or o.type == "Tile")
+           and not o.getLock() and o ~= codexMat then
+          o.setPosition(codexMat.positionToWorld(localPos:setAt("z", localPos.z + 1)):setAt("y", 3))
+          break
+        end
+      end
+
+      local card = takeCardByQuery(archive, {{
+        field = "number",
+        op    = "eq",
+        value = number
+      }}, {
+        position = worldPos,
+        rotation = {0, 180, 0},
+        smooth   = true
+      })
+
+      if not card then
+        log("[seedCodexEncounters] codex " .. tostring(number) .. " not found in archive")
+        done()
+        return
+      end
+
+      runAfterRest(card, function(c)
+        local data = parseJson(c.memo)
+        local neighborhood = data and data.encounter and data.encounter.neighborhood
+        if neighborhood then
+          table.insert(entries, { card = c, neighborhood = neighborhood })
+        else
+          log("[seedCodexEncounters] codex " .. tostring(number) .. " has no encounter.neighborhood")
+        end
+        done()
+      end)
+    end)
+  end
+
+  waitAll(spawnTasks, function()
+    local assembleTasks = {}
+    for _, e in ipairs(entries) do
+      table.insert(assembleTasks, function(done)
+        assembleCodexDeck(e.card, e.neighborhood, done)
+      end)
+    end
+
+    waitAll(assembleTasks, function()
+      for _, e in ipairs(entries) do
+        placeNeighborhoodToken(locationMat, e.neighborhood, tokenType)
+      end
+      if onDone then onDone() end
+    end)
+  end)
+end
