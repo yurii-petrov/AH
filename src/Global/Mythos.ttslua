@@ -177,6 +177,23 @@ function mythosTileCancelAction(d)
     end
 
     onClickEncounter(nil, gameData.encounterColor)
+  elseif string.lower(cardData.type) == "codex" then
+    local sourceMat = findBoardByQuery({{
+      field = "type",
+      op    = "eq",
+      value = "locationMat"
+    }})
+    if not sourceMat then
+      return
+    end
+
+    local archive = findDeckOnBoardByType(sourceMat, "archive")
+    if not archive then
+      return
+    end
+
+    card.setRotation({0, 180, 180})
+    archive.putObject(card)
   end
 end
 

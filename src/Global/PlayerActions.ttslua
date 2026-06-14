@@ -505,6 +505,11 @@ function onClickEncounter(obj, playerColor)
         return
       end
       local t = cardData.type and string.lower(cardData.type) or ""
+      if t == "codex" and cardData.encounter then
+        return {
+          type = "codex"
+        }
+      end
       return {
         type = ((t == "event" or t == "encounter" or t == "anomaly" or t == "headline" or t == "terror") and t or "empty")
       }
