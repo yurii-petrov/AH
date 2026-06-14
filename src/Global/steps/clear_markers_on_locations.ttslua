@@ -1,26 +1,32 @@
--- ╭──────────────────────────────────────────────╮
--- │      STEP: clearMarkersOnLocations           │
--- ╰──────────────────────────────────────────────╯
---
--- Scans every location tile on the location mat and removes all markers,
--- returning each to its bag (White / Blue / Green). The Red Marker is always
--- ignored (kept in place). If no Red Marker is found on any location, a new
--- one is spawned at the scenario start position
--- (gameData.scenarioData.startPosition, resolved on the location mat).
---
--- Example step JSON:
---   {
---     "type": "clearMarkersOnLocations"
---   }
+local function resolveLocationName(tile, tileData, token)
+  if not tileData then return tile.memo end
+  if tileData.type and string.lower(tileData.type) == "neighborhood" and tileData.locations then
+    local tokenPos = token.getPosition()
+    local bestName, bestDist
+    for i, loc in ipairs(tileData.locations) do
+      local pos = getNeighborhoodLocationPosition(tile, i, tileData.structureType)
+      local d = (pos.x - tokenPos.x) ^ 2 + (pos.z - tokenPos.z) ^ 2
+      if not bestDist or d < bestDist then
+        bestDist = d
+        bestName = loc
+      end
+    end
+    return bestName or tileData.name
+  end
+  return tileData.name or tile.memo
+end
 
-local MARKER_TYPES = {
-  ["White Marker"] = true,
-  ["Blue Marker"]  = true,
-  ["Green Marker"] = true,
-  ["Red Marker"]   = true,
-}
+local function localizeLocation(name)
+  if not name then return "?" end
+  return i18n.getStrById((name:gsub(" ", "_")))
+end
 
 function processStepClearMarkersOnLocations(step, context, onDone)
+  local removeMarkers = {}
+  for _, m in ipairs(step.removeMarkers or {}) do
+    removeMarkers[m] = true
+  end
+
   local locationMat = getObjectFromGUID(locationMatId)
   if not locationMat then
     log("[clearMarkersOnLocations] locationMat not found")
@@ -29,44 +35,46 @@ function processStepClearMarkersOnLocations(step, context, onDone)
   end
 
   local redFound = false
+  local logLines = { "\n" .. i18n.getStrById("LOG_markers_cleared_header") }
 
   local tiles = upCast(locationMat, 1, nil, 1)
   for _, tile in ipairs(tiles) do
     if tile.type == "Generic" then
+      local tileData = parseJson(tile.memo)
       local tokens = upCast(tile, 1, nil, 1)
       for _, o in ipairs(tokens) do
-        if o.type == "Tile" and MARKER_TYPES[o.memo] then
+        if o.type == "Tile" then
           if o.memo == "Red Marker" then
             redFound = true
-          else
-            local bagId = getTokenBagIdByType(o.memo)
+          elseif removeMarkers[o.memo] then
+            local markerType = o.memo
+            local locName = localizeLocation(resolveLocationName(tile, tileData, o))
+            local bagId = getTokenBagIdByType(markerType)
             local bag = bagId and getObjectFromGUID(bagId)
             if bag then
               bag.putObject(o)
             else
               o.destruct()
             end
+            table.insert(logLines, string.format(i18n.getStrById("LOG_marker_removed"), markerType, locName))
           end
         end
       end
     end
   end
 
-  print(i18n.getStrById("LOG_markers_cleared"))
+  print(table.concat(logLines, "\n"))
 
-  if not redFound then
-    local redBag = getObjectFromGUID(redTokenBagId)
-    local startPos = gameData.scenarioData and gameData.scenarioData.startPosition
-    if redBag and startPos then
-      local pos = locationMat.positionToWorld(startPos):setAt("y", 3)
-      redBag.takeObject({
-        index    = 0,
-        position = pos,
-        rotation = {0, 180, 180}
-      }).highlightOn("Red", 5)
+  if step.ensureRedMarker and not redFound then
+    local redToken = spawnTokenOnLocation({
+      token = "Red Marker",
+      placement = "location",
+      highlight = "Red"
+    })
+    if redToken then
       print(i18n.getStrById("LOG_red_marker_respawned"))
     else
-      log("[clearMarkersOnLocations] cannot spawn Red Marker (redBag or scenario startPosition missing)")
+      log("[clearMarkersOnLocations] cannot spawn Red Marker (startingSpace missing or tile not found)")
     end
   end
 

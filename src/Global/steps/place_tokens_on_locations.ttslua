@@ -56,7 +56,7 @@ end
 
 -- Returns a world position inside the location sector of a Neighborhood tile.
 -- Uses the same arc geometry as getEmptyDoomSpaces in Doom.ttslua.
-local function getNeighborhoodLocationPosition(tile, locationIndex, structureType)
+function getNeighborhoodLocationPosition(tile, locationIndex, structureType)
   local center      = { 0.049, 0.150, -0.056 }
   local radius      = 2.1
   local stepAngleDeg = 35

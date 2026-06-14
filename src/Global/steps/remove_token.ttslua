@@ -57,6 +57,7 @@ function getTokenBagIdByType(tokenType)
     ["Green Marker"] = greenTokenBagId,
     ["Doom Token"]   = doomBagId,
     ["Clue"]         = clueBagId,
+    ["Terror Token"] = terrorBagId,
   }
   return tokenBagMap[tokenType]
 end

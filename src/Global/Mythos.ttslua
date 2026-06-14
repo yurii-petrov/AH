@@ -518,58 +518,26 @@ function getTerrorDeck()
 end
 
 function processTerror(callBack)
-
-  local neighborhoodName = nil
-
-  local eventDiscard = getObjFromMythosTile({-0.199, 0.113, 0.731})
-  if eventDiscard then
-    local topCardMemo = nil
-    if eventDiscard.type == "Deck" then
-      local objs = eventDiscard.getObjects()
-       if #objs > 0 then
-        topCardMemo = parseJson(objs[#objs].memo)
-      end
-    elseif eventDiscard.type == "Card" then
-      topCardMemo = parseJson(eventDiscard.memo)
-    end
-
-    if topCardMemo and topCardMemo.neighborhood then
-      neighborhoodName = topCardMemo.neighborhood
-    end
-  end
-
-  if not neighborhoodName then
-    local terrorspawn = gameData.scenarioData and gameData.scenarioData.terrorspawn
-    neighborhoodName = terrorspawn and terrorspawn.location
-  end
-
-  if not neighborhoodName then
+  local startingSpace = gameData.scenarioData and gameData.scenarioData.startingSpace
+  if not startingSpace then
     callBack()
     return
   end
 
-  local neighborhoodTile = getNeighborhoodTile(neighborhoodName)
-  if not neighborhoodTile then
-    callBack()
-    return
-  end
-
-  local terrorBag = getObjectFromGUID(terrorBagId)
-  if not terrorBag then
-    callBack()
-    return
-  end
-
-  local terrorToken = terrorBag.takeObject({
-    index = 0,
-    position = neighborhoodTile.getPosition():setAt("y", 3),
-    rotation = {0, 180, 0}
+  local terrorToken, _, tileData = spawnTokenOnLocation({
+    token = "Terror Token",
+    memo = "Terror Token",
+    location = startingSpace,
+    placement = "neighborhood",
+    highlight = "Orange"
   })
 
-  terrorToken.highlightOn("Orange", 5)
+  if not terrorToken then
+    callBack()
+    return
+  end
 
-  local neighborhoodTileData = parseJson(neighborhoodTile.memo)
-  local nameKey = (neighborhoodTileData and neighborhoodTileData.name or neighborhoodName):gsub(" ", "_")
+  local nameKey = (tileData and tileData.name or startingSpace):gsub(" ", "_")
   printToAll(i18n.getStrById(nameKey) .. " - 1 " .. i18n.getStrById("LOG_terror_added"), "Orange")
 
   local terrorDeck = getTerrorDeck()

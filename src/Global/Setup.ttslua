@@ -1539,6 +1539,65 @@ function processSetupTile(o, name, setupTileInfo, locationMatOld)
   end
 end
 
+function spawnTokenOnLocation(spawnInfo)
+  if not spawnInfo or not spawnInfo.token then
+    log("[spawnTokenOnLocation] missing token")
+    return nil
+  end
+
+  local locationName = spawnInfo.location
+  if not locationName then
+    locationName = gameData.scenarioData and gameData.scenarioData.startingSpace
+  end
+  if not locationName then
+    log("[spawnTokenOnLocation] no location and no scenario startingSpace")
+    return nil
+  end
+
+  local locationMat = getObjectFromGUID(locationMatId)
+  if not locationMat then
+    log("[spawnTokenOnLocation] locationMat not found")
+    return nil
+  end
+
+  local bagId = getTokenBagIdByType(spawnInfo.token)
+  local bag = bagId and getObjectFromGUID(bagId)
+  if not bag then
+    log("[spawnTokenOnLocation] bag not found for token: " .. tostring(spawnInfo.token))
+    return nil
+  end
+
+  local tile, tileData, locationIndex = findLocationTileByName(locationMat, locationName)
+  if not tile then
+    log("[spawnTokenOnLocation] tile not found for: " .. tostring(locationName))
+    return nil
+  end
+
+  local placement = spawnInfo.placement and string.lower(spawnInfo.placement) or "location"
+
+  local pos
+  if placement ~= "neighborhood" and locationIndex and tileData and tileData.structureType then
+    pos = getNeighborhoodLocationPosition(tile, locationIndex, tileData.structureType):setAt("y", 3)
+  else
+    pos = tile.getPosition():setAt("y", 3)
+  end
+
+  local token = bag.takeObject({
+    index = 0,
+    position = pos,
+    rotation = {0, 180, 0}
+  })
+  if not token then
+    log("[spawnTokenOnLocation] takeObject returned nil for token: " .. tostring(spawnInfo.token))
+    return nil
+  end
+
+  token.memo = spawnInfo.memo or spawnInfo.token
+  token.highlightOn(spawnInfo.highlight or "Yellow", 5)
+
+  return token, tile, tileData
+end
+
 function lockSetupScenarioComponents(obj, scenarioTiles)
   local locationMat = getObjectFromGUID(locationMatId)
   if not locationMat then
