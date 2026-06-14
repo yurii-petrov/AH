@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"number\":10,\"type\":\"codex\"}",
+  "Memo": "{\"number\":10,\"type\":\"codex\",\"back\":{\"actions\":[{\"title\":\"Літа Чантлер\",\"description\":\"\",\"removeAfterUse\":true,\"steps\":[{\"type\":\"spawnCardBelowCodex\",\"board\":{\"query\":[{\"field\":\"type\",\"op\":\"eq\",\"value\":\"ShopMat\"}]},\"deck\":\"special\",\"card\":{\"query\":[{\"field\":\"name\",\"op\":\"eq\",\"value\":\"lita chantler\"},{\"field\":\"type\",\"op\":\"eq\",\"value\":\"special\"}]}}]}]}}",
   "Name": "Card",
   "Nickname": "10",
   "SidewaysCard": false,

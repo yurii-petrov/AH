@@ -52,13 +52,13 @@ local buttonStyle = {
 
 local pendingConfirm = nil
 
-local frontPositions = {
+local backPositions = {
 	"0 56 11",
   "0 73 11",
   "0 90 11"
 }
 
-local backPositions = {
+local frontPositions = {
   "0 56 -21",
   "0 73 -21",
   "0 90 -21"
@@ -130,7 +130,7 @@ function buildCodexUI()
           "front_"..i,
           "○ "..action.title,
           frontPositions[i],
-          "0 180 180"
+          "0 0 180"
         ))
       end
     end
@@ -143,7 +143,7 @@ function buildCodexUI()
           "back_"..i,
           "○ "..action.title,
           backPositions[i],
-          "0 0 180"
+          "0 180 180"
         ))
       end
     end

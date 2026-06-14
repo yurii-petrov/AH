@@ -1,0 +1,74 @@
+-- ╭──────────────────────────────────────────────╮
+-- │      STEP: Spawn Card Below Codex            │
+-- ╰──────────────────────────────────────────────╯
+--
+-- Finds a card by its memo inside a named deck sitting on some board
+-- (e.g. the "special" deck on the ShopMat) and spawns it just below the
+-- codex mat that triggered the action. Position is expressed in the codex
+-- mat's local space via step.offset so it follows the mat wherever it is.
+
+-- Default local-space offset (relative to context.codexMat). Negative z
+-- places the card toward the bottom edge of the mat, past the codex card
+-- (which rests at local z ≈ -0.154).
+local DEFAULT_OFFSET = { x = 0, y = 0, z = -0.55 }
+
+function processStepSpawnCardBelowCodex(step, context, onDone)
+  if not step.card or not step.card.query then
+    log("[spawnCardBelowCodex] card.query is nil")
+    if onDone then onDone() end
+    return
+  end
+
+  local codexMat = context and context.codexMat
+  if not codexMat then
+    log("[spawnCardBelowCodex] codexMat is nil")
+    if onDone then onDone() end
+    return
+  end
+
+  local board = findBoardByQuery(step.board and step.board.query)
+  if not board then
+    log("[spawnCardBelowCodex] source board not found")
+    if onDone then onDone() end
+    return
+  end
+
+  local deck = findDeckOnBoardByType(board, step.deck)
+  if not deck then
+    log("[spawnCardBelowCodex] deck '" .. tostring(step.deck) .. "' not found on board")
+    if onDone then onDone() end
+    return
+  end
+
+  -- Where to drop the card: codex mat local offset -> world, raised to a
+  -- safe drop height so it settles onto the table rather than clipping.
+  local offset = step.offset or DEFAULT_OFFSET
+  local spawnPos = codexMat.positionToWorld({ offset.x, offset.y, offset.z }):setAt("y", 3)
+
+  -- Face down by default (matches how codex/special cards rest); a step can
+  -- opt into face up with face_down = false.
+  local faceDown = step.face_down
+  if faceDown == nil then faceDown = true end
+  local rotation = faceDown and { 0, 180, 180 } or { 0, 180, 0 }
+
+  local card = takeCardByQuery(deck, step.card.query, {
+    position = spawnPos,
+    rotation = rotation,
+    smooth   = true
+  })
+
+  if not card then
+    log("[spawnCardBelowCodex] card not found in deck '" .. tostring(step.deck) .. "'")
+    if onDone then onDone() end
+    return
+  end
+
+  -- If the deck was already down to a single Card, takeCardByQuery returns
+  -- it in place; nudge it into position ourselves.
+  if card == deck then
+    card.setRotation(rotation)
+    card.setPositionSmooth(spawnPos)
+  end
+
+  if onDone then onDone() end
+end
