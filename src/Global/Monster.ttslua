@@ -64,6 +64,12 @@ function attachMonsterCard(monster, objectMemo, spawnPos)
     return
   end
 
+  -- Codex monster cards use the larger codex card art, so the mat must be
+  -- scaled up to fit (mirrors onMonsterDrop in ObjectDrop.ttslua).
+  if objectMemo.type == "codex" and objectMemo.role == "Monster" then
+    monsterMat.setScale({2.42, 1, 2.42})
+  end
+
   local pos = spawnPos
   pos.x = pos.x + 0.271
   monster.setPosition(pos)
