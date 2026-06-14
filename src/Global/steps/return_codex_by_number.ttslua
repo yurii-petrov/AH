@@ -1,0 +1,87 @@
+-- ╭──────────────────────────────────────────────╮
+-- │      STEP: Return Codex By Number            │
+-- ╰──────────────────────────────────────────────╯
+--
+-- Scans every codex mat sitting on the location mat's "codex_mat" snap
+-- points. For each codex card whose number is listed in step.numbers, it
+-- detaches the card, returns it face-down into the archive, and destructs
+-- the now-empty codex mat. Unlike returnCodexToArchive (which acts on the
+-- clicked mat via context.codexMat), this step targets arbitrary mats by
+-- their codex number.
+
+-- Detaches the codex card from `codexMat`, drops it into `archive` and
+-- destructs the mat. Returns true on success.
+local function returnCodexMatToArchive(codexMat, archive)
+  local index = findCodexAttachmentIndex(codexMat)
+  if not index then return false end
+
+  local codexCard = codexMat.removeAttachment(index)
+  if not codexCard then return false end
+
+  codexCard.interactable = true
+  codexCard.setRotation({0, 180, 180})
+  archive.putObject(codexCard)
+  codexMat.destruct()
+  return true
+end
+
+function processStepReturnCodexByNumber(step, context, onDone)
+  local numbers = step.numbers
+  if (not numbers or #numbers == 0) and step.number then
+    numbers = { step.number }
+  end
+  if not numbers or #numbers == 0 then
+    log("[returnCodexByNumber] numbers is nil/empty")
+    if onDone then onDone() end
+    return
+  end
+
+  -- Set membership for quick number lookup.
+  local wanted = {}
+  for _, n in ipairs(numbers) do wanted[n] = true end
+
+  local locationMat = findBoardByQuery({{
+    field = "type",
+    op    = "eq",
+    value = "locationMat"
+  }})
+  if not locationMat then
+    log("[returnCodexByNumber] locationMat not found")
+    if onDone then onDone() end
+    return
+  end
+
+  local archive = findDeckOnBoardByType(locationMat, "archive")
+  if not archive then
+    log("[returnCodexByNumber] archive not found")
+    if onDone then onDone() end
+    return
+  end
+
+  for _, snp in ipairs(locationMat.getSnapPoints()) do
+    if snp.tags then
+      for _, tag in ipairs(snp.tags) do
+        if tag == "codex_mat" then
+          local worldPos = locationMat.positionToWorld(snp.position)
+          local objs = upCast_pos(worldPos, 1)
+          for _, o in ipairs(objs) do
+            if o.type == "Tile" and o.getGUID() ~= locationMat.getGUID() then
+              for _, att in ipairs(o.getAttachments()) do
+                local data = parseJson(att.memo)
+                if data and string.lower(tostring(data.type or "")) == "codex"
+                   and data.number and wanted[data.number] then
+                  if returnCodexMatToArchive(o, archive) then
+                    log("[returnCodexByNumber] returned codex " .. tostring(data.number) .. " to archive")
+                  end
+                  break
+                end
+              end
+            end
+          end
+        end
+      end
+    end
+  end
+
+  if onDone then onDone() end
+end

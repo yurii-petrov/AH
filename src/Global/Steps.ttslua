@@ -29,6 +29,7 @@ require("Global/steps/merge_event_deck")
 require("Global/steps/replace_event_deck")
 require("Global/steps/take_codex_from_archive")
 require("Global/steps/return_codex_to_archive")
+require("Global/steps/return_codex_by_number")
 require("Global/steps/return_bridge")
 require("Global/steps/find_monster_by_type")
 require("Global/steps/place_tokens_on_locations")
@@ -49,6 +50,7 @@ local STEP_HANDLERS = {
   replaceeventdeck     = processStepReplaceEventDeck,
   takecodexfromarchive = processStepTakeCodexFromArchive,
   returncodextoarchive = processStepReturnCodexToArchive,
+  returncodexbynumber  = processStepReturnCodexByNumber,
   returnbridge         = processStepReturnBridge,
   findmonsterbytype          = processStepFindMonsterByType,
   placetokensonlocations     = processStepPlaceTokensOnLocations,
