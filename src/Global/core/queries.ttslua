@@ -50,6 +50,35 @@ function matchesMemoMap(data, map)
   return true
 end
 
+-- Returns a set { [type] = true } of every type a card "counts as":
+--   * its primary `type`
+--   * the doublesided `back.type` (generalises the old rawType logic)
+--   * any extra types it explicitly declares via `roles` (array)
+-- This lets one card be classified as more than one thing — e.g. a card that
+-- is dealt from the "special" deck but should also be handled as an "ally".
+-- All keys are lowercased so callers can do cardTypes(data)[someType:lower()].
+function cardTypes(data)
+  local out = {}
+  if not data then return out end
+
+  local function add(t)
+    if t and t ~= "" then out[string.lower(tostring(t))] = true end
+  end
+
+  add(data.type)
+  if data.back then add(data.back.type) end
+  if type(data.roles) == "table" then
+    for _, r in ipairs(data.roles) do add(r) end
+  end
+
+  return out
+end
+
+-- Convenience: does the card count as `t` (case-insensitive)?
+function cardIsType(data, t)
+  return cardTypes(data)[string.lower(tostring(t))] == true
+end
+
 -- Finds the first object on the table whose memo matches the query.
 function findBoardByQuery(query)
   if not query then return end

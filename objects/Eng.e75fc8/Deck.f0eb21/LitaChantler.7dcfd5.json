@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"hp\":3,\"name\":\"lita chantler\",\"sp\":3,\"type\":\"special\"}",
+  "Memo": "{\"hp\":3,\"name\":\"lita chantler\",\"roles\":[\"ally\"],\"sp\":3,\"type\":\"special\"}",
   "Name": "Card",
   "Nickname": "Lita Chantler",
   "SidewaysCard": false,
