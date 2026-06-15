@@ -32,7 +32,7 @@
     "42.1cb30c",
     "41.45b4c5"
   ],
-  "ContainedObjects_path": "Deck.09165e",
+  "ContainedObjects_path": "Archive2.09165e",
   "CustomDeck": {
     "5823": {
       "BackIsHidden": true,
@@ -82,15 +82,15 @@
   "MeasureMovement": false,
   "Memo": "{\"set\":1,\"startPosition\":{\"x\":0.086348035931587,\"y\":1.11721324920654,\"z\":-0.551658749580383},\"type\":\"archive\"}",
   "Name": "Deck",
-  "Nickname": "",
+  "Nickname": "Archive 2",
   "SidewaysCard": false,
   "Snap": true,
   "Sticky": true,
-  "Tooltip": true,
+  "Tooltip": false,
   "Transform": {
-    "posX": -0.434,
-    "posY": 4.127,
-    "posZ": 86.636,
+    "posX": -4.567,
+    "posY": 4.201,
+    "posZ": 97.593,
     "rotX": 0,
     "rotY": 180,
     "rotZ": 0,
