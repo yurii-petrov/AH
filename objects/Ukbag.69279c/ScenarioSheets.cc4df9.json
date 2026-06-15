@@ -24,7 +24,9 @@
     "IC.ff94f3",
     "TPL.a1b2c3",
     "ToR.4bc18e",
-    "BtS.8a7860"
+    "BtS.8a7860",
+    "FfU.b2991f",
+    "EotD.18b278"
   ],
   "ContainedObjects_path": "ScenarioSheets.cc4df9",
   "Description": "",
@@ -50,12 +52,12 @@
   "Sticky": true,
   "Tooltip": true,
   "Transform": {
-    "posX": -5.74,
-    "posY": 3.896,
-    "posZ": 98.618,
-    "rotX": 0,
+    "posX": -5.812,
+    "posY": 3.872,
+    "posZ": 97.745,
+    "rotX": 358,
     "rotY": 0,
-    "rotZ": 359,
+    "rotZ": 0,
     "scaleX": 1,
     "scaleY": 1,
     "scaleZ": 1

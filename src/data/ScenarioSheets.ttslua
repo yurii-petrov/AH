@@ -1,0 +1,675 @@
+-- ╭──────────────────────────────────────────────╮
+-- │           SCENARIO SHEET STATIC DATA         │
+-- ╰──────────────────────────────────────────────╯
+--
+-- Keyed by scenario name abbreviation.
+-- Replaces scanning getObjects() / language bag at runtime.
+
+SCENARIO_SHEETS = {
+
+  -- ── Scenario 1: The Approach of Azathoth ─────────────────────────────────
+  ["AoA"] = {
+    guid         = "f18189",
+    name         = "AoA",
+    number       = 1,
+    type         = "Scenario",
+    anomaly      = "TF",
+    startingSpace = "Train Station",
+    mythosCups   = {
+      ["Blank"]         = 3,
+      ["Gate Burst"]    = 1,
+      ["Read Headline"] = 2,
+      ["Reckoning"]     = 1,
+      ["Spawn Clue"]    = 2,
+      ["Spawn Monster"] = 2,
+      ["Spread Doom"]   = 3,
+    },
+    monsterdeck  = {
+      "Abyssal Servant", "Eyeless Watcher", "High Priest",
+      "Hooded Stalker", "Hooded Stalker", "Occult Ritualist",
+      "Occult Ritualist", "Robed Figure", "Swift Byakhee",
+      "Hound of Tindalos",
+    },
+    monsterspawn = {
+      ["Robed Figure"] = {
+        { location = "Rivertown", position = { x = 1.842, y = 0.164, z = -1.722 }, rotation = { x = 0, y = 180, z = 180 } },
+        { location = "Downtown",  position = { x = -1.755, y = 0.164, z = -1.688 }, rotation = { x = 0, y = 180, z = 180 } },
+      },
+    },
+    archive      = { 4, 5, 6, 7, 8, 9 },
+    codex        = { 2, 3 },
+    tiles        = {
+      ["Neighborhood"] = {
+        ["Downtown"]         = { position = { x = 0,      y = 0.4, z = 0     }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { 0.137, 0.149, -2.24  }, type = "Doom Token" } } },
+        ["Easttown"]         = { position = { x = -0.437, y = 0.4, z = 0     }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { -0.211, 0.149, -2.069 }, type = "Doom Token" } } },
+        ["Merchant District"]= { position = { x = 0.22,  y = 0.4, z = 0.378 }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { 0.316, 0.149, -2.043  }, type = "Doom Token" } } },
+        ["Northside"]        = { position = { x = 0.436, y = 0.4, z = 0     }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { 0.224, 0.149, -2.04   }, type = "Doom Token" } } },
+        ["Rivertown"]        = { position = { x = -0.217, y = 0.4, z = 0.378}, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { -0.382, 0.149, -2.033 }, type = "Doom Token" } } },
+      },
+      ["Street"] = {
+        ["Bridge1"]      = { position = { x = -0.327, y = 0.2, z = 0.189 }, rotation = { x = 0, y = 120, z = 0 } },
+        ["Bridge2"]      = { position = { x = -0.108, y = 0.2, z = 0.189 }, rotation = { x = 0, y = 240, z = 0 } },
+        ["Residential1"] = { position = { x = -0.218, y = 0.2, z = 0     }, rotation = { x = 0, y = 180, z = 0 } },
+        ["Residential2"] = { position = { x = 0.11,  y = 0.2, z = 0.189 }, rotation = { x = 0, y = 120, z = 0 } },
+        ["Residential3"] = { position = { x = 0.002, y = 0.2, z = 0.378 }, rotation = { x = 0, y = 180, z = 0 } },
+        ["Scenic1"]      = { position = { x = 0.218, y = 0.2, z = -0.001}, rotation = { x = 0, y = 180, z = 0 } },
+        ["Scenic2"]      = { position = { x = 0.328, y = 0.2, z = 0.189 }, rotation = { x = 0, y = 240, z = 0 } },
+      },
+    },
+  },
+
+  -- ── Scenario 2: Feast for Undead ─────────────────────────────────────────
+  ["FfU"] = {
+    name         = "FfU",
+    number       = 2,
+    type         = "Scenario",
+    setaside     = { "Alma Hill", "Billy Cooper", "Herman Collins", "Masked Hunter", "Ruth Turner", "Wolf-Man Drew" },
+    mythosCups   = {
+      ["Blank"]         = 3,
+      ["Gate Burst"]    = 1,
+      ["Read Headline"] = 2,
+      ["Reckoning"]     = 1,
+      ["Spawn Clue"]    = 2,
+      ["Spawn Monster"] = 2,
+      ["Spread Doom"]   = 3,
+    },
+    monsterdeck  = {
+      "Abyssal Servant", "Corpse-Taker", "Eyeless Watcher",
+      "Hooded Stalker", "Hooded Stalker", "Masked Ones", "Ghoul",
+    },
+    monsterspawn = {
+      ["Hooded Stalker"] = { { location = "Rivertown", position = { x = -3.163, y = 0.164, z = -0.254  }, rotation = { x = 0, y = 180, z = 180 } } },
+      ["Vicious Glutton"]= { { location = "Uptown",    position = { x = 1.579,  y = 0.164, z = -1.807  }, rotation = { x = 0, y = 180, z = 180 } } },
+    },
+    archive      = { 12, 13, 14, 15, 16, 17, 18, 19 },
+    codex        = { 1, 10, 11 },
+    tiles        = {
+      ["Neighborhood"] = {
+        ["Downtown"]  = { position = { x = 0.217,  y = 0.2, z = -0.379 }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { -1.95,  0.149, 0.977  }, type = "Doom Token" } } },
+        ["Easttown"]  = { position = { x = -0.219, y = 0.2, z = -0.378 }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { 1.962,  0.149, 0.726  }, type = "Doom Token" } } },
+        ["Rivertown"] = { position = { x = 0,      y = 0.2, z = 0      }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { -1.671, 0.149, 1.42   }, type = "Doom Token" } } },
+        ["Southside"] = { position = { x = -0.218, y = 0.2, z = 0.379  }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { -1.94,  0.149, 0.766  }, type = "Doom Token" } } },
+        ["Uptown"]    = { position = { x = 0.219,  y = 0.2, z = 0.377  }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { -0.395, 0.149, -2.083 }, type = "Doom Token" } } },
+      },
+      ["Street"] = {
+        ["Bridge1"]      = { position = { x = 0.109,  y = 0.2, z = -0.189 }, rotation = { x = 0, y = 60,  z = 0 } },
+        ["Bridge2"]      = { position = { x = -0.111, y = 0.2, z = -0.189 }, rotation = { x = 0, y = 120, z = 0 } },
+        ["Residential1"] = { position = { x = -0.108, y = 0.2, z = 0.189  }, rotation = { x = 0, y = 60,  z = 0 } },
+        ["Residential2"] = { position = { x = -0.001, y = 0.2, z = -0.379 }, rotation = { x = 0, y = 180, z = 0 } },
+        ["Scenic1"]      = { position = { x = 0.11,   y = 0.2, z = 0.188  }, rotation = { x = 0, y = 120, z = 0 } },
+        ["Scenic2"]      = { position = { x = 0.001,  y = 0.2, z = 0.376  }, rotation = { x = 0, y = 180, z = 0 } },
+      },
+    },
+  },
+
+  -- ── Scenario 3: The Voyage of the Theseus ────────────────────────────────
+  ["VoT"] = {
+    guid         = "1e1836",
+    name         = "VoT",
+    number       = 3,
+    type         = "Scenario",
+    anomaly      = "FR",
+    setaside     = { "Lodge" },
+    mythosCups   = {
+      ["Blank"]         = 3,
+      ["Gate Burst"]    = 1,
+      ["Read Headline"] = 2,
+      ["Reckoning"]     = 1,
+      ["Spawn Clue"]    = 2,
+      ["Spawn Monster"] = 2,
+      ["Spread Doom"]   = 3,
+    },
+    monsterdeck  = {
+      "Altered beast", "Altered beast", "Whippoorwill",
+      "Whippoorwill", "Thrall",
+    },
+    monsterspawn = {
+      ["Hulking Thrall"] = { { location = "Rivertown", position = { x = 3.065, y = 0.164, z = -1.639 }, rotation = { x = 0, y = 180, z = 180 } } },
+      ["Void Touched"]   = { { location = "Uptown",    position = { x = -0.198, y = 0.164, z = 3.27   }, rotation = { x = 0, y = 180, z = 180 } } },
+    },
+    archive      = { 22, 23, 24, 25, 26, 27, 28 },
+    codex        = { 2, 20, 21 },
+    tiles        = {
+      ["Neighborhood"] = {
+        ["Miskatonic University"] = { position = { x = 0.437, y = 0.2, z = -0.002 }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { 0.061, 0.149, 2.098  }, type = "Doom Token" } } },
+        ["Northside"]             = { position = { x = 0.217, y = 0.2, z = -0.379 }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { 0.378, 0.149, 2.084  }, type = "Doom Token" } } },
+        ["Rivertown"]             = { position = { x = 0,     y = 0.2, z = 0      }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { -1.634, 0.149, -1.228 }, type = "Doom Token" }, { position = { -0.095, 0.149, -2.224 }, type = "White Marker" } } },
+        ["Southside"]             = { position = { x = -0.218, y = 0.2, z = 0.38  }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { 0.266, 0.149, -2.032  }, type = "Doom Token" } } },
+        ["Uptown"]                = { position = { x = 0.22,  y = 0.2, z = 0.379 }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { -0.23, 0.149, -2.021   }, type = "Doom Token" } } },
+      },
+      ["Street"] = {
+        ["Bridge1"]      = { position = { x = 0.108,  y = 0.2, z = -0.189 }, rotation = { x = 0, y = 240, z = 0 } },
+        ["Residential1"] = { position = { x = -0.109, y = 0.2, z = 0.189  }, rotation = { x = 0, y = 240, z = 0 } },
+        ["Residential2"] = { position = { x = 0.001,  y = 0.2, z = 0.381  }, rotation = { x = 0, y = 180, z = 0 } },
+        ["Scenic1"]      = { position = { x = 0.219,  y = 0.2, z = 0      }, rotation = { x = 0, y = 180, z = 0 } },
+        ["Scenic2"]      = { position = { x = 0.329,  y = 0.2, z = 0.189  }, rotation = { x = 0, y = 240, z = 0 } },
+      },
+    },
+  },
+
+  -- ── Scenario 4: Echoes of the Deep ───────────────────────────────────────
+  ["EotD"] = {
+    name         = "EotD",
+    number       = 4,
+    type         = "Scenario",
+    anomaly      = "NB",
+    mythosCups   = {
+      ["Blank"]         = 3,
+      ["Gate Burst"]    = 1,
+      ["Read Headline"] = 2,
+      ["Reckoning"]     = 1,
+      ["Spawn Clue"]    = 2,
+      ["Spawn Monster"] = 2,
+      ["Spread Doom"]   = 3,
+    },
+    monsterdeck  = {
+      "Hooded Stalker", "Hooded Stalker", "Occult Ritualist",
+      "Occult Ritualist", "R'lyeh Guardian", "Deep One",
+    },
+    monsterspawn = {
+      ["Hybrid Thug"]  = { { location = "Rivertown",         position = { x = 3.409, y = 0.164, z = -1.877 }, rotation = { x = 0, y = 180, z = 180 } } },
+      ["River Skulk"]  = { { location = "Merchant District", position = { x = 3.515, y = 0.164, z = 1.96   }, rotation = { x = 0, y = 180, z = 180 } } },
+    },
+    archive      = { 31, 32, 33, 34, 35, 36, 37, 38, 39, 40 },
+    codex        = { 2, 29, 30 },
+    tiles        = {
+      ["Neighborhood"] = {
+        ["Downtown"]              = { position = { x = -0.006, y = 0.2, z = -0.378 }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { 0.357,  0.149, 2.002  }, type = "Doom Token" } } },
+        ["Merchant District"]     = { position = { x = 0.218,  y = 0.2, z = 0.0001 }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { -1.968, 0.149, -0.705 }, type = "Doom Token" }, { position = { 1.558, 0.149, -1.4 }, type = "Doom Token" } } },
+        ["Miskatonic University"] = { position = { x = -0.001, y = 0.2, z = 0.379  }, rotation = { x = 0, y = 180, z = 0 } },
+        ["Northside"]             = { position = { x = 0.433,  y = 0.2, z = -0.381 }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { -2.134, 0.149, 0.868  }, type = "Doom Token" } } },
+        ["Rivertown"]             = { position = { x = -0.219, y = 0.2, z = 0.002  }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { -0.275, 0.149, -2.01  }, type = "Doom Token" } } },
+      },
+      ["Street"] = {
+        ["Bridge1"]      = { position = { x = -0.112, y = 0.2, z = -0.189 }, rotation = { x = 0, y = 240, z = 0 } },
+        ["Residential1"] = { position = { x = 0.213,  y = 0.2, z = -0.38  }, rotation = { x = 0, y = 180, z = 0 } },
+        ["Residential2"] = { position = { x = 0.326,  y = 0.2, z = -0.19  }, rotation = { x = 0, y = 240, z = 0 } },
+        ["Residential3"] = { position = { x = -0.001, y = 0.2, z = 0.001  }, rotation = { x = 0, y = 180, z = 0 } },
+        ["Scenic1"]      = { position = { x = -0.109, y = 0.2, z = 0.19   }, rotation = { x = 0, y = 120, z = 0 } },
+        ["Scenic2"]      = { position = { x = 0.11,   y = 0.2, z = 0.19   }, rotation = { x = 0, y = 240, z = 0 } },
+      },
+    },
+  },
+
+  -- ── Scenario 5: Strangers in the Dark ────────────────────────────────────
+  ["SitD"] = {
+    guid         = "7eb83a",
+    name         = "SitD",
+    number       = 5,
+    type         = "Scenario",
+    setaside     = { "Brutal Goons", "Brutal Goons", "Rough Bootlegger", "Rough Bootlegger", "Corben Bouchard" },
+    setaside2    = { "Hit Squad", "Hit Squad", "Mob Enforcer", "Mob Enforcer", "Siobhan Riley" },
+    mythosCups   = {
+      ["Blank"]         = 3,
+      ["Gate Burst"]    = 1,
+      ["Read Headline"] = 2,
+      ["Reckoning"]     = 1,
+      ["Spawn Clue"]    = 2,
+      ["Spawn Monster"] = 2,
+      ["Spread Doom"]   = 3,
+    },
+    monsterdeck  = {
+      "brawling riot", "ghoul acolyte", "ghoul acolyte",
+      "Occult Ritualist", "Occult Ritualist",
+      "vicious glutton", "vicious glutton", "Nightgaunt",
+    },
+    monsterspawn = {
+      ["Feckless Agitator"] = { { location = "Northside", position = { x = -0.015, y = 0.164, z = 3.422  }, rotation = { x = 0, y = 180, z = 180 } } },
+      ["Mouthy Raconteur"]  = { { location = "Rivertown", position = { x = 0.256,  y = 0.164, z = -3.364 }, rotation = { x = 0, y = 180, z = 180 } } },
+    },
+    archive      = { 44, 45, 46, 47, 48, 49, 50, 51, 52 },
+    codex        = { 1, 41, 42, 43 },
+    tiles        = {
+      ["Neighborhood"] = {
+        ["Downtown"]         = { position = { x = -0.005, y = 0.4, z = -0.216 }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { 0.317, 0.149, 1.915  }, type = "Doom Token" }, { position = { -3.648, 0.149, 0.804 }, type = "Red Marker" } } },
+        ["Easttown"]         = { position = { x = -0.22,  y = 0.4, z = 0.163  }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { -1.714, 0.149, 1.379 }, type = "Doom Token" } } },
+        ["Merchant District"]= { position = { x = -0.002, y = 0.4, z = 0.541  }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { 1.583, 0.149, 1.293  }, type = "Doom Token" }, { position = { 2.599, 0.149, -2.784 }, type = "Blue Marker" } } },
+        ["Northside"]        = { position = { x = 0.215,  y = 0.4, z = 0.162  }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { 1.632, 0.149, -1.427 }, type = "Doom Token" } } },
+        ["Rivertown"]        = { position = { x = -0.436, y = 0.4, z = 0.542  }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { -1.545, 0.149, 1.324 }, type = "Doom Token" } } },
+      },
+      ["Street"] = {
+        ["Bridge1"]      = { position = { x = -0.111, y = 0.2, z = 0.352  }, rotation = { x = 0, y = 120, z = 0 } },
+        ["Bridge2"]      = { position = { x = -0.328, y = 0.2, z = 0.353  }, rotation = { x = 0, y = 240, z = 0 } },
+        ["Residential1"] = { position = { x = -0.003, y = 0.2, z = 0.161  }, rotation = { x = 0, y = 180, z = 0 } },
+        ["Residential2"] = { position = { x = -0.11,  y = 0.2, z = -0.026 }, rotation = { x = 0, y = 240, z = 0 } },
+        ["Scenic1"]      = { position = { x = 0.104,  y = 0.2, z = -0.027 }, rotation = { x = 0, y = 120, z = 0 } },
+        ["Scenic2"]      = { position = { x = -0.218, y = 0.2, z = 0.542  }, rotation = { x = 0, y = 180, z = 0 } },
+      },
+    },
+  },
+
+  -- ── Scenario 6: Secrets of the Tomb ──────────────────────────────────────
+  ["SoT"] = {
+    guid         = "62724a",
+    name         = "SoT",
+    number       = 6,
+    type         = "Scenario",
+    anomaly      = "YE",
+    mythosCups   = {
+      ["Blank"]         = 3,
+      ["Gate Burst"]    = 1,
+      ["Read Headline"] = 2,
+      ["Reckoning"]     = 1,
+      ["Spawn Clue"]    = 2,
+      ["Spawn Monster"] = 2,
+      ["Spread Doom"]   = 3,
+    },
+    monsterdeck  = {
+      "capricious stalker", "cerebral extractor", "eyeless watcher",
+      "grasping fungus", "occult ritualist", "Aberration", "Formless Spawn",
+    },
+    monsterspawn = {
+      ["grasping fungus"]  = { { location = "Merchant District", position = { x = -2.976, y = 0.164, z = -1.754 }, rotation = { x = 0, y = 180, z = 180 } } },
+      ["occult ritualist"] = { { location = "Rivertown",         position = { x = 0.466,  y = 0.164, z = -3.324 }, rotation = { x = 0, y = 180, z = 180 } } },
+    },
+    archive      = { 55, 56, 57, 58, 59, 60 },
+    codex        = { 2, 53, 54 },
+    tiles        = {
+      ["Neighborhood"] = {
+        ["Merchant District"]    = { position = { x = -0.091, y = 0.2, z = -0.225 }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { 0.386, 0.149, -2.024  }, type = "Doom Token" } } },
+        ["Miskatonic University"] = { position = { x = -0.306, y = 0.2, z = 0.155  }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { 0.301, 0.149, 1.987   }, type = "Doom Token" } } },
+        ["Northside"]             = { position = { x = 0.125,  y = 0.2, z = -0.606 }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { 1.513, 0.149, 1.226   }, type = "Doom Token" } } },
+        ["Rivertown"]             = { position = { x = -0.527, y = 0.2, z = -0.225 }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { 1.944, 0.149, -0.693  }, type = "Doom Token" } } },
+        ["Uptown"]                = { position = { x = -0.087, y = 0.2, z = 0.532  }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { -0.227, 0.149, -2.029 }, type = "Doom Token" } } },
+      },
+      ["Street"] = {
+        ["Bridge1"]      = { position = { x = 0.017,  y = 0.2, z = -0.416 }, rotation = { x = 0, y = 240, z = 0 } },
+        ["Bridge2"]      = { position = { x = -0.199, y = 0.2, z = -0.035 }, rotation = { x = 0, y = 240, z = 0 } },
+        ["Residential1"] = { position = { x = -0.308, y = 0.2, z = -0.225 }, rotation = { x = 0, y = 180, z = 0 } },
+        ["Residential2"] = { position = { x = -0.416, y = 0.2, z = -0.035 }, rotation = { x = 0, y = 120, z = 0 } },
+        ["Residential3"] = { position = { x = -0.196, y = 0.2, z = 0.343  }, rotation = { x = 0, y = 120, z = 0 } },
+      },
+    },
+  },
+
+  -- ── Scenario 7: Tides of Ruin ─────────────────────────────────────────────
+  ["ToR"] = {
+    guid          = "4bc18e",
+    name          = "ToR",
+    number        = 7,
+    type          = "Scenario",
+    terror        = "FF",
+    startingSpace = "Gilman House",
+    mythosCups    = {
+      ["Blank"]         = 2,
+      ["Terror"]        = 1,
+      ["Gate Burst"]    = 1,
+      ["Read Headline"] = 2,
+      ["Reckoning"]     = 1,
+      ["Spawn Clue"]    = 2,
+      ["Spawn Monster"] = 2,
+      ["Spread Doom"]   = 3,
+    },
+    monsterdeck  = {
+      "Altered beast", "Altered beast", "Hulking Thrall", "Hulking Thrall",
+      "Prowling Abductor", "Prowling Abductor", "Deep One",
+    },
+    monsterspawn = {
+      ["Prowling Abductor"] = { { location = "Easttown",       position = { x = -3.065, y = 0.164, z = 1.039  }, rotation = { x = 0, y = 180, z = 180 } } },
+      ["Entraced Hybrid"]   = { { location = "Innsmouth Shore", position = { x = -3,    y = 0.164, z = -5.6   }, rotation = { x = 0, y = 180, z = 180 } } },
+    },
+    archive      = { 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75 },
+    codex        = { 61, 62, 63 },
+    tiles        = {
+      ["Neighborhood"] = {
+        ["Northside"]          = { position = { x = 0.437,  y = 0.2, z = -0.002 }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { 1.551, 0.149, 1.498   }, type = "Doom Token" } } },
+        ["Easttown"]           = { position = { x = 0,      y = 0.2, z = 0      }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { -1.634, 0.149, -1.228  }, type = "Doom Token" } } },
+        ["Southside"]          = { position = { x = -0.218, y = 0.2, z = 0.38   }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { 1.666, 0.149, -1.532   }, type = "Doom Token" } } },
+        ["Miskatonic University"]={ position = { x = 0.22,  y = 0.2, z = 0.379  }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { 1.551, 0.149, 1.498   }, type = "Doom Token" } } },
+        ["Innsmouth Village"]  = { position = { x = 0.22,   y = 0.2, z = -0.469 }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { 0.386, 0.149, -2.024   }, type = "Doom Token" } } },
+        ["Innsmouth Shore"]    = { position = { x = -0.218, y = 0.2, z = -0.469 }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { -1.634, 0.149, -1.228  }, type = "Doom Token" } } },
+      },
+      ["Street"] = {
+        ["Scenic1"]      = { position = { x = -0.109, y = 0.2, z = 0.189 }, rotation = { x = 0, y = 240, z = 0 } },
+        ["Residential2"] = { position = { x = 0.001,  y = 0.2, z = 0.381 }, rotation = { x = 0, y = 180, z = 0 } },
+        ["Residential1"] = { position = { x = 0.219,  y = 0.2, z = 0     }, rotation = { x = 0, y = 180, z = 0 } },
+        ["Bridge1"]      = { position = { x = 0.329,  y = 0.2, z = 0.189 }, rotation = { x = 0, y = 240, z = 0 } },
+        ["Bridge2"]      = { position = { x = 0.111,  y = 0.2, z = 0.189 }, rotation = { x = 0, y = 120, z = 0 } },
+        ["Scenic2"]      = { position = { x = 0.001,  y = 0.2, z = -0.469}, rotation = { x = 0, y = 180, z = 0 } },
+      },
+      ["Travel Routes"] = {
+        ["Country Road1"]   = { position = { x = 0.545,  y = 0.2, z = -0.191 }, rotation = { x = 0, y = 240, z = 0 } },
+        ["Ferry Terminal1"] = { position = { x = -0.11,  y = 0.2, z = -0.189 }, rotation = { x = 0, y = 300, z = 0 } },
+        ["Country Road2"]   = { position = { x = 0.33,   y = 0.2, z = -0.28  }, rotation = { x = 0, y = 120, z = 0 } },
+        ["Country Road3"]   = { position = { x = -0.326, y = 0.2, z = 0.569  }, rotation = { x = 0, y = 60,  z = 0 } },
+        ["Ferry Terminal2"] = { position = { x = -0.326, y = 0.2, z = -0.28  }, rotation = { x = 0, y = 60,  z = 0 } },
+      },
+      ["Mystery"] = {
+        ["Devil Reef"] = { position = { x = -0.328, y = 0.2, z = -0.658 }, rotation = { x = 0, y = 300, z = 0 } },
+      },
+      ["Threshold"] = {},
+    },
+  },
+
+  -- ── Scenario 8: The Twilight Plague ──────────────────────────────────────
+  ["TPL"] = {
+    guid         = "a1b2c3",
+    name         = "TPL",
+    number       = 8,
+    type         = "Scenario",
+    anomaly      = "VM",
+    setaside     = { "Declan Pearce" },
+    mythosCups   = {
+      ["Blank"]         = 3,
+      ["Gate Burst"]    = 1,
+      ["Read Headline"] = 2,
+      ["Reckoning"]     = 1,
+      ["Spawn Clue"]    = 2,
+      ["Spawn Monster"] = 2,
+      ["Spread Doom"]   = 3,
+    },
+    monsterdeck  = {
+      "Guardian Beast", "Prowling Abductor", "Prowling Abductor",
+      "Robed Figure", "Robed Figure", "Robed Figure",
+      "Terrified Wanderer", "Terrified Wanderer",
+      "Void Touched", "Void Touched", "Byakhee", "Moon-beast",
+    },
+    monsterspawn = {
+      ["Swooping Scavenger"] = { { location = "Downtown",        position = { x = -0.337, y = 0.164, z = -2.939 }, rotation = { x = 0, y = 180, z = 180 } } },
+      ["Prowling Abductor"]  = { { location = "Kingsport Harbor",position = { x = -2.786, y = 0.164, z = -1.899 }, rotation = { x = 0, y = 180, z = 180 } } },
+    },
+    archive      = { 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 88, 89, 90 },
+    codex        = { 2, 76, 87 },
+    tiles        = {
+      ["Neighborhood"] = {
+        ["Downtown"]          = { position = { x = 0.081,  y = 0.2, z = -0.378 }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { -1.888, 0.149, -0.792 }, type = "Doom Token" } } },
+        ["Merchant District"] = { position = { x = 0.3,    y = 0.2, z = 0      }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { 0.22, 0.149, -2.063   }, type = "Doom Token" } } },
+        ["Uptown"]            = { position = { x = 0.082,  y = 0.2, z = 0.379  }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { 1.91, 0.149, -0.822   }, type = "Doom Token" } } },
+        ["Central Kingsport"] = { position = { x = -0.25,  y = 0.2, z = 0      }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { -0.364, 0.149, 1.991  }, type = "Doom Token" } } },
+        ["Kingsport Harbor"]  = { position = { x = -0.687, y = 0.2, z = 0      }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { 1.841, 0.149, -1.695  }, type = "Doom Token" } } },
+      },
+      ["Street"] = {
+        ["Bridge1"]      = { position = { x = 0.189,  y = 0.2, z = -0.189 }, rotation = { x = 0, y = 120, z = 0 } },
+        ["Residential1"] = { position = { x = 0.192,  y = 0.2, z = 0.189  }, rotation = { x = 0, y = 60,  z = 0 } },
+        ["Scenic1"]      = { position = { x = -0.468, y = 0.2, z = 0      }, rotation = { x = 0, y = 180, z = 0 } },
+      },
+      ["Travel Routes"] = {
+        ["Country Road1"]   = { position = { x = 0.299,  y = 0.2, z = -0.379 }, rotation = { x = 0, y = 180, z = 0 } },
+        ["Country Road2"]   = { position = { x = 0.301,  y = 0.2, z = 0.376  }, rotation = { x = 0, y = 180, z = 0 } },
+        ["Country Road3"]   = { position = { x = -0.577, y = 0.2, z = 0.189  }, rotation = { x = 0, y = 120, z = 0 } },
+        ["Train Platform1"] = { position = { x = 0.082,  y = 0.2, z = 0      }, rotation = { x = 0, y = 0,   z = 0 } },
+        ["Train Platform2"] = { position = { x = -0.361, y = 0.2, z = -0.189 }, rotation = { x = 0, y = 300, z = 0 } },
+      },
+      ["Mystery"] = {
+        ["Strange High House"] = { position = { x = -0.798, y = 0.2, z = -0.189 }, rotation = { x = 0, y = 300, z = 0 } },
+      },
+      ["Threshold"] = {},
+    },
+  },
+
+  -- ── Scenario 9: The Innsmouth Conspiracy ──────────────────────────────────
+  ["IC"] = {
+    guid         = "ff94f3",
+    name         = "IC",
+    number       = 9,
+    type         = "Scenario",
+    terror       = "FС",
+    mythosCups   = {
+      ["Blank"]         = 2,
+      ["Terror"]        = 1,
+      ["Gate Burst"]    = 1,
+      ["Read Headline"] = 2,
+      ["Reckoning"]     = 1,
+      ["Spawn Clue"]    = 2,
+      ["Spawn Monster"] = 2,
+      ["Spread Doom"]   = 3,
+    },
+    monsterdeck  = {
+      "Accursed Somnambulist", "Accursed Somnambulist",
+      "Altered Servant", "Altered Servant", "Avian Thrall",
+      "High Priest", "Hulking Thrall", "Hulking Thrall",
+      "Icebound Captive", "Icebound Captive", "Lupine Thrall",
+      "Ravenous Predator", "Terrified Wanderer", "Terrified Wanderer", "Shantak",
+    },
+    monsterspawn = {
+      ["High Priest"] = { { location = "Innsmouth Shore", position = { x = 3.201, y = 0.164, z = 1.784 }, rotation = { x = 0, y = 180, z = 180 } } },
+    },
+    archive      = { 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105 },
+    codex        = { 61, 91 },
+    tiles        = {
+      ["Neighborhood"] = {
+        ["Northside"]          = { position = { x = 0.086,  y = 0.4, z = 0      }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { -2.012, 0.149, 0.625   }, type = "Doom Token" } } },
+        ["Rivertown"]          = { position = { x = -0.35,  y = 0.4, z = 0      }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { 0.137, 0.149, -2.24    }, type = "Doom Token" } } },
+        ["Easttown"]           = { position = { x = -0.787, y = 0.4, z = 0      }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { -1.588, 0.149, -1.311  }, type = "Doom Token" } } },
+        ["Southside"]          = { position = { x = -0.567, y = 0.4, z = 0.378  }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { 1.498, 0.149, 1.213    }, type = "Doom Token" } } },
+        ["Downtown"]           = { position = { x = -0.134, y = 0.4, z = -0.378 }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { 2.475, 0.149, -2.962   }, type = "Doom Token" } } },
+        ["Central Kingsport"]  = { position = { x = 0.372,  y = 0.2, z = 0.378  }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { 1.958, 0.149, 0.727   }, type = "Doom Token" }, { position = { 1.958, 0.149, -0.784 }, type = "Doom Token" } } },
+        ["Innsmouth Shore"]    = { position = { x = 0.372,  y = 0.2, z = -0.378 }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { -0.252, 0.149, -2.136 }, type = "Doom Token" } } },
+      },
+      ["Street"] = {
+        ["Residential1"] = { position = { x = -0.568, y = 0.2, z = 0      }, rotation = { x = 0, y = 180, z = 0 } },
+        ["Residential2"] = { position = { x = -0.458, y = 0.2, z = 0.189  }, rotation = { x = 0, y = 240, z = 0 } },
+        ["Scenic1"]      = { position = { x = -0.676, y = 0.2, z = 0.188  }, rotation = { x = 0, y = 120, z = 0 } },
+        ["Scenic2"]      = { position = { x = -0.023, y = 0.2, z = -0.19  }, rotation = { x = 0, y = 120, z = 0 } },
+        ["Bridge1"]      = { position = { x = -0.132, y = 0.2, z = 0      }, rotation = { x = 0, y = 180, z = 0 } },
+        ["Bridge2"]      = { position = { x = -0.241, y = 0.2, z = -0.189 }, rotation = { x = 0, y = 240, z = 0 } },
+      },
+      ["Travel Routes"] = {
+        ["Country Road1"]   = { position = { x = -0.243, y = 0.2, z = -0.568 }, rotation = { x = 0, y = 300, z = 0 } },
+        ["Country Road2"]   = { position = { x = -0.675, y = 0.2, z = 0.567  }, rotation = { x = 0, y = 60,  z = 0 } },
+        ["Country Road3"]   = { position = { x = 0.59,   y = 0.2, z = -0.378 }, rotation = { x = 0, y = 180, z = 0 } },
+        ["Country Road4"]   = { position = { x = 0.154,  y = 0.2, z = 0.378  }, rotation = { x = 0, y = 0,   z = 0 } },
+        ["Ferry Terminal1"] = { position = { x = -1.005, y = 0.2, z = 0      }, rotation = { x = 0, y = 0,   z = 0 } },
+        ["Ferry Terminal2"] = { position = { x = 0.154,  y = 0.2, z = -0.378 }, rotation = { x = 0, y = 0,   z = 0 } },
+        ["Train Platform1"] = { position = { x = -0.022, y = 0.2, z = 0.189  }, rotation = { x = 0, y = 60,  z = 0 } },
+        ["Train Platform2"] = { position = { x = 0.59,   y = 0.2, z = 0.378  }, rotation = { x = 0, y = 180, z = 0 } },
+      },
+      ["Mystery"]   = {},
+      ["Threshold"] = {},
+    },
+  },
+
+  -- ── Scenario 10: Dreams of Ruin ───────────────────────────────────────────
+  ["DoR"] = {
+    guid         = "7dcc06",
+    name         = "DoR",
+    number       = 10,
+    type         = "Scenario",
+    mythosCups   = {
+      ["Blank"]         = 1,
+      ["Gate Burst"]    = 1,
+      ["Read Headline"] = 2,
+      ["Reckoning"]     = 1,
+      ["Spawn Clue"]    = 2,
+      ["Spawn Monster"] = 2,
+      ["Spread Doom"]   = 3,
+    },
+    monsterdeck  = {
+      "High Priest", "Occult Ritualist", "Occult Ritualist",
+      "Sea Singer", "Shallows Predator", "Shallows Predator",
+      "Shoreline Brute", "Dreaming", "Star Spawn",
+    },
+    monsterspawn = {
+      ["Accursed Somnambulist"] = { { location = "Rivertown", position = { x = -3.065, y = 0.164, z = 1.039  }, rotation = { x = 0, y = 180, z = 180 } } },
+      ["Enraged Dreamer"]       = { { location = "Uptown",    position = { x = 2.68,   y = 0.164, z = 1.902  }, rotation = { x = 0, y = 180, z = 180 } } },
+    },
+    archive      = { 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120 },
+    codex        = { 1, 106, 107 },
+    codexDeck    = { 117, 118, 119, 120 },
+    tiles        = {
+      ["Neighborhood"] = {
+        ["Miskatonic University"] = { position = { x = 0.437,  y = 0.2, z = -0.002 }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { 1.473, 0.149, -1.374  }, type = "Doom Token" } } },
+        ["Rivertown"]             = { position = { x = 0,      y = 0.2, z = 0      }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { -0.317, 0.149, -2.101 }, type = "Doom Token" } } },
+        ["Southside"]             = { position = { x = -0.218, y = 0.2, z = 0.38   }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { 0.257, 0.149, 2.004   }, type = "Doom Token" } } },
+        ["Uptown"]                = { position = { x = 0.22,   y = 0.2, z = 0.379  }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { -0.306, 0.149, -1.961 }, type = "Doom Token" } } },
+      },
+      ["Street"] = {
+        ["Residential3"] = { position = { x = -0.109, y = 0.2, z = 0.189 }, rotation = { x = 0, y = 240, z = 0 } },
+        ["Scenic1"]      = { position = { x = 0.001,  y = 0.2, z = 0.381 }, rotation = { x = 0, y = 180, z = 0 } },
+        ["Residential2"] = { position = { x = 0.219,  y = 0.2, z = 0     }, rotation = { x = 0, y = 180, z = 0 } },
+        ["Residential1"] = { position = { x = 0.329,  y = 0.2, z = 0.189 }, rotation = { x = 0, y = 240, z = 0 } },
+      },
+      ["Travel Routes"] = {
+        ["Country Road1"]   = { position = { x = 0.656,  y = 0.2, z = 0     }, rotation = { x = 0, y = 180, z = 0 } },
+        ["Ferry Terminal1"] = { position = { x = -0.326, y = 0.2, z = 0.569 }, rotation = { x = 0, y = 60,  z = 0 } },
+        ["Train Platform1"] = { position = { x = 0.331,  y = 0.2, z = 0.567 }, rotation = { x = 0, y = 120, z = 0 } },
+      },
+      ["Mystery"]   = {},
+      ["Threshold"] = {},
+    },
+  },
+
+  -- ── Scenario 11: Blood on the Streets ────────────────────────────────────
+  ["BtS"] = {
+    guid         = "8a7860",
+    name         = "BtS",
+    number       = 11,
+    type         = "Scenario",
+    anomaly      = "LS",
+    setaside     = { "Lodge" },
+    mythosCups   = {
+      ["Blank"]         = 3,
+      ["Gate Burst"]    = 1,
+      ["Read Headline"] = 2,
+      ["Reckoning"]     = 1,
+      ["Spawn Clue"]    = 2,
+      ["Spawn Monster"] = 2,
+      ["Spread Doom"]   = 3,
+    },
+    monsterdeck  = {
+      "Flesh-eater", "Flesh-eater", "High Priest", "Lupine Thrall",
+      "Taloned Cannibal", "Taloned Cannibal", "Tindalos alpha",
+      "Troubled Spirit", "Angry Spirit", "Hostile Spirit",
+    },
+    monsterspawn = {
+      ["Haunting Dead"]    = { { location = "Uptown",   position = { x = 2.519, y = 0.164, z = -1.727 }, rotation = { x = 0, y = 180, z = 180 } } },
+      ["Raging Poltergeist"]={ { location = "Downtown", position = { x = -0.61, y = 0.164, z = -3.131 }, rotation = { x = 0, y = 180, z = 180 } } },
+    },
+    archive      = { 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134 },
+    codex        = { 2, 121 },
+    tiles        = {
+      ["Neighborhood"] = {
+        ["Downtown"]          = { position = { x = 0,      y = 0.2, z = -0.758 }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { -2.055, 0.149, -0.704 }, type = "Doom Token" } } },
+        ["Merchant District"] = { position = { x = 0.217,  y = 0.2, z = -0.379 }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { -1.95, 0.149, -0.64   }, type = "Doom Token" } } },
+        ["Rivertown"]         = { position = { x = -0.219, y = 0.2, z = -0.378 }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { 1.962, 0.149, -0.631  }, type = "Doom Token" } } },
+        ["French Hill"]       = { position = { x = 0,      y = 0.2, z = 0      }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { -1.671, 0.149, 1.42   }, type = "Doom Token" } } },
+        ["Southside"]         = { position = { x = -0.218, y = 0.2, z = 0.379  }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { -1.94, 0.149, 0.766   }, type = "Doom Token" } } },
+        ["Uptown"]            = { position = { x = 0.219,  y = 0.2, z = 0.377  }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { -0.395, 0.149, -2.083 }, type = "Doom Token" } } },
+      },
+      ["Street"] = {
+        ["Bridge1"]      = { position = { x = 0.11,  y = 0.2, z = -0.568 }, rotation = { x = 0, y = 120, z = 0 } },
+        ["Bridge2"]      = { position = { x = -0.108,y = 0.2, z = -0.568 }, rotation = { x = 0, y = 60,  z = 0 } },
+        ["Residential1"] = { position = { x = 0.109, y = 0.2, z = -0.189 }, rotation = { x = 0, y = 60,  z = 0 } },
+        ["Residential2"] = { position = { x = -0.111,y = 0.2, z = -0.189 }, rotation = { x = 0, y = 120, z = 0 } },
+        ["Residential3"] = { position = { x = -0.108,y = 0.2, z = 0.189  }, rotation = { x = 0, y = 60,  z = 0 } },
+        ["Scenic1"]      = { position = { x = 0.11,  y = 0.2, z = 0.188  }, rotation = { x = 0, y = 120, z = 0 } },
+        ["Scenic2"]      = { position = { x = 0.001, y = 0.2, z = 0.376  }, rotation = { x = 0, y = 180, z = 0 } },
+      },
+      ["Mystery"] = {
+        ["The Witch House"] = { position = { x = -0.219, y = 0.2, z = 0 }, rotation = { x = 0, y = 0, z = 0 } },
+      },
+    },
+  },
+
+  -- ── Scenario 12: The Curse of the Outer Ones ─────────────────────────────
+  ["TDCO"] = {
+    guid         = "e024fc",
+    name         = "TDCO",
+    number       = 12,
+    type         = "Scenario",
+    mythosCups   = {
+      ["Blank"]         = 2,
+      ["Gate Burst"]    = 1,
+      ["Read Headline"] = 2,
+      ["Reckoning"]     = 1,
+      ["Spawn Clue"]    = 2,
+      ["Spawn Monster"] = 2,
+      ["Spread Doom"]   = 4,
+    },
+    monsterdeck  = {
+      "Abyssal Servant", "Coursing Hound", "Flesh-eater", "Flesh-eater",
+      "Nightmarish Fiend", "Swift Byakhee", "Tunneling Dhole",
+      "Vicious Glutton", "Vicious Glutton", "Troubled Spirit", "gug", "ghast",
+    },
+    monsterspawn = {
+      ["Vicious Glutton"]  = { { location = "Southside",   position = { x = 3.316,  y = 0.164, z = -0.457  }, rotation = { x = 0, y = 180, z = 180 } } },
+      ["Taloned Cannibal"] = { { location = "French Hill", position = { x = -1.688, y = 0.164, z = -3.051  }, rotation = { x = 0, y = 180, z = 180 } } },
+    },
+    allyspawn    = {
+      {
+        source  = { boardMemo = { type = "ShopMat" }, deckType = "ally" },
+        targets = {
+          { location = "Miskatonic University", position = { x = 3.919,  y = 0.164, z = 1.896  }, rotation = { x = 0, y = 180, z = 180 } },
+          { location = "Uptown",               position = { x = -3.209, y = 0.164, z = 2.01   }, rotation = { x = 0, y = 180, z = 180 } },
+          { location = "French Hill",          position = { x = 3.919,  y = 0.164, z = 1.896  }, rotation = { x = 0, y = 180, z = 180 } },
+        },
+      },
+    },
+    archive      = { 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149 },
+    codex        = { 1, 135, 136, 137 },
+    tiles        = {
+      ["Neighborhood"] = {
+        ["The Underworld"]       = { position = { x = 0,      y = 0.4, z = 0      }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { -0.232, 0.149, 1.958  }, type = "Doom Token" } } },
+        ["French Hill"]          = { position = { x = -0.437, y = 0.4, z = 0      }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { 0.349, 0.149, 1.911   }, type = "Doom Token" } } },
+        ["Uptown"]               = { position = { x = 0.22,   y = 0.4, z = 0.378  }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { -0.232, 0.149, 1.958  }, type = "Doom Token" } } },
+        ["Miskatonic University"] = { position = { x = 0.436, y = 0.4, z = 0      }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { 1.409, 0.149, -1.453  }, type = "Doom Token" } } },
+        ["Southside"]            = { position = { x = -0.217, y = 0.4, z = 0.378  }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { -2.028, 0.149, 0.56   }, type = "Doom Token" } } },
+        ["Northside"]            = { position = { x = 0.22,   y = 0.4, z = -0.378 }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { 0.361, 0.149, 2.079   }, type = "Doom Token" } } },
+        ["Easttown"]             = { position = { x = -0.217, y = 0.4, z = -0.378 }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { -0.303, 0.149, 1.934  }, type = "Doom Token" } } },
+      },
+      ["Street"] = {
+        ["Bridge1"]      = { position = { x = 0.326,  y = 0.2, z = -0.189 }, rotation = { x = 0, y = 120, z = 0 } },
+        ["Bridge2"]      = { position = { x = -0.328, y = 0.2, z = -0.189 }, rotation = { x = 0, y = 240, z = 0 } },
+        ["Residential2"] = { position = { x = 0.002,  y = 0.2, z = -0.378 }, rotation = { x = 0, y = 180, z = 0 } },
+        ["Scenic2"]      = { position = { x = -0.329, y = 0.2, z = 0.189  }, rotation = { x = 0, y = 120, z = 0 } },
+        ["Residential1"] = { position = { x = 0.002,  y = 0.2, z = 0.378  }, rotation = { x = 0, y = 180, z = 0 } },
+        ["Scenic1"]      = { position = { x = 0.328,  y = 0.2, z = 0.189  }, rotation = { x = 0, y = 240, z = 0 } },
+      },
+      ["Threshold"] = {
+        ["Derelict Portal"] = { position = { x = 0.11, y = 0.2, z = 0.189 }, rotation = { x = 0, y = 120, z = 0 } },
+        ["Hidden Path"]     = { position = { x = 0,    y = 0.2, z = -0.25 }, rotation = { x = 0, y = 180, z = 0 } },
+      },
+    },
+  },
+
+  -- ── Scenario 13: The Thousand Keys and the Gate ───────────────────────────
+  ["TKaTG"] = {
+    guid         = "1bab21",
+    name         = "TKaTG",
+    number       = 13,
+    type         = "Scenario",
+    anomaly      = "FR",
+    mythosCups   = {
+      ["Blank"]         = 3,
+      ["Gate Burst"]    = 1,
+      ["Read Headline"] = 2,
+      ["Reckoning"]     = 1,
+      ["Spawn Clue"]    = 2,
+      ["Spawn Monster"] = 2,
+      ["Spread Doom"]   = 3,
+    },
+    monsterdeck  = {
+      "Bloody Titan", "Corpse-Taker", "Coursing Hound", "Crazed Fiend",
+      "Gluttonous Giant", "Keening Hound", "Tunneling Dhole",
+      "Whippoorwill", "Whippoorwill",
+      "Angry Spirit", "Hostile Spirit", "Thrall",
+    },
+    monsterspawn = {
+      ["Tunneling Dhole"] = { { location = "Rivertown", position = { x = -3.078, y = 0.164, z = 1.094  }, rotation = { x = 0, y = 180, z = 180 } } },
+      ["Whippoorwill"]    = { { location = "Uptown",    position = { x = 1.367,  y = 0.164, z = -3.213 }, rotation = { x = 0, y = 180, z = 180 } } },
+    },
+    archive      = { 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165 },
+    codex        = { 2, 150, 151 },
+    tiles        = {
+      ["Neighborhood"] = {
+        ["French Hill"]       = { position = { x = 0,      y = 0.4, z = 0      }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { 0.252, 0.149, -1.936  }, type = "Doom Token" } } },
+        ["Uptown"]            = { position = { x = 0.22,   y = 0.4, z = 0.378  }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { 1.972, 0.149, -0.687  }, type = "Doom Token" } } },
+        ["Merchant District"] = { position = { x = 0.436,  y = 0.4, z = 0      }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { 1.636, 0.149, -1.327  }, type = "Doom Token" }, { position = { 5.836, 0.149, -0.154 }, type = "Doom Token" } } },
+        ["Rivertown"]         = { position = { x = 0.22,   y = 0.4, z = -0.378 }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { -1.615, 0.149, -1.544 }, type = "Doom Token" } } },
+        ["Easttown"]          = { position = { x = -0.217, y = 0.4, z = -0.378 }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { -1.615, 0.149, -1.544 }, type = "Doom Token" } } },
+      },
+      ["Street"] = {
+        ["Scenic1"]      = { position = { x = 0.326,  y = 0.2, z = -0.189 }, rotation = { x = 0, y = 120, z = 0 } },
+        ["Bridge1"]      = { position = { x = 0.002,  y = 0.2, z = -0.378 }, rotation = { x = 0, y = 180, z = 0 } },
+        ["Residential1"] = { position = { x = 0.328,  y = 0.2, z = 0.189  }, rotation = { x = 0, y = 240, z = 0 } },
+        ["Scenic2"]      = { position = { x = 0.11,   y = 0.2, z = 0.189  }, rotation = { x = 0, y = 120, z = 0 } },
+        ["Bridge2"]      = { position = { x = -0.11,  y = 0.2, z = -0.189 }, rotation = { x = 0, y = 120, z = 0 } },
+        ["Residential2"] = { position = { x = 0.109,  y = 0.2, z = -0.189 }, rotation = { x = 0, y = 240, z = 0 } },
+      },
+      ["Mystery"] = {
+        ["The Unnamable"] = { position = { x = 0.653, y = 0.2, z = 0 }, rotation = { x = 0, y = 180, z = 0 } },
+      },
+    },
+  },
+
+}

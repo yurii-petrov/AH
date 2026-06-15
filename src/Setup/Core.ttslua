@@ -22,24 +22,9 @@ function clearSetupCaches()
 end
 
 function getScenarioData(n)
-  for _, obj in ipairs(getObjects()) do
-    local memo = parseJson(obj.memo)
-    if memo and memo.type == "Scenario" and memo.number == n then
-      memo.guid = obj.guid
-      return memo
-    end
-  end
-
-  if gameData.directSetup and gameData.sourceBagGuid then
-    local bag = resolve(gameData.sourceBagGuid)
-    if bag then
-      for _, obj in ipairs(bag.getObjects()) do
-        local memo = parseJson(obj.memo)
-        if memo and memo.type == "Scenario" and memo.number == n then
-          memo.guid = obj.guid
-          return memo
-        end
-      end
+  for _, sheet in pairs(SCENARIO_SHEETS) do
+    if sheet.number == n then
+      return sheet
     end
   end
 end

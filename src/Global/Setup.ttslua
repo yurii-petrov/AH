@@ -1,3 +1,4 @@
+require("data/ScenarioSheets")
 require("Setup/Core")
 require("Setup/Language")
 require("Setup/ConditionMat")
