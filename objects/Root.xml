@@ -35,6 +35,28 @@
             fontSize="30"
             color="clear"
             text="УКРАЇНСЬКА"/>
+        <HorizontalLayout
+            id="direct_setup_row"
+            position="0 -170 0"
+            width="280"
+            height="36"
+            childAlignment="MiddleCenter"
+            spacing="10">
+            <Toggle
+                id="direct_setup_toggle"
+                onValueChanged="onDirectSetupToggle"
+                isOn="false"
+                width="30"
+                height="30"
+                toggleColor="#ffffff"/>
+            <Text
+                text="Quick Setup"
+                font="Fonts/AdonisC"
+                fontSize="22"
+                color="#ffffff"
+                width="220"
+                height="36"/>
+        </HorizontalLayout>
 </panel>
 <panel
     id="phase"

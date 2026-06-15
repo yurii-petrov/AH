@@ -212,3 +212,7 @@ function submitAddons()
   self.UI.setAttribute('chooseAddons', 'active', false)
   self.UI.setAttribute('main_menu', 'active', true)
 end
+
+function onDirectSetupToggle(player, value, id)
+  gameData.directSetup = value == "True"
+end
