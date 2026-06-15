@@ -1,0 +1,416 @@
+-- ╭──────────────────────────────────────────────╮
+-- │           LOCATION MAT / TILES SETUP         │
+-- ╰──────────────────────────────────────────────╯
+
+function prepareLocationMat(inv, scenarioData)
+  local locationMat = resolve(locationMatId)
+  if not locationMat then return 0 end
+  local locationData = parseJson(locationMat.memo)
+  if not locationData then return 0 end
+
+  local box          = resolve(boxId)
+  local sourceBag    = gameData.directSetup and resolve(gameData.sourceBagGuid) or nil
+  local timeStep     = sourceBag and 0.4 or 0.1
+  local time         = 0
+  local tileSpawnIdx = 0
+
+  -- ── 1. scenario sheet ────────────────────────────────────────────────────────
+  for _, e in ipairs(inv.scenario or {}) do
+    if scenarioData.name == e.memo.name then
+      local pos = locationMat.positionToWorld(locationData.scenraiomat):setAt("y", 2.21)
+      if e.fromBag then
+        local o = e.spawn(pos, {0, 180, 180})
+        if o then
+          runAfterRest(o, function(o2)
+            o2.setRotation({0, 180, 0})
+            o2.setLock(true)
+          end)
+        end
+      else
+        local o = e.spawn(pos)
+        if o then
+          runAfterRest(o, function(o2) o2.setLock(true) end)
+        end
+      end
+    else
+      e.discard()
+    end
+  end
+
+  -- ── 2. location tiles ────────────────────────────────────────────────────────
+  local tileTypes = {
+    "neighborhood", "street",
+    "travel routes", "travel route",
+    "threshold", "mystery"
+  }
+  for _, t in ipairs(tileTypes) do
+    for _, e in ipairs(inv[t] or {}) do
+      if e.fromBag then
+        local bagPos  = sourceBag and sourceBag.getPosition() or Vector(0, 3, 0)
+        local tilePos = Vector(bagPos.x + tileSpawnIdx * 5, bagPos.y + 3, bagPos.z)
+        tileSpawnIdx  = tileSpawnIdx + 1
+        local spawned = e.spawn(tilePos)
+        if spawned then
+          runAfterRest(spawned, function(o2)
+            lockSetupScenarioComponents(o2, scenarioData.tiles)
+          end)
+        end
+      else
+        lockSetupScenarioComponents(e.spawn(), scenarioData.tiles)
+      end
+    end
+  end
+
+  -- ── 3. headline ──────────────────────────────────────────────────────────────
+  if locationData.headline then
+    local headlinePos = locationMat.positionToWorld(locationData.headline):setAt("y", 3)
+    for _, e in ipairs(inv.headline or {}) do
+      time = time + timeStep
+      Wait.time(function()
+        local o = e.spawn(headlinePos, {0, 180, 180})
+        if not o then return end
+        if o.type == "Deck" then o.shuffle() end
+        if e.fromBag and shouldSetFaceUp(o, e.memo.type) then
+          runAfterRest(o, function(o2) o2.setRotation({0, 180, 0}) end)
+        end
+        Wait.time(function()
+          if o and o.getQuantity and box then
+            local extra = o.getQuantity() - 13
+            for i = 1, extra do
+              o.takeObject({ index = 0, position = box.getPosition():setAt("y", 3), smooth = false })
+            end
+          end
+        end, 2)
+      end, time)
+    end
+  end
+
+  -- ── 4. archive + codex ───────────────────────────────────────────────────────
+  local archiveCollection = {}
+  for _, e in ipairs(inv.archive or {}) do
+    table.insert(archiveCollection, {
+      guid  = e.guid,
+      place = e.fromBag and e.spawn or nil,
+      set   = e.memo.set,
+      memo  = e.memo
+    })
+  end
+
+  local moveObj = { toPosition = {}, toBox = {}, toMerge = {} }
+  prepareArchiveDecks(archiveCollection, moveObj, locationMat, locationData)
+
+  for _, guid in ipairs(moveObj.toBox) do
+    local o = getObjectFromGUID(guid)
+    if o and box then box.putObject(o) end
+  end
+
+  for _, data in ipairs(moveObj.toPosition) do
+    if data.name == "archive" then
+      time = time + timeStep
+      Wait.time(function()
+        local o = data.place
+          and data.place(data.p, {0, 180, 180})
+          or getObjectFromGUID(data.guid)
+        if not o then return end
+
+        local sources = moveObj.toMerge["archive"] and moveObj.toMerge["archive"].sources or {}
+        local function mergeNext(baseObj, idx)
+          if idx > #sources then
+            baseObj.setPosition(data.p)
+            Wait.time(function()
+              local function containsNumber(tbl, target)
+                for i, v in pairs(tbl) do if v == target then return i end end
+              end
+
+              local codexDeckCards = {}
+              local archiveObjs = baseObj.getObjects()
+              for i = #archiveObjs, 1, -1 do
+                local codex = archiveObjs[i]
+                local codexData = parseJson(codex.memo)
+                if codexData and codexData.number and string.lower(codexData.type) == "codex" then
+                  local idx2 = containsNumber(scenarioData.codex, codexData.number)
+                  if idx2 then
+                    local taken = baseObj.takeObject({ index = codex.index })
+                    attachCodexCard(taken, locationMat.positionToWorld(locationData.codex[idx2]):setAt("y", 3))
+                  elseif scenarioData.codexDeck and containsNumber(scenarioData.codexDeck, codexData.number) then
+                    local taken = baseObj.takeObject({
+                      index    = codex.index,
+                      position = locationMat.positionToWorld(locationData.codexDeck):setAt("y", 3),
+                      rotation = {0, 180, 0},
+                      smooth   = false
+                    })
+                    table.insert(codexDeckCards, taken)
+                  end
+                end
+              end
+
+              if #codexDeckCards > 0 then
+                Wait.time(function()
+                  local objs = findObjsInRadius(locationMat.positionToWorld(locationData.codexDeck):setAt("y", 2.2))
+                  for _, obj in ipairs(objs) do
+                    if obj.type == "Deck" or obj.type == "Card" then
+                      if obj.type == "Deck" then obj.shuffle() end
+                      break
+                    end
+                  end
+                end, 1)
+              end
+            end, 2)
+            return
+          end
+
+          local src = sources[idx].place
+            and sources[idx].place(sourceBag and sourceBag.getPosition():setAt("y", 3))
+            or getObjectFromGUID(sources[idx].guid)
+          if src then
+            local merged = baseObj.putObject(src)
+            local nextBase = merged or baseObj
+            runAfterRest(nextBase,
+              function(o2) mergeNext(o2, idx + 1) end,
+              function(o2) mergeNext(o2, idx + 1) end,
+              5
+            )
+          else
+            mergeNext(baseObj, idx + 1)
+          end
+        end
+
+        mergeNext(o, 1)
+      end, time)
+    end
+  end
+
+  -- ── 5. monster deck ──────────────────────────────────────────────────────────
+  Wait.time(function()
+    prepareScenarioMonsterDeck(inv)
+  end, time + 4)
+
+  return time
+end
+
+-- ╭──────────────────────────────────────────────╮
+-- │           TILE PROCESSING HELPERS            │
+-- ╰──────────────────────────────────────────────╯
+
+function processSetupTile(o, name, setupTileInfo, locationMatOld)
+  local doomBag       = resolve(doomBagId)
+  local whiteTokenBag = resolve(whiteTokenBagId)
+  local blueTokenBag  = resolve(blueTokenBagId)
+  local redTokenBag   = resolve(redTokenBagId)
+  local greenTokenBag = resolve(greenTokenBagId)
+
+  local locationMat = resolve(locationMatId)
+  if not locationMat then return end
+
+  local y = locationMat.getPosition().y + locationMat.getBoundsNormalized().size.y
+
+  gameData.lockObjs[o.guid] = true
+  lockObj(o.guid)
+  o.setRotation(setupTileInfo.rotation)
+  o.setPosition(locationMatOld.positionToWorld(setupTileInfo.position):setAt("y", y))
+
+  if not setupTileInfo.tokens then return end
+
+  for _, tokenInfo in ipairs(setupTileInfo.tokens) do
+    if tokenInfo.type == "Doom Token" and doomBag then
+      doomBag.takeObject({
+        index = 0,
+        position = o.positionToWorld(tokenInfo.position):setAt("y", 3)
+      }).highlightOn("Red", 5)
+      printToAll(i18n.getStrById(name) .. " - " .. i18n.getStrById("LOG_doom_added"), "Red")
+    elseif tokenInfo.type == "White Marker" and whiteTokenBag then
+      whiteTokenBag.takeObject({
+        index = 0,
+        position = o.positionToWorld(tokenInfo.position):setAt("y", 3)
+      }).highlightOn("White", 5)
+    elseif tokenInfo.type == "Blue Marker" and blueTokenBag then
+      blueTokenBag.takeObject({
+        index = 0,
+        position = o.positionToWorld(tokenInfo.position):setAt("y", 3)
+      }).highlightOn("Blue", 5)
+    elseif tokenInfo.type == "Red Marker" and redTokenBag then
+      redTokenBag.takeObject({
+        index = 0,
+        position = o.positionToWorld(tokenInfo.position):setAt("y", 3)
+      }).highlightOn("Red", 5)
+    elseif tokenInfo.type == "Green Marker" and greenTokenBag then
+      greenTokenBag.takeObject({
+        index = 0,
+        position = o.positionToWorld(tokenInfo.position):setAt("y", 3)
+      }).highlightOn("Green", 5)
+    end
+  end
+end
+
+function spawnTokenOnLocation(spawnInfo)
+  if not spawnInfo or not spawnInfo.token then
+    log("[spawnTokenOnLocation] missing token")
+    return nil
+  end
+
+  local locationName = spawnInfo.location
+  if not locationName then
+    locationName = gameData.scenarioData and gameData.scenarioData.startingSpace
+  end
+  if not locationName then
+    log("[spawnTokenOnLocation] no location and no scenario startingSpace")
+    return nil
+  end
+
+  local locationMat = resolve(locationMatId)
+  if not locationMat then
+    log("[spawnTokenOnLocation] locationMat not found")
+    return nil
+  end
+
+  local bagId = getTokenBagIdByType(spawnInfo.token)
+  local bag = bagId and getObjectFromGUID(bagId)
+  if not bag then
+    log("[spawnTokenOnLocation] bag not found for token: " .. tostring(spawnInfo.token))
+    return nil
+  end
+
+  local tile, tileData, locationIndex = findLocationTileByName(locationMat, locationName)
+  if not tile then
+    log("[spawnTokenOnLocation] tile not found for: " .. tostring(locationName))
+    return nil
+  end
+
+  local placement = spawnInfo.placement and string.lower(spawnInfo.placement) or "location"
+
+  local pos
+  if placement ~= "neighborhood" and locationIndex and tileData and tileData.structureType then
+    pos = getNeighborhoodLocationPosition(tile, locationIndex, tileData.structureType):setAt("y", 3)
+  else
+    pos = tile.getPosition():setAt("y", 3)
+  end
+
+  local token = bag.takeObject({
+    index = 0,
+    position = pos,
+    rotation = {0, 180, 0}
+  })
+  if not token then
+    log("[spawnTokenOnLocation] takeObject returned nil for token: " .. tostring(spawnInfo.token))
+    return nil
+  end
+
+  token.memo = spawnInfo.memo or spawnInfo.token
+  token.highlightOn(spawnInfo.highlight or "Yellow", 5)
+
+  return token, tile, tileData
+end
+
+function lockSetupScenarioComponents(obj, scenarioTiles)
+  local locationMat = resolve(locationMatId)
+  if not locationMat then return end
+
+  local box = resolve(boxId)
+  if not box then return end
+
+  if not resolve(doomBagId)       then return end
+  if not resolve(whiteTokenBagId) then return end
+  if not resolve(blueTokenBagId)  then return end
+  if not resolve(redTokenBagId)   then return end
+  if not resolve(greenTokenBagId) then return end
+
+  local locationMatOld = resolve("b195b0")
+  if not locationMatOld then
+    error("Мат для локацій не знайдено!")
+    return
+  end
+
+  local memo = parseJson(obj.memo)
+  if obj.type == "Generic" and memo and memo.type and memo.name then
+    local types = scenarioTiles[memo.type]
+    if types then
+      local tileInfo = types[memo.name]
+      if tileInfo then
+        processSetupTile(obj, memo.name, tileInfo, locationMatOld)
+      else
+        box.putObject(obj)
+      end
+    else
+      box.putObject(obj)
+    end
+  end
+end
+
+function spawnScenarioTilesOnMat(scenarioData, callBack)
+  local scenarioSheet = getObjectFromGUID(scenarioData.guid)
+  if not scenarioSheet then
+    callBack()
+    return
+  end
+
+  moveObjectToPosition(scenarioSheet, scenarioSheetSetupLocation, function() end)
+
+  local locationMat = resolve(locationMatId)
+  if not locationMat then
+    callBack()
+    error("Мат для локацій не знайдено!")
+    return
+  end
+
+  showScenarioComponentsOnMat(scenarioData, callBack)
+end
+
+function showScenarioComponentsOnMat(scenarioData, callBack)
+  local tableTile = resolve(tableId)
+  if not tableTile then
+    callBack()
+    return
+  end
+
+  local tableTileData = parseJson(tableTile.memo)
+  if not tableTileData then
+    callBack()
+    return
+  end
+
+  local locationMat = resolve(locationMatId)
+  if not locationMat then
+    error("Мат для локацій не знайдено!")
+    callBack()
+    return
+  end
+
+  local locationMatOld = resolve("b195b0")
+  if not locationMatOld then
+    callBack()
+    return
+  end
+
+  if not scenarioData.tiles then
+    callBack()
+    return
+  end
+
+  local allTasks = {}
+
+  for _, obj in ipairs(getObjects()) do
+    local memo = parseJson(obj.memo)
+    if obj.type == "Generic" and memo and memo.type and memo.name then
+      local types = scenarioData.tiles[memo.type]
+      if types then
+        local tileInfo = types[memo.name]
+        if tileInfo then
+          table.insert(allTasks, function(done)
+            obj.setRotation(tileInfo.rotation)
+            obj.setPositionSmooth(locationMatOld.positionToWorld(tileInfo.position):setAt("y", 3))
+            runAfterRest(obj, function(obj) done() end)
+          end)
+        else
+          local tileStartInfo = tableTileData.startPosition.tiles[memo.type][memo.name]
+          table.insert(allTasks, function(done)
+            obj.setRotation(tileStartInfo.r)
+            obj.setPositionSmooth(tableTile.positionToWorld(tileStartInfo.p):setAt("y", 3))
+            runAfterRest(obj, function(obj) done() end)
+          end)
+        end
+      end
+    end
+  end
+
+  waitAll(allTasks, callBack)
+end

@@ -1,0 +1,189 @@
+-- ╭──────────────────────────────────────────────╮
+-- │            SETUP-PHASE CACHES                │
+-- ╰──────────────────────────────────────────────╯
+
+local _refs  = {}
+local _memos = {}
+
+function resolve(id)
+  if not _refs[id] then _refs[id] = getObjectFromGUID(id) end
+  return _refs[id]
+end
+
+local function getMemo(obj)
+  local g = obj.getGUID and obj.getGUID() or obj.guid
+  if not _memos[g] then _memos[g] = parseJson(obj.memo) end
+  return _memos[g]
+end
+
+function clearSetupCaches()
+  _refs  = {}
+  _memos = {}
+end
+
+function getScenarioData(n)
+  for _, obj in ipairs(getObjects()) do
+    local memo = parseJson(obj.memo)
+    if memo and memo.type == "Scenario" and memo.number == n then
+      memo.guid = obj.guid
+      return memo
+    end
+  end
+
+  if gameData.directSetup and gameData.sourceBagGuid then
+    local bag = resolve(gameData.sourceBagGuid)
+    if bag then
+      for _, obj in ipairs(bag.getObjects()) do
+        local memo = parseJson(obj.memo)
+        if memo and memo.type == "Scenario" and memo.number == n then
+          memo.guid = obj.guid
+          return memo
+        end
+      end
+    end
+  end
+end
+
+-- ╭──────────────────────────────────────────────╮
+-- │            INVENTORY COLLECTION              │
+-- ╰──────────────────────────────────────────────╯
+--
+-- Phase 1 of setup: sweep every component ONCE and group it into a typed
+-- inventory table, independent of where the component currently lives —
+-- staged on the table (normal setup) or still inside the language bag
+-- (quick / direct setup).
+--
+-- Each entry hides that source difference behind two methods:
+--   entry.spawn(pos, rot) -> live object   (materialise / move into play)
+--   entry.discard()                         (send to box, or leave in bag)
+--
+-- Downstream type handlers consume inv[<lowerType>] and never touch
+-- getObjects() or the source bag directly.
+
+function collectInventory()
+  local inv = {}
+
+  local function add(entry)
+    local t = entry.memo and entry.memo.type and string.lower(entry.memo.type)
+    if not t then return end
+    inv[t] = inv[t] or {}
+    table.insert(inv[t], entry)
+  end
+
+  if gameData.directSetup and gameData.sourceBagGuid then
+    local bag = resolve(gameData.sourceBagGuid)
+    if bag then
+      for _, o in ipairs(bag.getObjects()) do
+        local memo = parseJson(o.memo)
+        if memo then
+          local guid = o.guid
+          local live = nil
+          add({
+            guid    = guid,
+            name    = o.name,
+            index   = o.index,
+            memo    = memo,
+            objType = nil,
+            fromBag = true,
+            spawn = function(pos, rot)
+              if live then return live end
+              live = bag.takeObject({
+                guid     = guid,
+                position = pos or bag.getPosition():setAt("y", 3),
+                rotation = rot or {0, 180, 180},
+                smooth   = false,
+              })
+              return live
+            end,
+            discard = function() end,
+          })
+        end
+      end
+    end
+  else
+    for _, o in ipairs(getObjects()) do
+      local memo = parseJson(o.memo)
+      if memo then
+        add({
+          guid    = o.getGUID(),
+          name    = o.getName(),
+          index   = nil,
+          memo    = memo,
+          objType = o.type,
+          fromBag = false,
+          spawn = function(pos, rot)
+            if rot then o.setRotation(rot) end
+            if pos then o.setPosition(pos) end
+            return o
+          end,
+          discard = function()
+            local box = resolve(boxId)
+            if box then box.putObject(o) end
+          end,
+        })
+      end
+    end
+  end
+
+  return inv
+end
+
+function logInventory(inv)
+  inv = inv or collectInventory()
+  local types, total = 0, 0
+  for t, entries in pairs(inv) do
+    log(string.format("[INV] %-18s x%d", t, #entries))
+    types = types + 1
+    total = total + #entries
+  end
+  log(string.format("[INV] %d types, %d components total", types, total))
+  return inv
+end
+
+-- ╭──────────────────────────────────────────────╮
+-- │                  HELPERS                     │
+-- ╰──────────────────────────────────────────────╯
+
+function tableLength(t)
+  local count = 0
+  for _ in pairs(t) do
+    count = count + 1
+  end
+  return count
+end
+
+local FACE_UP_MEMO_TYPES = {
+  ["dark pact"]      = true,
+  ["blessed cursed"] = true,
+  ["archive"]        = true,
+  ["driven fatigued"]= true,
+  ["tainted"]        = true,
+  ["wanted"]         = true,
+}
+
+function shouldSetFaceUp(obj, memoType)
+  return obj.type == "Generic"
+    or obj.type == "Tile"
+    or obj.type == "Card"
+    or (memoType and FACE_UP_MEMO_TYPES[memoType])
+end
+
+function moveObjectToPosition(obj, layoutData, callBack)
+  if not obj or not layoutData then
+    log("[ERROR] Invalid input for moveObjectToPosition")
+    if callBack then callBack() end
+    return
+  end
+
+  local pos = layoutData.position
+  pos.y = 4
+
+  if layoutData.rotation then
+    obj.setRotation(layoutData.rotation)
+  end
+
+  obj.setPositionSmooth(pos)
+  runOnceAfterRest(obj, function(obj)
+    if callBack then callBack(obj) end
+  end)
+end

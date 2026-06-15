@@ -1,0 +1,110 @@
+-- ╭──────────────────────────────────────────────╮
+-- │              SHOP MAT SETUP                  │
+-- ╰──────────────────────────────────────────────╯
+--
+-- Consumes inv slices matching deck types declared in shopMatData.decks.
+-- Returns the accumulated placement time so the orchestrator can
+-- sequence downstream phases (monster, ally, doom) after us.
+
+function prepareShopMat(inv, scenarioData)
+  local shopMat = resolve(shopMatId)
+  if not shopMat then return 0 end
+  local shopMatData = parseJson(shopMat.memo)
+  if not shopMatData or not shopMatData.decks then return 0 end
+
+  local box       = resolve(boxId)
+  local sourceBag = gameData.directSetup and resolve(gameData.sourceBagGuid) or nil
+  local timeStep  = sourceBag and 0.4 or 0.1
+  local time      = 0
+
+  -- build type → world-position map from the mat's own deck definitions
+  local deckDefs = {}  -- [lowerType] = { pos, name }
+  for _, d in ipairs(shopMatData.decks) do
+    if d.type and d.pos then
+      local t = string.lower(d.type)
+      local pos = shopMat.positionToWorld(d.pos):setAt("y", 3)
+      if d.name then
+        deckDefs[t] = deckDefs[t] or { names = {} }
+        deckDefs[t].names[string.lower(d.name)] = { pos = pos, type = d.type, name = d.name }
+      else
+        deckDefs[t] = { pos = pos, type = d.type }
+      end
+    end
+  end
+
+  -- for each known deck type: split inv entries into base / addon-source / discard
+  for t, def in pairs(deckDefs) do
+    local base    = nil   -- first no-set or active entry becomes the target
+    local sources = {}    -- addon entries to merge in
+    local toDiscard = {}
+
+    for _, e in ipairs(inv[t] or {}) do
+      local addonState = e.memo.set and gameData.addons[e.memo.set]
+      if e.memo.set and addonState == false then
+        table.insert(toDiscard, e)
+      elseif e.memo.set and addonState == true then
+        table.insert(sources, e)
+      else
+        base = e
+      end
+    end
+
+    for _, e in ipairs(toDiscard) do e.discard() end
+
+    if not base and #sources > 0 then
+      base = table.remove(sources, 1)
+    end
+
+    if base then
+      local pos = def.names
+        and def.names[base.memo.name and string.lower(base.memo.name) or ""]
+        and def.names[base.memo.name and string.lower(base.memo.name) or ""].pos
+        or def.pos
+
+      time = time + timeStep
+      Wait.time(function()
+        local o = base.spawn(pos, {0, 180, 180})
+        if not o then return end
+
+        -- merge addon sources into base
+        for _, src in ipairs(sources) do
+          local m = src.spawn(sourceBag and sourceBag.getPosition():setAt("y", 3))
+          if m then
+            local result = o.putObject(m)
+            if result then o = result end
+          end
+        end
+
+        o.setPosition(pos)
+        if o.type == "Deck" then o.shuffle() end
+
+        if base.fromBag and shouldSetFaceUp(o, base.memo.type) then
+          runAfterRest(o, function(o2) o2.setRotation({0, 180, 0}) end)
+        end
+
+        -- item deck: deal cards to display positions
+        if string.lower(base.memo.type) == "item" and shopMatData.displaypos then
+          Wait.time(function()
+            for i, cardPos in ipairs(shopMatData.displaypos) do
+              local itemCard = o.takeObject({
+                index    = 0,
+                rotation = {0, 180, 0},
+                position = shopMat.positionToWorld(cardPos):setAt("y", 3)
+              })
+              local itemData = parseJson(itemCard.memo)
+              if itemData then
+                local types = {}
+                if itemData.common then table.insert(types, "common") end
+                if itemData.curio  then table.insert(types, "curio")  end
+                shopMat.call("setBottom", { id = i, price = itemData.price or 0, guid = itemCard.guid })
+                shopMat.call("setTop",    { id = i, types = types })
+              end
+            end
+          end, 2)
+        end
+      end, time)
+    end
+  end
+
+  return time
+end

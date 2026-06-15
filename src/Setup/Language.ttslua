@@ -1,0 +1,166 @@
+-- ╭──────────────────────────────────────────────╮
+-- │                SELECT LANGUAGE               │
+-- ╰──────────────────────────────────────────────╯
+
+local languageReady = false
+Wait.time(function() languageReady = true end, 1.5)
+
+local function selectLanguage(lang, bagMemo)
+  if not languageReady then return end
+  languageReady = false
+  gameData.language = lang
+  updateXMLs()
+  Wait.time(function()
+    translationService.setCurrentLanguage(gameData.language)
+    for _, o in ipairs(getObjects()) do
+      if o.type == "Bag" and o.memo == bagMemo then
+        if gameData.directSetup then
+          gameData.sourceBagGuid         = o.getGUID()
+          gameData.areAllComponentsTaken = true
+        else
+          prepareLanguageBag(o)
+        end
+        return
+      end
+    end
+  end, 3)
+end
+
+function clickOnEN() selectLanguage("en", "Eng bag") end
+function clickOnUK() selectLanguage("uk", "Uk bag")  end
+
+-- ╭──────────────────────────────────────────────╮
+-- │                UPDATE XMLS                   │
+-- ╰──────────────────────────────────────────────╯
+
+function updateXMLs()
+  i18n.updateGlobalUiLanguage()
+  i18n.updateAllObjectsUiLanguage()
+end
+
+function updateGlobalXml(newXml)
+  local windowIdList = {"languages", "main_menu"}
+
+  for _, windowId in ipairs(windowIdList) do
+    local element = getXmlTableElementById(newXml, windowId)
+    if windowId == "main_menu" then
+      element.attributes.active = gameData.language and not gameData.isStarted
+    elseif windowId == "languages" then
+      element.attributes.active = gameData.language == nil
+    end
+  end
+
+  self.UI.setAttribute('title', 'text', i18n.getStrById("MM_scenario1_name_text"))
+  self.UI.setAttribute('body', 'text', i18n.getStrById("MM_scenario1_desc_text"))
+  self.UI.setXmlTable(newXml)
+end
+
+-- ╭──────────────────────────────────────────────╮
+-- │           PREPARE LANGUAGE BAG               │
+-- ╰──────────────────────────────────────────────╯
+
+function prepareLanguageBag(bag)
+  if not bag then
+    return
+  end
+
+  local tableObj = resolve(tableId)
+  if not tableObj then
+    return
+  end
+
+  local objs = bag.getObjects()
+
+  local pendingTakes = {}
+  local pendingCount = 0
+
+  for i = 1, #objs do
+    local memo = parseJson(objs[i].memo)
+
+    if memo and memo.startPosition then
+      pendingTakes[objs[i].guid] = {
+        guid = objs[i].guid,
+        name = objs[i].name,
+        index = objs[i].index,
+        memoType = memo.type,
+        state = "Scheduled",
+        spawnedGuid = nil
+      }
+      pendingCount = pendingCount + 1
+    end
+  end
+
+  if pendingCount == 0 then
+    gameData.areAllComponentsTaken = true
+    return
+  end
+
+  for i = #objs, 1, -1 do
+    local obj = objs[i]
+    local memo = parseJson(obj.memo)
+
+    if memo and memo.startPosition then
+      local delay = (#objs - i) / 20
+
+      Wait.time(function()
+        local o = bag.takeObject({
+          index = obj.index,
+          position = tableObj.positionToWorld(memo.startPosition):setAt("y", 3),
+          rotation = {0, 180, 180},
+          smooth = false
+        })
+
+        if not o then
+          if pendingTakes[obj.guid] then
+            pendingTakes[obj.guid].state = "takeObject=nil"
+          end
+          return
+        end
+
+        local spawnedGuid = o.getGUID()
+
+        if pendingTakes[obj.guid] then
+          pendingTakes[obj.guid].state = "Taken"
+          pendingTakes[obj.guid].spawnedGuid = spawnedGuid
+        end
+
+        runAfterRest(o,
+          function(o2)
+            if shouldSetFaceUp(o2, memo.type) then
+              o2.setRotation({0, 180, 0})
+            end
+
+            pendingTakes[obj.guid] = nil
+            pendingCount = pendingCount - 1
+
+            if pendingCount == 0 then
+              gameData.areAllComponentsTaken = true
+            end
+          end,
+
+          function(o2)
+            if shouldSetFaceUp(o2, memo.type) then
+              o2.setRotation({0, 180, 0})
+            end
+
+            pendingTakes[obj.guid] = nil
+            pendingCount = pendingCount - 1
+
+            if pendingCount == 0 then
+              gameData.areAllComponentsTaken = true
+            end
+          end,
+
+          5
+        )
+      end, delay)
+    else
+      log(string.format(
+        "[SKIPPED] No startPosition in memo. guid=%s name=%s index=%s",
+        obj.guid or "nil",
+        obj.name or "nil",
+        tostring(obj.index)
+      ))
+    end
+  end
+end
