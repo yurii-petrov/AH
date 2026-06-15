@@ -11,37 +11,29 @@
     "r": 0.71324
   },
   "ContainedObjects_order": [
-    "Card.dd0eb7",
-    "Card.b0852f",
-    "Card.2d8d34",
-    "Card.ef9c9a",
-    "Card.b23271",
-    "Card.79e9f6"
+    "Card.e33087",
+    "Card.8f33e2"
   ],
-  "ContainedObjects_path": "ReferenceCards.77f0b1",
+  "ContainedObjects_path": "darkpact3.1d1d2b",
   "CustomDeck": {
-    "5776": {
+    "5852": {
       "BackIsHidden": true,
-      "BackURL": "https://drive.google.com/uc?export=view\u0026id=1XM0Wg9VKWKlduUJ3MFS7ZNHKi2AA0wz9",
-      "FaceURL": "https://drive.google.com/uc?export=view\u0026id=1RzYW3HCHxzQotihKw5LVkhSW8aBbkjCW",
+      "BackURL": "https://drive.google.com/uc?export=view\u0026id=1RHyg79B8oN3ih47pzDkTESBT0r5ZZj8W",
+      "FaceURL": "https://drive.google.com/uc?export=view\u0026id=13z2HSBshIB9R3HcGbN3dr_CyGJb00hol",
       "NumHeight": 2,
-      "NumWidth": 3,
+      "NumWidth": 4,
       "Type": 0,
       "UniqueBack": true
     }
   },
   "DeckIDs": [
-    577600,
-    577601,
-    577602,
-    577603,
-    577604,
-    577605
+    585200,
+    585201
   ],
   "Description": "",
   "DragSelectable": true,
   "GMNotes": "",
-  "GUID": "77f0b1",
+  "GUID": "1d1d2b",
   "Grid": true,
   "GridProjection": false,
   "Hands": false,
@@ -52,23 +44,23 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"startPosition\":{\"x\":-0.021703302264214,\"y\":1.04981660842896,\"z\":-0.502225756645203}}",
-  "Name": "DeckCustom",
-  "Nickname": "Reference Cards",
+  "Memo": "{\"set\":2,\"startPosition\":{\"x\":0.666691601276398,\"y\":1.04981660842896,\"z\":-0.403197437524796},\"type\":\"dark pact\"}",
+  "Name": "Deck",
+  "Nickname": "dark pact 3",
   "SidewaysCard": false,
   "Snap": true,
   "Sticky": true,
   "Tooltip": true,
   "Transform": {
-    "posX": -5.666,
-    "posY": 4.111,
-    "posZ": 96.91,
-    "rotX": 1,
+    "posX": 42.969,
+    "posY": 4.067,
+    "posZ": 70.349,
+    "rotX": 0,
     "rotY": 180,
-    "rotZ": 180,
-    "scaleX": 1.5,
+    "rotZ": 0,
+    "scaleX": 1,
     "scaleY": 1,
-    "scaleZ": 1.5
+    "scaleZ": 1
   },
   "Value": 0,
   "XmlUI": ""

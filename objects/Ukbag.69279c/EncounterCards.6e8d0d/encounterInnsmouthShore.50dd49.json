@@ -1,0 +1,79 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "ContainedObjects_order": [
+    "Card.091b82",
+    "Card.a5ebbe",
+    "Card.d67703",
+    "Card.868411",
+    "Card.d94212",
+    "Card.1eadbb",
+    "Card.f7ea54",
+    "Card.7a4a8a"
+  ],
+  "ContainedObjects_path": "encounterInnsmouthShore.50dd49",
+  "CustomDeck": {
+    "5856": {
+      "BackIsHidden": true,
+      "BackURL": "https://drive.google.com/uc?export=view\u0026id=10JYBl6rEmJAMu6zAurN3nWQO586gM5Tx",
+      "FaceURL": "https://drive.google.com/uc?export=view\u0026id=1Wb48DaEPaA8y5_dfIbaOzr_t4CoOduDB",
+      "NumHeight": 5,
+      "NumWidth": 8,
+      "Type": 0,
+      "UniqueBack": true
+    }
+  },
+  "DeckIDs": [
+    585631,
+    585630,
+    585629,
+    585628,
+    585627,
+    585626,
+    585625,
+    585624
+  ],
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "50dd49",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Memo": "{\"name\":\"Innsmouth Shore\",\"set\":2,\"startPosition\":{\"x\":-0.112924963235855,\"y\":1.05944466590881,\"z\":-0.499919474124908},\"type\":\"encounter\"}",
+  "Name": "Deck",
+  "Nickname": "encounter Innsmouth Shore",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": 36.29,
+    "posY": 4.096,
+    "posZ": 56.683,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 180,
+    "scaleX": 1.5,
+    "scaleY": 1,
+    "scaleZ": 1.5
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

@@ -1,0 +1,79 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "ContainedObjects_order": [
+    "Card.13aa05",
+    "Card.5ae204",
+    "Card.11e0fe",
+    "Card.1f458f",
+    "Card.556a2f",
+    "Card.73732a",
+    "Card.281078",
+    "Card.612865"
+  ],
+  "ContainedObjects_path": "encounterTheUnderworld.e1528f",
+  "CustomDeck": {
+    "5858": {
+      "BackIsHidden": true,
+      "BackURL": "https://drive.google.com/uc?export=view\u0026id=161js3Nj1qKmfMo_lkDed8XRQXPkyQisX",
+      "FaceURL": "https://drive.google.com/uc?export=view\u0026id=1_cpBJ7hzMWs34dmCkLgSTh1qdV3JRtOy",
+      "NumHeight": 6,
+      "NumWidth": 9,
+      "Type": 0,
+      "UniqueBack": true
+    }
+  },
+  "DeckIDs": [
+    585831,
+    585830,
+    585829,
+    585828,
+    585827,
+    585826,
+    585825,
+    585824
+  ],
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "e1528f",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Memo": "{\"name\":\"The Underworld\",\"set\":3,\"startPosition\":{\"x\":-0.393524963235855,\"y\":1.05944466590881,\"z\":-0.499919474124908},\"type\":\"encounter\"}",
+  "Name": "Deck",
+  "Nickname": "encounter The Underworld",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": -20.546,
+    "posY": 4.096,
+    "posZ": 59.802,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 180,
+    "scaleX": 1.5,
+    "scaleY": 1,
+    "scaleZ": 1.5
+  },
+  "Value": 0,
+  "XmlUI": ""
+}
