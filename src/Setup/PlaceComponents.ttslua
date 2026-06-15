@@ -1,0 +1,116 @@
+-- ╭──────────────────────────────────────────────╮
+-- │           PLACE COMPONENTS ON GAME START     │
+-- ╰──────────────────────────────────────────────╯
+--
+-- Called from proceedStartGame after scenario is chosen.
+-- Each placeXxx() function is responsible for one component type.
+--
+-- Access pattern per mode:
+--   Normal : object already on table → getObjectFromGUID(guid)
+--   Quick  : object inside bag       → bag.takeObject({ guid = guid })
+
+-- ╭──────────────────────────────────────────────╮
+-- │                  HELPERS                     │
+-- ╰──────────────────────────────────────────────╯
+
+local function getGuids(bagType)
+  return gameData.components and gameData.components[bagType] or {}
+end
+
+local function spawnComponent(bagType, guid, pos, rot)
+  if gameData.directSetup then
+    local bag = getObjectFromGUID(gameData.componentBags and gameData.componentBags[bagType])
+    if not bag then return nil end
+    return bag.takeObject({
+      guid     = guid,
+      position = pos,
+      rotation = rot,
+      smooth   = true,
+    })
+  else
+    local o = getObjectFromGUID(guid)
+    if not o then return nil end
+    if pos then o.setPositionSmooth(pos) end
+    if rot then o.setRotation(rot) end
+    return o
+  end
+end
+
+-- ╭──────────────────────────────────────────────╮
+-- │           PER-TYPE PLACE FUNCTIONS           │
+-- ╰──────────────────────────────────────────────╯
+
+local function placeMapTiles()
+end
+
+local function placeScenarioSheets()
+end
+
+local function placeAllyCards()
+end
+
+local function placeAnomalyCards()
+end
+
+local function placeTerrorCards()
+end
+
+local function placeSpecialCards()
+end
+
+local function placeMonsterDecks()
+end
+
+local function placeStartingCards()
+end
+
+local function placeConditionCards()
+end
+
+local function placeSpellCards()
+end
+
+local function placeItemCards()
+end
+
+local function placeHeadlineCards()
+end
+
+local function placeEventCards()
+end
+
+local function placeEncounterCards()
+end
+
+local function placeArchiveDecks()
+end
+
+local function placeInvestigatorSheets()
+end
+
+local function placeReferenceCards()
+end
+
+-- ╭──────────────────────────────────────────────╮
+-- │               MAIN ENTRY POINT               │
+-- ╰──────────────────────────────────────────────╯
+
+function placeComponents()
+  placeMapTiles()
+  placeScenarioSheets()
+  placeAllyCards()
+  placeAnomalyCards()
+  placeTerrorCards()
+  placeSpecialCards()
+  placeMonsterDecks()
+  placeStartingCards()
+  placeConditionCards()
+  placeSpellCards()
+  placeItemCards()
+  placeHeadlineCards()
+  placeEventCards()
+  placeEncounterCards()
+  placeArchiveDecks()
+  placeInvestigatorSheets()
+  placeReferenceCards()
+end

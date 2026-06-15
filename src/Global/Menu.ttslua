@@ -93,6 +93,7 @@ function proceedStartGame()
   end
 
   addAdditionalCompoents()
+  placeComponents()
 
   gameData.scenarioData = scenarioData
 
