@@ -11,7 +11,7 @@
     "g": 0.71324,
     "r": 0.71324
   },
-  "CustomDeck": {
+  "CustomDeck": { 
     "5794": {
       "BackIsHidden": true,
       "BackURL": "https://drive.google.com/uc?export=view\u0026id=1YuOcLpvXHE4_-VgiMRad4_uVEAdxTaKK",
@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"number\":20,\"type\":\"codex\"}",
+  "Memo": "{\"number\":20,\"type\":\"codex\",\"back\":{\"actions\":[{\"title\":\"Вступити в Ложу\",\"description\":\"\",\"removeAfterUse\":true,\"steps\":[{\"type\":\"takeCodexFromArchive\",\"number\":24},{\"type\":\"takeCodexFromArchive\",\"number\":25}]}]}}",
   "Name": "Card",
   "Nickname": "20",
   "SidewaysCard": false,
