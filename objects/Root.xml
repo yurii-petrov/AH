@@ -37,8 +37,8 @@
             text="УКРАЇНСЬКА"/>
         <HorizontalLayout
             id="direct_setup_row"
-            position="0 -170 0"
-            width="280"
+            position="0 -155 0"
+            width="320"
             height="36"
             childAlignment="MiddleCenter"
             spacing="10">
@@ -54,9 +54,19 @@
                 font="Fonts/AdonisC"
                 fontSize="22"
                 color="#ffffff"
-                width="220"
+                width="260"
                 height="36"/>
         </HorizontalLayout>
+        <Text
+            id="direct_setup_note"
+            position="0 -192 0"
+            width="640"
+            height="40"
+            font="Fonts/AdonisC"
+            fontSize="14"
+            color="#ffffffaa"
+            alignment="MiddleCenter"
+            text="(use only with cache enabled, and after the mod was already opened once in normal mode)"/>
 </panel>
 <panel
     id="phase"

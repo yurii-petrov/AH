@@ -120,6 +120,23 @@ function onClickPrepareNumberOfPlayers(onComplete)
     end
   end
 
+  -- direct (quick) setup: deck is still inside the language bag
+  if not referenceDeck and gameData.directSetup and gameData.sourceBagGuid then
+    local bag = getObjectFromGUID(gameData.sourceBagGuid)
+    if bag then
+      for _, entry in ipairs(bag.getObjects()) do
+        if entry.name == "Reference Cards" then
+          referenceDeck = bag.takeObject({
+            guid     = entry.guid,
+            position = bag.getPosition():setAt("y", 3),
+            smooth   = false
+          })
+          break
+        end
+      end
+    end
+  end
+
   if not referenceDeck then
     error("Reference Cards not found")
     return

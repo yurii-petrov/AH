@@ -32,27 +32,28 @@ function deepCopy(orig)
   return copy
 end
 
+local function safeResting(o)
+  if o == nil then return true end
+  local ok, result = pcall(function() return o.resting end)
+  return not ok or result  -- treat destroyed object as "at rest"
+end
+
+local function safeCall(fn, o)
+  if o == nil then return end
+  pcall(fn, o)
+end
+
 function runAfterRest(o, f, f2, n)
-  f = f or function()
-  end -- function to run when resting
-  f2 = f2 or function()
-  end -- function to run when time-out is reached
-  n = n or 5 -- time out delay in seconds
+  f = f or function() end
+  f2 = f2 or function() end
+  n = n or 5
   Wait.frames(function()
     Wait.condition(function()
-      if o ~= nil then
-        f(o)
-      end
+      safeCall(f, o)
     end, function()
-      if o == nil then
-        return true
-      else
-        return o.resting
-      end
+      return safeResting(o)
     end, n, function()
-      if o ~= nil then
-        f2(o)
-      end
+      safeCall(f2, o)
     end)
   end, 1)
 end
@@ -70,20 +71,12 @@ function runOnceAfterRest(o, f, f2, n)
   Wait.frames(function()
     _G["runOnceAfterRestObjectIDs"][o] = Wait.condition(function()
       _G["runOnceAfterRestObjectIDs"][o] = nil
-      if o ~= nil then
-        f(o)
-      end
+      safeCall(f, o)
     end, function()
-      if o == nil then
-        return true
-      else
-        return o.resting
-      end
+      return safeResting(o)
     end, n, function()
       _G["runOnceAfterRestObjectIDs"][o] = nil
-      if o ~= nil then
-        f2(o)
-      end
+      safeCall(f2, o)
     end)
   end, 1)
 end

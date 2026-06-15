@@ -33,6 +33,21 @@ function getScenarioData(n)
       return memo
     end
   end
+
+  -- direct (quick) setup: scenario sheet is still inside the language bag,
+  -- not staged on the table, so look there as well
+  if gameData.directSetup and gameData.sourceBagGuid then
+    local bag = resolve(gameData.sourceBagGuid)
+    if bag then
+      for _, obj in ipairs(bag.getObjects()) do
+        local memo = parseJson(obj.memo)
+        if memo and memo.type == "Scenario" and memo.number == n then
+          memo.guid = obj.guid
+          return memo
+        end
+      end
+    end
+  end
 end
 
 -- ╭──────────────────────────────────────────────╮
@@ -631,14 +646,7 @@ function prepareScenarioMonsterDeck()
     setaside2 = locationMat.positionToWorld(locationData.setaside2):setAt("y", 3)
   }
 
-  local monsterDecks = {}
   local box = resolve(boxId)
-  for _, obj in ipairs(getObjects()) do
-    local memo = parseJson(obj.memo)
-    if memo then
-      tryCollectMonsterDeck(obj, memo, monsterDecks, box)
-    end
-  end
 
   local function mergeDecks(decks)
     if #decks == 0 then return nil end
@@ -652,21 +660,58 @@ function prepareScenarioMonsterDeck()
     return main
   end
 
-  local monsterDeck = mergeDecks(monsterDecks)
-  if not monsterDeck then
-    return
+  local function processMonsterDecks(monsterDecks)
+    local monsterDeck = mergeDecks(monsterDecks)
+    if not monsterDeck then
+      return
+    end
+
+    local counters = buildMonsterDeckSelectionCounters(gameData.scenarioData)
+    local objectsToTake = buildMonsterObjectsToTake(monsterDeck, counters, positions)
+
+    for _, data in ipairs(objectsToTake) do
+      takeAndPlaceMonsterCard(monsterDeck, data, counters.spawn, positions)
+    end
+
+    Wait.time(function()
+      finalizeMonsterDecks(positions, monsterDeck)
+    end, 2)
   end
 
-  local counters = buildMonsterDeckSelectionCounters(gameData.scenarioData)
-  local objectsToTake = buildMonsterObjectsToTake(monsterDeck, counters, positions)
-
-  for _, data in ipairs(objectsToTake) do
-    takeAndPlaceMonsterCard(monsterDeck, data, counters.spawn, positions)
+  -- direct (quick) setup: all monster decks come straight from the language bag;
+  -- do NOT search the table (stale objects from previous sessions would corrupt the merge)
+  if gameData.directSetup and gameData.sourceBagGuid then
+    local bag = resolve(gameData.sourceBagGuid)
+    local monsterDecks = {}
+    if bag then
+      local bagPos = bag.getPosition()
+      local idx = 0
+      for _, entry in ipairs(bag.getObjects()) do
+        local memo = parseJson(entry.memo)
+        if memo and memo.type and string.lower(memo.type) == "monster" then
+          local addonState = memo.set and gameData.addons[memo.set]
+          if not memo.set or addonState == true then
+            local pos = Vector(bagPos.x + idx * 3, bagPos.y + 3, bagPos.z - 7)
+            idx = idx + 1
+            local o = bag.takeObject({ guid = entry.guid, position = pos, rotation = {0, 180, 180}, smooth = false })
+            if o then table.insert(monsterDecks, o) end
+          end
+        end
+      end
+    end
+    Wait.time(function()
+      processMonsterDecks(monsterDecks)
+    end, 1)
+  else
+    local monsterDecks = {}
+    for _, obj in ipairs(getObjects()) do
+      local memo = parseJson(obj.memo)
+      if memo then
+        tryCollectMonsterDeck(obj, memo, monsterDecks, box)
+      end
+    end
+    processMonsterDecks(monsterDecks)
   end
-
-  Wait.time(function()
-    finalizeMonsterDecks(positions, monsterDeck)
-  end, 2)
 end
 
 -- ╭──────────────────────────────────────────────╮
@@ -1002,6 +1047,8 @@ function prepareScenarioDecks(scenarioData)
       end
     end
 
+    local tileSpawnIdx = 0   -- unique X-offset so co-located tiles don't auto-merge
+
     for _, obj in ipairs(sourceBag.getObjects()) do
       local memo = parseJson(obj.memo)
       if memo then
@@ -1016,11 +1063,24 @@ function prepareScenarioDecks(scenarioData)
               l     = true
             })
           end
-        elseif string.lower(memo.type) == "event" then
-          if memo.name == scenarioData.name then
+        elseif memo.type and allowedCustomModelTypes[string.lower(memo.type)] then
+          -- each tile gets a unique X offset so they don't land on top of each
+          -- other (which would cause TTS to auto-merge cards at the same position)
+          local bagPos   = sourceBag.getPosition()
+          local tilePos  = Vector(bagPos.x + tileSpawnIdx * 5, bagPos.y + 3, bagPos.z)
+          tileSpawnIdx   = tileSpawnIdx + 1
+          local spawned  = place(tilePos)
+          if spawned then
+            runAfterRest(spawned, function(o2)
+              lockSetupScenarioComponents(o2, scenarioData.tiles)
+            end)
+          end
+        elseif memo.type and string.lower(memo.type) == "event" then
+          if memo.name and scenarioData.name
+              and string.lower(memo.name) == string.lower(scenarioData.name) then
             eventItem = { guid = obj.guid, place = place, memo = memo }
           end
-        elseif string.lower(memo.type) == "archive" then
+        elseif memo.type and string.lower(memo.type) == "archive" then
           table.insert(archiveCollection, {
             guid  = obj.guid,
             place = place,
@@ -1042,6 +1102,7 @@ function prepareScenarioDecks(scenarioData)
         end
       end
     end
+
   end
 
   prepareArchiveDecks(archiveCollection, moveObj, locationMat, locationData)
@@ -1058,7 +1119,7 @@ function prepareScenarioDecks(scenarioData)
   -- print(serpent.tts(moveObj))
 
   local time = 0
-  local timeStep = 0.1
+  local timeStep = sourceBag and 0.4 or 0.1
   if box then
     for i, guid in ipairs(moveObj.toBox) do
       time = time + timeStep
@@ -1089,8 +1150,9 @@ function prepareScenarioDecks(scenarioData)
           and sources[idx].place(sourceBag.getPosition():setAt("y", 3))
           or getObjectFromGUID(sources[idx].guid)
         if src then
-          baseObj.putObject(src)
-          runAfterRest(baseObj,
+          local merged = baseObj.putObject(src)
+          local nextBase = merged or baseObj
+          runAfterRest(nextBase,
             function(o2) mergeNext(o2, idx + 1) end,
             function(o2) mergeNext(o2, idx + 1) end,
             5
@@ -1102,25 +1164,32 @@ function prepareScenarioDecks(scenarioData)
 
       mergeNext(o, 1)
     else
+      -- track the live container: when a Card absorbs another object a new Deck
+      -- with a new GUID is created, and the old Card reference becomes invalid.
+      -- putObject returns the resulting container in that case.
+      local container = o
       if moveObj.toMerge[data.name] then
         for _, sourceData in ipairs(moveObj.toMerge[data.name].sources) do
           local m = sourceData.place
             and sourceData.place(sourceBag and sourceBag.getPosition():setAt("y", 3))
             or getObjectFromGUID(sourceData.guid)
           if m then
-            o.putObject(m)
+            local result = container.putObject(m)
+            if result then container = result end
           end
         end
       end
-      o.setPosition(data.p)
+      container.setPosition(data.p)
     end
   end
 
   for i, data in pairs(moveObj.toPosition) do
     time = time + timeStep
     Wait.time(function()
+      -- direct mode takes objects out of the bag face-down ({0,180,180}),
+      -- matching how prepareLanguageBag stages them on the table
       local o = data.place
-        and data.place(data.p, {0, 180, 0})
+        and data.place(data.p, {0, 180, 180})
         or getObjectFromGUID(data.guid)
       if o then
         mergeDeckToPosition(o, data, moveObj)
@@ -1130,6 +1199,14 @@ function prepareScenarioDecks(scenarioData)
         end
 
         local oData = parseJson(o.memo)
+
+        -- in direct mode, objects come out of the bag face-down; flip them
+        -- face-up only after they (and any merge) have fully settled
+        if data.place and shouldSetFaceUp(o, oData and oData.type) then
+          runAfterRest(o, function(o2)
+            o2.setRotation({0, 180, 0})
+          end)
+        end
         if oData then
           if oData.type then
             if oData.type == "item" and shopMatData.displaypos then
@@ -1248,7 +1325,10 @@ function prepareScenarioDecks(scenarioData)
   local eventObj = nil
   if eventItem then
     if eventItem.place then
-      eventObj = eventItem.place(sourceBag.getPosition():setAt("y", 3))
+      local evPos = sourceBag.getPosition()
+      evPos.x = evPos.x - 15
+      evPos.y = evPos.y + 3
+      eventObj = eventItem.place(evPos)
     else
       eventObj = getObjectFromGUID(eventItem.guid)
     end

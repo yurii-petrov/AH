@@ -128,7 +128,7 @@ function spawnDoomTokensOnScenarioSheet(doomCount)
       index = 0,
       position = p
     })
-    doomToken.highlightOn("Red", 5)
+    if doomToken then doomToken.highlightOn("Red", 5) end
     p:setAt("x", p.x + 1.5)
   end
 
@@ -182,7 +182,7 @@ function getNeighborhoodDoomInfo(neighborhood)
   end
 
   local neighborhoodData = parseJson(neighborhood.memo)
-  if not neighborhoodData and not neighborhoodData.locations then
+  if not neighborhoodData or not neighborhoodData.locations then
     return
   end
 
@@ -589,7 +589,7 @@ function spawnDoomTokenInLocation(locationName, doomCount, neighborhoodInfo)
           index = 0,
           position = emptySpot:setAt("y", 3)
         })
-        doomToken.highlightOn("Red", 5)
+        if doomToken then doomToken.highlightOn("Red", 5) end
       end
 
       printToAll(i18n.getStrById(neighborhoodInfo.data.name:gsub(" ", "_")) .. " (" .. i18n.getStrById(locationName:gsub(" ", "_")) .. ") - " ..
@@ -620,7 +620,7 @@ function spawnDoomTokenOnTile(tileObj, doomCount)
         index = 0,
         position = emptySpot:setAt("y", 3)
       })
-      doomToken.highlightOn("Red", 5)
+      if doomToken then doomToken.highlightOn("Red", 5) end
     end
 
     printToAll(i18n.getStrById(tileData.name:gsub(" ", "_")) .. " - " .. doomCount .. " " .. i18n.getStrById("LOG_doom_added"), "Red")
