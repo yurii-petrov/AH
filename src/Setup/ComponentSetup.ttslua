@@ -1,0 +1,130 @@
+-- ╭──────────────────────────────────────────────╮
+-- │           COMPONENT SETUP (NORMAL)           │
+-- ╰──────────────────────────────────────────────╯
+--
+-- Called after prepareLanguageBag has placed all component bags on the table
+-- and gameData.componentBags is populated.
+--
+-- Each setupXxx() function:
+--   1. Gets the component bag by GUID from gameData.componentBags
+--   2. Takes every object from it and places it at the defined position
+--   3. Stores the live object reference in gameData.components[BagType]
+
+-- ╭──────────────────────────────────────────────╮
+-- │              COMPONENT REGISTRY              │
+-- ╰──────────────────────────────────────────────╯
+
+local function getComponentBag(bagType)
+  local guid = gameData.componentBags and gameData.componentBags[bagType]
+  if not guid then
+    log("[ComponentSetup] No bag guid for type: " .. tostring(bagType))
+    return nil
+  end
+  local bag = getObjectFromGUID(guid)
+  if not bag then
+    log("[ComponentSetup] Bag not found for type: " .. tostring(bagType))
+  end
+  return bag
+end
+
+local function storeComponent(bagType, obj)
+  gameData.components          = gameData.components or {}
+  gameData.components[bagType] = gameData.components[bagType] or {}
+  table.insert(gameData.components[bagType], obj.getGUID())
+end
+
+local TAKE_DELAY = 0.1 -- seconds between each takeObject
+local BAG_DELAY  = 0.5   -- seconds between finishing one bag and starting next
+
+local function takeNext(bag, bagType, tableObj, onDone)
+  local objs = bag.getObjects()
+  if #objs == 0 then
+    bag.destruct()
+    if onDone then onDone() end
+    return
+  end
+
+  local obj  = objs[#objs]
+  local memo = parseJson(obj.memo)
+
+  local pos  = memo and memo.startPosition
+               and tableObj
+               and tableObj.positionToWorld(memo.startPosition):setAt("y", 2.5)
+
+  local o = bag.takeObject({
+    index    = obj.index,
+    position = pos,
+    smooth   = false,
+  })
+
+  local rot  =  {0, 180, o.type == "Deck" and 180 or 0}
+  o.setRotation(rot)
+  if o then storeComponent(bagType, o) end
+
+  Wait.time(function()
+    takeNext(bag, bagType, tableObj, onDone)
+  end, TAKE_DELAY)
+end
+
+local function takeAll(bagType, onDone)
+  local bag = getComponentBag(bagType)
+  if not bag then
+    if onDone then onDone() end
+    return
+  end
+
+  if #bag.getObjects() == 0 then
+    if onDone then onDone() end
+    return
+  end
+
+  local tableObj = resolve(tableId)
+  takeNext(bag, bagType, tableObj, onDone)
+end
+
+-- ╭──────────────────────────────────────────────╮
+-- │           PER-TYPE SETUP FUNCTIONS           │
+-- ╰──────────────────────────────────────────────╯
+
+local ALL_BAG_TYPES = {
+  BagType.MAP_TILES,
+  BagType.SCENARIO_SHEETS,
+  BagType.ALLY_CARDS,
+  BagType.ANOMALY_CARDS,
+  BagType.TERROR_CARDS,
+  BagType.SPECIAL_CARDS,
+  BagType.MONSTER_DECKS,
+  BagType.CONDITION_CARDS,
+  BagType.SPELL_CARDS,
+  BagType.ITEM_CARDS,
+  BagType.HEADLINE_CARDS,
+  BagType.ARCHIVE_DECKS,
+  BagType.EVENT_CARDS,
+  BagType.ENCOUNTER_CARDS,
+  BagType.REFERENCE_CARDS,
+  BagType.INVESTIGATOR_SHEETS,
+  BagType.STARTING_CARDS,
+}
+
+-- ╭──────────────────────────────────────────────╮
+-- │               MAIN ENTRY POINT               │
+-- ╰──────────────────────────────────────────────╯
+
+function setupComponents()
+  gameData.components = {}
+
+  local bagIndex = 0
+
+  local function nextBag()
+    bagIndex = bagIndex + 1
+    if bagIndex > #ALL_BAG_TYPES then
+      gameData.areAllComponentsTaken = true
+      return
+    end
+    takeAll(ALL_BAG_TYPES[bagIndex], function()
+      Wait.time(nextBag, BAG_DELAY)
+    end)
+  end
+
+  nextBag()
+end

@@ -59,7 +59,7 @@ end
 -- │              COMPONENT BAG TYPES             │
 -- ╰──────────────────────────────────────────────╯
 
-local BagType = {
+BagType = {
   ALLY_CARDS         = "Ally Cards",
   ANOMALY_CARDS      = "Anomaly Cards",
   TERROR_CARDS       = "Terror Cards",
@@ -90,8 +90,28 @@ end
 -- │           PREPARE LANGUAGE BAG               │
 -- ╰──────────────────────────────────────────────╯
 
-local SPAWN_DOWN_OFFSET  = 3   -- Z offset for first bag (down on table)
+local SPAWN_DOWN_OFFSET  = 1   -- Z offset for first bag (down on table)
 local SPAWN_RIGHT_OFFSET = 2.5 -- X offset per subsequent bag (right)
+
+local COMPONENT_BAG_POSITIONS = {
+  [BagType.INVESTIGATOR_SHEETS] = {-0.411, 0, -0.37},
+  [BagType.SCENARIO_SHEETS]     = { 0.694, 0, -0.11},
+  [BagType.EVENT_CARDS]         = { 0.654, 0, -0.114},
+  [BagType.SPELL_CARDS]         = { 0.809, 0, -0.422},
+  [BagType.SPECIAL_CARDS]       = { 0.762, 0, -0.517},
+  [BagType.ALLY_CARDS]          = { 0.733, 0, -0.515},
+  [BagType.ITEM_CARDS]          = { 0.703, 0, -0.517},
+  [BagType.CONDITION_CARDS]     = { 0.633, 0, -0.405},
+  [BagType.MONSTER_DECKS]       = { 0.452, 0, -0.517},
+  [BagType.HEADLINE_CARDS]      = { 0.336, 0, -0.591},
+  [BagType.ANOMALY_CARDS]       = { 0.216, 0, -0.594},
+  [BagType.TERROR_CARDS]        = { 0.14,  0, -0.595},
+  [BagType.ARCHIVE_DECKS]       = { 0.076, 0, -0.595},
+  [BagType.ENCOUNTER_CARDS]     = {-0.015, 0, -0.559},
+  [BagType.REFERENCE_CARDS]     = { 0.017, 0, -0.497},
+  [BagType.STARTING_CARDS]      = { -0.78, 0,  0.012},
+  [BagType.MAP_TILES]           = { 0.089, 0, -0.688},
+}
 
 function prepareLanguageBag(bag)
   if not bag then return end
@@ -110,17 +130,23 @@ function prepareLanguageBag(bag)
     return
   end
 
+  gameData.componentBags = {}
+
+  local tableObj   = resolve(tableId)
   local basePos    = bag.getPosition()
   local spawnIndex = 0
 
   for i = #objs, 1, -1 do
     local obj = objs[i]
     if isComponentBag(obj.memo) then
-      local spawnPos = Vector(
-        basePos.x + spawnIndex * SPAWN_RIGHT_OFFSET,
-        3,
-        basePos.z - SPAWN_DOWN_OFFSET
-      )
+      local customPos = COMPONENT_BAG_POSITIONS[obj.memo]
+      local spawnPos  = customPos and tableObj
+                        and tableObj.positionToWorld(customPos):setAt("y", 3)
+                        or Vector(
+                          basePos.x + spawnIndex * SPAWN_RIGHT_OFFSET,
+                          3,
+                          basePos.z - SPAWN_DOWN_OFFSET
+                        )
 
       local o = bag.takeObject({
         index    = obj.index,
@@ -131,12 +157,19 @@ function prepareLanguageBag(bag)
       if not o then
         pendingCount = pendingCount - 1
       else
-        spawnIndex   = spawnIndex + 1
+        o.interactable = false
+        o.setColorTint(Color(1,1,1,0))
+        gameData.componentBags[obj.memo] = o.getGUID()
+        if not customPos then spawnIndex = spawnIndex + 1 end
         pendingCount = pendingCount - 1
       end
 
       if pendingCount == 0 then
-        gameData.areAllComponentsTaken = true
+        if gameData.directSetup then
+          gameData.areAllComponentsTaken = true
+        else
+          setupComponents()
+        end
       end
     end
   end

@@ -256,7 +256,7 @@ function onload(savedData)
     --    testResolveDooms() 
   end
 
-  lockObj(tableId)
+  -- lockObj(tableId)
   lockObj(locationMatId)
   lockObj(scenarioMatId)
   lockObj(mythosTileId)
