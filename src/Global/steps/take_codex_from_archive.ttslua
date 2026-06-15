@@ -5,6 +5,22 @@
 -- Draws a codex card (by number) from the archive on the location mat and
 -- attaches it to the codex mat at the next free codex snap point.
 
+local function attachCodexCardAtBottom(codexMat, card, rotation)
+  local CARD_OFFSET = 0.11
+  local height      = codexMat.getBounds().size.y
+  local matPos      = codexMat.getPosition()
+  local existing    = #codexMat.getAttachments()
+
+  card.setRotation(rotation)
+  card.setPosition({
+    x = matPos.x,
+    y = matPos.y - height - CARD_OFFSET - existing * 0.05,
+    z = matPos.z
+  })
+  card.interactable = false
+  codexMat.addAttachment(card)
+end
+
 local function findCodexMatOnSnapPoints(locationMat, number)
   for _, snp in ipairs(locationMat.getSnapPoints()) do
     if snp.tags then
@@ -57,9 +73,11 @@ function processStepTakeCodexFromArchive(step, context, onDone)
   end
 
   local freePos = findNextFreeCodexSnapPos(sourceMat)
+  local stackOnCurrent = false
   if not freePos then
-    log("[takeCodexFromArchive] no free codex snap")
-    return
+    stackOnCurrent = true
+    freePos = codexMat.getPosition():setAt("y", 3)
+    log("[takeCodexFromArchive] no free codex snap, stacking on current codex")
   end
 
   local rotation = { 0, 180, 0 }
@@ -101,7 +119,11 @@ function processStepTakeCodexFromArchive(step, context, onDone)
   end
   runAfterRest(card, function(c)
     -- log("[takeCodexFromArchive] codex "..step.number.." rotation: "..serpent.tts(c.getRotation()))
-    attachCodexCard(c, freePos, rotation)
+    if stackOnCurrent then
+      attachCodexCardAtBottom(codexMat, c, rotation)
+    else
+      attachCodexCard(c, freePos, rotation)
+    end
 
     if step.destructSelf then
       context.removeAfterUse = nil

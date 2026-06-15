@@ -225,7 +225,7 @@ function clickAction(player, alt_click, id)
         playerColor    = player.color,
         codexMat       = self,
         data           = data,
-        removeAfterUse = action.removeAfterUse and { side = side, index = index } or nil
+        removeAfterUse = action.removeAfterUse and { side = side, index = index, group = action.removeGroup } or nil
       }
     })
   else
@@ -245,9 +245,26 @@ end
 
 function onActionSuccess(params)
   if not params or not params.side or not params.index then return end
-  local sideData = data and data.codex and data.codex[params.side]
-  if not sideData or not sideData.actions then return end
-  table.remove(sideData.actions, params.index)
+  local codex = data and data.codex
+  if not codex then return end
+
+  if params.group then
+    for _, sideKey in ipairs({ "front", "back" }) do
+      local sideData = codex[sideKey]
+      if sideData and sideData.actions then
+        for i = #sideData.actions, 1, -1 do
+          if sideData.actions[i].removeGroup == params.group then
+            table.remove(sideData.actions, i)
+          end
+        end
+      end
+    end
+  else
+    local sideData = codex[params.side]
+    if not sideData or not sideData.actions then return end
+    table.remove(sideData.actions, params.index)
+  end
+
   pendingConfirm = nil
   buildCodexUI()
 end

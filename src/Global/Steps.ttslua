@@ -40,6 +40,8 @@ require("Global/steps/clear_markers_on_locations")
 require("Global/steps/spawn_card_below_codex")
 require("Global/steps/spawn_monster_on_location")
 require("Global/steps/seed_codex_encounters")
+require("Global/steps/merge_setaside_into_monster")
+require("Global/steps/broadcast_message")
 
 -- Dispatch table: lowercased step.type -> handler.
 -- Handlers are global functions defined by the required step modules above.
@@ -64,6 +66,8 @@ local STEP_HANDLERS = {
   spawncardbelowcodex               = processStepSpawnCardBelowCodex,
   spawnmonsteronlocation            = processStepSpawnMonsterOnLocation,
   seedcodexencounters               = processStepSeedCodexEncounters,
+  mergesetasideintomonster          = processStepMergeSetasideIntoMonster,
+  broadcastmessage                  = processStepBroadcastMessage,
 }
 
 function processSteps(data)

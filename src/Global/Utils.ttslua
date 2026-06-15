@@ -137,7 +137,7 @@ function findNextFreeCodexSnapPos(locationMat)
 
   for _, snp in ipairs(codexSnaps) do
     local worldPos = locationMat.positionToWorld(snp.position)
-    local objs = upCast_pos(worldPos, 0.5)
+    local objs = upCast_pos(worldPos, 2)
     local isOccupied = false
     for _, o in ipairs(objs) do
       if o.getGUID() ~= locationMat.getGUID() and o.type == "Tile" then

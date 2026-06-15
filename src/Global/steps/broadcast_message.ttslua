@@ -1,0 +1,32 @@
+-- ╭──────────────────────────────────────────────╮
+-- │           STEP: broadcastMessage             │
+-- ╰──────────────────────────────────────────────╯
+--
+-- Broadcasts a message to every player. Used for narrative outcomes that
+-- have no automated game-state effect (e.g. "Investigators win").
+--
+-- Example step JSON:
+--   {
+--     "type": "broadcastMessage",
+--     "message": "Дослідники перемогли!",
+--     "color": { "r": 0.2, "g": 1, "b": 0.2 }
+--   }
+-- A "messageId" can be given instead of "message" to look the text up via i18n.
+
+function processStepBroadcastMessage(step, context, onDone)
+  local message = step.message
+  if not message and step.messageId then
+    message = i18n.getStrById(step.messageId)
+  end
+
+  if not message then
+    log("[broadcastMessage] message is nil")
+    if onDone then onDone() end
+    return
+  end
+
+  local color = step.color or { r = 1, g = 1, b = 1 }
+  broadcastToAll(message, color)
+
+  if onDone then onDone() end
+end
