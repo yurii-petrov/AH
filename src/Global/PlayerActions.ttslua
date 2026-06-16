@@ -111,36 +111,6 @@ function onClickPrepareNumberOfPlayers(onComplete)
     return
   end
 
-  local referenceDeck = nil
-  for _, obj in ipairs(getObjects()) do
-    if obj.type == "Deck" and obj.getName() == "Reference Cards" then
-      referenceDeck = obj
-      break
-    end
-  end
-
-  -- direct (quick) setup: deck is still inside the language bag
-  if not referenceDeck and gameData.directSetup and gameData.sourceBagGuid then
-    local bag = getObjectFromGUID(gameData.sourceBagGuid)
-    if bag then
-      for _, entry in ipairs(bag.getObjects()) do
-        if entry.name == "Reference Cards" then
-          referenceDeck = bag.takeObject({
-            guid     = entry.guid,
-            position = bag.getPosition():setAt("y", 3),
-            smooth   = false
-          })
-          break
-        end
-      end
-    end
-  end
-
-  if not referenceDeck then
-    error("Reference Cards not found")
-    return
-  end
-
   for i = 1, matsToPlace do
 
     local xPos = startX + (i - 1) * spacing
@@ -246,14 +216,8 @@ function onClickPrepareNumberOfPlayers(onComplete)
     local color = colors[i]
     local data = getHandData(color)
     if data then
-      local hand = spawnObjectData({
-        data = data
-      })
+      local hand = spawnObjectData({ data = data })
       hand.setPosition({targetPosition.x, 3, -71})
-      referenceDeck.takeObject({
-        index = 0,
-        position = hand.getPosition()
-      })
     end
   end
 
@@ -262,9 +226,6 @@ function onClickPrepareNumberOfPlayers(onComplete)
     if box then
       box.putObject(activationTokenBag)
       box.putObject(activationLiderTokenBag)
-      if numPlayers < 6 then
-        box.putObject(referenceDeck)
-      end
     end
     if onComplete then
       onComplete()

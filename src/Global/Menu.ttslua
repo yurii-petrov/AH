@@ -95,7 +95,7 @@ function proceedStartGame()
   addAdditionalCompoents()
 
   gameData.scenarioData = scenarioData
-  placeComponents()
+  gameData.numberOfPlayers = currentSetup.players or 2
 
   if gameData.scenarioData.terror then
     local tile4Actions = getObjectFromGUID(tile4ActionsId)
@@ -109,14 +109,11 @@ function proceedStartGame()
     end
   end
 
-  gameData.numberOfPlayers = currentSetup.players or 2
-
-  -- TODO: re-enable after PlaceComponents is implemented
-  -- broadcastToAll(i18n.getStrById("LOG_preparing_investigators"), "White")
-  -- onClickPrepareNumberOfPlayers(function()
-  --   broadcastToAll(i18n.getStrById("LOG_preparing_scenario"), "White")
-  --   onClickPrepareScenario(function() end)
-  -- end)
+  onClickPrepareNumberOfPlayers(function()
+    placeComponents()
+    broadcastToAll(i18n.getStrById("LOG_preparing_scenario"), "White")
+    -- onClickPrepareScenario(function() end)
+  end)
 
   gameData.isStarted = true
   self.UI.setAttribute('main_menu', 'active', false)

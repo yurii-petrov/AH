@@ -132,6 +132,45 @@ end
 -- │               QUICK MODE                     │
 -- ╰──────────────────────────────────────────────╯
 
+-- Takes objects from bag and places at memo.startPosition without re-storing
+-- (components already stored by stageQuickMode scan).
+local function placeFromBag(bagType, onDone)
+  local bag = getComponentBag(bagType)
+  if not bag then
+    if onDone then onDone() end
+    return
+  end
+
+  local tableObj = resolve(tableId)
+
+  local function placeNext()
+    local objs = bag.getObjects()
+    if #objs == 0 then
+      bag.destruct()
+      if onDone then onDone() end
+      return
+    end
+    local obj  = objs[#objs]
+    local memo = parseJson(obj.memo)
+    local pos  = memo and memo.startPosition
+                 and tableObj
+                 and tableObj.positionToWorld(memo.startPosition):setAt("y", 2.5)
+                 or bag.getPosition():setAt("y", 3)
+    local o = bag.takeObject({ index = obj.index, position = pos, smooth = false })
+    if o then
+      o.setRotation({0, 180, o.type == "Deck" and 180 or 0})
+    end
+    Wait.time(placeNext, TAKE_DELAY)
+  end
+
+  placeNext()
+end
+
+local QUICK_PLACE_TYPES = {
+  BagType.INVESTIGATOR_SHEETS,
+  BagType.STARTING_CARDS,
+}
+
 function stageQuickMode()
   gameData.components = {}
 
@@ -145,4 +184,14 @@ function stageQuickMode()
   end
 
   gameData.areAllComponentsTaken = true
+
+  local idx = 0
+  local function nextBag()
+    idx = idx + 1
+    if idx > #QUICK_PLACE_TYPES then return end
+    placeFromBag(QUICK_PLACE_TYPES[idx], function()
+      Wait.time(nextBag, BAG_DELAY)
+    end)
+  end
+  nextBag()
 end
