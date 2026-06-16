@@ -51,8 +51,8 @@ local ALL_BAG_TYPES = {
 -- │              NORMAL MODE                     │
 -- ╰──────────────────────────────────────────────╯
 
-local TAKE_DELAY = 0.1
-local BAG_DELAY  = 0.3
+local TAKE_DELAY = 0.05
+local BAG_DELAY  = 0.2
 
 local function takeNext(bag, bagType, tableObj, onDone)
   local objs = bag.getObjects()
@@ -68,14 +68,15 @@ local function takeNext(bag, bagType, tableObj, onDone)
                and tableObj
                and tableObj.positionToWorld(memo.startPosition):setAt("y", 2.5)
                or bag.getPosition():setAt("y", 3)
-  local rot  = {0, 180, obj.type == "Deck" and 180 or 0}
 
   local o = bag.takeObject({
     index    = obj.index,
     position = pos,
-    rotation = rot,
     smooth   = false,
   })
+
+  local rot  = {0, 180, o.type == "Deck" and 180 or 0}
+  o.setRotation(rot)
 
   if o then
     storeComponent(bagType, o.getGUID(), o.getName(), memo)
