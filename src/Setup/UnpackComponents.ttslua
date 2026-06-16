@@ -1,0 +1,142 @@
+-- ╭──────────────────────────────────────────────╮
+-- │           UNPACK COMPONENTS                  │
+-- ╰──────────────────────────────────────────────╯
+--
+-- Normal mode : takes objects from component bags → places on table
+--               at memo.startPosition → stores {guid, name, memo}
+-- Quick mode  : scans bags without moving anything → stores {guid, name, memo}
+--
+-- Result: gameData.components[bagType] = { {guid, name, memo}, ... }
+
+-- ╭──────────────────────────────────────────────╮
+-- │                  HELPERS                     │
+-- ╰──────────────────────────────────────────────╯
+
+local function getComponentBag(bagType)
+  local guid = gameData.componentBags and gameData.componentBags[bagType]
+  if not guid then return nil end
+  return getObjectFromGUID(guid)
+end
+
+local function storeComponent(bagType, guid, name, memo)
+  gameData.components[bagType] = gameData.components[bagType] or {}
+  table.insert(gameData.components[bagType], {
+    guid = guid,
+    name = name,
+    memo = memo,
+  })
+end
+
+local ALL_BAG_TYPES = {
+  BagType.MAP_TILES,
+  BagType.SCENARIO_SHEETS,
+  BagType.ALLY_CARDS,
+  BagType.ANOMALY_CARDS,
+  BagType.TERROR_CARDS,
+  BagType.SPECIAL_CARDS,
+  BagType.MONSTER_DECKS,
+  BagType.CONDITION_CARDS,
+  BagType.SPELL_CARDS,
+  BagType.ITEM_CARDS,
+  BagType.HEADLINE_CARDS,
+  BagType.ARCHIVE_DECKS,
+  BagType.EVENT_CARDS,
+  BagType.ENCOUNTER_CARDS,
+  BagType.REFERENCE_CARDS,
+  BagType.INVESTIGATOR_SHEETS,
+  BagType.STARTING_CARDS,
+}
+
+-- ╭──────────────────────────────────────────────╮
+-- │              NORMAL MODE                     │
+-- ╰──────────────────────────────────────────────╯
+
+local TAKE_DELAY = 0.1
+local BAG_DELAY  = 0.3
+
+local function takeNext(bag, bagType, tableObj, onDone)
+  local objs = bag.getObjects()
+  if #objs == 0 then
+    bag.destruct()
+    if onDone then onDone() end
+    return
+  end
+
+  local obj  = objs[#objs]
+  local memo = parseJson(obj.memo)
+  local pos  = memo and memo.startPosition
+               and tableObj
+               and tableObj.positionToWorld(memo.startPosition):setAt("y", 2.5)
+               or bag.getPosition():setAt("y", 3)
+  local rot  = {0, 180, obj.type == "Deck" and 180 or 0}
+
+  local o = bag.takeObject({
+    index    = obj.index,
+    position = pos,
+    rotation = rot,
+    smooth   = false,
+  })
+
+  if o then
+    storeComponent(bagType, o.getGUID(), o.getName(), memo)
+  end
+
+  Wait.time(function()
+    takeNext(bag, bagType, tableObj, onDone)
+  end, TAKE_DELAY)
+end
+
+local function takeAllFromBag(bagType, onDone)
+  local bag = getComponentBag(bagType)
+  if not bag then
+    if onDone then onDone() end
+    return
+  end
+
+  if #bag.getObjects() == 0 then
+    bag.destruct()
+    if onDone then onDone() end
+    return
+  end
+
+  local tableObj = resolve(tableId)
+  takeNext(bag, bagType, tableObj, onDone)
+end
+
+function stageNormalMode()
+  gameData.components = {}
+
+  local bagIndex = 0
+
+  local function nextBag()
+    bagIndex = bagIndex + 1
+    if bagIndex > #ALL_BAG_TYPES then
+      gameData.areAllComponentsTaken = true
+      return
+    end
+    takeAllFromBag(ALL_BAG_TYPES[bagIndex], function()
+      Wait.time(nextBag, BAG_DELAY)
+    end)
+  end
+
+  nextBag()
+end
+
+-- ╭──────────────────────────────────────────────╮
+-- │               QUICK MODE                     │
+-- ╰──────────────────────────────────────────────╯
+
+function stageQuickMode()
+  gameData.components = {}
+
+  for _, bagType in ipairs(ALL_BAG_TYPES) do
+    local bag = getComponentBag(bagType)
+    if bag then
+      for _, obj in ipairs(bag.getObjects()) do
+        storeComponent(bagType, obj.guid, obj.name, parseJson(obj.memo))
+      end
+    end
+  end
+
+  gameData.areAllComponentsTaken = true
+end

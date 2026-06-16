@@ -1,34 +1,35 @@
 -- ╭──────────────────────────────────────────────╮
--- │           PLACE COMPONENTS ON GAME START     │
+-- │         PLACE COMPONENTS ON GAME START       │
 -- ╰──────────────────────────────────────────────╯
 --
 -- Called from proceedStartGame after scenario is chosen.
--- Each placeXxx() function is responsible for one component type.
+-- Works with gameData.components[bagType] = { {guid, name, memo}, ... }
 --
--- Access pattern per mode:
---   Normal : object already on table → getObjectFromGUID(guid)
---   Quick  : object inside bag       → bag.takeObject({ guid = guid })
+-- Normal mode : guid is an object already on the table
+--               → getObjectFromGUID(guid) + setPositionSmooth
+-- Quick mode  : guid is an object inside a component bag
+--               → bag.takeObject({ guid = guid, position = pos })
 
 -- ╭──────────────────────────────────────────────╮
 -- │                  HELPERS                     │
 -- ╰──────────────────────────────────────────────╯
 
-local function getGuids(bagType)
+local function getComponents(bagType)
   return gameData.components and gameData.components[bagType] or {}
 end
 
-local function spawnComponent(bagType, guid, pos, rot)
+local function spawnComponent(bagType, entry, pos, rot)
   if gameData.directSetup then
     local bag = getObjectFromGUID(gameData.componentBags and gameData.componentBags[bagType])
     if not bag then return nil end
     return bag.takeObject({
-      guid     = guid,
+      guid     = entry.guid,
       position = pos,
       rotation = rot,
       smooth   = true,
     })
   else
-    local o = getObjectFromGUID(guid)
+    local o = getObjectFromGUID(entry.guid)
     if not o then return nil end
     if pos then o.setPositionSmooth(pos) end
     if rot then o.setRotation(rot) end
