@@ -110,9 +110,16 @@ function proceedStartGame()
   end
 
   onClickPrepareNumberOfPlayers(function()
-    placeComponents()
+    placeComponents(function()
+      resolveComponents(function()
+        shuffleComponents(function()
+          prepareEventDeck(function()
+            cleanupComponents()
+          end)
+        end)
+      end)
+    end)
     broadcastToAll(i18n.getStrById("LOG_preparing_scenario"), "White")
-    -- onClickPrepareScenario(function() end)
   end)
 
   gameData.isStarted = true

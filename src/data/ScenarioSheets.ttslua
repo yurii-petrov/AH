@@ -3,19 +3,23 @@
 -- ╰──────────────────────────────────────────────╯
 --
 -- Keyed by scenario name abbreviation.
--- Replaces scanning getObjects() / language bag at runtime.
+-- monsters entries:
+--   { name = "...", dest = "...", [count = N] }          -- specific named card
+--   { type = "...", dest = "...", [count = N] }          -- all cards of this type
+--   dest: "deck" | "setaside" | "setaside2" | "spawn"
+--   spawn additionally requires: location, pos = {x,y,z}, rot = {x,y,z}
 
 SCENARIO_SHEETS = {
 
   -- ── Scenario 1: The Approach of Azathoth ─────────────────────────────────
   ["AoA"] = {
-    guid         = "f18189",
-    name         = "AoA",
-    number       = 1,
-    type         = "Scenario",
-    anomaly      = "TF",
+    guid          = "f18189",
+    name          = "AoA",
+    number        = 1,
+    type          = "Scenario",
+    anomaly       = "TF",
     startingSpace = "Train Station",
-    mythosCups   = {
+    mythosCups    = {
       ["Blank"]         = 3,
       ["Gate Burst"]    = 1,
       ["Read Headline"] = 2,
@@ -24,21 +28,21 @@ SCENARIO_SHEETS = {
       ["Spawn Monster"] = 2,
       ["Spread Doom"]   = 3,
     },
-    monsterdeck  = {
-      "Abyssal Servant", "Eyeless Watcher", "High Priest",
-      "Hooded Stalker", "Hooded Stalker", "Occult Ritualist",
-      "Occult Ritualist", "Robed Figure", "Swift Byakhee",
-      "Hound of Tindalos",
+    monsters = {
+      { name = "Robed Figure",      dest = "spawn", location = "Rivertown", pos = { 1.842, 0.164, -1.722 }, rot = {0, 180, 180} },
+      { name = "Robed Figure",      dest = "spawn", location = "Downtown",  pos = {-1.755, 0.164, -1.688 }, rot = {0, 180, 180} },
+      { name = "Abyssal Servant",   dest = "deck" },
+      { name = "Eyeless Watcher",   dest = "deck" },
+      { name = "High Priest",       dest = "deck" },
+      { name = "Hooded Stalker",    dest = "deck", count = 2 },
+      { name = "Occult Ritualist",  dest = "deck", count = 2 },
+      { name = "Robed Figure",      dest = "deck" },
+      { name = "Swift Byakhee",     dest = "deck" },
+      { type = "Hound of Tindalos", dest = "deck" },
     },
-    monsterspawn = {
-      ["Robed Figure"] = {
-        { location = "Rivertown", position = { x = 1.842, y = 0.164, z = -1.722 }, rotation = { x = 0, y = 180, z = 180 } },
-        { location = "Downtown",  position = { x = -1.755, y = 0.164, z = -1.688 }, rotation = { x = 0, y = 180, z = 180 } },
-      },
-    },
-    archive      = { 4, 5, 6, 7, 8, 9 },
-    codex        = { 2, 3 },
-    tiles        = {
+    archive = { 4, 5, 6, 7, 8, 9 },
+    codex   = { 2, 3 },
+    tiles   = {
       ["Neighborhood"] = {
         ["Downtown"]         = { position = { x = 0,      y = 0.4, z = 0     }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { 0.137, 0.149, -2.24  }, type = "Doom Token" } } },
         ["Easttown"]         = { position = { x = -0.437, y = 0.4, z = 0     }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { -0.211, 0.149, -2.069 }, type = "Doom Token" } } },
@@ -60,11 +64,10 @@ SCENARIO_SHEETS = {
 
   -- ── Scenario 2: Feast for Undead ─────────────────────────────────────────
   ["FfU"] = {
-    name         = "FfU",
-    number       = 2,
-    type         = "Scenario",
-    setaside     = { "Alma Hill", "Billy Cooper", "Herman Collins", "Masked Hunter", "Ruth Turner", "Wolf-Man Drew" },
-    mythosCups   = {
+    name   = "FfU",
+    number = 2,
+    type   = "Scenario",
+    mythosCups = {
       ["Blank"]         = 3,
       ["Gate Burst"]    = 1,
       ["Read Headline"] = 2,
@@ -73,17 +76,25 @@ SCENARIO_SHEETS = {
       ["Spawn Monster"] = 2,
       ["Spread Doom"]   = 3,
     },
-    monsterdeck  = {
-      "Abyssal Servant", "Corpse-Taker", "Eyeless Watcher",
-      "Hooded Stalker", "Hooded Stalker", "Masked Ones", "Ghoul",
+    monsters = {
+      { name = "Hooded Stalker",  dest = "spawn", location = "Rivertown", pos = {-3.163, 0.164, -0.254 }, rot = {0, 180, 180} },
+      { name = "Vicious Glutton", dest = "spawn", location = "Uptown",    pos = { 1.579, 0.164, -1.807 }, rot = {0, 180, 180} },
+      { name = "Abyssal Servant", dest = "deck" },
+      { name = "Corpse-Taker",    dest = "deck" },
+      { name = "Eyeless Watcher", dest = "deck" },
+      { name = "Hooded Stalker",  dest = "deck", count = 2 },
+      { name = "Masked Ones",     dest = "deck" },
+      { type = "Ghoul",           dest = "deck" },
+      { name = "Alma Hill",      dest = "setaside" },
+      { name = "Billy Cooper",   dest = "setaside" },
+      { name = "Herman Collins", dest = "setaside" },
+      { name = "Masked Hunter",  dest = "setaside" },
+      { name = "Ruth Turner",    dest = "setaside" },
+      { name = "Wolf-Man Drew",  dest = "setaside" },
     },
-    monsterspawn = {
-      ["Hooded Stalker"] = { { location = "Rivertown", position = { x = -3.163, y = 0.164, z = -0.254  }, rotation = { x = 0, y = 180, z = 180 } } },
-      ["Vicious Glutton"]= { { location = "Uptown",    position = { x = 1.579,  y = 0.164, z = -1.807  }, rotation = { x = 0, y = 180, z = 180 } } },
-    },
-    archive      = { 12, 13, 14, 15, 16, 17, 18, 19 },
-    codex        = { 1, 10, 11 },
-    tiles        = {
+    archive = { 12, 13, 14, 15, 16, 17, 18, 19 },
+    codex   = { 1, 10, 11 },
+    tiles   = {
       ["Neighborhood"] = {
         ["Downtown"]  = { position = { x = 0.217,  y = 0.2, z = -0.379 }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { -1.95,  0.149, 0.977  }, type = "Doom Token" } } },
         ["Easttown"]  = { position = { x = -0.219, y = 0.2, z = -0.378 }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { 1.962,  0.149, 0.726  }, type = "Doom Token" } } },
@@ -104,13 +115,12 @@ SCENARIO_SHEETS = {
 
   -- ── Scenario 3: The Voyage of the Theseus ────────────────────────────────
   ["VoT"] = {
-    guid         = "1e1836",
-    name         = "VoT",
-    number       = 3,
-    type         = "Scenario",
-    anomaly      = "FR",
-    setaside     = { "Lodge" },
-    mythosCups   = {
+    guid    = "1e1836",
+    name    = "VoT",
+    number  = 3,
+    type    = "Scenario",
+    anomaly = "FR",
+    mythosCups = {
       ["Blank"]         = 3,
       ["Gate Burst"]    = 1,
       ["Read Headline"] = 2,
@@ -119,17 +129,17 @@ SCENARIO_SHEETS = {
       ["Spawn Monster"] = 2,
       ["Spread Doom"]   = 3,
     },
-    monsterdeck  = {
-      "Altered beast", "Altered beast", "Whippoorwill",
-      "Whippoorwill", "Thrall",
+    monsters = {
+      { name = "Hulking Thrall", dest = "spawn", location = "Rivertown", pos = { 3.065, 0.164, -1.639 }, rot = {0, 180, 180} },
+      { name = "Void Touched",   dest = "spawn", location = "Uptown",    pos = {-0.198, 0.164,  3.27  }, rot = {0, 180, 180} },
+      { name = "Altered Beast", dest = "deck", count = 2 },
+      { name = "Whippoorwill",  dest = "deck", count = 2 },
+      { type = "Thrall",        dest = "deck" },
+      { type = "Lodge",         dest = "setaside" },
     },
-    monsterspawn = {
-      ["Hulking Thrall"] = { { location = "Rivertown", position = { x = 3.065, y = 0.164, z = -1.639 }, rotation = { x = 0, y = 180, z = 180 } } },
-      ["Void Touched"]   = { { location = "Uptown",    position = { x = -0.198, y = 0.164, z = 3.27   }, rotation = { x = 0, y = 180, z = 180 } } },
-    },
-    archive      = { 22, 23, 24, 25, 26, 27, 28 },
-    codex        = { 2, 20, 21 },
-    tiles        = {
+    archive = { 22, 23, 24, 25, 26, 27, 28 },
+    codex   = { 2, 20, 21 },
+    tiles   = {
       ["Neighborhood"] = {
         ["Miskatonic University"] = { position = { x = 0.437, y = 0.2, z = -0.002 }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { 0.061, 0.149, 2.098  }, type = "Doom Token" } } },
         ["Northside"]             = { position = { x = 0.217, y = 0.2, z = -0.379 }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { 0.378, 0.149, 2.084  }, type = "Doom Token" } } },
@@ -149,11 +159,11 @@ SCENARIO_SHEETS = {
 
   -- ── Scenario 4: Echoes of the Deep ───────────────────────────────────────
   ["EotD"] = {
-    name         = "EotD",
-    number       = 4,
-    type         = "Scenario",
-    anomaly      = "NB",
-    mythosCups   = {
+    name    = "EotD",
+    number  = 4,
+    type    = "Scenario",
+    anomaly = "NB",
+    mythosCups = {
       ["Blank"]         = 3,
       ["Gate Burst"]    = 1,
       ["Read Headline"] = 2,
@@ -162,17 +172,17 @@ SCENARIO_SHEETS = {
       ["Spawn Monster"] = 2,
       ["Spread Doom"]   = 3,
     },
-    monsterdeck  = {
-      "Hooded Stalker", "Hooded Stalker", "Occult Ritualist",
-      "Occult Ritualist", "R'lyeh Guardian", "Deep One",
+    monsters = {
+      { name = "Hybrid Thug", dest = "spawn", location = "Rivertown",         pos = { 3.409, 0.164, -1.877 }, rot = {0, 180, 180} },
+      { name = "River Skulk", dest = "spawn", location = "Merchant District", pos = { 3.515, 0.164,  1.96  }, rot = {0, 180, 180} },
+      { name = "Hooded Stalker",   dest = "deck", count = 2 },
+      { name = "Occult Ritualist", dest = "deck", count = 2 },
+      { name = "R'lyeh Guardian",  dest = "deck" },
+      { type = "Deep One",         dest = "deck" },
     },
-    monsterspawn = {
-      ["Hybrid Thug"]  = { { location = "Rivertown",         position = { x = 3.409, y = 0.164, z = -1.877 }, rotation = { x = 0, y = 180, z = 180 } } },
-      ["River Skulk"]  = { { location = "Merchant District", position = { x = 3.515, y = 0.164, z = 1.96   }, rotation = { x = 0, y = 180, z = 180 } } },
-    },
-    archive      = { 31, 32, 33, 34, 35, 36, 37, 38, 39, 40 },
-    codex        = { 2, 29, 30 },
-    tiles        = {
+    archive = { 31, 32, 33, 34, 35, 36, 37, 38, 39, 40 },
+    codex   = { 2, 29, 30 },
+    tiles   = {
       ["Neighborhood"] = {
         ["Downtown"]              = { position = { x = -0.006, y = 0.2, z = -0.378 }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { 0.357,  0.149, 2.002  }, type = "Doom Token" } } },
         ["Merchant District"]     = { position = { x = 0.218,  y = 0.2, z = 0.0001 }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { -1.968, 0.149, -0.705 }, type = "Doom Token" }, { position = { 1.558, 0.149, -1.4 }, type = "Doom Token" } } },
@@ -193,13 +203,11 @@ SCENARIO_SHEETS = {
 
   -- ── Scenario 5: Strangers in the Dark ────────────────────────────────────
   ["SitD"] = {
-    guid         = "7eb83a",
-    name         = "SitD",
-    number       = 5,
-    type         = "Scenario",
-    setaside     = { "Brutal Goons", "Brutal Goons", "Rough Bootlegger", "Rough Bootlegger", "Corben Bouchard" },
-    setaside2    = { "Hit Squad", "Hit Squad", "Mob Enforcer", "Mob Enforcer", "Siobhan Riley" },
-    mythosCups   = {
+    guid   = "7eb83a",
+    name   = "SitD",
+    number = 5,
+    type   = "Scenario",
+    mythosCups = {
       ["Blank"]         = 3,
       ["Gate Burst"]    = 1,
       ["Read Headline"] = 2,
@@ -208,18 +216,24 @@ SCENARIO_SHEETS = {
       ["Spawn Monster"] = 2,
       ["Spread Doom"]   = 3,
     },
-    monsterdeck  = {
-      "brawling riot", "ghoul acolyte", "ghoul acolyte",
-      "Occult Ritualist", "Occult Ritualist",
-      "vicious glutton", "vicious glutton", "Nightgaunt",
+    monsters = {
+      { name = "Feckless Agitator", dest = "spawn", location = "Northside", pos = {-0.015, 0.164,  3.422  }, rot = {0, 180, 180} },
+      { name = "Mouthy Raconteur",  dest = "spawn", location = "Rivertown",  pos = { 0.256, 0.164, -3.364  }, rot = {0, 180, 180} },
+      { name = "Brawling Riot",    dest = "deck" },
+      { name = "Ghoul Acolyte",    dest = "deck", count = 2 },
+      { name = "Occult Ritualist", dest = "deck", count = 2 },
+      { name = "Vicious Glutton",  dest = "deck", count = 2 },
+      { type = "Nightgaunt",       dest = "deck" },
+      { name = "Brutal Goons",     dest = "setaside", count = 2 },
+      { name = "Rough Bootlegger", dest = "setaside", count = 2 },
+      { name = "Corben Bouchard",  dest = "setaside" },
+      { name = "Hit Squad",        dest = "setaside2", count = 2 },
+      { name = "Mob Enforcer",     dest = "setaside2", count = 2 },
+      { name = "Siobhan Riley",    dest = "setaside2" },
     },
-    monsterspawn = {
-      ["Feckless Agitator"] = { { location = "Northside", position = { x = -0.015, y = 0.164, z = 3.422  }, rotation = { x = 0, y = 180, z = 180 } } },
-      ["Mouthy Raconteur"]  = { { location = "Rivertown", position = { x = 0.256,  y = 0.164, z = -3.364 }, rotation = { x = 0, y = 180, z = 180 } } },
-    },
-    archive      = { 44, 45, 46, 47, 48, 49, 50, 51, 52 },
-    codex        = { 1, 41, 42, 43 },
-    tiles        = {
+    archive = { 44, 45, 46, 47, 48, 49, 50, 51, 52 },
+    codex   = { 1, 41, 42, 43 },
+    tiles   = {
       ["Neighborhood"] = {
         ["Downtown"]         = { position = { x = -0.005, y = 0.4, z = -0.216 }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { 0.317, 0.149, 1.915  }, type = "Doom Token" }, { position = { -3.648, 0.149, 0.804 }, type = "Red Marker" } } },
         ["Easttown"]         = { position = { x = -0.22,  y = 0.4, z = 0.163  }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { -1.714, 0.149, 1.379 }, type = "Doom Token" } } },
@@ -240,12 +254,12 @@ SCENARIO_SHEETS = {
 
   -- ── Scenario 6: Secrets of the Tomb ──────────────────────────────────────
   ["SoT"] = {
-    guid         = "62724a",
-    name         = "SoT",
-    number       = 6,
-    type         = "Scenario",
-    anomaly      = "YE",
-    mythosCups   = {
+    guid    = "62724a",
+    name    = "SoT",
+    number  = 6,
+    type    = "Scenario",
+    anomaly = "YE",
+    mythosCups = {
       ["Blank"]         = 3,
       ["Gate Burst"]    = 1,
       ["Read Headline"] = 2,
@@ -254,17 +268,20 @@ SCENARIO_SHEETS = {
       ["Spawn Monster"] = 2,
       ["Spread Doom"]   = 3,
     },
-    monsterdeck  = {
-      "capricious stalker", "cerebral extractor", "eyeless watcher",
-      "grasping fungus", "occult ritualist", "Aberration", "Formless Spawn",
+    monsters = {
+      { name = "Grasping Fungus",  dest = "spawn", location = "Merchant District", pos = {-2.976, 0.164, -1.754 }, rot = {0, 180, 180} },
+      { name = "Occult Ritualist", dest = "spawn", location = "Rivertown",         pos = { 0.466, 0.164, -3.324 }, rot = {0, 180, 180} },
+      { name = "Capricious Stalker", dest = "deck" },
+      { name = "Cerebral Extractor", dest = "deck" },
+      { name = "Eyeless Watcher",    dest = "deck" },
+      { name = "Grasping Fungus",    dest = "deck" },
+      { name = "Occult Ritualist",   dest = "deck" },
+      { type = "Aberration",         dest = "deck" },
+      { type = "Formless Spawn",     dest = "deck" },
     },
-    monsterspawn = {
-      ["grasping fungus"]  = { { location = "Merchant District", position = { x = -2.976, y = 0.164, z = -1.754 }, rotation = { x = 0, y = 180, z = 180 } } },
-      ["occult ritualist"] = { { location = "Rivertown",         position = { x = 0.466,  y = 0.164, z = -3.324 }, rotation = { x = 0, y = 180, z = 180 } } },
-    },
-    archive      = { 55, 56, 57, 58, 59, 60 },
-    codex        = { 2, 53, 54 },
-    tiles        = {
+    archive = { 55, 56, 57, 58, 59, 60 },
+    codex   = { 2, 53, 54 },
+    tiles   = {
       ["Neighborhood"] = {
         ["Merchant District"]    = { position = { x = -0.091, y = 0.2, z = -0.225 }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { 0.386, 0.149, -2.024  }, type = "Doom Token" } } },
         ["Miskatonic University"] = { position = { x = -0.306, y = 0.2, z = 0.155  }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { 0.301, 0.149, 1.987   }, type = "Doom Token" } } },
@@ -300,17 +317,17 @@ SCENARIO_SHEETS = {
       ["Spawn Monster"] = 2,
       ["Spread Doom"]   = 3,
     },
-    monsterdeck  = {
-      "Altered beast", "Altered beast", "Hulking Thrall", "Hulking Thrall",
-      "Prowling Abductor", "Prowling Abductor", "Deep One",
+    monsters = {
+      { name = "Prowling Abductor", dest = "spawn", location = "Easttown",        pos = {-3.065, 0.164,  1.039 }, rot = {0, 180, 180} },
+      { name = "Entraced Hybrid",   dest = "spawn", location = "Innsmouth Shore", pos = {-3,    0.164, -5.6   }, rot = {0, 180, 180} },
+      { name = "Altered Beast",     dest = "deck", count = 2 },
+      { name = "Hulking Thrall",    dest = "deck", count = 2 },
+      { name = "Prowling Abductor", dest = "deck", count = 2 },
+      { type = "Deep One",          dest = "deck" },
     },
-    monsterspawn = {
-      ["Prowling Abductor"] = { { location = "Easttown",       position = { x = -3.065, y = 0.164, z = 1.039  }, rotation = { x = 0, y = 180, z = 180 } } },
-      ["Entraced Hybrid"]   = { { location = "Innsmouth Shore", position = { x = -3,    y = 0.164, z = -5.6   }, rotation = { x = 0, y = 180, z = 180 } } },
-    },
-    archive      = { 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75 },
-    codex        = { 61, 62, 63 },
-    tiles        = {
+    archive = { 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75 },
+    codex   = { 61, 62, 63 },
+    tiles   = {
       ["Neighborhood"] = {
         ["Northside"]          = { position = { x = 0.437,  y = 0.2, z = -0.002 }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { 1.551, 0.149, 1.498   }, type = "Doom Token" } } },
         ["Easttown"]           = { position = { x = 0,      y = 0.2, z = 0      }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { -1.634, 0.149, -1.228  }, type = "Doom Token" } } },
@@ -343,13 +360,12 @@ SCENARIO_SHEETS = {
 
   -- ── Scenario 8: The Twilight Plague ──────────────────────────────────────
   ["TPL"] = {
-    guid         = "a1b2c3",
-    name         = "TPL",
-    number       = 8,
-    type         = "Scenario",
-    anomaly      = "VM",
-    setaside     = { "Declan Pearce" },
-    mythosCups   = {
+    guid    = "a1b2c3",
+    name    = "TPL",
+    number  = 8,
+    type    = "Scenario",
+    anomaly = "VM",
+    mythosCups = {
       ["Blank"]         = 3,
       ["Gate Burst"]    = 1,
       ["Read Headline"] = 2,
@@ -358,19 +374,21 @@ SCENARIO_SHEETS = {
       ["Spawn Monster"] = 2,
       ["Spread Doom"]   = 3,
     },
-    monsterdeck  = {
-      "Guardian Beast", "Prowling Abductor", "Prowling Abductor",
-      "Robed Figure", "Robed Figure", "Robed Figure",
-      "Terrified Wanderer", "Terrified Wanderer",
-      "Void Touched", "Void Touched", "Byakhee", "Moon-beast",
+    monsters = {
+      { name = "Swooping Scavenger", dest = "spawn", location = "Downtown",         pos = {-0.337, 0.164, -2.939 }, rot = {0, 180, 180} },
+      { name = "Prowling Abductor",  dest = "spawn", location = "Kingsport Harbor", pos = {-2.786, 0.164, -1.899 }, rot = {0, 180, 180} },
+      { name = "Guardian Beast",     dest = "deck" },
+      { name = "Prowling Abductor",  dest = "deck", count = 2 },
+      { name = "Robed Figure",       dest = "deck", count = 3 },
+      { name = "Terrified Wanderer", dest = "deck", count = 2 },
+      { name = "Void Touched",       dest = "deck", count = 2 },
+      { type = "Byakhee",            dest = "deck" },
+      { type = "Moon-Beast",         dest = "deck" },
+      { name = "Declan Pearce",      dest = "setaside" },
     },
-    monsterspawn = {
-      ["Swooping Scavenger"] = { { location = "Downtown",        position = { x = -0.337, y = 0.164, z = -2.939 }, rotation = { x = 0, y = 180, z = 180 } } },
-      ["Prowling Abductor"]  = { { location = "Kingsport Harbor",position = { x = -2.786, y = 0.164, z = -1.899 }, rotation = { x = 0, y = 180, z = 180 } } },
-    },
-    archive      = { 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 88, 89, 90 },
-    codex        = { 2, 76, 87 },
-    tiles        = {
+    archive = { 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 88, 89, 90 },
+    codex   = { 2, 76, 87 },
+    tiles   = {
       ["Neighborhood"] = {
         ["Downtown"]          = { position = { x = 0.081,  y = 0.2, z = -0.378 }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { -1.888, 0.149, -0.792 }, type = "Doom Token" } } },
         ["Merchant District"] = { position = { x = 0.3,    y = 0.2, z = 0      }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { 0.22, 0.149, -2.063   }, type = "Doom Token" } } },
@@ -399,12 +417,12 @@ SCENARIO_SHEETS = {
 
   -- ── Scenario 9: The Innsmouth Conspiracy ──────────────────────────────────
   ["IC"] = {
-    guid         = "ff94f3",
-    name         = "IC",
-    number       = 9,
-    type         = "Scenario",
-    terror       = "FС",
-    mythosCups   = {
+    guid   = "ff94f3",
+    name   = "IC",
+    number = 9,
+    type   = "Scenario",
+    terror = "FС",
+    mythosCups = {
       ["Blank"]         = 2,
       ["Terror"]        = 1,
       ["Gate Burst"]    = 1,
@@ -414,27 +432,30 @@ SCENARIO_SHEETS = {
       ["Spawn Monster"] = 2,
       ["Spread Doom"]   = 3,
     },
-    monsterdeck  = {
-      "Accursed Somnambulist", "Accursed Somnambulist",
-      "Altered Servant", "Altered Servant", "Avian Thrall",
-      "High Priest", "Hulking Thrall", "Hulking Thrall",
-      "Icebound Captive", "Icebound Captive", "Lupine Thrall",
-      "Ravenous Predator", "Terrified Wanderer", "Terrified Wanderer", "Shantak",
+    monsters = {
+      { name = "High Priest", dest = "spawn", location = "Innsmouth Shore", pos = { 3.201, 0.164, 1.784 }, rot = {0, 180, 180} },
+      { name = "Accursed Somnambulist", dest = "deck", count = 2 },
+      { name = "Altered Servant",       dest = "deck", count = 2 },
+      { name = "Avian Thrall",          dest = "deck" },
+      { name = "High Priest",           dest = "deck" },
+      { name = "Hulking Thrall",        dest = "deck", count = 2 },
+      { name = "Icebound Captive",      dest = "deck", count = 2 },
+      { name = "Lupine Thrall",         dest = "deck" },
+      { name = "Ravenous Predator",     dest = "deck" },
+      { name = "Terrified Wanderer",    dest = "deck", count = 2 },
+      { type = "Shantak",               dest = "deck" },
     },
-    monsterspawn = {
-      ["High Priest"] = { { location = "Innsmouth Shore", position = { x = 3.201, y = 0.164, z = 1.784 }, rotation = { x = 0, y = 180, z = 180 } } },
-    },
-    archive      = { 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105 },
-    codex        = { 61, 91 },
-    tiles        = {
+    archive = { 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105 },
+    codex   = { 61, 91 },
+    tiles   = {
       ["Neighborhood"] = {
-        ["Northside"]          = { position = { x = 0.086,  y = 0.4, z = 0      }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { -2.012, 0.149, 0.625   }, type = "Doom Token" } } },
-        ["Rivertown"]          = { position = { x = -0.35,  y = 0.4, z = 0      }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { 0.137, 0.149, -2.24    }, type = "Doom Token" } } },
-        ["Easttown"]           = { position = { x = -0.787, y = 0.4, z = 0      }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { -1.588, 0.149, -1.311  }, type = "Doom Token" } } },
-        ["Southside"]          = { position = { x = -0.567, y = 0.4, z = 0.378  }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { 1.498, 0.149, 1.213    }, type = "Doom Token" } } },
-        ["Downtown"]           = { position = { x = -0.134, y = 0.4, z = -0.378 }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { 2.475, 0.149, -2.962   }, type = "Doom Token" } } },
-        ["Central Kingsport"]  = { position = { x = 0.372,  y = 0.2, z = 0.378  }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { 1.958, 0.149, 0.727   }, type = "Doom Token" }, { position = { 1.958, 0.149, -0.784 }, type = "Doom Token" } } },
-        ["Innsmouth Shore"]    = { position = { x = 0.372,  y = 0.2, z = -0.378 }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { -0.252, 0.149, -2.136 }, type = "Doom Token" } } },
+        ["Northside"]         = { position = { x = 0.086,  y = 0.4, z = 0      }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { -2.012, 0.149, 0.625   }, type = "Doom Token" } } },
+        ["Rivertown"]         = { position = { x = -0.35,  y = 0.4, z = 0      }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { 0.137, 0.149, -2.24    }, type = "Doom Token" } } },
+        ["Easttown"]          = { position = { x = -0.787, y = 0.4, z = 0      }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { -1.588, 0.149, -1.311  }, type = "Doom Token" } } },
+        ["Southside"]         = { position = { x = -0.567, y = 0.4, z = 0.378  }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { 1.498, 0.149, 1.213    }, type = "Doom Token" } } },
+        ["Downtown"]          = { position = { x = -0.134, y = 0.4, z = -0.378 }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { 2.475, 0.149, -2.962   }, type = "Doom Token" } } },
+        ["Central Kingsport"] = { position = { x = 0.372,  y = 0.2, z = 0.378  }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { 1.958, 0.149, 0.727   }, type = "Doom Token" }, { position = { 1.958, 0.149, -0.784 }, type = "Doom Token" } } },
+        ["Innsmouth Shore"]   = { position = { x = 0.372,  y = 0.2, z = -0.378 }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { -0.252, 0.149, -2.136 }, type = "Doom Token" } } },
       },
       ["Street"] = {
         ["Residential1"] = { position = { x = -0.568, y = 0.2, z = 0      }, rotation = { x = 0, y = 180, z = 0 } },
@@ -461,11 +482,11 @@ SCENARIO_SHEETS = {
 
   -- ── Scenario 10: Dreams of Ruin ───────────────────────────────────────────
   ["DoR"] = {
-    guid         = "7dcc06",
-    name         = "DoR",
-    number       = 10,
-    type         = "Scenario",
-    mythosCups   = {
+    guid   = "7dcc06",
+    name   = "DoR",
+    number = 10,
+    type   = "Scenario",
+    mythosCups = {
       ["Blank"]         = 1,
       ["Gate Burst"]    = 1,
       ["Read Headline"] = 2,
@@ -474,19 +495,21 @@ SCENARIO_SHEETS = {
       ["Spawn Monster"] = 2,
       ["Spread Doom"]   = 3,
     },
-    monsterdeck  = {
-      "High Priest", "Occult Ritualist", "Occult Ritualist",
-      "Sea Singer", "Shallows Predator", "Shallows Predator",
-      "Shoreline Brute", "Dreaming", "Star Spawn",
+    monsters = {
+      { name = "Accursed Somnambulist", dest = "spawn", location = "Rivertown", pos = {-3.065, 0.164, 1.039  }, rot = {0, 180, 180} },
+      { name = "Enraged Dreamer",       dest = "spawn", location = "Uptown",    pos = { 2.68,  0.164, 1.902  }, rot = {0, 180, 180} },
+      { name = "High Priest",       dest = "deck" },
+      { name = "Occult Ritualist",  dest = "deck", count = 2 },
+      { name = "Sea Singer",        dest = "deck" },
+      { name = "Shallows Predator", dest = "deck", count = 2 },
+      { name = "Shoreline Brute",   dest = "deck" },
+      { type = "Dreaming",          dest = "deck" },
+      { type = "Star Spawn",        dest = "deck" },
     },
-    monsterspawn = {
-      ["Accursed Somnambulist"] = { { location = "Rivertown", position = { x = -3.065, y = 0.164, z = 1.039  }, rotation = { x = 0, y = 180, z = 180 } } },
-      ["Enraged Dreamer"]       = { { location = "Uptown",    position = { x = 2.68,   y = 0.164, z = 1.902  }, rotation = { x = 0, y = 180, z = 180 } } },
-    },
-    archive      = { 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120 },
-    codex        = { 1, 106, 107 },
-    codexDeck    = { 117, 118, 119, 120 },
-    tiles        = {
+    archive   = { 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120 },
+    codex     = { 1, 106, 107 },
+    codexDeck = { 117, 118, 119, 120 },
+    tiles     = {
       ["Neighborhood"] = {
         ["Miskatonic University"] = { position = { x = 0.437,  y = 0.2, z = -0.002 }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { 1.473, 0.149, -1.374  }, type = "Doom Token" } } },
         ["Rivertown"]             = { position = { x = 0,      y = 0.2, z = 0      }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { -0.317, 0.149, -2.101 }, type = "Doom Token" } } },
@@ -511,13 +534,12 @@ SCENARIO_SHEETS = {
 
   -- ── Scenario 11: Blood on the Streets ────────────────────────────────────
   ["BtS"] = {
-    guid         = "8a7860",
-    name         = "BtS",
-    number       = 11,
-    type         = "Scenario",
-    anomaly      = "LS",
-    setaside     = { "Lodge" },
-    mythosCups   = {
+    guid    = "8a7860",
+    name    = "BtS",
+    number  = 11,
+    type    = "Scenario",
+    anomaly = "LS",
+    mythosCups = {
       ["Blank"]         = 3,
       ["Gate Burst"]    = 1,
       ["Read Headline"] = 2,
@@ -526,18 +548,22 @@ SCENARIO_SHEETS = {
       ["Spawn Monster"] = 2,
       ["Spread Doom"]   = 3,
     },
-    monsterdeck  = {
-      "Flesh-eater", "Flesh-eater", "High Priest", "Lupine Thrall",
-      "Taloned Cannibal", "Taloned Cannibal", "Tindalos alpha",
-      "Troubled Spirit", "Angry Spirit", "Hostile Spirit",
+    monsters = {
+      { name = "Haunting Dead",      dest = "spawn", location = "Uptown",   pos = { 2.519, 0.164, -1.727 }, rot = {0, 180, 180} },
+      { name = "Raging Poltergeist", dest = "spawn", location = "Downtown", pos = {-0.61,  0.164, -3.131 }, rot = {0, 180, 180} },
+      { name = "Flesh-Eater",      dest = "deck", count = 2 },
+      { name = "High Priest",      dest = "deck" },
+      { name = "Lupine Thrall",    dest = "deck" },
+      { name = "Taloned Cannibal", dest = "deck", count = 2 },
+      { name = "Tindalos Alpha",   dest = "deck" },
+      { name = "Troubled Spirit",  dest = "deck" },
+      { name = "Angry Spirit",     dest = "deck" },
+      { name = "Hostile Spirit",   dest = "deck" },
+      { type = "Lodge",            dest = "setaside" },
     },
-    monsterspawn = {
-      ["Haunting Dead"]    = { { location = "Uptown",   position = { x = 2.519, y = 0.164, z = -1.727 }, rotation = { x = 0, y = 180, z = 180 } } },
-      ["Raging Poltergeist"]={ { location = "Downtown", position = { x = -0.61, y = 0.164, z = -3.131 }, rotation = { x = 0, y = 180, z = 180 } } },
-    },
-    archive      = { 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134 },
-    codex        = { 2, 121 },
-    tiles        = {
+    archive = { 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134 },
+    codex   = { 2, 121 },
+    tiles   = {
       ["Neighborhood"] = {
         ["Downtown"]          = { position = { x = 0,      y = 0.2, z = -0.758 }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { -2.055, 0.149, -0.704 }, type = "Doom Token" } } },
         ["Merchant District"] = { position = { x = 0.217,  y = 0.2, z = -0.379 }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { -1.95, 0.149, -0.64   }, type = "Doom Token" } } },
@@ -563,11 +589,11 @@ SCENARIO_SHEETS = {
 
   -- ── Scenario 12: The Curse of the Outer Ones ─────────────────────────────
   ["TDCO"] = {
-    guid         = "e024fc",
-    name         = "TDCO",
-    number       = 12,
-    type         = "Scenario",
-    mythosCups   = {
+    guid   = "e024fc",
+    name   = "TDCO",
+    number = 12,
+    type   = "Scenario",
+    mythosCups = {
       ["Blank"]         = 2,
       ["Gate Burst"]    = 1,
       ["Read Headline"] = 2,
@@ -576,16 +602,21 @@ SCENARIO_SHEETS = {
       ["Spawn Monster"] = 2,
       ["Spread Doom"]   = 4,
     },
-    monsterdeck  = {
-      "Abyssal Servant", "Coursing Hound", "Flesh-eater", "Flesh-eater",
-      "Nightmarish Fiend", "Swift Byakhee", "Tunneling Dhole",
-      "Vicious Glutton", "Vicious Glutton", "Troubled Spirit", "gug", "ghast",
+    monsters = {
+      { name = "Vicious Glutton",  dest = "spawn", location = "Southside",   pos = { 3.316, 0.164, -0.457  }, rot = {0, 180, 180} },
+      { name = "Taloned Cannibal", dest = "spawn", location = "French Hill", pos = {-1.688, 0.164, -3.051  }, rot = {0, 180, 180} },
+      { name = "Abyssal Servant",  dest = "deck" },
+      { name = "Coursing Hound",   dest = "deck" },
+      { name = "Flesh-Eater",      dest = "deck", count = 2 },
+      { name = "Nightmarish Fiend",dest = "deck" },
+      { name = "Swift Byakhee",    dest = "deck" },
+      { name = "Tunneling Dhole",  dest = "deck" },
+      { name = "Vicious Glutton",  dest = "deck", count = 2 },
+      { name = "Troubled Spirit",  dest = "deck" },
+      { type = "Gug",              dest = "deck" },
+      { type = "Ghast",            dest = "deck" },
     },
-    monsterspawn = {
-      ["Vicious Glutton"]  = { { location = "Southside",   position = { x = 3.316,  y = 0.164, z = -0.457  }, rotation = { x = 0, y = 180, z = 180 } } },
-      ["Taloned Cannibal"] = { { location = "French Hill", position = { x = -1.688, y = 0.164, z = -3.051  }, rotation = { x = 0, y = 180, z = 180 } } },
-    },
-    allyspawn    = {
+    allyspawn = {
       {
         source  = { boardMemo = { type = "ShopMat" }, deckType = "ally" },
         targets = {
@@ -595,17 +626,17 @@ SCENARIO_SHEETS = {
         },
       },
     },
-    archive      = { 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149 },
-    codex        = { 1, 135, 136, 137 },
-    tiles        = {
+    archive = { 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149 },
+    codex   = { 1, 135, 136, 137 },
+    tiles   = {
       ["Neighborhood"] = {
-        ["The Underworld"]       = { position = { x = 0,      y = 0.4, z = 0      }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { -0.232, 0.149, 1.958  }, type = "Doom Token" } } },
-        ["French Hill"]          = { position = { x = -0.437, y = 0.4, z = 0      }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { 0.349, 0.149, 1.911   }, type = "Doom Token" } } },
-        ["Uptown"]               = { position = { x = 0.22,   y = 0.4, z = 0.378  }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { -0.232, 0.149, 1.958  }, type = "Doom Token" } } },
-        ["Miskatonic University"] = { position = { x = 0.436, y = 0.4, z = 0      }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { 1.409, 0.149, -1.453  }, type = "Doom Token" } } },
-        ["Southside"]            = { position = { x = -0.217, y = 0.4, z = 0.378  }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { -2.028, 0.149, 0.56   }, type = "Doom Token" } } },
-        ["Northside"]            = { position = { x = 0.22,   y = 0.4, z = -0.378 }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { 0.361, 0.149, 2.079   }, type = "Doom Token" } } },
-        ["Easttown"]             = { position = { x = -0.217, y = 0.4, z = -0.378 }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { -0.303, 0.149, 1.934  }, type = "Doom Token" } } },
+        ["The Underworld"]        = { position = { x = 0,      y = 0.4, z = 0      }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { -0.232, 0.149, 1.958  }, type = "Doom Token" } } },
+        ["French Hill"]           = { position = { x = -0.437, y = 0.4, z = 0      }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { 0.349, 0.149, 1.911   }, type = "Doom Token" } } },
+        ["Uptown"]                = { position = { x = 0.22,   y = 0.4, z = 0.378  }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { -0.232, 0.149, 1.958  }, type = "Doom Token" } } },
+        ["Miskatonic University"] = { position = { x = 0.436,  y = 0.4, z = 0      }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { 1.409, 0.149, -1.453  }, type = "Doom Token" } } },
+        ["Southside"]             = { position = { x = -0.217, y = 0.4, z = 0.378  }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { -2.028, 0.149, 0.56   }, type = "Doom Token" } } },
+        ["Northside"]             = { position = { x = 0.22,   y = 0.4, z = -0.378 }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { 0.361, 0.149, 2.079   }, type = "Doom Token" } } },
+        ["Easttown"]              = { position = { x = -0.217, y = 0.4, z = -0.378 }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { -0.303, 0.149, 1.934  }, type = "Doom Token" } } },
       },
       ["Street"] = {
         ["Bridge1"]      = { position = { x = 0.326,  y = 0.2, z = -0.189 }, rotation = { x = 0, y = 120, z = 0 } },
@@ -624,12 +655,12 @@ SCENARIO_SHEETS = {
 
   -- ── Scenario 13: The Thousand Keys and the Gate ───────────────────────────
   ["TKaTG"] = {
-    guid         = "1bab21",
-    name         = "TKaTG",
-    number       = 13,
-    type         = "Scenario",
-    anomaly      = "FR",
-    mythosCups   = {
+    guid    = "1bab21",
+    name    = "TKaTG",
+    number  = 13,
+    type    = "Scenario",
+    anomaly = "FR",
+    mythosCups = {
       ["Blank"]         = 3,
       ["Gate Burst"]    = 1,
       ["Read Headline"] = 2,
@@ -638,19 +669,24 @@ SCENARIO_SHEETS = {
       ["Spawn Monster"] = 2,
       ["Spread Doom"]   = 3,
     },
-    monsterdeck  = {
-      "Bloody Titan", "Corpse-Taker", "Coursing Hound", "Crazed Fiend",
-      "Gluttonous Giant", "Keening Hound", "Tunneling Dhole",
-      "Whippoorwill", "Whippoorwill",
-      "Angry Spirit", "Hostile Spirit", "Thrall",
+    monsters = {
+      { name = "Tunneling Dhole", dest = "spawn", location = "Rivertown", pos = {-3.078, 0.164,  1.094  }, rot = {0, 180, 180} },
+      { name = "Whippoorwill",    dest = "spawn", location = "Uptown",    pos = { 1.367, 0.164, -3.213  }, rot = {0, 180, 180} },
+      { name = "Bloody Titan",     dest = "deck" },
+      { name = "Corpse-Taker",     dest = "deck" },
+      { name = "Coursing Hound",   dest = "deck" },
+      { name = "Crazed Fiend",     dest = "deck" },
+      { name = "Gluttonous Giant", dest = "deck" },
+      { name = "Keening Hound",    dest = "deck" },
+      { name = "Tunneling Dhole",  dest = "deck" },
+      { name = "Whippoorwill",     dest = "deck", count = 2 },
+      { name = "Angry Spirit",     dest = "deck" },
+      { name = "Hostile Spirit",   dest = "deck" },
+      { type = "Thrall",           dest = "deck" },
     },
-    monsterspawn = {
-      ["Tunneling Dhole"] = { { location = "Rivertown", position = { x = -3.078, y = 0.164, z = 1.094  }, rotation = { x = 0, y = 180, z = 180 } } },
-      ["Whippoorwill"]    = { { location = "Uptown",    position = { x = 1.367,  y = 0.164, z = -3.213 }, rotation = { x = 0, y = 180, z = 180 } } },
-    },
-    archive      = { 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165 },
-    codex        = { 2, 150, 151 },
-    tiles        = {
+    archive = { 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165 },
+    codex   = { 2, 150, 151 },
+    tiles   = {
       ["Neighborhood"] = {
         ["French Hill"]       = { position = { x = 0,      y = 0.4, z = 0      }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { 0.252, 0.149, -1.936  }, type = "Doom Token" } } },
         ["Uptown"]            = { position = { x = 0.22,   y = 0.4, z = 0.378  }, rotation = { x = 0, y = 180, z = 0 }, tokens = { { position = { 1.972, 0.149, -0.687  }, type = "Doom Token" } } },

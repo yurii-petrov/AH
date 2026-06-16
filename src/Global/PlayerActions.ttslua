@@ -445,7 +445,7 @@ function onClickEncounter(obj, playerColor)
   end
 
   local function showCardInActiveSpace(data, obj)
-    local mythosTile = getObjectFromGUID(mythosTileId)
+    local mythosTile = MYTHOS_TILE_DATA.obj
     if not mythosTile then
       return
     end

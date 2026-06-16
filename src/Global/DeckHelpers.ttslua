@@ -98,24 +98,7 @@ function takeBottomCardFromTile(id, isBack)
   end
 end
 
-function getEventObj()
-  return getObjFromMythosTile({-0.198, 0.236, 0.278})
-end
-
-function getObjFromMythosTile(pos)
-  local mythosTile = getObjectFromGUID(mythosTileId)
-  if not mythosTile then
-    return
-  end
-
-  local y = mythosTile.getPosition().y + mythosTile.getBounds().size.y
-  local objs = findObjsInRadius(mythosTile.positionToWorld(pos):setAt("y", y))
-  for _, o in pairs(objs) do
-    if o.type == "Deck" or o.type == "Card" then
-      return o
-    end
-  end
-end
+-- getEventObj / getObjFromMythosTile moved to MythosTile.ttslua
 
 function findObjectOnTile(tileId)
   local tile = getObjectFromGUID(tileId)

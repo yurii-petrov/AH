@@ -14,17 +14,11 @@ function processStepReplaceEventDeck(step, context, onDone)
 
   local removeCount = step.removeFromTop or 0
 
-  local mythosTile = getObjectFromGUID(mythosTileId)
-  if not mythosTile then
-    log("[replaceEventDeck] mythosTile not found")
-    return
-  end
-
   local box = getObjectFromGUID(boxId)
   if not box then return end
 
-  local eventDeckPos    = getEventDeckWorldPos(mythosTile)
-  local eventDiscardPos = getEventDiscardWorldPos(mythosTile)
+  local eventDeckPos    = getEventDeckWorldPos()
+  local eventDiscardPos = getEventDiscardWorldPos()
 
   -- Step 1: return top N cards from current event deck → box
   local currentDeck = getEventObj()

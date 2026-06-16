@@ -28,7 +28,7 @@ function mergeEventOnTopAtEventPos(eventCard, targetDeck, done)
 end
 
 function prepareScenarioEventDeck(eventDeck, decks, time)
-  local mythosTile = getObjectFromGUID(mythosTileId)
+  local mythosTile = MYTHOS_TILE_DATA.obj
   if not eventDeck or not mythosTile then
     return
   end

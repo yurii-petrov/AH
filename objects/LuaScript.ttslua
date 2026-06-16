@@ -4,6 +4,7 @@ require("Global/Utils")
 require("Global/Steps")
 require("Global/Ally")
 require("Global/Mythos")
+require("Global/MythosTile")
 require("Global/Doom")
 require("Global/Monster")
 require("Global/DeckHelpers")
@@ -267,6 +268,28 @@ local function resolveAllDataObjects()
   end
 end
 
+-- Restores deck GUIDs saved by placeComponents into the runtime data structures.
+-- Called after gameData is loaded from savedData so GUIDs survive TTS reloads.
+local function resolveAllDeckObjects()
+  local guids = gameData.deckGuids
+  if not guids then return end
+
+  if guids.headline then
+    LOCATION_MAT_DATA.headlineGuid = guids.headline
+    LOCATION_MAT_DATA.headlineObj  = getObjectFromGUID(guids.headline)
+  end
+  if guids.monster then
+    LOCATION_MAT_DATA.monsterDeckGuid = guids.monster
+    LOCATION_MAT_DATA.monsterDeckObj  = getObjectFromGUID(guids.monster)
+  end
+  for _, t in pairs(ShopDeckType) do
+    if guids[t] and SHOP_MAT_DATA.decks[t] then
+      SHOP_MAT_DATA.decks[t].guid = guids[t]
+      SHOP_MAT_DATA.decks[t].obj  = getObjectFromGUID(guids[t])
+    end
+  end
+end
+
 function onload(savedData)
 
   resolveAllDataObjects()
@@ -280,15 +303,18 @@ function onload(savedData)
   lockObj(scenarioMatId)
   lockObj(mythosTileId)
   lockObj(tile4ActionsId)
-  lockObj(shopMatId)
+
   -- lockObj(conditionMatId)
   -- lockObj(mythosBagId)
+  lockObj(shopMatId)
   lockObj(nastilo4kaId)
 
   local parsedSaveData = parseJson(savedData)
   if parsedSaveData then
     gameData = parsedSaveData
   end
+
+  resolveAllDeckObjects()
 
   Wait.time(function()
     updateXMLs()
@@ -321,7 +347,7 @@ function onload(savedData)
     mythosBag.addContextMenuItem("Fix button", fixDrawMythosButton)
   end
 
-  local mythosTile = getObjectFromGUID(mythosTileId)
+  local mythosTile = MYTHOS_TILE_DATA.obj
   if mythosTile then
 
     mythosTile.createButton({

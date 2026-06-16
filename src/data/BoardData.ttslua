@@ -3,7 +3,10 @@
 -- ╰──────────────────────────────────────────────╯
 
 MYTHOS_TILE_DATA = {
-  guid = "3dbb4d",
+  guid         = "3dbb4d",
+  eventDeck    = {-0.198, 0.236,  0.278},
+  eventDiscard = {-0.199, 0.113,  0.731},
+  activeCard   = { 0.084, 0.113,  0.278},
 }
 
 SCENARIO_MAT_DATA = {
@@ -198,7 +201,46 @@ SCENARIO_MAT_DATA = {
 }
 
 TABLE_DATA = {
-  guid = "f47e19",
+  guid          = "f47e19",
+  referenceDeck = {-0.533, 0, 0.33},
+
+  startPosition = {
+    tiles = {
+      Neighborhood = {
+        Downtown                  = { p = { 0.762, 0, -0.915 }, r = { 0, 180, 0 } },
+        Easttown                  = { p = { 0.783, 0, -0.783 }, r = { 0, 180, 0 } },
+        ["Merchant District"]     = { p = { 0.541, 0, -0.783 }, r = { 0, 180, 0 } },
+        ["Miskatonic University"] = { p = { 0.783, 0, -0.915 }, r = { 0, 180, 0 } },
+        Northside                 = { p = { 0.541, 0, -0.915 }, r = { 0, 180, 0 } },
+        Rivertown                 = { p = { 0.420, 0, -0.783 }, r = { 0, 180, 0 } },
+        Southside                 = { p = { 0.420, 0, -0.915 }, r = { 0, 180, 0 } },
+        Uptown                    = { p = { 0.662, 0, -0.783 }, r = { 0, 180, 0 } },
+      },
+      Scenario = {
+        AoA  = { p = { 0.244,  0, -0.824 }, r = { 0, 180, 0 } },
+        EotD = { p = {-0.049,  0, -0.824 }, r = { 0, 180, 0 } },
+        FfU  = { p = { 0.147,  0, -0.824 }, r = { 0, 180, 0 } },
+        VoT  = { p = { 0.049,  0, -0.824 }, r = { 0, 180, 0 } },
+      },
+      Street = {
+        Bridge1      = { p = { 0.610, 0, -0.682 }, r = { 0, 180, 0 } },
+        Bridge2      = { p = { 0.512, 0, -0.682 }, r = { 0, 180, 0 } },
+        Residential1 = { p = { 0.660, 0, -0.682 }, r = { 0, 180, 0 } },
+        Residential2 = { p = { 0.561, 0, -0.682 }, r = { 0, 180, 0 } },
+        Residential3 = { p = { 0.462, 0, -0.682 }, r = { 0, 180, 0 } },
+        Scenic1      = { p = { 0.709, 0, -0.682 }, r = { 0, 180, 0 } },
+        Scenic2      = { p = { 0.759, 0, -0.682 }, r = { 0, 180, 0 } },
+      },
+    },
+  },
+
+  typeRegistry = {
+    Components = { "doom_token", "blue_marker", "red_marker", "white_marker", "item_mat" },
+    Core       = { "investigator", "ally", "monster", "item", "spell", "event", "encounter" },
+    Map        = { "neighborhood", "street", "threshold", "travel_routes" },
+    Scenarios  = { "scenario", "mystery", "anomaly", "codex", "archive", "special", "starting", "terror" },
+    Status     = { "blessed_cursed", "driven_fatigued", "tainted", "wanted", "dark_pact" },
+  },
 }
 
 LOCATION_MAT_DATA = {
