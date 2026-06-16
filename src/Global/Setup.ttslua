@@ -1,4 +1,5 @@
 require("data/ScenarioSheets")
+require("data/ShopMatData")
 require("Setup/Core")
 require("Setup/Language")
 require("Setup/UnpackComponents")

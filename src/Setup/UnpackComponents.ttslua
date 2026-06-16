@@ -18,13 +18,18 @@ local function getComponentBag(bagType)
   return getObjectFromGUID(guid)
 end
 
+local KEYED_BY_NAME = {
+  [BagType.SCENARIO_SHEETS] = true,
+}
+
 local function storeComponent(bagType, guid, name, memo)
   gameData.components[bagType] = gameData.components[bagType] or {}
-  table.insert(gameData.components[bagType], {
-    guid = guid,
-    name = name,
-    memo = memo,
-  })
+  local entry = { guid = guid, name = name, memo = memo }
+  if KEYED_BY_NAME[bagType] and memo and memo.name then
+    gameData.components[bagType][memo.name] = entry
+  else
+    table.insert(gameData.components[bagType], entry)
+  end
 end
 
 local ALL_BAG_TYPES = {

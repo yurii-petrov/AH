@@ -1,10 +1,8 @@
 -- ╭──────────────────────────────────────────────╮
 -- │              SHOP MAT SETUP                  │
 -- ╰──────────────────────────────────────────────╯
---
--- Consumes inv slices matching deck types declared in shopMatData.decks.
--- Returns the accumulated placement time so the orchestrator can
--- sequence downstream phases (monster, ally, doom) after us.
+
+-- ── (legacy) prepareShopMat – old inv-based flow ─────────────────────────────
 
 function prepareShopMat(inv, scenarioData)
   local shopMat = resolve(shopMatId)

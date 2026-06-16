@@ -93,9 +93,9 @@ function proceedStartGame()
   end
 
   addAdditionalCompoents()
-  placeComponents()
 
   gameData.scenarioData = scenarioData
+  placeComponents()
 
   if gameData.scenarioData.terror then
     local tile4Actions = getObjectFromGUID(tile4ActionsId)
