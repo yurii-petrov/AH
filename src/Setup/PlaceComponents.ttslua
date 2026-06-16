@@ -231,9 +231,9 @@ local function placeScenarioSheets()
     return
   end
 
-  local locationMat = resolve(locationMatId)
+  local locationMat = LOCATION_MAT_DATA.obj
   if not locationMat then
-    log("[placeScenarioSheets] locationMat not found, id=" .. tostring(locationMatId))
+    log("[placeScenarioSheets] locationMat not found")
     return
   end
 
@@ -269,7 +269,7 @@ local function placeScenarioSheets()
 end
 
 local function placeAllyCards()
-  local shopMat = resolve(shopMatId)
+  local shopMat = SHOP_MAT_DATA.obj
   if not shopMat then return end
   local deckData = SHOP_MAT_DATA.decks[ShopDeckType.ALLY]
   if not deckData then return end
@@ -312,7 +312,7 @@ local function placeTerrorCards()
 end
 
 local function placeSpecialCards()
-  local shopMat = resolve(shopMatId)
+  local shopMat = SHOP_MAT_DATA.obj
   if not shopMat then return end
   local deckData = SHOP_MAT_DATA.decks[ShopDeckType.SPECIAL]
   if not deckData then return end
@@ -334,7 +334,7 @@ local function placeMonsterDecks()
   local scenarioData = gameData.scenarioData
   if not scenarioData or not scenarioData.monsterdeck then return end
 
-  local locationMat = resolve(locationMatId)
+  local locationMat = LOCATION_MAT_DATA.obj
   if not locationMat then return end
   local locationData = parseJson(locationMat.memo)
   if not locationData then return end
@@ -384,7 +384,7 @@ local function placeMonsterDecks()
 end
 
 local function placeStartingCards()
-  local shopMat = resolve(shopMatId)
+  local shopMat = SHOP_MAT_DATA.obj
   if not shopMat then return end
   local deckData = SHOP_MAT_DATA.decks[ShopDeckType.STARTING]
   if not deckData then return end
@@ -402,37 +402,36 @@ local function placeStartingCards()
   end, ShopDeckType.STARTING)
 end
 
--- condition cards (blessed/cursed → slot 1, dark pact → slot 2) on conditionMat
-local function placeConditionCards()
-  local conditionMat = resolve(conditionMatId)
-  if not conditionMat then return end
-  local matData = parseJson(conditionMat.memo)
-  if not matData then return end
+function addConditionMat2()
+  local matData = CONDITION_MAT_DATA[2]
+  if not matData or not matData.guid then return end
+  local mat = matData.obj
+  if not mat then return end
+  local pos = mat.getPosition()
+  mat.setPosition(Vector(pos.x, 2, pos.z))
+end
 
+local function placeConditionCards()
   local entries = collectEntries(BagType.CONDITION_CARDS)
   for i, entry in pairs(entries) do
     local t = entry.memo and string.lower(entry.memo.type or "") or ""
-    local pos
-    if t == "blessed cursed" then
-      pos = conditionMat.positionToWorld(matData[1]):setAt("y", 3)
-    elseif t == "dark pact" then
-      pos = conditionMat.positionToWorld(matData[2]):setAt("y", 3)
-    end
-    if pos then
-      local o = spawnComponent(BagType.CONDITION_CARDS, entry, pos, {0, 180, 180})
-      if o then
-        if o.type == "Deck" then o.shuffle() end
-        if shouldSetFaceUp(o, t) then
-          runAfterRest(o, function(o2) o2.setRotation({0, 180, 0}) end)
+    for _, matData in ipairs(CONDITION_MAT_DATA) do
+      if matData.obj and matData.deck[t] then
+        local mat = matData.obj
+        if mat then
+          local pos = mat.positionToWorld(matData.deck[t]):setAt("y", 3)
+          local o = spawnComponent(BagType.CONDITION_CARDS, entry, pos, {0, 180, 180})
+          if o and t ~= "" then o.setName(t) end
+          consumeComponent(BagType.CONDITION_CARDS, i)
         end
+        break
       end
-      consumeComponent(BagType.CONDITION_CARDS, i)
     end
   end
 end
 
 local function placeSpellCards()
-  local shopMat = resolve(shopMatId)
+  local shopMat = SHOP_MAT_DATA.obj
   if not shopMat then return end
   local deckData = SHOP_MAT_DATA.decks[ShopDeckType.SPELL]
   if not deckData then return end
@@ -451,7 +450,7 @@ local function placeSpellCards()
 end
 
 local function placeItemCards()
-  local shopMat = resolve(shopMatId)
+  local shopMat = SHOP_MAT_DATA.obj
   if not shopMat then return end
   local deckData = SHOP_MAT_DATA.decks[ShopDeckType.ITEM]
   if not deckData then return end
@@ -473,7 +472,7 @@ end
 -- Resolves the deck object via stored GUID; falls back to Physics.cast at the
 -- item deck position and updates the stored GUID if found there.
 function showMerchandise()
-  local shopMat = resolve(shopMatId)
+  local shopMat = SHOP_MAT_DATA.obj
   if not shopMat then return end
 
   local deckData = SHOP_MAT_DATA.decks[ShopDeckType.ITEM]
@@ -520,7 +519,7 @@ end
 
 -- headline deck → locationMat headline slot; trim to 13 cards
 local function placeHeadlineCards()
-  local locationMat = resolve(locationMatId)
+  local locationMat = LOCATION_MAT_DATA.obj
   if not locationMat then return end
   local locationData = parseJson(locationMat.memo)
   if not locationData or not locationData.headline then return end
@@ -555,7 +554,7 @@ local function placeEventCards()
   local scenarioData = gameData.scenarioData
   if not scenarioData then return end
 
-  local scenarioMat = resolve(scenarioMatId)
+  local scenarioMat = SCENARIO_MAT_DATA.obj
   if not scenarioMat then return end
   local matData = parseJson(scenarioMat.memo)
   if not matData or not matData.scenarios then return end
@@ -594,7 +593,7 @@ local function placeEncounterCards()
   local scenarioData = gameData.scenarioData
   if not scenarioData then return end
 
-  local scenarioMat = resolve(scenarioMatId)
+  local scenarioMat = SCENARIO_MAT_DATA.obj
   if not scenarioMat then return end
   local matData = parseJson(scenarioMat.memo)
   if not matData or not matData.scenarios then return end
@@ -645,7 +644,7 @@ end
 
 -- archive decks → locationMat archive slot; merge addon sets; extract codex cards
 local function placeArchiveDecks()
-  local locationMat = resolve(locationMatId)
+  local locationMat = LOCATION_MAT_DATA.obj
   if not locationMat then return end
   local locationData = parseJson(locationMat.memo)
   if not locationData or not locationData.archive then return end
@@ -732,7 +731,7 @@ end
 
 -- place investigator sheets in a row near the location mat for player selection
 local function placeInvestigatorSheets()
-  local locationMat = resolve(locationMatId)
+  local locationMat = LOCATION_MAT_DATA.obj
   if not locationMat then return end
 
   local entries   = collectEntries(BagType.INVESTIGATOR_SHEETS)
@@ -757,7 +756,7 @@ local function placeReferenceCards()
   local entry = getComponents(BagType.REFERENCE_CARDS)[1]
   if not entry then return end
 
-  local locationMat = resolve(locationMatId)
+  local locationMat = LOCATION_MAT_DATA.obj
   if not locationMat then return end
 
   local centerPos = locationMat.getPosition()
@@ -791,11 +790,11 @@ function placeComponents()
   placeAllyCards()
   placeSpellCards()
   placeItemCards()
+  placeConditionCards()
   -- placeAnomalyCards()
   -- placeTerrorCards()
   -- placeStartingCards()
   -- placeMonsterDecks()
-  -- placeConditionCards()
   -- placeHeadlineCards()
   -- placeEventCards()
   -- placeEncounterCards()

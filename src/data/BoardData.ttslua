@@ -1,0 +1,83 @@
+-- ╭──────────────────────────────────────────────╮
+-- │          CORE BOARD OBJECT DATA             │
+-- ╰──────────────────────────────────────────────╯
+
+MYTHOS_TILE_DATA = {
+  guid = "3dbb4d",
+}
+
+SCENARIO_MAT_DATA = {
+  guid = "7b841f",
+}
+
+TABLE_DATA = {
+  guid = "f47e19",
+}
+
+LOCATION_MAT_DATA = {
+  guid = "9fe1d3",
+}
+
+-- ╭──────────────────────────────────────────────╮
+-- │          SHOP MAT STATIC DATA               │
+-- ╰──────────────────────────────────────────────╯
+-- Local positions relative to the shopMat object.
+-- Use shopMat.positionToWorld(pos) to get world coords.
+
+ShopDeckType = {
+  SPECIAL  = "special",
+  ALLY     = "ally",
+  SPELL    = "spell",
+  ITEM     = "item",
+  STARTING = "starting cards",
+}
+
+SHOP_MAT_DATA = {
+  guid = "80c416",
+  decks = {
+    special            = { pos = { 0.273,  0.246, -0.795 } },
+    ally               = { pos = { 0.001,  0.179, -0.795 } },
+    spell              = { pos = {-0.272,  0.155, -0.795 } },
+    item               = { pos = { 0.273,  0.231,  0.163 } },
+    ["starting cards"] = { pos = { 0,      0,      0      } }, -- TODO: fill in position
+  },
+  displaypos = {
+    { 0.001,  0.113,  0.222 },
+    {-0.273,  0.113,  0.222 },
+    { 0.273,  0.113,  0.724 },
+    { 0.001,  0.113,  0.724 },
+    {-0.273,  0.113,  0.724 },
+  },
+  encounterpos = {
+    { 0.273,  0.113, -0.307 },
+    { 0.001,  0.113, -0.307 },
+    {-0.273,  0.113, -0.307 },
+  },
+}
+
+-- ╭──────────────────────────────────────────────╮
+-- │        CONDITION MAT STATIC DATA            │
+-- ╰──────────────────────────────────────────────╯
+-- Local positions relative to each mat object.
+-- Use mat.positionToWorld(pos) to get world coords.
+--
+-- [1] always present (guid = "f0624c")
+-- [2] always present physically; shown (y raised) when addon set 1 or 2 is active (guid = "ecb76d")
+
+CONDITION_MAT_DATA = {
+  {
+    guid = "f0624c",
+    deck = {
+      ["blessed cursed"] = { 0.805,  0.113,  0.005 },
+      ["dark pact"]      = {-0.822,  0.113,  0.005 },
+    },
+  },
+  {
+    guid = "ecb76d",
+    deck = {
+      ["wanted"]          = { 1.270,  0.100,  0.000 },
+      ["tainted"]         = {-0.030,  0.100,  0.004 },
+      ["driven fatigued"] = {-1.290,  0.100,  0.004 },
+    },
+  },
+}

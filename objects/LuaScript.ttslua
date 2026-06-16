@@ -250,10 +250,29 @@ scenarioSheetSetupLocation = {
 
 isDrawMythInProcess = false
 
+local function resolveDataObj(data)
+  if data and data.guid then
+    data.obj = getObjectFromGUID(data.guid)
+  end
+end
+
+local function resolveAllDataObjects()
+  resolveDataObj(MYTHOS_TILE_DATA)
+  resolveDataObj(SCENARIO_MAT_DATA)
+  resolveDataObj(TABLE_DATA)
+  resolveDataObj(LOCATION_MAT_DATA)
+  resolveDataObj(SHOP_MAT_DATA)
+  for _, matData in ipairs(CONDITION_MAT_DATA) do
+    resolveDataObj(matData)
+  end
+end
+
 function onload(savedData)
 
+  resolveAllDataObjects()
+
   if isTestMode then
-    --    testResolveDooms() 
+    --    testResolveDooms()
   end
 
   -- lockObj(tableId)
@@ -262,7 +281,7 @@ function onload(savedData)
   lockObj(mythosTileId)
   lockObj(tile4ActionsId)
   lockObj(shopMatId)
-  lockObj(conditionMatId)
+  -- lockObj(conditionMatId)
   -- lockObj(mythosBagId)
   lockObj(nastilo4kaId)
 
