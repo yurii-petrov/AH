@@ -495,47 +495,38 @@ local function placeSpecialCards(done)
 end
 
 local function prepareMonsterDeck(done)
-  local entries = collectEntries(BagType.MONSTER_DECKS)
-  local model   = buildDeckModel(entries)
-  if not model.base then done() return end
+  local box = resolve(boxId)
 
-  local mpos = model.base.memo and model.base.memo.startPosition
-  if not mpos then done() return end
-  local deckPos = TABLE_DATA.obj.positionToWorld(mpos):setAt("y", 3)
-
-  for i in pairs(entries) do
-    consumeComponent(BagType.MONSTER_DECKS, i)
+  if gameData.directSetup then
+    local bagGuid = gameData.componentBags and gameData.componentBags[BagType.MONSTER_DECKS]
+    local bag = bagGuid and getObjectFromGUID(bagGuid)
+    if bag and box then pcall(function() box.putObject(bag) end) end
+  else
+    for _, entry in pairs(getComponents(BagType.MONSTER_DECKS)) do
+      local o = entry.guid and getObjectFromGUID(entry.guid)
+      if o and box then pcall(function() box.putObject(o) end) end
+    end
   end
+  if gameData.components then gameData.components[BagType.MONSTER_DECKS] = nil end
 
-  mergeDeckStack(BagType.MONSTER_DECKS, model, deckPos, {0, 180, 180}, function()
-    monsterStagingPos = deckPos
-    done()
-  end)
-end
-
-function distributeMonsterCards(done)
   local scenarioData = gameData.scenarioData
-  if not scenarioData or not scenarioData.monsters then done() return end
+  if not scenarioData then done() return end
 
-  if not monsterStagingPos then done() return end
+  local monstersObj = getObjectFromGUID(monstersbyScenarioUkId)
+  if not monstersObj then done() return end
 
-  local p = monsterStagingPos
-  local hits = Physics.cast({
-    origin       = Vector(p.x, p.y + 3, p.z),
-    direction    = {0, -1, 0},
-    type         = 2,
-    size         = {1, 1, 1},
-    max_distance = 5,
-  })
-  local deck
-  for _, hit in ipairs(hits) do
-    local o = hit.hit_object
-    if o and (o.type == "Deck" or o.type == "Card") then
-      deck = o
+  local scenarioBag
+  for _, obj in ipairs(monstersObj.getObjects()) do
+    if obj.name == tostring(scenarioData.number) then
+      scenarioBag = monstersObj.takeObject({ guid = obj.guid, smooth = false })
       break
     end
   end
-  if not deck then done() return end
+  if not scenarioBag then done() return end
+
+  local basePos = monstersObj.getPosition()
+  scenarioBag.setPosition(Vector(basePos.x, basePos.y, basePos.z - 3))
+  scenarioBag.setLock(true)
 
   local locationMat = LOCATION_MAT_DATA.obj
   if not locationMat then done() return end
@@ -544,77 +535,56 @@ function distributeMonsterCards(done)
   local setasidePos  = locationMat.positionToWorld(LOCATION_MAT_DATA.setaside):setAt("y", 3)
   local setaside2Pos = locationMat.positionToWorld(LOCATION_MAT_DATA.setaside2):setAt("y", 3)
 
-  local wantList = {}
-  for _, m in ipairs(scenarioData.monsters) do
-    table.insert(wantList, {
-      matchName = m.name and string.lower(m.name) or nil,
-      matchType = m.type and string.lower(m.type) or nil,
-      dest      = m.dest,
-      remaining = m.count or 1,
-      pos       = m.pos,
-      rot       = m.rot,
-      location  = m.location
-    })
-  end
-
-  local function hasMonsterType(monstertype, wantType)
-    if type(monstertype) ~= "table" then return false end
-    for _, t in ipairs(monstertype) do
-      if string.lower(t) == wantType then return true end
+  Wait.time(function()
+    local monsters = {}
+    for _, m in ipairs(scenarioData.monsters or {}) do
+      table.insert(monsters, m)
     end
-    return false
-  end
 
-  for _, card in ipairs(deck.getObjects()) do
-    local memo   = parseJson(card.memo) or {}
-    local cName  = string.lower(memo.name or card.name or "")
+    for _, objInfo in ipairs(scenarioBag.getObjects()) do
+      local obj = scenarioBag.takeObject({ guid = objInfo.guid, smooth = false })
+      if obj then
+        local lname = string.lower(obj.getName())
+        local targetPos
 
-    for _, want in ipairs(wantList) do
-      local matched = false
-      if want.matchName and want.matchName == cName and want.remaining > 0 then
-        matched = true
-        want.remaining = want.remaining - 1
-      elseif want.matchType and want.remaining > 0 and hasMonsterType(memo.monstertype, want.matchType) then
-        matched = true
-        want.remaining = want.remaining - 1
-      end
-
-      if matched then
-        if want.dest == "spawn" then
-          local tile = want.location and getNeighborhoodTile(want.location)
-          local worldPos = tile.positionToWorld(want.pos):setAt("y", 3)
-          local spawnedCard = deck.takeObject({ guid = card.guid, position = worldPos, smooth = false })
-          if spawnedCard then
-            Wait.time(function() spawnMonster(worldPos, spawnedCard) end, 0.1)
-          end
-        else
-          local targetPos, targetRot
-          if want.dest == "deck" then
-            targetPos = monsterPos
-            targetRot = {0, 180, 180}
-          elseif want.dest == "setaside" then
-            targetPos = setasidePos
-            targetRot = {0, 180, 180}
-          elseif want.dest == "setaside2" then
-            targetPos = setaside2Pos
-            targetRot = {0, 180, 180}
-          end
-          if targetPos then
-            deck.takeObject({ guid = card.guid, position = targetPos, rotation = targetRot, smooth = false })
+        if lname == "monster" then
+          targetPos = monsterPos
+        elseif lname == "setaside" then
+          targetPos = setasidePos
+        elseif lname == "setaside2" then
+          targetPos = setaside2Pos
+        elseif lname == "monster mat" then
+          local attachments = obj.getAttachments()
+          local attachment = attachments and attachments[1]
+          local memo = attachment and parseJson(attachment.memo)
+          local attachName = memo and string.lower(memo.name or "")
+          if attachName then
+            for i, m in ipairs(monsters) do
+              if string.lower(m.name or "") == attachName and m.dest == "spawn" and m.pos then
+                targetPos = locationMat.positionToWorld(m.pos):setAt("y", 3)
+                table.remove(monsters, i)
+                break
+              end
+            end
           end
         end
-        break
+
+        if targetPos then
+          obj.setPosition(targetPos)
+          obj.setRotation({0, 180, 180})
+        end
       end
     end
-  end
 
-  registerDeck(monsterPos, "Monster", function(obj)
-    LOCATION_MAT_DATA.monsterDeckObj  = obj
-    LOCATION_MAT_DATA.monsterDeckGuid = obj.getGUID()
-    gameData.deckGuids.monster         = obj.getGUID()
-  end)
+    registerDeck(monsterPos, "Monster", function(obj)
+      LOCATION_MAT_DATA.monsterDeckObj  = obj
+      LOCATION_MAT_DATA.monsterDeckGuid = obj.getGUID()
+      gameData.deckGuids.monster         = obj.getGUID()
+    end)
 
-  done()
+    monsterStagingPos = monsterPos
+    done()
+  end, 0.5)
 end
 
 local function placeStartingCards(done)
@@ -967,13 +937,14 @@ function placeComponents(done)
   monsterStagingPos   = nil
 
   local groups = {
-    { prepareMonsterDeck },
-    { placeReferenceCards, placeScenarioSheets, placeMapTiles,
+    {placeScenarioSheets, placeMapTiles},
+    { placeReferenceCards,
       placeArchiveDecks, placeHeadlineCards },
+    { prepareMonsterDeck },
     { placeSpecialCards, placeAllyCards, placeSpellCards, placeItemCards },
     { placeConditionCards },
     { placeEncounterCards, placeAnomalyCards, placeTerrorCards },
-    { placeEventCards, distributeMonsterCards },
+    { placeEventCards },
   }
 
   local GROUP_DELAY = 1

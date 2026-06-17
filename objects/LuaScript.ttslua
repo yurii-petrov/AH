@@ -162,6 +162,7 @@ local nastilo4kaId = "d75b3b"
 -- │                Bags                          │
 -- ╰──────────────────────────────────────────────╯
 
+monstersbyScenarioUkId = "dd5297"
 boxId = "49a7d7"
 doomBagId = "099201"
 clueBagId = "5e5b58"
