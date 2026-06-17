@@ -21,16 +21,7 @@ function prepareMythosTokens(mythosCups)
 end
 
 function getTerrorDeck()
-  local scenarioMat = getObjectFromGUID(scenarioMatId)
-  if not scenarioMat then return end
-
-  local objs = upCast(scenarioMat, 1, nil, 1)
-  for _, obj in pairs(objs) do
-    local objData = parseJson(obj.memo)
-    if objData and string.lower(objData.type) == "terror" and obj.type == "Deck" then
-      return obj
-    end
-  end
+  return findOnScenarioMat("terror", nil, "Deck")
 end
 
 function processTerror(callBack)

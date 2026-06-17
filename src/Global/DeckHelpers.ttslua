@@ -2,61 +2,32 @@
 -- │          DECK / TILE HELPERS                 │
 -- ╰──────────────────────────────────────────────╯
 
-function getDeckFromScenarioMat(typeDeck, nameDeck, isBack)
+-- Scans the scenario mat for the first Deck/Card whose memo matches `typeName`
+-- (and `name`, when given). Case-insensitive. `wantType` restricts to a TTS
+-- object type ("Deck"/"Card") when set. Shared by getDeckFromScenarioMat here
+-- and by getTerrorDeck.
+function findOnScenarioMat(typeName, name, wantType)
+  local scenarioMat = getObjectFromGUID(scenarioMatId)
+  if not scenarioMat then
+    return
+  end
+
+  for _, obj in pairs(upCast(scenarioMat, 1, nil, 1)) do
+    if not wantType or obj.type == wantType then
+      local data = parseJson(obj.memo)
+      if data and iEquals(data.type, typeName)
+         and (not name or iEquals(data.name, name)) then
+        return obj
+      end
+    end
+  end
+end
+
+function getDeckFromScenarioMat(typeDeck, nameDeck)
   if not nameDeck or not typeDeck then
     return
   end
-  local scenarioMat = getObjectFromGUID(scenarioMatId)
-  if not scenarioMat then
-    return
-  end
-
-  local objs = upCast(scenarioMat, 1, nil, 1)
-  for _, obj in pairs(objs) do
-    local objData = parseJson(obj.memo)
-    if objData and string.lower(objData.type) == string.lower(typeDeck) and string.lower(objData.name) ==
-      string.lower(nameDeck) then
-      if obj.type == "Deck" then
-        return obj
-      end
-    end
-  end
-end
-
-function takeTop2CardsFromScenarioMat(typeDeck, nameDeck, isBack)
-  local scenarioMat = getObjectFromGUID(scenarioMatId)
-  if not scenarioMat then
-    return
-  end
-
-  local objs = upCast(scenarioMat, 1, nil, 1)
-  for _, obj in pairs(objs) do
-    local objData = parseJson(obj.memo)
-    if objData and objData.type == typeDeck and objData.name == nameDeck then
-      if obj.type == "Deck" then
-        return {takeCardFromTop(obj, isBack), takeCardFromTop(obj, isBack)}
-      end
-    end
-  end
-end
-
-function takeTopCardFromScenarioMat(typeDeck, nameDeck, isBack)
-  local scenarioMat = getObjectFromGUID(scenarioMatId)
-  if not scenarioMat then
-    return
-  end
-
-  local objs = upCast(scenarioMat, 1, nil, 1)
-  for _, obj in pairs(objs) do
-    local ogjData = parseJson(obj.memo)
-    if ogjData and memo.type == typeDeck and memo.name == nameDeck then
-      if obj.type == "Deck" then
-        return takeCardFromTop(obj, true)
-      elseif obj.type == "Card" then
-        return obj
-      end
-    end
-  end
+  return findOnScenarioMat(typeDeck, nameDeck, "Deck")
 end
 
 function take2TopCardFromTile(id, isBack)
