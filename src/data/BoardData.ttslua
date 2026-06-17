@@ -4,6 +4,7 @@
 
 MYTHOS_TILE_DATA = {
   guid         = "3dbb4d",
+  bag          = { guid = "106418" },
   eventDeck    = {-0.198, 0.236,  0.278},
   eventDiscard = {-0.199, 0.113,  0.731},
   activeCard   = { 0.084, 0.113,  0.278},

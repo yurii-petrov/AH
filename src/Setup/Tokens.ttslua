@@ -5,32 +5,6 @@
 function prepareMarkers()
 end
 
-function prepareMythosTokens(mythosCups)
-  if not mythosCups then
-    return
-  end
-  local mythosBag = getObjectFromGUID(mythosBagId)
-  if not mythosBag then
-    return
-  end
-
-  for type, count in pairs(mythosCups) do
-    local bagGuid = mythosTokenBagIds[type]
-    local bag = getObjectFromGUID(bagGuid)
-
-    if bag and count > 0 then
-      for i = 1, count do
-        mythosBag.putObject(bag.takeObject({
-          index = 0
-        }))
-      end
-    else
-      log("[ERROR] Missing bag for type: " .. tostring(type))
-    end
-  end
-
-  mythosBag.shuffle()
-end
 
 function takeCardsWithMemo(deck, targetMemo, params)
   local cards = deck.getObjects()

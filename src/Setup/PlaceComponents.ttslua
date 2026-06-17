@@ -642,15 +642,6 @@ local function placeStartingCards(done)
   end)
 end
 
-function addConditionMat2()
-  local matData = CONDITION_MAT_DATA[2]
-  if not matData or not matData.guid then return end
-  local mat = matData.obj
-  if not mat then return end
-  local pos = mat.getPosition()
-  mat.setPosition(Vector(pos.x, 2, pos.z))
-end
-
 local function placeConditionCards(done)
   local entries = collectEntries(BagType.CONDITION_CARDS)
 

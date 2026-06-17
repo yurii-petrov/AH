@@ -81,6 +81,26 @@ function waitForComponentsReady(attempt)
   end, 1)
 end
 
+function processScenarioDecks(done)
+  fillDisplaySlots()
+  placeCodexFromArchive()
+  prepareEventDeck(function()
+  prepareAllySpawn(gameData.scenarioData)
+      spawnDoomsByClick()
+      prepareMythosTokens(gameData.scenarioData.mythosCups)
+      Global.UI.setAttribute("phase", "active", true)
+      self.UI.setAttribute('phase_text', "text", i18n.getStrById("PB_phase1"))
+      broadcastToAll(
+        i18n.getStrById("PB_next_phase") .. " " .. i18n.getStrById("PB_phase" .. gameData.phase) .. "!",
+        phases[gameData.phase].color)
+      if gameData.language == "en" then
+        self.UI.setAttribute('PB_phase_text', 'offsetXY', '0 15')
+        self.UI.setAttribute('phase_text', 'offsetXY', '0 35')
+      end
+      done()
+  end)
+end
+
 function proceedStartGame()
   local scenarioData = getScenarioData(currentSetup.scenario or 1)
   if not scenarioData then
@@ -92,7 +112,7 @@ function proceedStartGame()
     gameData.addons[i] = addon.include
   end
 
-  addAdditionalCompoents()
+  addConditionMat2()
 
   gameData.scenarioData = scenarioData
   gameData.numberOfPlayers = currentSetup.players or 2
@@ -113,9 +133,7 @@ function proceedStartGame()
     placeComponents(function()
       resolveComponents(function()
         shuffleComponents(function()
-          fillDisplaySlots()
-          placeCodexFromArchive()
-          prepareEventDeck(function()
+          processScenarioDecks(function()
             cleanupComponents()
           end)
         end)

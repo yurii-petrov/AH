@@ -3,6 +3,23 @@
 -- ╰──────────────────────────────────────────────╯
 -- Mythos tile UI/action code lives in MythosTile.ttslua.
 
+function prepareMythosTokens(mythosCups)
+  if not mythosCups then return end
+  local mythosBag = MYTHOS_TILE_DATA.bag.obj
+
+  for type, count in pairs(mythosCups) do
+    local bagGuid = mythosTokenBagIds[type]
+    local bag = getObjectFromGUID(bagGuid)
+    if bag and count > 0 then
+      for i = 1, count do
+        mythosBag.putObject(bag.takeObject({ index = 0 }))
+      end
+    end
+  end
+
+  mythosBag.shuffle()
+end
+
 function getTerrorDeck()
   local scenarioMat = getObjectFromGUID(scenarioMatId)
   if not scenarioMat then return end

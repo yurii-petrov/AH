@@ -259,6 +259,7 @@ end
 
 local function resolveAllDataObjects()
   resolveDataObj(MYTHOS_TILE_DATA)
+  resolveDataObj(MYTHOS_TILE_DATA.bag)
   resolveDataObj(SCENARIO_MAT_DATA)
   resolveDataObj(TABLE_DATA)
   resolveDataObj(LOCATION_MAT_DATA)
@@ -348,7 +349,7 @@ function onload(savedData)
     end
   end
 
-  local mythosBag = getObjectFromGUID(mythosBagId)
+  local mythosBag = MYTHOS_TILE_DATA.bag.obj
   if mythosBag then
     mythosBag.setName("Чаша міту")
     mythosBag.addContextMenuItem("Fix button", fixDrawMythosButton)
