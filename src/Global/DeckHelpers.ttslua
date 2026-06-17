@@ -69,8 +69,6 @@ function takeBottomCardFromTile(id, isBack)
   end
 end
 
--- getEventObj / getObjFromMythosTile moved to MythosTile.ttslua
-
 function findObjectOnTile(tileId)
   local tile = getObjectFromGUID(tileId)
   if not tile then
@@ -170,9 +168,4 @@ function getPositionByGUID(guid)
 
   return obj.getPosition()
 end
-
--- ╭──────────────────────────────────────────────╮
--- │                 Steps                        │
--- ╰──────────────────────────────────────────────╯
-
 

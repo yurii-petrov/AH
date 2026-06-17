@@ -412,10 +412,8 @@ function tryGetItemIndex(shopMat, object, objectData)
   }}
 
   local pos = shopMat.positionToLocal(object.getPosition())
-  -- print(serpent.tts(pos))
   for i, itemArea in ipairs(itemAreas) do
     if pos.x >= itemArea.minX and pos.x <= itemArea.maxX and pos.z >= itemArea.minZ and pos.z <= itemArea.maxZ then
-      -- print(i)
       return i
     end
   end

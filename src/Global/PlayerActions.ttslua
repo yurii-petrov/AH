@@ -9,7 +9,6 @@ function showHelp(player, _)
   else
     UI.setAttribute("help_panel", "visibility", vis .. "|" .. player.color)
   end
-  --  print(UI.getAttribute("help_panel", "visibility"))
 end
 
 function hideHelp(player, _)
@@ -20,7 +19,6 @@ function hideHelp(player, _)
     vis = "nobody"
   end
   UI.setAttribute("help_panel", "visibility", vis)
-  --  print(UI.getAttribute("help_panel", "visibility"))
 end
 
 function onClickScenario(n)
@@ -51,7 +49,6 @@ function onClickScenario(n)
     scenarioSheet.setPositionSmooth(tableTile.positionToWorld(p):setAt("y", 3))
   end
 
-  -- Wait.time(function()
   setupScenario.scenarioData = scenarioData
   spawnScenarioTilesOnMat(scenarioData, function()
     setupScenario.isPreparing = false
@@ -261,8 +258,6 @@ function reassignAllPlayersToAvailableColors()
     if participant.color ~= targetColor then
       log("Reassigning " .. participant.steam_name .. " to " .. targetColor)
       participant.changeColor(targetColor)
-    else
-      -- log(participant.steam_name .. " is already in correct color: " .. targetColor)
     end
 
     usedColors[targetColor] = true
@@ -712,11 +707,8 @@ local function findFreeSnapOnItemsMat(itemsMat)
     if not occupant then
       log("[placeItem] snap " .. i .. " is free on " .. itemsMat.guid)
       return worldPos
-    else
-      -- log("[placeItem] snap " .. i .. " occupied by guid=" .. occupant.guid .. " type=" .. occupant.type .. " memo=" .. tostring(occupant.memo):sub(1, 60))
     end
   end
-  -- log("[placeItem] all " .. #snps .. " snaps occupied on " .. itemsMat.guid)
   return nil
 end
 
@@ -793,8 +785,6 @@ function onClickMarket(d)
   local hand = hands[1]
 
   local item = nil
-  -- local objs = upCast(shopMat, 1, nil, 1)
-
   local p = d.id <= #shopData.displaypos and shopData.displaypos[d.id] or
               shopData.encounterpos[d.id - #shopData.displaypos]
 
@@ -967,34 +957,6 @@ function onClickFindItem(d)
     end
   end
 end
-
--- function updateHandPosition(d)
---     local p = d.o.getPosition()
---     p.z = p.z-2
---     p.y = 1.5
---   local hits = Physics.cast({
---     origin = p,
---     direction = {0, 1, 0},
---     type = 3,
---     size = {1, 1, 1},
---     max_distance = 0,
---     debug = true
---   })
-
---     -- local hasDoom = false
---     print(#hits)
---     for _, v in ipairs(hits) do
---     local obj = v.hit_object
---     if obj then
---         print(obj.type)
---         -- obj.setPosition(obj.getPosition()("z", {p[1], p[2], p.z}))
---     end
---     -- if obj and obj.memo == "Doom Token" then
---     --     hasDoom = true
---     --     break
---     -- end
---     end
--- end
 
 -- ╭─────────────────────────────────────────────╮
 -- │                GET DATA                      │

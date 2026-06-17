@@ -42,19 +42,6 @@ isTestMode = false
 
 -- /execute local c=Player.White;local h=c.getHoverObject();if h then print(serpent.tts(h)) end
 
--- print(JSON.encode(JSON.encode({
---   name = "AoA",
---   type = "Event",
---   locations = {
---     ["Arkham Asylum"] = {
---       dooms = 1
---     },
---     ["Hibb's Roadhouse"] = {
---       dooms = 1
---     }
---   }
--- })))
-
 -- Mechanic variables
 
 phases = {{
@@ -302,10 +289,6 @@ end
 function onload(savedData)
 
   resolveAllDataObjects()
-
-  if isTestMode then
-    --    testResolveDooms()
-  end
 
   -- lockObj(tableId)
   lockObj(locationMatId)

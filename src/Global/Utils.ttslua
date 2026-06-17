@@ -220,7 +220,6 @@ function downCast(obj, dist, offset, multi)
   local orig = {oPos[1], oPos[2] - dist / 2 - oBounds.size.y / 2 - offset, oPos[3]}
   local siz = {oBounds.size.x * multi, dist, oBounds.size.z * multi}
   local orient = {oRot[1], oRot[2], oRot[3]}
-  -- if isTestMode then log(serpent.tts(siz)) end
   local hits = Physics.cast({
     origin = orig,
     direction = {0, 1, 0},
@@ -443,7 +442,6 @@ function mPosRot(s, h)
     local p = getFormattedPos(s.positionToLocal(h.getPosition()))
     local r = getFormattedRot(s.positionToLocal(h.getRotation()))
     print("[\"" .. parseJson(h.memo).name .. "\"]={" .. p .. "," .. r .. "},")
-    -- print("" .. h.memo .. "\n{" .. p .. "},\n{" .. r .. "}")
   end
 end
 
@@ -451,54 +449,7 @@ function gPosRot(s, h)
   if s and h then
     local p = getFormattedPos(s.positionToLocal(h.getPosition()))
     local r = getFormattedRot(s.positionToLocal(h.getRotation()))
-    -- print("[" .. parseJson(h.memo).name .. "] = { {" .. p .. "},{" .. r .. "} }")
     print("" .. h.guid .. "\n{" .. p .. "},\n{" .. r .. "}")
-  end
-end
-
-function nPos(s, h)
-  local m = parseJson(s.memo)
-  if s and h and m then
-    local pos = s.positionToLocal(h.getPosition())
-    local formattedPos = {string.format("%.3f", pos[1]), string.format("%.3f", pos[2]), string.format("%.3f", pos[3])}
-    local rot = s.positionToLocal(h.getRotation())
-    local formattedRot = {string.format("%.3f", rot[1]), string.format("%.3f", rot[2]), string.format("%.3f", rot[3])}
-    log("location = " .. m.name .. ", \npos=" .. serpent.tts(formattedPos))
-  end
-end
-
-function setSPs(s, hs)
-  for _, h in pairs(hs) do
-    setSP(s, h)
-  end
-end
-
-function setSP(s, h)
-  if s and h then
-
-    if not h.memo then
-      local p = s.positionToLocal(h.getPosition())
-      h.memo = JSON.encode({
-        startPosition = p
-      })
-      print("\nstartPosition = " .. serpent.tts(p) .. "\n" .. h.guid)
-    else
-      local data = parseJson(h.memo)
-      local p = s.positionToLocal(h.getPosition())
-      if data then
-        data.startPosition = p
-        h.memo = JSON.encode(data)
-        print("\nstartPosition = " .. serpent.tts(p) .. "\n" .. h.guid)
-      else
-        local p = s.positionToLocal(h.getPosition())
-        h.memo = JSON.encode({
-          name = h.memo,
-          startPosition = p
-        })
-        print("\nstartPosition = " .. serpent.tts(p) .. "\n" .. h.guid)
-        -- print("Looks like memo is not table: "..h.memo)
-      end
-    end
   end
 end
 
