@@ -158,7 +158,7 @@ function prepareLanguageBag(bag)
         pendingCount = pendingCount - 1
       else
         o.interactable = false
-        o.setColorTint(Color(1,1,1,0))
+        o.setColorTint(o.getColorTint():setAt("a", 0))
         gameData.componentBags[obj.memo] = o.getGUID()
         if not customPos then spawnIndex = spawnIndex + 1 end
         pendingCount = pendingCount - 1

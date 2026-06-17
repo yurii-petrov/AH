@@ -262,7 +262,7 @@ function reassignAllPlayersToAvailableColors()
       log("Reassigning " .. participant.steam_name .. " to " .. targetColor)
       participant.changeColor(targetColor)
     else
-      log(participant.steam_name .. " is already in correct color: " .. targetColor)
+      -- log(participant.steam_name .. " is already in correct color: " .. targetColor)
     end
 
     usedColors[targetColor] = true

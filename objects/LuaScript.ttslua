@@ -288,6 +288,13 @@ local function resolveAllDeckObjects()
       SHOP_MAT_DATA.decks[t].obj  = getObjectFromGUID(guids[t])
     end
   end
+
+  if gameData.mapTileGuids then
+    LOCATION_MAT_DATA.tiles = {}
+    for name, guid in pairs(gameData.mapTileGuids) do
+      LOCATION_MAT_DATA.tiles[name] = getObjectFromGUID(guid)
+    end
+  end
 end
 
 function onload(savedData)
