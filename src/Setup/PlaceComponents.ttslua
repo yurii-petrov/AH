@@ -302,8 +302,14 @@ local function placeMapTiles(done)
     if o then
       local name = entry.memo and entry.memo.name
       if name then
-        LOCATION_MAT_DATA.tiles[name]  = o
-        gameData.mapTileGuids[name]    = o.getGUID()
+        LOCATION_MAT_DATA.tiles[name] = o
+        gameData.mapTileGuids[name]   = o.getGUID()
+        local locations = entry.memo and entry.memo.locations
+        if locations then
+          for _, loc in ipairs(locations) do
+            LOCATION_MAT_DATA.tiles[loc] = o
+          end
+        end
       end
     end
   end
@@ -549,6 +555,29 @@ local function prepareMonsterDeck(done)
 
         if lname == "monster" then
           targetPos = monsterPos
+        elseif lname == "random" then
+          obj.shuffle()
+          local card = obj.takeObject({ smooth = false })
+          if card then
+            local memo = parseJson(card.memo)
+            local backName = memo and memo.back and string.lower(memo.back.name or "")
+            if backName then
+              for i, m in ipairs(monsters) do
+                if string.lower(m.name or "") == backName and m.dest == "spawn" and m.location and m.pos then
+                  local tile = LOCATION_MAT_DATA.tiles and LOCATION_MAT_DATA.tiles[m.location]
+                  if tile then
+                    card.setRotation(m.rot or {0, 180, 180})
+                    attachDoubleSidedCard(card, memo, tile.positionToWorld(m.pos):setAt("y", 3))
+                    -- card.setPosition(tile.positionToWorld(m.pos):setAt("y", 3))
+                    -- card.setRotation(m.rot or {0, 180, 180})
+                    table.remove(monsters, i)
+                    break
+                  end
+                end
+              end
+            end
+          end
+          targetPos = monsterPos
         elseif lname == "setaside" then
           targetPos = setasidePos
         elseif lname == "setaside2" then
@@ -560,10 +589,13 @@ local function prepareMonsterDeck(done)
           local attachName = memo and string.lower(memo.name or "")
           if attachName then
             for i, m in ipairs(monsters) do
-              if string.lower(m.name or "") == attachName and m.dest == "spawn" and m.pos then
-                targetPos = locationMat.positionToWorld(m.pos):setAt("y", 3)
-                table.remove(monsters, i)
-                break
+              if string.lower(m.name or "") == attachName and m.dest == "spawn" and m.location and m.pos then
+                local tile = LOCATION_MAT_DATA.tiles and LOCATION_MAT_DATA.tiles[m.location]
+                if tile then
+                  targetPos = tile.positionToWorld(m.pos):setAt("y", 3)
+                  table.remove(monsters, i)
+                  break
+                end
               end
             end
           end
