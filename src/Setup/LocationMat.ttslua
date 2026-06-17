@@ -116,45 +116,11 @@ function prepareLocationMat(inv, scenarioData)
         local sources = moveObj.toMerge["archive"] and moveObj.toMerge["archive"].sources or {}
         local function mergeNext(baseObj, idx)
           if idx > #sources then
+            LOCATION_MAT_DATA.archiveObj  = baseObj
+            LOCATION_MAT_DATA.archiveGuid = baseObj.getGUID()
             baseObj.setPosition(data.p)
             Wait.time(function()
-              local function containsNumber(tbl, target)
-                for i, v in pairs(tbl) do if v == target then return i end end
-              end
-
-              local codexDeckCards = {}
-              local archiveObjs = baseObj.getObjects()
-              for i = #archiveObjs, 1, -1 do
-                local codex = archiveObjs[i]
-                local codexData = parseJson(codex.memo)
-                if codexData and codexData.number and string.lower(codexData.type) == "codex" then
-                  local idx2 = containsNumber(scenarioData.codex, codexData.number)
-                  if idx2 then
-                    local taken = baseObj.takeObject({ index = codex.index })
-                    attachCodexCard(taken, locationMat.positionToWorld(locationData.codex[idx2]):setAt("y", 3))
-                  elseif scenarioData.codexDeck and containsNumber(scenarioData.codexDeck, codexData.number) then
-                    local taken = baseObj.takeObject({
-                      index    = codex.index,
-                      position = locationMat.positionToWorld(locationData.codexDeck):setAt("y", 3),
-                      rotation = {0, 180, 0},
-                      smooth   = false
-                    })
-                    table.insert(codexDeckCards, taken)
-                  end
-                end
-              end
-
-              if #codexDeckCards > 0 then
-                Wait.time(function()
-                  local objs = findObjsInRadius(locationMat.positionToWorld(locationData.codexDeck):setAt("y", 2.2))
-                  for _, obj in ipairs(objs) do
-                    if obj.type == "Deck" or obj.type == "Card" then
-                      if obj.type == "Deck" then obj.shuffle() end
-                      break
-                    end
-                  end
-                end, 1)
-              end
+              placeCodexFromArchive()
             end, 2)
             return
           end
@@ -299,6 +265,34 @@ function spawnTokenOnLocation(spawnInfo)
   token.highlightOn(spawnInfo.highlight or "Yellow", 5)
 
   return token, tile, tileData
+end
+
+function placeCodexFromArchive()
+  local archiveDeck = LOCATION_MAT_DATA.archiveObj
+  if not archiveDeck then return end
+
+  local locationMat = LOCATION_MAT_DATA.obj
+  if not locationMat then return end
+
+  local scenarioData = gameData.scenarioData
+  if not scenarioData then return end
+
+  local function containsNumber(tbl, target)
+    for i, v in pairs(tbl) do if v == target then return i end end
+  end
+
+  local archiveObjs = archiveDeck.getObjects()
+  for i = #archiveObjs, 1, -1 do
+    local codex     = archiveObjs[i]
+    local codexData = parseJson(codex.memo)
+    if codexData and codexData.number and string.lower(codexData.type) == "codex" then
+      local idx = containsNumber(scenarioData.codex, codexData.number)
+      if idx then
+        local taken = archiveDeck.takeObject({ index = codex.index })
+        attachCodexCard(taken, locationMat.positionToWorld(LOCATION_MAT_DATA.codex[idx]):setAt("y", 3))
+      end
+    end
+  end
 end
 
 function lockSetupScenarioComponents(obj, scenarioTiles)
