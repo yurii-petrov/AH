@@ -49,13 +49,7 @@ function processStepClearMarkersOnLocations(step, context, onDone)
           elseif removeMarkers[o.memo] then
             local markerType = o.memo
             local locName = localizeLocation(resolveLocationName(tile, tileData, o))
-            local bagId = getTokenBagIdByType(markerType)
-            local bag = bagId and getObjectFromGUID(bagId)
-            if bag then
-              bag.putObject(o)
-            else
-              o.destruct()
-            end
+            returnTokenToBag(o, markerType)
             table.insert(logLines, string.format(i18n.getStrById("LOG_marker_removed"), markerType, locName))
           end
         end

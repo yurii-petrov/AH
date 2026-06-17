@@ -24,3 +24,19 @@ function removeCodexAttachment(codexMat)
   if not index then return nil end
   return codexMat.removeAttachment(index)
 end
+
+-- Detaches the codex card from `codexMat`, drops it face-down into `archive`
+-- and destructs the now-empty mat. Returns true on success.
+function returnCodexMatToArchive(codexMat, archive)
+  local index = findCodexAttachmentIndex(codexMat)
+  if not index then return false end
+
+  local codexCard = codexMat.removeAttachment(index)
+  if not codexCard then return false end
+
+  codexCard.interactable = true
+  codexCard.setRotation({0, 180, 180})
+  archive.putObject(codexCard)
+  codexMat.destruct()
+  return true
+end

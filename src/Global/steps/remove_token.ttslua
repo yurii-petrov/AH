@@ -29,16 +29,7 @@ function processStepRemoveToken(step, context, onDone)
     local objs = upCast(neighborhoodTile, 1, nil, 1)
     for _, o in ipairs(objs) do
       if o.type == "Tile" and o.memo == tokenType then
-        local tokenBagId = getTokenBagIdByType(tokenType)
-        if tokenBagId then
-          local bag = getObjectFromGUID(tokenBagId)
-          if bag then
-            bag.putObject(o)
-            print(string.format(i18n.getStrById("LOG_token_removed"), tokenType))
-            return
-          end
-        end
-        o.destruct()
+        returnTokenToBag(o, tokenType)
         print(string.format(i18n.getStrById("LOG_token_removed"), tokenType))
         return
       end
@@ -47,19 +38,6 @@ function processStepRemoveToken(step, context, onDone)
     log("[removeToken] token '" .. tokenType .. "' not found on player location")
   end
   if onDone then onDone() end
-end
-
-function getTokenBagIdByType(tokenType)
-  local tokenBagMap = {
-    ["White Marker"] = whiteTokenBagId,
-    ["Blue Marker"]  = blueTokenBagId,
-    ["Red Marker"]   = redTokenBagId,
-    ["Green Marker"] = greenTokenBagId,
-    ["Doom Token"]   = doomBagId,
-    ["Clue"]         = clueBagId,
-    ["Terror Token"] = terrorBagId,
-  }
-  return tokenBagMap[tokenType]
 end
 
 function getPlayerNeighborhoodTile(playerColor)

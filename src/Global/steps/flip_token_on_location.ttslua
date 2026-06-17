@@ -12,28 +12,7 @@
 --     "token": { "type": "Blue Marker" }
 --   }
 
--- Iterates all Generic tiles on locationMat, returns the first token of
--- tokenType found above any tile, plus the display name of that location.
-local function findTokenOnAnyLocation(locationMat, tokenType)
-  local objs = upCast(locationMat, 1, nil, 1)
-  for _, tile in ipairs(objs) do
-    if tile.type == "Generic" then
-      local data = parseJson(tile.memo)
-      if data then
-        local locationName
-        if data.name then
-          locationName = data.name
-        end
-        local tokens = upCast(tile, 1, nil, 1)
-        for _, o in ipairs(tokens) do
-          if o.type == "Tile" and o.memo == tokenType then
-            return o, locationName or "?"
-          end
-        end
-      end
-    end
-  end
-end
+-- findTokenOnAnyLocation lives in Global/core/locations.ttslua.
 
 function processStepFlipTokenOnLocation(step, context, onDone)
   if not step.token or not step.token.type then
