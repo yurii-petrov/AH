@@ -86,23 +86,8 @@ addons = {{
 -- ╰──────────────────────────────────────────────╯
 
 Tag = {
-  Streets = "streets",
-  Residential = "residential",
-  Bridge = "bridge",
-  Scenic = "scenic",
   DoomToken = "Doom Token",
   AnomalyToken = "Anomaly Token"
-}
-
-Neighborhood = {
-  Downtown = "Downtown",
-  Easttown = "Easttown",
-  MerchantDistrict = "Merchant District",
-  MiskatonicUniversity = "Miskatonic University",
-  Northside = "Northside",
-  Rivertown = "Rivertown",
-  Southside = "Southside",
-  Uptown = "Uptown"
 }
 
 MythosCup = {
@@ -154,10 +139,8 @@ boxId = "49a7d7"
 doomBagId = "099201"
 clueBagId = "5e5b58"
 mythosBagId = "106418"
-local reckoningBagId = "2fb57a"
 monsterMatBagId = "d96088"
 doubleSidedMatBagId = "5ed3b3"
-remnantBagId = "5ab73d"
 investigatorMatBagId = "774898"
 cardMatBagId = "fe8d29"
 rollerBagId = "2a2043"
