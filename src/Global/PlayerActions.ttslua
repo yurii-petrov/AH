@@ -21,57 +21,6 @@ function hideHelp(player, _)
   UI.setAttribute("help_panel", "visibility", vis)
 end
 
-function onClickScenario(n)
-
-  local tableTile = getObjectFromGUID(tableId)
-  if not tableTile then
-    callBack()
-    return
-  end
-
-  local tableTileData = parseJson(tableTile.memo)
-  if not tableTileData then
-    callBack()
-    return
-  end
-
-  local scenarioData = getScenarioData(n)
-  if not scenarioData then
-    broadcastToAll(string.format(i18n.getStrById("LOG_scenario_not_found"), n), "White")
-    return
-  end
-
-  setupScenario.isPreparing = true
-
-  local scenarioSheet = getObjectFromGUID(setupScenario.scenarioData.guid)
-  if scenarioSheet then
-    local p = tableTileData.startPosition.tiles[setupScenario.scenarioData.type][setupScenario.scenarioData.name].p
-    scenarioSheet.setPositionSmooth(tableTile.positionToWorld(p):setAt("y", 3))
-  end
-
-  setupScenario.scenarioData = scenarioData
-  spawnScenarioTilesOnMat(scenarioData, function()
-    setupScenario.isPreparing = false
-  end)
-  -- end, 1)
-  -- end)
-end
-
-function onClickPrepareScenario(onComplete)
-  Wait.time(function()
-    local inv = collectInventory()
-    prepareMythosTokens(gameData.scenarioData.mythosCups)
-    prepareScenarioDecks(gameData.scenarioData, inv)
-    if onComplete then
-      onComplete()
-    end
-  end, 1)
-end
-
-function onClickNumberOfPlayers(n)
-  gameData.numberOfPlayers = n
-end
-
 function onClickPrepareNumberOfPlayers(onComplete)
   local investigatorMatBag = getObjectFromGUID(investigatorMatBagId)
   if not investigatorMatBag then
