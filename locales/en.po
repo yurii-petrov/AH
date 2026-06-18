@@ -404,7 +404,7 @@ msgid "The_streets"
 msgstr "The streets"
 
 msgid "Street"
-msgstr "Street"
+msgstr "The streets"
 
 msgid "Central_Kingsport"
 msgstr "Central Kingsport"
@@ -419,6 +419,9 @@ msgid "Kingsport_Harbor"
 msgstr "Kingsport Harbor"
 
 msgid "travel_route"
+msgstr "Travel Route"
+
+msgid "Travel_Routes"
 msgstr "Travel Route"
 
 msgid "French_Hill"
@@ -498,7 +501,7 @@ msgstr "South Church"
 msgid "Hangman's_Hill"
 msgstr "Hangman's Hill"
 
-msgid "St_Mary's_Hospital"
+msgid "St._Mary's_Hospital"
 msgstr "St. Mary's Hospital"
 
 msgid "Ye_Olde_Magick_Shoppe"

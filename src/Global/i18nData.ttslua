@@ -1182,7 +1182,7 @@ I18N_DATA = {
     ["en"] = "St. Erasmus's Home",
     ["uk"] = "Притулок св. Еразма",
   },
-  ["St_Mary's_Hospital"] = {
+  ["St._Mary's_Hospital"] = {
     ["en"] = "St. Mary's Hospital",
     ["uk"] = "Лікарня св. Марії",
   },
@@ -1199,8 +1199,8 @@ I18N_DATA = {
     ["uk"] = "Дім Таємниць",
   },
   ["Street"] = {
-    ["en"] = "Street",
-    ["uk"] = "Вулиця",
+    ["en"] = "The streets",
+    ["uk"] = "Вулиці",
   },
   ["Swift_Byakhee"] = {
     ["en"] = "Swift Byakhee",
@@ -1297,6 +1297,10 @@ I18N_DATA = {
   ["Train_Station"] = {
     ["en"] = "Train Station",
     ["uk"] = "Залізничний Вокзал",
+  },
+  ["Travel_Routes"] = {
+    ["en"] = "Travel Route",
+    ["uk"] = "Шляхи Мандрів",
   },
   ["Tunneling_Dhole"] = {
     ["en"] = "Tunneling Dhole",

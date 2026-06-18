@@ -463,7 +463,7 @@ msgid "The_streets"
 msgstr "Вулиці"
 
 msgid "Street"
-msgstr "Вулиця"
+msgstr "Вулиці"
 
 msgid "Central_Kingsport"
 msgstr "Центр Кінгспорту"
@@ -478,6 +478,9 @@ msgid "Kingsport_Harbor"
 msgstr "Гавань Кінгспорту"
 
 msgid "travel_route"
+msgstr "Шляхи Мандрів"
+
+msgid "Travel_Routes"
 msgstr "Шляхи Мандрів"
 
 msgid "French_Hill"
@@ -556,7 +559,7 @@ msgstr "Південна Церква"
 msgid "Hangman's_Hill"
 msgstr "Пагорб Повішеника"
 
-msgid "St_Mary's_Hospital"
+msgid "St._Mary's_Hospital"
 msgstr "Лікарня св. Марії"
 
 msgid "Ye_Olde_Magick_Shoppe"
