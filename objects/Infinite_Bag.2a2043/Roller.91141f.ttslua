@@ -400,14 +400,15 @@ function dice_btn(playerColor, alt_click, id)
 end
 
 function setSucess(value, playerColor)
+  local name = Global.call("getInvestigatorName", playerColor.color)
   if value == 0 then
-    broadcastToAll(playerColor.steam_name .. " " .. i18n.getStrById("ROLLER_fail"), "Red")
+    broadcastToAll(name .. " " .. i18n.getStrById("ROLLER_fail"), "Red")
   elseif value == 1 then
-    broadcastToAll(string.format(playerColor.steam_name .. " " .. i18n.getStrById("ROLLER_success_1"), value), "Green")
+    broadcastToAll(string.format(name .. " " .. i18n.getStrById("ROLLER_success_1"), value), "Green")
   elseif value < 5 then
-    broadcastToAll(string.format(playerColor.steam_name .. " " .. i18n.getStrById("ROLLER_success_few"), value), "Green")
+    broadcastToAll(string.format(name .. " " .. i18n.getStrById("ROLLER_success_few"), value), "Green")
   else
-    broadcastToAll(string.format(playerColor.steam_name .. " " .. i18n.getStrById("ROLLER_success_many"), value), "Green")
+    broadcastToAll(string.format(name .. " " .. i18n.getStrById("ROLLER_success_many"), value), "Green")
   end
   local success_color = "#a29c90"
   if value > 0 then

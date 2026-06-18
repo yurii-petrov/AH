@@ -1,0 +1,328 @@
+-- ╭──────────────────────────────────────────────╮
+-- │          CORE BOARD OBJECT DATA             │
+-- ╰──────────────────────────────────────────────╯
+
+MYTHOS_TILE_DATA = {
+  guid         = "3dbb4d",
+  bag          = { guid = "106418" },
+  eventDeck    = {-0.198, 0.236,  0.278},
+  eventDiscard = {-0.199, 0.113,  0.731},
+  activeCard   = { 0.084, 0.113,  0.278},
+}
+
+SCENARIO_MAT_DATA = {
+  guid = "7b841f",
+  -- local positions on the mat; index used by scenario deck entries below
+  positions = {
+    [1]  = { 0.543,  0.179, -0.727 },
+    [2]  = { 0.002,  0.179, -0.727 },
+    [3]  = {-0.338,  0.179, -0.727 },
+    [4]  = { 0.343,  0.179, -0.241 },
+    [5]  = { 0.002,  0.179, -0.241 },
+    [6]  = {-0.338,  0.179, -0.241 },
+    [7]  = { 0.343,  0.179,  0.246 },
+    [8]  = { 0.002,  0.179,  0.246 },
+    [9]  = {-0.338,  0.179,  0.246 },
+    [10] = { 0.343,  0.179,  0.732 },
+    [11] = { 0.002,  0.179,  0.732 },
+    [12] = {-0.338,  0.179,  0.732 },
+  },
+  scenarios = {
+    AoA = {
+      number   = 1,
+      encounter = {
+        Northside             = 7,
+        Downtown              = 8,
+        Easttown              = 9,
+        ["The streets"]       = 10,
+        ["Merchant District"] = 11,
+        Rivertown             = 12,
+      },
+      anomaly = { TF = 5 },
+    },
+    FfU = {
+      number   = 2,
+      encounter = {
+        Downtown        = 7,
+        Rivertown       = 8,
+        Easttown        = 9,
+        ["The streets"] = 10,
+        Uptown          = 11,
+        Southside       = 12,
+      },
+    },
+    VoT = {
+      number   = 3,
+      encounter = {
+        Northside                 = 7,
+        ["Miskatonic University"] = 8,
+        Rivertown                 = 9,
+        ["The streets"]           = 10,
+        Uptown                    = 11,
+        Southside                 = 12,
+      },
+      anomaly = { FR = 5 },
+    },
+    EotD = {
+      number   = 4,
+      encounter = {
+        Northside                 = 2,
+        Downtown                  = 5,
+        Rivertown                 = 8,
+        ["Merchant District"]     = 9,
+        ["Miskatonic University"] = 11,
+        ["The streets"]           = 12,
+      },
+      anomaly = { NB = 6 },
+    },
+    SitD = {
+      number   = 5,
+      encounter = {
+        Northside             = 7,
+        Downtown              = 8,
+        Easttown              = 9,
+        ["The streets"]       = 10,
+        ["Merchant District"] = 11,
+        Rivertown             = 12,
+      },
+    },
+    SoT = {
+      number   = 6,
+      encounter = {
+        Northside                 = 5,
+        ["Merchant District"]     = 7,
+        ["Miskatonic University"] = 8,
+        Rivertown                 = 9,
+        Uptown                    = 11,
+        ["The streets"]           = 12,
+      },
+      anomaly = { YE = 6 },
+    },
+    ToR = {
+      number   = 7,
+      encounter = {
+        ["Innsmouth Village"]     = 4,
+        ["Innsmouth Shore"]       = 5,
+        ["Devil Reef"]            = 6,
+        ["Travel Routes"]         = 7,
+        Northside                 = 8,
+        Easttown                  = 9,
+        ["The streets"]           = 10,
+        ["Miskatonic University"] = 11,
+        Southside                 = 12,
+      },
+      terror = { FF = 2 },
+    },
+    TPL = {
+      number   = 8,
+      encounter = {
+        Downtown               = 5,
+        ["Strange High House"] = 6,
+        ["Travel Routes"]      = 7,
+        ["Merchant District"]  = 8,
+        ["Central Kingsport"]  = 9,
+        ["The streets"]        = 10,
+        Uptown                 = 11,
+        ["Kingsport Harbor"]   = 12,
+      },
+      anomaly = { VM = 4 },
+    },
+    IC = {
+      number   = 9,
+      encounter = {
+        ["Travel Routes"]     = 4,
+        ["Innsmouth Shore"]   = 5,
+        Downtown              = 6,
+        Northside             = 7,
+        Rivertown             = 8,
+        Easttown              = 9,
+        ["The streets"]       = 10,
+        ["Central Kingsport"] = 11,
+        Southside             = 12,
+      },
+      terror = { FC = 2 },
+    },
+    DoR = {
+      number   = 10,
+      encounter = {
+        ["Travel Routes"]         = 7,
+        ["Miskatonic University"] = 8,
+        Rivertown                 = 9,
+        ["The streets"]           = 10,
+        Uptown                    = 11,
+        Southside                 = 12,
+      },
+      deferred = {
+        ["Innsmouth Shore"]   = 5,
+        ["Innsmouth Village"] = 6,
+      },
+    },
+    BtS = {
+      number   = 11,
+      encounter = {
+        ["Merchant District"] = 4,
+        Downtown              = 5,
+        Rivertown             = 6,
+        ["French Hill"]       = 8,
+        ["The witch house"]   = 9,
+        ["The streets"]       = 10,
+        Uptown                = 11,
+        Southside             = 12,
+      },
+      anomaly = { LS = 7 },
+    },
+    TDCO = {
+      number   = 12,
+      encounter = {
+        Threshold                 = 4,
+        Northside                 = 5,
+        Easttown                  = 6,
+        ["Miskatonic University"] = 7,
+        ["The Underworld"]        = 8,
+        ["French Hill"]           = 9,
+        ["The streets"]           = 10,
+        Uptown                    = 11,
+        Southside                 = 12,
+      },
+    },
+    TKaTG = {
+      number   = 13,
+      encounter = {
+        Rivertown             = 4,
+        ["French Hill"]       = 5,
+        Easttown              = 6,
+        ["The unnamable"]     = 7,
+        ["Merchant District"] = 8,
+        ["The streets"]       = 10,
+        Uptown                = 11,
+      },
+      anomaly = { FR = 2 },
+    },
+  },
+}
+
+TABLE_DATA = {
+  guid          = "f47e19",
+  referenceDeck = {-0.533, 0, 0.33},
+
+  startPosition = {
+    tiles = {
+      Neighborhood = {
+        Downtown                  = { p = { 0.762, 0, -0.915 }, r = { 0, 180, 0 } },
+        Easttown                  = { p = { 0.783, 0, -0.783 }, r = { 0, 180, 0 } },
+        ["Merchant District"]     = { p = { 0.541, 0, -0.783 }, r = { 0, 180, 0 } },
+        ["Miskatonic University"] = { p = { 0.783, 0, -0.915 }, r = { 0, 180, 0 } },
+        Northside                 = { p = { 0.541, 0, -0.915 }, r = { 0, 180, 0 } },
+        Rivertown                 = { p = { 0.420, 0, -0.783 }, r = { 0, 180, 0 } },
+        Southside                 = { p = { 0.420, 0, -0.915 }, r = { 0, 180, 0 } },
+        Uptown                    = { p = { 0.662, 0, -0.783 }, r = { 0, 180, 0 } },
+      },
+      Scenario = {
+        AoA  = { p = { 0.244,  0, -0.824 }, r = { 0, 180, 0 } },
+        EotD = { p = {-0.049,  0, -0.824 }, r = { 0, 180, 0 } },
+        FfU  = { p = { 0.147,  0, -0.824 }, r = { 0, 180, 0 } },
+        VoT  = { p = { 0.049,  0, -0.824 }, r = { 0, 180, 0 } },
+      },
+      Street = {
+        Bridge1      = { p = { 0.610, 0, -0.682 }, r = { 0, 180, 0 } },
+        Bridge2      = { p = { 0.512, 0, -0.682 }, r = { 0, 180, 0 } },
+        Residential1 = { p = { 0.660, 0, -0.682 }, r = { 0, 180, 0 } },
+        Residential2 = { p = { 0.561, 0, -0.682 }, r = { 0, 180, 0 } },
+        Residential3 = { p = { 0.462, 0, -0.682 }, r = { 0, 180, 0 } },
+        Scenic1      = { p = { 0.709, 0, -0.682 }, r = { 0, 180, 0 } },
+        Scenic2      = { p = { 0.759, 0, -0.682 }, r = { 0, 180, 0 } },
+      },
+    },
+  },
+
+  typeRegistry = {
+    Components = { "doom_token", "blue_marker", "red_marker", "white_marker", "item_mat" },
+    Core       = { "investigator", "ally", "monster", "item", "spell", "event", "encounter" },
+    Map        = { "neighborhood", "street", "threshold", "travel_routes" },
+    Scenarios  = { "scenario", "mystery", "anomaly", "codex", "archive", "special", "starting", "terror" },
+    Status     = { "blessed_cursed", "driven_fatigued", "tainted", "wanted", "dark_pact" },
+  },
+}
+
+LOCATION_MAT_DATA = {
+  guid = "9fe1d3",
+  archive     = { 0.938, 0.38,  0.369 },
+  codex = {
+    { 0.938, 0.214, 0.77 },
+    { 0.846, 0.214, 0.77 },
+    { 0.755, 0.214, 0.77 },
+    { 0.663, 0.214, 0.77 },
+    { 0.572, 0.214, 0.77 },
+    { 0.48,  0.214, 0.77 },
+  },
+  headline    = { 0.846, 0.38,  0.369 },
+  headlinedis = { 0.755, 0.214, 0.369 },
+  monster     = { 0.687, 0.38,  0.622 },
+  scenarioMat = { 0.852, 0.214, 0.557 },
+  setaside    = { 0.95,  0.214, 0.248 },
+  setaside2   = { 0.858, 0.214, 0.248 },
+}
+
+-- ╭──────────────────────────────────────────────╮
+-- │          SHOP MAT STATIC DATA               │
+-- ╰──────────────────────────────────────────────╯
+-- Local positions relative to the shopMat object.
+-- Use shopMat.positionToWorld(pos) to get world coords.
+
+ShopDeckType = {
+  SPECIAL  = "special",
+  ALLY     = "ally",
+  SPELL    = "spell",
+  ITEM     = "item",
+  STARTING = "starting cards",
+}
+
+SHOP_MAT_DATA = {
+  guid = "80c416",
+  decks = {
+    special            = { pos = { 0.273,  0.246, -0.795 } },
+    ally               = { pos = { 0.001,  0.179, -0.795 } },
+    spell              = { pos = {-0.272,  0.155, -0.795 } },
+    item               = { pos = { 0.273,  0.231,  0.163 } },
+    ["starting cards"] = { pos = { 0,      0,      0      } }, -- TODO: fill in position
+  },
+  displaypos = {
+    { 0.001,  0.113,  0.222 },
+    {-0.273,  0.113,  0.222 },
+    { 0.273,  0.113,  0.724 },
+    { 0.001,  0.113,  0.724 },
+    {-0.273,  0.113,  0.724 },
+  },
+  encounterpos = {
+    { 0.273,  0.113, -0.307 },
+    { 0.001,  0.113, -0.307 },
+    {-0.273,  0.113, -0.307 },
+  },
+}
+
+-- ╭──────────────────────────────────────────────╮
+-- │        CONDITION MAT STATIC DATA            │
+-- ╰──────────────────────────────────────────────╯
+-- Local positions relative to each mat object.
+-- Use mat.positionToWorld(pos) to get world coords.
+--
+-- [1] always present (guid = "f0624c")
+-- [2] always present physically; shown (y raised) when addon set 1 or 2 is active (guid = "ecb76d")
+
+CONDITION_MAT_DATA = {
+  {
+    guid = "f0624c",
+    deck = {
+      ["blessed cursed"] = { 0.805,  0.113,  0.005 },
+      ["dark pact"]      = {-0.822,  0.113,  0.005 },
+    },
+  },
+  {
+    guid = "ecb76d",
+    deck = {
+      ["wanted"]          = { 1.270,  0.100,  0.000 },
+      ["tainted"]         = {-0.030,  0.100,  0.004 },
+      ["driven fatigued"] = {-1.290,  0.100,  0.004 },
+    },
+  },
+}

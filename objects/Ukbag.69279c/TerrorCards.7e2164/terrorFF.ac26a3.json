@@ -1,0 +1,87 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "ContainedObjects_order": [
+    "Card.2df831",
+    "Card.5f307a",
+    "Card.506454",
+    "Card.ef2e4e",
+    "Card.611415",
+    "Card.603dd1",
+    "Card.0e9bf6",
+    "Card.89f715",
+    "Card.f540ad",
+    "Card.33263c",
+    "Card.2c7aed",
+    "Card.a92c3d"
+  ],
+  "ContainedObjects_path": "terrorFF.ac26a3",
+  "CustomDeck": {
+    "5873": {
+      "BackIsHidden": true,
+      "BackURL": "https://drive.google.com/uc?export=view\u0026id=16HE0TJK888adVaVWlNHPZ2VjqWx9L0Ng",
+      "FaceURL": "https://drive.google.com/uc?export=view\u0026id=1oZe3JLO_yGVgrf34_ZpAWHq2smpzyzJN",
+      "NumHeight": 2,
+      "NumWidth": 6,
+      "Type": 0,
+      "UniqueBack": false
+    }
+  },
+  "DeckIDs": [
+    587300,
+    587301,
+    587302,
+    587303,
+    587304,
+    587305,
+    587306,
+    587307,
+    587308,
+    587309,
+    587310,
+    587311
+  ],
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "ac26a3",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": true,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Memo": "{\"name\":\"FF\",\"set\":2,\"startPosition\":{\"x\":0.137218755483627,\"y\":1.07870078086853,\"z\":-0.5484858751297},\"type\":\"terror\"}",
+  "Name": "DeckCustom",
+  "Nickname": "terror FF",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": 59.973,
+    "posY": 4.115,
+    "posZ": 69.984,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 180,
+    "scaleX": 1.5,
+    "scaleY": 1,
+    "scaleZ": 1.5
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

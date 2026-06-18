@@ -1,0 +1,499 @@
+-- ╭──────────────────────────────────────────────╮
+-- │              MYTHOS TILE                     │
+-- ╰──────────────────────────────────────────────╯
+-- Central file for all mythos tile logic.
+-- MYTHOS_TILE_DATA.obj is resolved in onload → always valid during gameplay.
+
+-- ╭──────────────────────────────────────────────╮
+-- │                 HELPERS                      │
+-- ╰──────────────────────────────────────────────╯
+
+function getObjFromMythosTile(pos)
+  local mythosTile = MYTHOS_TILE_DATA.obj
+  if not mythosTile then return end
+  local y = mythosTile.getPosition().y + mythosTile.getBounds().size.y
+  local objs = findObjsInRadius(mythosTile.positionToWorld(pos):setAt("y", y))
+  for _, o in pairs(objs) do
+    if o.type == "Deck" or o.type == "Card" then
+      return o
+    end
+  end
+end
+
+function getEventObj()
+  return getObjFromMythosTile(MYTHOS_TILE_DATA.eventDeck)
+end
+
+function getEventDiscardObj()
+  return getObjFromMythosTile(MYTHOS_TILE_DATA.eventDiscard)
+end
+
+function getEventDeckWorldPos(mythosTile)
+  local mt = mythosTile or MYTHOS_TILE_DATA.obj
+  if not mt then return Vector(0, 3, 0) end
+  return mt.positionToWorld(MYTHOS_TILE_DATA.eventDeck):setAt("y", 3)
+end
+
+function getEventDiscardWorldPos(mythosTile)
+  local mt = mythosTile or MYTHOS_TILE_DATA.obj
+  if not mt then return Vector(0, 3, 0) end
+  return mt.positionToWorld(MYTHOS_TILE_DATA.eventDiscard):setAt("y", 3)
+end
+
+-- ╭──────────────────────────────────────────────╮
+-- │              TILE ACTIONS                    │
+-- ╰──────────────────────────────────────────────╯
+
+function fixDrawMythosButton()
+  isDrawMythInProcess = false
+end
+
+function mythosTileSuccessAction(d)
+  local mythosTile = MYTHOS_TILE_DATA.obj
+  if not mythosTile then return end
+
+  mythosTile.call("setButtons", { type = "empty" })
+
+  local currentCardPos = mythosTile.positionToWorld(MYTHOS_TILE_DATA.activeCard)
+  local y    = mythosTile.getPosition().y + mythosTile.getBounds().size.y
+  local objs = findObjsInRadius(currentCardPos:setAt("y", y))
+  if not objs then return end
+
+  local eventCard = nil
+  for _, o in pairs(objs) do
+    local oData = parseJson(o.memo)
+    if o.type == "Card" and oData and oData.type and string.lower(oData.type) == "event" then
+      eventCard = o
+      break
+    end
+  end
+  if not eventCard then return end
+
+  local eventData = parseJson(eventCard.memo)
+  if not eventData or not eventData.neighborhood then return end
+
+  local eventDiscardPos = mythosTile.positionToWorld(MYTHOS_TILE_DATA.eventDiscard)
+  eventCard.setRotation({0, 180, 0})
+  eventCard.setPositionSmooth(eventDiscardPos:setAt("y", 3))
+
+  local locationMat = getObjectFromGUID(locationMatId)
+  if not locationMat then return end
+
+  local objs2 = upCast(locationMat, 1, nil, 1)
+  local neighborhood, neighborhoodData
+  for _, o in pairs(objs2) do
+    local data = parseJson(o.memo)
+    if o.type == "Generic" and data and data.name and
+       string.lower(data.name) == string.lower(eventData.neighborhood) then
+      neighborhood     = o
+      neighborhoodData = data
+    end
+  end
+  if not neighborhood or not neighborhoodData then return end
+
+  local objs3 = upCast(neighborhood, 1, nil, 1)
+  local clue
+  for _, o in pairs(objs3) do
+    if o.type == "Tile" and o.memo == "Clue" then
+      clue = o
+      break
+    end
+  end
+  if not clue then return end
+
+  if gameData.encounterColor then
+    for _, o in pairs(getObjectsInPlayerZone(gameData.encounterColor)) do
+      local oData = parseJson(o.memo)
+      if o.type == "Card" and oData and oData.type == "Investigator" then
+        clue.setPositionSmooth(o.getPosition():setAt("y", 3))
+        return
+      end
+    end
+  else
+    clue.setPositionSmooth(currentCardPos)
+  end
+end
+
+function mythosTileCancelAction(d)
+  local mythosTile = MYTHOS_TILE_DATA.obj
+  if not mythosTile then return end
+
+  mythosTile.call("setButtons", { type = "empty" })
+
+  local currentCardPos = mythosTile.positionToWorld(MYTHOS_TILE_DATA.activeCard)
+  local y    = mythosTile.getPosition().y + mythosTile.getBounds().size.y
+  local objs = findObjsInRadius(currentCardPos:setAt("y", y))
+  if not objs then return end
+
+  local card, cardData
+  for _, o in pairs(objs) do
+    local oData = parseJson(o.memo)
+    if o.type == "Card" and oData and oData.type and string.lower(oData.type) ~= "event" then
+      card     = o
+      cardData = oData
+      break
+    end
+  end
+  if not card or not cardData then return end
+
+  if cardData.neighborhood or cardData.type == "anomaly" then
+    local scenarioMat = getObjectFromGUID(scenarioMatId)
+    if not scenarioMat then return end
+
+    local foundObj
+    for _, o in pairs(upCast(scenarioMat, 1, nil, 1)) do
+      local oData   = parseJson(o.memo)
+      local isFound = false
+      if o.type == "Deck" and oData then
+        if cardData.neighborhood and oData.name then
+          isFound = string.lower(cardData.neighborhood) == string.lower(oData.name)
+        elseif cardData.type == "anomaly" then
+          isFound = string.lower(cardData.type) == string.lower(oData.type)
+        end
+        if isFound then foundObj = o; break end
+      end
+    end
+    if not foundObj then return end
+    foundObj.putObject(card)
+
+  elseif cardData.type == "headline" then
+    local locationMat = getObjectFromGUID(locationMatId)
+    if not locationMat then return end
+    local locationData = parseJson(locationMat.memo)
+    if not locationData and not locationData.headlinedis then return end
+    card.setPositionSmooth(locationMat.positionToWorld(locationData.headlinedis):setAt("y", 3))
+
+  elseif string.lower(cardData.type) == "terror" then
+    local terrorDeck = getTerrorDeck()
+    if terrorDeck then terrorDeck.putObject(card) end
+    onClickEncounter(nil, gameData.encounterColor)
+
+  elseif string.lower(cardData.type) == "codex" then
+    local sourceMat = findBoardByQuery({{ field = "type", op = "eq", value = "locationMat" }})
+    if not sourceMat then return end
+    local archive = findDeckOnBoardByType(sourceMat, "archive")
+    if not archive then return end
+    card.setRotation({0, 180, 180})
+    archive.putObject(card)
+  end
+end
+
+function mythosTileFailedAction(d)
+  local mythosTile = MYTHOS_TILE_DATA.obj
+  if not mythosTile then return end
+
+  mythosTile.call("setButtons", { type = "empty" })
+
+  local currentCardPos = mythosTile.positionToWorld(MYTHOS_TILE_DATA.activeCard)
+  local y    = mythosTile.getPosition().y + mythosTile.getBounds().size.y
+  local objs = findObjsInRadius(currentCardPos:setAt("y", y))
+  if not objs then return end
+
+  local eventCard
+  for _, o in pairs(objs) do
+    local oData = parseJson(o.memo)
+    if o.type == "Card" and oData and oData.type and string.lower(oData.type) == "event" then
+      eventCard = o; break
+    end
+  end
+  if not eventCard then return end
+
+  local eventData = parseJson(eventCard.memo)
+  if not eventData or not eventData.neighborhood then return end
+
+  local scenarioMat = getObjectFromGUID(scenarioMatId)
+  if not scenarioMat then return end
+
+  local encounterDeck
+  for _, obj in pairs(upCast(scenarioMat, 1, nil, 1)) do
+    local objData = parseJson(obj.memo)
+    if obj.type == "Deck" and objData and objData.type and
+       string.lower(objData.type) == "encounter" and
+       string.lower(objData.name) == string.lower(eventData.neighborhood) then
+      encounterDeck = obj; break
+    end
+  end
+  if not encounterDeck or #encounterDeck.getObjects() < 2 then return end
+
+  local p  = encounterDeck.getPosition()
+  eventCard.setRotation({0, 180, 180})
+  local o1 = encounterDeck.takeObject({ index = 0, rotation = {0, 180, 180} })
+  local o2 = encounterDeck.takeObject({ index = 0, rotation = {0, 180, 180} })
+  local d2 = eventCard.putObject(o1).putObject(o2)
+  Wait.time(function()
+    d2.shuffle()
+    runAfterRest(d2, function(d2) d2.setPositionSmooth(p:setAt("y", 2.5)) end)
+  end, 1)
+end
+
+-- ╭──────────────────────────────────────────────╮
+-- │      DRAW MYTHOS / GATE BURST                │
+-- ╰──────────────────────────────────────────────╯
+
+function drawMythos(obj, playerColor)
+  local mythosTile = MYTHOS_TILE_DATA.obj
+  if not mythosTile then return end
+
+  mythosTile.call("setButtons", { type = "empty" })
+
+  local discardTokenPositions = mythosTile.positionToWorld({-0.001, 0.1, -0.462})
+  local yUnderMythosMat       = mythosTile.getPosition().y + mythosTile.getBounds().size.y
+
+  if isDrawMythInProcess then return end
+  isDrawMythInProcess = true
+
+  local function findObjInActiveTokenZone(pos)
+    local hits = Physics.cast({
+      origin = pos, direction = {0, 1, 0},
+      type = 3, size = {1, 1, 1}, max_distance = 0, debug = isTestMode
+    })
+    local hitObjects = {}
+    for _, v in pairs(hits) do
+      if v.hit_object ~= obj then table.insert(hitObjects, v.hit_object) end
+    end
+    return hitObjects
+  end
+
+  local function findObjsInDiscardTokenZone(pos)
+    local hits = Physics.cast({
+      origin = pos, direction = {0, 1, 0},
+      type = 3, size = {10, 2.5, 14}, max_distance = 0, debug = isTestMode
+    })
+    local hitObjects = {}
+    for _, v in pairs(hits) do
+      if v.hit_object ~= obj then table.insert(hitObjects, v.hit_object) end
+    end
+    return hitObjects
+  end
+
+  local function clearActiveCard()
+    local cy   = mythosTile.getPosition().y + mythosTile.getBounds().size.y
+    local cPos = mythosTile.positionToWorld(MYTHOS_TILE_DATA.activeCard):setAt("y", cy)
+    local objs = findObjsInRadius(cPos)
+    if objs then
+      for _, o in pairs(objs) do
+        if o.type == "Deck" or o.type == "Card" or (o.type == "Tile" and o.memo == "Monster Mat") then
+          local p = cPos
+          p.x = p.x - 6
+          o.setPositionSmooth(p:setAt("y", 3))
+        end
+      end
+    end
+  end
+
+  local function clearActiveTile()
+    local z1 = findObjInActiveTokenZone(mythosTile.positionToWorld({0.012, 0.1, 0.649}):setAt("y", 2.7))
+    local z2 = findObjInActiveTokenZone(mythosTile.positionToWorld({0.012, 0.1, 0.792}):setAt("y", 2.7))
+    if #z1 < 1 or #z2 < 1 then return end
+
+    local activeObjs = {}
+    for _, o in ipairs(z1) do table.insert(activeObjs, o) end
+    for _, o in ipairs(z2) do table.insert(activeObjs, o) end
+
+    local counts = {}
+    for _, o in pairs(findObjsInDiscardTokenZone(discardTokenPositions:setAt("y", yUnderMythosMat))) do
+      for _, cupType in pairs(MythosCup) do
+        if o.memo == cupType then counts[cupType] = (counts[cupType] or 0) + 1 end
+      end
+    end
+
+    local startPos   = mythosTile.positionToWorld({0.278, 0.100, 0})
+    local mythosTypes = {
+      MythosCup.Terror, MythosCup.Blank, MythosCup.Reckoning, MythosCup.GateBurst,
+      MythosCup.ReadHeadline, MythosCup.SpawnMonster, MythosCup.SpawnClue, MythosCup.SpreadDoom
+    }
+    for _, ao in ipairs(activeObjs) do
+      for mtIdx, mt in pairs(mythosTypes) do
+        if ao and ao.memo == mt then
+          counts[mt] = (counts[mt] or 0) + 1
+          ao.setPosition({ startPos.x + (counts[mt] - 1) * 1.94, 3, startPos.z + (mtIdx - 1) * 1.8 })
+          break
+        end
+      end
+    end
+  end
+
+  local function restartMythosCup(callBack)
+    local function collect(myths)
+      local count = 0
+      for _, myth in pairs(myths) do
+        for _, cupType in pairs(MythosCup) do
+          if myth.memo == cupType then obj.putObject(myth); count = count + 1; break end
+        end
+      end
+      return count
+    end
+    local z1  = findObjInActiveTokenZone(mythosTile.positionToWorld({0.012, 0.1, 0.649}):setAt("y", 2.7))
+    local z2  = findObjInActiveTokenZone(mythosTile.positionToWorld({0.012, 0.1, 0.792}):setAt("y", 2.7))
+    local dis = findObjsInDiscardTokenZone(discardTokenPositions:setAt("y", yUnderMythosMat))
+    if collect(dis) + collect(z1) + collect(z2) == 0 then
+      isDrawMythInProcess = false
+      return
+    end
+    Wait.time(function() callBack() end, 1)
+  end
+
+  local function spawnCurrentMyth(callBack)
+    clearActiveCard()
+    local currentMyth = obj.takeObject({ index = 0 })
+    if not currentMyth then callBack(); return end
+
+    currentMyth.interactable   = false
+    currentMyth.drag_selectable = false
+
+    local z1 = findObjInActiveTokenZone(mythosTile.positionToWorld({0.012, 0.1, 0.649}):setAt("y", 2.7))
+    local z2 = findObjInActiveTokenZone(mythosTile.positionToWorld({0.012, 0.1, 0.792}):setAt("y", 2.7))
+    local ty  = mythosTile.getPosition().y + 0.1
+    if #z1 == 0 then
+      currentMyth.setPositionSmooth(mythosTile.positionToWorld({0.012, 0.1, 0.649}):setAt("y", ty))
+    elseif #z2 == 0 then
+      currentMyth.setPositionSmooth(mythosTile.positionToWorld({0.012, 0.1, 0.792}):setAt("y", ty))
+    end
+
+    runAfterRest(currentMyth, function(cm)
+      cm.interactable   = true
+      cm.drag_selectable = true
+      processDrawMyth(cm, obj, playerColor, function() callBack() end)
+    end)
+  end
+
+  if #obj.getObjects() > 0 then
+    clearActiveTile()
+    spawnCurrentMyth( function() isDrawMythInProcess = false end)
+  else
+    restartMythosCup(function()
+      isDrawMythInProcess = false
+      if #obj.getObjects() >= 0 then drawMythos(obj, playerColor) end
+    end)
+  end
+end
+
+function getInvestigatorName(color)
+  for _, o in pairs(getObjectsInPlayerZone(color) or {}) do
+    local oData = parseJson(o.memo)
+    if o.type == "Card" and oData and oData.type == "Investigator" then
+      local n = o.getName()
+      return i18n.getStrById(n:gsub(" ", "_")) or n
+    end
+  end
+  return color
+end
+
+function processDrawMyth(currentMyth, obj, playerColor, callBack)
+  local memoLabel  = i18n.getStrById(currentMyth.memo:gsub(" ", "_")) or currentMyth.memo
+  local investName = getInvestigatorName(playerColor)
+  broadcastToAll(string.format(i18n.getStrById("LOG_myth_draw"), memoLabel, investName), "White")
+
+  local mythosTile = MYTHOS_TILE_DATA.obj
+  if not mythosTile then callBack(); return end
+
+  if currentMyth.memo == MythosCup.SpreadDoom then
+    eventSpawnDooms(function() callBack() end); return
+  elseif currentMyth.memo == MythosCup.SpawnMonster then
+    drawMonster(mythosTile.positionToWorld(MYTHOS_TILE_DATA.activeCard):setAt("y", 3))
+    callBack(); return
+  elseif currentMyth.memo == MythosCup.ReadHeadline then
+    local locationMat = getObjectFromGUID(locationMatId)
+    if not locationMat then return end
+    local locationData = parseJson(locationMat.memo)
+    if not locationData then return end
+
+    local headlineObj
+    for _, o in ipairs(findObjsInRadius(locationMat.positionToWorld(locationData.headline):setAt("y", 2.2))) do
+      local oData = parseJson(o.memo)
+      if oData and oData.type and string.lower(oData.type) == "headline" then
+        headlineObj = o; break
+      end
+    end
+
+    local y           = mythosTile.getPosition().y + mythosTile.getBounds().size.y
+    local currentCardPos = mythosTile.positionToWorld(MYTHOS_TILE_DATA.activeCard):setAt("y", y)
+    if headlineObj then
+      local card = headlineObj.type == "Deck" and takeCardFromTop(headlineObj, false) or headlineObj
+      if card then
+        mythosTile.call("setButtons", { type = "headline" })
+        card.setPositionSmooth(currentCardPos:setAt("y", 3))
+        callBack(); return
+      end
+    end
+    spawnDoomTokensOnScenarioSheet(1)
+  elseif currentMyth.memo == MythosCup.GateBurst then
+    processGateBurst(function() callBack() end); return
+  elseif currentMyth.memo == MythosCup.SpawnClue then
+    spawnClue(function() callBack() end); return
+  elseif currentMyth.memo == MythosCup.Terror then
+    processTerror(function() callBack() end); return
+  end
+  callBack()
+end
+
+function processGateBurst(callBack)
+  local mythosTile = MYTHOS_TILE_DATA.obj
+  if not mythosTile then callBack(); return end
+
+  local eventObj = getEventObj()
+  if not eventObj then return end
+
+  local eventCard = eventObj.type == "Deck" and takeCardFromTop(eventObj, true) or eventObj
+  if not eventCard then callBack(); return end
+
+  local eventDiscardPos = mythosTile.positionToWorld(MYTHOS_TILE_DATA.eventDiscard)
+  eventCard.setRotation({0, 180, 0})
+  eventCard.setPositionSmooth(eventDiscardPos:setAt("y", 3))
+
+  if not eventCard.memo then
+    printToAll(i18n.getStrById("LOG_add_clue_manually"), "Red")
+    callBack(); return
+  end
+
+  local data = parseJson(eventCard.memo)
+  if not data or not data.neighborhood then callBack(); return end
+
+  broadcastToAll(string.format(i18n.getStrById("LOG_gate_burst"),
+    i18n.getStrById(data.neighborhood:gsub(" ", "_"))), "Red")
+
+  local locationMat = getObjectFromGUID(locationMatId)
+  if not locationMat then return end
+
+  local neighborhoodInfo
+  for _, o in pairs(upCast(locationMat, 1, nil, 1)) do
+    local oData = parseJson(o.memo)
+    if oData and string.lower(oData.type) == "neighborhood" and
+       oData.locations and oData.name == data.neighborhood then
+      neighborhoodInfo = { obj = o, data = oData }; break
+    end
+  end
+
+  if not neighborhoodInfo and not neighborhoodInfo.data.locations then callBack(); return end
+
+  local locations = {}
+  for _, v in pairs(neighborhoodInfo.data.locations) do locations[v] = { dooms = 1 } end
+  spawnDooms({ neighborhood = data.neighborhood, locations = locations }, function() end)
+
+  Wait.time(function()
+    local eventDiscard = getEventDiscardObj()
+    if not eventDiscard then callBack(); return end
+
+    local function putDiscardUnderDeck(discardObj, cb)
+      if discardObj.type == "Card" then
+        discardObj.putObject(eventObj)
+      elseif discardObj.type == "Deck" then
+        eventObj.putObject(discardObj)
+      end
+      cb()
+    end
+
+    Wait.time(function()
+      if eventDiscard.type == "Card" then
+        eventDiscard.setRotationSmooth({0, 180, 180})
+        runAfterRest(eventDiscard, function(ed) putDiscardUnderDeck(ed, callBack) end)
+      elseif eventDiscard.type == "Deck" then
+        eventDiscard.setRotationSmooth({0, 180, 180})
+        runAfterRest(eventDiscard, function(ed)
+          ed.shuffle()
+          Wait.time(function() putDiscardUnderDeck(ed, callBack) end, 1)
+        end)
+      end
+    end, 1)
+  end, 1.5)
+end

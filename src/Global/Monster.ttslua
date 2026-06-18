@@ -190,35 +190,6 @@ function onMonsterKilled(monster)
     return
   end
 
-  -- local deck = nil
-  -- local objs = findObjsInRadius(locationMat.positionToWorld(locationData.monster))
-  --   for _, obj in ipairs(objs) do
-  --     if obj.type == "Deck" then
-  --       local deckData = parseJson(obj.memo)
-  --       if deckData and string.lower(deckData.type) == "monster" then
-  --         deck = obj
-  --         break
-  --       end
-  --     end
-  --   end
-
-  -- if not deck then
-  --   return
-  -- end
-
-  --   local mData = parseJson(monster.memo)
-  --   if mData and mData.remnant then
-  --     local remnantBag = getObjectFromGUID(remnantBagId)
-  --     if not remnantBag then
-  --       return
-  --     end
-  --     local remnant = remnantBag.takeObject({
-  --       index = 0,
-  --       position = monster.getPosition(),
-  --       rotation = {0, 180, 180},
-  --       smooth = false
-  --     })
-  --   end
   monster.setRotation({0, 180, 180})
   monster.setPosition(locationMat.positionToWorld(locationData.monster):setAt("y", 3))
 end

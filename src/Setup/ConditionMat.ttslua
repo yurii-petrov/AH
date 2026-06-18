@@ -1,0 +1,10 @@
+-- ╭──────────────────────────────────────────────╮
+-- │             CONDITION MAT SETUP              │
+-- ╰──────────────────────────────────────────────╯
+function addConditionMat2()
+  if gameData.addons[1] == false and gameData.addons[2] == false and gameData.addons[3] == false then
+    return
+  end
+  local conditionMat2 = CONDITION_MAT_DATA[2].obj
+  conditionMat2.setPosition(conditionMat2.getPosition():setAt("y", 2))
+end

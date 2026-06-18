@@ -12,12 +12,6 @@ function processStepMergeEventDeck(step, context, onDone)
     return
   end
 
-  local mythosTile = getObjectFromGUID(mythosTileId)
-  if not mythosTile then
-    log("[mergeEventDeck] mythosTile not found")
-    return
-  end
-
   local box = getObjectFromGUID(boxId)
   if not box then return end
 
@@ -27,7 +21,7 @@ function processStepMergeEventDeck(step, context, onDone)
     return
   end
 
-  local eventDeckPos  = getEventDeckWorldPos(mythosTile)
+  local eventDeckPos  = getEventDeckWorldPos()
   local currentDeck   = getEventObj()
 
   local newDeck = box.takeObject({

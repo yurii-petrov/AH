@@ -1,0 +1,188 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ChildObjects": [
+    {
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Autoraise": true,
+      "CardID": 580408,
+      "ColorDiffuse": {
+        "b": 0.713235259,
+        "g": 0.713235259,
+        "r": 0.713235259
+      },
+      "CustomDeck": {
+        "5804": {
+          "BackIsHidden": true,
+          "BackURL": "https://drive.google.com/uc?export=view\u0026id=1vL9o8qSWzQdiFS6PEYagnbjOBlkCBRf0",
+          "FaceURL": "https://drive.google.com/uc?export=view\u0026id=15Y25nv4ebr0zS9K2kQDA990J_6miJ9pf",
+          "NumHeight": 4,
+          "NumWidth": 6,
+          "Type": 0,
+          "UniqueBack": true
+        }
+      },
+      "Description": "",
+      "DragSelectable": true,
+      "GMNotes": "",
+      "GUID": "b06172",
+      "Grid": true,
+      "GridProjection": false,
+      "Hands": true,
+      "HideWhenFaceDown": false,
+      "IgnoreFoW": false,
+      "LayoutGroupSortIndex": 0,
+      "Locked": false,
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "MeasureMovement": false,
+      "Memo": "{\"hp\":1,\"monstertype\":[\"O'Bannion\",\"Human\"],\"name\":\"Feckless Agitator\",\"remnant\":false,\"type\":\"Monster\"}",
+      "Name": "Card",
+      "Nickname": "",
+      "SidewaysCard": false,
+      "Snap": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "Transform": {
+        "posX": 0.1594117,
+        "posY": -2.36915643e-8,
+        "posZ": -1.39362131e-8,
+        "rotX": 0,
+        "rotY": 0,
+        "rotZ": 0,
+        "scaleX": 0.5652903,
+        "scaleY": 0.065,
+        "scaleZ": 0.588235259
+      },
+      "Value": 0,
+      "XmlUI": ""
+    },
+    {
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Autoraise": true,
+      "CardID": 580408,
+      "ColorDiffuse": {
+        "b": 0.713235259,
+        "g": 0.713235259,
+        "r": 0.713235259
+      },
+      "CustomDeck": {
+        "5804": {
+          "BackIsHidden": true,
+          "BackURL": "https://drive.google.com/uc?export=view\u0026id=1vL9o8qSWzQdiFS6PEYagnbjOBlkCBRf0",
+          "FaceURL": "https://drive.google.com/uc?export=view\u0026id=15Y25nv4ebr0zS9K2kQDA990J_6miJ9pf",
+          "NumHeight": 4,
+          "NumWidth": 6,
+          "Type": 0,
+          "UniqueBack": true
+        }
+      },
+      "Description": "",
+      "DragSelectable": true,
+      "GMNotes": "",
+      "GUID": "b06172",
+      "Grid": true,
+      "GridProjection": false,
+      "Hands": true,
+      "HideWhenFaceDown": false,
+      "IgnoreFoW": false,
+      "LayoutGroupSortIndex": 0,
+      "Locked": false,
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "MeasureMovement": false,
+      "Memo": "{\"hp\":1,\"monstertype\":[\"O'Bannion\",\"Human\"],\"name\":\"Feckless Agitator\",\"remnant\":false,\"type\":\"Monster\"}",
+      "Name": "Card",
+      "Nickname": "",
+      "SidewaysCard": false,
+      "Snap": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "Transform": {
+        "posX": -0.159999892,
+        "posY": 0.09999993,
+        "posZ": 1.39876351e-8,
+        "rotX": 0,
+        "rotY": 0,
+        "rotZ": 0,
+        "scaleX": 0.5652903,
+        "scaleY": 0.065,
+        "scaleZ": 0.588235259
+      },
+      "Value": 0,
+      "XmlUI": ""
+    }
+  ],
+  "ColorDiffuse": {
+    "b": 0.24868,
+    "g": 0.24868,
+    "r": 0.24912
+  },
+  "CustomImage": {
+    "CustomTile": {
+      "Stackable": false,
+      "Stretch": true,
+      "Thickness": 0.1,
+      "Type": 0
+    },
+    "ImageScalar": 1,
+    "ImageSecondaryURL": "",
+    "ImageURL": "https://drive.google.com/uc?export=view\u0026id=1Y4ZG4efiK6zPck2l9sTduxUg8sU-BBtb",
+    "WidthScale": 0
+  },
+  "CustomUIAssets": [
+    {
+      "Name": "Fonts",
+      "Type": 1,
+      "URL": "https://drive.google.com/uc?export=view\u0026id=18_lFlnSaOFlbNVfE-G-LFqqfptMMkKFS"
+    }
+  ],
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "528acc",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScriptState": "{\"cp\":0,\"cpHp\":0,\"hp\":0,\"maxHp\":1}",
+  "LuaScript_path": "MonstersbyScenariouk.dd5297/5.55cdf7/MonsterMat.528acc.ttslua",
+  "MeasureMovement": false,
+  "Memo": "Monster Mat",
+  "Name": "Custom_Tile",
+  "Nickname": "Monster Mat",
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "monster_mat"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": 16.622,
+    "posY": 4.397,
+    "posZ": 21.618,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 180,
+    "scaleX": 1.7,
+    "scaleY": 1,
+    "scaleZ": 1.7
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

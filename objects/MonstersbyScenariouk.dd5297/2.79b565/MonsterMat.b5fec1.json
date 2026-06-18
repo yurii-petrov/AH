@@ -1,0 +1,188 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ChildObjects": [
+    {
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Autoraise": true,
+      "CardID": 579854,
+      "ColorDiffuse": {
+        "b": 0.713235259,
+        "g": 0.713235259,
+        "r": 0.713235259
+      },
+      "CustomDeck": {
+        "5798": {
+          "BackIsHidden": true,
+          "BackURL": "https://drive.google.com/uc?export=view\u0026id=1Myde9M2n1OR8LEDbB0bGhL9fFqMQM_TB",
+          "FaceURL": "https://drive.google.com/uc?export=view\u0026id=1XLp2yFO1GilE_LxUpyVbTM_QwmoHuEfc",
+          "NumHeight": 7,
+          "NumWidth": 9,
+          "Type": 0,
+          "UniqueBack": true
+        }
+      },
+      "Description": "",
+      "DragSelectable": true,
+      "GMNotes": "",
+      "GUID": "2cb936",
+      "Grid": true,
+      "GridProjection": false,
+      "Hands": true,
+      "HideWhenFaceDown": false,
+      "IgnoreFoW": false,
+      "LayoutGroupSortIndex": 0,
+      "Locked": false,
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "MeasureMovement": false,
+      "Memo": "{\"hp\":2,\"monstertype\":[\"Ghoul\"],\"name\":\"Vicious Glutton\",\"remnant\":true,\"type\":\"Monster\"}",
+      "Name": "Card",
+      "Nickname": "",
+      "SidewaysCard": false,
+      "Snap": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "Transform": {
+        "posX": 0.1594117,
+        "posY": -2.36915643e-8,
+        "posZ": -1.39362131e-8,
+        "rotX": 0,
+        "rotY": 0,
+        "rotZ": 0,
+        "scaleX": 0.5651832,
+        "scaleY": 0.065,
+        "scaleZ": 0.588235259
+      },
+      "Value": 0,
+      "XmlUI": ""
+    },
+    {
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Autoraise": true,
+      "CardID": 579854,
+      "ColorDiffuse": {
+        "b": 0.713235259,
+        "g": 0.713235259,
+        "r": 0.713235259
+      },
+      "CustomDeck": {
+        "5798": {
+          "BackIsHidden": true,
+          "BackURL": "https://drive.google.com/uc?export=view\u0026id=1Myde9M2n1OR8LEDbB0bGhL9fFqMQM_TB",
+          "FaceURL": "https://drive.google.com/uc?export=view\u0026id=1XLp2yFO1GilE_LxUpyVbTM_QwmoHuEfc",
+          "NumHeight": 7,
+          "NumWidth": 9,
+          "Type": 0,
+          "UniqueBack": true
+        }
+      },
+      "Description": "",
+      "DragSelectable": true,
+      "GMNotes": "",
+      "GUID": "2cb936",
+      "Grid": true,
+      "GridProjection": false,
+      "Hands": true,
+      "HideWhenFaceDown": false,
+      "IgnoreFoW": false,
+      "LayoutGroupSortIndex": 0,
+      "Locked": false,
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "MeasureMovement": false,
+      "Memo": "{\"hp\":2,\"monstertype\":[\"Ghoul\"],\"name\":\"Vicious Glutton\",\"remnant\":true,\"type\":\"Monster\"}",
+      "Name": "Card",
+      "Nickname": "",
+      "SidewaysCard": false,
+      "Snap": true,
+      "Sticky": true,
+      "Tooltip": true,
+      "Transform": {
+        "posX": -0.160000175,
+        "posY": 0.09999993,
+        "posZ": 1.398766e-8,
+        "rotX": 0,
+        "rotY": 0,
+        "rotZ": 0,
+        "scaleX": 0.5651832,
+        "scaleY": 0.065,
+        "scaleZ": 0.588235259
+      },
+      "Value": 0,
+      "XmlUI": ""
+    }
+  ],
+  "ColorDiffuse": {
+    "b": 0.24868,
+    "g": 0.24868,
+    "r": 0.24912
+  },
+  "CustomImage": {
+    "CustomTile": {
+      "Stackable": false,
+      "Stretch": true,
+      "Thickness": 0.1,
+      "Type": 0
+    },
+    "ImageScalar": 1,
+    "ImageSecondaryURL": "",
+    "ImageURL": "https://drive.google.com/uc?export=view\u0026id=1Y4ZG4efiK6zPck2l9sTduxUg8sU-BBtb",
+    "WidthScale": 0
+  },
+  "CustomUIAssets": [
+    {
+      "Name": "Fonts",
+      "Type": 1,
+      "URL": "https://drive.google.com/uc?export=view\u0026id=18_lFlnSaOFlbNVfE-G-LFqqfptMMkKFS"
+    }
+  ],
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "b5fec1",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScriptState": "{\"cp\":0,\"cpHp\":0,\"hp\":0,\"maxHp\":2}",
+  "LuaScript_path": "MonstersbyScenariouk.dd5297/2.79b565/MonsterMat.b5fec1.ttslua",
+  "MeasureMovement": false,
+  "Memo": "Monster Mat",
+  "Name": "Custom_Tile",
+  "Nickname": "Monster Mat",
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "monster_mat"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": 27.834,
+    "posY": 4.348,
+    "posZ": 20.94,
+    "rotX": 1,
+    "rotY": 180,
+    "rotZ": 185,
+    "scaleX": 1.7,
+    "scaleY": 1,
+    "scaleZ": 1.7
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

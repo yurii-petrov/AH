@@ -1,0 +1,68 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "ContainedObjects_order": [
+    "Card.1cce03",
+    "Card.8c5dd2",
+    "Card.a0f2bc"
+  ],
+  "ContainedObjects_path": "Random.4a38b5",
+  "CustomDeck": {
+    "5865": {
+      "BackIsHidden": true,
+      "BackURL": "https://drive.google.com/uc?export=view\u0026id=1JZEo2d4LfJw_vu_VwMQT5yJvTD1kynMT",
+      "FaceURL": "https://drive.google.com/uc?export=view\u0026id=1Z2yDrfDzgAv-KxQ99Kqe1smzKpiL2ET_",
+      "NumHeight": 4,
+      "NumWidth": 5,
+      "Type": 0,
+      "UniqueBack": true
+    }
+  },
+  "DeckIDs": [
+    586506,
+    586505,
+    586504
+  ],
+  "Description": "1 - location\nall - monster",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "4a38b5",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Name": "Deck",
+  "Nickname": "Random",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": -7.035,
+    "posY": 4.297,
+    "posZ": 22.33,
+    "rotX": 359,
+    "rotY": 180,
+    "rotZ": 178,
+    "scaleX": 1,
+    "scaleY": 1,
+    "scaleZ": 1
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

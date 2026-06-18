@@ -1,0 +1,49 @@
+-- ╭──────────────────────────────────────────────╮
+-- │              SHOP MAT SETUP                  │
+-- ╰──────────────────────────────────────────────╯
+
+function fillDisplaySlots()
+  local shopMat = SHOP_MAT_DATA.obj
+  if not shopMat then return end
+
+  local deckData = SHOP_MAT_DATA.decks[ShopDeckType.ITEM]
+  if not deckData then return end
+
+  local obj = deckData.guid and getObjectFromGUID(deckData.guid)
+  if not obj then
+    local pos = shopMat.positionToWorld(deckData.pos):setAt("y", 3)
+    local hits = Physics.cast({
+      origin       = Vector(pos.x, pos.y + 2, pos.z),
+      direction    = {0, -1, 0},
+      type         = 2,
+      size         = {1, 1, 1},
+      max_distance = 3,
+    })
+    for _, hit in ipairs(hits) do
+      local o = hit.hit_object
+      if o and (o.type == "Deck" or o.type == "Card") then
+        obj = o
+        deckData.guid = o.getGUID()
+        break
+      end
+    end
+  end
+
+  if not obj then return end
+
+  for idx, localPos in ipairs(SHOP_MAT_DATA.displaypos) do
+    local worldPos = shopMat.positionToWorld(localPos):setAt("y", 3)
+    local card = obj.takeObject({ index = 0, rotation = {0, 180, 0}, position = worldPos })
+    if card then
+      local itemData = parseJson(card.memo)
+      if itemData then
+        local types = {}
+        if itemData.common then table.insert(types, "common") end
+        if itemData.curio  then table.insert(types, "curio")  end
+        shopMat.call("setBottom", { id = idx, price = itemData.price or 0, guid = card.guid })
+        shopMat.call("setTop",    { id = idx, types = types })
+      end
+    end
+  end
+end
+

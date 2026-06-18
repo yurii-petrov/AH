@@ -306,7 +306,7 @@ function resolveDooms(info, locations)
 end
 
 function eventSpawnDooms(callBack)
-  local mythosTile = getObjectFromGUID(mythosTileId)
+  local mythosTile = MYTHOS_TILE_DATA.obj
   if not mythosTile then
     callBack()
     return
@@ -676,7 +676,7 @@ function spawnMonterByClick()
     return
   end
 
-  local mythosTile = getObjectFromGUID(mythosTileId)
+  local mythosTile = MYTHOS_TILE_DATA.obj
   if not mythosTile then
     return
   end
@@ -750,7 +750,7 @@ function spawnClueTokenOnTile(tileObj)
 end
 
 function spawnClue(callBack)
-  local mythosTile = getObjectFromGUID(mythosTileId)
+  local mythosTile = MYTHOS_TILE_DATA.obj
   if not mythosTile then
     log("[spawnClue] mythosTile not found")
     callBack()

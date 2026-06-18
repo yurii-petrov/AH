@@ -18,6 +18,7 @@ require("Global/core/queries")
 require("Global/core/codex")
 require("Global/core/event_deck")
 require("Global/core/placement")
+require("Global/core/locations")
 
 -- Step handlers -------------------------------------------------------------
 require("Global/steps/remove_token")

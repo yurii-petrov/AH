@@ -2,26 +2,9 @@
 -- │            CORE: Event Deck                  │
 -- ╰──────────────────────────────────────────────╯
 --
--- Shared positions and object helpers for the mythos-tile event deck,
--- used by both the mergeEventDeck and replaceEventDeck steps.
-
--- Local positions on the mythos tile.
-EVENT_DECK_LOCAL_POS    = {-0.198, 0.236, 0.278}
-EVENT_DISCARD_LOCAL_POS = {-0.199, 0.113, 0.731}
-
--- World position of the event deck / discard slots for a given mythos tile.
-function getEventDeckWorldPos(mythosTile)
-  return mythosTile.positionToWorld(EVENT_DECK_LOCAL_POS)
-end
-
-function getEventDiscardWorldPos(mythosTile)
-  return mythosTile.positionToWorld(EVENT_DISCARD_LOCAL_POS)
-end
-
--- The object currently in the event discard slot (Deck/Card), or nil.
-function getEventDiscardObj()
-  return getObjFromMythosTile(EVENT_DISCARD_LOCAL_POS)
-end
+-- Box-lookup and deck-merge helpers for the mythos-tile event deck, used by
+-- the mergeEventDeck and replaceEventDeck steps. Event-deck world positions
+-- and the discard-slot lookup live in MythosTile.ttslua.
 
 -- Finds the guid of a deck in the box matching the given type + name.
 function findEventDeckInBox(deckType, deckName)

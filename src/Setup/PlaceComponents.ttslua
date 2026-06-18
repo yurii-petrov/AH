@@ -1,0 +1,1012 @@
+-- ╭──────────────────────────────────────────────╮
+-- │         PLACE COMPONENTS ON GAME START       │
+-- ╰──────────────────────────────────────────────╯
+--
+-- Called from proceedStartGame after scenario is chosen.
+-- Works with gameData.components[bagType] = { {guid, name, memo}, ... }
+--
+-- Normal mode : guid is an object already on the table
+--               → getObjectFromGUID(guid) + setPositionSmooth
+-- Quick mode  : guid is an object inside a component bag
+--               → bag.takeObject({ guid = guid, position = pos })
+
+-- ╭──────────────────────────────────────────────╮
+-- │                  HELPERS                     │
+-- ╰──────────────────────────────────────────────╯
+
+local function getComponents(bagType)
+  return gameData.components and gameData.components[bagType] or {}
+end
+
+local function consumeComponent(bagType, key)
+  if gameData.components and gameData.components[bagType] then
+    gameData.components[bagType][key] = nil
+  end
+end
+
+local KEEP_ON_TABLE = {
+  [BagType.MAP_TILES]           = true,
+  [BagType.INVESTIGATOR_SHEETS] = true,
+  [BagType.STARTING_CARDS]      = true,
+}
+
+function cleanupComponents(done)
+  local box = resolve(boxId)
+  if not box then
+    if done then done() end return
+  end
+
+  for bagType, entries in pairs(gameData.components or {}) do
+    if not KEEP_ON_TABLE[bagType] then
+      for key, entry in pairs(entries) do
+        if not gameData.directSetup then
+          local guid = entry and entry.guid
+          local o = guid and getObjectFromGUID(guid)
+          if o then
+            local ok, inContainer = pcall(function() return o.getContainer() end)
+            if not ok or not inContainer then
+              pcall(function() box.putObject(o) end)
+            end
+          end
+        end
+        entries[key] = nil
+      end
+    end
+  end
+
+  if gameData.directSetup then
+    for _, bagGuid in pairs(gameData.componentBags or {}) do
+      local bag = getObjectFromGUID(bagGuid)
+      if bag and box then
+        bag.setColorTint(bag.getColorTint():setAt("a", 1))
+        pcall(function() box.putObject(bag) end)
+      end
+    end
+    gameData.componentBags = {}
+  end
+
+  if done then done() end
+end
+
+local function spawnComponent(bagType, entry, pos, rot)
+  if gameData.directSetup then
+    local bagGuid = gameData.componentBags and gameData.componentBags[bagType]
+    if not bagGuid then return nil end
+    local bag = getObjectFromGUID(bagGuid)
+    if not bag then return nil end
+    return bag.takeObject({
+      guid     = entry.guid,
+      position = pos,
+      rotation = rot,
+      smooth   = false,
+    })
+  else
+    local o = getObjectFromGUID(entry.guid)
+    if not o then return nil end
+    if pos then o.setPosition(pos) end
+    if rot then o.setRotation(rot) end
+    return o
+  end
+end
+
+-- snapshot entries before consuming so iteration is safe
+local function collectEntries(bagType)
+  local result = {}
+  for i, entry in ipairs(getComponents(bagType)) do
+    result[i] = entry
+  end
+  return result
+end
+
+
+-- ── deck model builder ────────────────────────────────────────────────────────
+-- Splits array of entries into:
+--   base      – no-set entry, OR smallest active-set entry if all have sets
+--   additions – remaining active-set entries to merge into base
+--   inactive  – disabled addon entries (cleanup handles them)
+local function buildDeckModel(entries)
+  local noSet  = {}
+  local bySets = {}
+
+  for _, e in ipairs(entries) do
+    local s = e.memo and e.memo.set
+    if not s then
+      table.insert(noSet, e)
+    else
+      table.insert(bySets, { set = s, entry = e })
+    end
+  end
+
+  table.sort(bySets, function(a, b) return a.set < b.set end)
+
+  local base      = noSet[1]
+  local additions = {}
+  local inactive  = {}
+
+  for i = 2, #noSet do table.insert(additions, noSet[i]) end
+
+  for _, item in ipairs(bySets) do
+    local active = gameData.addons[item.set]
+    if active == false then
+      table.insert(inactive, item.entry)
+    else
+      if not base then
+        base = item.entry
+      else
+        table.insert(additions, item.entry)
+      end
+    end
+  end
+
+  return { base = base, additions = additions, inactive = inactive }
+end
+
+-- ╭──────────────────────────────────────────────╮
+-- │              DECK REGISTRY                   │
+-- ╰──────────────────────────────────────────────╯
+--
+-- Place functions record target world positions here instead of doing
+-- Physics.cast immediately. resolveComponents() fires after all placement,
+-- finds each deck by position, sets its name, and saves GUIDs.
+
+local deckRegistry      = {}
+local shuffleList       = {}
+local monsterStagingPos = nil
+
+local function registerDeck(pos, name, onResolved, noShuffle)
+  table.insert(deckRegistry, {
+    worldPos   = Vector(pos.x, pos.y, pos.z),
+    name       = name,
+    onResolved = onResolved,
+    noShuffle  = noShuffle,
+  })
+end
+
+local RESOLVE_WAIT = 1.5
+
+function resolveComponents(done)
+  Wait.time(function()
+    for _, entry in ipairs(deckRegistry) do
+      local p = entry.worldPos
+      local hits = Physics.cast({
+        origin       = Vector(p.x, p.y + 3, p.z),
+        direction    = {0, -1, 0},
+        type         = 2,
+        size         = {1, 1, 1},
+        max_distance = 5,
+      })
+      for _, hit in ipairs(hits) do
+        local o = hit.hit_object
+        if o and (o.type == "Deck" or o.type == "Card") then
+          if entry.name       then o.setName(entry.name) end
+          if entry.onResolved then entry.onResolved(o)   end
+          if not entry.noShuffle then table.insert(shuffleList, o) end
+          break
+        end
+      end
+    end
+    deckRegistry = {}
+    done()
+  end, RESOLVE_WAIT)
+end
+
+function shuffleComponents(done)
+  for _, obj in ipairs(shuffleList) do
+    obj.shuffle()
+  end
+  shuffleList = {}
+  done()
+end
+
+-- ╭──────────────────────────────────────────────╮
+-- │            DECK MERGE STRATEGIES            │
+-- ╰──────────────────────────────────────────────╯
+
+-- Strategy 1: spawn base → putObject each addition sequentially.
+local MERGE_DELAY        = 0.1
+local STACK_SETTLE_DELAY = 0.1
+
+local function mergeDeckSequential(bagType, model, pos, rot, onFinish)
+  local baseObj = spawnComponent(bagType, model.base, pos, rot)
+  if not baseObj then return end
+
+  if #model.additions == 0 then
+    if onFinish then Wait.time(function() onFinish(baseObj) end, 0) end
+    return
+  end
+
+  local function takeAddition(entry)
+    if gameData.directSetup then
+      local bagGuid = gameData.componentBags and gameData.componentBags[bagType]
+      local bag = bagGuid and getObjectFromGUID(bagGuid)
+      if bag then return bag.takeObject({ guid = entry.guid, smooth = false }) end
+    else
+      return getObjectFromGUID(entry.guid)
+    end
+  end
+
+  local function mergeNext(obj, idx)
+    if idx > #model.additions then
+      if onFinish then onFinish(obj) end
+      return
+    end
+    local src = takeAddition(model.additions[idx])
+    if src then
+      local merged = obj.putObject(src)
+      Wait.time(function() mergeNext(merged or obj, idx + 1) end, 0)
+    else
+      mergeNext(obj, idx + 1)
+    end
+  end
+
+  Wait.time(function() mergeNext(baseObj, 1) end, 1)
+end
+
+-- Strategy 2: spawn all decks at staggered y positions (largest addon first, base last).
+-- onFinish() is called with no args after all spawning is initiated.
+-- Use registerDeck() in the callback; resolveComponents() finds the final object by position.
+-- reverse=false (default): base at bottom, additions pile on top (largest set on top)
+-- reverse=true           : largest set at bottom, base on top
+local function mergeDeckStack(bagType, model, pos, rot, onFinish, ySpacing, reverse)
+  ySpacing = ySpacing or 0.2
+  local basePos = Vector(pos.x, pos.y, pos.z)
+  local n = #model.additions
+
+  if n == 0 then
+    local baseObj = spawnComponent(bagType, model.base, basePos, rot)
+    if not baseObj then return end
+    if onFinish then Wait.time(onFinish, MERGE_DELAY) end
+    return
+  end
+
+  if not reverse then
+    -- base at basePos, additions[i] at basePos + i*ySpacing (largest on top)
+    local function spawnBase()
+      local baseObj = spawnComponent(bagType, model.base, basePos, rot)
+      if not baseObj then return end
+      if onFinish then Wait.time(onFinish, STACK_SETTLE_DELAY) end
+    end
+    local function spawnNext(i)
+      if i < 1 then spawnBase() return end
+      spawnComponent(bagType, model.additions[i], Vector(pos.x, pos.y + i * ySpacing, pos.z), rot)
+      Wait.time(function() spawnNext(i - 1) end, MERGE_DELAY)
+    end
+    spawnNext(n)
+  else
+    -- additions[n] (largest set) at basePos, ..., additions[1] at basePos+(n-1)*ySpacing,
+    -- base at basePos + n*ySpacing (on top)
+    local function spawnBase()
+      spawnComponent(bagType, model.base, Vector(pos.x, pos.y + n * ySpacing, pos.z), rot)
+      if onFinish then Wait.time(onFinish, STACK_SETTLE_DELAY) end
+    end
+    local function spawnNext(i)
+      -- i goes from n down to 1; additions[n] spawns at y+0, additions[1] at y+(n-1)*ySpacing
+      if i < 1 then spawnBase() return end
+      local offset = (n - i) * ySpacing
+      spawnComponent(bagType, model.additions[i], Vector(pos.x, pos.y + offset, pos.z), rot)
+      Wait.time(function() spawnNext(i - 1) end, MERGE_DELAY)
+    end
+    spawnNext(n)
+  end
+end
+
+-- ╭──────────────────────────────────────────────╮
+-- │           PER-TYPE PLACE FUNCTIONS           │
+-- ╰──────────────────────────────────────────────╯
+
+local function placeMapTiles(done)
+  local scenarioData = gameData.scenarioData
+  if not scenarioData or not scenarioData.tiles then done() return end
+
+  local mapBagGuid = gameData.componentBags and gameData.componentBags[BagType.MAP_TILES]
+  local bag    = gameData.directSetup and mapBagGuid and getObjectFromGUID(mapBagGuid)
+  local idx    = 0
+
+  gameData.mapTileGuids    = {}
+  LOCATION_MAT_DATA.tiles  = {}
+
+  for _, entry in ipairs(getComponents(BagType.MAP_TILES)) do
+    local o
+    if gameData.directSetup then
+      if not bag then break end
+      local tempPos = bag.getPosition():setAt("y", 3) + Vector(idx * 5, 0, 0)
+      idx = idx + 1
+      o = bag.takeObject({ guid = entry.guid, position = tempPos, smooth = false })
+      if o then
+        runAfterRest(o, function(o2)
+          lockSetupScenarioComponents(o2, scenarioData.tiles)
+        end)
+      end
+    else
+      o = getObjectFromGUID(entry.guid)
+      if o then lockSetupScenarioComponents(o, scenarioData.tiles) end
+    end
+    if o then
+      local name = entry.memo and entry.memo.name
+      if name then
+        LOCATION_MAT_DATA.tiles[name] = o
+        gameData.mapTileGuids[name]   = o.getGUID()
+        local locations = entry.memo and entry.memo.locations
+        if locations then
+          for _, loc in ipairs(locations) do
+            LOCATION_MAT_DATA.tiles[loc] = o
+          end
+        end
+      end
+    end
+  end
+  done()
+end
+
+local function placeScenarioSheets(done)
+  local scenarioData = gameData.scenarioData
+  if not scenarioData then done() return end
+
+  local locationMat = LOCATION_MAT_DATA.obj
+  if not locationMat then done() return end
+
+  local locationData = parseJson(locationMat.memo)
+  if not locationData or not locationData.scenraiomat then done() return end
+
+  local sheets = getComponents(BagType.SCENARIO_SHEETS)
+  local entry  = sheets[scenarioData.name]
+  if not entry then done() return end
+
+  consumeComponent(BagType.SCENARIO_SHEETS, scenarioData.name)
+
+  local targetPos = locationMat.positionToWorld(locationData.scenraiomat):setAt("y", 2.21)
+  local o = spawnComponent(BagType.SCENARIO_SHEETS, entry, targetPos, {0, 180, 0})
+  if not o then done() return end
+
+  runAfterRest(o, function(o2) o2.setLock(true) end)
+  done()
+end
+
+local function placeAllyCards(done)
+  local shopMat = SHOP_MAT_DATA.obj
+  if not shopMat then done() return end
+  local deckData = SHOP_MAT_DATA.decks[ShopDeckType.ALLY]
+  if not deckData then done() return end
+  local pos = shopMat.positionToWorld(deckData.pos):setAt("y", 2.5)
+
+  local model = buildDeckModel(collectEntries(BagType.ALLY_CARDS))
+  if not model.base then done() return end
+
+  for i in pairs(collectEntries(BagType.ALLY_CARDS)) do
+    consumeComponent(BagType.ALLY_CARDS, i)
+  end
+
+  mergeDeckStack(BagType.ALLY_CARDS, model, pos, {0, 180, 180}, function()
+    registerDeck(pos, ShopDeckType.ALLY, function(obj)
+      SHOP_MAT_DATA.decks[ShopDeckType.ALLY].guid = obj.getGUID()
+      SHOP_MAT_DATA.decks[ShopDeckType.ALLY].obj  = obj
+      gameData.deckGuids[ShopDeckType.ALLY]        = obj.getGUID()
+    end)
+    done()
+  end)
+end
+
+local function placeAnomalyCards(done)
+  local scenarioData = gameData.scenarioData
+  if not scenarioData then done() return end
+
+  local scenarioMat = SCENARIO_MAT_DATA.obj
+  if not scenarioMat then done() return end
+
+  local scenInfo = SCENARIO_MAT_DATA.scenarios[scenarioData.name]
+  if not scenInfo or not scenInfo.anomaly then done() return end
+
+  local entries   = collectEntries(BagType.ANOMALY_CARDS)
+  local anomalies = scenInfo.anomaly
+
+  local groups    = {}
+  local nameOrder = {}
+  for i, entry in pairs(entries) do
+    local name   = entry.memo and entry.memo.name or ""
+    local posIdx = anomalies[name]
+    if posIdx then
+      if not groups[name] then
+        groups[name] = {
+          pos     = scenarioMat.positionToWorld(SCENARIO_MAT_DATA.positions[posIdx]):setAt("y", 3),
+          keys    = {},
+          entries = {},
+        }
+        table.insert(nameOrder, name)
+      end
+      table.insert(groups[name].keys, i)
+      table.insert(groups[name].entries, entry)
+    end
+  end
+
+  if #nameOrder == 0 then done() return end
+
+  local remaining = #nameOrder
+  for _, name in ipairs(nameOrder) do
+    local group = groups[name]
+    for _, k in ipairs(group.keys) do
+      consumeComponent(BagType.ANOMALY_CARDS, k)
+    end
+    local model = buildDeckModel(group.entries)
+    if not model.base then
+      remaining = remaining - 1
+      if remaining == 0 then done() end
+    else
+      mergeDeckStack(BagType.ANOMALY_CARDS, model, group.pos, {0, 180, 180}, function()
+        registerDeck(group.pos, name, function(obj)
+          gameData.deckGuids["anomaly_" .. name] = obj.getGUID()
+        end)
+        remaining = remaining - 1
+        if remaining == 0 then done() end
+      end)
+    end
+  end
+end
+
+local function placeTerrorCards(done)
+  local scenarioData = gameData.scenarioData
+  if not scenarioData then done() return end
+
+  local scenarioMat = SCENARIO_MAT_DATA.obj
+  if not scenarioMat then done() return end
+
+  local scenInfo = SCENARIO_MAT_DATA.scenarios[scenarioData.name]
+  if not scenInfo or not scenInfo.terror then done() return end
+
+  local entries  = collectEntries(BagType.TERROR_CARDS)
+  local terrors  = scenInfo.terror
+
+  local groups    = {}
+  local nameOrder = {}
+  for i, entry in pairs(entries) do
+    local name   = entry.memo and entry.memo.name or ""
+    local posIdx = terrors[name]
+    if posIdx then
+      if not groups[name] then
+        groups[name] = {
+          pos     = scenarioMat.positionToWorld(SCENARIO_MAT_DATA.positions[posIdx]):setAt("y", 3),
+          keys    = {},
+          entries = {},
+        }
+        table.insert(nameOrder, name)
+      end
+      table.insert(groups[name].keys, i)
+      table.insert(groups[name].entries, entry)
+    end
+  end
+
+  if #nameOrder == 0 then done() return end
+
+  local remaining = #nameOrder
+  for _, name in ipairs(nameOrder) do
+    local group = groups[name]
+    for _, k in ipairs(group.keys) do
+      consumeComponent(BagType.TERROR_CARDS, k)
+    end
+    local model = buildDeckModel(group.entries)
+    if not model.base then
+      remaining = remaining - 1
+      if remaining == 0 then done() end
+    else
+      mergeDeckStack(BagType.TERROR_CARDS, model, group.pos, {0, 180, 180}, function()
+        registerDeck(group.pos, name, function(obj)
+          gameData.deckGuids["terror_" .. name] = obj.getGUID()
+        end)
+        remaining = remaining - 1
+        if remaining == 0 then done() end
+      end)
+    end
+  end
+end
+
+local function placeSpecialCards(done)
+  local shopMat = SHOP_MAT_DATA.obj
+  if not shopMat then done() return end
+  local deckData = SHOP_MAT_DATA.decks[ShopDeckType.SPECIAL]
+  if not deckData then done() return end
+  local pos = shopMat.positionToWorld(deckData.pos):setAt("y", 2.5)
+
+  local model = buildDeckModel(collectEntries(BagType.SPECIAL_CARDS))
+  if not model.base then done() return end
+
+  for i in pairs(collectEntries(BagType.SPECIAL_CARDS)) do
+    consumeComponent(BagType.SPECIAL_CARDS, i)
+  end
+
+  mergeDeckStack(BagType.SPECIAL_CARDS, model, pos, {0, 180, 180}, function()
+    registerDeck(pos, ShopDeckType.SPECIAL, function(obj)
+      SHOP_MAT_DATA.decks[ShopDeckType.SPECIAL].guid = obj.getGUID()
+      SHOP_MAT_DATA.decks[ShopDeckType.SPECIAL].obj  = obj
+      gameData.deckGuids[ShopDeckType.SPECIAL]        = obj.getGUID()
+    end)
+    done()
+  end)
+end
+
+local function prepareMonsterDeck(done)
+  local box = resolve(boxId)
+
+  if gameData.directSetup then
+    local bagGuid = gameData.componentBags and gameData.componentBags[BagType.MONSTER_DECKS]
+    local bag = bagGuid and getObjectFromGUID(bagGuid)
+    if bag and box then pcall(function() box.putObject(bag) end) end
+  else
+    for _, entry in pairs(getComponents(BagType.MONSTER_DECKS)) do
+      local o = entry.guid and getObjectFromGUID(entry.guid)
+      if o and box then pcall(function() box.putObject(o) end) end
+    end
+  end
+  if gameData.components then gameData.components[BagType.MONSTER_DECKS] = nil end
+
+  local scenarioData = gameData.scenarioData
+  if not scenarioData then done() return end
+
+  local monstersObj = getObjectFromGUID(monstersbyScenarioUkId)
+  if not monstersObj then done() return end
+
+  local scenarioBag
+  for _, obj in ipairs(monstersObj.getObjects()) do
+    if obj.name == tostring(scenarioData.number) then
+      scenarioBag = monstersObj.takeObject({ guid = obj.guid, smooth = false })
+      break
+    end
+  end
+  if not scenarioBag then done() return end
+
+  local basePos = monstersObj.getPosition()
+  scenarioBag.setPosition(Vector(basePos.x, basePos.y, basePos.z - 3))
+  scenarioBag.setLock(true)
+
+  local locationMat = LOCATION_MAT_DATA.obj
+  if not locationMat then done() return end
+
+  local monsterPos   = locationMat.positionToWorld(LOCATION_MAT_DATA.monster):setAt("y", 3)
+  local setasidePos  = locationMat.positionToWorld(LOCATION_MAT_DATA.setaside):setAt("y", 3)
+  local setaside2Pos = locationMat.positionToWorld(LOCATION_MAT_DATA.setaside2):setAt("y", 3)
+
+  Wait.time(function()
+    local monsters = {}
+    for _, m in ipairs(scenarioData.monsters or {}) do
+      table.insert(monsters, m)
+    end
+
+    for _, objInfo in ipairs(scenarioBag.getObjects()) do
+      local obj = scenarioBag.takeObject({ guid = objInfo.guid, smooth = false })
+      if obj then
+        local lname = string.lower(obj.getName())
+        local targetPos
+
+        if lname == "monster" then
+          targetPos = monsterPos
+        elseif lname == "random" then
+          obj.shuffle()
+          local card = obj.takeObject({ smooth = false })
+          if card then
+            local memo = parseJson(card.memo)
+            local backName = memo and memo.back and string.lower(memo.back.name or "")
+            if backName then
+              for i, m in ipairs(monsters) do
+                if string.lower(m.name or "") == backName and m.dest == "spawn" and m.location and m.pos then
+                  local tile = LOCATION_MAT_DATA.tiles and LOCATION_MAT_DATA.tiles[m.location]
+                  if tile then
+                    card.setRotation(m.rot or {0, 180, 180})
+                    attachDoubleSidedCard(card, memo, tile.positionToWorld(m.pos):setAt("y", 3))
+                    table.remove(monsters, i)
+                    break
+                  end
+                end
+              end
+            end
+          end
+          targetPos = monsterPos
+        elseif lname == "setaside" then
+          targetPos = setasidePos
+        elseif lname == "setaside2" then
+          targetPos = setaside2Pos
+        elseif lname == "monster mat" then
+          local attachments = obj.getAttachments()
+          local attachment = attachments and attachments[1]
+          local memo = attachment and parseJson(attachment.memo)
+          local attachName = memo and string.lower(memo.name or "")
+          if attachName then
+            for i, m in ipairs(monsters) do
+              if string.lower(m.name or "") == attachName and m.dest == "spawn" and m.location and m.pos then
+                local tile = LOCATION_MAT_DATA.tiles and LOCATION_MAT_DATA.tiles[m.location]
+                if tile then
+                  targetPos = tile.positionToWorld(m.pos):setAt("y", 3)
+                  table.remove(monsters, i)
+                  break
+                end
+              end
+            end
+          end
+        end
+
+        if targetPos then
+          obj.setPosition(targetPos)
+          obj.setRotation({0, 180, 180})
+        end
+      end
+    end
+
+    registerDeck(monsterPos, "Monster", function(obj)
+      LOCATION_MAT_DATA.monsterDeckObj  = obj
+      LOCATION_MAT_DATA.monsterDeckGuid = obj.getGUID()
+      gameData.deckGuids.monster         = obj.getGUID()
+    end)
+
+    monsterStagingPos = monsterPos
+    done()
+  end, 0.5)
+end
+
+local function placeStartingCards(done)
+  if not gameData.directSetup then done() return end
+  local shopMat = SHOP_MAT_DATA.obj
+  if not shopMat then done() return end
+  local deckData = SHOP_MAT_DATA.decks[ShopDeckType.STARTING]
+  if not deckData then done() return end
+  local pos = shopMat.positionToWorld(deckData.pos):setAt("y", 2.5)
+
+  local model = buildDeckModel(collectEntries(BagType.STARTING_CARDS))
+  if not model.base then done() return end
+
+  for i in pairs(collectEntries(BagType.STARTING_CARDS)) do
+    consumeComponent(BagType.STARTING_CARDS, i)
+  end
+
+  mergeDeckStack(BagType.STARTING_CARDS, model, pos, {0, 180, 180}, function()
+    registerDeck(pos, ShopDeckType.STARTING, function(obj)
+      SHOP_MAT_DATA.decks[ShopDeckType.STARTING].guid = obj.getGUID()
+      SHOP_MAT_DATA.decks[ShopDeckType.STARTING].obj  = obj
+      gameData.deckGuids[ShopDeckType.STARTING]        = obj.getGUID()
+    end)
+    done()
+  end)
+end
+
+local function placeConditionCards(done)
+  local entries = collectEntries(BagType.CONDITION_CARDS)
+
+  local groups    = {}
+  local typeOrder = {}
+  for i, entry in pairs(entries) do
+    local t = entry.memo and string.lower(entry.memo.type or "") or ""
+    for _, matData in ipairs(CONDITION_MAT_DATA) do
+      if matData.obj and matData.deck[t] then
+        if not groups[t] then
+          groups[t] = {
+            pos     = matData.obj.positionToWorld(matData.deck[t]):setAt("y", 3),
+            keys    = {},
+            entries = {},
+          }
+          table.insert(typeOrder, t)
+        end
+        table.insert(groups[t].keys, i)
+        table.insert(groups[t].entries, entry)
+        break
+      end
+    end
+  end
+
+  if #typeOrder == 0 then done() return end
+
+  local remaining = #typeOrder
+  for _, t in ipairs(typeOrder) do
+    local group = groups[t]
+    for _, k in ipairs(group.keys) do
+      consumeComponent(BagType.CONDITION_CARDS, k)
+    end
+    local model = buildDeckModel(group.entries)
+    if not model.base then
+      remaining = remaining - 1
+      if remaining == 0 then done() end
+    else
+      mergeDeckStack(BagType.CONDITION_CARDS, model, group.pos, {0, 180, 180}, function()
+        registerDeck(group.pos, t ~= "" and t or nil, function(obj)
+          gameData.deckGuids["condition_" .. t] = obj.getGUID()
+        end)
+        remaining = remaining - 1
+        if remaining == 0 then done() end
+      end)
+    end
+  end
+end
+
+local function placeSpellCards(done)
+  local shopMat = SHOP_MAT_DATA.obj
+  if not shopMat then done() return end
+  local deckData = SHOP_MAT_DATA.decks[ShopDeckType.SPELL]
+  if not deckData then done() return end
+  local pos = shopMat.positionToWorld(deckData.pos):setAt("y", 2.5)
+
+  local model = buildDeckModel(collectEntries(BagType.SPELL_CARDS))
+  if not model.base then done() return end
+
+  for i in pairs(collectEntries(BagType.SPELL_CARDS)) do
+    consumeComponent(BagType.SPELL_CARDS, i)
+  end
+
+  mergeDeckStack(BagType.SPELL_CARDS, model, pos, {0, 180, 180}, function()
+    registerDeck(pos, ShopDeckType.SPELL, function(obj)
+      SHOP_MAT_DATA.decks[ShopDeckType.SPELL].guid = obj.getGUID()
+      SHOP_MAT_DATA.decks[ShopDeckType.SPELL].obj  = obj
+      gameData.deckGuids[ShopDeckType.SPELL]        = obj.getGUID()
+    end)
+    done()
+  end)
+end
+
+local function placeItemCards(done)
+  local shopMat = SHOP_MAT_DATA.obj
+  if not shopMat then done() return end
+  local deckData = SHOP_MAT_DATA.decks[ShopDeckType.ITEM]
+  if not deckData then done() return end
+  local pos = shopMat.positionToWorld(deckData.pos):setAt("y", 2.5)
+
+  local model = buildDeckModel(collectEntries(BagType.ITEM_CARDS))
+  if not model.base then done() return end
+
+  for i in pairs(collectEntries(BagType.ITEM_CARDS)) do
+    consumeComponent(BagType.ITEM_CARDS, i)
+  end
+
+  mergeDeckStack(BagType.ITEM_CARDS, model, pos, {0, 180, 180}, function()
+    registerDeck(pos, ShopDeckType.ITEM, function(obj)
+      SHOP_MAT_DATA.decks[ShopDeckType.ITEM].guid = obj.getGUID()
+      SHOP_MAT_DATA.decks[ShopDeckType.ITEM].obj  = obj
+      gameData.deckGuids[ShopDeckType.ITEM]        = obj.getGUID()
+    end)
+    done()
+  end)
+end
+
+function showMerchandise()
+  fillDisplaySlots()
+end
+
+local function placeHeadlineCards(done)
+  local locationMat = LOCATION_MAT_DATA.obj
+  if not locationMat then done() return end
+  if not LOCATION_MAT_DATA.headline then done() return end
+  local pos = locationMat.positionToWorld(LOCATION_MAT_DATA.headline):setAt("y", 3)
+
+  local entries = collectEntries(BagType.HEADLINE_CARDS)
+  for i in pairs(entries) do
+    consumeComponent(BagType.HEADLINE_CARDS, i)
+  end
+
+  local model = buildDeckModel(entries)
+  if not model.base then done() return end
+
+  mergeDeckStack(BagType.HEADLINE_CARDS, model, pos, {0, 180, 180}, function()
+    registerDeck(pos, "Headline", function(obj)
+      LOCATION_MAT_DATA.headlineGuid = obj.getGUID()
+      LOCATION_MAT_DATA.headlineObj  = obj
+      gameData.deckGuids.headline     = obj.getGUID()
+    end)
+    done()
+  end)
+end
+
+local function placeEventCards(done)
+  local scenarioData = gameData.scenarioData
+  if not scenarioData then done() return end
+
+  local pos     = getEventDeckWorldPos()
+  local entries = collectEntries(BagType.EVENT_CARDS)
+
+  for i, entry in pairs(entries) do
+    local eName = entry.memo and entry.memo.name and string.lower(entry.memo.name) or ""
+    local sName = string.lower(scenarioData.name or "")
+    if eName == sName then
+      spawnComponent(BagType.EVENT_CARDS, entry, pos, {0, 180, 180})
+      registerDeck(pos, nil, function(obj)
+        gameData.deckGuids.event = obj.getGUID()
+      end)
+      consumeComponent(BagType.EVENT_CARDS, i)
+    end
+  end
+  done()
+end
+
+-- wires event deck to encounter decks and runs scenario preparation; call after shuffleComponents
+function prepareEventDeck(done)
+  local eventObj = gameData.deckGuids.event and getObjectFromGUID(gameData.deckGuids.event)
+  if not eventObj then done() return end
+
+  local placedDecks = {}
+  local scenarioMat = SCENARIO_MAT_DATA.obj
+  if scenarioMat then
+    for _, obj in pairs(upCast(scenarioMat, 1, nil, 1)) do
+      local objData = parseJson(obj.memo)
+      if obj.type == "Deck" and objData and string.lower(objData.type or "") == "encounter" then
+        table.insert(placedDecks, { guid = obj.getGUID() })
+      end
+    end
+  end
+
+  prepareScenarioEventDeck(eventObj, placedDecks, 0.5)
+  done()
+end
+
+local function placeEncounterCards(done)
+  local scenarioData = gameData.scenarioData
+  if not scenarioData then done() return end
+
+  local scenarioMat = SCENARIO_MAT_DATA.obj
+  if not scenarioMat then done() return end
+
+  local scenInfo = SCENARIO_MAT_DATA.scenarios[scenarioData.name]
+  if not scenInfo then done() return end
+
+  local encounters = scenInfo.encounter or {}
+  local entries    = collectEntries(BagType.ENCOUNTER_CARDS)
+
+  local groups    = {}
+  local nameOrder = {}
+  for i, entry in pairs(entries) do
+    local addonState = entry.memo and entry.memo.set and gameData.addons[entry.memo.set]
+    if entry.memo and entry.memo.set and addonState == false then
+      consumeComponent(BagType.ENCOUNTER_CARDS, i)
+    else
+      local name   = entry.memo and entry.memo.name or ""
+      local posIdx = encounters[name]
+      if posIdx then
+        if not groups[name] then
+          groups[name] = {
+            pos     = scenarioMat.positionToWorld(SCENARIO_MAT_DATA.positions[posIdx]):setAt("y", 3),
+            keys    = {},
+            entries = {},
+          }
+          table.insert(nameOrder, name)
+        end
+        table.insert(groups[name].keys, i)
+        table.insert(groups[name].entries, entry)
+      end
+    end
+  end
+
+  if #nameOrder == 0 then done() return end
+
+  local remaining = #nameOrder
+  for _, name in ipairs(nameOrder) do
+    local group = groups[name]
+    for _, k in ipairs(group.keys) do
+      consumeComponent(BagType.ENCOUNTER_CARDS, k)
+    end
+    local model = buildDeckModel(group.entries)
+    if not model.base then
+      remaining = remaining - 1
+      if remaining == 0 then done() end
+    else
+      mergeDeckStack(BagType.ENCOUNTER_CARDS, model, group.pos, {0, 180, 180}, function()
+        registerDeck(group.pos, name, function(obj)
+          gameData.deckGuids["encounter_" .. name] = obj.getGUID()
+        end)
+        remaining = remaining - 1
+        if remaining == 0 then done() end
+      end)
+    end
+  end
+end
+
+local function placeArchiveDecks(done)
+  local locationMat = LOCATION_MAT_DATA.obj
+  if not locationMat then done() return end
+  if not LOCATION_MAT_DATA.archive then done() return end
+  local archivePos = locationMat.positionToWorld(LOCATION_MAT_DATA.archive):setAt("y", 3.01)
+
+  local entries = collectEntries(BagType.ARCHIVE_DECKS)
+  for i in pairs(entries) do
+    consumeComponent(BagType.ARCHIVE_DECKS, i)
+  end
+
+  local model = buildDeckModel(entries)
+  if not model.base then done() return end
+
+  mergeDeckStack(BagType.ARCHIVE_DECKS, model, archivePos, {0, 180, 180}, function()
+    registerDeck(archivePos, "Archive", function(obj)
+      LOCATION_MAT_DATA.archiveObj  = obj
+      LOCATION_MAT_DATA.archiveGuid = obj.getGUID()
+      gameData.deckGuids.archive    = obj.getGUID()
+    end, true)
+    done()
+  end, 1.0, true)
+end
+
+local function placeInvestigatorSheets(done)
+  if not gameData.directSetup then done() return end
+  local locationMat = LOCATION_MAT_DATA.obj
+  if not locationMat then done() return end
+
+  local entries    = collectEntries(BagType.INVESTIGATOR_SHEETS)
+  local matPos     = locationMat.getPosition()
+  local spacing    = 4
+  local totalWidth = (#entries - 1) * spacing
+  local startX     = matPos.x - totalWidth / 2
+
+  for i, entry in pairs(entries) do
+    local pos = Vector(startX + (i - 1) * spacing, matPos.y + 2, matPos.z + 25)
+    local o = spawnComponent(BagType.INVESTIGATOR_SHEETS, entry, pos, {0, 180, 0})
+    if o then
+      runAfterRest(o, function(o2)
+        o2.setRotation({0, 180, 0})
+      end)
+    end
+    consumeComponent(BagType.INVESTIGATOR_SHEETS, i)
+  end
+  done()
+end
+
+local function placeReferenceCards(done)
+  local entry = getComponents(BagType.REFERENCE_CARDS)[1]
+  if not entry then done() return end
+  consumeComponent(BagType.REFERENCE_CARDS, 1)
+
+  local tableMat = TABLE_DATA.obj
+  if not tableMat then done() return end
+
+  local numPlayers = gameData.numberOfPlayers or 2
+  local spacing    = 14.5
+  local centerX    = tableMat.getPosition().x
+  local startX     = centerX - ((numPlayers - 1) * spacing) / 2
+
+  local deck = spawnComponent(BagType.REFERENCE_CARDS, entry,
+    tableMat.positionToWorld(TABLE_DATA.referenceDeck):setAt("y", 3), {0, 180, 180})
+  if not deck then done() return end
+
+  Wait.time(function()
+    for i = 1, numPlayers do
+      local xPos = startX + (i - 1) * spacing
+      deck.takeObject({ index = 0, position = Vector(xPos, 3, -71), smooth = true })
+    end
+    done()
+  end, 0.5)
+end
+
+-- ╭──────────────────────────────────────────────╮
+-- │               MAIN ENTRY POINT               │
+-- ╰──────────────────────────────────────────────╯
+--
+-- Groups run sequentially; functions within a group run in parallel.
+-- Post-placement steps (resolveComponents, shuffleComponents, prepareEventDeck,
+-- distributeMonsterCards, cleanupComponents) are called by the Setup flow.
+
+local function runParallel(steps, done)
+  if #steps == 0 then done() return end
+  local remaining = #steps
+  local function onDone()
+    remaining = remaining - 1
+    if remaining == 0 then done() end
+  end
+  for _, step in ipairs(steps) do step(onDone) end
+end
+
+function placeComponents(done)
+  gameData.deckGuids  = {}
+  deckRegistry        = {}
+  shuffleList         = {}
+  monsterStagingPos   = nil
+
+  local groups = {
+    {placeScenarioSheets, placeMapTiles},
+    {placeArchiveDecks},
+    { placeReferenceCards, placeHeadlineCards },
+    { prepareMonsterDeck },
+    { placeSpecialCards, placeAllyCards, placeSpellCards, placeItemCards },
+    { placeConditionCards },
+    { placeEncounterCards, placeAnomalyCards, placeTerrorCards },
+    { placeEventCards },
+  }
+
+  local GROUP_DELAY = 1
+
+  local function runNext(i)
+    if i > #groups then if done then done() end return end
+    runParallel(groups[i], function()
+      Wait.time(function() runNext(i + 1) end, GROUP_DELAY)
+    end)
+  end
+
+  runNext(1)
+end

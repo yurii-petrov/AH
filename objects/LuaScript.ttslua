@@ -4,6 +4,7 @@ require("Global/Utils")
 require("Global/Steps")
 require("Global/Ally")
 require("Global/Mythos")
+require("Global/MythosTile")
 require("Global/Doom")
 require("Global/Monster")
 require("Global/DeckHelpers")
@@ -40,19 +41,6 @@ isTestMode = false
 -- /execute local c=Player.White;local s=c.getSelectedObjects();if s then addSet(n, s) end
 
 -- /execute local c=Player.White;local h=c.getHoverObject();if h then print(serpent.tts(h)) end
-
--- print(JSON.encode(JSON.encode({
---   name = "AoA",
---   type = "Event",
---   locations = {
---     ["Arkham Asylum"] = {
---       dooms = 1
---     },
---     ["Hibb's Roadhouse"] = {
---       dooms = 1
---     }
---   }
--- })))
 
 -- Mechanic variables
 
@@ -98,23 +86,8 @@ addons = {{
 -- ╰──────────────────────────────────────────────╯
 
 Tag = {
-  Streets = "streets",
-  Residential = "residential",
-  Bridge = "bridge",
-  Scenic = "scenic",
   DoomToken = "Doom Token",
   AnomalyToken = "Anomaly Token"
-}
-
-Neighborhood = {
-  Downtown = "Downtown",
-  Easttown = "Easttown",
-  MerchantDistrict = "Merchant District",
-  MiskatonicUniversity = "Miskatonic University",
-  Northside = "Northside",
-  Rivertown = "Rivertown",
-  Southside = "Southside",
-  Uptown = "Uptown"
 }
 
 MythosCup = {
@@ -161,14 +134,13 @@ local nastilo4kaId = "d75b3b"
 -- │                Bags                          │
 -- ╰──────────────────────────────────────────────╯
 
+monstersbyScenarioUkId = "dd5297"
 boxId = "49a7d7"
 doomBagId = "099201"
 clueBagId = "5e5b58"
 mythosBagId = "106418"
-local reckoningBagId = "2fb57a"
 monsterMatBagId = "d96088"
 doubleSidedMatBagId = "5ed3b3"
-remnantBagId = "5ab73d"
 investigatorMatBagId = "774898"
 cardMatBagId = "fe8d29"
 rollerBagId = "2a2043"
@@ -250,26 +222,74 @@ scenarioSheetSetupLocation = {
 
 isDrawMythInProcess = false
 
-function onload(savedData)
+local function resolveDataObj(data)
+  if data and data.guid then
+    data.obj = getObjectFromGUID(data.guid)
+  end
+end
 
-  if isTestMode then
-    --    testResolveDooms() 
+local function resolveAllDataObjects()
+  resolveDataObj(MYTHOS_TILE_DATA)
+  resolveDataObj(MYTHOS_TILE_DATA.bag)
+  resolveDataObj(SCENARIO_MAT_DATA)
+  resolveDataObj(TABLE_DATA)
+  resolveDataObj(LOCATION_MAT_DATA)
+  resolveDataObj(SHOP_MAT_DATA)
+  for _, matData in ipairs(CONDITION_MAT_DATA) do
+    resolveDataObj(matData)
+  end
+end
+
+-- Restores deck GUIDs saved by placeComponents into the runtime data structures.
+-- Called after gameData is loaded from savedData so GUIDs survive TTS reloads.
+local function resolveAllDeckObjects()
+  local guids = gameData.deckGuids
+  if not guids then return end
+
+  if guids.headline then
+    LOCATION_MAT_DATA.headlineGuid = guids.headline
+    LOCATION_MAT_DATA.headlineObj  = getObjectFromGUID(guids.headline)
+  end
+  if guids.monster then
+    LOCATION_MAT_DATA.monsterDeckGuid = guids.monster
+    LOCATION_MAT_DATA.monsterDeckObj  = getObjectFromGUID(guids.monster)
+  end
+  for _, t in pairs(ShopDeckType) do
+    if guids[t] and SHOP_MAT_DATA.decks[t] then
+      SHOP_MAT_DATA.decks[t].guid = guids[t]
+      SHOP_MAT_DATA.decks[t].obj  = getObjectFromGUID(guids[t])
+    end
   end
 
-  lockObj(tableId)
+  if gameData.mapTileGuids then
+    LOCATION_MAT_DATA.tiles = {}
+    for name, guid in pairs(gameData.mapTileGuids) do
+      LOCATION_MAT_DATA.tiles[name] = getObjectFromGUID(guid)
+    end
+  end
+end
+
+function onload(savedData)
+
+  resolveAllDataObjects()
+
+  -- lockObj(tableId)
   lockObj(locationMatId)
   lockObj(scenarioMatId)
   lockObj(mythosTileId)
   lockObj(tile4ActionsId)
-  lockObj(shopMatId)
-  lockObj(conditionMatId)
+
+  -- lockObj(conditionMatId)
   -- lockObj(mythosBagId)
+  lockObj(shopMatId)
   lockObj(nastilo4kaId)
 
   local parsedSaveData = parseJson(savedData)
   if parsedSaveData then
     gameData = parsedSaveData
   end
+
+  resolveAllDeckObjects()
 
   Wait.time(function()
     updateXMLs()
@@ -296,13 +316,13 @@ function onload(savedData)
     end
   end
 
-  local mythosBag = getObjectFromGUID(mythosBagId)
+  local mythosBag = MYTHOS_TILE_DATA.bag.obj
   if mythosBag then
     mythosBag.setName("Чаша міту")
     mythosBag.addContextMenuItem("Fix button", fixDrawMythosButton)
   end
 
-  local mythosTile = getObjectFromGUID(mythosTileId)
+  local mythosTile = MYTHOS_TILE_DATA.obj
   if mythosTile then
 
     mythosTile.createButton({

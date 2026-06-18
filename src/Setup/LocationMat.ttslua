@@ -1,0 +1,179 @@
+-- ╭──────────────────────────────────────────────╮
+-- │           LOCATION MAT / TILES SETUP         │
+-- ╰──────────────────────────────────────────────╯
+
+-- ╭──────────────────────────────────────────────╮
+-- │           TILE PROCESSING HELPERS            │
+-- ╰──────────────────────────────────────────────╯
+
+function processSetupTile(o, name, setupTileInfo, locationMatOld)
+  local doomBag       = resolve(doomBagId)
+  local whiteTokenBag = resolve(whiteTokenBagId)
+  local blueTokenBag  = resolve(blueTokenBagId)
+  local redTokenBag   = resolve(redTokenBagId)
+  local greenTokenBag = resolve(greenTokenBagId)
+
+  local locationMat = resolve(locationMatId)
+  if not locationMat then return end
+
+  local y = locationMat.getPosition().y + locationMat.getBoundsNormalized().size.y
+
+  gameData.lockObjs[o.guid] = true
+  lockObj(o.guid)
+  o.setRotation(setupTileInfo.rotation)
+  o.setPosition(locationMatOld.positionToWorld(setupTileInfo.position):setAt("y", y))
+
+  if not setupTileInfo.tokens then return end
+
+  for _, tokenInfo in ipairs(setupTileInfo.tokens) do
+    if tokenInfo.type == "Doom Token" and doomBag then
+      doomBag.takeObject({
+        index = 0,
+        position = o.positionToWorld(tokenInfo.position):setAt("y", 3)
+      }).highlightOn("Red", 5)
+      printToAll(i18n.getStrById(name) .. " - " .. i18n.getStrById("LOG_doom_added"), "Red")
+    elseif tokenInfo.type == "White Marker" and whiteTokenBag then
+      whiteTokenBag.takeObject({
+        index = 0,
+        position = o.positionToWorld(tokenInfo.position):setAt("y", 3)
+      }).highlightOn("White", 5)
+    elseif tokenInfo.type == "Blue Marker" and blueTokenBag then
+      blueTokenBag.takeObject({
+        index = 0,
+        position = o.positionToWorld(tokenInfo.position):setAt("y", 3)
+      }).highlightOn("Blue", 5)
+    elseif tokenInfo.type == "Red Marker" and redTokenBag then
+      redTokenBag.takeObject({
+        index = 0,
+        position = o.positionToWorld(tokenInfo.position):setAt("y", 3)
+      }).highlightOn("Red", 5)
+    elseif tokenInfo.type == "Green Marker" and greenTokenBag then
+      greenTokenBag.takeObject({
+        index = 0,
+        position = o.positionToWorld(tokenInfo.position):setAt("y", 3)
+      }).highlightOn("Green", 5)
+    end
+  end
+end
+
+function spawnTokenOnLocation(spawnInfo)
+  if not spawnInfo or not spawnInfo.token then
+    log("[spawnTokenOnLocation] missing token")
+    return nil
+  end
+
+  local locationName = spawnInfo.location
+  if not locationName then
+    locationName = gameData.scenarioData and gameData.scenarioData.startingSpace
+  end
+  if not locationName then
+    log("[spawnTokenOnLocation] no location and no scenario startingSpace")
+    return nil
+  end
+
+  local locationMat = resolve(locationMatId)
+  if not locationMat then
+    log("[spawnTokenOnLocation] locationMat not found")
+    return nil
+  end
+
+  local bagId = getTokenBagIdByType(spawnInfo.token)
+  local bag = bagId and getObjectFromGUID(bagId)
+  if not bag then
+    log("[spawnTokenOnLocation] bag not found for token: " .. tostring(spawnInfo.token))
+    return nil
+  end
+
+  local tile, tileData, locationIndex = findLocationTileByName(locationMat, locationName)
+  if not tile then
+    log("[spawnTokenOnLocation] tile not found for: " .. tostring(locationName))
+    return nil
+  end
+
+  local placement = spawnInfo.placement and string.lower(spawnInfo.placement) or "location"
+
+  local pos
+  if placement ~= "neighborhood" and locationIndex and tileData and tileData.structureType then
+    pos = getNeighborhoodLocationPosition(tile, locationIndex, tileData.structureType):setAt("y", 3)
+  else
+    pos = tile.getPosition():setAt("y", 3)
+  end
+
+  local token = bag.takeObject({
+    index = 0,
+    position = pos,
+    rotation = {0, 180, 0}
+  })
+  if not token then
+    log("[spawnTokenOnLocation] takeObject returned nil for token: " .. tostring(spawnInfo.token))
+    return nil
+  end
+
+  token.memo = spawnInfo.memo or spawnInfo.token
+  token.highlightOn(spawnInfo.highlight or "Yellow", 5)
+
+  return token, tile, tileData
+end
+
+function placeCodexFromArchive()
+  local archiveDeck = LOCATION_MAT_DATA.archiveObj
+  if not archiveDeck then return end
+
+  local locationMat = LOCATION_MAT_DATA.obj
+  if not locationMat then return end
+
+  local scenarioData = gameData.scenarioData
+  if not scenarioData then return end
+
+  local function containsNumber(tbl, target)
+    for i, v in pairs(tbl) do if v == target then return i end end
+  end
+
+  local archiveObjs = archiveDeck.getObjects()
+  for i = #archiveObjs, 1, -1 do
+    local codex     = archiveObjs[i]
+    local codexData = parseJson(codex.memo)
+    if codexData and codexData.number and string.lower(codexData.type) == "codex" then
+      local idx = containsNumber(scenarioData.codex, codexData.number)
+      if idx then
+        local taken = archiveDeck.takeObject({ index = codex.index })
+        attachCodexCard(taken, locationMat.positionToWorld(LOCATION_MAT_DATA.codex[idx]):setAt("y", 3))
+      end
+    end
+  end
+end
+
+function lockSetupScenarioComponents(obj, scenarioTiles)
+  local locationMat = resolve(locationMatId)
+  if not locationMat then return end
+
+  local box = resolve(boxId)
+  if not box then return end
+
+  if not resolve(doomBagId)       then return end
+  if not resolve(whiteTokenBagId) then return end
+  if not resolve(blueTokenBagId)  then return end
+  if not resolve(redTokenBagId)   then return end
+  if not resolve(greenTokenBagId) then return end
+
+  local locationMatOld = resolve("b195b0")
+  if not locationMatOld then
+    error("Мат для локацій не знайдено!")
+    return
+  end
+
+  local memo = parseJson(obj.memo)
+  if obj.type == "Generic" and memo and memo.type and memo.name then
+    local types = scenarioTiles[memo.type]
+    if types then
+      local tileInfo = types[memo.name]
+      if tileInfo then
+        processSetupTile(obj, memo.name, tileInfo, locationMatOld)
+      else
+        box.putObject(obj)
+      end
+    else
+      box.putObject(obj)
+    end
+  end
+end

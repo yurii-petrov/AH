@@ -58,6 +58,10 @@ I18N_DATA = {
     ["en"] = "Black Cave",
     ["uk"] = "Чорна Печера",
   },
+  ["Blank"] = {
+    ["en"] = "Blank",
+    ["uk"] = "Порожньо",
+  },
   ["Bloody_Titan"] = {
     ["en"] = "Bloody Titan",
     ["uk"] = "Кривавий Титан",
@@ -265,6 +269,10 @@ I18N_DATA = {
   ["Frenzied_Hunter"] = {
     ["en"] = "Frenzied Hunter",
     ["uk"] = "Шалений Мисливець",
+  },
+  ["Gate_Burst"] = {
+    ["en"] = "Gate Burst",
+    ["uk"] = "Прорив Воріт",
   },
   ["General_Store"] = {
     ["en"] = "General Store",
@@ -487,8 +495,8 @@ I18N_DATA = {
     ["uk"] = "Місця для дослідників підготовлені",
   },
   ["LOG_myth_draw"] = {
-    ["en"] = "\n%s - %s player",
-    ["uk"] = "\n%s - %s гравець",
+    ["en"] = "\n%s (%s)",
+    ["uk"] = "\n%s (%s)",
   },
   ["LOG_not_enough_money"] = {
     ["en"] = "%s - not enough $",
@@ -1030,6 +1038,14 @@ I18N_DATA = {
     ["en"] = "Ravenous Predator",
     ["uk"] = "Ненаситний Хижак",
   },
+  ["Read_Headline"] = {
+    ["en"] = "Read Headline",
+    ["uk"] = "Читати Заголовок",
+  },
+  ["Reckoning"] = {
+    ["en"] = "Reckoning",
+    ["uk"] = "Розплата",
+  },
   ["Residential"] = {
     ["en"] = "Residential",
     ["uk"] = "Житлові Будинки",
@@ -1150,6 +1166,18 @@ I18N_DATA = {
     ["en"] = "Southside",
     ["uk"] = "Південний Квартал",
   },
+  ["Spawn_Clue"] = {
+    ["en"] = "Spawn Clue",
+    ["uk"] = "Розмістити Зачіпку",
+  },
+  ["Spawn_Monster"] = {
+    ["en"] = "Spawn Monster",
+    ["uk"] = "Розмістити Монстра",
+  },
+  ["Spread_Doom"] = {
+    ["en"] = "Spread Doom",
+    ["uk"] = "Розподілити Приреченість",
+  },
   ["St._Erasmus's_Home"] = {
     ["en"] = "St. Erasmus's Home",
     ["uk"] = "Притулок св. Еразма",
@@ -1169,6 +1197,10 @@ I18N_DATA = {
   ["Strange_High_House"] = {
     ["en"] = "Strange High House",
     ["uk"] = "Дім Таємниць",
+  },
+  ["Street"] = {
+    ["en"] = "Street",
+    ["uk"] = "Вулиця",
   },
   ["Swift_Byakhee"] = {
     ["en"] = "Swift Byakhee",
@@ -1225,6 +1257,10 @@ I18N_DATA = {
   ["Terrified_Wanderer"] = {
     ["en"] = "Terrified Wanderer",
     ["uk"] = "Переляканий Блукалець",
+  },
+  ["Terror"] = {
+    ["en"] = "Terror",
+    ["uk"] = "Морок",
   },
   ["The_Rope_and_Anchor"] = {
     ["en"] = "The Rope and Anchor",

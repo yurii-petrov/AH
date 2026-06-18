@@ -1,0 +1,23 @@
+-- ╭──────────────────────────────────────────────╮
+-- │           TOKENS / PLAYER SEAT ZONE          │
+-- ╰──────────────────────────────────────────────╯
+
+function prepareMarkers()
+end
+
+
+function takeCardsWithMemo(deck, targetMemo, params)
+  local cards = deck.getObjects()
+
+  for i = #cards, 1, -1 do
+    local card = cards[i]
+    if card.memo == targetMemo then
+      deck.takeObject({
+        index = card.index,
+        position = params.position,
+        rotation = params.rotation,
+        smooth = true
+      })
+    end
+  end
+end

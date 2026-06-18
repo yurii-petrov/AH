@@ -9,7 +9,6 @@ function showHelp(player, _)
   else
     UI.setAttribute("help_panel", "visibility", vis .. "|" .. player.color)
   end
-  --  print(UI.getAttribute("help_panel", "visibility"))
 end
 
 function hideHelp(player, _)
@@ -20,60 +19,6 @@ function hideHelp(player, _)
     vis = "nobody"
   end
   UI.setAttribute("help_panel", "visibility", vis)
-  --  print(UI.getAttribute("help_panel", "visibility"))
-end
-
-function onClickScenario(n)
-
-  local tableTile = getObjectFromGUID(tableId)
-  if not tableTile then
-    callBack()
-    return
-  end
-
-  local tableTileData = parseJson(tableTile.memo)
-  if not tableTileData then
-    callBack()
-    return
-  end
-
-  local scenarioData = getScenarioData(n)
-  if not scenarioData then
-    broadcastToAll(string.format(i18n.getStrById("LOG_scenario_not_found"), n), "White")
-    return
-  end
-
-  setupScenario.isPreparing = true
-
-  local scenarioSheet = getObjectFromGUID(setupScenario.scenarioData.guid)
-  if scenarioSheet then
-    local p = tableTileData.startPosition.tiles[setupScenario.scenarioData.type][setupScenario.scenarioData.name].p
-    scenarioSheet.setPositionSmooth(tableTile.positionToWorld(p):setAt("y", 3))
-  end
-
-  -- Wait.time(function()
-  setupScenario.scenarioData = scenarioData
-  spawnScenarioTilesOnMat(scenarioData, function()
-    setupScenario.isPreparing = false
-  end)
-  -- end, 1)
-  -- end)
-end
-
-function onClickPrepareScenario(onComplete)
-  Wait.time(function()
-    -- lockSetupScenarioComponents(gameData.scenarioData)
-    -- prepareMarkers()
-    prepareMythosTokens(gameData.scenarioData.mythosCups)
-    prepareScenarioDecks(gameData.scenarioData)
-    if onComplete then
-      onComplete()
-    end
-  end, 1)
-end
-
-function onClickNumberOfPlayers(n)
-  gameData.numberOfPlayers = n
 end
 
 function onClickPrepareNumberOfPlayers(onComplete)
@@ -109,36 +54,6 @@ function onClickPrepareNumberOfPlayers(onComplete)
 
   local activationLiderTokenBag = getObjectFromGUID(activationLiderTokenBagId)
   if not activationLiderTokenBag then
-    return
-  end
-
-  local referenceDeck = nil
-  for _, obj in ipairs(getObjects()) do
-    if obj.type == "Deck" and obj.getName() == "Reference Cards" then
-      referenceDeck = obj
-      break
-    end
-  end
-
-  -- direct (quick) setup: deck is still inside the language bag
-  if not referenceDeck and gameData.directSetup and gameData.sourceBagGuid then
-    local bag = getObjectFromGUID(gameData.sourceBagGuid)
-    if bag then
-      for _, entry in ipairs(bag.getObjects()) do
-        if entry.name == "Reference Cards" then
-          referenceDeck = bag.takeObject({
-            guid     = entry.guid,
-            position = bag.getPosition():setAt("y", 3),
-            smooth   = false
-          })
-          break
-        end
-      end
-    end
-  end
-
-  if not referenceDeck then
-    error("Reference Cards not found")
     return
   end
 
@@ -247,14 +162,8 @@ function onClickPrepareNumberOfPlayers(onComplete)
     local color = colors[i]
     local data = getHandData(color)
     if data then
-      local hand = spawnObjectData({
-        data = data
-      })
+      local hand = spawnObjectData({ data = data })
       hand.setPosition({targetPosition.x, 3, -71})
-      referenceDeck.takeObject({
-        index = 0,
-        position = hand.getPosition()
-      })
     end
   end
 
@@ -263,9 +172,6 @@ function onClickPrepareNumberOfPlayers(onComplete)
     if box then
       box.putObject(activationTokenBag)
       box.putObject(activationLiderTokenBag)
-      if numPlayers < 6 then
-        box.putObject(referenceDeck)
-      end
     end
     if onComplete then
       onComplete()
@@ -301,8 +207,6 @@ function reassignAllPlayersToAvailableColors()
     if participant.color ~= targetColor then
       log("Reassigning " .. participant.steam_name .. " to " .. targetColor)
       participant.changeColor(targetColor)
-    else
-      log(participant.steam_name .. " is already in correct color: " .. targetColor)
     end
 
     usedColors[targetColor] = true
@@ -485,7 +389,7 @@ function onClickEncounter(obj, playerColor)
   end
 
   local function showCardInActiveSpace(data, obj)
-    local mythosTile = getObjectFromGUID(mythosTileId)
+    local mythosTile = MYTHOS_TILE_DATA.obj
     if not mythosTile then
       return
     end
@@ -597,7 +501,7 @@ function onClickEncounter(obj, playerColor)
         showCardInActiveSpace(data, o)
         print(string.format(i18n.getStrById("LOG_encounter_for"),
           i18n.getStrById(investigatorData.name:gsub(" ", "_")),
-          i18n.getStrById((data.name or data.type):gsub(" ", "_")),
+          i18n.getStrById((data.name or data.type):gsub("%d+$", ""):gsub(" ", "_")),
           i18n.getStrById((data.type):gsub(" ", "_"))))
         return
       end
@@ -676,13 +580,13 @@ function onClickEncounter(obj, playerColor)
           terrorCount = terrorCount + 1
         end
       end
-      broadcastToAll(string.format(i18n.getStrById("LOG_terror_count"), terrorCount, ""..neighborhoodName:gsub(" ", "_").." ("..i18n.getStrById(investigatorData.name:gsub(" ", "_"))..")"), "Orange")
+      broadcastToAll(string.format(i18n.getStrById("LOG_terror_count"), terrorCount, ""..neighborhoodName:gsub("%d+$", ""):gsub(" ", "_").." ("..i18n.getStrById(investigatorData.name:gsub(" ", "_"))..")"), "Orange")
     else
-      broadcastToAll("\n" .. i18n.getStrById(locationName:gsub(" ", "_")), "White")
+      broadcastToAll("\n" .. i18n.getStrById(locationName:gsub("%d+$", ""):gsub(" ", "_")), "White")
       print(string.format(i18n.getStrById("LOG_encounter_for"),
         i18n.getStrById(investigatorData.name:gsub(" ", "_")),
-        i18n.getStrById(locationName:gsub(" ", "_")),
-        i18n.getStrById(neighborhoodName:gsub(" ", "_"))))
+        i18n.getStrById(locationName:gsub("%d+$", ""):gsub(" ", "_")),
+        i18n.getStrById(neighborhoodName:gsub("%d+$", ""):gsub(" ", "_"))))
     end
   end
 end
@@ -752,11 +656,8 @@ local function findFreeSnapOnItemsMat(itemsMat)
     if not occupant then
       log("[placeItem] snap " .. i .. " is free on " .. itemsMat.guid)
       return worldPos
-    else
-      -- log("[placeItem] snap " .. i .. " occupied by guid=" .. occupant.guid .. " type=" .. occupant.type .. " memo=" .. tostring(occupant.memo):sub(1, 60))
     end
   end
-  -- log("[placeItem] all " .. #snps .. " snaps occupied on " .. itemsMat.guid)
   return nil
 end
 
@@ -833,8 +734,6 @@ function onClickMarket(d)
   local hand = hands[1]
 
   local item = nil
-  -- local objs = upCast(shopMat, 1, nil, 1)
-
   local p = d.id <= #shopData.displaypos and shopData.displaypos[d.id] or
               shopData.encounterpos[d.id - #shopData.displaypos]
 
@@ -1007,34 +906,6 @@ function onClickFindItem(d)
     end
   end
 end
-
--- function updateHandPosition(d)
---     local p = d.o.getPosition()
---     p.z = p.z-2
---     p.y = 1.5
---   local hits = Physics.cast({
---     origin = p,
---     direction = {0, 1, 0},
---     type = 3,
---     size = {1, 1, 1},
---     max_distance = 0,
---     debug = true
---   })
-
---     -- local hasDoom = false
---     print(#hits)
---     for _, v in ipairs(hits) do
---     local obj = v.hit_object
---     if obj then
---         print(obj.type)
---         -- obj.setPosition(obj.getPosition()("z", {p[1], p[2], p.z}))
---     end
---     -- if obj and obj.memo == "Doom Token" then
---     --     hasDoom = true
---     --     break
---     -- end
---     end
--- end
 
 -- ╭─────────────────────────────────────────────╮
 -- │                GET DATA                      │

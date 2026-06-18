@@ -1,0 +1,97 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "ContainedObjects_order": [
+    "Card.0e259b",
+    "Card.d901b2",
+    "Card.4cfa95",
+    "Card.721470",
+    "Card.0b550b",
+    "Card.871cd8",
+    "Card.dba84b",
+    "Card.5dacbb",
+    "Card.56f91b",
+    "Card.de4e4a",
+    "Card.f47e9b",
+    "Card.334a13",
+    "Card.1d9cd5"
+  ],
+  "ContainedObjects_path": "Monster1.91ae4f",
+  "CustomDeck": {
+    "5798": {
+      "BackIsHidden": true,
+      "BackURL": "https://drive.google.com/uc?export=view\u0026id=1Myde9M2n1OR8LEDbB0bGhL9fFqMQM_TB",
+      "FaceURL": "https://drive.google.com/uc?export=view\u0026id=1XLp2yFO1GilE_LxUpyVbTM_QwmoHuEfc",
+      "NumHeight": 7,
+      "NumWidth": 9,
+      "Type": 0,
+      "UniqueBack": true
+    },
+    "5804": {
+      "BackIsHidden": true,
+      "BackURL": "https://drive.google.com/uc?export=view\u0026id=1vL9o8qSWzQdiFS6PEYagnbjOBlkCBRf0",
+      "FaceURL": "https://drive.google.com/uc?export=view\u0026id=15Y25nv4ebr0zS9K2kQDA990J_6miJ9pf",
+      "NumHeight": 4,
+      "NumWidth": 6,
+      "Type": 0,
+      "UniqueBack": true
+    }
+  },
+  "DeckIDs": [
+    579803,
+    580420,
+    579802,
+    579810,
+    580409,
+    580421,
+    580406,
+    580403,
+    580404,
+    580415,
+    580407,
+    579833,
+    579808
+  ],
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "91ae4f",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Name": "Deck",
+  "Nickname": "Monster1",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": -5.154,
+    "posY": 4.3,
+    "posZ": -29.808,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 175,
+    "scaleX": 1,
+    "scaleY": 1,
+    "scaleZ": 1
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

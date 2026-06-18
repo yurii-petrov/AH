@@ -1,0 +1,92 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "ContainedObjects_order": [
+    "Card.e39463",
+    "Card.5f9cfc",
+    "Card.26c4ac",
+    "Card.8a526f",
+    "Card.40dbc2",
+    "Card.280dea",
+    "Card.365b58",
+    "Card.68afcf",
+    "Card.36035d",
+    "Card.07e3d5"
+  ],
+  "ContainedObjects_path": "setaside.d121ce",
+  "CustomDeck": {
+    "5798": {
+      "BackIsHidden": true,
+      "BackURL": "https://drive.google.com/uc?export=view\u0026id=1Myde9M2n1OR8LEDbB0bGhL9fFqMQM_TB",
+      "FaceURL": "https://drive.google.com/uc?export=view\u0026id=1XLp2yFO1GilE_LxUpyVbTM_QwmoHuEfc",
+      "NumHeight": 7,
+      "NumWidth": 9,
+      "Type": 0,
+      "UniqueBack": true
+    },
+    "5865": {
+      "BackIsHidden": true,
+      "BackURL": "https://drive.google.com/uc?export=view\u0026id=1JZEo2d4LfJw_vu_VwMQT5yJvTD1kynMT",
+      "FaceURL": "https://drive.google.com/uc?export=view\u0026id=1Z2yDrfDzgAv-KxQ99Kqe1smzKpiL2ET_",
+      "NumHeight": 4,
+      "NumWidth": 5,
+      "Type": 0,
+      "UniqueBack": true
+    }
+  },
+  "DeckIDs": [
+    586519,
+    586507,
+    586508,
+    579828,
+    579825,
+    579853,
+    579849,
+    579827,
+    579826,
+    579852
+  ],
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "d121ce",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Memo": "{\"type\":\"monster\"}",
+  "Name": "Deck",
+  "Nickname": "setaside",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": -6.139,
+    "posY": 4.337,
+    "posZ": 21.737,
+    "rotX": 1,
+    "rotY": 180,
+    "rotZ": 182,
+    "scaleX": 1,
+    "scaleY": 1,
+    "scaleZ": 1
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

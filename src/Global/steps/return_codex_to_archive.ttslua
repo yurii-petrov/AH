@@ -28,21 +28,10 @@ function processStepReturnCodexToArchive(step, context, onDone)
     return
   end
 
-  local codexIndex = findCodexAttachmentIndex(codexMat)
-  if not codexIndex then
+  if not returnCodexMatToArchive(codexMat, archive) then
     log("[returnCodexToArchive] codex card not found in attachments")
     return
   end
 
-  local codexCard = codexMat.removeAttachment(codexIndex)
-  if not codexCard then
-    log("[returnCodexToArchive] failed to remove codex card")
-    return
-  end
-
-  codexCard.interactable = true
-  codexCard.setRotation({0, 180, 180})
-  archive.putObject(codexCard)
-  codexMat.destruct()
   if onDone then onDone() end
 end

@@ -29,56 +29,8 @@ local function shufflePool(t)
   end
 end
 
--- Returns the first Tile on locationMat whose memo matches name directly
--- (memo.name) or contains it in memo.locations (for Neighborhood tiles).
--- For Neighborhood tiles also returns tileData and the 1-based locationIndex.
-function findLocationTileByName(locationMat, name)
-  local nameLower = string.lower(name)
-  local objs = upCast(locationMat, 1, nil, 1)
-  for _, o in ipairs(objs) do
-    if o.type == "Generic" then
-      local data = parseJson(o.memo)
-      if data then
-        if iEquals(data.name, name) then
-          return o, data, nil
-        end
-        if data.type and string.lower(data.type) == "neighborhood" and data.locations then
-          for i, loc in ipairs(data.locations) do
-            if string.lower(loc) == nameLower then
-              return o, data, i
-            end
-          end
-        end
-      end
-    end
-  end
-end
-
--- Returns a world position inside the location sector of a Neighborhood tile.
--- Uses the same arc geometry as getEmptyDoomSpaces in Doom.ttslua.
-function getNeighborhoodLocationPosition(tile, locationIndex, structureType)
-  local center      = { 0.049, 0.150, -0.056 }
-  local radius      = 2.1
-  local stepAngleDeg = 35
-  local startAngleDeg = 205
-  if locationIndex == 2 then
-    startAngleDeg = 85
-  elseif locationIndex == 3 then
-    startAngleDeg = 325
-  end
-  if structureType == 2 or structureType == "2" then
-    startAngleDeg = startAngleDeg + 60
-  end
-  -- middle of the 3-slot arc for this sector
-  local angleDeg = startAngleDeg + stepAngleDeg
-  local angleRad = math.rad(angleDeg)
-  local localPos  = {
-    center[1] + radius * math.cos(angleRad),
-    center[2],
-    center[3] + radius * math.sin(angleRad)
-  }
-  return tile.positionToWorld(localPos)
-end
+-- findLocationTileByName and getNeighborhoodLocationPosition live in
+-- Global/core/locations.ttslua (shared with the other location steps).
 
 function processStepPlaceTokensOnLocations(step, context, onDone)
   if not step.locations or #step.locations == 0 then

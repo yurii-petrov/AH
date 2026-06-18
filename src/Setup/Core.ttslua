@@ -1,0 +1,19 @@
+-- ╭──────────────────────────────────────────────╮
+-- │            SETUP-PHASE CACHES                │
+-- ╰──────────────────────────────────────────────╯
+
+local _refs = {}
+
+-- Cached getObjectFromGUID for the setup phase (mats/bags have stable GUIDs).
+function resolve(id)
+  if not _refs[id] then _refs[id] = getObjectFromGUID(id) end
+  return _refs[id]
+end
+
+function getScenarioData(n)
+  for _, sheet in pairs(SCENARIO_SHEETS) do
+    if sheet.number == n then
+      return sheet
+    end
+  end
+end

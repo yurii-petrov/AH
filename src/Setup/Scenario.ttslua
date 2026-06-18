@@ -1,0 +1,60 @@
+-- ╭──────────────────────────────────────────────╮
+-- │              CODEX CARD ATTACH               │
+-- ╰──────────────────────────────────────────────╯
+
+function attachCodexCard(card, spawnPos, rotation)
+  local codexMatBag = getObjectFromGUID(codexMatBagId)
+  if not codexMatBag then return end
+
+  local rotation = rotation or card.is_face_down and {0, 180, 180} or {0, 180, 0}
+
+  local codexMat = codexMatBag.takeObject({
+    index    = 0,
+    position = spawnPos,
+    rotation = rotation,
+    smooth   = false
+  })
+  if not codexMat then return end
+  codexMat.tooltip = false
+
+  local CARD_OFFSET    = 0.11
+  local height         = codexMat.getBounds().size.y
+  local baseY          = spawnPos.y
+  local cardOriginalY  = card.is_face_down and baseY - height - CARD_OFFSET or baseY + height + CARD_OFFSET
+  local cardCopyY      = card.is_face_down and cardOriginalY + 0.12 or cardOriginalY - 0.12
+
+  card.setPosition({ x = spawnPos.x, y = cardOriginalY, z = spawnPos.z + 0.95 })
+  card.interactable = false
+  codexMat.addAttachment(card)
+
+  local cloneData = card.getData()
+  cloneData.Transform.posX = spawnPos.x
+  cloneData.Transform.posY = cardCopyY
+  codexMat.addAttachment(spawnObjectData({ data = cloneData }))
+
+  if card.memo then
+    local params = parseJson(card.memo)
+    if not params then return end
+
+    local returnToArchive = params.returnToArchive
+    if returnToArchive == nil then returnToArchive = true end
+
+    if returnToArchive == true then
+      local function ensureSide(root, key)
+        root[key] = root[key] or {}
+        root[key].actions = root[key].actions or {}
+        return root[key]
+      end
+      local function addAction(side)
+        table.insert(side.actions, {
+          title = i18n.getStrById("CODEX_return_to_archive"),
+          steps = {{ type = "returnCodexToArchive" }}
+        })
+      end
+      addAction(ensureSide(params, "front"))
+      addAction(ensureSide(params, "back"))
+    end
+
+    runAfterRest(codexMat, function(m) m.call("setCodexData", params) end)
+  end
+end
