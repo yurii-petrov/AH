@@ -153,11 +153,12 @@ local deckRegistry      = {}
 local shuffleList       = {}
 local monsterStagingPos = nil
 
-local function registerDeck(pos, name, onResolved)
+local function registerDeck(pos, name, onResolved, noShuffle)
   table.insert(deckRegistry, {
     worldPos   = Vector(pos.x, pos.y, pos.z),
     name       = name,
     onResolved = onResolved,
+    noShuffle  = noShuffle,
   })
 end
 
@@ -179,7 +180,7 @@ function resolveComponents(done)
         if o and (o.type == "Deck" or o.type == "Card") then
           if entry.name       then o.setName(entry.name) end
           if entry.onResolved then entry.onResolved(o)   end
-          table.insert(shuffleList, o)
+          if not entry.noShuffle then table.insert(shuffleList, o) end
           break
         end
       end
@@ -244,27 +245,48 @@ end
 -- Strategy 2: spawn all decks at staggered y positions (largest addon first, base last).
 -- onFinish() is called with no args after all spawning is initiated.
 -- Use registerDeck() in the callback; resolveComponents() finds the final object by position.
-local function mergeDeckStack(bagType, model, pos, rot, onFinish)
-  local basePos = Vector(pos.x, pos.y + 3.05, pos.z)
+-- reverse=false (default): base at bottom, additions pile on top (largest set on top)
+-- reverse=true           : largest set at bottom, base on top
+local function mergeDeckStack(bagType, model, pos, rot, onFinish, ySpacing, reverse)
+  ySpacing = ySpacing or 0.2
+  local basePos = Vector(pos.x, pos.y, pos.z)
+  local n = #model.additions
 
-  local function spawnBase()
-    local baseObj = spawnComponent(bagType, model.base, basePos, rot)
-    if not baseObj then return end
-    if onFinish then Wait.time(onFinish, STACK_SETTLE_DELAY) end
-  end
-
-  if #model.additions == 0 then
+  if n == 0 then
     local baseObj = spawnComponent(bagType, model.base, basePos, rot)
     if not baseObj then return end
     if onFinish then Wait.time(onFinish, MERGE_DELAY) end
-  else
+    return
+  end
+
+  if not reverse then
+    -- base at basePos, additions[i] at basePos + i*ySpacing (largest on top)
+    local function spawnBase()
+      local baseObj = spawnComponent(bagType, model.base, basePos, rot)
+      if not baseObj then return end
+      if onFinish then Wait.time(onFinish, STACK_SETTLE_DELAY) end
+    end
     local function spawnNext(i)
       if i < 1 then spawnBase() return end
-      local addonPos = Vector(pos.x, pos.y + i * 0.2, pos.z)
-      spawnComponent(bagType, model.additions[i], addonPos, rot)
+      spawnComponent(bagType, model.additions[i], Vector(pos.x, pos.y + i * ySpacing, pos.z), rot)
       Wait.time(function() spawnNext(i - 1) end, MERGE_DELAY)
     end
-    spawnNext(#model.additions)
+    spawnNext(n)
+  else
+    -- additions[n] (largest set) at basePos, ..., additions[1] at basePos+(n-1)*ySpacing,
+    -- base at basePos + n*ySpacing (on top)
+    local function spawnBase()
+      spawnComponent(bagType, model.base, Vector(pos.x, pos.y + n * ySpacing, pos.z), rot)
+      if onFinish then Wait.time(onFinish, STACK_SETTLE_DELAY) end
+    end
+    local function spawnNext(i)
+      -- i goes from n down to 1; additions[n] spawns at y+0, additions[1] at y+(n-1)*ySpacing
+      if i < 1 then spawnBase() return end
+      local offset = (n - i) * ySpacing
+      spawnComponent(bagType, model.additions[i], Vector(pos.x, pos.y + offset, pos.z), rot)
+      Wait.time(function() spawnNext(i - 1) end, MERGE_DELAY)
+    end
+    spawnNext(n)
   end
 end
 
@@ -568,8 +590,6 @@ local function prepareMonsterDeck(done)
                   if tile then
                     card.setRotation(m.rot or {0, 180, 180})
                     attachDoubleSidedCard(card, memo, tile.positionToWorld(m.pos):setAt("y", 3))
-                    -- card.setPosition(tile.positionToWorld(m.pos):setAt("y", 3))
-                    -- card.setRotation(m.rot or {0, 180, 180})
                     table.remove(monsters, i)
                     break
                   end
@@ -874,7 +894,7 @@ local function placeArchiveDecks(done)
   local locationMat = LOCATION_MAT_DATA.obj
   if not locationMat then done() return end
   if not LOCATION_MAT_DATA.archive then done() return end
-  local archivePos = locationMat.positionToWorld(LOCATION_MAT_DATA.archive):setAt("y", 3)
+  local archivePos = locationMat.positionToWorld(LOCATION_MAT_DATA.archive):setAt("y", 3.01)
 
   local entries = collectEntries(BagType.ARCHIVE_DECKS)
   for i in pairs(entries) do
@@ -889,9 +909,9 @@ local function placeArchiveDecks(done)
       LOCATION_MAT_DATA.archiveObj  = obj
       LOCATION_MAT_DATA.archiveGuid = obj.getGUID()
       gameData.deckGuids.archive    = obj.getGUID()
-    end)
+    end, true)
     done()
-  end)
+  end, 1.0, true)
 end
 
 local function placeInvestigatorSheets(done)
@@ -970,8 +990,8 @@ function placeComponents(done)
 
   local groups = {
     {placeScenarioSheets, placeMapTiles},
-    { placeReferenceCards,
-      placeArchiveDecks, placeHeadlineCards },
+    {placeArchiveDecks},
+    { placeReferenceCards, placeHeadlineCards },
     { prepareMonsterDeck },
     { placeSpecialCards, placeAllyCards, placeSpellCards, placeItemCards },
     { placeConditionCards },
