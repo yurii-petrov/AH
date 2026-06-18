@@ -462,6 +462,9 @@ msgstr "Передмістя"
 msgid "The_streets"
 msgstr "Вулиці"
 
+msgid "Street"
+msgstr "Вулиця"
+
 msgid "Central_Kingsport"
 msgstr "Центр Кінгспорту"
 
@@ -693,7 +696,7 @@ msgstr "Додати приреченість вручну"
 msgid "LOG_myth_draw"
 msgstr ""
 "\n"
-"%s - %s гравець"
+"%s (%s)"
 
 msgid "LOG_gate_burst"
 msgstr ""
@@ -727,7 +730,9 @@ msgid "LOG_preparing_scenario"
 msgstr "Триває підготовка сценарію..."
 
 msgid "LOG_scenario_prepared"
-msgstr "Підготовку сценарію успішно завершено. Гравці можуть обирати дослідників, за яких бажають грати"
+msgstr ""
+"Підготовку сценарію успішно завершено. Гравці можуть обирати дослідників, за"
+" яких бажають грати"
 
 msgid "LOG_scenario_not_found"
 msgstr "Компоненти сценарію %s не знайдено"
@@ -1289,3 +1294,28 @@ msgstr "%s знайдено в - %s"
 
 msgid "LOG_terror_count"
 msgstr "Жах (%s) - %s"
+
+# Mythos cup token types
+msgid "Read_Headline"
+msgstr "Читати Заголовок"
+
+msgid "Reckoning"
+msgstr "Розплата"
+
+msgid "Blank"
+msgstr "Порожньо"
+
+msgid "Terror"
+msgstr "Морок"
+
+msgid "Gate_Burst"
+msgstr "Прорив Воріт"
+
+msgid "Spawn_Clue"
+msgstr "Розмістити Зачіпку"
+
+msgid "Spread_Doom"
+msgstr "Розподілити Приреченість"
+
+msgid "Spawn_Monster"
+msgstr "Розмістити Монстра"

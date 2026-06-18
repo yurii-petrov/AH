@@ -359,7 +359,7 @@ function drawMythos(obj, playerColor)
 
   if #obj.getObjects() > 0 then
     clearActiveTile()
-    spawnCurrentMyth(function() isDrawMythInProcess = false end)
+    spawnCurrentMyth( function() isDrawMythInProcess = false end)
   else
     restartMythosCup(function()
       isDrawMythInProcess = false
@@ -368,8 +368,21 @@ function drawMythos(obj, playerColor)
   end
 end
 
+function getInvestigatorName(color)
+  for _, o in pairs(getObjectsInPlayerZone(color) or {}) do
+    local oData = parseJson(o.memo)
+    if o.type == "Card" and oData and oData.type == "Investigator" then
+      local n = o.getName()
+      return i18n.getStrById(n:gsub(" ", "_")) or n
+    end
+  end
+  return color
+end
+
 function processDrawMyth(currentMyth, obj, playerColor, callBack)
-  broadcastToAll(string.format(i18n.getStrById("LOG_myth_draw"), currentMyth.memo, playerColor), "White")
+  local memoLabel  = i18n.getStrById(currentMyth.memo:gsub(" ", "_")) or currentMyth.memo
+  local investName = getInvestigatorName(playerColor)
+  broadcastToAll(string.format(i18n.getStrById("LOG_myth_draw"), memoLabel, investName), "White")
 
   local mythosTile = MYTHOS_TILE_DATA.obj
   if not mythosTile then callBack(); return end

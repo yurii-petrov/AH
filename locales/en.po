@@ -403,6 +403,9 @@ msgstr "Uptown"
 msgid "The_streets"
 msgstr "The streets"
 
+msgid "Street"
+msgstr "Street"
+
 msgid "Central_Kingsport"
 msgstr "Central Kingsport"
 
@@ -635,7 +638,7 @@ msgid "LOG_add_doom_manually"
 msgstr "Add doom manually"
 
 msgid "LOG_myth_draw"
-msgstr "\n%s - %s player"
+msgstr "\n%s (%s)"
 
 msgid "LOG_gate_burst"
 msgstr "\n%s gate burst!"
@@ -1225,3 +1228,28 @@ msgstr "%s found in - %s"
 
 msgid "LOG_terror_count"
 msgstr "Terror (%s) - %s"
+
+# Mythos cup token types
+msgid "Read_Headline"
+msgstr "Read Headline"
+
+msgid "Reckoning"
+msgstr "Reckoning"
+
+msgid "Blank"
+msgstr "Blank"
+
+msgid "Terror"
+msgstr "Terror"
+
+msgid "Gate_Burst"
+msgstr "Gate Burst"
+
+msgid "Spawn_Clue"
+msgstr "Spawn Clue"
+
+msgid "Spread_Doom"
+msgstr "Spread Doom"
+
+msgid "Spawn_Monster"
+msgstr "Spawn Monster"
