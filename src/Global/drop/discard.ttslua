@@ -88,54 +88,49 @@ end
 function discardCondition(obj, objData)
   local effectiveType = string.lower(objData.type)
 
-  local function tryDiscard(mat, positions)
-    for _, pos in ipairs(positions) do
-      local p = mat.positionToWorld(pos):setAt("y", 2.11)
-      local objs = findObjsInRadius(p)
-      for _, o in ipairs(objs) do
-        local oData = parseJson(o.memo)
-        if oData and oData.type and effectiveType == string.lower(oData.type) then
-          obj.setRotation({0, 180, 180})
+  local function tryDiscard(mat, pos)
+    local p = mat.positionToWorld(pos):setAt("y", 2.11)
+    local objs = findObjsInRadius(p)
+    for _, o in ipairs(objs) do
+      local oData = parseJson(o.memo)
+      if oData and oData.type and effectiveType == string.lower(oData.type) then
+        obj.setRotation({0, 180, 0})
+        o.setRotation({0, 180, 0})
+        local deck = o.putObject(obj)
+        if o.type == "Card" then
+          deck.memo = JSON.encode({type = oData.type})
+          deck.setRotation({0, 180, 180})
+        else
           o.setRotation({0, 180, 180})
-          local deck = o.putObject(obj)
-          if o.type == "Card" then
-            deck.memo = JSON.encode({type = oData.type})
-            deck.setRotation({0, 180, 0})
-          else
-            o.setRotation({0, 180, 0})
-          end
-          return true
         end
+        return true
       end
     end
     return false
   end
 
-  local conditionMat = getObjectFromGUID(conditionMatId)
-  if not conditionMat then return end
-  local conditionMatData = parseJson(conditionMat.memo)
-  if not conditionMatData then return end
+  local fallbackMat, fallbackPos = nil, nil
 
-  if tryDiscard(conditionMat, {conditionMatData[1], conditionMatData[2]}) then
-    return
-  end
-
-  local conditionMat2 = getObjectFromGUID(conditionMat2Id)
-  if conditionMat2 then
-    local conditionMat2Data = parseJson(conditionMat2.memo)
-    if conditionMat2Data and conditionMat2Data.snps then
-      local positions = {}
-      for _, snp in ipairs(conditionMat2Data.snps) do
-        table.insert(positions, snp.Position)
-      end
-      if tryDiscard(conditionMat2, positions) then
-        return
+  for _, matData in ipairs(CONDITION_MAT_DATA) do
+    local pos = matData.deck[effectiveType]
+    if pos then
+      local mat = getObjectFromGUID(matData.guid)
+      if mat then
+        if not fallbackMat then
+          fallbackMat = mat
+          fallbackPos = pos
+        end
+        if tryDiscard(mat, pos) then
+          return
+        end
       end
     end
   end
 
-  obj.setRotation({0, 180, 0})
-  obj.setPositionSmooth(conditionMat.positionToWorld(conditionMatData[2]):setAt("y", 3))
+  if fallbackMat and fallbackPos then
+    obj.setRotation({0, 180, 0})
+    obj.setPositionSmooth(fallbackMat.positionToWorld(fallbackPos):setAt("y", 3))
+  end
 end
 
 function discardCard(colorName, object, objectData, isHovering)
