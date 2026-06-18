@@ -2,8 +2,8 @@
 local i18n = require("Global/i18nApi")
 
 local rollerData = {
-  type = 1,
-  lastType = 1
+  type     = 1,
+  lastType = 1,
 }
 
 local diceY = 2.6
@@ -118,6 +118,30 @@ function hoverResultsExit(_, _, _)
   self.UI.setAttribute("results_hover", "active", "false")
 end
 
+local function findBlessedCursedType()
+  local pos    = self.getPosition()
+  local bounds = self.getBoundsNormalized()
+  local origin = Vector(pos.x, 2.21, -53.5)
+  local hits = Physics.cast({
+    origin       = origin,
+    direction    = {0, -1, 0},
+    type         = 3,
+    size         = {bounds.size.x, 1, 35},
+    max_distance = 10,
+    debug        = false
+  })
+  for _, v in pairs(hits) do
+    local obj = v.hit_object
+    if obj and obj ~= self and obj.memo then
+      local ok, data = pcall(JSON.decode, obj.memo)
+      if ok and data and data.type and string.lower(data.type) == "blessed cursed" then
+        return obj.is_face_down and 2 or 3
+      end
+    end
+  end
+  return 1
+end
+
 local numberSet = {}
 local rerollId = nil
 local isRolling = false
@@ -133,7 +157,7 @@ function dice_btn(playerColor, alt_click, id)
       return
     end
     
-    rollerData.type = Global.call("getRollerType", playerColor) or 1
+    rollerData.type = findBlessedCursedType()
 
     local removeAllDices = false
     if rollerData.type ~= rollerData.lastType then
@@ -425,14 +449,27 @@ function issuccesss(value)
   return (rollerData.type == 1 and value >= 5) or (rollerData.type == 2 and value >= 4) or (rollerData.type == 3 and value == 6)
 end
 
-function getDiceImage()
-  if rollerData.type == 1 then
+function getDiceImage(t)
+  local t = t or rollerData.type
+  if t == 1 then
     return "https://drive.google.com/uc?export=view&id=1ei-eki7jgVPGAUOgsbIb-EvYVP1qMM9u"
-  elseif rollerData.type == 2 then
+  elseif t == 2 then
     return "https://drive.google.com/uc?export=view&id=1UsEVYLoPfqJNlcdP2uwVmpZ9ALgctO9L"
-  elseif rollerData.type == 3 then
+  elseif t == 3 then
     return "https://drive.google.com/uc?export=view&id=1Qh1q7YFQvBvZ1QGBxhsIMIWDsFAHdj1z"
   end
+end
+
+function getImageForType(t)
+  return getDiceImage(t)
+end
+
+function setRollerType(t)
+  rollerData.type = t
+end
+
+function getIsRolling()
+  return isRolling
 end
 
 local rotationValues = {{

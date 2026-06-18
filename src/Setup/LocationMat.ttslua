@@ -116,7 +116,7 @@ function spawnTokenOnLocation(spawnInfo)
 end
 
 function placeCodexFromArchive()
-  local archiveDeck = LOCATION_MAT_DATA.archiveObj
+  local archiveDeck = LOCATION_MAT_DATA.decks and LOCATION_MAT_DATA.decks.archive and LOCATION_MAT_DATA.decks.archive.obj
   if not archiveDeck then return end
 
   local locationMat = LOCATION_MAT_DATA.obj

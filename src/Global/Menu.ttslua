@@ -82,8 +82,9 @@ function waitForComponentsReady(attempt)
 end
 
 function prepareHeadlineDeck(done)
-  local deck = LOCATION_MAT_DATA.headlineObj
-      or (gameData.deckGuids.headline and getObjectFromGUID(gameData.deckGuids.headline))
+  local headlineEntry = LOCATION_MAT_DATA.decks and LOCATION_MAT_DATA.decks.headline
+  local deck = (headlineEntry and headlineEntry.obj)
+      or (gameData.decks and gameData.decks.headline and getObjectFromGUID(gameData.decks.headline.guid))
   local box = resolve(boxId)
   if not deck or not box then if done then done() end return end
 
@@ -100,6 +101,21 @@ function prepareHeadlineDeck(done)
   Wait.time(function()
     deck.setLock(false)
     box.putObject(deck)
+    local hits = Physics.cast({
+      origin       = Vector(originalPos.x, originalPos.y + 3, originalPos.z),
+      direction    = {0, -1, 0},
+      type         = 2,
+      size         = {1, 1, 1},
+      max_distance = 5,
+    })
+    for _, hit in ipairs(hits) do
+      local o = hit.hit_object
+      if o and (o.type == "Deck" or o.type == "Card") then
+        o.memo = "{\"type\":\"headline\"}"
+        saveDeck(o, "headline", LOCATION_MAT_DATA.decks, "location")
+        break
+      end
+    end
     if done then done() end
   end, 3)
 end

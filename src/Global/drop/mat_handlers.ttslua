@@ -62,6 +62,11 @@ function onObjectPickUp(colorName, object)
     end
   end
 
+  local objectData = parseJson(object.memo)
+  if objectData and objectData.type == "blessed cursed" then
+    applyBlessedCursedToRoller(object, 1)
+  end
+
   local foundObjects = downCast(object, 10, nil, 1)
 
   for _, obj in pairs(foundObjects) do

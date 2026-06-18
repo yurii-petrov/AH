@@ -44,6 +44,10 @@ function onObjectDrop(colorName, object)
     runOnceAfterRest(object, function(object)
       onItemDrop(colorName, object, objectData)
     end)
+  elseif CONDITION_TYPES[objectData.type and string.lower(objectData.type) or ""] then
+    runOnceAfterRest(object, function(object)
+      onConditionCardDrop(colorName, object, objectData)
+    end)
   end
 
   local isFoundlocationMat = false
@@ -156,6 +160,54 @@ function onItemDrop(colorName, object, objectData)
   end
 
   attachItemToMat(object, objectData, itemMatBagId)
+end
+
+function applyBlessedCursedToRoller(object, forceType)
+  local foundObjects = downCast(object, 10, nil, 1)
+  local itemsMat = nil
+  for _, obj in pairs(foundObjects) do
+    if obj.memo == "Items Mat" then
+      itemsMat = obj
+      break
+    end
+  end
+  if not itemsMat then return end
+
+  local roller = nil
+  local p = itemsMat.getPosition():setAt("z", -36.00)
+  local belowMat = downCast_pos(p, 0.1)
+  for _, obj in pairs(belowMat) do
+    if obj.type == "Tile" and obj.memo == "ah_roller" then
+      roller = obj
+      break
+    end
+  end
+  if not roller or roller.call("getIsRolling") then return end
+
+  local newType = forceType or (object.is_face_down and 2 or 3)
+  roller.call("setRollerType", newType)
+  local imageUrl = roller.call("getImageForType", newType)
+  if imageUrl then
+    local diceObjs = upCast(roller, 2, nil, 1)
+    for _, die in pairs(diceObjs) do
+      if die.hasTag("Dice") then
+        die.setCustomObject({ type = 1, image = imageUrl })
+        die.reload()
+      end
+    end
+  end
+end
+
+function onConditionCardDrop(colorName, object, objectData)
+  if objectData.type ~= "blessed cursed" then return end
+  applyBlessedCursedToRoller(object)
+end
+
+function onObjectRotate(object, spin, flip, player_color, old_spin, old_flip)
+  if flip == old_flip then return end
+  local objectData = parseJson(object.memo)
+  if not objectData or objectData.type ~= "blessed cursed" then return end
+  runOnceAfterRest(object, function(object) applyBlessedCursedToRoller(object) end)
 end
 
 function onInvestigatorDrop(colorName, object, objectData, isIgnoreRandomCard)

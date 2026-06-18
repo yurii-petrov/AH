@@ -240,27 +240,33 @@ local function resolveAllDataObjects()
   end
 end
 
--- Restores deck GUIDs saved by placeComponents into the runtime data structures.
--- Called after gameData is loaded from savedData so GUIDs survive TTS reloads.
-local function resolveAllDeckObjects()
-  local guids = gameData.deckGuids
-  if not guids then return end
+function saveDeck(obj, key, store, storeKey)
+  gameData.decks = gameData.decks or {}
+  gameData.decks[key] = { guid = obj.getGUID(), store = storeKey }
+  if store then
+    store[key] = store[key] or {}
+    store[key].obj  = obj
+    store[key].guid = obj.getGUID()
+  end
+end
 
-  if guids.headline then
-    LOCATION_MAT_DATA.headlineGuid = guids.headline
-    LOCATION_MAT_DATA.headlineObj  = getObjectFromGUID(guids.headline)
-  end
-  if guids.monster then
-    LOCATION_MAT_DATA.monsterDeckGuid = guids.monster
-    LOCATION_MAT_DATA.monsterDeckObj  = getObjectFromGUID(guids.monster)
-  end
-  for _, t in pairs(ShopDeckType) do
-    if guids[t] and SHOP_MAT_DATA.decks[t] then
-      SHOP_MAT_DATA.decks[t].guid = guids[t]
-      SHOP_MAT_DATA.decks[t].obj  = getObjectFromGUID(guids[t])
+local function resolveAllDeckObjects()
+  local decks = gameData.decks
+  if not decks then return end
+  local storeMap = {
+    location = LOCATION_MAT_DATA.decks,
+    shop     = SHOP_MAT_DATA.decks,
+  }
+  for key, entry in pairs(decks) do
+    if entry.store then
+      local store = storeMap[entry.store]
+      if store then
+        store[key] = store[key] or {}
+        store[key].guid = entry.guid
+        store[key].obj  = getObjectFromGUID(entry.guid)
+      end
     end
   end
-
   if gameData.mapTileGuids then
     LOCATION_MAT_DATA.tiles = {}
     for name, guid in pairs(gameData.mapTileGuids) do

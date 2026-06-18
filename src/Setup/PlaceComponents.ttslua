@@ -378,9 +378,7 @@ local function placeAllyCards(done)
 
   mergeDeckStack(BagType.ALLY_CARDS, model, pos, {0, 180, 180}, function()
     registerDeck(pos, ShopDeckType.ALLY, function(obj)
-      SHOP_MAT_DATA.decks[ShopDeckType.ALLY].guid = obj.getGUID()
-      SHOP_MAT_DATA.decks[ShopDeckType.ALLY].obj  = obj
-      gameData.deckGuids[ShopDeckType.ALLY]        = obj.getGUID()
+      saveDeck(obj, ShopDeckType.ALLY, SHOP_MAT_DATA.decks, "shop")
     end)
     done()
   end)
@@ -433,7 +431,7 @@ local function placeAnomalyCards(done)
     else
       mergeDeckStack(BagType.ANOMALY_CARDS, model, group.pos, {0, 180, 180}, function()
         registerDeck(group.pos, name, function(obj)
-          gameData.deckGuids["anomaly_" .. name] = obj.getGUID()
+          saveDeck(obj, "anomaly_" .. name, nil)
         end)
         remaining = remaining - 1
         if remaining == 0 then done() end
@@ -489,7 +487,7 @@ local function placeTerrorCards(done)
     else
       mergeDeckStack(BagType.TERROR_CARDS, model, group.pos, {0, 180, 180}, function()
         registerDeck(group.pos, name, function(obj)
-          gameData.deckGuids["terror_" .. name] = obj.getGUID()
+          saveDeck(obj, "terror_" .. name, nil)
         end)
         remaining = remaining - 1
         if remaining == 0 then done() end
@@ -514,9 +512,7 @@ local function placeSpecialCards(done)
 
   mergeDeckStack(BagType.SPECIAL_CARDS, model, pos, {0, 180, 180}, function()
     registerDeck(pos, ShopDeckType.SPECIAL, function(obj)
-      SHOP_MAT_DATA.decks[ShopDeckType.SPECIAL].guid = obj.getGUID()
-      SHOP_MAT_DATA.decks[ShopDeckType.SPECIAL].obj  = obj
-      gameData.deckGuids[ShopDeckType.SPECIAL]        = obj.getGUID()
+      saveDeck(obj, ShopDeckType.SPECIAL, SHOP_MAT_DATA.decks, "shop")
     end)
     done()
   end)
@@ -628,14 +624,27 @@ local function prepareMonsterDeck(done)
       end
     end
 
-    registerDeck(monsterPos, "Monster", function(obj)
-      LOCATION_MAT_DATA.monsterDeckObj  = obj
-      LOCATION_MAT_DATA.monsterDeckGuid = obj.getGUID()
-      gameData.deckGuids.monster         = obj.getGUID()
-    end)
-
     monsterStagingPos = monsterPos
-    done()
+
+    Wait.time(function()
+      local hits = Physics.cast({
+        origin       = Vector(monsterPos.x, monsterPos.y + 3, monsterPos.z),
+        direction    = {0, -1, 0},
+        type         = 2,
+        size         = {1, 1, 1},
+        max_distance = 5,
+      })
+      for _, hit in ipairs(hits) do
+        local o = hit.hit_object
+        if o and (o.type == "Deck" or o.type == "Card") then
+          o.memo = "{\"type\":\"Monster\"}"
+          saveDeck(o, "monster", LOCATION_MAT_DATA.decks, "location")
+          table.insert(shuffleList, o)
+          break
+        end
+      end
+      done()
+    end, 1.5)
   end, 0.5)
 end
 
@@ -656,9 +665,7 @@ local function placeStartingCards(done)
 
   mergeDeckStack(BagType.STARTING_CARDS, model, pos, {0, 180, 180}, function()
     registerDeck(pos, ShopDeckType.STARTING, function(obj)
-      SHOP_MAT_DATA.decks[ShopDeckType.STARTING].guid = obj.getGUID()
-      SHOP_MAT_DATA.decks[ShopDeckType.STARTING].obj  = obj
-      gameData.deckGuids[ShopDeckType.STARTING]        = obj.getGUID()
+      saveDeck(obj, ShopDeckType.STARTING, SHOP_MAT_DATA.decks, "shop")
     end)
     done()
   end)
@@ -703,7 +710,7 @@ local function placeConditionCards(done)
     else
       mergeDeckStack(BagType.CONDITION_CARDS, model, group.pos, {0, 180, 180}, function()
         registerDeck(group.pos, t ~= "" and t or nil, function(obj)
-          gameData.deckGuids["condition_" .. t] = obj.getGUID()
+          saveDeck(obj, "condition_" .. t, nil)
         end)
         remaining = remaining - 1
         if remaining == 0 then done() end
@@ -728,9 +735,7 @@ local function placeSpellCards(done)
 
   mergeDeckStack(BagType.SPELL_CARDS, model, pos, {0, 180, 180}, function()
     registerDeck(pos, ShopDeckType.SPELL, function(obj)
-      SHOP_MAT_DATA.decks[ShopDeckType.SPELL].guid = obj.getGUID()
-      SHOP_MAT_DATA.decks[ShopDeckType.SPELL].obj  = obj
-      gameData.deckGuids[ShopDeckType.SPELL]        = obj.getGUID()
+      saveDeck(obj, ShopDeckType.SPELL, SHOP_MAT_DATA.decks, "shop")
     end)
     done()
   end)
@@ -752,9 +757,7 @@ local function placeItemCards(done)
 
   mergeDeckStack(BagType.ITEM_CARDS, model, pos, {0, 180, 180}, function()
     registerDeck(pos, ShopDeckType.ITEM, function(obj)
-      SHOP_MAT_DATA.decks[ShopDeckType.ITEM].guid = obj.getGUID()
-      SHOP_MAT_DATA.decks[ShopDeckType.ITEM].obj  = obj
-      gameData.deckGuids[ShopDeckType.ITEM]        = obj.getGUID()
+      saveDeck(obj, ShopDeckType.ITEM, SHOP_MAT_DATA.decks, "shop")
     end)
     done()
   end)
@@ -780,9 +783,7 @@ local function placeHeadlineCards(done)
 
   mergeDeckStack(BagType.HEADLINE_CARDS, model, pos, {0, 180, 180}, function()
     registerDeck(pos, "Headline", function(obj)
-      LOCATION_MAT_DATA.headlineGuid = obj.getGUID()
-      LOCATION_MAT_DATA.headlineObj  = obj
-      gameData.deckGuids.headline     = obj.getGUID()
+      saveDeck(obj, "headline", LOCATION_MAT_DATA.decks, "location")
     end)
     done()
   end)
@@ -801,7 +802,7 @@ local function placeEventCards(done)
     if eName == sName then
       spawnComponent(BagType.EVENT_CARDS, entry, pos, {0, 180, 180})
       registerDeck(pos, nil, function(obj)
-        gameData.deckGuids.event = obj.getGUID()
+        saveDeck(obj, "event", nil)
       end)
       consumeComponent(BagType.EVENT_CARDS, i)
     end
@@ -811,7 +812,8 @@ end
 
 -- wires event deck to encounter decks and runs scenario preparation; call after shuffleComponents
 function prepareEventDeck(done)
-  local eventObj = gameData.deckGuids.event and getObjectFromGUID(gameData.deckGuids.event)
+  local eventEntry = gameData.decks and gameData.decks.event
+  local eventObj = eventEntry and getObjectFromGUID(eventEntry.guid)
   if not eventObj then done() return end
 
   local placedDecks = {}
@@ -881,7 +883,7 @@ local function placeEncounterCards(done)
     else
       mergeDeckStack(BagType.ENCOUNTER_CARDS, model, group.pos, {0, 180, 180}, function()
         registerDeck(group.pos, name, function(obj)
-          gameData.deckGuids["encounter_" .. name] = obj.getGUID()
+          saveDeck(obj, "encounter_" .. name, nil)
         end)
         remaining = remaining - 1
         if remaining == 0 then done() end
@@ -906,9 +908,7 @@ local function placeArchiveDecks(done)
 
   mergeDeckStack(BagType.ARCHIVE_DECKS, model, archivePos, {0, 180, 180}, function()
     registerDeck(archivePos, "Archive", function(obj)
-      LOCATION_MAT_DATA.archiveObj  = obj
-      LOCATION_MAT_DATA.archiveGuid = obj.getGUID()
-      gameData.deckGuids.archive    = obj.getGUID()
+      saveDeck(obj, "archive", LOCATION_MAT_DATA.decks, "location")
     end, true)
     done()
   end, 1.0, true)
@@ -983,7 +983,7 @@ local function runParallel(steps, done)
 end
 
 function placeComponents(done)
-  gameData.deckGuids  = {}
+  gameData.decks      = {}
   deckRegistry        = {}
   shuffleList         = {}
   monsterStagingPos   = nil

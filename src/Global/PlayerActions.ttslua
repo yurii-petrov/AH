@@ -620,7 +620,7 @@ function getRollerType(player)
     if v.hit_object ~= locationMat and v.hit_object ~= hand then
       local oData = parseJson(v.hit_object.memo)
       if oData and oData.type == "blessed cursed" then
-        return v.hit_object.is_face_down and 3 or 2
+        return v.hit_object.is_face_down and 2 or 3
       end
     end
   end
