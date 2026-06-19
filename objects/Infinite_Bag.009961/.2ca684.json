@@ -38,13 +38,13 @@
   "MeasureMovement": false,
   "Memo": "Anomaly Token",
   "Name": "Custom_Tile",
-  "Nickname": "Аномалия",
+  "Nickname": "Anomaly",
   "Snap": true,
   "Sticky": true,
   "Tags": [
     "anomaly_snap"
   ],
-  "Tooltip": true,
+  "Tooltip": false,
   "Transform": {
     "posX": 20.888,
     "posY": 4.031,
