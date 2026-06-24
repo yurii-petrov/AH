@@ -881,7 +881,7 @@ msgid "Agatha_Crane"
 msgstr "Агата Крейн"
 
 msgid "Clue"
-msgstr "Підказка"
+msgstr "Зачіпка"
 
 # Roller
 msgid "ROLLER_fail"
@@ -1340,7 +1340,7 @@ msgid "Spawn_Monster"
 msgstr "Розмістити Монстра"
 
 msgid "IM_clue_gained"
-msgstr "%s - отримує 1 підказку"
+msgstr "%s - отримує 1 зачіпку"
 
 msgid "IM_clue_lost"
-msgstr "%s - втрачає 1 підказку"
+msgstr "%s - втрачає 1 зачіпку"

@@ -120,7 +120,7 @@ I18N_DATA = {
   },
   ["Clue"] = {
     ["en"] = "Clue",
-    ["uk"] = "Підказка",
+    ["uk"] = "Зачіпка",
   },
   ["Commanding_Specter"] = {
     ["en"] = "Commanding Specter",
@@ -364,11 +364,11 @@ I18N_DATA = {
   },
   ["IM_clue_gained"] = {
     ["en"] = "%s - gains 1 clue",
-    ["uk"] = "%s - отримує 1 підказку",
+    ["uk"] = "%s - отримує 1 зачіпку",
   },
   ["IM_clue_lost"] = {
     ["en"] = "%s - loses 1 clue",
-    ["uk"] = "%s - втрачає 1 підказку",
+    ["uk"] = "%s - втрачає 1 зачіпку",
   },
   ["IM_death"] = {
     ["en"] = "Death",
