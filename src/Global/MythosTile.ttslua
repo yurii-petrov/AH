@@ -104,8 +104,8 @@ function mythosTileSuccessAction(d)
   if gameData.encounterColor then
     for _, o in pairs(getObjectsInPlayerZone(gameData.encounterColor)) do
       local oData = parseJson(o.memo)
-      if o.type == "Card" and oData and oData.type == "Investigator" then
-        clue.setPositionSmooth(o.getPosition():setAt("y", 3))
+      if o.type == "Bag" and oData and oData.type == "player clue bag" then
+        o.putObject(clue)
         return
       end
     end

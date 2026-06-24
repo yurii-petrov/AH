@@ -535,6 +535,17 @@ function removeClue()
   self.UI.setAttribute("clueText", "color", data.clue > 0 and "#fff5e2" or "#a29c90")
 end
 
+function getInvestigatorDisplayName()
+  for _, o in ipairs(upCast(self, 3, 0, 1.5)) do
+    local oData = parseJson(o.memo)
+    if o.type == "Card" and oData and oData.type == "Investigator" then
+      local key = o.getName():gsub(" ", "_")
+      return Global.call("callTable", {{"i18n", "getStrById"}, key}) or o.getName()
+    end
+  end
+  return data.name ~= "" and data.name or "?"
+end
+
 function isMatNearContainer(container)
   local nearby = downCast(container, 2, 0, 2)
   for _, obj in ipairs(nearby) do
@@ -550,6 +561,9 @@ function onObjectEnterContainer(container, object)
   
   if isMatNearContainer(container) then
     addClue()
+    local name = getInvestigatorDisplayName()
+    local fmt  = Global.call("callTable", {{"i18n", "getStrById"}, "IM_clue_gained"})
+    broadcastToAll(string.format(fmt, name), "White")
   end
 end
 
@@ -557,9 +571,12 @@ function onObjectLeaveContainer(container, object)
   local memo = parseJson(container.memo)
   if not memo or memo.type ~= "player clue bag" then return end
   if not object.memo or object.memo ~= "Clue" then return end
-  
+
   if isMatNearContainer(container) then
     removeClue()
+    local name = getInvestigatorDisplayName()
+    local fmt  = Global.call("callTable", {{"i18n", "getStrById"}, "IM_clue_lost"})
+    broadcastToAll(string.format(fmt, name), "White")
   end
 end
 

@@ -1322,3 +1322,9 @@ msgstr "Розподілити Приреченість"
 
 msgid "Spawn_Monster"
 msgstr "Розмістити Монстра"
+
+msgid "IM_clue_gained"
+msgstr "%s - отримує 1 підказку"
+
+msgid "IM_clue_lost"
+msgstr "%s - втрачає 1 підказку"

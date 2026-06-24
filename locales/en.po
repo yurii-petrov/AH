@@ -1256,3 +1256,9 @@ msgstr "Spread Doom"
 
 msgid "Spawn_Monster"
 msgstr "Spawn Monster"
+
+msgid "IM_clue_gained"
+msgstr "%s - gains 1 clue"
+
+msgid "IM_clue_lost"
+msgstr "%s - loses 1 clue"

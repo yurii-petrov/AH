@@ -362,6 +362,14 @@ I18N_DATA = {
     ["en"] = "Bio",
     ["uk"] = "Біографія",
   },
+  ["IM_clue_gained"] = {
+    ["en"] = "%s - gains 1 clue",
+    ["uk"] = "%s - отримує 1 підказку",
+  },
+  ["IM_clue_lost"] = {
+    ["en"] = "%s - loses 1 clue",
+    ["uk"] = "%s - втрачає 1 підказку",
+  },
   ["IM_death"] = {
     ["en"] = "Death",
     ["uk"] = "Смерть",
