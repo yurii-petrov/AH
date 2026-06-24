@@ -28,8 +28,8 @@
   "CustomDeck": {
     "5798": {
       "BackIsHidden": true,
-      "BackURL": "https://drive.google.com/uc?export=view\u0026id=1Myde9M2n1OR8LEDbB0bGhL9fFqMQM_TB",
-      "FaceURL": "https://drive.google.com/uc?export=view\u0026id=1XLp2yFO1GilE_LxUpyVbTM_QwmoHuEfc",
+      "BackURL": "https://drive.google.com/uc?export=view\u0026id=1XLp2yFO1GilE_LxUpyVbTM_QwmoHuEfc",
+      "FaceURL": "https://drive.google.com/uc?export=view\u0026id=1Myde9M2n1OR8LEDbB0bGhL9fFqMQM_TB",
       "NumHeight": 7,
       "NumWidth": 9,
       "Type": 0,
@@ -56,7 +56,7 @@
   "GUID": "c632d3",
   "Grid": true,
   "GridProjection": false,
-  "Hands": false,
+  "Hands": false, 
   "HideWhenFaceDown": false,
   "IgnoreFoW": false,
   "LayoutGroupSortIndex": 0,
@@ -64,6 +64,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
+  "Memo": "{\"reversed\":true,\"type\":\"monster\"}",
   "Name": "Deck",
   "Nickname": "Monster",
   "SidewaysCard": false,
