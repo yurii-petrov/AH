@@ -80,7 +80,7 @@ function processStepTakeCodexFromArchive(step, context, onDone)
     log("[takeCodexFromArchive] no free codex snap, stacking on current codex")
   end
 
-  local rotation = { 0, 180, 180 }
+  local rotation = { 0, 180, 0 }
   if step.rotationFromCodex then
     local refMat = findCodexMatOnSnapPoints(sourceMat, step.rotationFromCodex)
     if refMat then
