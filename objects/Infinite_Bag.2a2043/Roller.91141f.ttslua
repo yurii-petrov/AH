@@ -6,10 +6,35 @@ local rollerData = {
   lastType = 1,
 }
 
+-- Player-configurable roll feel. These only affect the cosmetic tumble of the
+-- dice (the rolled value itself always comes from randomize()), so they are
+-- safe to tweak freely.
+local settings = {
+  spin    = 50,    -- angular velocity magnitude applied while the die tumbles
+  toss    = 0,     -- extra launch height (Y) added to the throw, 0 = flat slide
+  instant = false, -- skip the throw animation and resolve the roll immediately
+}
+
+local SETTINGS_DEFAULT = { spin = 50, toss = 0, instant = false }
+
+local SETTINGS_LIMITS = {
+  spin = { min = 20, max = 90 },
+  toss = { min = 0,  max = 4  },
+}
+
 local diceY = 2.6
 
-function onLoad()
+function onLoad(saved_data)
   self.interactable = true
+
+  if saved_data and saved_data ~= "" then
+    local ok, data = pcall(JSON.decode, saved_data)
+    if ok and type(data) == "table" then
+      if tonumber(data.spin) then settings.spin = tonumber(data.spin) end
+      if tonumber(data.toss) then settings.toss = tonumber(data.toss) end
+      if type(data.instant) == "boolean" then settings.instant = data.instant end
+    end
+  end
 
   local sps = self.getSnapPoints()
   for i, sp in pairs(sps) do
@@ -20,6 +45,10 @@ function onLoad()
   self.setSnapPoints(sps)
 
   buildRollerUI()
+end
+
+function onSave()
+  return JSON.encode({ spin = settings.spin, toss = settings.toss, instant = settings.instant })
 end
 
 local function colored(text)
@@ -52,10 +81,16 @@ function buildRollerUI()
     ]], i, pos, i, i, pos)
   end
 
+  local instantOn = settings.instant and "true" or "false"
+
   local xml = string.format([[
     <Button id="help" onClick="toggleHelp" width="400" height="400"
       position="540 -52 -22" rotation="0 0 180" scale="0.115 0.115 1"
       color="clear" text="" font="Fonts/AdonisC"/>
+
+    <Button id="settings" onClick="toggleSettings" width="400" height="400"
+      position="540 0 -22" rotation="0 0 180" scale="0.115 0.115 1"
+      color="clear" textColor="#a29c90" fontSize="300" text="s"/>
 
     <Panel id="help_panel" active="false" width="700" height="340"
       position="0 -300 -30" rotation="0 0 180" allowDragging="true" returnToOriginalPositionWhenReleased="false">
@@ -89,6 +124,35 @@ function buildRollerUI()
       </Panel>
     </Panel>
 
+    <Panel id="settings_panel" active="false" width="760" height="360"
+      position="0 -300 -30" rotation="0 0 180" allowDragging="true" returnToOriginalPositionWhenReleased="false">
+      <Image image="help_bg" preserveAspect="true" width="760"/>
+      <VerticalLayout width="680" height="320" padding="0 0 22 20" spacing="16">
+        <Panel padding="0 0 0 6">
+          <Text fontSize="45" font="fonts/AdonisC" color="#ffffff">%s</Text>
+        </Panel>
+        <HorizontalLayout spacing="18" childForceExpandWidth="false" childAlignment="MiddleCenter">
+          <Text fontSize="28" font="fonts/AdonisC" color="#ffffff" minWidth="240" alignment="MiddleLeft">%s</Text>
+          <Slider id="spin_slider" minValue="20" maxValue="90" wholeNumbers="true" value="%d"
+            onValueChanged="onSpinChanged" flexibleWidth="1" preferredHeight="40"/>
+          <Text id="spin_value" fontSize="28" font="fonts/AdonisC" color="#ffffff" minWidth="70" alignment="MiddleRight">%d</Text>
+        </HorizontalLayout>
+        <HorizontalLayout spacing="18" childForceExpandWidth="false" childAlignment="MiddleCenter">
+          <Text fontSize="28" font="fonts/AdonisC" color="#ffffff" minWidth="240" alignment="MiddleLeft">%s</Text>
+          <Slider id="toss_slider" minValue="0" maxValue="4" wholeNumbers="true" value="%d"
+            onValueChanged="onTossChanged" flexibleWidth="1" preferredHeight="40"/>
+          <Text id="toss_value" fontSize="28" font="fonts/AdonisC" color="#ffffff" minWidth="70" alignment="MiddleRight">%d</Text>
+        </HorizontalLayout>
+        <Toggle id="instant_toggle" isOn="%s" onValueChanged="onInstantChanged"
+          textColor="#ffffff" fontSize="28" font="fonts/AdonisC" preferredHeight="42">%s</Toggle>
+        <Button id="reset_settings" onClick="resetSettings" fontSize="26" font="fonts/AdonisC"
+          textColor="#ffffff" color="#00000055" minHeight="46">%s</Button>
+      </VerticalLayout>
+      <Button id="close_settings" onClick="toggleSettings" width="160" height="160"
+        position="340 120 0" fontSize="50" font="fonts/AdonisC"
+        textColor="#ffffff" color="clear">X</Button>
+    </Panel>
+
     %s
   ]],
     i18n.getStrById("ROLLER_help_title_text"),
@@ -97,6 +161,16 @@ function buildRollerUI()
     i18n.getStrById("ROLLER_success_text"),
     i18n.getStrById("ROLLER_reroll_total_text"),
     i18n.getStrById("ROLLER_rerolled_dice_text"),
+    i18n.getStrById("ROLLER_settings_title_text"),
+    i18n.getStrById("ROLLER_settings_spin_text"),
+    settings.spin,
+    settings.spin,
+    i18n.getStrById("ROLLER_settings_toss_text"),
+    settings.toss,
+    settings.toss,
+    instantOn,
+    i18n.getStrById("ROLLER_settings_instant_text"),
+    i18n.getStrById("ROLLER_settings_reset_text"),
     table.concat(diceButtons)
   )
 
@@ -106,6 +180,58 @@ end
 function toggleHelp()
   local active = self.UI.getAttribute("help_panel", "active")
   self.UI.setAttribute("help_panel", "active", active == "true" and "false" or "true")
+end
+
+function toggleSettings()
+  local active = self.UI.getAttribute("settings_panel", "active")
+  self.UI.setAttribute("settings_panel", "active", active == "true" and "false" or "true")
+end
+
+local function clamp(value, limit)
+  return math.max(limit.min, math.min(limit.max, value))
+end
+
+function onSpinChanged(_, value)
+  -- Lock settings while dice are rolling so changes can't interfere mid-roll;
+  -- snap the slider back to the stored value.
+  if getIsRolling() then
+    self.UI.setAttribute("spin_slider", "value", settings.spin)
+    return
+  end
+  settings.spin = clamp(math.floor(tonumber(value) + 0.5), SETTINGS_LIMITS.spin)
+  self.UI.setAttribute("spin_value", "text", settings.spin)
+end
+
+function onTossChanged(_, value)
+  if getIsRolling() then
+    self.UI.setAttribute("toss_slider", "value", settings.toss)
+    return
+  end
+  settings.toss = clamp(math.floor(tonumber(value) + 0.5), SETTINGS_LIMITS.toss)
+  self.UI.setAttribute("toss_value", "text", settings.toss)
+end
+
+function onInstantChanged(_, value)
+  local on = (tostring(value) == "True" or tostring(value) == "true")
+  if getIsRolling() then
+    self.UI.setAttribute("instant_toggle", "isOn", settings.instant and "true" or "false")
+    return
+  end
+  settings.instant = on
+end
+
+function resetSettings()
+  if getIsRolling() then
+    return
+  end
+  settings.spin    = SETTINGS_DEFAULT.spin
+  settings.toss    = SETTINGS_DEFAULT.toss
+  settings.instant = SETTINGS_DEFAULT.instant
+  self.UI.setAttribute("spin_slider", "value", settings.spin)
+  self.UI.setAttribute("spin_value", "text", settings.spin)
+  self.UI.setAttribute("toss_slider", "value", settings.toss)
+  self.UI.setAttribute("toss_value", "text", settings.toss)
+  self.UI.setAttribute("instant_toggle", "isOn", settings.instant and "true" or "false")
 end
 
 function hoverResultsEnter(_, _, _)
@@ -193,6 +319,20 @@ function dice_btn(playerColor, alt_click, id)
     local sps = self.getSnapPoints()
     local countFinishedDice = 0
     local total = 0
+
+    local function resolveDie(value)
+      if issuccesss(value) then
+        total = total + 1
+        self.UI.setAttribute("success", "text", total)
+        self.UI.setAttribute("success", "color", "#fff5e2")
+      end
+      countFinishedDice = countFinishedDice + 1
+      if countFinishedDice == current_number then
+        isRolling = false
+        setSucess(total, playerColor)
+      end
+    end
+
     for i = 1, 12 do
 
       local p = self.positionToWorld(sps[i].position):setAt("y", diceY)
@@ -239,12 +379,15 @@ function dice_btn(playerColor, alt_click, id)
           })
         end
 
+        if settings.instant then
+          rollDiceInstant(obj, p, resolveDie)
+        else
         obj.interactable = false
         Wait.time(function()
-          local pos = obj.getPosition() + Vector(0, 0, 5)
+          local pos = obj.getPosition() + Vector(0, settings.toss, 5)
           obj.setPositionSmooth(pos, false, true)
           Wait.time(function()
-            obj.setAngularVelocity(Vector(50, 50, 50))
+            obj.setAngularVelocity(Vector(settings.spin, settings.spin, settings.spin))
             runAfterRest(obj, function(obj)
               obj.randomize()
               runAfterRest(obj, function(obj)
@@ -275,6 +418,7 @@ function dice_btn(playerColor, alt_click, id)
             end)
           end, 0.3)
         end, 1)
+        end
 
         self.UI.setAttribute("dice_" .. i, "text", i)
         self.UI.setAttribute("dice_" .. i, "textColor", "#fff5e2")
@@ -315,6 +459,30 @@ function dice_btn(playerColor, alt_click, id)
 
       local total = tonumber(self.UI.getAttribute("success", "text"))
       local countFinishedDice = 0
+
+      local function resolveReroll(i, value)
+        if issuccesss(value) then
+          total = total + 1
+          self.UI.setAttribute("success", "text", total)
+          self.UI.setAttribute("success", "color", "#fff5e2")
+        end
+        self.UI.setAttribute("icon_dice_" .. i, "active", "false")
+        self.UI.setAttribute("dice_" .. i, "text", i)
+        self.UI.setAttribute("dice_" .. i, "textColor", "#a29c90")
+        countFinishedDice = countFinishedDice + 1
+        if countFinishedDice == nSelected then
+          isRolling = false
+          numberSet = {}
+          setSucess(total, playerColor)
+          local rerollCount = tonumber(self.UI.getAttribute("reroll", "text"))
+          self.UI.setAttribute("reroll", "text", rerollCount + 1)
+          self.UI.setAttribute("reroll", "color", "#fff5e2")
+          local rerolled_dicesCount = tonumber(self.UI.getAttribute("rerolled_dices", "text"))
+          self.UI.setAttribute("rerolled_dices", "text", rerolled_dicesCount + nSelected)
+          self.UI.setAttribute("rerolled_dices", "color", "#fff5e2")
+        end
+      end
+
       for i = 1, 12 do
 
         local color = self.UI.getAttribute("dice_" .. i, "textColor")
@@ -365,13 +533,16 @@ function dice_btn(playerColor, alt_click, id)
               })
             end
 
+            if settings.instant then
+              rollDiceInstant(obj, p, function(v) resolveReroll(i, v) end)
+            else
             obj.interactable = false
 
             Wait.time(function()
-            local pos = obj.getPosition() + Vector(0, 0, 5)
+            local pos = obj.getPosition() + Vector(0, settings.toss, 5)
             obj.setPositionSmooth(pos, false, true)
               Wait.time(function()
-                obj.setAngularVelocity(Vector(50, 50, 50))
+                obj.setAngularVelocity(Vector(settings.spin, settings.spin, settings.spin))
               end, 0.3)
               runAfterRest(obj, function(obj)
                 obj.randomize()
@@ -411,6 +582,7 @@ function dice_btn(playerColor, alt_click, id)
                 end)
               end)
             end, 1)
+            end
 
           elseif color == "#a29c90" then
             self.UI.setAttribute("dice_" .. i, "textColor", color)
@@ -519,6 +691,22 @@ local rotationValues = {{
 function getRandomDiceRotation()
   local index = math.random(1, #rotationValues)
   return rotationValues[index].Rotation
+end
+
+-- Resolve a single die without the throw animation: pick a random face and drop
+-- it flat onto its snap point on the next frame. onResolved gets the rolled value.
+function rollDiceInstant(obj, p, onResolved)
+  obj.interactable = false
+  Wait.frames(function()
+    if obj == nil then
+      return
+    end
+    local rv = rotationValues[math.random(1, #rotationValues)]
+    obj.setRotation(rv.Rotation)
+    obj.setPosition(p:setAt("z", p.z):setAt("y", 2.57))
+    obj.interactable = true
+    onResolved(tonumber(rv.Value))
+  end, 1)
 end
 
 function getDiceData(pos)

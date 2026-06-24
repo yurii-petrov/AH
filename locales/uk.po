@@ -927,6 +927,22 @@ msgstr "перекиду"
 msgid "ROLLER_help_rmb_key"
 msgstr "ПКМ"
 
+# Roller settings panel
+msgid "ROLLER_settings_title_text"
+msgstr "Налаштування кидка"
+
+msgid "ROLLER_settings_spin_text"
+msgstr "Сила закруту"
+
+msgid "ROLLER_settings_toss_text"
+msgstr "Висота підкиду"
+
+msgid "ROLLER_settings_instant_text"
+msgstr "Миттєвий кидок"
+
+msgid "ROLLER_settings_reset_text"
+msgstr "Скинути налаштування"
+
 # Monster names
 msgid "Abyssal_Servant"
 msgstr "Слуга Безодні"

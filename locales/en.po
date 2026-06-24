@@ -861,6 +861,22 @@ msgstr "reroll"
 msgid "ROLLER_help_rmb_key"
 msgstr "RMB"
 
+# Roller settings panel
+msgid "ROLLER_settings_title_text"
+msgstr "Roll settings"
+
+msgid "ROLLER_settings_spin_text"
+msgstr "Spin strength"
+
+msgid "ROLLER_settings_toss_text"
+msgstr "Toss height"
+
+msgid "ROLLER_settings_instant_text"
+msgstr "Instant roll"
+
+msgid "ROLLER_settings_reset_text"
+msgstr "Reset to defaults"
+
 # Monster names
 msgid "Abyssal_Servant"
 msgstr "Abyssal Servant"

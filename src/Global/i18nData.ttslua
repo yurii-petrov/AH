@@ -1022,6 +1022,26 @@ I18N_DATA = {
     ["en"] = "dice rerolled",
     ["uk"] = "перекинуто кубів",
   },
+  ["ROLLER_settings_spin_text"] = {
+    ["en"] = "Spin strength",
+    ["uk"] = "Сила закруту",
+  },
+  ["ROLLER_settings_title_text"] = {
+    ["en"] = "Roll settings",
+    ["uk"] = "Налаштування кидка",
+  },
+  ["ROLLER_settings_toss_text"] = {
+    ["en"] = "Toss height",
+    ["uk"] = "Висота підкиду",
+  },
+  ["ROLLER_settings_instant_text"] = {
+    ["en"] = "Instant roll",
+    ["uk"] = "Миттєвий кидок",
+  },
+  ["ROLLER_settings_reset_text"] = {
+    ["en"] = "Reset to defaults",
+    ["uk"] = "Скинути налаштування",
+  },
   ["ROLLER_success_1"] = {
     ["en"] = "has %s success!",
     ["uk"] = "має %s успіх!",
