@@ -18,6 +18,21 @@ function parseJson(memo)
   end
 end
 
+FACE_UP   = {0, 180, 0}
+FACE_DOWN = {0, 180, 180}
+
+function orient(memo, isFaceDown)
+  if isFaceDown == nil then isFaceDown = true end
+  if memo and memo.reversed then isFaceDown = not isFaceDown end
+  return isFaceDown and FACE_DOWN or FACE_UP
+end
+
+function faceRotZ(memo, isFaceDown)
+  if isFaceDown == nil then isFaceDown = true end
+  if memo and memo.reversed then isFaceDown = not isFaceDown end
+  return isFaceDown and 180 or 0
+end
+
 function deepCopy(orig)
   local copy
   if type(orig) == "table" then
@@ -354,19 +369,20 @@ end
 -- Attaches `object` to `mat` face-down with its mirrored clone on the back.
 -- Returns the clone object for further configuration by the caller.
 function attachCardToMat(object, mat)
+  local oMemo = parseJson(object.memo)
   object.interactable = false
   mat.setLock(true)
   object.setLock(true)
-  mat.setRotation({0, 180, 180})
+  mat.setRotation(orient(oMemo))
   local height   = mat.getBounds().size.y
   local matPos   = mat.getPosition()
   matPos.y       = matPos.y + height
   mat.setPosition(matPos)
-  object.setRotation({0, 180, 180})
+  object.setRotation(orient(oMemo))
   local frontPos = mat.positionToWorld({0.16, 0, 0})
   object.setPosition(frontPos:setAt("y", frontPos.y - height + 0.12))
   local oData             = object.getData()
-  oData.Transform.rotZ    = object.is_face_down and 180 or 0
+  oData.Transform.rotZ    = faceRotZ(oMemo, object.is_face_down)
   oData.Transform.posY    = oData.Transform.posY + 0.06
   mat.addAttachment(object)
   local backData          = object.getData()

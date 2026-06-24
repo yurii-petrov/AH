@@ -60,7 +60,7 @@ function processStepFindMonsterByType(step, context, onDone)
   if monsterDeck.type == "Card" then
     local cardData = parseJson(monsterDeck.memo)
     if matchesMonsterTypes(cardData, searchTypes) then
-      monsterDeck.setRotation({0, 180, 0})
+      monsterDeck.setRotation(orient(cardData, false))
       monsterDeck.setPositionSmooth(codexMat.positionToWorld({0, 0.5, 4}):setAt("y", 3))
     else
       log("[findMonsterByType] single card does not match")
@@ -114,7 +114,7 @@ function processStepFindMonsterByType(step, context, onDone)
     local card = monsterDeck.takeObject({
       guid     = entry.guid,
       position = worldPos,
-      rotation = {0, 180, 180},
+      rotation = orient(parseJson(monsterDeck.memo)),
       smooth   = true
     })
     if card then
@@ -188,7 +188,7 @@ function processStepFindMonsterByType(step, context, onDone)
       for _, guid in ipairs(revealResult.anotherGuids) do
         local obj = getObjectFromGUID(guid)
         if obj then
-          obj.setRotation({0, 180, 180})
+          obj.setRotation(orient(parseJson(obj.memo)))
           obj.setPosition(tempPos)
         end
       end

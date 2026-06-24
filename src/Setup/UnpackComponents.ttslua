@@ -80,8 +80,7 @@ local function takeNext(bag, bagType, tableObj, onDone)
     smooth   = false,
   })
 
-  local rot  = {0, 180, o.type == "Deck" and 180 or 0}
-  o.setRotation(rot)
+  o.setRotation(orient(memo, o.type == "Deck"))
 
   if o then
     storeComponent(bagType, o.getGUID(), o.getName(), memo)
@@ -158,7 +157,7 @@ local function placeFromBag(bagType, onDone)
                  or bag.getPosition():setAt("y", 3)
     local o = bag.takeObject({ index = obj.index, position = pos, smooth = false })
     if o then
-      o.setRotation({0, 180, o.type == "Deck" and 180 or 0})
+      o.setRotation(orient(memo, o.type == "Deck"))
     end
     Wait.time(placeNext, TAKE_DELAY)
   end

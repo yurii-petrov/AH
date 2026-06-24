@@ -355,7 +355,7 @@ local function placeScenarioSheets(done)
   consumeComponent(BagType.SCENARIO_SHEETS, scenarioData.name)
 
   local targetPos = locationMat.positionToWorld(locationData.scenraiomat):setAt("y", 2.21)
-  local o = spawnComponent(BagType.SCENARIO_SHEETS, entry, targetPos, {0, 180, 0})
+  local o = spawnComponent(BagType.SCENARIO_SHEETS, entry, targetPos, orient(entry.memo, false))
   if not o then done() return end
 
   runAfterRest(o, function(o2) o2.setLock(true) end)
@@ -376,7 +376,7 @@ local function placeAllyCards(done)
     consumeComponent(BagType.ALLY_CARDS, i)
   end
 
-  mergeDeckStack(BagType.ALLY_CARDS, model, pos, {0, 180, 180}, function()
+  mergeDeckStack(BagType.ALLY_CARDS, model, pos, orient(model.base.memo), function()
     registerDeck(pos, ShopDeckType.ALLY, function(obj)
       saveDeck(obj, ShopDeckType.ALLY, SHOP_MAT_DATA.decks, "shop")
     end)
@@ -429,7 +429,7 @@ local function placeAnomalyCards(done)
       remaining = remaining - 1
       if remaining == 0 then done() end
     else
-      mergeDeckStack(BagType.ANOMALY_CARDS, model, group.pos, {0, 180, 180}, function()
+      mergeDeckStack(BagType.ANOMALY_CARDS, model, group.pos, orient(model.base.memo), function()
         registerDeck(group.pos, name, function(obj)
           saveDeck(obj, "anomaly_" .. name, nil)
         end)
@@ -485,7 +485,7 @@ local function placeTerrorCards(done)
       remaining = remaining - 1
       if remaining == 0 then done() end
     else
-      mergeDeckStack(BagType.TERROR_CARDS, model, group.pos, {0, 180, 180}, function()
+      mergeDeckStack(BagType.TERROR_CARDS, model, group.pos, orient(model.base.memo), function()
         registerDeck(group.pos, name, function(obj)
           saveDeck(obj, "terror_" .. name, nil)
         end)
@@ -510,7 +510,7 @@ local function placeSpecialCards(done)
     consumeComponent(BagType.SPECIAL_CARDS, i)
   end
 
-  mergeDeckStack(BagType.SPECIAL_CARDS, model, pos, {0, 180, 180}, function()
+  mergeDeckStack(BagType.SPECIAL_CARDS, model, pos, orient(model.base.memo), function()
     registerDeck(pos, ShopDeckType.SPECIAL, function(obj)
       saveDeck(obj, ShopDeckType.SPECIAL, SHOP_MAT_DATA.decks, "shop")
     end)
@@ -584,7 +584,7 @@ local function prepareMonsterDeck(done)
                 if string.lower(m.name or "") == backName and m.dest == "spawn" and m.location and m.pos then
                   local tile = LOCATION_MAT_DATA.tiles and LOCATION_MAT_DATA.tiles[m.location]
                   if tile then
-                    card.setRotation(m.rot or {0, 180, 180})
+                    card.setRotation(m.rot or orient(memo))
                     attachDoubleSidedCard(card, memo, tile.positionToWorld(m.pos):setAt("y", 3))
                     table.remove(monsters, i)
                     break
@@ -619,7 +619,7 @@ local function prepareMonsterDeck(done)
 
         if targetPos then
           obj.setPosition(targetPos)
-          obj.setRotation({0, 180, 180})
+          obj.setRotation(orient(parseJson(obj.memo)))
         end
       end
     end
@@ -637,7 +637,10 @@ local function prepareMonsterDeck(done)
       for _, hit in ipairs(hits) do
         local o = hit.hit_object
         if o and (o.type == "Deck" or o.type == "Card") then
-          o.memo = "{\"type\":\"Monster\"}"
+          local existing = parseJson(o.memo)
+          local monsterMemo = { type = "Monster" }
+          if existing and existing.reversed then monsterMemo.reversed = true end
+          o.memo = JSON.encode(monsterMemo)
           saveDeck(o, "monster", LOCATION_MAT_DATA.decks, "location")
           table.insert(shuffleList, o)
           break
@@ -663,7 +666,7 @@ local function placeStartingCards(done)
     consumeComponent(BagType.STARTING_CARDS, i)
   end
 
-  mergeDeckStack(BagType.STARTING_CARDS, model, pos, {0, 180, 180}, function()
+  mergeDeckStack(BagType.STARTING_CARDS, model, pos, orient(model.base.memo), function()
     registerDeck(pos, ShopDeckType.STARTING, function(obj)
       saveDeck(obj, ShopDeckType.STARTING, SHOP_MAT_DATA.decks, "shop")
     end)
@@ -708,7 +711,7 @@ local function placeConditionCards(done)
       remaining = remaining - 1
       if remaining == 0 then done() end
     else
-      mergeDeckStack(BagType.CONDITION_CARDS, model, group.pos, {0, 180, 180}, function()
+      mergeDeckStack(BagType.CONDITION_CARDS, model, group.pos, orient(model.base.memo), function()
         registerDeck(group.pos, t ~= "" and t or nil, function(obj)
           saveDeck(obj, "condition_" .. t, nil)
         end)
@@ -733,7 +736,7 @@ local function placeSpellCards(done)
     consumeComponent(BagType.SPELL_CARDS, i)
   end
 
-  mergeDeckStack(BagType.SPELL_CARDS, model, pos, {0, 180, 180}, function()
+  mergeDeckStack(BagType.SPELL_CARDS, model, pos, orient(model.base.memo), function()
     registerDeck(pos, ShopDeckType.SPELL, function(obj)
       saveDeck(obj, ShopDeckType.SPELL, SHOP_MAT_DATA.decks, "shop")
     end)
@@ -755,7 +758,7 @@ local function placeItemCards(done)
     consumeComponent(BagType.ITEM_CARDS, i)
   end
 
-  mergeDeckStack(BagType.ITEM_CARDS, model, pos, {0, 180, 180}, function()
+  mergeDeckStack(BagType.ITEM_CARDS, model, pos, orient(model.base.memo), function()
     registerDeck(pos, ShopDeckType.ITEM, function(obj)
       saveDeck(obj, ShopDeckType.ITEM, SHOP_MAT_DATA.decks, "shop")
     end)
@@ -781,7 +784,7 @@ local function placeHeadlineCards(done)
   local model = buildDeckModel(entries)
   if not model.base then done() return end
 
-  mergeDeckStack(BagType.HEADLINE_CARDS, model, pos, {0, 180, 180}, function()
+  mergeDeckStack(BagType.HEADLINE_CARDS, model, pos, orient(model.base.memo), function()
     registerDeck(pos, "Headline", function(obj)
       saveDeck(obj, "headline", LOCATION_MAT_DATA.decks, "location")
     end)
@@ -800,7 +803,7 @@ local function placeEventCards(done)
     local eName = entry.memo and entry.memo.name and string.lower(entry.memo.name) or ""
     local sName = string.lower(scenarioData.name or "")
     if eName == sName then
-      spawnComponent(BagType.EVENT_CARDS, entry, pos, {0, 180, 180})
+      spawnComponent(BagType.EVENT_CARDS, entry, pos, orient(entry.memo))
       registerDeck(pos, nil, function(obj)
         saveDeck(obj, "event", nil)
       end)
@@ -881,7 +884,7 @@ local function placeEncounterCards(done)
       remaining = remaining - 1
       if remaining == 0 then done() end
     else
-      mergeDeckStack(BagType.ENCOUNTER_CARDS, model, group.pos, {0, 180, 180}, function()
+      mergeDeckStack(BagType.ENCOUNTER_CARDS, model, group.pos, orient(model.base.memo), function()
         registerDeck(group.pos, name, function(obj)
           saveDeck(obj, "encounter_" .. name, nil)
         end)
@@ -906,7 +909,7 @@ local function placeArchiveDecks(done)
   local model = buildDeckModel(entries)
   if not model.base then done() return end
 
-  mergeDeckStack(BagType.ARCHIVE_DECKS, model, archivePos, {0, 180, 180}, function()
+  mergeDeckStack(BagType.ARCHIVE_DECKS, model, archivePos, orient(model.base.memo), function()
     registerDeck(archivePos, "Archive", function(obj)
       saveDeck(obj, "archive", LOCATION_MAT_DATA.decks, "location")
     end, true)
@@ -927,10 +930,10 @@ local function placeInvestigatorSheets(done)
 
   for i, entry in pairs(entries) do
     local pos = Vector(startX + (i - 1) * spacing, matPos.y + 2, matPos.z + 25)
-    local o = spawnComponent(BagType.INVESTIGATOR_SHEETS, entry, pos, {0, 180, 0})
+    local o = spawnComponent(BagType.INVESTIGATOR_SHEETS, entry, pos, orient(entry.memo, false))
     if o then
       runAfterRest(o, function(o2)
-        o2.setRotation({0, 180, 0})
+        o2.setRotation(orient(entry.memo, false))
       end)
     end
     consumeComponent(BagType.INVESTIGATOR_SHEETS, i)
@@ -952,7 +955,7 @@ local function placeReferenceCards(done)
   local startX     = centerX - ((numPlayers - 1) * spacing) / 2
 
   local deck = spawnComponent(BagType.REFERENCE_CARDS, entry,
-    tableMat.positionToWorld(TABLE_DATA.referenceDeck):setAt("y", 3), {0, 180, 180})
+    tableMat.positionToWorld(TABLE_DATA.referenceDeck):setAt("y", 3), orient(entry.memo))
   if not deck then done() return end
 
   Wait.time(function()

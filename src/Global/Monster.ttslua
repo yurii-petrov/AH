@@ -24,12 +24,12 @@ function attachAllyCard(ally, allyMemo, spawnPos)
   local itemMat = itemMatBag.takeObject({
     index = 0,
     position = ally.getPosition():setAt("y", 2.21):setAt("z", spawnPos.z),
-    rotation = {0, 180, 0},
+    rotation = orient(allyMemo, false),
     smooth = false
   })
 
   ally.setLock(true)
-  ally.setRotation({0, 180, 0})
+  ally.setRotation(orient(allyMemo, false))
   ally.setPosition(itemMat.positionToWorld({0, 0, -0.154}):setAt("y", 2.31))
 
   itemMat.addAttachment(ally)
@@ -56,7 +56,7 @@ function attachMonsterCard(monster, objectMemo, spawnPos)
   local monsterMat = monsterMatBag.takeObject({
     index = 0,
     position = spawnPos,
-    rotation = {0, 180, 180},
+    rotation = orient(objectMemo),
     smooth = false
   })
 
@@ -79,7 +79,7 @@ function attachMonsterCard(monster, objectMemo, spawnPos)
   monster.interactable = false
 
   local oData = monster.getData()
-  oData.Transform.rotZ = monster.is_face_down and 180 or 0
+  oData.Transform.rotZ = faceRotZ(objectMemo, monster.is_face_down)
   oData.Transform.posY = oData.Transform.posY + 0.06
   monsterMat.addAttachment(monster)
 
@@ -113,7 +113,7 @@ function attachDoubleSidedCard(monster, objectMemo, spawnPos)
   local doubleSidedMat = doubleSidedMatBag.takeObject({
     index = 0,
     position = spawnPos,
-    rotation = {0, 180, 180},
+    rotation = orient(objectMemo),
     smooth = false
   })
 
@@ -130,12 +130,12 @@ function attachDoubleSidedCard(monster, objectMemo, spawnPos)
   monster.interactable = false
 
   local oData = monster.getData()
-  oData.Transform.rotZ = monster.is_face_down and 180 or 0
+  oData.Transform.rotZ = faceRotZ(objectMemo, monster.is_face_down)
   oData.Transform.posY = oData.Transform.posY + 0.06
   doubleSidedMat.addAttachment(monster)
 
   local oData = monster.getData()
-  oData.Transform.rotZ = monster.is_face_down and 180 or 0
+  oData.Transform.rotZ = faceRotZ(objectMemo, monster.is_face_down)
   oData.Transform.posX = doubleSidedMat.positionToWorld({-0.16, 0, 0}).x
   oData.Transform.posY = pos.y - height - 0.10
   local clone = spawnObjectData({
@@ -190,7 +190,7 @@ function onMonsterKilled(monster)
     return
   end
 
-  monster.setRotation({0, 180, 180})
+  monster.setRotation(orient(parseJson(monster.memo)))
   monster.setPosition(locationMat.positionToWorld(locationData.monster):setAt("y", 3))
 end
 

@@ -6,7 +6,7 @@ function attachCodexCard(card, spawnPos, rotation)
   local codexMatBag = getObjectFromGUID(codexMatBagId)
   if not codexMatBag then return end
 
-  local rotation = rotation or card.is_face_down and {0, 180, 180} or {0, 180, 0}
+  local rotation = rotation or orient(parseJson(card.memo), card.is_face_down)
 
   local codexMat = codexMatBag.takeObject({
     index    = 0,

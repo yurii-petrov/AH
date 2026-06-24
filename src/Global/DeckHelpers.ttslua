@@ -110,7 +110,7 @@ function takeCardFromTop(obj, isBack, skipTypes)
     return
   end
 
-  local rotation = isBack and {0, 180, 180} or {0, 180, 0}
+  local rotation = orient(parseJson(obj.memo), isBack or false)
 
   local function isSkipped(data)
     if not skipTypes or not data then
@@ -151,7 +151,7 @@ function takeCardFromBottom(obj, isBack)
     return
   end
 
-  local rotation = isBack and {0, 180, 180} or {0, 180, 0}
+  local rotation = orient(parseJson(obj.memo), isBack or false)
 
   local count = #obj.getObjects()
   return obj.takeObject({

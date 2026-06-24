@@ -100,7 +100,7 @@ function attachItemToItemsMat(object, objectData, targetPos, bagId)
   local itemMat = itemMatBag.takeObject({
     index    = 0,
     position = targetPos,
-    rotation = {0, 180, 0},
+    rotation = orient(objectData, false),
     smooth   = false
   })
 
@@ -109,7 +109,7 @@ function attachItemToItemsMat(object, objectData, targetPos, bagId)
   end
 
   object.setLock(true)
-  object.setRotation({0, 180, 0})
+  object.setRotation(orient(objectData, false))
   object.setPosition(itemMat.positionToWorld({0, 0, -0.154}):setAt("y", targetPos.y + 0.1))
 
   itemMat.addAttachment(object)
@@ -303,7 +303,7 @@ function onInvestigatorDrop(colorName, object, objectData, isIgnoreRandomCard)
           end
 
           object.setPosition(investigatorMat.positionToWorld({0.316, 2.213, 0.344}):setAt("y", 2.21))
-          object.setRotation({0, 180, 0})
+          object.setRotation(orient(objectData, false))
           runAfterRest(object, function(object)
             object.setLock(true)
             object.setPosition(investigatorMat.positionToWorld({0.316, 2.213, 0.344}):setAt("y", 2.21))
@@ -313,14 +313,14 @@ function onInvestigatorDrop(colorName, object, objectData, isIgnoreRandomCard)
         local cardData = parseJson(o.memo)
         if cardData and cardData.investigator and string.lower(cardData.investigator) == string.lower(objectData.name) then
           if cardData.guaranteed then
-            o.setRotation({0, 180, 0})
+            o.setRotation(orient(cardData, false))
             o.setPositionSmooth(obj.positionToWorld(guaranteedPosition):setAt("y", 3))
             runAfterRest(o, function(o)
               onItemDrop(colorName, o, cardData)
             end)
             guaranteedPosition[1] = guaranteedPosition[1] - 0.436
           else
-            o.setRotation({0, 180, 0})
+            o.setRotation(orient(cardData, false))
             o.setPositionSmooth(obj.positionToWorld(optionalPosition):setAt("y", 3))
             optionalPosition[1] = optionalPosition[1] - 0.436
           end
@@ -348,7 +348,7 @@ function onDoubleSidedDrop(colorName, object, objectData)
   end
 
   local clone = attachCardToMat(object, doubleSidedMat)
-  clone.setRotation({0, 180, 0})
+  clone.setRotation(orient(objectData, false))
   doubleSidedMat.addAttachment(clone)
   doubleSidedMat.setLock(false)
 

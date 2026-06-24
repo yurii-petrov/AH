@@ -15,7 +15,7 @@ function discardMonster(o, objData)
     return
   end
 
-  o.setRotation({0, 180, 180})
+  o.setRotation(orient(objData))
   o.setPosition(locationMat.positionToWorld(locationData.monster):setAt("y", 3))
 end
 
@@ -50,12 +50,13 @@ function discardToShop(obj, shopType, isHovering)
     return
   end
 
+  local shopMemo = parseJson(shopObj.memo)
   if isHovering == true then
-    shopObj.setRotation({0, 180, 0})
+    shopObj.setRotation(orient(shopMemo, false))
   end
   shopObj.putObject(obj)
   if isHovering == true then
-    shopObj.setRotation({0, 180, 180})
+    shopObj.setRotation(orient(shopMemo))
   end
 end
 
@@ -94,14 +95,14 @@ function discardCondition(obj, objData)
     for _, o in ipairs(objs) do
       local oData = parseJson(o.memo)
       if oData and oData.type and effectiveType == string.lower(oData.type) then
-        obj.setRotation({0, 180, 0})
-        o.setRotation({0, 180, 0})
+        obj.setRotation(orient(objData, false))
+        o.setRotation(orient(oData, false))
         local deck = o.putObject(obj)
         if o.type == "Card" then
           deck.memo = JSON.encode({type = oData.type})
-          deck.setRotation({0, 180, 180})
+          deck.setRotation(orient(oData))
         else
-          o.setRotation({0, 180, 180})
+          o.setRotation(orient(oData))
         end
         return true
       end
@@ -128,7 +129,7 @@ function discardCondition(obj, objData)
   end
 
   if fallbackMat and fallbackPos then
-    obj.setRotation({0, 180, 0})
+    obj.setRotation(orient(objData, false))
     obj.setPositionSmooth(fallbackMat.positionToWorld(fallbackPos):setAt("y", 3))
   end
 end

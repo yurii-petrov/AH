@@ -73,7 +73,7 @@ function mythosTileSuccessAction(d)
   if not eventData or not eventData.neighborhood then return end
 
   local eventDiscardPos = mythosTile.positionToWorld(MYTHOS_TILE_DATA.eventDiscard)
-  eventCard.setRotation({0, 180, 0})
+  eventCard.setRotation(orient(eventData, false))
   eventCard.setPositionSmooth(eventDiscardPos:setAt("y", 3))
 
   local locationMat = getObjectFromGUID(locationMatId)
@@ -173,7 +173,7 @@ function mythosTileCancelAction(d)
     if not sourceMat then return end
     local archive = findDeckOnBoardByType(sourceMat, "archive")
     if not archive then return end
-    card.setRotation({0, 180, 180})
+    card.setRotation(orient(cardData))
     archive.putObject(card)
   end
 end
@@ -216,9 +216,10 @@ function mythosTileFailedAction(d)
   if not encounterDeck or #encounterDeck.getObjects() < 2 then return end
 
   local p  = encounterDeck.getPosition()
-  eventCard.setRotation({0, 180, 180})
-  local o1 = encounterDeck.takeObject({ index = 0, rotation = {0, 180, 180} })
-  local o2 = encounterDeck.takeObject({ index = 0, rotation = {0, 180, 180} })
+  local encMemo = parseJson(encounterDeck.memo)
+  eventCard.setRotation(orient(eventData))
+  local o1 = encounterDeck.takeObject({ index = 0, rotation = orient(encMemo) })
+  local o2 = encounterDeck.takeObject({ index = 0, rotation = orient(encMemo) })
   local d2 = eventCard.putObject(o1).putObject(o2)
   Wait.time(function()
     d2.shuffle()
@@ -438,7 +439,7 @@ function processGateBurst(callBack)
   if not eventCard then callBack(); return end
 
   local eventDiscardPos = mythosTile.positionToWorld(MYTHOS_TILE_DATA.eventDiscard)
-  eventCard.setRotation({0, 180, 0})
+  eventCard.setRotation(orient(parseJson(eventCard.memo), false))
   eventCard.setPositionSmooth(eventDiscardPos:setAt("y", 3))
 
   if not eventCard.memo then
@@ -485,10 +486,10 @@ function processGateBurst(callBack)
 
     Wait.time(function()
       if eventDiscard.type == "Card" then
-        eventDiscard.setRotationSmooth({0, 180, 180})
+        eventDiscard.setRotationSmooth(orient(parseJson(eventDiscard.memo)))
         runAfterRest(eventDiscard, function(ed) putDiscardUnderDeck(ed, callBack) end)
       elseif eventDiscard.type == "Deck" then
-        eventDiscard.setRotationSmooth({0, 180, 180})
+        eventDiscard.setRotationSmooth(orient(parseJson(eventDiscard.memo)))
         runAfterRest(eventDiscard, function(ed)
           ed.shuffle()
           Wait.time(function() putDiscardUnderDeck(ed, callBack) end, 1)
