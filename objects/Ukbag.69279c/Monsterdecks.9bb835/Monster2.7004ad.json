@@ -38,8 +38,8 @@
   "CustomDeck": {
     "5804": {
       "BackIsHidden": true,
-      "BackURL": "https://drive.google.com/uc?export=view\u0026id=1vL9o8qSWzQdiFS6PEYagnbjOBlkCBRf0",
-      "FaceURL": "https://drive.google.com/uc?export=view\u0026id=15Y25nv4ebr0zS9K2kQDA990J_6miJ9pf",
+      "BackURL": "https://drive.google.com/uc?export=view\u0026id=15Y25nv4ebr0zS9K2kQDA990J_6miJ9pf",
+      "FaceURL": "https://drive.google.com/uc?export=view\u0026id=1vL9o8qSWzQdiFS6PEYagnbjOBlkCBRf0",
       "NumHeight": 4,
       "NumWidth": 6,
       "Type": 0,
@@ -84,7 +84,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"set\":1,\"startPosition\":{\"x\":0.405331254005432,\"y\":1.1268413066864,\"z\":-0.495397329330444},\"type\":\"Monster\"}",
+  "Memo": "{\"reversed\":true,\"set\":1,\"startPosition\":{\"x\":0.405331254005432,\"y\":1.1268413066864,\"z\":-0.495397329330444},\"type\":\"Monster\"}",
   "Name": "Deck",
   "Nickname": "Monster 2",
   "SidewaysCard": false,

@@ -42,8 +42,8 @@
     },
     "5865": {
       "BackIsHidden": true,
-      "BackURL": "https://drive.google.com/uc?export=view\u0026id=1JZEo2d4LfJw_vu_VwMQT5yJvTD1kynMT",
-      "FaceURL": "https://drive.google.com/uc?export=view\u0026id=1Z2yDrfDzgAv-KxQ99Kqe1smzKpiL2ET_",
+      "BackURL": "https://drive.google.com/uc?export=view\u0026id=1Z2yDrfDzgAv-KxQ99Kqe1smzKpiL2ET_",
+      "FaceURL": "https://drive.google.com/uc?export=view\u0026id=1JZEo2d4LfJw_vu_VwMQT5yJvTD1kynMT",
       "NumHeight": 4,
       "NumWidth": 5,
       "Type": 0,
@@ -83,6 +83,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
+  "Memo": "{\"reversed\":true,\"type\":\"monster\"}",
   "Name": "Deck",
   "Nickname": "Monster1",
   "SidewaysCard": false,

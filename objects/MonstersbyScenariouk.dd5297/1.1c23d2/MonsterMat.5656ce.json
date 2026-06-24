@@ -103,7 +103,7 @@
       "LuaScript": "",
       "LuaScriptState": "",
       "MeasureMovement": false,
-      "Memo": "{\"hp\":1,\"monstertype\":[\"Human\",\"Cultist\"],\"name\":\"Robed Figure\",\"remnant\":false,\"type\":\"Monster\"}",
+      "Memo": "{\"reversed\":true,\"hp\":1,\"monstertype\":[\"Human\",\"Cultist\"],\"name\":\"Robed Figure\",\"remnant\":false,\"type\":\"Monster\"}",
       "Name": "Card",
       "Nickname": "",
       "SidewaysCard": false,
@@ -178,7 +178,7 @@
     "posZ": 21.761,
     "rotX": 0,
     "rotY": 180,
-    "rotZ": 185,
+    "rotZ": 180,
     "scaleX": 1.7,
     "scaleY": 1,
     "scaleZ": 1.7

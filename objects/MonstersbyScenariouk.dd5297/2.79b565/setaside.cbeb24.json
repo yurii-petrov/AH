@@ -52,7 +52,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"type\":\"monster\"}",
+  "Memo": "{\"reversed\":true,\"type\":\"monster\"}",
   "Name": "Deck",
   "Nickname": "setaside",
   "SidewaysCard": false,
