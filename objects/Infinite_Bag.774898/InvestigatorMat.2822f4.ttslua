@@ -563,7 +563,7 @@ function onObjectEnterContainer(container, object)
     addClue()
     local name = getInvestigatorDisplayName()
     local fmt  = Global.call("callTable", {{"i18n", "getStrById"}, "IM_clue_gained"})
-    broadcastToAll(string.format(fmt, name), "White")
+    broadcastToAll(string.format(fmt, name) .. " (" .. container.getQuantity() .. ")", "White")
   end
 end
 
@@ -576,7 +576,7 @@ function onObjectLeaveContainer(container, object)
     removeClue()
     local name = getInvestigatorDisplayName()
     local fmt  = Global.call("callTable", {{"i18n", "getStrById"}, "IM_clue_lost"})
-    broadcastToAll(string.format(fmt, name), "White")
+    broadcastToAll(string.format(fmt, name) .. " (" .. container.getQuantity() .. ")", "White")
   end
 end
 
