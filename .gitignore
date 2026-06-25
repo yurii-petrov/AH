@@ -2,3 +2,8 @@
 TTSModManager.exe
 .venv/
 src/ConvertMemo/objects/
+# Cursor / Claude AI config
+.cursor/
+.claude/
+.cursorignore
+.claudeignore
