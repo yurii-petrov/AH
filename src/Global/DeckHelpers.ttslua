@@ -105,12 +105,39 @@ function findDeckOnTile(tileId)
   end
 end
 
+function takeDeckCard(deck, fromBottom, isFaceDown)
+  if not deck then return nil end
+  if deck.type ~= "Deck" then return deck end
+  local count = #deck.getObjects()
+  if count == 0 then return nil end
+  local memo = parseJson(deck.memo)
+  if memo and memo.reversed then fromBottom = not fromBottom end
+  local params = {
+    index  = fromBottom and (count - 1) or 0,
+    smooth = false,
+  }
+  if isFaceDown ~= nil then
+    params.rotation = orient(memo, isFaceDown)
+  end
+  return deck.takeObject(params)
+end
+
+function takeBottomCard(deck, isFaceDown)
+  return takeDeckCard(deck, true, isFaceDown)
+end
+
+function takeTopCard(deck, isFaceDown)
+  return takeDeckCard(deck, false, isFaceDown)
+end
+
 function takeCardFromTop(obj, isBack, skipTypes)
   if not obj or obj.type ~= "Deck" then
     return
   end
 
-  local rotation = orient(parseJson(obj.memo), isBack or false)
+  local memo     = parseJson(obj.memo)
+  local rotation = orient(memo, isBack or false)
+  local reversed = memo and memo.reversed
 
   local function isSkipped(data)
     if not skipTypes or not data then
@@ -129,10 +156,13 @@ function takeCardFromTop(obj, isBack, skipTypes)
   end
 
   local objects = obj.getObjects()
+  local n       = #objects
+  local first   = reversed and n or 1
+  local last    = reversed and 1 or n
+  local step    = reversed and -1 or 1
 
-  for i = 1, #objects do
-    local o = objects[i]
-    local data = parseJson(o.memo)
+  for i = first, last, step do
+    local data = parseJson(objects[i].memo)
 
     if not isSkipped(data) then
       return obj.takeObject({
@@ -150,14 +180,7 @@ function takeCardFromBottom(obj, isBack)
   if not obj or obj.type ~= "Deck" then
     return
   end
-
-  local rotation = orient(parseJson(obj.memo), isBack or false)
-
-  local count = #obj.getObjects()
-  return obj.takeObject({
-    index = count - 1,
-    rotation = rotation
-  })
+  return takeBottomCard(obj, isBack or false)
 end
 
 function getPositionByGUID(guid)

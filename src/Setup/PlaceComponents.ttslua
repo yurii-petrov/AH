@@ -570,9 +570,11 @@ local function prepareMonsterDeck(done)
       if obj then
         local lname = string.lower(obj.getName())
         local targetPos
+        local orientMemo
 
         if lname == "monster" then
           targetPos = monsterPos
+          orientMemo = parseJson(obj.memo)
         elseif lname == "random" then
           obj.shuffle()
           local card = obj.takeObject({ smooth = false })
@@ -594,15 +596,19 @@ local function prepareMonsterDeck(done)
             end
           end
           targetPos = monsterPos
+          orientMemo = parseJson(obj.memo)
         elseif lname == "setaside" then
           targetPos = setasidePos
+          orientMemo = parseJson(obj.memo)
         elseif lname == "setaside2" then
           targetPos = setaside2Pos
+          orientMemo = parseJson(obj.memo)
         elseif lname == "monster mat" then
           local attachments = obj.getAttachments()
           local attachment = attachments and attachments[1]
           local memo = attachment and parseJson(attachment.memo)
           local attachName = memo and string.lower(memo.name or "")
+          orientMemo = memo
           if attachName then
             for i, m in ipairs(monsters) do
               if string.lower(m.name or "") == attachName and m.dest == "spawn" and m.location and m.pos then
@@ -619,7 +625,7 @@ local function prepareMonsterDeck(done)
 
         if targetPos then
           obj.setPosition(targetPos)
-          obj.setRotation(orient(parseJson(obj.memo)))
+          obj.setRotation(orient(orientMemo))
         end
       end
     end

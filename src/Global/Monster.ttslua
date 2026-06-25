@@ -70,8 +70,9 @@ function attachMonsterCard(monster, objectMemo, spawnPos)
     monsterMat.setScale({2.42, 1, 2.42})
   end
 
+  local sign = objectMemo.reversed and -1 or 1
   local pos = spawnPos
-  pos.x = pos.x + 0.271
+  pos.x = pos.x + 0.271 * sign
   monster.setPosition(pos)
 
   local height = monsterMat.getBounds().size.y
@@ -80,12 +81,12 @@ function attachMonsterCard(monster, objectMemo, spawnPos)
 
   local oData = monster.getData()
   oData.Transform.rotZ = faceRotZ(objectMemo, monster.is_face_down)
-  oData.Transform.posY = oData.Transform.posY + 0.06
+  oData.Transform.posY = oData.Transform.posY + 0.06 * sign
   monsterMat.addAttachment(monster)
 
   local oData = monster.getData()
   oData.Transform.posX = monsterMat.positionToWorld({-0.16, 0, 0}).x
-  oData.Transform.posY = pos.y - height - 0.10
+  oData.Transform.posY = pos.y - (height + 0.10) * sign
   local clone = spawnObjectData({
     data = oData
   })
@@ -121,8 +122,9 @@ function attachDoubleSidedCard(monster, objectMemo, spawnPos)
     return
   end
 
+  local sign = objectMemo.reversed and -1 or 1
   local pos = spawnPos
-  pos.x = pos.x + 0.271
+  pos.x = pos.x + 0.271 * sign
   monster.setPosition(pos)
 
   local height = doubleSidedMat.getBounds().size.y
@@ -131,13 +133,13 @@ function attachDoubleSidedCard(monster, objectMemo, spawnPos)
 
   local oData = monster.getData()
   oData.Transform.rotZ = faceRotZ(objectMemo, monster.is_face_down)
-  oData.Transform.posY = oData.Transform.posY + 0.06
+  oData.Transform.posY = oData.Transform.posY + 0.06 * sign
   doubleSidedMat.addAttachment(monster)
 
   local oData = monster.getData()
   oData.Transform.rotZ = faceRotZ(objectMemo, monster.is_face_down)
   oData.Transform.posX = doubleSidedMat.positionToWorld({-0.16, 0, 0}).x
-  oData.Transform.posY = pos.y - height - 0.10
+  oData.Transform.posY = pos.y - (height + 0.10) * sign
   local clone = spawnObjectData({
     data = oData
   })
@@ -161,15 +163,7 @@ function drawMonster(spawnPos)
     for _, obj in ipairs(objs) do
       local deckData = parseJson(obj.memo)
       if deckData and deckData.type and string.lower(deckData.type) == "monster" then
-        if obj.type == "Deck" then
-          local count = #obj.getObjects()
-          if count > 0 then
-            return obj.takeObject({ index = count - 1, smooth = false })
-          end
-        else
-          return obj
-        end
-        break
+        return takeBottomCard(obj)
       end
     end
   end
