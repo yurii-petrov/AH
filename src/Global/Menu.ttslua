@@ -160,6 +160,9 @@ function proceedStartGame()
   gameData.scenarioData = scenarioData
   gameData.numberOfPlayers = currentSetup.players or 2
 
+  -- show the investigators HUD sized to the chosen player count
+  setInvestigatorCount(gameData.numberOfPlayers)
+
   if gameData.scenarioData.terror then
     local tile4Actions = getObjectFromGUID(tile4ActionsId)
     if tile4Actions then

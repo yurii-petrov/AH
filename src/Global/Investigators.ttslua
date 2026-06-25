@@ -1,0 +1,440 @@
+-- ╭──────────────────────────────────────────────╮
+-- │            INVESTIGATORS HUD PANEL           │
+-- ╰──────────────────────────────────────────────╯
+-- A HUD window that lists the active investigators (2..6 players) and,
+-- for each one, a row of "action" dots that can be toggled between two
+-- states:
+--   • gold  -> action available  (INV_GOLD, "неактивно" / not used)
+--   • black -> action spent       (INV_DARK, "активно" / used)
+--
+-- The panel height is dynamic: every row beyond the current player count
+-- is deactivated, and the surrounding layout uses contentSizeFitter so
+-- the window simply shrinks/grows to fit the visible rows.
+--
+-- "Застосувати для всіх" (apply-to-all) is a two-press control:
+--   1st press -> snapshots the current dots and flips every dot to black.
+--   2nd press -> restores the snapshot, so only the dots that were gold
+--                before pressing turn gold again.
+--
+-- The number of investigators is driven by gameData.numberOfPlayers
+-- (set in Global/Menu.ttslua -> proceedStartGame). Call
+-- setInvestigatorCount(n) whenever it becomes known.
+--
+-- This is the core scaffold; visuals (round sprites, avatars, real
+-- investigator names, state persistence) can be refined later.
+
+local FONT = "Fonts/AdonisC"
+
+-- ── tuning ────────────────────────────────────────────────────────
+
+local MIN_INV          = 2
+local MAX_INV          = 6
+local DEFAULT_COUNT    = 2
+local ACTIONS_PER_INV  = 2
+
+local PANEL_W          = "340"
+local HEADER_H         = "50"
+local ROW_H            = "54"
+local ROW_SPACING      = "8"
+local SECTION_SPACING  = "10"
+local APPLY_H          = "52"
+local PAD              = "12"
+local ACTION_SIZE      = "34"
+local AVATAR_SIZE      = "34"
+
+local INV_GOLD = "#F2C230" -- action available / button idle
+local INV_DARK = "#141414" -- action spent / button pressed
+local PANEL_BG = "#1d1d1dF2"
+local ROW_BG   = "#2c2c2c"
+local TEXT_COL = "#ffffff"
+
+-- ── runtime state ─────────────────────────────────────────────────
+
+INV_STATE = {
+  count      = DEFAULT_COUNT,
+  applied    = false,
+  collapsed  = false,
+  snapshot   = nil,
+  actions    = {}, -- actions[player][action] = bool (true = spent/black)
+  slotByName = {}, -- raw investigator name -> row slot
+  nameBySlot = {}, -- row slot -> raw investigator name
+  matBySlot  = {}, -- row slot -> investigator mat guid (for the physical tokens)
+  colorBySlot = {}, -- row slot -> owning player color (action dots are color-gated)
+}
+
+local ACTIVATION_MEMOS = {
+  ["Aactivation Token"]       = true,
+  ["Lider Aactivation Token"] = true,
+}
+
+for p = 1, MAX_INV do
+  INV_STATE.actions[p] = {}
+  for a = 1, ACTIONS_PER_INV do
+    INV_STATE.actions[p][a] = false
+  end
+end
+
+local function actionColor(spent)
+  return spent and INV_DARK or INV_GOLD
+end
+
+local function actionId(p, a)
+  return "INV_action_" .. p .. "_" .. a
+end
+
+-- ── small UI helpers ──────────────────────────────────────────────
+
+local function refreshActionColor(p, a)
+  self.UI.setAttribute(actionId(p, a), "color", actionColor(INV_STATE.actions[p][a]))
+end
+
+local function refreshAllActionColors()
+  for p = 1, MAX_INV do
+    for a = 1, ACTIONS_PER_INV do
+      refreshActionColor(p, a)
+    end
+  end
+end
+
+local function setApplyPressed(pressed)
+  self.UI.setAttribute("INV_apply_text", "color", pressed and INV_DARK or INV_GOLD)
+  self.UI.setAttribute("INV_apply_text", "textColor", pressed and INV_GOLD or INV_DARK)
+end
+
+-- Collect the activation tokens sitting on `mat` in the same order the HUD
+-- dots are laid out, so action 1 / action 2 always map to the same physical
+-- token. The mat is rotated 180°, so the dot order matches descending mat-
+-- local x (this fixes left-dot-flips-right-token).
+local function activationTokensOn(mat)
+  local tokens = {}
+  for _, o in ipairs(upCast(mat, 3, 0, 1) or {}) do
+    if o.type == "Tile" and o.memo and ACTIVATION_MEMOS[o.memo] then
+      tokens[#tokens + 1] = o
+    end
+  end
+  table.sort(tokens, function(t1, t2)
+    local a = mat.positionToLocal(t1.getPosition())
+    local b = mat.positionToLocal(t2.getPosition())
+    if math.abs(a.x - b.x) > 0.05 then return a.x > b.x end
+    return a.z > b.z
+  end)
+  return tokens
+end
+
+-- Flip the physical token for (slot, action) to match the dot:
+-- spent (black) -> face-down, available (gold) -> face-up.
+local function syncActivationToken(slot, action, spent)
+  local guid = INV_STATE.matBySlot[slot]
+  if not guid then return end
+  local mat = getObjectFromGUID(guid)
+  if not mat then return end
+
+  local token = activationTokensOn(mat)[action]
+  if not token then return end
+  if token.is_face_down ~= spent then
+    token.flip()
+  end
+end
+
+-- Locate which (slot, action) a given physical token belongs to.
+-- Returns nil if the token isn't one of the tracked mats' tokens.
+local function locateToken(token)
+  for slot, guid in pairs(INV_STATE.matBySlot) do
+    local mat = getObjectFromGUID(guid)
+    if mat then
+      for action, t in ipairs(activationTokensOn(mat)) do
+        if t == token then
+          return slot, action
+        end
+      end
+    end
+  end
+end
+
+-- ── XML builders ──────────────────────────────────────────────────
+
+local function buildActionButton(p, a)
+  return {
+    tag = "Button",
+    attributes = {
+      id            = actionId(p, a),
+      onClick       = "investigatorToggleAction",
+      color         = actionColor(INV_STATE.actions[p][a]),
+      text          = "",
+      minWidth      = ACTION_SIZE,
+      preferredWidth = ACTION_SIZE,
+      flexibleWidth = "0",
+      minHeight     = ACTION_SIZE,
+      preferredHeight = ACTION_SIZE,
+    },
+  }
+end
+
+local function buildRow(p)
+  return {
+    tag = "HorizontalLayout",
+    attributes = {
+      id                    = "INV_row_" .. p,
+      active                = (p <= DEFAULT_COUNT) and "true" or "false",
+      color                 = ROW_BG,
+      minHeight             = ROW_H,
+      preferredHeight       = ROW_H,
+      flexibleHeight        = "0",
+      padding               = "12 12 6 6",
+      spacing               = "10",
+      childAlignment        = "MiddleLeft",
+      childForceExpandWidth = "false",
+      childForceExpandHeight = "false",
+    },
+    children = {
+      -- avatar placeholder (swap for a real sprite later)
+      { tag = "Panel", attributes = { id = "INV_avatar_" .. p, minWidth = AVATAR_SIZE, preferredWidth = AVATAR_SIZE, flexibleWidth = "0", color = "#555555" } },
+      { tag = "Text", attributes = { id = "INV_name_" .. p .. "_text", text = "Дослідник " .. p, color = TEXT_COL, font = FONT, fontSize = "22", alignment = "MiddleLeft", flexibleWidth = "1" } },
+      buildActionButton(p, 1),
+      buildActionButton(p, 2),
+    },
+  }
+end
+
+local function buildRows()
+  local rows = {}
+  for p = 1, MAX_INV do
+    table.insert(rows, buildRow(p))
+  end
+  return rows
+end
+
+local function buildHeader()
+  return {
+    tag = "HorizontalLayout",
+    attributes = {
+      id                    = "INV_header",
+      minHeight             = HEADER_H,
+      preferredHeight       = HEADER_H,
+      flexibleHeight        = "0",
+      padding               = "14 6 0 0",
+      childAlignment        = "MiddleCenter",
+      childForceExpandWidth = "false",
+    },
+    children = {
+      { tag = "Text", attributes = { id = "INV_title_text", text = "Дослідники", color = TEXT_COL, font = FONT, fontStyle = "Bold", fontSize = "26", alignment = "MiddleLeft", flexibleWidth = "1" } },
+      -- collapse chevron (plain text caret for now; replace with a sprite later)
+      { tag = "Button", attributes = { id = "INV_collapse", onClick = "investigatorToggleCollapse", text = "v", color = "clear", textColor = TEXT_COL, font = FONT, fontSize = "26", minWidth = "40", preferredWidth = "40", flexibleWidth = "0" } },
+    },
+  }
+end
+
+local function buildBody()
+  return {
+    tag = "VerticalLayout",
+    attributes = {
+      id                     = "INV_body",
+      spacing                = SECTION_SPACING,
+      childForceExpandWidth  = "true",
+      childForceExpandHeight = "false",
+    },
+    children = {
+      {
+        tag = "VerticalLayout",
+        attributes = {
+          id                     = "INV_list",
+          spacing                = ROW_SPACING,
+          childForceExpandWidth  = "true",
+          childForceExpandHeight = "false",
+        },
+        children = buildRows(),
+      },
+      {
+        tag = "Button",
+        attributes = {
+          id              = "INV_apply_text",
+          onClick         = "investigatorApplyAll",
+          text            = "Застосувати для всіх",
+          color           = INV_GOLD,
+          textColor       = INV_DARK,
+          font            = FONT,
+          fontStyle       = "Bold",
+          fontSize        = "22",
+          minHeight       = APPLY_H,
+          preferredHeight = APPLY_H,
+          flexibleHeight  = "0",
+        },
+      },
+    },
+  }
+end
+
+--- Builds the investigators HUD window as a TTS Xml table.
+--- Exposed globally so RootUI.getRootXmlTable() can embed it.
+---@return table
+function buildInvestigatorsWindow()
+  return {
+    tag = "VerticalLayout",
+    attributes = {
+      id                                   = "investigators",
+      active                               = "false",
+      width                                = PANEL_W,
+      color                                = PANEL_BG,
+      rectAlignment                        = "MiddleRight",
+      offsetXY                             = "20 0",
+      padding                              = PAD .. " " .. PAD .. " " .. PAD .. " " .. PAD,
+      spacing                              = SECTION_SPACING,
+      contentSizeFitter                    = "vertical", -- height hugs the visible rows
+      childForceExpandWidth                = "true",
+      childForceExpandHeight               = "false",
+      allowDragging                        = "true",
+      returnToOriginalPositionWhenReleased = "false",
+    },
+    children = {
+      buildHeader(),
+      buildBody(),
+    },
+  }
+end
+
+-- ── click handlers (referenced by onClick in the XML) ─────────────
+
+--- Toggle a single action dot between gold (available) and black (spent).
+--- Only the investigator's own player (matching color) may toggle it.
+function investigatorToggleAction(player, alt, id)
+  local p, a = id:match("INV_action_(%d+)_(%d+)")
+  p, a = tonumber(p), tonumber(a)
+  if not p or not a then return end
+
+  -- color gate: you can only spend your own investigator's actions
+  local owner = INV_STATE.colorBySlot[p]
+  if owner and player and player.color ~= owner then
+    return
+  end
+
+  INV_STATE.actions[p][a] = not INV_STATE.actions[p][a]
+  refreshActionColor(p, a)
+  syncActivationToken(p, a, INV_STATE.actions[p][a]) -- flip the matching mat token
+end
+
+--- Mirror a physical token flip (done on the mat) back into the HUD dot.
+--- Called from Global/ObjectDrop.ttslua -> onObjectRotate. Does NOT flip the
+--- token again, so HUD<->token stays a one-way reaction in each direction.
+---@param token tts__Object the activation token that was flipped
+function onActivationTokenFlipped(token)
+  local slot, action = locateToken(token)
+  if not slot then return end
+  local spent = token.is_face_down
+  if INV_STATE.actions[slot][action] ~= spent then
+    INV_STATE.actions[slot][action] = spent
+    refreshActionColor(slot, action)
+  end
+end
+
+--- Two-press apply-to-all: spend every action, then restore the snapshot.
+function investigatorApplyAll(player, alt, id)
+  if not INV_STATE.applied then
+    INV_STATE.snapshot = {}
+    for p = 1, INV_STATE.count do
+      INV_STATE.snapshot[p] = {}
+      for a = 1, ACTIONS_PER_INV do
+        INV_STATE.snapshot[p][a] = INV_STATE.actions[p][a]
+        INV_STATE.actions[p][a]  = true
+        refreshActionColor(p, a)
+        syncActivationToken(p, a, true) -- flip every mat token face-down
+      end
+    end
+    INV_STATE.applied = true
+    setApplyPressed(true)
+  else
+    for p = 1, INV_STATE.count do
+      for a = 1, ACTIONS_PER_INV do
+        local prev = INV_STATE.snapshot and INV_STATE.snapshot[p] and INV_STATE.snapshot[p][a] or false
+        INV_STATE.actions[p][a] = prev
+        refreshActionColor(p, a)
+        syncActivationToken(p, a, prev) -- restore each mat token to its snapshot side
+      end
+    end
+    INV_STATE.applied  = false
+    INV_STATE.snapshot = nil
+    setApplyPressed(false)
+  end
+end
+
+--- Collapse/expand the body; the window shrinks to just the header.
+function investigatorToggleCollapse()
+  INV_STATE.collapsed = not INV_STATE.collapsed
+  self.UI.setAttribute("INV_body", "active", not INV_STATE.collapsed)
+  self.UI.setAttribute("INV_collapse", "text", INV_STATE.collapsed and "^" or "v")
+end
+
+-- ── public API ────────────────────────────────────────────────────
+
+--- Assign a dropped investigator to the next free row and show its name.
+--- Called from Global/ObjectDrop.ttslua -> onInvestigatorDrop at the moment
+--- the investigator is placed on its mat. `name` is the already-localized
+--- display string (the caller resolves it via i18n). `mat` links the row to
+--- the player's board so the action dots can flip the physical tokens.
+--- `color` is the owning player color, used to gate who may toggle this
+--- investigator's action dots.
+---@param name string localized investigator name to display
+---@param mat? tts__Object the investigator mat the card was dropped on
+---@param color? string owning player color (e.g. "Red")
+function setInvestigatorName(name, mat, color)
+  if not name or name == "" then return end
+
+  local slot = INV_STATE.slotByName[name]
+  if not slot then
+    local used = 0
+    for _ in pairs(INV_STATE.slotByName) do used = used + 1 end
+    slot = used + 1
+    if slot > MAX_INV then return end -- no free row
+    INV_STATE.slotByName[name] = slot
+    INV_STATE.nameBySlot[slot] = name
+  end
+
+  if mat then
+    INV_STATE.matBySlot[slot] = mat.getGUID()
+  end
+  if color then
+    INV_STATE.colorBySlot[slot] = color
+  end
+
+  self.UI.setAttribute("INV_name_" .. slot .. "_text", "text", name)
+end
+
+--- Show the panel with `n` investigator rows (clamped to 2..6) and reset
+--- all action dots. Call this once gameData.numberOfPlayers is known.
+---@param n number
+function setInvestigatorCount(n)
+  n = tonumber(n) or MIN_INV
+  if n < MIN_INV then n = MIN_INV elseif n > MAX_INV then n = MAX_INV end
+  INV_STATE.count = n
+
+  for p = 1, MAX_INV do
+    self.UI.setAttribute("INV_row_" .. p, "active", p <= n)
+  end
+
+  -- fresh game / fresh hand: everything available again
+  for p = 1, MAX_INV do
+    for a = 1, ACTIONS_PER_INV do
+      INV_STATE.actions[p][a] = false
+    end
+  end
+  INV_STATE.applied  = false
+  INV_STATE.snapshot = nil
+  refreshAllActionColors()
+  setApplyPressed(false)
+
+  -- fresh game: drop name / mat / color assignments back to placeholders
+  INV_STATE.slotByName  = {}
+  INV_STATE.nameBySlot  = {}
+  INV_STATE.matBySlot   = {}
+  INV_STATE.colorBySlot = {}
+  for p = 1, MAX_INV do
+    self.UI.setAttribute("INV_name_" .. p .. "_text", "text", "Дослідник " .. p)
+  end
+
+  if INV_STATE.collapsed then
+    INV_STATE.collapsed = false
+    self.UI.setAttribute("INV_body", "active", true)
+    self.UI.setAttribute("INV_collapse", "text", "v")
+  end
+
+  self.UI.setAttribute("investigators", "active", true)
+end

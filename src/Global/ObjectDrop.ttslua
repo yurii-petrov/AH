@@ -205,6 +205,13 @@ end
 
 function onObjectRotate(object, spin, flip, player_color, old_spin, old_flip)
   if flip == old_flip then return end
+
+  -- activation token flipped on the mat -> mirror it into the investigators HUD
+  if object.memo == "Aactivation Token" or object.memo == "Lider Aactivation Token" then
+    runOnceAfterRest(object, function(o) onActivationTokenFlipped(o) end)
+    return
+  end
+
   local objectData = parseJson(object.memo)
   if not objectData or objectData.type ~= "blessed cursed" then return end
   runOnceAfterRest(object, function(object) applyBlessedCursedToRoller(object) end)
@@ -240,6 +247,7 @@ function onInvestigatorDrop(colorName, object, objectData, isIgnoreRandomCard)
 
   gameData.selectedInvestigators[objectData.name] = objectData
   investigatorMat.call("setMemo", objectData)
+  setInvestigatorName(i18n.getStrById(objectData.name:gsub(" ", "_")), investigatorMat, colorName) -- localized name + mat link + owner color
   runAfterRest(investigatorMat, function(obj)
 
     local guaranteedPosition = {1.086, 0, 1.346}

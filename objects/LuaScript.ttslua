@@ -1,5 +1,7 @@
 require("Global/i18n")
 require("Global/i18nData")
+require("Global/RootUI")
+require("Global/Investigators")
 require("Global/Utils")
 require("Global/Steps")
 require("Global/Ally")
@@ -277,6 +279,8 @@ end
 
 function onload(savedData)
 
+  self.UI.setXmlTable(getRootXmlTable())
+
   resolveAllDataObjects()
 
   -- lockObj(tableId)
@@ -304,6 +308,10 @@ function onload(savedData)
   if gameData.isStarted then
     Global.UI.setAttribute("phase", "active", true)
     Global.UI.setAttribute("phase_img", "image", phases[gameData.phase].image)
+    -- restore the investigators HUD (after updateXMLs re-applies the UI table)
+    Wait.time(function()
+      setInvestigatorCount(gameData.numberOfPlayers or 2)
+    end, 1.5)
   end
 
   for guid, _ in pairs(gameData.lockObjs) do

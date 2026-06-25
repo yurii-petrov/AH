@@ -1,0 +1,453 @@
+-- ╭──────────────────────────────────────────────╮
+-- │                GLOBAL XML UI                 │
+-- ╰──────────────────────────────────────────────╯
+-- The Global window UI is built here in code instead of Root.xml,
+-- the same way object mats build their UI (see InvestigatorMat /
+-- Tile4ActionButtons). LuaScript.ttslua calls
+--   self.UI.setXmlTable(getRootXmlTable())
+-- in onload, and i18n later re-reads / re-applies it for translation.
+--
+-- Format follows the TTS Xml-as-table spec:
+--   { tag = "Panel", attributes = { ... }, children = { ... } }
+
+local FONT = "Fonts/AdonisC"
+
+-- ── reusable building blocks ──────────────────────────────────────
+
+-- A button sitting behind/over an image, both wrapped in a panel.
+local function imageButtonPanel(panelAttrs, button, image)
+  return {
+    tag = "panel",
+    attributes = panelAttrs,
+    children = { button, image },
+  }
+end
+
+-- 1..6 player-count buttons (player count 2 is selected by default).
+local function buildPlayerButtons()
+  local buttons = {}
+  for n = 1, 6 do
+    local btnAttrs = {
+      id = "players" .. n,
+      onClick = "players",
+      text = tostring(n),
+      fontSize = "46",
+    }
+    if n == 2 then btnAttrs.color = "#ffffff22" end
+    table.insert(buttons, imageButtonPanel(
+      {},
+      { tag = "Button", attributes = btnAttrs },
+      { tag = "image", attributes = { image = "button_num" } }
+    ))
+  end
+  return buttons
+end
+
+-- The three bottom buttons of the main menu (close / expansions / start).
+local function buildMainMenuActions()
+  local defs = {
+    { id = "MM_close",      onClick = "closeMenu" },
+    { id = "MM_expansions", onClick = "onClickAddons" },
+    { id = "MM_start_game", onClick = "startGame" },
+  }
+  local panels = {}
+  for _, d in ipairs(defs) do
+    table.insert(panels, imageButtonPanel(
+      {},
+      { tag = "Button", attributes = { id = d.id, onClick = d.onClick, text = "", color = "clear" } },
+      { tag = "image", attributes = { image = "button_medium" } }
+    ))
+  end
+  return panels
+end
+
+-- ── scenario chooser ──────────────────────────────────────────────
+
+-- Scenarios laid out in rows of three (the last row has a single one).
+local SCENARIO_ROWS = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 }, { 10, 11, 12 }, { 13 } }
+
+local function buildScenarioPanel(n)
+  local panelAttrs = { id = "scenario_panel" .. n }
+  if n == 1 then panelAttrs.color = "#ffffff22" end -- scenario 1 selected by default
+  return {
+    tag = "panel",
+    attributes = panelAttrs,
+    children = {
+      { tag = "button", attributes = { id = "scenario" .. n, onClick = "chooseScenario" } },
+      { tag = "image",  attributes = { id = "scenarioImage" .. n, image = "scenario" .. n, width = "180", preserveAspect = "true", rectAlignment = "UpperCenter", offsetXY = "0 -10" } },
+      { tag = "text",   attributes = { id = "MM_scenario" .. n .. "_name_text", alignment = "LowerCenter", text = "", offsetXY = "0 10" } },
+    },
+  }
+end
+
+local function buildScenarioRows()
+  local rows = {}
+  for _, ids in ipairs(SCENARIO_ROWS) do
+    local panels = {}
+    for _, n in ipairs(ids) do
+      table.insert(panels, buildScenarioPanel(n))
+    end
+    table.insert(rows, {
+      tag = "HorizontalLayout",
+      attributes = { width = "800", preferredHeight = "250", verticalOverflow = "Overflow", spacing = "30" },
+      children = panels,
+    })
+  end
+  return rows
+end
+
+-- ── addon chooser ─────────────────────────────────────────────────
+
+local ADDON_COUNT = 4
+
+local function buildAddonPanels()
+  local panels = {}
+  for n = 1, ADDON_COUNT do
+    local panelAttrs = { id = "addon_panel" .. n, preferredHeight = "50" }
+    if n == 1 then panelAttrs.color = "#ffffff22" end
+    table.insert(panels, {
+      tag = "panel",
+      attributes = panelAttrs,
+      children = {
+        { tag = "button", attributes = { id = "addon" .. n, onClick = "selectAddon", onMouseEnter = "previewAddon" } },
+        { tag = "text",   attributes = { id = "MM_text_addon" .. n .. "_text", alignment = "MiddleCenter", text = "" } },
+      },
+    })
+  end
+  return panels
+end
+
+-- ── top-level windows ─────────────────────────────────────────────
+
+local function languagesWindow()
+  return {
+    tag = "panel",
+    attributes = {
+      id = "languages",
+      width = "1000",
+      height = "482",
+      rectAligment = "middleCenter",
+      allowDragging = "true",
+      returnToOriginalPositionWhenReleased = "false",
+    },
+    children = {
+      { tag = "image", attributes = { image = "languages", width = "1000", height = "482" } },
+      { tag = "button", attributes = { id = "en", onClick = "clickOnEN", width = "350", height = "300", position = "-220 0 0", padding = "0 0 230 0", textColor = "#ffffff", font = FONT, fontStyle = "Bold", fontSize = "30", color = "clear", text = "ENGLISH" } },
+      { tag = "button", attributes = { id = "ua", onClick = "clickOnUK", width = "350", height = "300", position = "220 0 0", padding = "0 0 230 0", textColor = "#ffffff", font = FONT, fontStyle = "Bold", fontSize = "30", color = "clear", text = "УКРАЇНСЬКА" } },
+      {
+        tag = "HorizontalLayout",
+        attributes = { id = "direct_setup_row", position = "0 -155 0", width = "320", height = "36", childAlignment = "MiddleCenter", spacing = "10" },
+        children = {
+          { tag = "Toggle", attributes = { id = "direct_setup_toggle", onValueChanged = "onDirectSetupToggle", isOn = "false", width = "30", height = "30", toggleColor = "#ffffff" } },
+          { tag = "Text", attributes = { text = "Quick Setup", font = FONT, fontSize = "22", color = "#ffffff", width = "260", height = "36" } },
+        },
+      },
+      { tag = "Text", attributes = { id = "direct_setup_note", position = "0 -192 0", width = "640", height = "40", font = FONT, fontSize = "14", color = "#ffffffaa", alignment = "MiddleCenter", text = "(use only with cache enabled, and after the mod was already opened once in normal mode)" } },
+    },
+  }
+end
+
+local function phaseWindow()
+  local function phaseText(id, offsetXY, fontSize, active)
+    local attrs = {
+      id = id,
+      offsetXY = offsetXY,
+      font = FONT,
+      fontSize = fontSize,
+      color = "#ffffff",
+      shadow = "#000000",
+      shadowDistance = "1 1",
+      outline = "#00000088",
+      outlineSize = "2 2",
+      text = "",
+    }
+    if active ~= nil then attrs.active = active end
+    return { tag = "text", attributes = attrs }
+  end
+
+  return {
+    tag = "panel",
+    attributes = { id = "phase", active = "false", width = "200", height = "264", rectAlignment = "LowerRight", allowDragging = "true", returnToOriginalPositionWhenReleased = "false" },
+    children = {
+      { tag = "image", attributes = { id = "phase_img", image = "phase_action_image", width = "200", preserveAspect = "true", rectAlignment = "UpperCenter" } },
+      phaseText("PB_phase_text", "0 45", "12"),
+      phaseText("phase_text", "0 25", "16"),
+      phaseText("PB_phase_btn_btn_text", "0 -68", "12", "false"),
+      phaseText("phase_btn_text", "0 -83", "14", "false"),
+      { tag = "button", attributes = { id = "phase_btn", onClick = "nextPhase", width = "200", height = "170", rectAlignment = "UpperCenter", color = "clear" } },
+      { tag = "button", attributes = { id = "phase_btn_encounter", active = "false", onClick = "encounterHudBtn", width = "200", height = "84", rectAlignment = "LowerCenter", color = "clear" } },
+      { tag = "button", attributes = { id = "phase_btn_myth", active = "false", onClick = "mythHudBtn", width = "200", height = "84", rectAlignment = "LowerCenter", color = "clear" } },
+    },
+  }
+end
+
+local function helpWindow()
+  return {
+    tag = "Panel",
+    attributes = { id = "help_panel", visibility = "nobody", position = "0 0 -50", width = "700", height = "340", rectAlignment = "MiddleCenter", allowDragging = "true", returnToOriginalPositionWhenReleased = "false" },
+    children = {
+      { tag = "Image", attributes = { image = "help_bg", preserveAspect = "true", width = "700" } },
+      {
+        tag = "verticalLayout",
+        attributes = { width = "650", height = "280" },
+        children = {
+          {
+            tag = "panel",
+            attributes = { padding = "0 0 0 20" },
+            children = {
+              { tag = "text", attributes = { id = "ROLLER_help_title_text", fontSize = "45", font = FONT, color = "#ffffff" } },
+            },
+          },
+          { tag = "text", attributes = { id = "ROLLER_help_lmb_text", fontSize = "25", font = FONT, color = "#ffffff" } },
+          { tag = "text", attributes = { id = "ROLLER_help_rmb_text", fontSize = "25", font = FONT, color = "#ffffff" } },
+        },
+      },
+      { tag = "Button", attributes = { id = "close_help", text = "X", onClick = "hideHelp", width = "160", height = "160", position = "310 120 0", fontSize = "50", font = FONT, textColor = "#ffffff", color = "clear" } },
+    },
+  }
+end
+
+local function defaultsBlock()
+  return {
+    tag = "defaults",
+    children = {
+      { tag = "text", attributes = { color = "#FFFFFF", font = FONT, alignment = "UpperLeft", fontSize = "30" } },
+      { tag = "button", attributes = { color = "clear", textColor = "#FFFFFF", fontSize = "32", fontStyle = "bold", font = FONT, padding = "0 0 8 0" } },
+    },
+  }
+end
+
+local function mainMenuWindow()
+  return {
+    tag = "panel",
+    attributes = { id = "main_menu", active = "false", height = "700", width = "1000", position = "0 0", rectAlignment = "MiddleCenter", allowDragging = "true", returnToOriginalPositionWhenReleased = "false" },
+    children = {
+      { tag = "Image", attributes = { image = "hud_1", height = "700", width = "1000" } },
+      { tag = "Image", attributes = { id = "scenarioImage", image = "scenario1", width = "440", preserveAspect = "true", position = "-233 118" } },
+      { tag = "Image", attributes = { id = "scenarioMap", active = "false", image = "scenarioMap1", width = "440", height = "370", preserveAspect = "true", position = "-233 118" } },
+      { tag = "image", attributes = { image = "map", position = "-50 265", width = "50", height = "55" } },
+      { tag = "button", attributes = { id = "MM_map_text", onClick = "mapToggle", position = "-50 265", width = "50", height = "55", textColor = "#ffffff", fontSize = "14", text = "", padding = "0 0 1 0", fontStyle = "regular" } },
+      {
+        tag = "panel",
+        attributes = { width = "437", height = "330", position = "233 133", rectAlignment = "MiddleCenter" },
+        children = {
+          {
+            tag = "VerticalLayout",
+            attributes = { contentSizeFitter = "vertical", rectAlignment = "UpperCenter", spacing = "15" },
+            children = {
+              { tag = "Text", attributes = { id = "title", fontSize = "40", fontStyle = "bold", text = "" } },
+              { tag = "Text", attributes = { id = "body", fontSize = "28", text = "" } },
+            },
+          },
+        },
+      },
+      {
+        tag = "panel",
+        attributes = { width = "440", height = "92", position = "-233 -138" },
+        children = {
+          { tag = "Button", attributes = { id = "MM_change_scenario", onClick = "changeScenario", width = "440", height = "92", color = "clear", text = "" } },
+          { tag = "image", attributes = { width = "440", height = "92", image = "button_large" } },
+        },
+      },
+      { tag = "text", attributes = { id = "MM_player_numbers", childAlignment = "MiddleCenter", position = "515 -394", text = "", fontSize = "32", fontStyle = "bold" } },
+      {
+        tag = "HorizontalLayout",
+        attributes = { childAlignment = "MiddleCenter", width = "440", height = "92", position = "233 -138", spacing = "4" },
+        children = buildPlayerButtons(),
+      },
+      {
+        tag = "HorizontalLayout",
+        attributes = { childAlignment = "MiddleCenter", width = "910", height = "92", position = "0 -255", spacing = "30" },
+        children = buildMainMenuActions(),
+      },
+    },
+  }
+end
+
+local function chooseScenarioWindow()
+  return {
+    tag = "panel",
+    attributes = { id = "chooseScenario", active = "false", height = "700", width = "1000", position = "0 0", rectAlignment = "MiddleCenter", allowDragging = "true", returnToOriginalPositionWhenReleased = "false" },
+    children = {
+      { tag = "Image", attributes = { image = "hud_1", height = "700", width = "1000" } },
+      {
+        tag = "panel",
+        attributes = { width = "910", height = "610" },
+        children = {
+          {
+            tag = "VerticalLayout",
+            attributes = { contentSizeFitter = "vertical", height = "610", childAlignment = "MiddleCenter", rectAlignment = "UpperCenter" },
+            children = {
+              {
+                tag = "panel",
+                attributes = { minHeight = "100" },
+                children = {
+                  { tag = "text", attributes = { id = "MM_choice_scenario_text", text = "", fontSize = "46", fontStyle = "bold", alignment = "MiddleCenter" } },
+                },
+              },
+              {
+                tag = "panel",
+                attributes = { minHeight = "410" },
+                children = {
+                  {
+                    tag = "VerticalScrollView",
+                    attributes = { color = "clear", height = "400", verticalScrollbarVisibility = "AutoHideAndExpandViewport", verticalScrollbarWidth = "20", raycastTarget = "true", scrollSensitivity = "30" },
+                    children = {
+                      {
+                        tag = "VerticalLayout",
+                        attributes = { contentSizeFitter = "vertical", spacing = "30" },
+                        children = buildScenarioRows(),
+                      },
+                    },
+                  },
+                },
+              },
+              {
+                tag = "panel",
+                attributes = { minHeight = "100" },
+                children = {
+                  { tag = "Button", attributes = { id = "MM_select_scenario", onClick = "submitScenario", width = "440", height = "92", color = "clear", text = "" } },
+                  { tag = "image", attributes = { width = "400", preserveAspect = "true", image = "button_large" } },
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+  }
+end
+
+local function chooseAddonsWindow()
+  return {
+    tag = "panel",
+    attributes = { id = "chooseAddons", active = "false", height = "700", width = "1000", position = "0 0", rectAlignment = "MiddleCenter", allowDragging = "true", returnToOriginalPositionWhenReleased = "false" },
+    children = {
+      { tag = "Image", attributes = { image = "hud_1", height = "700", width = "1000" } },
+      {
+        tag = "TableLayout",
+        attributes = { width = "850", height = "610", rectAlignment = "MiddleCenter", cellSpacing = "0", cellPadding = "0", columnWidths = "400 50 400" },
+        children = {
+          -- Title row
+          {
+            tag = "Row",
+            attributes = { preferredHeight = "80" },
+            children = {
+              {
+                tag = "Cell",
+                attributes = { columnSpan = "3", dontUseTableCellBackground = "true" },
+                children = {
+                  { tag = "text", attributes = { id = "MM_addonTitle_text", text = "", fontSize = "46", fontStyle = "bold", alignment = "MiddleCenter" } },
+                },
+              },
+            },
+          },
+          -- Content row: [left][spacer][right], 530px tall
+          {
+            tag = "Row",
+            attributes = { preferredHeight = "530" },
+            children = {
+              -- LEFT: image + summary on top, description fills the rest
+              {
+                tag = "Cell",
+                attributes = { dontUseTableCellBackground = "true" },
+                children = {
+                  {
+                    tag = "panel",
+                    attributes = { width = "400", height = "530" },
+                    children = {
+                      {
+                        tag = "HorizontalLayout",
+                        attributes = { rectAlignment = "UpperCenter", width = "400", height = "190", spacing = "20", childForceExpandWidth = "false", childAlignment = "MiddleLeft" },
+                        children = {
+                          { tag = "image", attributes = { id = "addonImage", image = "addon1", width = "180", preserveAspect = "true" } },
+                          { tag = "text", attributes = { id = "MM_addonSummary_text", fontSize = "20", alignment = "MiddleLeft" } },
+                        },
+                      },
+                      {
+                        tag = "VerticalScrollView",
+                        attributes = { rectAlignment = "LowerCenter", width = "400", height = "330", color = "clear", verticalScrollbarVisibility = "AutoHideAndExpandViewport", verticalScrollbarWidth = "20", raycastTarget = "true", scrollSensitivity = "30" },
+                        children = {
+                          {
+                            tag = "VerticalLayout",
+                            attributes = { contentSizeFitter = "vertical" },
+                            children = {
+                              { tag = "text", attributes = { id = "MM_addonDescription_text", fontSize = "20", fontStyle = "italic" } },
+                            },
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+              -- SPACER
+              { tag = "Cell", attributes = { dontUseTableCellBackground = "true" } },
+              -- RIGHT: list on top, button at the bottom
+              {
+                tag = "Cell",
+                attributes = { dontUseTableCellBackground = "true" },
+                children = {
+                  {
+                    tag = "panel",
+                    attributes = { width = "400", height = "530" },
+                    children = {
+                      {
+                        tag = "VerticalScrollView",
+                        attributes = { rectAlignment = "UpperCenter", width = "400", height = "428", color = "clear", verticalScrollbarVisibility = "AutoHideAndExpandViewport", verticalScrollbarWidth = "20", raycastTarget = "true", scrollSensitivity = "30" },
+                        children = {
+                          {
+                            tag = "VerticalLayout",
+                            attributes = { contentSizeFitter = "vertical", width = "380", spacing = "10" },
+                            children = buildAddonPanels(),
+                          },
+                        },
+                      },
+                      {
+                        tag = "panel",
+                        attributes = { rectAlignment = "LowerCenter", width = "400", height = "92" },
+                        children = {
+                          { tag = "Button", attributes = { id = "MM_submitAddons_text", onClick = "submitAddons", width = "400", height = "92", color = "clear", text = "" } },
+                          { tag = "image", attributes = { width = "400", preserveAspect = "true", image = "button_large" } },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+  }
+end
+
+local function restoreWindow()
+  return {
+    tag = "panel",
+    attributes = { id = "restore", active = "false", offsetXY = "-30 20", rectAlignment = "LowerRight", allowDragging = "false", color = "#000000", width = "300", height = "109" },
+    children = {
+      { tag = "Button", attributes = { id = "MM_open", onClick = "restore", width = "280", height = "89", color = "clear", text = "" } },
+      { tag = "image", attributes = { width = "280", height = "89", preserveAspect = "true", image = "button_medium" } },
+    },
+  }
+end
+
+-- ── public entry point ────────────────────────────────────────────
+
+--- Builds the complete Global window UI as a TTS Xml table.
+---@return table
+function getRootXmlTable()
+  return {
+    languagesWindow(),
+    phaseWindow(),
+    helpWindow(),
+    defaultsBlock(),
+    mainMenuWindow(),
+    chooseScenarioWindow(),
+    chooseAddonsWindow(),
+    restoreWindow(),
+    buildInvestigatorsWindow(), -- src/Global/Investigators.ttslua
+  }
+end
