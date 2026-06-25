@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"number\":8,\"type\":\"codex\",\"back\":{\"actions\":[{\"title\":\"Маркери і міти\",\"description\":\"\",\"removeAfterUse\":true,\"steps\":[{\"type\":\"addMythosToken\",\"token\":{\"type\":\"Spread Doom\"}},{\"type\":\"addMythosToken\",\"token\":{\"type\":\"Gate Burst\"}},{\"type\":\"clearMarkersOnLocations\",\"removeMarkers\":[\"White Marker\",\"Blue Marker\"],\"ensureRedMarker\":true}]},{\"title\":\"Кодекси до Архіву\",\"description\":\"\",\"removeAfterUse\":true,\"steps\":[{\"type\":\"returnCodexByNumber\",\"numbers\":[4,6,7]}]}]}}",
+  "Memo": "{\"number\":8,\"type\":\"codex\",\"front\":{\"actions\":[{\"title\":\"Маркери і міти\",\"description\":\"\",\"removeAfterUse\":true,\"steps\":[{\"type\":\"addMythosToken\",\"token\":{\"type\":\"Spread Doom\"}},{\"type\":\"addMythosToken\",\"token\":{\"type\":\"Gate Burst\"}},{\"type\":\"clearMarkersOnLocations\",\"removeMarkers\":[\"White Marker\",\"Blue Marker\"],\"ensureRedMarker\":true}]},{\"title\":\"Кодекси до Архіву\",\"description\":\"\",\"removeAfterUse\":true,\"steps\":[{\"type\":\"returnCodexByNumber\",\"numbers\":[4,6,7]}]}]}}",
   "Name": "Card",
   "Nickname": "08",
   "SidewaysCard": false,

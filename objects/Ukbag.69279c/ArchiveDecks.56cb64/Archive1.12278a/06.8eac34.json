@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"number\":6,\"type\":\"codex\",\"back\":{\"actions\":[{\"title\":\"2 культисти\",\"description\":\"\",\"removeAfterUse\":true,\"steps\":[{\"type\":\"findMonsterByType\",\"monsterType\":[\"Cultist\"],\"deckType\":\"monster\"},{\"type\":\"findMonsterByType\",\"monsterType\":[\"Cultist\"],\"deckType\":\"monster\"}]}]}}",
+  "Memo": "{\"number\":6,\"type\":\"codex\",\"front\":{\"actions\":[{\"title\":\"2 культисти\",\"description\":\"\",\"removeAfterUse\":true,\"steps\":[{\"type\":\"findMonsterByType\",\"monsterType\":[\"Cultist\"],\"deckType\":\"monster\"},{\"type\":\"findMonsterByType\",\"monsterType\":[\"Cultist\"],\"deckType\":\"monster\"}]}]}}",
   "Name": "Card",
   "Nickname": "06",
   "SidewaysCard": false,
