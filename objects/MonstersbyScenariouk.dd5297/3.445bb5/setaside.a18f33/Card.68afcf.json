@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"hp\":1,\"monstertype\":[\"Lodge\",\"Human\"],\"name\":\"Lodge Loyalist\",\"remnant\":false,\"type\":\"Monster\"}",
+  "Memo": "{\"hp\":1,\"monstertype\":[\"Lodge\",\"Human\"],\"name\":\"Lodge Loyalist\",\"remnant\":false,\"type\":\"Monster\",\"reversed\":true}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,

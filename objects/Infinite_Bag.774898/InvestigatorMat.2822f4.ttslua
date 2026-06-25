@@ -497,7 +497,7 @@ function clickHP(player, alt_click)
 
     self.UI.setAttribute("clickHP", "text", data.hp)
     self.UI.setAttribute("clickHP", "textColor", data.hp > 0 and "#fff5e2" or "#a29c90")
-    broadcastStat("IM_hp", "HP", data.hp)
+    broadcastStat("IM_damage", "HP", data.hp)
 end
 
 function clickSanity(player, alt_click)
@@ -505,7 +505,7 @@ function clickSanity(player, alt_click)
 
     self.UI.setAttribute("clickSanity", "text", data.sanity)
     self.UI.setAttribute("clickSanity", "textColor", data.sanity > 0 and "#fff5e2" or "#a29c90")
-    broadcastStat("IM_sanity", "Sanity", data.sanity)
+    broadcastStat("IM_horror", "Sanity", data.sanity)
 end
 
 function clickMoney(player, alt_click)

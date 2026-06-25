@@ -1285,11 +1285,11 @@ msgstr "%s - gains 1 clue"
 msgid "IM_clue_lost"
 msgstr "%s - loses 1 clue"
 
-msgid "IM_hp"
-msgstr "HP"
+msgid "IM_damage"
+msgstr "Damage"
 
-msgid "IM_sanity"
-msgstr "Sanity"
+msgid "IM_horror"
+msgstr "Horror"
 
 msgid "IM_money"
 msgstr "Money"

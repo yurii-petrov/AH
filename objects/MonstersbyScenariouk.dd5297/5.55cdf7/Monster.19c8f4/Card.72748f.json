@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"elite\":1,\"hp\":2,\"monstertype\":[\"Human\",\"Mob\"],\"name\":\"Brawling Riot\",\"remnant\":false,\"type\":\"Monster\"}",
+  "Memo": "{\"elite\":1,\"hp\":2,\"monstertype\":[\"Human\",\"Mob\"],\"name\":\"Brawling Riot\",\"remnant\":false,\"type\":\"Monster\",\"reversed\":true}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,

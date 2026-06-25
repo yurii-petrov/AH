@@ -370,6 +370,10 @@ I18N_DATA = {
     ["en"] = "%s - loses 1 clue",
     ["uk"] = "%s - втрачає 1 зачіпку",
   },
+  ["IM_damage"] = {
+    ["en"] = "Damage",
+    ["uk"] = "Поранення",
+  },
   ["IM_death"] = {
     ["en"] = "Death",
     ["uk"] = "Смерть",
@@ -386,9 +390,9 @@ I18N_DATA = {
     ["en"] = "E    N    E    M    I    E    S",
     ["uk"] = "В    О    Р    О    Г    И",
   },
-  ["IM_hp"] = {
-    ["en"] = "HP",
-    ["uk"] = "Здоров'я",
+  ["IM_horror"] = {
+    ["en"] = "Horror",
+    ["uk"] = "Жах",
   },
   ["IM_influence"] = {
     ["en"] = "Influence",
@@ -404,15 +408,11 @@ I18N_DATA = {
   },
   ["IM_observation"] = {
     ["en"] = "Observation",
-    ["uk"] = "Спостережливість",
+    ["uk"] = "Увага",
   },
   ["IM_remnant"] = {
     ["en"] = "Remnant",
-    ["uk"] = "Залишок",
-  },
-  ["IM_sanity"] = {
-    ["en"] = "Sanity",
-    ["uk"] = "Розсудливість",
+    ["uk"] = "Рештки",
   },
   ["IM_strength"] = {
     ["en"] = "Strength",
