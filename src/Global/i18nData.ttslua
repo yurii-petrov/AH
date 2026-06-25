@@ -372,7 +372,7 @@ I18N_DATA = {
   },
   ["IM_damage"] = {
     ["en"] = "Damage",
-    ["uk"] = "Damage",
+    ["uk"] = "Поранення",
   },
   ["IM_death"] = {
     ["en"] = "Death",
@@ -392,7 +392,7 @@ I18N_DATA = {
   },
   ["IM_horror"] = {
     ["en"] = "Horror",
-    ["uk"] = "Horror",
+    ["uk"] = "Жах",
   },
   ["IM_influence"] = {
     ["en"] = "Influence",
@@ -408,11 +408,11 @@ I18N_DATA = {
   },
   ["IM_observation"] = {
     ["en"] = "Observation",
-    ["uk"] = "Спостережливість",
+    ["uk"] = "Увага",
   },
   ["IM_remnant"] = {
     ["en"] = "Remnant",
-    ["uk"] = "Залишок",
+    ["uk"] = "Рештки",
   },
   ["IM_strength"] = {
     ["en"] = "Strength",

@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"elite\":1,\"hp\":4,\"monstertype\":[\"Star Spawn\"],\"name\":\"R'lyeh Guardian\",\"remnant\":true,\"trait\":\"Massive\",\"type\":\"Monster\"}",
+  "Memo": "{\"elite\":1,\"hp\":4,\"monstertype\":[\"Star Spawn\"],\"name\":\"R'lyeh Guardian\",\"remnant\":true,\"trait\":\"Massive\",\"type\":\"Monster\",\"reversed\":true}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,

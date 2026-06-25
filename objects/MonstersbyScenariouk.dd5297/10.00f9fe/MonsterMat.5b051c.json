@@ -44,7 +44,7 @@
       "LuaScript": "",
       "LuaScriptState": "",
       "MeasureMovement": false,
-      "Memo": "{\"hp\":2,\"monstertype\":[\"Dreaming\",\"Human\"],\"name\":\"Enraged Dreamer\",\"remnant\":false,\"type\":\"Monster\"}",
+      "Memo": "{\"hp\":2,\"monstertype\":[\"Dreaming\",\"Human\"],\"name\":\"Enraged Dreamer\",\"remnant\":false,\"type\":\"Monster\",\"reversed\":true}",
       "Name": "Card",
       "Nickname": "",
       "SidewaysCard": false,

@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"hp\":2,\"monstertype\":[\"Human\",\"Thrall\"],\"name\":\"Void Touched\",\"remnant\":true,\"type\":\"Monster\"}",
+  "Memo": "{\"hp\":2,\"monstertype\":[\"Human\",\"Thrall\"],\"name\":\"Void Touched\",\"remnant\":true,\"type\":\"Monster\",\"reversed\":true}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,
