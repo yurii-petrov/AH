@@ -22,8 +22,8 @@
   "CustomDeck": {
     "5854": {
       "BackIsHidden": true,
-      "BackURL": "https://drive.google.com/uc?export=view\u0026id=1fI6EkjU9CwzFnL1ishP9i8ZCFbtPe8sX",
-      "FaceURL": "https://drive.google.com/uc?export=view\u0026id=10dtxdDM6yg1IQM-nWqA93wbwMuk8x72G",
+      "BackURL": "https://drive.google.com/uc?export=view\u0026id=10dtxdDM6yg1IQM-nWqA93wbwMuk8x72G",
+      "FaceURL": "https://drive.google.com/uc?export=view\u0026id=1fI6EkjU9CwzFnL1ishP9i8ZCFbtPe8sX",
       "NumHeight": 1,
       "NumWidth": 1,
       "Type": 0,
@@ -52,7 +52,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"set\":3,\"startPosition\":{\"x\":0.601599980926514,\"y\":1.04981660842896,\"z\":-0.367299944162369},\"type\":\"driven fatigued\"}",
+  "Memo": "{\"reversed\":true,\"set\":3,\"startPosition\":{\"x\":0.601599980926514,\"y\":1.04981660842896,\"z\":-0.367299944162369},\"type\":\"driven fatigued\"}",
   "Name": "Deck",
   "Nickname": "driven fatigued 4",
   "SidewaysCard": false,

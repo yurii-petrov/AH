@@ -22,8 +22,8 @@
   "CustomDeck": {
     "5779": {
       "BackIsHidden": true,
-      "BackURL": "https://drive.google.com/uc?export=view\u0026id=1PDKg3b3K2kVC469H53WvbMSnwkW5jxC6",
-      "FaceURL": "https://drive.google.com/uc?export=view\u0026id=1OAha9vAGBl5wYfxWtNir89Idagvu4e5Q",
+      "BackURL": "https://drive.google.com/uc?export=view\u0026id=1OAha9vAGBl5wYfxWtNir89Idagvu4e5Q",
+      "FaceURL": "https://drive.google.com/uc?export=view\u0026id=1PDKg3b3K2kVC469H53WvbMSnwkW5jxC6",
       "NumHeight": 2,
       "NumWidth": 4,
       "Type": 0,
@@ -52,7 +52,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"startPosition\":{\"x\":0.666691601276398,\"y\":1.04981660842896,\"z\":-0.367339849472046},\"type\":\"dark pact\"}",
+  "Memo": "{\"reversed\":true,\"startPosition\":{\"x\":0.666691601276398,\"y\":1.04981660842896,\"z\":-0.367339849472046},\"type\":\"dark pact\"}",
   "Name": "Deck",
   "Nickname": "dark pact 1",
   "SidewaysCard": false,

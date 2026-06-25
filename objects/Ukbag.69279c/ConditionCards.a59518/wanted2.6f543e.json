@@ -22,8 +22,8 @@
   "CustomDeck": {
     "5800": {
       "BackIsHidden": true,
-      "BackURL": "https://drive.google.com/uc?export=view\u0026id=1uuaRLZMmiv-bvhDMSDLQ-bkqEh0Pruo4",
-      "FaceURL": "https://drive.google.com/uc?export=view\u0026id=1vhv1xOsvaBQUm4VnQtO5widIgGXaWwXg",
+      "BackURL": "https://drive.google.com/uc?export=view\u0026id=1vhv1xOsvaBQUm4VnQtO5widIgGXaWwXg",
+      "FaceURL": "https://drive.google.com/uc?export=view\u0026id=1uuaRLZMmiv-bvhDMSDLQ-bkqEh0Pruo4",
       "NumHeight": 2,
       "NumWidth": 3,
       "Type": 0,
@@ -52,7 +52,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"set\":1,\"startPosition\":{\"x\":0.644999980926514,\"y\":1.04981660842896,\"z\":-0.367299944162369},\"type\":\"wanted\"}",
+  "Memo": "{\"reversed\":true,\"set\":1,\"startPosition\":{\"x\":0.644999980926514,\"y\":1.04981660842896,\"z\":-0.367299944162369},\"type\":\"wanted\"}",
   "Name": "Deck",
   "Nickname": "wanted 2",
   "SidewaysCard": false,
