@@ -865,14 +865,20 @@ msgstr "RMB"
 msgid "ROLLER_settings_title_text"
 msgstr "Roll settings"
 
-msgid "ROLLER_settings_spin_text"
-msgstr "Spin strength"
+msgid "ROLLER_settings_power_text"
+msgstr "Throw power"
 
-msgid "ROLLER_settings_toss_text"
-msgstr "Toss height"
+msgid "ROLLER_settings_light_text"
+msgstr "Light"
+
+msgid "ROLLER_settings_medium_text"
+msgstr "Medium"
+
+msgid "ROLLER_settings_strong_text"
+msgstr "Strong"
 
 msgid "ROLLER_settings_instant_text"
-msgstr "Instant roll"
+msgstr "Quick roll (no animation)"
 
 msgid "ROLLER_settings_reset_text"
 msgstr "Reset to defaults"

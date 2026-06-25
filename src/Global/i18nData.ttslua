@@ -1023,24 +1023,32 @@ I18N_DATA = {
     ["uk"] = "перекинуто кубів",
   },
   ["ROLLER_settings_instant_text"] = {
-    ["en"] = "Instant roll",
-    ["uk"] = "Миттєвий кидок",
+    ["en"] = "Quick roll (no animation)",
+    ["uk"] = "Швидкий кидок (без анімації)",
+  },
+  ["ROLLER_settings_light_text"] = {
+    ["en"] = "Light",
+    ["uk"] = "Легко",
+  },
+  ["ROLLER_settings_medium_text"] = {
+    ["en"] = "Medium",
+    ["uk"] = "Середньо",
+  },
+  ["ROLLER_settings_power_text"] = {
+    ["en"] = "Throw power",
+    ["uk"] = "Сила кидка",
   },
   ["ROLLER_settings_reset_text"] = {
     ["en"] = "Reset to defaults",
     ["uk"] = "Скинути налаштування",
   },
-  ["ROLLER_settings_spin_text"] = {
-    ["en"] = "Spin strength",
-    ["uk"] = "Сила закруту",
+  ["ROLLER_settings_strong_text"] = {
+    ["en"] = "Strong",
+    ["uk"] = "Сильно",
   },
   ["ROLLER_settings_title_text"] = {
     ["en"] = "Roll settings",
     ["uk"] = "Налаштування кидка",
-  },
-  ["ROLLER_settings_toss_text"] = {
-    ["en"] = "Toss height",
-    ["uk"] = "Висота підкиду",
   },
   ["ROLLER_success_1"] = {
     ["en"] = "has %s success!",

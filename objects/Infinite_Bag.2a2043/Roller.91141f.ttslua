@@ -7,20 +7,31 @@ local rollerData = {
 }
 
 -- Player-configurable roll feel. These only affect the cosmetic tumble of the
--- dice (the rolled value itself always comes from randomize()), so they are
--- safe to tweak freely.
+-- dice (the rolled value itself always comes from the physical landing), so they
+-- are safe to tweak freely.
 local settings = {
-  spin    = 50,    -- angular velocity magnitude applied while the die tumbles
-  toss    = 0,     -- extra launch height (Y) added to the throw, 0 = flat slide
-  instant = false, -- skip the throw animation and resolve the roll immediately
+  power   = "medium", -- throw strength preset: "light" | "medium" | "strong"
+  instant = false,    -- skip the throw animation and resolve the roll immediately
 }
 
-local SETTINGS_DEFAULT = { spin = 50, toss = 0, instant = false }
+local SETTINGS_DEFAULT = { power = "medium", instant = false }
 
-local SETTINGS_LIMITS = {
-  spin = { min = 20, max = 90 },
-  toss = { min = 0,  max = 4  },
+-- Throw strength presets. The die is thrown up AND forward at once so it arcs
+-- into the tray in front of the roller; height = extra upward velocity ("toss
+-- height"), forward = how far it carries, spin = tumble strength.
+local PRESETS = {
+  light  = { height = 1.5, forward = 6,  spin = 35 },
+  medium = { height = 3.0, forward = 8,  spin = 50 },
+  strong = { height = 4.5, forward = 10, spin = 70 },
 }
+local POWER_ORDER = { "light", "medium", "strong" }
+
+-- Base upward velocity every throw gets on top of the preset height.
+local LAUNCH_UP_VEL = 5
+
+local function getPreset()
+  return PRESETS[settings.power] or PRESETS.medium
+end
 
 local diceY = 2.6
 
@@ -30,8 +41,7 @@ function onLoad(saved_data)
   if saved_data and saved_data ~= "" then
     local ok, data = pcall(JSON.decode, saved_data)
     if ok and type(data) == "table" then
-      if tonumber(data.spin) then settings.spin = tonumber(data.spin) end
-      if tonumber(data.toss) then settings.toss = tonumber(data.toss) end
+      if data.power and PRESETS[data.power] then settings.power = data.power end
       if type(data.instant) == "boolean" then settings.instant = data.instant end
     end
   end
@@ -48,7 +58,7 @@ function onLoad(saved_data)
 end
 
 function onSave()
-  return JSON.encode({ spin = settings.spin, toss = settings.toss, instant = settings.instant })
+  return JSON.encode({ power = settings.power, instant = settings.instant })
 end
 
 local function colored(text)
@@ -82,6 +92,9 @@ function buildRollerUI()
   end
 
   local instantOn = settings.instant and "true" or "false"
+  -- highlight the active power preset
+  local function btnTxt(key) return settings.power == key and "#2b2924" or "#ffffff" end
+  local function btnCol(key) return settings.power == key and "#a29c90" or "#00000055" end
 
   local xml = string.format([[
     <Button id="help" onClick="toggleHelp" width="400" height="400"
@@ -131,20 +144,17 @@ function buildRollerUI()
         <Panel padding="0 0 0 6">
           <Text fontSize="45" font="fonts/AdonisC" color="#ffffff">%s</Text>
         </Panel>
-        <HorizontalLayout spacing="18" childForceExpandWidth="false" childAlignment="MiddleCenter">
-          <Text fontSize="28" font="fonts/AdonisC" color="#ffffff" minWidth="240" alignment="MiddleLeft">%s</Text>
-          <Slider id="spin_slider" minValue="20" maxValue="90" wholeNumbers="true" value="%d"
-            onValueChanged="onSpinChanged" flexibleWidth="1" preferredHeight="40"/>
-          <Text id="spin_value" fontSize="28" font="fonts/AdonisC" color="#ffffff" minWidth="70" alignment="MiddleRight">%d</Text>
+        <Text fontSize="26" font="fonts/AdonisC" color="#cfc7b8" alignment="MiddleLeft" preferredHeight="34">%s</Text>
+        <HorizontalLayout spacing="14" childForceExpandWidth="true" preferredHeight="66">
+          <Button id="power_light" onClick="onPowerClick" fontSize="28" font="fonts/AdonisC" textColor="%s" color="%s">%s</Button>
+          <Button id="power_medium" onClick="onPowerClick" fontSize="28" font="fonts/AdonisC" textColor="%s" color="%s">%s</Button>
+          <Button id="power_strong" onClick="onPowerClick" fontSize="28" font="fonts/AdonisC" textColor="%s" color="%s">%s</Button>
         </HorizontalLayout>
         <HorizontalLayout spacing="18" childForceExpandWidth="false" childAlignment="MiddleCenter">
           <Text fontSize="28" font="fonts/AdonisC" color="#ffffff" minWidth="240" alignment="MiddleLeft">%s</Text>
-          <Slider id="toss_slider" minValue="0" maxValue="4" wholeNumbers="true" value="%d"
-            onValueChanged="onTossChanged" flexibleWidth="1" preferredHeight="40"/>
-          <Text id="toss_value" fontSize="28" font="fonts/AdonisC" color="#ffffff" minWidth="70" alignment="MiddleRight">%d</Text>
+          <Toggle id="instant_toggle" isOn="%s" onValueChanged="onInstantChanged"
+            flexibleWidth="1" textColor="#ffffff" fontSize="28" font="fonts/AdonisC" preferredHeight="42"/>
         </HorizontalLayout>
-        <Toggle id="instant_toggle" isOn="%s" onValueChanged="onInstantChanged"
-          textColor="#ffffff" fontSize="28" font="fonts/AdonisC" preferredHeight="42">%s</Toggle>
         <Button id="reset_settings" onClick="resetSettings" fontSize="26" font="fonts/AdonisC"
           textColor="#ffffff" color="#00000055" minHeight="46">%s</Button>
       </VerticalLayout>
@@ -162,14 +172,12 @@ function buildRollerUI()
     i18n.getStrById("ROLLER_reroll_total_text"),
     i18n.getStrById("ROLLER_rerolled_dice_text"),
     i18n.getStrById("ROLLER_settings_title_text"),
-    i18n.getStrById("ROLLER_settings_spin_text"),
-    settings.spin,
-    settings.spin,
-    i18n.getStrById("ROLLER_settings_toss_text"),
-    settings.toss,
-    settings.toss,
-    instantOn,
+    i18n.getStrById("ROLLER_settings_power_text"),
+    btnTxt("light"),  btnCol("light"),  i18n.getStrById("ROLLER_settings_light_text"),
+    btnTxt("medium"), btnCol("medium"), i18n.getStrById("ROLLER_settings_medium_text"),
+    btnTxt("strong"), btnCol("strong"), i18n.getStrById("ROLLER_settings_strong_text"),
     i18n.getStrById("ROLLER_settings_instant_text"),
+    instantOn,
     i18n.getStrById("ROLLER_settings_reset_text"),
     table.concat(diceButtons)
   )
@@ -187,28 +195,33 @@ function toggleSettings()
   self.UI.setAttribute("settings_panel", "active", active == "true" and "false" or "true")
 end
 
-local function clamp(value, limit)
-  return math.max(limit.min, math.min(limit.max, value))
+-- Angular velocity with a randomized direction on each axis, so the physical
+-- result is well distributed (and looks more natural than always spinning the
+-- same way). Magnitude comes from the active power preset.
+local function randomSpin()
+  local s = getPreset().spin
+  local function axis() return (math.random(0, 1) == 0 and -s or s) end
+  return Vector(axis(), axis(), axis())
 end
 
-function onSpinChanged(_, value)
-  -- Lock settings while dice are rolling so changes can't interfere mid-roll;
-  -- snap the slider back to the stored value.
-  if getIsRolling() then
-    self.UI.setAttribute("spin_slider", "value", settings.spin)
-    return
+function refreshPowerButtons()
+  for _, key in ipairs(POWER_ORDER) do
+    local selected = (settings.power == key)
+    self.UI.setAttribute("power_" .. key, "color", selected and "#a29c90" or "#00000055")
+    self.UI.setAttribute("power_" .. key, "textColor", selected and "#2b2924" or "#ffffff")
   end
-  settings.spin = clamp(math.floor(tonumber(value) + 0.5), SETTINGS_LIMITS.spin)
-  self.UI.setAttribute("spin_value", "text", settings.spin)
 end
 
-function onTossChanged(_, value)
+function onPowerClick(_, _, id)
   if getIsRolling() then
-    self.UI.setAttribute("toss_slider", "value", settings.toss)
     return
   end
-  settings.toss = clamp(math.floor(tonumber(value) + 0.5), SETTINGS_LIMITS.toss)
-  self.UI.setAttribute("toss_value", "text", settings.toss)
+  local key = id:gsub("power_", "")
+  if not PRESETS[key] then
+    return
+  end
+  settings.power = key
+  refreshPowerButtons()
 end
 
 function onInstantChanged(_, value)
@@ -224,13 +237,9 @@ function resetSettings()
   if getIsRolling() then
     return
   end
-  settings.spin    = SETTINGS_DEFAULT.spin
-  settings.toss    = SETTINGS_DEFAULT.toss
+  settings.power   = SETTINGS_DEFAULT.power
   settings.instant = SETTINGS_DEFAULT.instant
-  self.UI.setAttribute("spin_slider", "value", settings.spin)
-  self.UI.setAttribute("spin_value", "text", settings.spin)
-  self.UI.setAttribute("toss_slider", "value", settings.toss)
-  self.UI.setAttribute("toss_value", "text", settings.toss)
+  refreshPowerButtons()
   self.UI.setAttribute("instant_toggle", "isOn", settings.instant and "true" or "false")
 end
 
@@ -384,13 +393,14 @@ function dice_btn(playerColor, alt_click, id)
         else
         obj.interactable = false
         Wait.time(function()
-          local pos = obj.getPosition() + Vector(0, settings.toss, 5)
-          obj.setPositionSmooth(pos, false, true)
-          Wait.time(function()
-            obj.setAngularVelocity(Vector(settings.spin, settings.spin, settings.spin))
-            runAfterRest(obj, function(obj)
-              obj.randomize()
-              runAfterRest(obj, function(obj)
+          -- Randomize the starting orientation, then physically toss the die
+          -- (arc up + forward, spinning from the moment it leaves) so it really
+          -- tumbles through the air and lands on a fair, real result (no re-roll).
+          obj.setRotation(Vector(math.random(0, 360), math.random(0, 360), math.random(0, 360)))
+          local preset = getPreset()
+          obj.setVelocity(Vector(0, LAUNCH_UP_VEL + preset.height, preset.forward))
+          obj.setAngularVelocity(randomSpin())
+          runAfterRest(obj, function(obj)
                 for _, rv in pairs(obj.getRotationValues()) do
                   if rv.value == obj.getRotationValue() then
 
@@ -414,9 +424,7 @@ function dice_btn(playerColor, alt_click, id)
                     end)
                   end
                 end
-              end)
             end)
-          end, 0.3)
         end, 1)
         end
 
@@ -539,14 +547,12 @@ function dice_btn(playerColor, alt_click, id)
             obj.interactable = false
 
             Wait.time(function()
-            local pos = obj.getPosition() + Vector(0, settings.toss, 5)
-            obj.setPositionSmooth(pos, false, true)
-              Wait.time(function()
-                obj.setAngularVelocity(Vector(settings.spin, settings.spin, settings.spin))
-              end, 0.3)
+            -- Randomize orientation, then physically toss (arc up + forward, spinning).
+            obj.setRotation(Vector(math.random(0, 360), math.random(0, 360), math.random(0, 360)))
+            local preset = getPreset()
+            obj.setVelocity(Vector(0, LAUNCH_UP_VEL + preset.height, preset.forward))
+            obj.setAngularVelocity(randomSpin())
               runAfterRest(obj, function(obj)
-                obj.randomize()
-                runAfterRest(obj, function(obj)
                   for _, rv in pairs(obj.getRotationValues()) do
                     if rv.value == obj.getRotationValue() then
 
@@ -580,7 +586,6 @@ function dice_btn(playerColor, alt_click, id)
                     end
                   end
                 end)
-              end)
             end, 1)
             end
 

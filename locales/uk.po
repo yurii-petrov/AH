@@ -931,14 +931,20 @@ msgstr "ПКМ"
 msgid "ROLLER_settings_title_text"
 msgstr "Налаштування кидка"
 
-msgid "ROLLER_settings_spin_text"
-msgstr "Сила закруту"
+msgid "ROLLER_settings_power_text"
+msgstr "Сила кидка"
 
-msgid "ROLLER_settings_toss_text"
-msgstr "Висота підкиду"
+msgid "ROLLER_settings_light_text"
+msgstr "Легко"
+
+msgid "ROLLER_settings_medium_text"
+msgstr "Середньо"
+
+msgid "ROLLER_settings_strong_text"
+msgstr "Сильно"
 
 msgid "ROLLER_settings_instant_text"
-msgstr "Миттєвий кидок"
+msgstr "Швидкий кидок (без анімації)"
 
 msgid "ROLLER_settings_reset_text"
 msgstr "Скинути налаштування"
