@@ -1,0 +1,37 @@
+-- ╭──────────────────────────────────────────────╮
+-- │                Runtime state                 │
+-- ╰──────────────────────────────────────────────╯
+
+isTestMode = false
+
+isDrawMythInProcess = false
+
+-- ╭──────────────────────────────────────────────╮
+-- │                Setup Scenario                │
+-- ╰──────────────────────────────────────────────╯
+
+currentSetup = {
+  scenario = 1,
+  players = 2
+}
+
+setupScenario = {
+  scenarioData = {},
+  isPreparing = false
+}
+
+-- ╭──────────────────────────────────────────────╮
+-- │                Game                          │
+-- ╰──────────────────────────────────────────────╯
+
+gameData = {
+  addons = {},
+  scenarioData = nil,
+  isStarted = false,
+  phase = 1,
+  numberOfPlayers = 2,
+  lockObjs = {},
+  language = nil,
+  selectedInvestigators = {},
+  areAllComponentsTaken = false
+}

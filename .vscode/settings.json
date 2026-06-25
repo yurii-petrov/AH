@@ -1,0 +1,69 @@
+{
+  "files.associations": {
+    "*.ttslua": "lua",
+    "*.luascriptstate": "json"
+  },
+
+  "Lua.runtime.version": "Lua 5.2",
+
+  "Lua.diagnostics.globals": [
+    "self",
+    "Player",
+    "Players",
+    "getObjectFromGUID",
+    "getAllObjects",
+    "spawnObject",
+    "destroyObject",
+    "broadcastToAll",
+    "printToAll",
+    "printToColor",
+    "log",
+    "Wait",
+    "WebRequest",
+    "UI",
+    "JSON",
+    "math",
+    "table",
+    "string",
+    "pcall",
+    "xpcall",
+    "ipairs",
+    "pairs",
+    "coroutine",
+    "tostring",
+    "tonumber",
+    "type",
+    "error",
+    "assert",
+    "setmetatable",
+    "getmetatable",
+    "rawget",
+    "rawset",
+    "FACE_UP",
+    "FACE_DOWN",
+    "i18n",
+    "serpent",
+    "translationService"
+  ],
+
+  "Lua.workspace.ignoreDir": ["objects", "saves", "modsettings", "locales", "memory"],
+
+  "xml.fileAssociations": [
+    { "pattern": "objects/**/*.xml", "systemId": "tts-ui" },
+    { "pattern": "objects/Root.xml",  "systemId": "tts-ui" }
+  ],
+
+  "xml.format.enabled": true,
+  "xml.format.splitAttributes": true,
+  "xml.validation.enabled": false,
+
+  "[lua]": {
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true
+  },
+  "[xml]": {
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "editor.formatOnSave": false
+  }
+}

@@ -1,0 +1,51 @@
+-- ╭──────────────────────────────────────────────╮
+-- │                Tile ids                      │
+-- ╰──────────────────────────────────────────────╯
+
+mythosTileId = "3dbb4d"
+scenarioMatId = "7b841f"
+shopMatId = "80c416"
+conditionMatId = "f0624c"
+tableId = "f47e19"
+tile4ActionsId = "d706d4"
+locationMatId = "9fe1d3"
+nastilo4kaId = "d75b3b"
+
+-- ╭──────────────────────────────────────────────╮
+-- │                Bags                          │
+-- ╰──────────────────────────────────────────────╯
+
+monstersbyScenarioUkId = "dd5297"
+boxId = "49a7d7"
+doomBagId = "099201"
+clueBagId = "5e5b58"
+mythosBagId = "106418"
+monsterMatBagId = "d96088"
+doubleSidedMatBagId = "5ed3b3"
+investigatorMatBagId = "774898"
+cardMatBagId = "fe8d29"
+rollerBagId = "2a2043"
+figureBagId = "add1ff"
+figure3dBagId = "50c60d"
+activationTokenBagId = "2f7335"
+activationLiderTokenBagId = "1a067e"
+itemMatBagId = "855d0e"
+itemMatBag2Id = "f20e66"
+codexMatBagId = "565442"
+whiteTokenBagId = "b84d40"
+blueTokenBagId = "40bae0"
+redTokenBagId = "fe6c51"
+greenTokenBagId = "18c8c9"
+anomalyBagId = "009961"
+terrorBagId = "c19def"
+
+mythosTokenBagIds = {
+  [MythosCup.SpreadDoom] = "829038",
+  [MythosCup.SpawnMonster] = "9f44f4",
+  [MythosCup.SpawnClue] = "fa4047",
+  [MythosCup.ReadHeadline] = "c2adec",
+  [MythosCup.GateBurst] = "3a385c",
+  [MythosCup.Reckoning] = "2fb57a",
+  [MythosCup.Blank] = "3a847f",
+  [MythosCup.Terror] = "77ae04"
+}

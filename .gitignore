@@ -7,3 +7,5 @@ src/ConvertMemo/objects/
 .claude/
 .cursorignore
 .claudeignore
+CLAUDE.md
+memory/

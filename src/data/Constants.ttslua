@@ -1,0 +1,70 @@
+-- ╭──────────────────────────────────────────────╮
+-- │                 TAG DEFINITIONS              │
+-- ╰──────────────────────────────────────────────╯
+
+Tag = {
+  DoomToken = "Doom Token",
+  AnomalyToken = "Anomaly Token"
+}
+
+MythosCup = {
+  SpreadDoom = "Spread Doom",
+  SpawnMonster = "Spawn Monster",
+  ReadHeadline = "Read Headline",
+  SpawnClue = "Spawn Clue",
+  GateBurst = "Gate Burst",
+  Reckoning = "Reckoning",
+  Blank = "Blank",
+  Terror = "Terror"
+}
+
+STREET_LIKE_TYPES = {
+  street = true,
+  mystery = true,
+  ["travel route"] = true,
+  ["travel routes"] = true,
+  threshold = true,
+}
+
+CONDITION_TYPES = {
+  ["blessed cursed"] = true,
+  ["dark pact"] = true,
+  ["tainted"] = true,
+  ["driven fatigued"] = true,
+  ["wanted"] = true,
+}
+
+-- ╭──────────────────────────────────────────────╮
+-- │                Phases                        │
+-- ╰──────────────────────────────────────────────╯
+
+phases = {{
+  image = "phase_action_image",
+  color = {1, 1, 0.6}
+}, {
+  image = "phase_monster_image",
+  color = {1, 0.6, 1}
+}, {
+  image = "phase_encounter_image",
+  color = {0.6, 1, 0.6}
+}, {
+  image = "phase_myth_image",
+  color = {1, 0.6, 0.6}
+}}
+
+-- ╭──────────────────────────────────────────────╮
+-- │                POSITIONS                     │
+-- ╰──────────────────────────────────────────────╯
+
+scenarioSheetSetupLocation = {
+  position = {
+    x = -30.225,
+    y = 2.013,
+    z = 39.417
+  },
+  rotation = {
+    x = 0,
+    y = 180,
+    z = 0
+  }
+}

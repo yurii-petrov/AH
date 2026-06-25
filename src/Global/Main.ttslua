@@ -1,0 +1,197 @@
+-- ╭────────────────────────────────────────────────╮
+-- │                MAP TILES                       │
+-- ╰────────────────────────────────────────────────╯
+
+local function resolveDataObj(data)
+  if data and data.guid then
+    data.obj = getObjectFromGUID(data.guid)
+  end
+end
+
+local function resolveAllDataObjects()
+  resolveDataObj(MYTHOS_TILE_DATA)
+  resolveDataObj(MYTHOS_TILE_DATA.bag)
+  resolveDataObj(SCENARIO_MAT_DATA)
+  resolveDataObj(TABLE_DATA)
+  resolveDataObj(LOCATION_MAT_DATA)
+  resolveDataObj(SHOP_MAT_DATA)
+  for _, matData in ipairs(CONDITION_MAT_DATA) do
+    resolveDataObj(matData)
+  end
+end
+
+function saveDeck(obj, key, store, storeKey)
+  gameData.decks = gameData.decks or {}
+  gameData.decks[key] = { guid = obj.getGUID(), store = storeKey }
+  if store then
+    store[key] = store[key] or {}
+    store[key].obj  = obj
+    store[key].guid = obj.getGUID()
+  end
+end
+
+local function resolveAllDeckObjects()
+  local decks = gameData.decks
+  if not decks then return end
+  local storeMap = {
+    location = LOCATION_MAT_DATA.decks,
+    shop     = SHOP_MAT_DATA.decks,
+  }
+  for key, entry in pairs(decks) do
+    if entry.store then
+      local store = storeMap[entry.store]
+      if store then
+        store[key] = store[key] or {}
+        store[key].guid = entry.guid
+        store[key].obj  = getObjectFromGUID(entry.guid)
+      end
+    end
+  end
+  if gameData.mapTileGuids then
+    LOCATION_MAT_DATA.tiles = {}
+    for name, guid in pairs(gameData.mapTileGuids) do
+      LOCATION_MAT_DATA.tiles[name] = getObjectFromGUID(guid)
+    end
+  end
+end
+
+function onload(savedData)
+
+  self.UI.setXmlTable(getRootXmlTable())
+
+  resolveAllDataObjects()
+
+  -- lockObj(tableId)
+  lockObj(locationMatId)
+  lockObj(scenarioMatId)
+  lockObj(mythosTileId)
+  lockObj(tile4ActionsId)
+
+  -- lockObj(conditionMatId)
+  -- lockObj(mythosBagId)
+  lockObj(shopMatId)
+  lockObj(nastilo4kaId)
+
+  local parsedSaveData = parseJson(savedData)
+  if parsedSaveData then
+    gameData = parsedSaveData
+  end
+
+  resolveAllDeckObjects()
+
+  Wait.time(function()
+    updateXMLs()
+  end, 1)
+
+  if gameData.isStarted then
+    Global.UI.setAttribute("phase", "active", true)
+    Global.UI.setAttribute("phase_img", "image", phases[gameData.phase].image)
+    -- restore the investigators HUD (after updateXMLs re-applies the UI table)
+    Wait.time(function()
+      setInvestigatorCount(gameData.numberOfPlayers or 2)
+    end, 1.5)
+  end
+
+  for guid, _ in pairs(gameData.lockObjs) do
+    lockObj(guid)
+
+    local memo = parseJson(getObjectFromGUID(guid).memo)
+    if memo and memo.name == "ConditionMat2" then
+      conditionMat2Id = guid
+    end
+  end
+
+  if not gameData.scenarioData then
+    local scenarioData = getScenarioData(1)
+    if scenarioData then
+      setupScenario.scenarioData = scenarioData
+    end
+  end
+
+  local mythosBag = MYTHOS_TILE_DATA.bag.obj
+  if mythosBag then
+    mythosBag.setName("Чаша міту")
+    mythosBag.addContextMenuItem("Fix button", fixDrawMythosButton)
+  end
+
+  local mythosTile = MYTHOS_TILE_DATA.obj
+  if mythosTile then
+
+    mythosTile.createButton({
+      click_function = 'onClickDrawMythos',
+      function_owner = nil,
+      position = {-0.24, 0.27, 0.95},
+      rotation = {0, 0, 0},
+      width = 100,
+      height = 30,
+      font_size = 0,
+      color = {0, 0, 0, 0},
+      font_color = {0, 0, 0, 0},
+      hover_color = {1, 1, 1, .3}
+    })
+
+    mythosTile.createButton({
+      click_function = 'onClickEncounter',
+      function_owner = nil,
+      position = {-0.04, 0.27, 0.95},
+      rotation = {0, 0, 0},
+      width = 100,
+      height = 30,
+      font_size = 0,
+      color = {0, 0, 0, 0},
+      font_color = {0, 0, 0, 0},
+      hover_color = {1, 1, 1, .3}
+    })
+  end
+end
+
+function onSave()
+  local saveData = JSON.encode(gameData)
+  return saveData
+end
+
+function nextPhase(player, value, id)
+  if not player.host then
+    printToColor("Ця кнопка доступна тільки хосту.", player.color, {1, 0.2, 0.2})
+    return
+  end
+  gameData.phase = gameData.phase + 1
+  if gameData.phase > #phases then
+    gameData.phase = 1
+  end
+  Global.UI.setAttribute("phase_img", "image", phases[gameData.phase].image)
+  broadcastToAll(i18n.getStrById("PB_next_phase") .. " " .. i18n.getStrById("PB_phase" .. gameData.phase) .. "!",
+    phases[gameData.phase].color)
+
+  self.UI.setAttribute('phase_text', "text", i18n.getStrById("PB_phase" .. gameData.phase))
+  if gameData.phase == 1 then
+    self.UI.setAttribute("phase_btn_myth", "active", false)
+    self.UI.setAttribute("phase_btn_text", "active", false)
+    self.UI.setAttribute("PB_phase_btn_btn_text", "active", false)
+    for _, o in ipairs(getObjects()) do
+      if o.type == "Tile" and o.memo and (o.memo == "Lider Aactivation Token" or o.memo == "Aactivation Token") then
+        if o.is_face_down then
+          o.flip()
+        end
+      end
+    end
+  elseif gameData.phase == 3 then
+    self.UI.setAttribute("phase_btn_encounter", "active", true)
+    self.UI.setAttribute("phase_btn_text", "text", i18n.getStrById("PB_phase_btn_btn_encounter"))
+    self.UI.setAttribute("phase_btn_text", "active", true)
+    self.UI.setAttribute("PB_phase_btn_btn_text", "active", true)
+  elseif gameData.phase == 4 then
+    self.UI.setAttribute("phase_btn_encounter", "active", false)
+    self.UI.setAttribute("phase_btn_text", "text", i18n.getStrById("PB_phase_btn_btn_mythos"))
+    self.UI.setAttribute("phase_btn_myth", "active", true)
+  end
+
+end
+
+function encounterHudBtn(player)
+  onClickEncounter(nil, player.color)
+end
+
+function mythHudBtn(player)
+  onClickDrawMythos(nil, player.color)
+end
