@@ -151,11 +151,9 @@ function onItemDrop(colorName, object, objectData)
   end
 
   if not objectData.hp and not objectData.sp then
-
-      if objectData.guaranteed and objectData.guaranteed == true and objectData.investigator and objectData.investigator == "Preston Fairmont" then
-        attachItemToMat(object, objectData, itemMatBag2Id)
-      end
-
+    if objectData.extraMat then
+      attachItemToMat(object, objectData, itemMatBag2Id)
+    end
     return
   end
 

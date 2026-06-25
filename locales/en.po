@@ -1311,3 +1311,9 @@ msgstr "Strength"
 
 msgid "IM_will"
 msgstr "Will"
+
+msgid "IM_debts"
+msgstr "Debts"
+
+msgid "IM_legacy"
+msgstr "Legacy"

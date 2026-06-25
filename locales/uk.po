@@ -1377,3 +1377,9 @@ msgstr "Сила"
 
 msgid "IM_will"
 msgstr "Воля"
+
+msgid "IM_debts"
+msgstr "Борги"
+
+msgid "IM_legacy"
+msgstr "Спадок"
