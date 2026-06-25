@@ -445,6 +445,7 @@ function clickLore(player, alt_click)
     self.UI.setAttribute("focusLoreText", "text","+"..data.focus.lore)
     self.UI.setAttribute("focusLoreText", "textColor", "#382c52")
     self.UI.setAttribute("focusLore", "active", data.focus.lore > 0)
+    broadcastStat("IM_lore", "Lore", data.skill.lore+data.focus.lore)
 end
 
 function clickInfluence(player, alt_click)
@@ -455,6 +456,7 @@ function clickInfluence(player, alt_click)
     self.UI.setAttribute("focusInfluenceText", "text","+"..data.focus.influence)
     self.UI.setAttribute("focusLoreText", "textColor", "#62280f")
     self.UI.setAttribute("focusInfluence", "active", data.focus.influence > 0)
+    broadcastStat("IM_influence", "Influence", data.skill.influence+data.focus.influence)
 end
 
 function clickObservation(player, alt_click)
@@ -465,6 +467,7 @@ function clickObservation(player, alt_click)
     self.UI.setAttribute("focusObservationText", "text","+"..data.focus.observation)
     self.UI.setAttribute("focusLoreText", "textColor", "#233c14")
     self.UI.setAttribute("focusObservation", "active", data.focus.observation > 0)
+    broadcastStat("IM_observation", "Observation", data.skill.observation+data.focus.observation)
 end
 
 function clickStrength(player, alt_click)
@@ -475,6 +478,7 @@ function clickStrength(player, alt_click)
     self.UI.setAttribute("focusStrengthText", "text","+"..data.focus.strength)
     self.UI.setAttribute("focusLoreText", "textColor", "#582410")
     self.UI.setAttribute("focusStrength", "active", data.focus.strength > 0)
+    broadcastStat("IM_strength", "Strength", data.skill.strength+data.focus.strength)
 end
 
 function clickWill(player, alt_click)
@@ -485,34 +489,45 @@ function clickWill(player, alt_click)
     self.UI.setAttribute("focusWillText", "text","+"..data.focus.will)
     self.UI.setAttribute("focusLoreText", "textColor", "#333c4f")
     self.UI.setAttribute("focusWill", "active", data.focus.will > 0)
+    broadcastStat("IM_will", "Will", data.skill.will+data.focus.will)
 end
 
 function clickHP(player, alt_click)
     data.hp = alt_click == "-1" and (data.hp < data.hpMax and data.hp+1 or data.hp) or (data.hp > 0 and data.hp-1 or 0)
-    
+
     self.UI.setAttribute("clickHP", "text", data.hp)
     self.UI.setAttribute("clickHP", "textColor", data.hp > 0 and "#fff5e2" or "#a29c90")
+    broadcastStat("IM_hp", "HP", data.hp)
 end
 
 function clickSanity(player, alt_click)
     data.sanity = alt_click == "-1" and (data.sanity < data.sanityMax and data.sanity+1 or data.sanity) or (data.sanity > 0 and data.sanity-1 or 0)
-    
+
     self.UI.setAttribute("clickSanity", "text", data.sanity)
     self.UI.setAttribute("clickSanity", "textColor", data.sanity > 0 and "#fff5e2" or "#a29c90")
+    broadcastStat("IM_sanity", "Sanity", data.sanity)
 end
 
 function clickMoney(player, alt_click)
     data.money = alt_click == "-1" and data.money+1 or (data.money>0 and data.money-1 or data.money)
-    
+
     self.UI.setAttribute("clickMoney", "text", data.money)
     self.UI.setAttribute("clickMoney", "textColor", data.money > 0 and "#fff5e2" or "#a29c90")
+    broadcastStat("IM_money", "Money", data.money)
 end
 
 function clickRemnant(player, alt_click)
     data.remnant = alt_click == "-1" and data.remnant+1 or (data.remnant>0 and data.remnant-1 or data.remnant)
-    
+
     self.UI.setAttribute("clickRemnant", "text", data.remnant)
     self.UI.setAttribute("clickRemnant", "textColor", data.remnant > 0 and "#fff5e2" or "#a29c90")
+    broadcastStat("IM_remnant", "Remnant", data.remnant)
+end
+
+function broadcastStat(labelKey, labelFallback, value)
+  local name = getInvestigatorDisplayName()
+  local label = Global.call("callTable", {{"i18n", "getStrById"}, labelKey}) or labelFallback
+  broadcastToAll(name .. ": " .. label .. " " .. tostring(value), "White")
 end
 
 function clickDeath(player, alt_click)

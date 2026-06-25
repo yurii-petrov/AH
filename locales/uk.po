@@ -1350,3 +1350,30 @@ msgstr "%s - отримує 1 зачіпку"
 
 msgid "IM_clue_lost"
 msgstr "%s - втрачає 1 зачіпку"
+
+msgid "IM_hp"
+msgstr "Здоров'я"
+
+msgid "IM_sanity"
+msgstr "Розсудливість"
+
+msgid "IM_money"
+msgstr "Гроші"
+
+msgid "IM_remnant"
+msgstr "Залишок"
+
+msgid "IM_lore"
+msgstr "Знання"
+
+msgid "IM_influence"
+msgstr "Вплив"
+
+msgid "IM_observation"
+msgstr "Спостережливість"
+
+msgid "IM_strength"
+msgstr "Сила"
+
+msgid "IM_will"
+msgstr "Воля"

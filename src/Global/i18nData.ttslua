@@ -386,6 +386,42 @@ I18N_DATA = {
     ["en"] = "E    N    E    M    I    E    S",
     ["uk"] = "В    О    Р    О    Г    И",
   },
+  ["IM_hp"] = {
+    ["en"] = "HP",
+    ["uk"] = "Здоров'я",
+  },
+  ["IM_influence"] = {
+    ["en"] = "Influence",
+    ["uk"] = "Вплив",
+  },
+  ["IM_lore"] = {
+    ["en"] = "Lore",
+    ["uk"] = "Знання",
+  },
+  ["IM_money"] = {
+    ["en"] = "Money",
+    ["uk"] = "Гроші",
+  },
+  ["IM_observation"] = {
+    ["en"] = "Observation",
+    ["uk"] = "Спостережливість",
+  },
+  ["IM_remnant"] = {
+    ["en"] = "Remnant",
+    ["uk"] = "Залишок",
+  },
+  ["IM_sanity"] = {
+    ["en"] = "Sanity",
+    ["uk"] = "Розсудливість",
+  },
+  ["IM_strength"] = {
+    ["en"] = "Strength",
+    ["uk"] = "Сила",
+  },
+  ["IM_will"] = {
+    ["en"] = "Will",
+    ["uk"] = "Воля",
+  },
   ["Icebound_Captive"] = {
     ["en"] = "Icebound Captive",
     ["uk"] = "Закутий у Льоді",
