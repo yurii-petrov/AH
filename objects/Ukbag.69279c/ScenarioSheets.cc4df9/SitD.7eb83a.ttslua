@@ -1,0 +1,117 @@
+local data = { hp = 0, sanity = 0, showHp = false, showSanity = false }
+
+function onLoad(savedData)
+  if savedData and savedData ~= "" then
+    local ok, d = pcall(function() return JSON.decode(savedData) end)
+    if ok and d then data = d end
+  end
+  Wait.time(buildUI, 0.5)
+end
+
+function onSave()
+  return JSON.encode(data)
+end
+
+function buildUI()
+  local elements = {}
+  addStatRow(elements, "hp",     "health", data.hp,     "clickHP",     data.showHp,     90, -120)
+  addStatRow(elements, "sanity", "sanity", data.sanity, "clickSanity", data.showSanity, 90,  -85)
+  self.UI.setXmlTable(elements)
+end
+
+function addStatRow(elements, id, image, value, clickFn, visible, x, y)
+  local active  = visible and "true" or "false"
+  local imgPos  = x .. " " .. y .. " -31"
+  local textPos = (x - 25) .. " " .. y .. " -21"
+
+  table.insert(elements, {
+    tag = "Panel",
+    attributes = {
+      id       = id .. "_panel",
+      active   = active,
+      position = imgPos,
+      rotation = "0 0 180",
+      scale    = "0.1 0.175 1",
+      width    = "250",
+      height   = "250",
+      color    = "clear",
+    },
+    children = {
+      {
+        tag = "Button",
+        attributes = {
+          id      = id .. "_btn",
+          onClick = clickFn,
+          width   = "250",
+          height  = "250",
+          color   = "clear",
+          text    = "",
+        }
+      },
+      {
+        tag = "Panel",
+        attributes = {
+          width  = "250",
+          height = "250",
+          color  = "clear",
+        },
+        children = {
+          {
+            tag = "image",
+            attributes = {
+              image          = image,
+              width          = "200",
+              height         = "200",
+              rectAlignment  = "UpperCenter",
+              preserveAspect = "true",
+              color          = "#ffffff",
+            }
+          }
+        }
+      }
+    }
+  })
+
+  table.insert(elements, {
+    tag = "Text",
+    attributes = {
+      id        = id .. "Counter",
+      active    = active,
+      text      = tostring(value),
+      position  = textPos,
+      rotation  = "0 0 180",
+      scale     = "0.1 0.175 1",
+      font      = "Fonts/AdonisC",
+      fontSize  = "180",
+      fontStyle = "Bold",
+      color     = value > 0 and "#fff5e2" or "#a29c90",
+      width     = "300",
+      height    = "250",
+      alignment = "MiddleCenter",
+    }
+  })
+end
+
+function setHpVisible(visible)
+  data.showHp = visible
+  self.UI.setAttribute("hp_panel",   "active", visible and "true" or "false")
+  self.UI.setAttribute("hpCounter",  "active", visible and "true" or "false")
+end
+
+function setSanityVisible(visible)
+  data.showSanity = visible
+  self.UI.setAttribute("sanity_panel",  "active", visible and "true" or "false")
+  self.UI.setAttribute("sanityCounter", "active", visible and "true" or "false")
+end
+
+function clickHP(player, alt_click)
+  data.hp = alt_click == "-1" and data.hp + 1 or (data.hp > 0 and data.hp - 1 or 0)
+  self.UI.setAttribute("hpCounter", "text",  data.hp)
+  self.UI.setAttribute("hpCounter", "color", data.hp > 0 and "#fff5e2" or "#a29c90")
+end
+
+function clickSanity(player, alt_click)
+  data.sanity = alt_click == "-1" and data.sanity + 1 or (data.sanity > 0 and data.sanity - 1 or 0)
+  self.UI.setAttribute("sanityCounter", "text",  data.sanity)
+  self.UI.setAttribute("sanityCounter", "color", data.sanity > 0 and "#fff5e2" or "#a29c90")
+end
