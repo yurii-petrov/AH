@@ -52,6 +52,8 @@ end
 
 function startGame(player, alt, id)
   self.UI.setAttribute('main_menu', 'active', false)
+  self.UI.setAttribute('chooseScenario', 'active', false)
+  self.UI.setAttribute('chooseAddons', 'active', false)
   if gameData.areAllComponentsTaken == true then
     proceedStartGame()
     return
