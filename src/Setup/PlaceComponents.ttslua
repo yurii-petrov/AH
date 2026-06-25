@@ -967,7 +967,7 @@ local function placeReferenceCards(done)
   Wait.time(function()
     for i = 1, numPlayers do
       local xPos = startX + (i - 1) * spacing
-      deck.takeObject({ index = 0, position = Vector(xPos, 3, -71), smooth = true })
+      deck.takeObject({ index = 0, position = Vector(xPos, 6, -71), smooth = true })
     end
     done()
   end, 0.5)
