@@ -59,8 +59,7 @@ INV_STATE = {
   isLeaderAction = {}, -- isLeaderAction[slot][action] = bool (Leader Activation Token)
   slotByName     = {}, -- localized investigator name -> row slot (= TABLE_DATA.players index)
   nameBySlot     = {}, -- row slot -> localized investigator name
-  colorBySlot    = {}, -- row slot -> owning player color (action dots are color-gated)
-  -- mat is NOT stored here; always resolved via TABLE_DATA.players[slot].obj
+  -- mat and color are NOT stored; always resolved dynamically via TABLE_DATA.players / hand memo
 }
 
 local ACTIVATION_MEMOS = {
@@ -132,6 +131,15 @@ end
 local function matForSlot(slot)
   local p = TABLE_DATA.players[slot]
   return p and p.obj
+end
+
+local function colorForSlot(slot)
+  for _, obj in ipairs(getObjects()) do
+    if obj.type == "Hand" and obj.memo == "hand " .. slot then
+      local c = obj.getValue()
+      return (c and c ~= "") and c or nil
+    end
+  end
 end
 
 local function refreshLeaderState(slot)
@@ -344,9 +352,12 @@ function investigatorToggleAction(player, alt, id)
     return
   end
 
-  local owner = INV_STATE.colorBySlot[p]
-  if owner and player and player.color ~= owner then
-    print("[INV] toggle blocked: slot=" .. p .. " owner=" .. owner .. " player=" .. tostring(player.color))
+  local owner = colorForSlot(p)
+  local ownerPlayer = owner and Player[owner]
+  if ownerPlayer and ownerPlayer.seated and ownerPlayer.steam_id ~= player.steam_id then
+    local invName = INV_STATE.nameBySlot[p] or ("Investigator " .. p)
+    local ownerName = (ownerPlayer.steam_name ~= "") and ownerPlayer.steam_name or owner
+    printToColor(string.format(i18n.getStrById("INV_blocked_msg"), invName, ownerName), player.color, {1, 0.5, 0.1})
     return
   end
 
@@ -371,6 +382,7 @@ end
 
 --- Two-press apply-to-all: spend every action, then restore the snapshot.
 function investigatorApplyAll(player, alt, id)
+  if not player.host then return end
   if not INV_STATE.applied then
     INV_STATE.snapshot = {}
     for p = 1, INV_STATE.count do
@@ -451,9 +463,8 @@ end
 --- investigator's action dots.
 ---@param name string localized investigator name to display
 ---@param mat? tts__Object the investigator mat the card was dropped on
----@param color? string owning player color (e.g. "Red")
 ---@param portraitKey? string CustomUIAssets image name for the investigator portrait
-function setInvestigatorName(name, mat, color, portraitKey)
+function setInvestigatorName(name, mat, portraitKey)
   if not name or name == "" then return end
 
   local slot = INV_STATE.slotByName[name]
@@ -477,10 +488,6 @@ function setInvestigatorName(name, mat, color, portraitKey)
   INV_STATE.slotByName[name] = slot
   INV_STATE.nameBySlot[slot] = name
 
-  if color then
-    INV_STATE.colorBySlot[slot] = color
-  end
-
   refreshLeaderState(slot)
   self.UI.setAttribute("INV_name_" .. slot .. "_text", "text", name:match("^(%S+)") or name)
   if portraitKey then
@@ -503,7 +510,6 @@ function clearInvestigatorSlot(mat)
   local name = INV_STATE.nameBySlot[slot]
   if name then INV_STATE.slotByName[name] = nil end
   INV_STATE.nameBySlot[slot]     = nil
-  INV_STATE.colorBySlot[slot]    = nil
   INV_STATE.isLeaderAction[slot] = {}
   for a = 1, ACTIONS_PER_INV do
     INV_STATE.actions[slot][a]        = false
@@ -540,7 +546,6 @@ function setInvestigatorCount(n)
   -- fresh game: drop name / color / leader assignments back to placeholders
   INV_STATE.slotByName     = {}
   INV_STATE.nameBySlot     = {}
-  INV_STATE.colorBySlot    = {}
   INV_STATE.isLeaderAction = {}
   for p = 1, MAX_INV do
     INV_STATE.isLeaderAction[p] = {}

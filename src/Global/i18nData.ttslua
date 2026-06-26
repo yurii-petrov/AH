@@ -430,6 +430,10 @@ I18N_DATA = {
     ["en"] = "Will",
     ["uk"] = "Воля",
   },
+  ["INV_blocked_msg"] = {
+    ["en"] = "%s is occupied by %s. You cannot interact with this investigator.",
+    ["uk"] = "%s зайнятий гравцем %s. Ви не можете взаємодіяти з цим дослідником.",
+  },
   ["Icebound_Captive"] = {
     ["en"] = "Icebound Captive",
     ["uk"] = "Закутий у Льоді",
