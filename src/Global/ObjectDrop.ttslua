@@ -406,7 +406,9 @@ function onMonsterDrop(colorName, object, objectData)
     return
   end
 
-  attachMonsterToMat(object, objectData, monsterMat)
+  runOnceAfterRest(object, function(object)
+    attachMonsterToMat(object, objectData, monsterMat)
+  end)
 end
 
 -- ON OBJECT SPAWN

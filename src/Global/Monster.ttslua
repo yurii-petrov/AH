@@ -51,35 +51,45 @@ function attachMonsterToMat(monster, objectMemo, monsterMat)
   if objectMemo.type == "codex" and objectMemo.role == "Monster" then
     monsterMat.setScale({2.42, 1, 2.42})
   end
-
   monsterMat.setRotation(orient(objectMemo))
 
-  local sign = objectMemo.reversed and -1 or 1
-  local pos = monsterMat.getPosition()
-  pos.x = pos.x + 0.271 * sign
-  monster.setPosition(pos)
+  local matData = monsterMat.getData()
+  local cardData = monster.getData()
 
-  local height = monsterMat.getBounds().size.y
-  monster.interactable = false
+  local sx = matData.Transform.scaleX
+  local sz = matData.Transform.scaleZ
 
-  local oData = monster.getData()
-  oData.Transform.rotZ = faceRotZ(objectMemo, monster.is_face_down)
-  oData.Transform.posY = oData.Transform.posY + 0.06 * sign
-  monsterMat.addAttachment(monster)
+  local frontCard = deepCopy(cardData)
+  frontCard.Transform = {
+    posX = 0.16, posY = 0, posZ = 0,
+    rotX = 0, rotY = 0, rotZ = 0,
+    scaleX = cardData.Transform.scaleX / sx,
+    scaleY = 0.065,
+    scaleZ = cardData.Transform.scaleZ / sz,
+  }
 
-  local oData = monster.getData()
-  oData.Transform.posX = monsterMat.positionToWorld({-0.16, 0, 0}).x
-  oData.Transform.posY = pos.y - (height + 0.10) * sign
-  local clone = spawnObjectData({data = oData})
-  monsterMat.addAttachment(clone)
-  monsterMat.setLock(false)
+  local backCard = deepCopy(cardData)
+  backCard.Transform = {
+    posX = -0.16, posY = 0.10, posZ = 0,
+    rotX = 0, rotY = 0, rotZ = 0,
+    scaleX = cardData.Transform.scaleX / sx,
+    scaleY = 0.065,
+    scaleZ = cardData.Transform.scaleZ / sz,
+  }
+
+  matData.ChildObjects = {frontCard, backCard}
+
+  monster.destruct()
+  monsterMat.destruct()
+
+  local spawnedMat = spawnObjectData({data = matData})
 
   if objectMemo.elite then
     objectMemo.hp = objectMemo.hp + gameData.numberOfPlayers * objectMemo.elite
   end
 
-  runAfterRest(monsterMat, function(monsterMat)
-    monsterMat.call("setHPMax", {maxHp = objectMemo.hp})
+  runAfterRest(spawnedMat, function(spawnedMat)
+    spawnedMat.call("setHPMax", {maxHp = objectMemo.hp})
   end)
 end
 
