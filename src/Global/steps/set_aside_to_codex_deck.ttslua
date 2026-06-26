@@ -1,0 +1,67 @@
+-- ╭──────────────────────────────────────────────╮
+-- │       STEP: setAsideToCodexDeck              │
+-- ╰──────────────────────────────────────────────╯
+--
+-- Takes specific codex cards from the archive (by number) and places them
+-- face-down at the codexDeck snap point on the location mat, forming the
+-- deck from which card 31's actions later draw.
+--
+-- Example step JSON:
+--   { "type": "setAsideToCodexDeck", "numbers": [32, 33, 34, 35] }
+
+function processStepSetAsideToCodexDeck(step, context, onDone)
+  local numbers = step.numbers
+  if not numbers or #numbers == 0 then
+    log("[setAsideToCodexDeck] numbers is nil/empty")
+    if onDone then onDone() end
+    return
+  end
+
+  local locationMat = findBoardByQuery({{
+    field = "type",
+    op    = "eq",
+    value = "locationMat"
+  }})
+  if not locationMat then
+    log("[setAsideToCodexDeck] locationMat not found")
+    if onDone then onDone() end
+    return
+  end
+
+  local archive = findDeckOnBoardByType(locationMat, "archive")
+  if not archive then
+    log("[setAsideToCodexDeck] archive not found")
+    if onDone then onDone() end
+    return
+  end
+
+  local boardData = parseJson(locationMat.memo)
+  if not boardData or not boardData.codexDeck then
+    log("[setAsideToCodexDeck] codexDeck position not found in locationMat memo")
+    if onDone then onDone() end
+    return
+  end
+
+  local codexDeckPos = locationMat.positionToWorld({
+    tonumber(boardData.codexDeck[1]),
+    tonumber(boardData.codexDeck[2]),
+    tonumber(boardData.codexDeck[3])
+  }):setAt("y", 3)
+
+  for _, number in ipairs(numbers) do
+    local card = takeCardByQuery(archive, {{
+      field = "number",
+      op    = "eq",
+      value = number
+    }}, {
+      position = codexDeckPos,
+      rotation = { 0, 180, 180 },
+      smooth   = true
+    })
+    if not card then
+      log("[setAsideToCodexDeck] card " .. tostring(number) .. " not found in archive")
+    end
+  end
+
+  if onDone then onDone() end
+end
