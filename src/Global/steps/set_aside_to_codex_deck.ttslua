@@ -55,7 +55,6 @@ function processStepSetAsideToCodexDeck(step, context, onDone)
       value = number
     }}, {
       position = codexDeckPos,
-      rotation = { 0, 180, 180 },
       smooth   = true
     })
     if not card then

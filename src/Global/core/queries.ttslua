@@ -132,7 +132,7 @@ function takeCardByQuery(deck, query, params)
       if deck.type == "Deck" then
         local takeParams = {
           guid     = entry.guid,
-          rotation = (params and params.rotation) or {0, 180, 0},
+          rotation = (params and params.rotation) or orient(entryData, true),
           smooth   = params and params.smooth or false
         }
         if params and params.position then

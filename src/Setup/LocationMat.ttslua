@@ -145,7 +145,7 @@ function placeCodexFromArchive()
         archiveDeck.takeObject({
           index    = codex.index,
           position = codexDeckPos,
-          rotation = { 0, 180, 0 },
+          rotation = orient(codexData),
           smooth   = false,
         })
         codexDeckCount = codexDeckCount + 1
