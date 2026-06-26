@@ -129,6 +129,9 @@ function placeCodexFromArchive()
     for i, v in pairs(tbl) do if v == target then return i end end
   end
 
+  local codexDeckPos = locationMat.positionToWorld(LOCATION_MAT_DATA.codexDeck):setAt("y", 3)
+  local codexDeckCount = 0
+
   local archiveObjs = archiveDeck.getObjects()
   for i = #archiveObjs, 1, -1 do
     local codex     = archiveObjs[i]
@@ -138,8 +141,28 @@ function placeCodexFromArchive()
       if idx then
         local taken = archiveDeck.takeObject({ index = codex.index })
         attachCodexCard(taken, locationMat.positionToWorld(LOCATION_MAT_DATA.codex[idx]):setAt("y", 3))
+      elseif scenarioData.codexDeck and containsNumber(scenarioData.codexDeck, codexData.number) then
+        archiveDeck.takeObject({
+          index    = codex.index,
+          position = codexDeckPos,
+          rotation = { 0, 180, 0 },
+          smooth   = false,
+        })
+        codexDeckCount = codexDeckCount + 1
       end
     end
+  end
+
+  if codexDeckCount > 1 then
+    Wait.time(function()
+      local objs = findObjsInRadius(codexDeckPos)
+      for _, obj in ipairs(objs) do
+        if obj.type == "Deck" then
+          obj.shuffle()
+          break
+        end
+      end
+    end, 1)
   end
 end
 
