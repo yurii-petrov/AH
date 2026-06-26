@@ -246,6 +246,22 @@ function onInvestigatorDrop(colorName, object, objectData, isIgnoreRandomCard)
   gameData.selectedInvestigators[objectData.name] = objectData
   investigatorMat.call("setMemo", objectData)
   setInvestigatorName(i18n.getStrById(objectData.name:gsub(" ", "_")), investigatorMat, colorName, objectData.name:gsub(" ", "_") .. "_portrait")
+
+  local tintColor = colorName
+  local matGuid = investigatorMat.getGUID()
+  for i, playerData in ipairs(TABLE_DATA.players) do
+    if playerData.guid == matGuid then
+      for _, obj in ipairs(getObjects()) do
+        if obj.type == "Hand" and obj.memo == "hand " .. i then
+          local c = obj.getValue()
+          if c and c ~= "" then tintColor = c end
+          break
+        end
+      end
+      break
+    end
+  end
+
   runAfterRest(investigatorMat, function(obj)
 
     local guaranteedPosition = {1.086, 0, 1.346}
@@ -285,7 +301,7 @@ function onInvestigatorDrop(colorName, object, objectData, isIgnoreRandomCard)
                   smooth = true
                 })
                 takenObject.setName(translationService.getText(objectData.name))
-                takenObject.setColorTint(colorName)
+                takenObject.setColorTint(tintColor)
                 break
               end
             end
@@ -302,7 +318,7 @@ function onInvestigatorDrop(colorName, object, objectData, isIgnoreRandomCard)
                   smooth = true
                 })
                 takenObject.setName(translationService.getText(objectData.name))
-                takenObject.setColorTint(colorName)
+                takenObject.setColorTint(tintColor)
                 break
               end
             end

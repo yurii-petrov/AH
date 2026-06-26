@@ -157,10 +157,16 @@ end
 
 local function syncActivationToken(slot, action, spent)
   local mat = matForSlot(slot)
-  if not mat then return end
+  if not mat then
+    print("[INV] syncToken: no mat for slot=" .. slot)
+    return
+  end
 
   local token = activationTokensOn(mat)[action]
-  if not token then return end
+  if not token then
+    print("[INV] syncToken: no token at slot=" .. slot .. " action=" .. action)
+    return
+  end
 
   local isLeader = token.memo == "Leader Activation Token"
   if isLeader ~= INV_STATE.isLeaderAction[slot][action] then
@@ -333,11 +339,14 @@ end
 function investigatorToggleAction(player, alt, id)
   local p, a = id:match("INV_action_(%d+)_(%d+)")
   p, a = tonumber(p), tonumber(a)
-  if not p or not a then return end
+  if not p or not a then
+    print("[INV] toggle: bad id=" .. tostring(id))
+    return
+  end
 
-  -- color gate: you can only spend your own investigator's actions
   local owner = INV_STATE.colorBySlot[p]
   if owner and player and player.color ~= owner then
+    print("[INV] toggle blocked: slot=" .. p .. " owner=" .. owner .. " player=" .. tostring(player.color))
     return
   end
 
@@ -418,6 +427,17 @@ function investigatorSeatPlayer(player, alt, id)
   local occupant = Player[targetColor]
   if occupant and occupant.seated and occupant.steam_id ~= player.steam_id then return end
   player.changeColor(targetColor)
+
+  local mat = TABLE_DATA.players[p] and TABLE_DATA.players[p].obj
+  if mat then
+    local pos = mat.getPosition()
+    Wait.frames(function()
+      local p2 = Player[targetColor]
+      if p2 and p2.seated then
+        p2.lookAt({ position = pos, pitch = 50, yaw = 0, distance = 25 })
+      end
+    end, 3)
+  end
 end
 
 -- ── public API ────────────────────────────────────────────────────
