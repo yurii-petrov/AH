@@ -47,36 +47,19 @@ function attachAllyCard(ally, allyMemo, spawnPos)
   end)
 end
 
-function attachMonsterCard(monster, objectMemo, spawnPos)
-  local monsterMatBag = getObjectFromGUID(monsterMatBagId)
-  if not monsterMatBag then
-    return
-  end
-
-  local monsterMat = monsterMatBag.takeObject({
-    index = 0,
-    position = spawnPos,
-    rotation = orient(objectMemo),
-    smooth = false
-  })
-
-  if not monsterMat then
-    return
-  end
-
-  -- Codex monster cards use the larger codex card art, so the mat must be
-  -- scaled up to fit (mirrors onMonsterDrop in ObjectDrop.ttslua).
+function attachMonsterToMat(monster, objectMemo, monsterMat)
   if objectMemo.type == "codex" and objectMemo.role == "Monster" then
     monsterMat.setScale({2.42, 1, 2.42})
   end
 
+  monsterMat.setRotation(orient(objectMemo))
+
   local sign = objectMemo.reversed and -1 or 1
-  local pos = spawnPos
+  local pos = monsterMat.getPosition()
   pos.x = pos.x + 0.271 * sign
   monster.setPosition(pos)
 
   local height = monsterMat.getBounds().size.y
-
   monster.interactable = false
 
   local oData = monster.getData()
@@ -87,22 +70,33 @@ function attachMonsterCard(monster, objectMemo, spawnPos)
   local oData = monster.getData()
   oData.Transform.posX = monsterMat.positionToWorld({-0.16, 0, 0}).x
   oData.Transform.posY = pos.y - (height + 0.10) * sign
-  local clone = spawnObjectData({
-    data = oData
-  })
+  local clone = spawnObjectData({data = oData})
   monsterMat.addAttachment(clone)
+  monsterMat.setLock(false)
 
   if objectMemo.elite then
     objectMemo.hp = objectMemo.hp + gameData.numberOfPlayers * objectMemo.elite
   end
 
-  local params = {
-    maxHp = objectMemo.hp
-  }
-
   runAfterRest(monsterMat, function(monsterMat)
-    monsterMat.call("setHPMax", params)
+    monsterMat.call("setHPMax", {maxHp = objectMemo.hp})
   end)
+end
+
+function attachMonsterCard(monster, objectMemo, spawnPos)
+  local monsterMatBag = getObjectFromGUID(monsterMatBagId)
+  if not monsterMatBag then return end
+
+  local monsterMat = monsterMatBag.takeObject({
+    index = 0,
+    position = spawnPos,
+    rotation = orient(objectMemo),
+    smooth = false
+  })
+
+  if not monsterMat then return end
+
+  attachMonsterToMat(monster, objectMemo, monsterMat)
 end
 
 function attachDoubleSidedCard(monster, objectMemo, spawnPos)

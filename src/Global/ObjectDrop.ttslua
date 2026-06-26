@@ -406,23 +406,7 @@ function onMonsterDrop(colorName, object, objectData)
     return
   end
 
-  if (objectData.type == "codex" and objectData.role and objectData.role == "Monster") then
-    monsterMat.setScale({2.42, 1, 2.42})
-  end
-
-  local clone = attachCardToMat(object, monsterMat)
-  monsterMat.addAttachment(clone)
-  monsterMat.setLock(false)
-
-  runAfterRest(monsterMat, function(monsterMat)
-    if objectData.elite then
-      objectData.hp = objectData.hp + gameData.numberOfPlayers * objectData.elite
-    end
-
-    monsterMat.call("setHPMax", {
-      maxHp = objectData.hp
-    })
-  end)
+  attachMonsterToMat(object, objectData, monsterMat)
 end
 
 -- ON OBJECT SPAWN
