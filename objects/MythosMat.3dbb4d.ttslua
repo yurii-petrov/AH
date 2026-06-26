@@ -1,49 +1,150 @@
+local HOVER_BTNS = {
+  { id = "MT_myth",      onClick = "myth_process",      position = "24.25 95 -11" },
+  { id = "MT_encounter", onClick = "encounter_process",  position = "4.25 95 -11"  },
+}
+
+local function makeHoverButton(def)
+  return {
+    tag = "Panel",
+    attributes = {
+      position = def.position,
+      rotation = "0 0 180",
+      scale    = "0.01 0.01 1",
+      width    = "1850",
+      height   = "500",
+      color    = "clear",
+    },
+    children = {
+      { tag = "Button", attributes = {
+          id           = def.id,
+          width        = "1850",
+          height       = "500",
+          color        = "clear",
+          text         = "",
+          textColor    = "#ffffff",
+          font         = "Fonts/AdonisC",
+          fontStyle    = "Bold",
+          fontSize     = "170",
+          onClick      = def.onClick,
+          onMouseEnter = "hoverEnter",
+          onMouseExit  = "hoverExit",
+        }
+      },
+    }
+  }
+end
+
+local function makeIconPanel(panelId, active, pos, imgId, imgSrc, btnId, btnOnClick, padding)
+  return {
+    tag = "Panel",
+    attributes = { id = panelId, active = active, width = "12", height = "14", position = pos, rotation = "0 0 180" },
+    children = {
+      { tag = "image",  attributes = { id = imgId, image = imgSrc, scale = "0.8 0.8 0.8" } },
+      { tag = "Button", attributes = {
+          id        = btnId,
+          onClick   = btnOnClick,
+          width     = "1200",
+          height    = "1400",
+          padding   = padding,
+          scale     = "0.01 0.01 1",
+          color     = "clear",
+          textColor = "#ffffff",
+          font      = "Fonts/AdonisC",
+          fontStyle = "Bold",
+          fontSize  = "170",
+          text      = "",
+        }
+      },
+    }
+  }
+end
+
+local function makeText(id, pos)
+  return {
+    tag = "text",
+    attributes = {
+      id        = id,
+      position  = pos,
+      rotation  = "0 0 180",
+      scale     = "0.01 0.01 1",
+      color     = "#ffffff",
+      font      = "Fonts/AdonisC",
+      fontStyle = "Bold",
+      fontSize  = "170",
+      text      = "",
+    }
+  }
+end
+
+local function buildUI()
+  local xml = {
+    makeIconPanel("success", "false", "28.5 14 -11", "success_img", "success_icon", "MT_success", "success",  "0 0 1050 0"),
+    makeIconPanel("discard", "false", "28.5 30 -11", "discard_img", "discard_icon", "MT_discard", "discard",  "0 0 1000 0"),
+    makeIconPanel("fail",    "false", "28.5 46 -11", "fail_img",    "fail_icon",    "MT_fail",    "fail",     "0 0 1050 0"),
+    {
+      tag = "image",
+      attributes = { id = "myth_slots", image = "myth_slots", width = "26", height = "69", position = "1.2 72 -11", scale = "0.54 0.54 1" },
+    },
+    makeText("MT_current_text", "8.5 50.25 -11"),
+    makeText("MT_event_text",   "-20 50.25 -11"),
+    makeText("MT_discard_text", "-20 96 -11"),
+  }
+  for _, def in ipairs(HOVER_BTNS) do
+    table.insert(xml, makeHoverButton(def))
+  end
+  self.UI.setXmlTable(xml)
+end
+
 function onLoad()
-	self.UI.setCustomAssets({
-		{
-			name = "success_icon",
-			url = "https://drive.google.com/uc?export=view&id=1TBSY-0NPCBdWWfWnsX3wdA0E_XyyZT-P"
-		},
-		{
-			name = "discard_icon",
-			url = "https://drive.google.com/uc?export=view&id=1L5IRVmKLkshXaBoRDIDmZtX-4zOi4f6-"
-		},
-		{
-			name = "fail_icon",
-			url = "https://drive.google.com/uc?export=view&id=1pwW68kYHr_bYN9EsFVgR5j8E5XNt2g4o"
-		},
-		{
-			name = "myth_slots",
-			url = "https://drive.google.com/uc?export=view&id=1bnd0sj5zPQGDZhnvDkv4Gr169gBwPr2T"
-		},
-	})
-	self.UI.setAttribute("success_img", "image", "success_icon")
-	self.UI.setAttribute("discard_img", "image", "discard_icon")
-	self.UI.setAttribute("fail_img", "image", "fail_icon")
-	self.UI.setAttribute("myth_slots", "image", "myth_slots")
-setButtons({type = "empty"})
+  self.UI.setCustomAssets({
+    { name = "success_icon", url = "https://drive.google.com/uc?export=view&id=1TBSY-0NPCBdWWfWnsX3wdA0E_XyyZT-P" },
+    { name = "discard_icon", url = "https://drive.google.com/uc?export=view&id=1L5IRVmKLkshXaBoRDIDmZtX-4zOi4f6-" },
+    { name = "fail_icon",    url = "https://drive.google.com/uc?export=view&id=1pwW68kYHr_bYN9EsFVgR5j8E5XNt2g4o" },
+    { name = "myth_slots",   url = "https://drive.google.com/uc?export=view&id=1bnd0sj5zPQGDZhnvDkv4Gr169gBwPr2T" },
+  })
+  Wait.time(buildUI, 0.5)
 end
+
+function hoverEnter(player, alt_click, id)
+  self.UI.setAttribute(id, "textColor", "#ffd8ab")
+end
+
+function hoverExit(player, alt_click, id)
+  self.UI.setAttribute(id, "textColor", "#ffffff")
+end
+
+function myth_process(player, alt_click, id)
+  Global.call("mythMatMythClick", {c = player.color})
+end
+
+function encounter_process(player, alt_click, id)
+  Global.call("mythMatEncounterClick", {c = player.color})
+end
+
 function success(player, alt, id)
-	Global.call("mythosTileSuccessAction", {c=player.color})
+  Global.call("mythosTileSuccessAction", {c = player.color})
 end
+
 function discard(player, alt, id)
-	Global.call("mythosTileCancelAction", {c=player.color})
+  Global.call("mythosTileCancelAction", {c = player.color})
 end
+
 function fail(player, alt, id)
-	Global.call("mythosTileFailedAction", {c=player.color})
+  Global.call("mythosTileFailedAction", {c = player.color})
 end
+
 function setButtons(d)
-	if d.type == "event" then
-		self.UI.setAttribute("success", "active", true)
-		self.UI.setAttribute("discard", "active", false)
-		self.UI.setAttribute("fail", "active", true)
-	elseif d.type == "empty" then
-		self.UI.setAttribute("success", "active", false)
-		self.UI.setAttribute("discard", "active", false)
-		self.UI.setAttribute("fail", "active", false)
-	else
-		self.UI.setAttribute("success", "active", false)
-		self.UI.setAttribute("discard", "active", true)
-		self.UI.setAttribute("fail", "active", false)
-	end
+  if d.type == "event" then
+    self.UI.setAttribute("success", "active", true)
+    self.UI.setAttribute("discard", "active", false)
+    self.UI.setAttribute("fail",    "active", true)
+  elseif d.type == "empty" then
+    self.UI.setAttribute("success", "active", false)
+    self.UI.setAttribute("discard", "active", false)
+    self.UI.setAttribute("fail",    "active", false)
+  else
+    self.UI.setAttribute("success", "active", false)
+    self.UI.setAttribute("discard", "active", true)
+    self.UI.setAttribute("fail",    "active", false)
+  end
 end
