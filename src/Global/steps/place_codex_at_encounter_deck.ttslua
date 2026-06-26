@@ -13,7 +13,7 @@
 -- In map mode the first entry whose card is still in the source deck is used.
 -- Optional: "sourceDeck": "codexDeck"  (default: "archive")
 
-local CARD_SIDE_OFFSET = 0.7
+local CARD_SIDE_OFFSET = -3.29
 
 function processStepPlaceCodexAtEncounterDeck(step, context, onDone)
   local locationMat = findBoardByQuery({{
@@ -27,7 +27,11 @@ function processStepPlaceCodexAtEncounterDeck(step, context, onDone)
     return
   end
 
-  local sourceDeckType = (step.sourceDeck) or "archive"
+  local sourceDeckType  = (step.sourceDeck) or "archive"
+  local removeAfterUse  = context and context.removeAfterUse
+  local codexMat        = context and context.codexMat
+  if context then context.removeAfterUse = nil end
+
   local archive = findDeckOnBoardByType(locationMat, sourceDeckType)
   if not archive then
     log("[placeCodexAtEncounterDeck] source deck '" .. sourceDeckType .. "' not found")
@@ -35,6 +39,10 @@ function processStepPlaceCodexAtEncounterDeck(step, context, onDone)
     return
   end
 
+  archive.shuffle()
+
+  local remaining  = archive.type == "Deck" and archive.getQuantity() or 1
+  local isLastCard = remaining == 1
   local neighborhood
   local card
 
@@ -84,8 +92,12 @@ function processStepPlaceCodexAtEncounterDeck(step, context, onDone)
   end
 
   local deckPos = encounterDeck.getPosition()
-  card.setRotation({ 0, 180, 0 })
-  card.setPositionSmooth(Vector(deckPos.x, deckPos.y + 0.3, deckPos.z + CARD_SIDE_OFFSET))
+  card.setRotation(orient(parseJson(card.memo)))
+  card.setPositionSmooth(Vector(deckPos.x + CARD_SIDE_OFFSET, deckPos.y + 0.3, deckPos.z))
+
+  if isLastCard and removeAfterUse and codexMat then
+    codexMat.call("onActionSuccess", removeAfterUse)
+  end
 
   if onDone then onDone() end
 end
