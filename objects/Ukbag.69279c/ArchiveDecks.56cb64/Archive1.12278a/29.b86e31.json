@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"number\":29,\"type\":\"codex\",\"back\":{\"actions\":[{\"title\":\"Виконати дії\",\"steps\":[{\"type\":\"takeCodexFromArchive\",\"number\":31},{\"type\":\"setAsideToCodexDeck\",\"numbers\":[32,33,34,35]},{\"type\":\"returnCodexToArchive\"}]}]}}",
+  "Memo": "{\"number\":29,\"type\":\"codex\",\"back\":{\"actions\":[{\"title\":\"Виконати дії\",\"steps\":[{\"type\":\"takeCodexFromArchive\",\"number\":31},{\"type\":\"setAsideToCodexDeck\",\"numbers\":[32,33,34,35]}]}]}}",
   "Name": "Card",
   "Nickname": "29",
   "SidewaysCard": false,
