@@ -1482,6 +1482,18 @@ I18N_DATA = {
     ["en"] = "Start of Encounter Phase",
     ["uk"] = "Настає фаза Зустрічей",
   },
+  ["kill_dialog_no"] = {
+    ["en"] = "No",
+    ["uk"] = "Ні",
+  },
+  ["kill_dialog_title"] = {
+    ["en"] = "This monster was killed by a simple attack (you will receive remains)",
+    ["uk"] = "Цей монстр вбитий звичайною атакою (ви отримаєте рештки)",
+  },
+  ["kill_dialog_yes"] = {
+    ["en"] = "Yes",
+    ["uk"] = "Так",
+  },
   ["monster_start"] = {
     ["en"] = "Start of Monster Phase",
     ["uk"] = "Настає фаза Монстрів",

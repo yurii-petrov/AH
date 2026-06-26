@@ -1,4 +1,5 @@
 --serpent = require("util/serpent")
+local i18n = require("Global/i18nApi")
 local isTestMode = false
 
 local data = {
@@ -7,6 +8,8 @@ local data = {
   cp = 0,
   cpHp = 0,
 }
+
+local pendingKillPlayer = nil
 
 function onSave()
   local saveData = JSON.encode(data)
@@ -62,12 +65,9 @@ function onLoad(savedData)
   killText2.attributes.rotation = "0 180 180"
   killText2.attributes.active = data.hp <= 0 or data.hp ~= data.maxHp
 
-  self.UI.setXmlTable({buttonHP1, buttonHP2, buttonKill1, buttonKill2, killText1, killText2})
-end
+  local killDialog = getKillDialog()
 
-function onSave()
-  local saveData = JSON.encode(data)
-  return saveData
+  self.UI.setXmlTable({buttonHP1, buttonHP2, buttonKill1, buttonKill2, killText1, killText2, killDialog})
 end
 
 function setHPMax(params)
@@ -108,21 +108,110 @@ function getText()
   }
 end
 
+function getKillDialog()
+  local titleText = i18n.getStrById("kill_dialog_title")
+  local yesText = i18n.getStrById("kill_dialog_yes")
+  local noText = i18n.getStrById("kill_dialog_no")
+  return {
+    tag = "Panel",
+    attributes = {
+      id = "killDialog",
+      active = false,
+      position = "0 -65 -12",
+      rotation = "0 0 180",
+      width = "900",
+      height = "550",
+      scale = "0.1 0.1 1",
+      color = "#1a1a1aEE",
+    },
+    children = {
+      {
+        tag = "Text",
+        attributes = {
+          text = titleText,
+          fontSize = "70",
+          color = "#e9543b",
+          font = "Fonts/AdonisC",
+          alignment = "MiddleCenter",
+          horizontalOverflow = "Wrap",
+          width = "860",
+          height = "320",
+          rectAlignment = "UpperCenter",
+          offsetXY = "0 -20",
+        }
+      },
+      {
+        tag = "Button",
+        attributes = {
+          id = "killDialogYes",
+          onClick = "clickKillYes",
+          text = yesText,
+          fontSize = "100",
+          color = "#2a2a2aFF",
+          textColor = "#e9543b",
+          font = "Fonts/AdonisC",
+          width = "350",
+          height = "130",
+          rectAlignment = "LowerLeft",
+          offsetXY = "50 30",
+        }
+      },
+      {
+        tag = "Button",
+        attributes = {
+          id = "killDialogNo",
+          onClick = "clickKillNo",
+          text = noText,
+          fontSize = "100",
+          color = "#2a2a2aFF",
+          textColor = "#e9543b",
+          font = "Fonts/AdonisC",
+          width = "350",
+          height = "130",
+          rectAlignment = "LowerRight",
+          offsetXY = "-50 30",
+        }
+      },
+    }
+  }
+end
+
 -- Click
 
 function clickKill(player, alt_click)
-  if #self.getAttachments() <= 0 then
+  local attachments = self.getAttachments()
+  if #attachments <= 0 then
     return
   end
-  local monster = self.removeAttachment(0)
+  local monsterMemo = parseJson(attachments[1].memo)
+  if monsterMemo and monsterMemo.remnant then
+    pendingKillPlayer = player
+    self.UI.setAttribute("killDialog", "active", true)
+  else
+    pendingKillPlayer = player
+    performKill(false)
+  end
+end
 
+function clickKillYes(player, alt_click)
+  self.UI.setAttribute("killDialog", "active", false)
+  performKill(true)
+end
+
+function clickKillNo(player, alt_click)
+  self.UI.setAttribute("killDialog", "active", false)
+  performKill(false)
+end
+
+function performKill(simpleAttack)
+  local monster = self.removeAttachment(0)
   if not monster then
     return
   end
   monster.setLock(false)
   monster.interactable = true
-  self.destruct()
-  Global.call("onMonsterKilled", monster)
+  Global.call("onMonsterKilled", {monster = monster, player = pendingKillPlayer, simpleAttack = simpleAttack, mat = self})
+  pendingKillPlayer = nil
 end
 
 function clickHp(player, alt_click)
@@ -149,6 +238,11 @@ function clickHp(player, alt_click)
   self.UI.setAttribute("btnKill2", "active", data.hp == data.maxHp)
   self.UI.setAttribute("killText1", "active", data.hp ~= data.maxHp)
   self.UI.setAttribute("killText2", "active", data.hp ~= data.maxHp)
+
+  if data.hp ~= data.maxHp then
+    self.UI.setAttribute("killDialog", "active", false)
+    pendingKillPlayer = nil
+  end
 
   if data.hp == data.maxHp then
     self.UI.setAttribute("btnKill1", "textColor", "#e9543b")

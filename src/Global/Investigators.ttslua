@@ -464,6 +464,21 @@ end
 ---@param name string localized investigator name to display
 ---@param mat? tts__Object the investigator mat the card was dropped on
 ---@param portraitKey? string CustomUIAssets image name for the investigator portrait
+function getInvestigatorMatByColor(color)
+  for slot = 1, MAX_INV do
+    if TABLE_DATA.players[slot] then
+      for _, obj in ipairs(getObjects()) do
+        if obj.type == "Hand" and obj.memo == "hand " .. slot then
+          if obj.getValue() == color then
+            return TABLE_DATA.players[slot].obj
+          end
+          break
+        end
+      end
+    end
+  end
+end
+
 function setInvestigatorName(name, mat, portraitKey)
   if not name or name == "" then return end
 

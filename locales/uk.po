@@ -1384,6 +1384,16 @@ msgstr "Борги"
 msgid "IM_inheritance"
 msgstr "Спадок"
 
+# Monster kill dialog
+msgid "kill_dialog_title"
+msgstr "Цей монстр вбитий звичайною атакою (ви отримаєте рештки)"
+
+msgid "kill_dialog_yes"
+msgstr "Так"
+
+msgid "kill_dialog_no"
+msgstr "Ні"
+
 # Investigators HUD
 msgid "INV_blocked_msg"
 msgstr "%s зайнятий гравцем %s. Ви не можете взаємодіяти з цим дослідником."

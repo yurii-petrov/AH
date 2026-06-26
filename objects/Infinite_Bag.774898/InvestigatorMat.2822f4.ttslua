@@ -524,6 +524,13 @@ function clickRemnant(player, alt_click)
     broadcastStat("IM_remnant", "Remnant", data.remnant)
 end
 
+function addRemnant()
+  data.remnant = data.remnant + 1
+  self.UI.setAttribute("clickRemnant", "text", data.remnant)
+  self.UI.setAttribute("clickRemnant", "textColor", "#fff5e2")
+  broadcastStat("IM_remnant", "Remnant", data.remnant)
+end
+
 function broadcastStat(labelKey, labelFallback, value)
   local name = getInvestigatorDisplayName()
   local label = Global.call("callTable", {{"i18n", "getStrById"}, labelKey}) or labelFallback

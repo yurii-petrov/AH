@@ -173,7 +173,28 @@ function drawMonster(spawnPos)
   spawnMonster(spawnPos, monster)
 end
 
-function onMonsterKilled(monster)
+function onMonsterKilled(params)
+  local monster = params.monster
+  local simpleAttack = params.simpleAttack
+  local mat = params.mat
+
+  if simpleAttack then
+    local monsterMemo = parseJson(monster.memo)
+    if monsterMemo and monsterMemo.remnant then
+      local playerColor = params.player and params.player.color
+      if playerColor then
+        local invMat = getInvestigatorMatByColor(playerColor)
+        if invMat then
+          invMat.call("addRemnant")
+        end
+      end
+    end
+  end
+
+  if mat then
+    mat.destruct()
+  end
+
   local locationMat = getObjectFromGUID(locationMatId)
   if not locationMat then
     return
