@@ -1,7 +1,6 @@
 import re
 import json
 from pathlib import Path
-from collections import defaultdict
 from slpp import slpp as lua
 
 
@@ -18,16 +17,6 @@ def strip_data_prefix(lua_text: str) -> str:
 
 def escape_for_json_string(s: str) -> str:
     return s.replace('\\', '\\\\').replace('"', '\\"')
-
-
-# ---------- BUILD INDEX (IMPORTANT SPEED OPTIMIZATION) ----------
-def build_json_index(objects_dir: Path):
-    index = defaultdict(list)
-
-    for f in objects_dir.rglob("*.json"):
-        index[f.stem].append(f)
-
-    return index
 
 
 # ---------- CORE UPDATE ----------
@@ -75,24 +64,17 @@ def main():
     lua_files = list(LUA_DIR.rglob("*.lua"))
     print(f"Lua files: {len(lua_files)}")
 
-    print("Indexing JSON files...")
-    json_index = build_json_index(OBJECTS_DIR)
-    print(f"Indexed keys: {len(json_index)}")
-
     for lua_file in lua_files:
-        name = lua_file.stem
+        rel = lua_file.relative_to(LUA_DIR)
+        json_file = OBJECTS_DIR / rel.with_suffix(".json")
 
-        matches = json_index.get(name, [])
+        print(f"[{lua_file.name}] -> {json_file.relative_to(OBJECTS_DIR)}")
 
-        print(f"[{lua_file.name}] -> {name}")
-
-        if not matches:
+        if not json_file.exists():
             print("  ❌ No match")
             continue
 
-        for json_file in matches:
-            update_memo_in_json(json_file, lua_file)
-
+        update_memo_in_json(json_file, lua_file)
         print()
 
     print("DONE")
