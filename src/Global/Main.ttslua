@@ -61,14 +61,14 @@ function onload(savedData)
 
   resolveAllDataObjects()
 
-  -- lockObj(tableId)
+  lockObj(tableId)
   lockObj(locationMatId)
   lockObj(scenarioMatId)
   lockObj(mythosTileId)
   lockObj(tile4ActionsId)
 
-  -- lockObj(conditionMatId)
-  -- lockObj(mythosBagId)
+  lockObj(conditionMatId)
+  lockObj(mythosBagId)
   lockObj(shopMatId)
   lockObj(nastilo4kaId)
 
