@@ -46,14 +46,15 @@ function onClickPrepareNumberOfPlayers(onComplete)
   local startX = centerPos.x - totalWidth / 2
 
   local colors = {"White", "Red", "Green", "Blue", "Yellow", "Purple"}
-  local activationTokenBag = getObjectFromGUID(activationTokenBagId)
+
+  local activationTokenBag = getObjectFromGUID(TABLE_DATA.bags["Activation Token"])
 
   if not activationTokenBag then
     return
   end
 
-  local activationLiderTokenBag = getObjectFromGUID(activationLiderTokenBagId)
-  if not activationLiderTokenBag then
+  local leaderActivationTokenBag = getObjectFromGUID(TABLE_DATA.bags["Leader Activation Token"])
+  if not leaderActivationTokenBag then
     return
   end
 
@@ -132,7 +133,7 @@ function onClickPrepareNumberOfPlayers(onComplete)
         end
       end
 
-      local bag = i == 1 and activationLiderTokenBag or activationTokenBag
+      local bag = i == 1 and leaderActivationTokenBag or activationTokenBag
       local p = mat.getPosition():setAt("y", 3)
       p.z = p.z - 6
       p.x = p.x + 2
@@ -153,7 +154,6 @@ function onClickPrepareNumberOfPlayers(onComplete)
               index = 0,
               position = mat.positionToWorld(snp.position:setAt("y", 3))
             })
-            token.memo = i == 1 and "Lider Aactivation Token" or "Aactivation Token"
           end
         end
       end
@@ -171,7 +171,7 @@ function onClickPrepareNumberOfPlayers(onComplete)
     local box = getObjectFromGUID(boxId)
     if box then
       box.putObject(activationTokenBag)
-      box.putObject(activationLiderTokenBag)
+      box.putObject(leaderActivationTokenBag)
     end
     if onComplete then
       onComplete()

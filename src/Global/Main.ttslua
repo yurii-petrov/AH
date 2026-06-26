@@ -169,7 +169,7 @@ function nextPhase(player, value, id)
     self.UI.setAttribute("phase_btn_text", "active", false)
     self.UI.setAttribute("PB_phase_btn_btn_text", "active", false)
     for _, o in ipairs(getObjects()) do
-      if o.type == "Tile" and o.memo and (o.memo == "Lider Aactivation Token" or o.memo == "Aactivation Token") then
+      if o.type == "Tile" and o.memo and (o.memo == "Leader Activation Token" or o.memo == "Activation Token") then
         if o.is_face_down then
           o.flip()
         end

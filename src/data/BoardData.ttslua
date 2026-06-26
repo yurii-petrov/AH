@@ -204,7 +204,10 @@ SCENARIO_MAT_DATA = {
 TABLE_DATA = {
   guid          = "f47e19",
   referenceDeck = {-0.533, 0, 0.33},
-
+  bags = {
+    ["Activation Token"] = "2f7335",
+    ["Leader Activation Token"] = "1a067e"
+  },
   startPosition = {
     tiles = {
       Neighborhood = {

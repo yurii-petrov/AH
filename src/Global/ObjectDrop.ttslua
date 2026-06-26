@@ -205,7 +205,7 @@ function onObjectRotate(object, spin, flip, player_color, old_spin, old_flip)
   if flip == old_flip then return end
 
   -- activation token flipped on the mat -> mirror it into the investigators HUD
-  if object.memo == "Aactivation Token" or object.memo == "Lider Aactivation Token" then
+  if object.memo == "Activation Token" or object.memo == "Leader Activation Token" then
     runOnceAfterRest(object, function(o) onActivationTokenFlipped(o) end)
     return
   end

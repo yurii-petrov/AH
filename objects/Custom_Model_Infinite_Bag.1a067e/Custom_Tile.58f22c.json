@@ -36,8 +36,9 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
+  "Memo": "Leader Activation Token",
   "Name": "Custom_Tile",
-  "Nickname": "",
+  "Nickname": "Leader Activation Token",
   "Snap": true,
   "Sticky": true,
   "Tags": [

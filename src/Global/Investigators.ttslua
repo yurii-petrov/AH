@@ -63,8 +63,8 @@ INV_STATE = {
 }
 
 local ACTIVATION_MEMOS = {
-  ["Aactivation Token"]       = true,
-  ["Lider Aactivation Token"] = true,
+  ["Activation Token"]       = true,
+  ["Leader Activation Token"] = true,
 }
 
 for p = 1, MAX_INV do

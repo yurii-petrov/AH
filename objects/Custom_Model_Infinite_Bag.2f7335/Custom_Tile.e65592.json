@@ -36,8 +36,9 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
+  "Memo": "Activation Token",
   "Name": "Custom_Tile",
-  "Nickname": "",
+  "Nickname": "Activation Token",
   "Snap": true,
   "Sticky": true,
   "Tags": [
