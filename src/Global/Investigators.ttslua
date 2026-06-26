@@ -129,6 +129,31 @@ local function activationTokensOn(mat)
   return tokens
 end
 
+-- Scan physical tokens on a mat to determine which action slots are leader
+-- tokens, then update the button images to match.
+local function refreshLeaderState(slot)
+  local guid = INV_STATE.matBySlot[slot]
+  if not guid then return end
+  local mat = getObjectFromGUID(guid)
+  if not mat then return end
+
+  local tokens = activationTokensOn(mat)
+  for action = 1, ACTIONS_PER_INV do
+    local token = tokens[action]
+    local isLeader = (token ~= nil) and (token.memo == "Leader Activation Token")
+    INV_STATE.isLeaderAction[slot][action] = isLeader
+    self.UI.setAttribute(actionId(slot, action), "image", actionImage(isLeader, INV_STATE.actions[slot][action]))
+  end
+end
+
+local function refreshAllLeaderStates()
+  for slot = 1, MAX_INV do
+    if INV_STATE.matBySlot[slot] then
+      refreshLeaderState(slot)
+    end
+  end
+end
+
 -- Flip the physical token for (slot, action) to match the dot:
 -- spent (black) -> face-down, available (gold) -> face-up.
 local function syncActivationToken(slot, action, spent)
@@ -139,6 +164,12 @@ local function syncActivationToken(slot, action, spent)
 
   local token = activationTokensOn(mat)[action]
   if not token then return end
+
+  local isLeader = token.memo == "Leader Activation Token"
+  if isLeader ~= INV_STATE.isLeaderAction[slot][action] then
+    refreshAllLeaderStates()
+  end
+
   if token.is_face_down ~= spent then
     token.flip()
   end
@@ -156,23 +187,6 @@ local function locateToken(token)
         end
       end
     end
-  end
-end
-
--- Scan physical tokens on a mat to determine which action slots are leader
--- tokens, then update the button images to match.
-local function refreshLeaderState(slot)
-  local guid = INV_STATE.matBySlot[slot]
-  if not guid then return end
-  local mat = getObjectFromGUID(guid)
-  if not mat then return end
-
-  local tokens = activationTokensOn(mat)
-  for action = 1, ACTIONS_PER_INV do
-    local token = tokens[action]
-    local isLeader = (token ~= nil) and (token.memo == "Leader Activation Token")
-    INV_STATE.isLeaderAction[slot][action] = isLeader
-    self.UI.setAttribute(actionId(slot, action), "image", actionImage(isLeader, INV_STATE.actions[slot][action]))
   end
 end
 
