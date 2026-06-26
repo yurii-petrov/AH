@@ -86,6 +86,14 @@ function onload(savedData)
   if gameData.isStarted then
     Global.UI.setAttribute("phase", "active", true)
     Global.UI.setAttribute("phase_img", "image", phases[gameData.phase].image)
+    if gameData.playerMats then
+      for i, data in ipairs(gameData.playerMats) do
+        TABLE_DATA.players[i] = {
+          guid = data.guid,
+          obj  = getObjectFromGUID(data.guid),
+        }
+      end
+    end
     -- restore the investigators HUD (after updateXMLs re-applies the UI table)
     Wait.time(function()
       setInvestigatorCount(gameData.numberOfPlayers or 2)

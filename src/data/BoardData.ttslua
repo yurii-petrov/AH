@@ -208,6 +208,9 @@ TABLE_DATA = {
     ["Activation Token"] = "2f7335",
     ["Leader Activation Token"] = "1a067e"
   },
+  -- Populated at game start and restored from save on onload.
+  -- [i] = { guid = string, obj = tts__Object }
+  players = {},
   startPosition = {
     tiles = {
       Neighborhood = {

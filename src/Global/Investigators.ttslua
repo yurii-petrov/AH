@@ -57,10 +57,10 @@ INV_STATE = {
   snapshot       = nil,
   actions        = {}, -- actions[slot][action] = bool (true = spent/face-down)
   isLeaderAction = {}, -- isLeaderAction[slot][action] = bool (Leader Activation Token)
-  slotByName     = {}, -- raw investigator name -> row slot
-  nameBySlot     = {}, -- row slot -> raw investigator name
-  matBySlot      = {}, -- row slot -> investigator mat guid (for the physical tokens)
+  slotByName     = {}, -- localized investigator name -> row slot (= TABLE_DATA.players index)
+  nameBySlot     = {}, -- row slot -> localized investigator name
   colorBySlot    = {}, -- row slot -> owning player color (action dots are color-gated)
+  -- mat is NOT stored here; always resolved via TABLE_DATA.players[slot].obj
 }
 
 local ACTIVATION_MEMOS = {
@@ -129,12 +129,13 @@ local function activationTokensOn(mat)
   return tokens
 end
 
--- Scan physical tokens on a mat to determine which action slots are leader
--- tokens, then update the button images to match.
+local function matForSlot(slot)
+  local p = TABLE_DATA.players[slot]
+  return p and p.obj
+end
+
 local function refreshLeaderState(slot)
-  local guid = INV_STATE.matBySlot[slot]
-  if not guid then return end
-  local mat = getObjectFromGUID(guid)
+  local mat = matForSlot(slot)
   if not mat then return end
 
   local tokens = activationTokensOn(mat)
@@ -148,18 +149,14 @@ end
 
 local function refreshAllLeaderStates()
   for slot = 1, MAX_INV do
-    if INV_STATE.matBySlot[slot] then
+    if TABLE_DATA.players[slot] then
       refreshLeaderState(slot)
     end
   end
 end
 
--- Flip the physical token for (slot, action) to match the dot:
--- spent (black) -> face-down, available (gold) -> face-up.
 local function syncActivationToken(slot, action, spent)
-  local guid = INV_STATE.matBySlot[slot]
-  if not guid then return end
-  local mat = getObjectFromGUID(guid)
+  local mat = matForSlot(slot)
   if not mat then return end
 
   local token = activationTokensOn(mat)[action]
@@ -175,11 +172,9 @@ local function syncActivationToken(slot, action, spent)
   end
 end
 
--- Locate which (slot, action) a given physical token belongs to.
--- Returns nil if the token isn't one of the tracked mats' tokens.
 local function locateToken(token)
-  for slot, guid in pairs(INV_STATE.matBySlot) do
-    local mat = getObjectFromGUID(guid)
+  for slot, player in ipairs(TABLE_DATA.players) do
+    local mat = player.obj
     if mat then
       for action, t in ipairs(activationTokensOn(mat)) do
         if t == token then
@@ -228,7 +223,7 @@ local function buildRow(p)
     },
     children = {
       -- avatar placeholder (swap for a real sprite later)
-      { tag = "Panel", attributes = { id = "INV_avatar_" .. p, minWidth = AVATAR_SIZE, preferredWidth = AVATAR_SIZE, flexibleWidth = "0", color = "#555555" } },
+      { tag = "Image", attributes = { id = "INV_avatar_" .. p, minWidth = AVATAR_SIZE, preferredWidth = AVATAR_SIZE, flexibleWidth = "0", color = "#FFFFFF" } },
       { tag = "Text", attributes = { id = "INV_name_" .. p .. "_text", text = "Дослідник " .. p, color = TEXT_COL, font = FONT, fontSize = "22", alignment = "MiddleLeft", flexibleWidth = "1" } },
       buildActionButton(p, 1),
       buildActionButton(p, 2),
@@ -415,28 +410,66 @@ end
 ---@param name string localized investigator name to display
 ---@param mat? tts__Object the investigator mat the card was dropped on
 ---@param color? string owning player color (e.g. "Red")
-function setInvestigatorName(name, mat, color)
+---@param portraitKey? string CustomUIAssets image name for the investigator portrait
+function setInvestigatorName(name, mat, color, portraitKey)
   if not name or name == "" then return end
 
   local slot = INV_STATE.slotByName[name]
-  if not slot then
-    local used = 0
-    for _ in pairs(INV_STATE.slotByName) do used = used + 1 end
-    slot = used + 1
-    if slot > MAX_INV then return end -- no free row
-    INV_STATE.slotByName[name] = slot
-    INV_STATE.nameBySlot[slot] = name
+
+  if not slot and mat then
+    local guid = mat.getGUID()
+    for i, player in ipairs(TABLE_DATA.players) do
+      if player.guid == guid then
+        slot = i
+        break
+      end
+    end
+    if slot then
+      local oldName = INV_STATE.nameBySlot[slot]
+      if oldName then INV_STATE.slotByName[oldName] = nil end
+    end
   end
 
-  if mat then
-    INV_STATE.matBySlot[slot] = mat.getGUID()
-    refreshLeaderState(slot)
-  end
+  if not slot then return end
+
+  INV_STATE.slotByName[name] = slot
+  INV_STATE.nameBySlot[slot] = name
+
   if color then
     INV_STATE.colorBySlot[slot] = color
   end
 
+  refreshLeaderState(slot)
   self.UI.setAttribute("INV_name_" .. slot .. "_text", "text", name)
+  if portraitKey then
+    self.UI.setAttribute("INV_avatar_" .. slot, "image", portraitKey)
+  end
+end
+
+--- Reset one investigator row back to its placeholder state.
+--- Called when a player's investigator dies. `mat` is the investigator mat object.
+---@param mat tts__Object
+function clearInvestigatorSlot(mat)
+  if not mat then return end
+  local guid = mat.getGUID()
+  local slot = nil
+  for i, player in ipairs(TABLE_DATA.players) do
+    if player.guid == guid then slot = i break end
+  end
+  if not slot then return end
+
+  local name = INV_STATE.nameBySlot[slot]
+  if name then INV_STATE.slotByName[name] = nil end
+  INV_STATE.nameBySlot[slot]     = nil
+  INV_STATE.colorBySlot[slot]    = nil
+  INV_STATE.isLeaderAction[slot] = {}
+  for a = 1, ACTIONS_PER_INV do
+    INV_STATE.actions[slot][a]        = false
+    INV_STATE.isLeaderAction[slot][a] = false
+    refreshActionButton(slot, a)
+  end
+  self.UI.setAttribute("INV_name_" .. slot .. "_text", "text", "Дослідник " .. slot)
+  self.UI.setAttribute("INV_avatar_" .. slot, "image", "")
 end
 
 --- Show the panel with `n` investigator rows (clamped to 2..6) and reset
@@ -462,10 +495,9 @@ function setInvestigatorCount(n)
   refreshAllActionColors()
   setApplyPressed(false)
 
-  -- fresh game: drop name / mat / color / leader assignments back to placeholders
+  -- fresh game: drop name / color / leader assignments back to placeholders
   INV_STATE.slotByName     = {}
   INV_STATE.nameBySlot     = {}
-  INV_STATE.matBySlot      = {}
   INV_STATE.colorBySlot    = {}
   INV_STATE.isLeaderAction = {}
   for p = 1, MAX_INV do
@@ -474,6 +506,7 @@ function setInvestigatorCount(n)
       INV_STATE.isLeaderAction[p][a] = false
     end
     self.UI.setAttribute("INV_name_" .. p .. "_text", "text", "Дослідник " .. p)
+    self.UI.setAttribute("INV_avatar_" .. p, "image", "")
   end
 
   if INV_STATE.collapsed then

@@ -89,6 +89,10 @@ function onClickPrepareNumberOfPlayers(onComplete)
       end
     })
 
+    TABLE_DATA.players[i] = { guid = mat.getGUID(), obj = mat }
+    gameData.playerMats = gameData.playerMats or {}
+    gameData.playerMats[i] = { guid = mat.getGUID() }
+
     local cardMatPosition = {targetPosition.x, targetPosition.y, targetPosition.z - 7.05}
     if cardMatBag then
       for i = 1, 1 do
@@ -300,6 +304,8 @@ function onPlayerClickDeath(d)
         box.putObject(obj)
       end
     end
+
+    clearInvestigatorSlot(d.mat)
   end)
 end
 
