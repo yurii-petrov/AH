@@ -1,0 +1,72 @@
+-- ╭──────────────────────────────────────────────╮
+-- │   STEP: mergeOneFromSetasideIntoMonster      │
+-- ╰──────────────────────────────────────────────╯
+--
+-- Takes ONE random card from the set-aside deck and merges it into the
+-- monster deck, then shuffles. Unlike mergeSetasideIntoMonster, this step
+-- takes only a single card and is safe to repeat.
+--
+-- Example step JSON:
+--   { "type": "mergeOneFromSetasideIntoMonster", "fromDeck": "setaside2" }
+-- Optional: "toDeck" (default "monster")
+
+function processStepMergeOneFromSetasideIntoMonster(step, context, onDone)
+  local fromType = (step and step.fromDeck) or "setaside"
+  local toType   = (step and step.toDeck) or "monster"
+
+  local locationMat = findBoardByQuery({{
+    field = "type",
+    op    = "eq",
+    value = "locationMat"
+  }})
+  if not locationMat then
+    log("[mergeOneFromSetasideIntoMonster] locationMat not found")
+    if onDone then onDone() end
+    return
+  end
+
+  local setaside = findDeckOnBoardByType(locationMat, fromType)
+  if not setaside then
+    log("[mergeOneFromSetasideIntoMonster] set-aside deck not found")
+    if onDone then onDone() end
+    return
+  end
+
+  local monsterDeck = findDeckOnBoardByType(locationMat, toType)
+  if not monsterDeck then
+    log("[mergeOneFromSetasideIntoMonster] monster deck not found")
+    if onDone then onDone() end
+    return
+  end
+
+  local function finalize()
+    Wait.time(function()
+      local merged = findDeckOnBoardByType(locationMat, toType)
+      if merged and merged.type == "Deck" then merged.shuffle() end
+      if onDone then onDone() end
+    end, 0.3)
+  end
+
+  if setaside.type == "Card" then
+    monsterDeck.putObject(setaside)
+    finalize()
+    return
+  end
+
+  setaside.shuffle()
+  Wait.time(function()
+    local sa = findDeckOnBoardByType(locationMat, fromType)
+    if not sa then
+      if onDone then onDone() end
+      return
+    end
+    local card = sa.type == "Deck"
+      and sa.takeObject({ index = 0, smooth = false })
+      or  sa
+    if card then
+      local md = findDeckOnBoardByType(locationMat, toType)
+      if md then md.putObject(card) end
+    end
+    finalize()
+  end, 0.4)
+end

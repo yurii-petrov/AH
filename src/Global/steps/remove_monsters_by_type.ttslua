@@ -1,0 +1,100 @@
+-- ╭──────────────────────────────────────────────╮
+-- │       STEP: removeMonstersByType             │
+-- ╰──────────────────────────────────────────────╯
+--
+-- Removes every card with a matching monstertype from the monster deck and
+-- puts them in the box (GUID boxId). The remaining deck is then shuffled.
+--
+-- Example step JSON:
+--   { "type": "removeMonstersByType", "monsterType": "O'Bannion" }
+-- Optional: "deckType" (default "monster")
+
+local function hasMatchingType(entryData, searchType)
+  local mt = entryData and (entryData.monstertype or (entryData.back and entryData.back.monstertype))
+  if not mt then return false end
+  local types = type(mt) == "table" and mt or {mt}
+  for _, t in ipairs(types) do
+    if string.lower(tostring(t)) == searchType then return true end
+  end
+  return false
+end
+
+function processStepRemoveMonstersByType(step, context, onDone)
+  if not step.monsterType then
+    log("[removeMonstersByType] monsterType is nil")
+    if onDone then onDone() end
+    return
+  end
+
+  local searchType  = string.lower(tostring(step.monsterType))
+  local deckType    = (step and step.deckType) or "monster"
+
+  local locationMat = findBoardByQuery({{
+    field = "type",
+    op    = "eq",
+    value = "locationMat"
+  }})
+  if not locationMat then
+    log("[removeMonstersByType] locationMat not found")
+    if onDone then onDone() end
+    return
+  end
+
+  local monsterDeck = findDeckOnBoardByType(locationMat, deckType)
+  if not monsterDeck then
+    log("[removeMonstersByType] monster deck not found")
+    if onDone then onDone() end
+    return
+  end
+
+  local box = getObjectFromGUID(boxId)
+  if not box then
+    log("[removeMonstersByType] box not found")
+    if onDone then onDone() end
+    return
+  end
+
+  if monsterDeck.type == "Card" then
+    local data = parseJson(monsterDeck.memo)
+    if hasMatchingType(data, searchType) then
+      box.putObject(monsterDeck)
+    end
+    if onDone then onDone() end
+    return
+  end
+
+  local toRemove = {}
+  for _, entry in ipairs(monsterDeck.getObjects()) do
+    local data = parseJson(entry.memo)
+    if hasMatchingType(data, searchType) then
+      table.insert(toRemove, entry.guid)
+    end
+  end
+
+  if #toRemove == 0 then
+    log("[removeMonstersByType] no monsters of type " .. step.monsterType .. " found")
+    if onDone then onDone() end
+    return
+  end
+
+  for _, guid in ipairs(toRemove) do
+    local deck = findDeckOnBoardByType(locationMat, deckType)
+    if deck then
+      if deck.type == "Card" then
+        local data = parseJson(deck.memo)
+        if hasMatchingType(data, searchType) then
+          box.putObject(deck)
+        end
+      else
+        local card = deck.takeObject({ guid = guid, smooth = false })
+        if card then box.putObject(card) end
+      end
+    end
+  end
+
+  Wait.time(function()
+    local deck = findDeckOnBoardByType(locationMat, deckType)
+    if deck and deck.type == "Deck" then deck.shuffle() end
+    if onDone then onDone() end
+  end, 0.5)
+end

@@ -115,3 +115,15 @@ function clickSanity(player, alt_click)
   self.UI.setAttribute("sanityCounter", "text",  data.sanity)
   self.UI.setAttribute("sanityCounter", "color", data.sanity > 0 and "#fff5e2" or "#a29c90")
 end
+
+function resetHp()
+  data.hp = 0
+  self.UI.setAttribute("hpCounter", "text",  "0")
+  self.UI.setAttribute("hpCounter", "color", "#a29c90")
+end
+
+function resetSanity()
+  data.sanity = 0
+  self.UI.setAttribute("sanityCounter", "text",  "0")
+  self.UI.setAttribute("sanityCounter", "color", "#a29c90")
+end

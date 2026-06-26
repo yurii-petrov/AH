@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"number\":45,\"type\":\"codex\"}",
+  "Memo": "{\"number\": 45, \"type\": \"codex\", \"front\": {\"actions\": [{\"title\": \"Додати карту 46\", \"removeAfterUse\": true, \"steps\": [{\"type\": \"takeCodexFromArchive\", \"number\": 46}]}, {\"title\": \"Розплата\", \"removeAfterUse\": true, \"steps\": [{\"type\": \"findMonsterByType\", \"monsterType\": [\"O'Bannion\"]}, {\"type\": \"showScenarioCounter\", \"counter\": \"sanity\"}]}]}, \"back\": {\"actions\": [{\"title\": \"Додати карту 46\", \"removeAfterUse\": true, \"steps\": [{\"type\": \"takeCodexFromArchive\", \"number\": 46}]}, {\"title\": \"Розплата\", \"removeAfterUse\": true, \"steps\": [{\"type\": \"findMonsterByType\", \"monsterType\": [\"Sheldon\"]}, {\"type\": \"showScenarioCounter\", \"counter\": \"hp\"}]}]}}",
   "Name": "Card",
   "Nickname": "45",
   "SidewaysCard": false,

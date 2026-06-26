@@ -51,7 +51,8 @@ function processStepPlaceTokenOnScenarioMat(step, context, onDone)
     return
   end
 
-  bag.takeObject({ index = 0, position = worldPos, rotation = { 0, 180, 180 } })
+  local rotation = step.face_up and { 0, 180, 0 } or { 0, 180, 180 }
+  bag.takeObject({ index = 0, position = worldPos, rotation = rotation })
       .highlightOn("Yellow", 5)
 
   if onDone then onDone() end

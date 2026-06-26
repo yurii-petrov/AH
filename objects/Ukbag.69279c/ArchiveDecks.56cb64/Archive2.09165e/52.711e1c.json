@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"number\":52,\"type\":\"codex\"}",
+  "Memo": "{\"number\": 52, \"type\": \"codex\", \"front\": {\"actions\": [{\"title\": \"Жетон прориву воріт\", \"removeAfterUse\": true, \"steps\": [{\"type\": \"addMythosToken\", \"token\": {\"type\": \"Gate Burst\"}}]}]}}",
   "Name": "Card",
   "Nickname": "52",
   "SidewaysCard": false,

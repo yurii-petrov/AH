@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"number\":46,\"type\":\"codex\"}",
+  "Memo": "{\"number\": 46, \"type\": \"codex\", \"front\": {\"actions\": [{\"title\": \"Виконати дії\", \"removeAfterUse\": true, \"steps\": [{\"type\": \"mergeSetasideIntoMonster\", \"fromDeck\": \"setaside\"}, {\"type\": \"mergeSetasideIntoMonster\", \"fromDeck\": \"setaside2\"}]}]}, \"back\": {\"actions\": [{\"title\": \"Білий маркер\", \"removeAfterUse\": true, \"steps\": [{\"type\": \"placeTokenOnScenarioMat\", \"token\": {\"type\": \"White Marker\"}, \"positionIndex\": 7, \"face_up\": true}]}, {\"title\": \"Додати карту 47\", \"removeAfterUse\": true, \"steps\": [{\"type\": \"takeCodexFromArchive\", \"number\": 47}]}]}}",
   "Name": "Card",
   "Nickname": "46",
   "SidewaysCard": false,

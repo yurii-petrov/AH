@@ -1,0 +1,33 @@
+-- ╭──────────────────────────────────────────────╮
+-- │       STEP: resetScenarioCounter             │
+-- ╰──────────────────────────────────────────────╯
+--
+-- Calls resetHp() or resetSanity() on the active scenario sheet to zero
+-- out the tracking counter. The scenario sheet must expose these functions.
+--
+-- Example step JSON:
+--   { "type": "resetScenarioCounter", "counter": "hp" }
+--   { "type": "resetScenarioCounter", "counter": "sanity" }
+
+function processStepResetScenarioCounter(step, context, onDone)
+  local counter = step and step.counter
+  if not counter then
+    log("[resetScenarioCounter] counter is nil")
+    if onDone then onDone() end
+    return
+  end
+
+  for _, o in ipairs(getObjects()) do
+    local data = parseJson(o.memo)
+    if data and iEquals(data.type, "Scenario") then
+      if counter == "hp" then
+        pcall(function() o.call("resetHp") end)
+      elseif counter == "sanity" then
+        pcall(function() o.call("resetSanity") end)
+      end
+      break
+    end
+  end
+
+  if onDone then onDone() end
+end

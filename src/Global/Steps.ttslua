@@ -46,6 +46,11 @@ require("Global/steps/broadcast_message")
 require("Global/steps/place_codex_at_encounter_deck")
 require("Global/steps/place_token_on_scenario_mat")
 require("Global/steps/set_aside_to_codex_deck")
+require("Global/steps/merge_one_from_setaside_into_monster")
+require("Global/steps/show_scenario_counter")
+require("Global/steps/reset_scenario_counter")
+require("Global/steps/find_monster_by_name")
+require("Global/steps/remove_monsters_by_type")
 
 -- Dispatch table: lowercased step.type -> handler.
 -- Handlers are global functions defined by the required step modules above.
@@ -75,6 +80,11 @@ local STEP_HANDLERS = {
   placecodexatencounterdeck         = processStepPlaceCodexAtEncounterDeck,
   placetokenonscenariomat           = processStepPlaceTokenOnScenarioMat,
   setasidetocodexdeck               = processStepSetAsideToCodexDeck,
+  mergeonefromsetasideintomonster   = processStepMergeOneFromSetasideIntoMonster,
+  showscenariocounter               = processStepShowScenarioCounter,
+  resetscenariocounter              = processStepResetScenarioCounter,
+  findmonsterbyname                 = processStepFindMonsterByName,
+  removemonstersbytype              = processStepRemoveMonstersByType,
 }
 
 function processSteps(data)

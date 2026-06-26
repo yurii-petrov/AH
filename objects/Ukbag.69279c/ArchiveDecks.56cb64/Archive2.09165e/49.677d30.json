@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"number\":49,\"type\":\"codex\"}",
+  "Memo": "{\"number\": 49, \"type\": \"codex\", \"front\": {\"actions\": [{\"title\": \"Розплата\", \"steps\": [{\"type\": \"findMonsterByName\", \"monsterName\": \"Siobhan Riley\"}]}, {\"title\": \"Виконати дії\", \"removeAfterUse\": true, \"steps\": [{\"type\": \"removeMonstersByType\", \"monsterType\": \"Sheldon\"}, {\"type\": \"broadcastMessage\", \"message\": \"Тепер гравці можуть атакувати червоний маркер\"}]}]}}",
   "Name": "Card",
   "Nickname": "49",
   "SidewaysCard": false,

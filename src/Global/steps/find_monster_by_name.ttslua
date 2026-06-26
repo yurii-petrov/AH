@@ -1,0 +1,174 @@
+-- ╭──────────────────────────────────────────────╮
+-- │        STEP: findMonsterByName               │
+-- ╰──────────────────────────────────────────────╯
+--
+-- Reveals cards from the monster deck (bottom-up) until one matching the
+-- requested monster name is found. Non-matching reveals are returned to the
+-- deck; the found card is spawned as a monster below the codex.
+-- Mirrors findMonsterByType but matches memo.name instead of monstertype.
+--
+-- Example step JSON:
+--   { "type": "findMonsterByName", "monsterName": "Corben Bouchard" }
+-- Optional: "deckType" (default "monster")
+
+local FIND_DURATION = 4
+
+local function nameMatches(entryData, searchName)
+  local name = entryData and (entryData.name or (entryData.back and entryData.back.name))
+  return iEquals(name, searchName)
+end
+
+function processStepFindMonsterByName(step, context, onDone)
+  if not step.monsterName then
+    log("[findMonsterByName] monsterName is nil")
+    if onDone then onDone() end
+    return
+  end
+
+  local codexMat = context and context.codexMat
+  if not codexMat then
+    log("[findMonsterByName] codexMat is nil")
+    if onDone then onDone() end
+    return
+  end
+
+  local locationMat = findBoardByQuery({{
+    field = "type",
+    op    = "eq",
+    value = "locationMat"
+  }})
+  if not locationMat then
+    log("[findMonsterByName] locationMat not found")
+    if onDone then onDone() end
+    return
+  end
+
+  local deckType    = step.deckType or "monster"
+  local monsterDeck = findDeckOnBoardByType(locationMat, deckType)
+  if not monsterDeck then
+    log("[findMonsterByName] monster deck not found")
+    if onDone then onDone() end
+    return
+  end
+
+  if monsterDeck.type == "Card" then
+    local cardData = parseJson(monsterDeck.memo)
+    if nameMatches(cardData, step.monsterName) then
+      monsterDeck.setRotation(orient(cardData, false))
+      monsterDeck.setPositionSmooth(codexMat.positionToWorld({0, 0.5, 4}):setAt("y", 3))
+    else
+      log("[findMonsterByName] single card does not match")
+    end
+    if onDone then onDone() end
+    return
+  end
+
+  local objects     = monsterDeck.getObjects()
+  local revealList  = {}
+  local foundTarget = false
+
+  for i = #objects, 1, -1 do
+    local entry     = objects[i]
+    local entryData = parseJson(entry.memo)
+    local isTarget  = nameMatches(entryData, step.monsterName)
+    local nameStr   = entryData and (entryData.name or entry.name or "?") or "?"
+    table.insert(revealList, { guid = entry.guid, isTarget = isTarget, name = nameStr })
+    if isTarget then
+      foundTarget = true
+      break
+    end
+  end
+
+  if not foundTarget then
+    print(string.format("[findMonsterByName] %s not found in deck", step.monsterName))
+    monsterDeck.highlightOn("Red", 5)
+    if onDone then onDone() end
+    return
+  end
+
+  local cardSpacing    = 0.9
+  local revealResult   = { foundGuid = nil, anotherGuids = {} }
+
+  for i, entry in ipairs(revealList) do
+    local localPos = Vector({ (i - 1) * cardSpacing, 0.5, 1.7 })
+    local worldPos = codexMat.positionToWorld(localPos):setAt("y", 3)
+    local card = monsterDeck.takeObject({
+      guid     = entry.guid,
+      position = worldPos,
+      rotation = orient(parseJson(monsterDeck.memo)),
+      smooth   = true
+    })
+    if card then
+      card.highlightOn(entry.isTarget and "Green" or "Red", 5)
+      if entry.isTarget then
+        revealResult.foundGuid = card.guid
+        if #revealList > 1 then card.interactable = false end
+      else
+        card.interactable = false
+        table.insert(revealResult.anotherGuids, card.guid)
+      end
+    end
+  end
+
+  local finalFoundPos = codexMat.positionToWorld({0, 0.5, 1.7}):setAt("y", 3)
+
+  local function spawnFoundCard()
+    local foundCard = getObjectFromGUID(revealResult.foundGuid)
+    if not foundCard then
+      if onDone then onDone() end
+      return
+    end
+    foundCard.interactable = true
+    spawnMonster(finalFoundPos, foundCard)
+    if onDone then onDone() end
+  end
+
+  Wait.time(function()
+    local anotherCount = #revealResult.anotherGuids
+    if anotherCount == 0 then
+      spawnFoundCard()
+      return
+    end
+
+    local locationData = parseJson(locationMat.memo)
+    if not locationData or not locationData.monster then return end
+    local monsterPos = locationMat.positionToWorld(locationData.monster)
+
+    if anotherCount == 1 then
+      local obj = getObjectFromGUID(revealResult.anotherGuids[1])
+      if obj then
+        obj.setPositionSmooth(monsterPos:setAt("y", 3))
+        Wait.time(function()
+          local foundCard = getObjectFromGUID(revealResult.foundGuid)
+          if foundCard then foundCard.setPositionSmooth(finalFoundPos) end
+          Wait.time(spawnFoundCard, 0.5)
+        end, 0.5)
+      end
+    else
+      local tempPos = Vector(monsterPos.x - 1, monsterPos.y, monsterPos.z)
+      for _, guid in ipairs(revealResult.anotherGuids) do
+        local obj = getObjectFromGUID(guid)
+        if obj then
+          obj.setRotation(orient(parseJson(obj.memo)))
+          obj.setPosition(tempPos)
+        end
+      end
+      Wait.time(function()
+        local pile = nil
+        for _, o in ipairs(findObjsInRadius(tempPos, 2)) do
+          if o.type == "Deck" or o.type == "Card" then pile = o; break end
+        end
+        if not pile then return end
+        if pile.type == "Deck" then pile.shuffle() end
+        Wait.time(function()
+          pile.setPositionSmooth(monsterPos:setAt("y", 3))
+          Wait.time(function()
+            local foundCard = getObjectFromGUID(revealResult.foundGuid)
+            if foundCard then foundCard.setPositionSmooth(finalFoundPos) end
+            Wait.time(spawnFoundCard, 0.5)
+          end, 0.5)
+        end, 0.5)
+      end, 0.5)
+    end
+  end, FIND_DURATION)
+end
