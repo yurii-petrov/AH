@@ -496,10 +496,18 @@ function setInvestigatorPhase(phase)
   for p = 1, MAX_INV do
     local active = (p <= INV_STATE.count)
     self.UI.setAttribute("INV_actions_"   .. p, "active", isAction and active)
-    self.UI.setAttribute("INV_encounter_" .. p, "active", isEncounter and active and not INV_STATE.encounterDone[p])
-    self.UI.setAttribute("INV_mythos_"    .. p, "active", isMythos and active and INV_STATE.mythosCount[p] > 0)
-    if isMythos and active then
-      self.UI.setAttribute("INV_mythos_" .. p, "text", "міт: " .. INV_STATE.mythosCount[p])
+
+    local encShow = isEncounter and active and not INV_STATE.encounterDone[p]
+    self.UI.setAttribute("INV_encounter_" .. p, "active", encShow)
+    if encShow then
+      self.UI.setAttribute("INV_encounter_" .. p, "textColor", TEXT_COL)
+    end
+
+    local mythShow = isMythos and active and INV_STATE.mythosCount[p] > 0
+    self.UI.setAttribute("INV_mythos_" .. p, "active", mythShow)
+    if mythShow then
+      self.UI.setAttribute("INV_mythos_" .. p, "text",      "міт: " .. INV_STATE.mythosCount[p])
+      self.UI.setAttribute("INV_mythos_" .. p, "textColor", TEXT_COL)
     end
   end
 end
@@ -546,7 +554,8 @@ function investigatorMythosClick(player, alt, id)
     self.UI.setAttribute("INV_mythos_" .. p, "active", false)
   else
     INV_STATE.mythosActive = p
-    self.UI.setAttribute("INV_mythos_" .. p, "text", "міт: " .. count)
+    self.UI.setAttribute("INV_mythos_" .. p, "text",      "міт: " .. count)
+    self.UI.setAttribute("INV_mythos_" .. p, "textColor", TEXT_COL)
   end
   onClickDrawMythos(nil, player.color)
 end
