@@ -222,8 +222,7 @@ local function buildRow(p)
       childForceExpandHeight = "false",
     },
     children = {
-      -- avatar placeholder (swap for a real sprite later)
-      { tag = "Image", attributes = { id = "INV_avatar_" .. p, minWidth = AVATAR_SIZE, preferredWidth = AVATAR_SIZE, flexibleWidth = "0", color = "#FFFFFF" } },
+      { tag = "Button", attributes = { id = "INV_avatar_" .. p, onClick = "investigatorSeatPlayer", text = "", color = "#FFFFFF", minWidth = AVATAR_SIZE, preferredWidth = AVATAR_SIZE, flexibleWidth = "0", minHeight = AVATAR_SIZE, preferredHeight = AVATAR_SIZE } },
       { tag = "Text", attributes = { id = "INV_name_" .. p .. "_text", text = "Дослідник " .. p, color = TEXT_COL, font = FONT, fontSize = "22", alignment = "MiddleLeft", flexibleWidth = "1" } },
       buildActionButton(p, 1),
       buildActionButton(p, 2),
@@ -398,6 +397,29 @@ function investigatorToggleCollapse()
   self.UI.setAttribute("INV_collapse", "text", INV_STATE.collapsed and "^" or "v")
 end
 
+--- Seat the clicking player at the color that owns this investigator row,
+--- but only if that color is not already taken by someone else.
+function investigatorSeatPlayer(player, alt, id)
+  local p = tonumber(id:match("INV_avatar_(%d+)"))
+  if not p then return end
+
+  local hand = nil
+  for _, obj in ipairs(getObjects()) do
+    if obj.type == "Hand" and obj.memo == "hand " .. p then
+      hand = obj
+      break
+    end
+  end
+
+  if not hand then return end
+
+  local targetColor = hand.getValue()
+  if not targetColor or targetColor == "" then return end
+  local occupant = Player[targetColor]
+  if occupant and occupant.seated and occupant.steam_id ~= player.steam_id then return end
+  player.changeColor(targetColor)
+end
+
 -- ── public API ────────────────────────────────────────────────────
 
 --- Assign a dropped investigator to the next free row and show its name.
@@ -440,7 +462,7 @@ function setInvestigatorName(name, mat, color, portraitKey)
   end
 
   refreshLeaderState(slot)
-  self.UI.setAttribute("INV_name_" .. slot .. "_text", "text", name)
+  self.UI.setAttribute("INV_name_" .. slot .. "_text", "text", name:match("^(%S+)") or name)
   if portraitKey then
     self.UI.setAttribute("INV_avatar_" .. slot, "image", portraitKey)
   end

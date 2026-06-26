@@ -168,6 +168,7 @@ function onClickPrepareNumberOfPlayers(onComplete)
     if data then
       local hand = spawnObjectData({ data = data })
       hand.setPosition({targetPosition.x, 3, -71})
+      hand.memo = "hand " .. i
     end
   end
 
