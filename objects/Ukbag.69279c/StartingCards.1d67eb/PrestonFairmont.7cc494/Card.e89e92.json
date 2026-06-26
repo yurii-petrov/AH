@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"investigator\":\"Preston Fairmont\",\"type\":\"starting\",\"extraMat\":{\"label\":\"IM_debts\"}}",
+  "Memo": "{\"investigator\":\"Preston Fairmont\",\"type\":\"starting\"}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,

@@ -378,10 +378,6 @@ I18N_DATA = {
     ["en"] = "Death",
     ["uk"] = "Смерть",
   },
-  ["IM_debts"] = {
-    ["en"] = "Debts",
-    ["uk"] = "Борги",
-  },
   ["IM_discard_desc_text"] = {
     ["en"] = "Place the card here; it will go back to its deck.",
     ["uk"] = "Покладіть сюди карту, вона опиниться у своїй колоді",
@@ -394,6 +390,10 @@ I18N_DATA = {
     ["en"] = "E    N    E    M    I    E    S",
     ["uk"] = "В    О    Р    О    Г    И",
   },
+  ["IM_favors"] = {
+    ["en"] = "Favors",
+    ["uk"] = "Борги",
+  },
   ["IM_horror"] = {
     ["en"] = "Horror",
     ["uk"] = "Жах",
@@ -402,8 +402,8 @@ I18N_DATA = {
     ["en"] = "Influence",
     ["uk"] = "Вплив",
   },
-  ["IM_legacy"] = {
-    ["en"] = "Legacy",
+  ["IM_inheritance"] = {
+    ["en"] = "Inheritance",
     ["uk"] = "Спадок",
   },
   ["IM_lore"] = {
