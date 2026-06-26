@@ -1317,3 +1317,7 @@ msgstr "Favors"
 
 msgid "IM_inheritance"
 msgstr "Inheritance"
+
+# Investigators HUD
+msgid "INV_blocked_msg"
+msgstr "%s is occupied by %s. You cannot interact with this investigator."

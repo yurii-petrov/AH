@@ -1383,3 +1383,7 @@ msgstr "Борги"
 
 msgid "IM_inheritance"
 msgstr "Спадок"
+
+# Investigators HUD
+msgid "INV_blocked_msg"
+msgstr "%s зайнятий гравцем %s. Ви не можете взаємодіяти з цим дослідником."
