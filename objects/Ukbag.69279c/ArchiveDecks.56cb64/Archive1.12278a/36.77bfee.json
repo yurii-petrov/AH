@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"number\":36,\"type\":\"codex\"}",
+  "Memo": "{\"number\":36,\"type\":\"codex\",\"returnToArchive\":false}",
   "Name": "Card",
   "Nickname": "36",
   "SidewaysCard": false,
