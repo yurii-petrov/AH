@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"number\":37,\"type\":\"codex\"}",
+  "Memo": "{\"number\":37,\"type\":\"codex\",\"back\":{\"actions\":[{\"title\":\"Виконати дії\",\"steps\":[{\"type\":\"returnCodexByNumber\",\"number\":36},{\"type\":\"takeCodexFromArchive\",\"number\":38},{\"type\":\"spawnMonsterOnLocation\",\"number\":40,\"location\":\"Docks\"},{\"type\":\"returnCodexToArchive\"}]}]}}",
   "Name": "Card",
   "Nickname": "37",
   "SidewaysCard": false,

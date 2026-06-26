@@ -1,0 +1,58 @@
+-- ╭──────────────────────────────────────────────╮
+-- │     STEP: placeTokenOnScenarioMat            │
+-- ╰──────────────────────────────────────────────╯
+--
+-- Drops a token at a local position on the scenario mat.
+-- Used to mark progress (e.g. scenario sheet tracking markers).
+--
+-- Example step JSON:
+--   {
+--     "type": "placeTokenOnScenarioMat",
+--     "token": { "type": "White Marker" },
+--     "positionIndex": 9
+--   }
+-- positionIndex references SCENARIO_MAT_DATA.positions (1-12).
+-- Alternatively supply "position": { "x": ..., "y": ..., "z": ... }
+-- for an explicit local coordinate on the mat.
+
+function processStepPlaceTokenOnScenarioMat(step, context, onDone)
+  local tokenType = (step.token and step.token.type) or "White Marker"
+
+  local scenarioMat = getObjectFromGUID(scenarioMatId)
+  if not scenarioMat then
+    log("[placeTokenOnScenarioMat] scenarioMat not found")
+    if onDone then onDone() end
+    return
+  end
+
+  local localPos
+  if step.positionIndex then
+    localPos = SCENARIO_MAT_DATA.positions[step.positionIndex]
+    if not localPos then
+      log("[placeTokenOnScenarioMat] invalid positionIndex: " .. tostring(step.positionIndex))
+      if onDone then onDone() end
+      return
+    end
+  elseif step.position then
+    localPos = { step.position.x or 0, step.position.y or 0.2, step.position.z or 0 }
+  else
+    log("[placeTokenOnScenarioMat] no position specified")
+    if onDone then onDone() end
+    return
+  end
+
+  local worldPos = scenarioMat.positionToWorld(localPos):setAt("y", 3)
+
+  local bagId = getTokenBagIdByType(tokenType)
+  local bag   = bagId and getObjectFromGUID(bagId)
+  if not bag then
+    log("[placeTokenOnScenarioMat] bag not found for token type: " .. tostring(tokenType))
+    if onDone then onDone() end
+    return
+  end
+
+  bag.takeObject({ index = 0, position = worldPos, rotation = { 0, 180, 180 } })
+      .highlightOn("Yellow", 5)
+
+  if onDone then onDone() end
+end

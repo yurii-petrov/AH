@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"number\":30,\"type\":\"codex\"}",
+  "Memo": "{\"number\":30,\"type\":\"codex\",\"back\":{\"actions\":[{\"title\":\"Виконати дії\",\"steps\":[{\"type\":\"spawnMonsterOnLocation\",\"number\":39,\"location\":\"Deserted Island\"},{\"type\":\"takeCodexFromArchive\",\"number\":37},{\"type\":\"returnCodexToArchive\"}]}]}}",
   "Name": "Card",
   "Nickname": "30",
   "SidewaysCard": false,
