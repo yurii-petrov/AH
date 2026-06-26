@@ -65,9 +65,10 @@ function onLoad(savedData)
   killText2.attributes.rotation = "0 180 180"
   killText2.attributes.active = data.hp <= 0 or data.hp ~= data.maxHp
 
-  local killDialog = getKillDialog()
+  local killDialog1 = getKillDialog("killDialog1", "0 -65 -12", "0 0 180")
+  local killDialog2 = getKillDialog("killDialog2", "0 -65 3", "0 180 180")
 
-  self.UI.setXmlTable({buttonHP1, buttonHP2, buttonKill1, buttonKill2, killText1, killText2, killDialog})
+  self.UI.setXmlTable({buttonHP1, buttonHP2, buttonKill1, buttonKill2, killText1, killText2, killDialog1, killDialog2})
 end
 
 function setHPMax(params)
@@ -108,17 +109,17 @@ function getText()
   }
 end
 
-function getKillDialog()
+function getKillDialog(id, pos, rot)
   local titleText = i18n.getStrById("kill_dialog_title")
   local yesText = i18n.getStrById("kill_dialog_yes")
   local noText = i18n.getStrById("kill_dialog_no")
   return {
     tag = "Panel",
     attributes = {
-      id = "killDialog",
+      id = id,
       active = false,
-      position = "0 -65 -12",
-      rotation = "0 0 180",
+      position = pos,
+      rotation = rot,
       width = "900",
       height = "550",
       scale = "0.1 0.1 1",
@@ -143,7 +144,7 @@ function getKillDialog()
       {
         tag = "Button",
         attributes = {
-          id = "killDialogYes",
+          id = id .. "Yes",
           onClick = "clickKillYes",
           text = yesText,
           fontSize = "100",
@@ -159,7 +160,7 @@ function getKillDialog()
       {
         tag = "Button",
         attributes = {
-          id = "killDialogNo",
+          id = id .. "No",
           onClick = "clickKillNo",
           text = noText,
           fontSize = "100",
@@ -186,7 +187,8 @@ function clickKill(player, alt_click)
   local monsterMemo = parseJson(attachments[1].memo)
   if monsterMemo and monsterMemo.remnant then
     pendingKillPlayer = player
-    self.UI.setAttribute("killDialog", "active", true)
+    self.UI.setAttribute("killDialog1", "active", true)
+    self.UI.setAttribute("killDialog2", "active", true)
   else
     pendingKillPlayer = player
     performKill(false)
@@ -194,12 +196,14 @@ function clickKill(player, alt_click)
 end
 
 function clickKillYes(player, alt_click)
-  self.UI.setAttribute("killDialog", "active", false)
+  self.UI.setAttribute("killDialog1", "active", false)
+  self.UI.setAttribute("killDialog2", "active", false)
   performKill(true)
 end
 
 function clickKillNo(player, alt_click)
-  self.UI.setAttribute("killDialog", "active", false)
+  self.UI.setAttribute("killDialog1", "active", false)
+  self.UI.setAttribute("killDialog2", "active", false)
   performKill(false)
 end
 
@@ -240,7 +244,8 @@ function clickHp(player, alt_click)
   self.UI.setAttribute("killText2", "active", data.hp ~= data.maxHp)
 
   if data.hp ~= data.maxHp then
-    self.UI.setAttribute("killDialog", "active", false)
+    self.UI.setAttribute("killDialog1", "active", false)
+    self.UI.setAttribute("killDialog2", "active", false)
     pendingKillPlayer = nil
   end
 
