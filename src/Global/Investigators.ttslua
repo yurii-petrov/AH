@@ -51,15 +51,16 @@ local TEXT_COL = "#ffffff"
 -- ── runtime state ─────────────────────────────────────────────────
 
 INV_STATE = {
-  count      = DEFAULT_COUNT,
-  applied    = false,
-  collapsed  = false,
-  snapshot   = nil,
-  actions    = {}, -- actions[player][action] = bool (true = spent/black)
-  slotByName = {}, -- raw investigator name -> row slot
-  nameBySlot = {}, -- row slot -> raw investigator name
-  matBySlot  = {}, -- row slot -> investigator mat guid (for the physical tokens)
-  colorBySlot = {}, -- row slot -> owning player color (action dots are color-gated)
+  count          = DEFAULT_COUNT,
+  applied        = false,
+  collapsed      = false,
+  snapshot       = nil,
+  actions        = {}, -- actions[slot][action] = bool (true = spent/face-down)
+  isLeaderAction = {}, -- isLeaderAction[slot][action] = bool (Leader Activation Token)
+  slotByName     = {}, -- raw investigator name -> row slot
+  nameBySlot     = {}, -- row slot -> raw investigator name
+  matBySlot      = {}, -- row slot -> investigator mat guid (for the physical tokens)
+  colorBySlot    = {}, -- row slot -> owning player color (action dots are color-gated)
 }
 
 local ACTIVATION_MEMOS = {
@@ -69,13 +70,19 @@ local ACTIVATION_MEMOS = {
 
 for p = 1, MAX_INV do
   INV_STATE.actions[p] = {}
+  INV_STATE.isLeaderAction[p] = {}
   for a = 1, ACTIONS_PER_INV do
     INV_STATE.actions[p][a] = false
+    INV_STATE.isLeaderAction[p][a] = false
   end
 end
 
-local function actionColor(spent)
-  return spent and INV_DARK or INV_GOLD
+local function actionImage(isLeader, spent)
+  if isLeader then
+    return spent and "leader_activation_token_back" or "leader_activation_token_front"
+  else
+    return spent and "activation_token_back" or "activation_token_front"
+  end
 end
 
 local function actionId(p, a)
@@ -84,14 +91,15 @@ end
 
 -- ── small UI helpers ──────────────────────────────────────────────
 
-local function refreshActionColor(p, a)
-  self.UI.setAttribute(actionId(p, a), "color", actionColor(INV_STATE.actions[p][a]))
+local function refreshActionButton(p, a)
+  local isLeader = INV_STATE.isLeaderAction[p][a]
+  self.UI.setAttribute(actionId(p, a), "image", actionImage(isLeader, INV_STATE.actions[p][a]))
 end
 
 local function refreshAllActionColors()
   for p = 1, MAX_INV do
     for a = 1, ACTIONS_PER_INV do
-      refreshActionColor(p, a)
+      refreshActionButton(p, a)
     end
   end
 end
@@ -151,20 +159,38 @@ local function locateToken(token)
   end
 end
 
+-- Scan physical tokens on a mat to determine which action slots are leader
+-- tokens, then update the button images to match.
+local function refreshLeaderState(slot)
+  local guid = INV_STATE.matBySlot[slot]
+  if not guid then return end
+  local mat = getObjectFromGUID(guid)
+  if not mat then return end
+
+  local tokens = activationTokensOn(mat)
+  for action = 1, ACTIONS_PER_INV do
+    local token = tokens[action]
+    local isLeader = (token ~= nil) and (token.memo == "Leader Activation Token")
+    INV_STATE.isLeaderAction[slot][action] = isLeader
+    self.UI.setAttribute(actionId(slot, action), "image", actionImage(isLeader, INV_STATE.actions[slot][action]))
+  end
+end
+
 -- ── XML builders ──────────────────────────────────────────────────
 
 local function buildActionButton(p, a)
   return {
     tag = "Button",
     attributes = {
-      id            = actionId(p, a),
-      onClick       = "investigatorToggleAction",
-      color         = actionColor(INV_STATE.actions[p][a]),
-      text          = "",
-      minWidth      = ACTION_SIZE,
-      preferredWidth = ACTION_SIZE,
-      flexibleWidth = "0",
-      minHeight     = ACTION_SIZE,
+      id              = actionId(p, a),
+      onClick         = "investigatorToggleAction",
+      image           = actionImage(false, false),
+      color           = "#FFFFFF",
+      text            = "",
+      minWidth        = ACTION_SIZE,
+      preferredWidth  = ACTION_SIZE,
+      flexibleWidth   = "0",
+      minHeight       = ACTION_SIZE,
       preferredHeight = ACTION_SIZE,
     },
   }
@@ -308,8 +334,8 @@ function investigatorToggleAction(player, alt, id)
   end
 
   INV_STATE.actions[p][a] = not INV_STATE.actions[p][a]
-  refreshActionColor(p, a)
-  syncActivationToken(p, a, INV_STATE.actions[p][a]) -- flip the matching mat token
+  refreshActionButton(p, a)
+  syncActivationToken(p, a, INV_STATE.actions[p][a])
 end
 
 --- Mirror a physical token flip (done on the mat) back into the HUD dot.
@@ -322,7 +348,7 @@ function onActivationTokenFlipped(token)
   local spent = token.is_face_down
   if INV_STATE.actions[slot][action] ~= spent then
     INV_STATE.actions[slot][action] = spent
-    refreshActionColor(slot, action)
+    refreshActionButton(slot, action)
   end
 end
 
@@ -335,8 +361,8 @@ function investigatorApplyAll(player, alt, id)
       for a = 1, ACTIONS_PER_INV do
         INV_STATE.snapshot[p][a] = INV_STATE.actions[p][a]
         INV_STATE.actions[p][a]  = true
-        refreshActionColor(p, a)
-        syncActivationToken(p, a, true) -- flip every mat token face-down
+        refreshActionButton(p, a)
+        syncActivationToken(p, a, true)
       end
     end
     INV_STATE.applied = true
@@ -346,8 +372,8 @@ function investigatorApplyAll(player, alt, id)
       for a = 1, ACTIONS_PER_INV do
         local prev = INV_STATE.snapshot and INV_STATE.snapshot[p] and INV_STATE.snapshot[p][a] or false
         INV_STATE.actions[p][a] = prev
-        refreshActionColor(p, a)
-        syncActivationToken(p, a, prev) -- restore each mat token to its snapshot side
+        refreshActionButton(p, a)
+        syncActivationToken(p, a, prev)
       end
     end
     INV_STATE.applied  = false
@@ -390,6 +416,7 @@ function setInvestigatorName(name, mat, color)
 
   if mat then
     INV_STATE.matBySlot[slot] = mat.getGUID()
+    refreshLeaderState(slot)
   end
   if color then
     INV_STATE.colorBySlot[slot] = color
@@ -421,12 +448,17 @@ function setInvestigatorCount(n)
   refreshAllActionColors()
   setApplyPressed(false)
 
-  -- fresh game: drop name / mat / color assignments back to placeholders
-  INV_STATE.slotByName  = {}
-  INV_STATE.nameBySlot  = {}
-  INV_STATE.matBySlot   = {}
-  INV_STATE.colorBySlot = {}
+  -- fresh game: drop name / mat / color / leader assignments back to placeholders
+  INV_STATE.slotByName     = {}
+  INV_STATE.nameBySlot     = {}
+  INV_STATE.matBySlot      = {}
+  INV_STATE.colorBySlot    = {}
+  INV_STATE.isLeaderAction = {}
   for p = 1, MAX_INV do
+    INV_STATE.isLeaderAction[p] = {}
+    for a = 1, ACTIONS_PER_INV do
+      INV_STATE.isLeaderAction[p][a] = false
+    end
     self.UI.setAttribute("INV_name_" .. p .. "_text", "text", "Дослідник " .. p)
   end
 
