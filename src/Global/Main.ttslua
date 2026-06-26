@@ -173,6 +173,7 @@ function nextPhase(player, value, id)
     self.UI.setAttribute("phase_btn_myth", "active", true)
   end
 
+  setInvestigatorPhase(gameData.phase)
 end
 
 function encounterHudBtn(player)

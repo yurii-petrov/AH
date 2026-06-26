@@ -42,11 +42,14 @@ local PAD              = "12"
 local ACTION_SIZE      = "34"
 local AVATAR_SIZE      = "34"
 
-local INV_GOLD = "#F2C230" -- action available / button idle
-local INV_DARK = "#141414" -- action spent / button pressed
-local PANEL_BG = "#1d1d1dF2"
-local ROW_BG   = "#2c2c2c"
-local TEXT_COL = "#ffffff"
+local INV_GOLD      = "#F2C230"
+local INV_DARK      = "#141414"
+local PANEL_BG      = "#1d1d1dF2"
+local ROW_BG        = "#2c2c2c"
+local TEXT_COL      = "#ffffff"
+local ENCOUNTER_CLR = "#1a6b1a"
+local MYTHOS_CLR    = "#8b1a1a"
+local PHASE_BTN_W   = "100"
 
 -- ── runtime state ─────────────────────────────────────────────────
 
@@ -55,11 +58,14 @@ INV_STATE = {
   applied        = false,
   collapsed      = false,
   snapshot       = nil,
-  actions        = {}, -- actions[slot][action] = bool (true = spent/face-down)
-  isLeaderAction = {}, -- isLeaderAction[slot][action] = bool (Leader Activation Token)
-  slotByName     = {}, -- localized investigator name -> row slot (= TABLE_DATA.players index)
-  nameBySlot     = {}, -- row slot -> localized investigator name
-  -- mat and color are NOT stored; always resolved dynamically via TABLE_DATA.players / hand memo
+  actions        = {},
+  isLeaderAction = {},
+  slotByName     = {},
+  nameBySlot     = {},
+  phase          = 1,
+  encounterDone  = {},
+  mythosCount    = {},
+  mythosActive   = nil,
 }
 
 local ACTIVATION_MEMOS = {
@@ -74,6 +80,11 @@ for p = 1, MAX_INV do
     INV_STATE.actions[p][a] = false
     INV_STATE.isLeaderAction[p][a] = false
   end
+end
+
+for p = 1, MAX_INV do
+  INV_STATE.encounterDone[p] = false
+  INV_STATE.mythosCount[p]   = 2
 end
 
 local function actionImage(isLeader, spent)
@@ -238,8 +249,53 @@ local function buildRow(p)
     children = {
       { tag = "Button", attributes = { id = "INV_avatar_" .. p, onClick = "investigatorSeatPlayer", text = "", color = "#FFFFFF", minWidth = AVATAR_SIZE, preferredWidth = AVATAR_SIZE, flexibleWidth = "0", minHeight = AVATAR_SIZE, preferredHeight = AVATAR_SIZE } },
       { tag = "Text", attributes = { id = "INV_name_" .. p .. "_text", text = "Дослідник " .. p, color = TEXT_COL, font = FONT, fontSize = "22", alignment = "MiddleLeft", flexibleWidth = "1" } },
-      buildActionButton(p, 1),
-      buildActionButton(p, 2),
+      {
+        tag = "HorizontalLayout",
+        attributes = {
+          id                     = "INV_actions_" .. p,
+          spacing                = "10",
+          childForceExpandWidth  = "false",
+          childForceExpandHeight = "false",
+          flexibleWidth          = "0",
+        },
+        children = { buildActionButton(p, 1), buildActionButton(p, 2) },
+      },
+      {
+        tag = "Button",
+        attributes = {
+          id              = "INV_encounter_" .. p,
+          onClick         = "investigatorEncounterClick",
+          active          = "false",
+          text            = "Зустріч",
+          color           = ENCOUNTER_CLR,
+          textColor       = TEXT_COL,
+          font            = FONT,
+          fontSize        = "18",
+          minWidth        = PHASE_BTN_W,
+          preferredWidth  = PHASE_BTN_W,
+          flexibleWidth   = "0",
+          minHeight       = ACTION_SIZE,
+          preferredHeight = ACTION_SIZE,
+        },
+      },
+      {
+        tag = "Button",
+        attributes = {
+          id              = "INV_mythos_" .. p,
+          onClick         = "investigatorMythosClick",
+          active          = "false",
+          text            = "міт: 2",
+          color           = MYTHOS_CLR,
+          textColor       = TEXT_COL,
+          font            = FONT,
+          fontSize        = "18",
+          minWidth        = PHASE_BTN_W,
+          preferredWidth  = PHASE_BTN_W,
+          flexibleWidth   = "0",
+          minHeight       = ACTION_SIZE,
+          preferredHeight = ACTION_SIZE,
+        },
+      },
     },
   }
 end
@@ -297,6 +353,7 @@ local function buildBody()
         attributes = {
           id              = "INV_apply_text",
           onClick         = "investigatorApplyAll",
+          visibility      = "Host",
           text            = "Застосувати для всіх",
           color           = INV_GOLD,
           textColor       = INV_DARK,
@@ -416,6 +473,82 @@ function investigatorToggleCollapse()
   INV_STATE.collapsed = not INV_STATE.collapsed
   self.UI.setAttribute("INV_body", "active", not INV_STATE.collapsed)
   self.UI.setAttribute("INV_collapse", "text", INV_STATE.collapsed and "^" or "v")
+end
+
+--- Switch per-investigator controls to match the current game phase.
+--- phase 1/2 = action dots; phase 3 = encounter button; phase 4 = mythos countdown.
+function setInvestigatorPhase(phase)
+  INV_STATE.phase = phase
+  local isAction    = (phase == 1)
+  local isEncounter = (phase == 3)
+  local isMythos    = (phase == 4)
+
+  if isEncounter then
+    for p = 1, INV_STATE.count do INV_STATE.encounterDone[p] = false end
+  end
+  if isMythos then
+    for p = 1, INV_STATE.count do INV_STATE.mythosCount[p] = 2 end
+    INV_STATE.mythosActive = nil
+  end
+
+  self.UI.setAttribute("INV_apply_text", "active", phase == 1)
+
+  for p = 1, MAX_INV do
+    local active = (p <= INV_STATE.count)
+    self.UI.setAttribute("INV_actions_"   .. p, "active", isAction and active)
+    self.UI.setAttribute("INV_encounter_" .. p, "active", isEncounter and active and not INV_STATE.encounterDone[p])
+    self.UI.setAttribute("INV_mythos_"    .. p, "active", isMythos and active and INV_STATE.mythosCount[p] > 0)
+    if isMythos and active then
+      self.UI.setAttribute("INV_mythos_" .. p, "text", "міт: " .. INV_STATE.mythosCount[p])
+    end
+  end
+end
+
+function investigatorEncounterClick(player, alt, id)
+  local p = tonumber(id:match("INV_encounter_(%d+)"))
+  if not p then return end
+
+  local owner = colorForSlot(p)
+  local ownerPlayer = owner and Player[owner]
+  if ownerPlayer and ownerPlayer.seated and ownerPlayer.steam_id ~= player.steam_id then
+    local invName   = INV_STATE.nameBySlot[p] or ("Investigator " .. p)
+    local ownerName = (ownerPlayer.steam_name ~= "") and ownerPlayer.steam_name or owner
+    printToColor(string.format(i18n.getStrById("INV_blocked_msg"), invName, ownerName), player.color, {1, 0.5, 0.1})
+    return
+  end
+
+  INV_STATE.encounterDone[p] = true
+  self.UI.setAttribute("INV_encounter_" .. p, "active", false)
+  onClickEncounter(nil, player.color)
+end
+
+function investigatorMythosClick(player, alt, id)
+  local p = tonumber(id:match("INV_mythos_(%d+)"))
+  if not p then return end
+
+  local owner = colorForSlot(p)
+  local ownerPlayer = owner and Player[owner]
+  if ownerPlayer and ownerPlayer.seated and ownerPlayer.steam_id ~= player.steam_id then
+    local invName   = INV_STATE.nameBySlot[p] or ("Investigator " .. p)
+    local ownerName = (ownerPlayer.steam_name ~= "") and ownerPlayer.steam_name or owner
+    printToColor(string.format(i18n.getStrById("INV_blocked_msg"), invName, ownerName), player.color, {1, 0.5, 0.1})
+    return
+  end
+
+  if INV_STATE.mythosActive ~= nil and INV_STATE.mythosActive ~= p then return end
+
+  local count = INV_STATE.mythosCount[p]
+  if count <= 0 then return end
+  count = count - 1
+  INV_STATE.mythosCount[p] = count
+  if count == 0 then
+    INV_STATE.mythosActive = nil
+    self.UI.setAttribute("INV_mythos_" .. p, "active", false)
+  else
+    INV_STATE.mythosActive = p
+    self.UI.setAttribute("INV_mythos_" .. p, "text", "міт: " .. count)
+  end
+  onClickDrawMythos(nil, player.color)
 end
 
 --- Seat the clicking player at the color that owns this investigator row,
@@ -564,12 +697,19 @@ function setInvestigatorCount(n)
   INV_STATE.isLeaderAction = {}
   for p = 1, MAX_INV do
     INV_STATE.isLeaderAction[p] = {}
+    INV_STATE.encounterDone[p]  = false
+    INV_STATE.mythosCount[p]    = 2
     for a = 1, ACTIONS_PER_INV do
       INV_STATE.isLeaderAction[p][a] = false
     end
-    self.UI.setAttribute("INV_name_" .. p .. "_text", "text", "Дослідник " .. p)
-    self.UI.setAttribute("INV_avatar_" .. p, "image", "")
+    self.UI.setAttribute("INV_name_"      .. p .. "_text", "text", "Дослідник " .. p)
+    self.UI.setAttribute("INV_avatar_"    .. p, "image", "")
+    self.UI.setAttribute("INV_actions_"   .. p, "active", p <= n)
+    self.UI.setAttribute("INV_encounter_" .. p, "active", false)
+    self.UI.setAttribute("INV_mythos_"    .. p, "active", false)
   end
+  INV_STATE.phase        = 1
+  INV_STATE.mythosActive = nil
 
   if INV_STATE.collapsed then
     INV_STATE.collapsed = false
