@@ -182,7 +182,10 @@ function applyBlessedCursedToRoller(object, forceType)
   end
   if not roller or roller.call("getIsRolling") then return end
 
-  local newType = forceType or (object.is_face_down and 2 or 3)
+  local objectData = parseJson(object.memo)
+  local isFaceDown = object.is_face_down
+  if objectData and objectData.reversed then isFaceDown = not isFaceDown end
+  local newType = forceType or (isFaceDown and 2 or 3)
   roller.call("setRollerType", newType)
   local imageUrl = roller.call("getImageForType", newType)
   if imageUrl then

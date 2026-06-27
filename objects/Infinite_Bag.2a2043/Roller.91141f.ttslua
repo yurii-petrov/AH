@@ -270,7 +270,10 @@ local function findBlessedCursedType()
     if obj and obj ~= self and obj.memo then
       local ok, data = pcall(JSON.decode, obj.memo)
       if ok and data and data.type and string.lower(data.type) == "blessed cursed" then
-        return obj.is_face_down and 2 or 3
+        local isFaceDown = obj.is_face_down
+        print(data.reversed)
+        if data.reversed then isFaceDown = not isFaceDown end
+        return isFaceDown and 2 or 3
       end
     end
   end
