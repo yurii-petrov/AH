@@ -254,7 +254,10 @@ function clickFight(player, alt_click)
   local attachments = self.getAttachments()
   local monsterMemo = attachments[1] and parseJson(attachments[1].memo)
 
-  if invMat then
+  local playerMat = Global.call("getInvestigatorMatByColor", player.color)
+  local isOnOwnMat = invMat and playerMat and invMat.getGUID() == playerMat.getGUID()
+
+  if isOnOwnMat then
     local figurine = findInvestigatorFigurine(invMat)
     if figurine then
       local pos = figurine.getPosition()
@@ -264,9 +267,8 @@ function clickFight(player, alt_click)
       Player[player.color].lookAt({position = targetPos, pitch = 50, yaw = 0, distance = 25})
     end
   else
-    local mat = Global.call("getInvestigatorMatByColor", player.color)
-    if mat then
-      local snapPos = findFreeMonsterSnap(mat)
+    if playerMat then
+      local snapPos = findFreeMonsterSnap(playerMat)
       if snapPos then
         local targetPos = {snapPos.x, snapPos.y + 0.5, snapPos.z}
         self.setPosition(targetPos)
