@@ -53,6 +53,9 @@ function updateGlobalXml(newXml)
   self.UI.setAttribute('title', 'text', i18n.getStrById("MM_scenario1_name_text"))
   self.UI.setAttribute('body', 'text', i18n.getStrById("MM_scenario1_desc_text"))
   self.UI.setXmlTable(newXml)
+  if gameData.isStarted then
+    restorePhaseHud(gameData.phase)
+  end
 end
 
 -- ╭──────────────────────────────────────────────╮

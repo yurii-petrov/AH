@@ -119,6 +119,17 @@ local function setApplyPressed(pressed)
   self.UI.setAttribute("INV_apply_text", "textColor", pressed and INV_GOLD or INV_DARK)
 end
 
+local function saveActionsToGameData()
+  gameData.invActions = {}
+  for p = 1, INV_STATE.count do
+    gameData.invActions[p] = {}
+    for a = 1, ACTIONS_PER_INV do
+      gameData.invActions[p][a] = INV_STATE.actions[p][a]
+    end
+  end
+  gameData.invApplied = INV_STATE.applied
+end
+
 -- Collect the activation tokens sitting on `mat` in the same order the HUD
 -- dots are laid out, so action 1 / action 2 always map to the same physical
 -- token. The mat is rotated 180°, so the dot order matches descending mat-
@@ -421,6 +432,7 @@ function investigatorToggleAction(player, alt, id)
   INV_STATE.actions[p][a] = not INV_STATE.actions[p][a]
   refreshActionButton(p, a)
   syncActivationToken(p, a, INV_STATE.actions[p][a])
+  saveActionsToGameData()
 end
 
 --- Mirror a physical token flip (done on the mat) back into the HUD dot.
@@ -453,6 +465,7 @@ function investigatorApplyAll(player, alt, id)
     end
     INV_STATE.applied = true
     setApplyPressed(true)
+    saveActionsToGameData()
   else
     for p = 1, INV_STATE.count do
       for a = 1, ACTIONS_PER_INV do
@@ -465,6 +478,7 @@ function investigatorApplyAll(player, alt, id)
     INV_STATE.applied  = false
     INV_STATE.snapshot = nil
     setApplyPressed(false)
+    saveActionsToGameData()
   end
 end
 
@@ -526,6 +540,8 @@ function investigatorEncounterClick(player, alt, id)
   end
 
   INV_STATE.encounterDone[p] = true
+  gameData.encounterDone = gameData.encounterDone or {}
+  gameData.encounterDone[p] = true
   self.UI.setAttribute("INV_encounter_" .. p, "active", false)
   onClickEncounter(nil, player.color)
 end
@@ -557,6 +573,9 @@ function investigatorMythosClick(player, alt, id)
     self.UI.setAttribute("INV_mythos_" .. p, "text",      "міт: " .. count)
     self.UI.setAttribute("INV_mythos_" .. p, "textColor", TEXT_COL)
   end
+  gameData.mythosCount = gameData.mythosCount or {}
+  gameData.mythosCount[p] = INV_STATE.mythosCount[p]
+  gameData.mythosActive   = INV_STATE.mythosActive
   onClickDrawMythos(nil, player.color)
 end
 
@@ -675,6 +694,52 @@ function clearInvestigatorSlot(mat)
   end
   self.UI.setAttribute("INV_name_" .. slot .. "_text", "text", "Дослідник " .. slot)
   self.UI.setAttribute("INV_avatar_" .. slot, "image", "")
+end
+
+function restoreInvestigatorSessionState()
+  if gameData.invActions then
+    for pStr, actions in pairs(gameData.invActions) do
+      local pNum = tonumber(pStr)
+      if pNum and INV_STATE.actions[pNum] then
+        for aStr, spent in pairs(actions) do
+          local aNum = tonumber(aStr)
+          if aNum then
+            INV_STATE.actions[pNum][aNum] = spent
+            refreshActionButton(pNum, aNum)
+          end
+        end
+      end
+    end
+  end
+  if gameData.invApplied then
+    INV_STATE.applied = gameData.invApplied
+    setApplyPressed(INV_STATE.applied)
+  end
+
+  if INV_STATE.phase == 3 and gameData.encounterDone then
+    for pStr, done in pairs(gameData.encounterDone) do
+      local pNum = tonumber(pStr)
+      if done and pNum then
+        INV_STATE.encounterDone[pNum] = true
+        self.UI.setAttribute("INV_encounter_" .. pNum, "active", false)
+      end
+    end
+  end
+
+  if INV_STATE.phase == 4 and gameData.mythosCount then
+    for pStr, count in pairs(gameData.mythosCount) do
+      local pNum = tonumber(pStr)
+      if pNum then
+        INV_STATE.mythosCount[pNum] = count
+        local show = count > 0 and pNum <= INV_STATE.count
+        self.UI.setAttribute("INV_mythos_" .. pNum, "active", show)
+        if show then
+          self.UI.setAttribute("INV_mythos_" .. pNum, "text", "міт: " .. count)
+        end
+      end
+    end
+    INV_STATE.mythosActive = gameData.mythosActive and tonumber(gameData.mythosActive)
+  end
 end
 
 --- Show the panel with `n` investigator rows (clamped to 2..6) and reset

@@ -83,8 +83,6 @@ function onload(savedData)
   end, 1)
 
   if gameData.isStarted then
-    Global.UI.setAttribute("phase", "active", true)
-    Global.UI.setAttribute("phase_img", "image", phases[gameData.phase].image)
     if gameData.playerMats then
       for i, data in ipairs(gameData.playerMats) do
         TABLE_DATA.players[i] = {
@@ -93,9 +91,20 @@ function onload(savedData)
         }
       end
     end
-    -- restore the investigators HUD (after updateXMLs re-applies the UI table)
     Wait.time(function()
       setInvestigatorCount(gameData.numberOfPlayers or 2)
+      setInvestigatorPhase(gameData.phase)
+      restoreInvestigatorSessionState()
+      if gameData.investigatorSlots then
+        for slotStr, data in pairs(gameData.investigatorSlots) do
+          local slotNum = tonumber(slotStr)
+          local mat = TABLE_DATA.players[slotNum] and TABLE_DATA.players[slotNum].obj
+          local invKey = data.name:gsub(" ", "_")
+          local displayName = i18n.getStrById(invKey)
+          INV_STATE.slotByName[displayName] = slotNum
+          setInvestigatorName(displayName, mat, invKey .. "_portrait")
+        end
+      end
     end, 1.5)
   end
 
@@ -136,6 +145,24 @@ function onSave()
   return saveData
 end
 
+function restorePhaseHud(phase)
+  self.UI.setAttribute("phase", "active", true)
+  self.UI.setAttribute("phase_img", "image", phases[phase].image)
+  self.UI.setAttribute("phase_text", "text", i18n.getStrById("PB_phase" .. phase))
+  if phase == 3 then
+    self.UI.setAttribute("phase_btn_encounter", "active", true)
+    self.UI.setAttribute("phase_btn_text", "text", i18n.getStrById("PB_phase_btn_btn_encounter"))
+    self.UI.setAttribute("phase_btn_text", "active", true)
+    self.UI.setAttribute("PB_phase_btn_btn_text", "active", true)
+  elseif phase == 4 then
+    self.UI.setAttribute("phase_btn_encounter", "active", false)
+    self.UI.setAttribute("phase_btn_text", "text", i18n.getStrById("PB_phase_btn_btn_mythos"))
+    self.UI.setAttribute("phase_btn_myth", "active", true)
+    self.UI.setAttribute("phase_btn_text", "active", true)
+    self.UI.setAttribute("PB_phase_btn_btn_text", "active", true)
+  end
+end
+
 function nextPhase(player, value, id)
   if not player.host then
     printToColor("Ця кнопка доступна тільки хосту.", player.color, {1, 0.2, 0.2})
@@ -151,6 +178,8 @@ function nextPhase(player, value, id)
 
   self.UI.setAttribute('phase_text', "text", i18n.getStrById("PB_phase" .. gameData.phase))
   if gameData.phase == 1 then
+    gameData.invActions  = nil
+    gameData.invApplied  = nil
     self.UI.setAttribute("phase_btn_myth", "active", false)
     self.UI.setAttribute("phase_btn_text", "active", false)
     self.UI.setAttribute("PB_phase_btn_btn_text", "active", false)
@@ -162,11 +191,14 @@ function nextPhase(player, value, id)
       end
     end
   elseif gameData.phase == 3 then
+    gameData.encounterDone = nil
     self.UI.setAttribute("phase_btn_encounter", "active", true)
     self.UI.setAttribute("phase_btn_text", "text", i18n.getStrById("PB_phase_btn_btn_encounter"))
     self.UI.setAttribute("phase_btn_text", "active", true)
     self.UI.setAttribute("PB_phase_btn_btn_text", "active", true)
   elseif gameData.phase == 4 then
+    gameData.mythosCount  = nil
+    gameData.mythosActive = nil
     self.UI.setAttribute("phase_btn_encounter", "active", false)
     self.UI.setAttribute("phase_btn_text", "text", i18n.getStrById("PB_phase_btn_btn_mythos"))
     self.UI.setAttribute("phase_btn_myth", "active", true)

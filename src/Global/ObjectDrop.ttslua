@@ -252,8 +252,10 @@ function onInvestigatorDrop(colorName, object, objectData, isIgnoreRandomCard)
 
   local tintColor = colorName
   local matGuid = investigatorMat.getGUID()
+  gameData.investigatorSlots = gameData.investigatorSlots or {}
   for i, playerData in ipairs(TABLE_DATA.players) do
     if playerData.guid == matGuid then
+      gameData.investigatorSlots[i] = { name = objectData.name, matGuid = investigatorMat.getGUID() }
       for _, obj in ipairs(getObjects()) do
         if obj.type == "Hand" and obj.memo == "hand " .. i then
           local c = obj.getValue()
