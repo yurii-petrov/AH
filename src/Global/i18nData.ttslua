@@ -554,6 +554,10 @@ I18N_DATA = {
     ["en"] = "\n%s (%s)",
     ["uk"] = "\n%s (%s)",
   },
+  ["LOG_myth_in_process"] = {
+    ["en"] = "Wait for the previous action to finish",
+    ["uk"] = "Зачекайте завершення попередньої дії",
+  },
   ["LOG_not_enough_money"] = {
     ["en"] = "%s - not enough $",
     ["uk"] = "%s - недостатньо $",

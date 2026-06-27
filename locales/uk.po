@@ -701,6 +701,9 @@ msgstr ""
 "\n"
 "%s (%s)"
 
+msgid "LOG_myth_in_process"
+msgstr "Зачекайте завершення попередньої дії"
+
 msgid "LOG_gate_burst"
 msgstr ""
 "\n"

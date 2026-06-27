@@ -4,6 +4,24 @@
 -- Central file for all mythos tile logic.
 -- MYTHOS_TILE_DATA.obj is resolved in onload → always valid during gameplay.
 
+MYTH_LOCK_TIMEOUT = 10
+
+function lockMythProcess(label)
+  isDrawMythInProcess = true
+  currentMythAction   = label
+  Wait.time(function()
+    if isDrawMythInProcess then
+      isDrawMythInProcess = false
+      currentMythAction   = nil
+    end
+  end, MYTH_LOCK_TIMEOUT)
+end
+
+function unlockMythProcess()
+  isDrawMythInProcess = false
+  currentMythAction   = nil
+end
+
 -- ╭──────────────────────────────────────────────╮
 -- │                 HELPERS                      │
 -- ╰──────────────────────────────────────────────╯
@@ -45,7 +63,7 @@ end
 -- ╰──────────────────────────────────────────────╯
 
 function fixDrawMythosButton()
-  isDrawMythInProcess = false
+  unlockMythProcess()
 end
 
 function mythosTileSuccessAction(d)
@@ -240,8 +258,13 @@ function drawMythos(obj, playerColor)
   local discardTokenPositions = mythosTile.positionToWorld({-0.001, 0.1, -0.462})
   local yUnderMythosMat       = mythosTile.getPosition().y + mythosTile.getBounds().size.y
 
-  if isDrawMythInProcess then return end
-  isDrawMythInProcess = true
+  if isDrawMythInProcess then
+    local msg = i18n.getStrById("LOG_myth_in_process")
+    if currentMythAction then msg = msg .. ": " .. currentMythAction end
+    broadcastToAll(msg, "Orange")
+    return
+  end
+  lockMythProcess(nil)
 
   local function findObjInActiveTokenZone(pos)
     local hits = Physics.cast({
@@ -328,7 +351,7 @@ function drawMythos(obj, playerColor)
     local z2  = findObjInActiveTokenZone(mythosTile.positionToWorld({0.012, 0.1, 0.792}):setAt("y", 2.7))
     local dis = findObjsInDiscardTokenZone(discardTokenPositions:setAt("y", yUnderMythosMat))
     if collect(dis) + collect(z1) + collect(z2) == 0 then
-      isDrawMythInProcess = false
+      unlockMythProcess()
       return
     end
     Wait.time(function() callBack() end, 1)
@@ -360,10 +383,10 @@ function drawMythos(obj, playerColor)
 
   if #obj.getObjects() > 0 then
     clearActiveTile()
-    spawnCurrentMyth( function() isDrawMythInProcess = false end)
+    spawnCurrentMyth(function() unlockMythProcess() end)
   else
     restartMythosCup(function()
-      isDrawMythInProcess = false
+      unlockMythProcess()
       if #obj.getObjects() >= 0 then drawMythos(obj, playerColor) end
     end)
   end
@@ -385,6 +408,8 @@ function processDrawMyth(currentMyth, obj, playerColor, callBack)
   local investName = getInvestigatorName(playerColor)
   broadcastToAll(string.format(i18n.getStrById("LOG_myth_draw"), memoLabel, investName), "White")
 
+  currentMythAction = memoLabel
+
   local mythosTile = MYTHOS_TILE_DATA.obj
   if not mythosTile then callBack(); return end
 
@@ -395,9 +420,9 @@ function processDrawMyth(currentMyth, obj, playerColor, callBack)
     callBack(); return
   elseif currentMyth.memo == MythosCup.ReadHeadline then
     local locationMat = getObjectFromGUID(locationMatId)
-    if not locationMat then return end
+    if not locationMat then callBack(); return end
     local locationData = parseJson(locationMat.memo)
-    if not locationData then return end
+    if not locationData then callBack(); return end
 
     local headlineObj
     for _, o in ipairs(findObjsInRadius(locationMat.positionToWorld(locationData.headline):setAt("y", 2.2))) do
@@ -433,7 +458,7 @@ function processGateBurst(callBack)
   if not mythosTile then callBack(); return end
 
   local eventObj = getEventObj()
-  if not eventObj then return end
+  if not eventObj then callBack(); return end
 
   local eventCard = eventObj.type == "Deck" and takeCardFromTop(eventObj, true) or eventObj
   if not eventCard then callBack(); return end
@@ -454,7 +479,7 @@ function processGateBurst(callBack)
     i18n.getStrById(data.neighborhood:gsub(" ", "_"))), "Red")
 
   local locationMat = getObjectFromGUID(locationMatId)
-  if not locationMat then return end
+  if not locationMat then callBack(); return end
 
   local neighborhoodInfo
   for _, o in pairs(upCast(locationMat, 1, nil, 1)) do
@@ -465,7 +490,7 @@ function processGateBurst(callBack)
     end
   end
 
-  if not neighborhoodInfo and not neighborhoodInfo.data.locations then callBack(); return end
+  if not neighborhoodInfo or not neighborhoodInfo.data.locations then callBack(); return end
 
   local locations = {}
   for _, v in pairs(neighborhoodInfo.data.locations) do locations[v] = { dooms = 1 } end
@@ -494,6 +519,8 @@ function processGateBurst(callBack)
           ed.shuffle()
           Wait.time(function() putDiscardUnderDeck(ed, callBack) end, 1)
         end)
+      else
+        callBack()
       end
     end, 1)
   end, 1.5)

@@ -314,6 +314,7 @@ function eventSpawnDooms(callBack)
 
   local eventObj = getEventObj()
   if not eventObj then
+    callBack()
     return
   end
 
@@ -647,67 +648,46 @@ function getNeighborhoodTile(neighborhoodName, tileType)
   end
 end
 
+local function mythInProcessGuard(label)
+  if not isDrawMythInProcess then return false end
+  local msg = i18n.getStrById("LOG_myth_in_process")
+  if currentMythAction then msg = msg .. ": " .. currentMythAction end
+  broadcastToAll(msg, "Orange")
+  return true
+end
+
 function spawnClueByClick()
-  if isDrawMythInProcess then
-    return
-  end
-
-  isDrawMythInProcess = true
-
-  spawnClue(function()
-    isDrawMythInProcess = false
-  end)
+  if mythInProcessGuard() then return end
+  lockMythProcess(i18n.getStrById("T4A_clue"))
+  spawnClue(function() unlockMythProcess() end)
 end
 
 function spawnDoomsByClick()
-  if isDrawMythInProcess then
-    return
-  end
-
-  isDrawMythInProcess = true
-
-  eventSpawnDooms(function()
-    isDrawMythInProcess = false
-  end)
+  if mythInProcessGuard() then return end
+  lockMythProcess(i18n.getStrById("T4A_doom"))
+  eventSpawnDooms(function() unlockMythProcess() end)
 end
 
 function spawnMonterByClick()
-  if isDrawMythInProcess then
-    return
-  end
-
+  if mythInProcessGuard() then return end
   local mythosTile = MYTHOS_TILE_DATA.obj
-  if not mythosTile then
-    return
-  end
-
-  isDrawMythInProcess = true
-
+  if not mythosTile then return end
+  lockMythProcess(i18n.getStrById("T4A_monster"))
   local currentCardPos = mythosTile.positionToWorld({0.084, 0.113, 0.278}):setAt("y", 3)
   drawMonster(currentCardPos)
-  isDrawMythInProcess = false
+  unlockMythProcess()
 end
 
 function processGateBurstByClick()
-  if isDrawMythInProcess then
-    return
-  end
-
-  isDrawMythInProcess = true
-  processGateBurst(function()
-    isDrawMythInProcess = false
-  end)
+  if mythInProcessGuard() then return end
+  lockMythProcess(i18n.getStrById("T4A_gate"))
+  processGateBurst(function() unlockMythProcess() end)
 end
 
 function processTerrorByClick()
-  if isDrawMythInProcess then
-    return
-  end
-
-  isDrawMythInProcess = true
-  processTerror(function()
-      isDrawMythInProcess = false
-    end)
+  if mythInProcessGuard() then return end
+  lockMythProcess(i18n.getStrById("T4A_terror"))
+  processTerror(function() unlockMythProcess() end)
 end
 
 function spawnClueToken(neighborhoodName)
@@ -843,7 +823,7 @@ function spawnClue(callBack)
         foundDeck.shuffle()
         Wait.time(function()
           foundDeck.setPositionSmooth(encounterDeck.getPosition():setAt("y", 3))
-          callBack()
+          runAfterRest(foundDeck, function() callBack() end)
         end, 0.7)
 
       end, 1)

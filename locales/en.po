@@ -643,6 +643,9 @@ msgstr "Add doom manually"
 msgid "LOG_myth_draw"
 msgstr "\n%s (%s)"
 
+msgid "LOG_myth_in_process"
+msgstr "Wait for the previous action to finish"
+
 msgid "LOG_gate_burst"
 msgstr "\n%s gate burst!"
 
