@@ -122,11 +122,40 @@ function spawnDoomTokensOnScenarioSheet(doomCount)
     return
   end
 
+  local snaps = scenarioSheet.getSnapPoints()
+  local freePositions = {}
+  for _, snp in ipairs(snaps or {}) do
+    if snp.tags then
+      local isDoomSnap = false
+      for _, tag in ipairs(snp.tags) do
+        if tag == "doom_scenario" then
+          isDoomSnap = true
+          break
+        end
+      end
+      if isDoomSnap then
+        local worldPos = scenarioSheet.positionToWorld(snp.position)
+        local objs = upCast_pos(worldPos, 2)
+        local isOccupied = false
+        for _, o in ipairs(objs) do
+          if o.memo == "Doom Token" then
+            isOccupied = true
+            break
+          end
+        end
+        if not isOccupied then
+          table.insert(freePositions, worldPos)
+        end
+      end
+    end
+  end
+
   local p = scenarioSheet.getPosition():setAt("y", 3)
   for i = 1, doomCount do
+    local pos = freePositions[i] and freePositions[i]:setAt("y", 3) or p
     local doomToken = doomBag.takeObject({
       index = 0,
-      position = p
+      position = pos
     })
     if doomToken then doomToken.highlightOn("Red", 5) end
     p:setAt("x", p.x + 1.5)
