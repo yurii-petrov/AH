@@ -73,14 +73,14 @@ function processStepFindMonsterByType(step, context, onDone)
   local revealList  = {}
   local foundTarget = false
 
-  for i = #objects, 1, -1 do
+  for i = 1, #objects do
     local entry     = objects[i]
     local entryData = parseJson(entry.memo)
     local isTarget  = matchesMonsterTypes(entryData, searchTypes)
     local mt        = entryData and (entryData.monstertype or (entryData.back and entryData.back.monstertype))
     local typeStr   = type(mt) == "table" and table.concat(mt, "/") or tostring(mt or "?")
     local nameStr   = entryData and (entryData.name or entry.name or "?") or "?"
-    table.insert(revealList, { guid = entry.guid, isTarget = isTarget, name = nameStr, cardType = typeStr })
+    table.insert(revealList, { guid = entry.guid, memo = entry.memo, isTarget = isTarget, name = nameStr, cardType = typeStr })
     if isTarget then
       foundTarget = true
       break
@@ -114,7 +114,7 @@ function processStepFindMonsterByType(step, context, onDone)
     local card = monsterDeck.takeObject({
       guid     = entry.guid,
       position = worldPos,
-      rotation = orient(parseJson(monsterDeck.memo)),
+      rotation = orient(parseJson(entry.memo)),
       smooth   = true
     })
     if card then
