@@ -588,7 +588,7 @@ I18N_DATA = {
   },
   ["LOG_terror_count"] = {
     ["en"] = "Terror (%s) - %s",
-    ["uk"] = "Жах (%s) - %s",
+    ["uk"] = "Морок (%s) - %s",
   },
   ["LOG_timeout_components"] = {
     ["en"] = "Timeout waiting for components",

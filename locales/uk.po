@@ -1318,7 +1318,7 @@ msgid "LOG_token_found"
 msgstr "%s знайдено в - %s"
 
 msgid "LOG_terror_count"
-msgstr "Жах (%s) - %s"
+msgstr "Морок (%s) - %s"
 
 # Mythos cup token types
 msgid "Read_Headline"
