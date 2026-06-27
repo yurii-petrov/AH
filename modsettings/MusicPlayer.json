@@ -1,7 +1,16 @@
 {
-  "AudioLibrary": [],
-  "CurrentAudioTitle": "Unknown Title",
-  "CurrentAudioURL": "",
+  "AudioLibrary": [
+    {
+      "Item1": "https://drive.google.com/uc?export=download\u0026id=1cDQn1GZ5bAJYpQpV7DrxOPCNdrS09q6Q",
+      "Item2": "lovecraft 01"
+    },
+    {
+      "Item1": "https://steamusercontent-a.akamaihd.net/ugc/12672819282907927825/8D21AE86DB55133F683A9859A45F2D90EA5C50A9/",
+      "Item2": "Cthulhu Music"
+    }
+  ],
+  "CurrentAudioTitle": "lovecraft 01",
+  "CurrentAudioURL": "https://drive.google.com/uc?export=download\u0026id=1cDQn1GZ5bAJYpQpV7DrxOPCNdrS09q6Q",
   "PlaylistEntry": -1,
   "RepeatSong": false
 }
