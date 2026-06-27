@@ -29,6 +29,10 @@ local POWER_ORDER = { "light", "medium", "strong" }
 -- Base upward velocity every throw gets on top of the preset height.
 local LAUNCH_UP_VEL = 5
 
+-- Rerolled dice are lifted to this height before the toss so they clear the dice
+-- that stay on the roller instead of knocking them out.
+local REROLL_LIFT_Y = 3.55
+
 local function getPreset()
   return PRESETS[settings.power] or PRESETS.medium
 end
@@ -550,7 +554,10 @@ function dice_btn(playerColor, alt_click, id)
             obj.interactable = false
 
             Wait.time(function()
-            -- Randomize orientation, then physically toss (arc up + forward, spinning).
+            -- Lift above the other dice first, then randomize orientation and
+            -- physically toss (arc up + forward) so it can't knock them out.
+            local liftPos = obj.getPosition()
+            obj.setPosition(Vector(liftPos.x, REROLL_LIFT_Y, liftPos.z))
             obj.setRotation(Vector(math.random(0, 360), math.random(0, 360), math.random(0, 360)))
             local preset = getPreset()
             obj.setVelocity(Vector(0, LAUNCH_UP_VEL + preset.height, preset.forward))
