@@ -68,7 +68,6 @@ function onload(savedData)
   lockObj(tile4ActionsId)
 
   lockObj(conditionMatId)
-  lockObj(mythosBagId)
   lockObj(shopMatId)
   lockObj(nastilo4kaId)
 
