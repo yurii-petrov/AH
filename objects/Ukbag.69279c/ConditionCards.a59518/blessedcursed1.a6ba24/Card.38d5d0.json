@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"type\":\"blessed cursed\"}",
+  "Memo": "{\"reversed\":true,\"type\":\"blessed cursed\"}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,
