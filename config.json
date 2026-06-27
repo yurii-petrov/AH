@@ -17,7 +17,7 @@
   "Lighting_path": "Lighting.json",
   "LuaScriptState_path": "LuaScriptState.luascriptstate",
   "LuaScript_path": "LuaScript.ttslua",
-  "MusicPlayer": {},
+  "MusicPlayer_path": "MusicPlayer.json",
   "Note": "",
   "ObjectStates_order": [
     "Custom_Tile.f47e19",
