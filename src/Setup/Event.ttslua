@@ -50,6 +50,8 @@ function prepareScenarioEventDeck(eventDeck, decks, time)
     return takenCards
   end
 
+  local clueIndexTracker = {}
+
   local function processCard(index, cards)
     if index > #cards then
       return
@@ -79,7 +81,9 @@ function prepareScenarioEventDeck(eventDeck, decks, time)
                   spawnClueTokenOnTile(mysteryTile)
                 end
               else
-                spawnClueToken(data.neighborhood)
+                local posIndex = (clueIndexTracker[data.neighborhood] or 0) + 1
+                clueIndexTracker[data.neighborhood] = posIndex
+                spawnClueToken(data.neighborhood, posIndex)
               end
 
               processCard(index + 1, cards)

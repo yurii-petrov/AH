@@ -14,6 +14,8 @@ chat console. Not bundled into the mod (this file is not `require()`d).
 /execute local c=Player.White;local h=c.getHoverObject();if h then h.setPosition({0, 2.4, 0}) end
 ```
 
+/execute getObjectFromGUID("4c0a70").interactable = true
+
 ## Prepare scenario
 
 ```lua

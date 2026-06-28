@@ -719,7 +719,15 @@ function processTerrorByClick()
   processTerror(function() unlockMythProcess() end)
 end
 
-function spawnClueToken(neighborhoodName)
+local CLUE_LOCAL_POSITIONS = {
+  {0,      0, -0.87},
+  {-0.87,  0, -0.2},
+  {-0.565, 0,  0.861},
+  {0.565,  0,  0.856},
+  {0.869,  0, -0.197},
+}
+
+function spawnClueToken(neighborhoodName, posIndex)
   local neighborhoodTile = getNeighborhoodTile(neighborhoodName)
   if not neighborhoodTile then
     return
@@ -730,11 +738,40 @@ function spawnClueToken(neighborhoodName)
     return
   end
 
-  local pos = neighborhoodTile.getPosition()
-  pos:setAt("y", 3):setAt("z", pos.z + 1)
-  local clue = clueBag.takeObject({
+  local spawnPos
+  if posIndex then
+    local localPos = CLUE_LOCAL_POSITIONS[posIndex] or CLUE_LOCAL_POSITIONS[1]
+    spawnPos = neighborhoodTile.positionToWorld(localPos)
+  else
+    for _, localPos in ipairs(CLUE_LOCAL_POSITIONS) do
+      local worldPos = neighborhoodTile.positionToWorld(localPos)
+      local hits = Physics.cast({
+        origin    = { worldPos.x, worldPos.y + 1, worldPos.z },
+        direction = { 0, 1, 0 },
+        type      = 3,
+        size      = { 0.4, 2, 0.4 },
+        max_distance = 0,
+      })
+      local isOccupied = false
+      for _, v in ipairs(hits) do
+        if v.hit_object and v.hit_object.memo == "Clue" then
+          isOccupied = true
+          break
+        end
+      end
+      if not isOccupied then
+        spawnPos = worldPos
+        break
+      end
+    end
+    if not spawnPos then
+      spawnPos = neighborhoodTile.positionToWorld(CLUE_LOCAL_POSITIONS[1])
+    end
+  end
+
+  clueBag.takeObject({
     index = 0,
-    position = pos
+    position = spawnPos:setAt("y", 3)
   }).highlightOn("Green", 5)
 
   printToAll(i18n.getStrById(neighborhoodName:gsub(" ", "_")) .. " - " .. i18n.getStrById("LOG_clue_spawn"), "Green")
@@ -748,7 +785,7 @@ function spawnClueTokenOnTile(tileObj)
 
   local pos = tileObj.getPosition()
   pos:setAt("y", 3):setAt("z", pos.z + 1)
-  local clue = clueBag.takeObject({
+  clueBag.takeObject({
     index = 0,
     position = pos
   }).highlightOn("Green", 5)
