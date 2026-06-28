@@ -264,8 +264,8 @@ msgstr "ENCOUNTER"
 msgid "PB_phase4"
 msgstr "MYTHOS"
 
-msgid "PB_myth_validate"
-msgstr "This button is only available during the Mythos phase"
+msgid "PB_encounter_validate"
+msgstr "This button is only available during the Encounter phase"
 
 msgid "PB_next_phase"
 msgstr "The phase begins"

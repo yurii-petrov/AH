@@ -322,8 +322,8 @@ msgstr "ЗУСТРІЧЕЙ"
 msgid "PB_phase4"
 msgstr "МІТУ"
 
-msgid "PB_myth_validate"
-msgstr "Ця кнопка доступна тільки у фазу міту"
+msgid "PB_encounter_validate"
+msgstr "Ця кнопка доступна тільки у фазу зустрічей"
 
 msgid "PB_next_phase"
 msgstr "Настає фаза"

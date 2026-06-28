@@ -325,7 +325,7 @@ end
 
 function onClickEncounter(obj, playerColor)
   if gameData.phase ~= 3 then
-    printToColor(i18n.getStrById("PB_myth_validate"), playerColor, {1, 0.2, 0.2})
+    printToColor(i18n.getStrById("PB_encounter_validate"), playerColor, {1, 0.2, 0.2})
     return
   end
 

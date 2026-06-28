@@ -974,9 +974,9 @@ I18N_DATA = {
     ["en"] = "Orne Library",
     ["uk"] = "Бібліотека Орна",
   },
-  ["PB_myth_validate"] = {
-    ["en"] = "This button is only available during the Mythos phase",
-    ["uk"] = "Ця кнопка доступна тільки у фазу міту",
+  ["PB_encounter_validate"] = {
+    ["en"] = "This button is only available during the Encounter phase",
+    ["uk"] = "Ця кнопка доступна тільки у фазу зустрічей",
   },
   ["PB_next_phase"] = {
     ["en"] = "The phase begins",
