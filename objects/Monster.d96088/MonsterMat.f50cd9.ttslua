@@ -77,17 +77,13 @@ function onLoad(savedData)
   local killDialog1 = getKillDialog("killDialog1", "0 -65 -12", "0 0 180")
   local killDialog2 = getKillDialog("killDialog2", "0 -65 3", "0 180 180")
 
-  local buttonFight1 = getButton()
+  local buttonFight1 = getFightButton()
   buttonFight1.attributes.id = "btnFight1"
-  buttonFight1.attributes.onClick = "clickFight"
-  buttonFight1.attributes.text = "F"
   buttonFight1.attributes.position = "67 3 -12"
   buttonFight1.attributes.rotation = "0 0 180"
 
-  local buttonFight2 = getButton()
+  local buttonFight2 = getFightButton()
   buttonFight2.attributes.id = "btnFight2"
-  buttonFight2.attributes.onClick = "clickFight"
-  buttonFight2.attributes.text = "F"
   buttonFight2.attributes.position = "-67 3 3"
   buttonFight2.attributes.rotation = "0 180 180"
 
@@ -117,6 +113,21 @@ function getButton()
   return {
     tag = "Button",
     attributes = attributes
+  }
+end
+
+function getFightButton()
+  return {
+    tag = "Button",
+    attributes = {
+      onClick = "clickFight",
+      image = "fight_evade",
+      color = "#FFFFFF",
+      text = "",
+      width = "300",
+      height = "300",
+      scale = "0.1 0.1 1",
+    }
   }
 end
 
