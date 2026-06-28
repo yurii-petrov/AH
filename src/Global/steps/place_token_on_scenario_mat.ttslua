@@ -18,15 +18,25 @@
 function processStepPlaceTokenOnScenarioMat(step, context, onDone)
   local tokenType = (step.token and step.token.type) or "White Marker"
 
-  local scenarioMat = getObjectFromGUID(scenarioMatId)
-  if not scenarioMat then
-    log("[placeTokenOnScenarioMat] scenarioMat not found")
-    if onDone then onDone() end
-    return
+  local mat
+  if step.target == "scenarioSheet" then
+    mat = getObjectFromGUID(gameData.scenarioData and gameData.scenarioData.guid)
+    if not mat then
+      log("[placeTokenOnScenarioMat] scenarioSheet not found")
+      if onDone then onDone() end
+      return
+    end
+  else
+    mat = getObjectFromGUID(scenarioMatId)
+    if not mat then
+      log("[placeTokenOnScenarioMat] scenarioMat not found")
+      if onDone then onDone() end
+      return
+    end
   end
 
   local localPos
-  if step.positionIndex then
+  if step.positionIndex and step.target ~= "scenarioSheet" then
     localPos = SCENARIO_MAT_DATA.positions[step.positionIndex]
     if not localPos then
       log("[placeTokenOnScenarioMat] invalid positionIndex: " .. tostring(step.positionIndex))
@@ -41,7 +51,7 @@ function processStepPlaceTokenOnScenarioMat(step, context, onDone)
     return
   end
 
-  local worldPos = scenarioMat.positionToWorld(localPos):setAt("y", 3)
+  local worldPos = mat.positionToWorld(localPos):setAt("y", 3)
 
   local bagId = getTokenBagIdByType(tokenType)
   local bag   = bagId and getObjectFromGUID(bagId)
