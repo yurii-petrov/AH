@@ -54,6 +54,12 @@ require("Global/steps/find_monster_by_name")
 require("Global/steps/remove_monsters_by_type")
 require("Global/steps/spawn_markers_on_locations")
 require("Global/steps/activate_markers_on_locations")
+require("Global/steps/attach_marker_to_monster")
+require("Global/steps/move_marker_to_scenario_sheet")
+require("Global/steps/move_marker_to_location")
+require("Global/steps/remove_neighborhood")
+require("Global/steps/remove_blank_mythos_token")
+require("Global/steps/remove_doom_from_scenario_sheet")
 
 -- Dispatch table: lowercased step.type -> handler.
 -- Handlers are global functions defined by the required step modules above.
@@ -90,6 +96,12 @@ local STEP_HANDLERS = {
   removemonstersbytype              = processStepRemoveMonstersByType,
   spawnmarkersonlocations           = processStepSpawnMarkersOnLocations,
   activatemarkersonlocations        = processStepActivateMarkersOnLocations,
+  attachmarkertomonster             = processStepAttachMarkerToMonster,
+  movemarkertoscenariosheet         = processStepMoveMarkerToScenarioSheet,
+  movemarkertolocation              = processStepMoveMarkerToLocation,
+  removeneighborhood                = processStepRemoveNeighborhood,
+  removeblankmythostoken            = processStepRemoveBlankMythosToken,
+  removedoomfromscenariosheet       = processStepRemoveDoomFromScenarioSheet,
 }
 
 function processSteps(data)

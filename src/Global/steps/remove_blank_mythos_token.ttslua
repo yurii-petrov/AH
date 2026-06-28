@@ -1,0 +1,58 @@
+-- ╭──────────────────────────────────────────────╮
+-- │     STEP: removeBlankMythosToken             │
+-- ╰──────────────────────────────────────────────╯
+--
+-- Removes one Blank mythos token from the game. Searches the mythos tile
+-- first (priority), then falls back to the mythos cup. The removed token
+-- is returned to the Blank token source bag.
+--
+-- Example step JSON:
+--   { "type": "removeBlankMythosToken" }
+
+local BLANK_TYPE   = "Blank"
+local BLANK_BAG_ID = "3a847f"
+
+function processStepRemoveBlankMythosToken(step, context, onDone)
+  local blankBag = getObjectFromGUID(BLANK_BAG_ID)
+
+  local function returnToken(obj)
+    if blankBag then
+      pcall(function() blankBag.putObject(obj) end)
+    else
+      pcall(function() obj.destruct() end)
+    end
+  end
+
+  -- 1. Search mythos tile area for a drawn Blank token
+  local mythosTile = MYTHOS_TILE_DATA and MYTHOS_TILE_DATA.obj
+  if mythosTile then
+    local tilePos = mythosTile.getPosition()
+    for _, obj in ipairs(findObjsInRadius(tilePos, 8)) do
+      if obj.type == "Generic" and obj.memo == BLANK_TYPE then
+        returnToken(obj)
+        if onDone then onDone() end
+        return
+      end
+    end
+  end
+
+  -- 2. Fall back: remove from the mythos cup directly
+  local cup = getObjectFromGUID(mythosBagId)
+  if not cup then
+    log("[removeBlankMythosToken] mythos cup not found")
+    if onDone then onDone() end
+    return
+  end
+
+  for _, entry in ipairs(cup.getObjects()) do
+    if entry.memo == BLANK_TYPE then
+      local token = cup.takeObject({ guid = entry.guid, smooth = false })
+      if token then returnToken(token) end
+      if onDone then onDone() end
+      return
+    end
+  end
+
+  log("[removeBlankMythosToken] Blank token not found in tile or cup")
+  if onDone then onDone() end
+end

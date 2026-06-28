@@ -1,0 +1,55 @@
+-- ╭──────────────────────────────────────────────╮
+-- │    STEP: moveMarkerToScenarioSheet           │
+-- ╰──────────────────────────────────────────────╯
+--
+-- Finds a marker token (by type) anywhere on the board and moves it to
+-- the scenario sheet at the given local position. Skips tokens already
+-- within 6 units of the scenario sheet.
+--
+-- Example step JSON:
+--   {
+--     "type": "moveMarkerToScenarioSheet",
+--     "token": { "type": "White Marker" },
+--     "position": { "x": -0.4, "y": 0.3, "z": 0.0 }
+--   }
+
+function processStepMoveMarkerToScenarioSheet(step, context, onDone)
+  local tokenType = (step.token and step.token.type) or "White Marker"
+
+  local sheet = getObjectFromGUID(gameData.scenarioData and gameData.scenarioData.guid)
+  if not sheet then
+    log("[moveMarkerToScenarioSheet] scenario sheet not found")
+    if onDone then onDone() end
+    return
+  end
+
+  local sheetPos = sheet.getPosition()
+  local found    = nil
+
+  for _, obj in ipairs(getAllObjects()) do
+    if obj.type == "Generic" and obj.memo == tokenType then
+      local p    = obj.getPosition()
+      local dist = math.sqrt((p.x - sheetPos.x)^2 + (p.z - sheetPos.z)^2)
+      if dist > 6 then
+        found = obj
+        break
+      end
+    end
+  end
+
+  if not found then
+    log("[moveMarkerToScenarioSheet] marker not found on board: " .. tostring(tokenType))
+    if onDone then onDone() end
+    return
+  end
+
+  local localPos = step.position
+    and { step.position.x or 0, step.position.y or 0.3, step.position.z or 0 }
+    or  { 0, 0.3, 0 }
+  local targetPos = sheet.positionToWorld(localPos):setAt("y", 3)
+
+  found.setPositionSmooth(targetPos)
+  found.highlightOn("Yellow", 5)
+
+  if onDone then onDone() end
+end

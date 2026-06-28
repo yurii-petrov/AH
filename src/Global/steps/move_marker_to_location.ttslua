@@ -1,0 +1,64 @@
+-- ╭──────────────────────────────────────────────╮
+-- │       STEP: moveMarkerToLocation             │
+-- ╰──────────────────────────────────────────────╯
+--
+-- Finds a marker token (by type) anywhere on the board and moves it to
+-- the named location tile on the location mat.
+--
+-- Example step JSON:
+--   {
+--     "type": "moveMarkerToLocation",
+--     "token": { "type": "Green Marker" },
+--     "location": "Northside"
+--   }
+
+function processStepMoveMarkerToLocation(step, context, onDone)
+  local tokenType = (step.token and step.token.type) or "White Marker"
+  local location  = step.location
+
+  if not location then
+    log("[moveMarkerToLocation] location is nil")
+    if onDone then onDone() end
+    return
+  end
+
+  local locationMat = getObjectFromGUID(locationMatId)
+  if not locationMat then
+    log("[moveMarkerToLocation] locationMat not found")
+    if onDone then onDone() end
+    return
+  end
+
+  local tile, tileData, locationIndex = findLocationTileByName(locationMat, location)
+  if not tile then
+    log("[moveMarkerToLocation] location tile not found: " .. location)
+    if onDone then onDone() end
+    return
+  end
+
+  local found = nil
+  for _, obj in ipairs(getAllObjects()) do
+    if obj.type == "Generic" and obj.memo == tokenType then
+      found = obj
+      break
+    end
+  end
+
+  if not found then
+    log("[moveMarkerToLocation] marker not found on board: " .. tostring(tokenType))
+    if onDone then onDone() end
+    return
+  end
+
+  local targetPos
+  if locationIndex and tileData and tileData.structureType then
+    targetPos = getNeighborhoodLocationPosition(tile, locationIndex, tileData.structureType):setAt("y", 3)
+  else
+    targetPos = tile.getPosition():setAt("y", 3)
+  end
+
+  found.setPositionSmooth(targetPos)
+  found.highlightOn("Yellow", 5)
+
+  if onDone then onDone() end
+end

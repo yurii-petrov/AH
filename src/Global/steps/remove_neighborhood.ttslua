@@ -1,0 +1,94 @@
+-- ╭──────────────────────────────────────────────╮
+-- │       STEP: removeNeighborhood               │
+-- ╰──────────────────────────────────────────────╯
+--
+-- Removes a neighborhood tile from the board, returns its encounter deck
+-- to the box, removes matching event cards from the event deck and event
+-- discard (by memo.neighborhood), then reshuffles the event deck only.
+--
+-- Example step JSON:
+--   {
+--     "type": "removeNeighborhood",
+--     "neighborhood": "Merchant District"
+--   }
+
+local function removeMatchingCardsFromDeck(deckOrCard, name)
+  if not deckOrCard then return end
+
+  local function matches(memo)
+    if not memo then return false end
+    return iEquals(memo.neighborhood, name) or iEquals(memo.district, name)
+  end
+
+  if deckOrCard.type == "Card" then
+    if matches(parseJson(deckOrCard.memo)) then
+      pcall(function() deckOrCard.destruct() end)
+    end
+    return
+  end
+
+  if deckOrCard.type ~= "Deck" then return end
+
+  local toRemove = {}
+  for _, entry in ipairs(deckOrCard.getObjects()) do
+    if matches(parseJson(entry.memo)) then
+      table.insert(toRemove, entry.guid)
+    end
+  end
+
+  for _, guid in ipairs(toRemove) do
+    local ok, card = pcall(function()
+      return deckOrCard.takeObject({ guid = guid, smooth = false })
+    end)
+    if not ok or not card then
+      card = getObjectFromGUID(guid)
+    end
+    if card then pcall(function() card.destruct() end) end
+  end
+end
+
+function processStepRemoveNeighborhood(step, context, onDone)
+  local name = step.neighborhood
+  if not name then
+    log("[removeNeighborhood] neighborhood is nil")
+    if onDone then onDone() end
+    return
+  end
+
+  local locationMat = getObjectFromGUID(locationMatId)
+  if not locationMat then
+    log("[removeNeighborhood] locationMat not found")
+    if onDone then onDone() end
+    return
+  end
+
+  local tile = findLocationTileByName(locationMat, name)
+  if tile then
+    pcall(function() tile.destruct() end)
+  else
+    log("[removeNeighborhood] neighborhood tile not found: " .. name)
+  end
+
+  local encounterDeck = getDeckFromScenarioMat("Encounter", name)
+  if encounterDeck then
+    local box = getObjectFromGUID(boxId)
+    if box then
+      pcall(function() box.putObject(encounterDeck) end)
+    else
+      pcall(function() encounterDeck.destruct() end)
+    end
+  else
+    log("[removeNeighborhood] encounter deck not found for: " .. name)
+  end
+
+  removeMatchingCardsFromDeck(getEventObj(), name)
+  removeMatchingCardsFromDeck(getEventDiscardObj(), name)
+
+  Wait.time(function()
+    local eventDeck = getEventObj()
+    if eventDeck and eventDeck.type == "Deck" then
+      eventDeck.shuffle()
+    end
+    if onDone then onDone() end
+  end, 0.3)
+end

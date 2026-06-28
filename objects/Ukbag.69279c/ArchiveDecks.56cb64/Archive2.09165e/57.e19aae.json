@@ -14,8 +14,8 @@
   "CustomDeck": {
     "5823": {
       "BackIsHidden": true,
-      "BackURL": "https://drive.google.com/uc?export=view\u0026id=1zGILUnfDkFIVLbaEJHj2xAj8wbuBpM-0",
-      "FaceURL": "https://drive.google.com/uc?export=view\u0026id=1up8zVy3iexGzHvxDV-6CP0MjPcHTzYBg",
+      "BackURL": "https://drive.google.com/uc?export=view&id=1zGILUnfDkFIVLbaEJHj2xAj8wbuBpM-0",
+      "FaceURL": "https://drive.google.com/uc?export=view&id=1up8zVy3iexGzHvxDV-6CP0MjPcHTzYBg",
       "NumHeight": 4,
       "NumWidth": 5,
       "Type": 0,
@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"number\":57,\"type\":\"codex\"}",
+  "Memo": "{\"number\": 57, \"type\": \"codex\", \"front\": {\"actions\": [{\"title\": \"Білий маркер\", \"steps\": [{\"type\": \"placeTokenOnScenarioMat\", \"token\": {\"type\": \"White Marker\"}, \"target\": \"scenarioSheet\", \"position\": {\"x\": -0.4, \"y\": 0.3, \"z\": 0.5}, \"face_up\": true}]}]}}",
   "Name": "Card",
   "Nickname": "57",
   "SidewaysCard": false,

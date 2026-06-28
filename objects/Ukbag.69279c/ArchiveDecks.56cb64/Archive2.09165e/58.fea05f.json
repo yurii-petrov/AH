@@ -14,8 +14,8 @@
   "CustomDeck": {
     "5823": {
       "BackIsHidden": true,
-      "BackURL": "https://drive.google.com/uc?export=view\u0026id=1zGILUnfDkFIVLbaEJHj2xAj8wbuBpM-0",
-      "FaceURL": "https://drive.google.com/uc?export=view\u0026id=1up8zVy3iexGzHvxDV-6CP0MjPcHTzYBg",
+      "BackURL": "https://drive.google.com/uc?export=view&id=1zGILUnfDkFIVLbaEJHj2xAj8wbuBpM-0",
+      "FaceURL": "https://drive.google.com/uc?export=view&id=1up8zVy3iexGzHvxDV-6CP0MjPcHTzYBg",
       "NumHeight": 4,
       "NumWidth": 5,
       "Type": 0,
@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"number\":58,\"type\":\"codex\"}",
+  "Memo": "{\"number\": 58, \"type\": \"codex\", \"front\": {\"actions\": [{\"title\": \"TODO: дія 1\", \"steps\": [{\"type\": \"removeNeighborhood\", \"neighborhood\": \"TODO_NEIGHBORHOOD_1\"}]}, {\"title\": \"TODO: дія 2\", \"steps\": [{\"type\": \"removeNeighborhood\", \"neighborhood\": \"TODO_NEIGHBORHOOD_2\"}]}]}}",
   "Name": "Card",
   "Nickname": "58",
   "SidewaysCard": false,

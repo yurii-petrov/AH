@@ -1,0 +1,43 @@
+-- ╭──────────────────────────────────────────────╮
+-- │    STEP: removeDoomFromScenarioSheet         │
+-- ╰──────────────────────────────────────────────╯
+--
+-- Finds all doom tokens at snap points tagged "doom_scenario" on the
+-- current scenario sheet and returns them to the doom bag.
+--
+-- Example step JSON:
+--   { "type": "removeDoomFromScenarioSheet" }
+
+function processStepRemoveDoomFromScenarioSheet(step, context, onDone)
+  local sheet = getObjectFromGUID(gameData.scenarioData and gameData.scenarioData.guid)
+  if not sheet then
+    log("[removeDoomFromScenarioSheet] scenario sheet not found")
+    if onDone then onDone() end
+    return
+  end
+
+  local bag = getObjectFromGUID(doomBagId)
+  if not bag then
+    log("[removeDoomFromScenarioSheet] doom bag not found")
+    if onDone then onDone() end
+    return
+  end
+
+  local snaps = sheet.getSnapPoints()
+  for _, snp in ipairs(snaps or {}) do
+    if snp.tags then
+      local isDoom = false
+      for _, tag in ipairs(snp.tags) do
+        if tag == "doom_scenario" then isDoom = true; break end
+      end
+      if isDoom then
+        local worldPos = sheet.positionToWorld(snp.position)
+        for _, obj in ipairs(upCast_pos(worldPos, 1)) do
+          pcall(function() bag.putObject(obj) end)
+        end
+      end
+    end
+  end
+
+  if onDone then onDone() end
+end

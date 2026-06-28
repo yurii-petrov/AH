@@ -1,0 +1,132 @@
+-- ╭──────────────────────────────────────────────╮
+-- │      STEP: attachMarkerToMonster             │
+-- ╰──────────────────────────────────────────────╯
+--
+-- Finds a monster in the monster deck by type, reveals it (same as
+-- findMonsterByType), then places a marker token on top of the found card.
+-- Visually indicates a special rule tied to the marker's presence.
+--
+-- Example step JSON:
+--   {
+--     "type": "attachMarkerToMonster",
+--     "monsterType": "aberration",
+--     "token": { "type": "White Marker" }
+--   }
+
+local function matchTypes(entryData, searchTypes)
+  local mt = entryData and (entryData.monstertype or (entryData.back and entryData.back.monstertype))
+  if not mt then return false end
+  local cardTypes = type(mt) == "table" and mt or {mt}
+  for _, cardType in ipairs(cardTypes) do
+    for _, searchType in ipairs(searchTypes) do
+      if string.lower(tostring(cardType)) == string.lower(tostring(searchType)) then
+        return true
+      end
+    end
+  end
+  return false
+end
+
+function processStepAttachMarkerToMonster(step, context, onDone)
+  if not step.monsterType then
+    log("[attachMarkerToMonster] monsterType is nil")
+    if onDone then onDone() end
+    return
+  end
+
+  local searchTypes = type(step.monsterType) == "table" and step.monsterType or {step.monsterType}
+  local tokenType   = (step.token and step.token.type) or "White Marker"
+
+  local codexMat = context and context.codexMat
+  if not codexMat then
+    log("[attachMarkerToMonster] codexMat is nil")
+    if onDone then onDone() end
+    return
+  end
+
+  local locationMat = findBoardByQuery({{ field = "type", op = "eq", value = "locationMat" }})
+  if not locationMat then
+    log("[attachMarkerToMonster] locationMat not found")
+    if onDone then onDone() end
+    return
+  end
+
+  local deckType    = step.deckType or "monster"
+  local monsterDeck = findDeckOnBoardByType(locationMat, deckType)
+  if not monsterDeck then
+    log("[attachMarkerToMonster] monster deck not found")
+    if onDone then onDone() end
+    return
+  end
+
+  if monsterDeck.type == "Card" then
+    local cardData = parseJson(monsterDeck.memo)
+    if matchTypes(cardData, searchTypes) then
+      monsterDeck.setRotation(orient(cardData, false))
+      local targetPos = codexMat.positionToWorld({0, 0.5, 1.7}):setAt("y", 3)
+      monsterDeck.setPositionSmooth(targetPos)
+      Wait.time(function()
+        local bagId = getTokenBagIdByType(tokenType)
+        local bag   = bagId and getObjectFromGUID(bagId)
+        if bag then
+          bag.takeObject({ index = 0, position = targetPos:setAt("y", targetPos.y + 0.5), rotation = {0, 180, 0} })
+             .highlightOn("Yellow", 5)
+        end
+        if onDone then onDone() end
+      end, 1.0)
+    else
+      log("[attachMarkerToMonster] single card does not match")
+      if onDone then onDone() end
+    end
+    return
+  end
+
+  local objects         = monsterDeck.getObjects()
+  local revealList      = {}
+  local foundMonsterGuid = nil
+
+  for i = 1, #objects do
+    local entry     = objects[i]
+    local entryData = parseJson(entry.memo)
+    local isTarget  = matchTypes(entryData, searchTypes)
+    table.insert(revealList, { guid = entry.guid, memo = entry.memo, isTarget = isTarget })
+    if isTarget then
+      foundMonsterGuid = entry.guid
+      break
+    end
+  end
+
+  if not foundMonsterGuid then
+    log("[attachMarkerToMonster] monster not found in deck")
+    if onDone then onDone() end
+    return
+  end
+
+  revealMonsterDeckEntries({
+    codexMat    = codexMat,
+    locationMat = locationMat,
+    monsterDeck = monsterDeck,
+    revealList  = revealList,
+    onDone      = function()
+      Wait.time(function()
+        local monster = getObjectFromGUID(foundMonsterGuid)
+        if not monster then
+          log("[attachMarkerToMonster] monster card not found after reveal")
+          if onDone then onDone() end
+          return
+        end
+        local pos   = monster.getPosition()
+        local bagId = getTokenBagIdByType(tokenType)
+        local bag   = bagId and getObjectFromGUID(bagId)
+        if bag then
+          bag.takeObject({
+            index    = 0,
+            position = Vector(pos.x, pos.y + 0.5, pos.z),
+            rotation = {0, 180, 0},
+          }).highlightOn("Yellow", 5)
+        end
+        if onDone then onDone() end
+      end, 1.0)
+    end,
+  })
+end
