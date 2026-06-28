@@ -1,0 +1,57 @@
+-- ╭──────────────────────────────────────────────╮
+-- │   STEP: activateMarkersOnLocations           │
+-- ╰──────────────────────────────────────────────╯
+--
+-- Finds Custom_Tile marker tokens at the given locations and activates
+-- their wound counter: HP = elite * playerCount.
+--
+-- Example step JSON:
+--   {
+--     "type": "activateMarkersOnLocations",
+--     "locations": ["Bridge1", "Bridge2"],
+--     "tokenMemo": "White Marker",
+--     "elite": 1
+--   }
+
+local SEARCH_RADIUS = 4
+
+function processStepActivateMarkersOnLocations(step, context, onDone)
+  local elite     = step.elite or 1
+  local seated    = getSeatedPlayers()
+  local players   = math.max(#seated, 1)
+  local hp        = elite * players
+  local tokenMemo = step.tokenMemo or "White Marker"
+
+  local locationMat = getObjectFromGUID(locationMatId)
+  if not locationMat then
+    log("[activateMarkersOnLocations] locationMat not found")
+    if onDone then onDone() end
+    return
+  end
+
+  Wait.time(function()
+    for _, locationName in ipairs(step.locations or {}) do
+      local tile, tileData, locationIndex = findLocationTileByName(locationMat, locationName)
+      if not tile then
+        log("[activateMarkersOnLocations] tile not found: " .. tostring(locationName))
+      else
+        local pos
+        if locationIndex and tileData and tileData.structureType then
+          pos = getNeighborhoodLocationPosition(tile, locationIndex, tileData.structureType)
+        else
+          pos = tile.getPosition()
+        end
+
+        for _, obj in ipairs(findObjsInRadius(pos, SEARCH_RADIUS)) do
+          if obj.type == "Tile" and obj.getMemo() == tokenMemo then
+            pcall(function()
+              obj.call("activateCounter", { hp = hp })
+            end)
+          end
+        end
+      end
+    end
+
+    if onDone then onDone() end
+  end, 1)
+end

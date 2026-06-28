@@ -14,8 +14,8 @@
   "CustomDeck": {
     "5823": {
       "BackIsHidden": true,
-      "BackURL": "https://drive.google.com/uc?export=view\u0026id=1Mi71yh_wpWPS83v-26mPn6_bVNkXAWUk",
-      "FaceURL": "https://drive.google.com/uc?export=view\u0026id=1SRJja6BM4D9d3wt3dyRELfzt0iOlc3Dx",
+      "BackURL": "https://drive.google.com/uc?export=view&id=1Mi71yh_wpWPS83v-26mPn6_bVNkXAWUk",
+      "FaceURL": "https://drive.google.com/uc?export=view&id=1SRJja6BM4D9d3wt3dyRELfzt0iOlc3Dx",
       "NumHeight": 4,
       "NumWidth": 5,
       "Type": 0,
@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"number\":46,\"type\":\"codex\"}",
+  "Memo": "{\"number\": 46, \"type\": \"codex\", \"front\": {\"actions\": [{\"title\": \"Замішати монстрів\", \"removeAfterUse\": true, \"steps\": [{\"type\": \"mergeSetasideIntoMonster\", \"fromDeck\": \"setaside\"}, {\"type\": \"mergeSetasideIntoMonster\", \"fromDeck\": \"setaside2\"}]}]}, \"back\": {\"actions\": [{\"title\": \"Білий маркер\", \"removeAfterUse\": true, \"steps\": [{\"type\": \"placeTokenOnScenarioMat\", \"token\": {\"type\": \"White Marker\"}, \"positionIndex\": 1, \"face_up\": true}]}, {\"title\": \"Додати карту 47\", \"removeAfterUse\": true, \"steps\": [{\"type\": \"takeCodexFromArchive\", \"number\": 47}]}]}}",
   "Name": "Card",
   "Nickname": "46",
   "SidewaysCard": false,

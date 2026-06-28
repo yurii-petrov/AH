@@ -73,7 +73,7 @@ function processStepFindMonsterByType(step, context, onDone)
   local revealList  = {}
   local foundTarget = false
 
-  for i = 1, #objects do
+  for i = #objects, 1, -1 do
     local entry     = objects[i]
     local entryData = parseJson(entry.memo)
     local isTarget  = matchesMonsterTypes(entryData, searchTypes)

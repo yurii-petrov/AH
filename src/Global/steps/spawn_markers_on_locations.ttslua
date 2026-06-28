@@ -1,0 +1,95 @@
+-- ╭──────────────────────────────────────────────╮
+-- │    STEP: spawnMarkersOnLocations             │
+-- ╰──────────────────────────────────────────────╯
+--
+-- Takes special marker cards from a source deck and places each face-up
+-- at a named location, then attaches a monster mat (for HP tracking).
+-- Marker cards must have elite/hp in their memo to display a monster mat.
+--
+-- Example step JSON:
+--   {
+--     "type": "spawnMarkersOnLocations",
+--     "locations": ["Bridge1", "Bridge2", "Residential1", "Residential2"],
+--     "query": [{ "field": "name", "op": "eq", "value": "White Marker" }],
+--     "sourceDeck": "archive"
+--   }
+
+function processStepSpawnMarkersOnLocations(step, context, onDone)
+  if not step.locations or #step.locations == 0 then
+    log("[spawnMarkersOnLocations] locations is nil or empty")
+    if onDone then onDone() end
+    return
+  end
+
+  local locationMat = findBoardByQuery({{
+    field = "type",
+    op    = "eq",
+    value = "locationMat"
+  }})
+  if not locationMat then
+    log("[spawnMarkersOnLocations] locationMat not found")
+    if onDone then onDone() end
+    return
+  end
+
+  local sourceDeckType = step.sourceDeck or "archive"
+  local source = findDeckOnBoardByType(locationMat, sourceDeckType)
+  if not source then
+    log("[spawnMarkersOnLocations] source deck '" .. sourceDeckType .. "' not found")
+    if onDone then onDone() end
+    return
+  end
+
+  local remaining = {}
+  for _, loc in ipairs(step.locations) do
+    table.insert(remaining, loc)
+  end
+
+  local function spawnNext()
+    if #remaining == 0 then
+      if onDone then onDone() end
+      return
+    end
+
+    local locationName = table.remove(remaining, 1)
+
+    local card
+    if step.query then
+      card = takeCardByQuery(source, step.query, { smooth = true })
+    else
+      card = (source.type == "Deck") and source.takeObject({ index = 0 }) or source
+    end
+
+    if not card then
+      log("[spawnMarkersOnLocations] no card found for: " .. tostring(locationName))
+      spawnNext()
+      return
+    end
+
+    local tile, tileData, locationIndex = findLocationTileByName(locationMat, locationName)
+    if not tile then
+      log("[spawnMarkersOnLocations] tile not found: " .. tostring(locationName))
+      card.setPositionSmooth(source.getPosition():setAt("y", 3))
+      Wait.time(spawnNext, 0.5)
+      return
+    end
+
+    local targetPos
+    if locationIndex and tileData and tileData.structureType then
+      targetPos = getNeighborhoodLocationPosition(tile, locationIndex, tileData.structureType):setAt("y", 3)
+    else
+      targetPos = tile.getPosition():setAt("y", 3)
+    end
+
+    card.setRotation({ 0, 180, 0 })
+    card.setPositionSmooth(targetPos)
+
+    Wait.time(function()
+      local cardData = parseJson(card.memo)
+      attachMonsterCard(card, cardData, card.getPosition():setAt("y", 3))
+      Wait.time(spawnNext, 0.3)
+    end, 0.6)
+  end
+
+  spawnNext()
+end

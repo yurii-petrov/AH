@@ -85,8 +85,9 @@ function processStepPlaceTokensOnLocations(step, context, onDone)
         else
           pos = tile.getPosition():setAt("y", 3)
         end
-        bag.takeObject({ index = 0, position = pos, rotation = {0, 180, 180} }).highlightOn("Yellow", 5)
-        local locKey = locationName:gsub(" ", "_")
+        local rot = step.face_up and {0, 180, 0} or {0, 180, 180}
+        bag.takeObject({ index = 0, position = pos, rotation = rot }).highlightOn("Yellow", 5)
+        local locKey = locationName:gsub("%d+$", ""):gsub(" ", "_")
         local locStr = i18n.getStrById(locKey)
         table.insert(logLines, locStr .. " - " .. tokenWord .. " 1")
       else

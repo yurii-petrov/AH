@@ -1,0 +1,66 @@
+-- ╭────────────────────────────────────────╮
+-- │          Marker — wound counter        │
+-- ╰────────────────────────────────────────╯
+-- Hidden by default. Call activateCounter({hp=N}) to show and track wounds.
+-- Left click = add wound, alt/right click = heal.
+
+local data = { wounds = 0, maxHp = 0, active = false }
+
+function onLoad(savedData)
+  if savedData and savedData ~= "" then
+    local ok, d = pcall(function() return JSON.decode(savedData) end)
+    if ok and d then data = d end
+  end
+  Wait.time(buildUI, 0.5)
+end
+
+function onSave()
+  return JSON.encode(data)
+end
+
+local function woundColor()
+  return data.wounds >= data.maxHp and "#ff2200" or "#000000"
+end
+
+function buildUI()
+  local active = data.active and "true" or "false"
+  self.UI.setXmlTable({
+    {
+      tag = "Button",
+      attributes = {
+        id        = "wound_btn",
+        active    = active,
+        position  = "0 -350 -50",
+        rotation  = "0 0 180",
+        scale     = "0.55 0.95 1",
+        width     = "220",
+        height    = "120",
+        color     = "clear",
+        text      = tostring(data.wounds),
+        textColor = woundColor(),
+        font      = "Fonts/AdonisC",
+        fontSize  = "130",
+        fontStyle = "Bold",
+        onClick   = "onWoundClick",
+      },
+    },
+  })
+end
+
+function activateCounter(params)
+  data.maxHp  = params and params.hp or 0
+  data.wounds = 0
+  data.active = true
+  buildUI()
+end
+
+function onWoundClick(player, alt_click)
+  if not data.active then return end
+  if alt_click == "-1" then
+    data.wounds = math.max(data.wounds - 1, 0)
+  else
+    data.wounds = math.min(data.wounds + 1, data.maxHp)
+  end
+  self.UI.setAttribute("wound_btn", "text",      tostring(data.wounds))
+  self.UI.setAttribute("wound_btn", "textColor", woundColor())
+end
