@@ -55,8 +55,6 @@ function onObjectPickUpShop(colorName, object, shopMat)
   })
 end
 
-DOOM_PICKUP_NEIGHBORHOOD = DOOM_PICKUP_NEIGHBORHOOD or {}
-
 function onObjectPickUp(colorName, object)
   for _, player in ipairs(Player.getPlayers()) do
     if player.lift_height <= 0.3 then
@@ -74,7 +72,10 @@ function onObjectPickUp(colorName, object)
     for _, obj in pairs(belowObjs) do
       local objMemo = parseJson(obj.memo)
       if objMemo and objMemo.type and string.lower(objMemo.type) == "neighborhood" then
-        DOOM_PICKUP_NEIGHBORHOOD[object.guid] = obj
+        local doomInfo = getNeighborhoodDoomInfo(obj)
+        if doomInfo and doomInfo.total == 1 then
+          tryRemoveAnomalyFromNeighborhood(obj)
+        end
         break
       end
     end

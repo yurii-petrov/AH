@@ -79,13 +79,6 @@ function onObjectDrop(colorName, object)
   end
 
   if isFoundlocationMat and not isFoundNeighborhood and not isFoundScenarioSheet then
-    if objectData.type == Tag.DoomToken then
-      local neighborhood = DOOM_PICKUP_NEIGHBORHOOD and DOOM_PICKUP_NEIGHBORHOOD[object.guid]
-      if neighborhood then
-        DOOM_PICKUP_NEIGHBORHOOD[object.guid] = nil
-        tryRemoveAnomalyFromNeighborhood(neighborhood)
-      end
-    end
     object.destruct()
   end
 end
