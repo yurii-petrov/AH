@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"number\": 47, \"type\": \"codex\", \"front\": {\"actions\": [{\"title\": \"Прислужник\", \"removeAfterUse\": true, \"steps\": [{\"type\": \"findMonsterByType\", \"monsterType\": [\"Servitor\"]}]}, {\"title\": \"Білий маркер\", \"removeAfterUse\": true, \"steps\": [{\"type\": \"placeTokenOnScenarioMat\", \"token\": {\"type\": \"White Marker\"}, \"positionIndex\": 8, \"face_up\": true}]}]}, \"back\": {\"actions\": [{\"title\": \"Прислужник\", \"removeAfterUse\": true, \"steps\": [{\"type\": \"findMonsterByType\", \"monsterType\": [\"Servitor\"]}]}, {\"title\": \"Білий маркер\", \"removeAfterUse\": true, \"steps\": [{\"type\": \"placeTokenOnScenarioMat\", \"token\": {\"type\": \"White Marker\"}, \"positionIndex\": 8, \"face_up\": true}]}]}}",
+  "Memo": "{\"number\": 47, \"type\": \"codex\", \"front\": {\"actions\": [{\"title\": \"Прислужник\", \"removeAfterUse\": true, \"steps\": [{\"type\": \"findMonsterByType\", \"monsterType\": [\"Servitor\"]}]}, {\"title\": \"Білий маркер\", \"steps\": [{\"type\": \"placeTokenOnScenarioMat\", \"token\": {\"type\": \"White Marker\"}, \"positionIndex\": 8, \"face_up\": true}]}]}}",
   "Name": "Card",
   "Nickname": "47",
   "SidewaysCard": false,
