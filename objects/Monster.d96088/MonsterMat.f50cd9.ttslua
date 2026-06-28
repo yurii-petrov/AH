@@ -92,6 +92,27 @@ end
 
 function setHPMax(params)
   data.maxHp = params.maxHp
+  if params.wounds and params.wounds > 0 then
+    data.hp = math.min(params.wounds, data.maxHp)
+    local fontSize = data.hp > 9 and "220" or "350"
+    local isMax = data.hp == data.maxHp
+    self.UI.setAttribute("btnHP1", "text", tostring(data.hp))
+    self.UI.setAttribute("btnHP1", "textColor", "#e9543b")
+    self.UI.setAttribute("btnHP1", "fontSize", fontSize)
+    self.UI.setAttribute("btnHP1", "textColor", "#e9543b")
+    self.UI.setAttribute("btnHP2", "text", tostring(data.hp))
+    self.UI.setAttribute("btnHP2", "textColor", "#e9543b")
+    self.UI.setAttribute("btnHP2", "fontSize", fontSize)
+    self.UI.setAttribute("btnHP2", "textColor", "#e9543b")
+    self.UI.setAttribute("btnKill1", "active", tostring(isMax))
+    self.UI.setAttribute("btnKill2", "active", tostring(isMax))
+    self.UI.setAttribute("killText1", "active", tostring(not isMax))
+    self.UI.setAttribute("killText2", "active", tostring(not isMax))
+    if isMax then
+      self.UI.setAttribute("btnKill1", "textColor", "#e9543b")
+      self.UI.setAttribute("btnKill2", "textColor", "#e9543b")
+    end
+  end
 end
 
 -- UI

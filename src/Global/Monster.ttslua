@@ -72,7 +72,7 @@ local function buildChildCards(matData, cardData, sign, rotZ)
   matData.ChildObjects = {frontCard, backCard}
 end
 
-function attachMonsterToMat(monster, objectMemo, monsterMat)
+function attachMonsterToMat(monster, objectMemo, monsterMat, wounds)
   if objectMemo.type == "codex" and objectMemo.role == "Monster" then
     monsterMat.setScale({2.42, 1, 2.42})
   end
@@ -93,11 +93,11 @@ function attachMonsterToMat(monster, objectMemo, monsterMat)
   end
 
   runAfterRest(spawnedMat, function(spawnedMat)
-    spawnedMat.call("setHPMax", {maxHp = objectMemo.hp})
+    spawnedMat.call("setHPMax", {maxHp = objectMemo.hp, wounds = wounds or 0})
   end)
 end
 
-function attachMonsterCard(monster, objectMemo, spawnPos)
+function attachMonsterCard(monster, objectMemo, spawnPos, wounds)
   local monsterMatBag = getObjectFromGUID(monsterMatBagId)
   if not monsterMatBag then return end
 
@@ -110,7 +110,7 @@ function attachMonsterCard(monster, objectMemo, spawnPos)
 
   if not monsterMat then return end
 
-  attachMonsterToMat(monster, objectMemo, monsterMat)
+  attachMonsterToMat(monster, objectMemo, monsterMat, wounds)
 end
 
 function attachDoubleSidedCard(monster, objectMemo, spawnPos)

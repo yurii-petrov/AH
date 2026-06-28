@@ -388,7 +388,7 @@ end
 function onRevealDoubleSided(res)
   if not res.frontData or not res.frontData.type then return end
   if res.frontData.type == "Monster" then
-    attachMonsterCard(res.doubleSided, res.frontData, res.doubleSided.getPosition())
+    attachMonsterCard(res.doubleSided, res.frontData, res.doubleSided.getPosition(), res.wounds)
   elseif res.frontData.type == "Ally" then
     attachAllyCard(res.doubleSided, res.frontData, res.doubleSided.getPosition())
   end
