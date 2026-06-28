@@ -19,7 +19,7 @@ function onSave()
 end
 
 local function woundColor()
-  return data.wounds >= data.maxHp and "#ff2200" or "#000000"
+  return data.wounds >= data.maxHp and "#ff4444" or "#cc0000"
 end
 
 function buildUI()
@@ -28,20 +28,34 @@ function buildUI()
     {
       tag = "Button",
       attributes = {
-        id        = "wound_btn",
+        id       = "wound_btn",
+        active   = active,
+        position = "0 -150 -50",
+        rotation = "0 0 180",
+        scale    = "0.7 1.2 1",
+        width    = "200",
+        height   = "200",
+        color    = "clear",
+        text     = "",
+        onClick  = "onWoundClick",
+      },
+    },
+    {
+      tag = "Text",
+      attributes = {
+        id        = "wound_text",
         active    = active,
-        position  = "0 -350 -50",
-        rotation  = "0 0 180",
-        scale     = "0.55 0.95 1",
-        width     = "220",
-        height    = "120",
-        color     = "clear",
         text      = tostring(data.wounds),
-        textColor = woundColor(),
+        position  = "0 -150 -31",
+        rotation  = "0 0 180",
+        scale     = "0.7 1.2 1",
         font      = "Fonts/AdonisC",
-        fontSize  = "130",
+        fontSize  = "120",
         fontStyle = "Bold",
-        onClick   = "onWoundClick",
+        color     = woundColor(),
+        width     = "200",
+        height    = "200",
+        alignment = "MiddleCenter",
       },
     },
   })
@@ -61,6 +75,6 @@ function onWoundClick(player, alt_click)
   else
     data.wounds = math.min(data.wounds + 1, data.maxHp)
   end
-  self.UI.setAttribute("wound_btn", "text",      tostring(data.wounds))
-  self.UI.setAttribute("wound_btn", "textColor", woundColor())
+  self.UI.setAttribute("wound_text", "text",  tostring(data.wounds))
+  self.UI.setAttribute("wound_text", "color", woundColor())
 end
