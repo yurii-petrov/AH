@@ -274,7 +274,8 @@ function clickFight(player, alt_click)
       local pos = figurine.getPosition()
       local targetPos = {pos.x, pos.y + 2, pos.z}
       self.setPosition(targetPos)
-      self.setRotation(orient(monsterMemo, true))
+      self.setRotation(orient(monsterMemo, false))
+      liftFigurinesAt(targetPos, targetPos[2] + 1)
       Player[player.color].lookAt({position = targetPos, pitch = 50, yaw = 0, distance = 25})
     end
   else
@@ -320,6 +321,19 @@ function findFreeMonsterSnap(invMat)
     end
   end
   return lastPos
+end
+
+function liftFigurinesAt(worldPos, liftY)
+  for _, obj in ipairs(getAllObjects()) do
+    if obj.type == "Figurine" then
+      local p = obj.getPosition()
+      local dx = p.x - worldPos[1]
+      local dz = p.z - worldPos[3]
+      if dx * dx + dz * dz < 1.5 then
+        obj.setPosition({p.x, liftY, p.z})
+      end
+    end
+  end
 end
 
 function findInvestigatorFigurine(invMat)
