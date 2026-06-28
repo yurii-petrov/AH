@@ -1,99 +1,221 @@
---serpent = require("util/serpent")
+local DAMAGE_COLOR = "#e9543b"
+local HORROR_COLOR = "#485cb3"
 
 local data = {
-	hp = 0,
-	maxHp = nil,
-	sp = 0,
-	maxSp = nil,
-	unbreakable = false
-  }
+    hp = 0,
+    maxHp = nil,
+    sp = 0,
+    maxSp = nil,
+    unbreakable = false,
+}
 
--- це все не працювало
-  function onLoad(savedData)
-	local sData = parseJson(savedData)
-	if sData then
-	  data = sData
-	end
-
-	prepareTile()
-  end
-
-  function onSave()
-	local saveData = JSON.encode(data)
-	return saveData
-  end
-
-function prepareTile() -- запустити під час аттачу щоб видалити зайвий каунтер
-	self.UI.setAttribute('damage', 'active', data.maxHp ~= nil) 
-	self.UI.setAttribute('horror', 'active', data.maxSp ~= nil) 
+function onLoad(savedData)
+    local sData = parseJson(savedData)
+    if sData then
+        data = sData
+    end
+    self.UI.setXmlTable(getXmlTable())
 end
 
-function damage(player, alt_click, id) -- обробка кліка по HP
-	if alt_click == "-1" then
-		if data.maxHp and data.hp < data.maxHp then data.hp = data.hp + 1 end
-	elseif alt_click == "-2" then
-		if data.hp > 0 then data.hp = data.hp - 1 end
-	end
-	updateTile()
+function onSave()
+    return JSON.encode(data)
 end
 
-function horror(player, alt_click, id) -- обробка кліка по SP
-	if alt_click == "-1" then
-		if data.maxSp and data.sp < data.maxSp then data.sp = data.sp + 1 end
-	elseif alt_click == "-2" then
-		if data.sp > 0 then data.sp = data.sp - 1 end
-	end
-	updateTile()
+function getXmlTable()
+    local hpAtMax = data.maxHp ~= nil and data.hp == data.maxHp and not data.unbreakable
+    local spAtMax = data.maxSp ~= nil and data.sp == data.maxSp and not data.unbreakable
+    return {
+        {
+            tag = "Panel",
+            attributes = {
+                id = "damage",
+                active = data.maxHp ~= nil and not spAtMax,
+                width = "500", height = "300",
+                scale = "0.1 0.1 0",
+                position = "30 85 -11",
+                rotation = "0 0 180",
+            },
+            children = {
+                {
+                    tag = "Button",
+                    attributes = {
+                        id = "damage_btn", onClick = "damage",
+                        width = "500", height = "300",
+                        position = "0 -40 0",
+                        padding = "0 300 10 0",
+                        fontSize = "290", fontStyle = "Bold",
+                        font = "Fonts/AdonisC",
+                        textColor = DAMAGE_COLOR,
+                        color = "clear",
+                        text = tostring(data.hp),
+                    },
+                },
+                {
+                    tag = "Text",
+                    attributes = {
+                        id = "damage_txt",
+                        position = "150 78 0",
+                        fontSize = "70", fontStyle = "Bold",
+                        font = "Fonts/AdonisC",
+                        color = "#fff5e2",
+                        text = "ПОРАНЕННЯ",
+                    },
+                },
+            },
+        },
+        {
+            tag = "Panel",
+            attributes = {
+                id = "damage_cls",
+                active = spAtMax,
+                width = "500", height = "300",
+                scale = "0.1 0.1 0",
+                position = "30 85 -11",
+                rotation = "0 0 180",
+            },
+            children = {
+                {
+                    tag = "Button",
+                    attributes = {
+                        onClick = "ItemMatDestruct",
+                        width = "500", height = "300",
+                        position = "0 -40 0",
+                        padding = "0 300 10 0",
+                        fontSize = "290", fontStyle = "Bold",
+                        font = "Fonts/AdonisC",
+                        textColor = DAMAGE_COLOR,
+                        color = "clear",
+                        text = "X",
+                    },
+                },
+            },
+        },
+        {
+            tag = "Panel",
+            attributes = {
+                id = "horror",
+                active = data.maxSp ~= nil and not hpAtMax,
+                width = "500", height = "300",
+                scale = "0.1 0.1 0",
+                position = "-30 85 -11",
+                rotation = "0 0 180",
+            },
+            children = {
+                {
+                    tag = "Button",
+                    attributes = {
+                        id = "horror_btn", onClick = "horror",
+                        width = "500", height = "300",
+                        position = "0 -40 0",
+                        padding = "300 0 10 0",
+                        fontSize = "290", fontStyle = "Bold",
+                        font = "Fonts/AdonisC",
+                        textColor = HORROR_COLOR,
+                        color = "clear",
+                        text = tostring(data.sp),
+                    },
+                },
+                {
+                    tag = "Text",
+                    attributes = {
+                        id = "horror_txt",
+                        position = "-26 -93 -11",
+                        fontSize = "70", fontStyle = "Bold",
+                        font = "Fonts/AdonisC",
+                        color = "#fff5e2",
+                        text = "ЖАХ",
+                    },
+                },
+            },
+        },
+        {
+            tag = "Panel",
+            attributes = {
+                id = "horror_cls",
+                active = hpAtMax,
+                width = "500", height = "300",
+                scale = "0.1 0.1 0",
+                position = "-30 85 -11",
+                rotation = "0 0 180",
+            },
+            children = {
+                {
+                    tag = "Button",
+                    attributes = {
+                        onClick = "ItemMatDestruct",
+                        width = "500", height = "300",
+                        position = "0 -40 0",
+                        padding = "300 0 10 0",
+                        fontSize = "290", fontStyle = "Bold",
+                        font = "Fonts/AdonisC",
+                        textColor = DAMAGE_COLOR,
+                        color = "clear",
+                        text = "X",
+                    },
+                },
+            },
+        },
+    }
+end
+
+function prepareTile()
+    self.UI.setXmlTable(getXmlTable())
+end
+
+function damage(player, alt_click, id)
+    if alt_click == "-1" then
+        if data.maxHp and data.hp < data.maxHp then data.hp = data.hp + 1 end
+    elseif alt_click == "-2" then
+        if data.hp > 0 then data.hp = data.hp - 1 end
+    end
+    updateTile()
+end
+
+function horror(player, alt_click, id)
+    if alt_click == "-1" then
+        if data.maxSp and data.sp < data.maxSp then data.sp = data.sp + 1 end
+    elseif alt_click == "-2" then
+        if data.sp > 0 then data.sp = data.sp - 1 end
+    end
+    updateTile()
 end
 
 function setData(d)
-	data.hp = 0
-	data.sp = 0
-	data.maxHp = d.hp
-	data.maxSp = d.sp
-	data.unbreakable = d.unbreakable or false
-	prepareTile()
+    data.hp = 0
+    data.sp = 0
+    data.maxHp = d.hp
+    data.maxSp = d.sp
+    data.unbreakable = d.unbreakable or false
+    prepareTile()
 end
 
-function updateTile() -- оновлення XML
-	local colorDamage = self.UI.getAttribute('damage_btn', 'textColor')
-	local colorHorror = self.UI.getAttribute('horror_btn', 'textColor')
-	if data.hp == data.maxHp and not data.unbreakable then
-		self.UI.setAttribute('horror', 'active', false)
-		self.UI.setAttribute('horror_cls', 'active', true)
-	else
-		self.UI.setAttribute('horror', 'active', true)
-		self.UI.setAttribute('horror_cls', 'active', false)
-	end
-	if data.sp == data.maxSp and not data.unbreakable then
-		self.UI.setAttribute('damage', 'active', false)
-		self.UI.setAttribute('damage_cls', 'active', true)
-	else
-		self.UI.setAttribute('damage', 'active', true)
-		self.UI.setAttribute('damage_cls', 'active', false)
-	end
-	self.UI.setAttribute('damage_btn', 'text', data.hp)
-	self.UI.setAttribute('horror_btn', 'text', data.sp)
-	self.UI.setAttribute('damage_btn', 'textColor', colorDamage)
-	self.UI.setAttribute('horror_btn', 'textColor', colorHorror)
+function updateTile()
+    local hpAtMax = data.hp == data.maxHp and not data.unbreakable
+    local spAtMax = data.sp == data.maxSp and not data.unbreakable
+    self.UI.setAttribute('damage', 'active', not spAtMax)
+    self.UI.setAttribute('damage_cls', 'active', spAtMax)
+    self.UI.setAttribute('horror', 'active', not hpAtMax)
+    self.UI.setAttribute('horror_cls', 'active', hpAtMax)
+    self.UI.setAttribute('damage_btn', 'text', data.hp)
+    self.UI.setAttribute('damage_btn', 'textColor', DAMAGE_COLOR)
+    self.UI.setAttribute('horror_btn', 'text', data.sp)
+    self.UI.setAttribute('horror_btn', 'textColor', HORROR_COLOR)
 end
 
-function ItemMatDestruct() -- обробка кліку по Х
-	Global.call("onItemMatDestruct", self)
+function ItemMatDestruct()
+    Global.call("onItemMatDestruct", self)
 end
 
 function parseJson(memo)
-  if not memo or type(memo) ~= "string" then
-    return nil
-  end
-
-  local success, result = pcall(function()
-    return JSON.decode(memo)
-  end)
-
-  if success then
-    return result
-  else
-    return nil
-  end
+    if not memo or type(memo) ~= "string" then
+        return nil
+    end
+    local success, result = pcall(function()
+        return JSON.decode(memo)
+    end)
+    if success then
+        return result
+    else
+        return nil
+    end
 end
