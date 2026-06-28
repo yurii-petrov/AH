@@ -1,0 +1,111 @@
+-- ╭──────────────────────────────────────────────╮
+-- │    SHARED: monster deck reveal logic         │
+-- ╰──────────────────────────────────────────────╯
+--
+-- revealMonsterDeckEntries(params)
+--   params.codexMat      -- codex mat object
+--   params.locationMat   -- location mat object
+--   params.monsterDeck   -- deck object (for takeObject calls)
+--   params.revealList    -- array of { guid, memo, isTarget }
+--   params.onDone        -- callback
+
+local MONSTER_REVEAL_DURATION = 4
+
+function revealMonsterDeckEntries(params)
+  local codexMat    = params.codexMat
+  local locationMat = params.locationMat
+  local monsterDeck = params.monsterDeck
+  local revealList  = params.revealList
+  local onDone      = params.onDone
+
+  local cardSpacing   = 0.9
+  local finalFoundPos = codexMat.positionToWorld({0, 0.5, 1.7}):setAt("y", 3)
+  local revealResult  = { foundGuid = nil, anotherGuids = {} }
+
+  for i, entry in ipairs(revealList) do
+    local localPos = Vector({ (i - 1) * cardSpacing, 0.5, 1.7 })
+    local worldPos = codexMat.positionToWorld(localPos):setAt("y", 3)
+    for _, o in ipairs(downCast_pos(worldPos, 2)) do
+      if o.type == "Card" or o.type == "Deck" then
+        o.setPosition(codexMat.positionToWorld(localPos:setAt("z", localPos.z + 1)):setAt("y", 3))
+        break
+      end
+    end
+    local card = monsterDeck.takeObject({
+      guid     = entry.guid,
+      position = worldPos,
+      rotation = orient(parseJson(entry.memo)),
+      smooth   = true,
+    })
+    if card then
+      card.highlightOn(entry.isTarget and "Green" or "Red", 5)
+      if entry.isTarget then
+        revealResult.foundGuid = card.guid
+        if #revealList > 1 then card.interactable = false end
+      else
+        card.interactable = false
+        table.insert(revealResult.anotherGuids, card.guid)
+      end
+    end
+  end
+
+  local function spawnFoundCard()
+    local foundCard = getObjectFromGUID(revealResult.foundGuid)
+    if not foundCard then
+      if onDone then onDone() end
+      return
+    end
+    foundCard.interactable = true
+    spawnMonster(finalFoundPos, foundCard)
+    if onDone then onDone() end
+  end
+
+  Wait.time(function()
+    local anotherCount = #revealResult.anotherGuids
+    if anotherCount == 0 then
+      spawnFoundCard()
+      return
+    end
+
+    local locationData = parseJson(locationMat.memo)
+    if not locationData or not locationData.monster then return end
+    local monsterPos = locationMat.positionToWorld(locationData.monster)
+
+    if anotherCount == 1 then
+      local obj = getObjectFromGUID(revealResult.anotherGuids[1])
+      if obj then
+        obj.setPositionSmooth(monsterPos:setAt("y", 3))
+        Wait.time(function()
+          local foundCard = getObjectFromGUID(revealResult.foundGuid)
+          if foundCard then foundCard.setPositionSmooth(finalFoundPos) end
+          Wait.time(spawnFoundCard, 0.5)
+        end, 0.5)
+      end
+    else
+      local tempPos = Vector(monsterPos.x - 1, monsterPos.y, monsterPos.z)
+      for _, guid in ipairs(revealResult.anotherGuids) do
+        local obj = getObjectFromGUID(guid)
+        if obj then
+          obj.setRotation(orient(parseJson(obj.memo)))
+          obj.setPosition(tempPos)
+        end
+      end
+      Wait.time(function()
+        local pile = nil
+        for _, o in ipairs(findObjsInRadius(tempPos, 2)) do
+          if o.type == "Deck" or o.type == "Card" then pile = o; break end
+        end
+        if not pile then return end
+        if pile.type == "Deck" then pile.shuffle() end
+        Wait.time(function()
+          pile.setPositionSmooth(monsterPos:setAt("y", 3))
+          Wait.time(function()
+            local foundCard = getObjectFromGUID(revealResult.foundGuid)
+            if foundCard then foundCard.setPositionSmooth(finalFoundPos) end
+            Wait.time(spawnFoundCard, 0.5)
+          end, 0.5)
+        end, 0.5)
+      end, 0.5)
+    end
+  end, MONSTER_REVEAL_DURATION)
+end
