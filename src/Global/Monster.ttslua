@@ -47,6 +47,31 @@ function attachAllyCard(ally, allyMemo, spawnPos)
   end)
 end
 
+local function buildChildCards(matData, cardData, sign, rotZ)
+  local sx = matData.Transform.scaleX
+  local sz = matData.Transform.scaleZ
+
+  local frontCard = deepCopy(cardData)
+  frontCard.Transform = {
+    posX = 0.16 * sign, posY = 0, posZ = 0,
+    rotX = 0, rotY = 0, rotZ = rotZ,
+    scaleX = cardData.Transform.scaleX / sx,
+    scaleY = 0.065,
+    scaleZ = cardData.Transform.scaleZ / sz,
+  }
+
+  local backCard = deepCopy(cardData)
+  backCard.Transform = {
+    posX = -0.16 * sign, posY = 0.10, posZ = 0,
+    rotX = 0, rotY = 0, rotZ = rotZ,
+    scaleX = cardData.Transform.scaleX / sx,
+    scaleY = 0.065,
+    scaleZ = cardData.Transform.scaleZ / sz,
+  }
+
+  matData.ChildObjects = {frontCard, backCard}
+end
+
 function attachMonsterToMat(monster, objectMemo, monsterMat)
   if objectMemo.type == "codex" and objectMemo.role == "Monster" then
     monsterMat.setScale({2.42, 1, 2.42})
@@ -56,28 +81,7 @@ function attachMonsterToMat(monster, objectMemo, monsterMat)
   local matData = monsterMat.getData()
   local cardData = monster.getData()
 
-  local sx = matData.Transform.scaleX
-  local sz = matData.Transform.scaleZ
-
-  local frontCard = deepCopy(cardData)
-  frontCard.Transform = {
-    posX = 0.16, posY = 0, posZ = 0,
-    rotX = 0, rotY = 0, rotZ = 0,
-    scaleX = cardData.Transform.scaleX / sx,
-    scaleY = 0.065,
-    scaleZ = cardData.Transform.scaleZ / sz,
-  }
-
-  local backCard = deepCopy(cardData)
-  backCard.Transform = {
-    posX = -0.16, posY = 0.10, posZ = 0,
-    rotX = 0, rotY = 0, rotZ = 0,
-    scaleX = cardData.Transform.scaleX / sx,
-    scaleY = 0.065,
-    scaleZ = cardData.Transform.scaleZ / sz,
-  }
-
-  matData.ChildObjects = {frontCard, backCard}
+  buildChildCards(matData, cardData, 1, 0)
 
   monster.destruct()
   monsterMat.destruct()
@@ -111,9 +115,7 @@ end
 
 function attachDoubleSidedCard(monster, objectMemo, spawnPos)
   local doubleSidedMatBag = getObjectFromGUID(doubleSidedMatBagId)
-  if not doubleSidedMatBag then
-    return
-  end
+  if not doubleSidedMatBag then return end
 
   local doubleSidedMat = doubleSidedMatBag.takeObject({
     index = 0,
@@ -122,35 +124,21 @@ function attachDoubleSidedCard(monster, objectMemo, spawnPos)
     smooth = false
   })
 
-  if not doubleSidedMat then
-    return
-  end
+  if not doubleSidedMat then return end
 
   local sign = objectMemo.reversed and -1 or 1
-  local pos = spawnPos
-  pos.x = pos.x + 0.271 * sign
-  monster.setPosition(pos)
+  local matData = doubleSidedMat.getData()
+  local cardData = monster.getData()
 
-  local height = doubleSidedMat.getBounds().size.y
+  buildChildCards(matData, cardData, sign, faceRotZ(objectMemo, monster.is_face_down))
 
-  monster.interactable = false
+  monster.destruct()
+  doubleSidedMat.destruct()
 
-  local oData = monster.getData()
-  oData.Transform.rotZ = faceRotZ(objectMemo, monster.is_face_down)
-  oData.Transform.posY = oData.Transform.posY + 0.06 * sign
-  doubleSidedMat.addAttachment(monster)
+  local spawnedMat = spawnObjectData({data = matData})
 
-  local oData = monster.getData()
-  oData.Transform.rotZ = faceRotZ(objectMemo, monster.is_face_down)
-  oData.Transform.posX = doubleSidedMat.positionToWorld({-0.16, 0, 0}).x
-  oData.Transform.posY = pos.y - (height + 0.10) * sign
-  local clone = spawnObjectData({
-    data = oData
-  })
-  doubleSidedMat.addAttachment(clone)
-
-  runAfterRest(doubleSidedMat, function(doubleSidedMat)
-    doubleSidedMat.call("setFrontData", objectMemo.front)
+  runAfterRest(spawnedMat, function(spawnedMat)
+    spawnedMat.call("setFrontData", objectMemo.front)
   end)
 end
 
