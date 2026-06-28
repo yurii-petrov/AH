@@ -47,20 +47,30 @@ function processStepPlaceCodexAtEncounterDeck(step, context, onDone)
   local card
 
   if step.map then
+    -- Build number→neighborhood lookup, then take the top card of the
+    -- already-shuffled deck so the draw order is truly random.
+    local lookup = {}
     for _, entry in ipairs(step.map) do
-      local candidate = takeCardByQuery(archive, {{
-        field = "number",
-        op    = "eq",
-        value = entry.number
-      }})
-      if candidate then
-        card         = candidate
-        neighborhood = entry.neighborhood
-        break
-      end
+      lookup[entry.number] = entry.neighborhood
     end
+
+    if archive.type == "Deck" then
+      card = archive.takeObject({ index = 0 })
+    else
+      card = archive
+    end
+
     if not card then
-      log("[placeCodexAtEncounterDeck] no matching card found in archive")
+      log("[placeCodexAtEncounterDeck] source deck is empty")
+      if onDone then onDone() end
+      return
+    end
+
+    local cardData = parseJson(card.memo)
+    neighborhood   = cardData and lookup[cardData.number]
+
+    if not neighborhood then
+      log("[placeCodexAtEncounterDeck] card " .. tostring(cardData and cardData.number) .. " not in map")
       if onDone then onDone() end
       return
     end
