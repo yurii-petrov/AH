@@ -657,6 +657,43 @@ function spawnDoomTokenOnTile(tileObj, doomCount)
   end
 end
 
+function tryRemoveAnomalyFromNeighborhood(neighborhoodObj)
+  if not gameData.scenarioData.anomaly then return end
+
+  local anomalyToken = nil
+  local nObjs = upCast(neighborhoodObj, 1, nil, 1)
+  for _, nObj in pairs(nObjs) do
+    if nObj.memo == "Anomaly Token" then
+      anomalyToken = nObj
+      break
+    end
+  end
+  if not anomalyToken then return end
+
+  local doomInfo = getNeighborhoodDoomInfo(neighborhoodObj)
+  if not doomInfo then return end
+
+  local conditionMet = doomInfo.total >= 5
+  if not conditionMet then
+    for _, dooms in pairs(doomInfo.locations) do
+      if dooms >= 3 then
+        conditionMet = true
+        break
+      end
+    end
+  end
+  if conditionMet then return end
+
+  local anomalyBag = getObjectFromGUID(anomalyBagId)
+  if anomalyBag then
+    anomalyBag.putObject(anomalyToken)
+  else
+    anomalyToken.destruct()
+  end
+  local nData = parseJson(neighborhoodObj.memo)
+  printToAll(string.format(i18n.getStrById("LOG_anomaly_removed"), i18n.getStrById((nData.name or ""):gsub(" ", "_"))), "Green")
+end
+
 function getNeighborhoodTile(neighborhoodName, tileType)
   tileType = tileType or "neighborhood"
   local locationMat = getObjectFromGUID(locationMatId)

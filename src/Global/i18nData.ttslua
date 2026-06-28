@@ -490,6 +490,10 @@ I18N_DATA = {
     ["en"] = "%s Anomaly (%s)",
     ["uk"] = "%s Аномалія (%s)",
   },
+  ["LOG_anomaly_removed"] = {
+    ["en"] = "%s - Anomaly removed.",
+    ["uk"] = "%s - аномалію прибрано.",
+  },
   ["LOG_bridge_returned"] = {
     ["en"] = "It looks like the bridge is already returned.",
     ["uk"] = "Схоже, міст уже повернено.",

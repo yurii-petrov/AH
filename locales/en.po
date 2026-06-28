@@ -655,6 +655,9 @@ msgstr "%s - %s doom added to the center of the neighborhood, players decide how
 msgid "LOG_anomaly_added"
 msgstr "%s - Anomaly added."
 
+msgid "LOG_anomaly_removed"
+msgstr "%s - Anomaly removed."
+
 msgid "LOG_scenario_doom_added"
 msgstr "Scenario - %s doom added"
 

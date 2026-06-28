@@ -55,6 +55,8 @@ function onObjectPickUpShop(colorName, object, shopMat)
   })
 end
 
+DOOM_PICKUP_NEIGHBORHOOD = DOOM_PICKUP_NEIGHBORHOOD or {}
+
 function onObjectPickUp(colorName, object)
   for _, player in ipairs(Player.getPlayers()) do
     if player.lift_height <= 0.3 then
@@ -65,6 +67,17 @@ function onObjectPickUp(colorName, object)
   local objectData = parseJson(object.memo)
   if objectData and objectData.type == "blessed cursed" then
     applyBlessedCursedToRoller(object, 1)
+  end
+
+  if object.memo == "Doom Token" then
+    local belowObjs = downCast(object, 10, nil, 1)
+    for _, obj in pairs(belowObjs) do
+      local objMemo = parseJson(obj.memo)
+      if objMemo and objMemo.type and string.lower(objMemo.type) == "neighborhood" then
+        DOOM_PICKUP_NEIGHBORHOOD[object.guid] = obj
+        break
+      end
+    end
   end
 
   local foundObjects = downCast(object, 10, nil, 1)

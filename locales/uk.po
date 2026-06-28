@@ -717,6 +717,9 @@ msgstr ""
 msgid "LOG_anomaly_added"
 msgstr "%s - додано аномалію."
 
+msgid "LOG_anomaly_removed"
+msgstr "%s - аномалію прибрано."
+
 msgid "LOG_scenario_doom_added"
 msgstr "Сценарій - додано %s приреченості"
 
