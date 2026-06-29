@@ -15,39 +15,8 @@ function spawnMonster(spawnPos, monster)
   end
 end
 
-function attachAllyCard(ally, allyMemo, spawnPos)
-  local itemMatBag = getObjectFromGUID(itemMatBagId)
-  if not itemMatBag then
-    return
-  end
-  
-  local itemMat = itemMatBag.takeObject({
-    index = 0,
-    position = ally.getPosition():setAt("y", 2.21):setAt("z", spawnPos.z),
-    rotation = orient(allyMemo, false),
-    smooth = false
-  })
-
-  ally.setLock(true)
-  ally.setRotation(orient(allyMemo, false))
-  ally.setPosition(itemMat.positionToWorld({0, 0, -0.154}):setAt("y", 2.31))
-
-  itemMat.addAttachment(ally)
-  itemMat.memo = JSON.encode({
-    type = "Item Mat"
-  })
-
-  runAfterRest(itemMat, function(itemMat)
-    Wait.time(function()
-      itemMat.call("setData", allyMemo)
-      Wait.time(function()
-        itemMat.call("setData", allyMemo)
-      end, 0.2)
-    end, 0.2)
-  end)
-end
-
-local function buildChildCards(matData, cardData, sign, rotZ)
+local function buildChildCards(matData, cardData, sign, rotZ, backRotZ)
+  backRotZ = backRotZ or rotZ
   local sx = matData.Transform.scaleX
   local sz = matData.Transform.scaleZ
 
@@ -63,13 +32,53 @@ local function buildChildCards(matData, cardData, sign, rotZ)
   local backCard = deepCopy(cardData)
   backCard.Transform = {
     posX = -0.16 * sign, posY = 0.10, posZ = 0,
-    rotX = 0, rotY = 0, rotZ = rotZ,
+    rotX = 0, rotY = 0, rotZ = backRotZ,
     scaleX = cardData.Transform.scaleX / sx,
     scaleY = 0.065,
     scaleZ = cardData.Transform.scaleZ / sz,
   }
 
   matData.ChildObjects = {frontCard, backCard}
+end
+
+function attachAllyCard(ally, allyMemo, spawnPos)
+  local itemMatBag = getObjectFromGUID(itemMatBagId)
+  if not itemMatBag then return end
+
+  local itemMat = itemMatBag.takeObject({
+    index    = 0,
+    position = spawnPos,
+    rotation = FACE_UP,
+    smooth   = false
+  })
+  if not itemMat then return end
+
+  itemMat.setRotation(FACE_UP)
+
+  local matData  = itemMat.getData()
+  local cardData = ally.getData()
+  local sx       = matData.Transform.scaleX
+  local sz       = matData.Transform.scaleZ
+  local rotZ     = allyMemo.reversed and 180 or 0
+
+  local card = deepCopy(cardData)
+  card.Transform = {
+    posX = 0, posY = 0.10, posZ = -0.154,
+    rotX = 0, rotY = 0,    rotZ = rotZ,
+    scaleX = cardData.Transform.scaleX / sx,
+    scaleY = 0.065,
+    scaleZ = cardData.Transform.scaleZ / sz,
+  }
+  matData.ChildObjects = {card}
+
+  ally.destruct()
+  itemMat.destruct()
+
+  local spawnedMat = spawnObjectData({data = matData})
+
+  runAfterRest(spawnedMat, function(spawnedMat)
+    spawnedMat.call("setData", allyMemo)
+  end)
 end
 
 function attachMonsterToMat(monster, objectMemo, monsterMat, wounds)
@@ -113,6 +122,26 @@ function attachMonsterCard(monster, objectMemo, spawnPos, wounds)
   attachMonsterToMat(monster, objectMemo, monsterMat, wounds)
 end
 
+function attachDoubleSidedToMat(monster, objectMemo, doubleSidedMat)
+  doubleSidedMat.setRotation(orient(objectMemo))
+
+  local matData = doubleSidedMat.getData()
+  local cardData = monster.getData()
+
+  local frontRotZ = objectMemo.reversed and 180 or 0
+  local backRotZ  = objectMemo.reversed and 0   or 180
+  buildChildCards(matData, cardData, 1, frontRotZ, backRotZ)
+
+  monster.destruct()
+  doubleSidedMat.destruct()
+
+  local spawnedMat = spawnObjectData({data = matData})
+
+  runAfterRest(spawnedMat, function(spawnedMat)
+    spawnedMat.call("setFrontData", objectMemo.front)
+  end)
+end
+
 function attachDoubleSidedCard(monster, objectMemo, spawnPos)
   local doubleSidedMatBag = getObjectFromGUID(doubleSidedMatBagId)
   if not doubleSidedMatBag then return end
@@ -125,21 +154,7 @@ function attachDoubleSidedCard(monster, objectMemo, spawnPos)
   })
 
   if not doubleSidedMat then return end
-
-  local sign = objectMemo.reversed and -1 or 1
-  local matData = doubleSidedMat.getData()
-  local cardData = monster.getData()
-
-  buildChildCards(matData, cardData, sign, faceRotZ(objectMemo, monster.is_face_down))
-
-  monster.destruct()
-  doubleSidedMat.destruct()
-
-  local spawnedMat = spawnObjectData({data = matData})
-
-  runAfterRest(spawnedMat, function(spawnedMat)
-    spawnedMat.call("setFrontData", objectMemo.front)
-  end)
+  attachDoubleSidedToMat(monster, objectMemo, doubleSidedMat)
 end
 
 -- Draw Monster

@@ -130,8 +130,8 @@ function clickFlip(player, alt_click)
   end
   doubleSided.setLock(false)
   doubleSided.interactable = true
-  self.destruct()
   Global.call("onRevealDoubleSided", {player = player, doubleSided = doubleSided, frontData = data, wounds = count})
+  self.destruct()
 end
 
 function parseJson(memo)

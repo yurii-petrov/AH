@@ -374,23 +374,23 @@ function onDoubleSidedDrop(colorName, object, objectData)
     return
   end
 
-  local clone = attachCardToMat(object, doubleSidedMat)
-  clone.setRotation(orient(objectData, false))
-  doubleSidedMat.addAttachment(clone)
-  doubleSidedMat.setLock(false)
-
-  runAfterRest(doubleSidedMat, function(doubleSidedMat)
-    doubleSidedMat.call("setFrontData", objectData.front)
+  runOnceAfterRest(object, function(object)
+    attachDoubleSidedToMat(object, objectData, doubleSidedMat)
   end)
-
 end
 
 function onRevealDoubleSided(res)
   if not res.frontData or not res.frontData.type then return end
-  if res.frontData.type == "Monster" then
-    attachMonsterCard(res.doubleSided, res.frontData, res.doubleSided.getPosition(), res.wounds)
-  elseif res.frontData.type == "Ally" then
-    attachAllyCard(res.doubleSided, res.frontData, res.doubleSided.getPosition())
+  local dsData    = parseJson(res.doubleSided.memo) or {}
+  local frontData = res.frontData
+  if dsData.reversed then
+    frontData = deepCopy(res.frontData)
+    frontData.reversed = true
+  end
+  if frontData.type == "Monster" then
+    attachMonsterCard(res.doubleSided, frontData, res.doubleSided.getPosition(), res.wounds)
+  elseif frontData.type == "Ally" then
+    attachAllyCard(res.doubleSided, frontData, res.doubleSided.getPosition())
   end
 end
 
