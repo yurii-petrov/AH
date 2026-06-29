@@ -24,7 +24,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"type\":\"DoubleSided\",\"back\":{\"name\":\"Raging Poltergeist\",\"monstertype\":[\"Angry Spirit\"],\"type\":\"Monster\"},\"front\":{\"elite\":1,\"hp\":1,\"monstertype\":[\"Troubled Spirit\"],\"name\":\"Crashing Specter\",\"remnant\":true,\"type\":\"Monster\"}}",
+  "Memo": "{\"reversed\":true,\"type\":\"DoubleSided\",\"back\":{\"name\":\"Raging Poltergeist\",\"monstertype\":[\"Angry Spirit\"],\"type\":\"Monster\"},\"front\":{\"elite\":1,\"hp\":1,\"monstertype\":[\"Troubled Spirit\"],\"name\":\"Crashing Specter\",\"remnant\":true,\"type\":\"Monster\"}}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,

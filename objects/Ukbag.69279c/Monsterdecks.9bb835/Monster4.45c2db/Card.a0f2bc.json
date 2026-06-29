@@ -24,7 +24,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"type\":\"DoubleSided\",\"back\":{\"name\":\"Haunting Dead\",\"monstertype\":[\"Troubled Spirit\"],\"type\":\"Monster\"},\"front\":{\"hp\":2,\"monstertype\":[\"Troubled Spirit\"],\"name\":\"Cacophonous Haunt\",\"remnant\":false,\"type\":\"Monster\"}}",
+  "Memo": "{\"reversed\":true,\"type\":\"DoubleSided\",\"back\":{\"name\":\"Haunting Dead\",\"monstertype\":[\"Troubled Spirit\"],\"type\":\"Monster\"},\"front\":{\"hp\":2,\"monstertype\":[\"Troubled Spirit\"],\"name\":\"Cacophonous Haunt\",\"remnant\":false,\"type\":\"Monster\"}}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,

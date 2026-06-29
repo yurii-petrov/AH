@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"type\":\"DoubleSided\",\"back\":{\"name\":\"Haunting Dead\",\"monstertype\":[\"Troubled Spirit\"],\"type\":\"Monster\"},\"front\":{\"sp\":2,\"type\":\"Ally\"}}",
+  "Memo": "{\"reversed\":true,\"type\":\"DoubleSided\",\"back\":{\"name\":\"Haunting Dead\",\"monstertype\":[\"Troubled Spirit\"],\"type\":\"Monster\"},\"front\":{\"sp\":2,\"type\":\"Ally\"}}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,
