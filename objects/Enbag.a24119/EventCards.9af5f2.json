@@ -1,0 +1,70 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "Bag": {
+    "Order": 0
+  },
+  "ColorDiffuse": {
+    "b": 0,
+    "g": 0.36652,
+    "r": 0.70588
+  },
+  "ContainedObjects_order": [
+    "eventTDCO.99d472",
+    "eventDoRInnsmouth.0b41dc",
+    "eventDoRKingsport.035356",
+    "eventDoR.0bae2c",
+    "eventIC.cd3439",
+    "eventToR.510ea9",
+    "eventTPL.5566dd",
+    "eventBtS.2ebfc4",
+    "eventTKaTG.14fb9d",
+    "eventTKaTGUnderworld.0f5372",
+    "EventSoT.73e5f9",
+    "EventSitD.f27889",
+    "eventEotD.768113",
+    "eventAoA.b3ab8e",
+    "eventFfU.7f6181",
+    "eventVoT.6403b5"
+  ],
+  "ContainedObjects_path": "EventCards.9af5f2",
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "9af5f2",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MaterialIndex": -1,
+  "MeasureMovement": false,
+  "Memo": "Event Cards",
+  "MeshIndex": -1,
+  "Name": "Bag",
+  "Nickname": "Event Cards",
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": -5.497,
+    "posY": 3.851,
+    "posZ": 96.753,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 1,
+    "scaleY": 1,
+    "scaleZ": 1
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

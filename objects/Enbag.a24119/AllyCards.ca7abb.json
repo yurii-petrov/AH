@@ -1,0 +1,58 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "Bag": {
+    "Order": 0
+  },
+  "ColorDiffuse": {
+    "b": 0,
+    "g": 0.36652,
+    "r": 0.70588
+  },
+  "ContainedObjects_order": [
+    "ally3.7c61e7",
+    "ally4.326023",
+    "ally1.3c9604",
+    "ally2.8e977b"
+  ],
+  "ContainedObjects_path": "AllyCards.ca7abb",
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "ca7abb",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MaterialIndex": -1,
+  "MeasureMovement": false,
+  "Memo": "Ally Cards",
+  "MeshIndex": -1,
+  "Name": "Bag",
+  "Nickname": "Ally Cards",
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": -11.221,
+    "posY": 3.851,
+    "posZ": 96.753,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 1,
+    "scaleY": 1,
+    "scaleZ": 1
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

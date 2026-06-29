@@ -1,0 +1,79 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "ContainedObjects_order": [
+    "Card.1351d5",
+    "Card.51d00b",
+    "Card.63a9c4",
+    "Card.c91e08",
+    "Card.53c0f4",
+    "Card.300a44",
+    "Card.d5502c",
+    "Card.97e80c"
+  ],
+  "ContainedObjects_path": "encounterStrangeHighHouse.adbf95",
+  "CustomDeck": {
+    "5857": {
+      "BackIsHidden": true,
+      "BackURL": "https://drive.google.com/uc?export=view&id=10GCXSIlrb5hjEF64L7s3m2WA2ZgoLhWW",
+      "FaceURL": "https://drive.google.com/uc?export=view&id=1ilzVMaAyIsEh4Ku2E_luuxKAW6rTc6O6",
+      "NumHeight": 5,
+      "NumWidth": 8,
+      "Type": 0,
+      "UniqueBack": true
+    }
+  },
+  "DeckIDs": [
+    585731,
+    585730,
+    585729,
+    585728,
+    585727,
+    585726,
+    585725,
+    585724
+  ],
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "adbf95",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Memo": "{\"name\":\"Strange High House\",\"set\":2,\"startPosition\":{\"x\":-0.270524963235855,\"y\":1.05944466590881,\"z\":-0.499919474124908},\"type\":\"encounter\"}",
+  "Name": "Deck",
+  "Nickname": "encounter Strange High House",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": -5.522,
+    "posY": 4.096,
+    "posZ": 55.822,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 180,
+    "scaleX": 1.5,
+    "scaleY": 1,
+    "scaleZ": 1.5
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

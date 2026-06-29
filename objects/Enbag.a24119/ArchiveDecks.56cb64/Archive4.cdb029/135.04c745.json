@@ -1,0 +1,62 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "CardID": 585114,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "CustomDeck": {
+    "5851": {
+      "BackIsHidden": true,
+      "BackURL": "https://drive.google.com/uc?export=view&id=1Mi71yh_wpWPS83v-26mPn6_bVNkXAWUk",
+      "FaceURL": "https://drive.google.com/uc?export=view&id=1SRJja6BM4D9d3wt3dyRELfzt0iOlc3Dx",
+      "NumHeight": 5,
+      "NumWidth": 9,
+      "Type": 0,
+      "UniqueBack": true
+    }
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "04c745",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": true,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Memo": "{\"number\":135,\"type\":\"codex\",\"tokenLayout\":{\"positions\":{\"1\":{\"x\":0,\"y\":0.2,\"z\":-0.25},\"2\":{\"x\":-0.218,\"y\":0.2,\"z\":-0.127},\"3\":{\"x\":-0.218,\"y\":0.2,\"z\":0.127},\"4\":{\"x\":0,\"y\":0.2,\"z\":0.252},\"5\":{\"x\":0.218,\"y\":0.2,\"z\":0.127},\"6\":{\"x\":0.218,\"y\":0.2,\"z\":-0.127}},\"rotationByPos\":{\"1\":[180,300,60],\"2\":[0,120,240],\"3\":[180,300,60],\"4\":[0,120,240],\"5\":[180,300,60],\"6\":[0,120,240]},\"tokenGUID\":\"1a2b2e\",\"posIndex\":1,\"lastRotIndex\":null,\"isAnimating\":false},\"front\":{\"actions\":[{\"title\":\"Унікальна дія\",\"description\":\"Опис унікальної дії\",\"steps\":[{\"type\":\"cycleTokenLayout\",\"tokenLayout\":{\"posIndex\":1,\"lastRotIndex\":null}}]}]}}",
+  "Name": "Card",
+  "Nickname": "135",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "codex"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": -16.933,
+    "posY": 2.548,
+    "posZ": 19.873,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 1.5,
+    "scaleY": 1,
+    "scaleZ": 1.5
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

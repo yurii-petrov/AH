@@ -18,8 +18,8 @@
       "Type": 2
     },
     "ImageScalar": 1,
-    "ImageSecondaryURL": "https://drive.google.com/uc?export=view&id=1z0H6IrHI5UHkj6BWal7joIT_4ktRhXUd",
-    "ImageURL": "https://drive.google.com/uc?export=view&id=1sBPfHRCfr-Bx8zlAD1AQ1Hk2V3wzSfmZ",
+    "ImageSecondaryURL": "https://drive.google.com/uc?export=view\u0026id=1z0H6IrHI5UHkj6BWal7joIT_4ktRhXUd",
+    "ImageURL": "https://drive.google.com/uc?export=view\u0026id=1sBPfHRCfr-Bx8zlAD1AQ1Hk2V3wzSfmZ",
     "WidthScale": 0
   },
   "Description": "",
@@ -33,8 +33,8 @@
   "IgnoreFoW": false,
   "LayoutGroupSortIndex": 0,
   "Locked": false,
-  "LuaScript": "-- ╭────────────────────────────────────────╮\n-- │          Marker — wound counter        │\n-- ╰────────────────────────────────────────╯\n-- Hidden by default. Call activateCounter({hp=N}) to show and track wounds.\n-- Left click = add wound, alt/right click = heal.\n\nlocal data = { wounds = 0, maxHp = 0, active = false }\n\nfunction onLoad(savedData)\n  if savedData and savedData ~= \"\" then\n    local ok, d = pcall(function() return JSON.decode(savedData) end)\n    if ok and d then data = d end\n  end\n  Wait.time(buildUI, 0.5)\nend\n\nfunction onSave()\n  return JSON.encode(data)\nend\n\nlocal function woundColor()\n  return data.wounds >= data.maxHp and \"#ff4444\" or \"#cc0000\"\nend\n\nfunction buildUI()\n  local active = data.active and \"true\" or \"false\"\n  self.UI.setXmlTable({\n    {\n      tag = \"Button\",\n      attributes = {\n        id       = \"wound_btn\",\n        active   = active,\n        position = \"0 -150 -50\",\n        rotation = \"0 0 180\",\n        scale    = \"0.7 1.2 1\",\n        width    = \"200\",\n        height   = \"200\",\n        color    = \"clear\",\n        text     = \"\",\n        onClick  = \"onWoundClick\",\n      },\n    },\n    {\n      tag = \"Text\",\n      attributes = {\n        id        = \"wound_text\",\n        active    = active,\n        text      = tostring(data.wounds),\n        position  = \"0 -150 -31\",\n        rotation  = \"0 0 180\",\n        scale     = \"0.7 1.2 1\",\n        font      = \"Fonts/AdonisC\",\n        fontSize  = \"120\",\n        fontStyle = \"Bold\",\n        color     = woundColor(),\n        width     = \"200\",\n        height    = \"200\",\n        alignment = \"MiddleCenter\",\n      },\n    },\n  })\nend\n\nfunction activateCounter(params)\n  data.maxHp  = params and params.hp or 0\n  data.wounds = 0\n  data.active = true\n  buildUI()\nend\n\nfunction onWoundClick(player, alt_click)\n  if not data.active then return end\n  if alt_click == \"-1\" then\n    data.wounds = math.min(data.wounds + 1, data.maxHp)\n  else\n    data.wounds = math.max(data.wounds - 1, 0)\n  end\n  self.UI.setAttribute(\"wound_text\", \"text\",  tostring(data.wounds))\n  self.UI.setAttribute(\"wound_text\", \"color\", woundColor())\nend\n",
   "LuaScriptState": "",
+  "LuaScript_path": "Infinite_Bag.b84d40/Custom_Tile.bf9b54.ttslua",
   "MeasureMovement": false,
   "Memo": "White Marker",
   "Name": "Custom_Tile",

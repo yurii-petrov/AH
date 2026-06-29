@@ -1,0 +1,67 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "ContainedObjects_order": [
+    "Card.0c91ba",
+    "Card.d4e135"
+  ],
+  "ContainedObjects_path": "encounterRivertown.283800",
+  "CustomDeck": {
+    "5856": {
+      "BackIsHidden": true,
+      "BackURL": "https://drive.google.com/uc?export=view&id=1pMbKi78wPWpv6-e01M90Qi5pqB6peLji",
+      "FaceURL": "https://drive.google.com/uc?export=view&id=13u68Q-jN-HXLx0rVixoFSBfXgvqzbtpC",
+      "NumHeight": 5,
+      "NumWidth": 8,
+      "Type": 0,
+      "UniqueBack": true
+    }
+  },
+  "DeckIDs": [
+    585611,
+    585610
+  ],
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "283800",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Memo": "{\"name\":\"Rivertown\",\"set\":2,\"startPosition\":{\"x\":-0.239024963235855,\"y\":1.05944466590881,\"z\":-0.551658749580383},\"type\":\"encounter\"}",
+  "Name": "Deck",
+  "Nickname": "encounter Rivertown",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": 0.737,
+    "posY": 4.067,
+    "posZ": 60.515,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 180,
+    "scaleX": 1.5,
+    "scaleY": 1,
+    "scaleZ": 1.5
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

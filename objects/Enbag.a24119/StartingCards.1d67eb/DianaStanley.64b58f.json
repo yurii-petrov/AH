@@ -1,0 +1,69 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "ContainedObjects_order": [
+    "Card.32fe96",
+    "Card.a3afee",
+    "Card.71a632"
+  ],
+  "ContainedObjects_path": "DianaStanley.64b58f",
+  "CustomDeck": {
+    "5809": {
+      "BackIsHidden": true,
+      "BackURL": "https://drive.google.com/uc?export=view&id=1doScDOXv0fiw1-YPWNY6B0ErhdAiPH-R",
+      "FaceURL": "https://drive.google.com/uc?export=view&id=1b7uqDYzZw27sTepsQhWBYiuDQOfEUzzL",
+      "NumHeight": 3,
+      "NumWidth": 4,
+      "Type": 0,
+      "UniqueBack": true
+    }
+  },
+  "DeckIDs": [
+    580900,
+    580907,
+    580901
+  ],
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "64b58f",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Memo": "{\"name\":\"Diana Stanley\",\"startPosition\":{\"x\":-0.4749735891819,\"y\":1.03537440299988,\"z\":-0.18656587600708}}",
+  "Name": "Deck",
+  "Nickname": "Diana Stanley",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": -15.252,
+    "posY": 4.072,
+    "posZ": 97.254,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 180,
+    "scaleX": 1,
+    "scaleY": 1,
+    "scaleZ": 1
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

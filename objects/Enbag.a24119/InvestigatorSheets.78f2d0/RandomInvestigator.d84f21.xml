@@ -1,0 +1,224 @@
+<panel
+	width="1405"
+	height="3000"
+	position="61.5 0 -22"
+	rotation="0 0 180"
+	scale="0.06 0.1 1">
+	<image
+		id="btn_img"
+		image="button_large_i"
+		width="1435"
+		preserveAspect="true"
+		position="0 0 0"/>
+	<text
+		position="0 1365 0"
+		fontStyle="Bold"
+		font="Fonts/AdonisC"
+		fontSize="143"
+		text="Випадковий"
+		color="#000000"/>
+	<text
+		position="0 1210 0"
+		fontStyle="Bold"
+		font="Fonts/AdonisC"
+		fontSize="95"
+		text="Дослідник"
+		color="#000000"/>
+	<text
+		position="80 820 0"
+		fontStyle="Italic"
+		font="Fonts/AdonisC"
+		fontSize="95"
+		alignment="MiddleLeft"
+		color="#000000">
+		Якщо хочеш зіграти
+		випадковим дослідником,
+		обери роль нижче
+		(не обов'язково) та	поклади
+		цю карту на планшет	гравця.
+		</text>
+	<button
+		id="all_roles"
+		onClick="changeRole"
+		width="1405"
+		height="300"
+		position="0 -20 0"
+		fontStyle="Bold"
+		font="Fonts/AdonisC"
+		fontSize="170"
+		text="Всі ролі"
+		textColor="#000000"
+		color="clear"/>
+	<button
+		id="mystic"
+		onClick="changeRole"
+		width="1405"
+		height="300"
+		position="0 -290 0"
+		fontStyle="Bold"
+		font="Fonts/AdonisC"
+		fontSize="170"
+		text="Містик"
+		textColor="#000000"
+		color="clear"/>
+	<button
+		id="guardian"
+		onClick="changeRole"
+		width="1405"
+		height="300"
+		position="0 -560 0"
+		fontStyle="Bold"
+		font="Fonts/AdonisC"
+		fontSize="170"
+		text="Захисник"
+		textColor="#000000"
+		color="clear"/>
+	<button
+		id="rogue"
+		onClick="changeRole"
+		width="1405"
+		height="300"
+		position="0 -830 0"
+		fontStyle="Bold"
+		font="Fonts/AdonisC"
+		fontSize="170"
+		text="Пройдисвіт"
+		textColor="#000000"
+		color="clear"/>
+	<button
+		id="survivor"
+		onClick="changeRole"
+		width="1405"
+		height="300"
+		position="1 -1100 0"
+		fontStyle="Bold"
+		font="Fonts/AdonisC"
+		fontSize="170"
+		text="Загартований"
+		textColor="#000000"
+		color="clear"/>
+	<button
+		id="seeker"
+		onClick="changeRole"
+		width="1405"
+		height="300"
+		position="0 -1370 0"
+		fontStyle="Bold"
+		font="Fonts/AdonisC"
+		fontSize="170"
+		text="Шукач"
+		textColor="#000000"
+		color="clear"/>
+</panel>
+<panel
+	width="1405"
+	height="3000"
+	position="-61.5 0 22"
+	rotation="0 180 180"
+	scale="0.06 0.1 1">
+	<image
+		id="btn_img1"
+		image="button_large_i"
+		width="1435"
+		preserveAspect="true"
+		position="0 0 0"/>
+	<text
+		position="0 1365 0"
+		fontStyle="Bold"
+		font="Fonts/AdonisC"
+		fontSize="143"
+		text="Випадковий"
+		color="#000000"/>
+	<text
+		position="0 1210 0"
+		fontStyle="Bold"
+		font="Fonts/AdonisC"
+		fontSize="95"
+		text="Дослідник"
+		color="#000000"/>
+	<text
+		position="80 820 0"
+		fontStyle="Italic"
+		font="Fonts/AdonisC"
+		fontSize="95"
+		alignment="MiddleLeft"
+		color="#000000">
+		Якщо хочеш зіграти
+		випадковим дослідником,
+		обери роль нижче
+		(не обов'язково) та	поклади
+		цю карту на планшет	гравця.
+		</text>
+	<button
+		id="all_roles1"
+		onClick="changeRole"
+		width="1405"
+		height="300"
+		position="0 -20 0"
+		fontStyle="Bold"
+		font="Fonts/AdonisC"
+		fontSize="170"
+		text="Всі ролі"
+		textColor="#000000"
+		color="clear"/>
+	<button
+		id="mystic1"
+		onClick="changeRole"
+		width="1405"
+		height="300"
+		position="0 -290 0"
+		fontStyle="Bold"
+		font="Fonts/AdonisC"
+		fontSize="170"
+		text="Містик"
+		textColor="#000000"
+		color="clear"/>
+	<button
+		id="guardian1"
+		onClick="changeRole"
+		width="1405"
+		height="300"
+		position="0 -560 0"
+		fontStyle="Bold"
+		font="Fonts/AdonisC"
+		fontSize="170"
+		text="Захисник"
+		textColor="#000000"
+		color="clear"/>
+	<button
+		id="rogue1"
+		onClick="changeRole"
+		width="1405"
+		height="300"
+		position="0 -830 0"
+		fontStyle="Bold"
+		font="Fonts/AdonisC"
+		fontSize="170"
+		text="Пройдисвіт"
+		textColor="#000000"
+		color="clear"/>
+	<button
+		id="survivor1"
+		onClick="changeRole"
+		width="1405"
+		height="300"
+		position="1 -1100 0"
+		fontStyle="Bold"
+		font="Fonts/AdonisC"
+		fontSize="170"
+		text="Загартований"
+		textColor="#000000"
+		color="clear"/>
+	<button
+		id="seeker1"
+		onClick="changeRole"
+		width="1405"
+		height="300"
+		position="0 -1370 0"
+		fontStyle="Bold"
+		font="Fonts/AdonisC"
+		fontSize="170"
+		text="Шукач"
+		textColor="#000000"
+		color="clear"/>
+</panel>

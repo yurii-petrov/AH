@@ -1,0 +1,79 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "ContainedObjects_order": [
+    "Card.b258c1",
+    "Card.a25808",
+    "Card.4eef2b",
+    "Card.d6bc88",
+    "Card.d7acbc",
+    "Card.36117b",
+    "Card.0b7c3c",
+    "Card.f04faa"
+  ],
+  "ContainedObjects_path": "eventDoRInnsmouth.0b41dc",
+  "CustomDeck": {
+    "5855": {
+      "BackIsHidden": true,
+      "BackURL": "https://drive.google.com/uc?export=view&id=1sM8kINUEF4vsGS6bTZPU_EVQBEBKMpUP",
+      "FaceURL": "https://drive.google.com/uc?export=view&id=1n5UKDtJ-bj6rbCxMND-uzdoQqVz4A88F",
+      "NumHeight": 4,
+      "NumWidth": 8,
+      "Type": 0,
+      "UniqueBack": true
+    }
+  },
+  "DeckIDs": [
+    585504,
+    585505,
+    585506,
+    585507,
+    585508,
+    585509,
+    585510,
+    585511
+  ],
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "0b41dc",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Memo": "{\"name\":\"DoR Innsmouth\",\"startPosition\":{\"x\":0.53547830581665,\"y\":1.13646936416626,\"z\":0.071333482027054},\"type\":\"event\"}",
+  "Name": "Deck",
+  "Nickname": "event DoR Innsmouth",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": -45.07,
+    "posY": 4.096,
+    "posZ": 62.551,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 180,
+    "scaleX": 1.5,
+    "scaleY": 1,
+    "scaleZ": 1.5
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

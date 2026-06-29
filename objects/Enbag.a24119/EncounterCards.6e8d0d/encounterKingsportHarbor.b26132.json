@@ -1,0 +1,79 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "ContainedObjects_order": [
+    "Card.a4d670",
+    "Card.c0c2e4",
+    "Card.d3a269",
+    "Card.def2a2",
+    "Card.21bc1d",
+    "Card.c289e8",
+    "Card.e385c3",
+    "Card.e32cfe"
+  ],
+  "ContainedObjects_path": "encounterKingsportHarbor.b26132",
+  "CustomDeck": {
+    "5857": {
+      "BackIsHidden": true,
+      "BackURL": "https://drive.google.com/uc?export=view&id=10GCXSIlrb5hjEF64L7s3m2WA2ZgoLhWW",
+      "FaceURL": "https://drive.google.com/uc?export=view&id=1ilzVMaAyIsEh4Ku2E_luuxKAW6rTc6O6",
+      "NumHeight": 5,
+      "NumWidth": 8,
+      "Type": 0,
+      "UniqueBack": true
+    }
+  },
+  "DeckIDs": [
+    585707,
+    585706,
+    585705,
+    585704,
+    585703,
+    585702,
+    585701,
+    585700
+  ],
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "b26132",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Memo": "{\"name\":\"Kingsport Harbor\",\"set\":2,\"startPosition\":{\"x\":-0.176024963235855,\"y\":1.05944466590881,\"z\":-0.499919474124908},\"type\":\"encounter\"}",
+  "Name": "Deck",
+  "Nickname": "encounter Kingsport Harbor",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": 39.419,
+    "posY": 4.096,
+    "posZ": 56.683,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 180,
+    "scaleX": 1.5,
+    "scaleY": 1,
+    "scaleZ": 1.5
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

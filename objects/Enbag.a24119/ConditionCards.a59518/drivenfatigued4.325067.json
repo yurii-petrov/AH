@@ -1,0 +1,78 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "ContainedObjects_order": [
+    "CardCustom.77bee1",
+    "CardCustom.d46315",
+    "CardCustom.068864",
+    "CardCustom.4fd482",
+    "CardCustom.9a76b7",
+    "CardCustom.db3f3c"
+  ],
+  "ContainedObjects_path": "drivenfatigued4.325067",
+  "CustomDeck": {
+    "5854": {
+      "BackIsHidden": true,
+      "BackURL": "https://drive.google.com/uc?export=view&id=1cE_pVLnk-vyctWIB8RnMYBoukbP-wy7Y",
+      "FaceURL": "https://drive.google.com/uc?export=view&id=13LNkogmzRS9eaZZza1ZRWxN7zMvsVolQ",
+      "NumHeight": 1,
+      "NumWidth": 1,
+      "Type": 0,
+      "UniqueBack": false
+    }
+  },
+  "DeckIDs": [
+    585400,
+    585400,
+    585400,
+    585400,
+    585400,
+    585400
+  ],
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "325067",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": true,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Memo": "{\"reversed\":true,\"set\":3,\"startPosition\":{\"x\":0.601599980926514,\"y\":1.04981660842896,\"z\":-0.367299944162369},\"type\":\"driven fatigued\"}",
+  "Name": "Deck",
+  "Nickname": "driven fatigued 4",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "item_magnet"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": 40.808,
+    "posY": 4.086,
+    "posZ": 70.349,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 1,
+    "scaleY": 1,
+    "scaleZ": 1
+  },
+  "Value": 0,
+  "XmlUI": ""
+}
