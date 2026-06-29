@@ -42,21 +42,22 @@ def load_excel(xlsx_path: str) -> dict:
     headers = [ws.cell(1, i + 1).value for i in range(ws.max_column)]
     print(f"  Lang_Compare columns: {headers}")
     print(f"  Total rows: {ws.max_row - 1}")
+    # columns: Name, Path, UK ID, ENG ID
     uk_to_en = {}
     missing_en = []
     for row in ws.iter_rows(min_row=2, values_only=True):
-        name, uk_id, eng_id = (row[i] if i < len(row) else None for i in range(3))
+        name, path, uk_id, eng_id = (row[i] if i < len(row) else None for i in range(4))
         if not uk_id:
             continue
         uk_id = str(uk_id).strip()
         if not eng_id or not str(eng_id).strip():
-            missing_en.append((name, uk_id))
+            missing_en.append((name, path, uk_id))
             continue
         uk_to_en[uk_id] = str(eng_id).strip()
     if missing_en:
-        print(f"  WARNING: {len(missing_en)} rows have UK ID but no EN ID:")
-        for name, uid in missing_en:
-            print(f"    {name!r}  uk={uid}")
+        print(f"  WARNING: {len(missing_en)} rows have UK ID but no ENG ID:")
+        for name, path, uid in missing_en:
+            print(f"    {name!r}  path={path!r}  uk={uid}")
     return uk_to_en
 
 
