@@ -2,15 +2,15 @@
 -- │      STEP: attachMarkerToMonster             │
 -- ╰──────────────────────────────────────────────╯
 --
--- Finds a monster in the monster deck by type, reveals it (same as
--- findMonsterByType), then places a marker token on top of the found card.
--- Visually indicates a special rule tied to the marker's presence.
+-- Reveals the monster deck until a card of the given type is found
+-- (same flow as findMonsterByType). The drop handler will automatically
+-- spawn the MonsterMat. After a short delay we search for that MonsterMat
+-- by monster type and call addEliteMarker() on it.
 --
 -- Example step JSON:
 --   {
 --     "type": "attachMarkerToMonster",
---     "monsterType": "aberration",
---     "token": { "type": "White Marker" }
+--     "monsterType": "aberration"
 --   }
 
 local function matchTypes(entryData, searchTypes)
@@ -27,6 +27,27 @@ local function matchTypes(entryData, searchTypes)
   return false
 end
 
+local function findAndMarkMonsterMat(searchTypes, onDone)
+  local players = gameData and gameData.numberOfPlayers or 1
+  for _, obj in ipairs(getAllObjects()) do
+    if obj.memo == "Monster Mat" then
+      local ok, atts = pcall(function() return obj.getAttachments() end)
+      if ok and atts then
+        for _, att in ipairs(atts) do
+          local attData = parseJson(att.memo)
+          if matchTypes(attData, searchTypes) then
+            pcall(function() obj.call("addEliteMarker", { players = players }) end)
+            if onDone then onDone() end
+            return
+          end
+        end
+      end
+    end
+  end
+  log("[attachMarkerToMonster] MonsterMat with matching type not found")
+  if onDone then onDone() end
+end
+
 function processStepAttachMarkerToMonster(step, context, onDone)
   if not step.monsterType then
     log("[attachMarkerToMonster] monsterType is nil")
@@ -35,7 +56,6 @@ function processStepAttachMarkerToMonster(step, context, onDone)
   end
 
   local searchTypes = type(step.monsterType) == "table" and step.monsterType or {step.monsterType}
-  local tokenType   = (step.token and step.token.type) or "White Marker"
 
   local codexMat = context and context.codexMat
   if not codexMat then
@@ -59,31 +79,21 @@ function processStepAttachMarkerToMonster(step, context, onDone)
     return
   end
 
+  -- single-card deck
   if monsterDeck.type == "Card" then
     local cardData = parseJson(monsterDeck.memo)
-    if matchTypes(cardData, searchTypes) then
-      monsterDeck.setRotation(orient(cardData, false))
-      local targetPos = codexMat.positionToWorld({0, 0.5, 1.7}):setAt("y", 3)
-      monsterDeck.setPositionSmooth(targetPos)
-      Wait.time(function()
-        local bagId = getTokenBagIdByType(tokenType)
-        local bag   = bagId and getObjectFromGUID(bagId)
-        if bag then
-          bag.takeObject({ index = 0, position = targetPos:setAt("y", targetPos.y + 0.5), rotation = {0, 180, 0} })
-             .highlightOn("Yellow", 5)
-        end
-        if onDone then onDone() end
-      end, 1.0)
-    else
+    if not matchTypes(cardData, searchTypes) then
       log("[attachMarkerToMonster] single card does not match")
       if onDone then onDone() end
+      return
     end
+    Wait.time(function() findAndMarkMonsterMat(searchTypes, onDone) end, 3.0)
     return
   end
 
-  local objects         = monsterDeck.getObjects()
-  local revealList      = {}
-  local foundMonsterGuid = nil
+  local objects    = monsterDeck.getObjects()
+  local revealList = {}
+  local found      = false
 
   for i = 1, #objects do
     local entry     = objects[i]
@@ -91,13 +101,13 @@ function processStepAttachMarkerToMonster(step, context, onDone)
     local isTarget  = matchTypes(entryData, searchTypes)
     table.insert(revealList, { guid = entry.guid, memo = entry.memo, isTarget = isTarget })
     if isTarget then
-      foundMonsterGuid = entry.guid
+      found = true
       break
     end
   end
 
-  if not foundMonsterGuid then
-    log("[attachMarkerToMonster] monster not found in deck")
+  if not found then
+    log("[attachMarkerToMonster] monster not found in deck: " .. tostring(step.monsterType))
     if onDone then onDone() end
     return
   end
@@ -108,25 +118,8 @@ function processStepAttachMarkerToMonster(step, context, onDone)
     monsterDeck = monsterDeck,
     revealList  = revealList,
     onDone      = function()
-      Wait.time(function()
-        local monster = getObjectFromGUID(foundMonsterGuid)
-        if not monster then
-          log("[attachMarkerToMonster] monster card not found after reveal")
-          if onDone then onDone() end
-          return
-        end
-        local pos   = monster.getPosition()
-        local bagId = getTokenBagIdByType(tokenType)
-        local bag   = bagId and getObjectFromGUID(bagId)
-        if bag then
-          bag.takeObject({
-            index    = 0,
-            position = Vector(pos.x, pos.y + 0.5, pos.z),
-            rotation = {0, 180, 0},
-          }).highlightOn("Yellow", 5)
-        end
-        if onDone then onDone() end
-      end, 1.0)
+      -- drop handler already created the MonsterMat — search by type
+      Wait.time(function() findAndMarkMonsterMat(searchTypes, onDone) end, 1.0)
     end,
   })
 end

@@ -198,6 +198,21 @@ function onMonsterKilled(params)
     end
   end
 
+  local eliteMarkers = params.eliteMarkers or 0
+  if eliteMarkers > 0 then
+    local sheet = getObjectFromGUID(gameData.scenarioData and gameData.scenarioData.guid)
+    if sheet then
+      local bagId = getTokenBagIdByType("White Marker")
+      local bag   = bagId and getObjectFromGUID(bagId)
+      if bag then
+        for i = 1, eliteMarkers do
+          local pos = sheet.positionToWorld({(i - 1) * 1.5, 0.3, 0}):setAt("y", 3)
+          bag.takeObject({ index = 0, position = pos, rotation = {0, 180, 0} })
+        end
+      end
+    end
+  end
+
   if mat then
     mat.destruct()
   end

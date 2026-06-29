@@ -18,6 +18,7 @@ local data = {
   maxHp = 0,
   cp = 0,
   cpHp = 0,
+  eliteMarkers = 0,
 }
 
 local pendingKillPlayer = nil
@@ -91,7 +92,9 @@ function onLoad(savedData)
   buttonFight2.attributes.position = "-67 3 3"
   buttonFight2.attributes.rotation = "0 180 180"
 
-  self.UI.setXmlTable({buttonHP1, buttonHP2, buttonKill1, buttonKill2, killText1, killText2, killDialog1, killDialog2, buttonFight1, buttonFight2})
+  local elitePanel1 = getElitePanel("elitePanel1", "55 90 -12", "0 0 180")
+  local elitePanel2 = getElitePanel("elitePanel2", "-55 90 3",  "0 180 180")
+  self.UI.setXmlTable({buttonHP1, buttonHP2, buttonKill1, buttonKill2, killText1, killText2, killDialog1, killDialog2, buttonFight1, buttonFight2, elitePanel1, elitePanel2})
 end
 
 function setHPMax(params)
@@ -236,6 +239,74 @@ function getKillDialog(id, pos, rot)
   }
 end
 
+function getElitePanel(id, pos, rot)
+  local count  = data.eliteMarkers or 0
+  local active = count > 0 and "true" or "false"
+  return {
+    tag = "Panel",
+    attributes = {
+      id       = id,
+      active   = active,
+      position = pos,
+      rotation = rot,
+      width    = "120",
+      height   = "120",
+      scale    = "0.1 0.1 1",
+      color    = "clear",
+    },
+    children = {
+      {
+        tag = "Image",
+        attributes = {
+          image  = "white_marker",
+          width  = "120",
+          height = "120",
+          color  = "#FFFFFFFF",
+        },
+      },
+      {
+        tag = "Text",
+        attributes = {
+          id        = id .. "_count",
+          text      = "x" .. tostring(count),
+          fontSize  = "55",
+          fontStyle = "Bold",
+          font      = "Fonts/AdonisC",
+          color     = "#e9543b",
+          alignment = "LowerRight",
+          width     = "120",
+          height    = "120",
+        },
+      },
+    },
+  }
+end
+
+function addEliteMarker(params)
+  data.eliteMarkers = (data.eliteMarkers or 0) + 1
+  local players = params and params.players or 0
+  data.maxHp    = data.maxHp + players
+
+  local txt = "x" .. tostring(data.eliteMarkers)
+  self.UI.setAttribute("elitePanel1",       "active", "true")
+  self.UI.setAttribute("elitePanel1_count", "text",   txt)
+  self.UI.setAttribute("elitePanel2",       "active", "true")
+  self.UI.setAttribute("elitePanel2_count", "text",   txt)
+
+  local fontSize = data.hp > 9 and "220" or "350"
+  self.UI.setAttribute("btnHP1", "text",      tostring(data.hp))
+  self.UI.setAttribute("btnHP1", "fontSize",  fontSize)
+  self.UI.setAttribute("btnHP1", "textColor", "#e9543b")
+  self.UI.setAttribute("btnHP2", "text",      tostring(data.hp))
+  self.UI.setAttribute("btnHP2", "fontSize",  fontSize)
+  self.UI.setAttribute("btnHP2", "textColor", "#e9543b")
+  local isMax = data.hp == data.maxHp
+  self.UI.setAttribute("btnKill1",  "active", tostring(isMax))
+  self.UI.setAttribute("btnKill2",  "active", tostring(isMax))
+  self.UI.setAttribute("killText1", "active", tostring(not isMax))
+  self.UI.setAttribute("killText2", "active", tostring(not isMax))
+end
+
 -- Click
 
 function clickKill(player, alt_click)
@@ -273,7 +344,9 @@ function performKill(simpleAttack)
   end
   monster.setLock(false)
   monster.interactable = true
-  Global.call("onMonsterKilled", {monster = monster, player = pendingKillPlayer, simpleAttack = simpleAttack, mat = self})
+  local eliteCount   = data.eliteMarkers
+  data.eliteMarkers  = 0
+  Global.call("onMonsterKilled", {monster = monster, player = pendingKillPlayer, simpleAttack = simpleAttack, mat = self, eliteMarkers = eliteCount})
   pendingKillPlayer = nil
 end
 
