@@ -71,9 +71,9 @@ end
 function onWoundClick(player, alt_click)
   if not data.active then return end
   if alt_click == "-1" then
-    data.wounds = math.max(data.wounds - 1, 0)
-  else
     data.wounds = math.min(data.wounds + 1, data.maxHp)
+  else
+    data.wounds = math.max(data.wounds - 1, 0)
   end
   self.UI.setAttribute("wound_text", "text",  tostring(data.wounds))
   self.UI.setAttribute("wound_text", "color", woundColor())

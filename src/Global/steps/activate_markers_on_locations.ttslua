@@ -3,24 +3,29 @@
 -- ╰──────────────────────────────────────────────╯
 --
 -- Finds Custom_Tile marker tokens at the given locations and activates
--- their wound counter: HP = elite * playerCount.
+-- their wound counter. HP is determined by token type:
+--   White Marker → 1 × numberOfPlayers
+--   Red Marker   → 4 × numberOfPlayers
 --
 -- Example step JSON:
 --   {
 --     "type": "activateMarkersOnLocations",
 --     "locations": ["Bridge1", "Bridge2"],
---     "tokenMemo": "White Marker",
---     "elite": 1
+--     "tokenMemo": "White Marker"
 --   }
 
 local SEARCH_RADIUS = 4
 
+local HP_BY_TOKEN = {
+  ["White Marker"] = 1,
+  ["Red Marker"]   = 4,
+}
+
 function processStepActivateMarkersOnLocations(step, context, onDone)
-  local elite     = step.elite or 1
-  local seated    = getSeatedPlayers()
-  local players   = math.max(#seated, 1)
-  local hp        = elite * players
   local tokenMemo = step.tokenMemo or "White Marker"
+  local players   = gameData.numberOfPlayers or 1
+  local mult      = HP_BY_TOKEN[tokenMemo] or 1
+  local hp        = mult * players
 
   local locationMat = getObjectFromGUID(locationMatId)
   if not locationMat then
