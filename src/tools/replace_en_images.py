@@ -11,6 +11,7 @@ import glob
 import re
 import sys
 import os
+import shutil
 
 try:
     import openpyxl
@@ -20,6 +21,7 @@ except ImportError:
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 ENBAG_DIR = os.path.join(REPO_ROOT, "objects", "Enbag.a24119")
+UKBAG_DIR = os.path.join(REPO_ROOT, "objects", "Ukbag.69279c")
 XLSX_PATH = os.path.join(REPO_ROOT, "src", "tools", "assets_tts_url.xlsx")
 
 DRIVE_ID_RE = re.compile(r"[?&]id=([A-Za-z0-9_\-]+)")
@@ -64,10 +66,15 @@ def load_excel(xlsx_path: str):
     return by_id, by_name
 
 
-def find_en_url(name, by_name):
+def base_path(path: str) -> str:
+    return path.rsplit("/", 1)[0] if "/" in path else path
+
+
+def find_en_url(name, ukr_path, by_name):
+    ukr_base = base_path(ukr_path)
     candidates = by_name.get(name, [])
     for url, path in candidates:
-        if is_en_path(path):
+        if is_en_path(path) and base_path(path) == ukr_base:
             en_id = extract_id(url)
             if en_id:
                 return "https://drive.google.com/uc?export=view&id=" + en_id
@@ -88,7 +95,7 @@ def replace_urls_in_value(value, by_id, by_name, not_found: set) -> tuple:
     name, _ukr_url, path = row
     if not is_ukr_path(path):
         return value, False
-    en_url = find_en_url(name, by_name)
+    en_url = find_en_url(name, path, by_name)
     if not en_url:
         not_found.add(drive_id)
         return value, False
@@ -118,11 +125,32 @@ def walk_and_replace(obj, by_id, by_name, not_found: set) -> tuple:
     return obj, False
 
 
+def reset_enbag():
+    print(f"Clearing {ENBAG_DIR} ...")
+    for item in os.listdir(ENBAG_DIR):
+        item_path = os.path.join(ENBAG_DIR, item)
+        if os.path.isdir(item_path):
+            shutil.rmtree(item_path)
+        else:
+            os.remove(item_path)
+    print(f"Copying from {UKBAG_DIR} ...")
+    for item in os.listdir(UKBAG_DIR):
+        src = os.path.join(UKBAG_DIR, item)
+        dst = os.path.join(ENBAG_DIR, item)
+        if os.path.isdir(src):
+            shutil.copytree(src, dst)
+        else:
+            shutil.copy2(src, dst)
+    print("Done.\n")
+
+
 def process_files():
     if not os.path.exists(XLSX_PATH):
         print("ERROR: assets_tts_url.xlsx not found.")
         print("Please add assets_tts_url.xlsx to src/tools/")
         sys.exit(1)
+    if not DRY_RUN:
+        reset_enbag()
     print(f"Loading Excel: {XLSX_PATH}")
     by_id, by_name = load_excel(XLSX_PATH)
     print(f"  Loaded {len(by_id)} image entries")

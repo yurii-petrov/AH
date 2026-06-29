@@ -46,7 +46,7 @@
   "LayoutGroupSortIndex": 0,
   "Locked": false,
   "LuaScriptState": "",
-  "LuaScript_path": "Enbag.a24119/InvestigatorSheets.78f2d0/RandomInvestigator.d84f21.ttslua",
+  "LuaScript_path": "Ukbag.69279c/InvestigatorSheets.78f2d0/RandomInvestigator.d84f21.ttslua",
   "MeasureMovement": false,
   "Memo": "{\"startPosition\":{\"x\":-0.827323913574218,\"y\":1.01360654830933,\"z\":-0.327265858650208}}",
   "Name": "CardCustom",
@@ -67,5 +67,5 @@
     "scaleZ": 1.5
   },
   "Value": 0,
-  "XmlUI_path": "Enbag.a24119/InvestigatorSheets.78f2d0/RandomInvestigator.d84f21.xml"
+  "XmlUI_path": "Ukbag.69279c/InvestigatorSheets.78f2d0/RandomInvestigator.d84f21.xml"
 }
