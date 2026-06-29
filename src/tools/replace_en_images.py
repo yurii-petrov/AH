@@ -39,11 +39,24 @@ def extract_id(url):
 def load_excel(xlsx_path: str) -> dict:
     wb = openpyxl.load_workbook(xlsx_path)
     ws = wb["Lang_Compare"]
+    headers = [ws.cell(1, i + 1).value for i in range(ws.max_column)]
+    print(f"  Lang_Compare columns: {headers}")
+    print(f"  Total rows: {ws.max_row - 1}")
     uk_to_en = {}
+    missing_en = []
     for row in ws.iter_rows(min_row=2, values_only=True):
-        name, uk_id, en_id = (row[i] if i < len(row) else None for i in range(3))
-        if uk_id and en_id:
-            uk_to_en[str(uk_id).strip()] = str(en_id).strip()
+        name, uk_id, eng_id = (row[i] if i < len(row) else None for i in range(3))
+        if not uk_id:
+            continue
+        uk_id = str(uk_id).strip()
+        if not eng_id or not str(eng_id).strip():
+            missing_en.append((name, uk_id))
+            continue
+        uk_to_en[uk_id] = str(eng_id).strip()
+    if missing_en:
+        print(f"  WARNING: {len(missing_en)} rows have UK ID but no EN ID:")
+        for name, uid in missing_en:
+            print(f"    {name!r}  uk={uid}")
     return uk_to_en
 
 
@@ -56,7 +69,8 @@ def replace_urls_in_value(value, uk_to_en, not_found: set) -> tuple:
     en_id = uk_to_en.get(drive_id)
     if not en_id:
         not_found.add(drive_id)
-        return value, False
+        normalized = "https://drive.google.com/uc?export=download&id=" + drive_id
+        return normalized, normalized != value
     return "https://drive.google.com/uc?export=download&id=" + en_id, True
 
 
