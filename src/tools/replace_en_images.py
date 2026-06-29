@@ -97,6 +97,10 @@ def walk_and_replace(obj, uk_to_en, not_found: set) -> tuple:
     return obj, False
 
 
+UKBAG_JSON = os.path.join(REPO_ROOT, "objects", "Ukbag.69279c.json")
+ENBAG_JSON = os.path.join(REPO_ROOT, "objects", "Enbag.a24119.json")
+
+
 def reset_enbag():
     print(f"Clearing {ENBAG_DIR} ...")
     for item in os.listdir(ENBAG_DIR):
@@ -113,7 +117,28 @@ def reset_enbag():
             shutil.copytree(src, dst)
         else:
             shutil.copy2(src, dst)
+    sync_enbag_order()
     print("Done.\n")
+
+
+def sync_enbag_order():
+    with open(UKBAG_JSON, encoding="utf-8") as f:
+        uk_data = json.load(f)
+    with open(ENBAG_JSON, encoding="utf-8") as f:
+        en_data = json.load(f)
+
+    uk_order = uk_data.get("ContainedObjects_order", [])
+    en_order = en_data.get("ContainedObjects_order", [])
+
+    if uk_order == en_order:
+        print("ContainedObjects_order already in sync.")
+        return
+
+    en_data["ContainedObjects_order"] = uk_order
+    with open(ENBAG_JSON, "w", encoding="utf-8") as f:
+        json.dump(en_data, f, ensure_ascii=False, indent=2)
+        f.write("\n")
+    print(f"Synced ContainedObjects_order: {len(uk_order)} items ({len(en_order)} before)")
 
 
 def process_files():
