@@ -28,9 +28,7 @@ function processStepPlaceCodexAtEncounterDeck(step, context, onDone)
   end
 
   local sourceDeckType  = (step.sourceDeck) or "archive"
-  local removeAfterUse  = context and context.removeAfterUse
-  local codexMat        = context and context.codexMat
-  if context then context.removeAfterUse = nil end
+  local codexMat = context and context.codexMat
 
   local archive = findDeckOnBoardByType(locationMat, sourceDeckType)
   if not archive then
@@ -104,10 +102,6 @@ function processStepPlaceCodexAtEncounterDeck(step, context, onDone)
   local deckPos = encounterDeck.getPosition()
   card.setRotation(orient(parseJson(card.memo)))
   card.setPositionSmooth(Vector(deckPos.x + CARD_SIDE_OFFSET, deckPos.y + 0.3, deckPos.z))
-
-  if isLastCard and removeAfterUse and codexMat then
-    codexMat.call("onActionSuccess", removeAfterUse)
-  end
 
   if onDone then onDone() end
 end
