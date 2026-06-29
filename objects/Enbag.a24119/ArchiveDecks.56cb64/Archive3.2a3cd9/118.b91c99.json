@@ -1,0 +1,62 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "CardID": 585057,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "CustomDeck": {
+    "5850": {
+      "BackIsHidden": true,
+      "BackURL": "https://drive.google.com/uc?export=view\u0026id=19f4n21WVQOYBpnFT-3FnKoESr3nNMbVz",
+      "FaceURL": "https://drive.google.com/uc?export=view\u0026id=1yCcxEEkAymBKeBnfUsVfZNT7dK72CVLq",
+      "NumHeight": 6,
+      "NumWidth": 10,
+      "Type": 0,
+      "UniqueBack": true
+    }
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "b91c99",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": true,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Memo": "{\"number\":118,\"type\":\"codex\",\"front\":{\"actions\":[{\"title\":\"Назва дії\",\"description\":\"Опис дії\",\"steps\":[{\"type\":\"contextSetup\",\"tiles\":{\"Neighborhood\":{\"Central Kingsport\":{\"position\":{\"x\":-0.5,\"y\":0.2,\"z\":0},\"rotation\":{\"x\":0,\"y\":180,\"z\":0}},\"Kingsport Harbor\":{\"position\":{\"x\":-0.718,\"y\":0.2,\"z\":0.38},\"rotation\":{\"x\":0,\"y\":180,\"z\":0}}},\"Street\":{\"Scenic2\":{\"position\":{\"x\":-0.609,\"y\":0.2,\"z\":0.189},\"rotation\":{\"x\":0,\"y\":240,\"z\":0}}},\"Travel Routes\":{\"Train Platform2\":{\"position\":{\"x\":-0.609,\"y\":0.2,\"z\":-0.19},\"rotation\":{\"x\":0,\"y\":300,\"z\":0}}}}},{\"type\":\"placeScenarioDecks\",\"decks\":[{\"type\":\"encounter\",\"name\":\"Central Kingsport\",\"pos\":9},{\"type\":\"encounter\",\"name\":\"Kingsport Harbor\",\"pos\":12}]},{\"type\":\"mergeEventDeck\",\"deck\":{\"type\":\"event\",\"name\":\"DoR Innsmouth\"}}]}]}}",
+  "Name": "Card",
+  "Nickname": "118",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "codex"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": -7.753,
+    "posY": 2.278,
+    "posZ": 18.562,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 1.5,
+    "scaleY": 1,
+    "scaleZ": 1.5
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

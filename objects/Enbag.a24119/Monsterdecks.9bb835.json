@@ -1,0 +1,58 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "Bag": {
+    "Order": 0
+  },
+  "ColorDiffuse": {
+    "b": 0,
+    "g": 0.36652,
+    "r": 0.70588
+  },
+  "ContainedObjects_order": [
+    "Monster3.515ff0",
+    "Monster4.45c2db",
+    "Monster1.7170bf",
+    "Monster2.7004ad"
+  ],
+  "ContainedObjects_path": "Monsterdecks.9bb835",
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "9bb835",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MaterialIndex": -1,
+  "MeasureMovement": false,
+  "Memo": "Monster decks",
+  "MeshIndex": -1,
+  "Name": "Bag",
+  "Nickname": "Monster decks",
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": -9.313,
+    "posY": 3.851,
+    "posZ": 94.741,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 1,
+    "scaleY": 1,
+    "scaleZ": 1
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

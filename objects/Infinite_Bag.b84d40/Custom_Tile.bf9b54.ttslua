@@ -78,3 +78,4 @@ function onWoundClick(player, alt_click)
   self.UI.setAttribute("wound_text", "text",  tostring(data.wounds))
   self.UI.setAttribute("wound_text", "color", woundColor())
 end
+

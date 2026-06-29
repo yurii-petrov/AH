@@ -1,0 +1,58 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "Bag": {
+    "Order": 0
+  },
+  "ColorDiffuse": {
+    "b": 0,
+    "g": 0.36652,
+    "r": 0.70588
+  },
+  "ContainedObjects_order": [
+    "Archive4.cdb029",
+    "Archive3.2a3cd9",
+    "Archive2.09165e",
+    "Archive1.12278a"
+  ],
+  "ContainedObjects_path": "ArchiveDecks.56cb64",
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "56cb64",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MaterialIndex": -1,
+  "MeasureMovement": false,
+  "Memo": "Archive Decks",
+  "MeshIndex": -1,
+  "Name": "Bag",
+  "Nickname": "Archive Decks",
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": 12.547,
+    "posY": 3.325,
+    "posZ": 83.623,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 1,
+    "scaleY": 1,
+    "scaleZ": 1
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

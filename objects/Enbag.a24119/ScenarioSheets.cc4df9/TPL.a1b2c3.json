@@ -1,0 +1,364 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "AttachedSnapPoints": [
+    {
+      "Position": {
+        "x": 0.885,
+        "y": 0.211,
+        "z": -1.184
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Tags": [
+        "doom_scenario"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.599,
+        "y": 0.21,
+        "z": -1.184
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Tags": [
+        "doom_scenario"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.313,
+        "y": 0.21,
+        "z": -1.184
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Tags": [
+        "doom_scenario"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.027,
+        "y": 0.21,
+        "z": -1.184
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Tags": [
+        "doom_scenario"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.885,
+        "y": 0.21,
+        "z": -0.668
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Tags": [
+        "doom_scenario"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.599,
+        "y": 0.21,
+        "z": -0.668
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Tags": [
+        "doom_scenario"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.313,
+        "y": 0.21,
+        "z": -0.668
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Tags": [
+        "doom_scenario"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.027,
+        "y": 0.21,
+        "z": -0.668
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Tags": [
+        "doom_scenario"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.885,
+        "y": 0.21,
+        "z": -0.153
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Tags": [
+        "doom_scenario"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.599,
+        "y": 0.21,
+        "z": -0.153
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Tags": [
+        "doom_scenario"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.313,
+        "y": 0.21,
+        "z": -0.153
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Tags": [
+        "doom_scenario"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.027,
+        "y": 0.209,
+        "z": -0.153
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Tags": [
+        "doom_scenario"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.879,
+        "y": 0.21,
+        "z": 1.229
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Tags": [
+        "clue_scenario"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.593,
+        "y": 0.21,
+        "z": 1.229
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Tags": [
+        "clue_scenario"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.307,
+        "y": 0.21,
+        "z": 1.229
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Tags": [
+        "clue_scenario"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.021,
+        "y": 0.21,
+        "z": 1.229
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Tags": [
+        "clue_scenario"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.879,
+        "y": 0.21,
+        "z": 0.714
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Tags": [
+        "clue_scenario"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.593,
+        "y": 0.21,
+        "z": 0.714
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Tags": [
+        "clue_scenario"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.307,
+        "y": 0.21,
+        "z": 0.714
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Tags": [
+        "clue_scenario"
+      ]
+    },
+    {
+      "Position": {
+        "x": 0.021,
+        "y": 0.21,
+        "z": 0.714
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Tags": [
+        "clue_scenario"
+      ]
+    }
+  ],
+  "Autoraise": true,
+  "CardID": 586601,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "CustomDeck": {
+    "5866": {
+      "BackIsHidden": true,
+      "BackURL": "https://drive.google.com/uc?export=view\u0026id=1nyt2YK64WAoWIpikftVjFmIPVJbrcfz-",
+      "FaceURL": "https://drive.google.com/uc?export=view\u0026id=1BZ8h2KQI_4rWWvVlTTI2KyfWpaEoHjeX",
+      "NumHeight": 2,
+      "NumWidth": 2,
+      "Type": 1,
+      "UniqueBack": true
+    }
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "a1b2c3",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": true,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Memo": "{\"anomaly\":\"VM\",\"archive\":[77,78,79,80,81,82,83,84,85,86,88,89,90],\"codex\":[2,76,87],\"monsterdeck\":[\"Guardian Beast\",\"Prowling Abductor\",\"Prowling Abductor\",\"Robed Figure\",\"Robed Figure\",\"Robed Figure\",\"Terrified Wanderer\",\"Terrified Wanderer\",\"Void Touched\",\"Void Touched\",\"Byakhee\",\"Moon-beast\"],\"monsterspawn\":{\"Swooping Scavenger\":[{\"location\":\"Downtown\",\"position\":{\"x\":-0.337,\"y\":0.164,\"z\":-2.939},\"rotation\":{\"x\":0,\"y\":180,\"z\":180}}],\"Prowling Abductor\":[{\"location\":\"Kingsport Harbor\",\"position\":{\"x\":-2.786,\"y\":0.164,\"z\":-1.899},\"rotation\":{\"x\":0,\"y\":180,\"z\":180}}]},\"mythosCups\":{\"Blank\":3,\"Gate Burst\":1,\"Read Headline\":2,\"Reckoning\":1,\"Spawn Clue\":2,\"Spawn Monster\":2,\"Spread Doom\":3},\"name\":\"TPL\",\"number\":8,\"setaside\":[\"Declan Pearce\"],\"startPosition\":{\"x\":0.769335031509399,\"y\":1.01360654830933,\"z\":0},\"tiles\":{\"Neighborhood\":{\"Downtown\":{\"position\":{\"x\":0.081,\"y\":0.2,\"z\":-0.378},\"rotation\":{\"x\":0,\"y\":180,\"z\":0},\"tokens\":[{\"position\":[-1.888,0.149,-0.792],\"type\":\"Doom Token\"}]},\"Merchant District\":{\"position\":{\"x\":0.3,\"y\":0.2,\"z\":0},\"rotation\":{\"x\":0,\"y\":180,\"z\":0},\"tokens\":[{\"position\":[0.22,0.149,-2.063],\"type\":\"Doom Token\"}]},\"Uptown\":{\"position\":{\"x\":0.082,\"y\":0.2,\"z\":0.379},\"rotation\":{\"x\":0,\"y\":180,\"z\":0},\"tokens\":[{\"position\":[1.91,0.149,-0.822],\"type\":\"Doom Token\"}]},\"Central Kingsport\":{\"position\":{\"x\":-0.25,\"y\":0.2,\"z\":0},\"rotation\":{\"x\":0,\"y\":180,\"z\":0},\"tokens\":[{\"position\":[-0.364,0.149,1.991],\"type\":\"Doom Token\"}]},\"Kingsport Harbor\":{\"position\":{\"x\":-0.687,\"y\":0.2,\"z\":0},\"rotation\":{\"x\":0,\"y\":180,\"z\":0},\"tokens\":[{\"position\":[1.841,0.149,-1.695],\"type\":\"Doom Token\"}]}},\"Street\":{\"Bridge1\":{\"position\":{\"x\":0.189,\"y\":0.2,\"z\":-0.189},\"rotation\":{\"x\":0,\"y\":120,\"z\":0}},\"Residential1\":{\"position\":{\"x\":0.192,\"y\":0.2,\"z\":0.189},\"rotation\":{\"x\":0,\"y\":60,\"z\":0}},\"Scenic1\":{\"position\":{\"x\":-0.468,\"y\":0.2,\"z\":0},\"rotation\":{\"x\":0,\"y\":180,\"z\":0}}},\"Travel Routes\":{\"Country Road1\":{\"position\":{\"x\":0.299,\"y\":0.2,\"z\":-0.379},\"rotation\":{\"x\":0,\"y\":180,\"z\":0}},\"Country Road2\":{\"position\":{\"x\":0.301,\"y\":0.2,\"z\":0.376},\"rotation\":{\"x\":0,\"y\":180,\"z\":0}},\"Country Road3\":{\"position\":{\"x\":-0.577,\"y\":0.2,\"z\":0.189},\"rotation\":{\"x\":0,\"y\":120,\"z\":0}},\"Train Platform1\":{\"position\":{\"x\":0.082,\"y\":0.2,\"z\":0},\"rotation\":{\"x\":0,\"y\":0,\"z\":0}},\"Train Platform2\":{\"position\":{\"x\":-0.361,\"y\":0.2,\"z\":-0.189},\"rotation\":{\"x\":0,\"y\":300,\"z\":0}}},\"Mystery\":{\"Strange High House\":{\"position\":{\"x\":-0.798,\"y\":0.2,\"z\":-0.189},\"rotation\":{\"x\":0,\"y\":300,\"z\":0}}},\"Threshold\":{}},\"type\":\"Scenario\"}",
+  "Name": "Card",
+  "Nickname": "TPL",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "scenario_mat"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": -42.44,
+    "posY": 4.05,
+    "posZ": 72.066,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 2.5,
+    "scaleY": 1,
+    "scaleZ": 2.5
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

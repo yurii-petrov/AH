@@ -1,0 +1,79 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "ContainedObjects_order": [
+    "Card.3f5dcb",
+    "Card.c7b5fe",
+    "Card.a6c227",
+    "Card.79c602",
+    "Card.f6f371",
+    "Card.4e761f",
+    "Card.7df22d",
+    "Card.67a5c0"
+  ],
+  "ContainedObjects_path": "encounterTheWitchHouse.1a41a0",
+  "CustomDeck": {
+    "5858": {
+      "BackIsHidden": true,
+      "BackURL": "https://drive.google.com/uc?export=view\u0026id=161js3Nj1qKmfMo_lkDed8XRQXPkyQisX",
+      "FaceURL": "https://drive.google.com/uc?export=view\u0026id=1_cpBJ7hzMWs34dmCkLgSTh1qdV3JRtOy",
+      "NumHeight": 6,
+      "NumWidth": 9,
+      "Type": 0,
+      "UniqueBack": true
+    }
+  },
+  "DeckIDs": [
+    585853,
+    585852,
+    585851,
+    585850,
+    585849,
+    585848,
+    585847,
+    585846
+  ],
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "1a41a0",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Memo": "{\"name\":\"The Witch House\",\"set\":3,\"startPosition\":{\"x\":-0.488024963235855,\"y\":1.05944466590881,\"z\":-0.499919474124908},\"type\":\"encounter\"}",
+  "Name": "Deck",
+  "Nickname": "encounter The Witch House",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": -36.193,
+    "posY": 4.096,
+    "posZ": 59.802,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 180,
+    "scaleX": 1.5,
+    "scaleY": 1,
+    "scaleZ": 1.5
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

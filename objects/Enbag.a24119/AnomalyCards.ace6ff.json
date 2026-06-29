@@ -1,0 +1,60 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "Bag": {
+    "Order": 0
+  },
+  "ColorDiffuse": {
+    "b": 0,
+    "g": 0.36652,
+    "r": 0.70588
+  },
+  "ContainedObjects_order": [
+    "anomalyLS.23d6b4",
+    "anomalyVM.41ffd5",
+    "anomalyFR.2801f3",
+    "anomalyYE.dfcddd",
+    "anomalyTF.b5ffba",
+    "anomalyNB.26b449"
+  ],
+  "ContainedObjects_path": "AnomalyCards.ace6ff",
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "ace6ff",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MaterialIndex": -1,
+  "MeasureMovement": false,
+  "Memo": "Anomaly Cards",
+  "MeshIndex": -1,
+  "Name": "Bag",
+  "Nickname": "Anomaly Cards",
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": -11.221,
+    "posY": 3.851,
+    "posZ": 98.765,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 1,
+    "scaleY": 1,
+    "scaleZ": 1
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

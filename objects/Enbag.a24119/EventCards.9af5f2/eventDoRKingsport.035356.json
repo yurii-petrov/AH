@@ -1,0 +1,79 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "ContainedObjects_order": [
+    "Card.2193c2",
+    "Card.ede66c",
+    "Card.05d8a9",
+    "Card.97e5ed",
+    "Card.0d0edd",
+    "Card.3ad453",
+    "Card.8601ca",
+    "Card.d60bb8"
+  ],
+  "ContainedObjects_path": "eventDoRKingsport.035356",
+  "CustomDeck": {
+    "5855": {
+      "BackIsHidden": true,
+      "BackURL": "https://drive.google.com/uc?export=view\u0026id=19IdDWuuEmE-_VCPz4_qsjQbCgBJkk2Mx",
+      "FaceURL": "https://drive.google.com/uc?export=view\u0026id=1AEEbTObjMdcyNvL0G0tYkDMN8owKGRJ3",
+      "NumHeight": 4,
+      "NumWidth": 8,
+      "Type": 0,
+      "UniqueBack": true
+    }
+  },
+  "DeckIDs": [
+    585500,
+    585501,
+    585502,
+    585503,
+    585512,
+    585513,
+    585514,
+    585515
+  ],
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "035356",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Memo": "{\"name\":\"DoR Kingsport\",\"startPosition\":{\"x\":0.57047830581665,\"y\":1.13646936416626,\"z\":0.071333482027054},\"type\":\"event\"}",
+  "Name": "Deck",
+  "Nickname": "event DoR Kingsport",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": -41.939,
+    "posY": 4.096,
+    "posZ": 62.551,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 180,
+    "scaleX": 1.5,
+    "scaleY": 1,
+    "scaleZ": 1.5
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

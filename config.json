@@ -1,9 +1,7 @@
 {
-  "CameraStates": [],
   "ComponentTags_path": "ComponentTags.json",
   "CustomUIAssets_path": "CustomUIAssets.json",
   "DecalPallet": [],
-  "Decals": [],
   "GameComplexity": "Low Complexity",
   "GameMode": "Arkham Horror 3ed Complete [UA]",
   "GameType": "Game",
@@ -65,7 +63,6 @@
     "Roller.911411",
     "InvestigatorMat.2822f5",
     "MonsterMat.f50cd9",
-    "Eng.e75fc8",
     "Ukrule.36bfd1",
     "Ukrule2.fa0c80",
     "Infinite_Bag.c19def",
@@ -81,7 +78,8 @@
     "Custom_Dice.92d987",
     "clueplayerbag.cfa4b0",
     "Custom_Tile.ecb76d",
-    "MonstersbyScenariouk.dd5297"
+    "MonstersbyScenariouk.dd5297",
+    "Enbag.a24119"
   ],
   "PlayArea": 0.5,
   "PlayerCounts": [
@@ -95,7 +93,6 @@
   "SaveName": "Arkham Horror 3ed [EN] [Ukr] [scripted] (base + DoN expansion)",
   "Sky": "Sky_Museum",
   "SkyURL": "https://steamusercontent-a.akamaihd.net/ugc/1004810215902243100/E890F03BD00542A575D66A7AD371A8571E67D921/",
-  "SnapPoints": [],
   "TabStates_path": "TabStates.json",
   "Table": "Table_None",
   "Tags": [
