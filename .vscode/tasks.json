@@ -116,6 +116,20 @@
     },
 
     {
+      "label": "Arkham Horror: Replace EN Images",
+      "type": "shell",
+      "osx": {
+        "command": "${workspaceFolder}/.venv/bin/python",
+        "args": ["${workspaceFolder}/src/tools/replace_en_images.py"]
+      },
+      "windows": {
+        "command": "py",
+        "args": ["${workspaceFolder}\\src\\tools\\replace_en_images.py"]
+      },
+      "problemMatcher": []
+    },
+
+    {
       "label": "Arkham Horror: Parse Memo",
       "type": "shell",
       "windows": {

@@ -9,3 +9,4 @@ src/ConvertMemo/objects/
 .claudeignore
 CLAUDE.md
 memory/
+src/tools/assets_tts_url.xlsx

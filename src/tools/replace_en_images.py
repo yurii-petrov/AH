@@ -20,7 +20,7 @@ except ImportError:
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 ENBAG_DIR = os.path.join(REPO_ROOT, "objects", "Enbag.a24119")
-XLSX_PATH = os.path.join(REPO_ROOT, "src", "assets_tts_url.xlsx")
+XLSX_PATH = os.path.join(REPO_ROOT, "src", "tools", "assets_tts_url.xlsx")
 
 DRIVE_ID_RE = re.compile(r"[?&]id=([A-Za-z0-9_\-]+)")
 UKR_MARKERS = {"ukr", "ua"}
@@ -119,6 +119,10 @@ def walk_and_replace(obj, by_id, by_name, not_found: set) -> tuple:
 
 
 def process_files():
+    if not os.path.exists(XLSX_PATH):
+        print("ERROR: assets_tts_url.xlsx not found.")
+        print("Please add assets_tts_url.xlsx to src/tools/")
+        sys.exit(1)
     print(f"Loading Excel: {XLSX_PATH}")
     by_id, by_name = load_excel(XLSX_PATH)
     print(f"  Loaded {len(by_id)} image entries")
