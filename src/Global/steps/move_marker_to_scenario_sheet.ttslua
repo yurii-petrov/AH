@@ -27,7 +27,7 @@ function processStepMoveMarkerToScenarioSheet(step, context, onDone)
   local found    = nil
 
   for _, obj in ipairs(getAllObjects()) do
-    if obj.type == "Generic" and obj.memo == tokenType then
+    if obj.type == "Tile" and obj.memo == tokenType then
       local p    = obj.getPosition()
       local dist = math.sqrt((p.x - sheetPos.x)^2 + (p.z - sheetPos.z)^2)
       if dist > 6 then

@@ -38,7 +38,7 @@ function processStepMoveMarkerToLocation(step, context, onDone)
 
   local found = nil
   for _, obj in ipairs(getAllObjects()) do
-    if obj.type == "Generic" and obj.memo == tokenType then
+    if obj.type == "Tile" and obj.memo == tokenType then
       found = obj
       break
     end
