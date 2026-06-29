@@ -1,0 +1,52 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "CustomPDF": {
+    "PDFPage": 0,
+    "PDFPageOffset": 0,
+    "PDFPassword": "",
+    "PDFUrl": "https://images-cdn.fantasyflightgames.com/filer_public/23/5e/235e1477-d981-409c-89f1-2034d0f3a8a0/ahb04_rulespage.pdf"
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "6a4052",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Memo": "{\"startPosition\":{\"x\":-0.575,\"y\":1.20000195503235,\"z\":0.223981723189354}}",
+  "Name": "Custom_PDF",
+  "Nickname": "",
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": 102.037,
+    "posY": 14.753,
+    "posZ": 18.41,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 2.88,
+    "scaleY": 1,
+    "scaleZ": 3.64
+  },
+  "Value": 0,
+  "XmlUI": ""
+}
