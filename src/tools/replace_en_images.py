@@ -12,12 +12,14 @@ import re
 import sys
 import os
 import shutil
+import subprocess
 
 try:
     import openpyxl
 except ImportError:
-    print("ERROR: openpyxl not installed. Run: pip3 install openpyxl")
-    sys.exit(1)
+    print("openpyxl not found, installing...")
+    subprocess.check_call([sys.executable, "-m", "pip", "install", "openpyxl"])
+    import openpyxl
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 ENBAG_DIR = os.path.join(REPO_ROOT, "objects", "Enbag.a24119")
