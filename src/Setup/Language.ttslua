@@ -63,23 +63,24 @@ end
 -- ╰──────────────────────────────────────────────╯
 
 BagType = {
-  ALLY_CARDS         = "Ally Cards",
-  ANOMALY_CARDS      = "Anomaly Cards",
-  TERROR_CARDS       = "Terror Cards",
-  SPECIAL_CARDS      = "Special Cards",
-  MONSTER_DECKS      = "Monster decks",
-  STARTING_CARDS     = "Starting Cards",
-  CONDITION_CARDS    = "Condition Cards",
-  SPELL_CARDS        = "Spell Cards",
-  ITEM_CARDS         = "Item Cards",
-  HEADLINE_CARDS     = "Headline Cards",
-  EVENT_CARDS        = "Event Cards",
-  ENCOUNTER_CARDS    = "Encounter Cards",
-  MAP_TILES          = "Map Tiles",
+  ALLY_CARDS          = "Ally Cards",
+  ANOMALY_CARDS       = "Anomaly Cards",
+  TERROR_CARDS        = "Terror Cards",
+  SPECIAL_CARDS       = "Special Cards",
+  MONSTER_DECKS       = "Monster decks",
+  STARTING_CARDS      = "Starting Cards",
+  CONDITION_CARDS     = "Condition Cards",
+  SPELL_CARDS         = "Spell Cards",
+  ITEM_CARDS          = "Item Cards",
+  HEADLINE_CARDS      = "Headline Cards",
+  EVENT_CARDS         = "Event Cards",
+  ENCOUNTER_CARDS     = "Encounter Cards",
+  MAP_TILES           = "Map Tiles",
   INVESTIGATOR_SHEETS = "Investigator Sheets",
-  ARCHIVE_DECKS      = "Archive Decks",
-  SCENARIO_SHEETS    = "Scenario Sheets",
-  REFERENCE_CARDS    = "Reference Cards"
+  ARCHIVE_DECKS       = "Archive Decks",
+  SCENARIO_SHEETS     = "Scenario Sheets",
+  REFERENCE_CARDS     = "Reference Cards",
+  RULEBOOKS           = "Rulebooks",
 }
 
 local bagTypeSet = {}
@@ -114,6 +115,7 @@ local COMPONENT_BAG_POSITIONS = {
   [BagType.REFERENCE_CARDS]     = { 0.017, 0, -0.497},
   [BagType.STARTING_CARDS]      = { -0.78, 0,  0.012},
   [BagType.MAP_TILES]           = { 0.089, 0, -0.688},
+  [BagType.RULEBOOKS]           = { -0.78, 0,  0.4  },
 }
 
 function prepareLanguageBag(bag)

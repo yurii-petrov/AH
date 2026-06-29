@@ -50,6 +50,7 @@ local ALL_BAG_TYPES = {
   BagType.REFERENCE_CARDS,
   BagType.INVESTIGATOR_SHEETS,
   BagType.STARTING_CARDS,
+  BagType.RULEBOOKS,
 }
 
 -- ╭──────────────────────────────────────────────╮
@@ -168,6 +169,7 @@ end
 local QUICK_PLACE_TYPES = {
   BagType.INVESTIGATOR_SHEETS,
   BagType.STARTING_CARDS,
+  BagType.RULEBOOKS,
 }
 
 function stageQuickMode()

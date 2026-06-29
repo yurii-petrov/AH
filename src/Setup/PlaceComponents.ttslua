@@ -28,6 +28,7 @@ local KEEP_ON_TABLE = {
   [BagType.MAP_TILES]           = true,
   [BagType.INVESTIGATOR_SHEETS] = true,
   [BagType.STARTING_CARDS]      = true,
+  [BagType.RULEBOOKS]           = true,
 }
 
 function cleanupComponents(done)

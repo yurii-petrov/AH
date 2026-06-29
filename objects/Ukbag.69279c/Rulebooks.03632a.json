@@ -40,6 +40,7 @@
   "MeshIndex": -1,
   "Name": "Bag",
   "Nickname": "Rulebooks",
+  "Memo": "Rulebooks",
   "Snap": true,
   "Sticky": true,
   "Tooltip": true,
