@@ -2,6 +2,21 @@
 -- │          MONSTER SPAWN / ATTACH              │
 -- ╰──────────────────────────────────────────────╯
 
+-- Finds the investigator's figurine that is actually sitting on the
+-- location mat (i.e. at a location), not just any figurine sharing the
+-- same memo (an investigator can have both a standee and a 3D figurine).
+function findInvestigatorFigurineOnLocationMat(invName)
+  if not invName then return nil end
+  local locationMat = getObjectFromGUID(locationMatId)
+  if not locationMat then return nil end
+
+  for _, obj in ipairs(upCast(locationMat, 5)) do
+    if obj.type == "Figurine" and obj.memo == invName then
+      return obj
+    end
+  end
+end
+
 function spawnMonster(spawnPos, monster)
   if not monster then return end
 

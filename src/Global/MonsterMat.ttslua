@@ -82,19 +82,14 @@ function onLoad(savedData)
   local killDialog1 = getKillDialog("killDialog1", "0 -65 -12", "0 0 180")
   local killDialog2 = getKillDialog("killDialog2", "0 -65 3", "0 180 180")
 
-  local buttonFight1 = getFightButton()
-  buttonFight1.attributes.id = "btnFight1"
-  buttonFight1.attributes.position = "67 3 -12"
-  buttonFight1.attributes.rotation = "0 0 180"
+  local fightGroup1 = getFightButtonsGroup("fight1", "67 3 -12", "0 0 180")
+  local fightGroup2 = getFightButtonsGroup("fight2", "-67 3 3", "0 180 180")
 
-  local buttonFight2 = getFightButton()
-  buttonFight2.attributes.id = "btnFight2"
-  buttonFight2.attributes.position = "-67 3 3"
-  buttonFight2.attributes.rotation = "0 180 180"
+  self.UI.setXmlTable({buttonHP1, buttonHP2, buttonKill1, buttonKill2, killText1, killText2, killDialog1, killDialog2, fightGroup1, fightGroup2})
 
-  local elitePanel1 = getElitePanel("elitePanel1", "55 90 -12", "0 0 180")
-  local elitePanel2 = getElitePanel("elitePanel2", "-55 90 3",  "0 180 180")
-  self.UI.setXmlTable({buttonHP1, buttonHP2, buttonKill1, buttonKill2, killText1, killText2, killDialog1, killDialog2, buttonFight1, buttonFight2, elitePanel1, elitePanel2})
+  if (data.eliteMarkers or 0) > 0 then
+    setMonsterMarkerVisible({ active = true })
+  end
 end
 
 function setHPMax(params)
@@ -144,19 +139,88 @@ function getButton()
   }
 end
 
-function getFightButton()
+-- Vertical stack of attack / evade / marker. Layout groups in TTS skip
+-- inactive children, so toggling "active" on evade/marker re-centers the
+-- remaining visible items automatically.
+function getFightButtonsGroup(idPrefix, pos, rot)
   return {
-    tag = "Button",
+    tag = "VerticalLayout",
     attributes = {
-      onClick = "clickFight",
-      image = "fight_evade",
-      color = "#FFFFFF",
-      text = "",
-      width = "300",
-      height = "300",
-      scale = "0.1 0.1 1",
-    }
+      id                     = idPrefix .. "_group",
+      position               = pos,
+      rotation               = rot,
+      scale                  = "0.1 0.1 1",
+      color                  = "clear",
+      spacing                = "20",
+      childAlignment         = "MiddleCenter",
+      contentSizeFitter      = "vertical",
+      childForceExpandWidth  = "false",
+      childForceExpandHeight = "false",
+    },
+    children = {
+      {
+        tag = "Button",
+        attributes = {
+          id              = idPrefix .. "_evade",
+          active          = "false",
+          onClick         = "clickEvade",
+          image           = "monster_evade",
+          color           = "#FFFFFF",
+          text            = "",
+          minWidth        = "300",
+          preferredWidth  = "300",
+          flexibleWidth   = "0",
+          minHeight       = "300",
+          preferredHeight = "300",
+          flexibleHeight  = "0",
+        },
+      },
+      {
+        tag = "Button",
+        attributes = {
+          id              = idPrefix .. "_attack",
+          onClick         = "clickFight",
+          image           = "monster_attack",
+          color           = "#FFFFFF",
+          text            = "",
+          minWidth        = "300",
+          preferredWidth  = "300",
+          flexibleWidth   = "0",
+          minHeight       = "300",
+          preferredHeight = "300",
+          flexibleHeight  = "0",
+        },
+      },
+      {
+        tag = "Image",
+        attributes = {
+          id              = idPrefix .. "_marker",
+          active          = "false",
+          image           = "monster_marker",
+          color           = "#FFFFFF",
+          minWidth        = "300",
+          preferredWidth  = "300",
+          flexibleWidth   = "0",
+          minHeight       = "300",
+          preferredHeight = "300",
+          flexibleHeight  = "0",
+        },
+      },
+    },
   }
+end
+
+-- External triggers: { active = true/false }
+function setMonsterEvadeAvailable(params)
+  local active = tostring(params and params.active and true or false)
+  self.UI.setAttribute("fight1_evade", "active", active)
+  self.UI.setAttribute("fight2_evade", "active", active)
+end
+
+function setMonsterMarkerVisible(params)
+  local active = tostring(params and params.active and true or false)
+  self.UI.setAttribute("fight1_marker", "active", active)
+  self.UI.setAttribute("fight2_marker", "active", active)
 end
 
 function getText()
@@ -239,59 +303,12 @@ function getKillDialog(id, pos, rot)
   }
 end
 
-function getElitePanel(id, pos, rot)
-  local count  = data.eliteMarkers or 0
-  local active = count > 0 and "true" or "false"
-  return {
-    tag = "Panel",
-    attributes = {
-      id       = id,
-      active   = active,
-      position = pos,
-      rotation = rot,
-      width    = "120",
-      height   = "120",
-      scale    = "0.1 0.1 1",
-      color    = "clear",
-    },
-    children = {
-      {
-        tag = "Image",
-        attributes = {
-          image  = "white_marker",
-          width  = "120",
-          height = "120",
-          color  = "#FFFFFFFF",
-        },
-      },
-      {
-        tag = "Text",
-        attributes = {
-          id        = id .. "_count",
-          text      = "x" .. tostring(count),
-          fontSize  = "55",
-          fontStyle = "Bold",
-          font      = "Fonts/AdonisC",
-          color     = "#e9543b",
-          alignment = "LowerRight",
-          width     = "120",
-          height    = "120",
-        },
-      },
-    },
-  }
-end
-
 function addEliteMarker(params)
   data.eliteMarkers = (data.eliteMarkers or 0) + 1
   local players = params and params.players or 0
   data.maxHp    = data.maxHp + players
 
-  local txt = "x" .. tostring(data.eliteMarkers)
-  self.UI.setAttribute("elitePanel1",       "active", "true")
-  self.UI.setAttribute("elitePanel1_count", "text",   txt)
-  self.UI.setAttribute("elitePanel2",       "active", "true")
-  self.UI.setAttribute("elitePanel2_count", "text",   txt)
+  setMonsterMarkerVisible({ active = true })
 
   local fontSize = data.hp > 9 and "220" or "350"
   self.UI.setAttribute("btnHP1", "text",      tostring(data.hp))
@@ -367,6 +384,39 @@ function clickFight(player, alt_click)
   local isOnOwnMat = invMat and playerMat and invMat.getGUID() == playerMat.getGUID()
 
   if isOnOwnMat then
+    -- Monster is already at this player's location — fighting it doesn't
+    -- need any movement, just makes evade available afterward.
+    setMonsterEvadeAvailable({ active = true })
+  else
+    if playerMat then
+      local snapPos = findFreeMonsterSnap(playerMat)
+      if snapPos then
+        local targetPos = {snapPos.x, snapPos.y + 0.5, snapPos.z}
+        self.setPosition(targetPos)
+        self.setRotation(orient(monsterMemo, false))
+        Player[player.color].lookAt({position = targetPos, pitch = 50, yaw = 0, distance = 25})
+        setMonsterEvadeAvailable({ active = true })
+      end
+    end
+  end
+end
+
+function clickEvade(player, alt_click)
+  local hits = downCast(self, 5, 0, 1)
+  local invMat = nil
+  for _, obj in ipairs(hits) do
+    if obj.memo == "Investigator Mat" then
+      invMat = obj
+      break
+    end
+  end
+
+  local playerMat = Global.call("getInvestigatorMatByColor", player.color)
+  local isOnOwnMat = invMat and playerMat and invMat.getGUID() == playerMat.getGUID()
+
+  if isOnOwnMat then
+    local attachments = self.getAttachments()
+    local monsterMemo = attachments[1] and parseJson(attachments[1].memo)
     local figurine = findInvestigatorFigurine(invMat)
     if figurine then
       local pos = figurine.getPosition()
@@ -376,17 +426,10 @@ function clickFight(player, alt_click)
       liftFigurinesAt(targetPos, targetPos[2] + 1)
       Player[player.color].lookAt({position = targetPos, pitch = 50, yaw = 0, distance = 25})
     end
-  else
-    if playerMat then
-      local snapPos = findFreeMonsterSnap(playerMat)
-      if snapPos then
-        local targetPos = {snapPos.x, snapPos.y + 0.5, snapPos.z}
-        self.setPosition(targetPos)
-        self.setRotation(orient(monsterMemo, false))
-        Player[player.color].lookAt({position = targetPos, pitch = 50, yaw = 0, distance = 25})
-      end
-    end
   end
+
+  setMonsterEvadeAvailable({ active = false })
+  Global.call("onMonsterEvade", { mat = self, player = player })
 end
 
 function findFreeMonsterSnap(invMat)
@@ -445,11 +488,7 @@ function findInvestigatorFigurine(invMat)
     end
   end
   if not invName then return nil end
-  for _, obj in ipairs(getAllObjects()) do
-    if obj.type == "Figurine" and obj.memo == invName then
-      return obj
-    end
-  end
+  return Global.call("findInvestigatorFigurineOnLocationMat", invName)
 end
 
 function upCastLocal(obj, dist, offset, multi)

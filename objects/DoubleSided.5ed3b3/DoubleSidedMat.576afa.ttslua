@@ -29,17 +29,13 @@ function onLoad(savedData)
   buttonCount2.attributes.position = "-67 72 3"
   buttonCount2.attributes.rotation = "0 180 180"
 
-  local buttonFlip1 = getButton()
+  local buttonFlip1 = getFlipButton()
   buttonFlip1.attributes.id       = "btnFlip1"
-  buttonFlip1.attributes.onClick  = "clickFlip"
-  buttonFlip1.attributes.text     = "⇆"
   buttonFlip1.attributes.position = "67 3 -12"
   buttonFlip1.attributes.rotation = "0 0 180"
 
-  local buttonFlip2 = getButton()
+  local buttonFlip2 = getFlipButton()
   buttonFlip2.attributes.id       = "btnFlip2"
-  buttonFlip2.attributes.onClick  = "clickFlip"
-  buttonFlip2.attributes.text     = "⇆"
   buttonFlip2.attributes.position = "-67 3 3"
   buttonFlip2.attributes.rotation = "0 180 180"
 
@@ -83,6 +79,21 @@ function getButton()
   return {
     tag        = "Button",
     attributes = attributes,
+  }
+end
+
+function getFlipButton()
+  return {
+    tag = "Button",
+    attributes = {
+      onClick = "clickFlip",
+      image   = "monster_shrouded",
+      color   = "#FFFFFF",
+      text    = "",
+      width   = "300",
+      height  = "300",
+      scale   = "0.1 0.1 1",
+    }
   }
 end
 
