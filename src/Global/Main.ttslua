@@ -103,6 +103,8 @@ end
 -- it frozen at its default/empty state).
 function onPlayerConnect(player)
   self.UI.setXmlTable(getRootXmlTable())
+  self.UI.setAttribute("languages", "active", gameData.language == nil)
+  self.UI.setAttribute("main_menu", "active", gameData.language and not gameData.isStarted)
   Wait.time(function()
     updateXMLs()
     Wait.time(restoreActiveGameUI, 2)
