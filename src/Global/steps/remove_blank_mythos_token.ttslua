@@ -28,7 +28,7 @@ function processStepRemoveBlankMythosToken(step, context, onDone)
   if mythosTile then
     local tilePos = mythosTile.getPosition()
     for _, obj in ipairs(findObjsInRadius(tilePos, 8)) do
-      if obj.type == "Generic" and obj.memo == BLANK_TYPE then
+      if obj.type == "Tile" and obj.memo == BLANK_TYPE then
         returnToken(obj)
         if onDone then onDone() end
         return
