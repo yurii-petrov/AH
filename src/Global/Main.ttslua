@@ -103,6 +103,7 @@ end
 -- it frozen at its default/empty state).
 function onPlayerConnect(player)
   self.UI.setXmlTable(getRootXmlTable())
+  Wait.time(updateXMLs, 1)
   Wait.time(restoreActiveGameUI, 1)
 end
 
