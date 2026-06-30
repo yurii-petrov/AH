@@ -316,14 +316,39 @@ function onInvestigatorDrop(colorName, object, objectData, isIgnoreRandomCard)
           if figureBag then
             for _, figure in pairs(figureBag.getObjects()) do
               if figure.memo and figure.memo == objectData.name then
-                local takenObject = figureBag.takeObject({
-                  guid = figure.guid,
-                  position = p:setAt("x", p.x + 2),
-                  rotation = {0, 180, 0},
-                  smooth = true
-                })
-                takenObject.setName(translationService.getText(objectData.name))
-                takenObject.setColorTint(tintColor)
+                local basePos = p:setAt("x", p.x + 2)
+
+                local function takeFigureOntoBase(base)
+                  local takenObject = figureBag.takeObject({
+                    guid = figure.guid,
+                    position = basePos:setAt("y", basePos.y + 1),
+                    rotation = {0, 180, 0},
+                    smooth = true
+                  })
+                  takenObject.setName(translationService.getText(objectData.name))
+                  if base then
+                    runAfterRest(takenObject, function(takenObject)
+                      takenObject.addAttachment(base)
+                    end)
+                  else
+                    takenObject.setColorTint(tintColor)
+                  end
+                end
+
+                local baseBag = getObjectFromGUID(figureBaseId)
+                if baseBag then
+                  local base = baseBag.takeObject({
+                    position = basePos,
+                    rotation = {0, 180, 0},
+                    smooth = true
+                  })
+                  base.setColorTint(tintColor)
+                  runAfterRest(base, function(base)
+                    takeFigureOntoBase(base)
+                  end)
+                else
+                  takeFigureOntoBase(nil)
+                end
                 break
               end
             end

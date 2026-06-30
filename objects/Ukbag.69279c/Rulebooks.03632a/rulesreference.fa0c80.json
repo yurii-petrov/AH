@@ -5,27 +5,21 @@
     "z": 0
   },
   "Autoraise": true,
-  "Bag": {
-    "Order": 0
-  },
   "ColorDiffuse": {
-    "b": 0,
-    "g": 0.36652,
-    "r": 0.70588
+    "b": 1,
+    "g": 1,
+    "r": 1
   },
-  "ContainedObjects_order": [
-    "baserules.36bfd1",
-    "rulesreference.fa0c80",
-    "Custom_PDF.6a4052",
-    "Custom_PDF.b33996",
-    "Custom_PDF.b57f29",
-    "Custom_PDF.9f2739"
-  ],
-  "ContainedObjects_path": "Rulebooks.03632a",
+  "CustomPDF": {
+    "PDFPage": 0,
+    "PDFPageOffset": 0,
+    "PDFPassword": "",
+    "PDFUrl": "https://drive.google.com/uc?export=view\u0026id=1O2fEpi0gEUmoO73yb7Mf2vnruh9r7Xc6"
+  },
   "Description": "",
   "DragSelectable": true,
   "GMNotes": "",
-  "GUID": "03632a",
+  "GUID": "fa0c80",
   "Grid": true,
   "GridProjection": false,
   "Hands": false,
@@ -35,25 +29,23 @@
   "Locked": false,
   "LuaScript": "",
   "LuaScriptState": "",
-  "MaterialIndex": -1,
   "MeasureMovement": false,
-  "Memo": "Rulebooks",
-  "MeshIndex": -1,
-  "Name": "Bag",
-  "Nickname": "Rulebooks",
+  "Memo": "{\"startPosition\":{\"x\":-0.453059375286102,\"y\":1.00000214576721,\"z\":0.0707066133618355}}",
+  "Name": "Custom_PDF",
+  "Nickname": "rules reference",
   "Snap": true,
   "Sticky": true,
   "Tooltip": true,
   "Transform": {
-    "posX": -11.222,
-    "posY": 4.386,
-    "posZ": 88.267,
+    "posX": 102.432,
+    "posY": 15.63,
+    "posZ": 14.59,
     "rotX": 0,
-    "rotY": 0,
+    "rotY": 180,
     "rotZ": 0,
-    "scaleX": 1,
+    "scaleX": 3.64,
     "scaleY": 1,
-    "scaleZ": 1
+    "scaleZ": 3.64
   },
   "Value": 0,
   "XmlUI": ""
