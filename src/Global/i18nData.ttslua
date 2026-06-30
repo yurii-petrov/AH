@@ -594,6 +594,10 @@ I18N_DATA = {
     ["en"] = "%s - spends %s $",
     ["uk"] = "%s - витрачає %s $",
   },
+  ["LOG_terror_added"] = {
+    ["en"] = "Terror added",
+    ["uk"] = "Морок додано",
+  },
   ["LOG_terror_count"] = {
     ["en"] = "Terror (%s) - %s",
     ["uk"] = "Морок (%s) - %s",

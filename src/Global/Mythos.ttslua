@@ -20,13 +20,44 @@ function prepareMythosTokens(mythosCups)
   mythosBag.shuffle()
 end
 
+-- Terror deck auto-collapses from a Deck to a lone Card once only one
+-- card remains, so it must not be filtered to wantType == "Deck".
 function getTerrorDeck()
-  return findOnScenarioMat("terror", nil, "Deck")
+  return findOnScenarioMat("terror", nil)
+end
+
+-- Reads memo.neighborhood off the top card of the event discard pile
+-- without removing it. getObjects() lists cards bottom-first, so for a
+-- face-up discard pile (top card = last one placed = last array entry)
+-- the array is reversed and the first entry of the reversed array is read.
+local function peekTopEventDiscardNeighborhood()
+  local discard = getEventDiscardObj()
+  if not discard then return nil end
+
+  if discard.type == "Card" then
+    local data = parseJson(discard.memo)
+    return data and data.neighborhood
+  end
+
+  if discard.type ~= "Deck" then return nil end
+
+  local objs = discard.getObjects()
+  if not objs or #objs == 0 then return nil end
+
+  local reversed = {}
+  for i = #objs, 1, -1 do
+    table.insert(reversed, objs[i])
+  end
+
+  local topData = parseJson(reversed[1].memo)
+  return topData and topData.neighborhood
 end
 
 function processTerror(callBack)
-  local startingSpace = gameData.scenarioData and gameData.scenarioData.startingSpace
-  if not startingSpace then
+  local neighborhoodTarget = peekTopEventDiscardNeighborhood()
+    or (gameData.scenarioData and gameData.scenarioData.startingSpace)
+
+  if not neighborhoodTarget then
     callBack()
     return
   end
@@ -34,7 +65,7 @@ function processTerror(callBack)
   local terrorToken, _, tileData = spawnTokenOnLocation({
     token     = "Terror Token",
     memo      = "Terror Token",
-    location  = startingSpace,
+    location  = neighborhoodTarget,
     placement = "neighborhood",
     highlight = "Orange"
   })
@@ -44,14 +75,21 @@ function processTerror(callBack)
     return
   end
 
-  local nameKey = (tileData and tileData.name or startingSpace):gsub(" ", "_")
+  local neighborhoodName = tileData and tileData.name or neighborhoodTarget
+  local nameKey = neighborhoodName:gsub(" ", "_")
   printToAll(i18n.getStrById(nameKey) .. " - 1 " .. i18n.getStrById("LOG_terror_added"), "Orange")
 
   local terrorDeck = getTerrorDeck()
   if terrorDeck then
     local encounterDeck = getDeckFromScenarioMat("Encounter", neighborhoodName, true)
     if encounterDeck then
-      local card = takeCardFromTop(terrorDeck, true)
+      local card
+      if terrorDeck.type == "Deck" then
+        card = takeCardFromTop(terrorDeck, true)
+      elseif terrorDeck.type == "Card" then
+        card = terrorDeck
+        card.setRotation(orient(parseJson(card.memo), true))
+      end
       if card then
         local deckPos = encounterDeck.getPosition()
         card.setPosition({deckPos.x, deckPos.y + 5, deckPos.z})

@@ -1260,6 +1260,9 @@ msgstr "%s found in - %s"
 msgid "LOG_terror_count"
 msgstr "Terror (%s) - %s"
 
+msgid "LOG_terror_added"
+msgstr "Terror added"
+
 # Mythos cup token types
 msgid "Read_Headline"
 msgstr "Read Headline"
