@@ -55,10 +55,42 @@ local function resolveAllDeckObjects()
   end
 end
 
+local function restoreActiveGameUI()
+  if not gameData.isStarted then return end
+  setInvestigatorCount(gameData.numberOfPlayers or 2)
+  setInvestigatorPhase(gameData.phase)
+  restoreInvestigatorSessionState()
+  if gameData.investigatorSlots then
+    for slotStr, data in pairs(gameData.investigatorSlots) do
+      local slotNum = tonumber(slotStr)
+      local mat = TABLE_DATA.players[slotNum] and TABLE_DATA.players[slotNum].obj
+      local invKey = data.name:gsub(" ", "_")
+      local displayName = i18n.getStrById(invKey)
+      INV_STATE.slotByName[displayName] = slotNum
+      setInvestigatorName(displayName, mat, invKey .. "_portrait")
+    end
+  end
+  restorePhaseHud(gameData.phase)
+end
+
+-- Re-pushes the dynamically-built UI to a player who connects after the
+-- Global object's onload already ran (and already built/populated it for
+-- whoever was present at the time). TTS does not retroactively sync
+-- self.UI.setXmlTable/setAttribute state to late joiners, so without this
+-- a player connecting mid-game never sees the Investigators HUD (or sees
+-- it frozen at its default/empty state).
+function onPlayerConnect(player)
+  self.UI.setXmlTable(getRootXmlTable())
+  Wait.time(restoreActiveGameUI, 1)
+end
+
 function onload(savedData)
 
   self.UI.setXmlTable(getRootXmlTable())
-
+  Wait.time(function()
+    print(prettyXml(self.UI.getXml()))
+    -- print("xm: " .. serpent.tts(self.UI.getXml()))
+  end, 5)
   resolveAllDataObjects()
 
   lockObj(tableId)
@@ -91,21 +123,7 @@ function onload(savedData)
         }
       end
     end
-    Wait.time(function()
-      setInvestigatorCount(gameData.numberOfPlayers or 2)
-      setInvestigatorPhase(gameData.phase)
-      restoreInvestigatorSessionState()
-      if gameData.investigatorSlots then
-        for slotStr, data in pairs(gameData.investigatorSlots) do
-          local slotNum = tonumber(slotStr)
-          local mat = TABLE_DATA.players[slotNum] and TABLE_DATA.players[slotNum].obj
-          local invKey = data.name:gsub(" ", "_")
-          local displayName = i18n.getStrById(invKey)
-          INV_STATE.slotByName[displayName] = slotNum
-          setInvestigatorName(displayName, mat, invKey .. "_portrait")
-        end
-      end
-    end, 1.5)
+    Wait.time(restoreActiveGameUI, 1.5)
   end
 
   for guid, _ in pairs(gameData.lockObjs) do
