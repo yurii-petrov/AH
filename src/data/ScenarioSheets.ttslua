@@ -422,6 +422,7 @@ SCENARIO_SHEETS = {
     number = 9,
     type   = "Scenario",
     terror = "FС",
+    startingSpace = "Velma's Diner",
     mythosCups = {
       ["Blank"]         = 2,
       ["Terror"]        = 1,
