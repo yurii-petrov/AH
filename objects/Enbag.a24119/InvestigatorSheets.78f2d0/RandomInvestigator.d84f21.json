@@ -14,8 +14,8 @@
   "CustomDeck": {
     "5771": {
       "BackIsHidden": true,
-      "BackURL": "https://drive.google.com/uc?export=download&id=1CWrOsj4iF5-HpJ79BkWTzXb3KQurMSSe",
-      "FaceURL": "https://drive.google.com/uc?export=download&id=1CWrOsj4iF5-HpJ79BkWTzXb3KQurMSSe",
+      "BackURL": "https://drive.google.com/uc?export=download\u0026id=1CWrOsj4iF5-HpJ79BkWTzXb3KQurMSSe",
+      "FaceURL": "https://drive.google.com/uc?export=download\u0026id=1CWrOsj4iF5-HpJ79BkWTzXb3KQurMSSe",
       "NumHeight": 1,
       "NumWidth": 1,
       "Type": 1,
@@ -26,12 +26,12 @@
     {
       "Name": "button_large_i",
       "Type": 0,
-      "URL": "https://drive.google.com/uc?export=download&id=1qSV5W57Nqm3gjXES67d9y5U-pDV83skK"
+      "URL": "https://drive.google.com/uc?export=download\u0026id=1qSV5W57Nqm3gjXES67d9y5U-pDV83skK"
     },
     {
       "Name": "Fonts",
       "Type": 1,
-      "URL": "https://drive.google.com/uc?export=download&id=18_lFlnSaOFlbNVfE-G-LFqqfptMMkKFS"
+      "URL": "https://drive.google.com/uc?export=download\u0026id=18_lFlnSaOFlbNVfE-G-LFqqfptMMkKFS"
     }
   ],
   "Description": "",
@@ -46,7 +46,7 @@
   "LayoutGroupSortIndex": 0,
   "Locked": false,
   "LuaScriptState": "",
-  "LuaScript_path": "Ukbag.69279c/InvestigatorSheets.78f2d0/RandomInvestigator.d84f21.ttslua",
+  "LuaScript_path": "Enbag.a24119/InvestigatorSheets.78f2d0/RandomInvestigator.d84f21.ttslua",
   "MeasureMovement": false,
   "Memo": "{\"startPosition\":{\"x\":-0.827323913574218,\"y\":1.01360654830933,\"z\":-0.327265858650208}}",
   "Name": "CardCustom",
@@ -67,5 +67,5 @@
     "scaleZ": 1.5
   },
   "Value": 0,
-  "XmlUI_path": "Ukbag.69279c/InvestigatorSheets.78f2d0/RandomInvestigator.d84f21.xml"
+  "XmlUI_path": "Enbag.a24119/InvestigatorSheets.78f2d0/RandomInvestigator.d84f21.xml"
 }

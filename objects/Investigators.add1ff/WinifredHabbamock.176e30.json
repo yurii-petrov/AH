@@ -51,12 +51,12 @@
   "Sticky": true,
   "Tooltip": true,
   "Transform": {
-    "posX": 48.785,
-    "posY": 3.999,
-    "posZ": 23.728,
-    "rotX": 0,
+    "posX": 38.357,
+    "posY": 4.08,
+    "posZ": 37.192,
+    "rotX": 359,
     "rotY": 180,
-    "rotZ": 0,
+    "rotZ": 1,
     "scaleX": 0.53,
     "scaleY": 0.53,
     "scaleZ": 0.53

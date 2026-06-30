@@ -48,8 +48,8 @@
   "CustomDeck": {
     "5781": {
       "BackIsHidden": true,
-      "BackURL": "https://drive.google.com/uc?export=download&id=1X6oWRHrAUxMk1vAae0oo_q-j9tn1Z6Uo",
-      "FaceURL": "https://drive.google.com/uc?export=download&id=1ufZcrYO4jEziY2OIA14MRfU0lFQR4Oeu",
+      "BackURL": "https://drive.google.com/uc?export=download\u0026id=1X6oWRHrAUxMk1vAae0oo_q-j9tn1Z6Uo",
+      "FaceURL": "https://drive.google.com/uc?export=download\u0026id=1ufZcrYO4jEziY2OIA14MRfU0lFQR4Oeu",
       "NumHeight": 4,
       "NumWidth": 8,
       "Type": 0,
