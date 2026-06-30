@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"elite\":4,\"hp\":8,\"monstertype\":[\"Ancient One\"],\"name\":\"Ithaqua\",\"number\":105,\"remnant\":true,\"role\":\"Monster\",\"type\":\"codex\"}",
+  "Memo": "{\"reversed\":true,\"elite\":4,\"hp\":8,\"monstertype\":[\"Ancient One\"],\"name\":\"Ithaqua\",\"number\":105,\"remnant\":true,\"role\":\"Monster\",\"type\":\"codex\"}",
   "Name": "Card",
   "Nickname": "105",
   "SidewaysCard": false,

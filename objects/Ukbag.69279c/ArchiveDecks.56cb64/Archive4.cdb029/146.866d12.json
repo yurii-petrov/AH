@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"elite\":2,\"hp\":6,\"monstertype\":[\"Deathless Gug\",\"Herald\"],\"name\":\"The Seer of Mnar\",\"number\":146,\"remnant\":true,\"role\":\"Monster\",\"type\":\"codex\"}",
+  "Memo": "{\"reversed\":true,\"elite\":2,\"hp\":6,\"monstertype\":[\"Deathless Gug\",\"Herald\"],\"name\":\"The Seer of Mnar\",\"number\":146,\"remnant\":true,\"role\":\"Monster\",\"type\":\"codex\"}",
   "Name": "Card",
   "Nickname": "146",
   "SidewaysCard": false,

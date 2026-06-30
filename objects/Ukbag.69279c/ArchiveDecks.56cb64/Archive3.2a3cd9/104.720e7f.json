@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"elite\":2,\"hp\":4,\"monstertype\":[\"Spirit\",\"Thrall\"],\"name\":\"Wendigo\",\"number\":104,\"remnant\":true,\"role\":\"Monster\",\"type\":\"codex\"}",
+  "Memo": "{\"reversed\":true,\"elite\":2,\"hp\":4,\"monstertype\":[\"Spirit\",\"Thrall\"],\"name\":\"Wendigo\",\"number\":104,\"remnant\":true,\"role\":\"Monster\",\"type\":\"codex\"}",
   "Name": "Card",
   "Nickname": "104",
   "SidewaysCard": false,
