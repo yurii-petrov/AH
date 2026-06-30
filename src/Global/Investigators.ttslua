@@ -741,7 +741,7 @@ function investigatorSeatPlayer(player, alt, id)
     Wait.frames(function()
       local p2 = Player[targetColor]
       if p2 and p2.seated then
-        p2.lookAt({ position = pos, pitch = 50, yaw = 0, distance = 25 })
+        p2.lookAt({position = targetPos, pitch = 65, yaw = 0, distance = 30})
       end
     end, 3)
   end

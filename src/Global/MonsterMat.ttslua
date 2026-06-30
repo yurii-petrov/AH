@@ -394,7 +394,7 @@ function clickFight(player, alt_click)
         local targetPos = {snapPos.x, snapPos.y + 0.5, snapPos.z}
         self.setPosition(targetPos)
         self.setRotation(orient(monsterMemo, false))
-        Player[player.color].lookAt({position = targetPos, pitch = 50, yaw = 0, distance = 25})
+        Player[player.color].lookAt({position = targetPos, pitch = 65, yaw = 0, distance = 30})
         setMonsterEvadeAvailable({ active = true })
       end
     end
@@ -424,7 +424,7 @@ function clickEvade(player, alt_click)
       self.setPosition(targetPos)
       self.setRotation(orient(monsterMemo, false))
       liftFigurinesAt(targetPos, targetPos[2] + 1)
-      Player[player.color].lookAt({position = targetPos, pitch = 50, yaw = 0, distance = 25})
+      Player[player.color].lookAt({position = targetPos, pitch = 65, yaw = 0, distance = 30})
     end
   end
 
