@@ -58,6 +58,7 @@ require("Global/steps/attach_marker_to_monster")
 require("Global/steps/move_marker_to_scenario_sheet")
 require("Global/steps/move_marker_to_location")
 require("Global/steps/remove_neighborhood")
+require("Global/steps/remove_street")
 require("Global/steps/remove_blank_mythos_token")
 require("Global/steps/remove_doom_from_scenario_sheet")
 
@@ -100,6 +101,7 @@ local STEP_HANDLERS = {
   movemarkertoscenariosheet         = processStepMoveMarkerToScenarioSheet,
   movemarkertolocation              = processStepMoveMarkerToLocation,
   removeneighborhood                = processStepRemoveNeighborhood,
+  removestreet                      = processStepRemoveStreet,
   removeblankmythostoken            = processStepRemoveBlankMythosToken,
   removedoomfromscenariosheet       = processStepRemoveDoomFromScenarioSheet,
 }

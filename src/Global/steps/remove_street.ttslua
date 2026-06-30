@@ -1,0 +1,53 @@
+-- ╭──────────────────────────────────────────────╮
+-- │          STEP: removeStreet                  │
+-- ╰──────────────────────────────────────────────╯
+--
+-- Returns a single street tile (memo.type == "Street") to the box by name.
+-- Same mechanics as returnBridgeToBox (Utils.ttslua), but the street name
+-- is supplied by the step instead of being hardcoded to "Bridge2".
+--
+-- Example step JSON:
+--   { "type": "removeStreet", "street": "Residential3" }
+
+function processStepRemoveStreet(step, context, onDone)
+  local name = step.street
+  if not name then
+    log("[removeStreet] street is nil")
+    if onDone then onDone() end
+    return
+  end
+
+  local locationMat = getObjectFromGUID(locationMatId)
+  if not locationMat then
+    log("[removeStreet] locationMat not found")
+    if onDone then onDone() end
+    return
+  end
+
+  local objs = upCast(locationMat, 1, nil, 1)
+  if not objs then
+    log("[removeStreet] no objects found on locationMat")
+    if onDone then onDone() end
+    return
+  end
+
+  for _, o in ipairs(objs) do
+    local data = parseJson(o.memo)
+    if data and data.type == "Street" and data.name == name then
+      o.setLock(false)
+      o.interactable     = true
+      o.drag_selectable   = true
+      o.gizmo_selectable  = true
+      o.highlightOn("Red", 1.5)
+      Wait.time(function()
+        local box = getObjectFromGUID(boxId)
+        if box then box.putObject(o) end
+        if onDone then onDone() end
+      end, 1.5)
+      return
+    end
+  end
+
+  log("[removeStreet] street tile not found: " .. name)
+  if onDone then onDone() end
+end
