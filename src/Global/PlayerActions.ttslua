@@ -306,6 +306,8 @@ function onPlayerClickDeath(d)
       end
     end
 
+    spawnDoomTokensOnScenarioSheet(1)
+
     clearInvestigatorSlot(d.mat)
   end)
 end

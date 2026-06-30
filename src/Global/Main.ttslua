@@ -87,10 +87,6 @@ end
 function onload(savedData)
 
   self.UI.setXmlTable(getRootXmlTable())
-  Wait.time(function()
-    print(prettyXml(self.UI.getXml()))
-    -- print("xm: " .. serpent.tts(self.UI.getXml()))
-  end, 5)
   resolveAllDataObjects()
 
   lockObj(tableId)
