@@ -506,10 +506,10 @@ function onClickEncounter(obj, playerColor)
         end
       elseif STREET_LIKE_TYPES[string.lower(data.type)] then
         showCardInActiveSpace(data, o)
-        print(string.format(i18n.getStrById("LOG_encounter_for"),
+        broadcastToAll(string.format(i18n.getStrById("LOG_encounter_for"),
           i18n.getStrById(investigatorData.name:gsub(" ", "_")),
           i18n.getStrById((data.name or data.type):gsub("%d+$", ""):gsub(" ", "_")),
-          i18n.getStrById((data.type):gsub(" ", "_"))))
+          i18n.getStrById((data.type):gsub(" ", "_"))), "White")
         return
       end
     end
@@ -590,10 +590,10 @@ function onClickEncounter(obj, playerColor)
       broadcastToAll(string.format(i18n.getStrById("LOG_terror_count"), terrorCount, ""..neighborhoodName:gsub("%d+$", ""):gsub(" ", "_").." ("..i18n.getStrById(investigatorData.name:gsub(" ", "_"))..")"), "Orange")
     else
       broadcastToAll("\n" .. i18n.getStrById(locationName:gsub("%d+$", ""):gsub(" ", "_")), "White")
-      print(string.format(i18n.getStrById("LOG_encounter_for"),
+      broadcastToAll(string.format(i18n.getStrById("LOG_encounter_for"),
         i18n.getStrById(investigatorData.name:gsub(" ", "_")),
         i18n.getStrById(locationName:gsub("%d+$", ""):gsub(" ", "_")),
-        i18n.getStrById(neighborhoodName:gsub("%d+$", ""):gsub(" ", "_"))))
+        i18n.getStrById(neighborhoodName:gsub("%d+$", ""):gsub(" ", "_"))), "White")
     end
   end
 end
