@@ -1340,3 +1340,18 @@ msgstr "No"
 # Investigators HUD
 msgid "INV_blocked_msg"
 msgstr "%s is occupied by %s. You cannot interact with this investigator."
+
+msgid "INV_title_text"
+msgstr "Investigators"
+
+msgid "INV_default_name_text"
+msgstr "Investigator %s"
+
+msgid "INV_encounter"
+msgstr "Encounter"
+
+msgid "INV_mythos"
+msgstr "myth: %s"
+
+msgid "INV_apply_text"
+msgstr "Apply to all"

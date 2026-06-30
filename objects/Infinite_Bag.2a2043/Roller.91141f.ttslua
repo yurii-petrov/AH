@@ -107,20 +107,20 @@ function buildRollerUI()
 
     <Button id="settings" onClick="toggleSettings" width="400" height="400"
       position="540 0 -22" rotation="0 0 180" scale="0.115 0.115 1"
-      color="clear" textColor="#a29c90" fontSize="300" text="s"/>
+      color="clear" textColor="#a29c90" fontSize="300" text=""/>
 
     <Panel id="help_panel" active="false" width="700" height="340"
       position="0 -300 -30" rotation="0 0 180" allowDragging="true" returnToOriginalPositionWhenReleased="false">
       <Image image="help_bg" preserveAspect="true" width="700"/>
       <VerticalLayout width="650" height="280">
         <Panel padding="0 0 0 20">
-          <Text id="ROLLER_help_title_text" fontSize="45" font="fonts/AdonisC" color="#ffffff">%s</Text>
+          <Text id="ROLLER_help_title_text" fontSize="45" font="Fonts/AdonisC" color="#ffffff">%s</Text>
         </Panel>
-        <Text id="ROLLER_help_lmb_text" fontSize="25" font="fonts/AdonisC" color="#ffffff">%s</Text>
-        <Text id="ROLLER_help_rmb_text" fontSize="25" font="fonts/AdonisC" color="#ffffff">%s</Text>
+        <Text id="ROLLER_help_lmb_text" fontSize="25" font="Fonts/AdonisC" color="#ffffff">%s</Text>
+        <Text id="ROLLER_help_rmb_text" fontSize="25" font="Fonts/AdonisC" color="#ffffff">%s</Text>
       </VerticalLayout>
       <Button id="close_help" onClick="toggleHelp" width="160" height="160"
-        position="310 120 0" fontSize="50" font="fonts/AdonisC"
+        position="310 120 0" fontSize="50" font="Fonts/AdonisC"
         textColor="#ffffff" color="clear">X</Button>
     </Panel>
 
@@ -132,12 +132,12 @@ function buildRollerUI()
           scale="0.35 0.35 1" color="#a29c90" font="Fonts/AdonisC" fontSize="1000">?</Text>
       </Panel>
       <Panel id="results_hover" active="false">
-        <Text id="ROLLER_success_text" fontSize="30" color="#a29c90" position="-40 5 0">%s</Text>
-        <Text id="success_additional" fontSize="90" color="#a29c90" position="35 20 0">?</Text>
-        <Text id="ROLLER_reroll_total_text" fontSize="16" color="#a29c90" position="-40 -30 0">%s</Text>
-        <Text id="reroll" fontSize="22" color="#a29c90" position="40 -30 0">0</Text>
-        <Text id="ROLLER_rerolled_dice_text" fontSize="16" color="#a29c90" position="-40 -60 0">%s</Text>
-        <Text id="rerolled_dices" fontSize="22" color="#a29c90" position="40 -60 0">0</Text>
+        <Text id="ROLLER_success_text" fontSize="30" font="Fonts/AdonisC" color="#a29c90" position="-40 5 0">%s</Text>
+        <Text id="success_additional" fontSize="90" font="Fonts/AdonisC" color="#a29c90" position="35 20 0">?</Text>
+        <Text id="ROLLER_reroll_total_text" fontSize="16" font="Fonts/AdonisC" color="#a29c90" position="-40 -30 0">%s</Text>
+        <Text id="reroll" fontSize="22" font="Fonts/AdonisC" color="#a29c90" position="40 -30 0">0</Text>
+        <Text id="ROLLER_rerolled_dice_text" fontSize="16" font="Fonts/AdonisC" color="#a29c90" position="-40 -60 0">%s</Text>
+        <Text id="rerolled_dices" fontSize="22" font="Fonts/AdonisC" color="#a29c90" position="40 -60 0">0</Text>
       </Panel>
     </Panel>
 
@@ -146,24 +146,24 @@ function buildRollerUI()
       <Image image="help_bg" preserveAspect="true" width="760"/>
       <VerticalLayout width="680" height="320" padding="0 0 22 20" spacing="16">
         <Panel padding="0 0 0 6">
-          <Text fontSize="45" font="fonts/AdonisC" color="#ffffff">%s</Text>
+          <Text fontSize="45" font="Fonts/AdonisC" color="#ffffff">%s</Text>
         </Panel>
-        <Text fontSize="26" font="fonts/AdonisC" color="#cfc7b8" alignment="MiddleLeft" preferredHeight="34">%s</Text>
+        <Text fontSize="26" font="Fonts/AdonisC" color="#cfc7b8" alignment="MiddleLeft" preferredHeight="34">%s</Text>
         <HorizontalLayout spacing="14" childForceExpandWidth="true" preferredHeight="66">
-          <Button id="power_light" onClick="onPowerClick" fontSize="28" font="fonts/AdonisC" textColor="%s" color="%s">%s</Button>
-          <Button id="power_medium" onClick="onPowerClick" fontSize="28" font="fonts/AdonisC" textColor="%s" color="%s">%s</Button>
-          <Button id="power_strong" onClick="onPowerClick" fontSize="28" font="fonts/AdonisC" textColor="%s" color="%s">%s</Button>
+          <Button id="power_light" onClick="onPowerClick" fontSize="28" font="Fonts/AdonisC" textColor="%s" color="%s">%s</Button>
+          <Button id="power_medium" onClick="onPowerClick" fontSize="28" font="Fonts/AdonisC" textColor="%s" color="%s">%s</Button>
+          <Button id="power_strong" onClick="onPowerClick" fontSize="28" font="Fonts/AdonisC" textColor="%s" color="%s">%s</Button>
         </HorizontalLayout>
         <HorizontalLayout spacing="18" childForceExpandWidth="false" childAlignment="MiddleCenter">
-          <Text fontSize="28" font="fonts/AdonisC" color="#ffffff" minWidth="240" alignment="MiddleLeft">%s</Text>
+          <Text fontSize="28" font="Fonts/AdonisC" color="#ffffff" minWidth="240" alignment="MiddleLeft">%s</Text>
           <Toggle id="instant_toggle" isOn="%s" onValueChanged="onInstantChanged"
-            flexibleWidth="1" textColor="#ffffff" fontSize="28" font="fonts/AdonisC" preferredHeight="42"/>
+            flexibleWidth="1" textColor="#ffffff" fontSize="28" font="Fonts/AdonisC" preferredHeight="42"/>
         </HorizontalLayout>
-        <Button id="reset_settings" onClick="resetSettings" fontSize="26" font="fonts/AdonisC"
+        <Button id="reset_settings" onClick="resetSettings" fontSize="26" font="Fonts/AdonisC"
           textColor="#ffffff" color="#00000055" minHeight="46">%s</Button>
       </VerticalLayout>
       <Button id="close_settings" onClick="toggleSettings" width="160" height="160"
-        position="340 120 0" fontSize="50" font="fonts/AdonisC"
+        position="340 120 0" fontSize="50" font="Fonts/AdonisC"
         textColor="#ffffff" color="clear">X</Button>
     </Panel>
 
@@ -190,11 +190,13 @@ function buildRollerUI()
 end
 
 function toggleHelp()
+  self.UI.setAttribute("settings_panel", "active", "false")
   local active = self.UI.getAttribute("help_panel", "active")
   self.UI.setAttribute("help_panel", "active", active == "true" and "false" or "true")
 end
 
 function toggleSettings()
+  self.UI.setAttribute("help_panel", "active", "false")
   local active = self.UI.getAttribute("settings_panel", "active")
   self.UI.setAttribute("settings_panel", "active", active == "true" and "false" or "true")
 end

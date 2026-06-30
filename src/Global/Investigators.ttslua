@@ -87,6 +87,14 @@ for p = 1, MAX_INV do
   INV_STATE.mythosCount[p]   = 2
 end
 
+local function defaultInvestigatorName(p)
+  return string.format(i18n.getStrById("INV_default_name_text"), p)
+end
+
+local function mythosCountText(count)
+  return string.format(i18n.getStrById("INV_mythos"), count)
+end
+
 local function actionImage(isLeader, spent)
   if isLeader then
     return spent and "leader_activation_token_back" or "leader_activation_token_front"
@@ -259,7 +267,7 @@ local function buildRow(p)
     },
     children = {
       { tag = "Button", attributes = { id = "INV_avatar_" .. p, onClick = "investigatorSeatPlayer", text = "", color = "#FFFFFF", minWidth = AVATAR_SIZE, preferredWidth = AVATAR_SIZE, flexibleWidth = "0", minHeight = AVATAR_SIZE, preferredHeight = AVATAR_SIZE } },
-      { tag = "Text", attributes = { id = "INV_name_" .. p .. "_text", text = "Дослідник " .. p, color = TEXT_COL, font = FONT, fontSize = "22", alignment = "MiddleLeft", flexibleWidth = "1" } },
+      { tag = "Text", attributes = { id = "INV_name_" .. p .. "_text", text = defaultInvestigatorName(p), color = TEXT_COL, font = FONT, fontSize = "22", alignment = "MiddleLeft", flexibleWidth = "1" } },
       {
         tag = "HorizontalLayout",
         attributes = {
@@ -277,7 +285,7 @@ local function buildRow(p)
           id              = "INV_encounter_" .. p,
           onClick         = "investigatorEncounterClick",
           active          = "false",
-          text            = "Зустріч",
+          text            = i18n.getStrById("INV_encounter"),
           color           = ENCOUNTER_CLR,
           textColor       = TEXT_COL,
           font            = FONT,
@@ -295,7 +303,7 @@ local function buildRow(p)
           id              = "INV_mythos_" .. p,
           onClick         = "investigatorMythosClick",
           active          = "false",
-          text            = "міт: 2",
+          text            = mythosCountText(2),
           color           = MYTHOS_CLR,
           textColor       = TEXT_COL,
           font            = FONT,
@@ -332,7 +340,7 @@ local function buildHeader()
       childForceExpandWidth = "false",
     },
     children = {
-      { tag = "Text", attributes = { id = "INV_title_text", text = "Дослідники", color = TEXT_COL, font = FONT, fontStyle = "Bold", fontSize = "26", alignment = "MiddleLeft", flexibleWidth = "1" } },
+      { tag = "Text", attributes = { id = "INV_title_text", text = i18n.getStrById("INV_title_text"), color = TEXT_COL, font = FONT, fontStyle = "Bold", fontSize = "26", alignment = "MiddleLeft", flexibleWidth = "1" } },
       -- collapse chevron (plain text caret for now; replace with a sprite later)
       { tag = "Button", attributes = { id = "INV_collapse", onClick = "investigatorToggleCollapse", text = "v", color = "clear", textColor = TEXT_COL, font = FONT, fontSize = "26", minWidth = "40", preferredWidth = "40", flexibleWidth = "0" } },
     },
@@ -365,7 +373,7 @@ local function buildBody()
           id              = "INV_apply_text",
           onClick         = "investigatorApplyAll",
           visibility      = "Host",
-          text            = "Застосувати для всіх",
+          text            = i18n.getStrById("INV_apply_text"),
           color           = INV_GOLD,
           textColor       = INV_DARK,
           font            = FONT,
@@ -520,7 +528,7 @@ function setInvestigatorPhase(phase)
     local mythShow = isMythos and active and INV_STATE.mythosCount[p] > 0
     self.UI.setAttribute("INV_mythos_" .. p, "active", mythShow)
     if mythShow then
-      self.UI.setAttribute("INV_mythos_" .. p, "text",      "міт: " .. INV_STATE.mythosCount[p])
+      self.UI.setAttribute("INV_mythos_" .. p, "text",      mythosCountText(INV_STATE.mythosCount[p]))
       self.UI.setAttribute("INV_mythos_" .. p, "textColor", TEXT_COL)
     end
   end
@@ -570,7 +578,7 @@ function investigatorMythosClick(player, alt, id)
     self.UI.setAttribute("INV_mythos_" .. p, "active", false)
   else
     INV_STATE.mythosActive = p
-    self.UI.setAttribute("INV_mythos_" .. p, "text",      "міт: " .. count)
+    self.UI.setAttribute("INV_mythos_" .. p, "text",      mythosCountText(count))
     self.UI.setAttribute("INV_mythos_" .. p, "textColor", TEXT_COL)
   end
   gameData.mythosCount = gameData.mythosCount or {}
@@ -692,7 +700,7 @@ function clearInvestigatorSlot(mat)
     INV_STATE.isLeaderAction[slot][a] = false
     refreshActionButton(slot, a)
   end
-  self.UI.setAttribute("INV_name_" .. slot .. "_text", "text", "Дослідник " .. slot)
+  self.UI.setAttribute("INV_name_" .. slot .. "_text", "text", defaultInvestigatorName(slot))
   self.UI.setAttribute("INV_avatar_" .. slot, "image", "")
 end
 
@@ -734,7 +742,7 @@ function restoreInvestigatorSessionState()
         local show = count > 0 and pNum <= INV_STATE.count
         self.UI.setAttribute("INV_mythos_" .. pNum, "active", show)
         if show then
-          self.UI.setAttribute("INV_mythos_" .. pNum, "text", "міт: " .. count)
+          self.UI.setAttribute("INV_mythos_" .. pNum, "text", mythosCountText(count))
         end
       end
     end
@@ -776,7 +784,7 @@ function setInvestigatorCount(n)
     for a = 1, ACTIONS_PER_INV do
       INV_STATE.isLeaderAction[p][a] = false
     end
-    self.UI.setAttribute("INV_name_"      .. p .. "_text", "text", "Дослідник " .. p)
+    self.UI.setAttribute("INV_name_"      .. p .. "_text", "text", defaultInvestigatorName(p))
     self.UI.setAttribute("INV_avatar_"    .. p, "image", "")
     self.UI.setAttribute("INV_actions_"   .. p, "active", p <= n)
     self.UI.setAttribute("INV_encounter_" .. p, "active", false)

@@ -1406,3 +1406,18 @@ msgstr "Ні"
 # Investigators HUD
 msgid "INV_blocked_msg"
 msgstr "%s зайнятий гравцем %s. Ви не можете взаємодіяти з цим дослідником."
+
+msgid "INV_title_text"
+msgstr "Дослідники"
+
+msgid "INV_default_name_text"
+msgstr "Дослідник %s"
+
+msgid "INV_encounter"
+msgstr "Зустріч"
+
+msgid "INV_mythos"
+msgstr "міт: %s"
+
+msgid "INV_apply_text"
+msgstr "Застосувати для всіх"

@@ -430,9 +430,29 @@ I18N_DATA = {
     ["en"] = "Will",
     ["uk"] = "Воля",
   },
+  ["INV_apply_text"] = {
+    ["en"] = "Apply to all",
+    ["uk"] = "Застосувати для всіх",
+  },
   ["INV_blocked_msg"] = {
     ["en"] = "%s is occupied by %s. You cannot interact with this investigator.",
     ["uk"] = "%s зайнятий гравцем %s. Ви не можете взаємодіяти з цим дослідником.",
+  },
+  ["INV_default_name_text"] = {
+    ["en"] = "Investigator %s",
+    ["uk"] = "Дослідник %s",
+  },
+  ["INV_encounter"] = {
+    ["en"] = "Encounter",
+    ["uk"] = "Зустріч",
+  },
+  ["INV_mythos"] = {
+    ["en"] = "myth: %s",
+    ["uk"] = "міт: %s",
+  },
+  ["INV_title_text"] = {
+    ["en"] = "Investigators",
+    ["uk"] = "Дослідники",
   },
   ["Icebound_Captive"] = {
     ["en"] = "Icebound Captive",
