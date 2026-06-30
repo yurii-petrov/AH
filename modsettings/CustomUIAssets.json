@@ -428,5 +428,15 @@
     "Name": "monster_attack",
     "Type": 0,
     "URL": "https://drive.google.com/uc?export=download&id=1bh4AXn1vlF8nAvJ6_Lu67KXwd4EvgFm_"
+  },
+  {
+    "Name": "action_no",
+    "Type": 0,
+    "URL": "https://drive.google.com/uc?export=download&id=1FuxqM1NqqINI0tez42Y_yQ0OlcPM1e7n"
+  },
+  {
+    "Name": "action_yes",
+    "Type": 0,
+    "URL": "https://drive.google.com/uc?export=download&id=1bYPSvY0jnzvHpe0XgMPzALsCdrfW0eST"
   }
 ]

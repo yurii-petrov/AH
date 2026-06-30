@@ -55,6 +55,28 @@ local function resolveAllDeckObjects()
   end
 end
 
+local function prettyXml(xml)
+    local indent = 0
+
+    xml = xml:gsub("><", ">\n<")
+
+    local out = {}
+
+    for line in xml:gmatch("[^\n]+") do
+        if line:match("^</") then
+            indent = indent - 1
+        end
+
+        table.insert(out, string.rep("    ", indent) .. line)
+
+        if line:match("^<[^!?/][^>]*[^/]>$") then
+            indent = indent + 1
+        end
+    end
+
+    return table.concat(out, "\n")
+end
+
 local function restoreActiveGameUI()
   if not gameData.isStarted then return end
   setInvestigatorCount(gameData.numberOfPlayers or 2)
@@ -87,6 +109,10 @@ end
 function onload(savedData)
 
   self.UI.setXmlTable(getRootXmlTable())
+  -- Wait.time(function()
+    -- print(prettyXml(self.UI.getXml()))
+    -- print("xm: " .. serpent.tts(self.UI.getXml()))
+  -- end, 5)
   resolveAllDataObjects()
 
   lockObj(tableId)

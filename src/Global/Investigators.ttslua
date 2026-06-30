@@ -32,31 +32,38 @@ local MAX_INV          = 6
 local DEFAULT_COUNT    = 2
 local ACTIONS_PER_INV  = 2
 
-local PANEL_W          = "340"
-local HEADER_H         = "50"
-local ROW_H            = "54"
+local PANEL_W          = "310"
+local ROW_H            = "44"
 local ROW_SPACING      = "8"
 local SECTION_SPACING  = "10"
-local APPLY_H          = "52"
-local PAD              = "12"
+local APPLY_H          = "30"
+local PAD              = "10"
 local ACTION_SIZE      = "34"
 local AVATAR_SIZE      = "34"
+local BORDER_W         = "2"
 
 local INV_GOLD      = "#F2C230"
 local INV_DARK      = "#141414"
-local PANEL_BG      = "#1d1d1dF2"
-local ROW_BG        = "#2c2c2c"
+local PANEL_BG      = "#000000bb"
 local TEXT_COL      = "#ffffff"
 local ENCOUNTER_CLR = "#1a6b1a"
 local MYTHOS_CLR    = "#8b1a1a"
 local PHASE_BTN_W   = "100"
+local CHEVRON_COL   = "#666666"
+
+-- Slot -> seat color, fixed order matching the hand-mat assignment in
+-- Global/PlayerActions.ttslua (colors = {"White","Red","Green","Blue","Yellow","Purple"}).
+local SLOT_COLORS = { "#FFFFFF", "#FF3B30", "#34C759", "#3478F6", "#FFD60A", "#AF52DE" }
+
+local function slotBorderColor(p)
+  return SLOT_COLORS[p] or CHEVRON_COL
+end
 
 -- ── runtime state ─────────────────────────────────────────────────
 
 INV_STATE = {
   count          = DEFAULT_COUNT,
   applied        = false,
-  collapsed      = false,
   snapshot       = nil,
   actions        = {},
   isLeaderAction = {},
@@ -91,15 +98,71 @@ local function defaultInvestigatorName(p)
   return string.format(i18n.getStrById("INV_default_name_text"), p)
 end
 
+-- ── dynamic panel width ───────────────────────────────────────────
+-- The displayed name (only the first word, see setInvestigatorName) can be
+-- shorter or longer than the "Investigator N" / "Дослідник N" placeholder,
+-- so the panel width is recomputed from the longest name currently shown
+-- across the active rows instead of staying fixed.
+--
+-- PANEL_FIXED_W is the width every row needs regardless of the name: the
+-- collapse chevron, INV_body's left/right padding, the avatar, the two
+-- row gaps around the name, and whichever right-side block is widest
+-- (the two action dots, or a single encounter/mythos button).
+
+local COLLAPSE_W     = 20
+local ROW_GAP        = 10
+local NAME_MIN_CHARS = 4  -- floor so a 1-char name doesn't collapse the row
+local NAME_CHAR_PX   = 12 -- approx glyph width at fontSize 22 in FONT
+local PANEL_W_MAX    = 460
+
+local RIGHT_BLOCK_W = math.max(2 * tonumber(ACTION_SIZE) + ROW_GAP, tonumber(PHASE_BTN_W))
+local PANEL_FIXED_W = COLLAPSE_W + tonumber(PAD) * 2 + tonumber(AVATAR_SIZE) + ROW_GAP * 2 + RIGHT_BLOCK_W
+
+-- Counts Unicode codepoints rather than bytes, so Cyrillic names (2 bytes
+-- per glyph in UTF-8) aren't measured as twice their visible width.
+local function utf8Length(s)
+  local len = 0
+  for i = 1, #s do
+    local b = string.byte(s, i)
+    if b < 0x80 or b >= 0xC0 then
+      len = len + 1
+    end
+  end
+  return len
+end
+
+local function displayedNameForSlot(slot)
+  local full = INV_STATE.nameBySlot[slot]
+  if full then return full:match("^(%S+)") or full end
+  return defaultInvestigatorName(slot)
+end
+
+local function refreshPanelWidth()
+  local maxLen = NAME_MIN_CHARS
+  for p = 1, INV_STATE.count do
+    local len = utf8Length(displayedNameForSlot(p))
+    if len > maxLen then maxLen = len end
+  end
+  local w = PANEL_FIXED_W + maxLen * NAME_CHAR_PX
+  if w > PANEL_W_MAX then w = PANEL_W_MAX end
+  self.UI.setAttribute("investigators", "width", w)
+end
+
 local function mythosCountText(count)
   return string.format(i18n.getStrById("INV_mythos"), count)
 end
 
+-- TODO: leader will get its own art later; both currently point at the same images.
+local LEADER_ACTION_NO  = "action_no"
+local LEADER_ACTION_YES = "action_yes"
+local ACTION_NO         = "action_no"
+local ACTION_YES        = "action_yes"
+
 local function actionImage(isLeader, spent)
   if isLeader then
-    return spent and "leader_activation_token_back" or "leader_activation_token_front"
+    return spent and LEADER_ACTION_NO or LEADER_ACTION_YES
   else
-    return spent and "activation_token_back" or "activation_token_front"
+    return spent and ACTION_NO or ACTION_YES
   end
 end
 
@@ -123,8 +186,8 @@ local function refreshAllActionColors()
 end
 
 local function setApplyPressed(pressed)
-  self.UI.setAttribute("INV_apply_text", "color", pressed and INV_DARK or INV_GOLD)
-  self.UI.setAttribute("INV_apply_text", "textColor", pressed and INV_GOLD or INV_DARK)
+  self.UI.setAttribute("INV_apply_text", "color", pressed and INV_GOLD or "clear")
+  self.UI.setAttribute("INV_apply_text", "textColor", pressed and INV_DARK or INV_GOLD)
 end
 
 local function saveActionsToGameData()
@@ -249,24 +312,53 @@ local function buildActionButton(p, a)
   }
 end
 
+local function buildAvatarButton(p)
+  return {
+    tag = "Button",
+    attributes = {
+      id              = "INV_avatar_" .. p,
+      onClick         = "investigatorSeatPlayer",
+      text            = "",
+      color           = "#FFFFFF",
+      minWidth        = AVATAR_SIZE,
+      preferredWidth  = AVATAR_SIZE,
+      flexibleWidth   = "0",
+      minHeight       = AVATAR_SIZE,
+      preferredHeight = AVATAR_SIZE,
+    },
+    children = {
+      {
+        tag = "Panel",
+        attributes = {
+          id             = "INV_avatar_" .. p .. "_border",
+          width          = BORDER_W,
+          height         = AVATAR_SIZE,
+          offsetXY       = "-3 0",
+          rectAlignment  = "MiddleLeft",
+          color          = slotBorderColor(p),
+        },
+      },
+    },
+  }
+end
+
 local function buildRow(p)
   return {
     tag = "HorizontalLayout",
     attributes = {
       id                    = "INV_row_" .. p,
       active                = (p <= DEFAULT_COUNT) and "true" or "false",
-      color                 = ROW_BG,
       minHeight             = ROW_H,
       preferredHeight       = ROW_H,
       flexibleHeight        = "0",
-      padding               = "12 12 6 6",
+      padding               = "0",
       spacing               = "10",
       childAlignment        = "MiddleLeft",
       childForceExpandWidth = "false",
       childForceExpandHeight = "false",
     },
     children = {
-      { tag = "Button", attributes = { id = "INV_avatar_" .. p, onClick = "investigatorSeatPlayer", text = "", color = "#FFFFFF", minWidth = AVATAR_SIZE, preferredWidth = AVATAR_SIZE, flexibleWidth = "0", minHeight = AVATAR_SIZE, preferredHeight = AVATAR_SIZE } },
+      buildAvatarButton(p),
       { tag = "Text", attributes = { id = "INV_name_" .. p .. "_text", text = defaultInvestigatorName(p), color = TEXT_COL, font = FONT, fontSize = "22", alignment = "MiddleLeft", flexibleWidth = "1" } },
       {
         tag = "HorizontalLayout",
@@ -327,32 +419,14 @@ local function buildRows()
   return rows
 end
 
-local function buildHeader()
-  return {
-    tag = "HorizontalLayout",
-    attributes = {
-      id                    = "INV_header",
-      minHeight             = HEADER_H,
-      preferredHeight       = HEADER_H,
-      flexibleHeight        = "0",
-      padding               = "14 6 0 0",
-      childAlignment        = "MiddleCenter",
-      childForceExpandWidth = "false",
-    },
-    children = {
-      { tag = "Text", attributes = { id = "INV_title_text", text = i18n.getStrById("INV_title_text"), color = TEXT_COL, font = FONT, fontStyle = "Bold", fontSize = "26", alignment = "MiddleLeft", flexibleWidth = "1" } },
-      -- collapse chevron (plain text caret for now; replace with a sprite later)
-      { tag = "Button", attributes = { id = "INV_collapse", onClick = "investigatorToggleCollapse", text = "v", color = "clear", textColor = TEXT_COL, font = FONT, fontSize = "26", minWidth = "40", preferredWidth = "40", flexibleWidth = "0" } },
-    },
-  }
-end
-
 local function buildBody()
   return {
     tag = "VerticalLayout",
     attributes = {
       id                     = "INV_body",
+      padding                = "2 " .. PAD .. " " .. PAD .. " " .. PAD,
       spacing                = SECTION_SPACING,
+      flexibleWidth          = "1",
       childForceExpandWidth  = "true",
       childForceExpandHeight = "false",
     },
@@ -374,11 +448,10 @@ local function buildBody()
           onClick         = "investigatorApplyAll",
           visibility      = "Host",
           text            = i18n.getStrById("INV_apply_text"),
-          color           = INV_GOLD,
-          textColor       = INV_DARK,
+          color           = "clear",
+          textColor       = INV_GOLD,
           font            = FONT,
-          fontStyle       = "Bold",
-          fontSize        = "22",
+          fontSize        = "16",
           minHeight       = APPLY_H,
           preferredHeight = APPLY_H,
           flexibleHeight  = "0",
@@ -393,25 +466,76 @@ end
 ---@return table
 function buildInvestigatorsWindow()
   return {
-    tag = "VerticalLayout",
+    tag = "HorizontalLayout",
     attributes = {
       id                                   = "investigators",
       active                               = "false",
       width                                = PANEL_W,
       color                                = PANEL_BG,
       rectAlignment                        = "MiddleRight",
-      offsetXY                             = "20 0",
-      padding                              = PAD .. " " .. PAD .. " " .. PAD .. " " .. PAD,
-      spacing                              = SECTION_SPACING,
+      offsetXY                             = "0 0",
+      padding                              = "0",
+      spacing                              = "0",
       contentSizeFitter                    = "vertical", -- height hugs the visible rows
-      childForceExpandWidth                = "true",
-      childForceExpandHeight               = "false",
+      childAlignment                       = "MiddleCenter",
+      childForceExpandWidth                = "false",
+      childForceExpandHeight               = "true",
       allowDragging                        = "true",
       returnToOriginalPositionWhenReleased = "false",
     },
     children = {
-      buildHeader(),
+      {
+        tag = "Button",
+        attributes = {
+          id             = "INV_collapse",
+          onClick        = "investigatorToggleCollapse",
+          text           = "▶",
+          padding        = "0 3 0 0",
+          color          = "clear",
+          minWidth       = "20",
+          preferredWidth = "20",
+          flexibleWidth  = "0",
+          textColor      = CHEVRON_COL,
+          font           = FONT,
+          fontSize       = "22",
+        },
+      },
       buildBody(),
+    },
+  }
+end
+
+--- Builds the small floating chevron shown when the investigators panel is
+--- collapsed; clicking it re-expands buildInvestigatorsWindow().
+--- Exposed globally so RootUI.getRootXmlTable() can embed it.
+---@return table
+function buildInvestigatorsCollapsedPanel()
+  return {
+    tag = "panel",
+    attributes = {
+      id            = "INV_collapse_alone",
+      active        = "false",
+      width         = "20",
+      height        = "60",
+      color         = "#000000ee",
+      rectAlignment = "MiddleRight",
+      offsetXY      = "0 0",
+    },
+    children = {
+      {
+        tag = "Button",
+        attributes = {
+          onClick   = "investigatorToggleCollapse",
+          text      = "◀",
+          padding   = "5 0",
+          color     = "clear",
+          minWidth  = "20",
+          minHeight = "60",
+          textColor = CHEVRON_COL,
+          font      = FONT,
+          fontSize  = "22",
+        },
+      },
     },
   }
 end
@@ -490,11 +614,11 @@ function investigatorApplyAll(player, alt, id)
   end
 end
 
---- Collapse/expand the body; the window shrinks to just the header.
+--- Collapse/expand the panel: swaps the full window for the floating chevron.
 function investigatorToggleCollapse()
-  INV_STATE.collapsed = not INV_STATE.collapsed
-  self.UI.setAttribute("INV_body", "active", not INV_STATE.collapsed)
-  self.UI.setAttribute("INV_collapse", "text", INV_STATE.collapsed and "^" or "v")
+  local isOpen = self.UI.getAttribute("investigators", "active") == "True"
+  self.UI.setAttribute("investigators", "active", not isOpen)
+  self.UI.setAttribute("INV_collapse_alone", "active", isOpen)
 end
 
 --- Switch per-investigator controls to match the current game phase.
@@ -677,6 +801,7 @@ function setInvestigatorName(name, mat, portraitKey)
   if portraitKey then
     self.UI.setAttribute("INV_avatar_" .. slot, "image", portraitKey)
   end
+  refreshPanelWidth()
 end
 
 --- Reset one investigator row back to its placeholder state.
@@ -702,6 +827,7 @@ function clearInvestigatorSlot(mat)
   end
   self.UI.setAttribute("INV_name_" .. slot .. "_text", "text", defaultInvestigatorName(slot))
   self.UI.setAttribute("INV_avatar_" .. slot, "image", "")
+  refreshPanelWidth()
 end
 
 function restoreInvestigatorSessionState()
@@ -793,11 +919,7 @@ function setInvestigatorCount(n)
   INV_STATE.phase        = 1
   INV_STATE.mythosActive = nil
 
-  if INV_STATE.collapsed then
-    INV_STATE.collapsed = false
-    self.UI.setAttribute("INV_body", "active", true)
-    self.UI.setAttribute("INV_collapse", "text", "v")
-  end
-
+  refreshPanelWidth()
+  self.UI.setAttribute("INV_collapse_alone", "active", false)
   self.UI.setAttribute("investigators", "active", true)
 end
