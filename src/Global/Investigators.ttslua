@@ -50,6 +50,7 @@ local ENCOUNTER_CLR = "#1a6b1a"
 local MYTHOS_CLR    = "#8b1a1a"
 local PHASE_BTN_W   = "100"
 local CHEVRON_COL   = "#666666"
+local AVATAR_PLACEHOLDER = "investigator_portrait"
 
 -- Slot -> seat color, fixed order matching the hand-mat assignment in
 -- Global/PlayerActions.ttslua (colors = {"White","Red","Green","Blue","Yellow","Purple"}).
@@ -319,6 +320,7 @@ local function buildAvatarButton(p)
       id              = "INV_avatar_" .. p,
       onClick         = "investigatorSeatPlayer",
       text            = "",
+      image           = AVATAR_PLACEHOLDER,
       color           = "#FFFFFF",
       minWidth        = AVATAR_SIZE,
       preferredWidth  = AVATAR_SIZE,
@@ -826,7 +828,7 @@ function clearInvestigatorSlot(mat)
     refreshActionButton(slot, a)
   end
   self.UI.setAttribute("INV_name_" .. slot .. "_text", "text", defaultInvestigatorName(slot))
-  self.UI.setAttribute("INV_avatar_" .. slot, "image", "")
+  self.UI.setAttribute("INV_avatar_" .. slot, "image", AVATAR_PLACEHOLDER)
   refreshPanelWidth()
 end
 
@@ -911,7 +913,7 @@ function setInvestigatorCount(n)
       INV_STATE.isLeaderAction[p][a] = false
     end
     self.UI.setAttribute("INV_name_"      .. p .. "_text", "text", defaultInvestigatorName(p))
-    self.UI.setAttribute("INV_avatar_"    .. p, "image", "")
+    self.UI.setAttribute("INV_avatar_"    .. p, "image", AVATAR_PLACEHOLDER)
     self.UI.setAttribute("INV_actions_"   .. p, "active", p <= n)
     self.UI.setAttribute("INV_encounter_" .. p, "active", false)
     self.UI.setAttribute("INV_mythos_"    .. p, "active", false)
