@@ -12,6 +12,16 @@
 --     "neighborhood": "Merchant District"
 --   }
 
+local REMOVABLE_TOKENS = { ["Doom Token"] = true, ["Clue"] = true }
+
+local function returnTokensOnTile(tile)
+  for _, obj in ipairs(upCast(tile, 5, nil, 1)) do
+    if obj.type == "Tile" and REMOVABLE_TOKENS[obj.memo] then
+      pcall(function() returnTokenToBag(obj, obj.memo) end)
+    end
+  end
+end
+
 local function removeMatchingCardsFromDeck(deckOrCard, name)
   if not deckOrCard then return end
 
@@ -64,6 +74,7 @@ function processStepRemoveNeighborhood(step, context, onDone)
 
   local tile = findLocationTileByName(locationMat, name)
   if tile then
+    returnTokensOnTile(tile)
     pcall(function() tile.destruct() end)
   else
     log("[removeNeighborhood] neighborhood tile not found: " .. name)
