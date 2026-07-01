@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"number\": 53, \"type\": \"codex\", \"back\": {\"actions\": [{\"title\": \"Знайти монстра\", \"removeAfterUse\": true, \"steps\": [{\"type\": \"attachMarkerToMonster\", \"monsterType\": \"aberration\", \"token\": {\"type\": \"White Marker\"}}]}, {\"title\": \"Після перемоги\", \"steps\": [{\"type\": \"moveMarkerToScenarioSheet\", \"token\": {\"type\": \"White Marker\"}}]}, {\"title\": \"Додати карту 57\", \"removeAfterUse\": true, \"steps\": [{\"type\": \"takeCodexFromArchive\", \"number\": 57}]}, {\"title\": \"Додати карту 59\", \"steps\": [{\"type\": \"takeCodexFromArchive\", \"number\": 59}]}]}}",
+  "Memo": "{\"number\": 53, \"type\": \"codex\", \"back\": {\"actions\": [{\"title\": \"Spawn monster\", \"removeAfterUse\": true, \"steps\": [{\"type\": \"attachMarkerToMonster\", \"monsterType\": \"aberration\", \"token\": {\"type\": \"White Marker\"}}]}, {\"title\": \"Add card 57\", \"removeAfterUse\": true, \"steps\": [{\"type\": \"takeCodexFromArchive\", \"number\": 57}]}, {\"title\": \"Add card 59\", \"removeAfterUse\": true, \"steps\": [{\"type\": \"takeCodexFromArchive\", \"number\": 59}]}]}}",
   "Name": "Card",
   "Nickname": "53",
   "SidewaysCard": false,
