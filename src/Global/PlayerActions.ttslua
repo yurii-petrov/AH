@@ -21,6 +21,126 @@ function hideHelp(player, _)
   UI.setAttribute("help_panel", "visibility", vis)
 end
 
+local PLAYER_COLORS = {"White", "Red", "Green", "Blue", "Yellow", "Purple"}
+local MAT_SPACING = 14.5
+local MAT_STAGGER_FRAMES = 8
+local PLACE_Y = 2
+
+local function lockNow(obj, thenFn)
+  gameData.lockObjs[obj.guid] = true
+  lockObj(obj.guid)
+  if thenFn then
+    thenFn()
+  end
+end
+
+local function hasTag(tagList, target)
+  if not tagList then
+    return false
+  end
+  for _, tag in ipairs(tagList) do
+    if tag == target then
+      return true
+    end
+  end
+  return false
+end
+
+local function spawnRoller(rollerBag, targetPosition, centerZ)
+  if not rollerBag then
+    return
+  end
+  rollerBag.takeObject({
+    index = 0,
+    position = {targetPosition.x, PLACE_Y, centerZ - 1.2},
+    rotation = {0, 180, 0},
+    smooth = false,
+    callback_function = function(obj)
+      lockNow(obj)
+    end
+  })
+end
+
+local function spawnCardMat(cardMatBag, targetPosition)
+  if not cardMatBag then
+    return
+  end
+  cardMatBag.takeObject({
+    index = 0,
+    position = {targetPosition.x, PLACE_Y, targetPosition.z - 7.05},
+    smooth = false,
+    callback_function = function(obj)
+      obj.setRotation({0, 180, 0})
+      obj.memo = "Items Mat"
+      lockNow(obj)
+    end
+  })
+end
+
+local function spawnMatExtras(mat, i)
+  local clueBagTemplate = getObjectFromGUID("cfa4b0")
+  if clueBagTemplate then
+    local clueBag = clueBagTemplate.takeObject({
+      index    = 0,
+      position = mat.positionToWorld({ x = -1.128, y = 0.209, z = 0.749 }):setAt("y", 2.3),
+      rotation = {0, 270, 0},
+      smooth   = false
+    })
+    if clueBag then
+      clueBag.setName(i18n.getStrById("Clue"))
+      clueBag.memo = JSON.encode({type = "player clue bag", color = PLAYER_COLORS[i]})
+      clueBag.setLock(true)
+    end
+  end
+
+  local activationTokenBag = getObjectFromGUID(TABLE_DATA.bags["Activation Token"])
+  local leaderActivationTokenBag = getObjectFromGUID(TABLE_DATA.bags["Leader Activation Token"])
+  local bag = i == 1 and leaderActivationTokenBag or activationTokenBag
+  if not bag then
+    return
+  end
+
+  local snps = mat.getSnapPoints()
+  if snps then
+    for _, snp in pairs(snps) do
+      if hasTag(snp.tags, "activation_snap") then
+        bag.takeObject({
+          index = 0,
+          position = mat.positionToWorld(snp.position:setAt("y", 3))
+        })
+      end
+    end
+  end
+end
+
+local function spawnPlayerHand(color, i, targetPosition)
+  local data = getHandData(color)
+  if data then
+    local hand = spawnObjectData({ data = data })
+    hand.setPosition({targetPosition.x, 3, -71})
+    hand.memo = "hand " .. i
+  end
+end
+
+local function spawnPlayerMat(investigatorMatBag, i, targetPosition, onMatReady)
+  local mat = investigatorMatBag.takeObject({
+    index = 0,
+    position = targetPosition,
+    smooth = false,
+    callback_function = function(obj)
+      obj.setRotation({0, 180, 0})
+      lockNow(obj, function()
+        spawnMatExtras(obj, i)
+        onMatReady()
+      end)
+    end
+  })
+
+  TABLE_DATA.players[i] = { guid = mat.getGUID(), obj = mat }
+  gameData.playerMats = gameData.playerMats or {}
+  gameData.playerMats[i] = { guid = mat.getGUID() }
+end
+
 function onClickPrepareNumberOfPlayers(onComplete)
   local investigatorMatBag = getObjectFromGUID(investigatorMatBagId)
   if not investigatorMatBag then
@@ -35,153 +155,53 @@ function onClickPrepareNumberOfPlayers(onComplete)
   local cardMatBag = getObjectFromGUID(cardMatBagId)
   local rollerBag = getObjectFromGUID(rollerBagId)
 
+  if not getObjectFromGUID(TABLE_DATA.bags["Activation Token"]) then
+    return
+  end
+  if not getObjectFromGUID(TABLE_DATA.bags["Leader Activation Token"]) then
+    return
+  end
+
   local centerPos = locationMat.getPosition()
   centerPos.z = centerPos.z - locationMat.getBoundsNormalized().size.z / 2
 
-  local spacing = 14.5
   local numPlayers = gameData.numberOfPlayers or 1
   local matsToPlace = math.min(numPlayers, 8)
 
-  local totalWidth = (matsToPlace - 1) * spacing
+  local totalWidth = (matsToPlace - 1) * MAT_SPACING
   local startX = centerPos.x - totalWidth / 2
 
-  local colors = {"White", "Red", "Green", "Blue", "Yellow", "Purple"}
-
-  local activationTokenBag = getObjectFromGUID(TABLE_DATA.bags["Activation Token"])
-
-  if not activationTokenBag then
-    return
-  end
-
-  local leaderActivationTokenBag = getObjectFromGUID(TABLE_DATA.bags["Leader Activation Token"])
-  if not leaderActivationTokenBag then
-    return
-  end
-
-  for i = 1, matsToPlace do
-
-    local xPos = startX + (i - 1) * spacing
-    local targetPosition = {
-      x = xPos,
-      y = centerPos.y + 2.1,
-      z = centerPos.z - 7.40
-    }
-
-    if rollerBag then
-      local roller = rollerBag.takeObject({
-        index = 0,
-        position = {targetPosition.x, targetPosition.y, centerPos.z - 1.2},
-        rotation = {0, 180, 0},
-        smooth = false
-      })
-      Wait.time(function()
-        gameData.lockObjs[roller.guid] = true
-        lockObj(roller.guid)
-      end, 2)
+  local matsReady = 0
+  local function onMatReady()
+    matsReady = matsReady + 1
+    if matsReady < matsToPlace then
+      return
     end
 
-    local mat = investigatorMatBag.takeObject({
-      index = 0,
-      position = targetPosition,
-      smooth = false,
-      callback_function = function(obj)
-        obj.setRotation({0, 180, 0})
-      end
-    })
-
-    TABLE_DATA.players[i] = { guid = mat.getGUID(), obj = mat }
-    gameData.playerMats = gameData.playerMats or {}
-    gameData.playerMats[i] = { guid = mat.getGUID() }
-
-    local cardMatPosition = {targetPosition.x, targetPosition.y, targetPosition.z - 7.05}
-    if cardMatBag then
-      for i = 1, 1 do
-        local cardMat = cardMatBag.takeObject {
-          index = 0,
-          position = cardMatPosition,
-          smooth = false,
-          callback_function = function(obj)
-            obj.setRotation({0, 180, 0})
-          end
-        }
-
-        cardMatPosition[3] = cardMatPosition[3] - 4.05
-        Wait.time(function()
-          cardMat.memo = "Items Mat"
-          gameData.lockObjs[cardMat.guid] = true
-          lockObj(cardMat.guid)
-        end, 2)
-      end
-    end
-
-    Wait.time(function()
-      gameData.lockObjs[mat.guid] = true
-      lockObj(mat.guid)
-
-      local clueBagTemplate = getObjectFromGUID("cfa4b0")
-      local clueBagPos = { x = -1.128, y = 0.209, z = 0.749 } 
-      local clueBagRot = {x = 0, y = 270, z = 0 }
-      
-      if clueBagTemplate then
-        local clueBag = clueBagTemplate.takeObject({
-          index    = 0,
-          position = mat.positionToWorld(clueBagPos):setAt("y", 2.3),
-          rotation = clueBagRot,
-          smooth   = false
-        })
-        
-        if clueBag then
-          clueBag.setName(i18n.getStrById("Clue"))
-          clueBag.memo = JSON.encode({type = "player clue bag", color = colors[i]})
-          clueBag.setLock(true)
-        end
-      end
-
-      local bag = i == 1 and leaderActivationTokenBag or activationTokenBag
-      local p = mat.getPosition():setAt("y", 3)
-      p.z = p.z - 6
-      p.x = p.x + 2
-      local snps = mat.getSnapPoints()
-      if snps then
-        local function hasTag(tagList, target)
-          for _, tag in ipairs(tagList) do
-            if tag == target then
-              return true
-            end
-          end
-          return false
-        end
-
-        for _, snp in pairs(snps) do
-          if hasTag(snp.tags, "activation_snap") then
-            local token = bag.takeObject({
-              index = 0,
-              position = mat.positionToWorld(snp.position:setAt("y", 3))
-            })
-          end
-        end
-      end
-    end, 2)
-
-    local color = colors[i]
-    local data = getHandData(color)
-    if data then
-      local hand = spawnObjectData({ data = data })
-      hand.setPosition({targetPosition.x, 3, -71})
-      hand.memo = "hand " .. i
-    end
-  end
-
-  Wait.time(function()
     local box = getObjectFromGUID(boxId)
     if box then
-      box.putObject(activationTokenBag)
-      box.putObject(leaderActivationTokenBag)
+      box.putObject(getObjectFromGUID(TABLE_DATA.bags["Activation Token"]))
+      box.putObject(getObjectFromGUID(TABLE_DATA.bags["Leader Activation Token"]))
     end
     if onComplete then
       onComplete()
     end
-  end, 4)
+  end
+
+  for i = 1, matsToPlace do
+    local targetPosition = {
+      x = startX + (i - 1) * MAT_SPACING,
+      y = PLACE_Y,
+      z = centerPos.z - 7.40
+    }
+
+    Wait.frames(function()
+      spawnRoller(rollerBag, targetPosition, centerPos.z)
+      spawnCardMat(cardMatBag, targetPosition)
+      spawnPlayerMat(investigatorMatBag, i, targetPosition, onMatReady)
+      spawnPlayerHand(PLAYER_COLORS[i], i, targetPosition)
+    end, (i - 1) * MAT_STAGGER_FRAMES)
+  end
 
   reassignAllPlayersToAvailableColors()
 end
