@@ -267,69 +267,129 @@ function onPlayerClickRemoveClue(obj)
   })
 end
 
-function onPlayerClickDeath(d)
-  d.player.showConfirmDialog(i18n.getStrById("LOG_confirm_death"), function()
-    local box = getObjectFromGUID(boxId)
-    if not box then
-      return
-    end
+local DEATH_CAUSE_EFFECT = {
+  death  = "Death",
+  sanity = "Insanity",
+}
 
-    local cardPosition = d.mat.positionToWorld({0.316, 2.213, 0.344})
-    local objs = findObjsInRadius(cardPosition:setAt("y", 2.2))
+local function playInvestigatorFigureEffect(figure, effectName)
+  if not figure or not figure.AssetBundle then
+    return
+  end
 
-    for _, obj in ipairs(objs) do
-      local objData = parseJson(obj.memo)
-      if d.mat.guid ~= obj.guid and tableId ~= obj.guid then
-        d.mat.call("setMemo")
-        obj.setLock(false)
-        box.putObject(obj)
+  local loopingEffects = figure.AssetBundle.getLoopingEffects()
+  if loopingEffects then
+    for _, e in ipairs(loopingEffects) do
+      if e.name == effectName then
+        figure.AssetBundle.playLoopingEffect(e.index)
+        break
       end
     end
+  end
 
-    local itemsMatPosition = {0, 0, 1.4}
-    for i = 1, 5 do
-      local objs = findObjsInRadius(d.mat.positionToWorld(itemsMatPosition):setAt("y", 2.2))
-      local itemsMatFound = false
-      for _, obj in ipairs(objs) do
-        if obj.memo and obj.memo == "Items Mat" then
-          itemsMatFound = true
-          local cards = upCast(obj, 1, nil, 1)
-          for _, card in pairs(cards) do
-            local cardData = parseJson(card.memo)
-            if cardData then
-                if card.type == "Tile" then
-                discardTile(d.player.color, card, cardData, true)
-              elseif card.type == "Card" then
-                discardCard(d.player.color, card, cardData, false)
-              elseif card.type == "Figurine" then
-                local box = getObjectFromGUID(boxId)
-                if box then
-                  box.putObject(card)
-                end
+  local triggerEffects = figure.AssetBundle.getTriggerEffects()
+  if triggerEffects then
+    for _, e in ipairs(triggerEffects) do
+      if e.name == effectName then
+        figure.AssetBundle.playTriggerEffect(e.index)
+        break
+      end
+    end
+  end
+end
+
+local function findInvestigatorAssetbundleFigurine(invName)
+  if not invName then
+    return nil
+  end
+  for _, obj in ipairs(getAllObjects()) do
+    if obj.type == "Figurine" and obj.memo == invName then
+      local ok, dataName = pcall(function() return obj.getData().Name end)
+      if ok and dataName == "Custom_Assetbundle" then
+        return obj
+      end
+    end
+  end
+  return nil
+end
+
+function onPlayerClickDeath(d)
+  local box = getObjectFromGUID(boxId)
+  if not box then
+    return
+  end
+
+  local cardPosition = d.mat.positionToWorld({0.316, 2.213, 0.344})
+  local objs = findObjsInRadius(cardPosition:setAt("y", 2.2))
+
+  local investigatorName = nil
+  for _, obj in ipairs(objs) do
+    local objData = parseJson(obj.memo)
+    if objData and objData.type == "Investigator" and objData.name then
+      investigatorName = objData.name
+    end
+  end
+
+  local effectName = DEATH_CAUSE_EFFECT[d.cause]
+  if effectName and investigatorName then
+    local figure = findInvestigatorAssetbundleFigurine(investigatorName)
+    if figure then
+      playInvestigatorFigureEffect(figure, effectName)
+    end
+  end
+
+  for _, obj in ipairs(objs) do
+    local objData = parseJson(obj.memo)
+    if d.mat.guid ~= obj.guid and tableId ~= obj.guid then
+      d.mat.call("setMemo")
+      obj.setLock(false)
+      box.putObject(obj)
+    end
+  end
+
+  local itemsMatPosition = {0, 0, 1.4}
+  for i = 1, 5 do
+    local objs = findObjsInRadius(d.mat.positionToWorld(itemsMatPosition):setAt("y", 2.2))
+    local itemsMatFound = false
+    for _, obj in ipairs(objs) do
+      if obj.memo and obj.memo == "Items Mat" then
+        itemsMatFound = true
+        local cards = upCast(obj, 1, nil, 1)
+        for _, card in pairs(cards) do
+          local cardData = parseJson(card.memo)
+          if cardData then
+              if card.type == "Tile" then
+              discardTile(d.player.color, card, cardData, true)
+            elseif card.type == "Card" then
+              discardCard(d.player.color, card, cardData, false)
+            elseif card.type == "Figurine" then
+              local box = getObjectFromGUID(boxId)
+              if box then
+                box.putObject(card)
               end
             end
           end
         end
       end
-
-      if not itemsMatFound then
-        break
-      end
-
-      itemsMatPosition[3] = itemsMatPosition[3] + 1.2
     end
 
-    for _, obj in ipairs(objs) do
-      local objData = parseJson(obj.memo)
-      if d.mat.guid ~= obj.guid and tableId ~= obj.guid then
-        box.putObject(obj)
-      end
+    if not itemsMatFound then
+      break
     end
 
-    spawnDoomTokensOnScenarioSheet(1)
+    itemsMatPosition[3] = itemsMatPosition[3] + 1.2
+  end
 
-    clearInvestigatorSlot(d.mat)
-  end)
+  for _, obj in ipairs(objs) do
+    local objData = parseJson(obj.memo)
+    if d.mat.guid ~= obj.guid and tableId ~= obj.guid then
+      box.putObject(obj)
+    end
+  end
+
+  spawnDoomTokensOnScenarioSheet(1)
+
+  clearInvestigatorSlot(d.mat)
 end
 
 function onPlayerClickBio(d)

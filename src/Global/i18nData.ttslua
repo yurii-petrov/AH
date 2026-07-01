@@ -1510,6 +1510,18 @@ I18N_DATA = {
     ["en"] = "Start of Action Phase",
     ["uk"] = "Настає фаза Дій",
   },
+  ["death_dialog_death"] = {
+    ["en"] = "Death",
+    ["uk"] = "Смерть",
+  },
+  ["death_dialog_insanity"] = {
+    ["en"] = "Insanity",
+    ["uk"] = "Божевілля",
+  },
+  ["death_dialog_title"] = {
+    ["en"] = "How did this investigator die?",
+    ["uk"] = "Від чого загинув цей слідчий?",
+  },
   ["encounter_start"] = {
     ["en"] = "Start of Encounter Phase",
     ["uk"] = "Настає фаза Зустрічей",

@@ -775,6 +775,16 @@ msgstr "Слідчого не знайдено для ролі: %s"
 msgid "LOG_confirm_death"
 msgstr "Підтвердити загибель слідчого"
 
+# Investigator death dialog
+msgid "death_dialog_title"
+msgstr "Від чого загинув цей слідчий?"
+
+msgid "death_dialog_insanity"
+msgstr "Божевілля"
+
+msgid "death_dialog_death"
+msgstr "Смерть"
+
 msgid "LOG_find_monster_header"
 msgstr "Відкриті карти монстрів:"
 

@@ -709,6 +709,16 @@ msgstr "Investigator not found for role: %s"
 msgid "LOG_confirm_death"
 msgstr "Confirm investigator death"
 
+# Investigator death dialog
+msgid "death_dialog_title"
+msgstr "How did this investigator die?"
+
+msgid "death_dialog_insanity"
+msgstr "Insanity"
+
+msgid "death_dialog_death"
+msgstr "Death"
+
 msgid "LOG_find_monster_header"
 msgstr "Revealed monster cards:"
 
