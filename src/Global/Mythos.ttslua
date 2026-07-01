@@ -92,12 +92,14 @@ function stashTerrorCardsFromDeck(deck)
   return stashPos
 end
 
-function restoreTerrorCardsToDeck(stashPos, deck)
-  if not stashPos or not deck then
+-- targetPos: world position to drop the terror card(s) back onto (usually
+-- the encounter deck's position, captured before the deck reference can go
+-- stale from further takeObject calls).
+function restoreTerrorCardsToDeck(stashPos, targetPos)
+  if not stashPos or not targetPos then
     return
   end
 
-  local deckPos = deck.getPosition()
   -- Wide radius: by restore time the stashed card/deck has settled at rest
   -- height on the mat, well below the y it was dropped at when stashed.
   for _, obj in ipairs(findObjsInRadius(stashPos, 3)) do
@@ -110,7 +112,7 @@ function restoreTerrorCardsToDeck(stashPos, deck)
     end
 
     if isTerror then
-      obj.setPositionSmooth(deckPos:setAt("y", 4))
+      obj.setPositionSmooth(targetPos:setAt("y", 4))
     end
   end
 end

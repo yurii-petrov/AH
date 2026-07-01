@@ -243,7 +243,14 @@ function mythosTileFailedAction(d)
       encounterDeck = obj; break
     end
   end
-  if not encounterDeck or #encounterDeck.getObjects() < 2 then return end
+  if not encounterDeck then return end
+
+  local stashedTerrorPos = stashTerrorCardsFromDeck(encounterDeck)
+
+  if #encounterDeck.getObjects() < 2 then
+    restoreTerrorCardsToDeck(stashedTerrorPos, encounterDeck.getPosition())
+    return
+  end
 
   local p  = encounterDeck.getPosition()
   local encMemo = parseJson(encounterDeck.memo)
@@ -253,7 +260,10 @@ function mythosTileFailedAction(d)
   local d2 = eventCard.putObject(o1).putObject(o2)
   Wait.time(function()
     d2.shuffle()
-    runAfterRest(d2, function(d2) d2.setPositionSmooth(p:setAt("y", 2.5)) end)
+    runAfterRest(d2, function(d2)
+      d2.setPositionSmooth(p:setAt("y", 2.5))
+      restoreTerrorCardsToDeck(stashedTerrorPos, p)
+    end)
   end, 1)
 end
 

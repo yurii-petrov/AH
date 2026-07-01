@@ -909,7 +909,7 @@ function spawnClue(callBack)
         foundDeck.shuffle()
         Wait.time(function()
           foundDeck.setPositionSmooth(encounterDeck.getPosition():setAt("y", 3))
-          restoreTerrorCardsToDeck(stashedTerrorPos, encounterDeck)
+          restoreTerrorCardsToDeck(stashedTerrorPos, encounterDeck.getPosition())
           Wait.time(function() callBack() end, 1)
         end, 0.7)
 
