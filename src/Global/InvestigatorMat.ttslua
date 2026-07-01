@@ -618,16 +618,19 @@ function broadcastStat(labelKey, labelFallback, value)
 end
 
 function clickDeath(player, alt_click)
-  self.UI.setAttribute("deathDialog", "active", true)
+  local isOpen = self.UI.getAttribute("deathDialog", "active") == "True"
+  self.UI.setAttribute("deathDialog", "active", not isOpen)
 end
 
 function clickDeathInsanity(player, alt_click)
   self.UI.setAttribute("deathDialog", "active", false)
+  broadcastToAll(string.format(i18n.getStrById("LOG_investigator_died_insanity"), getInvestigatorDisplayName()), "Orange")
   Global.call("onPlayerClickDeath", {mat = self, player = player, cause = "sanity"})
 end
 
 function clickDeathDeath(player, alt_click)
   self.UI.setAttribute("deathDialog", "active", false)
+  broadcastToAll(string.format(i18n.getStrById("LOG_investigator_died_death"), getInvestigatorDisplayName()), "Orange")
   Global.call("onPlayerClickDeath", {mat = self, player = player, cause = "death"})
 end
 

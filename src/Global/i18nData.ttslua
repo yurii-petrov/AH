@@ -566,9 +566,25 @@ I18N_DATA = {
     ["en"] = "\n%s gate burst!",
     ["uk"] = "\n%s прорив воріт!",
   },
+  ["LOG_investigator_detained"] = {
+    ["en"] = "%s has been detained",
+    ["uk"] = "%s затриманий(-а)",
+  },
+  ["LOG_investigator_died_death"] = {
+    ["en"] = "%s has died",
+    ["uk"] = "%s загинув(-ла)",
+  },
+  ["LOG_investigator_died_insanity"] = {
+    ["en"] = "%s has gone insane",
+    ["uk"] = "%s збожеволів(-ла)",
+  },
   ["LOG_investigator_not_found"] = {
     ["en"] = "Investigator not found for role: %s",
     ["uk"] = "Слідчого не знайдено для ролі: %s",
+  },
+  ["LOG_investigator_restored"] = {
+    ["en"] = "%s has been restored",
+    ["uk"] = "%s відновлений(-а)",
   },
   ["LOG_investigators_prepared"] = {
     ["en"] = "Investigator places are prepared",

@@ -29,15 +29,8 @@ function onPlayerAction(player, action, targets)
       if t.type == "Figurine" and (dataName == "Custom_Model" or dataName == "Custom_Assetbundle") then
         isFlip = false
         runOnceAfterRest(t, function(t)
-          print("[discard] dataName=" .. tostring(dataName) .. " hasAssetBundle=" .. tostring(t.AssetBundle ~= nil))
           if dataName == "Custom_Assetbundle" and t.AssetBundle then
             local effects = t.AssetBundle.getLoopingEffects()
-            print("[discard] getLoopingEffects=" .. tostring(effects and #effects or "nil"))
-            if effects then
-              for _, e in ipairs(effects) do
-                print("[discard] effect index=" .. tostring(e.index) .. " name=" .. tostring(e.name))
-              end
-            end
             if effects and #effects > 0 then
               local playIndex, delayIndex
               for _, e in ipairs(effects) do
@@ -53,20 +46,21 @@ function onPlayerAction(player, action, targets)
                   if e.index == 3 then delayIndex = 3 end
                 end
               end
-              print("[discard] playIndex=" .. tostring(playIndex) .. " delayIndex=" .. tostring(delayIndex))
               if playIndex and delayIndex then
                 local current = t.AssetBundle.getLoopingEffectIndex()
                 local target = current == delayIndex and playIndex or delayIndex
-                print("[discard] current=" .. tostring(current) .. " -> target=" .. tostring(target))
                 t.AssetBundle.playLoopingEffect(target)
 
-                if target == playIndex then
+                local isRestored = target == playIndex
+                local investigatorName = t.memo and i18n.getStrById(t.memo:gsub(" ", "_")) or t.memo
+                broadcastToAll(string.format(i18n.getStrById(isRestored and "LOG_investigator_restored" or
+                  "LOG_investigator_detained"), investigatorName), isRestored and "White" or "Orange")
+
+                if isRestored then
                   local triggers = t.AssetBundle.getTriggerEffects()
-                  print("[discard] getTriggerEffects=" .. tostring(triggers and #triggers or "nil"))
                   local triggerIndex
                   if triggers then
                     for _, e in ipairs(triggers) do
-                      print("[discard] trigger index=" .. tostring(e.index) .. " name=" .. tostring(e.name))
                       if e.name == "Playing" or e.name == "Idle" then
                         triggerIndex = e.index
                       end
@@ -75,7 +69,6 @@ function onPlayerAction(player, action, targets)
                       triggerIndex = triggers[1].index
                     end
                   end
-                  print("[discard] triggerIndex=" .. tostring(triggerIndex))
                   if triggerIndex then
                     t.AssetBundle.playTriggerEffect(triggerIndex)
                   end

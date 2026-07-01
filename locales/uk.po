@@ -772,8 +772,20 @@ msgstr "%s - витрачає %s $"
 msgid "LOG_investigator_not_found"
 msgstr "Слідчого не знайдено для ролі: %s"
 
+msgid "LOG_investigator_detained"
+msgstr "%s затриманий(-а)"
+
+msgid "LOG_investigator_restored"
+msgstr "%s відновлений(-а)"
+
 msgid "LOG_confirm_death"
 msgstr "Підтвердити загибель слідчого"
+
+msgid "LOG_investigator_died_insanity"
+msgstr "%s збожеволів(-ла)"
+
+msgid "LOG_investigator_died_death"
+msgstr "%s загинув(-ла)"
 
 # Investigator death dialog
 msgid "death_dialog_title"

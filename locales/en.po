@@ -706,8 +706,20 @@ msgstr "%s - spends %s $"
 msgid "LOG_investigator_not_found"
 msgstr "Investigator not found for role: %s"
 
+msgid "LOG_investigator_detained"
+msgstr "%s has been detained"
+
+msgid "LOG_investigator_restored"
+msgstr "%s has been restored"
+
 msgid "LOG_confirm_death"
 msgstr "Confirm investigator death"
+
+msgid "LOG_investigator_died_insanity"
+msgstr "%s has gone insane"
+
+msgid "LOG_investigator_died_death"
+msgstr "%s has died"
 
 # Investigator death dialog
 msgid "death_dialog_title"
