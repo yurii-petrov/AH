@@ -80,7 +80,7 @@ I18N_DATA = {
   },
   ["CODEX_return_to_archive"] = {
     ["en"] = "Return to Archive",
-    ["uk"] = "Повернути до архіву",
+    ["uk"] = "До архіву",
   },
   ["Cacophonous_Haunt"] = {
     ["en"] = "Cacophonous Haunt",

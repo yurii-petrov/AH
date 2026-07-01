@@ -788,7 +788,7 @@ msgid "LOG_find_monster_not_found"
 msgstr "%s тип - не знайдено"
 
 msgid "CODEX_return_to_archive"
-msgstr "Повернути до архіву"
+msgstr "До архіву"
 
 msgid "Patrice_Hathaway"
 msgstr "Патріс Гетевей"
