@@ -53,6 +53,68 @@ local function peekTopEventDiscardNeighborhood()
   return topData and topData.neighborhood
 end
 
+-- Terror cards land on top of an encounter deck (see below) and must be kept
+-- out of the way while spawnClue peeks/removes the top encounter cards, so
+-- they are parked above the terror deck and put back once that draw is done.
+-- Two or more stashed cards land on the exact same spot and auto-merge into
+-- a new Deck object, invalidating any individual Card references taken at
+-- stash time -- so restore looks up whatever object sits at that spot later
+-- instead of holding onto references.
+function stashTerrorCardsFromDeck(deck)
+  if not deck or deck.type ~= "Deck" then
+    return nil
+  end
+
+  local terrorDeck = getTerrorDeck()
+  if not terrorDeck then
+    return nil
+  end
+
+  local stashPos = terrorDeck.getPosition():setAt("z", terrorDeck.getPosition().z + 7):setAt("y", 3)
+
+  local objects = deck.getObjects()
+  local stashedCount = 0
+  for i = #objects, 1, -1 do
+    local data = parseJson(objects[i].memo)
+    if data and string.lower(data.type or "") == "terror" then
+      deck.takeObject({
+        index    = i - 1,
+        position = stashPos,
+      })
+      stashedCount = stashedCount + 1
+    end
+  end
+
+  if stashedCount == 0 then
+    return nil
+  end
+
+  return stashPos
+end
+
+function restoreTerrorCardsToDeck(stashPos, deck)
+  if not stashPos or not deck then
+    return
+  end
+
+  local deckPos = deck.getPosition()
+  -- Wide radius: by restore time the stashed card/deck has settled at rest
+  -- height on the mat, well below the y it was dropped at when stashed.
+  for _, obj in ipairs(findObjsInRadius(stashPos, 3)) do
+    -- Nothing but stashed terror cards (a lone Card or a merged Deck) can be
+    -- at stashPos, so a Deck is trusted as-is; a Card is still type-checked.
+    local isTerror = obj.type == "Deck"
+    if not isTerror and obj.type == "Card" then
+      local data = parseJson(obj.memo)
+      isTerror = data and string.lower(data.type or "") == "terror"
+    end
+
+    if isTerror then
+      obj.setPositionSmooth(deckPos:setAt("y", 4))
+    end
+  end
+end
+
 function processTerror(callBack)
   local neighborhoodTarget = peekTopEventDiscardNeighborhood()
     or (gameData.scenarioData and gameData.scenarioData.startingSpace)
