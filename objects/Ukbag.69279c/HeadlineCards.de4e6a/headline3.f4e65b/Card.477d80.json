@@ -24,7 +24,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"type\":\"headline\"}",
+  "Memo": "{\"type\":\"headline\",\"front\":{\"actions\":[{\"title\":\"Скинути\",\"steps\":[{\"type\":\"returnHeadline\"}]}]}}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,

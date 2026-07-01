@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"type\":\"headline\",\"front\":{\"actions\":[{\"title\":\"Дія газети\",\"description\":\"\",\"steps\":[{\"type\":\"broadcastMessage\",\"message\":\"Заголовок спрацював\"}]}]},\"back\":{\"actions\":[{\"title\":\"Скинути газету\",\"steps\":[{\"type\":\"returnHeadline\"}]}]}}",
+  "Memo": "{\"type\":\"headline\",\"front\":{\"actions\":[{\"title\":\"Дія газети\",\"description\":\"\",\"steps\":[{\"type\":\"broadcastMessage\",\"message\":\"Заголовок спрацював\"}]},{\"title\":\"Скинути\",\"steps\":[{\"type\":\"returnHeadline\"}]}]}}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,
