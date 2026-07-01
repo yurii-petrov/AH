@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"reversed\":true,\"number\":32,\"type\":\"codex\",\"back\":{\"actions\":[{\"title\":\"Відмітити\",\"removeAfterUse\":true,\"steps\":[{\"type\":\"placeTokenOnScenarioMat\",\"token\":{\"type\":\"White Marker\"},\"positionIndex\":9}]}]}}",
+  "Memo": "{\"reversed\":true,\"number\":32,\"type\":\"codex\",\"back\":{\"actions\":[{\"title\":\"Place\",\"removeAfterUse\":true,\"steps\":[{\"type\":\"placeTokenOnScenarioMat\",\"token\":{\"type\":\"White Marker\"},\"positionIndex\":9}]}]}}",
   "Name": "Card",
   "Nickname": "32",
   "SidewaysCard": false,

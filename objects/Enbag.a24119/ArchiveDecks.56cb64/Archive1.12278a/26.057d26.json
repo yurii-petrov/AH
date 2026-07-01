@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"number\":26,\"type\":\"codex\",\"back\":{\"actions\":[{\"title\":\"Виконати дії\",\"description\":\"\",\"steps\":[{\"type\":\"spawnMonsterOnLocation\",\"number\":28,\"location\":\"Historical Society\"},{\"type\":\"takeCodexFromArchive\",\"number\":27},{\"type\":\"returnCodexToArchive\"}]}]}}",
+  "Memo": "{\"number\":26,\"type\":\"codex\",\"back\":{\"actions\":[{\"title\":\"Actions\",\"description\":\"\",\"steps\":[{\"type\":\"spawnMonsterOnLocation\",\"number\":28,\"location\":\"Historical Society\"},{\"type\":\"takeCodexFromArchive\",\"number\":27},{\"type\":\"returnCodexToArchive\"}]}]}}",
   "Name": "Card",
   "Nickname": "26",
   "SidewaysCard": false,

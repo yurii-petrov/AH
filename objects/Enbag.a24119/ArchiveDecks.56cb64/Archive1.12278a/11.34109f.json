@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"number\":11,\"type\":\"codex\",\"back\":{\"actions\":[{\"title\":\"Викликати Умордота\",\"description\":\"\",\"removeAfterUse\":true,\"steps\":[{\"type\":\"spawnMonsterOnLocation\",\"number\":19,\"location\":\"Hangman's Hill\"},{\"type\":\"takeCodexFromArchive\",\"number\":18}]}]}}",
+  "Memo": "{\"number\":11,\"type\":\"codex\",\"back\":{\"actions\":[{\"title\":\"Spawn Umôrdhoth\",\"description\":\"\",\"removeAfterUse\":true,\"steps\":[{\"type\":\"spawnMonsterOnLocation\",\"number\":19,\"location\":\"Hangman's Hill\"},{\"type\":\"takeCodexFromArchive\",\"number\":18}]}]}}",
   "Name": "Card",
   "Nickname": "11",
   "SidewaysCard": false,

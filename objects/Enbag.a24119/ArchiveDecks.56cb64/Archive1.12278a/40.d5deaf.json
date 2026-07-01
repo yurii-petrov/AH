@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"elite\":4,\"hp\":8,\"monstertype\":[\"Ancient One\"],\"name\":\"Cthulhu\",\"number\":40,\"remnant\":true,\"role\":\"Monster\",\"trait\":\"Massive\",\"type\":\"codex\"}",
+  "Memo": "{\"reversed\":true,\"elite\":4,\"hp\":8,\"monstertype\":[\"Ancient One\"],\"name\":\"Cthulhu\",\"number\":40,\"remnant\":true,\"role\":\"Monster\",\"trait\":\"Massive\",\"type\":\"codex\"}",
   "Name": "Card",
   "Nickname": "40",
   "SidewaysCard": false,
