@@ -61,6 +61,7 @@ require("Global/steps/remove_neighborhood")
 require("Global/steps/remove_street")
 require("Global/steps/remove_blank_mythos_token")
 require("Global/steps/remove_doom_from_scenario_sheet")
+require("Global/steps/return_headline")
 
 -- Dispatch table: lowercased step.type -> handler.
 -- Handlers are global functions defined by the required step modules above.
@@ -104,6 +105,7 @@ local STEP_HANDLERS = {
   removestreet                      = processStepRemoveStreet,
   removeblankmythostoken            = processStepRemoveBlankMythosToken,
   removedoomfromscenariosheet       = processStepRemoveDoomFromScenarioSheet,
+  returnheadline                    = processStepReturnHeadline,
 }
 
 function processSteps(data)

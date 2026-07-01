@@ -175,10 +175,22 @@ function mythosTileCancelAction(d)
     foundObj.putObject(card)
 
   elseif cardData.type == "headline" then
+    if cardData.front or cardData.back then
+      local sourceMat = findBoardByQuery({{ field = "type", op = "eq", value = "locationMat" }})
+      if not sourceMat then return end
+
+      local freePos  = findNextFreeCodexSnapPos(sourceMat) or card.getPosition():setAt("y", 3)
+      local rotation = orient(cardData, false)
+      card.setRotation(rotation)
+      card.setPositionSmooth(freePos:setAt("y", 3))
+      runAfterRest(card, function(c) attachHeadlineCard(c, freePos, rotation) end)
+      return
+    end
+
     local locationMat = getObjectFromGUID(locationMatId)
     if not locationMat then return end
     local locationData = parseJson(locationMat.memo)
-    if not locationData and not locationData.headlinedis then return end
+    if not locationData or not locationData.headlinedis then return end
     card.setPositionSmooth(locationMat.positionToWorld(locationData.headlinedis):setAt("y", 3))
 
   elseif string.lower(cardData.type) == "terror" then

@@ -2,7 +2,7 @@
 -- │              CODEX CARD ATTACH               │
 -- ╰──────────────────────────────────────────────╯
 
-function attachCodexCard(card, spawnPos, rotation)
+function attachCodexCard(card, spawnPos, rotation, opts)
   local codexMatBag = getObjectFromGUID(codexMatBagId)
   if not codexMatBag then return end
 
@@ -36,25 +36,37 @@ function attachCodexCard(card, spawnPos, rotation)
     local params = parseJson(card.memo)
     if not params then return end
 
-    local returnToArchive = params.returnToArchive
-    if returnToArchive == nil then returnToArchive = true end
+    if not (opts and opts.noAutoReturn) then
+      local returnToArchive = params.returnToArchive
+      if returnToArchive == nil then returnToArchive = true end
 
-    if returnToArchive == true then
-      local function ensureSide(root, key)
-        root[key] = root[key] or {}
-        root[key].actions = root[key].actions or {}
-        return root[key]
+      if returnToArchive == true then
+        local function ensureSide(root, key)
+          root[key] = root[key] or {}
+          root[key].actions = root[key].actions or {}
+          return root[key]
+        end
+        local function addAction(side)
+          table.insert(side.actions, {
+            title = i18n.getStrById("CODEX_return_to_archive"),
+            steps = {{ type = "returnCodexToArchive" }}
+          })
+        end
+        addAction(ensureSide(params, "front"))
+        addAction(ensureSide(params, "back"))
       end
-      local function addAction(side)
-        table.insert(side.actions, {
-          title = i18n.getStrById("CODEX_return_to_archive"),
-          steps = {{ type = "returnCodexToArchive" }}
-        })
-      end
-      addAction(ensureSide(params, "front"))
-      addAction(ensureSide(params, "back"))
     end
 
     runAfterRest(codexMat, function(m) m.call("setCodexData", params) end)
   end
+end
+
+-- ╭──────────────────────────────────────────────╮
+-- │            HEADLINE CARD ATTACH              │
+-- ╰──────────────────────────────────────────────╯
+-- Reuses the codex mat backing for a "headline" card. No auto return action is
+-- injected — the headline's own memo drives every action (including a
+-- returnHeadline step configured with its target).
+function attachHeadlineCard(card, spawnPos, rotation)
+  attachCodexCard(card, spawnPos, rotation, { noAutoReturn = true })
 end

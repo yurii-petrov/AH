@@ -6,11 +6,14 @@
 -- has type == "codex". Several steps need to locate or detach it; this is
 -- the single source of truth for that lookup.
 
--- Returns the attachment index of the codex card on `codexMat`, or nil.
-function findCodexAttachmentIndex(codexMat)
+-- Returns the attachment index of the card whose memo type matches `attType`
+-- (default "codex") on `codexMat`, or nil. Headline mats reuse the same codex
+-- backing but keep their own attachment type, so the lookup is parametrised.
+function findCodexAttachmentIndex(codexMat, attType)
+  attType = attType or "codex"
   for _, att in ipairs(codexMat.getAttachments()) do
     local attData = parseJson(att.memo)
-    if attData and attData.type and string.lower(attData.type) == "codex" then
+    if attData and attData.type and iEquals(attData.type, attType) then
       return att.index
     end
   end
@@ -23,6 +26,21 @@ function removeCodexAttachment(codexMat)
   local index = findCodexAttachmentIndex(codexMat)
   if not index then return nil end
   return codexMat.removeAttachment(index)
+end
+
+-- Detaches the card of type `attType` from `codexMat`, destructs the now-empty
+-- mat and returns the freed (interactable) card, or nil. Used when the target
+-- is a loose slot rather than a deck (e.g. headline discard on the location mat).
+function detachCardAndDestructMat(codexMat, attType)
+  local index = findCodexAttachmentIndex(codexMat, attType)
+  if not index then return nil end
+
+  local card = codexMat.removeAttachment(index)
+  if not card then return nil end
+
+  card.interactable = true
+  codexMat.destruct()
+  return card
 end
 
 -- Detaches the codex card from `codexMat`, drops it face-down into `archive`

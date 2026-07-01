@@ -1,0 +1,55 @@
+-- ╭──────────────────────────────────────────────╮
+-- │          STEP: Return Headline               │
+-- ╰──────────────────────────────────────────────╯
+--
+-- Detaches the headline card from its (codex-style) mat, destructs the mat and
+-- drops the card onto a target slot. Fully parametrised so the memo controls
+-- what is returned and where:
+--   attachmentType : memo.type to detach from the mat        (default "headline")
+--   board          : memo.type of the board holding the slot (default "locationMat")
+--   slot           : memo field on that board with a local position (default "headlinedis")
+--   faceUp         : false to drop face-down, else face-up     (default true)
+
+function processStepReturnHeadline(step, context, onDone)
+  local codexMat = context.codexMat
+  if not codexMat then
+    log("[returnHeadline] codexMat is nil")
+    if onDone then onDone() end
+    return
+  end
+
+  local attachmentType = step.attachmentType or "headline"
+  local boardType      = step.board or "locationMat"
+  local slot           = step.slot or "headlinedis"
+
+  local board = findBoardByQuery({{ field = "type", op = "eq", value = boardType }})
+  if not board then
+    log("[returnHeadline] board '" .. boardType .. "' not found")
+    if onDone then onDone() end
+    return
+  end
+
+  local boardData = parseJson(board.memo)
+  if not boardData or not boardData[slot] then
+    log("[returnHeadline] slot '" .. slot .. "' not found on board")
+    if onDone then onDone() end
+    return
+  end
+
+  local card = detachCardAndDestructMat(codexMat, attachmentType)
+  if not card then
+    log("[returnHeadline] '" .. attachmentType .. "' card not found in attachments")
+    if onDone then onDone() end
+    return
+  end
+  context.removeAfterUse = nil
+
+  local faceUp = step.faceUp
+  if faceUp == nil then faceUp = true end
+
+  local cardData = parseJson(card.memo)
+  card.setRotation(orient(cardData, not faceUp))
+  card.setPositionSmooth(board.positionToWorld(boardData[slot]):setAt("y", 3))
+
+  if onDone then onDone() end
+end
