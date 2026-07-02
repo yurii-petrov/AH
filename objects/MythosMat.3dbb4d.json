@@ -561,29 +561,29 @@
     },
     "ImageScalar": 1,
     "ImageSecondaryURL": "",
-    "ImageURL": "https://drive.google.com/uc?export=view\u0026id=1mEle8k6MupiiWV40QI0Pysn8f_Q0_wot",
+    "ImageURL": "https://drive.google.com/uc?export=download\u0026id=1mEle8k6MupiiWV40QI0Pysn8f_Q0_wot",
     "WidthScale": 0
   },
   "CustomUIAssets": [
     {
       "Name": "success_icon",
       "Type": 0,
-      "URL": "https://drive.google.com/uc?export=view\u0026id=1TBSY-0NPCBdWWfWnsX3wdA0E_XyyZT-P"
+      "URL": "https://drive.google.com/uc?export=download\u0026id=1TBSY-0NPCBdWWfWnsX3wdA0E_XyyZT-P"
     },
     {
       "Name": "discard_icon",
       "Type": 0,
-      "URL": "https://drive.google.com/uc?export=view\u0026id=1L5IRVmKLkshXaBoRDIDmZtX-4zOi4f6-"
+      "URL": "https://drive.google.com/uc?export=download\u0026id=1L5IRVmKLkshXaBoRDIDmZtX-4zOi4f6-"
     },
     {
       "Name": "fail_icon",
       "Type": 0,
-      "URL": "https://drive.google.com/uc?export=view\u0026id=1pwW68kYHr_bYN9EsFVgR5j8E5XNt2g4o"
+      "URL": "https://drive.google.com/uc?export=download\u0026id=1pwW68kYHr_bYN9EsFVgR5j8E5XNt2g4o"
     },
     {
       "Name": "myth_slots",
       "Type": 0,
-      "URL": "https://drive.google.com/uc?export=view\u0026id=1bnd0sj5zPQGDZhnvDkv4Gr169gBwPr2T"
+      "URL": "https://drive.google.com/uc?export=download\u0026id=1bnd0sj5zPQGDZhnvDkv4Gr169gBwPr2T"
     }
   ],
   "Description": "",

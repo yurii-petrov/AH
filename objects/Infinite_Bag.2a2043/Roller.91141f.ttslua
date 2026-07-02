@@ -641,11 +641,11 @@ end
 function getDiceImage(t)
   local t = t or rollerData.type
   if t == 1 then
-    return "https://drive.google.com/uc?export=view&id=1ei-eki7jgVPGAUOgsbIb-EvYVP1qMM9u"
+    return "https://drive.google.com/uc?export=download&id=1ei-eki7jgVPGAUOgsbIb-EvYVP1qMM9u"
   elseif t == 2 then
-    return "https://drive.google.com/uc?export=view&id=1UsEVYLoPfqJNlcdP2uwVmpZ9ALgctO9L"
+    return "https://drive.google.com/uc?export=download&id=1UsEVYLoPfqJNlcdP2uwVmpZ9ALgctO9L"
   elseif t == 3 then
-    return "https://drive.google.com/uc?export=view&id=1Qh1q7YFQvBvZ1QGBxhsIMIWDsFAHdj1z"
+    return "https://drive.google.com/uc?export=download&id=1Qh1q7YFQvBvZ1QGBxhsIMIWDsFAHdj1z"
   end
 end
 

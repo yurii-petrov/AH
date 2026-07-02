@@ -19,14 +19,14 @@
     },
     "ImageScalar": 1,
     "ImageSecondaryURL": "",
-    "ImageURL": "https://drive.google.com/uc?export=view\u0026id=1Y4ZG4efiK6zPck2l9sTduxUg8sU-BBtb",
+    "ImageURL": "https://drive.google.com/uc?export=download\u0026id=1Y4ZG4efiK6zPck2l9sTduxUg8sU-BBtb",
     "WidthScale": 0
   },
   "CustomUIAssets": [
     {
       "Name": "Fonts",
       "Type": 1,
-      "URL": "https://drive.google.com/uc?export=view\u0026id=18_lFlnSaOFlbNVfE-G-LFqqfptMMkKFS"
+      "URL": "https://drive.google.com/uc?export=download\u0026id=18_lFlnSaOFlbNVfE-G-LFqqfptMMkKFS"
     }
   ],
   "Description": "",

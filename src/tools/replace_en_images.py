@@ -37,6 +37,7 @@ def extract_id(url):
 
 
 def load_excel(xlsx_path: str) -> dict:
+    
     wb = openpyxl.load_workbook(xlsx_path)
     ws = wb["Lang_Compare"]
     headers = [ws.cell(1, i + 1).value for i in range(ws.max_column)]

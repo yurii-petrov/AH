@@ -225,31 +225,31 @@ function onLoad(savedData)
         id = "focusLore",
         text = data.focus.lore,
         color = "#382c52",
-        image = "https://drive.google.com/uc?export=view&id=1Aq7R2-Kn4pe9yuyoIZV8naOhq6YrMT8R"
+        image = "https://drive.google.com/uc?export=download&id=1Aq7R2-Kn4pe9yuyoIZV8naOhq6YrMT8R"
     },
     {
         id = "focusInfluence",
         text = data.focus.influence,
         color = "#62280f",
-        image = "https://drive.google.com/uc?export=view&id=10SIQclth2ivBx6Djk-lh823F6Qe3SCEY"
+        image = "https://drive.google.com/uc?export=download&id=10SIQclth2ivBx6Djk-lh823F6Qe3SCEY"
     },
     {
         id = "focusObservation",
         text = data.focus.observation,
         color = "#233c14",
-        image = "https://drive.google.com/uc?export=view&id=19hQ8ski6BMqvThDkDC1YKEsyeqwI8eBF"
+        image = "https://drive.google.com/uc?export=download&id=19hQ8ski6BMqvThDkDC1YKEsyeqwI8eBF"
     }, 
     {
         id = "focusStrength",
         text = data.focus.strength,
         color = "#582410",
-        image = "https://drive.google.com/uc?export=view&id=14jdG30fw691zUYlpcCh5gE4OThSdoY8j"
+        image = "https://drive.google.com/uc?export=download&id=14jdG30fw691zUYlpcCh5gE4OThSdoY8j"
     },
     {
         id = "focusWill",
         text = data.focus.will,
         color = "#333c4f",
-        image = "https://drive.google.com/uc?export=view&id=1UsLCEiQw_xPXWf8ToTVhrUA_lyHJ4Wpe"
+        image = "https://drive.google.com/uc?export=download&id=1UsLCEiQw_xPXWf8ToTVhrUA_lyHJ4Wpe"
     }
   }
 

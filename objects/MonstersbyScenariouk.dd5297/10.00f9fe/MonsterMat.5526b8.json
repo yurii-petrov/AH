@@ -22,8 +22,8 @@
       "CustomDeck": {
         "5864": {
           "BackIsHidden": true,
-          "BackURL": "https://drive.google.com/uc?export=view\u0026id=1WwLFuHfzG-ntWosEDqwkLexfECleOytv",
-          "FaceURL": "https://drive.google.com/uc?export=view\u0026id=1sbV0JISfGN6i85ULSwgNDeVJ2-vFnbMT",
+          "BackURL": "https://drive.google.com/uc?export=download\u0026id=1WwLFuHfzG-ntWosEDqwkLexfECleOytv",
+          "FaceURL": "https://drive.google.com/uc?export=download\u0026id=1sbV0JISfGN6i85ULSwgNDeVJ2-vFnbMT",
           "NumHeight": 3,
           "NumWidth": 7,
           "Type": 0,
@@ -81,8 +81,8 @@
       "CustomDeck": {
         "5864": {
           "BackIsHidden": true,
-          "BackURL": "https://drive.google.com/uc?export=view\u0026id=1WwLFuHfzG-ntWosEDqwkLexfECleOytv",
-          "FaceURL": "https://drive.google.com/uc?export=view\u0026id=1sbV0JISfGN6i85ULSwgNDeVJ2-vFnbMT",
+          "BackURL": "https://drive.google.com/uc?export=download\u0026id=1WwLFuHfzG-ntWosEDqwkLexfECleOytv",
+          "FaceURL": "https://drive.google.com/uc?export=download\u0026id=1sbV0JISfGN6i85ULSwgNDeVJ2-vFnbMT",
           "NumHeight": 3,
           "NumWidth": 7,
           "Type": 0,
@@ -139,14 +139,14 @@
     },
     "ImageScalar": 1,
     "ImageSecondaryURL": "",
-    "ImageURL": "https://drive.google.com/uc?export=view\u0026id=1Y4ZG4efiK6zPck2l9sTduxUg8sU-BBtb",
+    "ImageURL": "https://drive.google.com/uc?export=download\u0026id=1Y4ZG4efiK6zPck2l9sTduxUg8sU-BBtb",
     "WidthScale": 0
   },
   "CustomUIAssets": [
     {
       "Name": "Fonts",
       "Type": 1,
-      "URL": "https://drive.google.com/uc?export=view\u0026id=18_lFlnSaOFlbNVfE-G-LFqqfptMMkKFS"
+      "URL": "https://drive.google.com/uc?export=download\u0026id=18_lFlnSaOFlbNVfE-G-LFqqfptMMkKFS"
     }
   ],
   "Description": "",

@@ -201,19 +201,19 @@
     },
     "ImageScalar": 1,
     "ImageSecondaryURL": "",
-    "ImageURL": "https://drive.google.com/uc?export=view\u0026id=1H60oUe7H8DSF1-gz6MjQr5Pcd-jbkWKS",
+    "ImageURL": "https://drive.google.com/uc?export=download\u0026id=1H60oUe7H8DSF1-gz6MjQr5Pcd-jbkWKS",
     "WidthScale": 0
   },
   "CustomUIAssets": [
     {
       "Name": "reeoll_icon",
       "Type": 0,
-      "URL": "https://drive.google.com/uc?export=view\u0026id=1ezIviP4ov0vARD5GBuExTCpPsMbBGL0B"
+      "URL": "https://drive.google.com/uc?export=download\u0026id=1ezIviP4ov0vARD5GBuExTCpPsMbBGL0B"
     },
     {
       "Name": "Fonts",
       "Type": 1,
-      "URL": "https://drive.google.com/uc?export=view\u0026id=18_lFlnSaOFlbNVfE-G-LFqqfptMMkKFS"
+      "URL": "https://drive.google.com/uc?export=download\u0026id=18_lFlnSaOFlbNVfE-G-LFqqfptMMkKFS"
     }
   ],
   "Description": "",

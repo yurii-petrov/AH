@@ -201,14 +201,14 @@
     },
     "ImageScalar": 1,
     "ImageSecondaryURL": "",
-    "ImageURL": "https://drive.google.com/uc?export=view\u0026id=1MprDIapt9_jwBuvQC9BM23HdyEEz0VC5",
+    "ImageURL": "https://drive.google.com/uc?export=download\u0026id=1MprDIapt9_jwBuvQC9BM23HdyEEz0VC5",
     "WidthScale": 0
   },
   "CustomUIAssets": [
     {
       "Name": "cards_icon",
       "Type": 0,
-      "URL": "https://drive.google.com/uc?export=view\u0026id=1P_bTtQ38TT0v5Fm1s632XzyV7KHLPa_s"
+      "URL": "https://drive.google.com/uc?export=download\u0026id=1P_bTtQ38TT0v5Fm1s632XzyV7KHLPa_s"
     }
   ],
   "Description": "",
