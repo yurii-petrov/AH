@@ -2,6 +2,7 @@
 TTSModManager.exe
 .venv/
 src/ConvertMemo/objects/
+/assets/
 # Cursor / Claude AI config
 .cursor/
 .claude/
@@ -10,3 +11,4 @@ src/ConvertMemo/objects/
 CLAUDE.md
 memory/
 src/tools/assets_tts_url.xlsx
+src/tools/index.json

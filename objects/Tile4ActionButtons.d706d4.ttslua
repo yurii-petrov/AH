@@ -1,9 +1,9 @@
 local buttonDefs = {
-  { id = "clue",    label = "Підказка",  position = "300 0 -11",   onClick = "clue_process",    image = "https://drive.google.com/uc?export=download&id=1Muxb5-td9ayvSRto02B5DIlRoWkyM4Op",  imageHover = "https://drive.google.com/uc?export=download&id=1Tz2_Pj2A2tSq8PoCjnpiP1byVOJyhEQq" },
-  { id = "doom",    label = "Загибель",  position = "150 0 -11",   onClick = "doom_process",    image = "https://drive.google.com/uc?export=download&id=1evqiJTx9JKJ8LLxXV77ua-eptdeZ4liH",  imageHover = "https://drive.google.com/uc?export=download&id=1c87UT-jjwzT8HTe6M1qYACRMKo298ASf" },
-  { id = "monster", label = "Монстр",    position = "0 0 -11",     onClick = "monster_process", image = "https://drive.google.com/uc?export=download&id=1dgeevtKAVcc_FLWnVUiSTEUfzbQAI2RW",  imageHover = "https://drive.google.com/uc?export=download&id=1nD2sGK5GhakVDs94LRE1T1zAPEgvdElH" },
-  { id = "gate",    label = "Портал",    position = "-150 0 -11",  onClick = "gate_process",    image = "https://drive.google.com/uc?export=download&id=13qSYeFgVOoONVb1gF6f_l5MgiD2UXk5b",  imageHover = "https://drive.google.com/uc?export=download&id=1XxN5Q4F8-AHhI1GYVaKOZLmD-MOWLHj4" },
-  { id = "terror",  label = "Жах",       position = "-300 0 -11",  onClick = "terror_process",  image = "https://drive.google.com/uc?export=download&id=1_hWznoT2dz_4VfDCfFyHfA4nurtRkaSw",  imageHover = "https://drive.google.com/uc?export=download&id=1em0nkMgejMKFNX9JHNWRXbi3-q9-QObv" },
+  { id = "clue",    label = "Підказка",  position = "300 0 -11",   onClick = "clue_process",    image = "additional_buttons_2",  imageHover = "additional_buttons_2_hover" },
+  { id = "doom",    label = "Загибель",  position = "150 0 -11",   onClick = "doom_process",    image = "additional_buttons_3",  imageHover = "additional_buttons_3_hover" },
+  { id = "monster", label = "Монстр",    position = "0 0 -11",     onClick = "monster_process", image = "additional_buttons_4",  imageHover = "additional_buttons_4_hover" },
+  { id = "gate",    label = "Портал",    position = "-150 0 -11",  onClick = "gate_process",    image = "additional_buttons_5",  imageHover = "additional_buttons_5_hover" },
+  { id = "terror",  label = "Жах",       position = "-300 0 -11",  onClick = "terror_process",  image = "additional_buttons_1",  imageHover = "additional_buttons_1_hover" },
 }
 
 local style = {

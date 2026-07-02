@@ -144,6 +144,34 @@
         "cwd": "${workspaceFolder}/src/ConvertMemo"
       },
       "problemMatcher": []
+    },
+
+    {
+      "label": "Arkham Horror: Use Local Assets",
+      "type": "shell",
+      "windows": {
+        "command": "py",
+        "args": ["${workspaceFolder}\\src\\tools\\apply_asset_source.py", "--local", "--apply"]
+      },
+      "osx": {
+        "command": "${workspaceFolder}/.venv/bin/python",
+        "args": ["${workspaceFolder}/src/tools/apply_asset_source.py", "--local", "--apply"]
+      },
+      "problemMatcher": []
+    },
+
+    {
+      "label": "Arkham Horror: Use Google Drive Links",
+      "type": "shell",
+      "windows": {
+        "command": "py",
+        "args": ["${workspaceFolder}\\src\\tools\\apply_asset_source.py", "--drive", "--apply"]
+      },
+      "osx": {
+        "command": "${workspaceFolder}/.venv/bin/python",
+        "args": ["${workspaceFolder}/src/tools/apply_asset_source.py", "--drive", "--apply"]
+      },
+      "problemMatcher": []
     }
   ]
 }
