@@ -120,11 +120,11 @@
       "type": "shell",
       "osx": {
         "command": "${workspaceFolder}/.venv/bin/python",
-        "args": ["${workspaceFolder}/src/tools/replace_en_images.py"]
+        "args": ["${workspaceFolder}/src/tools/replace_en_images.py", "${input:replaceEnTargetDir}", "--apply"]
       },
       "windows": {
         "command": "py",
-        "args": ["${workspaceFolder}\\src\\tools\\replace_en_images.py"]
+        "args": ["${workspaceFolder}\\src\\tools\\replace_en_images.py", "${input:replaceEnTargetDir}", "--apply"]
       },
       "problemMatcher": []
     },
@@ -172,6 +172,14 @@
         "args": ["${workspaceFolder}/src/tools/apply_asset_source.py", "--drive", "--apply"]
       },
       "problemMatcher": []
+    }
+  ],
+  "inputs": [
+    {
+      "id": "replaceEnTargetDir",
+      "type": "promptString",
+      "description": "Target objects/ folder (relative to repo root) to swap /uk/ asset paths to /en/",
+      "default": "objects/Enbag.a24119"
     }
   ]
 }

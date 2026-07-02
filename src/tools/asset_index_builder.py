@@ -569,6 +569,11 @@ def scan():
 
             walk(content, file_path, index, tts_index, local_files)
 
+    # Drop stale entries for files that were renamed/deleted since the last
+    # indexed run — otherwise merge-on-load_index() keeps them forever.
+    for stale_path in [p for p in index if not os.path.isfile(p)]:
+        del index[stale_path]
+
     return index
 
 

@@ -1,0 +1,69 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "ContainedObjects_order": [
+    "Card.7e2467",
+    "Card.0cc27c",
+    "Card.3d8674"
+  ],
+  "ContainedObjects_path": "Random.764e39",
+  "CustomDeck": {
+    "5865": {
+      "BackIsHidden": true,
+      "BackURL": "https://drive.google.com/uc?export=download&id=16XanwWYMNcc3KITys4iIivanMCsdvB20",
+      "FaceURL": "https://drive.google.com/uc?export=download&id=1kVDtT7ObearY_ritYQUKescO8cwP7krV",
+      "NumHeight": 4,
+      "NumWidth": 5,
+      "Type": 0,
+      "UniqueBack": true
+    }
+  },
+  "DeckIDs": [
+    586513,
+    586512,
+    586511
+  ],
+  "Description": "1 - location\nall - monster",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "764e39",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Memo": "{\"reversed\":true,\"type\":\"monster\"}",
+  "Name": "Deck",
+  "Nickname": "Random",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": -5.946,
+    "posY": 4.294,
+    "posZ": 21.679,
+    "rotX": 1,
+    "rotY": 180,
+    "rotZ": 182,
+    "scaleX": 1,
+    "scaleY": 1,
+    "scaleZ": 1
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

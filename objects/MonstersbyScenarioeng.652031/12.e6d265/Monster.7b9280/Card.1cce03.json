@@ -1,0 +1,62 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "CardID": 586506,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "CustomDeck": {
+    "5865": {
+      "BackIsHidden": true,
+      "BackURL": "https://drive.google.com/uc?export=download&id=16XanwWYMNcc3KITys4iIivanMCsdvB20",
+      "FaceURL": "https://drive.google.com/uc?export=download&id=1kVDtT7ObearY_ritYQUKescO8cwP7krV",
+      "NumHeight": 4,
+      "NumWidth": 5,
+      "Type": 0,
+      "UniqueBack": true
+    }
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "1cce03",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": true,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Memo": "{\"reversed\":true,\"type\":\"DoubleSided\",\"back\":{\"name\":\"Haunting Dead\",\"monstertype\":[\"Troubled Spirit\"],\"type\":\"Monster\"},\"front\":{\"sp\":2,\"type\":\"Ally\"}}",
+  "Name": "Card",
+  "Nickname": "",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "item_magnet"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": -11.102,
+    "posY": 2.241,
+    "posZ": -23.111,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 181,
+    "scaleX": 1,
+    "scaleY": 1,
+    "scaleZ": 1
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

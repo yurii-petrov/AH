@@ -1,0 +1,66 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "Bag": {
+    "Order": 0
+  },
+  "ColorDiffuse": {
+    "b": 0,
+    "g": 0.36652,
+    "r": 0.70588
+  },
+  "ContainedObjects_order": [
+    "13.74952d",
+    "12.e6d265",
+    "11.072f0b",
+    "10.00f9fe",
+    "9.eeee52",
+    "8.bcd4a9",
+    "7.26d351",
+    "6.d748bc",
+    "5.55cdf7",
+    "4.2bde1a",
+    "3.445bb5",
+    "2.79b565",
+    "1.1c23d2"
+  ],
+  "ContainedObjects_path": "MonstersbyScenarioeng.652031",
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "652031",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": true,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MaterialIndex": -1,
+  "MeasureMovement": false,
+  "MeshIndex": -1,
+  "Name": "Bag",
+  "Nickname": "Monsters by Scenario (eng)",
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": false,
+  "Transform": {
+    "posX": -17.055,
+    "posY": -1,
+    "posZ": -20.408,
+    "rotX": 0,
+    "rotY": 0,
+    "rotZ": 0,
+    "scaleX": 1,
+    "scaleY": 1,
+    "scaleZ": 1
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

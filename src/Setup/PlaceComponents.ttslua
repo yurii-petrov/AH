@@ -537,7 +537,8 @@ local function prepareMonsterDeck(done)
   local scenarioData = gameData.scenarioData
   if not scenarioData then done() return end
 
-  local monstersObj = getObjectFromGUID(monstersbyScenarioUkId)
+  local monstersByScenarioGuid = gameData.language == "en" and monstersbyScenarioEngId or monstersbyScenarioUkId
+  local monstersObj = getObjectFromGUID(monstersByScenarioGuid)
   if not monstersObj then done() return end
 
   local scenarioBag

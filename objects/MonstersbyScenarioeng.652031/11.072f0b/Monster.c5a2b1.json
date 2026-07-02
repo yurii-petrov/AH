@@ -1,0 +1,90 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "ContainedObjects_order": [
+    "Card.32c18f",
+    "Card.cdc98d",
+    "Card.99de98",
+    "Card.500798",
+    "Card.9278d1",
+    "Card.29d03f",
+    "Card.c43096",
+    "Card.a69f9d",
+    "Card.33f3f7"
+  ],
+  "ContainedObjects_path": "Monster.c5a2b1",
+  "CustomDeck": {
+    "5798": {
+      "BackIsHidden": true,
+      "BackURL": "https://drive.google.com/uc?export=download&id=1nqwJwxG7rqKmhXoDWYcoZKrx8Y8XdU9y",
+      "FaceURL": "https://drive.google.com/uc?export=download&id=1orUfeKB4AVIhb6ZS-PouGRoUKGdb8HKA",
+      "NumHeight": 7,
+      "NumWidth": 9,
+      "Type": 0,
+      "UniqueBack": true
+    },
+    "5865": {
+      "BackIsHidden": true,
+      "BackURL": "https://drive.google.com/uc?export=download&id=16XanwWYMNcc3KITys4iIivanMCsdvB20",
+      "FaceURL": "https://drive.google.com/uc?export=download&id=1kVDtT7ObearY_ritYQUKescO8cwP7krV",
+      "NumHeight": 4,
+      "NumWidth": 5,
+      "Type": 0,
+      "UniqueBack": true
+    }
+  },
+  "DeckIDs": [
+    586515,
+    586514,
+    586517,
+    586516,
+    579812,
+    579851,
+    579811,
+    579829,
+    579817
+  ],
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "c5a2b1",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Memo": "{\"reversed\":true,\"type\":\"monster\"}",
+  "Name": "Deck",
+  "Nickname": "Monster",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": -6.68,
+    "posY": 4.336,
+    "posZ": 21.591,
+    "rotX": 1,
+    "rotY": 180,
+    "rotZ": 179,
+    "scaleX": 1,
+    "scaleY": 1,
+    "scaleZ": 1
+  },
+  "Value": 0,
+  "XmlUI": ""
+}
