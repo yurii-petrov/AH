@@ -14,7 +14,7 @@
 
     {
       "label": "_prepare_project",
-      "dependsOn": ["_sync_po", "_convert_po", "_go_build"],
+      "dependsOn": ["_sync_po", "_convert_po", "_go_build", "_go_build_done"],
       "dependsOrder": "sequence",
       "problemMatcher": []
     },
@@ -76,9 +76,37 @@
     },
 
     {
+      "label": "_go_build_done",
+      "type": "shell",
+      "windows": {
+        "command": "py",
+        "args": ["${workspaceFolder}\\src\\tools\\box_echo.py", "MOD BUILD SUCCESS"]
+      },
+      "osx": {
+        "command": "${workspaceFolder}/.venv/bin/python",
+        "args": ["${workspaceFolder}/src/tools/box_echo.py", "MOD BUILD SUCCESS"]
+      },
+      "problemMatcher": []
+    },
+
+    {
       "label": "Arkham Horror: Decompose",
-      "dependsOn": ["_clean_objects", "_decompose", "_index_assets", "_add_download_links"],
+      "dependsOn": ["_clean_objects", "_decompose", "_index_assets", "_add_download_links", "_decompose_done"],
       "dependsOrder": "sequence",
+      "problemMatcher": []
+    },
+
+    {
+      "label": "_decompose_done",
+      "type": "shell",
+      "windows": {
+        "command": "py",
+        "args": ["${workspaceFolder}\\src\\tools\\box_echo.py", "DECOMPOSE SUCCESS"]
+      },
+      "osx": {
+        "command": "${workspaceFolder}/.venv/bin/python",
+        "args": ["${workspaceFolder}/src/tools/box_echo.py", "DECOMPOSE SUCCESS"]
+      },
       "problemMatcher": []
     },
 
@@ -159,6 +187,13 @@
 
     {
       "label": "Arkham Horror: Sync Lua → JSON",
+      "dependsOn": ["_sync_lua_to_json", "_sync_lua_to_json_done"],
+      "dependsOrder": "sequence",
+      "problemMatcher": []
+    },
+
+    {
+      "label": "_sync_lua_to_json",
       "type": "shell",
       "windows": {
         "command": "py",
@@ -175,7 +210,28 @@
     },
 
     {
+      "label": "_sync_lua_to_json_done",
+      "type": "shell",
+      "windows": {
+        "command": "py",
+        "args": ["${workspaceFolder}\\src\\tools\\box_echo.py", "LUA -> JSON SYNC SUCCESS"]
+      },
+      "osx": {
+        "command": "${workspaceFolder}/.venv/bin/python",
+        "args": ["${workspaceFolder}/src/tools/box_echo.py", "LUA -> JSON SYNC SUCCESS"]
+      },
+      "problemMatcher": []
+    },
+
+    {
       "label": "Arkham Horror: Replace EN Images",
+      "dependsOn": ["_replace_en_images", "_replace_en_images_done"],
+      "dependsOrder": "sequence",
+      "problemMatcher": []
+    },
+
+    {
+      "label": "_replace_en_images",
       "type": "shell",
       "osx": {
         "command": "${workspaceFolder}/.venv/bin/python",
@@ -189,7 +245,28 @@
     },
 
     {
+      "label": "_replace_en_images_done",
+      "type": "shell",
+      "windows": {
+        "command": "py",
+        "args": ["${workspaceFolder}\\src\\tools\\box_echo.py", "EN IMAGES REPLACED"]
+      },
+      "osx": {
+        "command": "${workspaceFolder}/.venv/bin/python",
+        "args": ["${workspaceFolder}/src/tools/box_echo.py", "EN IMAGES REPLACED"]
+      },
+      "problemMatcher": []
+    },
+
+    {
       "label": "Arkham Horror: Parse Memo",
+      "dependsOn": ["_parse_memo", "_parse_memo_done"],
+      "dependsOrder": "sequence",
+      "problemMatcher": []
+    },
+
+    {
+      "label": "_parse_memo",
       "type": "shell",
       "windows": {
         "command": "py",
@@ -201,6 +278,20 @@
       },
       "options": {
         "cwd": "${workspaceFolder}/src/ConvertMemo"
+      },
+      "problemMatcher": []
+    },
+
+    {
+      "label": "_parse_memo_done",
+      "type": "shell",
+      "windows": {
+        "command": "py",
+        "args": ["${workspaceFolder}\\src\\tools\\box_echo.py", "MEMO PARSE SUCCESS"]
+      },
+      "osx": {
+        "command": "${workspaceFolder}/.venv/bin/python",
+        "args": ["${workspaceFolder}/src/tools/box_echo.py", "MEMO PARSE SUCCESS"]
       },
       "problemMatcher": []
     },

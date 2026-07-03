@@ -47,9 +47,7 @@ def main():
     with open(INDEX_FILE, "w", encoding="utf-8") as f:
         json.dump(index, f, indent=2, ensure_ascii=False)
 
-    print("DONE")
-    print("Download links available:", len(links))
-    print("Asset entries matched:", matched)
+    print(f"index.json updated success. ({matched}/{len(links)} download links matched)")
 
 
 if __name__ == "__main__":

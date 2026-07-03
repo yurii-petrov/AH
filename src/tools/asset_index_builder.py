@@ -476,6 +476,40 @@ def fill_google_metadata(asset_google, tts_index):
         asset_google["drivePath"] = info["drivePath"]
 
 
+def has_local_coverage(asset):
+    return bool(
+        asset["google"].get("local")
+        or asset["steam"].get("local")
+        or asset["other"].get("link")
+    )
+
+
+def inherit_local_from_sibling(asset, assets, source, url):
+    """Backfill local/gUrl from another asset in the same file that's
+    already known to have this exact link, when `asset` itself has none yet
+    — e.g. two ChildObjects entries (two Card instances sharing one card
+    back image) legitimately embed the identical CustomDeck URL at two
+    distinct targets, but only one of them was ever actually downloaded/
+    localized."""
+    if has_local_coverage(asset):
+        return
+
+    carry_key = "_gurl" if source == "google" else "_steam_url"
+    for sibling in assets:
+        if sibling is asset:
+            continue
+        if not has_local_coverage(sibling):
+            continue
+        if sibling[source].get("link") == url or sibling.get(carry_key) == url:
+            asset["google"]["local"] = sibling["google"].get("local")
+            asset["google"]["drivePath"] = sibling["google"].get("drivePath")
+            asset["steam"]["local"] = sibling["steam"].get("local")
+            asset["other"]["link"] = sibling["other"].get("link")
+            asset["_gurl"] = asset.get("_gurl") or sibling.get("_gurl")
+            asset["_steam_url"] = asset.get("_steam_url") or sibling.get("_steam_url")
+            return
+
+
 def add_asset(index, file_path, source, url, target, tts_index, local_files, files_index):
     if file_path not in index:
         index[file_path] = {
@@ -484,6 +518,21 @@ def add_asset(index, file_path, source, url, target, tts_index, local_files, fil
         }
 
     assets = index[file_path]["assets"]
+
+    # Fall back to matching by the *link itself* when no asset has this exact
+    # target yet — a target-key scheme change (e.g. switching a JSON array
+    # from positional indices to a stable "Name" key, as happened once
+    # already) otherwise orphans the old entry's local/gUrl and silently
+    # starts the new-target entry from scratch with nothing but the URL just
+    # found in the file's current text.
+    if not any(asset["target"] == target for asset in assets):
+        # _gurl/_steam_url (not google["link"]/steam["link"], which only hold
+        # a link *confirmed this scan*) carry the value loaded from disk.
+        carry_key = "_gurl" if source == "google" else "_steam_url"
+        for asset in assets:
+            if asset.get(carry_key) == url and asset["target"] != target:
+                asset["target"] = target
+                break
 
     # find existing by target
     for asset in assets:
@@ -510,6 +559,8 @@ def add_asset(index, file_path, source, url, target, tts_index, local_files, fil
 
             if source == "steam":
                 asset[source]["id"] = extract_steam_id(url)
+
+            inherit_local_from_sibling(asset, assets, source, url)
 
             return
 
@@ -548,6 +599,8 @@ def add_asset(index, file_path, source, url, target, tts_index, local_files, fil
     elif source == "steam":
         new_asset[source]["id"] = extract_steam_id(url)
 
+    inherit_local_from_sibling(new_asset, assets, source, url)
+
     assets.append(new_asset)
 
 
@@ -563,15 +616,27 @@ def walk(obj, file_path, index, tts_index, local_files, files_index, path=None, 
             walk(v, file_path, index, tts_index, local_files, files_index, path + [k], visited)
 
     elif isinstance(obj, list):
+        # A raw list index is an unstable identity: inserting, removing, or
+        # reordering entries silently reassigns which asset a given position
+        # refers to, so a brand-new entry can inherit a stale sibling's
+        # local/gUrl/steamUrl (this is exactly what happened to a
+        # newly-appended CustomUIAssets entry landing on an old, orphaned
+        # index). Prefer the entry's own "Name" when it has one — stable
+        # regardless of position — but only when it's actually unique within
+        # this list: TTS object lists (e.g. ChildObjects) commonly hold
+        # several sibling entries all named after their generic type
+        # ("Card", "Custom_Tile", ...), and keying by a non-unique Name would
+        # collapse two distinct objects onto the same target, silently
+        # discarding one's local/gUrl/steamUrl instead of the other's.
+        name_counts = {}
+        for v in obj:
+            if isinstance(v, dict) and isinstance(v.get("Name"), str):
+                name_counts[v["Name"]] = name_counts.get(v["Name"], 0) + 1
+
         for i, v in enumerate(obj):
-            # A raw list index is an unstable identity: inserting, removing,
-            # or reordering entries silently reassigns which asset a given
-            # position refers to, so a brand-new entry can inherit a stale
-            # sibling's local/gUrl/steamUrl (this is exactly what happened to
-            # a newly-appended CustomUIAssets entry landing on an old,
-            # long-orphaned index). Prefer the entry's own "Name" when it has
-            # one — stable regardless of position.
-            key = v["Name"] if isinstance(v, dict) and isinstance(v.get("Name"), str) else i
+            key = i
+            if isinstance(v, dict) and isinstance(v.get("Name"), str) and name_counts[v["Name"]] == 1:
+                key = v["Name"]
             walk(v, file_path, index, tts_index, local_files, files_index, path + [key], visited)
 
     elif isinstance(obj, str):
@@ -686,8 +751,7 @@ def main():
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
         json.dump(output, f, indent=2, ensure_ascii=False)
 
-    print("DONE")
-    print("Files:", len(index))
+    print(f"index.json updated success. ({len(index)} files scanned)")
 
 
 if __name__ == "__main__":

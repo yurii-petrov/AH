@@ -20,14 +20,11 @@ def sync_and_reorder_files():
         print(f"Error: Master file '{MASTER_PO_FILE}' not found in '{script_dir}'.")
         return
 
-    print(f"Loading master file: {MASTER_PO_FILE}")
     try:
         master_po = polib.pofile(master_path)
     except Exception as e:
         print(f"Could not read master file. Error: {e}")
         return
-
-    print(f"Found {len(master_po)} strings in master file.")
 
     # --- Iterate over all other .po files in the directory ---
     for filename in os.listdir(script_dir):
@@ -35,7 +32,6 @@ def sync_and_reorder_files():
             continue
 
         target_path = os.path.join(script_dir, filename)
-        print(f"\n--- Processing '{filename}' ---")
 
         try:
             target_po = polib.pofile(target_path)
@@ -46,7 +42,6 @@ def sync_and_reorder_files():
 
             # This list will hold the newly ordered entries.
             new_ordered_entries = []
-            new_strings_count = 0
 
             # Reorder and Sync based on master file
             for master_entry in master_po:
@@ -64,7 +59,6 @@ def sync_and_reorder_files():
                         flags=master_entry.flags,
                     )
                     new_ordered_entries.append(new_entry)
-                    new_strings_count += 1
 
             # Check if the order has changed or if new strings were added.
             if len(target_po) != len(new_ordered_entries) or [
@@ -73,22 +67,15 @@ def sync_and_reorder_files():
                 target_po.clear()
                 target_po.extend(new_ordered_entries)
                 made_changes = True
-                if new_strings_count > 0:
-                    print(f"  + Synced and ordered {new_strings_count} new string(s).")
-                else:
-                    print("  * Reordered strings to match master file.")
 
             # Save if anything changed
             if made_changes:
-                print("  -> Saving changes...")
                 target_po.save(target_path)
-            else:
-                print("  -> File is up to date.")
 
         except Exception as e:
             print(f"Error processing file {filename}: {e}")
 
-    print("\nSynchronization and reordering complete!")
+    print("po files sync success.")
 
 
 if __name__ == "__main__":

@@ -45,6 +45,8 @@
             "Fonts",
             "URL"
           ],
+          "local": "assets/fonts/font_list.unity3d",
+          "gUrl": "https://drive.google.com/uc?export=download&id=136ZvlP_d9WqvYyBvwTGldulgXGsm6V0Y",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18387726393550310454/A578781E3315E733B9148B3F6DF2B249F8E5C9F4/"
         }
       ]
@@ -95,6 +97,8 @@
             "Fonts",
             "URL"
           ],
+          "local": "assets/fonts/font_list.unity3d",
+          "gUrl": "https://drive.google.com/uc?export=download&id=136ZvlP_d9WqvYyBvwTGldulgXGsm6V0Y",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18387726393550310454/A578781E3315E733B9148B3F6DF2B249F8E5C9F4/"
         }
       ]
@@ -117,6 +121,8 @@
             "Fonts",
             "URL"
           ],
+          "local": "assets/fonts/font_list.unity3d",
+          "gUrl": "https://drive.google.com/uc?export=download&id=136ZvlP_d9WqvYyBvwTGldulgXGsm6V0Y",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18387726393550310454/A578781E3315E733B9148B3F6DF2B249F8E5C9F4/"
         }
       ]
@@ -139,6 +145,8 @@
             "cards_icon",
             "URL"
           ],
+          "local": "assets/other_graphics/cards_icon.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1d9Pl24tX5ZR7po6s1w6InFJIr9BwPNVy",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10408952947598427217/424BE53C1078CD55AE672983BF5F81FDD5CA4324/"
         }
       ]
@@ -175,6 +183,8 @@
             "Fonts",
             "URL"
           ],
+          "local": "assets/fonts/font_list.unity3d",
+          "gUrl": "https://drive.google.com/uc?export=download&id=136ZvlP_d9WqvYyBvwTGldulgXGsm6V0Y",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18387726393550310454/A578781E3315E733B9148B3F6DF2B249F8E5C9F4/"
         }
       ]
@@ -280,6 +290,8 @@
             "Fonts",
             "URL"
           ],
+          "local": "assets/fonts/font_list.unity3d",
+          "gUrl": "https://drive.google.com/uc?export=download&id=136ZvlP_d9WqvYyBvwTGldulgXGsm6V0Y",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18387726393550310454/A578781E3315E733B9148B3F6DF2B249F8E5C9F4/"
         }
       ]
@@ -302,6 +314,8 @@
             "Fonts",
             "URL"
           ],
+          "local": "assets/fonts/font_list.unity3d",
+          "gUrl": "https://drive.google.com/uc?export=download&id=136ZvlP_d9WqvYyBvwTGldulgXGsm6V0Y",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18387726393550310454/A578781E3315E733B9148B3F6DF2B249F8E5C9F4/"
         }
       ]
@@ -338,6 +352,8 @@
             "success_icon",
             "URL"
           ],
+          "local": "assets/other_graphics/success.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1L7AZa56r3BBoQNviWpQS-y4ekER_Lpfq",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10151014189290626376/58E4451E7523BC52C0D4CDBFA0458C786AF6E4D8/"
         },
         {
@@ -346,6 +362,8 @@
             "discard_icon",
             "URL"
           ],
+          "local": "assets/other_graphics/discard.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1DuOIUR-za6c00dL_N3xbcpSRDCS8pol6",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14421964689492510289/C13A5A578F3A5D4E2B7F6DF6499FEFB4B980A884/"
         },
         {
@@ -354,6 +372,8 @@
             "fail_icon",
             "URL"
           ],
+          "local": "assets/other_graphics/fail.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1aqkaxfsTttxo1jfa4ma9VArcZ6WXy5Fw",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/9963488286847697072/FC0356EFD31B243D9D7BE96B8578493117C56A5C/"
         },
         {
@@ -362,6 +382,8 @@
             "myth_slots",
             "URL"
           ],
+          "local": "assets/other_graphics/token_slot_2.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1VYV4mgJSams5SMFYTASL0D9xJN7-Ap0y",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/11907850477784915952/43E1F877797D2A71087DBE0EDD4C169A317F74C6/"
         }
       ]
@@ -504,6 +526,8 @@
             "reeoll_icon",
             "URL"
           ],
+          "local": "assets/other_graphics/reroll.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1Rha9juxzF8VfGoOjl_qtnbjJo6qGYNAw",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16490829221783702583/8BD1DD77360E9A59859D4BAFCC1A162991D8C5D2/"
         },
         {
@@ -512,6 +536,8 @@
             "Fonts",
             "URL"
           ],
+          "local": "assets/fonts/font_list.unity3d",
+          "gUrl": "https://drive.google.com/uc?export=download&id=136ZvlP_d9WqvYyBvwTGldulgXGsm6V0Y",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18387726393550310454/A578781E3315E733B9148B3F6DF2B249F8E5C9F4/"
         }
       ]
@@ -576,6 +602,8 @@
             "cards_icon",
             "URL"
           ],
+          "local": "assets/other_graphics/cards_icon.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1d9Pl24tX5ZR7po6s1w6InFJIr9BwPNVy",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10408952947598427217/424BE53C1078CD55AE672983BF5F81FDD5CA4324/"
         }
       ]
@@ -612,6 +640,8 @@
             "Fonts",
             "URL"
           ],
+          "local": "assets/fonts/font_list.unity3d",
+          "gUrl": "https://drive.google.com/uc?export=download&id=136ZvlP_d9WqvYyBvwTGldulgXGsm6V0Y",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18387726393550310454/A578781E3315E733B9148B3F6DF2B249F8E5C9F4/"
         }
       ]
@@ -5940,6 +5970,8 @@
             "button_large_i",
             "URL"
           ],
+          "local": "assets/other_graphics/btn_bg.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1eQwzn6uIfVOJL9kGvNGHJSR2buGwo_V8",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12987736360294212435/6E9A02B21622878E9973D39F6785B3535FED021B/"
         },
         {
@@ -5948,6 +5980,8 @@
             "Fonts",
             "URL"
           ],
+          "local": "assets/fonts/font_list.unity3d",
+          "gUrl": "https://drive.google.com/uc?export=download&id=136ZvlP_d9WqvYyBvwTGldulgXGsm6V0Y",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18387726393550310454/A578781E3315E733B9148B3F6DF2B249F8E5C9F4/"
         }
       ]
@@ -31806,6 +31840,8 @@
             "Fonts",
             "URL"
           ],
+          "local": "assets/fonts/font_list.unity3d",
+          "gUrl": "https://drive.google.com/uc?export=download&id=136ZvlP_d9WqvYyBvwTGldulgXGsm6V0Y",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18387726393550310454/A578781E3315E733B9148B3F6DF2B249F8E5C9F4/"
         }
       ]
@@ -31973,21 +32009,25 @@
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5798",
             "BackURL"
           ],
+          "local": "assets/cards/0_base/uk/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1tvk-LqPPszWWTeHmWmRAuVdp7EId43Mh",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15716916044391762845/B229E49CF55E2F02B1283EC55915467504300A70/"
         },
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5798",
             "FaceURL"
           ],
+          "local": "assets/cards/0_base/uk/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1FbKdZTNMIwdeetCPsi-NX8bjgJcuIWmo",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16399548818406396612/760B24A37605A57F4F3E3BD70040B305729E99AD/"
         },
         {
@@ -31996,7 +32036,33 @@
             "Fonts",
             "URL"
           ],
+          "local": "assets/fonts/font_list.unity3d",
+          "gUrl": "https://drive.google.com/uc?export=download&id=136ZvlP_d9WqvYyBvwTGldulgXGsm6V0Y",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18387726393550310454/A578781E3315E733B9148B3F6DF2B249F8E5C9F4/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5798",
+            "BackURL"
+          ],
+          "local": "assets/cards/0_base/uk/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1tvk-LqPPszWWTeHmWmRAuVdp7EId43Mh",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15716916044391762845/B229E49CF55E2F02B1283EC55915467504300A70/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5798",
+            "FaceURL"
+          ],
+          "local": "assets/cards/0_base/uk/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1FbKdZTNMIwdeetCPsi-NX8bjgJcuIWmo",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16399548818406396612/760B24A37605A57F4F3E3BD70040B305729E99AD/"
         }
       ]
     },
@@ -32015,21 +32081,25 @@
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5804",
             "BackURL"
           ],
+          "local": "assets/cards/1_dead_of_night/uk/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1fD-8lSkoEv_THIk9ZzuUErOJDr42fNOR",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12113548486962268938/BC8500B25643C59AA67B81DBBDCE739EDFC3DCE5/"
         },
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5804",
             "FaceURL"
           ],
+          "local": "assets/cards/1_dead_of_night/uk/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1Oo-wU9Xta__rCpNVctlffQLMR3aWDqmv",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12559641758348254897/3676AA275E9C599FB2E87C7EDD466A0D05BCC5E1/"
         },
         {
@@ -32038,7 +32108,33 @@
             "Fonts",
             "URL"
           ],
+          "local": "assets/fonts/font_list.unity3d",
+          "gUrl": "https://drive.google.com/uc?export=download&id=136ZvlP_d9WqvYyBvwTGldulgXGsm6V0Y",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18387726393550310454/A578781E3315E733B9148B3F6DF2B249F8E5C9F4/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5804",
+            "BackURL"
+          ],
+          "local": "assets/cards/1_dead_of_night/uk/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1fD-8lSkoEv_THIk9ZzuUErOJDr42fNOR",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12113548486962268938/BC8500B25643C59AA67B81DBBDCE739EDFC3DCE5/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5804",
+            "FaceURL"
+          ],
+          "local": "assets/cards/1_dead_of_night/uk/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1Oo-wU9Xta__rCpNVctlffQLMR3aWDqmv",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12559641758348254897/3676AA275E9C599FB2E87C7EDD466A0D05BCC5E1/"
         }
       ]
     },
@@ -33147,21 +33243,25 @@
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5798",
             "BackURL"
           ],
+          "local": "assets/cards/0_base/uk/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1tvk-LqPPszWWTeHmWmRAuVdp7EId43Mh",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15716916044391762845/B229E49CF55E2F02B1283EC55915467504300A70/"
         },
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5798",
             "FaceURL"
           ],
+          "local": "assets/cards/0_base/uk/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1FbKdZTNMIwdeetCPsi-NX8bjgJcuIWmo",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16399548818406396612/760B24A37605A57F4F3E3BD70040B305729E99AD/"
         },
         {
@@ -33170,7 +33270,33 @@
             "Fonts",
             "URL"
           ],
+          "local": "assets/fonts/font_list.unity3d",
+          "gUrl": "https://drive.google.com/uc?export=download&id=136ZvlP_d9WqvYyBvwTGldulgXGsm6V0Y",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18387726393550310454/A578781E3315E733B9148B3F6DF2B249F8E5C9F4/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5798",
+            "BackURL"
+          ],
+          "local": "assets/cards/0_base/uk/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1tvk-LqPPszWWTeHmWmRAuVdp7EId43Mh",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15716916044391762845/B229E49CF55E2F02B1283EC55915467504300A70/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5798",
+            "FaceURL"
+          ],
+          "local": "assets/cards/0_base/uk/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1FbKdZTNMIwdeetCPsi-NX8bjgJcuIWmo",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16399548818406396612/760B24A37605A57F4F3E3BD70040B305729E99AD/"
         }
       ]
     },
@@ -33214,21 +33340,25 @@
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5798",
             "BackURL"
           ],
+          "local": "assets/cards/0_base/uk/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1tvk-LqPPszWWTeHmWmRAuVdp7EId43Mh",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15716916044391762845/B229E49CF55E2F02B1283EC55915467504300A70/"
         },
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5798",
             "FaceURL"
           ],
+          "local": "assets/cards/0_base/uk/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1FbKdZTNMIwdeetCPsi-NX8bjgJcuIWmo",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16399548818406396612/760B24A37605A57F4F3E3BD70040B305729E99AD/"
         },
         {
@@ -33237,7 +33367,33 @@
             "Fonts",
             "URL"
           ],
+          "local": "assets/fonts/font_list.unity3d",
+          "gUrl": "https://drive.google.com/uc?export=download&id=136ZvlP_d9WqvYyBvwTGldulgXGsm6V0Y",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18387726393550310454/A578781E3315E733B9148B3F6DF2B249F8E5C9F4/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5798",
+            "BackURL"
+          ],
+          "local": "assets/cards/0_base/uk/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1tvk-LqPPszWWTeHmWmRAuVdp7EId43Mh",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15716916044391762845/B229E49CF55E2F02B1283EC55915467504300A70/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5798",
+            "FaceURL"
+          ],
+          "local": "assets/cards/0_base/uk/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1FbKdZTNMIwdeetCPsi-NX8bjgJcuIWmo",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16399548818406396612/760B24A37605A57F4F3E3BD70040B305729E99AD/"
         }
       ]
     },
@@ -33731,21 +33887,25 @@
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5798",
             "BackURL"
           ],
+          "local": "assets/cards/0_base/uk/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1tvk-LqPPszWWTeHmWmRAuVdp7EId43Mh",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15716916044391762845/B229E49CF55E2F02B1283EC55915467504300A70/"
         },
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5798",
             "FaceURL"
           ],
+          "local": "assets/cards/0_base/uk/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1FbKdZTNMIwdeetCPsi-NX8bjgJcuIWmo",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16399548818406396612/760B24A37605A57F4F3E3BD70040B305729E99AD/"
         },
         {
@@ -33754,7 +33914,33 @@
             "Fonts",
             "URL"
           ],
+          "local": "assets/fonts/font_list.unity3d",
+          "gUrl": "https://drive.google.com/uc?export=download&id=136ZvlP_d9WqvYyBvwTGldulgXGsm6V0Y",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18387726393550310454/A578781E3315E733B9148B3F6DF2B249F8E5C9F4/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5798",
+            "BackURL"
+          ],
+          "local": "assets/cards/0_base/uk/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1tvk-LqPPszWWTeHmWmRAuVdp7EId43Mh",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15716916044391762845/B229E49CF55E2F02B1283EC55915467504300A70/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5798",
+            "FaceURL"
+          ],
+          "local": "assets/cards/0_base/uk/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1FbKdZTNMIwdeetCPsi-NX8bjgJcuIWmo",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16399548818406396612/760B24A37605A57F4F3E3BD70040B305729E99AD/"
         }
       ]
     },
@@ -33773,21 +33959,25 @@
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5798",
             "BackURL"
           ],
+          "local": "assets/cards/0_base/uk/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1tvk-LqPPszWWTeHmWmRAuVdp7EId43Mh",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15716916044391762845/B229E49CF55E2F02B1283EC55915467504300A70/"
         },
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5798",
             "FaceURL"
           ],
+          "local": "assets/cards/0_base/uk/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1FbKdZTNMIwdeetCPsi-NX8bjgJcuIWmo",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16399548818406396612/760B24A37605A57F4F3E3BD70040B305729E99AD/"
         },
         {
@@ -33796,7 +33986,33 @@
             "Fonts",
             "URL"
           ],
+          "local": "assets/fonts/font_list.unity3d",
+          "gUrl": "https://drive.google.com/uc?export=download&id=136ZvlP_d9WqvYyBvwTGldulgXGsm6V0Y",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18387726393550310454/A578781E3315E733B9148B3F6DF2B249F8E5C9F4/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5798",
+            "BackURL"
+          ],
+          "local": "assets/cards/0_base/uk/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1tvk-LqPPszWWTeHmWmRAuVdp7EId43Mh",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15716916044391762845/B229E49CF55E2F02B1283EC55915467504300A70/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5798",
+            "FaceURL"
+          ],
+          "local": "assets/cards/0_base/uk/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1FbKdZTNMIwdeetCPsi-NX8bjgJcuIWmo",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16399548818406396612/760B24A37605A57F4F3E3BD70040B305729E99AD/"
         }
       ]
     },
@@ -34290,21 +34506,25 @@
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5864",
             "BackURL"
           ],
+          "local": "assets/cards/2_under_dark_waves/uk/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1uoatFHSPqBlUsotxCTYCaanZX0AQi5mq",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17321219662975601297/573C26990A2432D394F67343BE856989FF20DF86/"
         },
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5864",
             "FaceURL"
           ],
+          "local": "assets/cards/2_under_dark_waves/uk/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1UpTLDp9ggyWvyxSHBRk4_XdiLTIyjXFy",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14224808500703212238/F151E9AFBCBA24DA12D8FFA3EA5BDB268B6CDD87/"
         },
         {
@@ -34313,7 +34533,33 @@
             "Fonts",
             "URL"
           ],
+          "local": "assets/fonts/font_list.unity3d",
+          "gUrl": "https://drive.google.com/uc?export=download&id=136ZvlP_d9WqvYyBvwTGldulgXGsm6V0Y",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18387726393550310454/A578781E3315E733B9148B3F6DF2B249F8E5C9F4/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5864",
+            "BackURL"
+          ],
+          "local": "assets/cards/2_under_dark_waves/uk/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1uoatFHSPqBlUsotxCTYCaanZX0AQi5mq",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17321219662975601297/573C26990A2432D394F67343BE856989FF20DF86/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5864",
+            "FaceURL"
+          ],
+          "local": "assets/cards/2_under_dark_waves/uk/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1UpTLDp9ggyWvyxSHBRk4_XdiLTIyjXFy",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14224808500703212238/F151E9AFBCBA24DA12D8FFA3EA5BDB268B6CDD87/"
         }
       ]
     },
@@ -34377,21 +34623,25 @@
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5864",
             "BackURL"
           ],
+          "local": "assets/cards/2_under_dark_waves/uk/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1uoatFHSPqBlUsotxCTYCaanZX0AQi5mq",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17321219662975601297/573C26990A2432D394F67343BE856989FF20DF86/"
         },
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5864",
             "FaceURL"
           ],
+          "local": "assets/cards/2_under_dark_waves/uk/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1UpTLDp9ggyWvyxSHBRk4_XdiLTIyjXFy",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14224808500703212238/F151E9AFBCBA24DA12D8FFA3EA5BDB268B6CDD87/"
         },
         {
@@ -34400,7 +34650,33 @@
             "Fonts",
             "URL"
           ],
+          "local": "assets/fonts/font_list.unity3d",
+          "gUrl": "https://drive.google.com/uc?export=download&id=136ZvlP_d9WqvYyBvwTGldulgXGsm6V0Y",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18387726393550310454/A578781E3315E733B9148B3F6DF2B249F8E5C9F4/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5864",
+            "BackURL"
+          ],
+          "local": "assets/cards/2_under_dark_waves/uk/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1uoatFHSPqBlUsotxCTYCaanZX0AQi5mq",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17321219662975601297/573C26990A2432D394F67343BE856989FF20DF86/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5864",
+            "FaceURL"
+          ],
+          "local": "assets/cards/2_under_dark_waves/uk/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1UpTLDp9ggyWvyxSHBRk4_XdiLTIyjXFy",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14224808500703212238/F151E9AFBCBA24DA12D8FFA3EA5BDB268B6CDD87/"
         }
       ]
     },
@@ -34769,21 +35045,25 @@
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5798",
             "BackURL"
           ],
+          "local": "assets/cards/0_base/uk/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1tvk-LqPPszWWTeHmWmRAuVdp7EId43Mh",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15716916044391762845/B229E49CF55E2F02B1283EC55915467504300A70/"
         },
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5798",
             "FaceURL"
           ],
+          "local": "assets/cards/0_base/uk/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1FbKdZTNMIwdeetCPsi-NX8bjgJcuIWmo",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16399548818406396612/760B24A37605A57F4F3E3BD70040B305729E99AD/"
         },
         {
@@ -34792,7 +35072,33 @@
             "Fonts",
             "URL"
           ],
+          "local": "assets/fonts/font_list.unity3d",
+          "gUrl": "https://drive.google.com/uc?export=download&id=136ZvlP_d9WqvYyBvwTGldulgXGsm6V0Y",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18387726393550310454/A578781E3315E733B9148B3F6DF2B249F8E5C9F4/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5798",
+            "BackURL"
+          ],
+          "local": "assets/cards/0_base/uk/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1tvk-LqPPszWWTeHmWmRAuVdp7EId43Mh",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15716916044391762845/B229E49CF55E2F02B1283EC55915467504300A70/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5798",
+            "FaceURL"
+          ],
+          "local": "assets/cards/0_base/uk/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1FbKdZTNMIwdeetCPsi-NX8bjgJcuIWmo",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16399548818406396612/760B24A37605A57F4F3E3BD70040B305729E99AD/"
         }
       ]
     },
@@ -34856,21 +35162,25 @@
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5865",
             "BackURL"
           ],
+          "local": "assets/cards/3_secrets_of_the_order/uk/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1WZVlxpc7xT1gHbXekLnxx2Fv_mFZ4Yr9",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17697114792223368506/6DFC82117C86B58B28E7FAD55B739F397A5793B0/"
         },
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5865",
             "FaceURL"
           ],
+          "local": "assets/cards/3_secrets_of_the_order/uk/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1FKBsBIEzqnYGIJ_E7jRHWpWCgikxb6uz",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15417797749374349608/621628DAC73E2AEB26622C4B07B11F30002ACA4F/"
         },
         {
@@ -34879,7 +35189,33 @@
             "Fonts",
             "URL"
           ],
+          "local": "assets/fonts/font_list.unity3d",
+          "gUrl": "https://drive.google.com/uc?export=download&id=136ZvlP_d9WqvYyBvwTGldulgXGsm6V0Y",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18387726393550310454/A578781E3315E733B9148B3F6DF2B249F8E5C9F4/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5865",
+            "BackURL"
+          ],
+          "local": "assets/cards/3_secrets_of_the_order/uk/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1WZVlxpc7xT1gHbXekLnxx2Fv_mFZ4Yr9",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17697114792223368506/6DFC82117C86B58B28E7FAD55B739F397A5793B0/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5865",
+            "FaceURL"
+          ],
+          "local": "assets/cards/3_secrets_of_the_order/uk/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1FKBsBIEzqnYGIJ_E7jRHWpWCgikxb6uz",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15417797749374349608/621628DAC73E2AEB26622C4B07B11F30002ACA4F/"
         }
       ]
     },
@@ -35393,21 +35729,25 @@
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5864",
             "BackURL"
           ],
+          "local": "assets/cards/2_under_dark_waves/uk/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1uoatFHSPqBlUsotxCTYCaanZX0AQi5mq",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17321219662975601297/573C26990A2432D394F67343BE856989FF20DF86/"
         },
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5864",
             "FaceURL"
           ],
+          "local": "assets/cards/2_under_dark_waves/uk/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1UpTLDp9ggyWvyxSHBRk4_XdiLTIyjXFy",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14224808500703212238/F151E9AFBCBA24DA12D8FFA3EA5BDB268B6CDD87/"
         },
         {
@@ -35416,7 +35756,33 @@
             "Fonts",
             "URL"
           ],
+          "local": "assets/fonts/font_list.unity3d",
+          "gUrl": "https://drive.google.com/uc?export=download&id=136ZvlP_d9WqvYyBvwTGldulgXGsm6V0Y",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18387726393550310454/A578781E3315E733B9148B3F6DF2B249F8E5C9F4/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5864",
+            "BackURL"
+          ],
+          "local": "assets/cards/2_under_dark_waves/uk/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1uoatFHSPqBlUsotxCTYCaanZX0AQi5mq",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17321219662975601297/573C26990A2432D394F67343BE856989FF20DF86/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5864",
+            "FaceURL"
+          ],
+          "local": "assets/cards/2_under_dark_waves/uk/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1UpTLDp9ggyWvyxSHBRk4_XdiLTIyjXFy",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14224808500703212238/F151E9AFBCBA24DA12D8FFA3EA5BDB268B6CDD87/"
         }
       ]
     },
@@ -35435,21 +35801,25 @@
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5864",
             "BackURL"
           ],
+          "local": "assets/cards/2_under_dark_waves/uk/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1uoatFHSPqBlUsotxCTYCaanZX0AQi5mq",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17321219662975601297/573C26990A2432D394F67343BE856989FF20DF86/"
         },
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5864",
             "FaceURL"
           ],
+          "local": "assets/cards/2_under_dark_waves/uk/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1UpTLDp9ggyWvyxSHBRk4_XdiLTIyjXFy",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14224808500703212238/F151E9AFBCBA24DA12D8FFA3EA5BDB268B6CDD87/"
         },
         {
@@ -35458,7 +35828,33 @@
             "Fonts",
             "URL"
           ],
+          "local": "assets/fonts/font_list.unity3d",
+          "gUrl": "https://drive.google.com/uc?export=download&id=136ZvlP_d9WqvYyBvwTGldulgXGsm6V0Y",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18387726393550310454/A578781E3315E733B9148B3F6DF2B249F8E5C9F4/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5864",
+            "BackURL"
+          ],
+          "local": "assets/cards/2_under_dark_waves/uk/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1uoatFHSPqBlUsotxCTYCaanZX0AQi5mq",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17321219662975601297/573C26990A2432D394F67343BE856989FF20DF86/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5864",
+            "FaceURL"
+          ],
+          "local": "assets/cards/2_under_dark_waves/uk/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1UpTLDp9ggyWvyxSHBRk4_XdiLTIyjXFy",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14224808500703212238/F151E9AFBCBA24DA12D8FFA3EA5BDB268B6CDD87/"
         }
       ]
     },
@@ -35927,21 +36323,25 @@
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5798",
             "BackURL"
           ],
+          "local": "assets/cards/0_base/uk/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1tvk-LqPPszWWTeHmWmRAuVdp7EId43Mh",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15716916044391762845/B229E49CF55E2F02B1283EC55915467504300A70/"
         },
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5798",
             "FaceURL"
           ],
+          "local": "assets/cards/0_base/uk/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1FbKdZTNMIwdeetCPsi-NX8bjgJcuIWmo",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16399548818406396612/760B24A37605A57F4F3E3BD70040B305729E99AD/"
         },
         {
@@ -35950,7 +36350,33 @@
             "Fonts",
             "URL"
           ],
+          "local": "assets/fonts/font_list.unity3d",
+          "gUrl": "https://drive.google.com/uc?export=download&id=136ZvlP_d9WqvYyBvwTGldulgXGsm6V0Y",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18387726393550310454/A578781E3315E733B9148B3F6DF2B249F8E5C9F4/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5798",
+            "BackURL"
+          ],
+          "local": "assets/cards/0_base/uk/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1tvk-LqPPszWWTeHmWmRAuVdp7EId43Mh",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15716916044391762845/B229E49CF55E2F02B1283EC55915467504300A70/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5798",
+            "FaceURL"
+          ],
+          "local": "assets/cards/0_base/uk/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1FbKdZTNMIwdeetCPsi-NX8bjgJcuIWmo",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16399548818406396612/760B24A37605A57F4F3E3BD70040B305729E99AD/"
         }
       ]
     },
@@ -35969,21 +36395,25 @@
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5798",
             "BackURL"
           ],
+          "local": "assets/cards/0_base/uk/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1tvk-LqPPszWWTeHmWmRAuVdp7EId43Mh",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15716916044391762845/B229E49CF55E2F02B1283EC55915467504300A70/"
         },
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5798",
             "FaceURL"
           ],
+          "local": "assets/cards/0_base/uk/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1FbKdZTNMIwdeetCPsi-NX8bjgJcuIWmo",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16399548818406396612/760B24A37605A57F4F3E3BD70040B305729E99AD/"
         },
         {
@@ -35992,7 +36422,33 @@
             "Fonts",
             "URL"
           ],
+          "local": "assets/fonts/font_list.unity3d",
+          "gUrl": "https://drive.google.com/uc?export=download&id=136ZvlP_d9WqvYyBvwTGldulgXGsm6V0Y",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18387726393550310454/A578781E3315E733B9148B3F6DF2B249F8E5C9F4/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5798",
+            "BackURL"
+          ],
+          "local": "assets/cards/0_base/uk/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1tvk-LqPPszWWTeHmWmRAuVdp7EId43Mh",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15716916044391762845/B229E49CF55E2F02B1283EC55915467504300A70/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5798",
+            "FaceURL"
+          ],
+          "local": "assets/cards/0_base/uk/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1FbKdZTNMIwdeetCPsi-NX8bjgJcuIWmo",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16399548818406396612/760B24A37605A57F4F3E3BD70040B305729E99AD/"
         }
       ]
     },
@@ -36561,21 +37017,25 @@
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5798",
             "BackURL"
           ],
+          "local": "assets/cards/0_base/uk/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1tvk-LqPPszWWTeHmWmRAuVdp7EId43Mh",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15716916044391762845/B229E49CF55E2F02B1283EC55915467504300A70/"
         },
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5798",
             "FaceURL"
           ],
+          "local": "assets/cards/0_base/uk/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1FbKdZTNMIwdeetCPsi-NX8bjgJcuIWmo",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16399548818406396612/760B24A37605A57F4F3E3BD70040B305729E99AD/"
         },
         {
@@ -36584,7 +37044,33 @@
             "Fonts",
             "URL"
           ],
+          "local": "assets/fonts/font_list.unity3d",
+          "gUrl": "https://drive.google.com/uc?export=download&id=136ZvlP_d9WqvYyBvwTGldulgXGsm6V0Y",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18387726393550310454/A578781E3315E733B9148B3F6DF2B249F8E5C9F4/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5798",
+            "BackURL"
+          ],
+          "local": "assets/cards/0_base/uk/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1tvk-LqPPszWWTeHmWmRAuVdp7EId43Mh",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15716916044391762845/B229E49CF55E2F02B1283EC55915467504300A70/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5798",
+            "FaceURL"
+          ],
+          "local": "assets/cards/0_base/uk/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1FbKdZTNMIwdeetCPsi-NX8bjgJcuIWmo",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16399548818406396612/760B24A37605A57F4F3E3BD70040B305729E99AD/"
         }
       ]
     },
@@ -36603,21 +37089,25 @@
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5798",
             "BackURL"
           ],
+          "local": "assets/cards/0_base/uk/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1tvk-LqPPszWWTeHmWmRAuVdp7EId43Mh",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15716916044391762845/B229E49CF55E2F02B1283EC55915467504300A70/"
         },
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5798",
             "FaceURL"
           ],
+          "local": "assets/cards/0_base/uk/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1FbKdZTNMIwdeetCPsi-NX8bjgJcuIWmo",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16399548818406396612/760B24A37605A57F4F3E3BD70040B305729E99AD/"
         },
         {
@@ -36626,7 +37116,33 @@
             "Fonts",
             "URL"
           ],
+          "local": "assets/fonts/font_list.unity3d",
+          "gUrl": "https://drive.google.com/uc?export=download&id=136ZvlP_d9WqvYyBvwTGldulgXGsm6V0Y",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18387726393550310454/A578781E3315E733B9148B3F6DF2B249F8E5C9F4/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5798",
+            "BackURL"
+          ],
+          "local": "assets/cards/0_base/uk/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1tvk-LqPPszWWTeHmWmRAuVdp7EId43Mh",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15716916044391762845/B229E49CF55E2F02B1283EC55915467504300A70/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5798",
+            "FaceURL"
+          ],
+          "local": "assets/cards/0_base/uk/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1FbKdZTNMIwdeetCPsi-NX8bjgJcuIWmo",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16399548818406396612/760B24A37605A57F4F3E3BD70040B305729E99AD/"
         }
       ]
     },
@@ -36995,21 +37511,25 @@
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5804",
             "BackURL"
           ],
+          "local": "assets/cards/1_dead_of_night/uk/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1fD-8lSkoEv_THIk9ZzuUErOJDr42fNOR",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12113548486962268938/BC8500B25643C59AA67B81DBBDCE739EDFC3DCE5/"
         },
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5804",
             "FaceURL"
           ],
+          "local": "assets/cards/1_dead_of_night/uk/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1Oo-wU9Xta__rCpNVctlffQLMR3aWDqmv",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12559641758348254897/3676AA275E9C599FB2E87C7EDD466A0D05BCC5E1/"
         },
         {
@@ -37018,7 +37538,33 @@
             "Fonts",
             "URL"
           ],
+          "local": "assets/fonts/font_list.unity3d",
+          "gUrl": "https://drive.google.com/uc?export=download&id=136ZvlP_d9WqvYyBvwTGldulgXGsm6V0Y",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18387726393550310454/A578781E3315E733B9148B3F6DF2B249F8E5C9F4/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5804",
+            "BackURL"
+          ],
+          "local": "assets/cards/1_dead_of_night/uk/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1fD-8lSkoEv_THIk9ZzuUErOJDr42fNOR",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12113548486962268938/BC8500B25643C59AA67B81DBBDCE739EDFC3DCE5/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5804",
+            "FaceURL"
+          ],
+          "local": "assets/cards/1_dead_of_night/uk/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1Oo-wU9Xta__rCpNVctlffQLMR3aWDqmv",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12559641758348254897/3676AA275E9C599FB2E87C7EDD466A0D05BCC5E1/"
         }
       ]
     },
@@ -37062,21 +37608,25 @@
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5804",
             "BackURL"
           ],
+          "local": "assets/cards/1_dead_of_night/uk/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1fD-8lSkoEv_THIk9ZzuUErOJDr42fNOR",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12113548486962268938/BC8500B25643C59AA67B81DBBDCE739EDFC3DCE5/"
         },
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5804",
             "FaceURL"
           ],
+          "local": "assets/cards/1_dead_of_night/uk/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1Oo-wU9Xta__rCpNVctlffQLMR3aWDqmv",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12559641758348254897/3676AA275E9C599FB2E87C7EDD466A0D05BCC5E1/"
         },
         {
@@ -37085,7 +37635,33 @@
             "Fonts",
             "URL"
           ],
+          "local": "assets/fonts/font_list.unity3d",
+          "gUrl": "https://drive.google.com/uc?export=download&id=136ZvlP_d9WqvYyBvwTGldulgXGsm6V0Y",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18387726393550310454/A578781E3315E733B9148B3F6DF2B249F8E5C9F4/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5804",
+            "BackURL"
+          ],
+          "local": "assets/cards/1_dead_of_night/uk/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1fD-8lSkoEv_THIk9ZzuUErOJDr42fNOR",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12113548486962268938/BC8500B25643C59AA67B81DBBDCE739EDFC3DCE5/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5804",
+            "FaceURL"
+          ],
+          "local": "assets/cards/1_dead_of_night/uk/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1Oo-wU9Xta__rCpNVctlffQLMR3aWDqmv",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12559641758348254897/3676AA275E9C599FB2E87C7EDD466A0D05BCC5E1/"
         }
       ]
     },
@@ -37674,21 +38250,25 @@
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5798",
             "BackURL"
           ],
+          "local": "assets/cards/0_base/uk/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1tvk-LqPPszWWTeHmWmRAuVdp7EId43Mh",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15716916044391762845/B229E49CF55E2F02B1283EC55915467504300A70/"
         },
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5798",
             "FaceURL"
           ],
+          "local": "assets/cards/0_base/uk/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1FbKdZTNMIwdeetCPsi-NX8bjgJcuIWmo",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16399548818406396612/760B24A37605A57F4F3E3BD70040B305729E99AD/"
         },
         {
@@ -37697,7 +38277,33 @@
             "Fonts",
             "URL"
           ],
+          "local": "assets/fonts/font_list.unity3d",
+          "gUrl": "https://drive.google.com/uc?export=download&id=136ZvlP_d9WqvYyBvwTGldulgXGsm6V0Y",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18387726393550310454/A578781E3315E733B9148B3F6DF2B249F8E5C9F4/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5798",
+            "BackURL"
+          ],
+          "local": "assets/cards/0_base/uk/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1tvk-LqPPszWWTeHmWmRAuVdp7EId43Mh",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15716916044391762845/B229E49CF55E2F02B1283EC55915467504300A70/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5798",
+            "FaceURL"
+          ],
+          "local": "assets/cards/0_base/uk/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1FbKdZTNMIwdeetCPsi-NX8bjgJcuIWmo",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16399548818406396612/760B24A37605A57F4F3E3BD70040B305729E99AD/"
         }
       ]
     },
@@ -38136,21 +38742,25 @@
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5864",
             "BackURL"
           ],
+          "local": "assets/cards/2_under_dark_waves/uk/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1uoatFHSPqBlUsotxCTYCaanZX0AQi5mq",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17321219662975601297/573C26990A2432D394F67343BE856989FF20DF86/"
         },
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5864",
             "FaceURL"
           ],
+          "local": "assets/cards/2_under_dark_waves/uk/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1UpTLDp9ggyWvyxSHBRk4_XdiLTIyjXFy",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14224808500703212238/F151E9AFBCBA24DA12D8FFA3EA5BDB268B6CDD87/"
         },
         {
@@ -38159,7 +38769,33 @@
             "Fonts",
             "URL"
           ],
+          "local": "assets/fonts/font_list.unity3d",
+          "gUrl": "https://drive.google.com/uc?export=download&id=136ZvlP_d9WqvYyBvwTGldulgXGsm6V0Y",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18387726393550310454/A578781E3315E733B9148B3F6DF2B249F8E5C9F4/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5864",
+            "BackURL"
+          ],
+          "local": "assets/cards/2_under_dark_waves/uk/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1uoatFHSPqBlUsotxCTYCaanZX0AQi5mq",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17321219662975601297/573C26990A2432D394F67343BE856989FF20DF86/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5864",
+            "FaceURL"
+          ],
+          "local": "assets/cards/2_under_dark_waves/uk/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1UpTLDp9ggyWvyxSHBRk4_XdiLTIyjXFy",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14224808500703212238/F151E9AFBCBA24DA12D8FFA3EA5BDB268B6CDD87/"
         }
       ]
     },
@@ -38178,21 +38814,25 @@
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5864",
             "BackURL"
           ],
+          "local": "assets/cards/2_under_dark_waves/uk/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1uoatFHSPqBlUsotxCTYCaanZX0AQi5mq",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17321219662975601297/573C26990A2432D394F67343BE856989FF20DF86/"
         },
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5864",
             "FaceURL"
           ],
+          "local": "assets/cards/2_under_dark_waves/uk/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1UpTLDp9ggyWvyxSHBRk4_XdiLTIyjXFy",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14224808500703212238/F151E9AFBCBA24DA12D8FFA3EA5BDB268B6CDD87/"
         },
         {
@@ -38201,7 +38841,33 @@
             "Fonts",
             "URL"
           ],
+          "local": "assets/fonts/font_list.unity3d",
+          "gUrl": "https://drive.google.com/uc?export=download&id=136ZvlP_d9WqvYyBvwTGldulgXGsm6V0Y",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18387726393550310454/A578781E3315E733B9148B3F6DF2B249F8E5C9F4/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5864",
+            "BackURL"
+          ],
+          "local": "assets/cards/2_under_dark_waves/uk/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1uoatFHSPqBlUsotxCTYCaanZX0AQi5mq",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17321219662975601297/573C26990A2432D394F67343BE856989FF20DF86/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5864",
+            "FaceURL"
+          ],
+          "local": "assets/cards/2_under_dark_waves/uk/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1UpTLDp9ggyWvyxSHBRk4_XdiLTIyjXFy",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14224808500703212238/F151E9AFBCBA24DA12D8FFA3EA5BDB268B6CDD87/"
         }
       ]
     },
@@ -38690,21 +39356,25 @@
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5865",
             "BackURL"
           ],
+          "local": "assets/cards/3_secrets_of_the_order/uk/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1WZVlxpc7xT1gHbXekLnxx2Fv_mFZ4Yr9",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17697114792223368506/6DFC82117C86B58B28E7FAD55B739F397A5793B0/"
         },
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5865",
             "FaceURL"
           ],
+          "local": "assets/cards/3_secrets_of_the_order/uk/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1FKBsBIEzqnYGIJ_E7jRHWpWCgikxb6uz",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15417797749374349608/621628DAC73E2AEB26622C4B07B11F30002ACA4F/"
         },
         {
@@ -38713,7 +39383,33 @@
             "Fonts",
             "URL"
           ],
+          "local": "assets/fonts/font_list.unity3d",
+          "gUrl": "https://drive.google.com/uc?export=download&id=136ZvlP_d9WqvYyBvwTGldulgXGsm6V0Y",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18387726393550310454/A578781E3315E733B9148B3F6DF2B249F8E5C9F4/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5865",
+            "BackURL"
+          ],
+          "local": "assets/cards/3_secrets_of_the_order/uk/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1WZVlxpc7xT1gHbXekLnxx2Fv_mFZ4Yr9",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17697114792223368506/6DFC82117C86B58B28E7FAD55B739F397A5793B0/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5865",
+            "FaceURL"
+          ],
+          "local": "assets/cards/3_secrets_of_the_order/uk/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1FKBsBIEzqnYGIJ_E7jRHWpWCgikxb6uz",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15417797749374349608/621628DAC73E2AEB26622C4B07B11F30002ACA4F/"
         }
       ]
     },
@@ -38802,21 +39498,25 @@
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5798",
             "BackURL"
           ],
+          "local": "assets/cards/0_base/uk/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1tvk-LqPPszWWTeHmWmRAuVdp7EId43Mh",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15716916044391762845/B229E49CF55E2F02B1283EC55915467504300A70/"
         },
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5798",
             "FaceURL"
           ],
+          "local": "assets/cards/0_base/uk/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1FbKdZTNMIwdeetCPsi-NX8bjgJcuIWmo",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16399548818406396612/760B24A37605A57F4F3E3BD70040B305729E99AD/"
         },
         {
@@ -38825,7 +39525,33 @@
             "Fonts",
             "URL"
           ],
+          "local": "assets/fonts/font_list.unity3d",
+          "gUrl": "https://drive.google.com/uc?export=download&id=136ZvlP_d9WqvYyBvwTGldulgXGsm6V0Y",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18387726393550310454/A578781E3315E733B9148B3F6DF2B249F8E5C9F4/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5798",
+            "BackURL"
+          ],
+          "local": "assets/cards/0_base/uk/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1tvk-LqPPszWWTeHmWmRAuVdp7EId43Mh",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15716916044391762845/B229E49CF55E2F02B1283EC55915467504300A70/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5798",
+            "FaceURL"
+          ],
+          "local": "assets/cards/0_base/uk/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1FbKdZTNMIwdeetCPsi-NX8bjgJcuIWmo",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16399548818406396612/760B24A37605A57F4F3E3BD70040B305729E99AD/"
         }
       ]
     },
@@ -39397,6 +40123,8 @@
             "Fonts",
             "URL"
           ],
+          "local": "assets/fonts/font_list.unity3d",
+          "gUrl": "https://drive.google.com/uc?export=download&id=136ZvlP_d9WqvYyBvwTGldulgXGsm6V0Y",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18387726393550310454/A578781E3315E733B9148B3F6DF2B249F8E5C9F4/"
         }
       ]
@@ -39447,6 +40175,8 @@
             "Fonts",
             "URL"
           ],
+          "local": "assets/fonts/font_list.unity3d",
+          "gUrl": "https://drive.google.com/uc?export=download&id=136ZvlP_d9WqvYyBvwTGldulgXGsm6V0Y",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18387726393550310454/A578781E3315E733B9148B3F6DF2B249F8E5C9F4/"
         }
       ]
@@ -39469,6 +40199,8 @@
             "Fonts",
             "URL"
           ],
+          "local": "assets/fonts/font_list.unity3d",
+          "gUrl": "https://drive.google.com/uc?export=download&id=136ZvlP_d9WqvYyBvwTGldulgXGsm6V0Y",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18387726393550310454/A578781E3315E733B9148B3F6DF2B249F8E5C9F4/"
         }
       ]
@@ -40698,6 +41430,8 @@
             "reeoll_icon",
             "URL"
           ],
+          "local": "assets/other_graphics/reroll.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1Rha9juxzF8VfGoOjl_qtnbjJo6qGYNAw",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16490829221783702583/8BD1DD77360E9A59859D4BAFCC1A162991D8C5D2/"
         },
         {
@@ -40706,6 +41440,8 @@
             "Fonts",
             "URL"
           ],
+          "local": "assets/fonts/font_list.unity3d",
+          "gUrl": "https://drive.google.com/uc?export=download&id=136ZvlP_d9WqvYyBvwTGldulgXGsm6V0Y",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18387726393550310454/A578781E3315E733B9148B3F6DF2B249F8E5C9F4/"
         }
       ]
@@ -40728,6 +41464,8 @@
             "Fonts",
             "URL"
           ],
+          "local": "assets/fonts/font_list.unity3d",
+          "gUrl": "https://drive.google.com/uc?export=download&id=136ZvlP_d9WqvYyBvwTGldulgXGsm6V0Y",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18387726393550310454/A578781E3315E733B9148B3F6DF2B249F8E5C9F4/"
         }
       ]
@@ -46070,6 +46808,8 @@
             "button_large_i",
             "URL"
           ],
+          "local": "assets/other_graphics/btn_bg.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1eQwzn6uIfVOJL9kGvNGHJSR2buGwo_V8",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12987736360294212435/6E9A02B21622878E9973D39F6785B3535FED021B/"
         },
         {
@@ -46078,6 +46818,8 @@
             "Fonts",
             "URL"
           ],
+          "local": "assets/fonts/font_list.unity3d",
+          "gUrl": "https://drive.google.com/uc?export=download&id=136ZvlP_d9WqvYyBvwTGldulgXGsm6V0Y",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18387726393550310454/A578781E3315E733B9148B3F6DF2B249F8E5C9F4/"
         }
       ]
@@ -71898,6 +72640,8 @@
             "scenarioMap1",
             "URL"
           ],
+          "local": "assets/other_graphics/scenarioMap1.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1_LkYXXSjMSmk503__pVO-IxLhaVTTsrS",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/11666478704317355574/AD693FC65A7DD043F5FD0412DF1B7CAA768B1A1D/"
         },
         {
@@ -71905,6 +72649,8 @@
             "scenarioMap2",
             "URL"
           ],
+          "local": "assets/other_graphics/scenarioMap2.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1lntG1LkAMv3K55lN6xkD9q4cVkAFmdzU",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/11689897356472842198/BF375CBD3C2CBAF99DE4F6B67768494DF4AA56D3/"
         },
         {
@@ -71912,6 +72658,8 @@
             "scenarioMap3",
             "URL"
           ],
+          "local": "assets/other_graphics/scenarioMap3.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1-ei9nPfmxg9E54dBQT-zvO771JzRLENy",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15757863547582140525/48D69366632EEC1B26249DD1FB2F6482C62308E3/"
         },
         {
@@ -71919,6 +72667,8 @@
             "scenarioMap4",
             "URL"
           ],
+          "local": "assets/other_graphics/scenarioMap4.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=180JX6k_YvdLtu4ACSBwpz0SrGACQHLpV",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15928186229006515260/C604E03D310E5B62C9525C0000EF9F2E922A9DB9/"
         },
         {
@@ -71926,6 +72676,8 @@
             "scenarioMap5",
             "URL"
           ],
+          "local": "assets/other_graphics/scenarioMap5.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1XzVjYKCJhwbSqfhQf4C6CPOZKyfoFKtZ",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10939125799254997281/FE4F229D42CA1B83F76C6ADEA6AB095ADD17B390/"
         },
         {
@@ -71933,6 +72685,8 @@
             "scenarioMap6",
             "URL"
           ],
+          "local": "assets/other_graphics/scenarioMap6.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1cqCH_6vh3gq5LgRA76gr-oNUrWylw3iX",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13011406142658389466/6DB1090E89513E68F21CB0C06921D801D96FC3BB/"
         },
         {
@@ -71940,6 +72694,8 @@
             "scenarioMap7",
             "URL"
           ],
+          "local": "assets/other_graphics/scenarioMap7.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1wNROPj6GfW_SKNvRk0pSpxqNKYHkNkHe",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12911782801268059789/6AED7CA3356E3DA02F556B3B176D8C510024D10A/"
         },
         {
@@ -71947,6 +72703,8 @@
             "scenarioMap8",
             "URL"
           ],
+          "local": "assets/other_graphics/scenarioMap8.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1JiBR_5um8arceEcRnsAYYQflhG5UVgWF",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/11369708469155869432/774C6D889AE1CF434F2FE9C9D3D8BF537F7BD080/"
         },
         {
@@ -71954,6 +72712,8 @@
             "scenarioMap9",
             "URL"
           ],
+          "local": "assets/other_graphics/scenarioMap9.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1TqZfc68LFqyZcePnK3RFJlqPWnNyejeQ",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10257196321975900708/9E9B176941854A22EAD0D6CAB92EA8A101C2CBF1/"
         },
         {
@@ -71961,6 +72721,8 @@
             "scenarioMap10",
             "URL"
           ],
+          "local": "assets/other_graphics/scenarioMap10.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1dCU0oTrVy3y-QP5stG3gOdufBcMOu5I8",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18313215279486480245/B3D7DFDD5E70AB32B13EB0308143E9B3A3F0666D/"
         },
         {
@@ -71968,6 +72730,8 @@
             "scenarioMap11",
             "URL"
           ],
+          "local": "assets/other_graphics/scenarioMap11.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1L7vcgPorMM7VSoIslHOOhZsGT0IqrxqO",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13781866654842132836/0E09365968CD29364D3F3EF7BFB1FEE92866C559/"
         },
         {
@@ -71975,6 +72739,8 @@
             "scenarioMap12",
             "URL"
           ],
+          "local": "assets/other_graphics/scenarioMap12.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1DKzJKaZjoLcwdv38_AOqSihJuCnin40F",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10752705207226809142/ABCDBBB85DE33EF7340433E274BEE76846C56F65/"
         },
         {
@@ -71982,6 +72748,8 @@
             "scenarioMap13",
             "URL"
           ],
+          "local": "assets/other_graphics/scenarioMap13.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1w80T8sdQMYqKpIBa3s0SmCxz3uzh4ztV",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12348439028512913058/424BAEE54C7BDB5579987BE8161A69D308ADB711/"
         },
         {
@@ -71989,6 +72757,8 @@
             "map",
             "URL"
           ],
+          "local": "assets/other_graphics/map.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1ZbNDECXuadkjCVN4f0u3KLsvt5L1XJdd",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/9850602859557503409/E27D915D72C79152F0977A24A252A3EB86331195/"
         },
         {
@@ -71996,6 +72766,8 @@
             "addon1",
             "URL"
           ],
+          "local": "assets/other_graphics/addon1.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=17KrjaDJW2n_UW2ZuDnYqVPhe4egPsMPQ",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10449792020228603736/8BF25875CC0B2E0D4E68CC3BECEA9841A7890000/"
         },
         {
@@ -72003,6 +72775,8 @@
             "addon2",
             "URL"
           ],
+          "local": "assets/other_graphics/addon2.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1MMc_X6CTBB6yoaPRMue3lA6YbWIVCs2z",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16815173618173350135/740CE58934951D970C6D1CE5A00ABCBC4CB3F7E1/"
         },
         {
@@ -72010,6 +72784,8 @@
             "addon3",
             "URL"
           ],
+          "local": "assets/other_graphics/addon3.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1CH4aqTJGlXOWql7r4MzmhrkNCGYYpZu_",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10000245113688986325/B7EAEA124C45D967B8EDEA300E61BC1B59F58CA8/"
         },
         {
@@ -72017,6 +72793,8 @@
             "addon4",
             "URL"
           ],
+          "local": "assets/other_graphics/addon4.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1XlFwO_hwRNxeu3pLO1DzzCwZgh8swWmA",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17826478962387355728/5CA54C41F6C2537DB01684FC20066623A698C94A/"
         },
         {
@@ -72024,6 +72802,8 @@
             "languages",
             "URL"
           ],
+          "local": "assets/other_graphics/languages.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1P4qgArA3pltcb54B1hZl0RuxDj6QOMah",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/11570919401506490796/8017D7AAF44E51EC02855B970D429871DB13BCE1/"
         },
         {
@@ -72031,6 +72811,8 @@
             "phase_action_image",
             "URL"
           ],
+          "local": "assets/other_graphics/phases_1.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1vlWEOz8gQLenK1O2wfHR60q-q5Y9X7J5",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13928921234501447013/83AD63B559DF788F2446396E4A9F219A357C5386/"
         },
         {
@@ -72038,6 +72820,8 @@
             "phase_monster_image",
             "URL"
           ],
+          "local": "assets/other_graphics/phases_2.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1l6s8cHqIxWatKMHmdt4zLFqfcOOAESDr",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17276539037857558633/C3197054C1E49E9ACEB462659D8A2A96327B1035/"
         },
         {
@@ -72045,6 +72829,8 @@
             "phase_encounter_image",
             "URL"
           ],
+          "local": "assets/other_graphics/phases_3.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1cHlCHV04d9DnLikTDBvXyuxCpE88FWv9",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/9343577444692051097/406B5DBD5D11D0AD4B60F25B6901C39F257CAF01/"
         },
         {
@@ -72052,6 +72838,8 @@
             "phase_myth_image",
             "URL"
           ],
+          "local": "assets/other_graphics/phases_4.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1ceVWaqu5due5KOhuv4-5LD6ZCpBo1e3T",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/11019573157133294649/87C8B61B829C7365D944ACD6988400343D325763/"
         },
         {
@@ -72059,6 +72847,8 @@
             "help_bg",
             "URL"
           ],
+          "local": "assets/other_graphics/conditions.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1x5CUkEdMK3LcXUf5_9EiAqCAjdSP_gMc",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15690048569655995772/05B985DA739E4AC3EB4C39918EFE43022BC582AE/"
         },
         {
@@ -72066,6 +72856,8 @@
             "Fonts",
             "URL"
           ],
+          "local": "assets/fonts/font_list.unity3d",
+          "gUrl": "https://drive.google.com/uc?export=download&id=136ZvlP_d9WqvYyBvwTGldulgXGsm6V0Y",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18387726393550310454/A578781E3315E733B9148B3F6DF2B249F8E5C9F4/"
         },
         {
@@ -72073,6 +72865,8 @@
             "hud_1",
             "URL"
           ],
+          "local": "assets/other_graphics/hud_window.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1EU0Pnfxn9pD4JwaDYXHRgwM-fsWz3y0-",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13557784216307017507/53259C9C1EF214DF73939A6550A5C8F878590C95/"
         },
         {
@@ -72080,6 +72874,8 @@
             "scenario1",
             "URL"
           ],
+          "local": "assets/other_graphics/scenario1.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1RtEUa2Py5HqxhsgMFct-1rtoEdp0uNJ8",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10573532603020511219/29D92DCE6BBDB3214E7D36C8E9250726F147A67D/"
         },
         {
@@ -72087,6 +72883,8 @@
             "scenario2",
             "URL"
           ],
+          "local": "assets/other_graphics/scenario2.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1CQZi1jrkvyyEHJSg-5M89j6Rm0c5p3zO",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12332330675051131861/0738FA065EE8E14BEFBCC134B8C62D1AA9097360/"
         },
         {
@@ -72094,6 +72892,8 @@
             "scenario3",
             "URL"
           ],
+          "local": "assets/other_graphics/scenario3.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1F-ymdlMQDvxOsQBSm3qulTN7YlJ2r5eE",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/9561138462427525503/7A2883FC4B90EF5091B7AFBBB77423DC392DD538/"
         },
         {
@@ -72101,6 +72901,8 @@
             "scenario4",
             "URL"
           ],
+          "local": "assets/other_graphics/scenario4.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1uERdfzs4Cl5I1HdNUtlyvjpyoqE1b9bl",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12918605235601384037/92383E8224B5117987B4CED8186CB651FD0BEDD7/"
         },
         {
@@ -72108,6 +72910,8 @@
             "scenario5",
             "URL"
           ],
+          "local": "assets/other_graphics/scenario5.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1_jXbIAbkSN0OR1lqIZ8Z8hkwX8FFAxxp",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/11169783164684561485/10451DEA7731FAB672915F99ACBDD0107CC7E7FA/"
         },
         {
@@ -72115,6 +72919,8 @@
             "scenario6",
             "URL"
           ],
+          "local": "assets/other_graphics/scenario6.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1Q9vR2YziKjBFPDc95giA2ihLUqM_JKB8",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13575520358203237318/FE500FB25CAC7EA9374B6048F31B89177C678AB1/"
         },
         {
@@ -72122,6 +72928,8 @@
             "scenario7",
             "URL"
           ],
+          "local": "assets/other_graphics/scenario7.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=14-AYhZJkpbMcbit_ajyrlUOsvpSKOew4",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12404456804360735792/1150B253DAECAA34977854A81B78D04E8E9C193C/"
         },
         {
@@ -72129,6 +72937,8 @@
             "scenario8",
             "URL"
           ],
+          "local": "assets/other_graphics/scenario8.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1LoDJre4flDX8Lb4zLnJBKG52zsk47rUZ",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17114762367999028401/39035C73FC280EDE480FE9883356978A2CEA8AE9/"
         },
         {
@@ -72136,6 +72946,8 @@
             "scenario9",
             "URL"
           ],
+          "local": "assets/other_graphics/scenario9.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1sNbKcSTLbxyxrQ8gVnJSplbGPshYaGKA",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17124634853079682006/8B473E7F83001AA62A0516AC5FA9687291991D7D/"
         },
         {
@@ -72143,6 +72955,8 @@
             "scenario10",
             "URL"
           ],
+          "local": "assets/other_graphics/scenario10.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1cn2Plg21g-VMTyE7FLuUdxMDfZYKQjoz",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/11940103398778039507/DF1A8797B399C588BA0355B87C3B61C7D7CD8ED5/"
         },
         {
@@ -72150,6 +72964,8 @@
             "scenario11",
             "URL"
           ],
+          "local": "assets/other_graphics/scenario11.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=18s6hXt40BF27aDGc5ljcquLKRT-T3_Pz",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16560082750404941754/46CD71D9529CB97331863A30B3A61DD22E334F97/"
         },
         {
@@ -72157,6 +72973,8 @@
             "scenario12",
             "URL"
           ],
+          "local": "assets/other_graphics/scenario12.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1lgBTgBf2I0UpGcU5AfDji3hEQFtbWmf1",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15271647457751965940/D06E81A41B6FCA4C674C1A92087E68FB4CD77B46/"
         },
         {
@@ -72164,6 +72982,8 @@
             "scenario13",
             "URL"
           ],
+          "local": "assets/other_graphics/scenario13.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1_WAS5gCk9d1KbcwRlpJWtfu8LekiKqt8",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10228181728485162982/2329C5D506609DE5F7D2CDB6492CFA0DB4E95F5A/"
         },
         {
@@ -72171,6 +72991,8 @@
             "button_num",
             "URL"
           ],
+          "local": "assets/other_graphics/button_num.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=19ni_ipw_-TrEgKSQNeLXWWZyHVR0hP4r",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/9509288242824866309/CA6454E40F89069524CC049E88C0145DA16F578F/"
         },
         {
@@ -72178,6 +73000,8 @@
             "button_medium",
             "URL"
           ],
+          "local": "assets/other_graphics/button_medium.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1hB6TeOovfqddhvBd5A1xu6vKdBe9tlkq",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16812881727270914334/7D86FE1A450A1648867FB684E870DD0D2EA1FE1F/"
         },
         {
@@ -72185,6 +73009,8 @@
             "button_large",
             "URL"
           ],
+          "local": "assets/other_graphics/button_large.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1kc6J7rfGkth345ghFrIrUyEuPKUtGKe4",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17244236335210734522/BB5F0A5902A82E142188721CE734D96184C16D61/"
         },
         {
@@ -72192,6 +73018,8 @@
             "health",
             "URL"
           ],
+          "local": "assets/other_graphics/health.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1p9fCGbMbOtIdfTkspR2bs8JFrbEDkiPk",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10083197624218500886/DA1895F8234F499DAA54C1DCBA2C1DF72699768B/"
         },
         {
@@ -72199,6 +73027,8 @@
             "sanity",
             "URL"
           ],
+          "local": "assets/other_graphics/sanity.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1a1NZNPY2c6Nb7td6Ru8tLKc_Q7tpygjZ",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12687297840877247598/A177EFBA2B30F1728EC5D81FDFA6273328823743/"
         },
         {
@@ -72206,6 +73036,8 @@
             "activation_token_front",
             "URL"
           ],
+          "local": "assets/other_graphics/Activation_Token_1.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1drPZXi-7QrXrHT33_K6c_ax5XvWvyQ4d",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/9902497394837208313/0C0811B37C263ACC790AD02773B9166645F836E8/"
         },
         {
@@ -72213,6 +73045,8 @@
             "activation_token_back",
             "URL"
           ],
+          "local": "assets/other_graphics/Activation_Token_2.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1G1N34d0jwI8g9oThaBJ1v8pTu1ANcx8a",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12500260379680170497/A5D36A9473F9E9638DE2EC62565EFF6DE5841A4A/"
         },
         {
@@ -72220,6 +73054,8 @@
             "leader_activation_token_front",
             "URL"
           ],
+          "local": "assets/other_graphics/Activation_Token_3.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1othFty2llGFmIk7FALRyIGV9ppN4j-iS",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14649702915111165841/BFC1751B5F22BC18772526B800D6E1338A5608A7/"
         },
         {
@@ -72227,6 +73063,8 @@
             "leader_activation_token_back",
             "URL"
           ],
+          "local": "assets/other_graphics/Activation_Token_4.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=12O4MYeJc7IfN22I2hXMDxDX9BydT5CGV",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10339586601283679911/A377A1BFA6F9CB4BF9F8352A35BD54E311081F48/"
         },
         {
@@ -72234,6 +73072,8 @@
             "Agnes_Baker_portrait",
             "URL"
           ],
+          "local": "assets/investigators/0_base/mini/agnes baker.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1e_FFfSw152IAUWU2Mq8lB9_8ZsUcdYyZ",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18351493191572076930/B10F4EB9C6EE7ECAEADCA1E8359DB08B55C07287/"
         },
         {
@@ -72241,6 +73081,8 @@
             "Calvin_Wright_portrait",
             "URL"
           ],
+          "local": "assets/investigators/0_base/mini/calvin wright.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1PMbiNlRVo0pKDTPGyCIypxO0W-5X2sFd",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16214139627557110558/91D6EB746E17F4D02592D3CB20CC36526D0D341A/"
         },
         {
@@ -72248,6 +73090,8 @@
             "Daniela_Reyes_portrait",
             "URL"
           ],
+          "local": "assets/investigators/0_base/mini/daniela reyes.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=16JzdzCylP1doqpFOUL2Wu-HGa5SZ1DRl",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15286850965266100531/415B732A42F60D2D6F9D3FB9E8273750A4B0CC8F/"
         },
         {
@@ -72255,6 +73099,8 @@
             "Dexter_Drake_portrait",
             "URL"
           ],
+          "local": "assets/investigators/0_base/mini/dexter drake.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1lEznJuI0PGbEbAbb79GJbTPLPlA7HmeW",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17004751135460942627/307BD0BBA58C59D25AF9FF51476E929983E955BB/"
         },
         {
@@ -72262,6 +73108,8 @@
             "Jenny_Barnes_portrait",
             "URL"
           ],
+          "local": "assets/investigators/0_base/mini/jenny barnes.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1K9Gz3xaFHwLT1NPcDyRcQ8zEopNPbf10",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/9616924869431338751/079D27165B611A3704246FE23BCE4845EC923901/"
         },
         {
@@ -72269,6 +73117,8 @@
             "Marie_Lambeau_portrait",
             "URL"
           ],
+          "local": "assets/investigators/0_base/mini/marie lambeau.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1oCyhptaRCKCnH9YRCV1I3oKdBaRm3GwV",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14125997191647585525/5F526CAFE0AEA7013AFF20BBFB8988A68C346E0F/"
         },
         {
@@ -72276,6 +73126,8 @@
             "Michael_McGlen_portrait",
             "URL"
           ],
+          "local": "assets/investigators/0_base/mini/michael mcglen.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=11EmE3XHKnxaaycBJnP3EOqvJp-72e8gg",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/9415456380843870709/B3DEC8701DFADA6B43AAA9A2323FE3BA4D0CE03D/"
         },
         {
@@ -72283,6 +73135,8 @@
             "Minh_Thi_Phan_portrait",
             "URL"
           ],
+          "local": "assets/investigators/0_base/mini/minh thi phan.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1PF0xWihwte4Jvlkx0jCBmj937jvynEG6",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14152267542919669178/1E976569E723D52F61A5AB4B7AC0D947CC810055/"
         },
         {
@@ -72290,6 +73144,8 @@
             "Norman_Withers_portrait",
             "URL"
           ],
+          "local": "assets/investigators/0_base/mini/norman withers.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1hc-KO4cAoCnizFJyT4wfXbmXhvwjtC8O",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12985438415842985652/FC7E25A5B0F1A854284F5AD556CAA1CE1F6D56C1/"
         },
         {
@@ -72297,6 +73153,8 @@
             "Rex_Murphy_portrait",
             "URL"
           ],
+          "local": "assets/investigators/0_base/mini/rex murphy.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1JTbV9gKBYJmtUZd7q4Oiw8qIy-71fngE",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16468089910537572906/586C0F0335E0D8CF83B0E56BDEFB4116F6101CC5/"
         },
         {
@@ -72304,6 +73162,8 @@
             "Tommy_Muldoon_portrait",
             "URL"
           ],
+          "local": "assets/investigators/0_base/mini/tommy muldoon.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1BDW16n-sePaHiTRBnUSA1cRZiRrKU1GM",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14989600312793072168/1838CF02619F05C9D1B2F93E6D75C3FD68F1DC05/"
         },
         {
@@ -72311,6 +73171,8 @@
             "Wendy_Adams_portrait",
             "URL"
           ],
+          "local": "assets/investigators/0_base/mini/wendy adams.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1okJuKRbNU7DF1NTNo0jaCN0X4_9RtqZ3",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/9831616011811308854/3BB238D00EC2D5B51CC18BEE145C84ED47AB64E8/"
         },
         {
@@ -72318,6 +73180,8 @@
             "Diana_Stanley_portrait",
             "URL"
           ],
+          "local": "assets/investigators/1_dead_of_night/mini/diana stanley.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1OKQqdh4lb6pPuAjfyi58THgqhyaylX13",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16407341500052118739/EDE80D0F9303EAE6B0CBEDC0F20E0C808765BFFD/"
         },
         {
@@ -72325,6 +73189,8 @@
             "Kate_Winthrop_portrait",
             "URL"
           ],
+          "local": "assets/investigators/1_dead_of_night/mini/kate winthrop.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1DhMGQi63qOseSyQ_VbO-BqwhzobxYLS3",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18192724707327914715/9A879BF19E60322F504F993097F78AEFFD0B1E09/"
         },
         {
@@ -72332,6 +73198,8 @@
             "Roland_Banks_portrait",
             "URL"
           ],
+          "local": "assets/investigators/1_dead_of_night/mini/roland banks.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1WC0eStBecqtRixaZmBowB0TU-y_blyi7",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13249887740359816915/1E8E3FB1D617720772AFC6F824E3E32722BE3A7F/"
         },
         {
@@ -72339,6 +73207,8 @@
             "Skids_O'Toole_portrait",
             "URL"
           ],
+          "local": "assets/investigators/1_dead_of_night/mini/skids otoole.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1WtyknQ6Lrj5OeFjjLsLzDuSx5yiOgfbG",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/9379186182596840151/21315C57B4F40ACF48C99205D95D2008E43C9513/"
         },
         {
@@ -72346,6 +73216,8 @@
             "Ashcan_Pete_portrait",
             "URL"
           ],
+          "local": "assets/investigators/2_under_dark_waves/mini/ashcan pete.jpg",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1Sqk2thl_402QDxB_OSi6SFb5m9GintZx",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13146292240890797847/11AFF6CB20BD3A9B6638BD66F168C0C1938A5E75/"
         },
         {
@@ -72353,6 +73225,8 @@
             "Carson_Sinclair_portrait",
             "URL"
           ],
+          "local": "assets/investigators/2_under_dark_waves/mini/carson sinclair.jpg",
+          "gUrl": "https://drive.google.com/uc?export=download&id=18S2jLw1LERX2soYfVUNTvaBTGxrLza2t",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18319648344842445846/C96458E978D751D9A878BDA9C56E372B9B63AD6C/"
         },
         {
@@ -72360,6 +73234,8 @@
             "Charlie_Kane_portrait",
             "URL"
           ],
+          "local": "assets/investigators/2_under_dark_waves/mini/charlie kane.jpg",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1FDORjp3soRMH0X8gz-4ybleOSYNoPZj7",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16589125868970395520/A71EBA979D6CFC6CC01731D1C9BEB283ED09FF23/"
         },
         {
@@ -72367,6 +73243,8 @@
             "Father_Mateo_portrait",
             "URL"
           ],
+          "local": "assets/investigators/2_under_dark_waves/mini/father mateo.jpg",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1y9K9C3HJLGaYtx5AXVDXsVOqpqNaTQez",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16713292230520292950/2E1627425222B707CAB9FE58FC98201209B48EF5/"
         },
         {
@@ -72374,6 +73252,8 @@
             "Patrice_Hathaway_portrait",
             "URL"
           ],
+          "local": "assets/investigators/2_under_dark_waves/mini/patrice hathaway.jpg",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1vh-JuXkxraNWV5B7BWWqygK4RRXB7OqS",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15151603301916447168/DA3C2E125C35C6B848CE7CDB6409844B78D19134/"
         },
         {
@@ -72381,6 +73261,8 @@
             "Silas_Marsh_portrait",
             "URL"
           ],
+          "local": "assets/investigators/2_under_dark_waves/mini/silas marsh.jpg",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1vQPavqgi814jzmvBmHA6AC8PzbnvJPTx",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14181780375694798233/03C08AB83B3AF4B3A85C59AC71C9C48E5E5F751B/"
         },
         {
@@ -72388,6 +73270,8 @@
             "Stella_Clark_portrait",
             "URL"
           ],
+          "local": "assets/investigators/2_under_dark_waves/mini/stella clark.jpg",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1Zd6j2CURoH1XvTHC2Y439X_Up9NoIl6q",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15178094548574493038/44CDC1C43D1D82E9430D9A85E157AB15C694E54F/"
         },
         {
@@ -72395,6 +73279,8 @@
             "Zoey_Samaras_portrait",
             "URL"
           ],
+          "local": "assets/investigators/2_under_dark_waves/mini/zoey samaras.jpg",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1a04h6LsRmNSDrzrSex3bmUYuOW0m3utb",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13575510064218600451/5D71F75897877C605F7638538DD3F105E6317FF1/"
         },
         {
@@ -72402,6 +73288,8 @@
             "Agatha_Crane_portrait",
             "URL"
           ],
+          "local": "assets/investigators/3_secrets_of_the_order/mini/Agatha Crane.jpg",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1CZpe8nwMksEXYQxBSha5NUItn0sjmXgW",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16447218207540703269/D217F9D14CAE2FFC3EF5207800153E9B48EA8FD0/"
         },
         {
@@ -72409,6 +73297,8 @@
             "Mark_Harrigan_portrait",
             "URL"
           ],
+          "local": "assets/investigators/3_secrets_of_the_order/mini/Mark Harrigan.jpg",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1D2TxGw4s1N2_2UN3qPt0zvBRj8echEUL",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16489116790003099167/0C1963CB294F46956B0F40722F071712D380DA07/"
         },
         {
@@ -72416,6 +73306,8 @@
             "Preston_Fairmont_portrait",
             "URL"
           ],
+          "local": "assets/investigators/3_secrets_of_the_order/mini/Preston Fairmont.jpg",
+          "gUrl": "https://drive.google.com/uc?export=download&id=10PfnIos2zEMslT3kB76PvZ8y-DVNZ1aG",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/9922535728362627563/0EB15B33EEA48ABC4FF9AA9B66D5F1B70F4EB5FE/"
         },
         {
@@ -72423,6 +73315,8 @@
             "Winifred_Habbamock_portrait",
             "URL"
           ],
+          "local": "assets/investigators/3_secrets_of_the_order/mini/Winifred Habbamock.jpg",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1gFPlV1bfr5GQQUztXWTJ3FpCLGIcPAMs",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18306313159315154348/32E682E56419EFCE9DD896857BA0990872DAD0AC/"
         },
         {
@@ -72430,6 +73324,8 @@
             "Dexter_Drake_alt_portrait",
             "URL"
           ],
+          "local": "assets/investigators/0_base/mini/dexter drake.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1lEznJuI0PGbEbAbb79GJbTPLPlA7HmeW",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17004751135460942627/307BD0BBA58C59D25AF9FF51476E929983E955BB/"
         },
         {
@@ -72437,6 +73333,8 @@
             "Minh_Thi_Phan_alt_portrait",
             "URL"
           ],
+          "local": "assets/investigators/0_base/mini/minh thi phan.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1PF0xWihwte4Jvlkx0jCBmj937jvynEG6",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14152267542919669178/1E976569E723D52F61A5AB4B7AC0D947CC810055/"
         },
         {
@@ -72444,6 +73342,8 @@
             "Rex_Murphy_alt_portrait",
             "URL"
           ],
+          "local": "assets/investigators/0_base/mini/rex murphy.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1JTbV9gKBYJmtUZd7q4Oiw8qIy-71fngE",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16468089910537572906/586C0F0335E0D8CF83B0E56BDEFB4116F6101CC5/"
         },
         {
@@ -72451,6 +73351,8 @@
             "Wendy_Adams_alt_portrait",
             "URL"
           ],
+          "local": "assets/investigators/0_base/mini/wendy adams.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1okJuKRbNU7DF1NTNo0jaCN0X4_9RtqZ3",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/9831616011811308854/3BB238D00EC2D5B51CC18BEE145C84ED47AB64E8/"
         },
         {
@@ -72458,6 +73360,8 @@
             "fight_evade",
             "URL"
           ],
+          "local": "assets/other_graphics/icon_fight_evade.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1EcTJJTMb9aFYk3GPcV51hrv1yGj9nqBk",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15010064734933102311/063106A7355E46EF0BA6CAFAC999FBA5418134EC/"
         },
         {
@@ -72465,6 +73369,8 @@
             "white_marker",
             "URL"
           ],
+          "local": "assets/icons/marker white.jpeg",
+          "gUrl": "https://drive.google.com/uc?export=download&id=18-9izTzU5NMVWTNlVtfuco_RG2EbHT9q",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15667415675879294247/65A2DDA209264C3ECAA3DD141221C64500A0FDA7/"
         },
         {
@@ -72472,6 +73378,8 @@
             "monster_shrouded",
             "URL"
           ],
+          "local": "assets/icons/monster_shrouded.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1pViDDIO9VgpxlmRastKxciTdgs6HZm7R",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13454388340140901550/BFA40B68306A66A7D43F6BE80498488DFBEE19C7/"
         },
         {
@@ -72479,6 +73387,8 @@
             "monster_marker",
             "URL"
           ],
+          "local": "assets/icons/monster_marker.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1W30Fc1OW8XuqcitYoVRtAQq9VLidtn82",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/11625039795906326232/B2D688A79FA528E81DB8A1071A7976D5AEE4267F/"
         },
         {
@@ -72486,6 +73396,8 @@
             "monster_evade",
             "URL"
           ],
+          "local": "assets/icons/monster_evade.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=11-4TGwau69tMB7QwlryBl8nCQ3DZfN9v",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13063078907463949014/93F40ECC6073D432BA2D217C4943199646ECED3C/"
         },
         {
@@ -72493,6 +73405,8 @@
             "monster_attack",
             "URL"
           ],
+          "local": "assets/icons/monster_attack.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1zIBspX3w4ELeLuhetadCVsytigRWtdaS",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15436144648483702476/B6A6CCC402B686BB5BDB11BE97CE124CD5605061/"
         },
         {
@@ -72500,6 +73414,8 @@
             "action_no",
             "URL"
           ],
+          "local": "assets/icons/action_no.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1CzNBjC4WB_nTl0pQo9Q8x4z08EnV2cxy",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16161585572463033587/7D810373C1D0EE01AB6776BAF3BECC046FF62B80/"
         },
         {
@@ -72507,6 +73423,8 @@
             "action_yes",
             "URL"
           ],
+          "local": "assets/icons/action_yes.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1LuvezrWjNgNmDfzhj40rDmWTLm7O3kVk",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12514357253007669354/A41EDD0C8D5064F56A459672682D2806B2B153B1/"
         },
         {
@@ -72514,6 +73432,8 @@
             "investigator_portrait",
             "URL"
           ],
+          "local": "assets/icons/investigator_portrait.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1lvwkGKDn8HzbnsuLLHLvRiNCdssCowYp",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18051620030031733455/2259B3C1AD323D6593D66715E69E8F86BD2CCBC2/"
         },
         {
@@ -72521,6 +73441,8 @@
             "additional_buttons_2",
             "URL"
           ],
+          "local": "assets/other_graphics/additional_buttons_for_xml/additional_buttons_2.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1IZa0E3lbARDRl6LQNgES0SPZITCjXAPq",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15828054709259990116/D16D477394624886F840E1B62A7C36E902FDFDFA/"
         },
         {
@@ -72528,6 +73450,8 @@
             "additional_buttons_2_hover",
             "URL"
           ],
+          "local": "assets/other_graphics/additional_buttons_for_xml/additional_buttons_2_hover.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1__vgCA_Cq9rAmBvPdKyFtmtMHtBHfdNQ",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16867761429553932552/35EDFE10D8FAFFD7BB6089FA4A251DB595439960/"
         },
         {
@@ -72535,6 +73459,8 @@
             "additional_buttons_3",
             "URL"
           ],
+          "local": "assets/other_graphics/additional_buttons_for_xml/additional_buttons_3.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=17IzHHoKcUHRWMJMgyy-ux-wMGWF64Q4Y",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14859589559123143492/E5AC1EF3AF172F5E6A3750BAF4CA266BB7E62197/"
         },
         {
@@ -72542,6 +73468,8 @@
             "additional_buttons_3_hover",
             "URL"
           ],
+          "local": "assets/other_graphics/additional_buttons_for_xml/additional_buttons_3_hover.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1eY-zlrboKdyFtSNA71oaJcdH1embnik_",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12844881950247875885/C7EA1DA1BD63E681D61357C95805451569CFCF4A/"
         },
         {
@@ -72549,6 +73477,8 @@
             "additional_buttons_4",
             "URL"
           ],
+          "local": "assets/other_graphics/additional_buttons_for_xml/additional_buttons_4.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1ilA_PCxwmN99Jafq0HVJ_dWqULzt-8F7",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/11923991564930232980/59813C95269AC72984D71C0385C605FE1E3EA4B6/"
         },
         {
@@ -72556,6 +73486,8 @@
             "additional_buttons_4_hover",
             "URL"
           ],
+          "local": "assets/other_graphics/additional_buttons_for_xml/additional_buttons_4_hover.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1TzwDS3pgd0XG9ryuGYs16KojOkdvdre0",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14463471640067051995/7F9DA0D80DA4C4815B2BE3E7BB2C5ECA6BDCC3C4/"
         },
         {
@@ -72563,6 +73495,8 @@
             "additional_buttons_5",
             "URL"
           ],
+          "local": "assets/other_graphics/additional_buttons_for_xml/additional_buttons_5.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1NtNDRFcW6kV3E2Me2F4_qDmoZJPbLebY",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/11120407224754132730/0D23FD54651F4BBC0AFCCDD00CEE858FDD38E691/"
         },
         {
@@ -72570,6 +73504,8 @@
             "additional_buttons_5_hover",
             "URL"
           ],
+          "local": "assets/other_graphics/additional_buttons_for_xml/additional_buttons_5_hover.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1e7lNfng_vv2zMXI26QQMLDVcucjDzj18",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10399342844834830782/D43C03C80EDCB601F5A6A10BA8F2250BF8F47FF0/"
         },
         {
@@ -72577,6 +73513,8 @@
             "additional_buttons_1",
             "URL"
           ],
+          "local": "assets/other_graphics/additional_buttons_for_xml/additional_buttons_1.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1XThdk39jJM76t-WAwFc8o7xB8IrgfEAI",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12007598906669708906/5197D047BE19260177674204F9576151E12C4B93/"
         },
         {
@@ -72584,6 +73522,8 @@
             "additional_buttons_1_hover",
             "URL"
           ],
+          "local": "assets/other_graphics/additional_buttons_for_xml/additional_buttons_1_hover.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1IASnIGR8pSOo-AQl0aA2pa_5AdZMAcOJ",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14299089380150510372/1978AE157E6509E00AC0D0D57C684909699891BE/"
         },
         {
@@ -72591,6 +73531,8 @@
             "znannia",
             "URL"
           ],
+          "local": "assets/other_graphics/знання.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=18qQgvNq5WtFW5F36mnoUNxx3f1ESXgzb",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14010801418572702190/A0C432DB6A6ABEF77CD693CF5BEB958CF4836C56/"
         },
         {
@@ -72598,6 +73540,8 @@
             "vplyv",
             "URL"
           ],
+          "local": "assets/other_graphics/вплив.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=17IH93H0VjBK42L9_PdOuwmejMqPjDrrX",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10239039491450441921/7B9EDE84B66F16D4E9E10783236D2373D8584BE5/"
         },
         {
@@ -72605,6 +73549,8 @@
             "sposterezhlyvist",
             "URL"
           ],
+          "local": "assets/other_graphics/спостережливість.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1ZiQjVgpLuF-A2e7-Dz-s6ZztXBousGcS",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14164920621031370715/554C396F5704080149306A971FF2B5D292274CCE/"
         },
         {
@@ -72612,6 +73558,8 @@
             "syla",
             "URL"
           ],
+          "local": "assets/other_graphics/сила.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1WC_j0Wmu5uLeZFAJIR5fJigJo5x1NIVM",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16286316675917407778/E4691D1F06CD05802CC7DE2E9D45DA86EC14FC0C/"
         },
         {
@@ -72619,6 +73567,8 @@
             "volia",
             "URL"
           ],
+          "local": "assets/other_graphics/воля.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1y1uAD-mE4fS-GDWBSNxKdwSQwPQRikCg",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17490566751848562665/01F5142B31F632F9FA30E298E0B29E65D9C63B27/"
         },
         {
@@ -72626,6 +73576,8 @@
             "success_icon",
             "URL"
           ],
+          "local": "assets/other_graphics/success.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1L7AZa56r3BBoQNviWpQS-y4ekER_Lpfq",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10151014189290626376/58E4451E7523BC52C0D4CDBFA0458C786AF6E4D8/"
         },
         {
@@ -72633,6 +73585,8 @@
             "discard_icon",
             "URL"
           ],
+          "local": "assets/other_graphics/discard.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1DuOIUR-za6c00dL_N3xbcpSRDCS8pol6",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14421964689492510289/C13A5A578F3A5D4E2B7F6DF6499FEFB4B980A884/"
         },
         {
@@ -72640,6 +73594,8 @@
             "fail_icon",
             "URL"
           ],
+          "local": "assets/other_graphics/fail.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1aqkaxfsTttxo1jfa4ma9VArcZ6WXy5Fw",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/9963488286847697072/FC0356EFD31B243D9D7BE96B8578493117C56A5C/"
         },
         {
@@ -72647,6 +73603,8 @@
             "myth_slots",
             "URL"
           ],
+          "local": "assets/other_graphics/token_slot_2.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1VYV4mgJSams5SMFYTASL0D9xJN7-Ap0y",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/11907850477784915952/43E1F877797D2A71087DBE0EDD4C169A317F74C6/"
         },
         {
@@ -72654,6 +73612,8 @@
             "dice_green",
             "URL"
           ],
+          "local": "assets/other_graphics/dice_green.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1ws8ybcuEFYR-5Qg6ng1QpWPebrCmZexL",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/9293897538631522871/B904927AB076362AB0E4FCF2FF2AF389A862A61D/"
         },
         {
@@ -72661,6 +73621,8 @@
             "dice_blue",
             "URL"
           ],
+          "local": "assets/other_graphics/dice_blue.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1TF18n0GQbor1dl90pYnFGIQDnzMStFs-",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12597826545315560669/D1E7D1511D57F7B5E9B3A524B89F9B216BF0D495/"
         },
         {
@@ -72668,6 +73630,8 @@
             "dice_red",
             "URL"
           ],
+          "local": "assets/other_graphics/dice_red.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1hhWiq2yQsXU44nBYqQCBD4gXW3gMVEKB",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13468893877756053433/011289201DE8E02EB44DBF0CA363DFF942B89466/"
         }
       ]
@@ -72757,21 +73721,25 @@
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5798",
             "BackURL"
           ],
+          "local": "assets/cards/0_base/en/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1nqwJwxG7rqKmhXoDWYcoZKrx8Y8XdU9y",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13873989503575279025/ECC3ACCC19223079466A78E703AECC34F142303E/"
         },
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5798",
             "FaceURL"
           ],
+          "local": "assets/cards/0_base/en/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1orUfeKB4AVIhb6ZS-PouGRoUKGdb8HKA",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10767459869529760203/E73A65E0CB74F6EFF4A44DEB30615F9A9A6D8564/"
         },
         {
@@ -72780,7 +73748,33 @@
             "Fonts",
             "URL"
           ],
+          "local": "assets/fonts/font_list.unity3d",
+          "gUrl": "https://drive.google.com/uc?export=download&id=136ZvlP_d9WqvYyBvwTGldulgXGsm6V0Y",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18387726393550310454/A578781E3315E733B9148B3F6DF2B249F8E5C9F4/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5798",
+            "BackURL"
+          ],
+          "local": "assets/cards/0_base/en/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1nqwJwxG7rqKmhXoDWYcoZKrx8Y8XdU9y",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13873989503575279025/ECC3ACCC19223079466A78E703AECC34F142303E/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5798",
+            "FaceURL"
+          ],
+          "local": "assets/cards/0_base/en/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1orUfeKB4AVIhb6ZS-PouGRoUKGdb8HKA",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10767459869529760203/E73A65E0CB74F6EFF4A44DEB30615F9A9A6D8564/"
         }
       ]
     },
@@ -72799,21 +73793,25 @@
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5804",
             "BackURL"
           ],
+          "local": "assets/cards/1_dead_of_night/en/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1AWaEljgs7LoIh6z4me_dwJoX2pbudPG1",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13433717936791182232/66FBFEC454E47B33A1FC125E93B033A3B2BF70A5/"
         },
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5804",
             "FaceURL"
           ],
+          "local": "assets/cards/1_dead_of_night/en/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1edVHb8njsNg00NHdwgTXCjcVpcXciIjV",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10500867953179527168/9900001B64F967506B0EFE156E5F244F887EBB42/"
         },
         {
@@ -72822,7 +73820,33 @@
             "Fonts",
             "URL"
           ],
+          "local": "assets/fonts/font_list.unity3d",
+          "gUrl": "https://drive.google.com/uc?export=download&id=136ZvlP_d9WqvYyBvwTGldulgXGsm6V0Y",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18387726393550310454/A578781E3315E733B9148B3F6DF2B249F8E5C9F4/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5804",
+            "BackURL"
+          ],
+          "local": "assets/cards/1_dead_of_night/en/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1AWaEljgs7LoIh6z4me_dwJoX2pbudPG1",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13433717936791182232/66FBFEC454E47B33A1FC125E93B033A3B2BF70A5/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5804",
+            "FaceURL"
+          ],
+          "local": "assets/cards/1_dead_of_night/en/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1edVHb8njsNg00NHdwgTXCjcVpcXciIjV",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10500867953179527168/9900001B64F967506B0EFE156E5F244F887EBB42/"
         }
       ]
     },
@@ -73931,21 +74955,25 @@
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5798",
             "BackURL"
           ],
+          "local": "assets/cards/0_base/en/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1nqwJwxG7rqKmhXoDWYcoZKrx8Y8XdU9y",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13873989503575279025/ECC3ACCC19223079466A78E703AECC34F142303E/"
         },
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5798",
             "FaceURL"
           ],
+          "local": "assets/cards/0_base/en/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1orUfeKB4AVIhb6ZS-PouGRoUKGdb8HKA",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10767459869529760203/E73A65E0CB74F6EFF4A44DEB30615F9A9A6D8564/"
         },
         {
@@ -73954,7 +74982,33 @@
             "Fonts",
             "URL"
           ],
+          "local": "assets/fonts/font_list.unity3d",
+          "gUrl": "https://drive.google.com/uc?export=download&id=136ZvlP_d9WqvYyBvwTGldulgXGsm6V0Y",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18387726393550310454/A578781E3315E733B9148B3F6DF2B249F8E5C9F4/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5798",
+            "BackURL"
+          ],
+          "local": "assets/cards/0_base/en/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1nqwJwxG7rqKmhXoDWYcoZKrx8Y8XdU9y",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13873989503575279025/ECC3ACCC19223079466A78E703AECC34F142303E/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5798",
+            "FaceURL"
+          ],
+          "local": "assets/cards/0_base/en/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1orUfeKB4AVIhb6ZS-PouGRoUKGdb8HKA",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10767459869529760203/E73A65E0CB74F6EFF4A44DEB30615F9A9A6D8564/"
         }
       ]
     },
@@ -73998,21 +75052,25 @@
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5798",
             "BackURL"
           ],
+          "local": "assets/cards/0_base/en/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1nqwJwxG7rqKmhXoDWYcoZKrx8Y8XdU9y",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13873989503575279025/ECC3ACCC19223079466A78E703AECC34F142303E/"
         },
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5798",
             "FaceURL"
           ],
+          "local": "assets/cards/0_base/en/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1orUfeKB4AVIhb6ZS-PouGRoUKGdb8HKA",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10767459869529760203/E73A65E0CB74F6EFF4A44DEB30615F9A9A6D8564/"
         },
         {
@@ -74021,7 +75079,33 @@
             "Fonts",
             "URL"
           ],
+          "local": "assets/fonts/font_list.unity3d",
+          "gUrl": "https://drive.google.com/uc?export=download&id=136ZvlP_d9WqvYyBvwTGldulgXGsm6V0Y",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18387726393550310454/A578781E3315E733B9148B3F6DF2B249F8E5C9F4/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5798",
+            "BackURL"
+          ],
+          "local": "assets/cards/0_base/en/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1nqwJwxG7rqKmhXoDWYcoZKrx8Y8XdU9y",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13873989503575279025/ECC3ACCC19223079466A78E703AECC34F142303E/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5798",
+            "FaceURL"
+          ],
+          "local": "assets/cards/0_base/en/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1orUfeKB4AVIhb6ZS-PouGRoUKGdb8HKA",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10767459869529760203/E73A65E0CB74F6EFF4A44DEB30615F9A9A6D8564/"
         }
       ]
     },
@@ -74515,21 +75599,25 @@
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5798",
             "BackURL"
           ],
+          "local": "assets/cards/0_base/en/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1nqwJwxG7rqKmhXoDWYcoZKrx8Y8XdU9y",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13873989503575279025/ECC3ACCC19223079466A78E703AECC34F142303E/"
         },
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5798",
             "FaceURL"
           ],
+          "local": "assets/cards/0_base/en/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1orUfeKB4AVIhb6ZS-PouGRoUKGdb8HKA",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10767459869529760203/E73A65E0CB74F6EFF4A44DEB30615F9A9A6D8564/"
         },
         {
@@ -74538,7 +75626,33 @@
             "Fonts",
             "URL"
           ],
+          "local": "assets/fonts/font_list.unity3d",
+          "gUrl": "https://drive.google.com/uc?export=download&id=136ZvlP_d9WqvYyBvwTGldulgXGsm6V0Y",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18387726393550310454/A578781E3315E733B9148B3F6DF2B249F8E5C9F4/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5798",
+            "BackURL"
+          ],
+          "local": "assets/cards/0_base/en/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1nqwJwxG7rqKmhXoDWYcoZKrx8Y8XdU9y",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13873989503575279025/ECC3ACCC19223079466A78E703AECC34F142303E/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5798",
+            "FaceURL"
+          ],
+          "local": "assets/cards/0_base/en/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1orUfeKB4AVIhb6ZS-PouGRoUKGdb8HKA",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10767459869529760203/E73A65E0CB74F6EFF4A44DEB30615F9A9A6D8564/"
         }
       ]
     },
@@ -74557,21 +75671,25 @@
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5798",
             "BackURL"
           ],
+          "local": "assets/cards/0_base/en/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1nqwJwxG7rqKmhXoDWYcoZKrx8Y8XdU9y",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13873989503575279025/ECC3ACCC19223079466A78E703AECC34F142303E/"
         },
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5798",
             "FaceURL"
           ],
+          "local": "assets/cards/0_base/en/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1orUfeKB4AVIhb6ZS-PouGRoUKGdb8HKA",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10767459869529760203/E73A65E0CB74F6EFF4A44DEB30615F9A9A6D8564/"
         },
         {
@@ -74580,7 +75698,33 @@
             "Fonts",
             "URL"
           ],
+          "local": "assets/fonts/font_list.unity3d",
+          "gUrl": "https://drive.google.com/uc?export=download&id=136ZvlP_d9WqvYyBvwTGldulgXGsm6V0Y",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18387726393550310454/A578781E3315E733B9148B3F6DF2B249F8E5C9F4/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5798",
+            "BackURL"
+          ],
+          "local": "assets/cards/0_base/en/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1nqwJwxG7rqKmhXoDWYcoZKrx8Y8XdU9y",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13873989503575279025/ECC3ACCC19223079466A78E703AECC34F142303E/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5798",
+            "FaceURL"
+          ],
+          "local": "assets/cards/0_base/en/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1orUfeKB4AVIhb6ZS-PouGRoUKGdb8HKA",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10767459869529760203/E73A65E0CB74F6EFF4A44DEB30615F9A9A6D8564/"
         }
       ]
     },
@@ -75074,21 +76218,25 @@
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5864",
             "BackURL"
           ],
+          "local": "assets/cards/2_under_dark_waves/en/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1pEXUZLsaLgNxOQWs5yycu0bGJ5fhK86j",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13097381969205142927/511C656275254C7E55FEE6B549F27330FD759EFD/"
         },
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5864",
             "FaceURL"
           ],
+          "local": "assets/cards/2_under_dark_waves/en/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1RVGyzFIUdhS6FlQAv6SfguqheJ7HMObT",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16141432830999556668/CFDC8D8D6CB96C8BAC2980BACF14B66D2BC264BD/"
         },
         {
@@ -75097,7 +76245,33 @@
             "Fonts",
             "URL"
           ],
+          "local": "assets/fonts/font_list.unity3d",
+          "gUrl": "https://drive.google.com/uc?export=download&id=136ZvlP_d9WqvYyBvwTGldulgXGsm6V0Y",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18387726393550310454/A578781E3315E733B9148B3F6DF2B249F8E5C9F4/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5864",
+            "BackURL"
+          ],
+          "local": "assets/cards/2_under_dark_waves/en/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1pEXUZLsaLgNxOQWs5yycu0bGJ5fhK86j",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13097381969205142927/511C656275254C7E55FEE6B549F27330FD759EFD/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5864",
+            "FaceURL"
+          ],
+          "local": "assets/cards/2_under_dark_waves/en/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1RVGyzFIUdhS6FlQAv6SfguqheJ7HMObT",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16141432830999556668/CFDC8D8D6CB96C8BAC2980BACF14B66D2BC264BD/"
         }
       ]
     },
@@ -75161,21 +76335,25 @@
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5864",
             "BackURL"
           ],
+          "local": "assets/cards/2_under_dark_waves/en/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1pEXUZLsaLgNxOQWs5yycu0bGJ5fhK86j",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13097381969205142927/511C656275254C7E55FEE6B549F27330FD759EFD/"
         },
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5864",
             "FaceURL"
           ],
+          "local": "assets/cards/2_under_dark_waves/en/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1RVGyzFIUdhS6FlQAv6SfguqheJ7HMObT",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16141432830999556668/CFDC8D8D6CB96C8BAC2980BACF14B66D2BC264BD/"
         },
         {
@@ -75184,7 +76362,33 @@
             "Fonts",
             "URL"
           ],
+          "local": "assets/fonts/font_list.unity3d",
+          "gUrl": "https://drive.google.com/uc?export=download&id=136ZvlP_d9WqvYyBvwTGldulgXGsm6V0Y",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18387726393550310454/A578781E3315E733B9148B3F6DF2B249F8E5C9F4/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5864",
+            "BackURL"
+          ],
+          "local": "assets/cards/2_under_dark_waves/en/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1pEXUZLsaLgNxOQWs5yycu0bGJ5fhK86j",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13097381969205142927/511C656275254C7E55FEE6B549F27330FD759EFD/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5864",
+            "FaceURL"
+          ],
+          "local": "assets/cards/2_under_dark_waves/en/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1RVGyzFIUdhS6FlQAv6SfguqheJ7HMObT",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16141432830999556668/CFDC8D8D6CB96C8BAC2980BACF14B66D2BC264BD/"
         }
       ]
     },
@@ -75553,21 +76757,25 @@
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5798",
             "BackURL"
           ],
+          "local": "assets/cards/0_base/en/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1nqwJwxG7rqKmhXoDWYcoZKrx8Y8XdU9y",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13873989503575279025/ECC3ACCC19223079466A78E703AECC34F142303E/"
         },
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5798",
             "FaceURL"
           ],
+          "local": "assets/cards/0_base/en/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1orUfeKB4AVIhb6ZS-PouGRoUKGdb8HKA",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10767459869529760203/E73A65E0CB74F6EFF4A44DEB30615F9A9A6D8564/"
         },
         {
@@ -75576,7 +76784,33 @@
             "Fonts",
             "URL"
           ],
+          "local": "assets/fonts/font_list.unity3d",
+          "gUrl": "https://drive.google.com/uc?export=download&id=136ZvlP_d9WqvYyBvwTGldulgXGsm6V0Y",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18387726393550310454/A578781E3315E733B9148B3F6DF2B249F8E5C9F4/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5798",
+            "BackURL"
+          ],
+          "local": "assets/cards/0_base/en/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1nqwJwxG7rqKmhXoDWYcoZKrx8Y8XdU9y",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13873989503575279025/ECC3ACCC19223079466A78E703AECC34F142303E/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5798",
+            "FaceURL"
+          ],
+          "local": "assets/cards/0_base/en/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1orUfeKB4AVIhb6ZS-PouGRoUKGdb8HKA",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10767459869529760203/E73A65E0CB74F6EFF4A44DEB30615F9A9A6D8564/"
         }
       ]
     },
@@ -75640,21 +76874,25 @@
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5865",
             "BackURL"
           ],
+          "local": "assets/cards/3_secrets_of_the_order/en/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=16XanwWYMNcc3KITys4iIivanMCsdvB20",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12966042190640645555/50285EB7E6AB14141BB6783BAC816CB0CCBBD7BB/"
         },
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5865",
             "FaceURL"
           ],
+          "local": "assets/cards/3_secrets_of_the_order/en/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1kVDtT7ObearY_ritYQUKescO8cwP7krV",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18364949048677091083/CCBABA69EF0E07F2FD5A28B27914D93B7EC44794/"
         },
         {
@@ -75663,7 +76901,33 @@
             "Fonts",
             "URL"
           ],
+          "local": "assets/fonts/font_list.unity3d",
+          "gUrl": "https://drive.google.com/uc?export=download&id=136ZvlP_d9WqvYyBvwTGldulgXGsm6V0Y",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18387726393550310454/A578781E3315E733B9148B3F6DF2B249F8E5C9F4/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5865",
+            "BackURL"
+          ],
+          "local": "assets/cards/3_secrets_of_the_order/en/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=16XanwWYMNcc3KITys4iIivanMCsdvB20",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12966042190640645555/50285EB7E6AB14141BB6783BAC816CB0CCBBD7BB/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5865",
+            "FaceURL"
+          ],
+          "local": "assets/cards/3_secrets_of_the_order/en/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1kVDtT7ObearY_ritYQUKescO8cwP7krV",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18364949048677091083/CCBABA69EF0E07F2FD5A28B27914D93B7EC44794/"
         }
       ]
     },
@@ -76177,21 +77441,25 @@
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5864",
             "BackURL"
           ],
+          "local": "assets/cards/2_under_dark_waves/en/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1pEXUZLsaLgNxOQWs5yycu0bGJ5fhK86j",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13097381969205142927/511C656275254C7E55FEE6B549F27330FD759EFD/"
         },
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5864",
             "FaceURL"
           ],
+          "local": "assets/cards/2_under_dark_waves/en/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1RVGyzFIUdhS6FlQAv6SfguqheJ7HMObT",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16141432830999556668/CFDC8D8D6CB96C8BAC2980BACF14B66D2BC264BD/"
         },
         {
@@ -76200,7 +77468,33 @@
             "Fonts",
             "URL"
           ],
+          "local": "assets/fonts/font_list.unity3d",
+          "gUrl": "https://drive.google.com/uc?export=download&id=136ZvlP_d9WqvYyBvwTGldulgXGsm6V0Y",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18387726393550310454/A578781E3315E733B9148B3F6DF2B249F8E5C9F4/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5864",
+            "BackURL"
+          ],
+          "local": "assets/cards/2_under_dark_waves/en/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1pEXUZLsaLgNxOQWs5yycu0bGJ5fhK86j",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13097381969205142927/511C656275254C7E55FEE6B549F27330FD759EFD/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5864",
+            "FaceURL"
+          ],
+          "local": "assets/cards/2_under_dark_waves/en/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1RVGyzFIUdhS6FlQAv6SfguqheJ7HMObT",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16141432830999556668/CFDC8D8D6CB96C8BAC2980BACF14B66D2BC264BD/"
         }
       ]
     },
@@ -76219,21 +77513,25 @@
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5864",
             "BackURL"
           ],
+          "local": "assets/cards/2_under_dark_waves/en/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1pEXUZLsaLgNxOQWs5yycu0bGJ5fhK86j",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13097381969205142927/511C656275254C7E55FEE6B549F27330FD759EFD/"
         },
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5864",
             "FaceURL"
           ],
+          "local": "assets/cards/2_under_dark_waves/en/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1RVGyzFIUdhS6FlQAv6SfguqheJ7HMObT",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16141432830999556668/CFDC8D8D6CB96C8BAC2980BACF14B66D2BC264BD/"
         },
         {
@@ -76242,7 +77540,33 @@
             "Fonts",
             "URL"
           ],
+          "local": "assets/fonts/font_list.unity3d",
+          "gUrl": "https://drive.google.com/uc?export=download&id=136ZvlP_d9WqvYyBvwTGldulgXGsm6V0Y",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18387726393550310454/A578781E3315E733B9148B3F6DF2B249F8E5C9F4/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5864",
+            "BackURL"
+          ],
+          "local": "assets/cards/2_under_dark_waves/en/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1pEXUZLsaLgNxOQWs5yycu0bGJ5fhK86j",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13097381969205142927/511C656275254C7E55FEE6B549F27330FD759EFD/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5864",
+            "FaceURL"
+          ],
+          "local": "assets/cards/2_under_dark_waves/en/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1RVGyzFIUdhS6FlQAv6SfguqheJ7HMObT",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16141432830999556668/CFDC8D8D6CB96C8BAC2980BACF14B66D2BC264BD/"
         }
       ]
     },
@@ -76711,21 +78035,25 @@
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5798",
             "BackURL"
           ],
+          "local": "assets/cards/0_base/en/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1nqwJwxG7rqKmhXoDWYcoZKrx8Y8XdU9y",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13873989503575279025/ECC3ACCC19223079466A78E703AECC34F142303E/"
         },
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5798",
             "FaceURL"
           ],
+          "local": "assets/cards/0_base/en/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1orUfeKB4AVIhb6ZS-PouGRoUKGdb8HKA",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10767459869529760203/E73A65E0CB74F6EFF4A44DEB30615F9A9A6D8564/"
         },
         {
@@ -76734,7 +78062,33 @@
             "Fonts",
             "URL"
           ],
+          "local": "assets/fonts/font_list.unity3d",
+          "gUrl": "https://drive.google.com/uc?export=download&id=136ZvlP_d9WqvYyBvwTGldulgXGsm6V0Y",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18387726393550310454/A578781E3315E733B9148B3F6DF2B249F8E5C9F4/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5798",
+            "BackURL"
+          ],
+          "local": "assets/cards/0_base/en/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1nqwJwxG7rqKmhXoDWYcoZKrx8Y8XdU9y",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13873989503575279025/ECC3ACCC19223079466A78E703AECC34F142303E/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5798",
+            "FaceURL"
+          ],
+          "local": "assets/cards/0_base/en/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1orUfeKB4AVIhb6ZS-PouGRoUKGdb8HKA",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10767459869529760203/E73A65E0CB74F6EFF4A44DEB30615F9A9A6D8564/"
         }
       ]
     },
@@ -76753,21 +78107,25 @@
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5798",
             "BackURL"
           ],
+          "local": "assets/cards/0_base/en/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1nqwJwxG7rqKmhXoDWYcoZKrx8Y8XdU9y",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13873989503575279025/ECC3ACCC19223079466A78E703AECC34F142303E/"
         },
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5798",
             "FaceURL"
           ],
+          "local": "assets/cards/0_base/en/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1orUfeKB4AVIhb6ZS-PouGRoUKGdb8HKA",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10767459869529760203/E73A65E0CB74F6EFF4A44DEB30615F9A9A6D8564/"
         },
         {
@@ -76776,7 +78134,33 @@
             "Fonts",
             "URL"
           ],
+          "local": "assets/fonts/font_list.unity3d",
+          "gUrl": "https://drive.google.com/uc?export=download&id=136ZvlP_d9WqvYyBvwTGldulgXGsm6V0Y",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18387726393550310454/A578781E3315E733B9148B3F6DF2B249F8E5C9F4/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5798",
+            "BackURL"
+          ],
+          "local": "assets/cards/0_base/en/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1nqwJwxG7rqKmhXoDWYcoZKrx8Y8XdU9y",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13873989503575279025/ECC3ACCC19223079466A78E703AECC34F142303E/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5798",
+            "FaceURL"
+          ],
+          "local": "assets/cards/0_base/en/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1orUfeKB4AVIhb6ZS-PouGRoUKGdb8HKA",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10767459869529760203/E73A65E0CB74F6EFF4A44DEB30615F9A9A6D8564/"
         }
       ]
     },
@@ -77345,21 +78729,25 @@
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5798",
             "BackURL"
           ],
+          "local": "assets/cards/0_base/en/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1nqwJwxG7rqKmhXoDWYcoZKrx8Y8XdU9y",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13873989503575279025/ECC3ACCC19223079466A78E703AECC34F142303E/"
         },
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5798",
             "FaceURL"
           ],
+          "local": "assets/cards/0_base/en/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1orUfeKB4AVIhb6ZS-PouGRoUKGdb8HKA",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10767459869529760203/E73A65E0CB74F6EFF4A44DEB30615F9A9A6D8564/"
         },
         {
@@ -77368,7 +78756,33 @@
             "Fonts",
             "URL"
           ],
+          "local": "assets/fonts/font_list.unity3d",
+          "gUrl": "https://drive.google.com/uc?export=download&id=136ZvlP_d9WqvYyBvwTGldulgXGsm6V0Y",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18387726393550310454/A578781E3315E733B9148B3F6DF2B249F8E5C9F4/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5798",
+            "BackURL"
+          ],
+          "local": "assets/cards/0_base/en/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1nqwJwxG7rqKmhXoDWYcoZKrx8Y8XdU9y",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13873989503575279025/ECC3ACCC19223079466A78E703AECC34F142303E/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5798",
+            "FaceURL"
+          ],
+          "local": "assets/cards/0_base/en/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1orUfeKB4AVIhb6ZS-PouGRoUKGdb8HKA",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10767459869529760203/E73A65E0CB74F6EFF4A44DEB30615F9A9A6D8564/"
         }
       ]
     },
@@ -77387,21 +78801,25 @@
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5798",
             "BackURL"
           ],
+          "local": "assets/cards/0_base/en/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1nqwJwxG7rqKmhXoDWYcoZKrx8Y8XdU9y",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13873989503575279025/ECC3ACCC19223079466A78E703AECC34F142303E/"
         },
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5798",
             "FaceURL"
           ],
+          "local": "assets/cards/0_base/en/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1orUfeKB4AVIhb6ZS-PouGRoUKGdb8HKA",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10767459869529760203/E73A65E0CB74F6EFF4A44DEB30615F9A9A6D8564/"
         },
         {
@@ -77410,7 +78828,33 @@
             "Fonts",
             "URL"
           ],
+          "local": "assets/fonts/font_list.unity3d",
+          "gUrl": "https://drive.google.com/uc?export=download&id=136ZvlP_d9WqvYyBvwTGldulgXGsm6V0Y",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18387726393550310454/A578781E3315E733B9148B3F6DF2B249F8E5C9F4/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5798",
+            "BackURL"
+          ],
+          "local": "assets/cards/0_base/en/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1nqwJwxG7rqKmhXoDWYcoZKrx8Y8XdU9y",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13873989503575279025/ECC3ACCC19223079466A78E703AECC34F142303E/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5798",
+            "FaceURL"
+          ],
+          "local": "assets/cards/0_base/en/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1orUfeKB4AVIhb6ZS-PouGRoUKGdb8HKA",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10767459869529760203/E73A65E0CB74F6EFF4A44DEB30615F9A9A6D8564/"
         }
       ]
     },
@@ -77779,21 +79223,25 @@
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5804",
             "BackURL"
           ],
+          "local": "assets/cards/1_dead_of_night/en/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1AWaEljgs7LoIh6z4me_dwJoX2pbudPG1",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13433717936791182232/66FBFEC454E47B33A1FC125E93B033A3B2BF70A5/"
         },
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5804",
             "FaceURL"
           ],
+          "local": "assets/cards/1_dead_of_night/en/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1edVHb8njsNg00NHdwgTXCjcVpcXciIjV",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10500867953179527168/9900001B64F967506B0EFE156E5F244F887EBB42/"
         },
         {
@@ -77802,7 +79250,33 @@
             "Fonts",
             "URL"
           ],
+          "local": "assets/fonts/font_list.unity3d",
+          "gUrl": "https://drive.google.com/uc?export=download&id=136ZvlP_d9WqvYyBvwTGldulgXGsm6V0Y",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18387726393550310454/A578781E3315E733B9148B3F6DF2B249F8E5C9F4/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5804",
+            "BackURL"
+          ],
+          "local": "assets/cards/1_dead_of_night/en/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1AWaEljgs7LoIh6z4me_dwJoX2pbudPG1",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13433717936791182232/66FBFEC454E47B33A1FC125E93B033A3B2BF70A5/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5804",
+            "FaceURL"
+          ],
+          "local": "assets/cards/1_dead_of_night/en/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1edVHb8njsNg00NHdwgTXCjcVpcXciIjV",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10500867953179527168/9900001B64F967506B0EFE156E5F244F887EBB42/"
         }
       ]
     },
@@ -77846,21 +79320,25 @@
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5804",
             "BackURL"
           ],
+          "local": "assets/cards/1_dead_of_night/en/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1AWaEljgs7LoIh6z4me_dwJoX2pbudPG1",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13433717936791182232/66FBFEC454E47B33A1FC125E93B033A3B2BF70A5/"
         },
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5804",
             "FaceURL"
           ],
+          "local": "assets/cards/1_dead_of_night/en/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1edVHb8njsNg00NHdwgTXCjcVpcXciIjV",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10500867953179527168/9900001B64F967506B0EFE156E5F244F887EBB42/"
         },
         {
@@ -77869,7 +79347,33 @@
             "Fonts",
             "URL"
           ],
+          "local": "assets/fonts/font_list.unity3d",
+          "gUrl": "https://drive.google.com/uc?export=download&id=136ZvlP_d9WqvYyBvwTGldulgXGsm6V0Y",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18387726393550310454/A578781E3315E733B9148B3F6DF2B249F8E5C9F4/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5804",
+            "BackURL"
+          ],
+          "local": "assets/cards/1_dead_of_night/en/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1AWaEljgs7LoIh6z4me_dwJoX2pbudPG1",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13433717936791182232/66FBFEC454E47B33A1FC125E93B033A3B2BF70A5/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5804",
+            "FaceURL"
+          ],
+          "local": "assets/cards/1_dead_of_night/en/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1edVHb8njsNg00NHdwgTXCjcVpcXciIjV",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10500867953179527168/9900001B64F967506B0EFE156E5F244F887EBB42/"
         }
       ]
     },
@@ -78458,21 +79962,25 @@
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5798",
             "BackURL"
           ],
+          "local": "assets/cards/0_base/en/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1nqwJwxG7rqKmhXoDWYcoZKrx8Y8XdU9y",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13873989503575279025/ECC3ACCC19223079466A78E703AECC34F142303E/"
         },
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5798",
             "FaceURL"
           ],
+          "local": "assets/cards/0_base/en/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1orUfeKB4AVIhb6ZS-PouGRoUKGdb8HKA",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10767459869529760203/E73A65E0CB74F6EFF4A44DEB30615F9A9A6D8564/"
         },
         {
@@ -78481,7 +79989,33 @@
             "Fonts",
             "URL"
           ],
+          "local": "assets/fonts/font_list.unity3d",
+          "gUrl": "https://drive.google.com/uc?export=download&id=136ZvlP_d9WqvYyBvwTGldulgXGsm6V0Y",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18387726393550310454/A578781E3315E733B9148B3F6DF2B249F8E5C9F4/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5798",
+            "BackURL"
+          ],
+          "local": "assets/cards/0_base/en/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1nqwJwxG7rqKmhXoDWYcoZKrx8Y8XdU9y",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13873989503575279025/ECC3ACCC19223079466A78E703AECC34F142303E/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5798",
+            "FaceURL"
+          ],
+          "local": "assets/cards/0_base/en/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1orUfeKB4AVIhb6ZS-PouGRoUKGdb8HKA",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10767459869529760203/E73A65E0CB74F6EFF4A44DEB30615F9A9A6D8564/"
         }
       ]
     },
@@ -78920,21 +80454,25 @@
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5864",
             "BackURL"
           ],
+          "local": "assets/cards/2_under_dark_waves/en/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1pEXUZLsaLgNxOQWs5yycu0bGJ5fhK86j",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13097381969205142927/511C656275254C7E55FEE6B549F27330FD759EFD/"
         },
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5864",
             "FaceURL"
           ],
+          "local": "assets/cards/2_under_dark_waves/en/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1RVGyzFIUdhS6FlQAv6SfguqheJ7HMObT",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16141432830999556668/CFDC8D8D6CB96C8BAC2980BACF14B66D2BC264BD/"
         },
         {
@@ -78943,7 +80481,33 @@
             "Fonts",
             "URL"
           ],
+          "local": "assets/fonts/font_list.unity3d",
+          "gUrl": "https://drive.google.com/uc?export=download&id=136ZvlP_d9WqvYyBvwTGldulgXGsm6V0Y",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18387726393550310454/A578781E3315E733B9148B3F6DF2B249F8E5C9F4/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5864",
+            "BackURL"
+          ],
+          "local": "assets/cards/2_under_dark_waves/en/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1pEXUZLsaLgNxOQWs5yycu0bGJ5fhK86j",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13097381969205142927/511C656275254C7E55FEE6B549F27330FD759EFD/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5864",
+            "FaceURL"
+          ],
+          "local": "assets/cards/2_under_dark_waves/en/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1RVGyzFIUdhS6FlQAv6SfguqheJ7HMObT",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16141432830999556668/CFDC8D8D6CB96C8BAC2980BACF14B66D2BC264BD/"
         }
       ]
     },
@@ -78962,21 +80526,25 @@
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5864",
             "BackURL"
           ],
+          "local": "assets/cards/2_under_dark_waves/en/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1pEXUZLsaLgNxOQWs5yycu0bGJ5fhK86j",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13097381969205142927/511C656275254C7E55FEE6B549F27330FD759EFD/"
         },
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5864",
             "FaceURL"
           ],
+          "local": "assets/cards/2_under_dark_waves/en/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1RVGyzFIUdhS6FlQAv6SfguqheJ7HMObT",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16141432830999556668/CFDC8D8D6CB96C8BAC2980BACF14B66D2BC264BD/"
         },
         {
@@ -78985,7 +80553,33 @@
             "Fonts",
             "URL"
           ],
+          "local": "assets/fonts/font_list.unity3d",
+          "gUrl": "https://drive.google.com/uc?export=download&id=136ZvlP_d9WqvYyBvwTGldulgXGsm6V0Y",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18387726393550310454/A578781E3315E733B9148B3F6DF2B249F8E5C9F4/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5864",
+            "BackURL"
+          ],
+          "local": "assets/cards/2_under_dark_waves/en/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1pEXUZLsaLgNxOQWs5yycu0bGJ5fhK86j",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13097381969205142927/511C656275254C7E55FEE6B549F27330FD759EFD/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5864",
+            "FaceURL"
+          ],
+          "local": "assets/cards/2_under_dark_waves/en/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1RVGyzFIUdhS6FlQAv6SfguqheJ7HMObT",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16141432830999556668/CFDC8D8D6CB96C8BAC2980BACF14B66D2BC264BD/"
         }
       ]
     },
@@ -79474,21 +81068,25 @@
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5865",
             "BackURL"
           ],
+          "local": "assets/cards/3_secrets_of_the_order/en/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=16XanwWYMNcc3KITys4iIivanMCsdvB20",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12966042190640645555/50285EB7E6AB14141BB6783BAC816CB0CCBBD7BB/"
         },
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5865",
             "FaceURL"
           ],
+          "local": "assets/cards/3_secrets_of_the_order/en/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1kVDtT7ObearY_ritYQUKescO8cwP7krV",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18364949048677091083/CCBABA69EF0E07F2FD5A28B27914D93B7EC44794/"
         },
         {
@@ -79497,7 +81095,33 @@
             "Fonts",
             "URL"
           ],
+          "local": "assets/fonts/font_list.unity3d",
+          "gUrl": "https://drive.google.com/uc?export=download&id=136ZvlP_d9WqvYyBvwTGldulgXGsm6V0Y",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18387726393550310454/A578781E3315E733B9148B3F6DF2B249F8E5C9F4/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5865",
+            "BackURL"
+          ],
+          "local": "assets/cards/3_secrets_of_the_order/en/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=16XanwWYMNcc3KITys4iIivanMCsdvB20",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12966042190640645555/50285EB7E6AB14141BB6783BAC816CB0CCBBD7BB/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5865",
+            "FaceURL"
+          ],
+          "local": "assets/cards/3_secrets_of_the_order/en/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1kVDtT7ObearY_ritYQUKescO8cwP7krV",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18364949048677091083/CCBABA69EF0E07F2FD5A28B27914D93B7EC44794/"
         }
       ]
     },
@@ -79586,21 +81210,25 @@
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5798",
             "BackURL"
           ],
+          "local": "assets/cards/0_base/en/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1nqwJwxG7rqKmhXoDWYcoZKrx8Y8XdU9y",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13873989503575279025/ECC3ACCC19223079466A78E703AECC34F142303E/"
         },
         {
           "target": [
             "ChildObjects",
-            "Card",
+            0,
             "CustomDeck",
             "5798",
             "FaceURL"
           ],
+          "local": "assets/cards/0_base/en/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1orUfeKB4AVIhb6ZS-PouGRoUKGdb8HKA",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10767459869529760203/E73A65E0CB74F6EFF4A44DEB30615F9A9A6D8564/"
         },
         {
@@ -79609,7 +81237,33 @@
             "Fonts",
             "URL"
           ],
+          "local": "assets/fonts/font_list.unity3d",
+          "gUrl": "https://drive.google.com/uc?export=download&id=136ZvlP_d9WqvYyBvwTGldulgXGsm6V0Y",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18387726393550310454/A578781E3315E733B9148B3F6DF2B249F8E5C9F4/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5798",
+            "BackURL"
+          ],
+          "local": "assets/cards/0_base/en/Monsters 1Front.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1nqwJwxG7rqKmhXoDWYcoZKrx8Y8XdU9y",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13873989503575279025/ECC3ACCC19223079466A78E703AECC34F142303E/"
+        },
+        {
+          "target": [
+            "ChildObjects",
+            1,
+            "CustomDeck",
+            "5798",
+            "FaceURL"
+          ],
+          "local": "assets/cards/0_base/en/Monsters 2Back.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1orUfeKB4AVIhb6ZS-PouGRoUKGdb8HKA",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10767459869529760203/E73A65E0CB74F6EFF4A44DEB30615F9A9A6D8564/"
         }
       ]
     },

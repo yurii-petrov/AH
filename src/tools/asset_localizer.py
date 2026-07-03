@@ -272,6 +272,21 @@ def apply_replacements(replacements_by_file, apply):
             content = f.read()
 
         original = content
+
+        # Precompute, per (key, old-variant), whether every fix requesting
+        # that exact match agrees on the same new_url. Two sibling entries
+        # can legitimately share one old value at the same field name (e.g.
+        # two ChildObjects Card instances using the identical card-back
+        # image) — a scoped match that isn't uniquely countable is still
+        # safe to replace everywhere in that case, since every requester
+        # wants the same outcome. Only a genuine disagreement is worth a
+        # warning.
+        agreement = {}
+        for fix in replacements:
+            old_url, new_url, key = fix if len(fix) == 3 else (fix[0], fix[1], None)
+            for variant in (old_url, old_url.replace("&", "\\u0026")):
+                agreement.setdefault((key, variant), set()).add(new_url)
+
         for fix in replacements:
             old_url, new_url, key = fix if len(fix) == 3 else (fix[0], fix[1], None)
 
@@ -289,9 +304,9 @@ def apply_replacements(replacements_by_file, apply):
 
                 if not done and variant in content:
                     occurrences = content.count(variant)
-                    if occurrences > 1:
+                    if occurrences > 1 and len(agreement.get((key, variant), set())) > 1:
                         print(f"WARNING: '{variant}' appears {occurrences}x in {file_path} "
-                              f"and couldn't be scoped to field '{key}' — replacing all occurrences")
+                              f"and resolves to conflicting values for field '{key}' — replacing all occurrences with the last one requested")
                     content = content.replace(variant, new_url)
                     urls_replaced += 1
 

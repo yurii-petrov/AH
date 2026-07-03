@@ -29,8 +29,6 @@ def convert_po_to_lua():
     # This makes the script runnable from any location.
     script_dir = os.path.dirname(os.path.abspath(__file__))
 
-    print(f"Reading .po files from script directory: '{script_dir}'")
-
     # Iterate over all files in the script's directory.
     for filename in os.listdir(script_dir):
         if filename.endswith(".po"):
@@ -45,10 +43,8 @@ def convert_po_to_lua():
                 if not lang_code:
                     lang_code = os.path.splitext(filename)[0]
                     print(
-                        f"> Warning: 'Language' metadata not set in '{filename}'. Falling back to filename for language code: '{lang_code}'"
+                        f"Warning: 'Language' metadata not set in '{filename}'. Falling back to filename for language code: '{lang_code}'"
                     )
-
-                print(f"> Processing '{filename}' for language: '{lang_code}'...")
 
                 # Process each translated entry in the .po file.
                 for entry in po_file.translated_entries():
@@ -105,11 +101,9 @@ def convert_po_to_lua():
     try:
         with open(output_path, "w", encoding="utf-8") as f:
             f.write(lua_output_string)
-        print(
-            f"\nSuccess! All translations have been written to '{os.path.abspath(output_path)}'."
-        )
+        print("i18nData.ttslua updated success.")
     except Exception as e:
-        print(f"\nError writing to output file {output_path}: {e}")
+        print(f"Error writing to output file {output_path}: {e}")
 
 
 if __name__ == "__main__":
