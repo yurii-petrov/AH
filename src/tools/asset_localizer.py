@@ -297,7 +297,6 @@ def apply_replacements(replacements_by_file, apply):
 
         if content != original:
             files_touched += 1
-            print(f"{'WRITE' if apply else 'PLAN'}: {file_path} ({len(replacements)} url(s))")
 
             if apply:
                 with open(file_path, "w", encoding="utf-8") as f:

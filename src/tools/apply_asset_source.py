@@ -20,6 +20,7 @@ def collect_fixes(source):
         index = json.load(f)["data"]
 
     fixes_by_file = {}
+    missing = []
 
     for rel_path, file_data in index.items():
         file_path = os.path.join(ROOT_DIR, *rel_path.split("/"))
@@ -39,6 +40,8 @@ def collect_fixes(source):
 
             new = urls.get(source)
             if not new:
+                available = [s for s, u in urls.items() if u and s != source]
+                missing.append((rel_path, asset.get("target"), available))
                 continue
 
             # Scope each replacement to this asset's own JSON field (e.g.
@@ -51,7 +54,7 @@ def collect_fixes(source):
                 if other_source != source and old:
                     fixes_by_file.setdefault(file_path, []).append((old, new, key))
 
-    return fixes_by_file
+    return fixes_by_file, missing
 
 
 # -------------------------
@@ -70,7 +73,7 @@ def main():
         print("Specify --local (use local files), --drive (use Google Drive links), or --steam (use Steam Cloud links)")
         sys.exit(1)
 
-    fixes_by_file = collect_fixes(source)
+    fixes_by_file, missing = collect_fixes(source)
     files_touched, urls_replaced = apply_replacements(fixes_by_file, apply)
 
     print()
@@ -78,6 +81,13 @@ def main():
     print("Source:", source)
     print("Files touched:", files_touched)
     print("URLs replaced:", urls_replaced)
+
+    if missing:
+        print()
+        print(f"No '{source}' link available (skipped):", len(missing))
+        for rel_path, target, available in missing:
+            have = ", ".join(available) if available else "nothing else either"
+            print(f"  {rel_path} {target}: no {source} link (have: {have})")
 
 
 if __name__ == "__main__":

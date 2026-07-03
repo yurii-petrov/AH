@@ -3,13 +3,20 @@
   "tasks": [
     {
       "label": "Arkham Horror: Build",
-      "dependsOn": ["_sync_po", "_convert_po", "_index_assets", "_add_download_links", "_go_build"],
+      "dependsOn": ["_index_assets", "_add_download_links", "_prepare_project"],
       "dependsOrder": "sequence",
       "problemMatcher": [],
       "group": {
         "kind": "build",
         "isDefault": true
       }
+    },
+
+    {
+      "label": "_prepare_project",
+      "dependsOn": ["_sync_po", "_convert_po", "_go_build"],
+      "dependsOrder": "sequence",
+      "problemMatcher": []
     },
 
     {
@@ -200,7 +207,7 @@
 
     {
       "label": "Arkham Horror: Use Local Assets",
-      "dependsOn": ["_use_local_assets", "Arkham Horror: Build"],
+      "dependsOn": ["_use_local_assets", "_prepare_project"],
       "dependsOrder": "sequence",
       "problemMatcher": []
     },
@@ -221,7 +228,7 @@
 
     {
       "label": "Arkham Horror: Use Google Drive Links",
-      "dependsOn": ["_use_drive_links", "Arkham Horror: Build"],
+      "dependsOn": ["_use_drive_links", "_prepare_project"],
       "dependsOrder": "sequence",
       "problemMatcher": []
     },
@@ -242,7 +249,7 @@
 
     {
       "label": "Arkham Horror: Use Steam Cloud Links",
-      "dependsOn": ["_use_steam_links", "Arkham Horror: Build"],
+      "dependsOn": ["_use_steam_links", "_prepare_project"],
       "dependsOrder": "sequence",
       "problemMatcher": []
     },
