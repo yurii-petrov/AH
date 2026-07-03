@@ -80172,7 +80172,9 @@
             0,
             "Item1"
           ],
-          "gUrl": "https://drive.google.com/uc?export=download&id=1cDQn1GZ5bAJYpQpV7DrxOPCNdrS09q6Q"
+          "local": "assets/music/lovecraft 01.mp3",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1cDQn1GZ5bAJYpQpV7DrxOPCNdrS09q6Q",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18146587035499244065/76C896520ED6AD6860804E853466164F4CFDE543/"
         },
         {
           "target": [
@@ -80181,13 +80183,16 @@
             "Item1"
           ],
           "local": "assets/music/cthulhu_music.mp3",
-          "gUrl": "https://drive.google.com/uc?export=download&id=1eKydxIrnvChQfJ48jo6cDstbZKR_FFIT"
+          "gUrl": "https://drive.google.com/uc?export=download&id=1eKydxIrnvChQfJ48jo6cDstbZKR_FFIT",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15805249985086253420/8D21AE86DB55133F683A9859A45F2D90EA5C50A9/"
         },
         {
           "target": [
             "CurrentAudioURL"
           ],
-          "gUrl": "https://drive.google.com/uc?export=download&id=1cDQn1GZ5bAJYpQpV7DrxOPCNdrS09q6Q"
+          "local": "assets/music/lovecraft 01.mp3",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1cDQn1GZ5bAJYpQpV7DrxOPCNdrS09q6Q",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18146587035499244065/76C896520ED6AD6860804E853466164F4CFDE543/"
         }
       ]
     }
