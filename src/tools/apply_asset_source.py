@@ -2,7 +2,7 @@ import json
 import os
 import sys
 
-from asset_index_builder import ROOT_DIR, build_local_file_url
+from asset_index_builder import ROOT_DIR, build_local_file_url, print_box
 from asset_localizer import apply_replacements
 
 INDEX_FILE = os.path.join(os.path.dirname(__file__), "index.json")
@@ -76,11 +76,8 @@ def main():
     fixes_by_file, missing = collect_fixes(source)
     files_touched, urls_replaced = apply_replacements(fixes_by_file, apply)
 
-    print()
-    print("DONE" if apply else "DRY RUN (pass --apply to write changes)")
-    print("Source:", source)
-    print("Files touched:", files_touched)
-    print("URLs replaced:", urls_replaced)
+    status = "APPLIED" if apply else "DRY RUN"
+    print_box(f"{source.upper()} LINKS {status} ({files_touched} FILES, {urls_replaced} URLS)")
 
     if missing:
         print()

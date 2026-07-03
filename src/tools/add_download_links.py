@@ -3,6 +3,8 @@ import os
 
 import openpyxl
 
+from asset_index_builder import print_box
+
 XLSX_FILE = os.path.join(os.path.dirname(__file__), "assets_tts_url.xlsx")
 INDEX_FILE = os.path.join(os.path.dirname(__file__), "index.json")
 
@@ -47,7 +49,7 @@ def main():
     with open(INDEX_FILE, "w", encoding="utf-8") as f:
         json.dump(index, f, indent=2, ensure_ascii=False)
 
-    print(f"index.json updated success. ({matched}/{len(links)} download links matched)")
+    print_box(f"DOWNLOAD LINKS UPDATED SUCCESS ({matched}/{len(links)} MATCHED)")
 
 
 if __name__ == "__main__":

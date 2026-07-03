@@ -16,6 +16,8 @@ import os
 import re
 import sys
 
+from asset_index_builder import print_box
+
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 DEFAULT_TARGET = os.path.join(REPO_ROOT, "objects", "Enbag.a24119")
 
@@ -107,9 +109,8 @@ def process_files(target_dir):
                     json.dump(new_data, f, ensure_ascii=False, indent=2)
                     f.write("\n")
 
-    print()
-    print("DONE" if APPLY else "DRY RUN (pass --apply to write changes)")
-    print("Files touched:", total_changed)
+    status = "APPLIED" if APPLY else "DRY RUN"
+    print_box(f"EN IMAGES {status} ({total_changed} FILES TOUCHED)")
 
     if missing:
         print()

@@ -47,7 +47,6 @@
     "Custom_Tile.7b841f",
     "Custom_Tile.f0624c",
     "LocationMat.9fe1d3",
-    "Custom_Model_Infinite_Bag.2f7335",
     "Shop.80c416",
     "Tile4ActionButtons.d706d4",
     "Ukbag.69279c",
@@ -76,7 +75,8 @@
     "Enbag.a24119",
     "Infinite_Bag.789c2b",
     "ModelBase.6947c3",
-    "MonstersbyScenarioeng.652031"
+    "MonstersbyScenarioeng.652031",
+    "Custom_Model_Infinite_Bag.2f7335"
   ],
   "PlayArea": 0.5,
   "PlayerCounts": [

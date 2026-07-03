@@ -3,6 +3,8 @@ TTSModManager.exe
 .venv/
 src/ConvertMemo/objects/
 /assets/
+src/tools/credentials.json
+src/tools/token.json
 # Cursor / Claude AI config
 .cursor/
 .claude/

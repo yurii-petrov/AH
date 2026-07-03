@@ -8,6 +8,16 @@ import polib
 OUTPUT_LUA_FILE = os.path.join("..", "src", "Global", "i18nData.ttslua")
 
 
+def print_box(message):
+    pad = 5
+    width = len(message) + pad * 2
+    print()
+    print("╔" + "═" * width + "╗")
+    print("║" + " " * pad + message + " " * pad + "║")
+    print("╚" + "═" * width + "╝")
+    print()
+
+
 def to_lua_string(s):
     """
     Escapes a Python string to be a valid Lua string literal.
@@ -101,7 +111,7 @@ def convert_po_to_lua():
     try:
         with open(output_path, "w", encoding="utf-8") as f:
             f.write(lua_output_string)
-        print("i18nData.ttslua updated success.")
+        print_box("I18N DATA UPDATED SUCCESS")
     except Exception as e:
         print(f"Error writing to output file {output_path}: {e}")
 

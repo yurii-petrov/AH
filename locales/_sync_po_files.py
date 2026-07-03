@@ -8,6 +8,16 @@ import polib
 MASTER_PO_FILE = "en.po"
 
 
+def print_box(message):
+    pad = 5
+    width = len(message) + pad * 2
+    print()
+    print("╔" + "═" * width + "╗")
+    print("║" + " " * pad + message + " " * pad + "║")
+    print("╚" + "═" * width + "╝")
+    print()
+
+
 def sync_and_reorder_files():
     """
     Synchronizes all .po files with a master file, reordering them to match
@@ -75,7 +85,7 @@ def sync_and_reorder_files():
         except Exception as e:
             print(f"Error processing file {filename}: {e}")
 
-    print("po files sync success.")
+    print_box("PO FILES SYNC SUCCESS")
 
 
 if __name__ == "__main__":

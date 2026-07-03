@@ -1,3 +1,4 @@
+import hashlib
 import os
 import platform
 import re
@@ -11,6 +12,19 @@ OUTPUT_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "index.js
 TTS_INDEX_XLSX = os.path.join(os.path.dirname(__file__), "assets_tts_url.xlsx")
 DRIVE_ROOT = "/Users/yurii/My Drive (pe.ur.ur@gmail.com)/Arkham Horror (TTS)"
 ASSETS_ROOT = os.path.join(ROOT_DIR, "assets")
+
+
+def print_box(message):
+    """Boxed final-status line, shared by the src/tools/ scripts, so a
+    result doesn't get lost between a run of VS Code's "Executing task: ..."
+    lines when several tasks chain together."""
+    pad = 5
+    width = len(message) + pad * 2
+    print()
+    print("╔" + "═" * width + "╗")
+    print("║" + " " * pad + message + " " * pad + "║")
+    print("╚" + "═" * width + "╝")
+    print()
 
 # Every google.drivePath category that has been migrated out of the Drive
 # mount into the project's assets/ folder (see asset_migrator.py) — these
@@ -420,13 +434,38 @@ def ensure_schema(index):
     return inflated
 
 
+_local_hash_cache = {}
+
+
+def local_file_hash(rel_local_path):
+    """SHA256 of the local asset file's current bytes — lets drive_upload.py
+    tell "already uploaded, content unchanged" apart from "content edited
+    since the last upload, needs re-uploading with a fresh Drive file/id".
+    Memoized per path since many asset entries commonly share one local
+    file (e.g. two ChildObjects Card instances using the same card art)."""
+    if rel_local_path in _local_hash_cache:
+        return _local_hash_cache[rel_local_path]
+
+    abs_path = to_absolute(rel_local_path)
+    digest = None
+    if os.path.isfile(abs_path):
+        h = hashlib.sha256()
+        with open(abs_path, "rb") as f:
+            for chunk in iter(lambda: f.read(1 << 16), b""):
+                h.update(chunk)
+        digest = h.hexdigest()
+
+    _local_hash_cache[rel_local_path] = digest
+    return digest
+
+
 # -------------------------
 # PRUNE FOR OUTPUT (write-time): flatten to {target, local, gUrl} — drop the
 # internal google/steam/other split, drop null fields, and turn absolute
 # paths under ROOT_DIR into relative ones so index.json is portable and easy
 # to read: just "where's the file locally" + "where to re-download it from".
 # -------------------------
-def prune_for_output(index):
+def prune_for_output(index, baseline_established=True):
     output = {}
 
     for file_path, file_data in index.items():
@@ -453,10 +492,30 @@ def prune_for_output(index):
             asset_out = {"target": asset["target"]}
             if local:
                 asset_out["local"] = local
+                local_hash = local_file_hash(local)
+                if local_hash:
+                    asset_out["localHash"] = local_hash
             if gurl:
                 asset_out["gUrl"] = gurl
             if steam_url:
                 asset_out["steamUrl"] = steam_url
+
+            uploaded_hash = asset.get("uploadedHash")
+            if not uploaded_hash and not baseline_established and gurl and asset_out.get("localHash"):
+                # Only true on the very first scan after upload-hash tracking
+                # was introduced: there's no upload history yet for anything,
+                # so treat the current file as the baseline rather than
+                # flagging every already-uploaded asset as "changed". Once
+                # that one-time baseline has run (baseline_established=True
+                # from then on, see main()), an asset that still has no
+                # uploadedHash is genuinely unaccounted for and must be
+                # treated as needing a real upload — not silently re-assumed
+                # "fine" on every later scan, which previously let a file
+                # that changed *after* it was first seen (but before ever
+                # being uploaded via drive_upload.py) go undetected forever.
+                uploaded_hash = asset_out["localHash"]
+            if uploaded_hash:
+                asset_out["uploadedHash"] = uploaded_hash
 
             if len(asset_out) > 1:
                 assets_out.append(asset_out)
@@ -484,29 +543,44 @@ def has_local_coverage(asset):
     )
 
 
+def has_gurl_coverage(asset):
+    return bool(asset.get("_gurl") or asset["google"].get("link"))
+
+
 def inherit_local_from_sibling(asset, assets, source, url):
-    """Backfill local/gUrl from another asset in the same file that's
-    already known to have this exact link, when `asset` itself has none yet
-    — e.g. two ChildObjects entries (two Card instances sharing one card
-    back image) legitimately embed the identical CustomDeck URL at two
+    """Backfill whichever of local/gUrl `asset` is still missing from
+    another asset in the same file that's already known to have this exact
+    link — e.g. two ChildObjects entries (two Card instances sharing one
+    card back image) legitimately embed the identical CustomDeck URL at two
     distinct targets, but only one of them was ever actually downloaded/
-    localized."""
-    if has_local_coverage(asset):
+    uploaded to Drive. Checked independently (not "has neither") since a
+    sibling can supply one without the other having supplied the same."""
+    needs_local = not has_local_coverage(asset)
+    needs_gurl = not has_gurl_coverage(asset)
+    if not needs_local and not needs_gurl:
         return
 
     carry_key = "_gurl" if source == "google" else "_steam_url"
     for sibling in assets:
         if sibling is asset:
             continue
-        if not has_local_coverage(sibling):
+        if sibling[source].get("link") != url and sibling.get(carry_key) != url:
             continue
-        if sibling[source].get("link") == url or sibling.get(carry_key) == url:
+
+        if needs_local and has_local_coverage(sibling):
             asset["google"]["local"] = sibling["google"].get("local")
             asset["google"]["drivePath"] = sibling["google"].get("drivePath")
             asset["steam"]["local"] = sibling["steam"].get("local")
             asset["other"]["link"] = sibling["other"].get("link")
-            asset["_gurl"] = asset.get("_gurl") or sibling.get("_gurl")
-            asset["_steam_url"] = asset.get("_steam_url") or sibling.get("_steam_url")
+            needs_local = False
+
+        if needs_gurl and has_gurl_coverage(sibling):
+            asset["_gurl"] = sibling.get("_gurl")
+            if sibling.get("uploadedHash"):
+                asset["uploadedHash"] = sibling["uploadedHash"]
+            needs_gurl = False
+
+        if not needs_local and not needs_gurl:
             return
 
 
@@ -681,6 +755,7 @@ def scan():
     IGNORE_DIRS = {
         os.path.realpath(os.path.join(ROOT_DIR, ".tts")),
         os.path.realpath(os.path.join(ROOT_DIR, "src/tools")),
+        os.path.realpath(os.path.join(ROOT_DIR, ".venv")),
     }
 
     def ignored(path):
@@ -714,8 +789,12 @@ def scan():
             visited_targets[file_path] = visited
 
     # Drop stale entries for files that were renamed/deleted since the last
-    # indexed run — otherwise merge-on-load_index() keeps them forever.
-    for stale_path in [p for p in index if not os.path.isfile(p)]:
+    # indexed run — otherwise merge-on-load_index() keeps them forever. Also
+    # drop entries under a now-ignored directory (e.g. .venv/, populated by
+    # a one-off pip install that got indexed before it was added to
+    # IGNORE_DIRS) — the file still exists, so only an explicit ignored()
+    # check catches it.
+    for stale_path in [p for p in index if not os.path.isfile(p) or ignored(p)]:
         del index[stale_path]
 
     # Drop stale per-asset entries whose target wasn't seen on this pass (see
@@ -746,12 +825,14 @@ def main():
         except (json.JSONDecodeError, OSError):
             output = {}
 
-    output["data"] = prune_for_output(index)
+    baseline_established = output.get("uploadHashBaselineEstablished", False)
+    output["data"] = prune_for_output(index, baseline_established)
+    output["uploadHashBaselineEstablished"] = True
 
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
         json.dump(output, f, indent=2, ensure_ascii=False)
 
-    print(f"index.json updated success. ({len(index)} files scanned)")
+    print_box(f"INDEX UPDATED SUCCESS ({len(index)} FILES SCANNED)")
 
 
 if __name__ == "__main__":

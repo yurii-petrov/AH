@@ -91,8 +91,22 @@
 
     {
       "label": "Arkham Horror: Decompose",
-      "dependsOn": ["_clean_objects", "_decompose", "_index_assets", "_add_download_links", "_decompose_done"],
+      "dependsOn": ["_clean_objects", "_decompose", "_index_assets", "_add_download_links", "_check_uploads", "_decompose_done"],
       "dependsOrder": "sequence",
+      "problemMatcher": []
+    },
+
+    {
+      "label": "_check_uploads",
+      "type": "shell",
+      "windows": {
+        "command": "py",
+        "args": ["${workspaceFolder}\\src\\tools\\drive_upload.py"]
+      },
+      "osx": {
+        "command": "${workspaceFolder}/.venv/bin/python",
+        "args": ["${workspaceFolder}/src/tools/drive_upload.py"]
+      },
       "problemMatcher": []
     },
 
@@ -187,13 +201,6 @@
 
     {
       "label": "Arkham Horror: Sync Lua → JSON",
-      "dependsOn": ["_sync_lua_to_json", "_sync_lua_to_json_done"],
-      "dependsOrder": "sequence",
-      "problemMatcher": []
-    },
-
-    {
-      "label": "_sync_lua_to_json",
       "type": "shell",
       "windows": {
         "command": "py",
@@ -210,28 +217,7 @@
     },
 
     {
-      "label": "_sync_lua_to_json_done",
-      "type": "shell",
-      "windows": {
-        "command": "py",
-        "args": ["${workspaceFolder}\\src\\tools\\box_echo.py", "LUA -> JSON SYNC SUCCESS"]
-      },
-      "osx": {
-        "command": "${workspaceFolder}/.venv/bin/python",
-        "args": ["${workspaceFolder}/src/tools/box_echo.py", "LUA -> JSON SYNC SUCCESS"]
-      },
-      "problemMatcher": []
-    },
-
-    {
       "label": "Arkham Horror: Replace EN Images",
-      "dependsOn": ["_replace_en_images", "_replace_en_images_done"],
-      "dependsOrder": "sequence",
-      "problemMatcher": []
-    },
-
-    {
-      "label": "_replace_en_images",
       "type": "shell",
       "osx": {
         "command": "${workspaceFolder}/.venv/bin/python",
@@ -245,28 +231,7 @@
     },
 
     {
-      "label": "_replace_en_images_done",
-      "type": "shell",
-      "windows": {
-        "command": "py",
-        "args": ["${workspaceFolder}\\src\\tools\\box_echo.py", "EN IMAGES REPLACED"]
-      },
-      "osx": {
-        "command": "${workspaceFolder}/.venv/bin/python",
-        "args": ["${workspaceFolder}/src/tools/box_echo.py", "EN IMAGES REPLACED"]
-      },
-      "problemMatcher": []
-    },
-
-    {
       "label": "Arkham Horror: Parse Memo",
-      "dependsOn": ["_parse_memo", "_parse_memo_done"],
-      "dependsOrder": "sequence",
-      "problemMatcher": []
-    },
-
-    {
-      "label": "_parse_memo",
       "type": "shell",
       "windows": {
         "command": "py",
@@ -278,20 +243,6 @@
       },
       "options": {
         "cwd": "${workspaceFolder}/src/ConvertMemo"
-      },
-      "problemMatcher": []
-    },
-
-    {
-      "label": "_parse_memo_done",
-      "type": "shell",
-      "windows": {
-        "command": "py",
-        "args": ["${workspaceFolder}\\src\\tools\\box_echo.py", "MEMO PARSE SUCCESS"]
-      },
-      "osx": {
-        "command": "${workspaceFolder}/.venv/bin/python",
-        "args": ["${workspaceFolder}/src/tools/box_echo.py", "MEMO PARSE SUCCESS"]
       },
       "problemMatcher": []
     },
@@ -356,6 +307,33 @@
         "command": "${workspaceFolder}/.venv/bin/python",
         "args": ["${workspaceFolder}/src/tools/apply_asset_source.py", "--steam", "--apply"]
       },
+      "problemMatcher": []
+    },
+
+    {
+      "label": "Arkham Horror: Upload New Assets to Drive",
+      "dependsOn": ["_index_assets", "_upload_to_drive", "_use_drive_links", "_prepare_project"],
+      "dependsOrder": "sequence",
+      "problemMatcher": []
+    },
+
+    {
+      "label": "_upload_to_drive",
+      "type": "shell",
+      "windows": {
+        "command": "py",
+        "args": ["${workspaceFolder}\\src\\tools\\drive_upload.py", "--apply"]
+      },
+      "osx": {
+        "command": "${workspaceFolder}/.venv/bin/python",
+        "args": ["${workspaceFolder}/src/tools/drive_upload.py", "--apply"]
+      },
+      "problemMatcher": []
+    },
+
+    {
+      "label": "Arkham Horror: Check Missing Drive Links",
+      "dependsOn": ["_check_uploads"],
       "problemMatcher": []
     }
   ],

@@ -10,6 +10,16 @@ OBJECTS_DIR = PROJECT_ROOT / "AH" / "objects"
 LUA_DIR = PROJECT_ROOT / "AH" / "src" / "ConvertMemo" / "objects"
 
 
+def print_box(message):
+    pad = 5
+    width = len(message) + pad * 2
+    print()
+    print("╔" + "═" * width + "╗")
+    print("║" + " " * pad + message + " " * pad + "║")
+    print("╚" + "═" * width + "╝")
+    print()
+
+
 # ---------- HELPERS ----------
 def strip_data_prefix(lua_text: str) -> str:
     return re.sub(r'^\s*data\s*=\s*', '', lua_text).strip()
@@ -77,7 +87,7 @@ def main():
         update_memo_in_json(json_file, lua_file)
         print()
 
-    print("DONE")
+    print_box(f"LUA -> JSON SYNC SUCCESS ({len(lua_files)} FILES)")
 
 
 if __name__ == "__main__":

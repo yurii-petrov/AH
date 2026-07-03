@@ -9,6 +9,16 @@ OUTPUT_DIR = Path(__file__).resolve().parent / "objects"
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 
+def print_box(message):
+    pad = 5
+    width = len(message) + pad * 2
+    print()
+    print("╔" + "═" * width + "╗")
+    print("║" + " " * pad + message + " " * pad + "║")
+    print("╚" + "═" * width + "╝")
+    print()
+
+
 # ---------- IO ----------
 def read(path: Path) -> str:
     return path.read_text(encoding="utf-8")
@@ -166,7 +176,7 @@ def main():
 
         tree[bag][deck].append(name)
 
-    print("\nDONE")
+    print_box(f"MEMO PARSE SUCCESS ({len(json_files)} FILES)")
 
 
 if __name__ == "__main__":
