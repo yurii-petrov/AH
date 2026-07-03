@@ -12,6 +12,7 @@ from googleapiclient.discovery import build
 from googleapiclient.http import MediaFileUpload
 
 from asset_index_builder import ROOT_DIR, extract_google_id, print_box
+from assets_manifest import diff as manifest_diff
 from assets_manifest import load_manifest, save_manifest, scan_assets
 
 # -------------------------
@@ -175,6 +176,33 @@ def seed_manifest_from_index(manifest, data):
                 entry["gUrl"] = gurl
 
 
+def sync_drive_metadata(service, file_id, new_path, root_folder_id, folder_cache):
+    """A local rename/move doesn't need the file re-uploaded (the Drive id
+    and gUrl stay valid either way), but leaves the Drive copy's own
+    name/folder stale — this brings them back in line so browsing Drive
+    directly still matches what's on disk, purely metadata, no re-upload."""
+    subfolder_parts = new_path.split("/")[1:-1]
+    new_name = new_path.split("/")[-1]
+    target_folder_id = resolve_drive_dir(service, root_folder_id, subfolder_parts, folder_cache)
+
+    current = service.files().get(fileId=file_id, fields="name, parents").execute()
+    old_parents = current.get("parents", [])
+
+    kwargs = {}
+    if current.get("name") != new_name:
+        kwargs["body"] = {"name": new_name}
+    if target_folder_id not in old_parents:
+        kwargs["addParents"] = target_folder_id
+        if old_parents:
+            kwargs["removeParents"] = ",".join(old_parents)
+
+    if not kwargs:
+        return False
+
+    service.files().update(fileId=file_id, fields="id", **kwargs).execute()
+    return True
+
+
 def find_dead_manifest_links(service, manifest):
     """--verify only: hash-matching isn't enough if someone deletes the
     Drive file directly (from the Drive UI, outside this script) — the
@@ -206,10 +234,18 @@ def main():
         index = json.load(f)
     data = index["data"]
 
-    manifest = scan_assets(load_manifest())
+    old_manifest = load_manifest()
+    manifest = scan_assets(old_manifest)
     seed_manifest_from_index(manifest, data)
 
     needing = [h for h, entry in manifest.items() if not entry.get("driveId")]
+
+    _, _, renamed = manifest_diff(old_manifest, manifest)
+    to_reconcile = [
+        (file_hash, sorted(new_paths)[0])
+        for file_hash, old_paths, new_paths in renamed
+        if manifest[file_hash].get("driveId")
+    ]
 
     service = None
     if verify:
@@ -225,19 +261,25 @@ def main():
                     print(f"  [dead-link] {path}")
         needing = list(set(needing) | set(dead))
 
-    if not needing:
+    if not needing and not to_reconcile:
         save_manifest(manifest)
-        print_box("NO DRIVE UPLOADS NEEDED")
+        print_box("NO DRIVE CHANGES NEEDED")
         return
 
-    print(f"{len(needing)} asset(s) need a Drive upload:")
-    for file_hash in needing:
-        for path in manifest[file_hash]["paths"]:
-            print(f"  {path}")
+    if needing:
+        print(f"{len(needing)} asset(s) need a Drive upload:")
+        for file_hash in needing:
+            for path in manifest[file_hash]["paths"]:
+                print(f"  {path}")
+
+    if to_reconcile:
+        print(f"{len(to_reconcile)} asset(s) renamed/moved locally — Drive file will be renamed to match:")
+        for file_hash, new_path in to_reconcile:
+            print(f"  -> {new_path}")
 
     if not apply:
         save_manifest(manifest)
-        print_box(f"DRY RUN — {len(needing)} PENDING (pass --apply to upload)")
+        print_box(f"DRY RUN — {len(needing)} UPLOAD(S), {len(to_reconcile)} RENAME(S) PENDING (pass --apply)")
         return
 
     if service is None:
@@ -310,6 +352,16 @@ def main():
         except Exception as e:
             print(f"Could not delete superseded Drive file {old_id}: {e}")
 
+    reconciled = 0
+    for file_hash, new_path in to_reconcile:
+        entry = manifest[file_hash]
+        try:
+            if sync_drive_metadata(service, entry["driveId"], new_path, root_folder_id, folder_cache):
+                reconciled += 1
+                print(f"Renamed on Drive: -> {new_path}")
+        except Exception as e:
+            print(f"Could not rename Drive file {entry['driveId']} to match {new_path}: {e}")
+
     save_manifest(manifest)
     with open(INDEX_FILE, "w", encoding="utf-8") as f:
         json.dump(index, f, indent=2, ensure_ascii=False)
@@ -319,7 +371,7 @@ def main():
         for path, file_id, gurl in unwired:
             print(f"  {path}  id={file_id}  {gurl}")
 
-    print_box(f"DRIVE UPLOAD SUCCESS ({uploaded} UPLOADED, {linked} LINKED, {deleted} OLD DELETED)")
+    print_box(f"DRIVE UPLOAD SUCCESS ({uploaded} UPLOADED, {linked} LINKED, {deleted} OLD DELETED, {reconciled} RENAMED)")
 
 
 if __name__ == "__main__":
