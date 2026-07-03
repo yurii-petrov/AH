@@ -12,6 +12,7 @@ from googleapiclient.discovery import build
 from googleapiclient.http import MediaFileUpload
 
 from asset_index_builder import ROOT_DIR, extract_google_id, print_box
+from assets_manifest import load_manifest, save_manifest, scan_assets
 
 # -------------------------
 # UPLOAD ASSETS WITH A LOCAL FILE BUT NO DRIVE LINK YET, THEN RECORD THE
@@ -147,60 +148,52 @@ def upload_file(service, folder_id, local_path):
     return file_id
 
 
-def find_needing_upload(data):
-    """Assets with a known local file that either have no Drive link yet
-    ("new"), or do have one but the local file's content has changed since
-    the last upload ("changed" — localHash, refreshed on every index scan,
-    no longer matches uploadedHash, set only when this script last uploaded
-    it)."""
-    needing = []
-    for rel_path, file_data in data.items():
+def seed_manifest_from_index(manifest, data):
+    """The manifest starts out knowing nothing about Drive — backfill
+    driveId/gUrl for any hash that index.json (built by asset_index_builder
+    from the URLs actually embedded in objects/*.json) already recorded as
+    uploaded. Matched by uploadedHash (the asset's actual content hash at
+    upload time), not by path/local — a path match alone would wrongly
+    carry the old gUrl forward onto an asset whose content has since changed
+    (same path, new hash), silently masking a real edit as "nothing to do".
+    Without this seeding at all, the first run after introducing the
+    manifest would see every asset as "no driveId yet" and re-upload the
+    entire library."""
+    for file_data in data.values():
         for asset in file_data.get("assets", []):
-            local = asset.get("local")
-            if not local:
+            uploaded_hash = asset.get("uploadedHash")
+            gurl = asset.get("gUrl")
+            if not uploaded_hash or not gurl:
                 continue
 
-            if not asset.get("gUrl"):
-                needing.append((rel_path, asset["target"], local, "new"))
-            elif asset.get("localHash") and asset.get("localHash") != asset.get("uploadedHash"):
-                needing.append((rel_path, asset["target"], local, "changed"))
+            entry = manifest.get(uploaded_hash)
+            if not entry:
+                continue
 
-    return needing
+            if not entry.get("driveId"):
+                entry["driveId"] = extract_google_id(gurl)
+                entry["gUrl"] = gurl
 
 
-def find_dead_drive_links(service, data, already_needing):
+def find_dead_manifest_links(service, manifest):
     """--verify only: hash-matching isn't enough if someone deletes the
     Drive file directly (from the Drive UI, outside this script) — the
-    recorded gUrl/uploadedHash still looks "up to date" with nothing to
-    contradict it, so the missing file goes unnoticed until something in
-    TTS fails to load. Checks each *distinct* gUrl once (many assets can
-    share one Drive file) via files.get, which is far cheaper than
-    re-uploading everything to find out."""
-    ids_seen = {}
+    recorded gUrl still looks "up to date" with nothing to contradict it, so
+    the missing file goes unnoticed until something in TTS fails to load."""
     dead = []
+    for file_hash, entry in manifest.items():
+        gurl = entry.get("gUrl")
+        if not gurl:
+            continue
 
-    for rel_path, file_data in data.items():
-        for asset in file_data.get("assets", []):
-            local = asset.get("local")
-            gurl = asset.get("gUrl")
-            if not local or not gurl:
-                continue
-            if any(n[0] == rel_path and n[1] == asset["target"] for n in already_needing):
-                continue
+        file_id = extract_google_id(gurl)
+        if not file_id:
+            continue
 
-            file_id = extract_google_id(gurl)
-            if not file_id:
-                continue
-
-            if file_id not in ids_seen:
-                try:
-                    service.files().get(fileId=file_id, fields="id", supportsAllDrives=True).execute()
-                    ids_seen[file_id] = True
-                except Exception:
-                    ids_seen[file_id] = False
-
-            if not ids_seen[file_id]:
-                dead.append((rel_path, asset["target"], local, "dead-link"))
+        try:
+            service.files().get(fileId=file_id, fields="id", supportsAllDrives=True).execute()
+        except Exception:
+            dead.append(file_hash)
 
     return dead
 
@@ -213,7 +206,10 @@ def main():
         index = json.load(f)
     data = index["data"]
 
-    needing = find_needing_upload(data)
+    manifest = scan_assets(load_manifest())
+    seed_manifest_from_index(manifest, data)
+
+    needing = [h for h, entry in manifest.items() if not entry.get("driveId")]
 
     service = None
     if verify:
@@ -221,22 +217,26 @@ def main():
         # the Drive UI (outside this script) — the recorded state still
         # looks "up to date" with nothing local to contradict it.
         service = get_service()
-        dead = find_dead_drive_links(service, data, needing)
+        dead = find_dead_manifest_links(service, manifest)
         if dead:
             print(f"{len(dead)} asset(s) point at a Drive file that no longer exists:")
-            for rel_path, target, local, reason in dead:
-                print(f"  [{reason}] {rel_path} {target}: {local}")
-        needing = needing + dead
+            for file_hash in dead:
+                for path in manifest[file_hash]["paths"]:
+                    print(f"  [dead-link] {path}")
+        needing = list(set(needing) | set(dead))
 
     if not needing:
+        save_manifest(manifest)
         print_box("NO DRIVE UPLOADS NEEDED")
         return
 
     print(f"{len(needing)} asset(s) need a Drive upload:")
-    for rel_path, target, local, reason in needing:
-        print(f"  [{reason}] {rel_path} {target}: {local}")
+    for file_hash in needing:
+        for path in manifest[file_hash]["paths"]:
+            print(f"  {path}")
 
     if not apply:
+        save_manifest(manifest)
         print_box(f"DRY RUN — {len(needing)} PENDING (pass --apply to upload)")
         return
 
@@ -245,79 +245,62 @@ def main():
     root_folder_id = find_folder(service, DRIVE_FOLDER_NAME)
     folder_cache = {(): root_folder_id}
 
-    uploaded = {}  # local path -> gUrl, so the same file uploads once
+    uploaded = 0
     linked = 0
+    unwired = []  # uploaded but not referenced by anything in objects/*.json yet
     old_ids_to_delete = set()  # every superseded Drive file id, across all replaced assets
 
-    for rel_path, target, local, reason in needing:
-        if local not in uploaded:
-            abs_path = os.path.join(ROOT_DIR, *local.split("/"))
-            if not os.path.isfile(abs_path):
-                print(f"SKIP (file missing on disk): {abs_path}")
-                continue
-
-            # local looks like "assets/other_graphics/foo.png" — mirror
-            # everything between the leading "assets" and the filename as
-            # Drive subfolders, so the Drive tree matches the project's.
-            local_parts = local.split("/")
-            subfolder_parts = local_parts[1:-1]
-            target_folder_id = resolve_drive_dir(service, root_folder_id, subfolder_parts, folder_cache)
-
-            # Always create a fresh Drive file/id, even when replacing
-            # existing content — TTS and Drive both cache aggressively by
-            # URL, so reusing the old id risks stale art showing in-game.
-            file_id = upload_file(service, target_folder_id, abs_path)
-            gurl = f"https://drive.google.com/uc?export=download&id={file_id}"
-            uploaded[local] = gurl
-            print(f"Uploaded ({reason}): {local} -> {gurl}")
-
-        gurl = uploaded.get(local)
-        if not gurl:
+    for file_hash in needing:
+        entry = manifest[file_hash]
+        paths = list(entry["paths"])
+        paths_lower = {p.lower() for p in paths}
+        primary_path = paths[0]
+        abs_path = os.path.join(ROOT_DIR, *primary_path.split("/"))
+        if not os.path.isfile(abs_path):
+            print(f"SKIP (file missing on disk): {abs_path}")
             continue
 
-        for asset in data[rel_path]["assets"]:
-            if asset["target"] == target:
-                # Every asset sharing this exact local file gets the *same*
-                # new gUrl, not just the one whose own hash mismatch first
-                # surfaced the change — otherwise other spots referencing
-                # the identical file silently keep pointing at the
-                # now-superseded Drive copy (see incident: a second
-                # CustomUIAssets entry for the same local PNG kept its old
-                # id because only one of the two entries had a hash to
-                # compare against).
+        # local looks like "assets/other_graphics/foo.png" — mirror
+        # everything between the leading "assets" and the filename as
+        # Drive subfolders, so the Drive tree matches the project's.
+        subfolder_parts = primary_path.split("/")[1:-1]
+        target_folder_id = resolve_drive_dir(service, root_folder_id, subfolder_parts, folder_cache)
+
+        # Always create a fresh Drive file/id, even when replacing existing
+        # content — TTS and Drive both cache aggressively by URL, so reusing
+        # the old id risks stale art showing in-game.
+        file_id = upload_file(service, target_folder_id, abs_path)
+        gurl = f"https://drive.google.com/uc?export=download&id={file_id}"
+        entry["driveId"] = file_id
+        entry["gUrl"] = gurl
+        uploaded += 1
+        print(f"Uploaded: {primary_path} -> {gurl}")
+
+        matched = False
+        for file_data in data.values():
+            for asset in file_data.get("assets", []):
+                local = asset.get("local")
+                if not local or local.lower() not in paths_lower:
+                    continue
+                matched = True
+
+                # apply_asset_source.py --drive can only replace objects/
+                # text it has an "old" candidate for — prevGUrl gives it the
+                # superseded link so a same-source (drive -> drive) swap
+                # isn't silently skipped.
                 old_gurl = asset.get("gUrl")
                 if old_gurl and old_gurl != gurl:
                     old_id = extract_google_id(old_gurl)
                     if old_id:
                         old_ids_to_delete.add(old_id)
-
-                # apply_asset_source.py --drive can only replace objects/
-                # text it has an "old" candidate for — prevGUrl gives it the
-                # superseded link so a same-source (drive -> drive) swap
-                # isn't silently skipped (it otherwise only ever compares
-                # against the *other* sources' current values).
-                if old_gurl and old_gurl != gurl:
                     asset["prevGUrl"] = old_gurl
+
                 asset["gUrl"] = gurl
-                asset["uploadedHash"] = asset.get("localHash")
+                asset["uploadedHash"] = file_hash
                 linked += 1
 
-        # Also catch sibling assets that reference the same local file but
-        # weren't individually flagged by find_needing_upload (e.g. an old
-        # asset whose own uploadedHash happened to already match — same
-        # root cause as above, applied file-wide instead of per-target).
-        for other_target_assets in data.values():
-            for asset in other_target_assets.get("assets", []):
-                if asset.get("local") == local and asset.get("gUrl") != gurl:
-                    old_gurl = asset.get("gUrl")
-                    if old_gurl:
-                        old_id = extract_google_id(old_gurl)
-                        if old_id:
-                            old_ids_to_delete.add(old_id)
-                        asset["prevGUrl"] = old_gurl
-                    asset["gUrl"] = gurl
-                    asset["uploadedHash"] = asset.get("localHash")
-                    linked += 1
+        if not matched:
+            unwired.append((primary_path, file_id, gurl))
 
     deleted = 0
     for old_id in old_ids_to_delete:
@@ -327,10 +310,16 @@ def main():
         except Exception as e:
             print(f"Could not delete superseded Drive file {old_id}: {e}")
 
+    save_manifest(manifest)
     with open(INDEX_FILE, "w", encoding="utf-8") as f:
         json.dump(index, f, indent=2, ensure_ascii=False)
 
-    print_box(f"DRIVE UPLOAD SUCCESS ({len(uploaded)} UPLOADED, {linked} LINKED, {deleted} OLD DELETED)")
+    if unwired:
+        print(f"\n{len(unwired)} file(s) uploaded but not referenced anywhere in objects/*.json yet:")
+        for path, file_id, gurl in unwired:
+            print(f"  {path}  id={file_id}  {gurl}")
+
+    print_box(f"DRIVE UPLOAD SUCCESS ({uploaded} UPLOADED, {linked} LINKED, {deleted} OLD DELETED)")
 
 
 if __name__ == "__main__":

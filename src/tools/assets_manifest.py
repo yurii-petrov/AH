@@ -60,6 +60,11 @@ def scan_assets(old_assets):
     return new_assets
 
 
+def save_manifest(assets):
+    with open(MANIFEST_FILE, "w", encoding="utf-8") as f:
+        json.dump({"assets": assets}, f, indent=2, ensure_ascii=False)
+
+
 def diff(old_assets, new_assets):
     old_hashes = set(old_assets)
     new_hashes = set(new_assets)
@@ -82,8 +87,7 @@ def main():
     new_assets = scan_assets(old_assets)
     added, removed, renamed = diff(old_assets, new_assets)
 
-    with open(MANIFEST_FILE, "w", encoding="utf-8") as f:
-        json.dump({"assets": new_assets}, f, indent=2, ensure_ascii=False)
+    save_manifest(new_assets)
 
     if added:
         print(f"New ({len(added)}):")
