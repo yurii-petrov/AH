@@ -1,13 +1,5 @@
 {
   "assets": {
-    "01758f1136bed7ad3f824c3e44f4c2d6ed9ed844e8561127d2a5ec057e7a634f": {
-      "paths": {
-        "assets/.DS_Store": {
-          "mtime": 1783073700.9156723,
-          "size": 8196
-        }
-      }
-    },
     "569f3db34327fa34b24e35768174b3e247a56da77fbd30cc6622d16e29adc00f": {
       "paths": {
         "assets/music/cthulhu_music.mp3": {
@@ -21,14 +13,6 @@
         "assets/music/lovecraft 01.MP3": {
           "mtime": 1782579601.515,
           "size": 89426445
-        }
-      }
-    },
-    "50065b447d76e4244786dbbcbfd03643c243c2d04a137d1976ef9560627e4135": {
-      "paths": {
-        "assets/investigators/.DS_Store": {
-          "mtime": 1783021394.6376798,
-          "size": 6148
         }
       }
     },
@@ -728,14 +712,6 @@
         }
       }
     },
-    "2fea60b53a92c8262a1de91033ccdb9fa9571775072d328346224689d334c8ef": {
-      "paths": {
-        "assets/map_tiles/.DS_Store": {
-          "mtime": 1783021394.6404855,
-          "size": 6148
-        }
-      }
-    },
     "ff418bd71403f4ea182fc6bcf85a207d99c5a69d9ab170bea4ccb80eb5dfed69": {
       "paths": {
         "assets/map_tiles/street_bridge.jpg": {
@@ -1072,14 +1048,6 @@
         }
       }
     },
-    "e800fc6ba764cd54739aedca3c059e960168b3f1d7fdc53f732fb5e1973c1186": {
-      "paths": {
-        "assets/cards/.DS_Store": {
-          "mtime": 1783073700.91388,
-          "size": 8196
-        }
-      }
-    },
     "72af99bfb406621390b11518c73d242c8cddd0b1d1c5d3107c8b07e4c7ec8946": {
       "paths": {
         "assets/cards/0_base/Anomaly TF 2Back.jpg": {
@@ -1093,14 +1061,6 @@
         "assets/cards/0_base/Items 2Back.jpg": {
           "mtime": 1749138269.815,
           "size": 228121
-        }
-      }
-    },
-    "1f98b640f230b4324068f495b91577c85ec7cf108e3f5877472ee19c75ccf97e": {
-      "paths": {
-        "assets/cards/0_base/.DS_Store": {
-          "mtime": 1783087162.484175,
-          "size": 6148
         }
       }
     },
@@ -1704,14 +1664,6 @@
         }
       }
     },
-    "02fbceb98c02005938e5a368afac22143297d544cdb4bc14218a7a3bc97f6316": {
-      "paths": {
-        "assets/cards/3_secrets_of_the_order/.DS_Store": {
-          "mtime": 1783021394.6513324,
-          "size": 6148
-        }
-      }
-    },
     "5d7af316c8ad4fc6cbe20c8489da74a911e47662d2bc65db2f9ca83117a2662d": {
       "paths": {
         "assets/cards/3_secrets_of_the_order/Anomaly LS 2Back.jpg": {
@@ -2136,14 +2088,6 @@
         }
       }
     },
-    "59d7b92ea8fde37084645c58a34e0ff2222a157beae55b35d238bbea6d8b2954": {
-      "paths": {
-        "assets/cards/4_recursive_echoes/.DS_Store": {
-          "mtime": 1783021394.6529267,
-          "size": 6148
-        }
-      }
-    },
     "021cbb93ff36da17ce3f502b5aadeb9e77f111456f3294e930bbea5680a793db": {
       "paths": {
         "assets/cards/4_recursive_echoes/uk/Investigators 2Back.png": {
@@ -2205,14 +2149,6 @@
         "assets/cards/4_recursive_echoes/en/Investigators 1Front.png": {
           "mtime": 1757788478.0,
           "size": 32568593
-        }
-      }
-    },
-    "d5fe1e16311adcbfe774eb83791646bd9cf48f4c4e817c6a40537dfb604c10de": {
-      "paths": {
-        "assets/cards/1_dead_of_night/.DS_Store": {
-          "mtime": 1783021394.6415255,
-          "size": 6148
         }
       }
     },
@@ -2621,14 +2557,6 @@
         "assets/cards/2_under_dark_waves/Terror FC 2Back.jpg": {
           "mtime": 1748292749.0,
           "size": 554241
-        }
-      }
-    },
-    "0975e58f21cd11762882c39f57ecd9e2d81b0f443519f8ec338c0a1f25ecaad9": {
-      "paths": {
-        "assets/cards/2_under_dark_waves/.DS_Store": {
-          "mtime": 1783021394.6391442,
-          "size": 6148
         }
       }
     },
@@ -3620,14 +3548,6 @@
         }
       }
     },
-    "c6415a1340679cde7e123264cefa6a05dc20f36940dc14243bd2ff3cf1f98871": {
-      "paths": {
-        "assets/other_graphics/.DS_Store": {
-          "mtime": 1783091107.7263136,
-          "size": 6148
-        }
-      }
-    },
     "41cdd1f11340e038ca4390fe8915a1c4ae88c5423c4e603d16fe18ce5a5facc9": {
       "paths": {
         "assets/other_graphics/scenarioMap2.png": {
@@ -4209,14 +4129,6 @@
         "assets/rules/rulebook.pdf": {
           "mtime": 1783001203.272,
           "size": 4471461
-        }
-      }
-    },
-    "d339ef87b19f25e90339ec9d4c58a76711fe0d0a0f27abd075171f70390e3b86": {
-      "paths": {
-        "assets/rules/.DS_Store": {
-          "mtime": 1783021394.6489847,
-          "size": 6148
         }
       }
     },

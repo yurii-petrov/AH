@@ -32,6 +32,8 @@ def scan_assets(old_assets):
 
     for root, _, files in os.walk(ASSETS_ROOT):
         for name in files:
+            if name == ".DS_Store":
+                continue
             abs_path = os.path.join(root, name)
             rel_path = to_relative(abs_path)
             stat = os.stat(abs_path)

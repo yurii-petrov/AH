@@ -1,5 +1,6 @@
 .tts/
 TTSModManager.exe
+.DS_Store
 .venv/
 src/ConvertMemo/objects/
 /assets/
