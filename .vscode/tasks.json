@@ -335,6 +335,20 @@
       "label": "Arkham Horror: Check Missing Drive Links",
       "dependsOn": ["_check_uploads"],
       "problemMatcher": []
+    },
+
+    {
+      "label": "Arkham Horror: Verify Drive Links (slow)",
+      "type": "shell",
+      "windows": {
+        "command": "py",
+        "args": ["${workspaceFolder}\\src\\tools\\drive_upload.py", "--verify"]
+      },
+      "osx": {
+        "command": "${workspaceFolder}/.venv/bin/python",
+        "args": ["${workspaceFolder}/src/tools/drive_upload.py", "--verify"]
+      },
+      "problemMatcher": []
     }
   ],
   "inputs": [

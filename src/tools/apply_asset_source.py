@@ -54,6 +54,16 @@ def collect_fixes(source):
                 if other_source != source and old:
                     fixes_by_file.setdefault(file_path, []).append((old, new, key))
 
+            # drive_upload.py re-uploading a changed local file gives the
+            # asset a *new* gUrl but can't touch objects/*.json itself — if
+            # the file's text still holds the superseded gUrl (this asset's
+            # own "drive" slot, not "local"/"steam"), that's a same-source
+            # old-value-to-new-value swap the loop above skips entirely
+            # (it only ever replaces a *different* source's value).
+            prev_gurl = asset.get("prevGUrl")
+            if source == "drive" and prev_gurl and prev_gurl != new:
+                fixes_by_file.setdefault(file_path, []).append((prev_gurl, new, key))
+
     return fixes_by_file, missing
 
 

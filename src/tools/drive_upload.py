@@ -168,14 +168,65 @@ def find_needing_upload(data):
     return needing
 
 
+def find_dead_drive_links(service, data, already_needing):
+    """--verify only: hash-matching isn't enough if someone deletes the
+    Drive file directly (from the Drive UI, outside this script) — the
+    recorded gUrl/uploadedHash still looks "up to date" with nothing to
+    contradict it, so the missing file goes unnoticed until something in
+    TTS fails to load. Checks each *distinct* gUrl once (many assets can
+    share one Drive file) via files.get, which is far cheaper than
+    re-uploading everything to find out."""
+    ids_seen = {}
+    dead = []
+
+    for rel_path, file_data in data.items():
+        for asset in file_data.get("assets", []):
+            local = asset.get("local")
+            gurl = asset.get("gUrl")
+            if not local or not gurl:
+                continue
+            if any(n[0] == rel_path and n[1] == asset["target"] for n in already_needing):
+                continue
+
+            file_id = extract_google_id(gurl)
+            if not file_id:
+                continue
+
+            if file_id not in ids_seen:
+                try:
+                    service.files().get(fileId=file_id, fields="id", supportsAllDrives=True).execute()
+                    ids_seen[file_id] = True
+                except Exception:
+                    ids_seen[file_id] = False
+
+            if not ids_seen[file_id]:
+                dead.append((rel_path, asset["target"], local, "dead-link"))
+
+    return dead
+
+
 def main():
     apply = "--apply" in sys.argv
+    verify = "--verify" in sys.argv
 
     with open(INDEX_FILE, "r", encoding="utf-8") as f:
         index = json.load(f)
     data = index["data"]
 
     needing = find_needing_upload(data)
+
+    service = None
+    if verify:
+        # Hash-matching alone can't catch a Drive file deleted directly from
+        # the Drive UI (outside this script) — the recorded state still
+        # looks "up to date" with nothing local to contradict it.
+        service = get_service()
+        dead = find_dead_drive_links(service, data, needing)
+        if dead:
+            print(f"{len(dead)} asset(s) point at a Drive file that no longer exists:")
+            for rel_path, target, local, reason in dead:
+                print(f"  [{reason}] {rel_path} {target}: {local}")
+        needing = needing + dead
 
     if not needing:
         print_box("NO DRIVE UPLOADS NEEDED")
@@ -189,7 +240,8 @@ def main():
         print_box(f"DRY RUN — {len(needing)} PENDING (pass --apply to upload)")
         return
 
-    service = get_service()
+    if service is None:
+        service = get_service()
     root_folder_id = find_folder(service, DRIVE_FOLDER_NAME)
     folder_cache = {(): root_folder_id}
 
@@ -239,6 +291,13 @@ def main():
                     if old_id:
                         old_ids_to_delete.add(old_id)
 
+                # apply_asset_source.py --drive can only replace objects/
+                # text it has an "old" candidate for — prevGUrl gives it the
+                # superseded link so a same-source (drive -> drive) swap
+                # isn't silently skipped (it otherwise only ever compares
+                # against the *other* sources' current values).
+                if old_gurl and old_gurl != gurl:
+                    asset["prevGUrl"] = old_gurl
                 asset["gUrl"] = gurl
                 asset["uploadedHash"] = asset.get("localHash")
                 linked += 1
@@ -255,6 +314,7 @@ def main():
                         old_id = extract_google_id(old_gurl)
                         if old_id:
                             old_ids_to_delete.add(old_id)
+                        asset["prevGUrl"] = old_gurl
                     asset["gUrl"] = gurl
                     asset["uploadedHash"] = asset.get("localHash")
                     linked += 1

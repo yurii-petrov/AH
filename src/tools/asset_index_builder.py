@@ -499,6 +499,8 @@ def prune_for_output(index, baseline_established=True):
                 asset_out["gUrl"] = gurl
             if steam_url:
                 asset_out["steamUrl"] = steam_url
+            if asset.get("prevGUrl"):
+                asset_out["prevGUrl"] = asset["prevGUrl"]
 
             uploaded_hash = asset.get("uploadedHash")
             if not uploaded_hash and not baseline_established and gurl and asset_out.get("localHash"):
