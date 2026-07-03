@@ -167,7 +167,8 @@ def collect_extension_fixes(index):
                 if new_url == link:
                     continue
 
-                fixes_by_file.setdefault(file_path, []).append((link, new_url))
+                key = (asset.get("target") or [None])[-1]
+                fixes_by_file.setdefault(file_path, []).append((link, new_url, key))
                 continue
 
             new_path = resolve_real_path(source_path)
@@ -175,7 +176,8 @@ def collect_extension_fixes(index):
                 continue
 
             new_url = build_local_file_url(new_path)
-            fixes_by_file.setdefault(file_path, []).append((link, new_url))
+            key = (asset.get("target") or [None])[-1]
+            fixes_by_file.setdefault(file_path, []).append((link, new_url, key))
 
     return fixes_by_file
 
@@ -208,7 +210,8 @@ def collect_cache_move_fixes(index):
                     new_path = new_root + fs_path[len(old_root):]
                     new_url = build_local_file_url(new_path)
                     if new_url != link:
-                        fixes_by_file.setdefault(file_path, []).append((link, new_url))
+                        key = (asset.get("target") or [None])[-1]
+                        fixes_by_file.setdefault(file_path, []).append((link, new_url, key))
                     break
 
     return fixes_by_file
@@ -237,13 +240,24 @@ def collect_replacements(index):
                 continue
 
             new_url = build_file_uri(local)
-            replacements_by_file.setdefault(file_path, []).append((link, new_url))
+            key = (asset.get("target") or [None])[-1]
+            replacements_by_file.setdefault(file_path, []).append((link, new_url, key))
 
     return replacements_by_file, missing
 
 
 # -------------------------
 # APPLY REPLACEMENTS
+#
+# Each fix is (old_url, new_url) or (old_url, new_url, key), where key is the
+# JSON field name (asset["target"][-1]) the value came from, when known. When
+# a key is available, the match is scoped to that field's own '"key": "old"'
+# text so a value that happens to coincide with a *different* field's value in
+# the same file can't get cross-replaced (this silently corrupted
+# InvestigatorMat.2822f5.json's "Fonts" CustomUIAsset with its unrelated
+# "ImageURL" value, since content.replace() can't tell which field a raw
+# string match belongs to). Falls back to the old whole-file replace — with a
+# warning — when no key is available or the scoped match isn't unique.
 # -------------------------
 def apply_replacements(replacements_by_file, apply):
     files_touched = 0
@@ -258,11 +272,26 @@ def apply_replacements(replacements_by_file, apply):
             content = f.read()
 
         original = content
-        for old_url, new_url in replacements:
+        for fix in replacements:
+            old_url, new_url, key = fix if len(fix) == 3 else (fix[0], fix[1], None)
+
             # normalize() unescapes "&" -> "&" for URL classification,
             # but most raw JSON files still contain the escaped form on disk.
             for variant in (old_url, old_url.replace("&", "\\u0026")):
-                if variant in content:
+                done = False
+
+                if key:
+                    scoped_old = f'"{key}": "{variant}"'
+                    if content.count(scoped_old) == 1:
+                        content = content.replace(scoped_old, f'"{key}": "{new_url}"')
+                        urls_replaced += 1
+                        done = True
+
+                if not done and variant in content:
+                    occurrences = content.count(variant)
+                    if occurrences > 1:
+                        print(f"WARNING: '{variant}' appears {occurrences}x in {file_path} "
+                              f"and couldn't be scoped to field '{key}' — replacing all occurrences")
                     content = content.replace(variant, new_url)
                     urls_replaced += 1
 
@@ -344,7 +373,8 @@ def collect_rename_reference_fixes(index, renamed_by_stem):
             if new_url == link:
                 continue
 
-            fixes_by_file.setdefault(file_path, []).append((link, new_url))
+            key = (asset.get("target") or [None])[-1]
+            fixes_by_file.setdefault(file_path, []).append((link, new_url, key))
 
     return fixes_by_file
 

@@ -127,7 +127,7 @@
   "LayoutGroupSortIndex": 0,
   "Locked": true,
   "LuaScript": "require(\"Global/InvestigatorMat\")",
-  "LuaScriptState": "",
+  "LuaScriptState_path": "Infinite_Bag.774898/InvestigatorMat.2822f4.luascriptstate",
   "MeasureMovement": false,
   "Memo": "Investigator Mat",
   "Name": "Custom_Tile",

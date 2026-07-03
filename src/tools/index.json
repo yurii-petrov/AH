@@ -123,7 +123,7 @@
           ],
           "local": "assets/fonts/font_list.unity3d",
           "gUrl": "https://drive.google.com/uc?export=download&id=136ZvlP_d9WqvYyBvwTGldulgXGsm6V0Y",
-          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10870436331696516692/5AB36D8CFD66040881D37224FBE0CE376F802C54/"
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18387726393550310454/A578781E3315E733B9148B3F6DF2B249F8E5C9F4/"
         }
       ]
     },
@@ -81832,6 +81832,34 @@
           "local": "assets/cards/0_base/en/Monsters 2Back.png",
           "gUrl": "https://drive.google.com/uc?export=download&id=1orUfeKB4AVIhb6ZS-PouGRoUKGdb8HKA",
           "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10767459869529760203/E73A65E0CB74F6EFF4A44DEB30615F9A9A6D8564/"
+        }
+      ]
+    },
+    "modsettings/MusicPlayer.json": {
+      "path": "modsettings/MusicPlayer.json",
+      "assets": [
+        {
+          "target": [
+            "AudioLibrary",
+            0,
+            "Item1"
+          ],
+          "gUrl": "https://drive.google.com/uc?export=download&id=1cDQn1GZ5bAJYpQpV7DrxOPCNdrS09q6Q"
+        },
+        {
+          "target": [
+            "AudioLibrary",
+            1,
+            "Item1"
+          ],
+          "local": "assets/music/cthulhu_music.mp3",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1eKydxIrnvChQfJ48jo6cDstbZKR_FFIT"
+        },
+        {
+          "target": [
+            "CurrentAudioURL"
+          ],
+          "gUrl": "https://drive.google.com/uc?export=download&id=1cDQn1GZ5bAJYpQpV7DrxOPCNdrS09q6Q"
         }
       ]
     }

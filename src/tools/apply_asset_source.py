@@ -41,9 +41,15 @@ def collect_fixes(source):
             if not new:
                 continue
 
+            # Scope each replacement to this asset's own JSON field (e.g.
+            # "ImageURL" or "URL") so a value that happens to coincide with a
+            # *different* field's value in the same file can't get
+            # cross-replaced by apply_replacements()'s text-level match.
+            key = (asset.get("target") or [None])[-1]
+
             for other_source, old in urls.items():
                 if other_source != source and old:
-                    fixes_by_file.setdefault(file_path, []).append((old, new))
+                    fixes_by_file.setdefault(file_path, []).append((old, new, key))
 
     return fixes_by_file
 

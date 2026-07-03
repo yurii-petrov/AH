@@ -1,0 +1,24 @@
+{
+  "clue": 0,
+  "focus": {
+    "influence": 0,
+    "lore": 0,
+    "observation": 0,
+    "strength": 0,
+    "will": 0
+  },
+  "hp": 0,
+  "hpMax": 0,
+  "money": 0,
+  "name": "",
+  "remnant": 0,
+  "sanity": 0,
+  "sanityMax": 0,
+  "skill": {
+    "influence": 0,
+    "lore": 0,
+    "observation": 0,
+    "strength": 0,
+    "will": 0
+  }
+}
