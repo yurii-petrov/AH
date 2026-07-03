@@ -3,7 +3,7 @@
   "tasks": [
     {
       "label": "Arkham Horror: Build",
-      "dependsOn": ["_sync_po", "_convert_po", "_go_build"],
+      "dependsOn": ["_sync_po", "_convert_po", "_index_assets", "_add_download_links", "_go_build"],
       "dependsOrder": "sequence",
       "problemMatcher": [],
       "group": {
@@ -70,8 +70,25 @@
 
     {
       "label": "Arkham Horror: Decompose",
-      "dependsOn": ["_decompose", "_index_assets", "_add_download_links"],
+      "dependsOn": ["_clean_objects", "_decompose", "_index_assets", "_add_download_links"],
       "dependsOrder": "sequence",
+      "problemMatcher": []
+    },
+
+    {
+      "label": "_clean_objects",
+      "type": "shell",
+      "windows": {
+        "command": "powershell",
+        "args": [
+          "-Command",
+          "Remove-Item -Recurse -Force '${workspaceFolder}\\objects' -ErrorAction SilentlyContinue"
+        ]
+      },
+      "osx": {
+        "command": "rm",
+        "args": ["-rf", "${workspaceFolder}/objects"]
+      },
       "problemMatcher": []
     },
 

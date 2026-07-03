@@ -490,6 +490,17 @@ def add_asset(index, file_path, source, url, target, tts_index, local_files, fil
         if asset["target"] == target:
             asset[source]["link"] = url
 
+            # A fresh google/steam link found directly in the file text is
+            # authoritative and supersedes any stale _gurl/_steam_url
+            # "re-download reference" carried forward from disk — otherwise
+            # a new value that happens to land on a reused/stale target
+            # position (e.g. an array index whose old content is long gone)
+            # would silently keep the old position's re-download link.
+            if source == "google":
+                asset["_gurl"] = None
+            elif source == "steam":
+                asset["_steam_url"] = None
+
             if source == "google":
                 asset[source].setdefault("drivePath", None)
                 asset[source]["id"] = extract_google_id(url)
@@ -543,17 +554,25 @@ def add_asset(index, file_path, source, url, target, tts_index, local_files, fil
 # -------------------------
 # JSON WALKER
 # -------------------------
-def walk(obj, file_path, index, tts_index, local_files, files_index, path=None):
+def walk(obj, file_path, index, tts_index, local_files, files_index, path=None, visited=None):
     if path is None:
         path = []
 
     if isinstance(obj, dict):
         for k, v in obj.items():
-            walk(v, file_path, index, tts_index, local_files, files_index, path + [k])
+            walk(v, file_path, index, tts_index, local_files, files_index, path + [k], visited)
 
     elif isinstance(obj, list):
         for i, v in enumerate(obj):
-            walk(v, file_path, index, tts_index, local_files, files_index, path + [i])
+            # A raw list index is an unstable identity: inserting, removing,
+            # or reordering entries silently reassigns which asset a given
+            # position refers to, so a brand-new entry can inherit a stale
+            # sibling's local/gUrl/steamUrl (this is exactly what happened to
+            # a newly-appended CustomUIAssets entry landing on an old,
+            # long-orphaned index). Prefer the entry's own "Name" when it has
+            # one — stable regardless of position.
+            key = v["Name"] if isinstance(v, dict) and isinstance(v.get("Name"), str) else i
+            walk(v, file_path, index, tts_index, local_files, files_index, path + [key], visited)
 
     elif isinstance(obj, str):
         if "http" not in obj and "file:" not in obj:
@@ -573,6 +592,9 @@ def walk(obj, file_path, index, tts_index, local_files, files_index, path=None):
             files_index
         )
 
+        if visited is not None:
+            visited.add(tuple(path))
+
 
 # -------------------------
 # SCAN PROJECT
@@ -582,6 +604,14 @@ def scan():
     tts_index = load_tts_index()
     local_files = load_local_files()
     files_index = load_files_index()
+
+    # target paths for JSON arrays include the raw index (e.g. CustomUIAssets
+    # entry 111) — when an array shrinks, reorders, or an entry gets replaced,
+    # a *different* value can land on a *previously indexed* position. Track
+    # which targets are actually seen on this pass so leftover asset entries
+    # at stale positions can be dropped below, instead of silently donating
+    # their old local/gUrl/steamUrl to whatever new content now sits there.
+    visited_targets = {}
 
     IGNORE_DIRS = {
         os.path.realpath(os.path.join(ROOT_DIR, ".tts")),
@@ -614,12 +644,25 @@ def scan():
             except:
                 continue
 
-            walk(content, file_path, index, tts_index, local_files, files_index)
+            visited = set()
+            walk(content, file_path, index, tts_index, local_files, files_index, visited=visited)
+            visited_targets[file_path] = visited
 
     # Drop stale entries for files that were renamed/deleted since the last
     # indexed run — otherwise merge-on-load_index() keeps them forever.
     for stale_path in [p for p in index if not os.path.isfile(p)]:
         del index[stale_path]
+
+    # Drop stale per-asset entries whose target wasn't seen on this pass (see
+    # visited_targets comment above) — prevents a new value that happens to
+    # land on an old, no-longer-valid target from inheriting that target's
+    # stale local/gUrl/steamUrl.
+    for file_path, visited in visited_targets.items():
+        if file_path not in index:
+            continue
+        index[file_path]["assets"] = [
+            a for a in index[file_path]["assets"] if tuple(a["target"]) in visited
+        ]
 
     return index
 
