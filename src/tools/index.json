@@ -112,7 +112,8 @@
             "ImageURL"
           ],
           "local": "assets/other_graphics/player_mat.png",
-          "gUrl": "https://drive.google.com/uc?export=download&id=1YZoUURnd_L34VY_zbPrQiQDIsLWJIuGr"
+          "gUrl": "https://drive.google.com/uc?export=download&id=1YZoUURnd_L34VY_zbPrQiQDIsLWJIuGr",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10870436331696516692/5AB36D8CFD66040881D37224FBE0CE376F802C54/"
         },
         {
           "target": [
@@ -121,7 +122,8 @@
             "URL"
           ],
           "local": "assets/fonts/font_list.unity3d",
-          "gUrl": "https://drive.google.com/uc?export=download&id=136ZvlP_d9WqvYyBvwTGldulgXGsm6V0Y"
+          "gUrl": "https://drive.google.com/uc?export=download&id=136ZvlP_d9WqvYyBvwTGldulgXGsm6V0Y",
+          "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10870436331696516692/5AB36D8CFD66040881D37224FBE0CE376F802C54/"
         }
       ]
     },
