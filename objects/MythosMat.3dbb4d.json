@@ -561,29 +561,29 @@
     },
     "ImageScalar": 1,
     "ImageSecondaryURL": "",
-    "ImageURL": "https://drive.google.com/uc?export=download&id=11DTiy5fy4qNbvVNBgCyLv5vLahmBhWxY",
+    "ImageURL": "https://drive.google.com/uc?export=download\u0026id=11DTiy5fy4qNbvVNBgCyLv5vLahmBhWxY",
     "WidthScale": 0
   },
   "CustomUIAssets": [
     {
       "Name": "success_icon",
       "Type": 0,
-      "URL": "https://drive.google.com/uc?export=download&id=1L7AZa56r3BBoQNviWpQS-y4ekER_Lpfq"
+      "URL": "https://drive.google.com/uc?export=download\u0026id=1L7AZa56r3BBoQNviWpQS-y4ekER_Lpfq"
     },
     {
       "Name": "discard_icon",
       "Type": 0,
-      "URL": "https://drive.google.com/uc?export=download&id=1DuOIUR-za6c00dL_N3xbcpSRDCS8pol6"
+      "URL": "https://drive.google.com/uc?export=download\u0026id=1DuOIUR-za6c00dL_N3xbcpSRDCS8pol6"
     },
     {
       "Name": "fail_icon",
       "Type": 0,
-      "URL": "https://drive.google.com/uc?export=download&id=1aqkaxfsTttxo1jfa4ma9VArcZ6WXy5Fw"
+      "URL": "https://drive.google.com/uc?export=download\u0026id=1aqkaxfsTttxo1jfa4ma9VArcZ6WXy5Fw"
     },
     {
       "Name": "myth_slots",
       "Type": 0,
-      "URL": "https://drive.google.com/uc?export=download&id=1VYV4mgJSams5SMFYTASL0D9xJN7-Ap0y"
+      "URL": "https://drive.google.com/uc?export=download\u0026id=1VYV4mgJSams5SMFYTASL0D9xJN7-Ap0y"
     }
   ],
   "Description": "",

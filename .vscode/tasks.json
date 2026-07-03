@@ -80,7 +80,7 @@
 
     {
       "label": "Arkham Horror: Decompose",
-      "dependsOn": ["_clean_objects", "_decompose", "_index_assets", "_add_download_links", "_check_uploads", "_decompose_done"],
+      "dependsOn": ["_decompose", "_index_assets", "_add_download_links", "_check_uploads", "_decompose_done"],
       "dependsOrder": "sequence",
       "problemMatcher": []
     },
@@ -109,23 +109,6 @@
       "osx": {
         "command": "${workspaceFolder}/.venv/bin/python",
         "args": ["${workspaceFolder}/src/tools/box_echo.py", "DECOMPOSE SUCCESS"]
-      },
-      "problemMatcher": []
-    },
-
-    {
-      "label": "_clean_objects",
-      "type": "shell",
-      "windows": {
-        "command": "powershell",
-        "args": [
-          "-Command",
-          "Remove-Item -Recurse -Force '${workspaceFolder}\\objects' -ErrorAction SilentlyContinue"
-        ]
-      },
-      "osx": {
-        "command": "rm",
-        "args": ["-rf", "${workspaceFolder}/objects"]
       },
       "problemMatcher": []
     },

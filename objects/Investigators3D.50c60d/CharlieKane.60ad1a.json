@@ -20,7 +20,7 @@
       },
       "CustomMesh": {
         "CastShadows": true,
-        "ColliderURL": "https://drive.google.com/uc?export=download&id=1NCRzhKqAdhxRnxkA-TNRMG_x_R1wWJYM",
+        "ColliderURL": "https://drive.google.com/uc?export=download\u0026id=1NCRzhKqAdhxRnxkA-TNRMG_x_R1wWJYM",
         "Convex": true,
         "CustomShader": {
           "FresnelStrength": 0,
@@ -32,9 +32,9 @@
           "SpecularIntensity": 0,
           "SpecularSharpness": 2
         },
-        "DiffuseURL": "https://drive.google.com/uc?export=download&id=1UlPfPNN2X-y6T32wnVXwyjbAYDPBqCVk",
+        "DiffuseURL": "https://drive.google.com/uc?export=download\u0026id=1UlPfPNN2X-y6T32wnVXwyjbAYDPBqCVk",
         "MaterialIndex": 3,
-        "MeshURL": "https://drive.google.com/uc?export=download&id=1NCRzhKqAdhxRnxkA-TNRMG_x_R1wWJYM",
+        "MeshURL": "https://drive.google.com/uc?export=download\u0026id=1NCRzhKqAdhxRnxkA-TNRMG_x_R1wWJYM",
         "NormalURL": "",
         "TypeIndex": 1
       },
@@ -79,7 +79,7 @@
   },
   "CustomAssetbundle": {
     "AssetbundleSecondaryURL": "",
-    "AssetbundleURL": "https://drive.google.com/uc?export=download&id=1p7R4HYemq4_O41amIFH4OyPHVJYB5wNS",
+    "AssetbundleURL": "https://drive.google.com/uc?export=download\u0026id=1p7R4HYemq4_O41amIFH4OyPHVJYB5wNS",
     "LoopingEffectIndex": 0,
     "MaterialIndex": 0,
     "TypeIndex": 1
