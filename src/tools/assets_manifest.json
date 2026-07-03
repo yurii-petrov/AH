@@ -1,0 +1,4288 @@
+{
+  "assets": {
+    "01758f1136bed7ad3f824c3e44f4c2d6ed9ed844e8561127d2a5ec057e7a634f": {
+      "paths": {
+        "assets/.DS_Store": {
+          "mtime": 1783073700.9156723,
+          "size": 8196
+        }
+      }
+    },
+    "569f3db34327fa34b24e35768174b3e247a56da77fbd30cc6622d16e29adc00f": {
+      "paths": {
+        "assets/music/cthulhu_music.mp3": {
+          "mtime": 1783001203.115,
+          "size": 165741434
+        }
+      }
+    },
+    "80c3a928cdbd3a9ada86062ec03561d3ed3d26390bd105271c765f1c5c71facd": {
+      "paths": {
+        "assets/music/lovecraft 01.MP3": {
+          "mtime": 1782579601.515,
+          "size": 89426445
+        }
+      }
+    },
+    "50065b447d76e4244786dbbcbfd03643c243c2d04a137d1976ef9560627e4135": {
+      "paths": {
+        "assets/investigators/.DS_Store": {
+          "mtime": 1783021394.6376798,
+          "size": 6148
+        }
+      }
+    },
+    "ec23aa1ba98cc6d939ce1808b7e3f3c5e0ffaa935572b1088fcc095316460340": {
+      "paths": {
+        "assets/investigators/0_base/TOMMY MULDOON.jpeg": {
+          "mtime": 1749252883.827,
+          "size": 74851
+        }
+      }
+    },
+    "03e391f2b5fe5fb330f7310211f0b63f983ede0ea6962898f4f13ccf30300ace": {
+      "paths": {
+        "assets/investigators/0_base/MICHAEL McGLEN.jpeg": {
+          "mtime": 1749252846.745,
+          "size": 58479
+        }
+      }
+    },
+    "ee29a88c6e52710513f277bdd603669448663523976b3802c82f3dfdf2c505ab": {
+      "paths": {
+        "assets/investigators/0_base/NORMAN WITHERS.jpeg": {
+          "mtime": 1749252865.817,
+          "size": 66308
+        }
+      }
+    },
+    "6c99cadc99b1c52d59f91c114a53a70c6f92ec1d3e8943d440f5bb1bb7ad6569": {
+      "paths": {
+        "assets/investigators/0_base/WENDY ADAMS back.jpeg": {
+          "mtime": 1749252891.831,
+          "size": 57937
+        }
+      }
+    },
+    "d63f62c4cfa9843bf6f53b914326d7e065d835c506cd77751ad19b9a1bdaa249": {
+      "paths": {
+        "assets/investigators/0_base/DEXTER DRAKE.jpeg": {
+          "mtime": 1749252814.29,
+          "size": 67477
+        }
+      }
+    },
+    "70aaf8b7e0430101d1bebe579e777ec029e9a6b31349a14923fdfdc31a45bd73": {
+      "paths": {
+        "assets/investigators/0_base/MINH THI PHAN.jpeg": {
+          "mtime": 1749252856.057,
+          "size": 64203
+        }
+      }
+    },
+    "55467288512903e7a0de2646a1a561edf4f7279b63ca167001dda3a55df7c496": {
+      "paths": {
+        "assets/investigators/0_base/DANIELA REYES.jpeg": {
+          "mtime": 1749252805.379,
+          "size": 89651
+        }
+      }
+    },
+    "8b42c01c3fc73bffb05d97e9558940137babfd08cc7c15bd1920a8a6ebcc4aa0": {
+      "paths": {
+        "assets/investigators/0_base/JENNY BARNES.jpeg": {
+          "mtime": 1749252824.446,
+          "size": 42792
+        }
+      }
+    },
+    "6e0bb8194fc99119cd170b127d0c52bca3839fc72d3ad3a03ddec6b96cee4095": {
+      "paths": {
+        "assets/investigators/0_base/REX MURPHY.jpeg": {
+          "mtime": 1749252874.808,
+          "size": 72545
+        }
+      }
+    },
+    "a942ce4fda29cc65c935748160ac492654a4ab349e4bc1fe57a02a3d126943f4": {
+      "paths": {
+        "assets/investigators/0_base/AGNES BAKER.jpeg": {
+          "mtime": 1749252783.821,
+          "size": 79316
+        }
+      }
+    },
+    "59f8a1fbc2909d30a71a5b1aa3d6e04261724fe3070c0c593178da4c29a33f42": {
+      "paths": {
+        "assets/investigators/0_base/MARIE LAMBEAU.jpeg": {
+          "mtime": 1749252834.944,
+          "size": 79843
+        }
+      }
+    },
+    "029b1df4e18792d0155a52b33b36d0c5bc17481ba9b6e5e21a2c6fbc4b1fa5f0": {
+      "paths": {
+        "assets/investigators/0_base/CALVIN WRIGHT.jpeg": {
+          "mtime": 1749252794.136,
+          "size": 81458
+        }
+      }
+    },
+    "ca56b4da6d019f5d8239390121d83c8f02cd5c169fa3a2117c306f7f1f08a23f": {
+      "paths": {
+        "assets/investigators/0_base/mini/tommy muldoon.png": {
+          "mtime": 1755356978.0,
+          "size": 4296
+        }
+      }
+    },
+    "45180ad7ae21fafbd33e356899e611f18e2d7a04a00f45749ba95a6860a84c5d": {
+      "paths": {
+        "assets/investigators/0_base/mini/wendy adams.png": {
+          "mtime": 1755357053.0,
+          "size": 4073
+        }
+      }
+    },
+    "290b386130775194cc5fb90271cd3fa2de6123e1250092e4d9aa94b7b6a66ba2": {
+      "paths": {
+        "assets/investigators/0_base/mini/rex murphy.png": {
+          "mtime": 1755356920.0,
+          "size": 4168
+        }
+      }
+    },
+    "7fb116c45f9d226f8322ccef8da151410b321059d69ba8d1c09e247647f798b5": {
+      "paths": {
+        "assets/investigators/0_base/mini/minh thi phan.png": {
+          "mtime": 1755356768.0,
+          "size": 4171
+        }
+      }
+    },
+    "ecf009329c3a9ceff0d3a767a3f6989a48be255f63a7bfd067c85c8c43eb3658": {
+      "paths": {
+        "assets/investigators/0_base/mini/daniela reyes.png": {
+          "mtime": 1755357205.0,
+          "size": 4121
+        }
+      }
+    },
+    "8f9afc4d21a451bfcd686c067e0d573ef5b33a5fe67570a744476068152f23da": {
+      "paths": {
+        "assets/investigators/0_base/mini/norman withers.png": {
+          "mtime": 1755356832.0,
+          "size": 4387
+        }
+      }
+    },
+    "ea6eaf88eaf6a7d3e80d74a89a17b36130ab18b4e8007271354f87ddd04967bb": {
+      "paths": {
+        "assets/investigators/0_base/mini/marie lambeau.png": {
+          "mtime": 1755357142.0,
+          "size": 4384
+        }
+      }
+    },
+    "5ab553424ffd42df6d177178c9a5fdcfb20c6be80e84e7166c950422f8973a87": {
+      "paths": {
+        "assets/investigators/0_base/mini/michael mcglen.png": {
+          "mtime": 1755357119.0,
+          "size": 4182
+        }
+      }
+    },
+    "a00bae5968057605ef987ef12579c25934d9a2b2920933334ee85aed65b5a775": {
+      "paths": {
+        "assets/investigators/0_base/mini/calvin wright.png": {
+          "mtime": 1782459942.94,
+          "size": 4244
+        }
+      }
+    },
+    "2fb558512bb90543b9000337e5df3e77203e10444586c4a5b2f30eb160c4c0b0": {
+      "paths": {
+        "assets/investigators/0_base/mini/jenny barnes.png": {
+          "mtime": 1755357165.0,
+          "size": 3660
+        }
+      }
+    },
+    "ee02e75e281bdeebf1279d35147fecab39b2aca95736d31186bd8e8b1c7549e0": {
+      "paths": {
+        "assets/investigators/0_base/mini/agnes baker.png": {
+          "mtime": 1755357264.0,
+          "size": 4029
+        }
+      }
+    },
+    "8551854b555855df85e4b911ab488c23a3780252906f0fa1ff570d1fa3a8b381": {
+      "paths": {
+        "assets/investigators/0_base/mini/dexter drake.png": {
+          "mtime": 1755357082.0,
+          "size": 4074
+        }
+      }
+    },
+    "b5ef241bc0aa78214984cc4308b0a1c94313bed0f20e45546af27b6dac2124e8": {
+      "paths": {
+        "assets/investigators/3_secrets_of_the_order/Winifred Habbamock.jpg": {
+          "mtime": 1754857191.0,
+          "size": 46831
+        }
+      }
+    },
+    "fc69f6a184e69a5c4fd3f0b710f13f6632b8cc869745e1408d07eab816c3d5da": {
+      "paths": {
+        "assets/investigators/3_secrets_of_the_order/Agatha Crane.jpg": {
+          "mtime": 1754857179.0,
+          "size": 44033
+        }
+      }
+    },
+    "d1a38f4a026c1cdfbb6a45a044f0c1ac63d5b34977f0837933738483a4808a70": {
+      "paths": {
+        "assets/investigators/3_secrets_of_the_order/Preston Fairmont.jpg": {
+          "mtime": 1754857189.0,
+          "size": 39361
+        }
+      }
+    },
+    "c2a048e1e4dbdafb06bd04bf4623565021b6f76e1e955c91720b9c48b970827a": {
+      "paths": {
+        "assets/investigators/3_secrets_of_the_order/Mark Harrigan.jpg": {
+          "mtime": 1754857184.0,
+          "size": 44788
+        }
+      }
+    },
+    "137f653d5270eee2589bc3e8adf9bb0bfb588f4df57ba6524375c5d75285e70d": {
+      "paths": {
+        "assets/investigators/3_secrets_of_the_order/mini/Winifred Habbamock.jpg": {
+          "mtime": 1782462171.0,
+          "size": 3520
+        }
+      }
+    },
+    "28351fb39ea4fe998ad746eed522ed7b717af511b798b35f5cef15d9a7cb7aab": {
+      "paths": {
+        "assets/investigators/3_secrets_of_the_order/mini/Agatha Crane.jpg": {
+          "mtime": 1782462116.0,
+          "size": 3167
+        }
+      }
+    },
+    "25bacc8cf863c0cdc026866e3e18f326171afc7f870295707f927c292a608590": {
+      "paths": {
+        "assets/investigators/3_secrets_of_the_order/mini/Preston Fairmont.jpg": {
+          "mtime": 1782462155.0,
+          "size": 2884
+        }
+      }
+    },
+    "a498a30a6749338bcdb292bf5423cf674761ce3e7cd8cae6c0578c1962e5d76d": {
+      "paths": {
+        "assets/investigators/3_secrets_of_the_order/mini/Mark Harrigan.jpg": {
+          "mtime": 1782462135.0,
+          "size": 3536
+        }
+      }
+    },
+    "49f5960ca58e398a1118e9d1ff0a57898f5a6191dbeef41db6173784ef4fb10c": {
+      "paths": {
+        "assets/investigators/1_dead_of_night/SKIDS O'TOOLE.jpg": {
+          "mtime": 1754856820.0,
+          "size": 60635
+        }
+      }
+    },
+    "e3fc5896518ba0563f50eabcabb3cc2a55023b2e0d3e9567e4e45db01eb7ea1c": {
+      "paths": {
+        "assets/investigators/1_dead_of_night/KATE WINTHROP.jpg": {
+          "mtime": 1754856814.0,
+          "size": 45981
+        }
+      }
+    },
+    "364e3f8ca56e1a38ea1e55bdc8eab9dcb764f8e2d0602df36439f1dba0c45aec": {
+      "paths": {
+        "assets/investigators/1_dead_of_night/DIANA STANLEY.jpg": {
+          "mtime": 1754856811.0,
+          "size": 56373
+        }
+      }
+    },
+    "f3a1aac22bcc8b8be258a9f52a12f24291430f48199a1ec2d9d7966ca9f40d23": {
+      "paths": {
+        "assets/investigators/1_dead_of_night/ROLAND BANKS.jpg": {
+          "mtime": 1754856817.0,
+          "size": 54991
+        }
+      }
+    },
+    "812d86d0578b0074abdad4c71c69d69cf2477d6ef5a4fbaa632df870f356ee0b": {
+      "paths": {
+        "assets/investigators/1_dead_of_night/mini/skids otoole.png": {
+          "mtime": 1755357853.0,
+          "size": 4210
+        }
+      }
+    },
+    "7076bf835d16a5d1808f72c88118d7858fe251f3c65c17504e645c874e36e319": {
+      "paths": {
+        "assets/investigators/1_dead_of_night/mini/kate winthrop.png": {
+          "mtime": 1755357761.0,
+          "size": 4030
+        }
+      }
+    },
+    "d919ead5db3fd14681e48f2479413297e58c1a18329beaba94591be04250503d": {
+      "paths": {
+        "assets/investigators/1_dead_of_night/mini/diana stanley.png": {
+          "mtime": 1755357667.0,
+          "size": 4287
+        }
+      }
+    },
+    "8451ad6cbd09d237248d2106a80fa27c9505b257dde2bc17f826f0103039ce36": {
+      "paths": {
+        "assets/investigators/1_dead_of_night/mini/roland banks.png": {
+          "mtime": 1755357800.0,
+          "size": 4315
+        }
+      }
+    },
+    "803fe25e8aaf85b84acee204f108227e22d7995f60738e532d6f4fa343df40a3": {
+      "paths": {
+        "assets/investigators/models/kate_winthrop.unity3d": {
+          "mtime": 1783001202.571,
+          "size": 3251152
+        }
+      }
+    },
+    "ad7266a99316d9e82d2479727bad154415321864c7fe6a84bbef2a8fccdd9a81": {
+      "paths": {
+        "assets/investigators/models/calvin_wright.unity3d": {
+          "mtime": 1783001202.992,
+          "size": 12295543
+        }
+      }
+    },
+    "04d96ee9cee2824445824aebcb5ee7dfe21020b0bbaea842d179af56d2c8a06d": {
+      "paths": {
+        "assets/investigators/models/jenny_barnes.unity3d": {
+          "mtime": 1783001202.571,
+          "size": 5178042
+        }
+      }
+    },
+    "bc18cc5b7654e84acc55ac2b5bbf8d193260d006fd03551b94b314b327f2966f": {
+      "paths": {
+        "assets/investigators/models/roland_banks.unity3d": {
+          "mtime": 1783001202.673,
+          "size": 2708980
+        }
+      }
+    },
+    "495e51fdb168d05d23d1e74e5031d13f71381120cc230b2a5b332d37924da8e6": {
+      "paths": {
+        "assets/investigators/models/patrice_hathaway.unity3d": {
+          "mtime": 1783001203.098,
+          "size": 8764541
+        }
+      }
+    },
+    "f5341a0702137085be5bbc2c0f384fec47747778fa988b927a89e8f69db8ac11": {
+      "paths": {
+        "assets/investigators/models/zoey_samaras.unity3d": {
+          "mtime": 1783001202.981,
+          "size": 10322698
+        }
+      }
+    },
+    "f64095ff5b9938b03eda6a68988faee338613bf537502c1fee1fd5f166a83d0f": {
+      "paths": {
+        "assets/investigators/models/marie_lambeau.unity3d": {
+          "mtime": 1783001202.674,
+          "size": 4547460
+        }
+      }
+    },
+    "de577300d118718489fd67d3ef81470db2d3b2264b6438263ba793c472777f94": {
+      "paths": {
+        "assets/investigators/models/wendy_adams.unity3d": {
+          "mtime": 1783001203.363,
+          "size": 7633597
+        }
+      }
+    },
+    "19cbc5d8d84731651b33e9172ba01c818c1959ebbc2fdb9f194686c4f18a8670": {
+      "paths": {
+        "assets/investigators/models/father_mateo.unity3d": {
+          "mtime": 1783001202.968,
+          "size": 2085651
+        }
+      }
+    },
+    "0e197f14b99acf1f77687611903707a061d57b9371b14481760ead6e7cec1d88": {
+      "paths": {
+        "assets/investigators/models/michael_mcglen.unity3d": {
+          "mtime": 1783001202.571,
+          "size": 5373877
+        }
+      }
+    },
+    "8a9aff43c4edbfa1d06cdbdec51764bbcd9a6b21262ab84ed21d5f3b2cda2fcf": {
+      "paths": {
+        "assets/investigators/models/preston_fairmont.unity3d": {
+          "mtime": 1783001202.961,
+          "size": 5523347
+        }
+      }
+    },
+    "73f7d89e94442d2732f2314cb5d79bf195da8ca8d8c4117fbcdc7606c4178f33": {
+      "paths": {
+        "assets/investigators/models/skids_otoole.unity3d": {
+          "mtime": 1783001202.979,
+          "size": 5468182
+        }
+      }
+    },
+    "1607129eefa44fa399424db1688e03bc5570b215e72c25d8a9ddfee2002673e5": {
+      "paths": {
+        "assets/investigators/models/agatha_crane.unity3d": {
+          "mtime": 1783001202.569999,
+          "size": 9873421
+        }
+      }
+    },
+    "811cd266fa1f86578d08a65306be3211a061aaf6551c706e93e27f07e84c14f4": {
+      "paths": {
+        "assets/investigators/models/charlie_kane.unity3d": {
+          "mtime": 1783001202.985,
+          "size": 2518921
+        }
+      }
+    },
+    "e3da3406b4e752923166defe7ca32ef9384a41c483f956143d7031796965a2b2": {
+      "paths": {
+        "assets/investigators/models/carson_sinclair.unity3d": {
+          "mtime": 1783001202.674,
+          "size": 1254135
+        }
+      }
+    },
+    "86e261c60ad1f8b71c07dd49f1ca4baf6b189ba72c7e439d0d46ec5c2920870b": {
+      "paths": {
+        "assets/investigators/models/daniela_reyes.unity3d": {
+          "mtime": 1783001203.12,
+          "size": 4345956
+        }
+      }
+    },
+    "c6d53253fb0bd01a00c3f179729b3379345ca122095af5b03749ee68bc6ff2d6": {
+      "paths": {
+        "assets/investigators/models/tommy_muldoon.unity3d": {
+          "mtime": 1783001202.981,
+          "size": 7568696
+        }
+      }
+    },
+    "cee72a30c94c8a578a979c595206fbde81d2484f00867f392b0fe60a0e276f77": {
+      "paths": {
+        "assets/investigators/models/norman_withers.unity3d": {
+          "mtime": 1783001202.981,
+          "size": 3024263
+        }
+      }
+    },
+    "bcbe3d87d9f4ce96da056cde12ab735c3d3d16ff5975724a6a5a09a073e871f3": {
+      "paths": {
+        "assets/investigators/models/base_standee.obj": {
+          "mtime": 1783001203.555999,
+          "size": 28288
+        }
+      }
+    },
+    "d7c3d09775723db8abdf0f54a1d823c1a88981c9d4da282f7a0f39a3ed3cc646": {
+      "paths": {
+        "assets/investigators/models/mark_harrigan.unity3d": {
+          "mtime": 1783001202.57,
+          "size": 22377242
+        }
+      }
+    },
+    "5c48c703c83394835a1c0f6d69f732c2f1900ffed585413abdd71728dbf448ad": {
+      "paths": {
+        "assets/investigators/models/dexter_drake.unity3d": {
+          "mtime": 1783001202.981,
+          "size": 4012214
+        }
+      }
+    },
+    "a9d52e19e6962cf7c56043cf05ca148f148ace0e92dc532c22766182cf16061e": {
+      "paths": {
+        "assets/investigators/models/stella_clark.unity3d": {
+          "mtime": 1783001203.551,
+          "size": 7118271
+        }
+      }
+    },
+    "4daf7a6ca3e960a35aefa685b8b8005f236e3fc07403ba8e5ce4f5634840a6c0": {
+      "paths": {
+        "assets/investigators/models/agnes_baker.unity3d": {
+          "mtime": 1783001202.571,
+          "size": 2937119
+        }
+      }
+    },
+    "09fbbf0247237953a90c188176cf827409599ef69b4f1fc1566478e986cc9c55": {
+      "paths": {
+        "assets/investigators/models/winifred_habbamock.unity3d": {
+          "mtime": 1783001203.549,
+          "size": 8418507
+        }
+      }
+    },
+    "f0df828afb72c2b6f487ed5ee0b08a7411b00d0b5a7a6ae598c5d2171429fbe6": {
+      "paths": {
+        "assets/investigators/models/rex_murphy.unity3d": {
+          "mtime": 1783001202.673,
+          "size": 3384152
+        }
+      }
+    },
+    "004c63841e3bd7ae70edac8138ae4b1bef30d69465c4b12f6e2f07ffadfb1231": {
+      "paths": {
+        "assets/investigators/models/minh_thi_phan.unity3d": {
+          "mtime": 1783001202.691,
+          "size": 5695128
+        }
+      }
+    },
+    "6dc5875dc2a3abd1ec9097a7df122bb49370600d32a8d4c98bdc55d15b3a1cfd": {
+      "paths": {
+        "assets/investigators/models/diana_stanley.unity3d": {
+          "mtime": 1783001203.122,
+          "size": 17195716
+        }
+      }
+    },
+    "0c90b252acc9695f0ae2808140777fb2b740d04c4c34081a57283c9a0008314d": {
+      "paths": {
+        "assets/investigators/models/ashcan_pete.unity3d": {
+          "mtime": 1783001203.264,
+          "size": 11785802
+        }
+      }
+    },
+    "9e6e42542f45efd576ac3b8eefc03fa53f78c84f66489d84c43152d0b95985ce": {
+      "paths": {
+        "assets/investigators/models/silas_marsh.unity3d": {
+          "mtime": 1783001202.99,
+          "size": 7285650
+        }
+      }
+    },
+    "87cfed1875f5e37476fbbcd603a7b1a91aadadb6e2f5b4abf371744dddc5e30f": {
+      "paths": {
+        "assets/investigators/2_under_dark_waves/zoey samaras.jpg": {
+          "mtime": 1754857081.0,
+          "size": 89868
+        }
+      }
+    },
+    "69f3a03bca04dfa53a100f73dd1d0c8371b1936588bdce7543dbc5a013bc0824": {
+      "paths": {
+        "assets/investigators/2_under_dark_waves/charlie kane.jpg": {
+          "mtime": 1754857058.0,
+          "size": 44325
+        }
+      }
+    },
+    "75dfc537607a4df442e3e1ce77d45a0445a0fc6e02b15a903592d198339de3eb": {
+      "paths": {
+        "assets/investigators/2_under_dark_waves/silas marsh.jpg": {
+          "mtime": 1754857073.0,
+          "size": 70009
+        }
+      }
+    },
+    "28bdf50626c3b4b24de4d43be4180c7256a17b798f5357c36310bfdf897adefd": {
+      "paths": {
+        "assets/investigators/2_under_dark_waves/father mateo.jpg": {
+          "mtime": 1754857063.0,
+          "size": 69442
+        }
+      }
+    },
+    "b2ae7d915d3280f2c27340ba92bb32cb54b98f58b41699d248bc91aa6a0ac40c": {
+      "paths": {
+        "assets/investigators/2_under_dark_waves/ashcan pete.jpg": {
+          "mtime": 1754857043.0,
+          "size": 57645
+        }
+      }
+    },
+    "ba5b2187392f7bf3b268e4fa2bbb80a2491764a8db0494ecac40cf91c1396d7a": {
+      "paths": {
+        "assets/investigators/2_under_dark_waves/stella clark.jpg": {
+          "mtime": 1754857077.0,
+          "size": 75311
+        }
+      }
+    },
+    "5d20acbef52b52955b28cfa2e58d8f15a3f804be8f415e712ba950292248bd52": {
+      "paths": {
+        "assets/investigators/2_under_dark_waves/patrice hathaway.jpg": {
+          "mtime": 1754857068.0,
+          "size": 77507
+        }
+      }
+    },
+    "b1eec7c40b7cb726c124ecb2b82b6b3256813e510d47e5cdc934b439966cbac2": {
+      "paths": {
+        "assets/investigators/2_under_dark_waves/carson sinclair.jpg": {
+          "mtime": 1754857051.0,
+          "size": 54057
+        }
+      }
+    },
+    "3e2a26cf3adb71350c60cd5e65611d384a000beb8b882f523d7edbafe4fe5945": {
+      "paths": {
+        "assets/investigators/2_under_dark_waves/mini/zoey samaras.jpg": {
+          "mtime": 1782461639.0,
+          "size": 3016
+        }
+      }
+    },
+    "754a36034fc135f45ff3b7c36d6eba3c61634731b0c3040e84b434efbff05a42": {
+      "paths": {
+        "assets/investigators/2_under_dark_waves/mini/charlie kane.jpg": {
+          "mtime": 1782461538.0,
+          "size": 2773
+        }
+      }
+    },
+    "63fc55bfbd2b8f40cfea63cc70f36b79da24e58027f10d68f1ffe9c4b6518ea9": {
+      "paths": {
+        "assets/investigators/2_under_dark_waves/mini/silas marsh.jpg": {
+          "mtime": 1782461917.0,
+          "size": 3316
+        }
+      }
+    },
+    "f7248d2e276d13db7b2cbcd74837b9f33f40754ec70e0a378c861eef56c74e4d": {
+      "paths": {
+        "assets/investigators/2_under_dark_waves/mini/father mateo.jpg": {
+          "mtime": 1782461592.0,
+          "size": 3263
+        }
+      }
+    },
+    "4ce7dc92d73490e0d6de61281dcdcf9369ec4a6c584dfe74b917f329286869f3": {
+      "paths": {
+        "assets/investigators/2_under_dark_waves/mini/ashcan pete.jpg": {
+          "mtime": 1782461840.0,
+          "size": 2887
+        }
+      }
+    },
+    "5c288bc774cf48531429e65fcdbf31f350a1be1929f835644d0cc0c2ab606dda": {
+      "paths": {
+        "assets/investigators/2_under_dark_waves/mini/stella clark.jpg": {
+          "mtime": 1782461867.0,
+          "size": 3051
+        }
+      }
+    },
+    "296c9fee807b58a4719527caa4297a1ab8bfc02b552f861cdaf30649da323df5": {
+      "paths": {
+        "assets/investigators/2_under_dark_waves/mini/patrice hathaway.jpg": {
+          "mtime": 1782461665.0,
+          "size": 3522
+        }
+      }
+    },
+    "056a6d3de61a9859725cace2cccb8da94444e1e45c7fabe743d5deafe114a472": {
+      "paths": {
+        "assets/investigators/2_under_dark_waves/mini/carson sinclair.jpg": {
+          "mtime": 1782461894.0,
+          "size": 3076
+        }
+      }
+    },
+    "4ef4cf7b6d13aab7c5ad042ac073e45d5c6a187298bf485106b5438a7e473b3f": {
+      "paths": {
+        "assets/map_tiles/Ferry Terminal6.jpg": {
+          "mtime": 1779687151.234999,
+          "size": 231742
+        }
+      }
+    },
+    "60f4476e421a3db814513bd5639d420e2589b5a81f82d8eb9270cf0bbed0951f": {
+      "paths": {
+        "assets/map_tiles/street_scenic.jpg": {
+          "mtime": 1752927954.0,
+          "size": 163111
+        }
+      }
+    },
+    "2fea60b53a92c8262a1de91033ccdb9fa9571775072d328346224689d334c8ef": {
+      "paths": {
+        "assets/map_tiles/.DS_Store": {
+          "mtime": 1783021394.6404855,
+          "size": 6148
+        }
+      }
+    },
+    "ff418bd71403f4ea182fc6bcf85a207d99c5a69d9ab170bea4ccb80eb5dfed69": {
+      "paths": {
+        "assets/map_tiles/street_bridge.jpg": {
+          "mtime": 1752928012.0,
+          "size": 159089
+        }
+      }
+    },
+    "e1687c96a26f5491e8323bd365b8c7405c339adfb339666f0c54feac343275ee": {
+      "paths": {
+        "assets/map_tiles/Hidden Path.jpeg": {
+          "mtime": 1779686220.861,
+          "size": 219308
+        }
+      }
+    },
+    "cbd6cfdbe7a9db8f8f5354667623e6fe1528789471ac3e0f6a4aa5b8232d430d": {
+      "paths": {
+        "assets/map_tiles/Train Platform6.jpg": {
+          "mtime": 1779687188.881,
+          "size": 201243
+        }
+      }
+    },
+    "37afb7a072c461e886f56890a33ba6cbf7f7244144e9a66e040a6e07efee2c4f": {
+      "paths": {
+        "assets/map_tiles/Country Road6.jpg": {
+          "mtime": 1779686953.493,
+          "size": 186924
+        }
+      }
+    },
+    "dad26f50978c2f9d544050f14c31c20ae7513ffda75c3962b138c08fafee4f82": {
+      "paths": {
+        "assets/map_tiles/street_residental.jpg": {
+          "mtime": 1752927875.0,
+          "size": 170721
+        }
+      }
+    },
+    "0eddc09285837f211f285df5897588eb0461787bef3cc6e4fd9ebc7d8660d2f8": {
+      "paths": {
+        "assets/map_tiles/Derelict Portal.jpg": {
+          "mtime": 1779686339.828,
+          "size": 213015
+        }
+      }
+    },
+    "e08018175559d8914299e2bf509291ca8edcffb211836eb57f0e42269dfa703a": {
+      "paths": {
+        "assets/map_tiles/uk/The Witch House.jpg": {
+          "mtime": 1779686468.108999,
+          "size": 218880
+        }
+      }
+    },
+    "a8b7e9ad31d9df92f1dec06a33cc89ccc8551d6707f9dcb667e4f996251e3354": {
+      "paths": {
+        "assets/map_tiles/uk/downtown.jpg": {
+          "mtime": 1752825987.0,
+          "size": 1122917
+        }
+      }
+    },
+    "93e3d09028a304b86102e910f628371be4a97833e632cc2c65310108b1eb9142": {
+      "paths": {
+        "assets/map_tiles/uk/Central Kingsport.jpg": {
+          "mtime": 1756107620.0,
+          "size": 832907
+        }
+      }
+    },
+    "57688ba71e8257888738f66eae029155202ca77927b1f265cce05d03acac6f87": {
+      "paths": {
+        "assets/map_tiles/uk/Innsmouth Shore.jpg": {
+          "mtime": 1755796200.0,
+          "size": 1211073
+        }
+      }
+    },
+    "268fd128004b763069fc8297a6be9cdf37fb3f96ff15b711a64364ac8c3a00dc": {
+      "paths": {
+        "assets/map_tiles/uk/easttown.jpg": {
+          "mtime": 1752825942.0,
+          "size": 1336342
+        }
+      }
+    },
+    "ab7a1ec048060ea810359302f4446d41e721db8b8297b04753e7d8c8fee53913": {
+      "paths": {
+        "assets/map_tiles/uk/miskatonic university.jpg": {
+          "mtime": 1752829449.0,
+          "size": 1385219
+        }
+      }
+    },
+    "4d2b362cf54aaed51638560eb1b60dd1dd62c56cfd1a970642f69b902aec72c9": {
+      "paths": {
+        "assets/map_tiles/uk/northside.jpg": {
+          "mtime": 1752845456.210999,
+          "size": 1174198
+        }
+      }
+    },
+    "b8dda31c4091944ab7f7ae17c6b3fc13f43fe0430d37d80c7c216960620f1e03": {
+      "paths": {
+        "assets/map_tiles/uk/The Unnamable.jpg": {
+          "mtime": 1779686440.213,
+          "size": 215747
+        }
+      }
+    },
+    "69fdd1fbb26481f2319a28bc64d960450b13fd3dadc21b1aac660469db6aecfd": {
+      "paths": {
+        "assets/map_tiles/uk/underworld.jpg": {
+          "mtime": 1756114629.0,
+          "size": 718566
+        }
+      }
+    },
+    "880474523a826971fd16552895ec0ccf764cf26f7dbe4cab424f74fb1cbe8af9": {
+      "paths": {
+        "assets/map_tiles/uk/rivertown.jpg": {
+          "mtime": 1752831941.0,
+          "size": 1217686
+        }
+      }
+    },
+    "bf61eb4da44fe3bc71d56e94f5f84390d198e43779f64da6e9d1e27e8dd19205": {
+      "paths": {
+        "assets/map_tiles/uk/Kingsport Harbor.jpg": {
+          "mtime": 1756115347.816999,
+          "size": 667185
+        }
+      }
+    },
+    "78b5cbf55ebe6bd9a30d1190365d3f5e6c7e40af69512ce5a2784d311f94a722": {
+      "paths": {
+        "assets/map_tiles/uk/Strange High House.jpg": {
+          "mtime": 1779686407.203999,
+          "size": 213988
+        }
+      }
+    },
+    "e1a2b97a4448bf0a61e59f1cd187095866ba2ee163d2fd077f89d3bad58d42ed": {
+      "paths": {
+        "assets/map_tiles/uk/uptown.jpg": {
+          "mtime": 1752834172.0,
+          "size": 1370783
+        }
+      }
+    },
+    "ce3f2e09b272578808c56e4aa25289d7238c54841dcc97769730ded402f3d767": {
+      "paths": {
+        "assets/map_tiles/uk/French Hill.jpg": {
+          "mtime": 1756111339.0,
+          "size": 875526
+        }
+      }
+    },
+    "f80dcbe1dd0ae4785a444a98a1c5d00eee81423104ece92a3632d0bcd98b9066": {
+      "paths": {
+        "assets/map_tiles/uk/Innsmouth Village.jpg": {
+          "mtime": 1756106730.0,
+          "size": 1069303
+        }
+      }
+    },
+    "1ab5d579d6c6760a1cc954fc954b73fe37612a7c589d859b8769329cae6d9353": {
+      "paths": {
+        "assets/map_tiles/uk/merchant district.jpg": {
+          "mtime": 1752826803.0,
+          "size": 1163926
+        }
+      }
+    },
+    "1970c82b00bf487375c8886aaa543450c3f2d58f357e27adf155c51836d1d13e": {
+      "paths": {
+        "assets/map_tiles/uk/southside.jpg": {
+          "mtime": 1752832761.0,
+          "size": 1314975
+        }
+      }
+    },
+    "091030b7bbd1bf72e037ec3763306d9220806f2b4665e9431b61920e6d29d32d": {
+      "paths": {
+        "assets/map_tiles/uk/Devil Reef.jpg": {
+          "mtime": 1779686381.361999,
+          "size": 205500
+        }
+      }
+    },
+    "7ff4de68db515ee594fe43c8cfbccc8e776cf7e4ce6b6145bab07270de903a50": {
+      "paths": {
+        "assets/map_tiles/en/The Witch House.jpg": {
+          "mtime": 1782753964.440999,
+          "size": 217968
+        }
+      }
+    },
+    "ad85e7541dc707e108a894fd69882d6385aebf5206eb509e6a299836add75ce4": {
+      "paths": {
+        "assets/map_tiles/en/downtown.jpg": {
+          "mtime": 1782752853.161999,
+          "size": 1129103
+        }
+      }
+    },
+    "147fd7fa3bba2081fa53bb8a5940429076dd046b50774418d2ccb54f3e8650fb": {
+      "paths": {
+        "assets/map_tiles/en/Central Kingsport.jpg": {
+          "mtime": 1782752904.059999,
+          "size": 830256
+        }
+      }
+    },
+    "ca17ef0c4fac5fc48b22656aa8d42ee6f96d644dccbd64cfd6281510052c1640": {
+      "paths": {
+        "assets/map_tiles/en/Innsmouth Shore.jpg": {
+          "mtime": 1782752907.141999,
+          "size": 1210090
+        }
+      }
+    },
+    "9d3f3eeb0f97adfa12505ef95e596cc5dcd70a97fa6931c0cf248bc525e8ba18": {
+      "paths": {
+        "assets/map_tiles/en/easttown.jpg": {
+          "mtime": 1782752854.638999,
+          "size": 1333742
+        }
+      }
+    },
+    "2dc841f82bb0b04238a2490ef1cb11afc71d7552ab205b04ced4fe5de0d4398f": {
+      "paths": {
+        "assets/map_tiles/en/miskatonic university.jpg": {
+          "mtime": 1782752857.706,
+          "size": 1378625
+        }
+      }
+    },
+    "e2b1f5d0aee0c918e9a44bd3cae60ba3edb4a652aef855134048c437bc12f70f": {
+      "paths": {
+        "assets/map_tiles/en/northside.jpg": {
+          "mtime": 1782752859.306999,
+          "size": 1161300
+        }
+      }
+    },
+    "3304f220269c9eb7c077e3442166cc4dd44bd2b9cdbe331e7543c3ad71a78ba0": {
+      "paths": {
+        "assets/map_tiles/en/The Unnamable.jpg": {
+          "mtime": 1782753963.029999,
+          "size": 215137
+        }
+      }
+    },
+    "cc1bca0cbd68f9b1250a80674b6d13ac0ea06038490f93262d8351ec185c4476": {
+      "paths": {
+        "assets/map_tiles/en/underworld.jpg": {
+          "mtime": 1782752911.131999,
+          "size": 717293
+        }
+      }
+    },
+    "fa8f023b5884e40fbe5901e59dce3d29ef57be6ce5a8b9877ff433f42a68f15a": {
+      "paths": {
+        "assets/map_tiles/en/rivertown.jpg": {
+          "mtime": 1782752862.184999,
+          "size": 1220105
+        }
+      }
+    },
+    "ebb4fdaf91e72eab545fbad00905d8ee075d74074e6272a34b91d19f5084d9d9": {
+      "paths": {
+        "assets/map_tiles/en/Kingsport Harbor.jpg": {
+          "mtime": 1782752909.776999,
+          "size": 668888
+        }
+      }
+    },
+    "49f5f75579d72bd94547bd2f5909178fe8b4429b08000323e0ebd36ee13f301c": {
+      "paths": {
+        "assets/map_tiles/en/Strange High House.jpg": {
+          "mtime": 1782753961.551,
+          "size": 215140
+        }
+      }
+    },
+    "ddb68e6a47d49c6742b911e7b97c507b2f416a82169e1a7a2d1528e13925bb29": {
+      "paths": {
+        "assets/map_tiles/en/uptown.jpg": {
+          "mtime": 1782752865.313999,
+          "size": 1370025
+        }
+      }
+    },
+    "a6cb7375deecd00614328227600891d0ce04d8b8bba33ffd74f6092665605be5": {
+      "paths": {
+        "assets/map_tiles/en/French Hill.jpg": {
+          "mtime": 1782752905.64,
+          "size": 869518
+        }
+      }
+    },
+    "2e7419ce086f82153454b08322634b235481506d699648a550cef67975ba105e": {
+      "paths": {
+        "assets/map_tiles/en/Innsmouth Village.jpg": {
+          "mtime": 1782752908.473999,
+          "size": 1066795
+        }
+      }
+    },
+    "a059efd3b20b40cdc3c87cc351eb30c3e5fd09d57de6648f733b6476db4cd890": {
+      "paths": {
+        "assets/map_tiles/en/merchant district.jpg": {
+          "mtime": 1782752856.151,
+          "size": 1168495
+        }
+      }
+    },
+    "b7f7d5183fb134fbac9387addcb21b1e9ee89b3df5c5322a8c5f290aaae405d0": {
+      "paths": {
+        "assets/map_tiles/en/southside.jpg": {
+          "mtime": 1782752863.815,
+          "size": 1398347
+        }
+      }
+    },
+    "4abc229febd6d812baa4b17e623b833259f7b61605596c7e6a937a75c7ba1d64": {
+      "paths": {
+        "assets/map_tiles/en/Devil Reef.jpg": {
+          "mtime": 1782753960.098999,
+          "size": 204170
+        }
+      }
+    },
+    "e800fc6ba764cd54739aedca3c059e960168b3f1d7fdc53f732fb5e1973c1186": {
+      "paths": {
+        "assets/cards/.DS_Store": {
+          "mtime": 1783073700.91388,
+          "size": 8196
+        }
+      }
+    },
+    "72af99bfb406621390b11518c73d242c8cddd0b1d1c5d3107c8b07e4c7ec8946": {
+      "paths": {
+        "assets/cards/0_base/Anomaly TF 2Back.jpg": {
+          "mtime": 1749138269.815,
+          "size": 752989
+        }
+      }
+    },
+    "381a24e6ca221cf6dc5bb159ab2705dda0778ef74000bb8b50ef60df8105ab3a": {
+      "paths": {
+        "assets/cards/0_base/Items 2Back.jpg": {
+          "mtime": 1749138269.815,
+          "size": 228121
+        }
+      }
+    },
+    "1f98b640f230b4324068f495b91577c85ec7cf108e3f5877472ee19c75ccf97e": {
+      "paths": {
+        "assets/cards/0_base/.DS_Store": {
+          "mtime": 1783087162.484175,
+          "size": 6148
+        }
+      }
+    },
+    "8d83a0ef8bd6e557deedf78fcb766a5d805e3e49e1b0f4a4021eae58085ec220": {
+      "paths": {
+        "assets/cards/0_base/Specials 2Back.jpg": {
+          "mtime": 1749138269.813999,
+          "size": 252218
+        }
+      }
+    },
+    "51940e94dc4c33552f4fedaa57c3cb1c85d5b86ba93a899146ad751e696cfe31": {
+      "paths": {
+        "assets/cards/0_base/Anomaly NB 2Back.jpg": {
+          "mtime": 1749138269.813999,
+          "size": 732885
+        }
+      }
+    },
+    "f48406296dfb47d73992cf9c621ac46851c061e71f1c369ca60b2a870572a0b1": {
+      "paths": {
+        "assets/cards/0_base/Ally 2Back.jpg": {
+          "mtime": 1749138269.815,
+          "size": 224235
+        }
+      }
+    },
+    "08624bb69d2df58235efc945cfe872f18463ab91758bad4572cc75e6b5eba87d": {
+      "paths": {
+        "assets/cards/0_base/Location mat.png": {
+          "mtime": 1749238876.864,
+          "size": 2013506
+        }
+      }
+    },
+    "2c1336888dc164c009f8d991093f47dc3801ec42e45d6dc3c82e695abf5a935c": {
+      "paths": {
+        "assets/cards/0_base/Headline 2Back.png": {
+          "mtime": 1749138269.815,
+          "size": 16846075
+        }
+      }
+    },
+    "6c227e25c30d208a0680709d83ec26822469897a3332b3da13851c1af49877c1": {
+      "paths": {
+        "assets/cards/0_base/Spell 2Back.jpg": {
+          "mtime": 1749138269.815,
+          "size": 211393
+        }
+      }
+    },
+    "90a9833908849bc6a1394da137a9a8e45b77637f5c3d905b5cfd221c7187a0c7": {
+      "paths": {
+        "assets/cards/0_base/Anomaly FR 2Back.jpg": {
+          "mtime": 1749138269.815,
+          "size": 792517
+        }
+      }
+    },
+    "fcb4c2dbdecc7281fe74670440d4877781c2ae13e45a6269d936ade126b24cde": {
+      "paths": {
+        "assets/cards/0_base/uk/Scenario 2Back.png": {
+          "mtime": 1754078213.0,
+          "size": 15642987
+        }
+      }
+    },
+    "729275423fcb09c0a7ca5a5f5f14f71d7e8cad64d311df12f0a8275b476cc4c4": {
+      "paths": {
+        "assets/cards/0_base/uk/Encounter Part2 2Back.png": {
+          "mtime": 1780813564.0,
+          "size": 16535593
+        }
+      }
+    },
+    "e55a3089375f90a0a03e71d742e85542487b400f2318cb2dda6e64bd6feb6d0a": {
+      "paths": {
+        "assets/cards/0_base/uk/Archive 1Front.png": {
+          "mtime": 1782731662.898,
+          "size": 62437351
+        }
+      }
+    },
+    "9975bc7571e3cc5dfc467fe1346afa3dff0fcd5c7b88c1510fa87285fa28a398": {
+      "paths": {
+        "assets/cards/0_base/uk/Anomaly FR 1Front.png": {
+          "mtime": 1756127486.0,
+          "size": 20994127
+        }
+      }
+    },
+    "6370d92154e58bcb17e62c54a05678a5f78bbff8c31a6bbb53e42da06b349867": {
+      "paths": {
+        "assets/cards/0_base/uk/Ally 1Front.png": {
+          "mtime": 1756792085.0,
+          "size": 18532184
+        }
+      }
+    },
+    "d0bff7fdbba3b2d38db6b5ead872a2d1822355fe19cb8553688f95c5f6076f4e": {
+      "paths": {
+        "assets/cards/0_base/uk/Monsters 1Front.png": {
+          "mtime": 1753968521.0,
+          "size": 43335275
+        }
+      }
+    },
+    "559c9ab7572ae446a28234057dd23d1c2c4b32f6d736b158a738d6d840342637": {
+      "paths": {
+        "assets/cards/0_base/uk/Encounter Part1 1Front.png": {
+          "mtime": 1781359506.0,
+          "size": 40831980
+        }
+      }
+    },
+    "e1b33e57dd510f433559b7865a5fa51d90a74cb60001223d9478a0f94a320d22": {
+      "paths": {
+        "assets/cards/0_base/uk/Items 1Front.png": {
+          "mtime": 1752561248.0,
+          "size": 46777845
+        }
+      }
+    },
+    "15b9481428713ebd33c15ce52495ef16d4e12235c740808e5a17e792c82d6a18": {
+      "paths": {
+        "assets/cards/0_base/uk/Investigators 2Back.png": {
+          "mtime": 1753896752.0,
+          "size": 45481224
+        }
+      }
+    },
+    "983e1057cf0229ec3ec01e0b97952db9aac45ed760061aff778b05262db492a8": {
+      "paths": {
+        "assets/cards/0_base/uk/Monsters 2Back.png": {
+          "mtime": 1753968525.0,
+          "size": 47122338
+        }
+      }
+    },
+    "7bd92d7eaae080236c9be6ad4be442f578b724f43947a5683d9bf0962f842d90": {
+      "paths": {
+        "assets/cards/0_base/uk/Starting 1Front.png": {
+          "mtime": 1754235671.0,
+          "size": 50839812
+        }
+      }
+    },
+    "bb4426e6d7c014278278a22ae8e39e17f4123041e6c701dc56da2bc54688cf01": {
+      "paths": {
+        "assets/cards/0_base/uk/VoT 2Back.png": {
+          "mtime": 1754055158.0,
+          "size": 40944991
+        }
+      }
+    },
+    "d95206a6ba62338ab0d2469f2500e870e142d23cf9f61817ae41d7e417f0828c": {
+      "paths": {
+        "assets/cards/0_base/uk/Anomaly NB 1Front.png": {
+          "mtime": 1756812114.0,
+          "size": 20597009
+        }
+      }
+    },
+    "aba9f31ac116d1f1f4d3e840dcbd6f12c2e0843c61d443df268ccb6f8f3cac0b": {
+      "paths": {
+        "assets/cards/0_base/uk/Headline 1Front.png": {
+          "mtime": 1781360628.0,
+          "size": 25989208
+        }
+      }
+    },
+    "790200412169f4db9f0e42335d92ff58744c1f198a163274cba7d8634fb21a60": {
+      "paths": {
+        "assets/cards/0_base/uk/Reference 1Front.png": {
+          "mtime": 1753972917.0,
+          "size": 9905584
+        }
+      }
+    },
+    "36d4e9bf17f7080029a74c5fe8d51e31ac72bd67f741eafb1cc01e1d327a5420": {
+      "paths": {
+        "assets/cards/0_base/uk/AoA 1Front.png": {
+          "mtime": 1753997087.0,
+          "size": 42765600
+        }
+      }
+    },
+    "a8aefad1668da3833f7b72e9ed8e8d865eef97bfddcbbf9f57ae0d8c8cf2eaf0": {
+      "paths": {
+        "assets/cards/0_base/uk/Starting 2Back.png": {
+          "mtime": 1753897063.0,
+          "size": 49173702
+        }
+      }
+    },
+    "e01bafb54e9d49430f5012bc15b7e1e3d1b1653fe71f57669a471a7dc71b10e5": {
+      "paths": {
+        "assets/cards/0_base/uk/Investigators 1Front.png": {
+          "mtime": 1781360222.0,
+          "size": 49116931
+        }
+      }
+    },
+    "1f1d319c3d27cf52c4f770f06733f03cb4039049eef4e025a655c2b06d0784fa": {
+      "paths": {
+        "assets/cards/0_base/uk/Reference 2Back.png": {
+          "mtime": 1753972918.0,
+          "size": 9533944
+        }
+      }
+    },
+    "e2e4a8f98835d29ab17babe6182673b43643c7d518f1f9f58197d11f9af1620e": {
+      "paths": {
+        "assets/cards/0_base/uk/Condition 2Back.png": {
+          "mtime": 1756823733.0,
+          "size": 12204362
+        }
+      }
+    },
+    "6226d05eb304746a7cdd93568e5468b425324f0db435797bbca6ed3064c28969": {
+      "paths": {
+        "assets/cards/0_base/uk/Condition 1Front.png": {
+          "mtime": 1754075921.0,
+          "size": 7990335
+        }
+      }
+    },
+    "60cd21824f1b448f1bff3a11848717bc79909998a6e43c2baa5f2d3a73342c88": {
+      "paths": {
+        "assets/cards/0_base/uk/VoT 1Front.png": {
+          "mtime": 1753017698.0,
+          "size": 42038081
+        }
+      }
+    },
+    "47113ddb8ec0538d7581d48526afcf23728a0356dc5705b490b8bf47ffe11ad6": {
+      "paths": {
+        "assets/cards/0_base/uk/AoA 2Back.png": {
+          "mtime": 1754039380.0,
+          "size": 73018244
+        }
+      }
+    },
+    "fd5b3b4ab2c7c99104c71c2314fe7d7d9767f6030d6544f99e0f4d54927519e9": {
+      "paths": {
+        "assets/cards/0_base/uk/Anomaly TF 1Front.png": {
+          "mtime": 1756817946.0,
+          "size": 21495906
+        }
+      }
+    },
+    "f7e708e5c8522b134cb69ea21d6a1f8df3022a4a85c8b128d28247b0716a19b8": {
+      "paths": {
+        "assets/cards/0_base/uk/Encounter Part2 1Front.png": {
+          "mtime": 1780813562.0,
+          "size": 32908787
+        }
+      }
+    },
+    "36f8411fcc7a9ada09f6b25e519c271ab88a9203a51697eb754dacba53b9085d": {
+      "paths": {
+        "assets/cards/0_base/uk/Archive 2Back.png": {
+          "mtime": 1782731659.561,
+          "size": 67083884
+        }
+      }
+    },
+    "6f4b1e34c675c11e59fab30b2e036cad5314e6499d41c81c85effed09f61e7d1": {
+      "paths": {
+        "assets/cards/0_base/uk/Encounter Part1 2Back.png": {
+          "mtime": 1780813958.586999,
+          "size": 20646010
+        }
+      }
+    },
+    "7069108ab07150ede9a89846f45ad5c3d71c487b077c307ce3298fbb789e53ce": {
+      "paths": {
+        "assets/cards/0_base/uk/EotD 2Back.png": {
+          "mtime": 1754040597.0,
+          "size": 41735295
+        }
+      }
+    },
+    "794e905a84d268a9995732715d1b3fba54110d993e8d41ba0a50e732f81cf704": {
+      "paths": {
+        "assets/cards/0_base/uk/Scenario 1Front.png": {
+          "mtime": 1756206509.0,
+          "size": 46689078
+        }
+      }
+    },
+    "197091828b08774287922abe6ae5c3b807d90787b91e81389dddc523cff353a5": {
+      "paths": {
+        "assets/cards/0_base/uk/FfU 2Back.png": {
+          "mtime": 1754054049.0,
+          "size": 38112949
+        }
+      }
+    },
+    "9e591fd088649ac09293208e707d037e9bd295b2861cf2ffef9337997429974c": {
+      "paths": {
+        "assets/cards/0_base/uk/FfU 1Front.png": {
+          "mtime": 1781360955.0,
+          "size": 41358098
+        }
+      }
+    },
+    "fa319a577c5f0758d66906b3630224d2ce2c4d0f0daca25df0038e33ed612b82": {
+      "paths": {
+        "assets/cards/0_base/uk/Special 1Front.png": {
+          "mtime": 1753198026.0,
+          "size": 41700101
+        }
+      }
+    },
+    "c4b6f6e3da1b3821c211c514fa0e883504e4a9066fb7acd06800614daa436639": {
+      "paths": {
+        "assets/cards/0_base/uk/EotD 1Front.png": {
+          "mtime": 1753017617.0,
+          "size": 41139984
+        }
+      }
+    },
+    "dc0c88e9ce6b89cee9e60aaf4c7eee16ef898c8f46bf6f7ee664e4eb9cc09b00": {
+      "paths": {
+        "assets/cards/0_base/uk/Spell 1Front.png": {
+          "mtime": 1756883410.0,
+          "size": 15962683
+        }
+      }
+    },
+    "78a59c3e038909b2f9f00d3006e709fa6d5068dcca4675c8af901c753e246f3a": {
+      "paths": {
+        "assets/cards/0_base/en/Scenario 2Back.png": {
+          "mtime": 1754078337.0,
+          "size": 15699202
+        }
+      }
+    },
+    "fa00b432a08cd3d6ef98c431097821202de5cc4e67878b3b7a6c224f4f7b0f08": {
+      "paths": {
+        "assets/cards/0_base/en/Encounter Part2 2Back.png": {
+          "mtime": 1754665160.0,
+          "size": 16524803
+        }
+      }
+    },
+    "3e65e460776fc4e8ccda9eb7eaded79007e48a6c0411851c6b8ddc008aed91c1": {
+      "paths": {
+        "assets/cards/0_base/en/Archive 1Front.png": {
+          "mtime": 1782731811.648,
+          "size": 60049938
+        }
+      }
+    },
+    "afa4bfcdffae0d63f6aa3a42d815af2bd21651a2876ad25355ec0678dd0cddcf": {
+      "paths": {
+        "assets/cards/0_base/en/Anomaly FR 1Front.png": {
+          "mtime": 1756127488.0,
+          "size": 19839908
+        }
+      }
+    },
+    "2e28d881e9655514d91c884c9ce1c093406c51b4bfdb2962be4490339e3d1742": {
+      "paths": {
+        "assets/cards/0_base/en/Ally 1Front.png": {
+          "mtime": 1754078131.319,
+          "size": 18169817
+        }
+      }
+    },
+    "eff2fc2a2c6404972fd1c740b3fea242c6ab4a300894c76d74b88a98ade25a3d": {
+      "paths": {
+        "assets/cards/0_base/en/Monsters 1Front.png": {
+          "mtime": 1753968568.0,
+          "size": 42326707
+        }
+      }
+    },
+    "e4be635937bc08237b46c3943af66f241eb6f374690469dc9de923b1fdf64663": {
+      "paths": {
+        "assets/cards/0_base/en/Encounter Part1 1Front.png": {
+          "mtime": 1753894904.0,
+          "size": 37397106
+        }
+      }
+    },
+    "d9e37767661e1c3ab16164ced465a7d0c01cf9fc71f4430e803aa5bd18f8508f": {
+      "paths": {
+        "assets/cards/0_base/en/Items 1Front.png": {
+          "mtime": 1754211620.0,
+          "size": 43566788
+        }
+      }
+    },
+    "fcb22306e6a1ea5605e30a6fa0d0995978a3bebc58b4af2125e37c0f877c4775": {
+      "paths": {
+        "assets/cards/0_base/en/Investigators 2Back.png": {
+          "mtime": 1753896856.0,
+          "size": 44809906
+        }
+      }
+    },
+    "6f9432fa87e8343469f245431ee52af70d36a2c8bd325c9900ba28908041b42b": {
+      "paths": {
+        "assets/cards/0_base/en/Monsters 2Back.png": {
+          "mtime": 1753968572.0,
+          "size": 46079779
+        }
+      }
+    },
+    "d9927d768d2318f5f07597b8844ce226bbb6871125f20269e61326cd5c13414b": {
+      "paths": {
+        "assets/cards/0_base/en/Starting 1Front.png": {
+          "mtime": 1753897681.0,
+          "size": 49753211
+        }
+      }
+    },
+    "012efd9553db5560ae82fa1874423221997f2b5dccaa7b4950356d0f07847726": {
+      "paths": {
+        "assets/cards/0_base/en/VoT 2Back.png": {
+          "mtime": 1754055212.0,
+          "size": 40909639
+        }
+      }
+    },
+    "a7c9d339779a8b59b2e513d52292163f143ee77aaada755ab5ba5a9e3652e67e": {
+      "paths": {
+        "assets/cards/0_base/en/Anomaly NB 1Front.png": {
+          "mtime": 1756812431.0,
+          "size": 19932940
+        }
+      }
+    },
+    "378917690157fefb9a44c42ae621fe93d33c393a10ce04dbf9fb92ee59beec21": {
+      "paths": {
+        "assets/cards/0_base/en/Headline 1Front.png": {
+          "mtime": 1753899950.0,
+          "size": 23807727
+        }
+      }
+    },
+    "e383c50b7fa95200f75f5f5a3c3cb053d3dd39122711b5a62418b9ef0aabaabd": {
+      "paths": {
+        "assets/cards/0_base/en/Reference 1Front.png": {
+          "mtime": 1753972774.0,
+          "size": 9985083
+        }
+      }
+    },
+    "609297e03294cb447d454c3a4b9f697f43a41e6603908aa1d1576b3b4147e61c": {
+      "paths": {
+        "assets/cards/0_base/en/AoA 1Front.png": {
+          "mtime": 1754039446.0,
+          "size": 40406298
+        }
+      }
+    },
+    "3ac81a9c5535196c6c24d1e66e5e976bd9d5e2db8caee9e2427dcc489768030b": {
+      "paths": {
+        "assets/cards/0_base/en/Starting 2Back.png": {
+          "mtime": 1753897684.0,
+          "size": 49303388
+        }
+      }
+    },
+    "e51096c9f32fea65a67660e10bac789963e7953d6e447f7830922fd12c44c0ba": {
+      "paths": {
+        "assets/cards/0_base/en/Investigators 1Front.png": {
+          "mtime": 1753896853.0,
+          "size": 50035709
+        }
+      }
+    },
+    "4f123357ecf72a099f70f947bf2decb9765266cacdf7ff93c5ab1bb927b4e9a5": {
+      "paths": {
+        "assets/cards/0_base/en/Reference 2Back.png": {
+          "mtime": 1753972775.0,
+          "size": 9573459
+        }
+      }
+    },
+    "d1e4e32f01606844270e03e3cc01fc92bf839956875cf4e90865d4ce37e620c1": {
+      "paths": {
+        "assets/cards/0_base/en/Condition 2Back.png": {
+          "mtime": 1753893610.0,
+          "size": 11919806
+        }
+      }
+    },
+    "78c4344e904cd02ed44963e59f5e04f503ee50e5195217be8168797c7a0c8b4d": {
+      "paths": {
+        "assets/cards/0_base/en/Condition 1Front.png": {
+          "mtime": 1754075971.0,
+          "size": 7912783
+        }
+      }
+    },
+    "021a3f67fb9b96804fe3c860802d69a68d43c2b03892f1e94c47fad7a2ce2112": {
+      "paths": {
+        "assets/cards/0_base/en/VoT 1Front.png": {
+          "mtime": 1754665064.0,
+          "size": 39317699
+        }
+      }
+    },
+    "3b75dacf5d747b3a9953afc386c06f14edb9a94c1535d5eb360d638b4483bdfc": {
+      "paths": {
+        "assets/cards/0_base/en/AoA 2Back.png": {
+          "mtime": 1754039451.0,
+          "size": 73065498
+        }
+      }
+    },
+    "33ccfdcc73409f441026371d6768e08786fa70af325e501f6ad70ae85d9b89d1": {
+      "paths": {
+        "assets/cards/0_base/en/Anomaly TF 1Front.png": {
+          "mtime": 1756817948.0,
+          "size": 19857733
+        }
+      }
+    },
+    "8fca3956459b4d4f9ae0da84a57fd26bccd092f536fd8c1cc58a87965141a845": {
+      "paths": {
+        "assets/cards/0_base/en/Encounter Part2 1Front.png": {
+          "mtime": 1753894911.0,
+          "size": 29950521
+        }
+      }
+    },
+    "bca1965d041df263a15dc412bdc9800f151d4fad2e0de280112efc0cc77c5825": {
+      "paths": {
+        "assets/cards/0_base/en/Archive 2Back.png": {
+          "mtime": 1782731802.451999,
+          "size": 64736007
+        }
+      }
+    },
+    "a7613219a37b7d3251f1ed645ade69da427b0cdbd7ee2d8a7ca266542cae8cd8": {
+      "paths": {
+        "assets/cards/0_base/en/Encounter Part1 2Back.png": {
+          "mtime": 1753894907.0,
+          "size": 20657152
+        }
+      }
+    },
+    "8da5ec94ff2ef5f72647a68fb57ddfecf2d4274aadd55b5504563761d3ca4761": {
+      "paths": {
+        "assets/cards/0_base/en/EotD 2Back.png": {
+          "mtime": 1754040653.0,
+          "size": 41756546
+        }
+      }
+    },
+    "a4d659100e442256ba4d6e46410b543cf019be84d4a5a506eef3a5247a69b54f": {
+      "paths": {
+        "assets/cards/0_base/en/Scenario 1Front.png": {
+          "mtime": 1754078335.0,
+          "size": 46709034
+        }
+      }
+    },
+    "a66a0e15fdef8399a21ed82980390ea6557e629ff2aabe7b7fa386a4ed5d54d7": {
+      "paths": {
+        "assets/cards/0_base/en/FfU 2Back.png": {
+          "mtime": 1754054108.0,
+          "size": 38098030
+        }
+      }
+    },
+    "3cf74957d6a5997fab25ae966111eced4e4b47a3b6b203b84d268302df97875c": {
+      "paths": {
+        "assets/cards/0_base/en/FfU 1Front.png": {
+          "mtime": 1754054412.0,
+          "size": 38775737
+        }
+      }
+    },
+    "45431229c97903bf606e73079258901b08215eac641191bf573b64f8a8916834": {
+      "paths": {
+        "assets/cards/0_base/en/Special 1Front.png": {
+          "mtime": 1753974696.0,
+          "size": 41286407
+        }
+      }
+    },
+    "1b19452f14752083b0b407193fafe551bd3d73342d376b76e492235ee08380fa": {
+      "paths": {
+        "assets/cards/0_base/en/EotD 1Front.png": {
+          "mtime": 1754049119.0,
+          "size": 39206188
+        }
+      }
+    },
+    "23a48fd3e0587fafc78791f9880a1aaa5b1f3c5889f1e3ccd4bd9f88045bd798": {
+      "paths": {
+        "assets/cards/0_base/en/Spell 1Front.png": {
+          "mtime": 1753974988.0,
+          "size": 15702729
+        }
+      }
+    },
+    "02fbceb98c02005938e5a368afac22143297d544cdb4bc14218a7a3bc97f6316": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/.DS_Store": {
+          "mtime": 1783021394.6513324,
+          "size": 6148
+        }
+      }
+    },
+    "5d7af316c8ad4fc6cbe20c8489da74a911e47662d2bc65db2f9ca83117a2662d": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/Anomaly LS 2Back.jpg": {
+          "mtime": 1780058574.453,
+          "size": 749482
+        }
+      }
+    },
+    "213011ffd6a8f35004126a4e272faca7461211336c136c69e863dcf239c38db9": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/uk/Encounter 1Front.png": {
+          "mtime": 1780062990.0,
+          "size": 54724757
+        }
+      }
+    },
+    "4b96e4ab58e081ea3d7650a9bfca2dcefedf994e6d0eb7f1db0d773f841c5ff1": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/uk/Scenario 2Back.png": {
+          "mtime": 1780475732.0,
+          "size": 13243945
+        }
+      }
+    },
+    "37c2f35c93893a4f524454f810250010a539d33b8c1ada03f85e6cbdb1b16d82": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/uk/TDCO 2Back.png": {
+          "mtime": 1780063484.0,
+          "size": 35548142
+        }
+      }
+    },
+    "f502918f3c740b33c1c0ddfa286abbf8fc3544ba280dd10240c67fd2170eb40c": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/uk/Archive 1Front.png": {
+          "mtime": 1780062516.0,
+          "size": 47955966
+        }
+      }
+    },
+    "e2354ccee7c26487d0f5d1711aee02938fca5f70e46749723f0d9d868ada1bde": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/uk/Ally 1Front.png": {
+          "mtime": 1780059242.0,
+          "size": 6114335
+        }
+      }
+    },
+    "8116bb8118b51acebeb6f2da22ff00f0ed0a92f5e8643a3b81b38334005a11d9": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/uk/Monsters 1Front.png": {
+          "mtime": 1780064295.0,
+          "size": 35906532
+        }
+      }
+    },
+    "c79cb8e40a5f5df1706f3cc8f4e15fd2b5c9199a6f02c67cfd8832b12ef9a27b": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/uk/TKaTG 2Back.png": {
+          "mtime": 1780063538.0,
+          "size": 35106769
+        }
+      }
+    },
+    "39aafb692c9a8942051f862d8d29d61c97c63f2ac2417c2ccef638acfa4f7dee": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/uk/Items 1Front.png": {
+          "mtime": 1780063837.0,
+          "size": 5885461
+        }
+      }
+    },
+    "79daa6b326039c2a1956b395baca34ae6422acebe9d959145593539ccb93c771": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/uk/Investigators 2Back.png": {
+          "mtime": 1780063658.0,
+          "size": 36113604
+        }
+      }
+    },
+    "9fa0380a08dafe5742426621ea1140e914556a1547204edc3aabc16d95f1b439": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/uk/Monsters 2Back.png": {
+          "mtime": 1780064298.0,
+          "size": 32434818
+        }
+      }
+    },
+    "332db4978a0e17a80c3eebba46d3a479ac1e0052b83f0f6eaefef3f231848ca2": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/uk/BtS 1Front.png": {
+          "mtime": 1780063360.0,
+          "size": 42888590
+        }
+      }
+    },
+    "efe9bd8c2f007c8f5b71dff3a85bcc4a291c8fdd5e7bcf9746209c6ea9ef256c": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/uk/TKaTG 1Front.png": {
+          "mtime": 1780063535.0,
+          "size": 37787026
+        }
+      }
+    },
+    "b687d005c8e3b9705b02de3e74cf52f2c4cfffec3556a0b59929775481c4b24a": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/uk/Starting 1Front.png": {
+          "mtime": 1780064995.0,
+          "size": 24091168
+        }
+      }
+    },
+    "5b62cea3380138414f7a47f2417c7bb2d86a839278b761faf985f2ec64b0e641": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/uk/Headline 1Front.png": {
+          "mtime": 1780063602.0,
+          "size": 12237706
+        }
+      }
+    },
+    "5fd8e017d884ef256f2c13b5dab54f4dc3121673d18dc3d59fe07a293c6db1d9": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/uk/Starting 2Back.png": {
+          "mtime": 1780064996.0,
+          "size": 20494985
+        }
+      }
+    },
+    "d5eee9d1c9f54deb88738b2abaed2f8f50990cf6b044d2cd14af81119c743f5e": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/uk/Investigators 1Front.png": {
+          "mtime": 1781360018.0,
+          "size": 36984552
+        }
+      }
+    },
+    "80a6c928693310e437ad4fac3c65f214c63432d68ad96428e60a0ded78a69072": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/uk/Condition 2Back.png": {
+          "mtime": 1780062627.0,
+          "size": 31591957
+        }
+      }
+    },
+    "d88b27e1cc97fe01ed346f663290b5d74eb529d3d3749ab584df6b6a587afd29": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/uk/Condition 1Front.png": {
+          "mtime": 1780062624.0,
+          "size": 28588480
+        }
+      }
+    },
+    "78dc4204ef27b538f0fc577d2500d0442d2f9f3049929f8137b647bdee81174e": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/uk/Encounter 2Back.png": {
+          "mtime": 1780062994.0,
+          "size": 40200183
+        }
+      }
+    },
+    "796e7fe443efd3a52693d19b92f657501f4732e45a9ed7caac558bd59398752a": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/uk/Archive 2Back.png": {
+          "mtime": 1780062520.0,
+          "size": 57392921
+        }
+      }
+    },
+    "37e264322dc825fc4329295ffb458c44a0cda28863f5e19873f4fd8902b67bcc": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/uk/TDCO 1Front.png": {
+          "mtime": 1780063480.0,
+          "size": 37952167
+        }
+      }
+    },
+    "70a5e9ad89e3e1bb49f7819479a9d442078d8e296d6bc5a70d9fcb99ff462b36": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/uk/Scenario 1Front.png": {
+          "mtime": 1780064380.0,
+          "size": 27295551
+        }
+      }
+    },
+    "bf5b0ce946ef01defd1d06aa7bfc0d154da7d8d163b86bd8fda31e77af28b7aa": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/uk/Special 1Front.png": {
+          "mtime": 1780064634.0,
+          "size": 29587001
+        }
+      }
+    },
+    "05397784f3c899a1b2f0a1ea9aa858c240e43eaf04ba57f508ca2d4b49c6491a": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/uk/Anomaly LS 1Front.png": {
+          "mtime": 1780062031.0,
+          "size": 20536047
+        }
+      }
+    },
+    "aaa514c9be8bd7469499bd0c6ac8b24054a5f948bf140605549be17519ddef08": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/uk/BtS 2Back.png": {
+          "mtime": 1780063364.0,
+          "size": 40338150
+        }
+      }
+    },
+    "b40eb7f270b4063db1ec54886d50497eb26dba80f200f2b76b4c4370a01a2714": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/uk/Spell 1Front.png": {
+          "mtime": 1780329964.0,
+          "size": 3915637
+        }
+      }
+    },
+    "380ac983265b9a6f2494d66edbce94b920905999223667a26c383bfaa591774c": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/en/Encounter 1Front.png": {
+          "mtime": 1780062999.0,
+          "size": 51871532
+        }
+      }
+    },
+    "a443ab42da3024e6bf06a4b68fc747757ee0393d6b2ec974ad5d92c07d502e95": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/en/Scenario 2Back.png": {
+          "mtime": 1780064385.0,
+          "size": 13275425
+        }
+      }
+    },
+    "f1e6e49aed1d1b3cf3bbe71f7ffe7f123434dd365c4a20c1b64f6fb0521d979c": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/en/TDCO 2Back.png": {
+          "mtime": 1780063491.0,
+          "size": 35516187
+        }
+      }
+    },
+    "b68c23672ab0f9908cdc4784b6e4e808da147449911f749c098fec0390825124": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/en/Archive 1Front.png": {
+          "mtime": 1782759580.0,
+          "size": 44868831
+        }
+      }
+    },
+    "baec98fab1fb40c62c81a9a160efbe00b1e6a9528d8554a9aa52feff179eed6a": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/en/Ally 1Front.png": {
+          "mtime": 1780059242.0,
+          "size": 6126276
+        }
+      }
+    },
+    "473fa8546f1bc95626d17c193ec8482aecae59d0bab8f3190edb9e4bc74cb386": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/en/Monsters 1Front.png": {
+          "mtime": 1780064300.0,
+          "size": 35361078
+        }
+      }
+    },
+    "48ae6241c506bf0ac555971a26143e294c3312da5a2962eed03d5b301c218a75": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/en/TKaTG 2Back.png": {
+          "mtime": 1780063545.0,
+          "size": 35111272
+        }
+      }
+    },
+    "48381f6259cda903fe594082b8c985f3ddde192031668af4be0393d82f9bb776": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/en/Items 1Front.png": {
+          "mtime": 1780063838.0,
+          "size": 5846027
+        }
+      }
+    },
+    "4079173e4bb6f17b8e08faa02bcd116fe3c533523f13c764c7ea4c5004f0a186": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/en/Investigators 2Back.png": {
+          "mtime": 1780063663.0,
+          "size": 35974290
+        }
+      }
+    },
+    "8a434fa7cd0055dd3bce9e63e3f1155d5c9e38d2c87798345d4006bbe4af0e71": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/en/Monsters 2Back.png": {
+          "mtime": 1780064303.0,
+          "size": 31885328
+        }
+      }
+    },
+    "13b03349f65b08dd2264ab40d664be2ec11bea2c604db42f07e7a007c09b6a13": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/en/BtS 1Front.png": {
+          "mtime": 1780063368.0,
+          "size": 40842220
+        }
+      }
+    },
+    "0fd7748de60c3c9b460e1c7e0a9540bb18f90ce49d477c8ca995130a261b791e": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/en/TKaTG 1Front.png": {
+          "mtime": 1780063542.0,
+          "size": 35497671
+        }
+      }
+    },
+    "2c1f8b88bf9e35239b082f964391d2ec7e932d61bda0210550967a57c8571a70": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/en/Starting 1Front.png": {
+          "mtime": 1780064998.0,
+          "size": 23609804
+        }
+      }
+    },
+    "cf9dd99eb74fd49d9717907055c9e70f6670d1c06be335180887712e41789819": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/en/Headline 1Front.png": {
+          "mtime": 1780063603.0,
+          "size": 12159921
+        }
+      }
+    },
+    "237bcdb53003ec6cd2ed73ce04faff8f2304c9ce2d5b3733c8fa9a46c363a402": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/en/Starting 2Back.png": {
+          "mtime": 1780064999.0,
+          "size": 20540415
+        }
+      }
+    },
+    "dafce4dc2ede0c8bf95e772f5cf6b74ce989a7246ea8f85ce73a704a08ea87bd": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/en/Investigators 1Front.png": {
+          "mtime": 1780063660.0,
+          "size": 37021909
+        }
+      }
+    },
+    "57d0efa34a16247cdd04918eba304de0c734270729c1215516fb7b2c0855e232": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/en/Condition 2Back.png": {
+          "mtime": 1780062632.0,
+          "size": 31773788
+        }
+      }
+    },
+    "081a9d663df8eab81dc6cb2fd26ffa2685b894b7ced3d310ea39d2005d79418e": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/en/Condition 1Front.png": {
+          "mtime": 1780062630.0,
+          "size": 28680663
+        }
+      }
+    },
+    "cbcbce78eae9ef13cbcb245269150af4ad381ee1c18e475be2e48c2ef2bffef9": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/en/Encounter 2Back.png": {
+          "mtime": 1780063132.0,
+          "size": 40206551
+        }
+      }
+    },
+    "e7f34d35f61f16ae3b2707b279464934e09dd7b5564409a70e952883ad54489e": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/en/Archive 2Back.png": {
+          "mtime": 1782759585.0,
+          "size": 55794141
+        }
+      }
+    },
+    "325137e756c808c80a986b93122c70328da57bafef0d71998bbaa404afb60986": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/en/TDCO 1Front.png": {
+          "mtime": 1780063487.0,
+          "size": 35467877
+        }
+      }
+    },
+    "515fa39d4f1919cc8ad3902b3091172f6f02671ebabd9b61dc473c878f9d4ffd": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/en/Scenario 1Front.png": {
+          "mtime": 1780064384.0,
+          "size": 27219161
+        }
+      }
+    },
+    "5f6ab5a3f91af0a962895087cf59dac19e4a7e3a791c050188d1efa2383f62f7": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/en/Special 1Front.png": {
+          "mtime": 1780064637.0,
+          "size": 28962221
+        }
+      }
+    },
+    "2905496b3e2fb45a5070766681aa4398fdcd7acadf575b127068d973baa7ee0b": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/en/Anomaly LS 1Front.png": {
+          "mtime": 1780062033.0,
+          "size": 19134622
+        }
+      }
+    },
+    "4eff3065987b0befea33510af26feb3cfa4b634ae95bf67009abbe032e7a1af4": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/en/BtS 2Back.png": {
+          "mtime": 1780063372.0,
+          "size": 40358396
+        }
+      }
+    },
+    "7dc4852c825bdc1da3ac0202d369fa7467799c562c85844324cbe2a6ec5967e8": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/en/Spell 1Front.png": {
+          "mtime": 1780329965.0,
+          "size": 3880872
+        }
+      }
+    },
+    "59d7b92ea8fde37084645c58a34e0ff2222a157beae55b35d238bbea6d8b2954": {
+      "paths": {
+        "assets/cards/4_recursive_echoes/.DS_Store": {
+          "mtime": 1783021394.6529267,
+          "size": 6148
+        }
+      }
+    },
+    "021cbb93ff36da17ce3f502b5aadeb9e77f111456f3294e930bbea5680a793db": {
+      "paths": {
+        "assets/cards/4_recursive_echoes/uk/Investigators 2Back.png": {
+          "mtime": 1757788475.0,
+          "size": 34645528
+        }
+      }
+    },
+    "6e74805652a14e9407610f8770baa8e9c1f978fefe4eb4eb23f98fcf7639db62": {
+      "paths": {
+        "assets/cards/4_recursive_echoes/uk/Starting 1Front.png": {
+          "mtime": 1759340875.0,
+          "size": 23876737
+        }
+      }
+    },
+    "7df48fb8f9e2778b380f2f4f5d51ef2e945c73a8b16b4a8e64172787d0e1364a": {
+      "paths": {
+        "assets/cards/4_recursive_echoes/uk/Starting 2Back.png": {
+          "mtime": 1759340876.0,
+          "size": 19655511
+        }
+      }
+    },
+    "bc237e10d9827035e581f2582ad6434bfe801259c4214c8fbc1a5232731e2cad": {
+      "paths": {
+        "assets/cards/4_recursive_echoes/uk/Investigators 1Front.png": {
+          "mtime": 1757788473.0,
+          "size": 32573516
+        }
+      }
+    },
+    "1191992e027c1e0581e9a9c4fd20ead8c54ee85570b9d8a4ced2ac0f0e36b502": {
+      "paths": {
+        "assets/cards/4_recursive_echoes/en/Investigators 2Back.png": {
+          "mtime": 1757788480.0,
+          "size": 34655384
+        }
+      }
+    },
+    "3e0c7232e96e0d38ca382331524d30df37d900e12aa2af0037d94187da061bc7": {
+      "paths": {
+        "assets/cards/4_recursive_echoes/en/Starting 1Front.png": {
+          "mtime": 1757789125.0,
+          "size": 23501351
+        }
+      }
+    },
+    "07bb0c7eb36d436ed0bd42c6c2cccea4dfe287eddd69accee0b3cfd3d53adba2": {
+      "paths": {
+        "assets/cards/4_recursive_echoes/en/Starting 2Back.png": {
+          "mtime": 1757789126.0,
+          "size": 19688919
+        }
+      }
+    },
+    "99b602b6d2056a12dc888ec7b0e78d4cd07770d4399aac7bea9e621d82cbcc6e": {
+      "paths": {
+        "assets/cards/4_recursive_echoes/en/Investigators 1Front.png": {
+          "mtime": 1757788478.0,
+          "size": 32568593
+        }
+      }
+    },
+    "d5fe1e16311adcbfe774eb83791646bd9cf48f4c4e817c6a40537dfb604c10de": {
+      "paths": {
+        "assets/cards/1_dead_of_night/.DS_Store": {
+          "mtime": 1783021394.6415255,
+          "size": 6148
+        }
+      }
+    },
+    "7b9cbb4eec144f9be35c3afab3763a0b085f94b889cd0fcc3cab37d96ad7a6e2": {
+      "paths": {
+        "assets/cards/1_dead_of_night/Headline 2Back.jpg": {
+          "mtime": 1748291188.0,
+          "size": 504169
+        }
+      }
+    },
+    "1a8700b50ef8c7ab161e7cea4cbf0af9d1c3d0f1ac79c7dba78be62ab2004d2d": {
+      "paths": {
+        "assets/cards/1_dead_of_night/Anomaly YE 2Back.jpg": {
+          "mtime": 1748291188.0,
+          "size": 717137
+        }
+      }
+    },
+    "d6aaf1c75e80a75581ef70c43dcc5a11957871be46519da7c5d3acd2673cbfb5": {
+      "paths": {
+        "assets/cards/1_dead_of_night/uk/Scenario 2Back.png": {
+          "mtime": 1754886238.0,
+          "size": 8312846
+        }
+      }
+    },
+    "28ab39f015d0e19282896e21d8216a0ab43046345bc91b578f1d20bb80cfee58": {
+      "paths": {
+        "assets/cards/1_dead_of_night/uk/Archive 1Front.png": {
+          "mtime": 1781004833.0,
+          "size": 49752886
+        }
+      }
+    },
+    "9f561ff420294aa2aea29e4cab36e71c249e62ff612b08fe48f5af699391686b": {
+      "paths": {
+        "assets/cards/1_dead_of_night/uk/Ally 1Front.png": {
+          "mtime": 1756792184.0,
+          "size": 7368055
+        }
+      }
+    },
+    "143cc33bf2650cc3b83f089d199d412309f643feec87c0a5afb91dc51b341cb3": {
+      "paths": {
+        "assets/cards/1_dead_of_night/uk/Monsters 1Front.png": {
+          "mtime": 1754855288.0,
+          "size": 31666563
+        }
+      }
+    },
+    "9ae0846b811d9b8fb4c74eea6ee339e5e0718e61733eb05d29a1255d3e4b1ba8": {
+      "paths": {
+        "assets/cards/1_dead_of_night/uk/SoT 1Front.png": {
+          "mtime": 1754854966.0,
+          "size": 43031796
+        }
+      }
+    },
+    "4697d27eaaf95794bfa79b1f9839484d9c7fcae0e5f5f96a32803c92d6241c0e": {
+      "paths": {
+        "assets/cards/1_dead_of_night/uk/SitD 2Back.png": {
+          "mtime": 1754854962.0,
+          "size": 38449879
+        }
+      }
+    },
+    "b012853205cfb9e9ecc8bafecf76da7a01ad66c598dae3d5f44871e2955a5594": {
+      "paths": {
+        "assets/cards/1_dead_of_night/uk/Encounter Part1 1Front.png": {
+          "mtime": 1754854844.0,
+          "size": 42500106
+        }
+      }
+    },
+    "ab69ebb089e89c41f8836471b3fb49df2954cd289dd33d18a70ba2e8d22c308c": {
+      "paths": {
+        "assets/cards/1_dead_of_night/uk/Items 1Front.png": {
+          "mtime": 1754855210.0,
+          "size": 7617058
+        }
+      }
+    },
+    "18f8c8a7c43956d0dbb659d1c414a81bb406f3c4d815039250845d8bb932b310": {
+      "paths": {
+        "assets/cards/1_dead_of_night/uk/Investigators 2Back.png": {
+          "mtime": 1754855160.0,
+          "size": 34307478
+        }
+      }
+    },
+    "07e14268054e6a7817eaa820a7909a8f3b06fe0de6eb8acb46e33905082b4065": {
+      "paths": {
+        "assets/cards/1_dead_of_night/uk/SoT 2Back.png": {
+          "mtime": 1754854969.0,
+          "size": 37938143
+        }
+      }
+    },
+    "059d00c2df3230c92dbb62eddb33c6882eba3875faceaea54e08671a8f756a7a": {
+      "paths": {
+        "assets/cards/1_dead_of_night/uk/Monsters 2Back.png": {
+          "mtime": 1754855290.0,
+          "size": 33969619
+        }
+      }
+    },
+    "dc18d27a1471856149a2c2c73d4f129554c5a3c65ff2228f2ee8bbcb98648dda": {
+      "paths": {
+        "assets/cards/1_dead_of_night/uk/Starting 1Front.png": {
+          "mtime": 1754855819.0,
+          "size": 22898664
+        }
+      }
+    },
+    "1330143b7e7e1f9d7be3357ba50d9e8d6c7abf59e43c7a87de24b8971d264bec": {
+      "paths": {
+        "assets/cards/1_dead_of_night/uk/Headline 1Front.png": {
+          "mtime": 1754855064.0,
+          "size": 16711764
+        }
+      }
+    },
+    "b0726ef7c5a4a329f20f0d3059c56e8c559d5b606d9265e3e8eba55e40646216": {
+      "paths": {
+        "assets/cards/1_dead_of_night/uk/Starting 2Back.png": {
+          "mtime": 1754855821.0,
+          "size": 20222858
+        }
+      }
+    },
+    "bd99922bb916a612255b4fc5d1fc1286a68a5693c32404a1ef24c8835f1c60ea": {
+      "paths": {
+        "assets/cards/1_dead_of_night/uk/Anomaly YE 1Front.png": {
+          "mtime": 1756820518.0,
+          "size": 21450187
+        }
+      }
+    },
+    "d4afc3283345e75b1d1a972fb0805494aca5905136ed6d7911fa8c8a8ae758fb": {
+      "paths": {
+        "assets/cards/1_dead_of_night/uk/Investigators 1Front.png": {
+          "mtime": 1757588911.0,
+          "size": 30558393
+        }
+      }
+    },
+    "0663172a81508061baefac206b51513a061fcdfced7b28af668b93013e6434a4": {
+      "paths": {
+        "assets/cards/1_dead_of_night/uk/Condition 2Back.png": {
+          "mtime": 1754854674.0,
+          "size": 9760955
+        }
+      }
+    },
+    "39bd3b38087764d4587be07af580e79c5a1fb19278b154332b04e2f7961a7eb3": {
+      "paths": {
+        "assets/cards/1_dead_of_night/uk/Condition 1Front.png": {
+          "mtime": 1780902988.0,
+          "size": 6326608
+        }
+      }
+    },
+    "844214e03b1fccb3278aa132614f6277a4fe05509ecae2ee8fa31af252301504": {
+      "paths": {
+        "assets/cards/1_dead_of_night/uk/Encounter Part2 1Front.png": {
+          "mtime": 1754854847.0,
+          "size": 34418441
+        }
+      }
+    },
+    "f9c7e4eeaee50ba79501669726ced5696e8d3b4d6f08d4af2489ef970427a99d": {
+      "paths": {
+        "assets/cards/1_dead_of_night/uk/Archive 2Back.png": {
+          "mtime": 1781004837.0,
+          "size": 55217543
+        }
+      }
+    },
+    "96fcca47bbcbabba3f05f126c733269305e4b6637fdf160b2e50911b1fa6dac4": {
+      "paths": {
+        "assets/cards/1_dead_of_night/uk/Scenario 1Front.png": {
+          "mtime": 1754886237.0,
+          "size": 18098747
+        }
+      }
+    },
+    "75b64bd07a30cddcaac4661f354dd3753e6c5a68ee2ff2da183b2d2cd46e6e00": {
+      "paths": {
+        "assets/cards/1_dead_of_night/uk/Special 1Front.png": {
+          "mtime": 1754926575.0,
+          "size": 47180044
+        }
+      }
+    },
+    "fce0c36f0454f1bea2e38e38493af554a086f5adfebbcd749725ec294b667615": {
+      "paths": {
+        "assets/cards/1_dead_of_night/uk/SitD 1Front.png": {
+          "mtime": 1754854958.0,
+          "size": 43132231
+        }
+      }
+    },
+    "882e2ab723ea47cc32abca2610b8aaa97b37dc351ffa8f16f4d830ea3d1a2013": {
+      "paths": {
+        "assets/cards/1_dead_of_night/uk/Spell 1Front.png": {
+          "mtime": 1781360478.0,
+          "size": 7353113
+        }
+      }
+    },
+    "94eef288b57fabef335ea705ed08bf57fe4474a7e9e5ef9645d1cbd39b18908f": {
+      "paths": {
+        "assets/cards/1_dead_of_night/en/Scenario 2Back.png": {
+          "mtime": 1754991977.0,
+          "size": 8384385
+        }
+      }
+    },
+    "b70fa66d275ded04efbdb03191541deb64b17d12f5767908c0b033bfc8c21072": {
+      "paths": {
+        "assets/cards/1_dead_of_night/en/Archive 1Front.png": {
+          "mtime": 1757515411.0,
+          "size": 47522465
+        }
+      }
+    },
+    "898f336221c83bc671ba6c6b4316cfaa82480e3512d0a07fd3cebe8c8d9a5847": {
+      "paths": {
+        "assets/cards/1_dead_of_night/en/Ally 1Front.png": {
+          "mtime": 1754990813.0,
+          "size": 7246588
+        }
+      }
+    },
+    "3ba235155ab2af1c53ffe481774951d4493ef3637bb5d9e8722227c8e1322522": {
+      "paths": {
+        "assets/cards/1_dead_of_night/en/Monsters 1Front.png": {
+          "mtime": 1754991855.0,
+          "size": 31130647
+        }
+      }
+    },
+    "d45c6ed3211c994565aaed2facf7fb6494335ba02e51456100d74c48f2ad8299": {
+      "paths": {
+        "assets/cards/1_dead_of_night/en/SoT 1Front.png": {
+          "mtime": 1754991567.0,
+          "size": 40229803
+        }
+      }
+    },
+    "d8f63a73f0942a31258a199bb9581ca31577bf6171c1ef6cf2d0d69f335e1b04": {
+      "paths": {
+        "assets/cards/1_dead_of_night/en/SitD 2Back.png": {
+          "mtime": 1754991563.0,
+          "size": 38471214
+        }
+      }
+    },
+    "f81bd3a47ce91438b21ca340c5e77217bcbd260e477160af2c416ee3aeb76cdb": {
+      "paths": {
+        "assets/cards/1_dead_of_night/en/Encounter Part1 1Front.png": {
+          "mtime": 1754991315.0,
+          "size": 38411245
+        }
+      }
+    },
+    "98d3059feff9f21d33d14ede2404bd99e8dd19a0f76068e3fb7798c7939e05a2": {
+      "paths": {
+        "assets/cards/1_dead_of_night/en/Items 1Front.png": {
+          "mtime": 1754991771.0,
+          "size": 7417376
+        }
+      }
+    },
+    "fbe6cb73eefd1e2fd4531abd7127181118d0f2b5c537555ebd7fe579a7c5167a": {
+      "paths": {
+        "assets/cards/1_dead_of_night/en/Investigators 2Back.png": {
+          "mtime": 1754991672.0,
+          "size": 34028464
+        }
+      }
+    },
+    "7cc38273df9decce2ef6996bd5bef14c0381df7d50dfadb7ea833d17b92747df": {
+      "paths": {
+        "assets/cards/1_dead_of_night/en/SoT 2Back.png": {
+          "mtime": 1754991570.0,
+          "size": 37933661
+        }
+      }
+    },
+    "287b2a0d63f37450bc036d31ac9c804b9c40bad82fccb4182747808a87e09f30": {
+      "paths": {
+        "assets/cards/1_dead_of_night/en/Monsters 2Back.png": {
+          "mtime": 1754991858.0,
+          "size": 33533675
+        }
+      }
+    },
+    "2b0cad2139a9f57fe54bbb495612d8e539863a0f2791d810d6ff809888cb81eb": {
+      "paths": {
+        "assets/cards/1_dead_of_night/en/Starting 1Front.png": {
+          "mtime": 1754992320.0,
+          "size": 22620705
+        }
+      }
+    },
+    "3db9867c6d44af819f4fd08796e5d919ce9098cc4af135922c6f4824210d0a3c": {
+      "paths": {
+        "assets/cards/1_dead_of_night/en/Headline 1Front.png": {
+          "mtime": 1754991440.0,
+          "size": 16179463
+        }
+      }
+    },
+    "553ab1bfbecf4535d96d9f9d07f9ab8251b2b76c902fb8c32e361c7995751d14": {
+      "paths": {
+        "assets/cards/1_dead_of_night/en/Starting 2Back.png": {
+          "mtime": 1755348933.032,
+          "size": 20261845
+        }
+      }
+    },
+    "351ba63231d37d595cd755909fe671f870f981922609dcba1f8fcc6135e1c82f": {
+      "paths": {
+        "assets/cards/1_dead_of_night/en/Anomaly YE 1Front.png": {
+          "mtime": 1756820520.0,
+          "size": 19700720
+        }
+      }
+    },
+    "0331252a469f119b0af11de5743248bd7ded2e8ab7d2e8f87c616b553f713b3f": {
+      "paths": {
+        "assets/cards/1_dead_of_night/en/Investigators 1Front.png": {
+          "mtime": 1757588914.0,
+          "size": 30578243
+        }
+      }
+    },
+    "488b34ec941eedb540081af723f7fbd90409d1050c958fca1e24f30b2b345d0d": {
+      "paths": {
+        "assets/cards/1_dead_of_night/en/Condition 2Back.png": {
+          "mtime": 1754991183.0,
+          "size": 9375206
+        }
+      }
+    },
+    "a926cc56efcb0b4baadc3cc01842ec9955b2148493816a94c4230ad1d3ef6af3": {
+      "paths": {
+        "assets/cards/1_dead_of_night/en/Condition 1Front.png": {
+          "mtime": 1782739268.0,
+          "size": 6343772
+        }
+      }
+    },
+    "3b7a2c7a8e762e02b2cb1f5754ec4727f011ffdb1e47b58a3822d98fc565007e": {
+      "paths": {
+        "assets/cards/1_dead_of_night/en/Encounter Part2 1Front.png": {
+          "mtime": 1754991319.0,
+          "size": 31202045
+        }
+      }
+    },
+    "9022d1c96aa8e1fd2ce8b9666257a3709617148fddfc6f37515551ad195b81f8": {
+      "paths": {
+        "assets/cards/1_dead_of_night/en/Archive 2Back.png": {
+          "mtime": 1757515415.0,
+          "size": 53770407
+        }
+      }
+    },
+    "1d7f38b8665705ee90b981fdf6d8460f1ac9a6e4ab3048b53ddc02d765f14d48": {
+      "paths": {
+        "assets/cards/1_dead_of_night/en/Scenario 1Front.png": {
+          "mtime": 1754991976.0,
+          "size": 18082943
+        }
+      }
+    },
+    "8b9a19977ea5577b0984fac5b146a0e3c976ad2795afd1de31eceaaf54e9a18a": {
+      "paths": {
+        "assets/cards/1_dead_of_night/en/Special 1Front.png": {
+          "mtime": 1754992068.0,
+          "size": 46384670
+        }
+      }
+    },
+    "24c2bfd284bc6a9471f24ac4386e781008dbb463491c3e273cce68a3e7a1e6a3": {
+      "paths": {
+        "assets/cards/1_dead_of_night/en/SitD 1Front.png": {
+          "mtime": 1754991559.0,
+          "size": 40295511
+        }
+      }
+    },
+    "238847760436956a507bf614f2c33bb51f8777ef4a1e57173816b44e9707d9c6": {
+      "paths": {
+        "assets/cards/1_dead_of_night/en/Spell 1Front.png": {
+          "mtime": 1754992259.0,
+          "size": 7168639
+        }
+      }
+    },
+    "618363f7f67db0989956dcc41ac2f6d1dc6c95da409a55f8b3fb45dff6dfb114": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/Terror FC 2Back.jpg": {
+          "mtime": 1748292749.0,
+          "size": 554241
+        }
+      }
+    },
+    "0975e58f21cd11762882c39f57ecd9e2d81b0f443519f8ec338c0a1f25ecaad9": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/.DS_Store": {
+          "mtime": 1783021394.6391442,
+          "size": 6148
+        }
+      }
+    },
+    "c7cc364c7b28e62f45146b72b5e9f9d76623245b81648bfa7252fa027316b4dc": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/Anomaly VM 2Back.jpg": {
+          "mtime": 1748292749.0,
+          "size": 670860
+        }
+      }
+    },
+    "71088af559b834a34c6627b8f3cde9b09731d3172713e11c4d0c07d0e5beea82": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/Terror FF 2Back.jpg": {
+          "mtime": 1748292749.0,
+          "size": 579183
+        }
+      }
+    },
+    "ae26f8e6432548a56fe26ead77c8adb76aec6a8f27491066422b2384b49a4834": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/uk/TPL 2Back.png": {
+          "mtime": 1759148916.0,
+          "size": 41427039
+        }
+      }
+    },
+    "ba4ea96432f15261c5336b40f5d6790e97e8503b8173ab9be4fac87863107db9": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/uk/Scenario 2Back.png": {
+          "mtime": 1780475674.0,
+          "size": 16712198
+        }
+      }
+    },
+    "b5723b5664cb78f8bfda943f1b72dc48add5de1ff9afc0fb9cce05bfab6b6457": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/uk/Encounter Part2 2Back.png": {
+          "mtime": 1759148471.0,
+          "size": 14274210
+        }
+      }
+    },
+    "cba0ddd80efddb28813b013c4d9b3f6fb910b218b7a94675f2a53d343ba95936": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/uk/Ally 1Front.png": {
+          "mtime": 1759146919.0,
+          "size": 3796679
+        }
+      }
+    },
+    "45b0f8c935e58d5ceabec2b5ff9565b9b0df882802738044bc6c0dbc9eec8c1e": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/uk/Monsters 1Front.png": {
+          "mtime": 1759151009.0,
+          "size": 30101923
+        }
+      }
+    },
+    "c0e01c919d61cfdd142a4ccc6a3a01ea291a8e1ee3e5b91fa9a1d89dd7f3eb2d": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/uk/Encounter Part1 1Front.png": {
+          "mtime": 1759148461.0,
+          "size": 49289713
+        }
+      }
+    },
+    "4d060c37adeb09cb8f8b604fd370602a235a6cd3d7f5fe968514a64eda938848": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/uk/Items 1Front.png": {
+          "mtime": 1759150916.0,
+          "size": 7092356
+        }
+      }
+    },
+    "785071659681a14e92477824a9e2995ffad6b83eff005cffce7feba5fa123be9": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/uk/Investigators 2Back.png": {
+          "mtime": 1759149403.0,
+          "size": 54390685
+        }
+      }
+    },
+    "101f3330d11bbb10a7a24ce85f0ced607692e7ae807455833fb9baeb809e94f3": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/uk/Monsters 2Back.png": {
+          "mtime": 1759151011.0,
+          "size": 32953819
+        }
+      }
+    },
+    "8901b95f4a726a6ee5481a29b3bfb3e31dfc347a60d8efe3e79263267e8027a2": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/uk/Archive 1F.png": {
+          "mtime": 1782991514.716,
+          "size": 56879813
+        }
+      }
+    },
+    "d99be558f666e4c74ca144e0dd3361e5ae95ded577f1b70c1020bbfe027cd767": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/uk/IC 1Front.png": {
+          "mtime": 1759148896.0,
+          "size": 42959486
+        }
+      }
+    },
+    "45a667e19f83b9cc6957a28056cca14740a98401b7694b4da792c5b22df38761": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/uk/DoR 1Front.png": {
+          "mtime": 1759148754.0,
+          "size": 33226822
+        }
+      }
+    },
+    "a5cae3e0d9798f6109c154108bd4f8e484410d6014db8d6b27b34d4a752dbfc2": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/uk/Starting 1Front.png": {
+          "mtime": 1759151657.0,
+          "size": 49655594
+        }
+      }
+    },
+    "12a5b99c21c779c7f11009009fe98a12d31dee41f845d155581c606f54bc4111": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/uk/Terror FC 1Front.png": {
+          "mtime": 1759151961.0,
+          "size": 19996377
+        }
+      }
+    },
+    "9750141c221c8f6d91a5d8dde8d700c1f3f0baa21d992bd4ca2379290a8a9b6b": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/uk/Headline 1Front.png": {
+          "mtime": 1759149178.0,
+          "size": 12235509
+        }
+      }
+    },
+    "1e65150fa4ca13cd3f1fa22286466b02d1a51d2f3a230605959b2ef422b3e018": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/uk/Archive 2B.png": {
+          "mtime": 1782991516.349999,
+          "size": 57931713
+        }
+      }
+    },
+    "d44a801308734291c6f2e2377720b75220cf6036d7d2e1075b8ed8dcfbbf3510": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/uk/ToR 2Back.png": {
+          "mtime": 1759148908.0,
+          "size": 45301236
+        }
+      }
+    },
+    "6471482cff44f3e87937727b3325f953f86bb11e0142629ab3110ce045db3c76": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/uk/Starting 2Back.png": {
+          "mtime": 1759151660.0,
+          "size": 39277451
+        }
+      }
+    },
+    "cf9f77fef7aacb70d1885a5da669471097674771b1417bff2142975433d38b7b": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/uk/Investigators 1Front.png": {
+          "mtime": 1759149399.0,
+          "size": 53157230
+        }
+      }
+    },
+    "d1925d97d05e92149d73f32d7eac292beefb60e7b48e41cff5f5105a3c872ef8": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/uk/Terror FF 1Front.png": {
+          "mtime": 1759151959.0,
+          "size": 20395218
+        }
+      }
+    },
+    "d36264ca4a8980a034fbc2cd6bc8af356ec5a185d1c7225f2329bd47d42a98b5": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/uk/IC 2Back.png": {
+          "mtime": 1759148900.0,
+          "size": 48923043
+        }
+      }
+    },
+    "9f4904c85c3473257a420f711c08794e21e1de187db10b0aa97065df3d973206": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/uk/Condition 2Back.png": {
+          "mtime": 1759147675.0,
+          "size": 12135113
+        }
+      }
+    },
+    "8d8ecba15a53b0160f988039b7cf56a572695bacda96b7accf76948ce8f72e5d": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/uk/Condition 1Front.png": {
+          "mtime": 1759147674.0,
+          "size": 8549835
+        }
+      }
+    },
+    "a3442f48c10e54d47ed417fcc731f241a0fcb602b7df3d904b615c4f300e9944": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/uk/DoR 2Back.png": {
+          "mtime": 1759148757.0,
+          "size": 28991183
+        }
+      }
+    },
+    "2a9600982ac7607f34a834ac1ba1618c6c25b8ba7f595e31b9f6c697798c11d4": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/uk/Encounter Part2 1Front.png": {
+          "mtime": 1759148468.0,
+          "size": 34995720
+        }
+      }
+    },
+    "4c7e876a3f5c0fcb1d30c186938fd05b1c73a5abc13c21f286c2cabe731576fa": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/uk/Encounter Part1 2Back.png": {
+          "mtime": 1759148465.0,
+          "size": 35604308
+        }
+      }
+    },
+    "7b8cf599cec36707a71181d3a6a90b85eacd727fa615d7376f3defdb4e0c39c8": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/uk/Anomaly VM 1Front.png": {
+          "mtime": 1759147098.0,
+          "size": 21623922
+        }
+      }
+    },
+    "51279fde7b23b7eaae1dd7ea4804e6ee5cfe2ed08bdd04e1b696516916fcc04e": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/uk/Scenario 1Front.png": {
+          "mtime": 1759151081.0,
+          "size": 35042648
+        }
+      }
+    },
+    "9a7dbae86ff90867d1f02d6cd84be79eb05d32065ad4a51de37a52260e059197": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/uk/TPL 1Front.png": {
+          "mtime": 1759148912.0,
+          "size": 42804370
+        }
+      }
+    },
+    "a34477f37e8c88cdd24aaf634181540e3d0e92bf261de698a24589bfceb96081": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/uk/ToR 1Front.png": {
+          "mtime": 1759148904.0,
+          "size": 43207197
+        }
+      }
+    },
+    "bed3e298c0a97e6864bfc6c7f1e220feec792219b54aa8eadcd4215706ec526f": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/uk/Special 1Front.png": {
+          "mtime": 1759151454.0,
+          "size": 23388358
+        }
+      }
+    },
+    "04d547de7a851d1de326557e9269f64eee691e1636973a438508acb20de6bd40": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/uk/Spell 1Front.png": {
+          "mtime": 1759151534.0,
+          "size": 3707801
+        }
+      }
+    },
+    "d51bd8d20a23fb515ec510e5495fa86e64df7944cdc234371d667a4fce7c429b": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/en/TPL 2Back.png": {
+          "mtime": 1759148941.0,
+          "size": 41491592
+        }
+      }
+    },
+    "05dc96a1bcfa3068ddbd2bd1fe86b1495eb5401962f773d6847f67d0c5cae624": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/en/Scenario 2Back.png": {
+          "mtime": 1759151087.0,
+          "size": 16633975
+        }
+      }
+    },
+    "8a66efc73035845725aecc03c30f9d310a29968872399c11b3739f938c01a315": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/en/Encounter Part2 2Back.png": {
+          "mtime": 1759148487.0,
+          "size": 14274255
+        }
+      }
+    },
+    "4df5935efc9212140a3741f90f5609afa4d85ceec801ae938606e550abf54b13": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/en/Archive 1Front.png": {
+          "mtime": 1782732616.0,
+          "size": 51961498
+        }
+      }
+    },
+    "b77ae119a33441fcef68aede05a1fea3f7e39a8db9fc67ccf75c24833642edbe": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/en/Ally 1Front.png": {
+          "mtime": 1759146920.0,
+          "size": 3740163
+        }
+      }
+    },
+    "6746dc28a04d8902ca9e973c31a6d2e4f39c6d710fe9c4ad1e678f4f79ff440d": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/en/Monsters 1Front.png": {
+          "mtime": 1759151014.0,
+          "size": 29525365
+        }
+      }
+    },
+    "3daa2f52b70cbbbc3a070ddb54942dff117f092f44eea0212fdfce01ba71a1ce": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/en/Encounter Part1 1Front.png": {
+          "mtime": 1759148476.0,
+          "size": 46184158
+        }
+      }
+    },
+    "8d3d48eec0418bdad7c3cb8a0641f981e7d347bc2672e2d3cfff15788b0e5abd": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/en/Items 1Front.png": {
+          "mtime": 1759150916.0,
+          "size": 7017891
+        }
+      }
+    },
+    "df65b1ae1b69e21bc8f022ba0a7c3f1fe6e1c92fdb9c8fb7871f0db3c20f865a": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/en/Investigators 2Back.png": {
+          "mtime": 1759149411.0,
+          "size": 54166652
+        }
+      }
+    },
+    "e77eaa01501cee05756757e61412ede8101d572be3d595c1309f5911397cee7a": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/en/Monsters 2Back.png": {
+          "mtime": 1759151016.0,
+          "size": 32373257
+        }
+      }
+    },
+    "7709978ad150b59d77a94048e5e0ca1fb1186bf991443e767877df0690f7c705": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/en/IC 1Front.png": {
+          "mtime": 1759148921.0,
+          "size": 40674527
+        }
+      }
+    },
+    "3e6d6244b715a512d66853eac70267f99373b6c4ef0316a43555b7e2808f202b": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/en/DoR 1Front.png": {
+          "mtime": 1759148761.0,
+          "size": 30658727
+        }
+      }
+    },
+    "641c27f888263d221fb868091004f2a6ef1e64219c9982f4735f3ffd3bd29a71": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/en/Starting 1Front.png": {
+          "mtime": 1759151664.0,
+          "size": 48735073
+        }
+      }
+    },
+    "d9464c46700f8c545cf3a3b8bcce54041352a687ed44646e0f1788ebb32d0ce2": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/en/Terror FC 1Front.png": {
+          "mtime": 1759151965.0,
+          "size": 19290491
+        }
+      }
+    },
+    "6a21b13d9b335780ea1e90950a84e4c0731e768cbe3f9ad0c413ea48fad9a55f": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/en/Headline 1Front.png": {
+          "mtime": 1759149179.0,
+          "size": 11929078
+        }
+      }
+    },
+    "9693a1331ff9f1187399c8c10478db12a8bca3f62c41b8080e43351257c62813": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/en/ToR 2Back.png": {
+          "mtime": 1759148933.0,
+          "size": 45263065
+        }
+      }
+    },
+    "9be5122f13fb0ea59365c20a01767d04327f87bb0ee0fb054289dbc5c0d6a650": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/en/Starting 2Back.png": {
+          "mtime": 1759151667.0,
+          "size": 39242733
+        }
+      }
+    },
+    "775be4dc44c9c7719203dd0bbc4972901dae2268bf5233be570799a3fdd70d01": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/en/Investigators 1Front.png": {
+          "mtime": 1759149407.0,
+          "size": 53194073
+        }
+      }
+    },
+    "3370a330650eef923242adec1220d30c76a3c32ce8baecf702049711b0471259": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/en/Terror FF 1Front.png": {
+          "mtime": 1759151963.0,
+          "size": 19264852
+        }
+      }
+    },
+    "fa56166dcb3163c46d2b82e799c5ffea9399e16f751fd1dc8ae4bedc07d40d8e": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/en/IC 2Back.png": {
+          "mtime": 1759148925.0,
+          "size": 48934620
+        }
+      }
+    },
+    "58574e3fcd3653a4c95f8be9ae8a401bd3dc10619a75974c1cab879803e8f6f2": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/en/Condition 2Back.png": {
+          "mtime": 1759147677.0,
+          "size": 11561621
+        }
+      }
+    },
+    "d63d00c4014d68690af344c7421c1e8fb3cebeb5f80f9acca97a0f143e51585d": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/en/Condition 1Front.png": {
+          "mtime": 1759147676.0,
+          "size": 8536786
+        }
+      }
+    },
+    "8f87fd7d10ec28ec88b0cc768e3f8288ee6b5273d54d2711ac09511301ae3253": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/en/DoR 2Back.png": {
+          "mtime": 1759148764.0,
+          "size": 28982252
+        }
+      }
+    },
+    "a83180623138c5621320974543819dcc12044803608edd7cc24d5bd8b15d61e0": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/en/Encounter Part2 1Front.png": {
+          "mtime": 1759148484.0,
+          "size": 32124639
+        }
+      }
+    },
+    "d6dbc7e2228a3c5a07879d00115bdc2494f97bf320701c8885fb3f6af7fdcc01": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/en/Archive 2Back.png": {
+          "mtime": 1782732620.0,
+          "size": 55224325
+        }
+      }
+    },
+    "1da0279d69e970dbcc1985a7a9d178e6df3c3cc20856b3ec08c5d0bb0747e32a": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/en/Encounter Part1 2Back.png": {
+          "mtime": 1759148480.0,
+          "size": 35594105
+        }
+      }
+    },
+    "c9949415bb078501e522c7cd5959766e466d51c578b43a524995b9aadbcd5e32": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/en/Anomaly VM 1Front.png": {
+          "mtime": 1759147100.0,
+          "size": 20099500
+        }
+      }
+    },
+    "53719c956537a81124153b7a711a5cb6c6b92550aa4ff17a64665888a65afcf6": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/en/Scenario 1Front.png": {
+          "mtime": 1759151085.0,
+          "size": 35014575
+        }
+      }
+    },
+    "e1341732df3872c2cc227a34945da79072f1357f560e10b96c2ecd724de82588": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/en/TPL 1Front.png": {
+          "mtime": 1759148937.0,
+          "size": 40554665
+        }
+      }
+    },
+    "f08cb365fd64fdf2c9e297f0c7e1eb99a80087c42ec4628ff6ec5d7b7afbde75": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/en/ToR 1Front.png": {
+          "mtime": 1759148929.0,
+          "size": 40625246
+        }
+      }
+    },
+    "f0a37d2fe894b155efb2d8b257347ec934229bb6cb61b57e49c35abf8dce2408": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/en/Special 1Front.png": {
+          "mtime": 1759151456.0,
+          "size": 23007536
+        }
+      }
+    },
+    "08c8233f8f4cfcb6347d5a8fc072baf0465b9c9ebbf745566a363885e31e7a22": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/en/Spell 1Front.png": {
+          "mtime": 1759151534.0,
+          "size": 3702000
+        }
+      }
+    },
+    "3060f5287e5149f622824515bc60d181400b3a35951569e2450e882999ee0a42": {
+      "paths": {
+        "assets/models/mythos_cup_diffuse.jpg": {
+          "mtime": 1783001203.118999,
+          "size": 163301
+        }
+      }
+    },
+    "93c47d1e9b4661111bd1ad03ee80bf55319c75d04e1d59123d0955922144e414": {
+      "paths": {
+        "assets/models/infinite_bag.obj": {
+          "mtime": 1783001202.977999,
+          "size": 34030
+        }
+      }
+    },
+    "9af152e8c33d118e64aaeaf6e485b42b7e0a42d108dd834a40e6af9df105319f": {
+      "paths": {
+        "assets/models/map_tile_variant_a_collider.obj": {
+          "mtime": 1783001202.588,
+          "size": 20394
+        }
+      }
+    },
+    "99f2d493e6e51cb8d6a1b0f1a28f719775e41a61066059f2e1ce56e8b887584b": {
+      "paths": {
+        "assets/models/model_base.obj": {
+          "mtime": 1783001203.128999,
+          "size": 13166
+        }
+      }
+    },
+    "a2959943af8d6abbdcf76356a3e148a7cfa7cfc95975396ac06c7184a63df8b1": {
+      "paths": {
+        "assets/models/map_tile_variant_b_collider.obj": {
+          "mtime": 1783001202.957999,
+          "size": 4778
+        }
+      }
+    },
+    "c7d41f864cdf31e9616b1f25888dadf3629c5374f0db314b8cccd6fcce09ccae": {
+      "paths": {
+        "assets/models/map_tile_variant_a.obj": {
+          "mtime": 1783001202.569999,
+          "size": 103208
+        }
+      }
+    },
+    "603506996b902b8797cbc1dc4bf350440caad5c59feb97c39344fd7648403b5d": {
+      "paths": {
+        "assets/models/blank_diffuse.png": {
+          "mtime": 1783001202.963,
+          "size": 119
+        }
+      }
+    },
+    "258ce722fae4cee5fb0a590781e8477cf6f856b0ac25b610f19a19356c542f2e": {
+      "paths": {
+        "assets/models/map_tile_variant_b.obj": {
+          "mtime": 1783001202.986999,
+          "size": 26351
+        }
+      }
+    },
+    "b6f1f4e6d4e72e0af49dc0ce532dabe9e3f74e26b778ba9693e40c79cc40f8ce": {
+      "paths": {
+        "assets/models/clue.obj": {
+          "mtime": 1783001202.569,
+          "size": 2160
+        }
+      }
+    },
+    "3a6e11426a62eb1c2fcf888424d95d1630c8b6d66d62d8c7f78e3d8717cc24d1": {
+      "paths": {
+        "assets/models/arkham.obj": {
+          "mtime": 1749720116.000999,
+          "size": 16465
+        }
+      }
+    },
+    "65547d5652e1b32330f83a1721bb6a532b14f3c0e2f6d8986e95f7aa52afa25f": {
+      "paths": {
+        "assets/models/map_tile_hidden_path.obj": {
+          "mtime": 1783001203.365,
+          "size": 10361
+        }
+      }
+    },
+    "4daae147e8ffd45e683da603fe0836fdd4a3a91210388de753808bd63da85f0a": {
+      "paths": {
+        "assets/models/mythos_cup.obj": {
+          "mtime": 1783001203.552999,
+          "size": 11542
+        }
+      }
+    },
+    "2c2cf42a71a28a6dce6670bd0c153afb255ea438792a69d96e785801582ac9b7": {
+      "paths": {
+        "assets/models/map_tile_hidden_path_collider.obj": {
+          "mtime": 1783001203.371,
+          "size": 856
+        }
+      }
+    },
+    "1b1ec50e6c05483dc52cb45d448baec7d9128738d4aa16f99461ff5a26c5c895": {
+      "paths": {
+        "assets/icons/mythos terror.png": {
+          "mtime": 1751355404.295,
+          "size": 166245
+        }
+      }
+    },
+    "0c4a5ad868a89acb62e2a78d0e4e050a66115aa2992f0479c2dcb5a7006fc933": {
+      "paths": {
+        "assets/icons/token terror.jpeg": {
+          "mtime": 1780719722.0,
+          "size": 29222
+        }
+      }
+    },
+    "7464b98cf3043d4fb4f7ca00d28a55fc40fad8578454310e6bbe6b1d79e9c7c9": {
+      "paths": {
+        "assets/icons/token clue.jpeg": {
+          "mtime": 1751355480.0,
+          "size": 8563
+        }
+      }
+    },
+    "c003607a50179aa1e27afa98897711ae2e7dfd9bfa95f8e28b4ecac4db43bf47": {
+      "paths": {
+        "assets/icons/mythos blank.png": {
+          "mtime": 1751355377.674999,
+          "size": 125590
+        }
+      }
+    },
+    "b372ba983948654572fd506748a5cc30af0807956e1c7ca5a95b5c7699f422ab": {
+      "paths": {
+        "assets/icons/activation token back.jpeg": {
+          "mtime": 1751386234.0,
+          "size": 36933
+        }
+      }
+    },
+    "909b90fd687b1020ee352d9a97a7813e3c0fbeec3aada6cf1c0d8847d9db18a6": {
+      "paths": {
+        "assets/icons/monster_evade.png": {
+          "mtime": 1782812608.15,
+          "size": 2502
+        }
+      }
+    },
+    "2e423511bf3d7a140cce101bf1bc51337f1f1f4ef9d555a6199aa4b5b8bf2f2d": {
+      "paths": {
+        "assets/icons/activation token.jpeg": {
+          "mtime": 1751386242.0,
+          "size": 43807
+        }
+      }
+    },
+    "4544bf489ac7a40f3c503ed0c9452c2159369e562443eddfe44e1d85b61fd983": {
+      "paths": {
+        "assets/icons/mythos doom.png": {
+          "mtime": 1751355342.332,
+          "size": 198800
+        }
+      }
+    },
+    "ab37d4e2a339e6a1be0a075ce760efac5527b08aca7a05cf1b0371ee75c836a4": {
+      "paths": {
+        "assets/icons/anomaly.jpg": {
+          "mtime": 1751355437.250999,
+          "size": 129033
+        }
+      }
+    },
+    "960840587b4dc476c1a49a6681f57fd8048b0ca41c644047d99ae6e1df083ff5": {
+      "paths": {
+        "assets/icons/Leader token.jpeg": {
+          "mtime": 1751386057.0,
+          "size": 42514
+        }
+      }
+    },
+    "dc080d912159fa128da588a044fe9afe49c34d7d46e3e8e96b02c940712c1aa8": {
+      "paths": {
+        "assets/icons/action_yes.png": {
+          "mtime": 1782840666.0,
+          "size": 1890
+        }
+      }
+    },
+    "1be1c381584f987594ddd3957a0be3399bdd95e8c3cbface5e56d25f48cc3c28": {
+      "paths": {
+        "assets/icons/investigator_portrait.png": {
+          "mtime": 1782848788.0,
+          "size": 8525
+        }
+      }
+    },
+    "2888100c2ff4f3b3e13a402055f0332c3f9a4160ac95fceb5db53c73fef387af": {
+      "paths": {
+        "assets/icons/action_no.png": {
+          "mtime": 1782840716.0,
+          "size": 1901
+        }
+      }
+    },
+    "138dd9da7433fe5bc7ecb0eb418a4ead61aca4d69a3f9747cf0deca226f2f870": {
+      "paths": {
+        "assets/icons/marker yellow.jpeg": {
+          "mtime": 1751386495.0,
+          "size": 9219
+        }
+      }
+    },
+    "9fc08b3b251eff37e55feaddb85c547012d64402b28edd7a0247c94eb2f01c83": {
+      "paths": {
+        "assets/icons/marker blue.jpeg": {
+          "mtime": 1751386508.0,
+          "size": 12725
+        }
+      }
+    },
+    "e237e7d006ac9de8e29feddff6c4105652a80f8df124a7a5610224302847063f": {
+      "paths": {
+        "assets/icons/mythos headline.png": {
+          "mtime": 1751355387.602999,
+          "size": 181561
+        }
+      }
+    },
+    "5b07adaa529be204b742ad7956bccd8b9c60a4ec52a89c33dfb6d02cec4fe080": {
+      "paths": {
+        "assets/icons/mythos reckoning.png": {
+          "mtime": 1751355373.219,
+          "size": 191052
+        }
+      }
+    },
+    "69e65ad159b6c7735755530a69d94ded3388192f818e0f81fb9196b3c65f7bff": {
+      "paths": {
+        "assets/icons/token remnant.jpeg": {
+          "mtime": 1751355483.0,
+          "size": 7290
+        }
+      }
+    },
+    "a0d9fff75cdab37e4b4ad181c7f18a37a69703cd250f08efc3111ce57aadff87": {
+      "paths": {
+        "assets/icons/marker white.jpeg": {
+          "mtime": 1751386504.0,
+          "size": 11930
+        }
+      }
+    },
+    "c787328beb0c562baa4f8c9cd4e2bb592b56b160a49e98bb020c61d540d9bb83": {
+      "paths": {
+        "assets/icons/marker red.jpeg": {
+          "mtime": 1751386499.0,
+          "size": 11772
+        }
+      }
+    },
+    "a5a025e2ebc1242c2d8469333fd3b2fb02c351df9e5d031298eb13ea0ab0208c": {
+      "paths": {
+        "assets/icons/marker back.jpeg": {
+          "mtime": 1751386512.0,
+          "size": 17994
+        }
+      }
+    },
+    "e30ca266f42378f1e773a161b7137477037ccc0171fb0d2843f91f453092f1e7": {
+      "paths": {
+        "assets/icons/monster_attack.png": {
+          "mtime": 1782812601.477999,
+          "size": 1935
+        }
+      }
+    },
+    "050c8bb8f39f915a728d8b2fae32150004dac689f6c28e58b5f17b8b6accda8a": {
+      "paths": {
+        "assets/icons/Leader token back.jpeg": {
+          "mtime": 1751386062.0,
+          "size": 36609
+        }
+      }
+    },
+    "3c02e99c8a6b13531e0f4777810ae9380809f171302f0fa3195d432ff482e371": {
+      "paths": {
+        "assets/icons/mythos monster.png": {
+          "mtime": 1751355382.964999,
+          "size": 183827
+        }
+      }
+    },
+    "bfc2999cb949480278de94076c3bd20381ea84f965ac34932ae0f5bf7c90634e": {
+      "paths": {
+        "assets/icons/token doom.jpeg": {
+          "mtime": 1751355476.0,
+          "size": 8836
+        }
+      }
+    },
+    "d8365e81f134bae6a984bc11cd3e547a06d6ce386ea8d2eb59b008d0a0d474dc": {
+      "paths": {
+        "assets/icons/monster_marker.png": {
+          "mtime": 1782812613.105,
+          "size": 3170
+        }
+      }
+    },
+    "1c11bc4e354dda58a80e1c997f8aed4883e4082178d08533f05858a6bc39b1d0": {
+      "paths": {
+        "assets/icons/mythos gate burst.png": {
+          "mtime": 1751355368.191999,
+          "size": 190724
+        }
+      }
+    },
+    "315cf2fef1d8744edfaeefd0d3a7f381ae024799fa9bc15d411082cb745768fa": {
+      "paths": {
+        "assets/icons/mythos clue.png": {
+          "mtime": 1751355361.469,
+          "size": 183716
+        }
+      }
+    },
+    "89ee9abbf7a2dc3dd717889cc0bd5c7ea4fb1a8d02db02d4f8288440afbc0b8d": {
+      "paths": {
+        "assets/icons/monster_shrouded.png": {
+          "mtime": 1782812617.463,
+          "size": 2192
+        }
+      }
+    },
+    "68ab2ade32195693563fd687935a6c450b495b49408fe6acbeb4bc54428b58bc": {
+      "paths": {
+        "assets/other_graphics/hud_window.png": {
+          "mtime": 1752222181.0,
+          "size": 243447
+        }
+      }
+    },
+    "e6c0b02cbd5c62e3d00fad690d8c91a9f57365f09fbcf42c53807f798c05eec4": {
+      "paths": {
+        "assets/other_graphics/знання.png": {
+          "mtime": 1750255074.644999,
+          "size": 6389
+        }
+      }
+    },
+    "a4bc47a6aebdcac4e19618dbcf2d386f5bb955cc199d4e372b11fcd433f1e8a5": {
+      "paths": {
+        "assets/other_graphics/addon3.png": {
+          "mtime": 1754747045.0,
+          "size": 31970
+        }
+      }
+    },
+    "5ffaa0f1fd6dfcd0e0d9c5eae613c63659c5a7917411b930973ae6cb0cd8a55d": {
+      "paths": {
+        "assets/other_graphics/Activation_Token_1.png": {
+          "mtime": 1782447883.0,
+          "size": 169734
+        }
+      }
+    },
+    "29159dc37329659eb72b73070623af95de8d4f12a73ff69d56632b4713115e76": {
+      "paths": {
+        "assets/other_graphics/scenarioMap4.png": {
+          "mtime": 1754724494.0,
+          "size": 704756
+        }
+      }
+    },
+    "704b5a8cf955918101fdee75487e6c1ea1b6fdb3a012d6d577a1eb1e79aefec2": {
+      "paths": {
+        "assets/other_graphics/scenarioMap5.png": {
+          "mtime": 1754759284.0,
+          "size": 808036
+        }
+      }
+    },
+    "382c516a77520a5b01058e701766e275bdc8ec1b82b7f4dfada7223fb470e164": {
+      "paths": {
+        "assets/other_graphics/token_slot_2.png": {
+          "mtime": 1751889361.0,
+          "size": 35164
+        }
+      }
+    },
+    "d2a988dacf3246c9a921031026e71f9157323697cfbdd385227d5d29fdd700b8": {
+      "paths": {
+        "assets/other_graphics/addon2.png": {
+          "mtime": 1754747072.0,
+          "size": 31542
+        }
+      }
+    },
+    "d30e500cf1e627f13741e2a107b6fbab34d82762235e93429b64c4d1e53cfada": {
+      "paths": {
+        "assets/other_graphics/mith_mat.jpg": {
+          "mtime": 1756743666.0,
+          "size": 1300450
+        }
+      }
+    },
+    "7d5504ef139315737f711f21f4404cd8e01076226c6ba866121d34b187762bf6": {
+      "paths": {
+        "assets/other_graphics/enemy.png": {
+          "mtime": 1752743406.605999,
+          "size": 10482
+        }
+      }
+    },
+    "1c9b0a16ad368399c70c39c7c8823fdd00ccad9fbc759e1c144c831a07ae3d10": {
+      "paths": {
+        "assets/other_graphics/Activation_Token_2.png": {
+          "mtime": 1782447879.0,
+          "size": 146380
+        }
+      }
+    },
+    "566c8fd2705ad7fb97bfc518b2afda84c917682eda07aa1a9e6eb4d164e555ad": {
+      "paths": {
+        "assets/other_graphics/scenarioMap7.png": {
+          "mtime": 1780479471.0,
+          "size": 1725267
+        }
+      }
+    },
+    "9036a1def71aef06a0d2559dc5b5cfcf505b75a35c2aa313e8abff1355b25779": {
+      "paths": {
+        "assets/other_graphics/scenarioMap6.png": {
+          "mtime": 1754759369.0,
+          "size": 707617
+        }
+      }
+    },
+    "28d10f1af9e07d370f3fc99c7937fffc7407520bedd192ef60c7a0373795ae84": {
+      "paths": {
+        "assets/other_graphics/Activation_Token_3.png": {
+          "mtime": 1782447875.0,
+          "size": 162096
+        },
+        "assets/other_graphics/Test Activation_Token.png": {
+          "mtime": 1782447875.0,
+          "size": 162096
+        }
+      }
+    },
+    "988724ad5d319bd5e4fe0433c7f8c000e561841befbd4b10c2a8e54c35e43d7a": {
+      "paths": {
+        "assets/other_graphics/addon1.png": {
+          "mtime": 1754747058.0,
+          "size": 29610
+        }
+      }
+    },
+    "c6415a1340679cde7e123264cefa6a05dc20f36940dc14243bd2ff3cf1f98871": {
+      "paths": {
+        "assets/other_graphics/.DS_Store": {
+          "mtime": 1783091107.7263136,
+          "size": 6148
+        }
+      }
+    },
+    "41cdd1f11340e038ca4390fe8915a1c4ae88c5423c4e603d16fe18ce5a5facc9": {
+      "paths": {
+        "assets/other_graphics/scenarioMap2.png": {
+          "mtime": 1754723635.0,
+          "size": 680398
+        }
+      }
+    },
+    "415b1f1c0356b7aea381b40317cfb9573fd39e454bb88bce8753c2e2d4e92d68": {
+      "paths": {
+        "assets/other_graphics/scenarioMap3.png": {
+          "mtime": 1754724315.0,
+          "size": 679445
+        }
+      }
+    },
+    "2b1939764d9226e316024b3df1f84e4da46d019fabd0b7868c740ed832a425cf": {
+      "paths": {
+        "assets/other_graphics/addon4.png": {
+          "mtime": 1754752410.0,
+          "size": 27223
+        }
+      }
+    },
+    "720a9e84b6657e6fbad95f89fb12483df538a2640a027b15e3dbc24b5034126c": {
+      "paths": {
+        "assets/other_graphics/dice_blue.png": {
+          "mtime": 1751646214.724999,
+          "size": 26019
+        }
+      }
+    },
+    "4b411e73bc9c3be120b5b26f23f2809eb3a5db4ded283a84c1a5724f75101c93": {
+      "paths": {
+        "assets/other_graphics/button_medium.png": {
+          "mtime": 1752220746.0,
+          "size": 1500
+        }
+      }
+    },
+    "cff4ddbb3093411074368804f6d67eb5258302e25d57d4860f3cbf4c26326079": {
+      "paths": {
+        "assets/other_graphics/Activation_Token_4.png": {
+          "mtime": 1782447872.0,
+          "size": 144426
+        }
+      }
+    },
+    "5ac10cede77655fbfc5493e9f2c4625c4ddfe4d203344bc8beee925a865cdb86": {
+      "paths": {
+        "assets/other_graphics/scenarioMap1.png": {
+          "mtime": 1754720597.0,
+          "size": 716443
+        }
+      }
+    },
+    "7cb027918791ac2d213f4fc194303a6312c37b3277561e3a06fe91e0b676fed4": {
+      "paths": {
+        "assets/other_graphics/health.png": {
+          "mtime": 1782385437.0,
+          "size": 48355
+        }
+      }
+    },
+    "be6972a5a9deed06d0294011dd8d8c616c251713fc17d6b9b4449ac9942b505d": {
+      "paths": {
+        "assets/other_graphics/languages.png": {
+          "mtime": 1752751278.496999,
+          "size": 241849
+        }
+      }
+    },
+    "3b5325e32d71d1a907c423ba0ab6303297aa0788a6f1376506923cd620b68f5f": {
+      "paths": {
+        "assets/other_graphics/sky_background.png": {
+          "mtime": 1783001202.570999,
+          "size": 107
+        }
+      }
+    },
+    "97ad2736a33a0d23da70a46735094f8c2c18effa04cf564f4b2222f0068ad739": {
+      "paths": {
+        "assets/other_graphics/encounters.png": {
+          "mtime": 1751028065.490999,
+          "size": 2011577
+        }
+      }
+    },
+    "28a4eed20c262e04b1fd255be98abff4a63f4282fe0d3b983b2d0c50855e84fc": {
+      "paths": {
+        "assets/other_graphics/discard.png": {
+          "mtime": 1754996796.286,
+          "size": 11660
+        }
+      }
+    },
+    "445d7b5333682aaafbc47c9b4a3d453e8eb00dd6cd5cf40a5c3b7d95d9c86a52": {
+      "paths": {
+        "assets/other_graphics/map.png": {
+          "mtime": 1754821528.017999,
+          "size": 2543
+        }
+      }
+    },
+    "0ae753b67d28c0bdf1d1a747607171552ad022345c01144a14f9d5052602673a": {
+      "paths": {
+        "assets/other_graphics/reroll.png": {
+          "mtime": 1751361560.049999,
+          "size": 8456
+        }
+      }
+    },
+    "625ff029e8885471196bc764c3153d5e46dc1bc3d92efee66f573d71c86801ea": {
+      "paths": {
+        "assets/other_graphics/спостережливість.png": {
+          "mtime": 1750255074.644999,
+          "size": 6226
+        }
+      }
+    },
+    "6c17ec5382a64d6c909fd284a4197c34594e8dd670d16011be9ca143249ccfc9": {
+      "paths": {
+        "assets/other_graphics/dice_red.png": {
+          "mtime": 1751646153.351,
+          "size": 17480
+        }
+      }
+    },
+    "0d7a732970404b01cab9d51b4a6a6a250a2af67b9f7cf460d3e727bb253b0499": {
+      "paths": {
+        "assets/other_graphics/conditions.png": {
+          "mtime": 1751028050.026,
+          "size": 233276
+        }
+      }
+    },
+    "4517d92074374b4437bd7469c1c3dc0e325ec740bf362ae85131fe3e73223bb2": {
+      "paths": {
+        "assets/other_graphics/player_items.png": {
+          "mtime": 1751348754.469,
+          "size": 502253
+        }
+      }
+    },
+    "1b3b2ff738ce70fea5efcebcc5e06b33f9c30fbb2b82d68e2ceb4163194f0c47": {
+      "paths": {
+        "assets/other_graphics/scenario9.png": {
+          "mtime": 1780479296.911,
+          "size": 365719
+        }
+      }
+    },
+    "7aa8cc70f07ad95660a1801babacb162fb62cd79e3e9482a2484cff3ec0a1587": {
+      "paths": {
+        "assets/other_graphics/scenario8.png": {
+          "mtime": 1780479293.809,
+          "size": 329090
+        }
+      }
+    },
+    "086fd92d2c12e32542d80c61c57f5a144431fbdf4be7ad8eb21db0405475514e": {
+      "paths": {
+        "assets/other_graphics/icon_fight_evade.png": {
+          "mtime": 1782607824.0,
+          "size": 1480698
+        }
+      }
+    },
+    "942db5e1d6585c47fb356c44421cb7b7b54e45d24cd69d696f3243a4aeb2c85b": {
+      "paths": {
+        "assets/other_graphics/scenario6.png": {
+          "mtime": 1754755975.0,
+          "size": 135780
+        }
+      }
+    },
+    "4c3297d73c2db4023657ac170569c1dc64812c7125e4ae6e0edb790cda739f72": {
+      "paths": {
+        "assets/other_graphics/scenarioMap10.png": {
+          "mtime": 1780479575.0,
+          "size": 1589636
+        }
+      }
+    },
+    "4cc49b3c0df2e91ec0d31a23a544cf5de9954493052bc10541305b14c87fc639": {
+      "paths": {
+        "assets/other_graphics/tableMat.png": {
+          "mtime": 1782515644.0,
+          "size": 2593749
+        }
+      }
+    },
+    "15078495f394fca4c0f57990f60e37472c466848601cf50d71b82736a1ead926": {
+      "paths": {
+        "assets/other_graphics/phases_3.png": {
+          "mtime": 1754990256.0,
+          "size": 26693
+        }
+      }
+    },
+    "6475cb439fb8635b2fbf7d6c0c24cbc34a731cbb7fb53f6a9efc0d93bc8fef72": {
+      "paths": {
+        "assets/other_graphics/phases_2.png": {
+          "mtime": 1754989578.0,
+          "size": 20755
+        }
+      }
+    },
+    "3205092eacc7c4134cd4a8e4c3b6c7658e815cff3d316ecc8feec54852885221": {
+      "paths": {
+        "assets/other_graphics/cards_icon.png": {
+          "mtime": 1752322144.0,
+          "size": 4135
+        }
+      }
+    },
+    "b122ecdc970ec6a7e685ff48e5da315cc3536966ad649375477f361f09a7b1b3": {
+      "paths": {
+        "assets/other_graphics/scenarioMap11.png": {
+          "mtime": 1780479600.0,
+          "size": 1574842
+        }
+      }
+    },
+    "3bc37c642f197aa82d6080e52554b028c3942145a0542e81d2498e661e206724": {
+      "paths": {
+        "assets/other_graphics/btn_bg.png": {
+          "mtime": 1752414333.0,
+          "size": 45373
+        }
+      }
+    },
+    "ea9ff9b67ce308db716379d0abd7251ac6f648db33e530caa1b440be103fe4f2": {
+      "paths": {
+        "assets/other_graphics/player_mat.png": {
+          "mtime": 1752765239.342999,
+          "size": 1307406
+        }
+      }
+    },
+    "2b8d682efd7ab8f780cd83594e7f0bd93f3ee5f9e094aedc621fddb88ee6974e": {
+      "paths": {
+        "assets/other_graphics/scenario7.png": {
+          "mtime": 1780478683.0,
+          "size": 387928
+        }
+      }
+    },
+    "1f8dae5f5ec641f5629c508acb6860311a664f1ffbfb24c8d3d5bdc98ec4f442": {
+      "paths": {
+        "assets/other_graphics/scenario5.png": {
+          "mtime": 1754756047.0,
+          "size": 121307
+        }
+      }
+    },
+    "dd9e97b809527f9cd89166af8cc6868c3d2c8690f241731ad301296ddd52571f": {
+      "paths": {
+        "assets/other_graphics/scenarioMap13.png": {
+          "mtime": 1780479646.0,
+          "size": 1582462
+        }
+      }
+    },
+    "36299882c722416c1b068c4f182ce82bf954de1f795ccf49e00643ae07ddb9ac": {
+      "paths": {
+        "assets/other_graphics/воля.png": {
+          "mtime": 1750255074.644999,
+          "size": 5569
+        }
+      }
+    },
+    "208dacf6398bcafa4e696583ef2ff6dc25f6483a9ac35cc92d501ddbc28e1b08": {
+      "paths": {
+        "assets/other_graphics/random.png": {
+          "mtime": 1752407577.0,
+          "size": 871708
+        }
+      }
+    },
+    "d6960394502572a94c7b89f33beb73be552cafe859718e8846dd03cb84665be2": {
+      "paths": {
+        "assets/other_graphics/phases_1.png": {
+          "mtime": 1754989144.0,
+          "size": 20905
+        }
+      }
+    },
+    "3341f51fb6c3f6123f2ee50a6f4341ece93b43387df8231176a33f453e8df41f": {
+      "paths": {
+        "assets/other_graphics/scenarioMap12.png": {
+          "mtime": 1780479623.0,
+          "size": 1761972
+        }
+      }
+    },
+    "692596641a249ea3767b7fe047062b3daa437c7600c8b87872b6caa1af20e318": {
+      "paths": {
+        "assets/other_graphics/scenario4.png": {
+          "mtime": 1752225744.0,
+          "size": 139369
+        }
+      }
+    },
+    "31bf77109820d1e2bfd9c5577a0c6a4e6638abf60c7467d28ee29bfd6ab6586b": {
+      "paths": {
+        "assets/other_graphics/phases_4.png": {
+          "mtime": 1754989619.0,
+          "size": 27309
+        }
+      }
+    },
+    "bad850aaa6e5a18cfedd04aa3e9ac6d02ae22c85db0cce93b6e41e9b7b72f2cf": {
+      "paths": {
+        "assets/other_graphics/scenario1.png": {
+          "mtime": 1752225592.0,
+          "size": 124266
+        }
+      }
+    },
+    "a9831b1a1583c0f9f8a1ee357f35720c9058bb4b8dc7da8b712ce69590ac98aa": {
+      "paths": {
+        "assets/other_graphics/scenario3.png": {
+          "mtime": 1752225708.0,
+          "size": 128467
+        }
+      }
+    },
+    "df4afb5e459f5b07870a55d2bc30db844b8fb90ddb7aa826a0f5f115046e512b": {
+      "paths": {
+        "assets/other_graphics/success.png": {
+          "mtime": 1754996796.341,
+          "size": 14706
+        }
+      }
+    },
+    "c1e28b29a0e95375ad41df3c1b239dd82edeb45161bba28e3c02aa973cb7b6ed": {
+      "paths": {
+        "assets/other_graphics/item.png": {
+          "mtime": 1751620361.549999,
+          "size": 86478
+        }
+      }
+    },
+    "b58bca31b20c636ef6e8656ea469b2a5b4f4e60c88bf1b163198e41588382e2f": {
+      "paths": {
+        "assets/other_graphics/scenario2.png": {
+          "mtime": 1752225646.0,
+          "size": 131698
+        }
+      }
+    },
+    "7ea11e556f3d49a68cb4354037da772b430146470b135c651346099c6fe4a758": {
+      "paths": {
+        "assets/other_graphics/вплив.png": {
+          "mtime": 1750255074.644999,
+          "size": 6185
+        }
+      }
+    },
+    "b3fdd996dc712d7e05b5504780441b14550fa28c990f24905ace97b1ac8afd90": {
+      "paths": {
+        "assets/other_graphics/scenario11.png": {
+          "mtime": 1780478746.0,
+          "size": 318146
+        }
+      }
+    },
+    "a1816a3ffd5b946210548ec7690e2cc3ae82105728f977c6b0efff4d6af6b852": {
+      "paths": {
+        "assets/other_graphics/scenario10.png": {
+          "mtime": 1780478264.0,
+          "size": 320399
+        }
+      }
+    },
+    "d15c37b97d2b5521f114b2a81beea1b41a9d6efc3267578993ca3fcc9d8c2716": {
+      "paths": {
+        "assets/other_graphics/button_large.png": {
+          "mtime": 1752220673.0,
+          "size": 1578
+        }
+      }
+    },
+    "2de1e65c60c7e66de6b950f2a1a4c9f9f331c85bd85a4d25a835a9144d684da3": {
+      "paths": {
+        "assets/other_graphics/roller_s.png": {
+          "mtime": 1782819016.0,
+          "size": 236329
+        }
+      }
+    },
+    "06ba2c4ab678cfd669ac548b9d1e9030b78a8636337d4bdc5df12cc4c417de1b": {
+      "paths": {
+        "assets/other_graphics/scenario12.png": {
+          "mtime": 1780478777.0,
+          "size": 377257
+        }
+      }
+    },
+    "e28a5bebd6f122e481cdf2a4ffb618a438eb009fe6d2a8dda5e2abfd15261a5d": {
+      "paths": {
+        "assets/other_graphics/market.png": {
+          "mtime": 1756743675.0,
+          "size": 1167795
+        }
+      }
+    },
+    "91d69d206b33a76d8881813f273ae568b6f56a9492c71de87507ec4c3c9f5558": {
+      "paths": {
+        "assets/other_graphics/сила.png": {
+          "mtime": 1750255074.644999,
+          "size": 5622
+        }
+      }
+    },
+    "35d9306162b052d8cdcbe3ab6c4027d6028b4f01707fd9eec911f3ee6e222a0d": {
+      "paths": {
+        "assets/other_graphics/scenario13.png": {
+          "mtime": 1780478806.0,
+          "size": 362961
+        }
+      }
+    },
+    "c9a95b0422015bf85bbdb1c20839f89995eefbb502cff4e5e3a1944e4f6907e3": {
+      "paths": {
+        "assets/other_graphics/button_num.png": {
+          "mtime": 1752220627.0,
+          "size": 161
+        }
+      }
+    },
+    "c73236664754b5655114cc6b63fd566f277c4d6934148afe97d7ae04074b595b": {
+      "paths": {
+        "assets/other_graphics/custom_tile_banner.png": {
+          "mtime": 1783001202.569998,
+          "size": 52151
+        }
+      }
+    },
+    "37260b4a3cc8a538fe822c9a10041acc8cb22b85f7dc006287214477991f150b": {
+      "paths": {
+        "assets/other_graphics/fail.png": {
+          "mtime": 1754996796.444,
+          "size": 12056
+        }
+      }
+    },
+    "eaf64f1f18bd11e90a6dd99202637f5c78f3860919499b46acd05ef098aeda4a": {
+      "paths": {
+        "assets/other_graphics/dice_green.png": {
+          "mtime": 1783086111.1555767,
+          "size": 24843
+        }
+      }
+    },
+    "0df96bb1d1cd30df70b228099b2ae4a8f4146d733686bd62f493ca43a8d2729a": {
+      "paths": {
+        "assets/other_graphics/codex.png": {
+          "mtime": 1755078928.0,
+          "size": 190965
+        }
+      }
+    },
+    "cb5023e4fcf65850cddc3407e6bc9cfea4487d530675402dd5b57a93ec996271": {
+      "paths": {
+        "assets/other_graphics/scenarioMap8.png": {
+          "mtime": 1780479516.0,
+          "size": 1597959
+        }
+      }
+    },
+    "b8230c1e6e85a3d219f51202f12fef80d3d31a42f27cc47518d10a767cf48294": {
+      "paths": {
+        "assets/other_graphics/scenarioMap9.png": {
+          "mtime": 1780479551.0,
+          "size": 1757653
+        }
+      }
+    },
+    "5caa13fcc0882d902dee2d5b9a13df68d2978cc6fd981e177afa766bd31230f7": {
+      "paths": {
+        "assets/other_graphics/sanity.png": {
+          "mtime": 1782385433.0,
+          "size": 45910
+        }
+      }
+    },
+    "335309389853ea616cf3af469c6b3d8ba20fe9e9c1b92e56ecc92667a8ff390c": {
+      "paths": {
+        "assets/other_graphics/additional_buttons_for_xml/additional_buttons_4_hover.png": {
+          "mtime": 1781097309.0,
+          "size": 6165
+        }
+      }
+    },
+    "ed0feee3e5d1f8591a026027518830fd5babc13d97bae07e580103d7a2095468": {
+      "paths": {
+        "assets/other_graphics/additional_buttons_for_xml/additional_buttons_bg.png": {
+          "mtime": 1781096793.0,
+          "size": 357957
+        }
+      }
+    },
+    "bd3de436122f733e9d003619f2c29706ad1b8e132ffddd243b89bd8ccb6cd4d4": {
+      "paths": {
+        "assets/other_graphics/additional_buttons_for_xml/additional_buttons_2_hover.png": {
+          "mtime": 1781097117.0,
+          "size": 5264
+        }
+      }
+    },
+    "fa0503e88feb1f1d210e4f2d0ca01bd391eb33fc2807c502f3288edf3d9d91ea": {
+      "paths": {
+        "assets/other_graphics/additional_buttons_for_xml/additional_buttons_5_hover.png": {
+          "mtime": 1781097395.0,
+          "size": 5951
+        }
+      }
+    },
+    "123e500c4b6377f8fc23fdf4c3cd661bfb304c6fac7be4bb469ddc75bd160b1e": {
+      "paths": {
+        "assets/other_graphics/additional_buttons_for_xml/additional_buttons_3_hover.png": {
+          "mtime": 1781097200.0,
+          "size": 5672
+        }
+      }
+    },
+    "c22cd446862980526002c2c4988a312df57bd5b73b29cfbba0161edf83ddaf61": {
+      "paths": {
+        "assets/other_graphics/additional_buttons_for_xml/additional_buttons_2.png": {
+          "mtime": 1781097135.0,
+          "size": 5326
+        }
+      }
+    },
+    "bb856d62ec54353965b683d863dd6ad922b870a6158d93b2f0c822df167496f7": {
+      "paths": {
+        "assets/other_graphics/additional_buttons_for_xml/additional_buttons_3.png": {
+          "mtime": 1781097227.0,
+          "size": 5614
+        }
+      }
+    },
+    "d3de6cca6973cc7991561549b8530ffea34d66aee18c1edba43f9dcda12f7d51": {
+      "paths": {
+        "assets/other_graphics/additional_buttons_for_xml/additional_buttons_1.png": {
+          "mtime": 1781096999.0,
+          "size": 5588
+        }
+      }
+    },
+    "20e9481cf3d6ee8b7d7e629372add148649219fd4e44b4a4d421c68838878d3c": {
+      "paths": {
+        "assets/other_graphics/additional_buttons_for_xml/additional_buttons_4.png": {
+          "mtime": 1781097324.0,
+          "size": 6166
+        }
+      }
+    },
+    "aa783c81ead87093e3e6ca4431e597c942b6eec3d890dacbe6ff702852ff661b": {
+      "paths": {
+        "assets/other_graphics/additional_buttons_for_xml/additional_buttons_5.png": {
+          "mtime": 1781097415.0,
+          "size": 5960
+        }
+      }
+    },
+    "8dfdcfe187ecc3e78355b4d5fa6f8c88f4762c2827d647134434be628926207a": {
+      "paths": {
+        "assets/other_graphics/additional_buttons_for_xml/additional_buttons_1_hover.png": {
+          "mtime": 1781096980.0,
+          "size": 5564
+        }
+      }
+    },
+    "5f12fa7a16064dc0f55b39504ac574af7c32379c49e8ce36ddeb350c72f0d6f3": {
+      "paths": {
+        "assets/rules/rulebook.pdf": {
+          "mtime": 1783001203.272,
+          "size": 4471461
+        }
+      }
+    },
+    "d339ef87b19f25e90339ec9d4c58a76711fe0d0a0f27abd075171f70390e3b86": {
+      "paths": {
+        "assets/rules/.DS_Store": {
+          "mtime": 1783021394.6489847,
+          "size": 6148
+        }
+      }
+    },
+    "24fa6ece60f087ef226ccfb0e547f4412d4b27768149b18e0741012d0b77a998": {
+      "paths": {
+        "assets/rules/base_rules_reference.pdf": {
+          "mtime": 1783001203.265,
+          "size": 5545722
+        }
+      }
+    },
+    "42251fd2dee731f15cc7bc6fed646f66a0265a0e68cc856713785db32e04421b": {
+      "paths": {
+        "assets/rules/quick_reference.pdf": {
+          "mtime": 1783001203.13,
+          "size": 3681515
+        }
+      }
+    },
+    "85efe4448afef476cb5509c325d8c9f817604afe59404ee8edb189c90b312d1e": {
+      "paths": {
+        "assets/rules/secrets_of_the_order_rulebook.pdf": {
+          "mtime": 1783001203.349999,
+          "size": 2571442
+        }
+      }
+    },
+    "b4af099a2c1a1ff4e99d222487d2b38466b61335eec958a41126c1d6af6e2031": {
+      "paths": {
+        "assets/rules/uk/(0) Learn to Play.pdf.pdf": {
+          "mtime": 1782756607.996999,
+          "size": 12030262
+        }
+      }
+    },
+    "5fcac2e82645f988aeadad948134cfe8a1bbe0cf2b8f6754bc96fdfc2cc0cc28": {
+      "paths": {
+        "assets/rules/uk/Rules Reference.pdf": {
+          "mtime": 1782756614.165999,
+          "size": 11654144
+        }
+      }
+    },
+    "c00ce82953beceeba742c7bc7bb4f3243e8443af88c63c207c3fff3c010d07ff": {
+      "paths": {
+        "assets/rules/en/Rules Reference.pdf": {
+          "mtime": 1754078686.0,
+          "size": 572452
+        }
+      }
+    },
+    "28c88deaa538b6132f212cb3107bebea294c6240caef651088d4a39c277e95f6": {
+      "paths": {
+        "assets/rules/en/(0) Learn to Play.pdf": {
+          "mtime": 1782756597.394,
+          "size": 5624246
+        }
+      }
+    },
+    "4d2ef9fcac6bcf489687c930739432c7ee6d61fa12a9f465155fa4bf5b27e2b7": {
+      "paths": {
+        "assets/fonts/font_list.unity3d": {
+          "mtime": 1750490214.111999,
+          "size": 101333
+        }
+      }
+    }
+  }
+}
