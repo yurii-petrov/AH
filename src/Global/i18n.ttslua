@@ -151,7 +151,7 @@ end
 ---@param obj tts__Object The game object with a UI to translate.
 function i18n.updateObjectUiLanguage(obj)
   if obj ~= nil and obj.UI then
-    local xmlTable = obj.UI.getXmlTable()
+    local xmlTable = obj.UI.getXmlTable() or {}
     i18n.recursiveTranslate(xmlTable)
     obj.UI.setXmlTable(xmlTable)
   end
