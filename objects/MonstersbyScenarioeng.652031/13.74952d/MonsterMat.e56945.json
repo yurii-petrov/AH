@@ -53,8 +53,8 @@
       "Tooltip": true,
       "Transform": {
         "posX": 0.1594117,
-        "posY": -2.36915643e-08,
-        "posZ": -1.39362131e-08,
+        "posY": -2.36915643e-8,
+        "posZ": -1.39362131e-8,
         "rotX": 0,
         "rotY": 0,
         "rotZ": 0,
@@ -113,7 +113,7 @@
       "Transform": {
         "posX": -0.160000175,
         "posY": 0.09999993,
-        "posZ": 1.398766e-08,
+        "posZ": 1.398766e-8,
         "rotX": 0,
         "rotY": 0,
         "rotZ": 0,

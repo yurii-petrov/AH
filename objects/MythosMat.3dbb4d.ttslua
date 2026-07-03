@@ -96,12 +96,6 @@ local function buildUI()
 end
 
 function onLoad()
-  self.UI.setCustomAssets({
-    { name = "success_icon", url = "file:////Users/yurii/AH/TTS/AH/assets/other_graphics/success.png" },
-    { name = "discard_icon", url = "file:////Users/yurii/AH/TTS/AH/assets/other_graphics/discard.png" },
-    { name = "fail_icon",    url = "file:////Users/yurii/AH/TTS/AH/assets/other_graphics/fail.png" },
-    { name = "myth_slots",   url = "file:////Users/yurii/AH/TTS/AH/assets/other_graphics/token_slot_2.png" },
-  })
   Wait.time(buildUI, 0.5)
 end
 

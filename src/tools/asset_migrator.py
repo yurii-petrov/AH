@@ -114,6 +114,14 @@ def collect_asset_moves(index):
             if not link or not local:
                 continue
 
+            # Resolved via the "Files" sheet reverse-lookup (TTS_Index is
+            # gone) — `local` already points at an existing assets/ file, no
+            # DRIVE_PATH_MAP/copy needed, just point the reference at it.
+            if local.startswith(ASSETS_ROOT + os.sep):
+                new_url = build_local_file_url(local)
+                fixes_by_file.setdefault(file_path, []).append((link, new_url))
+                continue
+
             mapped = DRIVE_PATH_MAP.get(drive_path)
             if not mapped:
                 unmapped_paths.add(drive_path)

@@ -3,16 +3,45 @@ import os
 import re
 import sys
 
-from asset_index_builder import ROOT_DIR
+from asset_index_builder import (
+    ROOT_DIR,
+    build_local_file_url,
+    extract_google_id,
+    load_files_index,
+    to_absolute,
+)
 
 CUSTOM_UI_ASSETS_PATH = os.path.join(ROOT_DIR, "modsettings", "CustomUIAssets.json")
+MODSETTINGS_DIR = os.path.join(ROOT_DIR, "modsettings")
 
-# TTS XML UI attributes named "image"/"imageHover" must reference a Name
-# registered in CustomUIAssets.json — unlike native object fields (ImageURL,
-# MeshURL, etc.) a raw file:// path doesn't work there. Native-field usages
-# (e.g. Roller.ttslua's getDiceImage(), or self.UI.setCustomAssets() url
-# tables) are untouched since they don't match this attribute-name pattern.
+# Steam Cloud upload only scans the mod's static object save-state — it never
+# executes Lua and never reads modsettings/*.json. Any local file:// (or raw
+# drive.google.com) reference living inside a .ttslua script or a modsettings
+# file is therefore invisible to it and never gets uploaded, unless it's
+# registered here in CustomUIAssets.json and referenced by Name instead.
+
+# TTS XML UI attributes named "image"/"imageHover" must reference a Name.
 UI_ATTR_REGEX = re.compile(r'\b(image(?:Hover)?)(\s*=\s*)"(file:[^"]+)"')
+
+# Bare `return "file:...png"`-style literals (e.g. Roller.ttslua's
+# getDiceImage()) used for native fields (ImageURL, MeshURL, ...) — still
+# invisible to Steam Cloud since they only exist inside Lua source.
+RETURN_URL_REGEX = re.compile(r'(return\s+)"(file:[^"]+)"')
+
+# self.UI.setCustomAssets({ { name = "x", url = "file:..." }, ... }) is a
+# *local*, per-object registration TTS resolves at runtime for its own XML —
+# it works in-game but is just as invisible to Steam Cloud as any other Lua
+# literal. Migrate each entry to the global registry and delete the call.
+SET_CUSTOM_ASSETS_REGEX = re.compile(r'[ \t]*self\.UI\.setCustomAssets\(\s*\{.*?\}\s*\)\n?', re.DOTALL)
+SET_CUSTOM_ASSETS_ENTRY_REGEX = re.compile(r'name\s*=\s*"([^"]+)"\s*,\s*url\s*=\s*"([^"]+)"')
+
+TYPE_BY_EXT = {
+    ".png": 0, ".jpg": 0, ".jpeg": 0,
+    ".unity3d": 1,
+    ".mp3": 2, ".wav": 2, ".ogg": 2,
+    ".obj": 3, ".fbx": 3,
+    ".pdf": 4,
+}
 
 TRANSLIT = {
     "а": "a", "б": "b", "в": "v", "г": "h", "ґ": "g", "д": "d", "е": "e", "є": "ie",
@@ -38,6 +67,11 @@ def sanitize_name(url: str) -> str:
     return stem or "ui_asset"
 
 
+def guess_type(url: str) -> int:
+    ext = os.path.splitext(url)[1].lower()
+    return TYPE_BY_EXT.get(ext, 0)
+
+
 # -------------------------
 # CustomUIAssets.json I/O
 # -------------------------
@@ -49,6 +83,52 @@ def load_custom_ui_assets():
 def save_custom_ui_assets(assets):
     with open(CUSTOM_UI_ASSETS_PATH, "w", encoding="utf-8") as f:
         json.dump(assets, f, indent=2, ensure_ascii=False)
+
+
+# -------------------------
+# SHARED NAME REGISTRY
+# -------------------------
+class Registry:
+    def __init__(self, assets):
+        self.assets = assets
+        self.url_to_name = {a["URL"]: a["Name"] for a in assets}
+        self.existing_names = {a["Name"] for a in assets}
+        self.new_assets = []
+
+    def register(self, url):
+        name = self.url_to_name.get(url)
+        if name:
+            return name
+
+        base_name = sanitize_name(url)
+        name = base_name
+        i = 2
+        while name in self.existing_names:
+            name = f"{base_name}_{i}"
+            i += 1
+
+        self.existing_names.add(name)
+        self.url_to_name[url] = name
+        entry = {"Name": name, "Type": guess_type(url), "URL": url}
+        self.new_assets.append(entry)
+        self.assets.append(entry)
+        return name
+
+
+# -------------------------
+# RESOLVE A file:// OR raw drive.google.com STRING TO ITS ASSET file:// URL
+# -------------------------
+def resolve_asset_url(value: str, files_index):
+    if value.lower().startswith("file:"):
+        return value
+
+    if "drive.google.com" in value:
+        gid = extract_google_id(value)
+        rel_path = files_index.get(gid) if gid else None
+        if rel_path:
+            return build_local_file_url(to_absolute(rel_path))
+
+    return None
 
 
 # -------------------------
@@ -72,60 +152,118 @@ def find_ttslua_files():
 
 
 # -------------------------
+# .ttslua FIXES
+# -------------------------
+def fix_ttslua(content, registry):
+    def repl_attr(match):
+        attr, eq, url = match.group(1), match.group(2), match.group(3)
+        return f'{attr}{eq}"{registry.register(url)}"'
+
+    def repl_return(match):
+        prefix, url = match.group(1), match.group(2)
+        return f'{prefix}"{registry.register(url)}"'
+
+    def repl_set_custom_assets(match):
+        for name, url in SET_CUSTOM_ASSETS_ENTRY_REGEX.findall(match.group(0)):
+            registry.register(url)  # keep the file's own chosen name where possible
+            registry.url_to_name[url] = name
+            registry.existing_names.add(name)
+            for entry in registry.new_assets:
+                if entry["URL"] == url:
+                    entry["Name"] = name
+        return ""
+
+    content = SET_CUSTOM_ASSETS_REGEX.sub(repl_set_custom_assets, content)
+    content = UI_ATTR_REGEX.sub(repl_attr, content)
+    content = RETURN_URL_REGEX.sub(repl_return, content)
+    return content
+
+
+# -------------------------
+# modsettings/*.json FIXES (excluding CustomUIAssets.json itself)
+# -------------------------
+def find_modsettings_files():
+    for file in sorted(os.listdir(MODSETTINGS_DIR)):
+        if file.endswith(".json") and file != "CustomUIAssets.json":
+            yield os.path.join(MODSETTINGS_DIR, file)
+
+
+def fix_modsettings_json(data, registry, files_index):
+    if isinstance(data, dict):
+        changed = False
+        new_data = {}
+        for k, v in data.items():
+            new_v, c = fix_modsettings_json(v, registry, files_index)
+            new_data[k] = new_v
+            changed = changed or c
+        return new_data, changed
+
+    if isinstance(data, list):
+        changed = False
+        new_data = []
+        for v in data:
+            new_v, c = fix_modsettings_json(v, registry, files_index)
+            new_data.append(new_v)
+            changed = changed or c
+        return new_data, changed
+
+    if isinstance(data, str):
+        asset_url = resolve_asset_url(data, files_index)
+        if asset_url:
+            return registry.register(asset_url), True
+
+    return data, False
+
+
+# -------------------------
 # MAIN
 # -------------------------
 def main():
     apply = "--apply" in sys.argv
 
     assets = load_custom_ui_assets()
-    url_to_name = {a["URL"]: a["Name"] for a in assets}
-    existing_names = {a["Name"] for a in assets}
-    new_assets = []
-    file_fixes = {}
+    registry = Registry(assets)
+    files_index = load_files_index()
 
+    ttslua_fixes = {}
     for file_path in find_ttslua_files():
         with open(file_path, "r", encoding="utf-8") as f:
             content = f.read()
 
-        original = content
+        new_content = fix_ttslua(content, registry)
+        if new_content != content:
+            ttslua_fixes[file_path] = new_content
 
-        def repl(match):
-            attr, eq, url = match.group(1), match.group(2), match.group(3)
+    json_fixes = {}
+    for file_path in find_modsettings_files():
+        with open(file_path, "r", encoding="utf-8") as f:
+            data = json.load(f)
 
-            name = url_to_name.get(url)
-            if not name:
-                base_name = sanitize_name(url)
-                name = base_name
-                i = 2
-                while name in existing_names:
-                    name = f"{base_name}_{i}"
-                    i += 1
-                existing_names.add(name)
-                url_to_name[url] = name
-                new_assets.append({"Name": name, "Type": 0, "URL": url})
+        new_data, changed = fix_modsettings_json(data, registry, files_index)
+        if changed:
+            json_fixes[file_path] = new_data
 
-            return f'{attr}{eq}"{name}"'
-
-        content = UI_ATTR_REGEX.sub(repl, content)
-
-        if content != original:
-            file_fixes[file_path] = content
-
-    for file_path, content in file_fixes.items():
+    for file_path, content in ttslua_fixes.items():
         print(f"{'WRITE' if apply else 'PLAN'}: {file_path}")
         if apply:
             with open(file_path, "w", encoding="utf-8") as f:
                 f.write(content)
 
+    for file_path, data in json_fixes.items():
+        print(f"{'WRITE' if apply else 'PLAN'}: {file_path}")
+        if apply:
+            with open(file_path, "w", encoding="utf-8") as f:
+                json.dump(data, f, indent=2, ensure_ascii=False)
+                f.write("\n")
+
     print()
     print("DONE" if apply else "DRY RUN (pass --apply to write changes)")
-    print("Files touched:", len(file_fixes))
-    print("New CustomUIAssets entries:", len(new_assets))
-    for a in new_assets:
-        print(" ", a["Name"], "->", a["URL"])
+    print("Files touched:", len(ttslua_fixes) + len(json_fixes))
+    print("New CustomUIAssets entries:", len(registry.new_assets))
+    for a in registry.new_assets:
+        print(" ", a["Name"], f"(Type {a['Type']})", "->", a["URL"])
 
-    if apply and new_assets:
-        assets.extend(new_assets)
+    if apply and registry.new_assets:
         save_custom_ui_assets(assets)
 
 

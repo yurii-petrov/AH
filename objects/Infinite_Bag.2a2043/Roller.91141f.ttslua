@@ -641,11 +641,11 @@ end
 function getDiceImage(t)
   local t = t or rollerData.type
   if t == 1 then
-    return "file:////Users/yurii/AH/TTS/AH/assets/other_graphics/dice_green.png"
+    return "dice_green"
   elseif t == 2 then
-    return "file:////Users/yurii/AH/TTS/AH/assets/other_graphics/dice_blue.png"
+    return "dice_blue"
   elseif t == 3 then
-    return "file:////Users/yurii/AH/TTS/AH/assets/other_graphics/dice_red.png"
+    return "dice_red"
   end
 end
 

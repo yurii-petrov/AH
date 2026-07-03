@@ -67612,6 +67612,78 @@
           ],
           "local": "assets/other_graphics/воля.png",
           "gUrl": "https://drive.google.com/uc?export=download&id=1y1uAD-mE4fS-GDWBSNxKdwSQwPQRikCg"
+        },
+        {
+          "target": [
+            104,
+            "URL"
+          ],
+          "local": "assets/other_graphics/success.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1L7AZa56r3BBoQNviWpQS-y4ekER_Lpfq"
+        },
+        {
+          "target": [
+            105,
+            "URL"
+          ],
+          "local": "assets/other_graphics/discard.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1DuOIUR-za6c00dL_N3xbcpSRDCS8pol6"
+        },
+        {
+          "target": [
+            106,
+            "URL"
+          ],
+          "local": "assets/other_graphics/fail.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1aqkaxfsTttxo1jfa4ma9VArcZ6WXy5Fw"
+        },
+        {
+          "target": [
+            107,
+            "URL"
+          ],
+          "local": "assets/other_graphics/token_slot_2.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1VYV4mgJSams5SMFYTASL0D9xJN7-Ap0y"
+        },
+        {
+          "target": [
+            108,
+            "URL"
+          ],
+          "local": "assets/other_graphics/dice_green.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1ws8ybcuEFYR-5Qg6ng1QpWPebrCmZexL"
+        },
+        {
+          "target": [
+            109,
+            "URL"
+          ],
+          "local": "assets/other_graphics/dice_blue.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1TF18n0GQbor1dl90pYnFGIQDnzMStFs-"
+        },
+        {
+          "target": [
+            110,
+            "URL"
+          ],
+          "local": "assets/other_graphics/dice_red.png",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1hhWiq2yQsXU44nBYqQCBD4gXW3gMVEKB"
+        },
+        {
+          "target": [
+            111,
+            "URL"
+          ],
+          "local": "assets/music/lovecraft 01.MP3",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1P-HuS5WpUEaFCAJ6steI2z5GQSIDehGP"
+        },
+        {
+          "target": [
+            112,
+            "URL"
+          ],
+          "local": "assets/music/cthulhu_music.mp3",
+          "gUrl": "https://drive.google.com/uc?export=download&id=1eKydxIrnvChQfJ48jo6cDstbZKR_FFIT"
         }
       ]
     },

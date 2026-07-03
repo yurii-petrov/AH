@@ -518,5 +518,50 @@
     "Name": "volia",
     "Type": 0,
     "URL": "https://drive.google.com/uc?export=download&id=1y1uAD-mE4fS-GDWBSNxKdwSQwPQRikCg"
+  },
+  {
+    "Name": "success_icon",
+    "Type": 0,
+    "URL": "https://drive.google.com/uc?export=download&id=1L7AZa56r3BBoQNviWpQS-y4ekER_Lpfq"
+  },
+  {
+    "Name": "discard_icon",
+    "Type": 0,
+    "URL": "https://drive.google.com/uc?export=download&id=1DuOIUR-za6c00dL_N3xbcpSRDCS8pol6"
+  },
+  {
+    "Name": "fail_icon",
+    "Type": 0,
+    "URL": "https://drive.google.com/uc?export=download&id=1aqkaxfsTttxo1jfa4ma9VArcZ6WXy5Fw"
+  },
+  {
+    "Name": "myth_slots",
+    "Type": 0,
+    "URL": "https://drive.google.com/uc?export=download&id=1VYV4mgJSams5SMFYTASL0D9xJN7-Ap0y"
+  },
+  {
+    "Name": "dice_green",
+    "Type": 0,
+    "URL": "https://drive.google.com/uc?export=download&id=1ws8ybcuEFYR-5Qg6ng1QpWPebrCmZexL"
+  },
+  {
+    "Name": "dice_blue",
+    "Type": 0,
+    "URL": "https://drive.google.com/uc?export=download&id=1TF18n0GQbor1dl90pYnFGIQDnzMStFs-"
+  },
+  {
+    "Name": "dice_red",
+    "Type": 0,
+    "URL": "https://drive.google.com/uc?export=download&id=1hhWiq2yQsXU44nBYqQCBD4gXW3gMVEKB"
+  },
+  {
+    "Name": "lovecraft_01",
+    "Type": 2,
+    "URL": "https://drive.google.com/uc?export=download&id=1P-HuS5WpUEaFCAJ6steI2z5GQSIDehGP"
+  },
+  {
+    "Name": "cthulhu_music",
+    "Type": 2,
+    "URL": "https://drive.google.com/uc?export=download&id=1eKydxIrnvChQfJ48jo6cDstbZKR_FFIT"
   }
 ]

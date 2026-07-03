@@ -317,6 +317,44 @@ def fill_local_path(asset_google, local_files):
 
 
 # -------------------------
+# LOAD "Files" SHEET REVERSE (google id -> project-relative local path)
+# TTS_Index (name/drivePath based resolution) no longer exists in the xlsx;
+# this is the fallback for resolving brand-new raw google links that were
+# never localized, using the same "Files" sheet add_download_links.py reads.
+# -------------------------
+def load_files_index():
+    if not os.path.exists(TTS_INDEX_XLSX):
+        return {}
+
+    wb = openpyxl.load_workbook(TTS_INDEX_XLSX, data_only=True)
+    if "Files" not in wb.sheetnames:
+        return {}
+
+    ws = wb["Files"]
+    rows = ws.iter_rows(values_only=True)
+    next(rows, None)  # skip header
+
+    lookup = {}
+    for path, link in rows:
+        if not path or not link:
+            continue
+        gid = extract_google_id(link)
+        if gid:
+            lookup[gid] = path
+
+    return lookup
+
+
+def fill_local_path_from_files_index(asset_google, files_index):
+    if asset_google.get("local"):
+        return
+
+    rel_path = files_index.get(asset_google.get("id"))
+    if rel_path:
+        asset_google["local"] = to_absolute(rel_path)
+
+
+# -------------------------
 # LOAD EXISTING INDEX (MERGE SUPPORT)
 # -------------------------
 def load_index():
@@ -433,7 +471,7 @@ def fill_google_metadata(asset_google, tts_index):
         asset_google["drivePath"] = info["drivePath"]
 
 
-def add_asset(index, file_path, source, url, target, tts_index, local_files):
+def add_asset(index, file_path, source, url, target, tts_index, local_files, files_index):
     if file_path not in index:
         index[file_path] = {
             "path": file_path,
@@ -452,6 +490,7 @@ def add_asset(index, file_path, source, url, target, tts_index, local_files):
                 asset[source]["id"] = extract_google_id(url)
                 fill_google_metadata(asset[source], tts_index)
                 fill_local_path(asset[source], local_files)
+                fill_local_path_from_files_index(asset[source], files_index)
 
             if source == "steam":
                 asset[source]["id"] = extract_steam_id(url)
@@ -488,6 +527,7 @@ def add_asset(index, file_path, source, url, target, tts_index, local_files):
         new_asset[source]["id"] = extract_google_id(url)
         fill_google_metadata(new_asset[source], tts_index)
         fill_local_path(new_asset[source], local_files)
+        fill_local_path_from_files_index(new_asset[source], files_index)
 
     elif source == "steam":
         new_asset[source]["id"] = extract_steam_id(url)
@@ -498,17 +538,17 @@ def add_asset(index, file_path, source, url, target, tts_index, local_files):
 # -------------------------
 # JSON WALKER
 # -------------------------
-def walk(obj, file_path, index, tts_index, local_files, path=None):
+def walk(obj, file_path, index, tts_index, local_files, files_index, path=None):
     if path is None:
         path = []
 
     if isinstance(obj, dict):
         for k, v in obj.items():
-            walk(v, file_path, index, tts_index, local_files, path + [k])
+            walk(v, file_path, index, tts_index, local_files, files_index, path + [k])
 
     elif isinstance(obj, list):
         for i, v in enumerate(obj):
-            walk(v, file_path, index, tts_index, local_files, path + [i])
+            walk(v, file_path, index, tts_index, local_files, files_index, path + [i])
 
     elif isinstance(obj, str):
         if "http" not in obj and "file:" not in obj:
@@ -524,7 +564,8 @@ def walk(obj, file_path, index, tts_index, local_files, path=None):
             url,
             path,
             tts_index,
-            local_files
+            local_files,
+            files_index
         )
 
 
@@ -535,6 +576,7 @@ def scan():
     index = ensure_schema(load_index())
     tts_index = load_tts_index()
     local_files = load_local_files()
+    files_index = load_files_index()
 
     IGNORE_DIRS = {
         os.path.realpath(os.path.join(ROOT_DIR, ".tts")),
@@ -567,7 +609,7 @@ def scan():
             except:
                 continue
 
-            walk(content, file_path, index, tts_index, local_files)
+            walk(content, file_path, index, tts_index, local_files, files_index)
 
     # Drop stale entries for files that were renamed/deleted since the last
     # indexed run — otherwise merge-on-load_index() keeps them forever.

@@ -1,16 +1,16 @@
 {
   "AudioLibrary": [
     {
-      "Item1": "https://drive.google.com/uc?export=download&id=1P-HuS5WpUEaFCAJ6steI2z5GQSIDehGP",
+      "Item1": "lovecraft_01",
       "Item2": "lovecraft 01"
     },
     {
-      "Item1": "https://drive.google.com/uc?export=download&id=1eKydxIrnvChQfJ48jo6cDstbZKR_FFIT",
+      "Item1": "cthulhu_music",
       "Item2": "Cthulhu Music"
     }
   ],
   "CurrentAudioTitle": "lovecraft 01",
-  "CurrentAudioURL": "https://drive.google.com/uc?export=download&id=1P-HuS5WpUEaFCAJ6steI2z5GQSIDehGP",
+  "CurrentAudioURL": "lovecraft_01",
   "PlaylistEntry": -1,
   "RepeatSong": false
 }
