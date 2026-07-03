@@ -48,6 +48,32 @@
 
   "Lua.workspace.ignoreDir": ["objects", "saves", "modsettings", "locales", "memory"],
 
+  "files.exclude": {
+    ".gitattributes": true,
+    ".cursorignore": true,
+    "CLAUDE.md": true,
+    "README.md": true,
+    ".venv": true,
+    ".tts": true,
+    ".github": true,
+    ".cursor": true,
+    ".claude": true,
+    "assets": true,
+    "memory": true,
+    "xml": true,
+    ".claudeignore": true,
+    ".gitignore": true,
+    // ".vscode": true,
+  },
+
+  // exlude folders
+
+  "search.exclude": {
+    "TTSModManager": true,
+    "src/tools/index.json": true,
+    "src/tools/assets_manifest.json": true
+  },
+
   "xml.fileAssociations": [
     { "pattern": "objects/**/*.xml", "systemId": "tts-ui" },
     { "pattern": "objects/Root.xml",  "systemId": "tts-ui" }

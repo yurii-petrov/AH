@@ -50,27 +50,16 @@
     {
       "label": "_go_build",
       "type": "shell",
-      "command": "go",
       "windows": {
-        "args": [
-          "run",
-          "main.go",
-          "--moddir=${workspaceFolder}",
-          "--modfile=${env:USERPROFILE}\\Documents\\My Games\\Tabletop Simulator\\Saves\\ArkhamHorror.json"
-        ]
+        "command": "py",
+        "args": ["${workspaceFolder}\\.vscode\\build.py", "--action", "build", "--moddir", "${workspaceFolder}"]
       },
       "osx": {
-        "args": [
-          "run",
-          "main.go",
-          "-moddir",
-          "${workspaceFolder}",
-          "-modfile",
-          "${userHome}/Library/Tabletop Simulator/Saves/ArkhamHorror.json"
-        ]
+        "command": "${workspaceFolder}/.venv/bin/python",
+        "args": ["${workspaceFolder}/.vscode/build.py", "--action", "build", "--moddir", "${workspaceFolder}"]
       },
       "options": {
-        "cwd": "${workspaceFolder}${pathSeparator}..${pathSeparator}TTSModManager"
+        "cwd": "${workspaceFolder}${pathSeparator}.vscode"
       },
       "problemMatcher": []
     },
@@ -144,29 +133,16 @@
     {
       "label": "_decompose",
       "type": "shell",
-      "command": "go",
       "windows": {
-        "args": [
-          "run",
-          "main.go",
-          "--moddir=${workspaceFolder}",
-          "--modfile=${env:USERPROFILE}\\Documents\\My Games\\Tabletop Simulator\\Saves\\ArkhamHorror.json",
-          "--reverse"
-        ]
+        "command": "py",
+        "args": ["${workspaceFolder}\\.vscode\\build.py", "--action", "decompose", "--moddir", "${workspaceFolder}"]
       },
       "osx": {
-        "args": [
-          "run",
-          "main.go",
-          "-moddir",
-          "${workspaceFolder}",
-          "-modfile",
-          "${userHome}/Library/Tabletop Simulator/Saves/ArkhamHorror.json",
-          "-reverse"
-        ]
+        "command": "${workspaceFolder}/.venv/bin/python",
+        "args": ["${workspaceFolder}/.vscode/build.py", "--action", "decompose", "--moddir", "${workspaceFolder}"]
       },
       "options": {
-        "cwd": "${workspaceFolder}${pathSeparator}..${pathSeparator}TTSModManager"
+        "cwd": "${workspaceFolder}${pathSeparator}.vscode"
       },
       "problemMatcher": []
     },
