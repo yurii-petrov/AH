@@ -5,10 +5,77 @@
     "z": 0
   },
   "Autoraise": true,
+  "ChildObjects": [
+    {
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Autoraise": true,
+      "ColorDiffuse": {
+        "b": 1,
+        "g": 1,
+        "r": 1
+      },
+      "CustomMesh": {
+        "CastShadows": true,
+        "ColliderURL": "https://drive.google.com/uc?export=download&id=1NCRzhKqAdhxRnxkA-TNRMG_x_R1wWJYM",
+        "Convex": true,
+        "CustomShader": {
+          "FresnelStrength": 0,
+          "SpecularColor": {
+            "b": 1,
+            "g": 1,
+            "r": 1
+          },
+          "SpecularIntensity": 0,
+          "SpecularSharpness": 2
+        },
+        "DiffuseURL": "https://drive.google.com/uc?export=download&id=1UlPfPNN2X-y6T32wnVXwyjbAYDPBqCVk",
+        "MaterialIndex": 3,
+        "MeshURL": "https://drive.google.com/uc?export=download&id=1NCRzhKqAdhxRnxkA-TNRMG_x_R1wWJYM",
+        "NormalURL": "",
+        "TypeIndex": 1
+      },
+      "Description": "",
+      "DragSelectable": true,
+      "GMNotes": "",
+      "GUID": "fe5fc9",
+      "Grid": false,
+      "GridProjection": false,
+      "Hands": false,
+      "HideWhenFaceDown": false,
+      "IgnoreFoW": false,
+      "LayoutGroupSortIndex": 0,
+      "Locked": false,
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "MeasureMovement": false,
+      "Name": "Custom_Model",
+      "Nickname": "ModelBase",
+      "Snap": false,
+      "Sticky": false,
+      "Tooltip": true,
+      "Transform": {
+        "posX": 0.000533533,
+        "posY": -0.2676715,
+        "posZ": 0.00145093014,
+        "rotX": 0.009442815,
+        "rotY": 179.999908,
+        "rotZ": 359.9929,
+        "scaleX": 1.64772737,
+        "scaleY": 1.64772737,
+        "scaleZ": 1.64772737
+      },
+      "Value": 0,
+      "XmlUI": ""
+    }
+  ],
   "ColorDiffuse": {
-    "b": 0.54717,
-    "g": 0.54717,
-    "r": 0.54717
+    "b": 1,
+    "g": 1,
+    "r": 1
   },
   "CustomAssetbundle": {
     "AssetbundleSecondaryURL": "",
@@ -38,11 +105,11 @@
   "Sticky": false,
   "Tooltip": true,
   "Transform": {
-    "posX": 13.86,
-    "posY": 4.042,
-    "posZ": 77.618,
+    "posX": 36.002,
+    "posY": 4.293,
+    "posZ": 38.045,
     "rotX": 0,
-    "rotY": 180,
+    "rotY": 270,
     "rotZ": 0,
     "scaleX": 0.88,
     "scaleY": 0.88,

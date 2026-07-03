@@ -5,6 +5,73 @@
     "z": 0
   },
   "Autoraise": true,
+  "ChildObjects": [
+    {
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Autoraise": true,
+      "ColorDiffuse": {
+        "b": 1,
+        "g": 1,
+        "r": 1
+      },
+      "CustomMesh": {
+        "CastShadows": true,
+        "ColliderURL": "https://drive.google.com/uc?export=download&id=1NCRzhKqAdhxRnxkA-TNRMG_x_R1wWJYM",
+        "Convex": true,
+        "CustomShader": {
+          "FresnelStrength": 0,
+          "SpecularColor": {
+            "b": 1,
+            "g": 1,
+            "r": 1
+          },
+          "SpecularIntensity": 0,
+          "SpecularSharpness": 2
+        },
+        "DiffuseURL": "https://drive.google.com/uc?export=download&id=1UlPfPNN2X-y6T32wnVXwyjbAYDPBqCVk",
+        "MaterialIndex": 3,
+        "MeshURL": "https://drive.google.com/uc?export=download&id=1NCRzhKqAdhxRnxkA-TNRMG_x_R1wWJYM",
+        "NormalURL": "",
+        "TypeIndex": 1
+      },
+      "Description": "",
+      "DragSelectable": true,
+      "GMNotes": "",
+      "GUID": "e7772e",
+      "Grid": false,
+      "GridProjection": false,
+      "Hands": false,
+      "HideWhenFaceDown": false,
+      "IgnoreFoW": false,
+      "LayoutGroupSortIndex": 0,
+      "Locked": false,
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "MeasureMovement": false,
+      "Name": "Custom_Model",
+      "Nickname": "ModelBase",
+      "Snap": false,
+      "Sticky": false,
+      "Tooltip": true,
+      "Transform": {
+        "posX": 0.000196320078,
+        "posY": -0.2711976,
+        "posZ": 0.0005667096,
+        "rotX": 0.0124331862,
+        "rotY": 179.999954,
+        "rotZ": 359.990875,
+        "scaleX": 1.61111128,
+        "scaleY": 1.61111128,
+        "scaleZ": 1.61111128
+      },
+      "Value": 0,
+      "XmlUI": ""
+    }
+  ],
   "ColorDiffuse": {
     "b": 1,
     "g": 1,
@@ -38,12 +105,12 @@
   "Sticky": true,
   "Tooltip": true,
   "Transform": {
-    "posX": 10.031,
-    "posY": 4.084,
-    "posZ": 72.942,
+    "posX": 36.01,
+    "posY": 4.326,
+    "posZ": 37.281,
     "rotX": 0,
     "rotY": 180,
-    "rotZ": 1,
+    "rotZ": 0,
     "scaleX": 0.9,
     "scaleY": 0.9,
     "scaleZ": 0.9

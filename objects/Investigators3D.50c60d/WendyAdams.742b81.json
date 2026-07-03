@@ -5,10 +5,77 @@
     "z": 0
   },
   "Autoraise": true,
+  "ChildObjects": [
+    {
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Autoraise": true,
+      "ColorDiffuse": {
+        "b": 1,
+        "g": 1,
+        "r": 1
+      },
+      "CustomMesh": {
+        "CastShadows": true,
+        "ColliderURL": "https://drive.google.com/uc?export=download&id=1NCRzhKqAdhxRnxkA-TNRMG_x_R1wWJYM",
+        "Convex": true,
+        "CustomShader": {
+          "FresnelStrength": 0,
+          "SpecularColor": {
+            "b": 1,
+            "g": 1,
+            "r": 1
+          },
+          "SpecularIntensity": 0,
+          "SpecularSharpness": 2
+        },
+        "DiffuseURL": "https://drive.google.com/uc?export=download&id=1UlPfPNN2X-y6T32wnVXwyjbAYDPBqCVk",
+        "MaterialIndex": 3,
+        "MeshURL": "https://drive.google.com/uc?export=download&id=1NCRzhKqAdhxRnxkA-TNRMG_x_R1wWJYM",
+        "NormalURL": "",
+        "TypeIndex": 1
+      },
+      "Description": "",
+      "DragSelectable": true,
+      "GMNotes": "",
+      "GUID": "3aa12e",
+      "Grid": false,
+      "GridProjection": false,
+      "Hands": false,
+      "HideWhenFaceDown": false,
+      "IgnoreFoW": false,
+      "LayoutGroupSortIndex": 0,
+      "Locked": false,
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "MeasureMovement": false,
+      "Name": "Custom_Model",
+      "Nickname": "ModelBase",
+      "Snap": false,
+      "Sticky": false,
+      "Tooltip": true,
+      "Transform": {
+        "posX": 0.0000379395278,
+        "posY": -0.287666231,
+        "posZ": 0.00134929933,
+        "rotX": 0.008777518,
+        "rotY": 180.000076,
+        "rotZ": -0.00521164062,
+        "scaleX": 1.746988,
+        "scaleY": 1.746988,
+        "scaleZ": 1.746988
+      },
+      "Value": 0,
+      "XmlUI": ""
+    }
+  ],
   "ColorDiffuse": {
-    "b": 0.46226,
-    "g": 0.46226,
-    "r": 0.46226
+    "b": 1,
+    "g": 1,
+    "r": 1
   },
   "CustomAssetbundle": {
     "AssetbundleSecondaryURL": "",
@@ -38,12 +105,12 @@
   "Sticky": false,
   "Tooltip": true,
   "Transform": {
-    "posX": 35.998,
-    "posY": 4.006,
-    "posZ": 32.505,
-    "rotX": 0,
-    "rotY": 180,
-    "rotZ": 0,
+    "posX": 35.754,
+    "posY": 4.314,
+    "posZ": 36.93,
+    "rotX": 1,
+    "rotY": 177,
+    "rotZ": 359,
     "scaleX": 0.83,
     "scaleY": 0.83,
     "scaleZ": 0.83

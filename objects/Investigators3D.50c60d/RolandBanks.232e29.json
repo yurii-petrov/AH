@@ -5,10 +5,77 @@
     "z": 0
   },
   "Autoraise": true,
+  "ChildObjects": [
+    {
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Autoraise": true,
+      "ColorDiffuse": {
+        "b": 1,
+        "g": 1,
+        "r": 1
+      },
+      "CustomMesh": {
+        "CastShadows": true,
+        "ColliderURL": "https://drive.google.com/uc?export=download&id=1NCRzhKqAdhxRnxkA-TNRMG_x_R1wWJYM",
+        "Convex": true,
+        "CustomShader": {
+          "FresnelStrength": 0,
+          "SpecularColor": {
+            "b": 1,
+            "g": 1,
+            "r": 1
+          },
+          "SpecularIntensity": 0,
+          "SpecularSharpness": 2
+        },
+        "DiffuseURL": "https://drive.google.com/uc?export=download&id=1UlPfPNN2X-y6T32wnVXwyjbAYDPBqCVk",
+        "MaterialIndex": 3,
+        "MeshURL": "https://drive.google.com/uc?export=download&id=1NCRzhKqAdhxRnxkA-TNRMG_x_R1wWJYM",
+        "NormalURL": "",
+        "TypeIndex": 1
+      },
+      "Description": "",
+      "DragSelectable": true,
+      "GMNotes": "",
+      "GUID": "7f76df",
+      "Grid": false,
+      "GridProjection": false,
+      "Hands": false,
+      "HideWhenFaceDown": false,
+      "IgnoreFoW": false,
+      "LayoutGroupSortIndex": 0,
+      "Locked": false,
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "MeasureMovement": false,
+      "Name": "Custom_Model",
+      "Nickname": "ModelBase",
+      "Snap": false,
+      "Sticky": false,
+      "Tooltip": true,
+      "Transform": {
+        "posX": 0.0006218344,
+        "posY": -0.241314873,
+        "posZ": 0.000613190641,
+        "rotX": 0.00515987957,
+        "rotY": 179.999954,
+        "rotZ": -0.003988305,
+        "scaleX": 1.55913985,
+        "scaleY": 1.55913985,
+        "scaleZ": 1.55913985
+      },
+      "Value": 0,
+      "XmlUI": ""
+    }
+  ],
   "ColorDiffuse": {
-    "b": 0.10519,
-    "g": 0.10519,
-    "r": 0.1132
+    "b": 1,
+    "g": 1,
+    "r": 1
   },
   "CustomAssetbundle": {
     "AssetbundleSecondaryURL": "",
@@ -38,12 +105,12 @@
   "Sticky": false,
   "Tooltip": true,
   "Transform": {
-    "posX": 35.868,
-    "posY": 4.061,
-    "posZ": 37.101,
-    "rotX": 0,
-    "rotY": 180,
-    "rotZ": 359,
+    "posX": 35.952,
+    "posY": 4.295,
+    "posZ": 37.776,
+    "rotX": 359,
+    "rotY": 178,
+    "rotZ": 0,
     "scaleX": 0.93,
     "scaleY": 0.93,
     "scaleZ": 0.93

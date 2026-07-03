@@ -337,38 +337,23 @@ function onInvestigatorDrop(colorName, object, objectData, isIgnoreRandomCard)
               if figure.memo and figure.memo == objectData.name then
                 local basePos = p:setAt("x", p.x + 2):setAt("z", -33.78)
 
-                local function takeFigureOntoBase(base)
-                  local takenObject = figureBag.takeObject({
-                    guid = figure.guid,
-                    position = basePos:setAt("y", basePos.y + 1),
-                    rotation = {0, 180, 0},
-                    smooth = true
-                  })
-                  takenObject.setName(translationService.getText(objectData.name))
-                  if base then
-                    runAfterRest(takenObject, function(takenObject)
-                      takenObject.addAttachment(base)
-                      Wait.time(function()
-                        playFigureIdleTriggerEffect(takenObject)
-                      end, 1)
-                    end)
-                  else
-                    takenObject.setColorTint(tintColor)
-                  end
-                end
+                local takenObject = figureBag.takeObject({
+                  guid = figure.guid,
+                  position = basePos:setAt("y", basePos.y + 1),
+                  rotation = {0, 180, 0},
+                  smooth = true
+                })
+                takenObject.setName(translationService.getText(objectData.name))
 
-                local baseBag = getObjectFromGUID(figureBaseId)
-                if baseBag then
-                  local base = baseBag.takeObject({
-                    position = basePos:setAt("y", basePos.y + 1 - 0.22),
-                    rotation = {0, 0, 0},
-                    smooth = true
-                  })
-                  base.setColorTint(tintColor)
-                  takeFigureOntoBase(base)
-                else
-                  takeFigureOntoBase(nil)
-                end
+                runAfterRest(takenObject, function(takenObject)
+                  local attachments = takenObject.getAttachments()
+                  if attachments and attachments[1] then
+                    attachments[1].setColorTint(tintColor)
+                  end
+                  Wait.time(function()
+                    playFigureIdleTriggerEffect(takenObject)
+                  end, 1)
+                end)
                 break
               end
             end

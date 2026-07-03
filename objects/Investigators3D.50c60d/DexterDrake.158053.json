@@ -5,10 +5,77 @@
     "z": 0
   },
   "Autoraise": true,
+  "ChildObjects": [
+    {
+      "AltLookAngle": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "Autoraise": true,
+      "ColorDiffuse": {
+        "b": 1,
+        "g": 1,
+        "r": 1
+      },
+      "CustomMesh": {
+        "CastShadows": true,
+        "ColliderURL": "https://drive.google.com/uc?export=download&id=1NCRzhKqAdhxRnxkA-TNRMG_x_R1wWJYM",
+        "Convex": true,
+        "CustomShader": {
+          "FresnelStrength": 0,
+          "SpecularColor": {
+            "b": 1,
+            "g": 1,
+            "r": 1
+          },
+          "SpecularIntensity": 0,
+          "SpecularSharpness": 2
+        },
+        "DiffuseURL": "https://drive.google.com/uc?export=download&id=1UlPfPNN2X-y6T32wnVXwyjbAYDPBqCVk",
+        "MaterialIndex": 3,
+        "MeshURL": "https://drive.google.com/uc?export=download&id=1NCRzhKqAdhxRnxkA-TNRMG_x_R1wWJYM",
+        "NormalURL": "",
+        "TypeIndex": 1
+      },
+      "Description": "",
+      "DragSelectable": true,
+      "GMNotes": "",
+      "GUID": "fe8700",
+      "Grid": false,
+      "GridProjection": false,
+      "Hands": false,
+      "HideWhenFaceDown": false,
+      "IgnoreFoW": false,
+      "LayoutGroupSortIndex": 0,
+      "Locked": false,
+      "LuaScript": "",
+      "LuaScriptState": "",
+      "MeasureMovement": false,
+      "Name": "Custom_Model",
+      "Nickname": "ModelBase",
+      "Snap": false,
+      "Sticky": false,
+      "Tooltip": true,
+      "Transform": {
+        "posX": 0.0012482896,
+        "posY": -0.325986922,
+        "posZ": 0.00146097294,
+        "rotX": 0.004800764,
+        "rotY": 179.999863,
+        "rotZ": -0.002107395,
+        "scaleX": 1.98630142,
+        "scaleY": 1.98630142,
+        "scaleZ": 1.98630142
+      },
+      "Value": 0,
+      "XmlUI": ""
+    }
+  ],
   "ColorDiffuse": {
-    "b": 0,
-    "g": 0,
-    "r": 0
+    "b": 1,
+    "g": 1,
+    "r": 1
   },
   "CustomAssetbundle": {
     "AssetbundleSecondaryURL": "",
@@ -38,12 +105,12 @@
   "Sticky": false,
   "Tooltip": true,
   "Transform": {
-    "posX": 36.066,
-    "posY": 4.059,
-    "posZ": 36.446,
-    "rotX": 0,
-    "rotY": 271,
-    "rotZ": 0,
+    "posX": 35.865,
+    "posY": 4.315,
+    "posZ": 37.458,
+    "rotX": 359,
+    "rotY": 177,
+    "rotZ": 359,
     "scaleX": 0.73,
     "scaleY": 0.73,
     "scaleZ": 0.73
