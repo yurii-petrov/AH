@@ -130,10 +130,22 @@ function onload(savedData)
   lockObj(shopMatId)
   lockObj(nastilo4kaId)
 
+  -- A missing/empty savedData means a genuine fresh load (no save to
+  -- restore) — parsedSaveData stays nil and gameData keeps State.ttslua's
+  -- defaults. When there IS saved data, merge it onto the defaults instead
+  -- of replacing gameData outright, so any key a partial/older save doesn't
+  -- have (lockObjs, selectedInvestigators, addons, ...) still exists —
+  -- otherwise downstream code (e.g. `pairs(gameData.lockObjs)`) can crash
+  -- on a nil field.
   local parsedSaveData = parseJson(savedData)
   if parsedSaveData then
-    gameData = parsedSaveData
+    for key, value in pairs(parsedSaveData) do
+      gameData[key] = value
+    end
   end
+  gameData.lockObjs = gameData.lockObjs or {}
+  gameData.addons = gameData.addons or {}
+  gameData.selectedInvestigators = gameData.selectedInvestigators or {}
 
   resolveAllDeckObjects()
 
@@ -156,7 +168,8 @@ function onload(savedData)
   for guid, _ in pairs(gameData.lockObjs) do
     lockObj(guid)
 
-    local memo = parseJson(getObjectFromGUID(guid).memo)
+    local lockedObj = getObjectFromGUID(guid)
+    local memo = lockedObj and parseJson(lockedObj.memo)
     if memo and memo.name == "ConditionMat2" then
       conditionMat2Id = guid
     end

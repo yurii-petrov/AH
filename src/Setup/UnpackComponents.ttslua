@@ -81,9 +81,8 @@ local function takeNext(bag, bagType, tableObj, onDone)
     smooth   = false,
   })
 
-  o.setRotation(orient(memo, o.type == "Deck"))
-
   if o then
+    o.setRotation(orient(memo, o.type == "Deck"))
     storeComponent(bagType, o.getGUID(), o.getName(), memo)
   end
 

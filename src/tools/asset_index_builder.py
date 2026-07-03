@@ -383,13 +383,15 @@ def ensure_schema(index):
 
         for asset in assets:
             local = asset.pop("local", None)
-            # _gurl is carried forward verbatim as a re-download reference for
-            # an already-local file — deliberately kept separate from the
-            # google/steam sub-dicts below, which specifically mean "this
-            # target's live text still has a raw drive.google.com URL to
-            # localize." Reusing google.link/local for gUrl would make
+            # _gurl/_steam_url are carried forward verbatim as re-download
+            # references for an already-local file — deliberately kept
+            # separate from the google/steam sub-dicts below, which
+            # specifically mean "this target's live text still has a raw
+            # drive.google.com / steamusercontent.com URL to localize."
+            # Reusing google.link/steam.link for them would make
             # already-migrated assets look like they still need migrating.
             asset["_gurl"] = asset.pop("gUrl", None)
+            asset["_steam_url"] = asset.pop("steamUrl", None)
 
             abs_local = None
             if local:
@@ -438,6 +440,7 @@ def prune_for_output(index):
 
             local = None
             gurl = asset.get("_gurl") or google.get("link")
+            steam_url = asset.get("_steam_url") or steam.get("link")
 
             if google.get("local"):
                 local = to_relative(google["local"])
@@ -452,6 +455,8 @@ def prune_for_output(index):
                 asset_out["local"] = local
             if gurl:
                 asset_out["gUrl"] = gurl
+            if steam_url:
+                asset_out["steamUrl"] = steam_url
 
             if len(asset_out) > 1:
                 assets_out.append(asset_out)

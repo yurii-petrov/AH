@@ -172,6 +172,20 @@
         "args": ["${workspaceFolder}/src/tools/apply_asset_source.py", "--drive", "--apply"]
       },
       "problemMatcher": []
+    },
+
+    {
+      "label": "Arkham Horror: Use Steam Cloud Links",
+      "type": "shell",
+      "windows": {
+        "command": "py",
+        "args": ["${workspaceFolder}\\src\\tools\\apply_asset_source.py", "--steam", "--apply"]
+      },
+      "osx": {
+        "command": "${workspaceFolder}/.venv/bin/python",
+        "args": ["${workspaceFolder}/src/tools/apply_asset_source.py", "--steam", "--apply"]
+      },
+      "problemMatcher": []
     }
   ],
   "inputs": [

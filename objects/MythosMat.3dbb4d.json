@@ -561,29 +561,29 @@
     },
     "ImageScalar": 1,
     "ImageSecondaryURL": "",
-    "ImageURL": "https://drive.google.com/uc?export=download&id=11DTiy5fy4qNbvVNBgCyLv5vLahmBhWxY",
+    "ImageURL": "https://steamusercontent-a.akamaihd.net/ugc/9893206252386731672/AFD5C60BA7D22E2D6BA86762B60474845D92EE9D/",
     "WidthScale": 0
   },
   "CustomUIAssets": [
     {
       "Name": "success_icon",
       "Type": 0,
-      "URL": "https://drive.google.com/uc?export=download&id=1L7AZa56r3BBoQNviWpQS-y4ekER_Lpfq"
+      "URL": "https://steamusercontent-a.akamaihd.net/ugc/10151014189290626376/58E4451E7523BC52C0D4CDBFA0458C786AF6E4D8/"
     },
     {
       "Name": "discard_icon",
       "Type": 0,
-      "URL": "https://drive.google.com/uc?export=download&id=1DuOIUR-za6c00dL_N3xbcpSRDCS8pol6"
+      "URL": "https://steamusercontent-a.akamaihd.net/ugc/14421964689492510289/C13A5A578F3A5D4E2B7F6DF6499FEFB4B980A884/"
     },
     {
       "Name": "fail_icon",
       "Type": 0,
-      "URL": "https://drive.google.com/uc?export=download&id=1aqkaxfsTttxo1jfa4ma9VArcZ6WXy5Fw"
+      "URL": "https://steamusercontent-a.akamaihd.net/ugc/9963488286847697072/FC0356EFD31B243D9D7BE96B8578493117C56A5C/"
     },
     {
       "Name": "myth_slots",
       "Type": 0,
-      "URL": "https://drive.google.com/uc?export=download&id=1VYV4mgJSams5SMFYTASL0D9xJN7-Ap0y"
+      "URL": "https://steamusercontent-a.akamaihd.net/ugc/11907850477784915952/43E1F877797D2A71087DBE0EDD4C169A317F74C6/"
     }
   ],
   "Description": "",

@@ -9,10 +9,11 @@ INDEX_FILE = os.path.join(os.path.dirname(__file__), "index.json")
 
 
 # -------------------------
-# SWITCH PROJECT REFERENCES BETWEEN THE local FILE AND THE gUrl DRIVE LINK,
-# per asset entry recorded in index.json. Doesn't rescan the project — run
-# asset_index_builder.py (+ add_download_links.py for gUrl coverage) first
-# if index.json might be stale.
+# SWITCH PROJECT REFERENCES BETWEEN THE local FILE, THE gUrl DRIVE LINK, AND
+# THE steamUrl STEAM CLOUD LINK, per asset entry recorded in index.json.
+# Doesn't rescan the project — run asset_index_builder.py (+
+# add_download_links.py for gUrl coverage) first if index.json might be
+# stale.
 # -------------------------
 def collect_fixes(source):
     with open(INDEX_FILE, "r", encoding="utf-8") as f:
@@ -25,18 +26,24 @@ def collect_fixes(source):
 
         for asset in file_data.get("assets", []):
             local = asset.get("local")
-            gurl = asset.get("gUrl")
-            if not local or not gurl:
+            local_url = (
+                build_local_file_url(os.path.join(ROOT_DIR, *local.split("/")))
+                if local else None
+            )
+
+            urls = {
+                "local": local_url,
+                "drive": asset.get("gUrl"),
+                "steam": asset.get("steamUrl"),
+            }
+
+            new = urls.get(source)
+            if not new:
                 continue
 
-            local_url = build_local_file_url(os.path.join(ROOT_DIR, *local.split("/")))
-
-            if source == "local":
-                old, new = gurl, local_url
-            else:
-                old, new = local_url, gurl
-
-            fixes_by_file.setdefault(file_path, []).append((old, new))
+            for other_source, old in urls.items():
+                if other_source != source and old:
+                    fixes_by_file.setdefault(file_path, []).append((old, new))
 
     return fixes_by_file
 
@@ -51,8 +58,10 @@ def main():
         source = "local"
     elif "--drive" in sys.argv:
         source = "drive"
+    elif "--steam" in sys.argv:
+        source = "steam"
     else:
-        print("Specify --local (use local files) or --drive (use Google Drive links)")
+        print("Specify --local (use local files), --drive (use Google Drive links), or --steam (use Steam Cloud links)")
         sys.exit(1)
 
     fixes_by_file = collect_fixes(source)

@@ -16,7 +16,7 @@
   "ContainedObjects_path": "Custom_Model_Infinite_Bag.2f7335",
   "CustomMesh": {
     "CastShadows": true,
-    "ColliderURL": "https://drive.google.com/uc?export=download&id=1lnNRkMFfBgoCQ-yz-rfXqIzlhOX3oa3A",
+    "ColliderURL": "https://steamusercontent-a.akamaihd.net/ugc/17103949398364322315/B156B9A92D44736B0D5B44910E546B4BC621F5FC/",
     "Convex": true,
     "CustomShader": {
       "FresnelStrength": 0,
@@ -28,9 +28,9 @@
       "SpecularIntensity": 0,
       "SpecularSharpness": 2
     },
-    "DiffuseURL": "https://drive.google.com/uc?export=download&id=10zlaY8j7BlUtumiupu47GoC6EcbdW5hc",
+    "DiffuseURL": "https://steamusercontent-a.akamaihd.net/ugc/15802443103836560711/0B0042DDF705DD8D22CF78DDB4329EBABDCABFDC/",
     "MaterialIndex": 3,
-    "MeshURL": "https://drive.google.com/uc?export=download&id=1lnNRkMFfBgoCQ-yz-rfXqIzlhOX3oa3A",
+    "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/17103949398364322315/B156B9A92D44736B0D5B44910E546B4BC621F5FC/",
     "NormalURL": "",
     "TypeIndex": 7
   },

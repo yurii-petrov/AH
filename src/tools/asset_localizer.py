@@ -250,6 +250,10 @@ def apply_replacements(replacements_by_file, apply):
     urls_replaced = 0
 
     for file_path, replacements in replacements_by_file.items():
+        if not os.path.isfile(file_path):
+            print(f"SKIP (missing, index.json is stale): {file_path}")
+            continue
+
         with open(file_path, "r", encoding="utf-8") as f:
             content = f.read()
 

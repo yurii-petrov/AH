@@ -22,8 +22,8 @@
       "CustomDeck": {
         "5798": {
           "BackIsHidden": true,
-          "BackURL": "https://drive.google.com/uc?export=download&id=1tvk-LqPPszWWTeHmWmRAuVdp7EId43Mh",
-          "FaceURL": "https://drive.google.com/uc?export=download&id=1FbKdZTNMIwdeetCPsi-NX8bjgJcuIWmo",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/15716916044391762845/B229E49CF55E2F02B1283EC55915467504300A70/",
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/16399548818406396612/760B24A37605A57F4F3E3BD70040B305729E99AD/",
           "NumHeight": 7,
           "NumWidth": 9,
           "Type": 0,
@@ -81,8 +81,8 @@
       "CustomDeck": {
         "5798": {
           "BackIsHidden": true,
-          "BackURL": "https://drive.google.com/uc?export=download&id=1tvk-LqPPszWWTeHmWmRAuVdp7EId43Mh",
-          "FaceURL": "https://drive.google.com/uc?export=download&id=1FbKdZTNMIwdeetCPsi-NX8bjgJcuIWmo",
+          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/15716916044391762845/B229E49CF55E2F02B1283EC55915467504300A70/",
+          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/16399548818406396612/760B24A37605A57F4F3E3BD70040B305729E99AD/",
           "NumHeight": 7,
           "NumWidth": 9,
           "Type": 0,
@@ -139,14 +139,14 @@
     },
     "ImageScalar": 1,
     "ImageSecondaryURL": "",
-    "ImageURL": "https://drive.google.com/uc?export=download&id=1_4mfR3Rlcb7XZuwjK3gp4FuG1Vgo6eOB",
+    "ImageURL": "https://steamusercontent-a.akamaihd.net/ugc/15423721545364936281/60EF655541BA52B3E18F6CE7D6D2F07C09165750/",
     "WidthScale": 0
   },
   "CustomUIAssets": [
     {
       "Name": "Fonts",
       "Type": 1,
-      "URL": "https://drive.google.com/uc?export=download&id=136ZvlP_d9WqvYyBvwTGldulgXGsm6V0Y"
+      "URL": "https://steamusercontent-a.akamaihd.net/ugc/18387726393550310454/A578781E3315E733B9148B3F6DF2B249F8E5C9F4/"
     }
   ],
   "Description": "",

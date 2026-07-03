@@ -20,13 +20,16 @@ MODSETTINGS_DIR = os.path.join(ROOT_DIR, "modsettings")
 # file is therefore invisible to it and never gets uploaded, unless it's
 # registered here in CustomUIAssets.json and referenced by Name instead.
 
-# TTS XML UI attributes named "image"/"imageHover" must reference a Name.
+# TTS XML UI attributes named "image"/"imageHover" must reference a Name —
+# this is TTS's documented mechanism for self.UI.setXmlTable()/setXml() XML.
 UI_ATTR_REGEX = re.compile(r'\b(image(?:Hover)?)(\s*=\s*)"(file:[^"]+)"')
 
-# Bare `return "file:...png"`-style literals (e.g. Roller.ttslua's
-# getDiceImage()) used for native fields (ImageURL, MeshURL, ...) — still
-# invisible to Steam Cloud since they only exist inside Lua source.
-RETURN_URL_REGEX = re.compile(r'(return\s+)"(file:[^"]+)"')
+# NOTE: bare `return "file:...png"`-style literals feeding a *native* object
+# field (CustomImage.ImageURL, MeshURL, ...) passed to spawnObjectData are
+# NOT safe to Name-ify — confirmed by Roller.ttslua breaking on save/reload
+# when its getDiceImage() returned a Name instead of a real URL. Only the
+# CustomUIAssets *registration* (for Steam Cloud discovery) applies there;
+# the Lua code itself must keep using a real, resolvable URL.
 
 # self.UI.setCustomAssets({ { name = "x", url = "file:..." }, ... }) is a
 # *local*, per-object registration TTS resolves at runtime for its own XML —
@@ -154,14 +157,13 @@ def find_ttslua_files():
 # -------------------------
 # .ttslua FIXES
 # -------------------------
+RETURN_URL_SCAN_REGEX = re.compile(r'return\s+"(file:[^"]+)"')
+
+
 def fix_ttslua(content, registry):
     def repl_attr(match):
         attr, eq, url = match.group(1), match.group(2), match.group(3)
         return f'{attr}{eq}"{registry.register(url)}"'
-
-    def repl_return(match):
-        prefix, url = match.group(1), match.group(2)
-        return f'{prefix}"{registry.register(url)}"'
 
     def repl_set_custom_assets(match):
         for name, url in SET_CUSTOM_ASSETS_ENTRY_REGEX.findall(match.group(0)):
@@ -175,7 +177,12 @@ def fix_ttslua(content, registry):
 
     content = SET_CUSTOM_ASSETS_REGEX.sub(repl_set_custom_assets, content)
     content = UI_ATTR_REGEX.sub(repl_attr, content)
-    content = RETURN_URL_REGEX.sub(repl_return, content)
+
+    # Native-field URLs (return "file://...") get registered for Steam Cloud
+    # discovery only — the Lua text itself must keep the real URL, not a Name.
+    for url in RETURN_URL_SCAN_REGEX.findall(content):
+        registry.register(url)
+
     return content
 
 

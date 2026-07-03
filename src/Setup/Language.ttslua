@@ -43,10 +43,12 @@ function updateGlobalXml(newXml)
 
   for _, windowId in ipairs(windowIdList) do
     local element = getXmlTableElementById(newXml, windowId)
-    if windowId == "main_menu" then
-      element.attributes.active = gameData.language and not gameData.isStarted
-    elseif windowId == "languages" then
-      element.attributes.active = gameData.language == nil
+    if element then
+      if windowId == "main_menu" then
+        element.attributes.active = gameData.language and not gameData.isStarted
+      elseif windowId == "languages" then
+        element.attributes.active = gameData.language == nil
+      end
     end
   end
 

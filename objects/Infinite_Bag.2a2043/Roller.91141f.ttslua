@@ -641,11 +641,11 @@ end
 function getDiceImage(t)
   local t = t or rollerData.type
   if t == 1 then
-    return "dice_green"
+    return "https://steamusercontent-a.akamaihd.net/ugc/9293897538631522871/B904927AB076362AB0E4FCF2FF2AF389A862A61D/"
   elseif t == 2 then
-    return "dice_blue"
+    return "https://steamusercontent-a.akamaihd.net/ugc/12597826545315560669/D1E7D1511D57F7B5E9B3A524B89F9B216BF0D495/"
   elseif t == 3 then
-    return "dice_red"
+    return "https://steamusercontent-a.akamaihd.net/ugc/13468893877756053433/011289201DE8E02EB44DBF0CA363DFF942B89466/"
   end
 end
 
