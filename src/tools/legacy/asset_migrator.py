@@ -3,6 +3,8 @@ import re
 import shutil
 import sys
 
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 from asset_index_builder import (
     ASSET_FLATTEN_MOVES,
     ASSETS_ROOT,

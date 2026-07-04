@@ -10,7 +10,7 @@ sys.path.insert(0, os.path.normpath(TOOLS_DIR))
 from asset_index_builder import ROOT_DIR, build_local_file_url, print_box
 from asset_localizer import apply_replacements
 
-INDEX_FILE = os.path.join(os.path.normpath(TOOLS_DIR), "index.json")
+INDEX_FILE = os.path.join(os.path.normpath(TOOLS_DIR), "legacy", "index.json")
 
 
 # -------------------------

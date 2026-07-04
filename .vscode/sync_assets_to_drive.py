@@ -4,6 +4,7 @@ import sys
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 ROOT_DIR = os.path.dirname(SCRIPT_DIR)
 sys.path.insert(0, os.path.join(ROOT_DIR, "src", "tools"))
+sys.path.insert(0, os.path.join(ROOT_DIR, "src", "tools", "drive"))
 sys.path.insert(0, SCRIPT_DIR)
 
 from asset_index_builder import extract_google_id, print_box

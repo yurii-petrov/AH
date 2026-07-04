@@ -5,6 +5,8 @@ import warnings
 
 warnings.filterwarnings("ignore")
 
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
@@ -22,7 +24,7 @@ from assets_manifest import drive_url, load_manifest, save_manifest, scan_assets
 # One-time setup (can't be automated — needs your own Google account):
 #   1. console.cloud.google.com -> new project -> enable "Google Drive API".
 #   2. Credentials -> Create Credentials -> OAuth client ID -> "Desktop app".
-#      Download the JSON, save it as src/tools/credentials.json.
+#      Download the JSON, save it as src/tools/drive/credentials.json.
 #   3. OAuth consent screen -> add yourself as a test user.
 #   4. DRIVE_FOLDER_NAME below must already exist in your Drive, owned by
 #      you (or shared with Editor access) — this script does not create the
@@ -30,7 +32,7 @@ from assets_manifest import drive_url, load_manifest, save_manifest, scan_assets
 #      subfolder structure).
 #
 # First run opens a browser for you to sign in and grant access; after that
-# it reuses src/tools/token.json (gitignored, do not commit either file).
+# it reuses src/tools/drive/token.json (gitignored, do not commit either file).
 # -------------------------
 
 # drive.file (files created *by this app* only) can't see a folder that
@@ -40,7 +42,7 @@ SCOPES = ["https://www.googleapis.com/auth/drive"]
 TOOLS_DIR = os.path.dirname(os.path.abspath(__file__))
 CREDENTIALS_FILE = os.path.join(TOOLS_DIR, "credentials.json")
 TOKEN_FILE = os.path.join(TOOLS_DIR, "token.json")
-INDEX_FILE = os.path.join(TOOLS_DIR, "index.json")
+INDEX_FILE = os.path.join(os.path.dirname(TOOLS_DIR), "legacy", "index.json")
 
 DRIVE_FOLDER_NAME = "assets"
 

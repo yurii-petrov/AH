@@ -48,7 +48,7 @@
 
     {
       "label": "Arkham Horror: Decompose",
-      "dependsOn": ["_decompose", "_index_assets", "_add_download_links"],
+      "dependsOn": ["_decompose"],
       "dependsOrder": "sequence",
       "problemMatcher": []
     },
@@ -66,34 +66,6 @@
       },
       "options": {
         "cwd": "${workspaceFolder}${pathSeparator}.vscode"
-      },
-      "problemMatcher": []
-    },
-
-    {
-      "label": "_index_assets",
-      "type": "shell",
-      "windows": {
-        "command": "py",
-        "args": ["${workspaceFolder}\\src\\tools\\asset_index_builder.py"]
-      },
-      "osx": {
-        "command": "${workspaceFolder}/.venv/bin/python",
-        "args": ["${workspaceFolder}/src/tools/asset_index_builder.py"]
-      },
-      "problemMatcher": []
-    },
-
-    {
-      "label": "_add_download_links",
-      "type": "shell",
-      "windows": {
-        "command": "py",
-        "args": ["${workspaceFolder}\\src\\tools\\add_download_links.py"]
-      },
-      "osx": {
-        "command": "${workspaceFolder}/.venv/bin/python",
-        "args": ["${workspaceFolder}/src/tools/add_download_links.py"]
       },
       "problemMatcher": []
     },

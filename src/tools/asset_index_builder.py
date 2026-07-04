@@ -8,8 +8,8 @@ import openpyxl
 # Repo root, derived from this file's location (src/tools/asset_index_builder.py)
 # so every developer's own checkout resolves correctly, regardless of OS or path.
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-OUTPUT_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "index.json")
-TTS_INDEX_XLSX = os.path.join(os.path.dirname(__file__), "assets_tts_url.xlsx")
+OUTPUT_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "legacy", "index.json")
+TTS_INDEX_XLSX = os.path.join(os.path.dirname(__file__), "legacy", "assets_tts_url.xlsx")
 DRIVE_ROOT = "/Users/yurii/My Drive (pe.ur.ur@gmail.com)/Arkham Horror (TTS)"
 ASSETS_ROOT = os.path.join(ROOT_DIR, "assets")
 

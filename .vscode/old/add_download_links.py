@@ -1,12 +1,20 @@
 import json
 import os
+import sys
 
 import openpyxl
 
+# Archived: no longer wired into tasks.json, but kept runnable manually.
+# It still lives off the src/tools/ modules/files it always used.
+TOOLS_DIR = os.path.normpath(
+    os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "src", "tools")
+)
+sys.path.insert(0, TOOLS_DIR)
+
 from asset_index_builder import print_box
 
-XLSX_FILE = os.path.join(os.path.dirname(__file__), "assets_tts_url.xlsx")
-INDEX_FILE = os.path.join(os.path.dirname(__file__), "index.json")
+XLSX_FILE = os.path.join(TOOLS_DIR, "legacy", "assets_tts_url.xlsx")
+INDEX_FILE = os.path.join(TOOLS_DIR, "legacy", "index.json")
 
 
 # -------------------------
