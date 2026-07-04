@@ -83,8 +83,12 @@ def scan_assets(old_assets):
 
 
 def save_manifest(assets):
+    # sort_keys: os.walk()'s traversal order (and hence dict insertion order)
+    # differs by OS/filesystem, so without this every developer's save would
+    # reorder the whole file — making git diffs show a total rewrite even
+    # when only a handful of entries actually changed.
     with open(MANIFEST_FILE, "w", encoding="utf-8") as f:
-        json.dump({"assets": assets}, f, indent=2, ensure_ascii=False)
+        json.dump({"assets": assets}, f, indent=2, ensure_ascii=False, sort_keys=True)
 
 
 def load_local_snapshot():
@@ -101,7 +105,7 @@ def load_local_snapshot():
 
 def save_local_snapshot(assets):
     with open(LOCAL_SNAPSHOT_FILE, "w", encoding="utf-8") as f:
-        json.dump({"assets": assets}, f, indent=2, ensure_ascii=False)
+        json.dump({"assets": assets}, f, indent=2, ensure_ascii=False, sort_keys=True)
 
 
 def diff(old_assets, new_assets):
