@@ -624,7 +624,11 @@
     "24fa6ece60f087ef226ccfb0e547f4412d4b27768149b18e0741012d0b77a998": {
       "driveId": "1aqL9-8tcUfIkY3vhj3aPkgttNI_SvmDf",
       "paths": {
-        "assets/rules/base_rules_reference.pdf": {
+        "assets/rules/en/(1) Dead of Night.pdf": {
+          "mtime": 1783001203.265,
+          "size": 5545722
+        },
+        "assets/rules/uk/(1) Dead of Night.pdf": {
           "mtime": 1783001203.265,
           "size": 5545722
         }
@@ -1294,7 +1298,11 @@
     "42251fd2dee731f15cc7bc6fed646f66a0265a0e68cc856713785db32e04421b": {
       "driveId": "1dOyBcPbKvr6uU1t2f8UKHjVUgyb2yyfT",
       "paths": {
-        "assets/rules/quick_reference.pdf": {
+        "assets/rules/en/(4) Recursive Echoes.pdf": {
+          "mtime": 1783001203.13,
+          "size": 3681515
+        },
+        "assets/rules/uk/(4) Recursive Echoes.pdf": {
           "mtime": 1783001203.13,
           "size": 3681515
         }
@@ -1789,7 +1797,11 @@
     "5f12fa7a16064dc0f55b39504ac574af7c32379c49e8ce36ddeb350c72f0d6f3": {
       "driveId": "1JsZePrQWUPqoytBHUo7s4MW5yA1f8gsd",
       "paths": {
-        "assets/rules/rulebook.pdf": {
+        "assets/rules/en/(2) Under Dark Waves.pdf": {
+          "mtime": 1783001203.272,
+          "size": 4471461
+        },
+        "assets/rules/uk/(2) Under Dark Waves.pdf": {
           "mtime": 1783001203.272,
           "size": 4471461
         }
@@ -2500,7 +2512,11 @@
     "85efe4448afef476cb5509c325d8c9f817604afe59404ee8edb189c90b312d1e": {
       "driveId": "1xx_b-dY4NvpPcWKA6TRsnvhjglQI9oWh",
       "paths": {
-        "assets/rules/secrets_of_the_order_rulebook.pdf": {
+        "assets/rules/en/(3) Secrets of the Order.pdf": {
+          "mtime": 1783001203.35,
+          "size": 2571442
+        },
+        "assets/rules/uk/(3) Secrets of the Order.pdf": {
           "mtime": 1783001203.35,
           "size": 2571442
         }
