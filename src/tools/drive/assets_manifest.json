@@ -3870,15 +3870,6 @@
       },
       "driveId": "18qQgvNq5WtFW5F36mnoUNxx3f1ESXgzb"
     },
-    "a4bc47a6aebdcac4e19618dbcf2d386f5bb955cc199d4e372b11fcd433f1e8a5": {
-      "paths": {
-        "assets/other_graphics/addon3.png": {
-          "mtime": 1754747045.0,
-          "size": 31970
-        }
-      },
-      "driveId": "1CH4aqTJGlXOWql7r4MzmhrkNCGYYpZu_"
-    },
     "5ffaa0f1fd6dfcd0e0d9c5eae613c63659c5a7917411b930973ae6cb0cd8a55d": {
       "paths": {
         "assets/other_graphics/Activation_Token_1.png": {
@@ -3886,7 +3877,7 @@
           "size": 169734
         }
       },
-      "driveId": "1bIq4PwuNrdUPjsXQoOh05YvihE0ZCkmv"
+      "driveId": "1ixG-9EWnMQF7B0ywqvvdegJBWx8_OdYU"
     },
     "29159dc37329659eb72b73070623af95de8d4f12a73ff69d56632b4713115e76": {
       "paths": {
@@ -3914,15 +3905,6 @@
         }
       },
       "driveId": "1VYV4mgJSams5SMFYTASL0D9xJN7-Ap0y"
-    },
-    "d2a988dacf3246c9a921031026e71f9157323697cfbdd385227d5d29fdd700b8": {
-      "paths": {
-        "assets/other_graphics/addon2.png": {
-          "mtime": 1754747072.0,
-          "size": 31542
-        }
-      },
-      "driveId": "1MMc_X6CTBB6yoaPRMue3lA6YbWIVCs2z"
     },
     "d30e500cf1e627f13741e2a107b6fbab34d82762235e93429b64c4d1e53cfada": {
       "paths": {
@@ -3982,15 +3964,6 @@
       },
       "driveId": "1othFty2llGFmIk7FALRyIGV9ppN4j-iS"
     },
-    "988724ad5d319bd5e4fe0433c7f8c000e561841befbd4b10c2a8e54c35e43d7a": {
-      "paths": {
-        "assets/other_graphics/addon1.png": {
-          "mtime": 1754747058.0,
-          "size": 29610
-        }
-      },
-      "driveId": "17KrjaDJW2n_UW2ZuDnYqVPhe4egPsMPQ"
-    },
     "41cdd1f11340e038ca4390fe8915a1c4ae88c5423c4e603d16fe18ce5a5facc9": {
       "paths": {
         "assets/other_graphics/scenarioMap2.png": {
@@ -4008,15 +3981,6 @@
         }
       },
       "driveId": "1-ei9nPfmxg9E54dBQT-zvO771JzRLENy"
-    },
-    "2b1939764d9226e316024b3df1f84e4da46d019fabd0b7868c740ed832a425cf": {
-      "paths": {
-        "assets/other_graphics/addon4.png": {
-          "mtime": 1754752410.0,
-          "size": 27223
-        }
-      },
-      "driveId": "1XlFwO_hwRNxeu3pLO1DzzCwZgh8swWmA"
     },
     "720a9e84b6657e6fbad95f89fb12483df538a2640a027b15e3dbc24b5034126c": {
       "paths": {
@@ -4540,6 +4504,42 @@
       },
       "driveId": "1a1NZNPY2c6Nb7td6Ru8tLKc_Q7tpygjZ"
     },
+    "a4bc47a6aebdcac4e19618dbcf2d386f5bb955cc199d4e372b11fcd433f1e8a5": {
+      "paths": {
+        "assets/other_graphics/Addons/addon3.png": {
+          "mtime": 1754747045.0,
+          "size": 31970
+        }
+      },
+      "driveId": "1CH4aqTJGlXOWql7r4MzmhrkNCGYYpZu_"
+    },
+    "d2a988dacf3246c9a921031026e71f9157323697cfbdd385227d5d29fdd700b8": {
+      "paths": {
+        "assets/other_graphics/Addons/addon2.png": {
+          "mtime": 1754747072.0,
+          "size": 31542
+        }
+      },
+      "driveId": "1MMc_X6CTBB6yoaPRMue3lA6YbWIVCs2z"
+    },
+    "988724ad5d319bd5e4fe0433c7f8c000e561841befbd4b10c2a8e54c35e43d7a": {
+      "paths": {
+        "assets/other_graphics/Addons/addon1.png": {
+          "mtime": 1754747058.0,
+          "size": 29610
+        }
+      },
+      "driveId": "17KrjaDJW2n_UW2ZuDnYqVPhe4egPsMPQ"
+    },
+    "2b1939764d9226e316024b3df1f84e4da46d019fabd0b7868c740ed832a425cf": {
+      "paths": {
+        "assets/other_graphics/Addons/addon4.png": {
+          "mtime": 1754752410.0,
+          "size": 27223
+        }
+      },
+      "driveId": "1XlFwO_hwRNxeu3pLO1DzzCwZgh8swWmA"
+    },
     "335309389853ea616cf3af469c6b3d8ba20fe9e9c1b92e56ecc92667a8ff390c": {
       "paths": {
         "assets/other_graphics/additional_buttons_for_xml/additional_buttons_4_hover.png": {
@@ -4639,15 +4639,6 @@
       },
       "driveId": "1IASnIGR8pSOo-AQl0aA2pa_5AdZMAcOJ"
     },
-    "5f12fa7a16064dc0f55b39504ac574af7c32379c49e8ce36ddeb350c72f0d6f3": {
-      "paths": {
-        "assets/rules/rulebook.pdf": {
-          "mtime": 1783001203.272,
-          "size": 4471461
-        }
-      },
-      "driveId": "1JsZePrQWUPqoytBHUo7s4MW5yA1f8gsd"
-    },
     "24fa6ece60f087ef226ccfb0e547f4412d4b27768149b18e0741012d0b77a998": {
       "paths": {
         "assets/rules/base_rules_reference.pdf": {
@@ -4656,6 +4647,15 @@
         }
       },
       "driveId": "1aqL9-8tcUfIkY3vhj3aPkgttNI_SvmDf"
+    },
+    "5f12fa7a16064dc0f55b39504ac574af7c32379c49e8ce36ddeb350c72f0d6f3": {
+      "paths": {
+        "assets/rules/rulebook1.pdf": {
+          "mtime": 1783001203.272,
+          "size": 4471461
+        }
+      },
+      "driveId": "1JsZePrQWUPqoytBHUo7s4MW5yA1f8gsd"
     },
     "42251fd2dee731f15cc7bc6fed646f66a0265a0e68cc856713785db32e04421b": {
       "paths": {
@@ -4675,15 +4675,6 @@
       },
       "driveId": "1xx_b-dY4NvpPcWKA6TRsnvhjglQI9oWh"
     },
-    "b4af099a2c1a1ff4e99d222487d2b38466b61335eec958a41126c1d6af6e2031": {
-      "paths": {
-        "assets/rules/uk/(0) Learn to Play.pdf.pdf": {
-          "mtime": 1782756607.996999,
-          "size": 12030262
-        }
-      },
-      "driveId": "1I9SDa1xDSUjy3MplJr4zJqsJs8MLSsf8"
-    },
     "5fcac2e82645f988aeadad948134cfe8a1bbe0cf2b8f6754bc96fdfc2cc0cc28": {
       "paths": {
         "assets/rules/uk/Rules Reference.pdf": {
@@ -4692,6 +4683,15 @@
         }
       },
       "driveId": "1TGE3S87AcgXuDCjXNSNgMRvxt1Gj-Adw"
+    },
+    "b4af099a2c1a1ff4e99d222487d2b38466b61335eec958a41126c1d6af6e2031": {
+      "paths": {
+        "assets/rules/uk/(0) Learn to Play.pdf": {
+          "mtime": 1782756607.996999,
+          "size": 12030262
+        }
+      },
+      "driveId": "1I9SDa1xDSUjy3MplJr4zJqsJs8MLSsf8"
     },
     "c00ce82953beceeba742c7bc7bb4f3243e8443af88c63c207c3fff3c010d07ff": {
       "paths": {
