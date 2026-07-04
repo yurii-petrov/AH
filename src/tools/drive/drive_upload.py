@@ -13,9 +13,9 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaFileUpload
 
-from asset_index_builder import ROOT_DIR, extract_google_id, print_box
+from asset_index_builder import extract_google_id, print_box
 from assets_manifest import diff as manifest_diff
-from assets_manifest import drive_url, load_manifest, save_manifest, scan_assets
+from assets_manifest import drive_url, load_manifest, save_manifest, scan_assets, to_absolute_asset
 
 # -------------------------
 # UPLOAD ASSETS WITH A LOCAL FILE BUT NO DRIVE LINK YET, THEN RECORD THE
@@ -294,7 +294,7 @@ def main():
         paths = list(entry["paths"])
         paths_lower = {p.lower() for p in paths}
         primary_path = paths[0]
-        abs_path = os.path.join(ROOT_DIR, *primary_path.split("/"))
+        abs_path = to_absolute_asset(primary_path)
         if not os.path.isfile(abs_path):
             print(f"SKIP (file missing on disk): {abs_path}")
             continue

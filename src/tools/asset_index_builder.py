@@ -11,7 +11,25 @@ ROOT_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 OUTPUT_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "legacy", "index.json")
 TTS_INDEX_XLSX = os.path.join(os.path.dirname(__file__), "legacy", "assets_tts_url.xlsx")
 DRIVE_ROOT = "/Users/yurii/My Drive (pe.ur.ur@gmail.com)/Arkham Horror (TTS)"
-ASSETS_ROOT = os.path.join(ROOT_DIR, "assets")
+
+
+def _load_local_settings():
+    """Per-developer overrides (assetsRoot, ...) — gitignored, since where the
+    assets/ folder actually lives (a local copy, a Drive-synced mount, a
+    renamed/relocated folder, ...) is a per-machine choice, not something a
+    shared repo file can hardcode for everyone."""
+    path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "local_settings.json")
+    if not os.path.exists(path):
+        return {}
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except (json.JSONDecodeError, OSError):
+        return {}
+
+
+_LOCAL_SETTINGS = _load_local_settings()
+ASSETS_ROOT = _LOCAL_SETTINGS.get("assetsRoot") or os.path.join(ROOT_DIR, "assets")
 
 
 def print_box(message):

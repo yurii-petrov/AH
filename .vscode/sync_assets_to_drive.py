@@ -7,9 +7,9 @@ sys.path.insert(0, os.path.join(ROOT_DIR, "src", "tools"))
 sys.path.insert(0, os.path.join(ROOT_DIR, "src", "tools", "drive"))
 sys.path.insert(0, SCRIPT_DIR)
 
-from asset_index_builder import extract_google_id, print_box
+from asset_index_builder import ASSETS_ROOT, extract_google_id, print_box
 from assets_manifest import diff as manifest_diff
-from assets_manifest import drive_url, load_manifest, save_manifest, scan_assets
+from assets_manifest import drive_url, load_manifest, save_manifest, scan_assets, to_absolute_asset
 from drive_upload import (
     DRIVE_FOLDER_NAME,
     find_folder,
@@ -26,7 +26,7 @@ IGNORE_DIRS = {
     os.path.realpath(os.path.join(ROOT_DIR, ".tts")),
     os.path.realpath(os.path.join(ROOT_DIR, "src/tools")),
     os.path.realpath(os.path.join(ROOT_DIR, ".venv")),
-    os.path.realpath(os.path.join(ROOT_DIR, "assets")),
+    os.path.realpath(ASSETS_ROOT),
 }
 
 
@@ -101,8 +101,8 @@ def pull_asset_layout(shared_manifest):
 
         old_path = sorted(current_paths)[0]
         new_path = sorted(expected_paths)[0]
-        old_abs = os.path.join(ROOT_DIR, *old_path.split("/"))
-        new_abs = os.path.join(ROOT_DIR, *new_path.split("/"))
+        old_abs = to_absolute_asset(old_path)
+        new_abs = to_absolute_asset(new_path)
 
         if os.path.isfile(new_abs):
             print(f"SKIP pulling rename ({old_path} -> {new_path}): destination already exists locally")
@@ -159,7 +159,7 @@ def main():
         entry = manifest[file_hash]
         paths = list(entry["paths"])
         primary_path = paths[0]
-        abs_path = os.path.join(ROOT_DIR, *primary_path.split("/"))
+        abs_path = to_absolute_asset(primary_path)
         if not os.path.isfile(abs_path):
             print(f"SKIP (file missing on disk): {abs_path}")
             continue

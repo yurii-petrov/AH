@@ -5,7 +5,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from asset_index_builder import ASSETS_ROOT, print_box, to_relative
+from asset_index_builder import ASSETS_ROOT, print_box
 
 MANIFEST_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets_manifest.json")
 DRIVE_URL_TEMPLATE = "https://drive.google.com/uc?export=download&id={}"
@@ -13,6 +13,23 @@ DRIVE_URL_TEMPLATE = "https://drive.google.com/uc?export=download&id={}"
 
 def drive_url(drive_id):
     return DRIVE_URL_TEMPLATE.format(drive_id) if drive_id else None
+
+
+def to_relative_asset(abs_path):
+    """Stored asset paths must stay a portable "assets/..." string — ASSETS_ROOT
+    can live anywhere on disk (a plain local folder, a relocated/renamed one, a
+    Drive-synced mount, ...) and differs per developer, so resolving against
+    ROOT_DIR like the rest of the project's paths would bake a machine-specific
+    absolute path into the shared, git-committed manifest."""
+    rel = os.path.relpath(abs_path, ASSETS_ROOT)
+    return "assets/" + rel.replace(os.sep, "/")
+
+
+def to_absolute_asset(rel_path):
+    parts = rel_path.split("/")
+    if parts and parts[0] == "assets":
+        parts = parts[1:]
+    return os.path.join(ASSETS_ROOT, *parts)
 
 
 def hash_file(abs_path):
@@ -43,7 +60,7 @@ def scan_assets(old_assets):
             if name == ".DS_Store":
                 continue
             abs_path = os.path.join(root, name)
-            rel_path = to_relative(abs_path)
+            rel_path = to_relative_asset(abs_path)
             stat = os.stat(abs_path)
             mtime, size = stat.st_mtime, stat.st_size
 

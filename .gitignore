@@ -5,6 +5,7 @@ src/ConvertMemo/objects/
 /assets/
 src/tools/drive/credentials.json
 src/tools/drive/token.json
+src/tools/local_settings.json
 # Cursor / Claude AI config
 .cursor/
 .claude/
