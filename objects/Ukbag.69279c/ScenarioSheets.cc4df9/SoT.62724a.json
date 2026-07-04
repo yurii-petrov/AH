@@ -316,8 +316,8 @@
   "CustomDeck": {
     "5802": {
       "BackIsHidden": true,
-      "BackURL": "file:////Users/yurii/AH/TTS assets/cards/1_dead_of_night/uk/Scenario 2Back.png",
-      "FaceURL": "file:////Users/yurii/AH/TTS assets/cards/1_dead_of_night/uk/Scenario 1Front.png",
+      "BackURL": "https://drive.google.com/uc?export=download&id=1e7VpxHNwHVXFUn1bgeQuA9Di8LbJvrH4",
+      "FaceURL": "https://drive.google.com/uc?export=download&id=1_OWz1MjIDwSbzIrJs6GxZEOPuvjmK87U",
       "NumHeight": 2,
       "NumWidth": 2,
       "Type": 1,

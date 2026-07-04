@@ -1,16 +1,16 @@
 {
   "AudioLibrary": [
     {
-      "Item1": "file:////Users/yurii/AH/TTS assets/music/lovecraft 01.MP3",
+      "Item1": "https://drive.google.com/uc?export=download&id=1cDQn1GZ5bAJYpQpV7DrxOPCNdrS09q6Q",
       "Item2": "lovecraft 01"
     },
     {
-      "Item1": "file:////Users/yurii/AH/TTS assets/music/cthulhu_music.mp3",
+      "Item1": "https://drive.google.com/uc?export=download&id=1eKydxIrnvChQfJ48jo6cDstbZKR_FFIT",
       "Item2": "Cthulhu Music"
     }
   ],
   "CurrentAudioTitle": "lovecraft 01",
-  "CurrentAudioURL": "file:////Users/yurii/AH/TTS assets/music/lovecraft 01.MP3",
+  "CurrentAudioURL": "https://drive.google.com/uc?export=download&id=1cDQn1GZ5bAJYpQpV7DrxOPCNdrS09q6Q",
   "PlaylistEntry": -1,
   "RepeatSong": false
 }

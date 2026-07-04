@@ -105,14 +105,14 @@
     },
     "ImageScalar": 1,
     "ImageSecondaryURL": "",
-    "ImageURL": "file:////Users/yurii/AH/TTS assets/other_graphics/market.png",
+    "ImageURL": "https://drive.google.com/uc?export=download&id=10hz6iF03hrUZsC7R7KYIth37b1pUfyj3",
     "WidthScale": 0
   },
   "CustomUIAssets": [
     {
       "Name": "Fonts",
       "Type": 1,
-      "URL": "file:////Users/yurii/AH/TTS assets/fonts/font_list.unity3d"
+      "URL": "https://drive.google.com/uc?export=download&id=136ZvlP_d9WqvYyBvwTGldulgXGsm6V0Y"
     }
   ],
   "Description": "",

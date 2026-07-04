@@ -12,7 +12,7 @@
   },
   "CustomMesh": {
     "CastShadows": true,
-    "ColliderURL": "file:////Users/yurii/AH/TTS assets/models/map_tile_hidden_path_collider.obj",
+    "ColliderURL": "https://drive.google.com/uc?export=download&id=12X9dYIxApSFfNNyPijiBZ14oURkfnSFr",
     "Convex": true,
     "CustomShader": {
       "FresnelStrength": 0,
@@ -24,9 +24,9 @@
       "SpecularIntensity": 0,
       "SpecularSharpness": 2
     },
-    "DiffuseURL": "file:////Users/yurii/AH/TTS assets/map_tiles/Hidden Path.jpeg",
+    "DiffuseURL": "https://drive.google.com/uc?export=download&id=1AzCdVoMJ7h1wBU1n6bo3IzotJJbOsc5B",
     "MaterialIndex": 3,
-    "MeshURL": "file:////Users/yurii/AH/TTS assets/models/map_tile_hidden_path.obj",
+    "MeshURL": "https://drive.google.com/uc?export=download&id=1PxDjt2EOCNmfCmK6Onpvb7pLILOF9XfG",
     "NormalURL": "",
     "TypeIndex": 0
   },

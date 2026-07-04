@@ -29,7 +29,7 @@
   },
   "CustomMesh": {
     "CastShadows": true,
-    "ColliderURL": "file:////Users/yurii/AH/TTS assets/models/map_tile_variant_a_collider.obj",
+    "ColliderURL": "https://drive.google.com/uc?export=download&id=1_7zW1jpKqmUa76bxglP84QdJXrAfTijN",
     "Convex": true,
     "CustomShader": {
       "FresnelStrength": 0,
@@ -41,9 +41,9 @@
       "SpecularIntensity": 0,
       "SpecularSharpness": 2
     },
-    "DiffuseURL": "file:////Users/yurii/AH/TTS assets/map_tiles/uk/northside.jpg",
+    "DiffuseURL": "https://drive.google.com/uc?export=download&id=1QKMonEvlS0WFc8ImPigYkSjLTIH24w_n",
     "MaterialIndex": 3,
-    "MeshURL": "file:////Users/yurii/AH/TTS assets/models/map_tile_variant_a.obj",
+    "MeshURL": "https://drive.google.com/uc?export=download&id=1HX6A_EDqe8q_l0juU2M8wZdUAmp2fwSi",
     "NormalURL": "",
     "TypeIndex": 0
   },

@@ -201,19 +201,19 @@
     },
     "ImageScalar": 1,
     "ImageSecondaryURL": "",
-    "ImageURL": "file:////Users/yurii/AH/TTS assets/other_graphics/roller_s.png",
+    "ImageURL": "https://drive.google.com/uc?export=download&id=10EJYjD9C2-ArkGfYpbIle3WqTI8wdsGf",
     "WidthScale": 0
   },
   "CustomUIAssets": [
     {
       "Name": "reeoll_icon",
       "Type": 0,
-      "URL": "file:////Users/yurii/AH/TTS assets/other_graphics/reroll.png"
+      "URL": "https://drive.google.com/uc?export=download&id=1Rha9juxzF8VfGoOjl_qtnbjJo6qGYNAw"
     },
     {
       "Name": "Fonts",
       "Type": 1,
-      "URL": "file:////Users/yurii/AH/TTS assets/fonts/font_list.unity3d"
+      "URL": "https://drive.google.com/uc?export=download&id=136ZvlP_d9WqvYyBvwTGldulgXGsm6V0Y"
     }
   ],
   "Description": "",

@@ -12,7 +12,7 @@
   },
   "CustomMesh": {
     "CastShadows": true,
-    "ColliderURL": "file:////Users/yurii/AH/TTS assets/models/map_tile_variant_b_collider.obj",
+    "ColliderURL": "https://drive.google.com/uc?export=download&id=1OD9dvAvYRzHG-eGXDJ9X64pCyHh-L62v",
     "Convex": true,
     "CustomShader": {
       "FresnelStrength": 0,
@@ -24,9 +24,9 @@
       "SpecularIntensity": 0,
       "SpecularSharpness": 2
     },
-    "DiffuseURL": "file:////Users/yurii/AH/TTS assets/map_tiles/en/The Unnamable.jpg",
+    "DiffuseURL": "https://drive.google.com/uc?export=download&id=1d-i1FH1-LGjh2vl_aDbwaGlY0eYiWC2i",
     "MaterialIndex": 3,
-    "MeshURL": "file:////Users/yurii/AH/TTS assets/models/arkham.obj",
+    "MeshURL": "https://drive.google.com/uc?export=download&id=1IbK0kh3asgW5iL0uIpmigeGN6ixsayeJ",
     "NormalURL": "",
     "TypeIndex": 0
   },

@@ -316,8 +316,8 @@
   "CustomDeck": {
     "5867": {
       "BackIsHidden": true,
-      "BackURL": "file:////Users/yurii/AH/TTS assets/cards/3_secrets_of_the_order/uk/Scenario 2Back.png",
-      "FaceURL": "file:////Users/yurii/AH/TTS assets/cards/3_secrets_of_the_order/uk/Scenario 1Front.png",
+      "BackURL": "https://drive.google.com/uc?export=download&id=1RgMawIwHqnT_sCbqACCl8pGBsj-BfKN9",
+      "FaceURL": "https://drive.google.com/uc?export=download&id=15Bu3jm6xxnFOwaWLST8hakcbVZNXok5B",
       "NumHeight": 2,
       "NumWidth": 2,
       "Type": 1,

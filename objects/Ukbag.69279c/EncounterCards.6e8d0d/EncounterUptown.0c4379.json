@@ -24,8 +24,8 @@
   "CustomDeck": {
     "5760": {
       "BackIsHidden": true,
-      "BackURL": "file:////Users/yurii/AH/TTS assets/cards/0_base/uk/Encounter Part2 2Back.png",
-      "FaceURL": "file:////Users/yurii/AH/TTS assets/cards/0_base/uk/Encounter Part2 1Front.png",
+      "BackURL": "https://drive.google.com/uc?export=download&id=10jty9dmyIDQ2VFXgOLLxudvrTarcBTjt",
+      "FaceURL": "https://drive.google.com/uc?export=download&id=1etC5eNUECtrc4IdMcc4t8R5cy6ledrcZ",
       "NumHeight": 5,
       "NumWidth": 8,
       "Type": 0,

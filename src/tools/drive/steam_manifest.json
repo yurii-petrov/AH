@@ -1309,6 +1309,13 @@
       "steamId": "16424657777944441422",
       "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16424657777944441422/6AED7CA3356E3DA02F556B3B176D8C510024D10A/"
     },
+    "569f3db34327fa34b24e35768174b3e247a56da77fbd30cc6622d16e29adc00f": {
+      "paths": {
+        "assets/music/cthulhu_music.mp3": {}
+      },
+      "steamId": "15805249985086253420",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15805249985086253420/8D21AE86DB55133F683A9859A45F2D90EA5C50A9/"
+    },
     "57688ba71e8257888738f66eae029155202ca77927b1f265cce05d03acac6f87": {
       "paths": {
         "assets/map_tiles/uk/Innsmouth Shore.jpg": {}
@@ -1434,6 +1441,13 @@
       },
       "steamId": "14352125780440265216",
       "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14352125780440265216/0C0811B37C263ACC790AD02773B9166645F836E8/"
+    },
+    "603506996b902b8797cbc1dc4bf350440caad5c59feb97c39344fd7648403b5d": {
+      "paths": {
+        "assets/models/blank_diffuse.png": {}
+      },
+      "steamId": "16799222260407107019",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16799222260407107019/D324EFA2B5648EACA4A376C87A01808EB63CC18F/"
     },
     "609297e03294cb447d454c3a4b9f697f43a41e6603908aa1d1576b3b4147e61c": {
       "paths": {
@@ -1896,6 +1910,13 @@
       },
       "steamId": "10888374918875093407",
       "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10888374918875093407/45DA28347437B58AE147871DE4A2A22FA1860EFB/"
+    },
+    "80c3a928cdbd3a9ada86062ec03561d3ed3d26390bd105271c765f1c5c71facd": {
+      "paths": {
+        "assets/music/lovecraft 01.MP3": {}
+      },
+      "steamId": "18146587035499244065",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18146587035499244065/76C896520ED6AD6860804E853466164F4CFDE543/"
     },
     "8116bb8118b51acebeb6f2da22ff00f0ed0a92f5e8643a3b81b38334005a11d9": {
       "paths": {

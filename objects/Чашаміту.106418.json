@@ -17,9 +17,9 @@
     "CastShadows": true,
     "ColliderURL": "",
     "Convex": true,
-    "DiffuseURL": "file:////Users/yurii/AH/TTS assets/models/mythos_cup_diffuse.jpg",
+    "DiffuseURL": "https://drive.google.com/uc?export=download&id=13hIcvz5NLKL_XeEJdKNhN0bAdfiORxRV",
     "MaterialIndex": 1,
-    "MeshURL": "file:////Users/yurii/AH/TTS assets/models/mythos_cup.obj",
+    "MeshURL": "https://drive.google.com/uc?export=download&id=1-0ozAusZAg6CrCQP5m1CTHn6fmZFEKjA",
     "NormalURL": "",
     "TypeIndex": 6
   },

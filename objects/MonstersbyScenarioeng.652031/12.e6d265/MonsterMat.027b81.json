@@ -22,8 +22,8 @@
       "CustomDeck": {
         "5865": {
           "BackIsHidden": true,
-          "BackURL": "file:////Users/yurii/AH/TTS assets/cards/3_secrets_of_the_order/en/Monsters 1Front.png",
-          "FaceURL": "file:////Users/yurii/AH/TTS assets/cards/3_secrets_of_the_order/en/Monsters 2Back.png",
+          "BackURL": "https://drive.google.com/uc?export=download&id=16XanwWYMNcc3KITys4iIivanMCsdvB20",
+          "FaceURL": "https://drive.google.com/uc?export=download&id=1kVDtT7ObearY_ritYQUKescO8cwP7krV",
           "NumHeight": 4,
           "NumWidth": 5,
           "Type": 0,
@@ -81,8 +81,8 @@
       "CustomDeck": {
         "5865": {
           "BackIsHidden": true,
-          "BackURL": "file:////Users/yurii/AH/TTS assets/cards/3_secrets_of_the_order/en/Monsters 1Front.png",
-          "FaceURL": "file:////Users/yurii/AH/TTS assets/cards/3_secrets_of_the_order/en/Monsters 2Back.png",
+          "BackURL": "https://drive.google.com/uc?export=download&id=16XanwWYMNcc3KITys4iIivanMCsdvB20",
+          "FaceURL": "https://drive.google.com/uc?export=download&id=1kVDtT7ObearY_ritYQUKescO8cwP7krV",
           "NumHeight": 4,
           "NumWidth": 5,
           "Type": 0,
@@ -139,14 +139,14 @@
     },
     "ImageScalar": 1,
     "ImageSecondaryURL": "",
-    "ImageURL": "file:////Users/yurii/AH/TTS assets/other_graphics/enemy.png",
+    "ImageURL": "https://drive.google.com/uc?export=download&id=1_4mfR3Rlcb7XZuwjK3gp4FuG1Vgo6eOB",
     "WidthScale": 0
   },
   "CustomUIAssets": [
     {
       "Name": "Fonts",
       "Type": 1,
-      "URL": "file:////Users/yurii/AH/TTS assets/fonts/font_list.unity3d"
+      "URL": "https://drive.google.com/uc?export=download&id=136ZvlP_d9WqvYyBvwTGldulgXGsm6V0Y"
     }
   ],
   "Description": "",

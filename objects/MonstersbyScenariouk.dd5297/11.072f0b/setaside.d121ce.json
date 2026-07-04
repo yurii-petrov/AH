@@ -26,8 +26,8 @@
   "CustomDeck": {
     "5798": {
       "BackIsHidden": true,
-      "BackURL": "file:////Users/yurii/AH/TTS assets/cards/0_base/uk/Monsters 1Front.png",
-      "FaceURL": "file:////Users/yurii/AH/TTS assets/cards/0_base/uk/Monsters 2Back.png",
+      "BackURL": "https://drive.google.com/uc?export=download&id=1tvk-LqPPszWWTeHmWmRAuVdp7EId43Mh",
+      "FaceURL": "https://drive.google.com/uc?export=download&id=1FbKdZTNMIwdeetCPsi-NX8bjgJcuIWmo",
       "NumHeight": 7,
       "NumWidth": 9,
       "Type": 0,
@@ -35,8 +35,8 @@
     },
     "5865": {
       "BackIsHidden": true,
-      "BackURL": "file:////Users/yurii/AH/TTS assets/cards/3_secrets_of_the_order/uk/Monsters 1Front.png",
-      "FaceURL": "file:////Users/yurii/AH/TTS assets/cards/3_secrets_of_the_order/uk/Monsters 2Back.png",
+      "BackURL": "https://drive.google.com/uc?export=download&id=1WZVlxpc7xT1gHbXekLnxx2Fv_mFZ4Yr9",
+      "FaceURL": "https://drive.google.com/uc?export=download&id=1FKBsBIEzqnYGIJ_E7jRHWpWCgikxb6uz",
       "NumHeight": 4,
       "NumWidth": 5,
       "Type": 0,

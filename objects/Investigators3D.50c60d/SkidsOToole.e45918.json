@@ -20,7 +20,7 @@
       },
       "CustomMesh": {
         "CastShadows": true,
-        "ColliderURL": "file:////Users/yurii/AH/TTS assets/investigators/models/base_standee.obj",
+        "ColliderURL": "https://drive.google.com/uc?export=download&id=1QrSnMS0yYHENn7ze72yO3rUtPLQ-ODYE",
         "Convex": true,
         "CustomShader": {
           "FresnelStrength": 0,
@@ -32,9 +32,9 @@
           "SpecularIntensity": 0,
           "SpecularSharpness": 2
         },
-        "DiffuseURL": "file:////Users/yurii/AH/TTS assets/models/blank_diffuse.png",
+        "DiffuseURL": "https://drive.google.com/uc?export=download&id=1R_9OIWUU6EwD5hlGmSA8nCQWxchfEs4V",
         "MaterialIndex": 3,
-        "MeshURL": "file:////Users/yurii/AH/TTS assets/investigators/models/base_standee.obj",
+        "MeshURL": "https://drive.google.com/uc?export=download&id=1QrSnMS0yYHENn7ze72yO3rUtPLQ-ODYE",
         "NormalURL": "",
         "TypeIndex": 1
       },
@@ -79,7 +79,7 @@
   },
   "CustomAssetbundle": {
     "AssetbundleSecondaryURL": "",
-    "AssetbundleURL": "file:////Users/yurii/AH/TTS assets/investigators/models/skids_otoole.unity3d",
+    "AssetbundleURL": "https://drive.google.com/uc?export=download&id=1aCD9yFQN1AYBFHoQkZFS1Iwz5q1ePNNd",
     "LoopingEffectIndex": 0,
     "MaterialIndex": 0,
     "TypeIndex": 1

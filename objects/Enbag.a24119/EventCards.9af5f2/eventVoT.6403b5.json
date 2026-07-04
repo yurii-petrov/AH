@@ -40,8 +40,8 @@
   "CustomDeck": {
     "5706": {
       "BackIsHidden": true,
-      "BackURL": "file:////Users/yurii/AH/TTS assets/cards/0_base/en/VoT 2Back.png",
-      "FaceURL": "file:////Users/yurii/AH/TTS assets/cards/0_base/en/VoT 1Front.png",
+      "BackURL": "https://drive.google.com/uc?export=download&id=1hiWYHjX13WCcLskrBf51Cb13crkZLpMd",
+      "FaceURL": "https://drive.google.com/uc?export=download&id=158yqMFiyv7n-XI-90EKH3n9aonjmJNY7",
       "NumHeight": 4,
       "NumWidth": 6,
       "Type": 0,
