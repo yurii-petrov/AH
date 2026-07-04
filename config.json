@@ -1,9 +1,7 @@
 {
-  "CameraStates": [],
   "ComponentTags_path": "ComponentTags.json",
   "CustomUIAssets_path": "CustomUIAssets.json",
   "DecalPallet": [],
-  "Decals": [],
   "GameComplexity": "Low Complexity",
   "GameMode": "Arkham Horror 3ed Complete [UA]",
   "GameType": "Game",
@@ -75,7 +73,6 @@
     "Custom_Tile.ecb76d",
     "MonstersbyScenariouk.dd5297",
     "Enbag.a24119",
-    "Infinite_Bag.789c2b",
     "ModelBase.6947c3",
     "MonstersbyScenarioeng.652031",
     "Custom_Model_Infinite_Bag.2f7335"
@@ -92,7 +89,6 @@
   "SaveName": "Arkham Horror 3ed [EN] [Ukr] [scripted] (base + DoN expansion)",
   "Sky": "Sky_Museum",
   "SkyURL": "https://drive.google.com/uc?export=download&id=1zDbAm4TVGWTul_hJyNIqADR2-k395rcO",
-  "SnapPoints": [],
   "TabStates_path": "TabStates.json",
   "Table": "Table_None",
   "Tags": [
