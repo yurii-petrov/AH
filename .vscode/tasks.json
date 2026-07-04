@@ -133,6 +133,41 @@
         "cwd": "${workspaceFolder}${pathSeparator}.vscode"
       },
       "problemMatcher": []
+    },
+
+    {
+      "label": "Arkham Horror: Switch Assets",
+      "type": "shell",
+      "windows": {
+        "command": "py",
+        "args": ["${workspaceFolder}\\src\\tools\\drive\\switch_asset_source.py", "--${input:assetSource}", "--apply"]
+      },
+      "osx": {
+        "command": "${workspaceFolder}/.venv/bin/python",
+        "args": ["${workspaceFolder}/src/tools/drive/switch_asset_source.py", "--${input:assetSource}", "--apply"]
+      },
+      "problemMatcher": []
+    },
+
+    {
+      "label": "Arkham Horror: Collect Steam Links",
+      "dependsOn": ["_decompose", "_collect_steam_links"],
+      "dependsOrder": "sequence",
+      "problemMatcher": []
+    },
+
+    {
+      "label": "_collect_steam_links",
+      "type": "shell",
+      "windows": {
+        "command": "py",
+        "args": ["${workspaceFolder}\\src\\tools\\drive\\collect_steam_links.py"]
+      },
+      "osx": {
+        "command": "${workspaceFolder}/.venv/bin/python",
+        "args": ["${workspaceFolder}/src/tools/drive/collect_steam_links.py"]
+      },
+      "problemMatcher": []
     }
   ],
   "inputs": [
@@ -141,6 +176,13 @@
       "type": "promptString",
       "description": "Target objects/ folder (relative to repo root) to swap /uk/ asset paths to /en/",
       "default": "objects/Enbag.a24119"
+    },
+    {
+      "id": "assetSource",
+      "type": "pickString",
+      "description": "Switch objects/*.json asset references to this source",
+      "options": ["local", "drive", "steam"],
+      "default": "local"
     }
   ]
 }
