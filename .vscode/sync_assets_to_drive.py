@@ -9,7 +9,15 @@ sys.path.insert(0, SCRIPT_DIR)
 
 from asset_index_builder import ASSETS_ROOT, extract_google_id, print_box
 from assets_manifest import diff as manifest_diff
-from assets_manifest import drive_url, load_manifest, save_manifest, scan_assets, to_absolute_asset
+from assets_manifest import (
+    drive_url,
+    load_local_snapshot,
+    load_manifest,
+    save_local_snapshot,
+    save_manifest,
+    scan_assets,
+    to_absolute_asset,
+)
 from drive_upload import (
     DRIVE_FOLDER_NAME,
     find_folder,
@@ -75,27 +83,37 @@ def build_mod():
     build.run_build(ROOT_DIR, "build")
 
 
-def pull_asset_layout(shared_manifest):
+def pull_asset_layout(local_snapshot, shared_manifest, current):
     """assets/ is gitignored but assets_manifest.json is committed, so a
-    teammate's earlier rename arrives via `git pull` as a path change in the
-    manifest while their own assets/ folder never moved — scanning it fresh
-    would then look exactly like "I renamed it back", and undo their work.
-    Bring the local file layout in line with the just-pulled manifest FIRST,
-    purely by moving local files (no network), so the diff computed
-    afterward only reflects genuinely new local changes."""
-    current = scan_assets(shared_manifest)
+    teammate's rename arrives via `git pull` as a path change in the shared
+    manifest while their own assets/ folder never moved. Comparing disk
+    directly against the shared manifest can't tell that apart from "I just
+    renamed this myself, it needs to go the other way" — both look exactly
+    like "disk disagrees with the shared file". The disambiguator is
+    local_snapshot: what MY OWN disk looked like after MY OWN last run here.
+    Only pull (rename local to match shared) when my disk still matches
+    what I last knew — if it doesn't, I changed it myself since then, and
+    that's a push, not a pull; leave it for the diff below to pick up."""
     moved = []
 
-    for file_hash, entry in shared_manifest.items():
-        expected_paths = set(entry.get("paths", {}))
+    for file_hash, shared_entry in shared_manifest.items():
+        expected_paths = set(shared_entry.get("paths", {}))
         if not expected_paths:
             continue
+
+        snapshot_entry = local_snapshot.get(file_hash)
+        snapshot_paths = set(snapshot_entry.get("paths", {})) if snapshot_entry else set()
+        if snapshot_paths == expected_paths:
+            continue  # shared hasn't moved relative to what I last knew
 
         current_entry = current.get(file_hash)
         if not current_entry:
             continue  # not present locally at all — a separate "missing content" case
 
         current_paths = set(current_entry.get("paths", {}))
+        if current_paths != snapshot_paths:
+            continue  # I already changed this myself since my last run — a push, not a pull
+
         if current_paths & expected_paths:
             continue  # already sitting at (one of) the expected path(s)
 
@@ -116,23 +134,31 @@ def pull_asset_layout(shared_manifest):
 
 
 def main():
-    old_manifest = load_manifest()
+    shared_manifest = load_manifest()
+    local_snapshot = load_local_snapshot()
+    if local_snapshot is None:
+        # First run on this machine — nothing to compare my own disk against
+        # yet, so trust the shared state as the starting point rather than
+        # treating every asset as a brand-new local change.
+        local_snapshot = shared_manifest
 
-    moved = pull_asset_layout(old_manifest)
+    current = scan_assets(shared_manifest)
+    moved = pull_asset_layout(local_snapshot, shared_manifest, current)
     if moved:
         print(f"Pulled {len(moved)} local rename(s) to match the shared layout:")
         for old_path, new_path in moved:
             print(f"  {old_path} -> {new_path}")
+        current = scan_assets(shared_manifest)  # re-scan: files just physically moved
 
-    manifest = scan_assets(old_manifest)
+    manifest = current
 
     old_path_to_hash = {}
-    for file_hash, entry in old_manifest.items():
+    for file_hash, entry in local_snapshot.items():
         for path in entry.get("paths", {}):
             old_path_to_hash[path] = file_hash
 
     needing = [h for h, entry in manifest.items() if not entry.get("driveId")]
-    _, _, renamed = manifest_diff(old_manifest, manifest)
+    _, _, renamed = manifest_diff(local_snapshot, manifest)
     to_reconcile = [
         (file_hash, sorted(new_paths)[0])
         for file_hash, old_paths, new_paths in renamed
@@ -141,6 +167,7 @@ def main():
 
     if not needing and not to_reconcile:
         save_manifest(manifest)
+        save_local_snapshot(manifest)
         print_box("NO ASSET CHANGES TO SYNC")
         build_mod()
         return
@@ -184,7 +211,7 @@ def main():
                 # that still-valid, unrelated asset.
                 if old_hash in manifest:
                     continue
-                old_id = old_manifest.get(old_hash, {}).get("driveId")
+                old_id = shared_manifest.get(old_hash, {}).get("driveId") or local_snapshot.get(old_hash, {}).get("driveId")
                 if old_id:
                     old_ids.add(old_id)
 
@@ -225,6 +252,7 @@ def main():
             print(f"Could not rename Drive file {entry['driveId']} to match {new_path}: {e}")
 
     save_manifest(manifest)
+    save_local_snapshot(manifest)
 
     if relinked_files:
         print(f"\n{len(relinked_files)} project file(s) updated with new links:")

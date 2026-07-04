@@ -8,6 +8,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from asset_index_builder import ASSETS_ROOT, print_box
 
 MANIFEST_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets_manifest.json")
+LOCAL_SNAPSHOT_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "local_snapshot.json")
 DRIVE_URL_TEMPLATE = "https://drive.google.com/uc?export=download&id={}"
 
 
@@ -83,6 +84,23 @@ def scan_assets(old_assets):
 
 def save_manifest(assets):
     with open(MANIFEST_FILE, "w", encoding="utf-8") as f:
+        json.dump({"assets": assets}, f, indent=2, ensure_ascii=False)
+
+
+def load_local_snapshot():
+    """What THIS machine's assets/ folder looked like after its own last
+    sync run — gitignored, distinct from the shared MANIFEST_FILE. Needed to
+    tell "the shared manifest moved without me (pull)" apart from "my own
+    disk moved on its own (push)": both look identical (disk != manifest)
+    if compared against the shared file alone."""
+    if not os.path.exists(LOCAL_SNAPSHOT_FILE):
+        return None
+    with open(LOCAL_SNAPSHOT_FILE, "r", encoding="utf-8") as f:
+        return json.load(f).get("assets", {})
+
+
+def save_local_snapshot(assets):
+    with open(LOCAL_SNAPSHOT_FILE, "w", encoding="utf-8") as f:
         json.dump({"assets": assets}, f, indent=2, ensure_ascii=False)
 
 
