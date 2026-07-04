@@ -21,8 +21,8 @@
   "CustomDeck": {
     "5804": {
       "BackIsHidden": true,
-      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/13433717936791182232/66FBFEC454E47B33A1FC125E93B033A3B2BF70A5/",
-      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/10500867953179527168/9900001B64F967506B0EFE156E5F244F887EBB42/",
+      "BackURL": "file:////Users/yurii/AH/TTS assets/cards/1_dead_of_night/en/Monsters 1Front.png",
+      "FaceURL": "file:////Users/yurii/AH/TTS assets/cards/1_dead_of_night/en/Monsters 2Back.png",
       "NumHeight": 4,
       "NumWidth": 6,
       "Type": 0,

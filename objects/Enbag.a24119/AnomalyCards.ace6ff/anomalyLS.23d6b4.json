@@ -28,8 +28,8 @@
   "CustomDeck": {
     "5849": {
       "BackIsHidden": true,
-      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/13956113112139048157/FFFDA155AA3EA9C348FAC4CF6F086ABBB05BF1E7/",
-      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/12803248223310156702/ED163CEA4167DB825047FD986BE2F224F611BBAE/",
+      "BackURL": "file:////Users/yurii/AH/TTS assets/cards/3_secrets_of_the_order/Anomaly LS 2Back.jpg",
+      "FaceURL": "file:////Users/yurii/AH/TTS assets/cards/3_secrets_of_the_order/en/Anomaly LS 1Front.png",
       "NumHeight": 2,
       "NumWidth": 6,
       "Type": 0,

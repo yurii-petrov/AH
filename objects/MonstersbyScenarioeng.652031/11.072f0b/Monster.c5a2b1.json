@@ -25,8 +25,8 @@
   "CustomDeck": {
     "5798": {
       "BackIsHidden": true,
-      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/13873989503575279025/ECC3ACCC19223079466A78E703AECC34F142303E/",
-      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/10767459869529760203/E73A65E0CB74F6EFF4A44DEB30615F9A9A6D8564/",
+      "BackURL": "file:////Users/yurii/AH/TTS assets/cards/0_base/en/Monsters 1Front.png",
+      "FaceURL": "file:////Users/yurii/AH/TTS assets/cards/0_base/en/Monsters 2Back.png",
       "NumHeight": 7,
       "NumWidth": 9,
       "Type": 0,
@@ -34,8 +34,8 @@
     },
     "5865": {
       "BackIsHidden": true,
-      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/12966042190640645555/50285EB7E6AB14141BB6783BAC816CB0CCBBD7BB/",
-      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/18364949048677091083/CCBABA69EF0E07F2FD5A28B27914D93B7EC44794/",
+      "BackURL": "file:////Users/yurii/AH/TTS assets/cards/3_secrets_of_the_order/en/Monsters 1Front.png",
+      "FaceURL": "file:////Users/yurii/AH/TTS assets/cards/3_secrets_of_the_order/en/Monsters 2Back.png",
       "NumHeight": 4,
       "NumWidth": 5,
       "Type": 0,

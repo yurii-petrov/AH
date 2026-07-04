@@ -17,9 +17,9 @@
     "CastShadows": true,
     "ColliderURL": "",
     "Convex": true,
-    "DiffuseURL": "https://steamusercontent-a.akamaihd.net/ugc/10443662056642367853/FDA724CE3F0F9C62A141C0B33CAB238C40EDEE32/",
+    "DiffuseURL": "file:////Users/yurii/AH/TTS assets/models/mythos_cup_diffuse.jpg",
     "MaterialIndex": 1,
-    "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/12336893511705462482/6C95EB6308A0A9E89367DD67D5C65D09EB3C06A0/",
+    "MeshURL": "file:////Users/yurii/AH/TTS assets/models/mythos_cup.obj",
     "NormalURL": "",
     "TypeIndex": 6
   },

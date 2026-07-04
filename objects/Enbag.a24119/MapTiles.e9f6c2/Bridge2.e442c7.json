@@ -12,7 +12,7 @@
   },
   "CustomMesh": {
     "CastShadows": true,
-    "ColliderURL": "https://steamusercontent-a.akamaihd.net/ugc/18177435305610839305/B92A923EDA913F161A5B6528A4B10F6683C2C59E/",
+    "ColliderURL": "file:////Users/yurii/AH/TTS assets/models/map_tile_variant_b_collider.obj",
     "Convex": true,
     "CustomShader": {
       "FresnelStrength": 0,
@@ -24,9 +24,9 @@
       "SpecularIntensity": 0,
       "SpecularSharpness": 2
     },
-    "DiffuseURL": "https://steamusercontent-a.akamaihd.net/ugc/11239769792848846746/C0AC483BE0DDA634E27E9C1CA81373AB8FA2D23B/",
+    "DiffuseURL": "file:////Users/yurii/AH/TTS assets/map_tiles/street_bridge.jpg",
     "MaterialIndex": 3,
-    "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/10761200643369136671/4AD7DB1135E28D775131CD1DE8C9627E5122736C/",
+    "MeshURL": "file:////Users/yurii/AH/TTS assets/models/map_tile_variant_b.obj",
     "NormalURL": "",
     "TypeIndex": 0
   },

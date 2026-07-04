@@ -28,8 +28,8 @@
   "CustomDeck": {
     "5797": {
       "BackIsHidden": true,
-      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/14617230610248503513/07816FBC2E6649AC5514470479BE25ACA64C25D2/",
-      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/9820014215942202465/E1A8931673558DED9EA5C83D8CBA933EDD539DD5/",
+      "BackURL": "file:////Users/yurii/AH/TTS assets/cards/0_base/Anomaly TF 2Back.jpg",
+      "FaceURL": "file:////Users/yurii/AH/TTS assets/cards/0_base/uk/Anomaly TF 1Front.png",
       "NumHeight": 2,
       "NumWidth": 6,
       "Type": 0,

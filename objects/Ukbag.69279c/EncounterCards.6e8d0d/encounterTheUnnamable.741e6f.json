@@ -24,8 +24,8 @@
   "CustomDeck": {
     "5858": {
       "BackIsHidden": true,
-      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/9856671886115398057/D281C9E08999A6D02A9A53CE6C70968887D2914F/",
-      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/10624133726835538729/18EE6AB477C443E6889B79E5DA242165D0A1B607/",
+      "BackURL": "file:////Users/yurii/AH/TTS assets/cards/3_secrets_of_the_order/uk/Encounter 2Back.png",
+      "FaceURL": "file:////Users/yurii/AH/TTS assets/cards/3_secrets_of_the_order/uk/Encounter 1Front.png",
       "NumHeight": 6,
       "NumWidth": 9,
       "Type": 0,

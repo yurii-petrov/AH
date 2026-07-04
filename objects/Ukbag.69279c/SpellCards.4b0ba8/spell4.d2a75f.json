@@ -18,8 +18,8 @@
   "CustomDeck": {
     "5871": {
       "BackIsHidden": true,
-      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/14688256381556049717/1AFEAC69A05C503824968BA125BC231C53CA81C2/",
-      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/16601467536609261733/D38FFC4163FBADBE274AAE50B99D9B327C2E0035/",
+      "BackURL": "file:////Users/yurii/AH/TTS assets/cards/0_base/Spell 2Back.jpg",
+      "FaceURL": "file:////Users/yurii/AH/TTS assets/cards/3_secrets_of_the_order/uk/Spell 1Front.png",
       "NumHeight": 2,
       "NumWidth": 2,
       "Type": 0,

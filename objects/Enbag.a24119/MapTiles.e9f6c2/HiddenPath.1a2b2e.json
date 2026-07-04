@@ -12,7 +12,7 @@
   },
   "CustomMesh": {
     "CastShadows": true,
-    "ColliderURL": "https://steamusercontent-a.akamaihd.net/ugc/9690906750018145720/53797060C4FAFA9EF7E0C1CBA17557270A7AD07F/",
+    "ColliderURL": "file:////Users/yurii/AH/TTS assets/models/map_tile_hidden_path_collider.obj",
     "Convex": true,
     "CustomShader": {
       "FresnelStrength": 0,
@@ -24,9 +24,9 @@
       "SpecularIntensity": 0,
       "SpecularSharpness": 2
     },
-    "DiffuseURL": "https://steamusercontent-a.akamaihd.net/ugc/17135325053800518290/AF7EEF17346A50FD7299582C6EE6F825E3EF1837/",
+    "DiffuseURL": "file:////Users/yurii/AH/TTS assets/map_tiles/Hidden Path.jpeg",
     "MaterialIndex": 3,
-    "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/14563435137952412781/86D19B09A79D2E45032B1196D0639A1C686192B9/",
+    "MeshURL": "file:////Users/yurii/AH/TTS assets/models/map_tile_hidden_path.obj",
     "NormalURL": "",
     "TypeIndex": 0
   },

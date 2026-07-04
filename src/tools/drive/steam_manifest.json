@@ -1,3 +1,3672 @@
 {
-  "assets": {}
+  "assets": {
+    "004c63841e3bd7ae70edac8138ae4b1bef30d69465c4b12f6e2f07ffadfb1231": {
+      "paths": {
+        "assets/investigators/models/minh_thi_phan.unity3d": {}
+      },
+      "steamId": "14375877024086244582",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14375877024086244582/36E3950976451B4BC61A82350E588811E08A3AA0/"
+    },
+    "012efd9553db5560ae82fa1874423221997f2b5dccaa7b4950356d0f07847726": {
+      "paths": {
+        "assets/cards/0_base/en/VoT 2Back.png": {}
+      },
+      "steamId": "17596584968303972076",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17596584968303972076/CA616FE6EAB0961343C61833A9D71F1BB7D951DA/"
+    },
+    "01dea0c528f8e11505f16ce86032f62706635ee59ea07594b4597f8f727bfb05": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/uk/Archive 2Back.png": {}
+      },
+      "steamId": "10964999297177151427",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10964999297177151427/B71FC5BAAF9B476637E44508631A29AFF564C649/"
+    },
+    "021a3f67fb9b96804fe3c860802d69a68d43c2b03892f1e94c47fad7a2ce2112": {
+      "paths": {
+        "assets/cards/0_base/en/VoT 1Front.png": {}
+      },
+      "steamId": "11955948628160056461",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/11955948628160056461/3A842AB2179A2F479E56C478AD560555FA1531F6/"
+    },
+    "021cbb93ff36da17ce3f502b5aadeb9e77f111456f3294e930bbea5680a793db": {
+      "paths": {
+        "assets/cards/4_recursive_echoes/uk/Investigators 2Back.png": {}
+      },
+      "steamId": "14585224836311384232",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14585224836311384232/88BA3A4707185180A4FC9B320A1859BFACC70166/"
+    },
+    "029b1df4e18792d0155a52b33b36d0c5bc17481ba9b6e5e21a2c6fbc4b1fa5f0": {
+      "paths": {
+        "assets/investigators/0_base/CALVIN WRIGHT.jpeg": {}
+      },
+      "steamId": "17731387910106847534",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17731387910106847534/02DDC6D453EAAD0A75306F80304E535E69E2EF99/"
+    },
+    "0331252a469f119b0af11de5743248bd7ded2e8ab7d2e8f87c616b553f713b3f": {
+      "paths": {
+        "assets/cards/1_dead_of_night/en/Investigators 1Front.png": {}
+      },
+      "steamId": "16532028457791403728",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16532028457791403728/7DE1B2F6B28CBB0E86EC4F183488C822FE2131DB/"
+    },
+    "03e391f2b5fe5fb330f7310211f0b63f983ede0ea6962898f4f13ccf30300ace": {
+      "paths": {
+        "assets/investigators/0_base/MICHAEL McGLEN.jpeg": {}
+      },
+      "steamId": "16137863514709236712",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16137863514709236712/8CD82FF9E66F508F5CAA6749E2916C4F3CD72442/"
+    },
+    "04d547de7a851d1de326557e9269f64eee691e1636973a438508acb20de6bd40": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/uk/Spell 1Front.png": {}
+      },
+      "steamId": "13984056507245143032",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13984056507245143032/E1538258847F799E4BE508F725962B6BCE79CAAC/"
+    },
+    "04d96ee9cee2824445824aebcb5ee7dfe21020b0bbaea842d179af56d2c8a06d": {
+      "paths": {
+        "assets/investigators/models/jenny_barnes.unity3d": {}
+      },
+      "steamId": "17335967547084455470",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17335967547084455470/A98E4C51CA54317C73FC04D3DF62F2B47A9653FD/"
+    },
+    "050c8bb8f39f915a728d8b2fae32150004dac689f6c28e58b5f17b8b6accda8a": {
+      "paths": {
+        "assets/icons/Leader token back.jpeg": {}
+      },
+      "steamId": "14220553392399629357",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14220553392399629357/79AA6E541C37051C42C8CC40325A89B9258ACE7C/"
+    },
+    "05397784f3c899a1b2f0a1ea9aa858c240e43eaf04ba57f508ca2d4b49c6491a": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/uk/Anomaly LS 1Front.png": {}
+      },
+      "steamId": "12240233782246904129",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12240233782246904129/F4555F5AB9F6965AE73AB89AC12B8FB424B74641/"
+    },
+    "056a6d3de61a9859725cace2cccb8da94444e1e45c7fabe743d5deafe114a472": {
+      "paths": {
+        "assets/investigators/2_under_dark_waves/mini/carson sinclair.jpg": {}
+      },
+      "steamId": "17515554680153970133",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17515554680153970133/C96458E978D751D9A878BDA9C56E372B9B63AD6C/"
+    },
+    "059d00c2df3230c92dbb62eddb33c6882eba3875faceaea54e08671a8f756a7a": {
+      "paths": {
+        "assets/cards/1_dead_of_night/uk/Monsters 2Back.png": {}
+      },
+      "steamId": "12559641758348254897",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12559641758348254897/3676AA275E9C599FB2E87C7EDD466A0D05BCC5E1/"
+    },
+    "05dc96a1bcfa3068ddbd2bd1fe86b1495eb5401962f773d6847f67d0c5cae624": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/en/Scenario 2Back.png": {}
+      },
+      "steamId": "16564792193871569233",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16564792193871569233/1D7DC3BAA87A2F95FCD58F08384C6531BA35ED16/"
+    },
+    "0663172a81508061baefac206b51513a061fcdfced7b28af668b93013e6434a4": {
+      "paths": {
+        "assets/cards/1_dead_of_night/uk/Condition 2Back.png": {}
+      },
+      "steamId": "14399032934001700960",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14399032934001700960/1F0E5DDFCE65F5ED768A6174A75615C817F43F96/"
+    },
+    "06ba2c4ab678cfd669ac548b9d1e9030b78a8636337d4bdc5df12cc4c417de1b": {
+      "paths": {
+        "assets/other_graphics/scenario12.png": {}
+      },
+      "steamId": "9436275792170556586",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/9436275792170556586/D06E81A41B6FCA4C674C1A92087E68FB4CD77B46/"
+    },
+    "07bb0c7eb36d436ed0bd42c6c2cccea4dfe287eddd69accee0b3cfd3d53adba2": {
+      "paths": {
+        "assets/cards/4_recursive_echoes/en/Starting 2Back.png": {}
+      },
+      "steamId": "17583136999768062275",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17583136999768062275/7D40B463875CBF4F493780E1120BC35106077674/"
+    },
+    "07e14268054e6a7817eaa820a7909a8f3b06fe0de6eb8acb46e33905082b4065": {
+      "paths": {
+        "assets/cards/1_dead_of_night/uk/SoT 2Back.png": {}
+      },
+      "steamId": "14738333027995887113",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14738333027995887113/C850BE0DC95EF3BDFCE085C506D290099C76C254/"
+    },
+    "081a9d663df8eab81dc6cb2fd26ffa2685b894b7ced3d310ea39d2005d79418e": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/en/Condition 1Front.png": {}
+      },
+      "steamId": "15649365851060641448",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15649365851060641448/59FACE148DC619DB7CE44F28E89EADBFCF9833F1/"
+    },
+    "08624bb69d2df58235efc945cfe872f18463ab91758bad4572cc75e6b5eba87d": {
+      "paths": {
+        "assets/cards/0_base/Location mat.png": {}
+      },
+      "steamId": "12461479231141449008",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12461479231141449008/C226CD3E3BC63CF2F297AC74A0AEA56C6AD0531D/"
+    },
+    "086fd92d2c12e32542d80c61c57f5a144431fbdf4be7ad8eb21db0405475514e": {
+      "paths": {
+        "assets/other_graphics/icon_fight_evade.png": {}
+      },
+      "steamId": "17616920183781149998",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17616920183781149998/063106A7355E46EF0BA6CAFAC999FBA5418134EC/"
+    },
+    "08c8233f8f4cfcb6347d5a8fc072baf0465b9c9ebbf745566a363885e31e7a22": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/en/Spell 1Front.png": {}
+      },
+      "steamId": "16151812513286707536",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16151812513286707536/D9CD4FC1C5B4A93CFD77D2F7B5881E40E5C7C56D/"
+    },
+    "091030b7bbd1bf72e037ec3763306d9220806f2b4665e9431b61920e6d29d32d": {
+      "paths": {
+        "assets/map_tiles/uk/Devil Reef.jpg": {}
+      },
+      "steamId": "14944852450540445542",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14944852450540445542/BA5C6FD17826BD59B45316ECC1BBD5FE498B4B1B/"
+    },
+    "09fbbf0247237953a90c188176cf827409599ef69b4f1fc1566478e986cc9c55": {
+      "paths": {
+        "assets/investigators/models/winifred_habbamock.unity3d": {}
+      },
+      "steamId": "14753307441535092658",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14753307441535092658/5F469EA786143859B59CDE129F03CADAE82FAD9E/"
+    },
+    "0ae753b67d28c0bdf1d1a747607171552ad022345c01144a14f9d5052602673a": {
+      "paths": {
+        "assets/other_graphics/reroll.png": {}
+      },
+      "steamId": "16490829221783702583",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16490829221783702583/8BD1DD77360E9A59859D4BAFCC1A162991D8C5D2/"
+    },
+    "0c4a5ad868a89acb62e2a78d0e4e050a66115aa2992f0479c2dcb5a7006fc933": {
+      "paths": {
+        "assets/icons/token terror.jpeg": {}
+      },
+      "steamId": "18373964484514278563",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18373964484514278563/F957706BF08D9555E100899399A55CC8400B84FB/"
+    },
+    "0c90b252acc9695f0ae2808140777fb2b740d04c4c34081a57283c9a0008314d": {
+      "paths": {
+        "assets/investigators/models/ashcan_pete.unity3d": {}
+      },
+      "steamId": "16439850163248098716",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16439850163248098716/3A6BD69F300CF86062F738C715C8BA8B98DB7D38/"
+    },
+    "0d7a732970404b01cab9d51b4a6a6a250a2af67b9f7cf460d3e727bb253b0499": {
+      "paths": {
+        "assets/other_graphics/conditions.png": {}
+      },
+      "steamId": "13446307034204283240",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13446307034204283240/05B985DA739E4AC3EB4C39918EFE43022BC582AE/"
+    },
+    "0df96bb1d1cd30df70b228099b2ae4a8f4146d733686bd62f493ca43a8d2729a": {
+      "paths": {
+        "assets/other_graphics/codex.png": {}
+      },
+      "steamId": "12881769847532278992",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12881769847532278992/401690DC2B76BC610D3350160808A9BF0D379852/"
+    },
+    "0e197f14b99acf1f77687611903707a061d57b9371b14481760ead6e7cec1d88": {
+      "paths": {
+        "assets/investigators/models/michael_mcglen.unity3d": {}
+      },
+      "steamId": "13980893664943144264",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13980893664943144264/483949040715B221D4E243C7F90784BBF93AB672/"
+    },
+    "0eddc09285837f211f285df5897588eb0461787bef3cc6e4fd9ebc7d8660d2f8": {
+      "paths": {
+        "assets/map_tiles/Derelict Portal.jpg": {}
+      },
+      "steamId": "10556663378189399584",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10556663378189399584/C1BD2FF90595C900CD10C697523F2E5AE3209F1B/"
+    },
+    "0fd7748de60c3c9b460e1c7e0a9540bb18f90ce49d477c8ca995130a261b791e": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/en/TKaTG 1Front.png": {}
+      },
+      "steamId": "18267691025849915891",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18267691025849915891/34013BD74C3689F9BFD029274CB2E5AF3F5FDFDC/"
+    },
+    "101f3330d11bbb10a7a24ce85f0ced607692e7ae807455833fb9baeb809e94f3": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/uk/Monsters 2Back.png": {}
+      },
+      "steamId": "14224808500703212238",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14224808500703212238/F151E9AFBCBA24DA12D8FFA3EA5BDB268B6CDD87/"
+    },
+    "1191992e027c1e0581e9a9c4fd20ead8c54ee85570b9d8a4ced2ac0f0e36b502": {
+      "paths": {
+        "assets/cards/4_recursive_echoes/en/Investigators 2Back.png": {}
+      },
+      "steamId": "17593555835305255686",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17593555835305255686/97EDA6F144C7A1AEDBF4DE7A31B5F56CD8405D13/"
+    },
+    "123e500c4b6377f8fc23fdf4c3cd661bfb304c6fac7be4bb469ddc75bd160b1e": {
+      "paths": {
+        "assets/other_graphics/additional_buttons_for_xml/additional_buttons_3_hover.png": {}
+      },
+      "steamId": "12844881950247875885",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12844881950247875885/C7EA1DA1BD63E681D61357C95805451569CFCF4A/"
+    },
+    "12a5b99c21c779c7f11009009fe98a12d31dee41f845d155581c606f54bc4111": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/uk/Terror FC 1Front.png": {}
+      },
+      "steamId": "13452218836715871565",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13452218836715871565/289926A4803275365DEFCE1E14F7030AECEC5E6C/"
+    },
+    "1330143b7e7e1f9d7be3357ba50d9e8d6c7abf59e43c7a87de24b8971d264bec": {
+      "paths": {
+        "assets/cards/1_dead_of_night/uk/Headline 1Front.png": {}
+      },
+      "steamId": "13572780090560022257",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13572780090560022257/E362F297F103086CD3D7479F2E792665E61F3122/"
+    },
+    "137f653d5270eee2589bc3e8adf9bb0bfb588f4df57ba6524375c5d75285e70d": {
+      "paths": {
+        "assets/investigators/3_secrets_of_the_order/mini/Winifred Habbamock.jpg": {}
+      },
+      "steamId": "11184475385834983426",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/11184475385834983426/32E682E56419EFCE9DD896857BA0990872DAD0AC/"
+    },
+    "138dd9da7433fe5bc7ecb0eb418a4ead61aca4d69a3f9747cf0deca226f2f870": {
+      "paths": {
+        "assets/icons/marker yellow.jpeg": {}
+      },
+      "steamId": "12592370854163452500",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12592370854163452500/07D8C1E7995ADD2B5E3D4F3D7CDF73600E420FA5/"
+    },
+    "13b03349f65b08dd2264ab40d664be2ec11bea2c604db42f07e7a007c09b6a13": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/en/BtS 1Front.png": {}
+      },
+      "steamId": "16939220048443067244",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16939220048443067244/CC9C8D6BFB9C30F858B6A01754EAF57FB7C12536/"
+    },
+    "143cc33bf2650cc3b83f089d199d412309f643feec87c0a5afb91dc51b341cb3": {
+      "paths": {
+        "assets/cards/1_dead_of_night/uk/Monsters 1Front.png": {}
+      },
+      "steamId": "12113548486962268938",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12113548486962268938/BC8500B25643C59AA67B81DBBDCE739EDFC3DCE5/"
+    },
+    "147fd7fa3bba2081fa53bb8a5940429076dd046b50774418d2ccb54f3e8650fb": {
+      "paths": {
+        "assets/map_tiles/en/Central Kingsport.jpg": {}
+      },
+      "steamId": "13328811241034145153",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13328811241034145153/1260C63F05168553490572315D56DBBCEDCE55E3/"
+    },
+    "15078495f394fca4c0f57990f60e37472c466848601cf50d71b82736a1ead926": {
+      "paths": {
+        "assets/other_graphics/phases_3.png": {}
+      },
+      "steamId": "18004091475977058532",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18004091475977058532/406B5DBD5D11D0AD4B60F25B6901C39F257CAF01/"
+    },
+    "15b9481428713ebd33c15ce52495ef16d4e12235c740808e5a17e792c82d6a18": {
+      "paths": {
+        "assets/cards/0_base/uk/Investigators 2Back.png": {}
+      },
+      "steamId": "15837995986042384409",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15837995986042384409/A4486CE8BF4A2DAD1D737C51AF844BDB715173B3/"
+    },
+    "1607129eefa44fa399424db1688e03bc5570b215e72c25d8a9ddfee2002673e5": {
+      "paths": {
+        "assets/investigators/models/agatha_crane.unity3d": {}
+      },
+      "steamId": "11521984118378353000",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/11521984118378353000/9DDE4F5385DEE9388DB69CC22EF19D5645FD0ED3/"
+    },
+    "17d4c156762e4501fe61b0f9567818b6ca4e0e4c42f678cf120cf069b5468978": {
+      "paths": {
+        "assets/rules/uk/(4) Recursive Echoes.pdf": {}
+      },
+      "steamId": "14919846254457283664",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14919846254457283664/648696C4C62BC7EDE34A7B80CCF70D5D75398E27/"
+    },
+    "18f8c8a7c43956d0dbb659d1c414a81bb406f3c4d815039250845d8bb932b310": {
+      "paths": {
+        "assets/cards/1_dead_of_night/uk/Investigators 2Back.png": {}
+      },
+      "steamId": "11210993627284697209",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/11210993627284697209/CFE9006E34BACEA72ED1E5450FBBF4BB1ED855F8/"
+    },
+    "197091828b08774287922abe6ae5c3b807d90787b91e81389dddc523cff353a5": {
+      "paths": {
+        "assets/cards/0_base/uk/FfU 2Back.png": {}
+      },
+      "steamId": "13839106602649965518",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13839106602649965518/DCB94AEBF408E27761A8AB19EC61BDC5FB2E78D0/"
+    },
+    "1970c82b00bf487375c8886aaa543450c3f2d58f357e27adf155c51836d1d13e": {
+      "paths": {
+        "assets/map_tiles/uk/southside.jpg": {}
+      },
+      "steamId": "15901022822591952024",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15901022822591952024/D813306251FBA31596BF34D76E12A3C722877D81/"
+    },
+    "19cbc5d8d84731651b33e9172ba01c818c1959ebbc2fdb9f194686c4f18a8670": {
+      "paths": {
+        "assets/investigators/models/father_mateo.unity3d": {}
+      },
+      "steamId": "10079370760670848131",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10079370760670848131/DFB8C91A7DB98D01D381AEFD426F1721D3EDADA3/"
+    },
+    "1a8700b50ef8c7ab161e7cea4cbf0af9d1c3d0f1ac79c7dba78be62ab2004d2d": {
+      "paths": {
+        "assets/cards/1_dead_of_night/Anomaly YE 2Back.jpg": {}
+      },
+      "steamId": "9470015928411867909",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/9470015928411867909/074F8C550FBC4E004BBB6F42637ED92E121C4701/"
+    },
+    "1ab5d579d6c6760a1cc954fc954b73fe37612a7c589d859b8769329cae6d9353": {
+      "paths": {
+        "assets/map_tiles/uk/merchant district.jpg": {}
+      },
+      "steamId": "11378869211165005276",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/11378869211165005276/EA09704D63268F87AD0B88DA2935BEA7CAB268E3/"
+    },
+    "1b19452f14752083b0b407193fafe551bd3d73342d376b76e492235ee08380fa": {
+      "paths": {
+        "assets/cards/0_base/en/EotD 1Front.png": {}
+      },
+      "steamId": "16439694511507110208",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16439694511507110208/C29580BB524709C71ED807B7EC4F3D0C33E2D1E0/"
+    },
+    "1b1ec50e6c05483dc52cb45d448baec7d9128738d4aa16f99461ff5a26c5c895": {
+      "paths": {
+        "assets/icons/mythos terror.png": {}
+      },
+      "steamId": "14391302249074577325",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14391302249074577325/AE573275FF75ACB1BFC07A2370D51767B440465D/"
+    },
+    "1b3b2ff738ce70fea5efcebcc5e06b33f9c30fbb2b82d68e2ceb4163194f0c47": {
+      "paths": {
+        "assets/other_graphics/scenario9.png": {}
+      },
+      "steamId": "11460716173982862065",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/11460716173982862065/8B473E7F83001AA62A0516AC5FA9687291991D7D/"
+    },
+    "1be1c381584f987594ddd3957a0be3399bdd95e8c3cbface5e56d25f48cc3c28": {
+      "paths": {
+        "assets/icons/investigator_portrait.png": {}
+      },
+      "steamId": "17634010774881629805",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17634010774881629805/2259B3C1AD323D6593D66715E69E8F86BD2CCBC2/"
+    },
+    "1c11bc4e354dda58a80e1c997f8aed4883e4082178d08533f05858a6bc39b1d0": {
+      "paths": {
+        "assets/icons/mythos gate burst.png": {}
+      },
+      "steamId": "13198507396323182504",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13198507396323182504/7FA6E84AE88FB82B878A21A0FB63DCA35A0CC367/"
+    },
+    "1c9b0a16ad368399c70c39c7c8823fdd00ccad9fbc759e1c144c831a07ae3d10": {
+      "paths": {
+        "assets/other_graphics/Activation_Token_2.png": {}
+      },
+      "steamId": "17665181325877403711",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17665181325877403711/A5D36A9473F9E9638DE2EC62565EFF6DE5841A4A/"
+    },
+    "1d7f38b8665705ee90b981fdf6d8460f1ac9a6e4ab3048b53ddc02d765f14d48": {
+      "paths": {
+        "assets/cards/1_dead_of_night/en/Scenario 1Front.png": {}
+      },
+      "steamId": "12002163139003359914",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12002163139003359914/5F8D5C9EEAB5A8820B2FF6B11E5AD518CAA5ECCC/"
+    },
+    "1da0279d69e970dbcc1985a7a9d178e6df3c3cc20856b3ec08c5d0bb0747e32a": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/en/Encounter Part1 2Back.png": {}
+      },
+      "steamId": "11315037287136307849",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/11315037287136307849/06BB828991972C3B2F9E83BF74C5AE102A9B4E2D/"
+    },
+    "1f1d319c3d27cf52c4f770f06733f03cb4039049eef4e025a655c2b06d0784fa": {
+      "paths": {
+        "assets/cards/0_base/uk/Reference 2Back.png": {}
+      },
+      "steamId": "13408970210846355411",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13408970210846355411/A5BB0558C393C220EA498A1EC4925583A79A8C6E/"
+    },
+    "1f8dae5f5ec641f5629c508acb6860311a664f1ffbfb24c8d3d5bdc98ec4f442": {
+      "paths": {
+        "assets/other_graphics/scenario5.png": {}
+      },
+      "steamId": "13719683796546845729",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13719683796546845729/10451DEA7731FAB672915F99ACBDD0107CC7E7FA/"
+    },
+    "208dacf6398bcafa4e696583ef2ff6dc25f6483a9ac35cc92d501ddbc28e1b08": {
+      "paths": {
+        "assets/other_graphics/random.png": {}
+      },
+      "steamId": "14288967041485031705",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14288967041485031705/E964E516B56B5B2B602398513F0C77E7B0FCF003/"
+    },
+    "20e9481cf3d6ee8b7d7e629372add148649219fd4e44b4a4d421c68838878d3c": {
+      "paths": {
+        "assets/other_graphics/additional_buttons_for_xml/additional_buttons_4.png": {}
+      },
+      "steamId": "11923991564930232980",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/11923991564930232980/59813C95269AC72984D71C0385C605FE1E3EA4B6/"
+    },
+    "213011ffd6a8f35004126a4e272faca7461211336c136c69e863dcf239c38db9": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/uk/Encounter 1Front.png": {}
+      },
+      "steamId": "10624133726835538729",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10624133726835538729/18EE6AB477C443E6889B79E5DA242165D0A1B607/"
+    },
+    "237bcdb53003ec6cd2ed73ce04faff8f2304c9ce2d5b3733c8fa9a46c363a402": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/en/Starting 2Back.png": {}
+      },
+      "steamId": "16665132867647031894",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16665132867647031894/206D7A2A04DD9E8CBAB025B6BD2D0E91071A49FD/"
+    },
+    "238847760436956a507bf614f2c33bb51f8777ef4a1e57173816b44e9707d9c6": {
+      "paths": {
+        "assets/cards/1_dead_of_night/en/Spell 1Front.png": {}
+      },
+      "steamId": "13393738882838154215",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13393738882838154215/AD6A7D0C86884DADC5A673B514239DD911D56FE2/"
+    },
+    "23a48fd3e0587fafc78791f9880a1aaa5b1f3c5889f1e3ccd4bd9f88045bd798": {
+      "paths": {
+        "assets/cards/0_base/en/Spell 1Front.png": {}
+      },
+      "steamId": "10846074213336529276",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10846074213336529276/450373706271A2569501A5CE1673900156B88668/"
+    },
+    "24c2bfd284bc6a9471f24ac4386e781008dbb463491c3e273cce68a3e7a1e6a3": {
+      "paths": {
+        "assets/cards/1_dead_of_night/en/SitD 1Front.png": {}
+      },
+      "steamId": "14144515663599095328",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14144515663599095328/F0ED6316A374C5EE3DE9D6CDDEECC503BA07C9A7/"
+    },
+    "24fa6ece60f087ef226ccfb0e547f4412d4b27768149b18e0741012d0b77a998": {
+      "paths": {
+        "assets/rules/en/(1) Dead of Night.pdf": {}
+      },
+      "steamId": "13685844655407789193",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13685844655407789193/4B2F4F40DCA7AF8606B58C38C9E4C986FA6A696E/"
+    },
+    "258ce722fae4cee5fb0a590781e8477cf6f856b0ac25b610f19a19356c542f2e": {
+      "paths": {
+        "assets/models/map_tile_variant_b.obj": {}
+      },
+      "steamId": "10761200643369136671",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10761200643369136671/4AD7DB1135E28D775131CD1DE8C9627E5122736C/"
+    },
+    "25bacc8cf863c0cdc026866e3e18f326171afc7f870295707f927c292a608590": {
+      "paths": {
+        "assets/investigators/3_secrets_of_the_order/mini/Preston Fairmont.jpg": {}
+      },
+      "steamId": "16214316907572810011",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16214316907572810011/0EB15B33EEA48ABC4FF9AA9B66D5F1B70F4EB5FE/"
+    },
+    "268fd128004b763069fc8297a6be9cdf37fb3f96ff15b711a64364ac8c3a00dc": {
+      "paths": {
+        "assets/map_tiles/uk/easttown.jpg": {}
+      },
+      "steamId": "12118208215689649966",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12118208215689649966/73CCB524E957DE7D50ACD4291F0998DC4E53DAAE/"
+    },
+    "28351fb39ea4fe998ad746eed522ed7b717af511b798b35f5cef15d9a7cb7aab": {
+      "paths": {
+        "assets/investigators/3_secrets_of_the_order/mini/Agatha Crane.jpg": {}
+      },
+      "steamId": "14040302790067266576",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14040302790067266576/D217F9D14CAE2FFC3EF5207800153E9B48EA8FD0/"
+    },
+    "287b2a0d63f37450bc036d31ac9c804b9c40bad82fccb4182747808a87e09f30": {
+      "paths": {
+        "assets/cards/1_dead_of_night/en/Monsters 2Back.png": {}
+      },
+      "steamId": "10500867953179527168",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10500867953179527168/9900001B64F967506B0EFE156E5F244F887EBB42/"
+    },
+    "2888100c2ff4f3b3e13a402055f0332c3f9a4160ac95fceb5db53c73fef387af": {
+      "paths": {
+        "assets/icons/action_no.png": {}
+      },
+      "steamId": "14532054693568478990",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14532054693568478990/7D810373C1D0EE01AB6776BAF3BECC046FF62B80/"
+    },
+    "28a4eed20c262e04b1fd255be98abff4a63f4282fe0d3b983b2d0c50855e84fc": {
+      "paths": {
+        "assets/other_graphics/discard.png": {}
+      },
+      "steamId": "14421964689492510289",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14421964689492510289/C13A5A578F3A5D4E2B7F6DF6499FEFB4B980A884/"
+    },
+    "28ab39f015d0e19282896e21d8216a0ab43046345bc91b578f1d20bb80cfee58": {
+      "paths": {
+        "assets/cards/1_dead_of_night/uk/Archive 1Front.png": {}
+      },
+      "steamId": "16603104068887504047",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16603104068887504047/F9CC514B89554D998C62C5B582126A2D0B2FF11B/"
+    },
+    "28bdf50626c3b4b24de4d43be4180c7256a17b798f5357c36310bfdf897adefd": {
+      "paths": {
+        "assets/investigators/2_under_dark_waves/father mateo.jpg": {}
+      },
+      "steamId": "13199968068886564470",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13199968068886564470/ED91A876568C632AEF471A545342DD12E8EA71C1/"
+    },
+    "28c88deaa538b6132f212cb3107bebea294c6240caef651088d4a39c277e95f6": {
+      "paths": {
+        "assets/rules/en/(0) Learn to Play.pdf": {}
+      },
+      "steamId": "17481515934010723646",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17481515934010723646/B6BAE66B8E1DAE4D9968A20E41DF4AACB8D6EDDF/"
+    },
+    "28d10f1af9e07d370f3fc99c7937fffc7407520bedd192ef60c7a0373795ae84": {
+      "paths": {
+        "assets/other_graphics/Activation_Token_3.png": {}
+      },
+      "steamId": "15455796187859602096",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15455796187859602096/BFC1751B5F22BC18772526B800D6E1338A5608A7/"
+    },
+    "2905496b3e2fb45a5070766681aa4398fdcd7acadf575b127068d973baa7ee0b": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/en/Anomaly LS 1Front.png": {}
+      },
+      "steamId": "12803248223310156702",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12803248223310156702/ED163CEA4167DB825047FD986BE2F224F611BBAE/"
+    },
+    "290b386130775194cc5fb90271cd3fa2de6123e1250092e4d9aa94b7b6a66ba2": {
+      "paths": {
+        "assets/investigators/0_base/mini/rex murphy.png": {}
+      },
+      "steamId": "13231349688967807330",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13231349688967807330/586C0F0335E0D8CF83B0E56BDEFB4116F6101CC5/"
+    },
+    "29159dc37329659eb72b73070623af95de8d4f12a73ff69d56632b4713115e76": {
+      "paths": {
+        "assets/other_graphics/scenarioMap4.png": {}
+      },
+      "steamId": "10983627489633067309",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10983627489633067309/C604E03D310E5B62C9525C0000EF9F2E922A9DB9/"
+    },
+    "296c9fee807b58a4719527caa4297a1ab8bfc02b552f861cdaf30649da323df5": {
+      "paths": {
+        "assets/investigators/2_under_dark_waves/mini/patrice hathaway.jpg": {}
+      },
+      "steamId": "17634833464253596243",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17634833464253596243/DA3C2E125C35C6B848CE7CDB6409844B78D19134/"
+    },
+    "2a76fd604823e30e1683e80215f2c353503169d7c0be4769c7e42f6daa0d0cdd": {
+      "paths": {
+        "assets/rules/uk/(1) Dead of Night.pdf": {}
+      },
+      "steamId": "18219046182336130615",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18219046182336130615/DA55BA3D7F4D34A34C5294029D26DDD73CBCDE5A/"
+    },
+    "2a9600982ac7607f34a834ac1ba1618c6c25b8ba7f595e31b9f6c697798c11d4": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/uk/Encounter Part2 1Front.png": {}
+      },
+      "steamId": "9911626623616365530",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/9911626623616365530/4D328D281DC95F49A0528CA73F82CE6EA5BB1B96/"
+    },
+    "2b0cad2139a9f57fe54bbb495612d8e539863a0f2791d810d6ff809888cb81eb": {
+      "paths": {
+        "assets/cards/1_dead_of_night/en/Starting 1Front.png": {}
+      },
+      "steamId": "10724106003798649371",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10724106003798649371/92190B2CEDF0248FB1D89A9CCD150C405967ED21/"
+    },
+    "2b1939764d9226e316024b3df1f84e4da46d019fabd0b7868c740ed832a425cf": {
+      "paths": {
+        "assets/other_graphics/Addons/addon4.png": {}
+      },
+      "steamId": "10088502557100462736",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10088502557100462736/5CA54C41F6C2537DB01684FC20066623A698C94A/"
+    },
+    "2b8d682efd7ab8f780cd83594e7f0bd93f3ee5f9e094aedc621fddb88ee6974e": {
+      "paths": {
+        "assets/other_graphics/scenario7.png": {}
+      },
+      "steamId": "9612979639187329033",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/9612979639187329033/1150B253DAECAA34977854A81B78D04E8E9C193C/"
+    },
+    "2c1336888dc164c009f8d991093f47dc3801ec42e45d6dc3c82e695abf5a935c": {
+      "paths": {
+        "assets/cards/0_base/Headline 2Back.png": {}
+      },
+      "steamId": "18398992537103638154",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18398992537103638154/BD8D42CF9FDD328EF1602DC72FAC6DE903DB45F3/"
+    },
+    "2c1f8b88bf9e35239b082f964391d2ec7e932d61bda0210550967a57c8571a70": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/en/Starting 1Front.png": {}
+      },
+      "steamId": "17946943475922689038",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17946943475922689038/2900F93ABC5FBB1CD3DF7071A700EC73CBE1DFD8/"
+    },
+    "2c2cf42a71a28a6dce6670bd0c153afb255ea438792a69d96e785801582ac9b7": {
+      "paths": {
+        "assets/models/map_tile_hidden_path_collider.obj": {}
+      },
+      "steamId": "9690906750018145720",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/9690906750018145720/53797060C4FAFA9EF7E0C1CBA17557270A7AD07F/"
+    },
+    "2dc841f82bb0b04238a2490ef1cb11afc71d7552ab205b04ced4fe5de0d4398f": {
+      "paths": {
+        "assets/map_tiles/en/miskatonic university.jpg": {}
+      },
+      "steamId": "15857715085106049330",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15857715085106049330/C690A49AF4CFD4F52EB883FB6974CB012E80E29E/"
+    },
+    "2de1e65c60c7e66de6b950f2a1a4c9f9f331c85bd85a4d25a835a9144d684da3": {
+      "paths": {
+        "assets/other_graphics/roller_s.png": {}
+      },
+      "steamId": "12897324949407043128",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12897324949407043128/3D3511F551D03849AE50489DA0C77DFBFF4DAB71/"
+    },
+    "2e28d881e9655514d91c884c9ce1c093406c51b4bfdb2962be4490339e3d1742": {
+      "paths": {
+        "assets/cards/0_base/en/Ally 1Front.png": {}
+      },
+      "steamId": "17017522181218241510",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17017522181218241510/7C878BDF0E79E9C03979CBADD40929784F9F5A52/"
+    },
+    "2e423511bf3d7a140cce101bf1bc51337f1f1f4ef9d555a6199aa4b5b8bf2f2d": {
+      "paths": {
+        "assets/icons/activation token.jpeg": {}
+      },
+      "steamId": "15802443103836560711",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15802443103836560711/0B0042DDF705DD8D22CF78DDB4329EBABDCABFDC/"
+    },
+    "2e7419ce086f82153454b08322634b235481506d699648a550cef67975ba105e": {
+      "paths": {
+        "assets/map_tiles/en/Innsmouth Village.jpg": {}
+      },
+      "steamId": "15126784680477822531",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15126784680477822531/5384AA362C3816B7AACA7DC365213A867FBDD2CF/"
+    },
+    "2fb558512bb90543b9000337e5df3e77203e10444586c4a5b2f30eb160c4c0b0": {
+      "paths": {
+        "assets/investigators/0_base/mini/jenny barnes.png": {}
+      },
+      "steamId": "11025499118689857419",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/11025499118689857419/079D27165B611A3704246FE23BCE4845EC923901/"
+    },
+    "3060f5287e5149f622824515bc60d181400b3a35951569e2450e882999ee0a42": {
+      "paths": {
+        "assets/models/mythos_cup_diffuse.jpg": {}
+      },
+      "steamId": "10443662056642367853",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10443662056642367853/FDA724CE3F0F9C62A141C0B33CAB238C40EDEE32/"
+    },
+    "315cf2fef1d8744edfaeefd0d3a7f381ae024799fa9bc15d411082cb745768fa": {
+      "paths": {
+        "assets/icons/mythos clue.png": {}
+      },
+      "steamId": "14983561112576305801",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14983561112576305801/F69326304AD7864ACDD3501A396AA342F2F2F3B5/"
+    },
+    "31bf77109820d1e2bfd9c5577a0c6a4e6638abf60c7467d28ee29bfd6ab6586b": {
+      "paths": {
+        "assets/other_graphics/phases_4.png": {}
+      },
+      "steamId": "11764672064814428581",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/11764672064814428581/87C8B61B829C7365D944ACD6988400343D325763/"
+    },
+    "3205092eacc7c4134cd4a8e4c3b6c7658e815cff3d316ecc8feec54852885221": {
+      "paths": {
+        "assets/other_graphics/cards_icon.png": {}
+      },
+      "steamId": "10408952947598427217",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10408952947598427217/424BE53C1078CD55AE672983BF5F81FDD5CA4324/"
+    },
+    "325137e756c808c80a986b93122c70328da57bafef0d71998bbaa404afb60986": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/en/TDCO 1Front.png": {}
+      },
+      "steamId": "18315670133304862252",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18315670133304862252/DC6A313EEDC5D27F7FB7CCBBC22CBEA323F84B58/"
+    },
+    "3304f220269c9eb7c077e3442166cc4dd44bd2b9cdbe331e7543c3ad71a78ba0": {
+      "paths": {
+        "assets/map_tiles/en/The Unnamable.jpg": {}
+      },
+      "steamId": "15546134216394598801",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15546134216394598801/9D39E00954BF4802D38D6C31F5BF981D0AB94A6F/"
+    },
+    "332db4978a0e17a80c3eebba46d3a479ac1e0052b83f0f6eaefef3f231848ca2": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/uk/BtS 1Front.png": {}
+      },
+      "steamId": "12956006112351518677",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12956006112351518677/DE7A83F382B32765C679EBE88A522B3F7F0C28CD/"
+    },
+    "3341f51fb6c3f6123f2ee50a6f4341ece93b43387df8231176a33f453e8df41f": {
+      "paths": {
+        "assets/other_graphics/scenarioMap12.png": {}
+      },
+      "steamId": "10803185899812057895",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10803185899812057895/ABCDBBB85DE33EF7340433E274BEE76846C56F65/"
+    },
+    "335309389853ea616cf3af469c6b3d8ba20fe9e9c1b92e56ecc92667a8ff390c": {
+      "paths": {
+        "assets/other_graphics/additional_buttons_for_xml/additional_buttons_4_hover.png": {}
+      },
+      "steamId": "14463471640067051995",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14463471640067051995/7F9DA0D80DA4C4815B2BE3E7BB2C5ECA6BDCC3C4/"
+    },
+    "3370a330650eef923242adec1220d30c76a3c32ce8baecf702049711b0471259": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/en/Terror FF 1Front.png": {}
+      },
+      "steamId": "10202737905842038939",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10202737905842038939/B2B8F482CBD345EC5C83F4C3EFE9A028E020A842/"
+    },
+    "33acb84e4595f1a2bbc62572dc3eea5fbdaee33da466078343e20a3183d5e17b": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/uk/Archive 1Front.png": {}
+      },
+      "steamId": "12057014742005699993",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12057014742005699993/AFB443AAE5754F45E8912F5AEC4B315983F80DF0/"
+    },
+    "33ccfdcc73409f441026371d6768e08786fa70af325e501f6ad70ae85d9b89d1": {
+      "paths": {
+        "assets/cards/0_base/en/Anomaly TF 1Front.png": {}
+      },
+      "steamId": "13674114149173045369",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13674114149173045369/92C538665FAA216CAF78223F57238166247924B7/"
+    },
+    "351ba63231d37d595cd755909fe671f870f981922609dcba1f8fcc6135e1c82f": {
+      "paths": {
+        "assets/cards/1_dead_of_night/en/Anomaly YE 1Front.png": {}
+      },
+      "steamId": "10323099301145202545",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10323099301145202545/7A4BB8DB6D83948E8F9B1AF2C730499579539C41/"
+    },
+    "35d9306162b052d8cdcbe3ab6c4027d6028b4f01707fd9eec911f3ee6e222a0d": {
+      "paths": {
+        "assets/other_graphics/scenario13.png": {}
+      },
+      "steamId": "9935314637704290105",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/9935314637704290105/2329C5D506609DE5F7D2CDB6492CFA0DB4E95F5A/"
+    },
+    "36299882c722416c1b068c4f182ce82bf954de1f795ccf49e00643ae07ddb9ac": {
+      "paths": {
+        "assets/other_graphics/воля.png": {}
+      },
+      "steamId": "17490566751848562665",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17490566751848562665/01F5142B31F632F9FA30E298E0B29E65D9C63B27/"
+    },
+    "364e3f8ca56e1a38ea1e55bdc8eab9dcb764f8e2d0602df36439f1dba0c45aec": {
+      "paths": {
+        "assets/investigators/1_dead_of_night/DIANA STANLEY.jpg": {}
+      },
+      "steamId": "11913995091506251921",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/11913995091506251921/CD39CB6B82D6B5393388922DAE6B373F3523468F/"
+    },
+    "36d4e9bf17f7080029a74c5fe8d51e31ac72bd67f741eafb1cc01e1d327a5420": {
+      "paths": {
+        "assets/cards/0_base/uk/AoA 1Front.png": {}
+      },
+      "steamId": "10366292191528360234",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10366292191528360234/7F016FA63AF1D2D57B5EE43745760B33BD5A8225/"
+    },
+    "36f8411fcc7a9ada09f6b25e519c271ab88a9203a51697eb754dacba53b9085d": {
+      "paths": {
+        "assets/cards/0_base/uk/Archive 2Back.png": {}
+      },
+      "steamId": "12363888030878220780",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12363888030878220780/D9602E8E7B320415F76A1295B1CD56FAE715133E/"
+    },
+    "37260b4a3cc8a538fe822c9a10041acc8cb22b85f7dc006287214477991f150b": {
+      "paths": {
+        "assets/other_graphics/fail.png": {}
+      },
+      "steamId": "9963488286847697072",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/9963488286847697072/FC0356EFD31B243D9D7BE96B8578493117C56A5C/"
+    },
+    "378917690157fefb9a44c42ae621fe93d33c393a10ce04dbf9fb92ee59beec21": {
+      "paths": {
+        "assets/cards/0_base/en/Headline 1Front.png": {}
+      },
+      "steamId": "10432288491851156979",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10432288491851156979/5A2B0664ECF4241BF7BD3D1545A2737B14F2A17A/"
+    },
+    "37afb7a072c461e886f56890a33ba6cbf7f7244144e9a66e040a6e07efee2c4f": {
+      "paths": {
+        "assets/map_tiles/Country Road6.jpg": {}
+      },
+      "steamId": "14258544307138503209",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14258544307138503209/43ED8B979FFE458F16A7DCFBD5061FC86691EE48/"
+    },
+    "37c2f35c93893a4f524454f810250010a539d33b8c1ada03f85e6cbdb1b16d82": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/uk/TDCO 2Back.png": {}
+      },
+      "steamId": "13018260176363193681",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13018260176363193681/BA87754B6296A31E69AFB82F91518677E3A04108/"
+    },
+    "37e264322dc825fc4329295ffb458c44a0cda28863f5e19873f4fd8902b67bcc": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/uk/TDCO 1Front.png": {}
+      },
+      "steamId": "18200929385126523382",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18200929385126523382/B5142B3D8FCC0673D1132A0E096203EE94714782/"
+    },
+    "380ac983265b9a6f2494d66edbce94b920905999223667a26c383bfaa591774c": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/en/Encounter 1Front.png": {}
+      },
+      "steamId": "16345980209155046341",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16345980209155046341/BFBCF545FA3672E8DC898E9DEF17179610BFD2DA/"
+    },
+    "381a24e6ca221cf6dc5bb159ab2705dda0778ef74000bb8b50ef60df8105ab3a": {
+      "paths": {
+        "assets/cards/0_base/Items 2Back.jpg": {}
+      },
+      "steamId": "15281311875596653134",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15281311875596653134/1968B03E17B8A0E34F64B223235B91C0CB7958AD/"
+    },
+    "382c516a77520a5b01058e701766e275bdc8ec1b82b7f4dfada7223fb470e164": {
+      "paths": {
+        "assets/other_graphics/token_slot_2.png": {}
+      },
+      "steamId": "11907850477784915952",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/11907850477784915952/43E1F877797D2A71087DBE0EDD4C169A317F74C6/"
+    },
+    "39aafb692c9a8942051f862d8d29d61c97c63f2ac2417c2ccef638acfa4f7dee": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/uk/Items 1Front.png": {}
+      },
+      "steamId": "10997687448257845756",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10997687448257845756/3CA2A27F0C9133AFE99B2F6DC539768E03F222F1/"
+    },
+    "39bd3b38087764d4587be07af580e79c5a1fb19278b154332b04e2f7961a7eb3": {
+      "paths": {
+        "assets/cards/1_dead_of_night/uk/Condition 1Front.png": {}
+      },
+      "steamId": "11889605732685293776",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/11889605732685293776/C89D13136128CCA204AD0BE7C9B729DC280004C8/"
+    },
+    "3a6e11426a62eb1c2fcf888424d95d1630c8b6d66d62d8c7f78e3d8717cc24d1": {
+      "paths": {
+        "assets/models/arkham.obj": {}
+      },
+      "steamId": "10864451512044438128",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10864451512044438128/49047E52EE3E7ED9121BAF440700C7E0ACF72AD4/"
+    },
+    "3ac81a9c5535196c6c24d1e66e5e976bd9d5e2db8caee9e2427dcc489768030b": {
+      "paths": {
+        "assets/cards/0_base/en/Starting 2Back.png": {}
+      },
+      "steamId": "11682780009718136529",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/11682780009718136529/6EC8D9E40A2094D5977E491F9AD9925637641CCA/"
+    },
+    "3b5325e32d71d1a907c423ba0ab6303297aa0788a6f1376506923cd620b68f5f": {
+      "paths": {
+        "assets/other_graphics/sky_background.png": {}
+      },
+      "steamId": "15107353272147951870",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15107353272147951870/E890F03BD00542A575D66A7AD371A8571E67D921/"
+    },
+    "3b75dacf5d747b3a9953afc386c06f14edb9a94c1535d5eb360d638b4483bdfc": {
+      "paths": {
+        "assets/cards/0_base/en/AoA 2Back.png": {}
+      },
+      "steamId": "12059907284101367308",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12059907284101367308/E16B125259DE33AD032266CFBAD8A80CA80200C4/"
+    },
+    "3b7a2c7a8e762e02b2cb1f5754ec4727f011ffdb1e47b58a3822d98fc565007e": {
+      "paths": {
+        "assets/cards/1_dead_of_night/en/Encounter Part2 1Front.png": {}
+      },
+      "steamId": "10083930563506535306",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10083930563506535306/CCF21451358FE62F4A98B0070D939E4F13567B0F/"
+    },
+    "3ba235155ab2af1c53ffe481774951d4493ef3637bb5d9e8722227c8e1322522": {
+      "paths": {
+        "assets/cards/1_dead_of_night/en/Monsters 1Front.png": {}
+      },
+      "steamId": "13433717936791182232",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13433717936791182232/66FBFEC454E47B33A1FC125E93B033A3B2BF70A5/"
+    },
+    "3bc37c642f197aa82d6080e52554b028c3942145a0542e81d2498e661e206724": {
+      "paths": {
+        "assets/other_graphics/btn_bg.png": {}
+      },
+      "steamId": "12987736360294212435",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12987736360294212435/6E9A02B21622878E9973D39F6785B3535FED021B/"
+    },
+    "3c02e99c8a6b13531e0f4777810ae9380809f171302f0fa3195d432ff482e371": {
+      "paths": {
+        "assets/icons/mythos monster.png": {}
+      },
+      "steamId": "12699519280779237072",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12699519280779237072/9C89231FFA4FFF5CAA19D03821A684A4ECCEAFAA/"
+    },
+    "3cf74957d6a5997fab25ae966111eced4e4b47a3b6b203b84d268302df97875c": {
+      "paths": {
+        "assets/cards/0_base/en/FfU 1Front.png": {}
+      },
+      "steamId": "17881689433833097327",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17881689433833097327/12DF39A180465DBFEF16BDF7A222BB770157905C/"
+    },
+    "3daa2f52b70cbbbc3a070ddb54942dff117f092f44eea0212fdfce01ba71a1ce": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/en/Encounter Part1 1Front.png": {}
+      },
+      "steamId": "9890715282994326173",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/9890715282994326173/836094A00E2A515C94F9E71DF62BB217AF1E5BB2/"
+    },
+    "3db9867c6d44af819f4fd08796e5d919ce9098cc4af135922c6f4824210d0a3c": {
+      "paths": {
+        "assets/cards/1_dead_of_night/en/Headline 1Front.png": {}
+      },
+      "steamId": "18174231197691475984",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18174231197691475984/F1F0CE8208A52170F58DC06C24F5902D31900169/"
+    },
+    "3e0c7232e96e0d38ca382331524d30df37d900e12aa2af0037d94187da061bc7": {
+      "paths": {
+        "assets/cards/4_recursive_echoes/en/Starting 1Front.png": {}
+      },
+      "steamId": "12244485579699371229",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12244485579699371229/397A7D68EB9903A90BC0C43D1B55C03149B9502D/"
+    },
+    "3e2a26cf3adb71350c60cd5e65611d384a000beb8b882f523d7edbafe4fe5945": {
+      "paths": {
+        "assets/investigators/2_under_dark_waves/mini/zoey samaras.jpg": {}
+      },
+      "steamId": "17101816874732562707",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17101816874732562707/5D71F75897877C605F7638538DD3F105E6317FF1/"
+    },
+    "3e65e460776fc4e8ccda9eb7eaded79007e48a6c0411851c6b8ddc008aed91c1": {
+      "paths": {
+        "assets/cards/0_base/en/Archive 1Front.png": {}
+      },
+      "steamId": "10509164869732223173",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10509164869732223173/803C649045C2AA7BD4B0186921DD02E2380B5AF7/"
+    },
+    "3e6d6244b715a512d66853eac70267f99373b6c4ef0316a43555b7e2808f202b": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/en/DoR 1Front.png": {}
+      },
+      "steamId": "12006976438469906612",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12006976438469906612/CED12C615EB4C2D33A1CFFAF74DFA67E415B3C04/"
+    },
+    "4079173e4bb6f17b8e08faa02bcd116fe3c533523f13c764c7ea4c5004f0a186": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/en/Investigators 2Back.png": {}
+      },
+      "steamId": "11370514784574767540",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/11370514784574767540/D4A29CBE2C901753C8C23413FB0ACB0D9E3DD69C/"
+    },
+    "415b1f1c0356b7aea381b40317cfb9573fd39e454bb88bce8753c2e2d4e92d68": {
+      "paths": {
+        "assets/other_graphics/scenarioMap3.png": {}
+      },
+      "steamId": "18338744394015185770",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18338744394015185770/48D69366632EEC1B26249DD1FB2F6482C62308E3/"
+    },
+    "41cdd1f11340e038ca4390fe8915a1c4ae88c5423c4e603d16fe18ce5a5facc9": {
+      "paths": {
+        "assets/other_graphics/scenarioMap2.png": {}
+      },
+      "steamId": "13297786292446896912",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13297786292446896912/BF375CBD3C2CBAF99DE4F6B67768494DF4AA56D3/"
+    },
+    "42251fd2dee731f15cc7bc6fed646f66a0265a0e68cc856713785db32e04421b": {
+      "paths": {
+        "assets/rules/en/(4) Recursive Echoes.pdf": {}
+      },
+      "steamId": "12442789477617799994",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12442789477617799994/DE978F99ECAE0A7B2E23236D6ABC5427535C20B3/"
+    },
+    "445d7b5333682aaafbc47c9b4a3d453e8eb00dd6cd5cf40a5c3b7d95d9c86a52": {
+      "paths": {
+        "assets/other_graphics/map.png": {}
+      },
+      "steamId": "18003511354737871997",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18003511354737871997/E27D915D72C79152F0977A24A252A3EB86331195/"
+    },
+    "4517d92074374b4437bd7469c1c3dc0e325ec740bf362ae85131fe3e73223bb2": {
+      "paths": {
+        "assets/other_graphics/player_items.png": {}
+      },
+      "steamId": "11654986626130221332",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/11654986626130221332/D8210D7DCE79D76D78906BEA3495D2B8C8016986/"
+    },
+    "45180ad7ae21fafbd33e356899e611f18e2d7a04a00f45749ba95a6860a84c5d": {
+      "paths": {
+        "assets/investigators/0_base/mini/wendy adams.png": {}
+      },
+      "steamId": "11604903968719420627",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/11604903968719420627/3BB238D00EC2D5B51CC18BEE145C84ED47AB64E8/"
+    },
+    "45431229c97903bf606e73079258901b08215eac641191bf573b64f8a8916834": {
+      "paths": {
+        "assets/cards/0_base/en/Special 1Front.png": {}
+      },
+      "steamId": "17422640235236707801",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17422640235236707801/6337C201A053A8D6F770B16B33C436EF1F1F5273/"
+    },
+    "4544bf489ac7a40f3c503ed0c9452c2159369e562443eddfe44e1d85b61fd983": {
+      "paths": {
+        "assets/icons/mythos doom.png": {}
+      },
+      "steamId": "15766350680081605984",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15766350680081605984/24ABBE02C8097607506B23D8005526422C746722/"
+    },
+    "45a667e19f83b9cc6957a28056cca14740a98401b7694b4da792c5b22df38761": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/uk/DoR 1Front.png": {}
+      },
+      "steamId": "14357315907423786954",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14357315907423786954/315BFCDAACC82DB3502545A93A02947CE6E0D96E/"
+    },
+    "45b0f8c935e58d5ceabec2b5ff9565b9b0df882802738044bc6c0dbc9eec8c1e": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/uk/Monsters 1Front.png": {}
+      },
+      "steamId": "17321219662975601297",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17321219662975601297/573C26990A2432D394F67343BE856989FF20DF86/"
+    },
+    "4697d27eaaf95794bfa79b1f9839484d9c7fcae0e5f5f96a32803c92d6241c0e": {
+      "paths": {
+        "assets/cards/1_dead_of_night/uk/SitD 2Back.png": {}
+      },
+      "steamId": "13026213489906670802",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13026213489906670802/86BE60C33751BA143B89BD41AC107E49916F195E/"
+    },
+    "47113ddb8ec0538d7581d48526afcf23728a0356dc5705b490b8bf47ffe11ad6": {
+      "paths": {
+        "assets/cards/0_base/uk/AoA 2Back.png": {}
+      },
+      "steamId": "13086634780384701383",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13086634780384701383/BF96656C6D27B1952F843AB448C1363F85783C29/"
+    },
+    "473fa8546f1bc95626d17c193ec8482aecae59d0bab8f3190edb9e4bc74cb386": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/en/Monsters 1Front.png": {}
+      },
+      "steamId": "12966042190640645555",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12966042190640645555/50285EB7E6AB14141BB6783BAC816CB0CCBBD7BB/"
+    },
+    "48381f6259cda903fe594082b8c985f3ddde192031668af4be0393d82f9bb776": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/en/Items 1Front.png": {}
+      },
+      "steamId": "18243075466154049327",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18243075466154049327/E60AE14893953A29C12E190FC7815FFFEA2740E9/"
+    },
+    "488b34ec941eedb540081af723f7fbd90409d1050c958fca1e24f30b2b345d0d": {
+      "paths": {
+        "assets/cards/1_dead_of_night/en/Condition 2Back.png": {}
+      },
+      "steamId": "13929737066671748164",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13929737066671748164/2FFEF63B04193D98AD76C0EBC481BE9ED39D4365/"
+    },
+    "48ae6241c506bf0ac555971a26143e294c3312da5a2962eed03d5b301c218a75": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/en/TKaTG 2Back.png": {}
+      },
+      "steamId": "9283294189860937917",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/9283294189860937917/4BA13CAD61810402F980D64942A365BC2BFB5C72/"
+    },
+    "495e51fdb168d05d23d1e74e5031d13f71381120cc230b2a5b332d37924da8e6": {
+      "paths": {
+        "assets/investigators/models/patrice_hathaway.unity3d": {}
+      },
+      "steamId": "18292380919468809682",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18292380919468809682/8BFD03C48D1551DD8258BFBB7C9E999018C14196/"
+    },
+    "49f5960ca58e398a1118e9d1ff0a57898f5a6191dbeef41db6173784ef4fb10c": {
+      "paths": {
+        "assets/investigators/1_dead_of_night/SKIDS O'TOOLE.jpg": {}
+      },
+      "steamId": "16629083994215354549",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16629083994215354549/2E5B47FA36756093D55ED7B330D1045D8B6CCC58/"
+    },
+    "49f5f75579d72bd94547bd2f5909178fe8b4429b08000323e0ebd36ee13f301c": {
+      "paths": {
+        "assets/map_tiles/en/Strange High House.jpg": {}
+      },
+      "steamId": "11436088997045921262",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/11436088997045921262/D371FAB5B524C2B3EA94D32AD63873BC3E9F6548/"
+    },
+    "4abc229febd6d812baa4b17e623b833259f7b61605596c7e6a937a75c7ba1d64": {
+      "paths": {
+        "assets/map_tiles/en/Devil Reef.jpg": {}
+      },
+      "steamId": "13524603157440244272",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13524603157440244272/9E3A10E336E7F85AECD7FA63B05698A4958DEADA/"
+    },
+    "4b411e73bc9c3be120b5b26f23f2809eb3a5db4ded283a84c1a5724f75101c93": {
+      "paths": {
+        "assets/other_graphics/button_medium.png": {}
+      },
+      "steamId": "16692616358041441049",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16692616358041441049/7D86FE1A450A1648867FB684E870DD0D2EA1FE1F/"
+    },
+    "4b96e4ab58e081ea3d7650a9bfca2dcefedf994e6d0eb7f1db0d773f841c5ff1": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/uk/Scenario 2Back.png": {}
+      },
+      "steamId": "10480446017550986300",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10480446017550986300/89A1B5807B0D69B4CE408B65B12A7EDA8F1025FA/"
+    },
+    "4c3297d73c2db4023657ac170569c1dc64812c7125e4ae6e0edb790cda739f72": {
+      "paths": {
+        "assets/other_graphics/scenarioMap10.png": {}
+      },
+      "steamId": "12700688675245071998",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12700688675245071998/B3D7DFDD5E70AB32B13EB0308143E9B3A3F0666D/"
+    },
+    "4c7e876a3f5c0fcb1d30c186938fd05b1c73a5abc13c21f286c2cabe731576fa": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/uk/Encounter Part1 2Back.png": {}
+      },
+      "steamId": "13030802856670412472",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13030802856670412472/B564FD6E20D91F6ABE9DE1CCEF06AEB5D3315AFE/"
+    },
+    "4cc49b3c0df2e91ec0d31a23a544cf5de9954493052bc10541305b14c87fc639": {
+      "paths": {
+        "assets/other_graphics/tableMat.png": {}
+      },
+      "steamId": "15128609788393062072",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15128609788393062072/1F8E5E0F683F3FBF6A4E9C05BFC342FDEFC22A0A/"
+    },
+    "4ce7dc92d73490e0d6de61281dcdcf9369ec4a6c584dfe74b917f329286869f3": {
+      "paths": {
+        "assets/investigators/2_under_dark_waves/mini/ashcan pete.jpg": {}
+      },
+      "steamId": "10310382202872954564",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10310382202872954564/11AFF6CB20BD3A9B6638BD66F168C0C1938A5E75/"
+    },
+    "4d060c37adeb09cb8f8b604fd370602a235a6cd3d7f5fe968514a64eda938848": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/uk/Items 1Front.png": {}
+      },
+      "steamId": "17784389587355929246",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17784389587355929246/ED10CB632704FF83ED93015732004C9C21712FEF/"
+    },
+    "4d2b362cf54aaed51638560eb1b60dd1dd62c56cfd1a970642f69b902aec72c9": {
+      "paths": {
+        "assets/map_tiles/uk/northside.jpg": {}
+      },
+      "steamId": "16564289127534513027",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16564289127534513027/36679CB916F764B235A83BEC229666DA345E2969/"
+    },
+    "4d2ef9fcac6bcf489687c930739432c7ee6d61fa12a9f465155fa4bf5b27e2b7": {
+      "paths": {
+        "assets/fonts/font_list.unity3d": {}
+      },
+      "steamId": "12793432762534607789",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12793432762534607789/A578781E3315E733B9148B3F6DF2B249F8E5C9F4/"
+    },
+    "4daae147e8ffd45e683da603fe0836fdd4a3a91210388de753808bd63da85f0a": {
+      "paths": {
+        "assets/models/mythos_cup.obj": {}
+      },
+      "steamId": "12336893511705462482",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12336893511705462482/6C95EB6308A0A9E89367DD67D5C65D09EB3C06A0/"
+    },
+    "4daf7a6ca3e960a35aefa685b8b8005f236e3fc07403ba8e5ce4f5634840a6c0": {
+      "paths": {
+        "assets/investigators/models/agnes_baker.unity3d": {}
+      },
+      "steamId": "9967193410284523642",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/9967193410284523642/7CF8A04A12BB27C6BB368A78C333D395EC2E3089/"
+    },
+    "4df5935efc9212140a3741f90f5609afa4d85ceec801ae938606e550abf54b13": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/en/Archive 1Front.png": {}
+      },
+      "steamId": "18129683359423775212",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18129683359423775212/FC72C339FFE1A9A0F46B60933285867BF2F1ABED/"
+    },
+    "4ef4cf7b6d13aab7c5ad042ac073e45d5c6a187298bf485106b5438a7e473b3f": {
+      "paths": {
+        "assets/map_tiles/Ferry Terminal6.jpg": {}
+      },
+      "steamId": "13431924611608652492",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13431924611608652492/A41BB818D40230F4DBA3D26477CC066F49F7757B/"
+    },
+    "4eff3065987b0befea33510af26feb3cfa4b634ae95bf67009abbe032e7a1af4": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/en/BtS 2Back.png": {}
+      },
+      "steamId": "14139407430066768976",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14139407430066768976/D7D5338B48AE9E44FACD8929C4E82EDC0D077331/"
+    },
+    "4f123357ecf72a099f70f947bf2decb9765266cacdf7ff93c5ab1bb927b4e9a5": {
+      "paths": {
+        "assets/cards/0_base/en/Reference 2Back.png": {}
+      },
+      "steamId": "11330031157299137251",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/11330031157299137251/28F55646B53F9576B08340DF1728FD08A2A3C380/"
+    },
+    "51279fde7b23b7eaae1dd7ea4804e6ee5cfe2ed08bdd04e1b696516916fcc04e": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/uk/Scenario 1Front.png": {}
+      },
+      "steamId": "11645621610210704378",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/11645621610210704378/E1CFA9B69B80F7CCBD7F0EC24EBBDD1A93753449/"
+    },
+    "515fa39d4f1919cc8ad3902b3091172f6f02671ebabd9b61dc473c878f9d4ffd": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/en/Scenario 1Front.png": {}
+      },
+      "steamId": "17139821814931583111",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17139821814931583111/418C6D0F36516221B7AEFB7AD30F5B57AA0E235C/"
+    },
+    "51940e94dc4c33552f4fedaa57c3cb1c85d5b86ba93a899146ad751e696cfe31": {
+      "paths": {
+        "assets/cards/0_base/Anomaly NB 2Back.jpg": {}
+      },
+      "steamId": "17500841106536773372",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17500841106536773372/260B0C645CFA6DBB9763596FDA3A53D32CBCC930/"
+    },
+    "53719c956537a81124153b7a711a5cb6c6b92550aa4ff17a64665888a65afcf6": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/en/Scenario 1Front.png": {}
+      },
+      "steamId": "18020302177385034883",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18020302177385034883/B7ACE3DDC53AA9360CEE46073B98B9344ECD4D79/"
+    },
+    "553ab1bfbecf4535d96d9f9d07f9ab8251b2b76c902fb8c32e361c7995751d14": {
+      "paths": {
+        "assets/cards/1_dead_of_night/en/Starting 2Back.png": {}
+      },
+      "steamId": "12104426254889470959",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12104426254889470959/18294A1114ABE44E853A4B07A62AECF5E8BE6B98/"
+    },
+    "55467288512903e7a0de2646a1a561edf4f7279b63ca167001dda3a55df7c496": {
+      "paths": {
+        "assets/investigators/0_base/DANIELA REYES.jpeg": {}
+      },
+      "steamId": "16022665463206142994",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16022665463206142994/486ED5B21C5AD93A0D288C6C28407A965575E5A2/"
+    },
+    "559c9ab7572ae446a28234057dd23d1c2c4b32f6d736b158a738d6d840342637": {
+      "paths": {
+        "assets/cards/0_base/uk/Encounter Part1 1Front.png": {}
+      },
+      "steamId": "17110068129412112015",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17110068129412112015/6065CEB56BFC411657AA6539F30FF72821974173/"
+    },
+    "566c8fd2705ad7fb97bfc518b2afda84c917682eda07aa1a9e6eb4d164e555ad": {
+      "paths": {
+        "assets/other_graphics/scenarioMap7.png": {}
+      },
+      "steamId": "16424657777944441422",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16424657777944441422/6AED7CA3356E3DA02F556B3B176D8C510024D10A/"
+    },
+    "57688ba71e8257888738f66eae029155202ca77927b1f265cce05d03acac6f87": {
+      "paths": {
+        "assets/map_tiles/uk/Innsmouth Shore.jpg": {}
+      },
+      "steamId": "9756143682994816771",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/9756143682994816771/836DABC099A10702BA73D0DD09819C8A2CA6BCFE/"
+    },
+    "57d0efa34a16247cdd04918eba304de0c734270729c1215516fb7b2c0855e232": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/en/Condition 2Back.png": {}
+      },
+      "steamId": "18250692662703405759",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18250692662703405759/ECDDBDCA9A62CEA60D874F69A3181BD0D1765FF6/"
+    },
+    "58574e3fcd3653a4c95f8be9ae8a401bd3dc10619a75974c1cab879803e8f6f2": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/en/Condition 2Back.png": {}
+      },
+      "steamId": "10767333641586485380",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10767333641586485380/842B70E1F0DDF6B00CB58D00060943AD8D281D82/"
+    },
+    "59f8a1fbc2909d30a71a5b1aa3d6e04261724fe3070c0c593178da4c29a33f42": {
+      "paths": {
+        "assets/investigators/0_base/MARIE LAMBEAU.jpeg": {}
+      },
+      "steamId": "10404544497099695051",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10404544497099695051/27AF49311B4504F65ED20DDE32483089B9D7B700/"
+    },
+    "5ab553424ffd42df6d177178c9a5fdcfb20c6be80e84e7166c950422f8973a87": {
+      "paths": {
+        "assets/investigators/0_base/mini/michael mcglen.png": {}
+      },
+      "steamId": "16085193905964591873",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16085193905964591873/B3DEC8701DFADA6B43AAA9A2323FE3BA4D0CE03D/"
+    },
+    "5ac10cede77655fbfc5493e9f2c4625c4ddfe4d203344bc8beee925a865cdb86": {
+      "paths": {
+        "assets/other_graphics/scenarioMap1.png": {}
+      },
+      "steamId": "17635576004788889538",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17635576004788889538/AD693FC65A7DD043F5FD0412DF1B7CAA768B1A1D/"
+    },
+    "5b07adaa529be204b742ad7956bccd8b9c60a4ec52a89c33dfb6d02cec4fe080": {
+      "paths": {
+        "assets/icons/mythos reckoning.png": {}
+      },
+      "steamId": "13442145950347259090",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13442145950347259090/29271E622B71CD78EE8BFC650504F84B3BD58DD3/"
+    },
+    "5b62cea3380138414f7a47f2417c7bb2d86a839278b761faf985f2ec64b0e641": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/uk/Headline 1Front.png": {}
+      },
+      "steamId": "15131831178268510434",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15131831178268510434/FFEFF1C6B9246F38CF60C75B6B778F53631DF3F5/"
+    },
+    "5c288bc774cf48531429e65fcdbf31f350a1be1929f835644d0cc0c2ab606dda": {
+      "paths": {
+        "assets/investigators/2_under_dark_waves/mini/stella clark.jpg": {}
+      },
+      "steamId": "16063931760543222943",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16063931760543222943/44CDC1C43D1D82E9430D9A85E157AB15C694E54F/"
+    },
+    "5c48c703c83394835a1c0f6d69f732c2f1900ffed585413abdd71728dbf448ad": {
+      "paths": {
+        "assets/investigators/models/dexter_drake.unity3d": {}
+      },
+      "steamId": "16919985050663875763",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16919985050663875763/79FC2A955DD9520B20F5674761AFDC76FCBF4708/"
+    },
+    "5caa13fcc0882d902dee2d5b9a13df68d2978cc6fd981e177afa766bd31230f7": {
+      "paths": {
+        "assets/other_graphics/sanity.png": {}
+      },
+      "steamId": "13389012384445155160",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13389012384445155160/A177EFBA2B30F1728EC5D81FDFA6273328823743/"
+    },
+    "5d20acbef52b52955b28cfa2e58d8f15a3f804be8f415e712ba950292248bd52": {
+      "paths": {
+        "assets/investigators/2_under_dark_waves/patrice hathaway.jpg": {}
+      },
+      "steamId": "16621688675141277762",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16621688675141277762/FB52EAC8000CF070F048B588013560044558D6A6/"
+    },
+    "5d7af316c8ad4fc6cbe20c8489da74a911e47662d2bc65db2f9ca83117a2662d": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/Anomaly LS 2Back.jpg": {}
+      },
+      "steamId": "13956113112139048157",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13956113112139048157/FFFDA155AA3EA9C348FAC4CF6F086ABBB05BF1E7/"
+    },
+    "5f12fa7a16064dc0f55b39504ac574af7c32379c49e8ce36ddeb350c72f0d6f3": {
+      "paths": {
+        "assets/rules/en/(2) Under Dark Waves.pdf": {}
+      },
+      "steamId": "15985018684369414268",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15985018684369414268/C3E790EC2F88F3320D828C435DE7B98447BCEF28/"
+    },
+    "5f6ab5a3f91af0a962895087cf59dac19e4a7e3a791c050188d1efa2383f62f7": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/en/Special 1Front.png": {}
+      },
+      "steamId": "16385126121330765319",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16385126121330765319/965B33FE7480D870094576CA496521A3C7EE6C54/"
+    },
+    "5fcac2e82645f988aeadad948134cfe8a1bbe0cf2b8f6754bc96fdfc2cc0cc28": {
+      "paths": {
+        "assets/rules/uk/Rules Reference.pdf": {}
+      },
+      "steamId": "14559358295766329961",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14559358295766329961/9F77BEC2CFD5DE82231C3B7FFE7424B25B8C345F/"
+    },
+    "5fd8e017d884ef256f2c13b5dab54f4dc3121673d18dc3d59fe07a293c6db1d9": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/uk/Starting 2Back.png": {}
+      },
+      "steamId": "14885052128221224862",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14885052128221224862/E17BA6B471963DD6EAE903910C2627945838BFC1/"
+    },
+    "5ffaa0f1fd6dfcd0e0d9c5eae613c63659c5a7917411b930973ae6cb0cd8a55d": {
+      "paths": {
+        "assets/other_graphics/Activation_Token_1.png": {}
+      },
+      "steamId": "14352125780440265216",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14352125780440265216/0C0811B37C263ACC790AD02773B9166645F836E8/"
+    },
+    "609297e03294cb447d454c3a4b9f697f43a41e6603908aa1d1576b3b4147e61c": {
+      "paths": {
+        "assets/cards/0_base/en/AoA 1Front.png": {}
+      },
+      "steamId": "10497871879580561570",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10497871879580561570/FC1C8B70772D5D11404F880E31FE384ACE4F7379/"
+    },
+    "60cd21824f1b448f1bff3a11848717bc79909998a6e43c2baa5f2d3a73342c88": {
+      "paths": {
+        "assets/cards/0_base/uk/VoT 1Front.png": {}
+      },
+      "steamId": "9611912888658860495",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/9611912888658860495/CFB35C20062E1B924E668BCEB2A0CCBBB705FB11/"
+    },
+    "60f4476e421a3db814513bd5639d420e2589b5a81f82d8eb9270cf0bbed0951f": {
+      "paths": {
+        "assets/map_tiles/street_scenic.jpg": {}
+      },
+      "steamId": "11848390773051594587",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/11848390773051594587/AE2EA10B75884CDE2F341451A277474CC5CCA7F8/"
+    },
+    "618363f7f67db0989956dcc41ac2f6d1dc6c95da409a55f8b3fb45dff6dfb114": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/Terror FC 2Back.jpg": {}
+      },
+      "steamId": "9261605499801832958",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/9261605499801832958/915873E95774FFF67AA9617A840DA920F3B48F84/"
+    },
+    "6226d05eb304746a7cdd93568e5468b425324f0db435797bbca6ed3064c28969": {
+      "paths": {
+        "assets/cards/0_base/uk/Condition 1Front.png": {}
+      },
+      "steamId": "17096726764396675911",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17096726764396675911/29AE48B38E79EA0D21EEFCDA8E95F9B50C5B62A4/"
+    },
+    "625ff029e8885471196bc764c3153d5e46dc1bc3d92efee66f573d71c86801ea": {
+      "paths": {
+        "assets/other_graphics/спостережливість.png": {}
+      },
+      "steamId": "14164920621031370715",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14164920621031370715/554C396F5704080149306A971FF2B5D292274CCE/"
+    },
+    "6370d92154e58bcb17e62c54a05678a5f78bbff8c31a6bbb53e42da06b349867": {
+      "paths": {
+        "assets/cards/0_base/uk/Ally 1Front.png": {}
+      },
+      "steamId": "13767159581222232778",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13767159581222232778/370D563F80B5DFAD0CD653794E59BAF22CE84A53/"
+    },
+    "63fc55bfbd2b8f40cfea63cc70f36b79da24e58027f10d68f1ffe9c4b6518ea9": {
+      "paths": {
+        "assets/investigators/2_under_dark_waves/mini/silas marsh.jpg": {}
+      },
+      "steamId": "16127155887079323290",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16127155887079323290/03C08AB83B3AF4B3A85C59AC71C9C48E5E5F751B/"
+    },
+    "641c27f888263d221fb868091004f2a6ef1e64219c9982f4735f3ffd3bd29a71": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/en/Starting 1Front.png": {}
+      },
+      "steamId": "17563340098034343574",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17563340098034343574/8DBE79EDBA06927D5A88E93D9FF248C074264952/"
+    },
+    "6471482cff44f3e87937727b3325f953f86bb11e0142629ab3110ce045db3c76": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/uk/Starting 2Back.png": {}
+      },
+      "steamId": "12052679996081430839",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12052679996081430839/BB34ED8EE7272BBB2125DC2587692B9D82949DF1/"
+    },
+    "6475cb439fb8635b2fbf7d6c0c24cbc34a731cbb7fb53f6a9efc0d93bc8fef72": {
+      "paths": {
+        "assets/other_graphics/phases_2.png": {}
+      },
+      "steamId": "16183076851726164440",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16183076851726164440/C3197054C1E49E9ACEB462659D8A2A96327B1035/"
+    },
+    "65547d5652e1b32330f83a1721bb6a532b14f3c0e2f6d8986e95f7aa52afa25f": {
+      "paths": {
+        "assets/models/map_tile_hidden_path.obj": {}
+      },
+      "steamId": "14563435137952412781",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14563435137952412781/86D19B09A79D2E45032B1196D0639A1C686192B9/"
+    },
+    "6746dc28a04d8902ca9e973c31a6d2e4f39c6d710fe9c4ad1e678f4f79ff440d": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/en/Monsters 1Front.png": {}
+      },
+      "steamId": "13097381969205142927",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13097381969205142927/511C656275254C7E55FEE6B549F27330FD759EFD/"
+    },
+    "68ab2ade32195693563fd687935a6c450b495b49408fe6acbeb4bc54428b58bc": {
+      "paths": {
+        "assets/other_graphics/hud_window.png": {}
+      },
+      "steamId": "9907807488786269549",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/9907807488786269549/53259C9C1EF214DF73939A6550A5C8F878590C95/"
+    },
+    "692596641a249ea3767b7fe047062b3daa437c7600c8b87872b6caa1af20e318": {
+      "paths": {
+        "assets/other_graphics/scenario4.png": {}
+      },
+      "steamId": "15778723024869370909",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15778723024869370909/92383E8224B5117987B4CED8186CB651FD0BEDD7/"
+    },
+    "69e65ad159b6c7735755530a69d94ded3388192f818e0f81fb9196b3c65f7bff": {
+      "paths": {
+        "assets/icons/token remnant.jpeg": {}
+      },
+      "steamId": "15356137305177138204",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15356137305177138204/48F14C64AC1FF28931F5B631D93E3758E357DFDE/"
+    },
+    "69f3a03bca04dfa53a100f73dd1d0c8371b1936588bdce7543dbc5a013bc0824": {
+      "paths": {
+        "assets/investigators/2_under_dark_waves/charlie kane.jpg": {}
+      },
+      "steamId": "16644912915418424001",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16644912915418424001/D5FC5E1A0137D78C4BB5790997B9F03805882E89/"
+    },
+    "69fdd1fbb26481f2319a28bc64d960450b13fd3dadc21b1aac660469db6aecfd": {
+      "paths": {
+        "assets/map_tiles/uk/underworld.jpg": {}
+      },
+      "steamId": "18441330771940404321",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18441330771940404321/146F8B2B68911C7875BCBD57083596B7D062FC1E/"
+    },
+    "6a21b13d9b335780ea1e90950a84e4c0731e768cbe3f9ad0c413ea48fad9a55f": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/en/Headline 1Front.png": {}
+      },
+      "steamId": "11512953069307127029",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/11512953069307127029/1BF190C74DD346466DAF4B1B7C9FBBED39E0B058/"
+    },
+    "6c17ec5382a64d6c909fd284a4197c34594e8dd670d16011be9ca143249ccfc9": {
+      "paths": {
+        "assets/other_graphics/dice_red.png": {}
+      },
+      "steamId": "13468893877756053433",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13468893877756053433/011289201DE8E02EB44DBF0CA363DFF942B89466/"
+    },
+    "6c227e25c30d208a0680709d83ec26822469897a3332b3da13851c1af49877c1": {
+      "paths": {
+        "assets/cards/0_base/Spell 2Back.jpg": {}
+      },
+      "steamId": "14688256381556049717",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14688256381556049717/1AFEAC69A05C503824968BA125BC231C53CA81C2/"
+    },
+    "6c99cadc99b1c52d59f91c114a53a70c6f92ec1d3e8943d440f5bb1bb7ad6569": {
+      "paths": {
+        "assets/investigators/0_base/WENDY ADAMS back.jpeg": {}
+      },
+      "steamId": "12186404171709602307",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12186404171709602307/F5C4357A240E51C5381658F1AF569C00949099E5/"
+    },
+    "6dc5875dc2a3abd1ec9097a7df122bb49370600d32a8d4c98bdc55d15b3a1cfd": {
+      "paths": {
+        "assets/investigators/models/diana_stanley.unity3d": {}
+      },
+      "steamId": "11499065013242084163",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/11499065013242084163/3D983853F57FE7BE4092F1CFB952420644DAC579/"
+    },
+    "6e0bb8194fc99119cd170b127d0c52bca3839fc72d3ad3a03ddec6b96cee4095": {
+      "paths": {
+        "assets/investigators/0_base/REX MURPHY.jpeg": {}
+      },
+      "steamId": "14215373916008833615",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14215373916008833615/05FE06DC393728EC34D1D87BFC64E907CB3B43A5/"
+    },
+    "6e74805652a14e9407610f8770baa8e9c1f978fefe4eb4eb23f98fcf7639db62": {
+      "paths": {
+        "assets/cards/4_recursive_echoes/uk/Starting 1Front.png": {}
+      },
+      "steamId": "13761098675627532708",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13761098675627532708/0D6DDADBD780AEF7AB13387D891FB506C0A88DEA/"
+    },
+    "6f4b1e34c675c11e59fab30b2e036cad5314e6499d41c81c85effed09f61e7d1": {
+      "paths": {
+        "assets/cards/0_base/uk/Encounter Part1 2Back.png": {}
+      },
+      "steamId": "16079824494913133699",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16079824494913133699/54515422D474C765247C91477A93430170473F46/"
+    },
+    "6f9432fa87e8343469f245431ee52af70d36a2c8bd325c9900ba28908041b42b": {
+      "paths": {
+        "assets/cards/0_base/en/Monsters 2Back.png": {}
+      },
+      "steamId": "10767459869529760203",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10767459869529760203/E73A65E0CB74F6EFF4A44DEB30615F9A9A6D8564/"
+    },
+    "704b5a8cf955918101fdee75487e6c1ea1b6fdb3a012d6d577a1eb1e79aefec2": {
+      "paths": {
+        "assets/other_graphics/scenarioMap5.png": {}
+      },
+      "steamId": "17570881785925706022",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17570881785925706022/FE4F229D42CA1B83F76C6ADEA6AB095ADD17B390/"
+    },
+    "7069108ab07150ede9a89846f45ad5c3d71c487b077c307ce3298fbb789e53ce": {
+      "paths": {
+        "assets/cards/0_base/uk/EotD 2Back.png": {}
+      },
+      "steamId": "9923565287737372602",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/9923565287737372602/5C6CFD25F4E5173D9063EA71259499C87591CAF1/"
+    },
+    "7076bf835d16a5d1808f72c88118d7858fe251f3c65c17504e645c874e36e319": {
+      "paths": {
+        "assets/investigators/1_dead_of_night/mini/kate winthrop.png": {}
+      },
+      "steamId": "15637640597858348904",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15637640597858348904/9A879BF19E60322F504F993097F78AEFFD0B1E09/"
+    },
+    "70a5e9ad89e3e1bb49f7819479a9d442078d8e296d6bc5a70d9fcb99ff462b36": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/uk/Scenario 1Front.png": {}
+      },
+      "steamId": "11074360565964924843",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/11074360565964924843/62F4C8FE73699F93CAD1253D94720BA51017CCCE/"
+    },
+    "70aaf8b7e0430101d1bebe579e777ec029e9a6b31349a14923fdfdc31a45bd73": {
+      "paths": {
+        "assets/investigators/0_base/MINH THI PHAN.jpeg": {}
+      },
+      "steamId": "14457728324179386852",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14457728324179386852/32224C6AE39974ADA0FAC21712D812D6CF0000A5/"
+    },
+    "71088af559b834a34c6627b8f3cde9b09731d3172713e11c4d0c07d0e5beea82": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/Terror FF 2Back.jpg": {}
+      },
+      "steamId": "11434060645688598909",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/11434060645688598909/2C8A41997447E4E12452B42592EFE783A00F7D33/"
+    },
+    "720a9e84b6657e6fbad95f89fb12483df538a2640a027b15e3dbc24b5034126c": {
+      "paths": {
+        "assets/other_graphics/dice_blue.png": {}
+      },
+      "steamId": "12597826545315560669",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12597826545315560669/D1E7D1511D57F7B5E9B3A524B89F9B216BF0D495/"
+    },
+    "729275423fcb09c0a7ca5a5f5f14f71d7e8cad64d311df12f0a8275b476cc4c4": {
+      "paths": {
+        "assets/cards/0_base/uk/Encounter Part2 2Back.png": {}
+      },
+      "steamId": "13601649465258031194",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13601649465258031194/06CD7281DB788B04F49557A5F7086DC13E9E7C44/"
+    },
+    "72af99bfb406621390b11518c73d242c8cddd0b1d1c5d3107c8b07e4c7ec8946": {
+      "paths": {
+        "assets/cards/0_base/Anomaly TF 2Back.jpg": {}
+      },
+      "steamId": "14617230610248503513",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14617230610248503513/07816FBC2E6649AC5514470479BE25ACA64C25D2/"
+    },
+    "73f7d89e94442d2732f2314cb5d79bf195da8ca8d8c4117fbcdc7606c4178f33": {
+      "paths": {
+        "assets/investigators/models/skids_otoole.unity3d": {}
+      },
+      "steamId": "15611739096789869061",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15611739096789869061/A3A8BDC0EC808D9BAC94D7441A65D96778B98263/"
+    },
+    "7464b98cf3043d4fb4f7ca00d28a55fc40fad8578454310e6bbe6b1d79e9c7c9": {
+      "paths": {
+        "assets/icons/token clue.jpeg": {}
+      },
+      "steamId": "12208610361811172914",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12208610361811172914/BAFA136CFF577FCF56E1FCC9F56A5D581140929C/"
+    },
+    "754a36034fc135f45ff3b7c36d6eba3c61634731b0c3040e84b434efbff05a42": {
+      "paths": {
+        "assets/investigators/2_under_dark_waves/mini/charlie kane.jpg": {}
+      },
+      "steamId": "10466058002544564783",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10466058002544564783/A71EBA979D6CFC6CC01731D1C9BEB283ED09FF23/"
+    },
+    "75b64bd07a30cddcaac4661f354dd3753e6c5a68ee2ff2da183b2d2cd46e6e00": {
+      "paths": {
+        "assets/cards/1_dead_of_night/uk/Special 1Front.png": {}
+      },
+      "steamId": "14842737792982158369",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14842737792982158369/45A3B011A2648F1DAB7B164D24C4562888108CD5/"
+    },
+    "75dfc537607a4df442e3e1ce77d45a0445a0fc6e02b15a903592d198339de3eb": {
+      "paths": {
+        "assets/investigators/2_under_dark_waves/silas marsh.jpg": {}
+      },
+      "steamId": "17536564928148575475",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17536564928148575475/0ACE919787E4A6128B2342FB5F2B598C5139251E/"
+    },
+    "7709978ad150b59d77a94048e5e0ca1fb1186bf991443e767877df0690f7c705": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/en/IC 1Front.png": {}
+      },
+      "steamId": "17773998868675002780",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17773998868675002780/1D5D0D1FF1FADBC469E4A07A804A5E7400EFF475/"
+    },
+    "775be4dc44c9c7719203dd0bbc4972901dae2268bf5233be570799a3fdd70d01": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/en/Investigators 1Front.png": {}
+      },
+      "steamId": "17695420605576600602",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17695420605576600602/70DDBD81879AD335EFF0D7435A00878BB1E81C12/"
+    },
+    "785071659681a14e92477824a9e2995ffad6b83eff005cffce7feba5fa123be9": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/uk/Investigators 2Back.png": {}
+      },
+      "steamId": "15320000457051600194",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15320000457051600194/EFF7BCDAE1F53C885D6C079034718A051224977D/"
+    },
+    "78a59c3e038909b2f9f00d3006e709fa6d5068dcca4675c8af901c753e246f3a": {
+      "paths": {
+        "assets/cards/0_base/en/Scenario 2Back.png": {}
+      },
+      "steamId": "11400473007884385200",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/11400473007884385200/FDF265C54DA84B2F25EF9E1ADD5289DE3067567E/"
+    },
+    "78b5cbf55ebe6bd9a30d1190365d3f5e6c7e40af69512ce5a2784d311f94a722": {
+      "paths": {
+        "assets/map_tiles/uk/Strange High House.jpg": {}
+      },
+      "steamId": "9802284026291814723",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/9802284026291814723/161DF4493F6B125F6AA74B65CAA140DAC258521A/"
+    },
+    "78c4344e904cd02ed44963e59f5e04f503ee50e5195217be8168797c7a0c8b4d": {
+      "paths": {
+        "assets/cards/0_base/en/Condition 1Front.png": {}
+      },
+      "steamId": "17184595247795123503",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17184595247795123503/782D3B051858E19F6DE52DA3ECB6D020BDFCCD7D/"
+    },
+    "78dc4204ef27b538f0fc577d2500d0442d2f9f3049929f8137b647bdee81174e": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/uk/Encounter 2Back.png": {}
+      },
+      "steamId": "9856671886115398057",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/9856671886115398057/D281C9E08999A6D02A9A53CE6C70968887D2914F/"
+    },
+    "790200412169f4db9f0e42335d92ff58744c1f198a163274cba7d8634fb21a60": {
+      "paths": {
+        "assets/cards/0_base/uk/Reference 1Front.png": {}
+      },
+      "steamId": "9304277124477343223",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/9304277124477343223/FEC34A3A31A6865BFF897E9A92E74F6776481C85/"
+    },
+    "794e905a84d268a9995732715d1b3fba54110d993e8d41ba0a50e732f81cf704": {
+      "paths": {
+        "assets/cards/0_base/uk/Scenario 1Front.png": {}
+      },
+      "steamId": "9830492015314806828",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/9830492015314806828/D9C2981F72BBD5B9D38F046B36BAEDB278CFC103/"
+    },
+    "796e7fe443efd3a52693d19b92f657501f4732e45a9ed7caac558bd59398752a": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/uk/Archive 2Back.png": {}
+      },
+      "steamId": "16153884494570611519",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16153884494570611519/A41E8F199570406F4EFD3E0CB4F9172D49518EE9/"
+    },
+    "79daa6b326039c2a1956b395baca34ae6422acebe9d959145593539ccb93c771": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/uk/Investigators 2Back.png": {}
+      },
+      "steamId": "17981923495534613843",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17981923495534613843/9004F852A5450391EBCF15E993210C0394262006/"
+    },
+    "7aa8cc70f07ad95660a1801babacb162fb62cd79e3e9482a2484cff3ec0a1587": {
+      "paths": {
+        "assets/other_graphics/scenario8.png": {}
+      },
+      "steamId": "13002627754956011241",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13002627754956011241/39035C73FC280EDE480FE9883356978A2CEA8AE9/"
+    },
+    "7b8cf599cec36707a71181d3a6a90b85eacd727fa615d7376f3defdb4e0c39c8": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/uk/Anomaly VM 1Front.png": {}
+      },
+      "steamId": "12486754809666387992",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12486754809666387992/F481EAB22C561680026B17D4E9647831B8791624/"
+    },
+    "7b9cbb4eec144f9be35c3afab3763a0b085f94b889cd0fcc3cab37d96ad7a6e2": {
+      "paths": {
+        "assets/cards/1_dead_of_night/Headline 2Back.jpg": {}
+      },
+      "steamId": "13434902683876240825",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13434902683876240825/8566C65A619DE9C113813B1AA3AF47AE64135E32/"
+    },
+    "7bd92d7eaae080236c9be6ad4be442f578b724f43947a5683d9bf0962f842d90": {
+      "paths": {
+        "assets/cards/0_base/uk/Starting 1Front.png": {}
+      },
+      "steamId": "14675487671557999867",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14675487671557999867/2AF18576B73F9A2CBD46974A58B23731AC8964D4/"
+    },
+    "7cb027918791ac2d213f4fc194303a6312c37b3277561e3a06fe91e0b676fed4": {
+      "paths": {
+        "assets/other_graphics/health.png": {}
+      },
+      "steamId": "17081069903362042003",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17081069903362042003/DA1895F8234F499DAA54C1DCBA2C1DF72699768B/"
+    },
+    "7cc38273df9decce2ef6996bd5bef14c0381df7d50dfadb7ea833d17b92747df": {
+      "paths": {
+        "assets/cards/1_dead_of_night/en/SoT 2Back.png": {}
+      },
+      "steamId": "12930379842209026548",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12930379842209026548/5F3522502D68D5251A63C90E9DF967CF7CFABE4C/"
+    },
+    "7d5504ef139315737f711f21f4404cd8e01076226c6ba866121d34b187762bf6": {
+      "paths": {
+        "assets/other_graphics/enemy.png": {}
+      },
+      "steamId": "15423721545364936281",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15423721545364936281/60EF655541BA52B3E18F6CE7D6D2F07C09165750/"
+    },
+    "7dc4852c825bdc1da3ac0202d369fa7467799c562c85844324cbe2a6ec5967e8": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/en/Spell 1Front.png": {}
+      },
+      "steamId": "10092334476011430018",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10092334476011430018/9C519ACBFCFFA01582AA419F90904F2A89FA2A85/"
+    },
+    "7df48fb8f9e2778b380f2f4f5d51ef2e945c73a8b16b4a8e64172787d0e1364a": {
+      "paths": {
+        "assets/cards/4_recursive_echoes/uk/Starting 2Back.png": {}
+      },
+      "steamId": "13094557349930147152",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13094557349930147152/2D20AACC3F9CBB8DEBACEBB78BFFDDE49A1A53E5/"
+    },
+    "7ea11e556f3d49a68cb4354037da772b430146470b135c651346099c6fe4a758": {
+      "paths": {
+        "assets/other_graphics/вплив.png": {}
+      },
+      "steamId": "10239039491450441921",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10239039491450441921/7B9EDE84B66F16D4E9E10783236D2373D8584BE5/"
+    },
+    "7fb116c45f9d226f8322ccef8da151410b321059d69ba8d1c09e247647f798b5": {
+      "paths": {
+        "assets/investigators/0_base/mini/minh thi phan.png": {}
+      },
+      "steamId": "12960210297485593839",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12960210297485593839/1E976569E723D52F61A5AB4B7AC0D947CC810055/"
+    },
+    "7ff4de68db515ee594fe43c8cfbccc8e776cf7e4ce6b6145bab07270de903a50": {
+      "paths": {
+        "assets/map_tiles/en/The Witch House.jpg": {}
+      },
+      "steamId": "12552806262714723368",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12552806262714723368/366BF765AB37033A3AFA1939831DCC5438C1E83A/"
+    },
+    "803fe25e8aaf85b84acee204f108227e22d7995f60738e532d6f4fa343df40a3": {
+      "paths": {
+        "assets/investigators/models/kate_winthrop.unity3d": {}
+      },
+      "steamId": "15164211946814125910",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15164211946814125910/90BE8C2EB3D7F8DBDD4C06F4A9A741F840FF9B00/"
+    },
+    "80a6c928693310e437ad4fac3c65f214c63432d68ad96428e60a0ded78a69072": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/uk/Condition 2Back.png": {}
+      },
+      "steamId": "10888374918875093407",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10888374918875093407/45DA28347437B58AE147871DE4A2A22FA1860EFB/"
+    },
+    "8116bb8118b51acebeb6f2da22ff00f0ed0a92f5e8643a3b81b38334005a11d9": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/uk/Monsters 1Front.png": {}
+      },
+      "steamId": "17697114792223368506",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17697114792223368506/6DFC82117C86B58B28E7FAD55B739F397A5793B0/"
+    },
+    "811cd266fa1f86578d08a65306be3211a061aaf6551c706e93e27f07e84c14f4": {
+      "paths": {
+        "assets/investigators/models/charlie_kane.unity3d": {}
+      },
+      "steamId": "11869576213964270070",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/11869576213964270070/0B8F4D17A609BA9CB955964C61B988DBBCFCA049/"
+    },
+    "812d86d0578b0074abdad4c71c69d69cf2477d6ef5a4fbaa632df870f356ee0b": {
+      "paths": {
+        "assets/investigators/1_dead_of_night/mini/skids otoole.png": {}
+      },
+      "steamId": "11853096292931779920",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/11853096292931779920/21315C57B4F40ACF48C99205D95D2008E43C9513/"
+    },
+    "844214e03b1fccb3278aa132614f6277a4fe05509ecae2ee8fa31af252301504": {
+      "paths": {
+        "assets/cards/1_dead_of_night/uk/Encounter Part2 1Front.png": {}
+      },
+      "steamId": "9407361972137926536",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/9407361972137926536/C2D6724938570623BD59DE316527EC47379D872C/"
+    },
+    "8451ad6cbd09d237248d2106a80fa27c9505b257dde2bc17f826f0103039ce36": {
+      "paths": {
+        "assets/investigators/1_dead_of_night/mini/roland banks.png": {}
+      },
+      "steamId": "18100519951343738686",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18100519951343738686/1E8E3FB1D617720772AFC6F824E3E32722BE3A7F/"
+    },
+    "8551854b555855df85e4b911ab488c23a3780252906f0fa1ff570d1fa3a8b381": {
+      "paths": {
+        "assets/investigators/0_base/mini/dexter drake.png": {}
+      },
+      "steamId": "14890761160787637798",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14890761160787637798/307BD0BBA58C59D25AF9FF51476E929983E955BB/"
+    },
+    "85efe4448afef476cb5509c325d8c9f817604afe59404ee8edb189c90b312d1e": {
+      "paths": {
+        "assets/rules/en/(3) Secrets of the Order.pdf": {}
+      },
+      "steamId": "11264177841691178435",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/11264177841691178435/AF8CD0259B5F24C9FCA7B58D4037C52DE59BA4F5/"
+    },
+    "86e261c60ad1f8b71c07dd49f1ca4baf6b189ba72c7e439d0d46ec5c2920870b": {
+      "paths": {
+        "assets/investigators/models/daniela_reyes.unity3d": {}
+      },
+      "steamId": "14624601989657041589",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14624601989657041589/9C8C21271767A524EF0D0BD8562417EDD92618FC/"
+    },
+    "87cfed1875f5e37476fbbcd603a7b1a91aadadb6e2f5b4abf371744dddc5e30f": {
+      "paths": {
+        "assets/investigators/2_under_dark_waves/zoey samaras.jpg": {}
+      },
+      "steamId": "14457021051550243366",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14457021051550243366/40746CE626262601C799DA6FC836F1ADF893BE68/"
+    },
+    "880474523a826971fd16552895ec0ccf764cf26f7dbe4cab424f74fb1cbe8af9": {
+      "paths": {
+        "assets/map_tiles/uk/rivertown.jpg": {}
+      },
+      "steamId": "15390539417286561940",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15390539417286561940/9676F7E290A6E13DAD8E7E1ECF9B2C40E7162D5A/"
+    },
+    "882e2ab723ea47cc32abca2610b8aaa97b37dc351ffa8f16f4d830ea3d1a2013": {
+      "paths": {
+        "assets/cards/1_dead_of_night/uk/Spell 1Front.png": {}
+      },
+      "steamId": "14834856879732395736",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14834856879732395736/F851B7B4CBC5A6F8B86332F0A176B9E300898203/"
+    },
+    "898f336221c83bc671ba6c6b4316cfaa82480e3512d0a07fd3cebe8c8d9a5847": {
+      "paths": {
+        "assets/cards/1_dead_of_night/en/Ally 1Front.png": {}
+      },
+      "steamId": "15225587523019075358",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15225587523019075358/399F361B84F29F4F25A0A8C58E904A33D2D42314/"
+    },
+    "89ee9abbf7a2dc3dd717889cc0bd5c7ea4fb1a8d02db02d4f8288440afbc0b8d": {
+      "paths": {
+        "assets/icons/monster_shrouded.png": {}
+      },
+      "steamId": "15708653533700281107",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15708653533700281107/BFA40B68306A66A7D43F6BE80498488DFBEE19C7/"
+    },
+    "8a434fa7cd0055dd3bce9e63e3f1155d5c9e38d2c87798345d4006bbe4af0e71": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/en/Monsters 2Back.png": {}
+      },
+      "steamId": "18364949048677091083",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18364949048677091083/CCBABA69EF0E07F2FD5A28B27914D93B7EC44794/"
+    },
+    "8a66efc73035845725aecc03c30f9d310a29968872399c11b3739f938c01a315": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/en/Encounter Part2 2Back.png": {}
+      },
+      "steamId": "11383239655436640095",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/11383239655436640095/6B8139EFE3707742604B82CE369F42B378C5F917/"
+    },
+    "8a9aff43c4edbfa1d06cdbdec51764bbcd9a6b21262ab84ed21d5f3b2cda2fcf": {
+      "paths": {
+        "assets/investigators/models/preston_fairmont.unity3d": {}
+      },
+      "steamId": "9780852471339380620",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/9780852471339380620/4B0C2306ABFFFA43776667CF420D55AA2C728228/"
+    },
+    "8b42c01c3fc73bffb05d97e9558940137babfd08cc7c15bd1920a8a6ebcc4aa0": {
+      "paths": {
+        "assets/investigators/0_base/JENNY BARNES.jpeg": {}
+      },
+      "steamId": "14698491478544207862",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14698491478544207862/6DA2AF7272B6103BEA44E61613DE093642CC3294/"
+    },
+    "8b9a19977ea5577b0984fac5b146a0e3c976ad2795afd1de31eceaaf54e9a18a": {
+      "paths": {
+        "assets/cards/1_dead_of_night/en/Special 1Front.png": {}
+      },
+      "steamId": "14715539438219869536",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14715539438219869536/90611D426E865D8F523AE5A0C6B3C3A1218E8AF8/"
+    },
+    "8d3d48eec0418bdad7c3cb8a0641f981e7d347bc2672e2d3cfff15788b0e5abd": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/en/Items 1Front.png": {}
+      },
+      "steamId": "13220636976873136080",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13220636976873136080/6250A9DDA34C659D8A38A5D5318D4C0C58B48004/"
+    },
+    "8d83a0ef8bd6e557deedf78fcb766a5d805e3e49e1b0f4a4021eae58085ec220": {
+      "paths": {
+        "assets/cards/0_base/Specials 2Back.jpg": {}
+      },
+      "steamId": "13132441143517241437",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13132441143517241437/E15F4FFA65B7DF11B499FE2A04D2B839F3DB613A/"
+    },
+    "8d8ecba15a53b0160f988039b7cf56a572695bacda96b7accf76948ce8f72e5d": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/uk/Condition 1Front.png": {}
+      },
+      "steamId": "14946833292727479892",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14946833292727479892/5E8F70FB6D0125201E32259D7953BB5267583DA7/"
+    },
+    "8da5ec94ff2ef5f72647a68fb57ddfecf2d4274aadd55b5504563761d3ca4761": {
+      "paths": {
+        "assets/cards/0_base/en/EotD 2Back.png": {}
+      },
+      "steamId": "12442718284480699067",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12442718284480699067/DA3CDCB35AC60806D20EB963672CB4168E24F71A/"
+    },
+    "8dfdcfe187ecc3e78355b4d5fa6f8c88f4762c2827d647134434be628926207a": {
+      "paths": {
+        "assets/other_graphics/additional_buttons_for_xml/additional_buttons_1_hover.png": {}
+      },
+      "steamId": "14299089380150510372",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14299089380150510372/1978AE157E6509E00AC0D0D57C684909699891BE/"
+    },
+    "8f87fd7d10ec28ec88b0cc768e3f8288ee6b5273d54d2711ac09511301ae3253": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/en/DoR 2Back.png": {}
+      },
+      "steamId": "17956034859227261194",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17956034859227261194/932E60388F0FAF7D68EB26D6FFBC572223E07809/"
+    },
+    "8f9afc4d21a451bfcd686c067e0d573ef5b33a5fe67570a744476068152f23da": {
+      "paths": {
+        "assets/investigators/0_base/mini/norman withers.png": {}
+      },
+      "steamId": "14447295224434619623",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14447295224434619623/FC7E25A5B0F1A854284F5AD556CAA1CE1F6D56C1/"
+    },
+    "8fca3956459b4d4f9ae0da84a57fd26bccd092f536fd8c1cc58a87965141a845": {
+      "paths": {
+        "assets/cards/0_base/en/Encounter Part2 1Front.png": {}
+      },
+      "steamId": "15173685943175208039",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15173685943175208039/050926499C52375176C0311EF2368B9DBD7E73E6/"
+    },
+    "9022d1c96aa8e1fd2ce8b9666257a3709617148fddfc6f37515551ad195b81f8": {
+      "paths": {
+        "assets/cards/1_dead_of_night/en/Archive 2Back.png": {}
+      },
+      "steamId": "15462223440441946523",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15462223440441946523/ED0C1DAC0ACD12C163CD33F2337A2E7C14177B14/"
+    },
+    "9036a1def71aef06a0d2559dc5b5cfcf505b75a35c2aa313e8abff1355b25779": {
+      "paths": {
+        "assets/other_graphics/scenarioMap6.png": {}
+      },
+      "steamId": "12114025428242858130",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12114025428242858130/6DB1090E89513E68F21CB0C06921D801D96FC3BB/"
+    },
+    "909b90fd687b1020ee352d9a97a7813e3c0fbeec3aada6cf1c0d8847d9db18a6": {
+      "paths": {
+        "assets/icons/monster_evade.png": {}
+      },
+      "steamId": "13442298671423408053",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13442298671423408053/93F40ECC6073D432BA2D217C4943199646ECED3C/"
+    },
+    "90a9833908849bc6a1394da137a9a8e45b77637f5c3d905b5cfd221c7187a0c7": {
+      "paths": {
+        "assets/cards/0_base/Anomaly FR 2Back.jpg": {}
+      },
+      "steamId": "12858849937645555893",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12858849937645555893/65061B8A52A718E1601C7934BC118F7870B9E450/"
+    },
+    "91d69d206b33a76d8881813f273ae568b6f56a9492c71de87507ec4c3c9f5558": {
+      "paths": {
+        "assets/other_graphics/сила.png": {}
+      },
+      "steamId": "16286316675917407778",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16286316675917407778/E4691D1F06CD05802CC7DE2E9D45DA86EC14FC0C/"
+    },
+    "93c47d1e9b4661111bd1ad03ee80bf55319c75d04e1d59123d0955922144e414": {
+      "paths": {
+        "assets/models/infinite_bag.obj": {}
+      },
+      "steamId": "17103949398364322315",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17103949398364322315/B156B9A92D44736B0D5B44910E546B4BC621F5FC/"
+    },
+    "93e3d09028a304b86102e910f628371be4a97833e632cc2c65310108b1eb9142": {
+      "paths": {
+        "assets/map_tiles/uk/Central Kingsport.jpg": {}
+      },
+      "steamId": "9273698554209055362",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/9273698554209055362/7228F7D0580CFAFD1600D06334CEC3934A9FCFAA/"
+    },
+    "942db5e1d6585c47fb356c44421cb7b7b54e45d24cd69d696f3243a4aeb2c85b": {
+      "paths": {
+        "assets/other_graphics/scenario6.png": {}
+      },
+      "steamId": "11819696334893061747",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/11819696334893061747/FE500FB25CAC7EA9374B6048F31B89177C678AB1/"
+    },
+    "94eef288b57fabef335ea705ed08bf57fe4474a7e9e5ef9645d1cbd39b18908f": {
+      "paths": {
+        "assets/cards/1_dead_of_night/en/Scenario 2Back.png": {}
+      },
+      "steamId": "11028894570704653311",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/11028894570704653311/E787AF547A57988D0DAFECCFC7A980AF4F7AABB0/"
+    },
+    "960840587b4dc476c1a49a6681f57fd8048b0ca41c644047d99ae6e1df083ff5": {
+      "paths": {
+        "assets/icons/Leader token.jpeg": {}
+      },
+      "steamId": "10990587865791923835",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10990587865791923835/56C69F79C05504AC3DACAABB0979D5610A6CE97C/"
+    },
+    "9693a1331ff9f1187399c8c10478db12a8bca3f62c41b8080e43351257c62813": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/en/ToR 2Back.png": {}
+      },
+      "steamId": "13492522111982187586",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13492522111982187586/6655E2AAACDCEDD2AC2731A37E38719D27CD3DAC/"
+    },
+    "96fcca47bbcbabba3f05f126c733269305e4b6637fdf160b2e50911b1fa6dac4": {
+      "paths": {
+        "assets/cards/1_dead_of_night/uk/Scenario 1Front.png": {}
+      },
+      "steamId": "15429308832249102720",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15429308832249102720/0116534F9C025358BEA187A4CD6906EB30742CF2/"
+    },
+    "9750141c221c8f6d91a5d8dde8d700c1f3f0baa21d992bd4ca2379290a8a9b6b": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/uk/Headline 1Front.png": {}
+      },
+      "steamId": "14210484214374451334",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14210484214374451334/B8181FF65F52F074703191551419A96C0792D07E/"
+    },
+    "97ad2736a33a0d23da70a46735094f8c2c18effa04cf564f4b2222f0068ad739": {
+      "paths": {
+        "assets/other_graphics/encounters.png": {}
+      },
+      "steamId": "17161975483593521712",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17161975483593521712/89C70C71ABC20B11EEBB5EE593B7C9F79ED1C94C/"
+    },
+    "983e1057cf0229ec3ec01e0b97952db9aac45ed760061aff778b05262db492a8": {
+      "paths": {
+        "assets/cards/0_base/uk/Monsters 2Back.png": {}
+      },
+      "steamId": "16399548818406396612",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16399548818406396612/760B24A37605A57F4F3E3BD70040B305729E99AD/"
+    },
+    "988724ad5d319bd5e4fe0433c7f8c000e561841befbd4b10c2a8e54c35e43d7a": {
+      "paths": {
+        "assets/other_graphics/Addons/addon1.png": {}
+      },
+      "steamId": "15450905380923916415",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15450905380923916415/8BF25875CC0B2E0D4E68CC3BECEA9841A7890000/"
+    },
+    "98d3059feff9f21d33d14ede2404bd99e8dd19a0f76068e3fb7798c7939e05a2": {
+      "paths": {
+        "assets/cards/1_dead_of_night/en/Items 1Front.png": {}
+      },
+      "steamId": "11223790591374880776",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/11223790591374880776/1D3CC61894BE1B1F1BE98F6F7E8D6C6346A0C9E7/"
+    },
+    "9975bc7571e3cc5dfc467fe1346afa3dff0fcd5c7b88c1510fa87285fa28a398": {
+      "paths": {
+        "assets/cards/0_base/uk/Anomaly FR 1Front.png": {}
+      },
+      "steamId": "11897421651871737534",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/11897421651871737534/6CC369089EF7A49BF3BC7B2845B7AC3F242EF9A9/"
+    },
+    "99b602b6d2056a12dc888ec7b0e78d4cd07770d4399aac7bea9e621d82cbcc6e": {
+      "paths": {
+        "assets/cards/4_recursive_echoes/en/Investigators 1Front.png": {}
+      },
+      "steamId": "13473070353327338100",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13473070353327338100/69F099F79EA482518A553759699390E1C9087B15/"
+    },
+    "9a7dbae86ff90867d1f02d6cd84be79eb05d32065ad4a51de37a52260e059197": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/uk/TPL 1Front.png": {}
+      },
+      "steamId": "17899603103400168569",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17899603103400168569/E525771266958963922615BAF641787DED45A006/"
+    },
+    "9ae0846b811d9b8fb4c74eea6ee339e5e0718e61733eb05d29a1255d3e4b1ba8": {
+      "paths": {
+        "assets/cards/1_dead_of_night/uk/SoT 1Front.png": {}
+      },
+      "steamId": "9686693479791131522",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/9686693479791131522/A89A037E42D28CA58BBCAD1E7FDAD060CEE46B33/"
+    },
+    "9af152e8c33d118e64aaeaf6e485b42b7e0a42d108dd834a40e6af9df105319f": {
+      "paths": {
+        "assets/models/map_tile_variant_a_collider.obj": {}
+      },
+      "steamId": "16145913936668690532",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16145913936668690532/2A879D89402AB2F52469E10391D07E0CA1466FC5/"
+    },
+    "9be5122f13fb0ea59365c20a01767d04327f87bb0ee0fb054289dbc5c0d6a650": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/en/Starting 2Back.png": {}
+      },
+      "steamId": "11263668443481751231",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/11263668443481751231/5927711926FDF37A79FF170D95EF6BFFF01FF8AF/"
+    },
+    "9d3f3eeb0f97adfa12505ef95e596cc5dcd70a97fa6931c0cf248bc525e8ba18": {
+      "paths": {
+        "assets/map_tiles/en/easttown.jpg": {}
+      },
+      "steamId": "14939041859861846950",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14939041859861846950/5EC4E9CD07A08A278A6F8BF0AEBB363FC03B22F8/"
+    },
+    "9e591fd088649ac09293208e707d037e9bd295b2861cf2ffef9337997429974c": {
+      "paths": {
+        "assets/cards/0_base/uk/FfU 1Front.png": {}
+      },
+      "steamId": "17775486114328050807",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17775486114328050807/0C9BBC681DCE9374E39E535F95ADCEF28F2DEB1C/"
+    },
+    "9e6e42542f45efd576ac3b8eefc03fa53f78c84f66489d84c43152d0b95985ce": {
+      "paths": {
+        "assets/investigators/models/silas_marsh.unity3d": {}
+      },
+      "steamId": "9675521182111130666",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/9675521182111130666/305FF9FB7E6CA3E1C9F02E82F0F5B052536B72C7/"
+    },
+    "9f4904c85c3473257a420f711c08794e21e1de187db10b0aa97065df3d973206": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/uk/Condition 2Back.png": {}
+      },
+      "steamId": "9734928482868649897",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/9734928482868649897/8D68B45D4CB75FE453632DE59C0ACA073F41F834/"
+    },
+    "9f561ff420294aa2aea29e4cab36e71c249e62ff612b08fe48f5af699391686b": {
+      "paths": {
+        "assets/cards/1_dead_of_night/uk/Ally 1Front.png": {}
+      },
+      "steamId": "13066297055829389668",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13066297055829389668/5E8B82A76DF3F76D66DDCF2DEDA92DBC9BAC3987/"
+    },
+    "9fa0380a08dafe5742426621ea1140e914556a1547204edc3aabc16d95f1b439": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/uk/Monsters 2Back.png": {}
+      },
+      "steamId": "15417797749374349608",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15417797749374349608/621628DAC73E2AEB26622C4B07B11F30002ACA4F/"
+    },
+    "9fc08b3b251eff37e55feaddb85c547012d64402b28edd7a0247c94eb2f01c83": {
+      "paths": {
+        "assets/icons/marker blue.jpeg": {}
+      },
+      "steamId": "13517352116638969584",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13517352116638969584/593536BCA125CC185E1F8CA7DE50E3FE907B0E0B/"
+    },
+    "a00bae5968057605ef987ef12579c25934d9a2b2920933334ee85aed65b5a775": {
+      "paths": {
+        "assets/investigators/0_base/mini/calvin wright.png": {}
+      },
+      "steamId": "10039861882841361323",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10039861882841361323/91D6EB746E17F4D02592D3CB20CC36526D0D341A/"
+    },
+    "a059efd3b20b40cdc3c87cc351eb30c3e5fd09d57de6648f733b6476db4cd890": {
+      "paths": {
+        "assets/map_tiles/en/merchant district.jpg": {}
+      },
+      "steamId": "9832549618314437419",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/9832549618314437419/34652773FF7FBE7DF13DAC80B2FE8E602CFD9F18/"
+    },
+    "a0d9fff75cdab37e4b4ad181c7f18a37a69703cd250f08efc3111ce57aadff87": {
+      "paths": {
+        "assets/icons/marker white.jpeg": {}
+      },
+      "steamId": "10854949135087091736",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10854949135087091736/65A2DDA209264C3ECAA3DD141221C64500A0FDA7/"
+    },
+    "a1816a3ffd5b946210548ec7690e2cc3ae82105728f977c6b0efff4d6af6b852": {
+      "paths": {
+        "assets/other_graphics/scenario10.png": {}
+      },
+      "steamId": "17379815056412629691",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17379815056412629691/DF1A8797B399C588BA0355B87C3B61C7D7CD8ED5/"
+    },
+    "a2959943af8d6abbdcf76356a3e148a7cfa7cfc95975396ac06c7184a63df8b1": {
+      "paths": {
+        "assets/models/map_tile_variant_b_collider.obj": {}
+      },
+      "steamId": "18177435305610839305",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18177435305610839305/B92A923EDA913F161A5B6528A4B10F6683C2C59E/"
+    },
+    "a3442f48c10e54d47ed417fcc731f241a0fcb602b7df3d904b615c4f300e9944": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/uk/DoR 2Back.png": {}
+      },
+      "steamId": "18384362276530264514",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18384362276530264514/B5009923342262379EC71B2A31BC7F004866821B/"
+    },
+    "a34477f37e8c88cdd24aaf634181540e3d0e92bf261de698a24589bfceb96081": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/uk/ToR 1Front.png": {}
+      },
+      "steamId": "12906982881046026218",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12906982881046026218/B3A5829FB2033B7502A09C48EDBF3AF1AA0C7DB7/"
+    },
+    "a443ab42da3024e6bf06a4b68fc747757ee0393d6b2ec974ad5d92c07d502e95": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/en/Scenario 2Back.png": {}
+      },
+      "steamId": "15939471530001434763",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15939471530001434763/D946F6CD627F3716335699839096F64B254EA1CB/"
+    },
+    "a498a30a6749338bcdb292bf5423cf674761ce3e7cd8cae6c0578c1962e5d76d": {
+      "paths": {
+        "assets/investigators/3_secrets_of_the_order/mini/Mark Harrigan.jpg": {}
+      },
+      "steamId": "15499608190058362128",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15499608190058362128/0C1963CB294F46956B0F40722F071712D380DA07/"
+    },
+    "a4bc47a6aebdcac4e19618dbcf2d386f5bb955cc199d4e372b11fcd433f1e8a5": {
+      "paths": {
+        "assets/other_graphics/Addons/addon3.png": {}
+      },
+      "steamId": "16735358836545577928",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16735358836545577928/B7EAEA124C45D967B8EDEA300E61BC1B59F58CA8/"
+    },
+    "a4d659100e442256ba4d6e46410b543cf019be84d4a5a506eef3a5247a69b54f": {
+      "paths": {
+        "assets/cards/0_base/en/Scenario 1Front.png": {}
+      },
+      "steamId": "14940333603152456596",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14940333603152456596/AC6AB8C2C840C3337C4E49FA88B0C3A92A3BEF13/"
+    },
+    "a5a025e2ebc1242c2d8469333fd3b2fb02c351df9e5d031298eb13ea0ab0208c": {
+      "paths": {
+        "assets/icons/marker back.jpeg": {}
+      },
+      "steamId": "12871504668372179193",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12871504668372179193/4F464242F72CC393B3D7C6C3D1EDF1168113BA1F/"
+    },
+    "a5cae3e0d9798f6109c154108bd4f8e484410d6014db8d6b27b34d4a752dbfc2": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/uk/Starting 1Front.png": {}
+      },
+      "steamId": "14058004334831098479",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14058004334831098479/A837C43B95F9386D22D58D405AB8FAC36BB8907F/"
+    },
+    "a66a0e15fdef8399a21ed82980390ea6557e629ff2aabe7b7fa386a4ed5d54d7": {
+      "paths": {
+        "assets/cards/0_base/en/FfU 2Back.png": {}
+      },
+      "steamId": "11888214614263459306",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/11888214614263459306/07D79D4343CE0C35C91C457BD8C4F9FCE2F93F5E/"
+    },
+    "a6cb7375deecd00614328227600891d0ce04d8b8bba33ffd74f6092665605be5": {
+      "paths": {
+        "assets/map_tiles/en/French Hill.jpg": {}
+      },
+      "steamId": "13075619341284543804",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13075619341284543804/F0445B1D9AC699C5B7E0BFE0D9C28E8F25EC870B/"
+    },
+    "a7613219a37b7d3251f1ed645ade69da427b0cdbd7ee2d8a7ca266542cae8cd8": {
+      "paths": {
+        "assets/cards/0_base/en/Encounter Part1 2Back.png": {}
+      },
+      "steamId": "9423489337219947130",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/9423489337219947130/F60C3F3C49BBAAF6DD6681DFC51AC01D26691EE4/"
+    },
+    "a7c9d339779a8b59b2e513d52292163f143ee77aaada755ab5ba5a9e3652e67e": {
+      "paths": {
+        "assets/cards/0_base/en/Anomaly NB 1Front.png": {}
+      },
+      "steamId": "13532215661577074550",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13532215661577074550/46AD22021CA731387A25C07CC5C718D9684F20EC/"
+    },
+    "a83180623138c5621320974543819dcc12044803608edd7cc24d5bd8b15d61e0": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/en/Encounter Part2 1Front.png": {}
+      },
+      "steamId": "9458507907055902213",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/9458507907055902213/2C90416A3C0A7F72E6D15FDF0A1ADCA451B3A35F/"
+    },
+    "a8aefad1668da3833f7b72e9ed8e8d865eef97bfddcbbf9f57ae0d8c8cf2eaf0": {
+      "paths": {
+        "assets/cards/0_base/uk/Starting 2Back.png": {}
+      },
+      "steamId": "18328641576764867696",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18328641576764867696/57CAA6B86D3F6A1AD9BBA54B88A02509E5D17BC6/"
+    },
+    "a8b7e9ad31d9df92f1dec06a33cc89ccc8551d6707f9dcb667e4f996251e3354": {
+      "paths": {
+        "assets/map_tiles/uk/downtown.jpg": {}
+      },
+      "steamId": "14372006123918424509",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14372006123918424509/052D3BC332E38D9B14A478ACB651D57B04051A4A/"
+    },
+    "a926cc56efcb0b4baadc3cc01842ec9955b2148493816a94c4230ad1d3ef6af3": {
+      "paths": {
+        "assets/cards/1_dead_of_night/en/Condition 1Front.png": {}
+      },
+      "steamId": "14163835538321990709",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14163835538321990709/E3C643A89C0A29EDD9D54B6D9316EB7ED67705A1/"
+    },
+    "a942ce4fda29cc65c935748160ac492654a4ab349e4bc1fe57a02a3d126943f4": {
+      "paths": {
+        "assets/investigators/0_base/AGNES BAKER.jpeg": {}
+      },
+      "steamId": "15471000271983430743",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15471000271983430743/4E94037D11E6104CB6E3A06EB829F04C77D58C8C/"
+    },
+    "a9831b1a1583c0f9f8a1ee357f35720c9058bb4b8dc7da8b712ce69590ac98aa": {
+      "paths": {
+        "assets/other_graphics/scenario3.png": {}
+      },
+      "steamId": "15362416579775821708",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15362416579775821708/7A2883FC4B90EF5091B7AFBBB77423DC392DD538/"
+    },
+    "a9d52e19e6962cf7c56043cf05ca148f148ace0e92dc532c22766182cf16061e": {
+      "paths": {
+        "assets/investigators/models/stella_clark.unity3d": {}
+      },
+      "steamId": "17077619231094326754",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17077619231094326754/92F5D2C9532A74E4E3AC418021CB5CBED35AE872/"
+    },
+    "aa783c81ead87093e3e6ca4431e597c942b6eec3d890dacbe6ff702852ff661b": {
+      "paths": {
+        "assets/other_graphics/additional_buttons_for_xml/additional_buttons_5.png": {}
+      },
+      "steamId": "11120407224754132730",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/11120407224754132730/0D23FD54651F4BBC0AFCCDD00CEE858FDD38E691/"
+    },
+    "aaa514c9be8bd7469499bd0c6ac8b24054a5f948bf140605549be17519ddef08": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/uk/BtS 2Back.png": {}
+      },
+      "steamId": "16336701000943752343",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16336701000943752343/5BD638FCE12E603D4FB6AB574ED0C7115F48341F/"
+    },
+    "ab37d4e2a339e6a1be0a075ce760efac5527b08aca7a05cf1b0371ee75c836a4": {
+      "paths": {
+        "assets/icons/anomaly.jpg": {}
+      },
+      "steamId": "9436226932500242190",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/9436226932500242190/6B7744A6A4CC8618346E9DAC8E8C5E30FA3046DC/"
+    },
+    "ab69ebb089e89c41f8836471b3fb49df2954cd289dd33d18a70ba2e8d22c308c": {
+      "paths": {
+        "assets/cards/1_dead_of_night/uk/Items 1Front.png": {}
+      },
+      "steamId": "10709317962070092598",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10709317962070092598/C41A9EF7307348FABABAB5C943D500D7BD6A24B5/"
+    },
+    "ab7a1ec048060ea810359302f4446d41e721db8b8297b04753e7d8c8fee53913": {
+      "paths": {
+        "assets/map_tiles/uk/miskatonic university.jpg": {}
+      },
+      "steamId": "14612654452460492319",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14612654452460492319/6DC95351C380746584305D5CA7FF3815545D1AB8/"
+    },
+    "aba9f31ac116d1f1f4d3e840dcbd6f12c2e0843c61d443df268ccb6f8f3cac0b": {
+      "paths": {
+        "assets/cards/0_base/uk/Headline 1Front.png": {}
+      },
+      "steamId": "13505254689870265845",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13505254689870265845/44B02650105BB8F46BBA278B58B58D22802F63C9/"
+    },
+    "ad7266a99316d9e82d2479727bad154415321864c7fe6a84bbef2a8fccdd9a81": {
+      "paths": {
+        "assets/investigators/models/calvin_wright.unity3d": {}
+      },
+      "steamId": "16881282699838751005",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16881282699838751005/DED74596937C5F3C8EC3E98591B07CE9E45E27CB/"
+    },
+    "ad85e7541dc707e108a894fd69882d6385aebf5206eb509e6a299836add75ce4": {
+      "paths": {
+        "assets/map_tiles/en/downtown.jpg": {}
+      },
+      "steamId": "9486009678069055933",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/9486009678069055933/E321DBDED94819037819E46C04B02A20BFFEE946/"
+    },
+    "ae26f8e6432548a56fe26ead77c8adb76aec6a8f27491066422b2384b49a4834": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/uk/TPL 2Back.png": {}
+      },
+      "steamId": "15223419251092539800",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15223419251092539800/1CE463A311877C1CD3991641C524F5EDADBC6CDB/"
+    },
+    "afa4bfcdffae0d63f6aa3a42d815af2bd21651a2876ad25355ec0678dd0cddcf": {
+      "paths": {
+        "assets/cards/0_base/en/Anomaly FR 1Front.png": {}
+      },
+      "steamId": "16463232137871502131",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16463232137871502131/3B515034822A70079CEEE47699DE26D3F34854CB/"
+    },
+    "b012853205cfb9e9ecc8bafecf76da7a01ad66c598dae3d5f44871e2955a5594": {
+      "paths": {
+        "assets/cards/1_dead_of_night/uk/Encounter Part1 1Front.png": {}
+      },
+      "steamId": "12764948213238563856",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12764948213238563856/9A5156067EFDDD7B8044A80971D2EA95CF559DDD/"
+    },
+    "b0726ef7c5a4a329f20f0d3059c56e8c559d5b606d9265e3e8eba55e40646216": {
+      "paths": {
+        "assets/cards/1_dead_of_night/uk/Starting 2Back.png": {}
+      },
+      "steamId": "13052894815228801810",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13052894815228801810/8582DF73690938C4654E319FA4C9A2D86D0353A6/"
+    },
+    "b122ecdc970ec6a7e685ff48e5da315cc3536966ad649375477f361f09a7b1b3": {
+      "paths": {
+        "assets/other_graphics/scenarioMap11.png": {}
+      },
+      "steamId": "15562920217462503292",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15562920217462503292/0E09365968CD29364D3F3EF7BFB1FEE92866C559/"
+    },
+    "b1eec7c40b7cb726c124ecb2b82b6b3256813e510d47e5cdc934b439966cbac2": {
+      "paths": {
+        "assets/investigators/2_under_dark_waves/carson sinclair.jpg": {}
+      },
+      "steamId": "17945542156119429995",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17945542156119429995/46A6537623A7F2D97AA3B66A5288498A979B3B18/"
+    },
+    "b2ae7d915d3280f2c27340ba92bb32cb54b98f58b41699d248bc91aa6a0ac40c": {
+      "paths": {
+        "assets/investigators/2_under_dark_waves/ashcan pete.jpg": {}
+      },
+      "steamId": "9717179004228788919",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/9717179004228788919/A929975D0EB69D3A094CF1911677CC18B0C5CB8F/"
+    },
+    "b372ba983948654572fd506748a5cc30af0807956e1c7ca5a95b5c7699f422ab": {
+      "paths": {
+        "assets/icons/activation token back.jpeg": {}
+      },
+      "steamId": "12223419467356465730",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12223419467356465730/F1DA2DE8F6631D477E7C11C893950C0032489375/"
+    },
+    "b3fdd996dc712d7e05b5504780441b14550fa28c990f24905ace97b1ac8afd90": {
+      "paths": {
+        "assets/other_graphics/scenario11.png": {}
+      },
+      "steamId": "10576525306804314405",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10576525306804314405/46CD71D9529CB97331863A30B3A61DD22E334F97/"
+    },
+    "b40eb7f270b4063db1ec54886d50497eb26dba80f200f2b76b4c4370a01a2714": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/uk/Spell 1Front.png": {}
+      },
+      "steamId": "16601467536609261733",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16601467536609261733/D38FFC4163FBADBE274AAE50B99D9B327C2E0035/"
+    },
+    "b4af099a2c1a1ff4e99d222487d2b38466b61335eec958a41126c1d6af6e2031": {
+      "paths": {
+        "assets/rules/uk/(0) Learn to Play.pdf": {}
+      },
+      "steamId": "16154039931315300644",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16154039931315300644/2D6601ECD959025A528F00B69C396642E1048D99/"
+    },
+    "b5723b5664cb78f8bfda943f1b72dc48add5de1ff9afc0fb9cce05bfab6b6457": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/uk/Encounter Part2 2Back.png": {}
+      },
+      "steamId": "15187782501430771941",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15187782501430771941/CA25963A7CC4EC4690899B296393782E7BFB73A0/"
+    },
+    "b58bca31b20c636ef6e8656ea469b2a5b4f4e60c88bf1b163198e41588382e2f": {
+      "paths": {
+        "assets/other_graphics/scenario2.png": {}
+      },
+      "steamId": "12472424228646182328",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12472424228646182328/0738FA065EE8E14BEFBCC134B8C62D1AA9097360/"
+    },
+    "b5ef241bc0aa78214984cc4308b0a1c94313bed0f20e45546af27b6dac2124e8": {
+      "paths": {
+        "assets/investigators/3_secrets_of_the_order/Winifred Habbamock.jpg": {}
+      },
+      "steamId": "15254746536665738345",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15254746536665738345/6FDF794EE24C19A87A45AE791351A3B0EEB2B2F8/"
+    },
+    "b687d005c8e3b9705b02de3e74cf52f2c4cfffec3556a0b59929775481c4b24a": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/uk/Starting 1Front.png": {}
+      },
+      "steamId": "10787687149682168808",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10787687149682168808/438801109B57CCE0B5146093354A4D8E3EB17E83/"
+    },
+    "b68c23672ab0f9908cdc4784b6e4e808da147449911f749c098fec0390825124": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/en/Archive 1Front.png": {}
+      },
+      "steamId": "11892221074308389075",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/11892221074308389075/A8D10319B780C977FF4EC1268E23244A33DC8BCD/"
+    },
+    "b6f1f4e6d4e72e0af49dc0ce532dabe9e3f74e26b778ba9693e40c79cc40f8ce": {
+      "paths": {
+        "assets/models/clue.obj": {}
+      },
+      "steamId": "18375802641394700317",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18375802641394700317/8AAC853C0F929A8C6AA568E4471D30A8227AA441/"
+    },
+    "b70fa66d275ded04efbdb03191541deb64b17d12f5767908c0b033bfc8c21072": {
+      "paths": {
+        "assets/cards/1_dead_of_night/en/Archive 1Front.png": {}
+      },
+      "steamId": "13820711599416235942",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13820711599416235942/C7280EE7A902B353D8F650C9E581392F8F932353/"
+    },
+    "b77ae119a33441fcef68aede05a1fea3f7e39a8db9fc67ccf75c24833642edbe": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/en/Ally 1Front.png": {}
+      },
+      "steamId": "11956112356635957206",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/11956112356635957206/08ED3F29488EF0882784ADE2F694512DE975DFD8/"
+    },
+    "b7f7d5183fb134fbac9387addcb21b1e9ee89b3df5c5322a8c5f290aaae405d0": {
+      "paths": {
+        "assets/map_tiles/en/southside.jpg": {}
+      },
+      "steamId": "17807211535820612554",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17807211535820612554/3A7FE36DC67388D71D84B63FB15FF2E72706F129/"
+    },
+    "b8230c1e6e85a3d219f51202f12fef80d3d31a42f27cc47518d10a767cf48294": {
+      "paths": {
+        "assets/other_graphics/scenarioMap9.png": {}
+      },
+      "steamId": "10215721389950543916",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10215721389950543916/9E9B176941854A22EAD0D6CAB92EA8A101C2CBF1/"
+    },
+    "b8dda31c4091944ab7f7ae17c6b3fc13f43fe0430d37d80c7c216960620f1e03": {
+      "paths": {
+        "assets/map_tiles/uk/The Unnamable.jpg": {}
+      },
+      "steamId": "13050550855346903833",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13050550855346903833/CB8CCEEDEAEF949D1F692AE277AF62B54727D9FB/"
+    },
+    "ba4ea96432f15261c5336b40f5d6790e97e8503b8173ab9be4fac87863107db9": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/uk/Scenario 2Back.png": {}
+      },
+      "steamId": "18071393838842116623",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18071393838842116623/BCBCF376C61CBA05725227904DDC35B7BC07E0B6/"
+    },
+    "ba5b2187392f7bf3b268e4fa2bbb80a2491764a8db0494ecac40cf91c1396d7a": {
+      "paths": {
+        "assets/investigators/2_under_dark_waves/stella clark.jpg": {}
+      },
+      "steamId": "17806924804228158618",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17806924804228158618/003B066CA389797515D334995D18F476A1F1D2C2/"
+    },
+    "bad850aaa6e5a18cfedd04aa3e9ac6d02ae22c85db0cce93b6e41e9b7b72f2cf": {
+      "paths": {
+        "assets/other_graphics/scenario1.png": {}
+      },
+      "steamId": "15706459988528726973",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15706459988528726973/29D92DCE6BBDB3214E7D36C8E9250726F147A67D/"
+    },
+    "baec98fab1fb40c62c81a9a160efbe00b1e6a9528d8554a9aa52feff179eed6a": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/en/Ally 1Front.png": {}
+      },
+      "steamId": "12922004584201798225",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12922004584201798225/64E218FDA74B1FA76630C21F2A65EC1D1DAFFEDE/"
+    },
+    "bb4426e6d7c014278278a22ae8e39e17f4123041e6c701dc56da2bc54688cf01": {
+      "paths": {
+        "assets/cards/0_base/uk/VoT 2Back.png": {}
+      },
+      "steamId": "15923219567642520037",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15923219567642520037/29D2D50ABEFE48DF93ED2A3271759FABBB2E9044/"
+    },
+    "bb856d62ec54353965b683d863dd6ad922b870a6158d93b2f0c822df167496f7": {
+      "paths": {
+        "assets/other_graphics/additional_buttons_for_xml/additional_buttons_3.png": {}
+      },
+      "steamId": "14859589559123143492",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14859589559123143492/E5AC1EF3AF172F5E6A3750BAF4CA266BB7E62197/"
+    },
+    "bc18cc5b7654e84acc55ac2b5bbf8d193260d006fd03551b94b314b327f2966f": {
+      "paths": {
+        "assets/investigators/models/roland_banks.unity3d": {}
+      },
+      "steamId": "11036238727483630686",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/11036238727483630686/DFA34F50B0F0D2E9A127C596FA588138909725AD/"
+    },
+    "bc237e10d9827035e581f2582ad6434bfe801259c4214c8fbc1a5232731e2cad": {
+      "paths": {
+        "assets/cards/4_recursive_echoes/uk/Investigators 1Front.png": {}
+      },
+      "steamId": "16342705909138563936",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16342705909138563936/B7570E8341B27A9FEAF7A4B22BBF8E693FEB9FA3/"
+    },
+    "bca1965d041df263a15dc412bdc9800f151d4fad2e0de280112efc0cc77c5825": {
+      "paths": {
+        "assets/cards/0_base/en/Archive 2Back.png": {}
+      },
+      "steamId": "11242661548688400480",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/11242661548688400480/3372BFE4352980A36B04C0C66260EB468AA49C5D/"
+    },
+    "bcbe3d87d9f4ce96da056cde12ab735c3d3d16ff5975724a6a5a09a073e871f3": {
+      "paths": {
+        "assets/investigators/models/base_standee.obj": {}
+      },
+      "steamId": "10812311169226231461",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10812311169226231461/9BE95E7760E7D2D53BC31BE50BEBFF3E84E3F2A7/"
+    },
+    "bd3de436122f733e9d003619f2c29706ad1b8e132ffddd243b89bd8ccb6cd4d4": {
+      "paths": {
+        "assets/other_graphics/additional_buttons_for_xml/additional_buttons_2_hover.png": {}
+      },
+      "steamId": "13070050113835875617",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13070050113835875617/35EDFE10D8FAFFD7BB6089FA4A251DB595439960/"
+    },
+    "bd99922bb916a612255b4fc5d1fc1286a68a5693c32404a1ef24c8835f1c60ea": {
+      "paths": {
+        "assets/cards/1_dead_of_night/uk/Anomaly YE 1Front.png": {}
+      },
+      "steamId": "11924607358339381677",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/11924607358339381677/6EF0DCE7B11C8936EFF78952F5E5F8B00AE0DDBB/"
+    },
+    "be6972a5a9deed06d0294011dd8d8c616c251713fc17d6b9b4449ac9942b505d": {
+      "paths": {
+        "assets/other_graphics/languages.png": {}
+      },
+      "steamId": "14937158328930195540",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14937158328930195540/8017D7AAF44E51EC02855B970D429871DB13BCE1/"
+    },
+    "bed3e298c0a97e6864bfc6c7f1e220feec792219b54aa8eadcd4215706ec526f": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/uk/Special 1Front.png": {}
+      },
+      "steamId": "15728178832145992828",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15728178832145992828/51EDFEF7361C39A8222E5F2EF8ED0B353DDC8D68/"
+    },
+    "bf5b0ce946ef01defd1d06aa7bfc0d154da7d8d163b86bd8fda31e77af28b7aa": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/uk/Special 1Front.png": {}
+      },
+      "steamId": "10493915626135035886",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10493915626135035886/3AD4BF2223B5BBA1B0615DB14DD8163BA7396F21/"
+    },
+    "bf61eb4da44fe3bc71d56e94f5f84390d198e43779f64da6e9d1e27e8dd19205": {
+      "paths": {
+        "assets/map_tiles/uk/Kingsport Harbor.jpg": {}
+      },
+      "steamId": "14560475467412404068",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14560475467412404068/D5056460F0FE4F9CEBEE17B26377840CF3B8E884/"
+    },
+    "bfc2999cb949480278de94076c3bd20381ea84f965ac34932ae0f5bf7c90634e": {
+      "paths": {
+        "assets/icons/token doom.jpeg": {}
+      },
+      "steamId": "14406572254866650551",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14406572254866650551/C5B132C9AA25CFD0C7DE5A9084D5C025A2187E02/"
+    },
+    "c003607a50179aa1e27afa98897711ae2e7dfd9bfa95f8e28b4ecac4db43bf47": {
+      "paths": {
+        "assets/icons/mythos blank.png": {}
+      },
+      "steamId": "14996236230474267713",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14996236230474267713/E6962B57A2B9D504E9307A04927C009B7B90A81A/"
+    },
+    "c00ce82953beceeba742c7bc7bb4f3243e8443af88c63c207c3fff3c010d07ff": {
+      "paths": {
+        "assets/rules/en/Rules Reference.pdf": {}
+      },
+      "steamId": "13117187762539079106",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13117187762539079106/9DD69E5A017969ABBD6430A4EF88F2E69020C86D/"
+    },
+    "c0e01c919d61cfdd142a4ccc6a3a01ea291a8e1ee3e5b91fa9a1d89dd7f3eb2d": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/uk/Encounter Part1 1Front.png": {}
+      },
+      "steamId": "14270004210214003728",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14270004210214003728/317141543E94071096001C644476C48404A3B2B9/"
+    },
+    "c1e28b29a0e95375ad41df3c1b239dd82edeb45161bba28e3c02aa973cb7b6ed": {
+      "paths": {
+        "assets/other_graphics/item.png": {}
+      },
+      "steamId": "14514456549420813782",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14514456549420813782/CD7E9358F61030511306013A2663D9BF2E90DC06/"
+    },
+    "c22cd446862980526002c2c4988a312df57bd5b73b29cfbba0161edf83ddaf61": {
+      "paths": {
+        "assets/other_graphics/additional_buttons_for_xml/additional_buttons_2.png": {}
+      },
+      "steamId": "16818810511974084213",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16818810511974084213/D16D477394624886F840E1B62A7C36E902FDFDFA/"
+    },
+    "c2a048e1e4dbdafb06bd04bf4623565021b6f76e1e955c91720b9c48b970827a": {
+      "paths": {
+        "assets/investigators/3_secrets_of_the_order/Mark Harrigan.jpg": {}
+      },
+      "steamId": "10608667422224650503",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10608667422224650503/E3F9934F2919F93BBDFDF5FA84828E65725C5BBC/"
+    },
+    "c4b6f6e3da1b3821c211c514fa0e883504e4a9066fb7acd06800614daa436639": {
+      "paths": {
+        "assets/cards/0_base/uk/EotD 1Front.png": {}
+      },
+      "steamId": "11571910418291465631",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/11571910418291465631/9BC7AFEA9D8F5D94BB69C4CEF4E38C67706B32EE/"
+    },
+    "c6d53253fb0bd01a00c3f179729b3379345ca122095af5b03749ee68bc6ff2d6": {
+      "paths": {
+        "assets/investigators/models/tommy_muldoon.unity3d": {}
+      },
+      "steamId": "10140617488746359502",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10140617488746359502/0FC02EBA3F911ED8AA66B0959B7095CB3DE6BE67/"
+    },
+    "c73236664754b5655114cc6b63fd566f277c4d6934148afe97d7ae04074b595b": {
+      "paths": {
+        "assets/other_graphics/custom_tile_banner.png": {}
+      },
+      "steamId": "12677984166504790494",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12677984166504790494/611EFE02827187D07428DCDFFA75AFA1A3E068EC/"
+    },
+    "c787328beb0c562baa4f8c9cd4e2bb592b56b160a49e98bb020c61d540d9bb83": {
+      "paths": {
+        "assets/icons/marker red.jpeg": {}
+      },
+      "steamId": "16710039697211221309",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16710039697211221309/66C45140C80148B577772EA7C87A5D3706BD9F92/"
+    },
+    "c79cb8e40a5f5df1706f3cc8f4e15fd2b5c9199a6f02c67cfd8832b12ef9a27b": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/uk/TKaTG 2Back.png": {}
+      },
+      "steamId": "15896227477558261880",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15896227477558261880/506A3E4B4C653E0216720B02C638B3AD2EE46A91/"
+    },
+    "c7cc364c7b28e62f45146b72b5e9f9d76623245b81648bfa7252fa027316b4dc": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/Anomaly VM 2Back.jpg": {}
+      },
+      "steamId": "17399543543313533455",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17399543543313533455/D34586441989AE37C643D89FD1C3A0CC0C90F055/"
+    },
+    "c7d41f864cdf31e9616b1f25888dadf3629c5374f0db314b8cccd6fcce09ccae": {
+      "paths": {
+        "assets/models/map_tile_variant_a.obj": {}
+      },
+      "steamId": "11739180978061755624",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/11739180978061755624/4FB43A5260CCADD09C2F94112E854B4634EC0D75/"
+    },
+    "c9949415bb078501e522c7cd5959766e466d51c578b43a524995b9aadbcd5e32": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/en/Anomaly VM 1Front.png": {}
+      },
+      "steamId": "18230023123547958211",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18230023123547958211/0C6447569E5EE2DFCA8E78D2FB6CA9FAFF817AE3/"
+    },
+    "c9a95b0422015bf85bbdb1c20839f89995eefbb502cff4e5e3a1944e4f6907e3": {
+      "paths": {
+        "assets/other_graphics/button_num.png": {}
+      },
+      "steamId": "18051216090086074316",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18051216090086074316/CA6454E40F89069524CC049E88C0145DA16F578F/"
+    },
+    "ca17ef0c4fac5fc48b22656aa8d42ee6f96d644dccbd64cfd6281510052c1640": {
+      "paths": {
+        "assets/map_tiles/en/Innsmouth Shore.jpg": {}
+      },
+      "steamId": "11862109862358298374",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/11862109862358298374/368396CD266596FE843DEB738C14FFD567B72620/"
+    },
+    "ca56b4da6d019f5d8239390121d83c8f02cd5c169fa3a2117c306f7f1f08a23f": {
+      "paths": {
+        "assets/investigators/0_base/mini/tommy muldoon.png": {}
+      },
+      "steamId": "11992681160362335992",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/11992681160362335992/1838CF02619F05C9D1B2F93E6D75C3FD68F1DC05/"
+    },
+    "cb5023e4fcf65850cddc3407e6bc9cfea4487d530675402dd5b57a93ec996271": {
+      "paths": {
+        "assets/other_graphics/scenarioMap8.png": {}
+      },
+      "steamId": "11537127373509419761",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/11537127373509419761/774C6D889AE1CF434F2FE9C9D3D8BF537F7BD080/"
+    },
+    "cba0ddd80efddb28813b013c4d9b3f6fb910b218b7a94675f2a53d343ba95936": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/uk/Ally 1Front.png": {}
+      },
+      "steamId": "15416944979085611653",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15416944979085611653/38C094D7C2EE6ECEEF0E7955783C7BB089E905A0/"
+    },
+    "cbcbce78eae9ef13cbcb245269150af4ad381ee1c18e475be2e48c2ef2bffef9": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/en/Encounter 2Back.png": {}
+      },
+      "steamId": "14503964617370557988",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14503964617370557988/60B0BBE8D4B4BB29B7DC8DA0C75FFDD5119B097C/"
+    },
+    "cbd6cfdbe7a9db8f8f5354667623e6fe1528789471ac3e0f6a4aa5b8232d430d": {
+      "paths": {
+        "assets/map_tiles/Train Platform6.jpg": {}
+      },
+      "steamId": "10301274324472592132",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10301274324472592132/0EFEB993E85227FB591B9817A6090EC26BAA7E9A/"
+    },
+    "cc1bca0cbd68f9b1250a80674b6d13ac0ea06038490f93262d8351ec185c4476": {
+      "paths": {
+        "assets/map_tiles/en/underworld.jpg": {}
+      },
+      "steamId": "16277878657276155682",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16277878657276155682/D9A6ED1E2CF8D883514AAAEEDBB66B8B3BC0BE0B/"
+    },
+    "ce3f2e09b272578808c56e4aa25289d7238c54841dcc97769730ded402f3d767": {
+      "paths": {
+        "assets/map_tiles/uk/French Hill.jpg": {}
+      },
+      "steamId": "10542513723371810807",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10542513723371810807/315F915DE765181BA8458214FDBD37F7671EC07B/"
+    },
+    "cee72a30c94c8a578a979c595206fbde81d2484f00867f392b0fe60a0e276f77": {
+      "paths": {
+        "assets/investigators/models/norman_withers.unity3d": {}
+      },
+      "steamId": "14546931115519125314",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14546931115519125314/DBD9FB7B1E701C543430DCA1E6D1927AEF8DABB9/"
+    },
+    "cf9dd99eb74fd49d9717907055c9e70f6670d1c06be335180887712e41789819": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/en/Headline 1Front.png": {}
+      },
+      "steamId": "10492751672475593713",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10492751672475593713/69BAA504ABEC6DE4F2E8F5A864EF2204B9C749B5/"
+    },
+    "cf9f77fef7aacb70d1885a5da669471097674771b1417bff2142975433d38b7b": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/uk/Investigators 1Front.png": {}
+      },
+      "steamId": "16397204584161874113",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16397204584161874113/9F0A5D22D7D19F5B3C22AB0CFB8884242052E666/"
+    },
+    "cff4ddbb3093411074368804f6d67eb5258302e25d57d4860f3cbf4c26326079": {
+      "paths": {
+        "assets/other_graphics/Activation_Token_4.png": {}
+      },
+      "steamId": "9568459939053122280",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/9568459939053122280/A377A1BFA6F9CB4BF9F8352A35BD54E311081F48/"
+    },
+    "d0bff7fdbba3b2d38db6b5ead872a2d1822355fe19cb8553688f95c5f6076f4e": {
+      "paths": {
+        "assets/cards/0_base/uk/Monsters 1Front.png": {}
+      },
+      "steamId": "15716916044391762845",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15716916044391762845/B229E49CF55E2F02B1283EC55915467504300A70/"
+    },
+    "d15c37b97d2b5521f114b2a81beea1b41a9d6efc3267578993ca3fcc9d8c2716": {
+      "paths": {
+        "assets/other_graphics/button_large.png": {}
+      },
+      "steamId": "10036109745637431192",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10036109745637431192/BB5F0A5902A82E142188721CE734D96184C16D61/"
+    },
+    "d1925d97d05e92149d73f32d7eac292beefb60e7b48e41cff5f5105a3c872ef8": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/uk/Terror FF 1Front.png": {}
+      },
+      "steamId": "14110085614181515970",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14110085614181515970/5065087734C664C13AB01202D5C92F0EF8C114D1/"
+    },
+    "d1a38f4a026c1cdfbb6a45a044f0c1ac63d5b34977f0837933738483a4808a70": {
+      "paths": {
+        "assets/investigators/3_secrets_of_the_order/Preston Fairmont.jpg": {}
+      },
+      "steamId": "13277688172514944353",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13277688172514944353/9552414EA8687720C50EEC0006FF43D94DDD57F9/"
+    },
+    "d1e4e32f01606844270e03e3cc01fc92bf839956875cf4e90865d4ce37e620c1": {
+      "paths": {
+        "assets/cards/0_base/en/Condition 2Back.png": {}
+      },
+      "steamId": "10510167418665039013",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10510167418665039013/EB27373ADDDB26A6C0D99A3C10BBC25E8946C894/"
+    },
+    "d2a988dacf3246c9a921031026e71f9157323697cfbdd385227d5d29fdd700b8": {
+      "paths": {
+        "assets/other_graphics/Addons/addon2.png": {}
+      },
+      "steamId": "10466690520746593573",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10466690520746593573/740CE58934951D970C6D1CE5A00ABCBC4CB3F7E1/"
+    },
+    "d30e500cf1e627f13741e2a107b6fbab34d82762235e93429b64c4d1e53cfada": {
+      "paths": {
+        "assets/other_graphics/mith_mat.jpg": {}
+      },
+      "steamId": "9893206252386731672",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/9893206252386731672/AFD5C60BA7D22E2D6BA86762B60474845D92EE9D/"
+    },
+    "d36264ca4a8980a034fbc2cd6bc8af356ec5a185d1c7225f2329bd47d42a98b5": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/uk/IC 2Back.png": {}
+      },
+      "steamId": "16514280347809408177",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16514280347809408177/8F42D41978A40AC15EF25A5FA18322EADCA3EE86/"
+    },
+    "d3de6cca6973cc7991561549b8530ffea34d66aee18c1edba43f9dcda12f7d51": {
+      "paths": {
+        "assets/other_graphics/additional_buttons_for_xml/additional_buttons_1.png": {}
+      },
+      "steamId": "12007598906669708906",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12007598906669708906/5197D047BE19260177674204F9576151E12C4B93/"
+    },
+    "d44a801308734291c6f2e2377720b75220cf6036d7d2e1075b8ed8dcfbbf3510": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/uk/ToR 2Back.png": {}
+      },
+      "steamId": "16747767705520312755",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16747767705520312755/E179FBB81FA91EF4931131590AAD3B4B3B2A4303/"
+    },
+    "d45c6ed3211c994565aaed2facf7fb6494335ba02e51456100d74c48f2ad8299": {
+      "paths": {
+        "assets/cards/1_dead_of_night/en/SoT 1Front.png": {}
+      },
+      "steamId": "16036367328169106531",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16036367328169106531/65696F17DBA89CA5C70041058A08C9A22D260CDE/"
+    },
+    "d4afc3283345e75b1d1a972fb0805494aca5905136ed6d7911fa8c8a8ae758fb": {
+      "paths": {
+        "assets/cards/1_dead_of_night/uk/Investigators 1Front.png": {}
+      },
+      "steamId": "12774600667644345028",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12774600667644345028/FEE68A23075FB05B468167B62C05C4DB0F9CBB34/"
+    },
+    "d51bd8d20a23fb515ec510e5495fa86e64df7944cdc234371d667a4fce7c429b": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/en/TPL 2Back.png": {}
+      },
+      "steamId": "16709351639616977026",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16709351639616977026/A5793CB901DCBC87B0CD87F1154F66BDC0089F4E/"
+    },
+    "d5eee9d1c9f54deb88738b2abaed2f8f50990cf6b044d2cd14af81119c743f5e": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/uk/Investigators 1Front.png": {}
+      },
+      "steamId": "16819494527413252163",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16819494527413252163/FDD495F080C80EE6A393F97DD566C0E674027080/"
+    },
+    "d63d00c4014d68690af344c7421c1e8fb3cebeb5f80f9acca97a0f143e51585d": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/en/Condition 1Front.png": {}
+      },
+      "steamId": "14679047542293829341",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14679047542293829341/44A52349B303E50CABA1FE983EB556ECCF35E0BE/"
+    },
+    "d63f62c4cfa9843bf6f53b914326d7e065d835c506cd77751ad19b9a1bdaa249": {
+      "paths": {
+        "assets/investigators/0_base/DEXTER DRAKE.jpeg": {}
+      },
+      "steamId": "9350177974238544370",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/9350177974238544370/715E8DF6818DB3DFA1D02230903214BB300C1070/"
+    },
+    "d6960394502572a94c7b89f33beb73be552cafe859718e8846dd03cb84665be2": {
+      "paths": {
+        "assets/other_graphics/phases_1.png": {}
+      },
+      "steamId": "15418860225943391629",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15418860225943391629/83AD63B559DF788F2446396E4A9F219A357C5386/"
+    },
+    "d6aaf1c75e80a75581ef70c43dcc5a11957871be46519da7c5d3acd2673cbfb5": {
+      "paths": {
+        "assets/cards/1_dead_of_night/uk/Scenario 2Back.png": {}
+      },
+      "steamId": "15668990207095074959",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15668990207095074959/555B320391CB58611CC417986893301E50E0D2AE/"
+    },
+    "d6dbc7e2228a3c5a07879d00115bdc2494f97bf320701c8885fb3f6af7fdcc01": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/en/Archive 2Back.png": {}
+      },
+      "steamId": "16479668378258740993",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16479668378258740993/70261ADF71E01801D609B09C22D4D6BEC2EF7802/"
+    },
+    "d7c3d09775723db8abdf0f54a1d823c1a88981c9d4da282f7a0f39a3ed3cc646": {
+      "paths": {
+        "assets/investigators/models/mark_harrigan.unity3d": {}
+      },
+      "steamId": "17566629798741871037",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17566629798741871037/1062973A034487D8A0D05FEB465EF33C36E736D0/"
+    },
+    "d8365e81f134bae6a984bc11cd3e547a06d6ce386ea8d2eb59b008d0a0d474dc": {
+      "paths": {
+        "assets/icons/monster_marker.png": {}
+      },
+      "steamId": "15113066867019872092",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15113066867019872092/B2D688A79FA528E81DB8A1071A7976D5AEE4267F/"
+    },
+    "d88b27e1cc97fe01ed346f663290b5d74eb529d3d3749ab584df6b6a587afd29": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/uk/Condition 1Front.png": {}
+      },
+      "steamId": "14375689089781230504",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14375689089781230504/7BD83B3F3AB477F757263512CBBE8CA892E7B0F8/"
+    },
+    "d8f63a73f0942a31258a199bb9581ca31577bf6171c1ef6cf2d0d69f335e1b04": {
+      "paths": {
+        "assets/cards/1_dead_of_night/en/SitD 2Back.png": {}
+      },
+      "steamId": "11760890823188365228",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/11760890823188365228/8E96CCF83E5B44BFB68ED16351358229C3788283/"
+    },
+    "d919ead5db3fd14681e48f2479413297e58c1a18329beaba94591be04250503d": {
+      "paths": {
+        "assets/investigators/1_dead_of_night/mini/diana stanley.png": {}
+      },
+      "steamId": "12347014753275774656",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12347014753275774656/EDE80D0F9303EAE6B0CBEDC0F20E0C808765BFFD/"
+    },
+    "d9464c46700f8c545cf3a3b8bcce54041352a687ed44646e0f1788ebb32d0ce2": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/en/Terror FC 1Front.png": {}
+      },
+      "steamId": "12286817163974090745",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12286817163974090745/07914C20FDA7C7B82EC6D4CAF3DAADEEFD40B1CB/"
+    },
+    "d95206a6ba62338ab0d2469f2500e870e142d23cf9f61817ae41d7e417f0828c": {
+      "paths": {
+        "assets/cards/0_base/uk/Anomaly NB 1Front.png": {}
+      },
+      "steamId": "18027949338090996537",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18027949338090996537/609C34919C1562C442FA366B71B7A97045DF7675/"
+    },
+    "d9927d768d2318f5f07597b8844ce226bbb6871125f20269e61326cd5c13414b": {
+      "paths": {
+        "assets/cards/0_base/en/Starting 1Front.png": {}
+      },
+      "steamId": "17291963905042789940",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17291963905042789940/7443F94ACFAE10557115210589BE83386F9DB2B9/"
+    },
+    "d99be558f666e4c74ca144e0dd3361e5ae95ded577f1b70c1020bbfe027cd767": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/uk/IC 1Front.png": {}
+      },
+      "steamId": "10491684535588451239",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10491684535588451239/504D1D513878B093B1EF01DE7B6A6CBB435E0D42/"
+    },
+    "d9e37767661e1c3ab16164ced465a7d0c01cf9fc71f4430e803aa5bd18f8508f": {
+      "paths": {
+        "assets/cards/0_base/en/Items 1Front.png": {}
+      },
+      "steamId": "17373494526728962307",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17373494526728962307/6781600AA10F5ECDED2E3A09EA75A3E53C0E1088/"
+    },
+    "dad26f50978c2f9d544050f14c31c20ae7513ffda75c3962b138c08fafee4f82": {
+      "paths": {
+        "assets/map_tiles/street_residental.jpg": {}
+      },
+      "steamId": "14222585653226881864",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14222585653226881864/AD31070828B8CC3300F9E199B6000CA75786BC91/"
+    },
+    "dafce4dc2ede0c8bf95e772f5cf6b74ce989a7246ea8f85ce73a704a08ea87bd": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/en/Investigators 1Front.png": {}
+      },
+      "steamId": "18067068949703562496",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18067068949703562496/2D63812D5CB87822B2FFA385F979F6C5823C0BF2/"
+    },
+    "dc0c88e9ce6b89cee9e60aaf4c7eee16ef898c8f46bf6f7ee664e4eb9cc09b00": {
+      "paths": {
+        "assets/cards/0_base/uk/Spell 1Front.png": {}
+      },
+      "steamId": "11412317801375525648",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/11412317801375525648/3E914472A284BAF20696C7B94F826648877DF955/"
+    },
+    "dc18d27a1471856149a2c2c73d4f129554c5a3c65ff2228f2ee8bbcb98648dda": {
+      "paths": {
+        "assets/cards/1_dead_of_night/uk/Starting 1Front.png": {}
+      },
+      "steamId": "13835322242456581053",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13835322242456581053/8B5E8025DE2004749B193D7309BEC3D7299B84FA/"
+    },
+    "dd9e97b809527f9cd89166af8cc6868c3d2c8690f241731ad301296ddd52571f": {
+      "paths": {
+        "assets/other_graphics/scenarioMap13.png": {}
+      },
+      "steamId": "14713156124454845765",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14713156124454845765/424BAEE54C7BDB5579987BE8161A69D308ADB711/"
+    },
+    "ddb68e6a47d49c6742b911e7b97c507b2f416a82169e1a7a2d1528e13925bb29": {
+      "paths": {
+        "assets/map_tiles/en/uptown.jpg": {}
+      },
+      "steamId": "15521385788220502778",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15521385788220502778/66D0C03D54374D404FA0F2F64ED22AD2977024DA/"
+    },
+    "de577300d118718489fd67d3ef81470db2d3b2264b6438263ba793c472777f94": {
+      "paths": {
+        "assets/investigators/models/wendy_adams.unity3d": {}
+      },
+      "steamId": "11677424504259364658",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/11677424504259364658/D1353FE7E5727082F43C59EA6FCD388439FB5F6A/"
+    },
+    "df4afb5e459f5b07870a55d2bc30db844b8fb90ddb7aa826a0f5f115046e512b": {
+      "paths": {
+        "assets/other_graphics/success.png": {}
+      },
+      "steamId": "10151014189290626376",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10151014189290626376/58E4451E7523BC52C0D4CDBFA0458C786AF6E4D8/"
+    },
+    "df65b1ae1b69e21bc8f022ba0a7c3f1fe6e1c92fdb9c8fb7871f0db3c20f865a": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/en/Investigators 2Back.png": {}
+      },
+      "steamId": "18225608947304398107",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18225608947304398107/C1321B2F64C4BF91E5526D95650ACF1C49CD5FC6/"
+    },
+    "e01bafb54e9d49430f5012bc15b7e1e3d1b1653fe71f57669a471a7dc71b10e5": {
+      "paths": {
+        "assets/cards/0_base/uk/Investigators 1Front.png": {}
+      },
+      "steamId": "9702102699196266476",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/9702102699196266476/C721B8157623E419DDEE87247AD2413DA853A920/"
+    },
+    "e08018175559d8914299e2bf509291ca8edcffb211836eb57f0e42269dfa703a": {
+      "paths": {
+        "assets/map_tiles/uk/The Witch House.jpg": {}
+      },
+      "steamId": "17923531117668742529",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17923531117668742529/7ACCB1C613DB105DFE8F88DE46D80915EC3ACC08/"
+    },
+    "e1341732df3872c2cc227a34945da79072f1357f560e10b96c2ecd724de82588": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/en/TPL 1Front.png": {}
+      },
+      "steamId": "15305064097263997480",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15305064097263997480/54DB4D2107A03095D587C0ECEF55E4D51DEAB465/"
+    },
+    "e1687c96a26f5491e8323bd365b8c7405c339adfb339666f0c54feac343275ee": {
+      "paths": {
+        "assets/map_tiles/Hidden Path.jpeg": {}
+      },
+      "steamId": "17135325053800518290",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17135325053800518290/AF7EEF17346A50FD7299582C6EE6F825E3EF1837/"
+    },
+    "e1a2b97a4448bf0a61e59f1cd187095866ba2ee163d2fd077f89d3bad58d42ed": {
+      "paths": {
+        "assets/map_tiles/uk/uptown.jpg": {}
+      },
+      "steamId": "16624714874672093912",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16624714874672093912/F771D315DD587CC75B422413D78B84FC9DA59F08/"
+    },
+    "e1b33e57dd510f433559b7865a5fa51d90a74cb60001223d9478a0f94a320d22": {
+      "paths": {
+        "assets/cards/0_base/uk/Items 1Front.png": {}
+      },
+      "steamId": "12256894003531811174",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12256894003531811174/DC29B512CDEBB3AD0A778F49794AC3D495075DE8/"
+    },
+    "e2354ccee7c26487d0f5d1711aee02938fca5f70e46749723f0d9d868ada1bde": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/uk/Ally 1Front.png": {}
+      },
+      "steamId": "10475469267094508731",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10475469267094508731/CADBBDCDC53D0ADD5C18C66E356CB51D8B86D4F4/"
+    },
+    "e237e7d006ac9de8e29feddff6c4105652a80f8df124a7a5610224302847063f": {
+      "paths": {
+        "assets/icons/mythos headline.png": {}
+      },
+      "steamId": "15631714193277380785",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15631714193277380785/1D906A0B536B73AF8F43B2233D5FAB30CA905033/"
+    },
+    "e28a5bebd6f122e481cdf2a4ffb618a438eb009fe6d2a8dda5e2abfd15261a5d": {
+      "paths": {
+        "assets/other_graphics/market.png": {}
+      },
+      "steamId": "16543193629151779787",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16543193629151779787/5D9E1980B7549AF92AD9A9E272EDA1372ADAD593/"
+    },
+    "e2b1f5d0aee0c918e9a44bd3cae60ba3edb4a652aef855134048c437bc12f70f": {
+      "paths": {
+        "assets/map_tiles/en/northside.jpg": {}
+      },
+      "steamId": "16073491709596288172",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16073491709596288172/695AB8F40535AD7F450837CF67545DFF75B0827A/"
+    },
+    "e2e4a8f98835d29ab17babe6182673b43643c7d518f1f9f58197d11f9af1620e": {
+      "paths": {
+        "assets/cards/0_base/uk/Condition 2Back.png": {}
+      },
+      "steamId": "10530004218059279934",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10530004218059279934/A4BFDCE3D2C79B06DC79A068AA597704F4C46C09/"
+    },
+    "e30ca266f42378f1e773a161b7137477037ccc0171fb0d2843f91f453092f1e7": {
+      "paths": {
+        "assets/icons/monster_attack.png": {}
+      },
+      "steamId": "14555059478788182009",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14555059478788182009/B6A6CCC402B686BB5BDB11BE97CE124CD5605061/"
+    },
+    "e383c50b7fa95200f75f5f5a3c3cb053d3dd39122711b5a62418b9ef0aabaabd": {
+      "paths": {
+        "assets/cards/0_base/en/Reference 1Front.png": {}
+      },
+      "steamId": "18233248761308981181",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18233248761308981181/36312F1ED370F4EA287531CD6ABE2288ACC955F3/"
+    },
+    "e3da3406b4e752923166defe7ca32ef9384a41c483f956143d7031796965a2b2": {
+      "paths": {
+        "assets/investigators/models/carson_sinclair.unity3d": {}
+      },
+      "steamId": "15038336393401665270",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15038336393401665270/7C27513F2C91C4A964C11E8D98E70FE9FF7F8DD5/"
+    },
+    "e3fc5896518ba0563f50eabcabb3cc2a55023b2e0d3e9567e4e45db01eb7ea1c": {
+      "paths": {
+        "assets/investigators/1_dead_of_night/KATE WINTHROP.jpg": {}
+      },
+      "steamId": "15304559392125073744",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15304559392125073744/A75E1A3DCF0A8B3C98277DA72955A2604C77D7DF/"
+    },
+    "e4be635937bc08237b46c3943af66f241eb6f374690469dc9de923b1fdf64663": {
+      "paths": {
+        "assets/cards/0_base/en/Encounter Part1 1Front.png": {}
+      },
+      "steamId": "11360196159035803240",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/11360196159035803240/1ADF3E6DC4B8ED4E54CC6DDB969EA04E22ED4A01/"
+    },
+    "e51096c9f32fea65a67660e10bac789963e7953d6e447f7830922fd12c44c0ba": {
+      "paths": {
+        "assets/cards/0_base/en/Investigators 1Front.png": {}
+      },
+      "steamId": "10587176905981732233",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10587176905981732233/BD70CFFC557896AFAB9BF33D9319413259D71CC1/"
+    },
+    "e55a3089375f90a0a03e71d742e85542487b400f2318cb2dda6e64bd6feb6d0a": {
+      "paths": {
+        "assets/cards/0_base/uk/Archive 1Front.png": {}
+      },
+      "steamId": "13846532081717838741",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13846532081717838741/A0991B2277EB7EBDFCB91EEF49B2C39A43856641/"
+    },
+    "e6c0b02cbd5c62e3d00fad690d8c91a9f57365f09fbcf42c53807f798c05eec4": {
+      "paths": {
+        "assets/other_graphics/знання.png": {}
+      },
+      "steamId": "14010801418572702190",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14010801418572702190/A0C432DB6A6ABEF77CD693CF5BEB958CF4836C56/"
+    },
+    "e77eaa01501cee05756757e61412ede8101d572be3d595c1309f5911397cee7a": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/en/Monsters 2Back.png": {}
+      },
+      "steamId": "16141432830999556668",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16141432830999556668/CFDC8D8D6CB96C8BAC2980BACF14B66D2BC264BD/"
+    },
+    "e7f34d35f61f16ae3b2707b279464934e09dd7b5564409a70e952883ad54489e": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/en/Archive 2Back.png": {}
+      },
+      "steamId": "16968735527371890204",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16968735527371890204/272C21CF4FDBFA25C7D996065D0A5E6BE72D4C88/"
+    },
+    "ea6eaf88eaf6a7d3e80d74a89a17b36130ab18b4e8007271354f87ddd04967bb": {
+      "paths": {
+        "assets/investigators/0_base/mini/marie lambeau.png": {}
+      },
+      "steamId": "15850684197064201612",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15850684197064201612/5F526CAFE0AEA7013AFF20BBFB8988A68C346E0F/"
+    },
+    "ea9ff9b67ce308db716379d0abd7251ac6f648db33e530caa1b440be103fe4f2": {
+      "paths": {
+        "assets/other_graphics/player_mat.png": {}
+      },
+      "steamId": "10870436331696516692",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10870436331696516692/5AB36D8CFD66040881D37224FBE0CE376F802C54/"
+    },
+    "eaf64f1f18bd11e90a6dd99202637f5c78f3860919499b46acd05ef098aeda4a": {
+      "paths": {
+        "assets/other_graphics/dice_green.png": {}
+      },
+      "steamId": "9293897538631522871",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/9293897538631522871/B904927AB076362AB0E4FCF2FF2AF389A862A61D/"
+    },
+    "ebb4fdaf91e72eab545fbad00905d8ee075d74074e6272a34b91d19f5084d9d9": {
+      "paths": {
+        "assets/map_tiles/en/Kingsport Harbor.jpg": {}
+      },
+      "steamId": "9403903083553246856",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/9403903083553246856/DDD91CAAE100FBD6F1740502E6DCAF25C4A37061/"
+    },
+    "ec23aa1ba98cc6d939ce1808b7e3f3c5e0ffaa935572b1088fcc095316460340": {
+      "paths": {
+        "assets/investigators/0_base/TOMMY MULDOON.jpeg": {}
+      },
+      "steamId": "10504169985205314964",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10504169985205314964/931EDC98604818CEF2A139F1CE5F6814A2185B7B/"
+    },
+    "ecf009329c3a9ceff0d3a767a3f6989a48be255f63a7bfd067c85c8c43eb3658": {
+      "paths": {
+        "assets/investigators/0_base/mini/daniela reyes.png": {}
+      },
+      "steamId": "13961724869395905869",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13961724869395905869/415B732A42F60D2D6F9D3FB9E8273750A4B0CC8F/"
+    },
+    "ed0feee3e5d1f8591a026027518830fd5babc13d97bae07e580103d7a2095468": {
+      "paths": {
+        "assets/other_graphics/additional_buttons_for_xml/additional_buttons_bg.png": {}
+      },
+      "steamId": "16175864720668545812",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16175864720668545812/82AFA8B1C7AE1E963F624F06B758AFD6ABE80559/"
+    },
+    "ee02e75e281bdeebf1279d35147fecab39b2aca95736d31186bd8e8b1c7549e0": {
+      "paths": {
+        "assets/investigators/0_base/mini/agnes baker.png": {}
+      },
+      "steamId": "15457612495906095306",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15457612495906095306/B10F4EB9C6EE7ECAEADCA1E8359DB08B55C07287/"
+    },
+    "ee29a88c6e52710513f277bdd603669448663523976b3802c82f3dfdf2c505ab": {
+      "paths": {
+        "assets/investigators/0_base/NORMAN WITHERS.jpeg": {}
+      },
+      "steamId": "13616584353922402837",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13616584353922402837/690F53A86B78196C8CCF6A2A787173C1E9573760/"
+    },
+    "efe9bd8c2f007c8f5b71dff3a85bcc4a291c8fdd5e7bcf9746209c6ea9ef256c": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/uk/TKaTG 1Front.png": {}
+      },
+      "steamId": "16832329345069127643",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16832329345069127643/31ED4B477A4B4FAA326197C085F6390BD8A02AA1/"
+    },
+    "eff2fc2a2c6404972fd1c740b3fea242c6ab4a300894c76d74b88a98ade25a3d": {
+      "paths": {
+        "assets/cards/0_base/en/Monsters 1Front.png": {}
+      },
+      "steamId": "13873989503575279025",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13873989503575279025/ECC3ACCC19223079466A78E703AECC34F142303E/"
+    },
+    "f08cb365fd64fdf2c9e297f0c7e1eb99a80087c42ec4628ff6ec5d7b7afbde75": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/en/ToR 1Front.png": {}
+      },
+      "steamId": "17696255265051319503",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17696255265051319503/51068DB474E8F98CB9978668917EC264911F834C/"
+    },
+    "f0a37d2fe894b155efb2d8b257347ec934229bb6cb61b57e49c35abf8dce2408": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/en/Special 1Front.png": {}
+      },
+      "steamId": "16859651951619557351",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16859651951619557351/1E6ED24B35629F7BE53DCC362C63F897431DB363/"
+    },
+    "f0df828afb72c2b6f487ed5ee0b08a7411b00d0b5a7a6ae598c5d2171429fbe6": {
+      "paths": {
+        "assets/investigators/models/rex_murphy.unity3d": {}
+      },
+      "steamId": "16773568761599516385",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16773568761599516385/B99AA40E79AFB95642F4518FF7B2DAD2498198D4/"
+    },
+    "f1e6e49aed1d1b3cf3bbe71f7ffe7f123434dd365c4a20c1b64f6fb0521d979c": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/en/TDCO 2Back.png": {}
+      },
+      "steamId": "16311896526798779560",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16311896526798779560/AE4EE62B4FDF5D094153A7A2CD6FB60DC7AB5144/"
+    },
+    "f3a1aac22bcc8b8be258a9f52a12f24291430f48199a1ec2d9d7966ca9f40d23": {
+      "paths": {
+        "assets/investigators/1_dead_of_night/ROLAND BANKS.jpg": {}
+      },
+      "steamId": "13041335307058571138",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13041335307058571138/8FB5D5BC2C6293D268EFE7FD856124565377E17B/"
+    },
+    "f48406296dfb47d73992cf9c621ac46851c061e71f1c369ca60b2a870572a0b1": {
+      "paths": {
+        "assets/cards/0_base/Ally 2Back.jpg": {}
+      },
+      "steamId": "15715758060453424211",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15715758060453424211/4409940797D14200A1ED8C879C3E749F52091783/"
+    },
+    "f502918f3c740b33c1c0ddfa286abbf8fc3544ba280dd10240c67fd2170eb40c": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/uk/Archive 1Front.png": {}
+      },
+      "steamId": "15799106982283291659",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15799106982283291659/43F9B045EB23A209BF7BB0EE25EE84DE550EF154/"
+    },
+    "f5341a0702137085be5bbc2c0f384fec47747778fa988b927a89e8f69db8ac11": {
+      "paths": {
+        "assets/investigators/models/zoey_samaras.unity3d": {}
+      },
+      "steamId": "11376504773381545288",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/11376504773381545288/DADC55D99DF84C816C5D48EE8A8BEC74EDA164C6/"
+    },
+    "f64095ff5b9938b03eda6a68988faee338613bf537502c1fee1fd5f166a83d0f": {
+      "paths": {
+        "assets/investigators/models/marie_lambeau.unity3d": {}
+      },
+      "steamId": "15006760667231699527",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15006760667231699527/DDB5C90BD02C476E91B8E89A52E44A2B6F06C9EB/"
+    },
+    "f7248d2e276d13db7b2cbcd74837b9f33f40754ec70e0a378c861eef56c74e4d": {
+      "paths": {
+        "assets/investigators/2_under_dark_waves/mini/father mateo.jpg": {}
+      },
+      "steamId": "11025631162435866970",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/11025631162435866970/2E1627425222B707CAB9FE58FC98201209B48EF5/"
+    },
+    "f7e708e5c8522b134cb69ea21d6a1f8df3022a4a85c8b128d28247b0716a19b8": {
+      "paths": {
+        "assets/cards/0_base/uk/Encounter Part2 1Front.png": {}
+      },
+      "steamId": "17257083979690158381",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17257083979690158381/C5E614F1641570616E55D2C4962A96FB758A06E7/"
+    },
+    "f80dcbe1dd0ae4785a444a98a1c5d00eee81423104ece92a3632d0bcd98b9066": {
+      "paths": {
+        "assets/map_tiles/uk/Innsmouth Village.jpg": {}
+      },
+      "steamId": "17172449373729703982",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17172449373729703982/E1A138ABA04EAEDA5F4DA9DE5D3ECD967EA98398/"
+    },
+    "f81bd3a47ce91438b21ca340c5e77217bcbd260e477160af2c416ee3aeb76cdb": {
+      "paths": {
+        "assets/cards/1_dead_of_night/en/Encounter Part1 1Front.png": {}
+      },
+      "steamId": "14158205425385607569",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14158205425385607569/05B5EAC04A8C143BC53D008452E044BF530A1701/"
+    },
+    "f9c7e4eeaee50ba79501669726ced5696e8d3b4d6f08d4af2489ef970427a99d": {
+      "paths": {
+        "assets/cards/1_dead_of_night/uk/Archive 2Back.png": {}
+      },
+      "steamId": "14662570181686975297",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14662570181686975297/AAF70FF78876AFD672CD37C7C8E897316686CD87/"
+    },
+    "fa00b432a08cd3d6ef98c431097821202de5cc4e67878b3b7a6c224f4f7b0f08": {
+      "paths": {
+        "assets/cards/0_base/en/Encounter Part2 2Back.png": {}
+      },
+      "steamId": "12511285505093654882",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12511285505093654882/FBBD700343E5BC4F212D7246641DB26140B2C295/"
+    },
+    "fa0503e88feb1f1d210e4f2d0ca01bd391eb33fc2807c502f3288edf3d9d91ea": {
+      "paths": {
+        "assets/other_graphics/additional_buttons_for_xml/additional_buttons_5_hover.png": {}
+      },
+      "steamId": "10399342844834830782",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10399342844834830782/D43C03C80EDCB601F5A6A10BA8F2250BF8F47FF0/"
+    },
+    "fa319a577c5f0758d66906b3630224d2ce2c4d0f0daca25df0038e33ed612b82": {
+      "paths": {
+        "assets/cards/0_base/uk/Special 1Front.png": {}
+      },
+      "steamId": "14196065518606734455",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14196065518606734455/8ED8F3C4B7093D6C4C89D1FDAD8FC3BAACBAF68F/"
+    },
+    "fa56166dcb3163c46d2b82e799c5ffea9399e16f751fd1dc8ae4bedc07d40d8e": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/en/IC 2Back.png": {}
+      },
+      "steamId": "9899494990158031923",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/9899494990158031923/8CA9F349CA04958A10AA96684FF5CBCF47F84D48/"
+    },
+    "fa8f023b5884e40fbe5901e59dce3d29ef57be6ce5a8b9877ff433f42a68f15a": {
+      "paths": {
+        "assets/map_tiles/en/rivertown.jpg": {}
+      },
+      "steamId": "11545374314584908718",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/11545374314584908718/1390AC497FFAE05FF04E1014A5C8817DF5FF4C2D/"
+    },
+    "fa9267dcbba7762225da3ab420cd9144f30443e35ac904a1b831a3c0a108eb64": {
+      "paths": {
+        "assets/rules/uk/(2) Under Dark Waves.pdf": {}
+      },
+      "steamId": "9882153024463792210",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/9882153024463792210/E7E86B71BCF5079C4105D0439AB94EBF1687F4A2/"
+    },
+    "fbe6cb73eefd1e2fd4531abd7127181118d0f2b5c537555ebd7fe579a7c5167a": {
+      "paths": {
+        "assets/cards/1_dead_of_night/en/Investigators 2Back.png": {}
+      },
+      "steamId": "9893158653820421500",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/9893158653820421500/B701FED3D492B8FD6C3391CB73DFEEE7747CA3B8/"
+    },
+    "fc69f6a184e69a5c4fd3f0b710f13f6632b8cc869745e1408d07eab816c3d5da": {
+      "paths": {
+        "assets/investigators/3_secrets_of_the_order/Agatha Crane.jpg": {}
+      },
+      "steamId": "13154899898340381542",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13154899898340381542/CE1CC123ACA9E5D3910C51A49881060B17A88C29/"
+    },
+    "fcb22306e6a1ea5605e30a6fa0d0995978a3bebc58b4af2125e37c0f877c4775": {
+      "paths": {
+        "assets/cards/0_base/en/Investigators 2Back.png": {}
+      },
+      "steamId": "15330782289127614992",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15330782289127614992/2162C7576C720030F705C3B5D8CB63C1A0661E65/"
+    },
+    "fcb4c2dbdecc7281fe74670440d4877781c2ae13e45a6269d936ade126b24cde": {
+      "paths": {
+        "assets/cards/0_base/uk/Scenario 2Back.png": {}
+      },
+      "steamId": "12870913005869581654",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12870913005869581654/25523C42C71FA4126B90D2ECDFD56ADB6EA327B0/"
+    },
+    "fcc97d100d44c7b8a84a029b35fd339f85afe6a93c3f0df2b096ebeef16e2d4d": {
+      "paths": {
+        "assets/rules/uk/(3) Secrets of the Order.pdf": {}
+      },
+      "steamId": "10111671380204722226",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10111671380204722226/310F4FEDFB1CF43BEAC1B777C0547A945C0C4F31/"
+    },
+    "fce0c36f0454f1bea2e38e38493af554a086f5adfebbcd749725ec294b667615": {
+      "paths": {
+        "assets/cards/1_dead_of_night/uk/SitD 1Front.png": {}
+      },
+      "steamId": "14788479927729935605",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14788479927729935605/34C9A2413017D6F7814E7673EF39DF85891D4595/"
+    },
+    "fd5b3b4ab2c7c99104c71c2314fe7d7d9767f6030d6544f99e0f4d54927519e9": {
+      "paths": {
+        "assets/cards/0_base/uk/Anomaly TF 1Front.png": {}
+      },
+      "steamId": "9820014215942202465",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/9820014215942202465/E1A8931673558DED9EA5C83D8CBA933EDD539DD5/"
+    },
+    "ff418bd71403f4ea182fc6bcf85a207d99c5a69d9ab170bea4ccb80eb5dfed69": {
+      "paths": {
+        "assets/map_tiles/street_bridge.jpg": {}
+      },
+      "steamId": "11239769792848846746",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/11239769792848846746/C0AC483BE0DDA634E27E9C1CA81373AB8FA2D23B/"
+    },
+    "ffa3f369c2aae98cc85c7192eab67f1e9d92d990a9c9cb34217813f072678b5c": {
+      "paths": {
+        "assets/icons/action_yes.png": {}
+      },
+      "steamId": "15869488742842908574",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15869488742842908574/02F57F0898605DF140625299EE2D3B22601D2533/"
+    }
+  }
 }

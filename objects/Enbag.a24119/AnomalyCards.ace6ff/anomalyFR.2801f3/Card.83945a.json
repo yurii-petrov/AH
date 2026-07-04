@@ -14,8 +14,8 @@
   "CustomDeck": {
     "5712": {
       "BackIsHidden": true,
-      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/12858849937645555893/65061B8A52A718E1601C7934BC118F7870B9E450/",
-      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/16463232137871502131/3B515034822A70079CEEE47699DE26D3F34854CB/",
+      "BackURL": "file:////Users/yurii/AH/TTS assets/cards/0_base/Anomaly FR 2Back.jpg",
+      "FaceURL": "file:////Users/yurii/AH/TTS assets/cards/0_base/en/Anomaly FR 1Front.png",
       "NumHeight": 2,
       "NumWidth": 6,
       "Type": 0,

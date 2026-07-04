@@ -91,6 +91,41 @@ def build_reverse_maps(manifest, steam_manifest):
     return path_to_hash, drive_id_to_hash, steam_id_to_hash
 
 
+# -------------------------
+# RESOLVE A SINGLE EMBEDDED URL BACK TO ITS CANONICAL CONTENT-HASH, via
+# whichever of the three reverse maps matches its form. Shared with
+# collect_steam_links.py, which needs the exact same resolution for the
+# "old" (pre-Decompose) side of its git diff.
+# -------------------------
+def resolve_asset_hash(raw_value, path_to_hash, drive_id_to_hash, steam_id_to_hash):
+    if "http" not in raw_value and "file:" not in raw_value:
+        return None, None
+
+    url = fix_url(normalize(raw_value))
+    kind = classify(url)
+
+    if url.lower().startswith("file:"):
+        fs_path = path_from_file_url(url)
+        asset_path = to_relative_asset(fs_path) if fs_path else None
+        # to_relative_asset() only produces a portable "assets/..." string
+        # when fs_path actually sits under ASSETS_ROOT — a link pointing
+        # elsewhere (stale/foreign path) falls back to "assets/../../..."
+        # here, which must not be treated as a hit.
+        if asset_path and not asset_path.startswith("assets/.."):
+            return path_to_hash.get(asset_path), url
+        return None, url
+
+    if kind == "google":
+        gid = extract_google_id(url)
+        return (drive_id_to_hash.get(gid) if gid else None), url
+
+    if kind == "steam":
+        sid = extract_steam_id(url)
+        return (steam_id_to_hash.get(sid) if sid else None), url
+
+    return None, url
+
+
 def desired_url(file_hash, manifest, steam_manifest, source):
     if source == "local":
         entry = manifest.get(file_hash)
@@ -159,22 +194,7 @@ def collect_fixes(source, manifest, steam_manifest):
             if not is_asset_link:
                 continue
 
-            file_hash = None
-            if url.lower().startswith("file:"):
-                fs_path = path_from_file_url(url)
-                asset_path = to_relative_asset(fs_path) if fs_path else None
-                # to_relative_asset() only produces a portable "assets/..."
-                # string when fs_path actually sits under ASSETS_ROOT — a
-                # link pointing elsewhere (stale/foreign path) falls back to
-                # "assets/../../..." here, which must not be treated as a hit.
-                if asset_path and not asset_path.startswith("assets/.."):
-                    file_hash = path_to_hash.get(asset_path)
-            elif kind == "google":
-                gid = extract_google_id(url)
-                file_hash = drive_id_to_hash.get(gid) if gid else None
-            elif kind == "steam":
-                sid = extract_steam_id(url)
-                file_hash = steam_id_to_hash.get(sid) if sid else None
+            file_hash, _ = resolve_asset_hash(raw_value, path_to_hash, drive_id_to_hash, steam_id_to_hash)
 
             if not file_hash:
                 # A recognized asset link (file:// under assets/, a Drive
@@ -206,7 +226,10 @@ def main():
         sys.exit(1)
 
     manifest = load_manifest()
-    steam_manifest = load_steam_manifest() if SOURCE == "steam" else {}
+    # Always loaded, regardless of target: an *existing* embedded reference
+    # can be a Steam link even when switching to --local/--drive, and needs
+    # this to resolve back to its content-hash.
+    steam_manifest = load_steam_manifest()
 
     fixes_by_file, missing, unresolved = collect_fixes(SOURCE, manifest, steam_manifest)
     files_touched, urls_replaced = apply_replacements(fixes_by_file, APPLY)

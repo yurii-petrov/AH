@@ -22,8 +22,8 @@
       "CustomDeck": {
         "5798": {
           "BackIsHidden": true,
-          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/13873989503575279025/ECC3ACCC19223079466A78E703AECC34F142303E/",
-          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/10767459869529760203/E73A65E0CB74F6EFF4A44DEB30615F9A9A6D8564/",
+          "BackURL": "file:////Users/yurii/AH/TTS assets/cards/0_base/en/Monsters 1Front.png",
+          "FaceURL": "file:////Users/yurii/AH/TTS assets/cards/0_base/en/Monsters 2Back.png",
           "NumHeight": 7,
           "NumWidth": 9,
           "Type": 0,
@@ -81,8 +81,8 @@
       "CustomDeck": {
         "5798": {
           "BackIsHidden": true,
-          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/13873989503575279025/ECC3ACCC19223079466A78E703AECC34F142303E/",
-          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/10767459869529760203/E73A65E0CB74F6EFF4A44DEB30615F9A9A6D8564/",
+          "BackURL": "file:////Users/yurii/AH/TTS assets/cards/0_base/en/Monsters 1Front.png",
+          "FaceURL": "file:////Users/yurii/AH/TTS assets/cards/0_base/en/Monsters 2Back.png",
           "NumHeight": 7,
           "NumWidth": 9,
           "Type": 0,
@@ -139,14 +139,14 @@
     },
     "ImageScalar": 1,
     "ImageSecondaryURL": "",
-    "ImageURL": "https://steamusercontent-a.akamaihd.net/ugc/15423721545364936281/60EF655541BA52B3E18F6CE7D6D2F07C09165750/",
+    "ImageURL": "file:////Users/yurii/AH/TTS assets/other_graphics/enemy.png",
     "WidthScale": 0
   },
   "CustomUIAssets": [
     {
       "Name": "Fonts",
       "Type": 1,
-      "URL": "https://steamusercontent-a.akamaihd.net/ugc/12793432762534607789/A578781E3315E733B9148B3F6DF2B249F8E5C9F4/"
+      "URL": "file:////Users/yurii/AH/TTS assets/fonts/font_list.unity3d"
     }
   ],
   "Description": "",

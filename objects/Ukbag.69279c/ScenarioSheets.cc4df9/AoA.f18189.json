@@ -316,8 +316,8 @@
   "CustomDeck": {
     "5728": {
       "BackIsHidden": true,
-      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/12870913005869581654/25523C42C71FA4126B90D2ECDFD56ADB6EA327B0/",
-      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/9830492015314806828/D9C2981F72BBD5B9D38F046B36BAEDB278CFC103/",
+      "BackURL": "file:////Users/yurii/AH/TTS assets/cards/0_base/uk/Scenario 2Back.png",
+      "FaceURL": "file:////Users/yurii/AH/TTS assets/cards/0_base/uk/Scenario 1Front.png",
       "NumHeight": 2,
       "NumWidth": 2,
       "Type": 1,

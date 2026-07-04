@@ -24,8 +24,8 @@
   "CustomDeck": {
     "5746": {
       "BackIsHidden": true,
-      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/16079824494913133699/54515422D474C765247C91477A93430170473F46/",
-      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/17110068129412112015/6065CEB56BFC411657AA6539F30FF72821974173/",
+      "BackURL": "file:////Users/yurii/AH/TTS assets/cards/0_base/uk/Encounter Part1 2Back.png",
+      "FaceURL": "file:////Users/yurii/AH/TTS assets/cards/0_base/uk/Encounter Part1 1Front.png",
       "NumHeight": 5,
       "NumWidth": 8,
       "Type": 0,

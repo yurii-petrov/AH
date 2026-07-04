@@ -16,7 +16,7 @@
   },
   "CustomMesh": {
     "CastShadows": true,
-    "ColliderURL": "https://steamusercontent-a.akamaihd.net/ugc/18375802641394700317/8AAC853C0F929A8C6AA568E4471D30A8227AA441/",
+    "ColliderURL": "file:////Users/yurii/AH/TTS assets/models/clue.obj",
     "Convex": true,
     "CustomShader": {
       "FresnelStrength": 0,
@@ -30,7 +30,7 @@
     },
     "DiffuseURL": "",
     "MaterialIndex": 3,
-    "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/18375802641394700317/8AAC853C0F929A8C6AA568E4471D30A8227AA441/",
+    "MeshURL": "file:////Users/yurii/AH/TTS assets/models/clue.obj",
     "NormalURL": "",
     "TypeIndex": 6
   },

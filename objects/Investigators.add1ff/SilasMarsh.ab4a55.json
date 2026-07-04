@@ -24,9 +24,9 @@
       "SpecularIntensity": 0,
       "SpecularSharpness": 2
     },
-    "DiffuseURL": "https://steamusercontent-a.akamaihd.net/ugc/17536564928148575475/0ACE919787E4A6128B2342FB5F2B598C5139251E/",
+    "DiffuseURL": "file:////Users/yurii/AH/TTS assets/investigators/2_under_dark_waves/silas marsh.jpg",
     "MaterialIndex": 3,
-    "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/10812311169226231461/9BE95E7760E7D2D53BC31BE50BEBFF3E84E3F2A7/",
+    "MeshURL": "file:////Users/yurii/AH/TTS assets/investigators/models/base_standee.obj",
     "NormalURL": "",
     "TypeIndex": 1
   },

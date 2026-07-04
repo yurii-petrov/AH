@@ -561,29 +561,29 @@
     },
     "ImageScalar": 1,
     "ImageSecondaryURL": "",
-    "ImageURL": "https://steamusercontent-a.akamaihd.net/ugc/9893206252386731672/AFD5C60BA7D22E2D6BA86762B60474845D92EE9D/",
+    "ImageURL": "file:////Users/yurii/AH/TTS assets/other_graphics/mith_mat.jpg",
     "WidthScale": 0
   },
   "CustomUIAssets": [
     {
       "Name": "success_icon",
       "Type": 0,
-      "URL": "https://steamusercontent-a.akamaihd.net/ugc/10151014189290626376/58E4451E7523BC52C0D4CDBFA0458C786AF6E4D8/"
+      "URL": "file:////Users/yurii/AH/TTS assets/other_graphics/success.png"
     },
     {
       "Name": "discard_icon",
       "Type": 0,
-      "URL": "https://steamusercontent-a.akamaihd.net/ugc/14421964689492510289/C13A5A578F3A5D4E2B7F6DF6499FEFB4B980A884/"
+      "URL": "file:////Users/yurii/AH/TTS assets/other_graphics/discard.png"
     },
     {
       "Name": "fail_icon",
       "Type": 0,
-      "URL": "https://steamusercontent-a.akamaihd.net/ugc/9963488286847697072/FC0356EFD31B243D9D7BE96B8578493117C56A5C/"
+      "URL": "file:////Users/yurii/AH/TTS assets/other_graphics/fail.png"
     },
     {
       "Name": "myth_slots",
       "Type": 0,
-      "URL": "https://steamusercontent-a.akamaihd.net/ugc/11907850477784915952/43E1F877797D2A71087DBE0EDD4C169A317F74C6/"
+      "URL": "file:////Users/yurii/AH/TTS assets/other_graphics/token_slot_2.png"
     }
   ],
   "Description": "",

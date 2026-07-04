@@ -14,8 +14,8 @@
   "CustomDeck": {
     "5711": {
       "BackIsHidden": true,
-      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/15715758060453424211/4409940797D14200A1ED8C879C3E749F52091783/",
-      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/13767159581222232778/370D563F80B5DFAD0CD653794E59BAF22CE84A53/",
+      "BackURL": "file:////Users/yurii/AH/TTS assets/cards/0_base/Ally 2Back.jpg",
+      "FaceURL": "file:////Users/yurii/AH/TTS assets/cards/0_base/uk/Ally 1Front.png",
       "NumHeight": 2,
       "NumWidth": 6,
       "Type": 0,

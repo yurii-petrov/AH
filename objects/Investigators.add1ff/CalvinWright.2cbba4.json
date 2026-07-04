@@ -24,9 +24,9 @@
       "SpecularIntensity": 0,
       "SpecularSharpness": 2
     },
-    "DiffuseURL": "https://steamusercontent-a.akamaihd.net/ugc/17731387910106847534/02DDC6D453EAAD0A75306F80304E535E69E2EF99/",
+    "DiffuseURL": "file:////Users/yurii/AH/TTS assets/investigators/0_base/CALVIN WRIGHT.jpeg",
     "MaterialIndex": 3,
-    "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/10812311169226231461/9BE95E7760E7D2D53BC31BE50BEBFF3E84E3F2A7/",
+    "MeshURL": "file:////Users/yurii/AH/TTS assets/investigators/models/base_standee.obj",
     "NormalURL": "",
     "TypeIndex": 1
   },

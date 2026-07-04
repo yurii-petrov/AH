@@ -24,9 +24,9 @@
       "SpecularIntensity": 0,
       "SpecularSharpness": 2
     },
-    "DiffuseURL": "https://steamusercontent-a.akamaihd.net/ugc/16629083994215354549/2E5B47FA36756093D55ED7B330D1045D8B6CCC58/",
+    "DiffuseURL": "file:////Users/yurii/AH/TTS assets/investigators/1_dead_of_night/SKIDS O'TOOLE.jpg",
     "MaterialIndex": 3,
-    "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/10812311169226231461/9BE95E7760E7D2D53BC31BE50BEBFF3E84E3F2A7/",
+    "MeshURL": "file:////Users/yurii/AH/TTS assets/investigators/models/base_standee.obj",
     "NormalURL": "",
     "TypeIndex": 1
   },

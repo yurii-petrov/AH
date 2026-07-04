@@ -44,8 +44,8 @@
   "CustomDeck": {
     "5876": {
       "BackIsHidden": true,
-      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/13018260176363193681/BA87754B6296A31E69AFB82F91518677E3A04108/",
-      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/18200929385126523382/B5142B3D8FCC0673D1132A0E096203EE94714782/",
+      "BackURL": "file:////Users/yurii/AH/TTS assets/cards/3_secrets_of_the_order/uk/TDCO 2Back.png",
+      "FaceURL": "file:////Users/yurii/AH/TTS assets/cards/3_secrets_of_the_order/uk/TDCO 1Front.png",
       "NumHeight": 4,
       "NumWidth": 7,
       "Type": 0,

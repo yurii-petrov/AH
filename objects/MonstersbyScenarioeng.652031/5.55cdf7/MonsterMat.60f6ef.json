@@ -22,8 +22,8 @@
       "CustomDeck": {
         "5804": {
           "BackIsHidden": true,
-          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/13433717936791182232/66FBFEC454E47B33A1FC125E93B033A3B2BF70A5/",
-          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/10500867953179527168/9900001B64F967506B0EFE156E5F244F887EBB42/",
+          "BackURL": "file:////Users/yurii/AH/TTS assets/cards/1_dead_of_night/en/Monsters 1Front.png",
+          "FaceURL": "file:////Users/yurii/AH/TTS assets/cards/1_dead_of_night/en/Monsters 2Back.png",
           "NumHeight": 4,
           "NumWidth": 6,
           "Type": 0,
@@ -81,8 +81,8 @@
       "CustomDeck": {
         "5804": {
           "BackIsHidden": true,
-          "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/13433717936791182232/66FBFEC454E47B33A1FC125E93B033A3B2BF70A5/",
-          "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/10500867953179527168/9900001B64F967506B0EFE156E5F244F887EBB42/",
+          "BackURL": "file:////Users/yurii/AH/TTS assets/cards/1_dead_of_night/en/Monsters 1Front.png",
+          "FaceURL": "file:////Users/yurii/AH/TTS assets/cards/1_dead_of_night/en/Monsters 2Back.png",
           "NumHeight": 4,
           "NumWidth": 6,
           "Type": 0,
@@ -139,14 +139,14 @@
     },
     "ImageScalar": 1,
     "ImageSecondaryURL": "",
-    "ImageURL": "https://steamusercontent-a.akamaihd.net/ugc/15423721545364936281/60EF655541BA52B3E18F6CE7D6D2F07C09165750/",
+    "ImageURL": "file:////Users/yurii/AH/TTS assets/other_graphics/enemy.png",
     "WidthScale": 0
   },
   "CustomUIAssets": [
     {
       "Name": "Fonts",
       "Type": 1,
-      "URL": "https://steamusercontent-a.akamaihd.net/ugc/12793432762534607789/A578781E3315E733B9148B3F6DF2B249F8E5C9F4/"
+      "URL": "file:////Users/yurii/AH/TTS assets/fonts/font_list.unity3d"
     }
   ],
   "Description": "",

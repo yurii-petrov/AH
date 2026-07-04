@@ -14,8 +14,8 @@
   "CustomDeck": {
     "5833": {
       "BackIsHidden": true,
-      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/11370514784574767540/D4A29CBE2C901753C8C23413FB0ACB0D9E3DD69C/",
-      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/18067068949703562496/2D63812D5CB87822B2FFA385F979F6C5823C0BF2/",
+      "BackURL": "file:////Users/yurii/AH/TTS assets/cards/3_secrets_of_the_order/en/Investigators 2Back.png",
+      "FaceURL": "file:////Users/yurii/AH/TTS assets/cards/3_secrets_of_the_order/en/Investigators 1Front.png",
       "NumHeight": 2,
       "NumWidth": 2,
       "Type": 1,

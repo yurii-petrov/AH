@@ -40,8 +40,8 @@
   "CustomDeck": {
     "5706": {
       "BackIsHidden": true,
-      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/17596584968303972076/CA616FE6EAB0961343C61833A9D71F1BB7D951DA/",
-      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/11955948628160056461/3A842AB2179A2F479E56C478AD560555FA1531F6/",
+      "BackURL": "file:////Users/yurii/AH/TTS assets/cards/0_base/en/VoT 2Back.png",
+      "FaceURL": "file:////Users/yurii/AH/TTS assets/cards/0_base/en/VoT 1Front.png",
       "NumHeight": 4,
       "NumWidth": 6,
       "Type": 0,

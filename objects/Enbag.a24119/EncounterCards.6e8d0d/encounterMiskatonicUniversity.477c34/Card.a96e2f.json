@@ -14,8 +14,8 @@
   "CustomDeck": {
     "5818": {
       "BackIsHidden": true,
-      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/9423489337219947130/F60C3F3C49BBAAF6DD6681DFC51AC01D26691EE4/",
-      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/14158205425385607569/05B5EAC04A8C143BC53D008452E044BF530A1701/",
+      "BackURL": "file:////Users/yurii/AH/TTS assets/cards/0_base/en/Encounter Part1 2Back.png",
+      "FaceURL": "file:////Users/yurii/AH/TTS assets/cards/1_dead_of_night/en/Encounter Part1 1Front.png",
       "NumHeight": 5,
       "NumWidth": 8,
       "Type": 0,

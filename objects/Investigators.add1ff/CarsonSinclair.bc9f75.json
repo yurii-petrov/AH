@@ -24,9 +24,9 @@
       "SpecularIntensity": 0,
       "SpecularSharpness": 2
     },
-    "DiffuseURL": "https://steamusercontent-a.akamaihd.net/ugc/17945542156119429995/46A6537623A7F2D97AA3B66A5288498A979B3B18/",
+    "DiffuseURL": "file:////Users/yurii/AH/TTS assets/investigators/2_under_dark_waves/carson sinclair.jpg",
     "MaterialIndex": 3,
-    "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/10812311169226231461/9BE95E7760E7D2D53BC31BE50BEBFF3E84E3F2A7/",
+    "MeshURL": "file:////Users/yurii/AH/TTS assets/investigators/models/base_standee.obj",
     "NormalURL": "",
     "TypeIndex": 1
   },

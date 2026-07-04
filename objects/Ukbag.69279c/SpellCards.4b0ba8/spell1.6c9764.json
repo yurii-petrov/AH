@@ -26,8 +26,8 @@
   "CustomDeck": {
     "5759": {
       "BackIsHidden": true,
-      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/14688256381556049717/1AFEAC69A05C503824968BA125BC231C53CA81C2/",
-      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/11412317801375525648/3E914472A284BAF20696C7B94F826648877DF955/",
+      "BackURL": "file:////Users/yurii/AH/TTS assets/cards/0_base/Spell 2Back.jpg",
+      "FaceURL": "file:////Users/yurii/AH/TTS assets/cards/0_base/uk/Spell 1Front.png",
       "NumHeight": 2,
       "NumWidth": 5,
       "Type": 0,

@@ -105,14 +105,14 @@
     },
     "ImageScalar": 1,
     "ImageSecondaryURL": "",
-    "ImageURL": "https://steamusercontent-a.akamaihd.net/ugc/16543193629151779787/5D9E1980B7549AF92AD9A9E272EDA1372ADAD593/",
+    "ImageURL": "file:////Users/yurii/AH/TTS assets/other_graphics/market.png",
     "WidthScale": 0
   },
   "CustomUIAssets": [
     {
       "Name": "Fonts",
       "Type": 1,
-      "URL": "https://steamusercontent-a.akamaihd.net/ugc/12793432762534607789/A578781E3315E733B9148B3F6DF2B249F8E5C9F4/"
+      "URL": "file:////Users/yurii/AH/TTS assets/fonts/font_list.unity3d"
     }
   ],
   "Description": "",

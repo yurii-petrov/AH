@@ -33,8 +33,8 @@
   "CustomDeck": {
     "5869": {
       "BackIsHidden": true,
-      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/13132441143517241437/E15F4FFA65B7DF11B499FE2A04D2B839F3DB613A/",
-      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/16385126121330765319/965B33FE7480D870094576CA496521A3C7EE6C54/",
+      "BackURL": "file:////Users/yurii/AH/TTS assets/cards/0_base/Specials 2Back.jpg",
+      "FaceURL": "file:////Users/yurii/AH/TTS assets/cards/3_secrets_of_the_order/en/Special 1Front.png",
       "NumHeight": 3,
       "NumWidth": 6,
       "Type": 0,

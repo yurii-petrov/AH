@@ -28,8 +28,8 @@
   "CustomDeck": {
     "5824": {
       "BackIsHidden": true,
-      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/9470015928411867909/074F8C550FBC4E004BBB6F42637ED92E121C4701/",
-      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/10323099301145202545/7A4BB8DB6D83948E8F9B1AF2C730499579539C41/",
+      "BackURL": "file:////Users/yurii/AH/TTS assets/cards/1_dead_of_night/Anomaly YE 2Back.jpg",
+      "FaceURL": "file:////Users/yurii/AH/TTS assets/cards/1_dead_of_night/en/Anomaly YE 1Front.png",
       "NumHeight": 2,
       "NumWidth": 6,
       "Type": 0,

@@ -78,8 +78,8 @@
   "CustomDeck": {
     "5798": {
       "BackIsHidden": true,
-      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/15716916044391762845/B229E49CF55E2F02B1283EC55915467504300A70/",
-      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/16399548818406396612/760B24A37605A57F4F3E3BD70040B305729E99AD/",
+      "BackURL": "file:////Users/yurii/AH/TTS assets/cards/0_base/uk/Monsters 1Front.png",
+      "FaceURL": "file:////Users/yurii/AH/TTS assets/cards/0_base/uk/Monsters 2Back.png",
       "NumHeight": 7,
       "NumWidth": 9,
       "Type": 0,

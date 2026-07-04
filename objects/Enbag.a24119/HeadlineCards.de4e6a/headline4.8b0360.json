@@ -20,8 +20,8 @@
   "CustomDeck": {
     "5860": {
       "BackIsHidden": true,
-      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/13434902683876240825/8566C65A619DE9C113813B1AA3AF47AE64135E32/",
-      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/10492751672475593713/69BAA504ABEC6DE4F2E8F5A864EF2204B9C749B5/",
+      "BackURL": "file:////Users/yurii/AH/TTS assets/cards/1_dead_of_night/Headline 2Back.jpg",
+      "FaceURL": "file:////Users/yurii/AH/TTS assets/cards/3_secrets_of_the_order/en/Headline 1Front.png",
       "NumHeight": 2,
       "NumWidth": 2,
       "Type": 0,

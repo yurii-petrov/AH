@@ -18,8 +18,8 @@
   "CustomDeck": {
     "5856": {
       "BackIsHidden": true,
-      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/13030802856670412472/B564FD6E20D91F6ABE9DE1CCEF06AEB5D3315AFE/",
-      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/14270004210214003728/317141543E94071096001C644476C48404A3B2B9/",
+      "BackURL": "file:////Users/yurii/AH/TTS assets/cards/2_under_dark_waves/uk/Encounter Part1 2Back.png",
+      "FaceURL": "file:////Users/yurii/AH/TTS assets/cards/2_under_dark_waves/uk/Encounter Part1 1Front.png",
       "NumHeight": 5,
       "NumWidth": 8,
       "Type": 0,

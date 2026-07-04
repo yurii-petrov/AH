@@ -15,8 +15,8 @@
   "CustomDeck": {
     "5753": {
       "BackIsHidden": true,
-      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/15837995986042384409/A4486CE8BF4A2DAD1D737C51AF844BDB715173B3/",
-      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/9702102699196266476/C721B8157623E419DDEE87247AD2413DA853A920/",
+      "BackURL": "file:////Users/yurii/AH/TTS assets/cards/0_base/uk/Investigators 2Back.png",
+      "FaceURL": "file:////Users/yurii/AH/TTS assets/cards/0_base/uk/Investigators 1Front.png",
       "NumHeight": 3,
       "NumWidth": 4,
       "Type": 1,

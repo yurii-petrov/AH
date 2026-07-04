@@ -28,8 +28,8 @@
   "CustomDeck": {
     "5873": {
       "BackIsHidden": true,
-      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/11434060645688598909/2C8A41997447E4E12452B42592EFE783A00F7D33/",
-      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/14110085614181515970/5065087734C664C13AB01202D5C92F0EF8C114D1/",
+      "BackURL": "file:////Users/yurii/AH/TTS assets/cards/2_under_dark_waves/Terror FF 2Back.jpg",
+      "FaceURL": "file:////Users/yurii/AH/TTS assets/cards/2_under_dark_waves/uk/Terror FF 1Front.png",
       "NumHeight": 2,
       "NumWidth": 6,
       "Type": 0,

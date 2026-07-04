@@ -40,8 +40,8 @@
   "CustomDeck": {
     "5874": {
       "BackIsHidden": true,
-      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/16747767705520312755/E179FBB81FA91EF4931131590AAD3B4B3B2A4303/",
-      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/12906982881046026218/B3A5829FB2033B7502A09C48EDBF3AF1AA0C7DB7/",
+      "BackURL": "file:////Users/yurii/AH/TTS assets/cards/2_under_dark_waves/uk/ToR 2Back.png",
+      "FaceURL": "file:////Users/yurii/AH/TTS assets/cards/2_under_dark_waves/uk/ToR 1Front.png",
       "NumHeight": 4,
       "NumWidth": 6,
       "Type": 0,

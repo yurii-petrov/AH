@@ -14,8 +14,8 @@
   "CustomDeck": {
     "5803": {
       "BackIsHidden": true,
-      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/13132441143517241437/E15F4FFA65B7DF11B499FE2A04D2B839F3DB613A/",
-      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/14842737792982158369/45A3B011A2648F1DAB7B164D24C4562888108CD5/",
+      "BackURL": "file:////Users/yurii/AH/TTS assets/cards/0_base/Specials 2Back.jpg",
+      "FaceURL": "file:////Users/yurii/AH/TTS assets/cards/1_dead_of_night/uk/Special 1Front.png",
       "NumHeight": 4,
       "NumWidth": 7,
       "Type": 0,

@@ -29,7 +29,7 @@
   },
   "CustomMesh": {
     "CastShadows": true,
-    "ColliderURL": "https://steamusercontent-a.akamaihd.net/ugc/16145913936668690532/2A879D89402AB2F52469E10391D07E0CA1466FC5/",
+    "ColliderURL": "file:////Users/yurii/AH/TTS assets/models/map_tile_variant_a_collider.obj",
     "Convex": true,
     "CustomShader": {
       "FresnelStrength": 0,
@@ -41,9 +41,9 @@
       "SpecularIntensity": 0,
       "SpecularSharpness": 2
     },
-    "DiffuseURL": "https://steamusercontent-a.akamaihd.net/ugc/14939041859861846950/5EC4E9CD07A08A278A6F8BF0AEBB363FC03B22F8/",
+    "DiffuseURL": "file:////Users/yurii/AH/TTS assets/map_tiles/en/easttown.jpg",
     "MaterialIndex": 3,
-    "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/11739180978061755624/4FB43A5260CCADD09C2F94112E854B4634EC0D75/",
+    "MeshURL": "file:////Users/yurii/AH/TTS assets/models/map_tile_variant_a.obj",
     "NormalURL": "",
     "TypeIndex": 0
   },

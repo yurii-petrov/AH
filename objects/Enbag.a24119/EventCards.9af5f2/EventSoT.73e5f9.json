@@ -40,8 +40,8 @@
   "CustomDeck": {
     "5812": {
       "BackIsHidden": true,
-      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/12930379842209026548/5F3522502D68D5251A63C90E9DF967CF7CFABE4C/",
-      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/16036367328169106531/65696F17DBA89CA5C70041058A08C9A22D260CDE/",
+      "BackURL": "file:////Users/yurii/AH/TTS assets/cards/1_dead_of_night/en/SoT 2Back.png",
+      "FaceURL": "file:////Users/yurii/AH/TTS assets/cards/1_dead_of_night/en/SoT 1Front.png",
       "NumHeight": 4,
       "NumWidth": 6,
       "Type": 0,

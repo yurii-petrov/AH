@@ -14,8 +14,8 @@
   "CustomDeck": {
     "5810": {
       "BackIsHidden": true,
-      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/11210993627284697209/CFE9006E34BACEA72ED1E5450FBBF4BB1ED855F8/",
-      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/12774600667644345028/FEE68A23075FB05B468167B62C05C4DB0F9CBB34/",
+      "BackURL": "file:////Users/yurii/AH/TTS assets/cards/1_dead_of_night/uk/Investigators 2Back.png",
+      "FaceURL": "file:////Users/yurii/AH/TTS assets/cards/1_dead_of_night/uk/Investigators 1Front.png",
       "NumHeight": 2,
       "NumWidth": 2,
       "Type": 1,

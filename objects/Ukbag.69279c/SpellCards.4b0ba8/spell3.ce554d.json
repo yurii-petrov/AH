@@ -18,8 +18,8 @@
   "CustomDeck": {
     "5870": {
       "BackIsHidden": true,
-      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/14688256381556049717/1AFEAC69A05C503824968BA125BC231C53CA81C2/",
-      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/13984056507245143032/E1538258847F799E4BE508F725962B6BCE79CAAC/",
+      "BackURL": "file:////Users/yurii/AH/TTS assets/cards/0_base/Spell 2Back.jpg",
+      "FaceURL": "file:////Users/yurii/AH/TTS assets/cards/2_under_dark_waves/uk/Spell 1Front.png",
       "NumHeight": 2,
       "NumWidth": 2,
       "Type": 0,

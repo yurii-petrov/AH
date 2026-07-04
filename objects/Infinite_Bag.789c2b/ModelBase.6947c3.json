@@ -12,7 +12,7 @@
   },
   "CustomMesh": {
     "CastShadows": true,
-    "ColliderURL": "https://steamusercontent-a.akamaihd.net/ugc/10812311169226231461/9BE95E7760E7D2D53BC31BE50BEBFF3E84E3F2A7/",
+    "ColliderURL": "file:////Users/yurii/AH/TTS assets/investigators/models/base_standee.obj",
     "Convex": true,
     "CustomShader": {
       "FresnelStrength": 0,
@@ -24,9 +24,9 @@
       "SpecularIntensity": 0,
       "SpecularSharpness": 2
     },
-    "DiffuseURL": "https://steamusercontent-a.akamaihd.net/ugc/16799222260407107019/D324EFA2B5648EACA4A376C87A01808EB63CC18F/",
+    "DiffuseURL": "file:////Users/yurii/AH/TTS assets/models/blank_diffuse.png",
     "MaterialIndex": 3,
-    "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/10812311169226231461/9BE95E7760E7D2D53BC31BE50BEBFF3E84E3F2A7/",
+    "MeshURL": "file:////Users/yurii/AH/TTS assets/investigators/models/base_standee.obj",
     "NormalURL": "",
     "TypeIndex": 1
   },

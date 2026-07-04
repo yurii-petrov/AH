@@ -14,8 +14,8 @@
   "CustomDeck": {
     "5705": {
       "BackIsHidden": true,
-      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/12442718284480699067/DA3CDCB35AC60806D20EB963672CB4168E24F71A/",
-      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/16439694511507110208/C29580BB524709C71ED807B7EC4F3D0C33E2D1E0/",
+      "BackURL": "file:////Users/yurii/AH/TTS assets/cards/0_base/en/EotD 2Back.png",
+      "FaceURL": "file:////Users/yurii/AH/TTS assets/cards/0_base/en/EotD 1Front.png",
       "NumHeight": 4,
       "NumWidth": 6,
       "Type": 0,

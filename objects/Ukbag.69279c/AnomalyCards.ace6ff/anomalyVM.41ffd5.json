@@ -28,8 +28,8 @@
   "CustomDeck": {
     "5848": {
       "BackIsHidden": true,
-      "BackURL": "https://steamusercontent-a.akamaihd.net/ugc/17399543543313533455/D34586441989AE37C643D89FD1C3A0CC0C90F055/",
-      "FaceURL": "https://steamusercontent-a.akamaihd.net/ugc/12486754809666387992/F481EAB22C561680026B17D4E9647831B8791624/",
+      "BackURL": "file:////Users/yurii/AH/TTS assets/cards/2_under_dark_waves/Anomaly VM 2Back.jpg",
+      "FaceURL": "file:////Users/yurii/AH/TTS assets/cards/2_under_dark_waves/uk/Anomaly VM 1Front.png",
       "NumHeight": 2,
       "NumWidth": 6,
       "Type": 0,

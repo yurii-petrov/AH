@@ -12,7 +12,7 @@
   },
   "CustomMesh": {
     "CastShadows": true,
-    "ColliderURL": "https://steamusercontent-a.akamaihd.net/ugc/18177435305610839305/B92A923EDA913F161A5B6528A4B10F6683C2C59E/",
+    "ColliderURL": "file:////Users/yurii/AH/TTS assets/models/map_tile_variant_b_collider.obj",
     "Convex": true,
     "CustomShader": {
       "FresnelStrength": 0,
@@ -24,9 +24,9 @@
       "SpecularIntensity": 0,
       "SpecularSharpness": 2
     },
-    "DiffuseURL": "https://steamusercontent-a.akamaihd.net/ugc/12552806262714723368/366BF765AB37033A3AFA1939831DCC5438C1E83A/",
+    "DiffuseURL": "file:////Users/yurii/AH/TTS assets/map_tiles/en/The Witch House.jpg",
     "MaterialIndex": 3,
-    "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/10864451512044438128/49047E52EE3E7ED9121BAF440700C7E0ACF72AD4/",
+    "MeshURL": "file:////Users/yurii/AH/TTS assets/models/arkham.obj",
     "NormalURL": "",
     "TypeIndex": 0
   },
