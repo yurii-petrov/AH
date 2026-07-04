@@ -52,7 +52,8 @@ def scan_assets(old_assets):
     path_to_old = {}
     for file_hash, entry in old_assets.items():
         for path, meta in entry.get("paths", {}).items():
-            path_to_old[path] = (file_hash, meta.get("mtime"), meta.get("size"))
+            old_mtime = meta.get("mtime")
+            path_to_old[path] = (file_hash, round(old_mtime, 3) if old_mtime is not None else None, meta.get("size"))
 
     new_assets = {}
 
@@ -63,7 +64,13 @@ def scan_assets(old_assets):
             abs_path = os.path.join(root, name)
             rel_path = to_relative_asset(abs_path)
             stat = os.stat(abs_path)
-            mtime, size = stat.st_mtime, stat.st_size
+            # Rounded to milliseconds: the same instant can come back as a
+            # slightly different float (e.g. 1749238876.864 vs
+            # .8639998) depending on OS/filesystem — exact equality below
+            # would treat that as "changed" and force a needless re-hash,
+            # and the raw float would keep "flickering" between machines'
+            # own representations in the saved manifest forever.
+            mtime, size = round(stat.st_mtime, 3), stat.st_size
 
             cached = path_to_old.get(rel_path)
             if cached and cached[1] == mtime and cached[2] == size:
