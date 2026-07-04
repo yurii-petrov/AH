@@ -103,6 +103,7 @@ def main():
     uploaded = 0
     relinked_files = set()
     unwired = []
+    unresolved = []
     old_ids_to_delete = set()
 
     for file_hash in needing:
@@ -127,6 +128,13 @@ def main():
         for path in paths:
             old_hash = old_path_to_hash.get(path)
             if old_hash and old_hash != file_hash:
+                # If old_hash is still present in the *new* scan, its content
+                # lives on at some other path (e.g. a duplicate file) and its
+                # Drive copy is still legitimately in use — deleting it or
+                # redirecting its references to the new upload would corrupt
+                # that still-valid, unrelated asset.
+                if old_hash in manifest:
+                    continue
                 old_id = old_manifest.get(old_hash, {}).get("driveId")
                 if old_id:
                     old_ids.add(old_id)
@@ -140,6 +148,15 @@ def main():
             touched = find_and_replace_link(old_url, new_url)
             relinked_files.update(touched)
             old_ids_to_delete.add(old_id)
+
+            if not touched:
+                # The manifest's previous driveId wasn't found anywhere in the
+                # project — a prior sync likely already failed to relink it,
+                # so whatever's actually still embedded is even further out
+                # of date. Deleting the superseded Drive file is still safe
+                # (its content is gone locally either way), but this needs a
+                # human to find and fix the real stale reference by hand.
+                unresolved.append((primary_path, old_id, new_url))
 
     deleted = 0
     for old_id in old_ids_to_delete:
@@ -171,9 +188,17 @@ def main():
         for path, file_id, new_url in unwired:
             print(f"  {path}  id={file_id}  {new_url}")
 
+    if unresolved:
+        print(f"\n⚠ {len(unresolved)} asset(s) expected an old link in the project but found none —")
+        print("  whatever's actually still referenced is stale and needs a manual fix:")
+        for path, old_id, new_url in unresolved:
+            print(f"  {path}  expected old id={old_id}  new link={new_url}")
+
     print_box(
         f"ASSETS SYNCED ({uploaded} UPLOADED, {len(relinked_files)} FILES RELINKED, "
-        f"{deleted} OLD DELETED, {reconciled} RENAMED)"
+        f"{deleted} OLD DELETED, {reconciled} RENAMED"
+        + (f", {len(unresolved)} UNRESOLVED" if unresolved else "")
+        + ")"
     )
 
     build_mod()
