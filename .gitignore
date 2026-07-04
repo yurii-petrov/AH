@@ -1,5 +1,7 @@
 .tts/
 .DS_Store
+__pycache__/
+*.pyc
 .venv/
 src/ConvertMemo/objects/
 /assets/

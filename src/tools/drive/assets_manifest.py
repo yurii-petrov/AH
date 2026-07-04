@@ -57,9 +57,14 @@ def scan_assets(old_assets):
 
     new_assets = {}
 
-    for root, _, files in os.walk(ASSETS_ROOT):
+    for root, dirs, files in os.walk(ASSETS_ROOT):
+        # Hidden files/folders (.DS_Store, .git, editor swap files, ...) are
+        # never real assets — they must never end up in the manifest or get
+        # uploaded to Drive.
+        dirs[:] = [d for d in dirs if not d.startswith(".")]
+
         for name in files:
-            if name == ".DS_Store":
+            if name.startswith("."):
                 continue
             abs_path = os.path.join(root, name)
             rel_path = to_relative_asset(abs_path)
