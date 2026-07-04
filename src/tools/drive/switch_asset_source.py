@@ -239,9 +239,7 @@ def main():
 
     if missing:
         print()
-        print(f"No '{SOURCE}' link available (skipped):", len(missing))
-        for rel_path, key, source in sorted(missing):
-            print(f"  {rel_path} [{key}]")
+        print(f"No '{SOURCE}' link available (skipped): {len(missing)}")
 
     if unresolved:
         print()
