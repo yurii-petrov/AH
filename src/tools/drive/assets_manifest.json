@@ -4639,6 +4639,15 @@
       },
       "driveId": "1IASnIGR8pSOo-AQl0aA2pa_5AdZMAcOJ"
     },
+    "5f12fa7a16064dc0f55b39504ac574af7c32379c49e8ce36ddeb350c72f0d6f3": {
+      "paths": {
+        "assets/rules/rulebook.pdf": {
+          "mtime": 1783001203.2719998,
+          "size": 4471461
+        }
+      },
+      "driveId": "1JsZePrQWUPqoytBHUo7s4MW5yA1f8gsd"
+    },
     "24fa6ece60f087ef226ccfb0e547f4412d4b27768149b18e0741012d0b77a998": {
       "paths": {
         "assets/rules/base_rules_reference.pdf": {
@@ -4647,15 +4656,6 @@
         }
       },
       "driveId": "1aqL9-8tcUfIkY3vhj3aPkgttNI_SvmDf"
-    },
-    "5f12fa7a16064dc0f55b39504ac574af7c32379c49e8ce36ddeb350c72f0d6f3": {
-      "paths": {
-        "assets/rules/rulebook1.pdf": {
-          "mtime": 1783001203.2719998,
-          "size": 4471461
-        }
-      },
-      "driveId": "1JsZePrQWUPqoytBHUo7s4MW5yA1f8gsd"
     },
     "42251fd2dee731f15cc7bc6fed646f66a0265a0e68cc856713785db32e04421b": {
       "paths": {
