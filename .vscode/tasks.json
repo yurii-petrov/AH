@@ -137,6 +137,13 @@
 
     {
       "label": "Arkham Horror: Switch Assets",
+      "dependsOn": ["_switch_assets", "_go_build"],
+      "dependsOrder": "sequence",
+      "problemMatcher": []
+    },
+
+    {
+      "label": "_switch_assets",
       "type": "shell",
       "windows": {
         "command": "py",
