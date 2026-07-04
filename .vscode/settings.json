@@ -63,7 +63,7 @@
     "xml": true,
     ".claudeignore": true,
     ".gitignore": true,
-    // ".vscode": true,
+    ".vscode": true,
   },
 
   // exlude folders
