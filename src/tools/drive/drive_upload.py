@@ -15,7 +15,7 @@ from googleapiclient.http import MediaFileUpload
 
 from asset_index_builder import extract_google_id, print_box
 from assets_manifest import diff as manifest_diff
-from assets_manifest import drive_url, load_manifest, save_manifest, scan_assets, to_absolute_asset
+from assets_manifest import check_no_duplicates, drive_url, load_manifest, save_manifest, scan_assets, to_absolute_asset
 
 # -------------------------
 # UPLOAD ASSETS WITH A LOCAL FILE BUT NO DRIVE LINK YET, THEN RECORD THE
@@ -233,6 +233,7 @@ def main():
 
     old_manifest = load_manifest()
     manifest = scan_assets(old_manifest)
+    check_no_duplicates(manifest)
     seed_manifest_from_index(manifest, data)
 
     needing = [h for h, entry in manifest.items() if not entry.get("driveId")]

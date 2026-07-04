@@ -10,6 +10,7 @@ sys.path.insert(0, SCRIPT_DIR)
 from asset_index_builder import ASSETS_ROOT, extract_google_id, print_box
 from assets_manifest import diff as manifest_diff
 from assets_manifest import (
+    check_no_duplicates,
     drive_url,
     load_local_snapshot,
     load_manifest,
@@ -151,6 +152,7 @@ def main():
         current = scan_assets(shared_manifest)  # re-scan: files just physically moved
 
     manifest = current
+    check_no_duplicates(manifest)
 
     old_path_to_hash = {}
     for file_hash, entry in local_snapshot.items():

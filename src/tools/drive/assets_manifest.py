@@ -115,6 +115,35 @@ def save_local_snapshot(assets):
         json.dump({"assets": assets}, f, indent=2, ensure_ascii=False, sort_keys=True)
 
 
+def find_duplicates(assets):
+    return [
+        (file_hash, sorted(entry["paths"]))
+        for file_hash, entry in assets.items()
+        if len(entry.get("paths", {})) > 1
+    ]
+
+
+def check_no_duplicates(assets):
+    """Two local files that are byte-for-byte identical share one Drive
+    upload and one driveId — harmless at first, but if just one of the
+    copies is later edited, the pipeline can't tell which project reference
+    should follow the edit and which should keep the old link, and refuses
+    to guess (see sync_assets_to_drive.py's unresolved/unwired reporting) —
+    that then needs a manual fix per affected object. Catching duplicates
+    here, at scan time, and refusing to go any further (no upload, no
+    build) is cheaper than untangling that later — each local file is
+    expected to be its own unique asset."""
+    duplicates = find_duplicates(assets)
+    if not duplicates:
+        return
+
+    print(f"\n✗ {len(duplicates)} duplicate file(s) found — byte-identical copies sharing one Drive upload:")
+    for file_hash, paths in duplicates:
+        print(f"  {' == '.join(paths)}")
+    print("  Each local file must be unique — delete all but one copy, or make their contents different, then run again.")
+    sys.exit(1)
+
+
 def diff(old_assets, new_assets):
     old_hashes = set(old_assets)
     new_hashes = set(new_assets)
@@ -155,6 +184,8 @@ def main():
         print(f"Renamed/moved ({len(renamed)}):")
         for file_hash, old_paths, new_paths in renamed:
             print(f"  {sorted(old_paths)} -> {sorted(new_paths)}")
+
+    check_no_duplicates(new_assets)
 
     print_box(f"ASSETS MANIFEST UPDATED ({len(new_assets)} UNIQUE FILES)")
 
