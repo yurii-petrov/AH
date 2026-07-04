@@ -20,7 +20,9 @@ def calculate_translation_stats_condensed():
     Analyzes all .po files and displays translation progress in a
     condensed format.
     """
-    script_dir = os.path.dirname(os.path.abspath(__file__))
+    script_dir = os.path.normpath(
+        os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "locales")
+    )
     master_path = os.path.join(script_dir, MASTER_PO_FILE)
 
     if not os.path.exists(master_path):

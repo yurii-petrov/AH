@@ -2,10 +2,15 @@ import json
 import os
 import sys
 
+# Archived: no longer wired into tasks.json, but kept runnable manually.
+# It still lives off the src/tools/ modules/index.json it always used.
+TOOLS_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "src", "tools")
+sys.path.insert(0, os.path.normpath(TOOLS_DIR))
+
 from asset_index_builder import ROOT_DIR, build_local_file_url, print_box
 from asset_localizer import apply_replacements
 
-INDEX_FILE = os.path.join(os.path.dirname(__file__), "index.json")
+INDEX_FILE = os.path.join(os.path.normpath(TOOLS_DIR), "index.json")
 
 
 # -------------------------

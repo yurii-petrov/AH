@@ -5,6 +5,11 @@ import os
 from asset_index_builder import ASSETS_ROOT, print_box, to_relative
 
 MANIFEST_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets_manifest.json")
+DRIVE_URL_TEMPLATE = "https://drive.google.com/uc?export=download&id={}"
+
+
+def drive_url(drive_id):
+    return DRIVE_URL_TEMPLATE.format(drive_id) if drive_id else None
 
 
 def hash_file(abs_path):
@@ -50,12 +55,8 @@ def scan_assets(old_assets):
 
     for file_hash, entry in new_assets.items():
         old_entry = old_assets.get(file_hash)
-        if not old_entry:
-            continue
-        if old_entry.get("driveId"):
+        if old_entry and old_entry.get("driveId"):
             entry["driveId"] = old_entry["driveId"]
-        if old_entry.get("gUrl"):
-            entry["gUrl"] = old_entry["gUrl"]
 
     return new_assets
 

@@ -3,7 +3,7 @@
   "tasks": [
     {
       "label": "Arkham Horror: Build",
-      "dependsOn": ["_index_assets", "_add_download_links", "_prepare_project"],
+      "dependsOn": ["_go_build"],
       "dependsOrder": "sequence",
       "problemMatcher": [],
       "group": {
@@ -13,36 +13,18 @@
     },
 
     {
-      "label": "_prepare_project",
-      "dependsOn": ["_sync_po", "_convert_po", "_go_build", "_go_build_done"],
-      "dependsOrder": "sequence",
-      "problemMatcher": []
-    },
-
-    {
-      "label": "_sync_po",
+      "label": "Arkham Horror: Sync Translations",
       "type": "shell",
       "windows": {
         "command": "py",
-        "args": ["${workspaceFolder}\\locales\\_sync_po_files.py"]
+        "args": ["${workspaceFolder}\\.vscode\\locales\\sync_translations.py"]
       },
       "osx": {
         "command": "${workspaceFolder}/.venv/bin/python",
-        "args": ["${workspaceFolder}/locales/_sync_po_files.py"]
+        "args": ["${workspaceFolder}/.vscode/locales/sync_translations.py"]
       },
-      "problemMatcher": []
-    },
-
-    {
-      "label": "_convert_po",
-      "type": "shell",
-      "windows": {
-        "command": "py",
-        "args": ["${workspaceFolder}\\locales\\_po_to_lua_converter.py"]
-      },
-      "osx": {
-        "command": "${workspaceFolder}/.venv/bin/python",
-        "args": ["${workspaceFolder}/locales/_po_to_lua_converter.py"]
+      "options": {
+        "cwd": "${workspaceFolder}${pathSeparator}.vscode"
       },
       "problemMatcher": []
     },
@@ -65,51 +47,9 @@
     },
 
     {
-      "label": "_go_build_done",
-      "type": "shell",
-      "windows": {
-        "command": "py",
-        "args": ["${workspaceFolder}\\src\\tools\\box_echo.py", "MOD BUILD SUCCESS"]
-      },
-      "osx": {
-        "command": "${workspaceFolder}/.venv/bin/python",
-        "args": ["${workspaceFolder}/src/tools/box_echo.py", "MOD BUILD SUCCESS"]
-      },
-      "problemMatcher": []
-    },
-
-    {
       "label": "Arkham Horror: Decompose",
-      "dependsOn": ["_decompose", "_index_assets", "_add_download_links", "_check_uploads", "_decompose_done"],
+      "dependsOn": ["_decompose", "_index_assets", "_add_download_links"],
       "dependsOrder": "sequence",
-      "problemMatcher": []
-    },
-
-    {
-      "label": "_check_uploads",
-      "type": "shell",
-      "windows": {
-        "command": "py",
-        "args": ["${workspaceFolder}\\src\\tools\\drive_upload.py"]
-      },
-      "osx": {
-        "command": "${workspaceFolder}/.venv/bin/python",
-        "args": ["${workspaceFolder}/src/tools/drive_upload.py"]
-      },
-      "problemMatcher": []
-    },
-
-    {
-      "label": "_decompose_done",
-      "type": "shell",
-      "windows": {
-        "command": "py",
-        "args": ["${workspaceFolder}\\src\\tools\\box_echo.py", "DECOMPOSE SUCCESS"]
-      },
-      "osx": {
-        "command": "${workspaceFolder}/.venv/bin/python",
-        "args": ["${workspaceFolder}/src/tools/box_echo.py", "DECOMPOSE SUCCESS"]
-      },
       "problemMatcher": []
     },
 
@@ -207,105 +147,18 @@
     },
 
     {
-      "label": "Arkham Horror: Use Local Assets",
-      "dependsOn": ["_use_local_assets", "_prepare_project"],
-      "dependsOrder": "sequence",
-      "problemMatcher": []
-    },
-
-    {
-      "label": "_use_local_assets",
+      "label": "Arkham Horror: Sync Assets to Drive",
       "type": "shell",
       "windows": {
         "command": "py",
-        "args": ["${workspaceFolder}\\src\\tools\\apply_asset_source.py", "--local", "--apply"]
+        "args": ["${workspaceFolder}\\.vscode\\sync_assets_to_drive.py"]
       },
       "osx": {
         "command": "${workspaceFolder}/.venv/bin/python",
-        "args": ["${workspaceFolder}/src/tools/apply_asset_source.py", "--local", "--apply"]
+        "args": ["${workspaceFolder}/.vscode/sync_assets_to_drive.py"]
       },
-      "problemMatcher": []
-    },
-
-    {
-      "label": "Arkham Horror: Use Google Drive Links",
-      "dependsOn": ["_use_drive_links", "_prepare_project"],
-      "dependsOrder": "sequence",
-      "problemMatcher": []
-    },
-
-    {
-      "label": "_use_drive_links",
-      "type": "shell",
-      "windows": {
-        "command": "py",
-        "args": ["${workspaceFolder}\\src\\tools\\apply_asset_source.py", "--drive", "--apply"]
-      },
-      "osx": {
-        "command": "${workspaceFolder}/.venv/bin/python",
-        "args": ["${workspaceFolder}/src/tools/apply_asset_source.py", "--drive", "--apply"]
-      },
-      "problemMatcher": []
-    },
-
-    {
-      "label": "Arkham Horror: Use Steam Cloud Links",
-      "dependsOn": ["_use_steam_links", "_prepare_project"],
-      "dependsOrder": "sequence",
-      "problemMatcher": []
-    },
-
-    {
-      "label": "_use_steam_links",
-      "type": "shell",
-      "windows": {
-        "command": "py",
-        "args": ["${workspaceFolder}\\src\\tools\\apply_asset_source.py", "--steam", "--apply"]
-      },
-      "osx": {
-        "command": "${workspaceFolder}/.venv/bin/python",
-        "args": ["${workspaceFolder}/src/tools/apply_asset_source.py", "--steam", "--apply"]
-      },
-      "problemMatcher": []
-    },
-
-    {
-      "label": "Arkham Horror: Upload New Assets to Drive",
-      "dependsOn": ["_index_assets", "_upload_to_drive", "_use_drive_links", "_prepare_project"],
-      "dependsOrder": "sequence",
-      "problemMatcher": []
-    },
-
-    {
-      "label": "_upload_to_drive",
-      "type": "shell",
-      "windows": {
-        "command": "py",
-        "args": ["${workspaceFolder}\\src\\tools\\drive_upload.py", "--apply"]
-      },
-      "osx": {
-        "command": "${workspaceFolder}/.venv/bin/python",
-        "args": ["${workspaceFolder}/src/tools/drive_upload.py", "--apply"]
-      },
-      "problemMatcher": []
-    },
-
-    {
-      "label": "Arkham Horror: Check Missing Drive Links",
-      "dependsOn": ["_check_uploads"],
-      "problemMatcher": []
-    },
-
-    {
-      "label": "Arkham Horror: Verify Drive Links (slow)",
-      "type": "shell",
-      "windows": {
-        "command": "py",
-        "args": ["${workspaceFolder}\\src\\tools\\drive_upload.py", "--verify"]
-      },
-      "osx": {
-        "command": "${workspaceFolder}/.venv/bin/python",
-        "args": ["${workspaceFolder}/src/tools/drive_upload.py", "--verify"]
+      "options": {
+        "cwd": "${workspaceFolder}${pathSeparator}.vscode"
       },
       "problemMatcher": []
     }

@@ -23,13 +23,23 @@ except ImportError:
 PLATFORM = platform.system()
 TTS_SUFFIX = Path("Tabletop Simulator") / "Saves"
 
+
+def print_box(message):
+    pad = 5
+    width = len(message) + pad * 2
+    print()
+    print("╔" + "═" * width + "╗")
+    print("║" + " " * pad + message + " " * pad + "║")
+    print("╚" + "═" * width + "╝")
+    print()
+
 # Helper Functions
 
 
 def load_config():
     """Loads configuration from build_config.json with defaults."""
     config_path = Path(__file__).parent / "build_config.json"
-    data = {"GAME_NAME": "ArkhamSCE", "HOTKEY": "f13", "FORCE_GO": False}  # Defaults
+    data = {"GAME_NAME": "ArkhamSCE", "HOTKEY": "f13"}  # Defaults
 
     if config_path.is_file():
         try:
@@ -89,11 +99,12 @@ def get_base_command():
         "Linux": "TTSModManager",
     }
     binary_name = binary_map.get(PLATFORM, "TTSModManager")
-    binary_path = Path.cwd() / "bin" / binary_name
+    binary_path = Path(__file__).parent / "bin" / binary_name
 
-    if not FORCE_GO and binary_path.is_file():
-        return [str(binary_path)], False
-    return ["go", "run", "main.go"], True
+    if not binary_path.is_file():
+        raise FileNotFoundError(f"TTSModManager binary not found at {binary_path}")
+
+    return [str(binary_path)]
 
 
 def load_savegame_in_TTS():
@@ -153,17 +164,60 @@ def copy_preview_image(output_folder, branch):
 CONFIG = load_config()
 GAME_NAME = CONFIG["GAME_NAME"]
 HOTKEY = CONFIG["HOTKEY"]
-FORCE_GO = CONFIG["FORCE_GO"]
 WINDOW_TITLE = "Tabletop Simulator"
 
 
 # Main Logic
-def main():
-    # Start the timer and get the current time
+def run_build(moddir, action):
+    """Runs the TTSModManager build/decompose step — the one thing other
+    scripts (sync_assets_to_drive.py, sync_translations.py) need to trigger
+    without going through argv, so they can end with an up-to-date mod file
+    instead of leaving that as a separate manual step for the user."""
     start_time = time.time()
     start_time_formatted = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
-    # Parse arguments
+    output_folder = get_output_folder()
+    cmd = get_base_command()
+
+    mod_dir_arg = ["-moddir", moddir]
+    mod_file_arg = ["-modfile", str(output_folder / f"{GAME_NAME}.json")]
+    reverse_arg = ["-reverse"] if action == "decompose" else []
+
+    full_cmd = cmd + mod_dir_arg + mod_file_arg + reverse_arg
+
+    branch = get_current_git_branch()
+
+    print(f"{start_time_formatted}")
+    print(f"Branch: {branch}")
+    print(f"Action: {action}")
+    print(f"Running: {' '.join(full_cmd)}")
+
+    # TTSModManager can print an internal object-graph error ("order
+    # expected X, not found in db <map[...]>") while still exiting 0 — an
+    # asset silently failed to pack even though the process claims success.
+    # Treat that pattern as a real failure so we never print "MOD BUILD
+    # SUCCESS" over a build that's actually broken.
+    result = subprocess.run(full_cmd, capture_output=True, text=True)
+    combined_output = result.stdout + result.stderr
+    build_failed = result.returncode != 0 or "not found in db" in combined_output
+
+    if build_failed:
+        print(result.stdout)
+        print(result.stderr)
+        raise subprocess.CalledProcessError(result.returncode, full_cmd)
+
+    elapsed_time = time.time() - start_time
+    print(f"Execution took {elapsed_time:.2f} seconds.")
+
+    if action == "build":
+        copy_preview_image(output_folder, branch)
+        load_savegame_in_TTS()
+        print_box("MOD BUILD SUCCESS")
+    else:
+        print_box("DECOMPOSE SUCCESS")
+
+
+def main():
     parser = argparse.ArgumentParser(
         description=f"VS Code build script for {GAME_NAME}"
     )
@@ -176,40 +230,7 @@ def main():
     parser.add_argument("--moddir", required=True, help="The mod directory.")
     args = parser.parse_args()
 
-    # Determine folder and command
-    output_folder = get_output_folder()
-    cmd, using_go = get_base_command()
-
-    # Set up command-line arguments
-    mod_dir_arg = ["-moddir", args.moddir]
-    mod_file_arg = ["-modfile", str(output_folder / f"{GAME_NAME}.json")]
-    reverse_arg = ["-reverse"] if args.action == "decompose" else []
-
-    # Final command to execute
-    full_cmd = cmd + mod_dir_arg + mod_file_arg + reverse_arg
-
-    # Execute the core command
-    branch = get_current_git_branch()
-
-    print(f"{start_time_formatted}")
-    print(f"Branch: {branch}")
-    print(f"Action: {args.action}")
-    print(f"Running: {' '.join(full_cmd)}")
-
-    if using_go:
-        project_root = Path(__file__).resolve().parent.parent
-        full_ttsmodmanager_path = project_root / "TTSModManager"
-        subprocess.run(full_cmd, check=True, cwd=full_ttsmodmanager_path)
-    else:
-        subprocess.run(full_cmd, check=True)
-
-    # Calculate and print the elapsed time
-    elapsed_time = time.time() - start_time
-    print(f"Execution took {elapsed_time:.2f} seconds.")
-
-    if args.action == "build":
-        copy_preview_image(output_folder, branch)
-        load_savegame_in_TTS()
+    run_build(args.moddir, args.action)
 
 
 if __name__ == "__main__":

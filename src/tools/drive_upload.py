@@ -13,7 +13,7 @@ from googleapiclient.http import MediaFileUpload
 
 from asset_index_builder import ROOT_DIR, extract_google_id, print_box
 from assets_manifest import diff as manifest_diff
-from assets_manifest import load_manifest, save_manifest, scan_assets
+from assets_manifest import drive_url, load_manifest, save_manifest, scan_assets
 
 # -------------------------
 # UPLOAD ASSETS WITH A LOCAL FILE BUT NO DRIVE LINK YET, THEN RECORD THE
@@ -173,7 +173,6 @@ def seed_manifest_from_index(manifest, data):
 
             if not entry.get("driveId"):
                 entry["driveId"] = extract_google_id(gurl)
-                entry["gUrl"] = gurl
 
 
 def sync_drive_metadata(service, file_id, new_path, root_folder_id, folder_cache):
@@ -210,11 +209,7 @@ def find_dead_manifest_links(service, manifest):
     the missing file goes unnoticed until something in TTS fails to load."""
     dead = []
     for file_hash, entry in manifest.items():
-        gurl = entry.get("gUrl")
-        if not gurl:
-            continue
-
-        file_id = extract_google_id(gurl)
+        file_id = entry.get("driveId")
         if not file_id:
             continue
 
@@ -312,9 +307,8 @@ def main():
         # content — TTS and Drive both cache aggressively by URL, so reusing
         # the old id risks stale art showing in-game.
         file_id = upload_file(service, target_folder_id, abs_path)
-        gurl = f"https://drive.google.com/uc?export=download&id={file_id}"
+        gurl = drive_url(file_id)
         entry["driveId"] = file_id
-        entry["gUrl"] = gurl
         uploaded += 1
         print(f"Uploaded: {primary_path} -> {gurl}")
 

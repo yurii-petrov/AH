@@ -35,11 +35,14 @@ def convert_po_to_lua():
     # Example: {'OP_HEADER': {'en': 'Options', 'de': 'Optionen'}}
     i18n_data = {}
 
-    # Get the absolute path of the directory containing this script.
-    # This makes the script runnable from any location.
-    script_dir = os.path.dirname(os.path.abspath(__file__))
+    # This script now lives in .vscode/locales/, but the .po files themselves
+    # stay at the repo's top-level locales/ — walk up to it explicitly rather
+    # than assuming the script's own directory holds the translation data.
+    script_dir = os.path.normpath(
+        os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "locales")
+    )
 
-    # Iterate over all files in the script's directory.
+    # Iterate over all files in the locales directory.
     for filename in os.listdir(script_dir):
         if filename.endswith(".po"):
             filepath = os.path.join(script_dir, filename)
@@ -73,7 +76,7 @@ def convert_po_to_lua():
 
     if not i18n_data:
         print("No translation data was found in the script's directory.")
-        return
+        return False
 
     # --- Generate the Lua file content ---
     lua_output_string = (
@@ -111,10 +114,12 @@ def convert_po_to_lua():
     try:
         with open(output_path, "w", encoding="utf-8") as f:
             f.write(lua_output_string)
-        print_box("I18N DATA UPDATED SUCCESS")
+        return True
     except Exception as e:
         print(f"Error writing to output file {output_path}: {e}")
+        return False
 
 
 if __name__ == "__main__":
-    convert_po_to_lua()
+    if convert_po_to_lua():
+        print_box("I18N DATA UPDATED SUCCESS")

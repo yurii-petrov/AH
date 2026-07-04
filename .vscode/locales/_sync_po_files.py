@@ -23,18 +23,20 @@ def sync_and_reorder_files():
     Synchronizes all .po files with a master file, reordering them to match
     the master's structure and cleaning up multi-line strings.
     """
-    script_dir = os.path.dirname(os.path.abspath(__file__))
+    script_dir = os.path.normpath(
+        os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "locales")
+    )
     master_path = os.path.join(script_dir, MASTER_PO_FILE)
 
     if not os.path.exists(master_path):
         print(f"Error: Master file '{MASTER_PO_FILE}' not found in '{script_dir}'.")
-        return
+        return False
 
     try:
         master_po = polib.pofile(master_path)
     except Exception as e:
         print(f"Could not read master file. Error: {e}")
-        return
+        return False
 
     # --- Iterate over all other .po files in the directory ---
     for filename in os.listdir(script_dir):
@@ -85,8 +87,9 @@ def sync_and_reorder_files():
         except Exception as e:
             print(f"Error processing file {filename}: {e}")
 
-    print_box("PO FILES SYNC SUCCESS")
+    return True
 
 
 if __name__ == "__main__":
-    sync_and_reorder_files()
+    if sync_and_reorder_files():
+        print_box("PO FILES SYNC SUCCESS")
