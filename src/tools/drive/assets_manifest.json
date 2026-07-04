@@ -405,6 +405,15 @@
         }
       }
     },
+    "17d4c156762e4501fe61b0f9567818b6ca4e0e4c42f678cf120cf069b5468978": {
+      "driveId": "1aVqt6ht0XGA_DWqhhgmWUdC-_hRvpeSy",
+      "paths": {
+        "assets/rules/uk/(4) Recursive Echoes.pdf": {
+          "mtime": 1783178201.758,
+          "size": 9501318
+        }
+      }
+    },
     "18f8c8a7c43956d0dbb659d1c414a81bb406f3c4d815039250845d8bb932b310": {
       "driveId": "1X-vCGBW_EKAs9WkcWOF-HmtOtw3IsST3",
       "paths": {
@@ -627,10 +636,6 @@
         "assets/rules/en/(1) Dead of Night.pdf": {
           "mtime": 1783001203.265,
           "size": 5545722
-        },
-        "assets/rules/uk/(1) Dead of Night.pdf": {
-          "mtime": 1783001203.265,
-          "size": 5545722
         }
       }
     },
@@ -770,6 +775,15 @@
         "assets/investigators/2_under_dark_waves/mini/patrice hathaway.jpg": {
           "mtime": 1782461665.0,
           "size": 3522
+        }
+      }
+    },
+    "2a76fd604823e30e1683e80215f2c353503169d7c0be4769c7e42f6daa0d0cdd": {
+      "driveId": "13EkYOms-3fCnWrfKI46QBBpj79CQzJ3u",
+      "paths": {
+        "assets/rules/uk/(1) Dead of Night.pdf": {
+          "mtime": 1783177776.332,
+          "size": 8847133
         }
       }
     },
@@ -1301,10 +1315,6 @@
         "assets/rules/en/(4) Recursive Echoes.pdf": {
           "mtime": 1783001203.13,
           "size": 3681515
-        },
-        "assets/rules/uk/(4) Recursive Echoes.pdf": {
-          "mtime": 1783001203.13,
-          "size": 3681515
         }
       }
     },
@@ -1798,10 +1808,6 @@
       "driveId": "1JsZePrQWUPqoytBHUo7s4MW5yA1f8gsd",
       "paths": {
         "assets/rules/en/(2) Under Dark Waves.pdf": {
-          "mtime": 1783001203.272,
-          "size": 4471461
-        },
-        "assets/rules/uk/(2) Under Dark Waves.pdf": {
           "mtime": 1783001203.272,
           "size": 4471461
         }
@@ -2513,10 +2519,6 @@
       "driveId": "1xx_b-dY4NvpPcWKA6TRsnvhjglQI9oWh",
       "paths": {
         "assets/rules/en/(3) Secrets of the Order.pdf": {
-          "mtime": 1783001203.35,
-          "size": 2571442
-        },
-        "assets/rules/uk/(3) Secrets of the Order.pdf": {
           "mtime": 1783001203.35,
           "size": 2571442
         }
@@ -4673,6 +4675,15 @@
         }
       }
     },
+    "fa9267dcbba7762225da3ab420cd9144f30443e35ac904a1b831a3c0a108eb64": {
+      "driveId": "1XNUT4cONpcaYqJ9GPCF_ZSLfnkL_TlSc",
+      "paths": {
+        "assets/rules/uk/(2) Under Dark Waves.pdf": {
+          "mtime": 1783177964.627,
+          "size": 25239499
+        }
+      }
+    },
     "fbe6cb73eefd1e2fd4531abd7127181118d0f2b5c537555ebd7fe579a7c5167a": {
       "driveId": "1j8j3pPdgPVdUJMIoq8-7K5nlPKxHrKjb",
       "paths": {
@@ -4706,6 +4717,15 @@
         "assets/cards/0_base/uk/Scenario 2Back.png": {
           "mtime": 1754078213.0,
           "size": 15642987
+        }
+      }
+    },
+    "fcc97d100d44c7b8a84a029b35fd339f85afe6a93c3f0df2b096ebeef16e2d4d": {
+      "driveId": "1Pyu5SzQCCQh5DaIa4SDZBwPryGuz810e",
+      "paths": {
+        "assets/rules/uk/(3) Secrets of the Order.pdf": {
+          "mtime": 1783178144.054,
+          "size": 14471699
         }
       }
     },
