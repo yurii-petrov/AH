@@ -35,12 +35,14 @@ def _ignored(path):
     return any(path.startswith(i) for i in IGNORE_DIRS)
 
 
-def find_and_replace_link(old_url, new_url):
-    """A Drive URL is byte-identical only when the uploaded content is
-    byte-identical, so replacing every literal occurrence of it project-wide
-    is always correct — unlike switching *sources* per field (handled
-    separately by apply_asset_source.py), there's no risk of two unrelated
-    fields coincidentally needing different treatment here."""
+def find_and_replace_link(old_id, new_id):
+    """Search by the bare Drive file id, not the full URL — sidesteps
+    TTSModManager's JSON writer sometimes html-escaping "&" as "\\u0026",
+    which would otherwise make a plain URL string search miss half the
+    occurrences depending on which tool last touched the file. IDs are
+    long, high-entropy strings, but only replace inside files that actually
+    reference a Drive URL at all, as a cheap sanity check against a
+    coincidental match."""
     touched = []
 
     for root, dirs, files in os.walk(ROOT_DIR):
@@ -59,11 +61,11 @@ def find_and_replace_link(old_url, new_url):
             except (OSError, UnicodeDecodeError):
                 continue
 
-            if old_url not in content:
+            if old_id not in content or "drive.google.com" not in content:
                 continue
 
             with open(path, "w", encoding="utf-8") as f:
-                f.write(content.replace(old_url, new_url))
+                f.write(content.replace(old_id, new_id))
             touched.append(os.path.relpath(path, ROOT_DIR))
 
     return touched
@@ -144,8 +146,7 @@ def main():
             continue
 
         for old_id in old_ids:
-            old_url = drive_url(old_id)
-            touched = find_and_replace_link(old_url, new_url)
+            touched = find_and_replace_link(old_id, file_id)
             relinked_files.update(touched)
             old_ids_to_delete.add(old_id)
 
