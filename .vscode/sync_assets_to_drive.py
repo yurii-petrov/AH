@@ -75,8 +75,55 @@ def build_mod():
     build.run_build(ROOT_DIR, "build")
 
 
+def pull_asset_layout(shared_manifest):
+    """assets/ is gitignored but assets_manifest.json is committed, so a
+    teammate's earlier rename arrives via `git pull` as a path change in the
+    manifest while their own assets/ folder never moved — scanning it fresh
+    would then look exactly like "I renamed it back", and undo their work.
+    Bring the local file layout in line with the just-pulled manifest FIRST,
+    purely by moving local files (no network), so the diff computed
+    afterward only reflects genuinely new local changes."""
+    current = scan_assets(shared_manifest)
+    moved = []
+
+    for file_hash, entry in shared_manifest.items():
+        expected_paths = set(entry.get("paths", {}))
+        if not expected_paths:
+            continue
+
+        current_entry = current.get(file_hash)
+        if not current_entry:
+            continue  # not present locally at all — a separate "missing content" case
+
+        current_paths = set(current_entry.get("paths", {}))
+        if current_paths & expected_paths:
+            continue  # already sitting at (one of) the expected path(s)
+
+        old_path = sorted(current_paths)[0]
+        new_path = sorted(expected_paths)[0]
+        old_abs = os.path.join(ROOT_DIR, *old_path.split("/"))
+        new_abs = os.path.join(ROOT_DIR, *new_path.split("/"))
+
+        if os.path.isfile(new_abs):
+            print(f"SKIP pulling rename ({old_path} -> {new_path}): destination already exists locally")
+            continue
+
+        os.makedirs(os.path.dirname(new_abs), exist_ok=True)
+        os.rename(old_abs, new_abs)
+        moved.append((old_path, new_path))
+
+    return moved
+
+
 def main():
     old_manifest = load_manifest()
+
+    moved = pull_asset_layout(old_manifest)
+    if moved:
+        print(f"Pulled {len(moved)} local rename(s) to match the shared layout:")
+        for old_path, new_path in moved:
+            print(f"  {old_path} -> {new_path}")
+
     manifest = scan_assets(old_manifest)
 
     old_path_to_hash = {}
