@@ -12,7 +12,7 @@
   },
   "CustomMesh": {
     "CastShadows": true,
-    "ColliderURL": "https://drive.google.com/uc?export=download\u0026id=1OD9dvAvYRzHG-eGXDJ9X64pCyHh-L62v",
+    "ColliderURL": "https://steamusercontent-a.akamaihd.net/ugc/18177435305610839305/B92A923EDA913F161A5B6528A4B10F6683C2C59E/",
     "Convex": true,
     "CustomShader": {
       "FresnelStrength": 0,
@@ -24,9 +24,9 @@
       "SpecularIntensity": 0,
       "SpecularSharpness": 2
     },
-    "DiffuseURL": "https://drive.google.com/uc?export=download\u0026id=1wi1ExiSbX_ukL0eDDA2dLd0K8tIEj3qn",
+    "DiffuseURL": "https://steamusercontent-a.akamaihd.net/ugc/14222585653226881864/AD31070828B8CC3300F9E199B6000CA75786BC91/",
     "MaterialIndex": 3,
-    "MeshURL": "https://drive.google.com/uc?export=download\u0026id=1Ec7bL4ITygxVsPZxtVeOJkOHKHqDB7Ce",
+    "MeshURL": "https://steamusercontent-a.akamaihd.net/ugc/10761200643369136671/4AD7DB1135E28D775131CD1DE8C9627E5122736C/",
     "NormalURL": "",
     "TypeIndex": 0
   },

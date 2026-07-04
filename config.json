@@ -1,9 +1,7 @@
 {
-  "CameraStates": [],
   "ComponentTags_path": "ComponentTags.json",
   "CustomUIAssets_path": "CustomUIAssets.json",
   "DecalPallet": [],
-  "Decals": [],
   "GameComplexity": "Low Complexity",
   "GameMode": "Arkham Horror 3ed Complete [UA]",
   "GameType": "Game",
@@ -91,8 +89,7 @@
   ],
   "SaveName": "Arkham Horror 3ed [EN] [Ukr] [scripted] (base + DoN expansion)",
   "Sky": "Sky_Museum",
-  "SkyURL": "https://drive.google.com/uc?export=download\u0026id=1zDbAm4TVGWTul_hJyNIqADR2-k395rcO",
-  "SnapPoints": [],
+  "SkyURL": "https://steamusercontent-a.akamaihd.net/ugc/15107353272147951870/E890F03BD00542A575D66A7AD371A8571E67D921/",
   "TabStates_path": "TabStates.json",
   "Table": "Table_None",
   "Tags": [

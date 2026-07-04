@@ -1,4 +1,3 @@
-import glob
 import json
 import os
 import sys
@@ -6,6 +5,7 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from asset_index_builder import (
+    ASSETS_ROOT,
     ROOT_DIR,
     build_local_file_url,
     classify,
@@ -20,7 +20,34 @@ from asset_localizer import apply_replacements
 from assets_manifest import drive_url, load_manifest, to_absolute_asset, to_relative_asset
 
 STEAM_MANIFEST_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "steam_manifest.json")
-OBJECTS_DIR = os.path.join(ROOT_DIR, "objects")
+
+# Same scope as asset_index_builder.scan()/sync_assets_to_drive.py: asset
+# references live not just under objects/ (per-object scripts) but also in
+# top-level config.json (e.g. SkyURL) and modsettings/*.json (e.g.
+# CustomUIAssets.json) — anywhere TTSModManager decomposes project state to.
+IGNORE_DIRS = {
+    os.path.realpath(os.path.join(ROOT_DIR, ".tts")),
+    os.path.realpath(os.path.join(ROOT_DIR, "src/tools")),
+    os.path.realpath(os.path.join(ROOT_DIR, ".venv")),
+    os.path.realpath(ASSETS_ROOT),
+}
+
+
+def _ignored(path):
+    path = os.path.realpath(path)
+    return any(path.startswith(i) for i in IGNORE_DIRS)
+
+
+def find_json_files():
+    json_files = []
+    for root, dirs, files in os.walk(ROOT_DIR):
+        dirs[:] = [d for d in dirs if not _ignored(os.path.join(root, d))]
+        if _ignored(root):
+            continue
+        for name in files:
+            if name.endswith(".json"):
+                json_files.append(os.path.join(root, name))
+    return sorted(json_files)
 
 APPLY = "--apply" in sys.argv
 if "--local" in sys.argv:
@@ -108,10 +135,9 @@ def collect_fixes(source, manifest, steam_manifest):
 
     fixes_by_file = {}
     missing = []
+    unresolved = []
 
-    json_files = sorted(glob.glob(os.path.join(OBJECTS_DIR, "**", "*.json"), recursive=True))
-
-    for file_path in json_files:
+    for file_path in find_json_files():
         with open(file_path, "r", encoding="utf-8") as f:
             try:
                 data = json.load(f)
@@ -124,6 +150,14 @@ def collect_fixes(source, manifest, steam_manifest):
 
             url = fix_url(normalize(raw_value))
             kind = classify(url)
+
+            # These are the only three forms the switcher understands as an
+            # asset reference — an unrelated http(s) link (Steam workshop
+            # page, font CDN, ...) legitimately has no manifest coverage and
+            # must not be reported as a problem.
+            is_asset_link = url.lower().startswith("file:") or kind in ("google", "steam")
+            if not is_asset_link:
+                continue
 
             file_hash = None
             if url.lower().startswith("file:"):
@@ -143,6 +177,13 @@ def collect_fixes(source, manifest, steam_manifest):
                 file_hash = steam_id_to_hash.get(sid) if sid else None
 
             if not file_hash:
+                # A recognized asset link (file:// under assets/, a Drive
+                # link, or a Steam Cloud link) that doesn't match anything in
+                # the manifest(s) — e.g. a Drive id that was superseded by a
+                # re-upload but never relinked here. Silently skipping this
+                # would leave a stale/dead reference in place with no sign
+                # anything's wrong.
+                unresolved.append((os.path.relpath(file_path, ROOT_DIR), key, url))
                 continue
 
             new_url = desired_url(file_hash, manifest, steam_manifest, source)
@@ -153,7 +194,7 @@ def collect_fixes(source, manifest, steam_manifest):
             if new_url != raw_value:
                 fixes_by_file.setdefault(file_path, []).append((raw_value, new_url, key))
 
-    return fixes_by_file, missing
+    return fixes_by_file, missing, unresolved
 
 
 # -------------------------
@@ -167,7 +208,7 @@ def main():
     manifest = load_manifest()
     steam_manifest = load_steam_manifest() if SOURCE == "steam" else {}
 
-    fixes_by_file, missing = collect_fixes(SOURCE, manifest, steam_manifest)
+    fixes_by_file, missing, unresolved = collect_fixes(SOURCE, manifest, steam_manifest)
     files_touched, urls_replaced = apply_replacements(fixes_by_file, APPLY)
 
     status = "APPLIED" if APPLY else "DRY RUN"
@@ -178,6 +219,12 @@ def main():
         print(f"No '{SOURCE}' link available (skipped):", len(missing))
         for rel_path, key, source in sorted(missing):
             print(f"  {rel_path} [{key}]")
+
+    if unresolved:
+        print()
+        print(f"⚠ {len(unresolved)} asset link(s) don't match anything in the manifest(s) — left as-is:")
+        for rel_path, key, url in sorted(unresolved):
+            print(f"  {rel_path} [{key}]: {url}")
 
 
 if __name__ == "__main__":
