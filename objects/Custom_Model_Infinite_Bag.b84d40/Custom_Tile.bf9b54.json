@@ -1,0 +1,58 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.26828,
+    "g": 0.26828,
+    "r": 0.26828
+  },
+  "CustomImage": {
+    "CustomTile": {
+      "Stackable": false,
+      "Stretch": true,
+      "Thickness": 0.1,
+      "Type": 2
+    },
+    "ImageScalar": 1,
+    "ImageSecondaryURL": "file:////Users/yurii/AH/TTS assets/icons/marker back.jpeg",
+    "ImageURL": "file:////Users/yurii/AH/TTS assets/icons/marker white.jpeg",
+    "WidthScale": 0
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "bf9b54",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScriptState": "",
+  "LuaScript_path": "Infinite_Bag.b84d40/Custom_Tile.bf9b54.ttslua",
+  "MeasureMovement": false,
+  "Memo": "White Marker",
+  "Name": "Custom_Tile",
+  "Nickname": "",
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": -8.237,
+    "posY": 4.064,
+    "posZ": 71.552,
+    "rotX": 358,
+    "rotY": 180,
+    "rotZ": 357,
+    "scaleX": 0.7,
+    "scaleY": 1,
+    "scaleZ": 0.7
+  },
+  "Value": 0,
+  "XmlUI": ""
+}
