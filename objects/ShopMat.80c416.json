@@ -127,11 +127,11 @@
   "LayoutGroupSortIndex": 0,
   "Locked": true,
   "LuaScriptState": "[]",
-  "LuaScript_path": "Shop.80c416.ttslua",
+  "LuaScript_path": "ShopMat.80c416.ttslua",
   "MeasureMovement": false,
   "Memo": "{\"type\":\"ShopMat\",\"decks\":[{\"pos\":[\"0.273\",\"0.246\",\"-0.795\"],\"type\":\"special\"},{\"pos\":[\"0.001\",\"0.179\",\"-0.795\"],\"type\":\"ally\"},{\"pos\":[\"-0.272\",\"0.155\",\"-0.795\"],\"type\":\"spell\"},{\"pos\":[\"0.273\",\"0.231\",\"0.163\"],\"type\":\"item\"}],\"displaypos\":[[\"0.001\",\"0.113\",\"0.222\"],[\"-0.273\",\"0.113\",\"0.222\"],[\"0.273\",\"0.113\",\"0.724\"],[\"0.001\",\"0.113\",\"0.724\"],[\"-0.273\",\"0.113\",\"0.724\"]],\"encounterpos\":[[\"0.273\",\"0.113\",\"-0.307\"],[\"0.001\",\"0.113\",\"-0.307\"],[\"-0.273\",\"0.113\",\"-0.307\"]]}",
   "Name": "Custom_Tile",
-  "Nickname": "Shop",
+  "Nickname": "ShopMat",
   "Snap": true,
   "Sticky": true,
   "Tags": [
@@ -150,5 +150,5 @@
     "scaleZ": 9
   },
   "Value": 0,
-  "XmlUI_path": "Shop.80c416.xml"
+  "XmlUI_path": "ShopMat.80c416.xml"
 }

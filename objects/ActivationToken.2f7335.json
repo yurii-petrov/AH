@@ -7,13 +7,13 @@
   "Autoraise": true,
   "ColorDiffuse": {
     "b": 1,
-    "g": 0.37256,
-    "r": 0.30589
+    "g": 1,
+    "r": 1
   },
   "ContainedObjects_order": [
-    "Custom_Tile.8bdee9"
+    "ActivationToken.e65592"
   ],
-  "ContainedObjects_path": "Custom_Model_Infinite_Bag.3a385c",
+  "ContainedObjects_path": "ActivationToken.2f7335",
   "CustomMesh": {
     "CastShadows": true,
     "ColliderURL": "https://drive.google.com/uc?export=download&id=1lnNRkMFfBgoCQ-yz-rfXqIzlhOX3oa3A",
@@ -28,7 +28,7 @@
       "SpecularIntensity": 0,
       "SpecularSharpness": 2
     },
-    "DiffuseURL": "https://drive.google.com/uc?export=download&id=1nr4acf9Uxalj76D--D3nlJfrXqh99WIk",
+    "DiffuseURL": "https://drive.google.com/uc?export=download&id=1ixG-9EWnMQF7B0ywqvvdegJBWx8_OdYU",
     "MaterialIndex": 3,
     "MeshURL": "https://drive.google.com/uc?export=download&id=1lnNRkMFfBgoCQ-yz-rfXqIzlhOX3oa3A",
     "NormalURL": "",
@@ -37,7 +37,7 @@
   "Description": "",
   "DragSelectable": true,
   "GMNotes": "",
-  "GUID": "3a385c",
+  "GUID": "2f7335",
   "Grid": true,
   "GridProjection": false,
   "Hands": false,
@@ -51,20 +51,20 @@
   "MeasureMovement": false,
   "MeshIndex": -1,
   "Name": "Custom_Model_Infinite_Bag",
-  "Nickname": "",
+  "Nickname": "Activation Token",
   "Snap": true,
   "Sticky": true,
   "Tooltip": true,
   "Transform": {
-    "posX": 26.66,
+    "posX": -7.14,
     "posY": 2.1,
-    "posZ": 36.52,
+    "posZ": 36.522,
     "rotX": 0,
     "rotY": 180,
     "rotZ": 0,
-    "scaleX": 1,
+    "scaleX": 0.8,
     "scaleY": 1,
-    "scaleZ": 1
+    "scaleZ": 0.8
   },
   "Value": 0,
   "XmlUI": ""

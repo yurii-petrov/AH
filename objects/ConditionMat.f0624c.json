@@ -53,7 +53,7 @@
   "LuaScriptState": "",
   "MeasureMovement": false,
   "Name": "Custom_Tile",
-  "Nickname": "",
+  "Nickname": "ConditionMat",
   "Snap": true,
   "Sticky": true,
   "Tooltip": true,

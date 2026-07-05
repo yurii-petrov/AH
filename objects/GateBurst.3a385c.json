@@ -11,9 +11,9 @@
     "r": 0.30589
   },
   "ContainedObjects_order": [
-    "Custom_Tile.d30ba6"
+    "Custom_Tile.8bdee9"
   ],
-  "ContainedObjects_path": "Custom_Model_Infinite_Bag.9f44f4",
+  "ContainedObjects_path": "GateBurst.3a385c",
   "CustomMesh": {
     "CastShadows": true,
     "ColliderURL": "https://drive.google.com/uc?export=download&id=1lnNRkMFfBgoCQ-yz-rfXqIzlhOX3oa3A",
@@ -28,7 +28,7 @@
       "SpecularIntensity": 0,
       "SpecularSharpness": 2
     },
-    "DiffuseURL": "https://drive.google.com/uc?export=download&id=1lJg6l2rlIYCE0-CcmYYplNE_fwtXmzE1",
+    "DiffuseURL": "https://drive.google.com/uc?export=download&id=1nr4acf9Uxalj76D--D3nlJfrXqh99WIk",
     "MaterialIndex": 3,
     "MeshURL": "https://drive.google.com/uc?export=download&id=1lnNRkMFfBgoCQ-yz-rfXqIzlhOX3oa3A",
     "NormalURL": "",
@@ -37,7 +37,7 @@
   "Description": "",
   "DragSelectable": true,
   "GMNotes": "",
-  "GUID": "9f44f4",
+  "GUID": "3a385c",
   "Grid": true,
   "GridProjection": false,
   "Hands": false,
@@ -51,12 +51,12 @@
   "MeasureMovement": false,
   "MeshIndex": -1,
   "Name": "Custom_Model_Infinite_Bag",
-  "Nickname": "",
+  "Nickname": "Gate Burst",
   "Snap": true,
   "Sticky": true,
   "Tooltip": true,
   "Transform": {
-    "posX": 17.037,
+    "posX": 26.66,
     "posY": 2.1,
     "posZ": 36.52,
     "rotX": 0,

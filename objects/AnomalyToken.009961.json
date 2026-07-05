@@ -11,9 +11,9 @@
     "r": 0.30589
   },
   "ContainedObjects_order": [
-    "Custom_Tile.98f10e"
+    "Anomaly.2ca684"
   ],
-  "ContainedObjects_path": "Custom_Model_Infinite_Bag.c2adec",
+  "ContainedObjects_path": "AnomalyToken.009961",
   "CustomMesh": {
     "CastShadows": true,
     "ColliderURL": "https://drive.google.com/uc?export=download&id=1lnNRkMFfBgoCQ-yz-rfXqIzlhOX3oa3A",
@@ -28,7 +28,7 @@
       "SpecularIntensity": 0,
       "SpecularSharpness": 2
     },
-    "DiffuseURL": "https://drive.google.com/uc?export=download&id=1wrp4cTP97Ae0uPz3OjaFKDWd8rAoFe2_",
+    "DiffuseURL": "https://drive.google.com/uc?export=download&id=1kHWhBcHRlAbaefOvG00yXmSaWUDd1u8X",
     "MaterialIndex": 3,
     "MeshURL": "https://drive.google.com/uc?export=download&id=1lnNRkMFfBgoCQ-yz-rfXqIzlhOX3oa3A",
     "NormalURL": "",
@@ -37,7 +37,7 @@
   "Description": "",
   "DragSelectable": true,
   "GMNotes": "",
-  "GUID": "c2adec",
+  "GUID": "009961",
   "Grid": true,
   "GridProjection": false,
   "Hands": false,
@@ -51,12 +51,12 @@
   "MeasureMovement": false,
   "MeshIndex": -1,
   "Name": "Custom_Model_Infinite_Bag",
-  "Nickname": "",
+  "Nickname": "Anomaly Token",
   "Snap": true,
   "Sticky": true,
   "Tooltip": true,
   "Transform": {
-    "posX": 21.848,
+    "posX": 12.271,
     "posY": 2.1,
     "posZ": 36.52,
     "rotX": 0,

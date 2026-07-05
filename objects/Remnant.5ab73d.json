@@ -6,14 +6,14 @@
   },
   "Autoraise": true,
   "ColorDiffuse": {
-    "b": 1,
-    "g": 1,
-    "r": 1
+    "b": 0.06157,
+    "g": 0.06157,
+    "r": 0.28049
   },
   "ContainedObjects_order": [
-    "LeaderActivationToken.58f22c"
+    "Custom_Tile.9dbc0c"
   ],
-  "ContainedObjects_path": "Custom_Model_Infinite_Bag.1a067e",
+  "ContainedObjects_path": "Remnant.5ab73d",
   "CustomMesh": {
     "CastShadows": true,
     "ColliderURL": "https://drive.google.com/uc?export=download&id=1lnNRkMFfBgoCQ-yz-rfXqIzlhOX3oa3A",
@@ -28,7 +28,7 @@
       "SpecularIntensity": 0,
       "SpecularSharpness": 2
     },
-    "DiffuseURL": "https://drive.google.com/uc?export=download&id=1oSo35XNQUWy4KfL1ok9uR1hWnDu2mVHP",
+    "DiffuseURL": "https://drive.google.com/uc?export=download&id=1G9A9ZvIqeYdbk5Jt6u8D8eV3YfzYeeMG",
     "MaterialIndex": 3,
     "MeshURL": "https://drive.google.com/uc?export=download&id=1lnNRkMFfBgoCQ-yz-rfXqIzlhOX3oa3A",
     "NormalURL": "",
@@ -37,7 +37,7 @@
   "Description": "",
   "DragSelectable": true,
   "GMNotes": "",
-  "GUID": "1a067e",
+  "GUID": "5ab73d",
   "Grid": true,
   "GridProjection": false,
   "Hands": false,
@@ -51,20 +51,20 @@
   "MeasureMovement": false,
   "MeshIndex": -1,
   "Name": "Custom_Model_Infinite_Bag",
-  "Nickname": "",
+  "Nickname": "Remnant",
   "Snap": true,
   "Sticky": true,
   "Tooltip": true,
   "Transform": {
-    "posX": -5.195,
+    "posX": 9.865,
     "posY": 2.1,
-    "posZ": 36.522,
+    "posZ": 36.52,
     "rotX": 0,
     "rotY": 180,
     "rotZ": 0,
-    "scaleX": 0.8,
+    "scaleX": 1,
     "scaleY": 1,
-    "scaleZ": 0.8
+    "scaleZ": 1
   },
   "Value": 0,
   "XmlUI": ""

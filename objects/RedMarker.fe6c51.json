@@ -11,9 +11,9 @@
     "r": 0.30589
   },
   "ContainedObjects_order": [
-    "Custom_Tile.9d0772"
+    "Custom_Tile.1eda93"
   ],
-  "ContainedObjects_path": "Custom_Model_Infinite_Bag.829038",
+  "ContainedObjects_path": "RedMarker.fe6c51",
   "CustomMesh": {
     "CastShadows": true,
     "ColliderURL": "https://drive.google.com/uc?export=download&id=1lnNRkMFfBgoCQ-yz-rfXqIzlhOX3oa3A",
@@ -28,7 +28,7 @@
       "SpecularIntensity": 0,
       "SpecularSharpness": 2
     },
-    "DiffuseURL": "https://drive.google.com/uc?export=download&id=1XzbJBPYGf8pg9VA9XdOAy1uukeko9k01",
+    "DiffuseURL": "https://drive.google.com/uc?export=download&id=1S0Ikc0Z2n2uQLAj8Qi1l5uhXyNgkvNcU",
     "MaterialIndex": 3,
     "MeshURL": "https://drive.google.com/uc?export=download&id=1lnNRkMFfBgoCQ-yz-rfXqIzlhOX3oa3A",
     "NormalURL": "",
@@ -37,7 +37,7 @@
   "Description": "",
   "DragSelectable": true,
   "GMNotes": "",
-  "GUID": "829038",
+  "GUID": "fe6c51",
   "Grid": true,
   "GridProjection": false,
   "Hands": false,
@@ -51,12 +51,12 @@
   "MeasureMovement": false,
   "MeshIndex": -1,
   "Name": "Custom_Model_Infinite_Bag",
-  "Nickname": "",
+  "Nickname": "Red Marker",
   "Snap": true,
   "Sticky": true,
   "Tooltip": true,
   "Transform": {
-    "posX": 19.443,
+    "posX": 4.597,
     "posY": 2.1,
     "posZ": 36.52,
     "rotX": 0,

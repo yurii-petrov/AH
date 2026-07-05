@@ -11,9 +11,9 @@
     "r": 0.30589
   },
   "ContainedObjects_order": [
-    "Custom_Tile.bf9b54"
+    "Custom_Tile.9d0772"
   ],
-  "ContainedObjects_path": "Custom_Model_Infinite_Bag.b84d40",
+  "ContainedObjects_path": "SpreadDoom.829038",
   "CustomMesh": {
     "CastShadows": true,
     "ColliderURL": "https://drive.google.com/uc?export=download&id=1lnNRkMFfBgoCQ-yz-rfXqIzlhOX3oa3A",
@@ -28,7 +28,7 @@
       "SpecularIntensity": 0,
       "SpecularSharpness": 2
     },
-    "DiffuseURL": "https://drive.google.com/uc?export=download&id=18-9izTzU5NMVWTNlVtfuco_RG2EbHT9q",
+    "DiffuseURL": "https://drive.google.com/uc?export=download&id=1XzbJBPYGf8pg9VA9XdOAy1uukeko9k01",
     "MaterialIndex": 3,
     "MeshURL": "https://drive.google.com/uc?export=download&id=1lnNRkMFfBgoCQ-yz-rfXqIzlhOX3oa3A",
     "NormalURL": "",
@@ -37,7 +37,7 @@
   "Description": "",
   "DragSelectable": true,
   "GMNotes": "",
-  "GUID": "b84d40",
+  "GUID": "829038",
   "Grid": true,
   "GridProjection": false,
   "Hands": false,
@@ -51,12 +51,12 @@
   "MeasureMovement": false,
   "MeshIndex": -1,
   "Name": "Custom_Model_Infinite_Bag",
-  "Nickname": "",
+  "Nickname": "Spread Doom",
   "Snap": true,
   "Sticky": true,
   "Tooltip": true,
   "Transform": {
-    "posX": -0.214,
+    "posX": 19.443,
     "posY": 2.1,
     "posZ": 36.52,
     "rotX": 0,

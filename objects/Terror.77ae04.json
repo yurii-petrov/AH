@@ -11,9 +11,9 @@
     "r": 0.30589
   },
   "ContainedObjects_order": [
-    "Anomaly.2ca684"
+    "Custom_Tile.dde3c3"
   ],
-  "ContainedObjects_path": "Custom_Model_Infinite_Bag.009961",
+  "ContainedObjects_path": "Terror.77ae04",
   "CustomMesh": {
     "CastShadows": true,
     "ColliderURL": "https://drive.google.com/uc?export=download&id=1lnNRkMFfBgoCQ-yz-rfXqIzlhOX3oa3A",
@@ -28,7 +28,7 @@
       "SpecularIntensity": 0,
       "SpecularSharpness": 2
     },
-    "DiffuseURL": "https://drive.google.com/uc?export=download&id=1kHWhBcHRlAbaefOvG00yXmSaWUDd1u8X",
+    "DiffuseURL": "https://drive.google.com/uc?export=download&id=1bSwhkPJH9zCEz1YcvHUvhz_RUgmA8iF5",
     "MaterialIndex": 3,
     "MeshURL": "https://drive.google.com/uc?export=download&id=1lnNRkMFfBgoCQ-yz-rfXqIzlhOX3oa3A",
     "NormalURL": "",
@@ -37,7 +37,7 @@
   "Description": "",
   "DragSelectable": true,
   "GMNotes": "",
-  "GUID": "009961",
+  "GUID": "77ae04",
   "Grid": true,
   "GridProjection": false,
   "Hands": false,
@@ -51,12 +51,12 @@
   "MeasureMovement": false,
   "MeshIndex": -1,
   "Name": "Custom_Model_Infinite_Bag",
-  "Nickname": "",
+  "Nickname": "Terror",
   "Snap": true,
   "Sticky": true,
   "Tooltip": true,
   "Transform": {
-    "posX": 12.271,
+    "posX": 33.877,
     "posY": 2.1,
     "posZ": 36.52,
     "rotX": 0,

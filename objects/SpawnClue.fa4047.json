@@ -11,9 +11,9 @@
     "r": 0.30589
   },
   "ContainedObjects_order": [
-    "Custom_Tile.1f4346"
+    "Custom_Tile.277c69"
   ],
-  "ContainedObjects_path": "Custom_Model_Infinite_Bag.2fb57a",
+  "ContainedObjects_path": "SpawnClue.fa4047",
   "CustomMesh": {
     "CastShadows": true,
     "ColliderURL": "https://drive.google.com/uc?export=download&id=1lnNRkMFfBgoCQ-yz-rfXqIzlhOX3oa3A",
@@ -28,7 +28,7 @@
       "SpecularIntensity": 0,
       "SpecularSharpness": 2
     },
-    "DiffuseURL": "https://drive.google.com/uc?export=download&id=1eP8ka_Pyzd456lYeAZq33hFZLlP9aUdA",
+    "DiffuseURL": "https://drive.google.com/uc?export=download&id=1a5ESoC7FjZv1Vv5xDArVs6SjSryGLLQ1",
     "MaterialIndex": 3,
     "MeshURL": "https://drive.google.com/uc?export=download&id=1lnNRkMFfBgoCQ-yz-rfXqIzlhOX3oa3A",
     "NormalURL": "",
@@ -37,7 +37,7 @@
   "Description": "",
   "DragSelectable": true,
   "GMNotes": "",
-  "GUID": "2fb57a",
+  "GUID": "fa4047",
   "Grid": true,
   "GridProjection": false,
   "Hands": false,
@@ -51,12 +51,12 @@
   "MeasureMovement": false,
   "MeshIndex": -1,
   "Name": "Custom_Model_Infinite_Bag",
-  "Nickname": "",
+  "Nickname": "Spawn Clue",
   "Snap": true,
   "Sticky": true,
   "Tooltip": true,
   "Transform": {
-    "posX": 29.065,
+    "posX": 24.254,
     "posY": 2.1,
     "posZ": 36.52,
     "rotX": 0,
