@@ -121,6 +121,7 @@ function onload(savedData)
   resolveAllDataObjects()
 
   lockObj(tableId)
+  lockObj(tableMatId)
   lockObj(locationMatId)
   lockObj(scenarioMatId)
   lockObj(mythosTileId)
@@ -137,6 +138,14 @@ function onload(savedData)
   lockObj(itemMatBag2Id)
   lockObj(codexMatBagId)
   lockObj(cluePlayerBagId)
+
+ for lang, guid in pairs(LANG_BAG_GUID) do
+  lockObj(guid)
+end
+
+  for _, guid in ipairs(imageCacheObjectIds) do
+    lockObj(guid)
+  end
 
   -- A missing/empty savedData means a genuine fresh load (no save to
   -- restore) — parsedSaveData stays nil and gameData keeps State.ttslua's

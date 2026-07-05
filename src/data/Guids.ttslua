@@ -7,9 +7,27 @@ scenarioMatId = "7b841f"
 shopMatId = "80c416"
 conditionMatId = "f0624c"
 tableId = "f47e19"
+tableMatId = "7d2ff4"
 tile4ActionsId = "d706d4"
 locationMatId = "9fe1d3"
 nastilo4kaId = "d75b3b"
+
+-- Prototype objects sitting on the table for image caching only: a player
+-- must see them once so TTS downloads their images, then they get locked
+-- and hidden from interaction (never actually used by gameplay).
+imageCacheObjectIds = {
+  "6947c3",
+  "2822f5",
+  "8391f2",
+  "911411",
+  "70fe15",
+  "92d987",
+  "fa517d",
+  "5b7bb3",
+  "f50cd9",
+  "f2ba55",
+  "7dc693",
+}
 
 -- ╭──────────────────────────────────────────────╮
 -- │                Bags                          │

@@ -5,7 +5,7 @@
 local languageReady = false
 Wait.time(function() languageReady = true end, 1.5)
 
-local LANG_BAG_GUID = {
+LANG_BAG_GUID = {
   en = "a24119",
   uk = "69279c",
 }
