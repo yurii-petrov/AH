@@ -1310,6 +1310,12 @@ msgstr "Spread Doom"
 msgid "Spawn_Monster"
 msgstr "Spawn Monster"
 
+msgid "Activation_Token"
+msgstr "Activation Token"
+
+msgid "Leader_Activation_Token"
+msgstr "Leader Activation Token"
+
 msgid "IM_clue_gained"
 msgstr "%s - gains 1 clue"
 

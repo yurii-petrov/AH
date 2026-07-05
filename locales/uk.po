@@ -1376,6 +1376,12 @@ msgstr "Розподілити Приреченість"
 msgid "Spawn_Monster"
 msgstr "Розмістити Монстра"
 
+msgid "Activation_Token"
+msgstr "Жетон Активації"
+
+msgid "Leader_Activation_Token"
+msgstr "Жетон Активації Лідера"
+
 msgid "IM_clue_gained"
 msgstr "%s - отримує 1 зачіпку"
 

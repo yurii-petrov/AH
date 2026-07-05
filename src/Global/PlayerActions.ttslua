@@ -104,10 +104,13 @@ local function spawnMatExtras(mat, i)
   if snps then
     for _, snp in pairs(snps) do
       if hasTag(snp.tags, "activation_snap") then
-        bag.takeObject({
+        local token = bag.takeObject({
           index = 0,
           position = mat.positionToWorld(snp.position:setAt("y", 3))
         })
+        Wait.time(function()
+          token.setName(i18n.getStrById(token.getName():gsub(" ", "_")))
+        end, 1)
       end
     end
   end

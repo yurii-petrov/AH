@@ -10,6 +10,10 @@ I18N_DATA = {
     ["en"] = "Accursed Somnambulist",
     ["uk"] = "Проклятий Лунатик",
   },
+  ["Activation_Token"] = {
+    ["en"] = "Activation Token",
+    ["uk"] = "Жетон Активації",
+  },
   ["Agatha_Crane"] = {
     ["en"] = "Agatha Crane",
     ["uk"] = "Агата Крейн",
@@ -661,6 +665,10 @@ I18N_DATA = {
   ["La_Bella_Luna"] = {
     ["en"] = "La Bella Luna",
     ["uk"] = "Ла Белла Луна",
+  },
+  ["Leader_Activation_Token"] = {
+    ["en"] = "Leader Activation Token",
+    ["uk"] = "Жетон Активації Лідера",
   },
   ["Lodge_Enforcer"] = {
     ["en"] = "Lodge Enforcer",
