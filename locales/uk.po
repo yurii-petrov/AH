@@ -1443,3 +1443,7 @@ msgstr "міт: %s"
 
 msgid "INV_apply_text"
 msgstr "Застосувати для всіх"
+
+# 3D investigator figure: description shown on hover
+msgid "FIG_hotkeys_desc"
+msgstr "Q, E, F перемикають стан фігурки."

@@ -234,6 +234,10 @@ I18N_DATA = {
     ["en"] = "Eyeless Watcher",
     ["uk"] = "Безокий Спостерігач",
   },
+  ["FIG_hotkeys_desc"] = {
+    ["en"] = "Q, E, F all toggle the figure's state.",
+    ["uk"] = "Q, E, F перемикають стан фігурки.",
+  },
   ["Falcon_Point"] = {
     ["en"] = "Falcon Point",
     ["uk"] = "Мис Сокола",

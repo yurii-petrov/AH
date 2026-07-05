@@ -1377,3 +1377,7 @@ msgstr "myth: %s"
 
 msgid "INV_apply_text"
 msgstr "Apply to all"
+
+# 3D investigator figure: description shown on hover
+msgid "FIG_hotkeys_desc"
+msgstr "Q, E, F all toggle the figure's state."
