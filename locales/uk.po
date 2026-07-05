@@ -340,6 +340,15 @@ msgstr "ЗУСТРІЧ"
 msgid "PB_phase_btn_btn_mythos"
 msgstr "МІТ"
 
+msgid "PB_actions_unfinished"
+msgstr "не завершили дії"
+
+msgid "INV_detained_action_msg"
+msgstr "%s стає затриманим — залишається лише одна дія"
+
+msgid "INV_detained_no_actions_msg"
+msgstr "%s затриманий — дій не залишилось"
+
 # Shop
 msgid "S_show_cards_text"
 msgstr "ПОДИВИТИСЬ КАРТИ(У)"
@@ -491,6 +500,9 @@ msgstr "Підземний Світ"
 
 msgid "Threshold"
 msgstr "Поріг"
+
+msgid "Mystery"
+msgstr "Таємниця"
 
 # Neighborhood spaces
 msgid "Arkham_Asylum"

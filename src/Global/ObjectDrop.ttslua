@@ -220,21 +220,23 @@ end
 
 local function playFigureIdleTriggerEffect(figure)
   if not figure or not figure.AssetBundle then return end
-  local triggerEffects = figure.AssetBundle.getTriggerEffects()
-  if not triggerEffects or #triggerEffects == 0 then return end
+  pcall(function()
+    local triggerEffects = figure.AssetBundle.getTriggerEffects()
+    if not triggerEffects or #triggerEffects == 0 then return end
 
-  local triggerIndex = nil
-  for _, e in ipairs(triggerEffects) do
-    if e.name == "Playing" or e.name == "Idle" then
-      triggerIndex = e.index
-      break
+    local triggerIndex = nil
+    for _, e in ipairs(triggerEffects) do
+      if e.name == "Playing" or e.name == "Idle" then
+        triggerIndex = e.index
+        break
+      end
     end
-  end
-  if not triggerIndex then
-    triggerIndex = triggerEffects[1].index
-  end
+    if not triggerIndex then
+      triggerIndex = triggerEffects[1].index
+    end
 
-  figure.AssetBundle.playTriggerEffect(triggerIndex)
+    figure.AssetBundle.playTriggerEffect(triggerIndex)
+  end)
 end
 
 function onInvestigatorDrop(colorName, object, objectData, isIgnoreRandomCard)
@@ -342,23 +344,32 @@ function onInvestigatorDrop(colorName, object, objectData, isIgnoreRandomCard)
 
                 local takenObject = figureBag.takeObject({
                   guid = figure.guid,
-                  position = basePos:setAt("y", basePos.y + 1),
-                  rotation = {0, 180, 0},
                   smooth = false
                 })
-                takenObject.interactable = false
 
                 Wait.time(function()
-                  local attachment = takenObject.removeAttachment(0)
-                  if attachment then
-                    attachment.setColorTint(tintColor)
-                    takenObject.addAttachment(attachment)
-                    takenObject.setName(translatedName)
-                    takenObject.setDescription(i18n.getStrById("FIG_hotkeys_desc"))
-                    takenObject.interactable = true
+                  local figureData = takenObject.getData()
+                  takenObject.destruct()
+
+                  local spawnPos = basePos:setAt("y", basePos.y + 1)
+                  figureData.Transform.posX = spawnPos.x
+                  figureData.Transform.posY = spawnPos.y
+                  figureData.Transform.posZ = spawnPos.z
+                  figureData.Transform.rotX = 0
+                  figureData.Transform.rotY = 180
+                  figureData.Transform.rotZ = 0
+                  figureData.Nickname = translatedName
+                  figureData.Description = i18n.getStrById("FIG_hotkeys_desc")
+
+                  if figureData.ChildObjects and figureData.ChildObjects[1] then
+                    local tint = Color.fromString(tintColor)
+                    figureData.ChildObjects[1].ColorDiffuse = {r = tint.r, g = tint.g, b = tint.b}
                   end
+
+                  local newFigure = spawnObjectData({data = figureData})
+
                   Wait.time(function()
-                    playFigureIdleTriggerEffect(takenObject)
+                    playFigureIdleTriggerEffect(newFigure)
                   end, 1)
                 end, 2)
                 break

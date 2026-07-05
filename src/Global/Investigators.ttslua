@@ -640,6 +640,9 @@ function setInvestigatorPhase(phase)
   end
 
   self.UI.setAttribute("INV_apply_text", "active", phase == 1)
+  if isAction then
+    setApplyPressed(INV_STATE.applied)
+  end
 
   for p = 1, MAX_INV do
     local active = (p <= INV_STATE.count)
@@ -876,6 +879,69 @@ function restoreInvestigatorSessionState()
     end
     INV_STATE.mythosActive = gameData.mythosActive and tonumber(gameData.mythosActive)
   end
+end
+
+function getUnfinishedInvestigatorNames()
+  local names = {}
+  for p = 1, INV_STATE.count do
+    local hasFree = false
+    for a = 1, ACTIONS_PER_INV do
+      if not INV_STATE.actions[p][a] then
+        hasFree = true
+        break
+      end
+    end
+    if hasFree then
+      names[#names + 1] = INV_STATE.nameBySlot[p] or defaultInvestigatorName(p)
+    end
+  end
+  return names
+end
+
+function resetAllActionsAndTokens()
+  for p = 1, MAX_INV do
+    for a = 1, ACTIONS_PER_INV do
+      INV_STATE.actions[p][a] = false
+      refreshActionButton(p, a)
+      if p <= INV_STATE.count then
+        syncActivationToken(p, a, false)
+      end
+    end
+  end
+  INV_STATE.applied  = false
+  INV_STATE.snapshot = nil
+  setApplyPressed(false)
+  saveActionsToGameData()
+end
+
+function spendActionForDetainedFigure(displayName)
+  local slot = INV_STATE.slotByName[displayName]
+  if not slot then return false, nil, nil, false end
+  for a = 1, ACTIONS_PER_INV do
+    if not INV_STATE.actions[slot][a] then
+      INV_STATE.actions[slot][a] = true
+      refreshActionButton(slot, a)
+      syncActivationToken(slot, a, true)
+      saveActionsToGameData()
+      return true, slot, a, false
+    end
+  end
+  return false, slot, nil, true
+end
+
+function restoreActionForDetainedFigure(displayName)
+  local slot = INV_STATE.slotByName[displayName]
+  if not slot then return false end
+  for a = ACTIONS_PER_INV, 1, -1 do
+    if INV_STATE.actions[slot][a] then
+      INV_STATE.actions[slot][a] = false
+      refreshActionButton(slot, a)
+      syncActivationToken(slot, a, false)
+      saveActionsToGameData()
+      return true
+    end
+  end
+  return false
 end
 
 --- Show the panel with `n` investigator rows (clamped to 2..6) and reset

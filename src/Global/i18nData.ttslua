@@ -450,6 +450,14 @@ I18N_DATA = {
     ["en"] = "Investigator %s",
     ["uk"] = "Дослідник %s",
   },
+  ["INV_detained_action_msg"] = {
+    ["en"] = "%s becomes detained — only one action remains",
+    ["uk"] = "%s стає затриманим — залишається лише одна дія",
+  },
+  ["INV_detained_no_actions_msg"] = {
+    ["en"] = "%s is detained — no actions left",
+    ["uk"] = "%s затриманий — дій не залишилось",
+  },
   ["INV_encounter"] = {
     ["en"] = "Encounter",
     ["uk"] = "Зустріч",
@@ -990,6 +998,10 @@ I18N_DATA = {
     ["en"] = "Mouthy Raconteur",
     ["uk"] = "Язикатий Пліткар",
   },
+  ["Mystery"] = {
+    ["en"] = "Mystery",
+    ["uk"] = "Таємниця",
+  },
   ["Neil's_Curiosity_Shop"] = {
     ["en"] = "Neil's Curiosity Shop",
     ["uk"] = "Крамничка Диковинок Ніла",
@@ -1025,6 +1037,10 @@ I18N_DATA = {
   ["Orne_Library"] = {
     ["en"] = "Orne Library",
     ["uk"] = "Бібліотека Орна",
+  },
+  ["PB_actions_unfinished"] = {
+    ["en"] = "haven't finished their actions",
+    ["uk"] = "не завершили дії",
   },
   ["PB_encounter_validate"] = {
     ["en"] = "This button is only available during the Encounter phase",

@@ -142,16 +142,14 @@ function onObjectDropOnMythosMat(colorName, object, objectData)
 
   local pos = mythosTile.positionToLocal(object.getPosition())
   if pos.x > activeArea.minX and pos.x < activeArea.maxX and pos.z > activeArea.minZ and pos.z < activeArea.maxZ then
-    local function getUIType(cardData)
-      if not cardData then
-        return
-      end
-      local t = cardData.type and string.lower(cardData.type) or ""
-      return {
-        type = ((t == "event" or t == "encounter" or t == "anomaly" or t == "headline" or t == "terror") and t or "empty")
-      }
+    local cardData = parseJson(object.memo)
+    if not cardData then
+      return
     end
-    mythosTile.call("setButtons", getUIType(parseJson(object.memo)))
+    local t = cardData.type and string.lower(cardData.type) or ""
+    mythosTile.call("setButtons", {
+      type = ((t == "event" or t == "encounter" or t == "anomaly" or t == "headline" or t == "terror") and t or "empty")
+    })
   end
 end
 

@@ -282,6 +282,15 @@ msgstr "ENCOUNTER"
 msgid "PB_phase_btn_btn_mythos"
 msgstr "MYTHOS"
 
+msgid "PB_actions_unfinished"
+msgstr "haven't finished their actions"
+
+msgid "INV_detained_action_msg"
+msgstr "%s becomes detained — only one action remains"
+
+msgid "INV_detained_no_actions_msg"
+msgstr "%s is detained — no actions left"
+
 # Shop
 msgid "S_show_cards_text"
 msgstr "View the Card(s)"
@@ -432,6 +441,9 @@ msgstr "The Underworld"
 
 msgid "Threshold"
 msgstr "Threshold"
+
+msgid "Mystery"
+msgstr "Mystery"
 
 # Neighborhood spaces
 

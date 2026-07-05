@@ -332,6 +332,9 @@ function clickKill(player, alt_click)
     return
   end
   local monsterMemo = parseJson(attachments[1].memo)
+  if monsterMemo and monsterMemo.type == "DoubleSided" and monsterMemo.front then
+    monsterMemo = monsterMemo.front
+  end
   if monsterMemo and monsterMemo.remnant then
     pendingKillPlayer = player
     self.UI.setAttribute("killDialog1", "active", true)

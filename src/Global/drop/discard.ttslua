@@ -19,75 +19,146 @@ function discardMonster(o, objData)
   o.setPosition(locationMat.positionToWorld(locationData.monster):setAt("y", 3))
 end
 
+local function getInvestigatorEffectIndices(effects)
+  local playIndex, delayIndex
+  for _, e in ipairs(effects) do
+    if e.name == "Playing" or e.name == "Idle" then
+      playIndex = e.index
+    elseif e.name == "Delayed" then
+      delayIndex = e.index
+    end
+  end
+  if not playIndex and not delayIndex then
+    for _, e in ipairs(effects) do
+      if e.index == 0 then playIndex = 0 end
+      if e.index == 3 then delayIndex = 3 end
+    end
+  end
+  return playIndex, delayIndex
+end
+
+local function safePcall(fn)
+  local ok, result = pcall(fn)
+  if ok then return result end
+  return nil
+end
+
+local function playInvestigatorTriggerEffect(t)
+  local triggers = safePcall(function() return t.AssetBundle.getTriggerEffects() end)
+  local triggerIndex
+  if triggers then
+    for _, e in ipairs(triggers) do
+      if e.name == "Playing" or e.name == "Idle" then
+        triggerIndex = e.index
+      end
+    end
+    if not triggerIndex and triggers[1] then
+      triggerIndex = triggers[1].index
+    end
+  end
+  if triggerIndex then
+    safePcall(function() t.AssetBundle.playTriggerEffect(triggerIndex) end)
+  end
+end
+
+local function announceDetainedTransition(investigatorName, isRestored)
+  if isRestored then
+    broadcastToAll(string.format(i18n.getStrById("LOG_investigator_restored"), investigatorName), "White")
+    restoreActionForDetainedFigure(investigatorName)
+  else
+    local spent, slot, _, noneLeft = spendActionForDetainedFigure(investigatorName)
+    if spent then
+      broadcastToAll(string.format(i18n.getStrById("INV_detained_action_msg"), investigatorName), "Orange")
+    elseif slot and noneLeft then
+      broadcastToAll(string.format(i18n.getStrById("INV_detained_no_actions_msg"), investigatorName), "Orange")
+    end
+  end
+end
+
+local function restoreDetainedFigure(t)
+  local ok = pcall(function()
+    local dataName = safePcall(function() return t.name end)
+    if dataName == "Custom_Assetbundle" and t.AssetBundle then
+      local effects = safePcall(function() return t.AssetBundle.getLoopingEffects() end)
+      if effects and #effects > 0 then
+        local playIndex, delayIndex = getInvestigatorEffectIndices(effects)
+        local current = playIndex and delayIndex and
+          safePcall(function() return t.AssetBundle.getLoopingEffectIndex() end)
+        if current == delayIndex then
+          safePcall(function() t.AssetBundle.playLoopingEffect(playIndex) end)
+          local investigatorName = t.memo and i18n.getStrById(t.memo:gsub(" ", "_")) or t.memo
+          announceDetainedTransition(investigatorName, true)
+          playInvestigatorTriggerEffect(t)
+        end
+      end
+    elseif dataName == "Custom_Model" then
+      local rot = safePcall(function() return t.getRotation() end)
+      if rot and math.abs(rot.x - 90) < 5 then
+        t.setRotationSmooth({0, 180, 0})
+        local investigatorName = t.memo and i18n.getStrById(t.memo:gsub(" ", "_")) or t.memo
+        announceDetainedTransition(investigatorName, true)
+      end
+    end
+  end)
+end
+
+function restoreAllDetainedInvestigators()
+  local figureCount = 0
+  for _, t in ipairs(getObjects()) do
+    if t.type == "Figurine" then
+      figureCount = figureCount + 1
+      Wait.frames(function() restoreDetainedFigure(t) end, figureCount)
+    end
+  end
+end
+
 function onPlayerAction(player, action, targets)
   if action == Player.Action.FlipOver or action == Player.Action.FlipIncrementalLeft or action ==
     Player.Action.FlipIncrementalRight or action == Player.Action.RotateIncrementalLeft or action ==
     Player.Action.RotateIncrementalRight then
     local isFlip = true
     for _, t in pairs(targets) do
-      local dataName = t.getData().Name
-      if t.type == "Figurine" and (dataName == "Custom_Model" or dataName == "Custom_Assetbundle") then
+      local dataName = safePcall(function() return t.name end)
+      local figType  = safePcall(function() return t.type end)
+      if figType == "Figurine" and (dataName == "Custom_Model" or dataName == "Custom_Assetbundle") then
         isFlip = false
         runOnceAfterRest(t, function(t)
-          if dataName == "Custom_Assetbundle" and t.AssetBundle then
-            local effects = t.AssetBundle.getLoopingEffects()
-            if effects and #effects > 0 then
-              local playIndex, delayIndex
-              for _, e in ipairs(effects) do
-                if e.name == "Playing" or e.name == "Idle" then
-                  playIndex = e.index
-                elseif e.name == "Delayed" then
-                  delayIndex = e.index
-                end
-              end
-              if not playIndex and not delayIndex then
-                for _, e in ipairs(effects) do
-                  if e.index == 0 then playIndex = 0 end
-                  if e.index == 3 then delayIndex = 3 end
-                end
-              end
-              if playIndex and delayIndex then
-                local current = t.AssetBundle.getLoopingEffectIndex()
-                local target = current == delayIndex and playIndex or delayIndex
-                t.AssetBundle.playLoopingEffect(target)
+          pcall(function()
+            local investigatorName = t.memo and i18n.getStrById(t.memo:gsub(" ", "_")) or t.memo
 
-                local isRestored = target == playIndex
-                local investigatorName = t.memo and i18n.getStrById(t.memo:gsub(" ", "_")) or t.memo
-                broadcastToAll(string.format(i18n.getStrById(isRestored and "LOG_investigator_restored" or
-                  "LOG_investigator_detained"), investigatorName), isRestored and "White" or "Orange")
-
-                if isRestored then
-                  local triggers = t.AssetBundle.getTriggerEffects()
-                  local triggerIndex
-                  if triggers then
-                    for _, e in ipairs(triggers) do
-                      if e.name == "Playing" or e.name == "Idle" then
-                        triggerIndex = e.index
-                      end
+            if dataName == "Custom_Assetbundle" and t.AssetBundle then
+              local effects = safePcall(function() return t.AssetBundle.getLoopingEffects() end)
+              if effects and #effects > 0 then
+                local playIndex, delayIndex = getInvestigatorEffectIndices(effects)
+                local current = playIndex and delayIndex and
+                  safePcall(function() return t.AssetBundle.getLoopingEffectIndex() end)
+                if current ~= nil then
+                  local target = current == delayIndex and playIndex or delayIndex
+                  local switched = safePcall(function() t.AssetBundle.playLoopingEffect(target) return true end)
+                  if switched then
+                    local isRestored = target == playIndex
+                    announceDetainedTransition(investigatorName, isRestored)
+                    if isRestored then
+                      playInvestigatorTriggerEffect(t)
                     end
-                    if not triggerIndex and triggers[1] then
-                      triggerIndex = triggers[1].index
-                    end
-                  end
-                  if triggerIndex then
-                    t.AssetBundle.playTriggerEffect(triggerIndex)
+                    return
                   end
                 end
-
-                return
               end
             end
-          end
 
-          local p = t.getPosition()
-          if t.getRotation().x == 90 then
-            t.setRotationSmooth({0, 180, 0})
-          else
-            t.setRotationSmooth({90, 0, 0})
-            runOnceAfterRest(t, function(t)
-              t.setPosition(p:setAt("y", p.y + (dataName == "Custom_Model" and 0.7 or 2)))
-            end)
-          end
+            local p = t.getPosition()
+            local isRestored = math.abs(t.getRotation().x - 90) < 5
+            if isRestored then
+              t.setRotationSmooth({0, 180, 0})
+            else
+              t.setRotationSmooth({90, 0, 0})
+              runOnceAfterRest(t, function(t)
+                t.setPosition(p:setAt("y", p.y + (dataName == "Custom_Model" and 0.7 or 2)))
+              end)
+            end
+            announceDetainedTransition(investigatorName, isRestored)
+          end)
         end)
       end
     end

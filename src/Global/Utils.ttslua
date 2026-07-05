@@ -74,6 +74,7 @@ function runAfterRest(o, f, f2, n)
 end
 
 _G["runOnceAfterRestObjectIDs"] = {}
+_G["runOnceAfterRestTokens"] = {}
 function runOnceAfterRest(o, f, f2, n)
   f = f or function()
   end -- function to run when resting
@@ -82,8 +83,14 @@ function runOnceAfterRest(o, f, f2, n)
   n = n or 5 -- time out delay in seconds
   if _G["runOnceAfterRestObjectIDs"][o] then
     Wait.stop(_G["runOnceAfterRestObjectIDs"][o])
+    _G["runOnceAfterRestObjectIDs"][o] = nil
   end
+  local requestToken = {}
+  _G["runOnceAfterRestTokens"][o] = requestToken
   Wait.frames(function()
+    if _G["runOnceAfterRestTokens"][o] ~= requestToken then
+      return -- a newer runOnceAfterRest call for this object superseded us
+    end
     _G["runOnceAfterRestObjectIDs"][o] = Wait.condition(function()
       _G["runOnceAfterRestObjectIDs"][o] = nil
       safeCall(f, o)
