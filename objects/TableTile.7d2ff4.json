@@ -19,13 +19,13 @@
     },
     "ImageScalar": 1,
     "ImageSecondaryURL": "",
-    "ImageURL": "file:////Users/yurii/Desktop/black.png",
+    "ImageURL": "https://drive.google.com/uc?export=download&id=1M-d7lKuhf1Wn2j8pVA3eLFnNE-z8Ti_0",
     "WidthScale": 0
   },
   "Description": "",
   "DragSelectable": false,
   "GMNotes": "",
-  "GUID": "f47e19",
+  "GUID": "7d2ff4",
   "Grid": true,
   "GridProjection": true,
   "Hands": false,
@@ -44,14 +44,14 @@
   "Tooltip": true,
   "Transform": {
     "posX": 0,
-    "posY": 0.95,
+    "posY": 1,
     "posZ": 0,
     "rotX": 0,
     "rotY": 180,
     "rotZ": 0,
-    "scaleX": 100,
+    "scaleX": 70,
     "scaleY": 1,
-    "scaleZ": 100
+    "scaleZ": 70
   },
   "Value": 0,
   "XmlUI": ""

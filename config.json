@@ -18,7 +18,6 @@
   "MusicPlayer_path": "MusicPlayer.json",
   "Note": "",
   "ObjectStates_order": [
-    "TableTile.f47e19",
     "Investigators3D.50c60d",
     "Investigators.add1ff",
     "Draggedouttogetpromoted.c648e5",
@@ -73,10 +72,12 @@
     "Custom_Tile.ecb76d",
     "MonstersbyScenariouk.dd5297",
     "Enbag.a24119",
-    "ModelBase.6947c3",
     "MonstersbyScenarioeng.652031",
     "ActivationToken.2f7335",
-    "SkillMats.6d5d10"
+    "SkillMats.6d5d10",
+    "TableTile.7d2ff4",
+    "TableTile.f47e19",
+    "ModelBase.6947c3"
   ],
   "PlayArea": 0.7,
   "PlayerCounts": [

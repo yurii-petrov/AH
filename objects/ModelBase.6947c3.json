@@ -12,7 +12,7 @@
   },
   "CustomMesh": {
     "CastShadows": true,
-    "ColliderURL": "https://drive.google.com/uc?export=download&id=1QrSnMS0yYHENn7ze72yO3rUtPLQ-ODYE",
+    "ColliderURL": "https://drive.google.com/uc?export=download&id=1T2koNYzLt-XDaKdI7bCYXNd5LLSMNf37",
     "Convex": true,
     "CustomShader": {
       "FresnelStrength": 0,
@@ -26,7 +26,7 @@
     },
     "DiffuseURL": "https://drive.google.com/uc?export=download&id=1R_9OIWUU6EwD5hlGmSA8nCQWxchfEs4V",
     "MaterialIndex": 3,
-    "MeshURL": "https://drive.google.com/uc?export=download&id=1QrSnMS0yYHENn7ze72yO3rUtPLQ-ODYE",
+    "MeshURL": "https://drive.google.com/uc?export=download&id=1T2koNYzLt-XDaKdI7bCYXNd5LLSMNf37",
     "NormalURL": "",
     "TypeIndex": 1
   },
@@ -50,9 +50,9 @@
   "Sticky": false,
   "Tooltip": true,
   "Transform": {
-    "posX": 144.361,
-    "posY": -32.101,
-    "posZ": 91.792,
+    "posX": 91.388,
+    "posY": -7.116,
+    "posZ": 58.517,
     "rotX": 0,
     "rotY": 180,
     "rotZ": 0,
