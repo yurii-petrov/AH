@@ -16,7 +16,7 @@
   "ContainedObjects_path": "Custom_Model_Infinite_Bag.b84d40",
   "CustomMesh": {
     "CastShadows": true,
-    "ColliderURL": "file:////Users/yurii/AH/TTS assets/models/infinite_bag.obj",
+    "ColliderURL": "https://drive.google.com/uc?export=download&id=1lnNRkMFfBgoCQ-yz-rfXqIzlhOX3oa3A",
     "Convex": true,
     "CustomShader": {
       "FresnelStrength": 0,
@@ -28,9 +28,9 @@
       "SpecularIntensity": 0,
       "SpecularSharpness": 2
     },
-    "DiffuseURL": "file:////Users/yurii/AH/TTS assets/icons/marker white.jpeg",
+    "DiffuseURL": "https://drive.google.com/uc?export=download&id=18-9izTzU5NMVWTNlVtfuco_RG2EbHT9q",
     "MaterialIndex": 3,
-    "MeshURL": "file:////Users/yurii/AH/TTS assets/models/infinite_bag.obj",
+    "MeshURL": "https://drive.google.com/uc?export=download&id=1lnNRkMFfBgoCQ-yz-rfXqIzlhOX3oa3A",
     "NormalURL": "",
     "TypeIndex": 7
   },
@@ -56,9 +56,9 @@
   "Sticky": true,
   "Tooltip": true,
   "Transform": {
-    "posX": 3.514,
-    "posY": 1.983,
-    "posZ": 36.75,
+    "posX": -0.214,
+    "posY": 2.1,
+    "posZ": 36.52,
     "rotX": 0,
     "rotY": 180,
     "rotZ": 0,
