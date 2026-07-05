@@ -240,12 +240,21 @@ function onMonsterKilled(params)
     return
   end
 
+  local monsterMemo = parseJson(monster.memo)
+  if monsterMemo and monsterMemo.attachUnderCodex then
+    local targetMat = findCodexMatByNumber(locationMat, monsterMemo.attachUnderCodex)
+    if targetMat then
+      attachCardUnderCodexMat(targetMat, monster, orient(monsterMemo))
+      return
+    end
+  end
+
   local locationData = parseJson(locationMat.memo)
   if not locationData then
     return
   end
 
-  monster.setRotation(orient(parseJson(monster.memo)))
+  monster.setRotation(orient(monsterMemo))
   monster.setPosition(locationMat.positionToWorld(locationData.monster):setAt("y", 3))
 end
 

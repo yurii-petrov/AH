@@ -4,45 +4,8 @@
 --
 -- Draws a codex card (by number) from the archive on the location mat and
 -- attaches it to the codex mat at the next free codex snap point.
-
-local function attachCodexCardAtBottom(codexMat, card, rotation)
-  local CARD_OFFSET = 0.11
-  local height      = codexMat.getBounds().size.y
-  local matPos      = codexMat.getPosition()
-  local existing    = #codexMat.getAttachments()
-
-  card.setRotation(rotation)
-  card.setPosition({
-    x = matPos.x,
-    y = matPos.y - height - CARD_OFFSET - existing * 0.05,
-    z = matPos.z
-  })
-  card.interactable = false
-  codexMat.addAttachment(card)
-end
-
-local function findCodexMatOnSnapPoints(locationMat, number)
-  for _, snp in ipairs(locationMat.getSnapPoints()) do
-    if snp.tags then
-      for _, tag in ipairs(snp.tags) do
-        if tag == "codex_mat" then
-          local worldPos = locationMat.positionToWorld(snp.position)
-          local objs = upCast_pos(worldPos, 1)
-          for _, o in ipairs(objs) do
-            if o.type == "Tile" then
-              for _, att in ipairs(o.getAttachments()) do
-                local data = parseJson(att.memo)
-                if data and string.lower(tostring(data.type or "")) == "codex" and data.number == number then
-                  return o
-                end
-              end
-            end
-          end
-        end
-      end
-    end
-  end
-end
+--
+-- findCodexMatByNumber / attachCardUnderCodexMat live in Global/core/codex.ttslua.
 
 function processStepTakeCodexFromArchive(step, context, onDone)
   if not step.number then
@@ -82,7 +45,7 @@ function processStepTakeCodexFromArchive(step, context, onDone)
 
   local rotation = { 0, 180, 0 }
   if step.rotationFromCodex then
-    local refMat = findCodexMatOnSnapPoints(sourceMat, step.rotationFromCodex)
+    local refMat = findCodexMatByNumber(sourceMat, step.rotationFromCodex)
     if refMat then
       rotation = refMat.is_face_down and {0, 180, 180} or {0, 180, 0}
       log("[takeCodexFromArchive] refMat (codex "..step.rotationFromCodex..") rotation: "..serpent.tts(rotation))
@@ -92,7 +55,7 @@ function processStepTakeCodexFromArchive(step, context, onDone)
   end
 
   if step.faceFromCodex then
-    local refMat = findCodexMatOnSnapPoints(sourceMat, step.faceFromCodex)
+    local refMat = findCodexMatByNumber(sourceMat, step.faceFromCodex)
     if refMat then
       rotation = refMat.is_face_down and {0, 180, 180} or {0, 180, 0}
       log("[takeCodexFromArchive] faceFromCodex "..step.faceFromCodex.." is "..(refMat.is_face_down and "face down" or "face up"))
@@ -120,7 +83,7 @@ function processStepTakeCodexFromArchive(step, context, onDone)
   runAfterRest(card, function(c)
     -- log("[takeCodexFromArchive] codex "..step.number.." rotation: "..serpent.tts(c.getRotation()))
     if stackOnCurrent then
-      attachCodexCardAtBottom(codexMat, c, rotation)
+      attachCardUnderCodexMat(codexMat, c, rotation)
     else
       attachCodexCard(c, freePos, rotation)
     end

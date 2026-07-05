@@ -1,0 +1,110 @@
+-- ╭──────────────────────────────────────────────╮
+-- │      STEP: resolveResearchEncounter          │
+-- ╰──────────────────────────────────────────────╯
+--
+-- Draws the top card of the pile set aside at the locationMat's codexDeck
+-- position (via setAsideToCodexDeck) and reveals it below the codex. Then
+-- branches on the drawn card's number:
+--   * addToCodexNumbers -> attached as a normal codex card at the next free
+--     codex snap point (falls back to stacking under the current codex mat).
+--   * itemNumbers -> scaled down to a normal card size and tagged
+--     "item_magnet" so it's picked up naturally as an item; if also listed in
+--     extraMatNumbers, forced onto the secondary/special item mat.
+--
+-- Example step JSON:
+--   {
+--     "type": "resolveResearchEncounter",
+--     "addToCodexNumbers": [71],
+--     "itemNumbers": [68, 69, 70],
+--     "extraMatNumbers": [68]
+--   }
+
+local function toSet(list)
+  local set = {}
+  for _, v in ipairs(list or {}) do set[v] = true end
+  return set
+end
+
+local function findResearchPile(locationMat)
+  local boardData = parseJson(locationMat.memo)
+  if not boardData or not boardData.codexDeck then return nil end
+
+  local codexDeckPos = locationMat.positionToWorld({
+    tonumber(boardData.codexDeck[1]),
+    tonumber(boardData.codexDeck[2]),
+    tonumber(boardData.codexDeck[3])
+  }):setAt("y", 3)
+
+  for _, obj in ipairs(findObjsInRadius(codexDeckPos)) do
+    if obj.type == "Deck" or obj.type == "Card" then
+      return obj
+    end
+  end
+end
+
+function processStepResolveResearchEncounter(step, context, onDone)
+  local locationMat = findBoardByQuery({{
+    field = "type",
+    op    = "eq",
+    value = "locationMat"
+  }})
+  if not locationMat then
+    log("[resolveResearchEncounter] locationMat not found")
+    if onDone then onDone() end
+    return
+  end
+
+  local codexMat = context and context.codexMat
+  if not codexMat then
+    log("[resolveResearchEncounter] codexMat is nil")
+    if onDone then onDone() end
+    return
+  end
+
+  local pile = findResearchPile(locationMat)
+  if not pile then
+    log("[resolveResearchEncounter] research pile is empty")
+    if onDone then onDone() end
+    return
+  end
+
+  local card = takeTopCard(pile, false)
+  if not card then
+    log("[resolveResearchEncounter] failed to draw from research pile")
+    if onDone then onDone() end
+    return
+  end
+
+  local cardData = parseJson(card.memo)
+  local showPos  = codexMat.positionToWorld({0, 0.5, 1.7}):setAt("y", 3)
+  card.setRotation(orient(cardData, false))
+  card.setPositionSmooth(showPos)
+
+  local addToCodexNumbers = toSet(step.addToCodexNumbers)
+  local itemNumbers       = toSet(step.itemNumbers)
+  local extraMatNumbers   = toSet(step.extraMatNumbers)
+  local number            = cardData and cardData.number
+
+  runAfterRest(card, function(c)
+    if number and addToCodexNumbers[number] then
+      local freePos = findNextFreeCodexSnapPos(locationMat)
+      local rotation = orient(cardData, false)
+      if freePos then
+        attachCodexCard(c, freePos, rotation)
+      else
+        attachCardUnderCodexMat(codexMat, c, rotation)
+      end
+    elseif number and itemNumbers[number] then
+      c.setScale({1, 1, 1})
+      c.addTag("item_magnet")
+      if extraMatNumbers[number] then
+        local targetPos = c.getPosition():setAt("y", 2.21)
+        attachItemToItemsMat(c, cardData, targetPos, itemMatBag2Id)
+      end
+    else
+      log("[resolveResearchEncounter] drawn card number not in any branch: " .. tostring(number))
+    end
+
+    if onDone then onDone() end
+  end)
+end

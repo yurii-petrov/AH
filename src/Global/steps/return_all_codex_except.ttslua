@@ -1,0 +1,46 @@
+-- ╭──────────────────────────────────────────────╮
+-- │      STEP: Return All Codex Except           │
+-- ╰──────────────────────────────────────────────╯
+--
+-- Scans every occupied codex mat on the location mat's "codex_mat" snap
+-- points and returns each one to the archive, except those whose codex
+-- number is listed in step.exceptNumbers. Headline cards (memo.type ==
+-- "headline") are never matched by findAllCodexMats, so they're left alone
+-- automatically.
+--
+-- Example step JSON:
+--   { "type": "returnAllCodexExcept", "exceptNumbers": [61] }
+
+function processStepReturnAllCodexExcept(step, context, onDone)
+  local exceptNumbers = step.exceptNumbers or {}
+  local except = {}
+  for _, n in ipairs(exceptNumbers) do except[n] = true end
+
+  local locationMat = findBoardByQuery({{
+    field = "type",
+    op    = "eq",
+    value = "locationMat"
+  }})
+  if not locationMat then
+    log("[returnAllCodexExcept] locationMat not found")
+    if onDone then onDone() end
+    return
+  end
+
+  local archive = findDeckOnBoardByType(locationMat, "archive")
+  if not archive then
+    log("[returnAllCodexExcept] archive not found")
+    if onDone then onDone() end
+    return
+  end
+
+  for _, entry in ipairs(findAllCodexMats(locationMat)) do
+    if not except[entry.number] then
+      if returnCodexMatToArchive(entry.mat, archive) then
+        log("[returnAllCodexExcept] returned codex " .. tostring(entry.number) .. " to archive")
+      end
+    end
+  end
+
+  if onDone then onDone() end
+end

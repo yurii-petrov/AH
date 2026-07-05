@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"number\":67,\"type\":\"codex\"}",
+  "Memo": "{\"number\":67,\"type\":\"codex\",\"back\":{\"actions\":[{\"title\":\"Add boss\",\"removeAfterUse\":true,\"steps\":[{\"type\":\"spawnMonsterOnLocation\",\"number\":74,\"location\":\"Devil Reef\"}]}]}}",
   "Name": "Card",
   "Nickname": "67",
   "SidewaysCard": false,

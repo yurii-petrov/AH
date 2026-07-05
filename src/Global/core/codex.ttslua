@@ -58,3 +58,75 @@ function returnCodexMatToArchive(codexMat, archive)
   codexMat.destruct()
   return true
 end
+
+-- Scans locationMat's "codex_mat" snap points for the codex mat currently
+-- holding the codex card whose memo.number == number, or nil.
+function findCodexMatByNumber(locationMat, number)
+  for _, snp in ipairs(locationMat.getSnapPoints()) do
+    if snp.tags then
+      for _, tag in ipairs(snp.tags) do
+        if tag == "codex_mat" then
+          local worldPos = locationMat.positionToWorld(snp.position)
+          local objs = upCast_pos(worldPos, 1)
+          for _, o in ipairs(objs) do
+            if o.type == "Tile" then
+              for _, att in ipairs(o.getAttachments()) do
+                local data = parseJson(att.memo)
+                if data and string.lower(tostring(data.type or "")) == "codex" and data.number == number then
+                  return o
+                end
+              end
+            end
+          end
+        end
+      end
+    end
+  end
+end
+
+-- Scans locationMat's "codex_mat" snap points for every occupied codex mat.
+-- Returns a list of { mat = Tile, number = <codex card number> }.
+function findAllCodexMats(locationMat)
+  local found = {}
+  for _, snp in ipairs(locationMat.getSnapPoints()) do
+    if snp.tags then
+      for _, tag in ipairs(snp.tags) do
+        if tag == "codex_mat" then
+          local worldPos = locationMat.positionToWorld(snp.position)
+          local objs = upCast_pos(worldPos, 1)
+          for _, o in ipairs(objs) do
+            if o.type == "Tile" then
+              for _, att in ipairs(o.getAttachments()) do
+                local data = parseJson(att.memo)
+                if data and string.lower(tostring(data.type or "")) == "codex" and data.number then
+                  table.insert(found, { mat = o, number = data.number })
+                  break
+                end
+              end
+            end
+          end
+        end
+      end
+    end
+  end
+  return found
+end
+
+-- Attaches `card` underneath an already-occupied `codexMat` (stacked below its
+-- current attachment(s)), interactable = false. Used when the mat's own free
+-- codex snap point is unavailable / not applicable.
+function attachCardUnderCodexMat(codexMat, card, rotation)
+  local CARD_OFFSET = 0.11
+  local height      = codexMat.getBounds().size.y
+  local matPos      = codexMat.getPosition()
+  local existing    = #codexMat.getAttachments()
+
+  card.setRotation(rotation)
+  card.setPosition({
+    x = matPos.x,
+    y = matPos.y - height - CARD_OFFSET - existing * 0.05,
+    z = matPos.z
+  })
+  card.interactable = false
+  codexMat.addAttachment(card)
+end

@@ -1,0 +1,55 @@
+-- ╭──────────────────────────────────────────────╮
+-- │    STEP: Return Research Deck To Archive     │
+-- ╰──────────────────────────────────────────────╯
+--
+-- Cleans up whatever remains at the locationMat's codexDeck snap position
+-- (the pile set aside earlier via setAsideToCodexDeck) by returning it
+-- face-down into the archive. No-op if the pile is already empty.
+--
+-- Example step JSON:
+--   { "type": "returnResearchDeckToArchive" }
+
+function processStepReturnResearchDeckToArchive(step, context, onDone)
+  local locationMat = findBoardByQuery({{
+    field = "type",
+    op    = "eq",
+    value = "locationMat"
+  }})
+  if not locationMat then
+    log("[returnResearchDeckToArchive] locationMat not found")
+    if onDone then onDone() end
+    return
+  end
+
+  local archive = findDeckOnBoardByType(locationMat, "archive")
+  if not archive then
+    log("[returnResearchDeckToArchive] archive not found")
+    if onDone then onDone() end
+    return
+  end
+
+  local boardData = parseJson(locationMat.memo)
+  if not boardData or not boardData.codexDeck then
+    log("[returnResearchDeckToArchive] codexDeck position not found in locationMat memo")
+    if onDone then onDone() end
+    return
+  end
+
+  local codexDeckPos = locationMat.positionToWorld({
+    tonumber(boardData.codexDeck[1]),
+    tonumber(boardData.codexDeck[2]),
+    tonumber(boardData.codexDeck[3])
+  }):setAt("y", 3)
+
+  for _, obj in ipairs(findObjsInRadius(codexDeckPos)) do
+    if obj.type == "Deck" then
+      archive.putObject(obj)
+    elseif obj.type == "Card" then
+      local cardData = parseJson(obj.memo)
+      obj.setRotation(orient(cardData))
+      archive.putObject(obj)
+    end
+  end
+
+  if onDone then onDone() end
+end

@@ -9,7 +9,7 @@
 -- clicked mat via context.codexMat), this step targets arbitrary mats by
 -- their codex number.
 
--- returnCodexMatToArchive lives in Global/core/codex.ttslua.
+-- returnCodexMatToArchive / findCodexMatByNumber live in Global/core/codex.ttslua.
 
 function processStepReturnCodexByNumber(step, context, onDone)
   local numbers = step.numbers
@@ -21,10 +21,6 @@ function processStepReturnCodexByNumber(step, context, onDone)
     if onDone then onDone() end
     return
   end
-
-  -- Set membership for quick number lookup.
-  local wanted = {}
-  for _, n in ipairs(numbers) do wanted[n] = true end
 
   local locationMat = findBoardByQuery({{
     field = "type",
@@ -44,28 +40,10 @@ function processStepReturnCodexByNumber(step, context, onDone)
     return
   end
 
-  for _, snp in ipairs(locationMat.getSnapPoints()) do
-    if snp.tags then
-      for _, tag in ipairs(snp.tags) do
-        if tag == "codex_mat" then
-          local worldPos = locationMat.positionToWorld(snp.position)
-          local objs = upCast_pos(worldPos, 1)
-          for _, o in ipairs(objs) do
-            if o.type == "Tile" and o.getGUID() ~= locationMat.getGUID() then
-              for _, att in ipairs(o.getAttachments()) do
-                local data = parseJson(att.memo)
-                if data and string.lower(tostring(data.type or "")) == "codex"
-                   and data.number and wanted[data.number] then
-                  if returnCodexMatToArchive(o, archive) then
-                    log("[returnCodexByNumber] returned codex " .. tostring(data.number) .. " to archive")
-                  end
-                  break
-                end
-              end
-            end
-          end
-        end
-      end
+  for _, n in ipairs(numbers) do
+    local codexMat = findCodexMatByNumber(locationMat, n)
+    if codexMat and returnCodexMatToArchive(codexMat, archive) then
+      log("[returnCodexByNumber] returned codex " .. tostring(n) .. " to archive")
     end
   end
 
