@@ -23,7 +23,7 @@
     }
   },
   "Description": "",
-  "DragSelectable": true,
+  "DragSelectable": false,
   "GMNotes": "",
   "GUID": "5d73d3",
   "Grid": true,

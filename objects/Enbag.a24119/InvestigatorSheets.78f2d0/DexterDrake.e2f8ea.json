@@ -24,7 +24,7 @@
     }
   },
   "Description": "",
-  "DragSelectable": true,
+  "DragSelectable": false,
   "GMNotes": "",
   "GUID": "e2f8ea",
   "Grid": true,

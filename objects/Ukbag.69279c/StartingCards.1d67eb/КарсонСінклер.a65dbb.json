@@ -1,0 +1,69 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "ContainedObjects_order": [
+    "Card.d32556",
+    "Card.0d2127",
+    "Card.fa9342"
+  ],
+  "ContainedObjects_path": "КарсонСінклер.a65dbb",
+  "CustomDeck": {
+    "5840": {
+      "BackIsHidden": true,
+      "BackURL": "https://drive.google.com/uc?export=download&id=1SrshXDz3nosU87yvFlKkWkJBLkwTmQ05",
+      "FaceURL": "https://drive.google.com/uc?export=download&id=1FYu0jwF7HeY8IjrILWSI-tF05Lc_I0h4",
+      "NumHeight": 4,
+      "NumWidth": 7,
+      "Type": 0,
+      "UniqueBack": true
+    }
+  },
+  "DeckIDs": [
+    584004,
+    584003,
+    584002
+  ],
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "a65dbb",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Memo": "{\"name\":\"Carson Sinclair\",\"startPosition\":{\"x\":-0.575636327266693,\"y\":1.03537440299988,\"z\":-0.13962584733963}}",
+  "Name": "Deck",
+  "Nickname": "Карсон Сінклер",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": -21.722,
+    "posY": 4.074,
+    "posZ": 87.767,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 180,
+    "scaleX": 1,
+    "scaleY": 1,
+    "scaleZ": 1
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

@@ -1,0 +1,82 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "AttachedSnapPoints": [
+    {
+      "Position": {
+        "x": 0,
+        "y": 0.1,
+        "z": -0.154
+      },
+      "Rotation": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      }
+    }
+  ],
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.24999,
+    "g": 0.24999,
+    "r": 0.24999
+  },
+  "CustomImage": {
+    "CustomTile": {
+      "Stackable": false,
+      "Stretch": true,
+      "Thickness": 0.1,
+      "Type": 3
+    },
+    "ImageScalar": 1,
+    "ImageSecondaryURL": "",
+    "ImageURL": "https://drive.google.com/uc?export=download&id=1s89RZ5lIfC4noRdabqzoB4nddtbtiFSu",
+    "WidthScale": 0
+  },
+  "CustomUIAssets": [
+    {
+      "Name": "Fonts",
+      "Type": 1,
+      "URL": "https://drive.google.com/uc?export=download&id=136ZvlP_d9WqvYyBvwTGldulgXGsm6V0Y"
+    }
+  ],
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "f6569c",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScriptState": "{\"hp\":0,\"sp\":0}",
+  "LuaScript_path": "SkillMats.6d5d10/SkillMat.f6569c.ttslua",
+  "MeasureMovement": false,
+  "Memo": "{\"type\":\"Item Mat\"}",
+  "Name": "Custom_Tile",
+  "Nickname": "Skill Mat",
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "item_mat"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": -10.556,
+    "posY": 4.066,
+    "posZ": 36.72,
+    "rotX": 1,
+    "rotY": 180,
+    "rotZ": 358,
+    "scaleX": 1.8,
+    "scaleY": 1,
+    "scaleZ": 1.84
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

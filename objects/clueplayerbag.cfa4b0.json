@@ -15,7 +15,7 @@
   ],
   "ContainedObjects_path": "clueplayerbag.cfa4b0",
   "Description": "",
-  "DragSelectable": true,
+  "DragSelectable": false,
   "GMNotes": "",
   "GUID": "cfa4b0",
   "Grid": true,

@@ -160,6 +160,26 @@ def copy_preview_image(output_folder, branch):
         print(f"Note: Icon {source_image} not found, skipping copy.")
 
 
+def unescape_html_entities(moddir):
+    """TTSModManager's Go JSON encoder HTML-escapes &, <, > as \\u0026/\\u003c/\\u003e
+    in decomposed JSON (Go's encoding/json default). Undo that so diffs stay clean."""
+    replacements = (("\\u0026", "&"), ("\\u003c", "<"), ("\\u003e", ">"))
+    skip_dirs = {".git", ".venv", "node_modules"}
+
+    for root, dirs, files in os.walk(moddir):
+        dirs[:] = [d for d in dirs if d not in skip_dirs]
+        for name in files:
+            if not name.endswith(".json"):
+                continue
+            path = Path(root) / name
+            text = path.read_text(encoding="utf-8")
+            new_text = text
+            for escaped, literal in replacements:
+                new_text = new_text.replace(escaped, literal)
+            if new_text != text:
+                path.write_text(new_text, encoding="utf-8")
+
+
 # CONFIGURATION
 CONFIG = load_config()
 GAME_NAME = CONFIG["GAME_NAME"]
@@ -214,6 +234,7 @@ def run_build(moddir, action):
         load_savegame_in_TTS()
         print_box("MOD BUILD SUCCESS")
     else:
+        unescape_html_entities(moddir)
         print_box("DECOMPOSE SUCCESS")
 
 

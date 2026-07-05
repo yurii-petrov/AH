@@ -1,0 +1,59 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "CardID": 583302,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "CustomDeck": {
+    "5833": {
+      "BackIsHidden": true,
+      "BackURL": "https://drive.google.com/uc?export=download&id=1m2EkNz_3kOkHVeljFbtAnHzrVThukkxa",
+      "FaceURL": "https://drive.google.com/uc?export=download&id=135_6s2zhDeXxCmYNDjDke8ZH00unvB2H",
+      "NumHeight": 2,
+      "NumWidth": 2,
+      "Type": 1,
+      "UniqueBack": true
+    }
+  },
+  "Description": "",
+  "DragSelectable": false,
+  "GMNotes": "",
+  "GUID": "fd21da",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": true,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Memo": "{\"hp\":7,\"money\":4,\"name\":\"Preston Fairmont\",\"role\":[\"rogue\",\"survivor\"],\"sanity\":5,\"skill\":{\"influence\":5,\"lore\":2,\"observation\":2,\"strength\":3,\"will\":1},\"startPosition\":{\"x\":-0.626198887825012,\"y\":1.01360654830933,\"z\":-0.0459058582782746},\"type\":\"Investigator\"}",
+  "Name": "Card",
+  "Nickname": "Престон Фейрмонт",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": 23.974,
+    "posY": 4.05,
+    "posZ": 66.864,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 0,
+    "scaleX": 1.5,
+    "scaleY": 1,
+    "scaleZ": 1.5
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

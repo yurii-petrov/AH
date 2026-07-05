@@ -15,7 +15,7 @@
   ],
   "ContainedObjects_path": "Infinite_Bag.fe8d29",
   "Description": "",
-  "DragSelectable": true,
+  "DragSelectable": false,
   "GMNotes": "",
   "GUID": "fe8d29",
   "Grid": true,

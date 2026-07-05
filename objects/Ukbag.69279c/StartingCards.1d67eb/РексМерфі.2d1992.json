@@ -1,0 +1,74 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "ContainedObjects_order": [
+    "Card.0e4197",
+    "Card.01ed9b",
+    "Card.038379",
+    "Card.bd8cc5"
+  ],
+  "ContainedObjects_path": "РексМерфі.2d1992",
+  "CustomDeck": {
+    "5792": {
+      "BackIsHidden": true,
+      "BackURL": "https://drive.google.com/uc?export=download&id=1pcj3x38EQMNak46iKYpYpcQylfRRbhMz",
+      "FaceURL": "https://drive.google.com/uc?export=download&id=1a8SHUZtaF20VMcnKP5kx7CKBffQ7kMAq",
+      "NumHeight": 6,
+      "NumWidth": 7,
+      "Type": 0,
+      "UniqueBack": true
+    }
+  },
+  "DeckIDs": [
+    579218,
+    579231,
+    579230,
+    579228
+  ],
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "2d1992",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": true,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Memo": "{\"name\":\"Rex Murphy\",\"startPosition\":{\"x\":-0.666200032234192,\"y\":1.03537440299988,\"z\":-0.327265858650208}}",
+  "Name": "Deck",
+  "Nickname": "Рекс Мерфі",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tags": [
+    "item_magnet"
+  ],
+  "Tooltip": true,
+  "Transform": {
+    "posX": -23.88,
+    "posY": 4.077,
+    "posZ": 97.254,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 180,
+    "scaleX": 1,
+    "scaleY": 1,
+    "scaleZ": 1
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

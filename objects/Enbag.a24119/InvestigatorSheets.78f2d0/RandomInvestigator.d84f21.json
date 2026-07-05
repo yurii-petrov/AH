@@ -35,7 +35,7 @@
     }
   ],
   "Description": "",
-  "DragSelectable": true,
+  "DragSelectable": false,
   "GMNotes": "",
   "GUID": "d84f21",
   "Grid": true,
