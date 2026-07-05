@@ -1414,6 +1414,14 @@ I18N_DATA = {
     ["en"] = "The Underworld",
     ["uk"] = "Підземний Світ",
   },
+  ["The_Unnamable"] = {
+    ["en"] = "The Unnamable",
+    ["uk"] = "Невимовне",
+  },
+  ["The_Witch_House"] = {
+    ["en"] = "The Witch House",
+    ["uk"] = "Відьомський Дім",
+  },
   ["The_streets"] = {
     ["en"] = "The streets",
     ["uk"] = "Вулиці",
@@ -1573,14 +1581,6 @@ I18N_DATA = {
   ["mythos_start"] = {
     ["en"] = "Start of Mythos Phase",
     ["uk"] = "Настає фаза Мітів",
-  },
-  ["the_unnamable"] = {
-    ["en"] = "The Unnamable",
-    ["uk"] = "Невимовне",
-  },
-  ["the_witch_house"] = {
-    ["en"] = "The Witch House",
-    ["uk"] = "Відьомський Дім",
   },
   ["token"] = {
     ["en"] = "token",

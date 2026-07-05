@@ -594,7 +594,7 @@ msgstr "Devil Reef"
 msgid "Strange_High_House"
 msgstr "Strange High House"
 
-msgid "the_unnamable"
+msgid "The_Unnamable"
 msgstr "The Unnamable"
 
 msgid "The_Witch_House"

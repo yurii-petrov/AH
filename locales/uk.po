@@ -652,7 +652,7 @@ msgstr "Риф Диявола"
 msgid "Strange_High_House"
 msgstr "Дім Таємниць"
 
-msgid "the_unnamable"
+msgid "The_Unnamable"
 msgstr "Невимовне"
 
 msgid "The_Witch_House"
