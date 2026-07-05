@@ -212,7 +212,7 @@
     }
   ],
   "Description": "",
-  "DragSelectable": true,
+  "DragSelectable": false,
   "GMNotes": "",
   "GUID": "8391f2",
   "Grid": true,

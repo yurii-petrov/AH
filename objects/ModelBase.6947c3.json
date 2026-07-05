@@ -31,7 +31,7 @@
     "TypeIndex": 1
   },
   "Description": "",
-  "DragSelectable": true,
+  "DragSelectable": false,
   "GMNotes": "",
   "GUID": "6947c3",
   "Grid": false,

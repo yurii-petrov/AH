@@ -116,7 +116,7 @@
     }
   ],
   "Description": "",
-  "DragSelectable": true,
+  "DragSelectable": false,
   "GMNotes": "",
   "GUID": "2822f5",
   "Grid": true,

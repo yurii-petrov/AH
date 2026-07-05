@@ -20,7 +20,7 @@
     "WidthScale": 0
   },
   "Description": "",
-  "DragSelectable": true,
+  "DragSelectable": false,
   "GMNotes": "",
   "GUID": "fa517d",
   "Grid": true,

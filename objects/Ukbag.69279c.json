@@ -9,9 +9,10 @@
     "Order": 0
   },
   "ColorDiffuse": {
+    "a": 0,
     "b": 0,
-    "g": 0.36652,
-    "r": 0.70588
+    "g": 0,
+    "r": 0
   },
   "ContainedObjects_order": [
     "Rulebooks.03632a",
