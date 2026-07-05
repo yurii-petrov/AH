@@ -59,6 +59,31 @@ def find_child_image_url(bag_dir):
     return image_url
 
 
+def fix_child_path_references(new_dir, guid):
+    """A child object's own JSON can carry a self-referencing *_path field
+    (e.g. LuaScript_path for one with an attached .ttslua) built from its
+    parent's folder name at the time it was written — renaming the parent
+    folder moves the file but leaves that stale "Infinite_Bag.<guid>/..."
+    string behind, which TTSModManager then fails to find at build time."""
+    old_prefix = f"{OLD_NAME}.{guid}/"
+    new_prefix = f"{NEW_NAME}.{guid}/"
+    fixed = []
+
+    for name in os.listdir(new_dir):
+        if not name.endswith(".json"):
+            continue
+        path = os.path.join(new_dir, name)
+        with open(path, "r", encoding="utf-8") as f:
+            content = f.read()
+        if old_prefix not in content:
+            continue
+        with open(path, "w", encoding="utf-8") as f:
+            f.write(content.replace(old_prefix, new_prefix))
+        fixed.append(name)
+
+    return fixed
+
+
 def convert(guid):
     old_json = os.path.join(OBJECTS_DIR, f"{OLD_NAME}.{guid}.json")
     old_dir = os.path.join(OBJECTS_DIR, f"{OLD_NAME}.{guid}")
@@ -87,6 +112,9 @@ def convert(guid):
 
     if os.path.isdir(old_dir):
         os.rename(old_dir, new_dir)
+        fixed = fix_child_path_references(new_dir, guid)
+        for name in fixed:
+            print(f"  fixed stale path reference in {name}")
 
     print(f"Converted {OLD_NAME}.{guid} -> {NEW_NAME}.{guid} (DiffuseURL: {diffuse_url})")
     return True

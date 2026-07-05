@@ -34,7 +34,7 @@
   "LayoutGroupSortIndex": 0,
   "Locked": false,
   "LuaScriptState": "",
-  "LuaScript_path": "Infinite_Bag.b84d40/Custom_Tile.bf9b54.ttslua",
+  "LuaScript_path": "Custom_Model_Infinite_Bag.b84d40/Custom_Tile.bf9b54.ttslua",
   "MeasureMovement": false,
   "Memo": "White Marker",
   "Name": "Custom_Tile",
