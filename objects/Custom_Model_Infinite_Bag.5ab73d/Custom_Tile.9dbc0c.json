@@ -6,9 +6,9 @@
   },
   "Autoraise": true,
   "ColorDiffuse": {
-    "b": 0.21024,
-    "g": 0.50523,
-    "r": 0.08538
+    "b": 0.24261,
+    "g": 0.03079,
+    "r": 0.3101
   },
   "CustomImage": {
     "CustomTile": {
@@ -19,13 +19,13 @@
     },
     "ImageScalar": 1,
     "ImageSecondaryURL": "",
-    "ImageURL": "https://drive.google.com/uc?export=download&id=1LOTUmSdz6PQeN-uymF4tCqaWabzGCG1i",
+    "ImageURL": "file:////Users/yurii/AH/TTS assets/icons/token remnant.jpeg",
     "WidthScale": 0
   },
   "Description": "",
   "DragSelectable": true,
   "GMNotes": "",
-  "GUID": "971210",
+  "GUID": "9dbc0c",
   "Grid": false,
   "GridProjection": false,
   "Hands": false,
@@ -36,22 +36,18 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "Clue",
   "Name": "Custom_Tile",
   "Nickname": "",
   "Snap": true,
   "Sticky": true,
-  "Tags": [
-    "clue_scenario"
-  ],
   "Tooltip": true,
   "Transform": {
-    "posX": 16.536,
-    "posY": 4.061,
-    "posZ": 37.146,
+    "posX": 10.036,
+    "posY": 4.277,
+    "posZ": 25.877,
     "rotX": 2,
     "rotY": 180,
-    "rotZ": 354,
+    "rotZ": 1,
     "scaleX": 0.6,
     "scaleY": 1,
     "scaleZ": 0.6
