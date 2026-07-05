@@ -597,7 +597,7 @@ msgstr "Strange High House"
 msgid "the_unnamable"
 msgstr "The Unnamable"
 
-msgid "the_witch_house"
+msgid "The_Witch_House"
 msgstr "The Witch House"
 
 # Change of phase
