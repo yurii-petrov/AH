@@ -13,7 +13,7 @@
   "ContainedObjects_order": [
     "Custom_Tile.8870bb"
   ],
-  "ContainedObjects_path": "Custom_Model_Infinite_Bag.099201",
+  "ContainedObjects_path": "DoomToken.099201",
   "CustomMesh": {
     "CastShadows": true,
     "ColliderURL": "https://drive.google.com/uc?export=download&id=1lnNRkMFfBgoCQ-yz-rfXqIzlhOX3oa3A",
@@ -51,7 +51,7 @@
   "MeasureMovement": false,
   "MeshIndex": -1,
   "Name": "Custom_Model_Infinite_Bag",
-  "Nickname": "",
+  "Nickname": "Doom Token",
   "Snap": true,
   "Sticky": true,
   "Tooltip": true,
