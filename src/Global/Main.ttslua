@@ -130,6 +130,14 @@ function onload(savedData)
   lockObj(shopMatId)
   lockObj(nastilo4kaId)
 
+  lockObj(investigatorMatBagId)
+  lockObj(cardMatBagId)
+  lockObj(rollerBagId)
+  lockObj(itemMatBagId)
+  lockObj(itemMatBag2Id)
+  lockObj(codexMatBagId)
+  lockObj(cluePlayerBagId)
+
   -- A missing/empty savedData means a genuine fresh load (no save to
   -- restore) — parsedSaveData stays nil and gameData keeps State.ttslua's
   -- defaults. When there IS saved data, merge it onto the defaults instead
