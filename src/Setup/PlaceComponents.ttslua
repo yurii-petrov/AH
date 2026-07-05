@@ -540,19 +540,17 @@ local function prepareMonsterDeck(done)
   local monstersByScenarioGuid = gameData.language == "en" and monstersbyScenarioEngId or monstersbyScenarioUkId
   local monstersObj = getObjectFromGUID(monstersByScenarioGuid)
   if not monstersObj then done() return end
-
+  local basePos = monstersObj.getPosition()
   local scenarioBag
   for _, obj in ipairs(monstersObj.getObjects()) do
     if obj.name == tostring(scenarioData.number) then
-      scenarioBag = monstersObj.takeObject({ guid = obj.guid, smooth = false })
+      scenarioBag = monstersObj.takeObject({ guid = obj.guid, position = Vector(basePos.x, basePos.y, basePos.z - 3), smooth = false })
       break
     end
   end
-  if not scenarioBag then done() return end
 
-  local basePos = monstersObj.getPosition()
-  scenarioBag.setPosition(Vector(basePos.x, basePos.y, basePos.z - 3))
-  scenarioBag.setLock(true)
+  if not scenarioBag then done() return end
+  lockObj(scenarioBag.getGUID())
 
   local locationMat = LOCATION_MAT_DATA.obj
   if not locationMat then done() return end
