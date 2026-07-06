@@ -1,0 +1,57 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 1,
+    "g": 1,
+    "r": 1
+  },
+  "CustomImage": {
+    "CustomTile": {
+      "Stackable": false,
+      "Stretch": true,
+      "Thickness": 0.2,
+      "Type": 0
+    },
+    "ImageScalar": 1,
+    "ImageSecondaryURL": "https://drive.google.com/uc?export=download&id=1vecMIU5DpEaO9uoMy-KNKUGdt8ltCTpj",
+    "ImageURL": "https://drive.google.com/uc?export=download&id=1vecMIU5DpEaO9uoMy-KNKUGdt8ltCTpj",
+    "WidthScale": 0
+  },
+  "Description": "",
+  "DragSelectable": false,
+  "GMNotes": "",
+  "GUID": "8307b8",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": true,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Name": "Custom_Tile",
+  "Nickname": "ko-fi",
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": -35.60,
+    "posY": 2.2,
+    "posZ": 37.623,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 180,
+    "scaleX": 2.25,
+    "scaleY": 1,
+    "scaleZ": 2.25
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

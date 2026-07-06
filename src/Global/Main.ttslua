@@ -130,6 +130,7 @@ function onload(savedData)
   lockObj(conditionMatId)
   lockObj(shopMatId)
   lockObj(nastilo4kaId)
+  lockObj(koFiId)
 
   lockObj(investigatorMatBagId)
   lockObj(cardMatBagId)
