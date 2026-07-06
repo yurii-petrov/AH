@@ -1448,3 +1448,31 @@ msgstr "Anomaly Token"
 
 msgid "Terror Token"
 msgstr "Terror Token"
+
+# Random Investigator card
+msgid "RI_titleLine1_text"
+msgstr "Random"
+
+msgid "RI_titleLine2_text"
+msgstr "Investigator"
+
+msgid "RI_desc_text"
+msgstr "If you want to play a random investigator, choose a role below (optional) and place this card on the player's mat."
+
+msgid "RI_allRoles"
+msgstr "All Roles"
+
+msgid "RI_mystic"
+msgstr "Mystic"
+
+msgid "RI_guardian"
+msgstr "Guardian"
+
+msgid "RI_rogue"
+msgstr "Rogue"
+
+msgid "RI_survivor"
+msgstr "Survivor"
+
+msgid "RI_seeker"
+msgstr "Seeker"

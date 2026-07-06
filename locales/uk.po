@@ -1514,3 +1514,33 @@ msgstr "Жетон Аномалії"
 
 msgid "Terror Token"
 msgstr "Жетон Мороку"
+
+# Random Investigator card
+msgid "RI_titleLine1_text"
+msgstr "Випадковий"
+
+msgid "RI_titleLine2_text"
+msgstr "Дослідник"
+
+msgid "RI_desc_text"
+msgstr ""
+"Якщо хочеш зіграти випадковим дослідником, обери роль нижче (не "
+"обов'язково) та поклади цю карту на планшет гравця."
+
+msgid "RI_allRoles"
+msgstr "Всі ролі"
+
+msgid "RI_mystic"
+msgstr "Містик"
+
+msgid "RI_guardian"
+msgstr "Захисник"
+
+msgid "RI_rogue"
+msgstr "Пройдисвіт"
+
+msgid "RI_survivor"
+msgstr "Загартований"
+
+msgid "RI_seeker"
+msgstr "Шукач"

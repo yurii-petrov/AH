@@ -1150,6 +1150,42 @@ I18N_DATA = {
     ["en"] = "R'lyeh Guardian",
     ["uk"] = "Страж Р'льєху",
   },
+  ["RI_allRoles"] = {
+    ["en"] = "All Roles",
+    ["uk"] = "Всі ролі",
+  },
+  ["RI_desc_text"] = {
+    ["en"] = "If you want to play a random investigator, choose a role below (optional) and place this card on the player's mat.",
+    ["uk"] = "Якщо хочеш зіграти випадковим дослідником, обери роль нижче (не обов'язково) та поклади цю карту на планшет гравця.",
+  },
+  ["RI_guardian"] = {
+    ["en"] = "Guardian",
+    ["uk"] = "Захисник",
+  },
+  ["RI_mystic"] = {
+    ["en"] = "Mystic",
+    ["uk"] = "Містик",
+  },
+  ["RI_rogue"] = {
+    ["en"] = "Rogue",
+    ["uk"] = "Пройдисвіт",
+  },
+  ["RI_seeker"] = {
+    ["en"] = "Seeker",
+    ["uk"] = "Шукач",
+  },
+  ["RI_survivor"] = {
+    ["en"] = "Survivor",
+    ["uk"] = "Загартований",
+  },
+  ["RI_titleLine1_text"] = {
+    ["en"] = "Random",
+    ["uk"] = "Випадковий",
+  },
+  ["RI_titleLine2_text"] = {
+    ["en"] = "Investigator",
+    ["uk"] = "Дослідник",
+  },
   ["ROLLER_fail"] = {
     ["en"] = "failed the check!",
     ["uk"] = "провалив перевірку!",
