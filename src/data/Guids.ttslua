@@ -57,6 +57,9 @@ redTokenBagId = "fe6c51"
 greenTokenBagId = "18c8c9"
 anomalyBagId = "009961"
 terrorBagId = "c19def"
+activationTokenId = "2f7335"
+leaderActivationTokenId = "1a067e"
+remnantId = "5ab73d"
 
 mythosTokenBagIds = {
   [MythosCup.SpreadDoom] = "829038",

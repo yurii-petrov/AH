@@ -923,6 +923,9 @@ msgstr "Агата Крейн"
 msgid "Clue"
 msgstr "Зачіпка"
 
+msgid "Remnant"
+msgstr "Рештки"
+
 # Roller
 msgid "ROLLER_fail"
 msgstr "провалив перевірку!"
@@ -1465,3 +1468,49 @@ msgstr "Застосувати для всіх"
 # 3D investigator figure: description shown on hover
 msgid "FIG_hotkeys_desc"
 msgstr "Q, E, F перемикають стан фігурки."
+
+# Setup: localized bag/token object names
+msgid "Box"
+msgstr "Коробка"
+
+msgid "Doom Token"
+msgstr "Жетон Приреченості"
+
+msgid "clue player bag"
+msgstr "мішок зачіпок гравця"
+
+msgid "Mythos Cup"
+msgstr "Чаша Міту"
+
+msgid "Monster"
+msgstr "Монстр"
+
+msgid "Double Sided"
+msgstr "Двосторонній"
+
+msgid "Investigators 3D"
+msgstr "Дослідники 3D"
+
+msgid "Investigators"
+msgstr "Дослідники"
+
+msgid "Blue Marker"
+msgstr "Синій Маркер"
+
+msgid "Codex Mat bag"
+msgstr "мішок кодекс-мату"
+
+msgid "White Marker"
+msgstr "Білий Маркер"
+
+msgid "Red Marker"
+msgstr "Червоний Маркер"
+
+msgid "Green Marker"
+msgstr "Зелений Маркер"
+
+msgid "Anomaly Token"
+msgstr "Жетон Аномалії"
+
+msgid "Terror Token"
+msgstr "Жетон Мороку"

@@ -36,7 +36,7 @@
   ],
   "ContainedObjects_path": "Enbag.a24119",
   "Description": "",
-  "DragSelectable": true,
+  "DragSelectable": false,
   "GMNotes": "",
   "GUID": "a24119",
   "Grid": true,

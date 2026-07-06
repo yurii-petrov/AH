@@ -34,6 +34,10 @@ I18N_DATA = {
     ["en"] = "Altered Servant",
     ["uk"] = "Мутований Слуга",
   },
+  ["Anomaly Token"] = {
+    ["en"] = "Anomaly Token",
+    ["uk"] = "Жетон Аномалії",
+  },
   ["Arkham_Advertiser"] = {
     ["en"] = "Arkham Advertiser",
     ["uk"] = "Аркгемський Вісник",
@@ -69,6 +73,14 @@ I18N_DATA = {
   ["Bloody_Titan"] = {
     ["en"] = "Bloody Titan",
     ["uk"] = "Кривавий Титан",
+  },
+  ["Blue Marker"] = {
+    ["en"] = "Blue Marker",
+    ["uk"] = "Синій Маркер",
+  },
+  ["Box"] = {
+    ["en"] = "Box",
+    ["uk"] = "Коробка",
   },
   ["Brawling_Riot"] = {
     ["en"] = "Brawling Riot",
@@ -125,6 +137,10 @@ I18N_DATA = {
   ["Clue"] = {
     ["en"] = "Clue",
     ["uk"] = "Зачіпка",
+  },
+  ["Codex Mat bag"] = {
+    ["en"] = "Codex Mat bag",
+    ["uk"] = "мішок кодекс-мату",
   },
   ["Commanding_Specter"] = {
     ["en"] = "Commanding Specter",
@@ -205,6 +221,14 @@ I18N_DATA = {
   ["Diana_Stanley"] = {
     ["en"] = "Diana Stanley",
     ["uk"] = "Діана Стенлі",
+  },
+  ["Doom Token"] = {
+    ["en"] = "Doom Token",
+    ["uk"] = "Жетон Приреченості",
+  },
+  ["Double Sided"] = {
+    ["en"] = "Double Sided",
+    ["uk"] = "Двосторонній",
   },
   ["Downtown"] = {
     ["en"] = "Downtown",
@@ -309,6 +333,10 @@ I18N_DATA = {
   ["Graveyard"] = {
     ["en"] = "Graveyard",
     ["uk"] = "Кладовище",
+  },
+  ["Green Marker"] = {
+    ["en"] = "Green Marker",
+    ["uk"] = "Зелений Маркер",
   },
   ["Guardian_Beast"] = {
     ["en"] = "Guardian Beast",
@@ -489,6 +517,14 @@ I18N_DATA = {
   ["Innsmouth_Village"] = {
     ["en"] = "Innsmouth Village",
     ["uk"] = "Старий Інсмут",
+  },
+  ["Investigators"] = {
+    ["en"] = "Investigators",
+    ["uk"] = "Дослідники",
+  },
+  ["Investigators 3D"] = {
+    ["en"] = "Investigators 3D",
+    ["uk"] = "Дослідники 3D",
   },
   ["Jenny_Barnes"] = {
     ["en"] = "Jenny Barnes",
@@ -990,6 +1026,10 @@ I18N_DATA = {
     ["en"] = "Mob Enforcer",
     ["uk"] = "Головоріз Банди",
   },
+  ["Monster"] = {
+    ["en"] = "Monster",
+    ["uk"] = "Монстр",
+  },
   ["Morphic_Terror"] = {
     ["en"] = "Morphic Terror",
     ["uk"] = "Жах-Перевертень",
@@ -1001,6 +1041,10 @@ I18N_DATA = {
   ["Mystery"] = {
     ["en"] = "Mystery",
     ["uk"] = "Таємниця",
+  },
+  ["Mythos Cup"] = {
+    ["en"] = "Mythos Cup",
+    ["uk"] = "Чаша Міту",
   },
   ["Neil's_Curiosity_Shop"] = {
     ["en"] = "Neil's Curiosity Shop",
@@ -1205,6 +1249,14 @@ I18N_DATA = {
   ["Reckoning"] = {
     ["en"] = "Reckoning",
     ["uk"] = "Розплата",
+  },
+  ["Red Marker"] = {
+    ["en"] = "Red Marker",
+    ["uk"] = "Червоний Маркер",
+  },
+  ["Remnant"] = {
+    ["en"] = "Remnant",
+    ["uk"] = "Рештки",
   },
   ["Residential"] = {
     ["en"] = "Residential",
@@ -1422,6 +1474,10 @@ I18N_DATA = {
     ["en"] = "Terror",
     ["uk"] = "Морок",
   },
+  ["Terror Token"] = {
+    ["en"] = "Terror Token",
+    ["uk"] = "Жетон Мороку",
+  },
   ["The_Rope_and_Anchor"] = {
     ["en"] = "The Rope and Anchor",
     ["uk"] = "Канат і Якір",
@@ -1538,6 +1594,10 @@ I18N_DATA = {
     ["en"] = "Whippoorwill",
     ["uk"] = "Дрімлюга",
   },
+  ["White Marker"] = {
+    ["en"] = "White Marker",
+    ["uk"] = "Білий Маркер",
+  },
   ["Wild_Gateway"] = {
     ["en"] = "Wild Gateway",
     ["uk"] = "Ворота Хаосу",
@@ -1561,6 +1621,10 @@ I18N_DATA = {
   ["action_start"] = {
     ["en"] = "Start of Action Phase",
     ["uk"] = "Настає фаза Дій",
+  },
+  ["clue player bag"] = {
+    ["en"] = "clue player bag",
+    ["uk"] = "мішок зачіпок гравця",
   },
   ["death_dialog_death"] = {
     ["en"] = "Death",

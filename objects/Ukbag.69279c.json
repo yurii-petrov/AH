@@ -36,7 +36,7 @@
   ],
   "ContainedObjects_path": "Ukbag.69279c",
   "Description": "",
-  "DragSelectable": true,
+  "DragSelectable": false,
   "GMNotes": "",
   "GUID": "69279c",
   "Grid": true,

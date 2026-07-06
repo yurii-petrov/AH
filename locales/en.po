@@ -857,6 +857,9 @@ msgstr "Agatha Crane"
 msgid "Clue"
 msgstr "Clue"
 
+msgid "Remnant"
+msgstr "Remnant"
+
 # Roller
 msgid "ROLLER_fail"
 msgstr "failed the check!"
@@ -1399,3 +1402,49 @@ msgstr "Apply to all"
 # 3D investigator figure: description shown on hover
 msgid "FIG_hotkeys_desc"
 msgstr "Q, E, F all toggle the figure's state."
+
+# Setup: localized bag/token object names
+msgid "Box"
+msgstr "Box"
+
+msgid "Doom Token"
+msgstr "Doom Token"
+
+msgid "clue player bag"
+msgstr "clue player bag"
+
+msgid "Mythos Cup"
+msgstr "Mythos Cup"
+
+msgid "Monster"
+msgstr "Monster"
+
+msgid "Double Sided"
+msgstr "Double Sided"
+
+msgid "Investigators 3D"
+msgstr "Investigators 3D"
+
+msgid "Investigators"
+msgstr "Investigators"
+
+msgid "Blue Marker"
+msgstr "Blue Marker"
+
+msgid "Codex Mat bag"
+msgstr "Codex Mat bag"
+
+msgid "White Marker"
+msgstr "White Marker"
+
+msgid "Red Marker"
+msgstr "Red Marker"
+
+msgid "Green Marker"
+msgstr "Green Marker"
+
+msgid "Anomaly Token"
+msgstr "Anomaly Token"
+
+msgid "Terror Token"
+msgstr "Terror Token"

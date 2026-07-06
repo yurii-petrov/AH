@@ -152,6 +152,25 @@ local function localizeBagNames()
       o.setName(i18n.getStrById(o.getName()))
     end
   end
+
+  -- These use underscore-joined msgids (e.g. "Spawn_Monster"), matching the
+  -- convention used elsewhere for the same objects (see PlayerActions.ttslua,
+  -- MythosTile.ttslua, Doom.ttslua).
+  local underscoreMsgidIds = {
+    activationTokenId,
+    leaderActivationTokenId,
+    remnantId,
+  }
+  for _, guid in pairs(mythosTokenBagIds) do
+    table.insert(underscoreMsgidIds, guid)
+  end
+
+  for _, guid in ipairs(underscoreMsgidIds) do
+    local o = getObjectFromGUID(guid)
+    if o then
+      o.setName(i18n.getStrById(o.getName():gsub(" ", "_")))
+    end
+  end
 end
 
 function prepareLanguageBag(bag)
