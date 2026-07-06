@@ -107,12 +107,12 @@
   {
     "Name": "phase_encounter_image",
     "Type": 0,
-    "URL": "https://drive.google.com/uc?export=download&id=1cHlCHV04d9DnLikTDBvXyuxCpE88FWv9"
+    "URL": "https://drive.google.com/uc?export=download&id=1KZjJ9kMFo-sEsZ0i2rUfaLiTSSvj74XQ"
   },
   {
     "Name": "phase_myth_image",
     "Type": 0,
-    "URL": "https://drive.google.com/uc?export=download&id=1ceVWaqu5due5KOhuv4-5LD6ZCpBo1e3T"
+    "URL": "https://drive.google.com/uc?export=download&id=15Q84bDQfiLauptDTeoECW_MTscaSJxRS"
   },
   {
     "Name": "help_bg",
@@ -523,6 +523,16 @@
     "Name": "success_icon",
     "Type": 0,
     "URL": "https://drive.google.com/uc?export=download&id=1L7AZa56r3BBoQNviWpQS-y4ekER_Lpfq"
+  },
+  {
+    "Name": "phase_button_3",
+    "Type": 0,
+    "URL": "https://drive.google.com/uc?export=download&id=1hv0K73xotzLsBAjXxMoRVzufJQhr0m-e"
+  },
+  {
+    "Name": "phase_button_4",
+    "Type": 0,
+    "URL": "https://drive.google.com/uc?export=download&id=1GHQ8OGefQ8aNwywXXXz-ULAQtZAzp_qz"
   },
   {
     "Name": "discard_icon",

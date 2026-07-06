@@ -227,18 +227,6 @@ function restorePhaseHud(phase)
   self.UI.setAttribute("phase", "active", true)
   self.UI.setAttribute("phase_img", "image", phases[phase].image)
   self.UI.setAttribute("phase_text", "text", i18n.getStrById("PB_phase" .. phase))
-  if phase == 3 then
-    self.UI.setAttribute("phase_btn_encounter", "active", true)
-    self.UI.setAttribute("phase_btn_text", "text", i18n.getStrById("PB_phase_btn_btn_encounter"))
-    self.UI.setAttribute("phase_btn_text", "active", true)
-    self.UI.setAttribute("PB_phase_btn_btn_text", "active", true)
-  elseif phase == 4 then
-    self.UI.setAttribute("phase_btn_encounter", "active", false)
-    self.UI.setAttribute("phase_btn_text", "text", i18n.getStrById("PB_phase_btn_btn_mythos"))
-    self.UI.setAttribute("phase_btn_myth", "active", true)
-    self.UI.setAttribute("phase_btn_text", "active", true)
-    self.UI.setAttribute("PB_phase_btn_btn_text", "active", true)
-  end
 end
 
 local function flipActivationTokensUp()
@@ -248,19 +236,6 @@ local function flipActivationTokensUp()
         o.flip()
       end
     end
-  end
-end
-
-local function applyPhaseButtonVisibility(phase)
-  self.UI.setAttribute("phase_btn_encounter", "active", phase == 3)
-  self.UI.setAttribute("phase_btn_myth", "active", phase == 4)
-  local showText = (phase == 3 or phase == 4)
-  self.UI.setAttribute("phase_btn_text", "active", showText)
-  self.UI.setAttribute("PB_phase_btn_btn_text", "active", showText)
-  if phase == 3 then
-    self.UI.setAttribute("phase_btn_text", "text", i18n.getStrById("PB_phase_btn_btn_encounter"))
-  elseif phase == 4 then
-    self.UI.setAttribute("phase_btn_text", "text", i18n.getStrById("PB_phase_btn_btn_mythos"))
   end
 end
 
@@ -285,7 +260,6 @@ local function goToPhase(newPhase)
 
   self.UI.setAttribute("phase_img", "image", phases[newPhase].image)
   self.UI.setAttribute("phase_text", "text", i18n.getStrById("PB_phase" .. newPhase))
-  applyPhaseButtonVisibility(newPhase)
 
   broadcastToAll(i18n.getStrById("PB_next_phase") .. " " .. i18n.getStrById("PB_phase" .. newPhase) .. "!",
     phases[newPhase].color)
@@ -321,12 +295,4 @@ function nextPhase(player, value, id)
   end
 
   goToPhase(newPhase)
-end
-
-function encounterHudBtn(player)
-  onClickEncounter(nil, player.color)
-end
-
-function mythHudBtn(player)
-  onClickDrawMythos(nil, player.color)
 end

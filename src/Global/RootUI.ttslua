@@ -172,11 +172,7 @@ local function phaseWindow()
       { tag = "image", attributes = { id = "phase_img", image = "phase_action_image", width = "200", preserveAspect = "true", rectAlignment = "UpperCenter" } },
       phaseText("PB_phase_text", "0 45", "12"),
       phaseText("phase_text", "0 25", "16"),
-      phaseText("PB_phase_btn_btn_text", "0 -68", "12", "false"),
-      phaseText("phase_btn_text", "0 -83", "14", "false"),
       { tag = "button", attributes = { id = "phase_btn", onClick = "nextPhase", width = "200", height = "170", rectAlignment = "UpperCenter", color = "clear" } },
-      { tag = "button", attributes = { id = "phase_btn_encounter", active = "false", onClick = "encounterHudBtn", width = "200", height = "84", rectAlignment = "LowerCenter", color = "clear" } },
-      { tag = "button", attributes = { id = "phase_btn_myth", active = "false", onClick = "mythHudBtn", width = "200", height = "84", rectAlignment = "LowerCenter", color = "clear" } },
     },
   }
 end
