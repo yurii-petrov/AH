@@ -120,8 +120,44 @@ local COMPONENT_BAG_POSITIONS = {
   [BagType.RULEBOOKS]           = { -0.78, 0,  0.4  },
 }
 
+local function localizeBagNames()
+  local translatableBagIds = {
+    boxId,
+    doomBagId,
+    clueBagId,
+    cluePlayerBagId,
+    mythosBagId,
+    monsterMatBagId,
+    doubleSidedMatBagId,
+    investigatorMatBagId,
+    cardMatBagId,
+    rollerBagId,
+    figureBagId,
+    figure3dBagId,
+    figureBaseId,
+    itemMatBagId,
+    itemMatBag2Id,
+    codexMatBagId,
+    whiteTokenBagId,
+    blueTokenBagId,
+    redTokenBagId,
+    greenTokenBagId,
+    anomalyBagId,
+    terrorBagId,
+  }
+
+  for _, guid in ipairs(translatableBagIds) do
+    local o = getObjectFromGUID(guid)
+    if o then
+      o.setName(i18n.getStrById(o.getName()))
+    end
+  end
+end
+
 function prepareLanguageBag(bag)
   if not bag then return end
+
+  localizeBagNames()
 
   local objs = bag.getObjects()
 
