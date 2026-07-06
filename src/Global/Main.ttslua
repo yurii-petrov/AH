@@ -208,10 +208,13 @@ end
 end
 
 function mythMatMythClick(d)
-  onClickDrawMythos(nil, d.c)
+  if syncMythosCountForColor(d.c) then
+    onClickDrawMythos(nil, d.c)
+  end
 end
 
 function mythMatEncounterClick(d)
+  syncEncounterDoneForColor(d.c)
   onClickEncounter(nil, d.c)
 end
 

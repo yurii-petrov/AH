@@ -236,6 +236,14 @@ local function colorForSlot(slot)
   end
 end
 
+local function slotForColor(color)
+  for p = 1, MAX_INV do
+    if TABLE_DATA.players[p] and colorForSlot(p) == color then
+      return p
+    end
+  end
+end
+
 local function refreshLeaderState(slot)
   local mat = matForSlot(slot)
   if not mat then return end
@@ -663,6 +671,39 @@ function setInvestigatorPhase(phase)
   end
 end
 
+local function markEncounterDone(p)
+  INV_STATE.encounterDone[p] = true
+  gameData.encounterDone = gameData.encounterDone or {}
+  gameData.encounterDone[p] = true
+  self.UI.setAttribute("INV_encounter_" .. p, "active", false)
+end
+
+local function consumeMythosCount(p)
+  if INV_STATE.mythosActive ~= nil and INV_STATE.mythosActive ~= p then
+    local activeSlot = INV_STATE.mythosActive
+    local activeName = INV_STATE.nameBySlot[activeSlot] or defaultInvestigatorName(activeSlot)
+    broadcastToAll(string.format(i18n.getStrById("INV_mythos_blocked"), activeName, INV_STATE.mythosCount[activeSlot]), "Orange")
+    return false
+  end
+
+  local count = INV_STATE.mythosCount[p]
+  if count <= 0 then return false end
+  count = count - 1
+  INV_STATE.mythosCount[p] = count
+  if count == 0 then
+    INV_STATE.mythosActive = nil
+    self.UI.setAttribute("INV_mythos_" .. p, "active", false)
+  else
+    INV_STATE.mythosActive = p
+    self.UI.setAttribute("INV_mythos_" .. p, "text",      mythosCountText(count))
+    self.UI.setAttribute("INV_mythos_" .. p, "textColor", TEXT_COL)
+  end
+  gameData.mythosCount = gameData.mythosCount or {}
+  gameData.mythosCount[p] = INV_STATE.mythosCount[p]
+  gameData.mythosActive   = INV_STATE.mythosActive
+  return true
+end
+
 function investigatorEncounterClick(player, alt, id)
   local p = tonumber(id:match("INV_encounter_(%d+)"))
   if not p then return end
@@ -676,10 +717,7 @@ function investigatorEncounterClick(player, alt, id)
     return
   end
 
-  INV_STATE.encounterDone[p] = true
-  gameData.encounterDone = gameData.encounterDone or {}
-  gameData.encounterDone[p] = true
-  self.UI.setAttribute("INV_encounter_" .. p, "active", false)
+  markEncounterDone(p)
   onClickEncounter(nil, player.color)
 end
 
@@ -696,24 +734,19 @@ function investigatorMythosClick(player, alt, id)
     return
   end
 
-  if INV_STATE.mythosActive ~= nil and INV_STATE.mythosActive ~= p then return end
-
-  local count = INV_STATE.mythosCount[p]
-  if count <= 0 then return end
-  count = count - 1
-  INV_STATE.mythosCount[p] = count
-  if count == 0 then
-    INV_STATE.mythosActive = nil
-    self.UI.setAttribute("INV_mythos_" .. p, "active", false)
-  else
-    INV_STATE.mythosActive = p
-    self.UI.setAttribute("INV_mythos_" .. p, "text",      mythosCountText(count))
-    self.UI.setAttribute("INV_mythos_" .. p, "textColor", TEXT_COL)
-  end
-  gameData.mythosCount = gameData.mythosCount or {}
-  gameData.mythosCount[p] = INV_STATE.mythosCount[p]
-  gameData.mythosActive   = INV_STATE.mythosActive
+  if not consumeMythosCount(p) then return end
   onClickDrawMythos(nil, player.color)
+end
+
+function syncEncounterDoneForColor(color)
+  local p = slotForColor(color)
+  if p then markEncounterDone(p) end
+end
+
+function syncMythosCountForColor(color)
+  local p = slotForColor(color)
+  if not p then return true end
+  return consumeMythosCount(p)
 end
 
 --- Seat the clicking player at the color that owns this investigator row,

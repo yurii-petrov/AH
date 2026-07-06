@@ -494,6 +494,10 @@ I18N_DATA = {
     ["en"] = "myth: %s",
     ["uk"] = "міт: %s",
   },
+  ["INV_mythos_blocked"] = {
+    ["en"] = "%s is currently drawing mythos (%s left) — wait for them to finish.",
+    ["uk"] = "%s зараз тягне міт (лишилось %s) — зачекайте, поки він завершить.",
+  },
   ["INV_title_text"] = {
     ["en"] = "Investigators",
     ["uk"] = "Дослідники",

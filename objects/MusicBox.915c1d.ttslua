@@ -25,7 +25,6 @@ Timer.create({
 if string.match(self.script_state, "autostart") then
 
 local playlist = MusicPlayer.getPlaylist()
-print(playlist[1].url)
 
 MusicPlayer.setCurrentAudioclip({
     url = playlist[1].url,

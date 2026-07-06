@@ -1462,6 +1462,9 @@ msgstr "Зустріч"
 msgid "INV_mythos"
 msgstr "міт: %s"
 
+msgid "INV_mythos_blocked"
+msgstr "%s зараз тягне міт (лишилось %s) — зачекайте, поки він завершить."
+
 msgid "INV_apply_text"
 msgstr "Застосувати для всіх"
 

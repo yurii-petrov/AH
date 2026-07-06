@@ -1396,6 +1396,9 @@ msgstr "Encounter"
 msgid "INV_mythos"
 msgstr "myth: %s"
 
+msgid "INV_mythos_blocked"
+msgstr "%s is currently drawing mythos (%s left) — wait for them to finish."
+
 msgid "INV_apply_text"
 msgstr "Apply to all"
 
