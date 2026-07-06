@@ -54,15 +54,6 @@
         }
       }
     },
-    "0331252a469f119b0af11de5743248bd7ded2e8ab7d2e8f87c616b553f713b3f": {
-      "driveId": "1BIPMCOS4JOyr5Qg_Qqd_keDanlmD3jEA",
-      "paths": {
-        "assets/cards/1_dead_of_night/en/Investigators 1Front.png": {
-          "mtime": 1757588914.0,
-          "size": 30578243
-        }
-      }
-    },
     "03e391f2b5fe5fb330f7310211f0b63f983ede0ea6962898f4f13ccf30300ace": {
       "driveId": "13OAyE91o_-iNJ5YjZp7WDEhUNI0EQolS",
       "paths": {
@@ -771,15 +762,6 @@
         "assets/investigators/2_under_dark_waves/mini/patrice hathaway.jpg": {
           "mtime": 1782461665.0,
           "size": 3522
-        }
-      }
-    },
-    "29898b79f576ae1bfdd0a20a702d66f236a19a2af03b96cf98a9d9857d686a2e": {
-      "driveId": "1qAzhEy5-DpsvU87QmAo9uPueJ4fX75U_",
-      "paths": {
-        "assets/rules/uk/~syncthing~(1) Dead of Night.af.tmp": {
-          "mtime": 1783177743.009,
-          "size": 10886523
         }
       }
     },
@@ -1620,6 +1602,15 @@
         }
       }
     },
+    "4fbf8327b9354ae6193eea21b9cacd2c4989d42a2f7f09c784dfccbaa06d4c50": {
+      "driveId": "1Fm6RpgZrUDHfqfSlQ0QnGBN7KK6eep2p",
+      "paths": {
+        "assets/cards/1_dead_of_night/en/Investigators 1Front.png": {
+          "mtime": 1783324487.138,
+          "size": 30572282
+        }
+      }
+    },
     "51279fde7b23b7eaae1dd7ea4804e6ee5cfe2ed08bdd04e1b696516916fcc04e": {
       "driveId": "19QUetbsH7qL9S2yZokbKtCcxP3aLNjE5",
       "paths": {
@@ -1680,6 +1671,15 @@
         "assets/cards/0_base/uk/Encounter Part1 1Front.png": {
           "mtime": 1781359506.0,
           "size": 40831980
+        }
+      }
+    },
+    "5646692474f071c34d5d29577327efa870255348d5b3bfd95d02ec4e880a34d5": {
+      "driveId": "1eAIwPDUl79rk_1eEavy1ktuKs6-VI5OF",
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/en/Investigators 1Front.png": {
+          "mtime": 1783324741.499,
+          "size": 36899466
         }
       }
     },
@@ -1824,6 +1824,15 @@
         "assets/rules/en/(2) Under Dark Waves.pdf": {
           "mtime": 1783001203.272,
           "size": 4471461
+        }
+      }
+    },
+    "5f2372f285053a78f31f70249d70601f7cbb7710096c2d3a0bb0819e4ad10a0d": {
+      "driveId": "1jXPqWS5oT0tJsZK7ordUiYE9RWL2UuAQ",
+      "paths": {
+        "assets/cards/2_under_dark_waves/en/Investigators 1Front.png": {
+          "mtime": 1783324700.133,
+          "size": 53173478
         }
       }
     },
@@ -2250,15 +2259,6 @@
         }
       }
     },
-    "775be4dc44c9c7719203dd0bbc4972901dae2268bf5233be570799a3fdd70d01": {
-      "driveId": "10grwWWBe6B491nRHwp4xnSXtFsvOpIYs",
-      "paths": {
-        "assets/cards/2_under_dark_waves/en/Investigators 1Front.png": {
-          "mtime": 1759149407.0,
-          "size": 53194073
-        }
-      }
-    },
     "785071659681a14e92477824a9e2995ffad6b83eff005cffce7feba5fa123be9": {
       "driveId": "1k-AvK51jzcppnieqWZfdGgZ7ElEvDjlL",
       "paths": {
@@ -2346,6 +2346,15 @@
         "assets/other_graphics/scenario8.png": {
           "mtime": 1780479293.809,
           "size": 329090
+        }
+      }
+    },
+    "7af7509575f2ca76a81c3bb472acb1da4653a7e5d2006ff04b3bae9c39a12308": {
+      "driveId": "1MxdN4FR7DKWY4NwCo7QmotkhENPiwcFl",
+      "paths": {
+        "assets/cards/4_recursive_echoes/en/Investigators 1Front.png": {
+          "mtime": 1783324792.435,
+          "size": 32562572
         }
       }
     },
@@ -2868,15 +2877,6 @@
         "assets/cards/0_base/uk/Anomaly FR 1Front.png": {
           "mtime": 1756127486.0,
           "size": 20994127
-        }
-      }
-    },
-    "99b602b6d2056a12dc888ec7b0e78d4cd07770d4399aac7bea9e621d82cbcc6e": {
-      "driveId": "1wiMHWral3tFYmo6o7BG2LZ367jg1a0l6",
-      "paths": {
-        "assets/cards/4_recursive_echoes/en/Investigators 1Front.png": {
-          "mtime": 1757788478.0,
-          "size": 32568593
         }
       }
     },
@@ -4137,15 +4137,6 @@
         "assets/map_tiles/street_residental.jpg": {
           "mtime": 1752927875.0,
           "size": 170721
-        }
-      }
-    },
-    "dafce4dc2ede0c8bf95e772f5cf6b74ce989a7246ea8f85ce73a704a08ea87bd": {
-      "driveId": "1o9ZUopkEX6HyhX8TSpXmc45RoBwf56Nx",
-      "paths": {
-        "assets/cards/3_secrets_of_the_order/en/Investigators 1Front.png": {
-          "mtime": 1780063660.0,
-          "size": 37021909
         }
       }
     },
