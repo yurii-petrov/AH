@@ -1,0 +1,45 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.54007,
+    "g": 0.54007,
+    "r": 0.54007
+  },
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "915c1d",
+  "Grid": false,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": false,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": true,
+  "LuaScriptState": "onesongautostart",
+  "LuaScript_path": "MusicBox.915c1d.ttslua",
+  "MeasureMovement": false,
+  "Name": "BlockSquare",
+  "Nickname": "Music Box",
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": -53.565,
+    "posY": 2.022,
+    "posZ": -33.275,
+    "rotX": 0,
+    "rotY": 0,
+    "rotZ": 0,
+    "scaleX": 4.69,
+    "scaleY": 0.04,
+    "scaleZ": 3.02
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

@@ -1,0 +1,244 @@
+function onLoad()
+if string.match(self.script_state, "onesong") then
+goonbutton = "onesong"
+else
+goonbutton = "allsongs"
+end
+
+if string.match(self.script_state, "autostart") then
+autobutton = "play at load"
+else
+autobutton = "stop at load"
+end
+
+pausedas = 0
+current_clip = MusicPlayer.playlistIndex
+
+timerID = self.getGUID()..math.random(9999999999999)
+
+Timer.create({
+        identifier=timerID,
+        function_name="countCards", function_owner=self,
+        repetitions=0, delay=0.1
+    })
+
+if string.match(self.script_state, "autostart") then
+
+local playlist = MusicPlayer.getPlaylist()
+print(playlist[1].url)
+
+MusicPlayer.setCurrentAudioclip({
+    url = playlist[1].url,
+    title = playlist[1].title
+})
+
+
+MusicPlayer.play()
+end
+
+  self.createButton({
+    click_function = 'play_track',
+    function_owner = self,
+    label          = '>',
+    position       = {0.07,0.6,-0.18},
+    rotation       = {0,180,0},
+    width          = 800,
+    height         = 1000,
+    tooltip        = '',
+    font_color={0,0,0},
+    font_size=500,
+    scale          = {0.13,0.13,0.13},
+  })
+self.createButton({
+    click_function = 'pause_track',
+    function_owner = self,
+    label          = '||',
+    position       = {-0.13,0.6,-0.18},
+    rotation       = {0,180,0},
+    width          = 500,
+    height         = 1000,
+    tooltip        = '',
+    scale          = {0.13,0.13,0.13},
+    font_color={0,0,0},
+    font_size=500
+  })
+  self.createButton({
+    click_function = 'next_track',
+    function_owner = self,
+    label          = '-->',
+    position       = {-0.34,0.6,-0.18},
+    rotation       = {0,180,0},
+    width          = 1000,
+    height         = 1000,
+    tooltip        = '',
+    scale          = {0.13,0.13,0.13},
+    font_color={0,0,0},
+    font_size=500
+  })
+  self.createButton({
+    click_function = 'previous_track',
+    function_owner = self,
+    label          = '<--',
+    position       = {0.34,0.6,-0.18},
+    rotation       = {0,180,0},
+    width          = 1000,
+    height         = 1000,
+    tooltip        = '',
+    scale          = {0.13,0.13,0.13},
+    font_color={0,0,0},
+    font_size=500
+  })
+
+ 
+  self.createButton({
+    click_function = 'none',
+    function_owner = self,
+    position       = {0,0.6,0.22},
+    rotation       = {0,180,0},
+    width          = 0,
+    height         = 0,
+    tooltip        = '',
+    scale          = {0.13,0.13,0.13},
+    font_color={0,0,0},
+    font_size=500
+  })
+ self.createButton({
+    click_function = 'keine_funktion',
+    function_owner = self,
+    position       = {0,0.7,0.22},
+    rotation       = {0,180,0},
+    width          = 3500,
+    height         = 1700,
+    tooltip        = '',
+    scale          = {0.13,0.13,0.13},
+    font_color={0,0,0},
+    font_size=500
+  })
+
+  self.createButton({
+    click_function = 'onlyonesong',
+    function_owner = self,
+    label          = goonbutton,
+    position       = {0.24,0.6,-0.4},
+    rotation       = {0,180,0},
+    width          = 1700,
+    height         = 400,
+    tooltip        = '',
+    scale          = {0.13,0.13,0.13},
+    font_color={0,0,0},
+    font_size=300
+  })
+
+  self.createButton({
+    click_function = 'autostart',
+    function_owner = self,
+    label          = autobutton,
+    position       = {-0.24,0.6,-0.4},
+    rotation       = {0,180,0},
+    width          = 1700,
+    height         = 400,
+    tooltip        = '',
+    scale          = {0.13,0.13,0.13},
+    font_color={0,0,0},
+    font_size=300
+  })
+
+
+end
+
+
+function onlyonesong()
+current_clip = MusicPlayer.playlist_index
+if string.match(self.script_state, "onesong") then
+if string.match(self.script_state, "autostart") then
+self.script_state = "allsongsautostart"
+self.editButton({index=6, label="allsongs"})
+else
+self.script_state = "allsongs"
+self.editButton({index=6, label="allsongs"})
+end
+else
+if string.match(self.script_state, "autostart") then
+self.script_state = "onesongautostart"
+self.editButton({index=6, label="onesong"})
+else
+self.script_state = "onesong"
+self.editButton({index=6, label="onesong"})
+end
+end
+end
+
+
+
+function autostart()
+if string.match(self.script_state, "onesong") then
+if string.match(self.script_state, "autostart") then
+self.script_state = "onesong"
+self.editButton({index=7, label="stop at load"})
+else
+self.script_state = "onesongautostart"
+self.editButton({index=7, label="play at load"})
+end
+else
+if string.match(self.script_state, "autostart") then
+self.script_state = "allsongs"
+self.editButton({index=7, label="stop at load"})
+else
+self.script_state = "allsongsautostart"
+self.editButton({index=7, label="play at load"})
+end
+end
+end
+
+
+function keine_funktion()
+end
+function play_track()
+pausedas = 0
+current_clip = MusicPlayer.playlist_index
+   MusicPlayer.play()
+
+end
+
+function next_track()
+  MusicPlayer.skipForward()
+current_clip = MusicPlayer.playlist_index
+pausedas = 1
+
+end
+
+function previous_track()
+current_clip = MusicPlayer.playlist_index
+pausedas = 1
+  if current_clip > 0 then
+    MusicPlayer.skipBack()
+    current_clip = MusicPlayer.playlist_index
+  else
+    MusicPlayer.pause()
+  end
+end
+
+
+function pause_track()
+MusicPlayer.pause()
+end
+
+function countCards()
+audio_check = MusicPlayer.playlist_index
+if pausedas == 1 then
+    MusicPlayer.pause()
+end
+if current_clip ~= audio_check  and string.match(self.script_state, "onesong") then
+    MusicPlayer.pause()
+  end
+local clip = MusicPlayer.getCurrentAudioclip()
+
+if string.len(clip.title) > 13 then
+shortenclip = string.sub(clip.title, 1, 10) .. ".."
+else
+shortenclip = clip.title
+end
+
+ self.editButton({index=4, label=MusicPlayer.playlistIndex .. ". " .. shortenclip})
+
+end
