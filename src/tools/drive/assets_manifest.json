@@ -1314,6 +1314,15 @@
         }
       }
     },
+    "44170221a32d9953e8cafc5fc084dae4a0b7d732137292960deee1ffea40ca0e": {
+      "driveId": "1fTQTON79Onz2CFWzmWXE2VSPdPpGr3wc",
+      "paths": {
+        "assets/other_graphics/black.png": {
+          "mtime": 1783196345.906,
+          "size": 6298
+        }
+      }
+    },
     "445d7b5333682aaafbc47c9b4a3d453e8eb00dd6cd5cf40a5c3b7d95d9c86a52": {
       "driveId": "1ZbNDECXuadkjCVN4f0u3KLsvt5L1XJdd",
       "paths": {
@@ -1603,7 +1612,7 @@
       }
     },
     "4fbf8327b9354ae6193eea21b9cacd2c4989d42a2f7f09c784dfccbaa06d4c50": {
-      "driveId": "1Fm6RpgZrUDHfqfSlQ0QnGBN7KK6eep2p",
+      "driveId": "10z0rxgSqn3DEHRCZlJYsGxh1Qcccc3Vh",
       "paths": {
         "assets/cards/1_dead_of_night/en/Investigators 1Front.png": {
           "mtime": 1783324487.138,
@@ -1675,7 +1684,7 @@
       }
     },
     "5646692474f071c34d5d29577327efa870255348d5b3bfd95d02ec4e880a34d5": {
-      "driveId": "1eAIwPDUl79rk_1eEavy1ktuKs6-VI5OF",
+      "driveId": "1yv8nBHuORqPn0w_oIz84J9EfBNmwBT-7",
       "paths": {
         "assets/cards/3_secrets_of_the_order/en/Investigators 1Front.png": {
           "mtime": 1783324741.499,
@@ -1828,7 +1837,7 @@
       }
     },
     "5f2372f285053a78f31f70249d70601f7cbb7710096c2d3a0bb0819e4ad10a0d": {
-      "driveId": "1jXPqWS5oT0tJsZK7ordUiYE9RWL2UuAQ",
+      "driveId": "1VNlzMVh0vNwrl1pHzMO_EWDS_jY-YXeQ",
       "paths": {
         "assets/cards/2_under_dark_waves/en/Investigators 1Front.png": {
           "mtime": 1783324700.133,
@@ -2350,7 +2359,7 @@
       }
     },
     "7af7509575f2ca76a81c3bb472acb1da4653a7e5d2006ff04b3bae9c39a12308": {
-      "driveId": "1MxdN4FR7DKWY4NwCo7QmotkhENPiwcFl",
+      "driveId": "1JYt-jE2G12NrWlU8hUeObVmCGHmLQ8OP",
       "paths": {
         "assets/cards/4_recursive_echoes/en/Investigators 1Front.png": {
           "mtime": 1783324792.435,
