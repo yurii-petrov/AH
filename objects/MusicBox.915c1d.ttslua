@@ -45,7 +45,10 @@ end
     width          = 800,
     height         = 1000,
     tooltip        = '',
-    font_color={0,0,0},
+    color          = {0,0,0},
+    hover_color    = {0.3,0.3,0.3},
+    press_color    = {0,0,0},
+    font_color     = {1,1,1},
     font_size=500,
     scale          = {0.13,0.13,0.13},
   })
@@ -59,7 +62,10 @@ self.createButton({
     height         = 1000,
     tooltip        = '',
     scale          = {0.13,0.13,0.13},
-    font_color={0,0,0},
+    color          = {0,0,0},
+    hover_color    = {0.3,0.3,0.3},
+    press_color    = {0,0,0},
+    font_color     = {1,1,1},
     font_size=500
   })
   self.createButton({
@@ -72,7 +78,10 @@ self.createButton({
     height         = 1000,
     tooltip        = '',
     scale          = {0.13,0.13,0.13},
-    font_color={0,0,0},
+    color          = {0,0,0},
+    hover_color    = {0.3,0.3,0.3},
+    press_color    = {0,0,0},
+    font_color     = {1,1,1},
     font_size=500
   })
   self.createButton({
@@ -85,7 +94,10 @@ self.createButton({
     height         = 1000,
     tooltip        = '',
     scale          = {0.13,0.13,0.13},
-    font_color={0,0,0},
+    color          = {0,0,0},
+    hover_color    = {0.3,0.3,0.3},
+    press_color    = {0,0,0},
+    font_color     = {1,1,1},
     font_size=500
   })
 
@@ -99,7 +111,7 @@ self.createButton({
     height         = 0,
     tooltip        = '',
     scale          = {0.13,0.13,0.13},
-    font_color={0,0,0},
+    font_color={1,1,1},
     font_size=500
   })
  self.createButton({
@@ -125,7 +137,10 @@ self.createButton({
     height         = 400,
     tooltip        = '',
     scale          = {0.13,0.13,0.13},
-    font_color={0,0,0},
+    color          = {0,0,0},
+    hover_color    = {0.3,0.3,0.3},
+    press_color    = {0,0,0},
+    font_color     = {1,1,1},
     font_size=300
   })
 
@@ -139,7 +154,10 @@ self.createButton({
     height         = 400,
     tooltip        = '',
     scale          = {0.13,0.13,0.13},
-    font_color={0,0,0},
+    color          = {0,0,0},
+    hover_color    = {0.3,0.3,0.3},
+    press_color    = {0,0,0},
+    font_color     = {1,1,1},
     font_size=300
   })
 

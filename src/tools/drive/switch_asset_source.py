@@ -240,6 +240,8 @@ def main():
     if missing:
         print()
         print(f"No '{SOURCE}' link available (skipped): {len(missing)}")
+        for rel_path, key, _ in sorted(missing):
+            print(f"  {rel_path} [{key}]")
 
     if unresolved:
         print()
