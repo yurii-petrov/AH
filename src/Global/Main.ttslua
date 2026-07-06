@@ -202,7 +202,6 @@ end
 
   local mythosBag = MYTHOS_TILE_DATA.bag.obj
   if mythosBag then
-    mythosBag.setName("Чаша міту")
     mythosBag.addContextMenuItem("Fix button", fixDrawMythosButton)
   end
 
