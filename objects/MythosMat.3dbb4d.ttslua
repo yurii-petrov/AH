@@ -147,7 +147,7 @@ function setButtons(d)
   end
   self.UI.setAttribute("success", "visibility", eventVisibility)
   self.UI.setAttribute("fail",    "visibility", eventVisibility)
-  self.UI.setAttribute("discard", "visibility", "")
+  self.UI.setAttribute("discard", "visibility", eventVisibility)
 
   if d.type == "event" then
     self.UI.setAttribute("success", "active", true)
