@@ -270,7 +270,8 @@ function onInvestigatorDrop(colorName, object, objectData, isIgnoreRandomCard)
   gameData.selectedInvestigators[objectData.name] = objectData
   investigatorMat.call("setMemo", objectData)
   local translatedName = i18n.getStrById(objectData.name:gsub(" ", "_"))
-  setInvestigatorName(translatedName, investigatorMat, objectData.name:gsub(" ", "_") .. "_portrait")
+  local baseKey = objectData.name:gsub(" ", "_"):gsub("_alt$", "")
+  setInvestigatorName(translatedName, investigatorMat, baseKey)
   -- investigatorMat.setName(translatedName)
 
   local tintColor = colorName

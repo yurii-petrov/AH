@@ -70,6 +70,7 @@ INV_STATE = {
   isLeaderAction = {},
   slotByName     = {},
   nameBySlot     = {},
+  baseKeyBySlot  = {},
   phase          = 1,
   encounterDone  = {},
   mythosCount    = {},
@@ -132,9 +133,47 @@ local function utf8Length(s)
   return len
 end
 
+-- MoonSharp's %S pattern class misclassifies multi-byte UTF-8 (Cyrillic)
+-- sequences, so string.match("^(%S+)") returns nil on non-ASCII names.
+-- Find plain space bytes instead, which works regardless of encoding.
+local function firstWord(name)
+  local spacePos = name:find(" ", 1, true)
+  if spacePos then
+    return name:sub(1, spacePos - 1)
+  end
+  return name
+end
+
+local function lastWord(name)
+  local lastSpace = nil
+  local searchFrom = 1
+  while true do
+    local pos = name:find(" ", searchFrom, true)
+    if not pos then break end
+    lastSpace = pos
+    searchFrom = pos + 1
+  end
+  return lastSpace and name:sub(lastSpace + 1) or name
+end
+
+-- Investigators whose localized name leads with a title/prefix (e.g. "Father
+-- Mateo", "Отець Матео") rather than a given name, so the compact HUD label
+-- should use the last word instead of the first. Keyed by the base name key
+-- (spaces -> underscores, no "_alt" suffix), same as the portrait image key.
+local LAST_WORD_NAMES = {
+  Father_Mateo = true,
+}
+
+local function shortDisplayName(name, baseKey)
+  if baseKey and LAST_WORD_NAMES[baseKey] then
+    return lastWord(name)
+  end
+  return firstWord(name)
+end
+
 local function displayedNameForSlot(slot)
   local full = INV_STATE.nameBySlot[slot]
-  if full then return full:match("^(%S+)") or full end
+  if full then return shortDisplayName(full, INV_STATE.baseKeyBySlot[slot]) end
   return defaultInvestigatorName(slot)
 end
 
@@ -807,7 +846,7 @@ end
 --- investigator's action dots.
 ---@param name string localized investigator name to display
 ---@param mat? tts__Object the investigator mat the card was dropped on
----@param portraitKey? string CustomUIAssets image name for the investigator portrait
+---@param baseKey? string investigator base name key (spaces -> "_", no "_alt"); used for the portrait image and the short-name exception table
 function getInvestigatorMatByColor(color)
   for slot = 1, MAX_INV do
     if TABLE_DATA.players[slot] then
@@ -823,7 +862,7 @@ function getInvestigatorMatByColor(color)
   end
 end
 
-function setInvestigatorName(name, mat, portraitKey)
+function setInvestigatorName(name, mat, baseKey)
   if not name or name == "" then return end
 
   local slot = INV_STATE.slotByName[name]
@@ -846,11 +885,12 @@ function setInvestigatorName(name, mat, portraitKey)
 
   INV_STATE.slotByName[name] = slot
   INV_STATE.nameBySlot[slot] = name
+  INV_STATE.baseKeyBySlot[slot] = baseKey
 
   refreshLeaderState(slot)
-  self.UI.setAttribute("INV_name_" .. slot .. "_text", "text", name:match("^(%S+)") or name)
-  if portraitKey then
-    self.UI.setAttribute("INV_avatar_" .. slot, "image", portraitKey)
+  self.UI.setAttribute("INV_name_" .. slot .. "_text", "text", shortDisplayName(name, baseKey))
+  if baseKey then
+    self.UI.setAttribute("INV_avatar_" .. slot, "image", baseKey .. "_portrait")
   end
   refreshPanelWidth()
 end
@@ -870,6 +910,7 @@ function clearInvestigatorSlot(mat)
   local name = INV_STATE.nameBySlot[slot]
   if name then INV_STATE.slotByName[name] = nil end
   INV_STATE.nameBySlot[slot]     = nil
+  INV_STATE.baseKeyBySlot[slot]  = nil
   INV_STATE.isLeaderAction[slot] = {}
   for a = 1, ACTIONS_PER_INV do
     INV_STATE.actions[slot][a]        = false
@@ -1016,6 +1057,7 @@ function setInvestigatorCount(n)
   -- fresh game: drop name / color / leader assignments back to placeholders
   INV_STATE.slotByName     = {}
   INV_STATE.nameBySlot     = {}
+  INV_STATE.baseKeyBySlot  = {}
   INV_STATE.isLeaderAction = {}
   for p = 1, MAX_INV do
     INV_STATE.isLeaderAction[p] = {}

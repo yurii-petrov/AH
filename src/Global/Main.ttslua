@@ -89,7 +89,7 @@ local function restoreActiveGameUI()
       local invKey = data.name:gsub(" ", "_")
       local displayName = i18n.getStrById(invKey)
       INV_STATE.slotByName[displayName] = slotNum
-      setInvestigatorName(displayName, mat, invKey .. "_portrait")
+      setInvestigatorName(displayName, mat, invKey:gsub("_alt$", ""))
     end
   end
   restorePhaseHud(gameData.phase)
