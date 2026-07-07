@@ -1,15 +1,3 @@
--- ╭──────────────────────────────────────────────╮
--- │         STEP: removeMythosToken              │
--- ╰──────────────────────────────────────────────╯
---
--- Removes one mythos token of step.token.type from the game. Searches the
--- mythos tile first (priority), then falls back to the mythos cup. The
--- removed token is returned to its type's source bag (mythosTokenBagIds).
--- Generalizes removeBlankMythosToken to an arbitrary token type.
---
--- Example step JSON:
---   { "type": "removeMythosToken", "token": { "type": "Spawn Monster" } }
-
 function processStepRemoveMythosToken(step, context, onDone)
   local tokenType = step.token and step.token.type
   if not tokenType then
@@ -29,36 +17,25 @@ function processStepRemoveMythosToken(step, context, onDone)
     end
   end
 
-  -- 1. Search mythos tile area for a drawn token of this type
-  local mythosTile = MYTHOS_TILE_DATA and MYTHOS_TILE_DATA.obj
-  if mythosTile then
-    local tilePos = mythosTile.getPosition()
-    for _, obj in ipairs(findObjsInRadius(tilePos, 8)) do
-      if obj.type == "Tile" and obj.memo == tokenType then
-        returnToken(obj)
+  local cup = getObjectFromGUID(mythosBagId)
+  if cup then
+    for _, entry in ipairs(cup.getObjects()) do
+      if entry.memo == tokenType then
+        local token = cup.takeObject({ guid = entry.guid, smooth = false })
+        if token then returnToken(token) end
         if onDone then onDone() end
         return
       end
     end
   end
 
-  -- 2. Fall back: remove from the mythos cup directly
-  local cup = getObjectFromGUID(mythosBagId)
-  if not cup then
-    log("[removeMythosToken] mythos cup not found")
+  local token = findMythosTokenOnMat(tokenType)
+  if token then
+    returnToken(token)
     if onDone then onDone() end
     return
   end
 
-  for _, entry in ipairs(cup.getObjects()) do
-    if entry.memo == tokenType then
-      local token = cup.takeObject({ guid = entry.guid, smooth = false })
-      if token then returnToken(token) end
-      if onDone then onDone() end
-      return
-    end
-  end
-
-  log("[removeMythosToken] token not found in tile or cup: " .. tostring(tokenType))
+  log("[removeMythosToken] token not found in cup or mat: " .. tostring(tokenType))
   if onDone then onDone() end
 end

@@ -1,14 +1,3 @@
--- ╭──────────────────────────────────────────────╮
--- │    STEP: Return Research Deck To Archive     │
--- ╰──────────────────────────────────────────────╯
---
--- Cleans up whatever remains at the locationMat's codexDeck snap position
--- (the pile set aside earlier via setAsideToCodexDeck) by returning it
--- face-down into the archive. No-op if the pile is already empty.
---
--- Example step JSON:
---   { "type": "returnResearchDeckToArchive" }
-
 function processStepReturnResearchDeckToArchive(step, context, onDone)
   local locationMat = findBoardByQuery({{
     field = "type",
@@ -39,15 +28,17 @@ function processStepReturnResearchDeckToArchive(step, context, onDone)
     tonumber(boardData.codexDeck[1]),
     tonumber(boardData.codexDeck[2]),
     tonumber(boardData.codexDeck[3])
-  }):setAt("y", 3)
+  }):setAt("y", locationMat.getPosition().y)
 
-  for _, obj in ipairs(findObjsInRadius(codexDeckPos)) do
+  for _, obj in ipairs(upCast_pos(codexDeckPos, 4)) do
     if obj.type == "Deck" then
       archive.putObject(obj)
     elseif obj.type == "Card" then
       local cardData = parseJson(obj.memo)
       obj.setRotation(orient(cardData))
       archive.putObject(obj)
+    elseif obj.type == "Tile" and obj.memo == "White Marker" then
+      returnTokenToBag(obj, "White Marker")
     end
   end
 

@@ -58,6 +58,31 @@ function getEventDiscardWorldPos(mythosTile)
   return mt.positionToWorld(MYTHOS_TILE_DATA.eventDiscard):setAt("y", 3)
 end
 
+function findMythosTokenOnMat(tokenType)
+  local mythosTile = MYTHOS_TILE_DATA.obj
+  if not mythosTile then return nil end
+
+  local function castZone(pos, size)
+    local hits = Physics.cast({
+      origin = pos, direction = {0, 1, 0},
+      type = 3, size = size, max_distance = 0, debug = isTestMode
+    })
+    for _, v in pairs(hits) do
+      if v.hit_object and v.hit_object.memo == tokenType then
+        return v.hit_object
+      end
+    end
+    return nil
+  end
+
+  local yUnderMythosMat = mythosTile.getPosition().y + mythosTile.getBounds().size.y
+  local discardTokenPositions = mythosTile.positionToWorld({-0.001, 0.1, -0.462})
+
+  return castZone(mythosTile.positionToWorld({0.012, 0.1, 0.649}):setAt("y", 2.7), {1, 1, 1})
+      or castZone(mythosTile.positionToWorld({0.012, 0.1, 0.792}):setAt("y", 2.7), {1, 1, 1})
+      or castZone(discardTokenPositions:setAt("y", yUnderMythosMat), {10, 2.5, 14})
+end
+
 -- ╭──────────────────────────────────────────────╮
 -- │              TILE ACTIONS                    │
 -- ╰──────────────────────────────────────────────╯
