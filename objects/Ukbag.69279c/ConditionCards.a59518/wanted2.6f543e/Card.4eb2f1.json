@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"type\":\"wanted\"}",
+  "Memo": "{\"type\":\"wanted\",\"reversed\":true,\"attachSkillMat\":true,\"skillMatMode\":2}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,

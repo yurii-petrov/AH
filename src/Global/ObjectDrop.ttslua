@@ -155,6 +155,20 @@ function attachItemToSkillMat(object, objectData, targetPos, bagId)
   return skillMat
 end
 
+function onWantedCardFlipped(object)
+  if object.getLock() then return end
+
+  local objectData = parseJson(object.memo)
+  if not objectData or not objectData.attachSkillMat then return end
+
+  local isFaceDown = object.is_face_down
+  if objectData.reversed then isFaceDown = not isFaceDown end
+  if isFaceDown then return end
+
+  local targetPos = object.getPosition():setAt("y", 2.21)
+  attachItemToSkillMat(object, objectData, targetPos, skillMatBagId)
+end
+
 function onItemDrop(colorName, object, objectData)
 
   local function attachItemToMat(object, objectData, bagId)
@@ -242,8 +256,17 @@ function onObjectRotate(object, spin, flip, player_color, old_spin, old_flip)
   end
 
   local objectData = parseJson(object.memo)
-  if not objectData or objectData.type ~= "blessed cursed" then return end
-  runOnceAfterRest(object, function(object) applyBlessedCursedToRoller(object) end)
+  if not objectData then return end
+
+  if objectData.type == "blessed cursed" then
+    runOnceAfterRest(object, function(object) applyBlessedCursedToRoller(object) end)
+    return
+  end
+
+  if objectData.attachSkillMat then
+    runOnceAfterRest(object, function(object) onWantedCardFlipped(object) end)
+    return
+  end
 end
 
 local function playFigureIdleTriggerEffect(figure)

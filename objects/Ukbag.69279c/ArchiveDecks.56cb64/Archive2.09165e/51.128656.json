@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"number\": 51, \"type\": \"codex\", \"back\": {\"actions\": [{\"title\": \"Порожній жетон\", \"removeAfterUse\": true, \"steps\": [{\"type\": \"addMythosToken\", \"token\": {\"type\": \"Blank\"}}]}, {\"title\": \"Додати карту 50\", \"removeAfterUse\": true, \"steps\": [{\"type\": \"takeCodexFromArchive\", \"number\": 50}]}]}}",
+  "Memo": "{\"number\":51,\"type\":\"codex\",\"back\":{\"actions\":[{\"title\":\"Порожній жетон\",\"removeAfterUse\":true,\"steps\":[{\"type\":\"addMythosToken\",\"token\":{\"type\":\"Blank\"}}]},{\"title\":\"Додати карту 50\",\"removeAfterUse\":true,\"steps\":[{\"type\":\"takeCodexFromArchive\",\"number\":50}]}]}}",
   "Name": "Card",
   "Nickname": "51",
   "SidewaysCard": false,
