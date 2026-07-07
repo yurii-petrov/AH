@@ -1,6 +1,7 @@
 serpent = require("util/serpent")
 local i18n = require("Global/i18nApi")
 local isTestMode = false
+local FOCUS_MAX = 2
 
 local data = {
       hp = 0,
@@ -518,90 +519,117 @@ function setMemo(objectMemo)
 end
 
 function clickLore(player, alt_click)
-  data.focus.lore = alt_click == "-1" and data.focus.lore+1 or (data.focus.lore > 0 and data.focus.lore-1 or 0)
+  local oldFocus = data.focus.lore
+  data.focus.lore = alt_click == "-1" and (data.focus.lore < FOCUS_MAX and data.focus.lore+1 or data.focus.lore) or (data.focus.lore > 0 and data.focus.lore-1 or 0)
     self.UI.setAttribute("clickLore", "text", data.skill.lore+data.focus.lore)
     self.UI.setAttribute("clickLore", "textColor", data.focus.lore > 0 and "#fff5e2" or "#a29c90")
 
     self.UI.setAttribute("focusLoreText", "text","+"..data.focus.lore)
     self.UI.setAttribute("focusLoreText", "textColor", "#382c52")
     self.UI.setAttribute("focusLore", "active", data.focus.lore > 0)
-    broadcastStat("IM_lore", "Lore", data.skill.lore+data.focus.lore)
+    if data.focus.lore ~= oldFocus then
+      broadcastStat("IM_lore", "Lore", data.skill.lore+data.focus.lore)
+    end
 end
 
 function clickInfluence(player, alt_click)
-    data.focus.influence = alt_click == "-1" and data.focus.influence+1 or (data.focus.influence > 0 and data.focus.influence-1 or 0)
+    local oldFocus = data.focus.influence
+    data.focus.influence = alt_click == "-1" and (data.focus.influence < FOCUS_MAX and data.focus.influence+1 or data.focus.influence) or (data.focus.influence > 0 and data.focus.influence-1 or 0)
     self.UI.setAttribute("clickInfluence", "text", data.skill.influence+data.focus.influence)
     self.UI.setAttribute("clickInfluence", "textColor", data.focus.influence > 0 and "#fff5e2" or "#a29c90")
 
     self.UI.setAttribute("focusInfluenceText", "text","+"..data.focus.influence)
     self.UI.setAttribute("focusLoreText", "textColor", "#62280f")
     self.UI.setAttribute("focusInfluence", "active", data.focus.influence > 0)
-    broadcastStat("IM_influence", "Influence", data.skill.influence+data.focus.influence)
+    if data.focus.influence ~= oldFocus then
+      broadcastStat("IM_influence", "Influence", data.skill.influence+data.focus.influence)
+    end
 end
 
 function clickObservation(player, alt_click)
-    data.focus.observation = alt_click == "-1" and data.focus.observation+1 or (data.focus.observation > 0 and data.focus.observation-1 or 0)
+    local oldFocus = data.focus.observation
+    data.focus.observation = alt_click == "-1" and (data.focus.observation < FOCUS_MAX and data.focus.observation+1 or data.focus.observation) or (data.focus.observation > 0 and data.focus.observation-1 or 0)
     self.UI.setAttribute("clickObservation", "text", data.skill.observation+data.focus.observation)
     self.UI.setAttribute("clickObservation", "textColor", data.focus.observation > 0 and "#fff5e2" or "#a29c90")
 
     self.UI.setAttribute("focusObservationText", "text","+"..data.focus.observation)
     self.UI.setAttribute("focusLoreText", "textColor", "#233c14")
     self.UI.setAttribute("focusObservation", "active", data.focus.observation > 0)
-    broadcastStat("IM_observation", "Observation", data.skill.observation+data.focus.observation)
+    if data.focus.observation ~= oldFocus then
+      broadcastStat("IM_observation", "Observation", data.skill.observation+data.focus.observation)
+    end
 end
 
 function clickStrength(player, alt_click)
-    data.focus.strength = alt_click == "-1" and data.focus.strength+1 or (data.focus.strength > 0 and data.focus.strength-1 or 0)
+    local oldFocus = data.focus.strength
+    data.focus.strength = alt_click == "-1" and (data.focus.strength < FOCUS_MAX and data.focus.strength+1 or data.focus.strength) or (data.focus.strength > 0 and data.focus.strength-1 or 0)
     self.UI.setAttribute("clickStrength", "text", data.skill.strength+data.focus.strength)
     self.UI.setAttribute("clickStrength", "textColor", data.focus.strength > 0 and "#fff5e2" or "#a29c90")
 
     self.UI.setAttribute("focusStrengthText", "text","+"..data.focus.strength)
     self.UI.setAttribute("focusLoreText", "textColor", "#582410")
     self.UI.setAttribute("focusStrength", "active", data.focus.strength > 0)
-    broadcastStat("IM_strength", "Strength", data.skill.strength+data.focus.strength)
+    if data.focus.strength ~= oldFocus then
+      broadcastStat("IM_strength", "Strength", data.skill.strength+data.focus.strength)
+    end
 end
 
 function clickWill(player, alt_click)
-    data.focus.will = alt_click == "-1" and data.focus.will+1 or (data.focus.will > 0 and data.focus.will-1 or 0)
+    local oldFocus = data.focus.will
+    data.focus.will = alt_click == "-1" and (data.focus.will < FOCUS_MAX and data.focus.will+1 or data.focus.will) or (data.focus.will > 0 and data.focus.will-1 or 0)
     self.UI.setAttribute("clickWill", "text", data.skill.will+data.focus.will)
     self.UI.setAttribute("clickWill", "textColor", data.focus.will > 0 and "#fff5e2" or "#a29c90")
 
     self.UI.setAttribute("focusWillText", "text","+"..data.focus.will)
     self.UI.setAttribute("focusLoreText", "textColor", "#333c4f")
     self.UI.setAttribute("focusWill", "active", data.focus.will > 0)
-    broadcastStat("IM_will", "Will", data.skill.will+data.focus.will)
+    if data.focus.will ~= oldFocus then
+      broadcastStat("IM_will", "Will", data.skill.will+data.focus.will)
+    end
 end
 
 function clickHP(player, alt_click)
+    local oldHp = data.hp
     data.hp = alt_click == "-1" and (data.hp < data.hpMax and data.hp+1 or data.hp) or (data.hp > 0 and data.hp-1 or 0)
 
     self.UI.setAttribute("clickHP", "text", data.hp)
     self.UI.setAttribute("clickHP", "textColor", data.hp > 0 and "#fff5e2" or "#a29c90")
-    broadcastStat("IM_damage", "HP", data.hp)
+    if data.hp ~= oldHp then
+      broadcastStat("IM_damage", "HP", data.hp)
+    end
 end
 
 function clickSanity(player, alt_click)
+    local oldSanity = data.sanity
     data.sanity = alt_click == "-1" and (data.sanity < data.sanityMax and data.sanity+1 or data.sanity) or (data.sanity > 0 and data.sanity-1 or 0)
 
     self.UI.setAttribute("clickSanity", "text", data.sanity)
     self.UI.setAttribute("clickSanity", "textColor", data.sanity > 0 and "#fff5e2" or "#a29c90")
-    broadcastStat("IM_horror", "Sanity", data.sanity)
+    if data.sanity ~= oldSanity then
+      broadcastStat("IM_horror", "Sanity", data.sanity)
+    end
 end
 
 function clickMoney(player, alt_click)
+    local oldMoney = data.money
     data.money = alt_click == "-1" and data.money+1 or (data.money>0 and data.money-1 or data.money)
 
     self.UI.setAttribute("clickMoney", "text", data.money)
     self.UI.setAttribute("clickMoney", "textColor", data.money > 0 and "#fff5e2" or "#a29c90")
-    broadcastStat("IM_money", "Money", data.money)
+    if data.money ~= oldMoney then
+      broadcastStat("IM_money", "Money", data.money)
+    end
 end
 
 function clickRemnant(player, alt_click)
+    local oldRemnant = data.remnant
     data.remnant = alt_click == "-1" and data.remnant+1 or (data.remnant>0 and data.remnant-1 or data.remnant)
 
     self.UI.setAttribute("clickRemnant", "text", data.remnant)
     self.UI.setAttribute("clickRemnant", "textColor", data.remnant > 0 and "#fff5e2" or "#a29c90")
-    broadcastStat("IM_remnant", "Remnant", data.remnant)
+    if data.remnant ~= oldRemnant then
+      broadcastStat("IM_remnant", "Remnant", data.remnant)
+    end
 end
 
 function addRemnant()
