@@ -1,0 +1,63 @@
+function processStepTakeItemFromArchive(step, context, onDone)
+  if not step.number then
+    log("[takeItemFromArchive] number is nil")
+    if onDone then onDone() end
+    return
+  end
+
+  local locationMat = findBoardByQuery({{
+    field = "type",
+    op    = "eq",
+    value = "locationMat"
+  }})
+  if not locationMat then
+    log("[takeItemFromArchive] locationMat not found")
+    if onDone then onDone() end
+    return
+  end
+
+  local archive = findDeckOnBoardByType(locationMat, "archive")
+  if not archive then
+    log("[takeItemFromArchive] archive not found")
+    if onDone then onDone() end
+    return
+  end
+
+  local codexMat = context and context.codexMat
+  if not codexMat then
+    log("[takeItemFromArchive] codexMat is nil")
+    if onDone then onDone() end
+    return
+  end
+
+  local showPos = codexMat.positionToWorld({0, 0.5, 1.7}):setAt("y", 3)
+  for _, o in ipairs(downCast_pos(showPos, 2)) do
+    if (o.type == "Card" or o.type == "Deck" or o.type == "Tile")
+       and not o.getLock() and o ~= codexMat then
+      o.setPosition(codexMat.positionToWorld({0, 0.5, 2.7}):setAt("y", 3))
+      break
+    end
+  end
+
+  local card = takeCardByQuery(archive, {{
+    field = "number",
+    op    = "eq",
+    value = step.number
+  }}, {
+    position = showPos,
+    rotation = {0, 180, 0},
+    smooth   = true
+  })
+
+  if not card then
+    log("[takeItemFromArchive] card with number " .. step.number .. " not found in archive")
+    if onDone then onDone() end
+    return
+  end
+
+  runAfterRest(card, function(c)
+    c.setScale({1, 1, 1})
+    c.addTag("item_magnet")
+    if onDone then onDone() end
+  end)
+end

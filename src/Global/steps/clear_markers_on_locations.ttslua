@@ -46,7 +46,7 @@ function processStepClearMarkersOnLocations(step, context, onDone)
         if o.type == "Tile" then
           if o.memo == "Red Marker" then
             redFound = true
-          elseif removeMarkers[o.memo] then
+          elseif removeMarkers[o.memo] and (not step.onlyFaceDown or o.is_face_down) then
             local markerType = o.memo
             local locName = localizeLocation(resolveLocationName(tile, tileData, o))
             returnTokenToBag(o, markerType)

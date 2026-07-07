@@ -66,6 +66,9 @@ require("Global/steps/return_all_codex_except")
 require("Global/steps/return_research_deck_to_archive")
 require("Global/steps/remove_mythos_token")
 require("Global/steps/resolve_research_encounter")
+require("Global/steps/take_item_from_archive")
+require("Global/steps/spawn_setaside_monster")
+require("Global/steps/spawn_doom_on_scenario_sheet")
 
 -- Dispatch table: lowercased step.type -> handler.
 -- Handlers are global functions defined by the required step modules above.
@@ -114,6 +117,9 @@ local STEP_HANDLERS = {
   returnresearchdecktoarchive       = processStepReturnResearchDeckToArchive,
   removemythostoken                 = processStepRemoveMythosToken,
   resolveresearchencounter          = processStepResolveResearchEncounter,
+  takeitemfromarchive               = processStepTakeItemFromArchive,
+  spawnsetasidemonster              = processStepSpawnSetasideMonster,
+  spawndoomonscenariosheet          = processStepSpawnDoomOnScenarioSheet,
 }
 
 function processSteps(data)

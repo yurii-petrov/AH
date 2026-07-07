@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"number\":83,\"type\":\"codex\"}",
+  "Memo": "{\"number\":83,\"type\":\"codex\",\"back\":{\"actions\":[{\"title\":\"Розплата\",\"removeAfterUse\":true,\"steps\":[{\"type\":\"spawnMonsterOnLocation\",\"number\":89},{\"type\":\"spawnDoomOnScenarioSheet\",\"count\":1}]}]}}",
   "Name": "Card",
   "Nickname": "83",
   "SidewaysCard": false,

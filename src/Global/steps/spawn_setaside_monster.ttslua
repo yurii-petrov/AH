@@ -1,0 +1,31 @@
+function processStepSpawnSetasideMonster(step, context, onDone)
+  local deckType = step.deck or "setaside"
+
+  local locationMat = findBoardByQuery({{
+    field = "type",
+    op    = "eq",
+    value = "locationMat"
+  }})
+  if not locationMat then
+    log("[spawnSetasideMonster] locationMat not found")
+    if onDone then onDone() end
+    return
+  end
+
+  local card = findDeckOnBoardByType(locationMat, deckType)
+  if not card then
+    log("[spawnSetasideMonster] '" .. deckType .. "' not found")
+    if onDone then onDone() end
+    return
+  end
+
+  local cardData = parseJson(card.memo)
+  if step.attachUnderCodex and cardData then
+    cardData.attachUnderCodex = step.attachUnderCodex
+    card.memo = JSON.encode(cardData)
+  end
+
+  attachMonsterCard(card, cardData, card.getPosition():setAt("y", 3))
+
+  if onDone then onDone() end
+end

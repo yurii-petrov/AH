@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"number\":62,\"type\":\"codex\",\"back\":{\"actions\":[{\"title\":\"Додати карту 73\",\"removeAfterUse\":true,\"steps\":[{\"type\":\"takeCodexFromArchive\",\"number\":73}]}]}}",
+  "Memo": "{\"number\":62,\"type\":\"codex\",\"back\":{\"actions\":[{\"title\":\"Додати картку 73\",\"removeAfterUse\":true,\"steps\":[{\"type\":\"takeCodexFromArchive\",\"number\":73}]}]}}",
   "Name": "Card",
   "Nickname": "62",
   "SidewaysCard": false,

@@ -1,29 +1,8 @@
--- ╭──────────────────────────────────────────────╮
--- │      STEP: spawnMonsterOnLocation            │
--- ╰──────────────────────────────────────────────╯
---
--- Draws a monster codex card (by number) from the archive on the location
--- mat, reveals it face-up below the codex, then moves it to a named location
--- and spawns it together with the monster mat.
---
--- Example step JSON:
---   {
---     "type": "spawnMonsterOnLocation",
---     "number": 19,
---     "location": "Hangman's Hill"
---   }
-
 local REVEAL_DURATION = 2
 
 function processStepSpawnMonsterOnLocation(step, context, onDone)
   if not step.number then
     log("[spawnMonsterOnLocation] number is nil")
-    if onDone then onDone() end
-    return
-  end
-
-  if not step.location then
-    log("[spawnMonsterOnLocation] location is nil")
     if onDone then onDone() end
     return
   end
@@ -53,7 +32,6 @@ function processStepSpawnMonsterOnLocation(step, context, onDone)
     return
   end
 
-  -- 1) reveal the card face-up below the codex
   local showPos = codexMat.positionToWorld({0, 0.5, 1.7}):setAt("y", 3)
   for _, o in ipairs(downCast_pos(showPos, 2)) do
     if (o.type == "Card" or o.type == "Deck" or o.type == "Tile")
@@ -81,28 +59,34 @@ function processStepSpawnMonsterOnLocation(step, context, onDone)
 
   card.highlightOn("Green", REVEAL_DURATION + 1)
 
-  -- 2) find the target location position
-  local tile, tileData, locationIndex = findLocationTileByName(locationMat, step.location)
-  if not tile then
-    log("[spawnMonsterOnLocation] tile not found for: " .. tostring(step.location))
-    if onDone then onDone() end
-    return
-  end
-
   local targetPos
-  if locationIndex and tileData and tileData.structureType then
-    targetPos = getNeighborhoodLocationPosition(tile, locationIndex, tileData.structureType):setAt("y", 3)
-  else
-    targetPos = tile.getPosition():setAt("y", 3)
+  if step.location then
+    local tile, tileData, locationIndex = findLocationTileByName(locationMat, step.location)
+    if not tile then
+      log("[spawnMonsterOnLocation] tile not found for: " .. tostring(step.location))
+      if onDone then onDone() end
+      return
+    end
+
+    if locationIndex and tileData and tileData.structureType then
+      targetPos = getNeighborhoodLocationPosition(tile, locationIndex, tileData.structureType):setAt("y", 3)
+    else
+      targetPos = tile.getPosition():setAt("y", 3)
+    end
   end
 
-  -- 3) after the reveal, move to the location and spawn the monster mat
   Wait.time(function()
-    card.setPositionSmooth(targetPos)
-    Wait.time(function()
+    if targetPos then
+      card.setPositionSmooth(targetPos)
+      Wait.time(function()
+        local cardData = parseJson(card.memo)
+        attachMonsterCard(card, cardData, card.getPosition():setAt("y", 3))
+        if onDone then onDone() end
+      end, 0.6)
+    else
       local cardData = parseJson(card.memo)
       attachMonsterCard(card, cardData, card.getPosition():setAt("y", 3))
       if onDone then onDone() end
-    end, 0.6)
+    end
   end, REVEAL_DURATION)
 end

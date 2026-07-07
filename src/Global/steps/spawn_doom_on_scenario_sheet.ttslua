@@ -1,0 +1,4 @@
+function processStepSpawnDoomOnScenarioSheet(step, context, onDone)
+  spawnDoomTokensOnScenarioSheet(step.count or 1)
+  if onDone then onDone() end
+end
