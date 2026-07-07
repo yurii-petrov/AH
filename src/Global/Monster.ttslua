@@ -244,7 +244,15 @@ function onMonsterKilled(params)
   if monsterMemo and monsterMemo.attachUnderCodex then
     local targetMat = findCodexMatByNumber(locationMat, monsterMemo.attachUnderCodex)
     if targetMat then
-      attachCardUnderCodexMat(targetMat, monster, orient(monsterMemo))
+      local dropPos = targetMat.positionToWorld({0, 0.5, 1.7}):setAt("y", 3)
+      for _, o in ipairs(downCast_pos(dropPos, 2)) do
+        if (o.type == "Card" or o.type == "Deck") and o ~= monster then
+          o.setPosition(targetMat.positionToWorld({0, 0.5, 2.7}):setAt("y", 3))
+          break
+        end
+      end
+      monster.setRotation(orient(monsterMemo))
+      monster.setPositionSmooth(dropPos)
       return
     end
   end
