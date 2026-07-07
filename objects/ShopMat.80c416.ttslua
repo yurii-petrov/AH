@@ -8,7 +8,9 @@ local data = {}
 function setTop(d)
 	local type_txt = ""
 	if not d.types then
-		data["market_"..d.id].types = {}
+		if data["market_"..d.id] then
+			data["market_"..d.id].types = {}
+		end
 		self.UI.setAttribute("market_txt_"..d.id, "text", "")
 		return 
 	end

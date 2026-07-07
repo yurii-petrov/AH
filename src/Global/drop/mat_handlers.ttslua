@@ -248,15 +248,29 @@ function onObjectDropOnShop(colorName, object, objectData)
     return
   end
 
+  -- Synchronous pre-check: is the shop mat anywhere below this card right now?
+  -- We need this so we can return true and stop onObjectDrop's dispatcher from
+  -- ALSO scheduling runOnceAfterRest(onItemDrop) for the same object below —
+  -- runOnceAfterRest dedups per-object via a token, so a second call registered
+  -- in the same tick silently cancels this one before it ever fires.
+  local isOverShop = false
+  for _, obj in ipairs(downCast(object, 10, nil, 1)) do
+    if obj.guid == shopMatId then
+      isOverShop = true
+      break
+    end
+  end
+  if not isOverShop then
+    return
+  end
+
   runOnceAfterRest(object, function(object)
     local shopMat = nil
     local foundObjects = downCast(object, 10, nil, 1)
-    if #foundObjects == 2 then
-      for i, obj in ipairs(foundObjects) do
-        if obj.guid == shopMatId then
-          shopMat = obj
-          break
-        end
+    for i, obj in ipairs(foundObjects) do
+      if obj.guid == shopMatId then
+        shopMat = obj
+        break
       end
     end
 
@@ -290,6 +304,7 @@ function onObjectDropOnShop(colorName, object, objectData)
     })
   end)
 
+  return true
 end
 
 function onRandomInvestigatorCardDrop(colorName, object)
