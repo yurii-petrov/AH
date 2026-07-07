@@ -1,0 +1,34 @@
+name: parse-memo
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  parse-memo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Run parse.py
+        working-directory: src/ConvertMemo
+        run: python3 parse.py
+
+      - name: Commit updated memo files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add src/ConvertMemo/objects
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "chore: sync parsed memo files"
+            git push
+          fi
