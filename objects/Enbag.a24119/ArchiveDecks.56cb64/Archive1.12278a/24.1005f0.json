@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"number\":24,\"type\":\"codex\",\"back\":{\"actions\":[{\"title\":\"Add card 26\",\"description\":\"\",\"removeAfterUse\":true,\"steps\":[{\"type\":\"takeCodexFromArchive\",\"number\":26}]},{\"title\":\"Back of card 26\",\"description\":\"\",\"removeAfterUse\":true,\"steps\":[{\"type\":\"takeCodexFromArchive\",\"number\":26,\"face_down\":true}]}]}}",
+  "Memo": "{\"number\":24,\"type\":\"codex\",\"back\":{\"actions\":[{\"title\":\"Add card 26\",\"description\":\"\",\"removeAfterUse\":true,\"removeGroup\":\"24\",\"steps\":[{\"type\":\"takeCodexFromArchive\",\"number\":26}]},{\"title\":\"Back of card 26\",\"description\":\"\",\"removeAfterUse\":true,\"removeGroup\":\"24\",\"steps\":[{\"type\":\"takeCodexFromArchive\",\"number\":26,\"face_down\":true}]}]}}",
   "Name": "Card",
   "Nickname": "24",
   "SidewaysCard": false,

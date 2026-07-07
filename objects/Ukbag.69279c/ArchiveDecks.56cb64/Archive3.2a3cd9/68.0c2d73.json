@@ -43,7 +43,8 @@
   "Snap": true,
   "Sticky": true,
   "Tags": [
-    "codex"
+    "codex",
+    "item_magnet"
   ],
   "Tooltip": true,
   "Transform": {
