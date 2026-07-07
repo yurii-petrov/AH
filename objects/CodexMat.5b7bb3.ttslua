@@ -97,6 +97,30 @@ local function getCodexButton(id, text, position, rotation)
   }
 end
 
+local function getCounterText(action)
+  local icon = action.icon or ""
+  local value = action.value or 0
+  return icon .. " " .. tostring(value)
+end
+
+local function getCounterButton(id, action, position, rotation)
+  local attributes = getAttributes()
+
+  attributes.id = id
+  attributes.onClick = "counterClick"
+  attributes.text = getCounterText(action)
+  attributes.position = position
+  attributes.rotation = rotation
+  attributes.fontSize = "100"
+  attributes.textAlignment = "MiddleLeft"
+  attributes.color = "clear"
+
+  return {
+    tag = "Button",
+    attributes = attributes
+  }
+end
+
 function onLoad(savedData)
   local sData = parseJson(savedData)
   if sData then data = sData end
@@ -125,7 +149,14 @@ function buildCodexUI()
 
   if hasFront then
     for i, action in ipairs(codex.front.actions) do
-      if action.title then
+      if action.type == "counter" then
+        table.insert(xml, getCounterButton(
+          "front_"..i,
+          action,
+          frontPositions[i],
+          "0 180 180"
+        ))
+      elseif action.title then
         table.insert(xml, getCodexButton(
           "front_"..i,
           "○ "..action.title,
@@ -138,7 +169,14 @@ function buildCodexUI()
 
   if hasBack then
     for i, action in ipairs(codex.back.actions) do
-      if action.title then
+      if action.type == "counter" then
+        table.insert(xml, getCounterButton(
+          "back_"..i,
+          action,
+          backPositions[i],
+          "0 0 180"
+        ))
+      elseif action.title then
         table.insert(xml, getCodexButton(
           "back_"..i,
           "○ "..action.title,
@@ -241,6 +279,24 @@ function clickAction(player, alt_click, id)
     self.UI.setAttribute(id, "text", buttonStyle.confirm.text)
     self.UI.setAttribute(id, "textColor", buttonStyle.confirm.color)
   end
+end
+
+function counterClick(player, alt_click, id)
+  local side, index = parseButtonId(id)
+  if not side or not index then return end
+
+  local action = getAction(side, index)
+  if not action or action.type ~= "counter" then return end
+
+  local value = action.value or 0
+  if alt_click == "-1" then
+    value = value + 1
+  elseif alt_click == "-2" then
+    if value > 0 then value = value - 1 end
+  end
+  action.value = value
+
+  self.UI.setAttribute(id, "text", getCounterText(action))
 end
 
 function onActionSuccess(params)

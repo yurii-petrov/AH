@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"number\":88,\"type\":\"codex\"}",
+  "Memo": "{\"number\":88,\"type\":\"codex\",\"back\":{\"actions\":[{\"type\":\"counter\",\"icon\":\"\",\"value\":0}]}}",
   "Name": "Card",
   "Nickname": "88",
   "SidewaysCard": false,
