@@ -178,7 +178,10 @@ function discardToShop(obj, shopType, isHovering)
   if isHovering == true then
     shopObj.setRotation(orient(shopMemo, false))
   end
-  shopObj.putObject(obj)
+  obj.setRotation(orient(shopMemo))
+  local existingCount = shopObj.getQuantity()
+  if existingCount < 0 then existingCount = 1 end
+  shopObj.putObject(obj, existingCount)
   if isHovering == true then
     shopObj.setRotation(orient(shopMemo))
   end

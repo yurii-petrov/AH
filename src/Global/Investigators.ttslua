@@ -162,6 +162,7 @@ end
 -- (spaces -> underscores, no "_alt" suffix), same as the portrait image key.
 local LAST_WORD_NAMES = {
   Father_Mateo = true,
+  Ashcan_Pete = true
 }
 
 local function shortDisplayName(name, baseKey)
