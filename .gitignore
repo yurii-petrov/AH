@@ -3,7 +3,6 @@
 __pycache__/
 *.pyc
 .venv/
-src/ConvertMemo/objects/
 /assets/
 src/tools/drive/credentials.json
 src/tools/drive/token.json
