@@ -9,6 +9,7 @@
 --     codex snap point (falls back to stacking under the current codex mat).
 --   * itemNumbers -> scaled down to a normal card size and tagged
 --     "item_magnet" so it's picked up naturally as an item; if also listed in
+--     skillNumbers, attached to the Skill Mat instead; else if also listed in
 --     extraMatNumbers, forced onto the secondary/special item mat.
 --
 -- Example step JSON:
@@ -16,7 +17,7 @@
 --     "type": "resolveResearchEncounter",
 --     "addToCodexNumbers": [71],
 --     "itemNumbers": [68, 69, 70],
---     "extraMatNumbers": [68]
+--     "skillNumbers": [68]
 --   }
 
 local function toSet(list)
@@ -33,9 +34,9 @@ local function findResearchPile(locationMat)
     tonumber(boardData.codexDeck[1]),
     tonumber(boardData.codexDeck[2]),
     tonumber(boardData.codexDeck[3])
-  }):setAt("y", 3)
+  }):setAt("y", locationMat.getPosition().y)
 
-  for _, obj in ipairs(findObjsInRadius(codexDeckPos)) do
+  for _, obj in ipairs(upCast_pos(codexDeckPos, 2)) do
     if obj.type == "Deck" or obj.type == "Card" then
       return obj
     end
@@ -83,6 +84,7 @@ function processStepResolveResearchEncounter(step, context, onDone)
   local addToCodexNumbers = toSet(step.addToCodexNumbers)
   local itemNumbers       = toSet(step.itemNumbers)
   local extraMatNumbers   = toSet(step.extraMatNumbers)
+  local skillNumbers      = toSet(step.skillNumbers)
   local number            = cardData and cardData.number
 
   runAfterRest(card, function(c)
@@ -97,7 +99,10 @@ function processStepResolveResearchEncounter(step, context, onDone)
     elseif number and itemNumbers[number] then
       c.setScale({1, 1, 1})
       c.addTag("item_magnet")
-      if extraMatNumbers[number] then
+      if skillNumbers[number] then
+        local targetPos = c.getPosition():setAt("y", 2.21)
+        attachItemToSkillMat(c, cardData, targetPos, skillMatBagId)
+      elseif extraMatNumbers[number] then
         local targetPos = c.getPosition():setAt("y", 2.21)
         attachItemToItemsMat(c, cardData, targetPos, itemMatBag2Id)
       end

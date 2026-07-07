@@ -255,6 +255,14 @@ function onMonsterKilled(params)
       monster.setPositionSmooth(dropPos)
       return
     end
+
+    local archive = findDeckOnBoardByType(locationMat, "archive")
+    if archive then
+      monster.interactable = true
+      monster.setRotation({0, 180, 180})
+      archive.putObject(monster)
+      return
+    end
   end
 
   local locationData = parseJson(locationMat.memo)
