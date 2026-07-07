@@ -127,7 +127,28 @@ function fail(player, alt, id)
   Global.call("mythosTileFailedAction", {c = player.color})
 end
 
+local function otherSeatedColors(activeColor)
+  local colors = {}
+  for _, player in ipairs(Player.getPlayers()) do
+    if player.color ~= activeColor then
+      table.insert(colors, player.color)
+    end
+  end
+  return colors
+end
+
 function setButtons(d)
+  local eventVisibility = ""
+  if d.type == "event" and d.color then
+    local others = otherSeatedColors(d.color)
+    if #others > 0 then
+      eventVisibility = table.concat(others, "|")
+    end
+  end
+  self.UI.setAttribute("success", "visibility", eventVisibility)
+  self.UI.setAttribute("fail",    "visibility", eventVisibility)
+  self.UI.setAttribute("discard", "visibility", "")
+
   if d.type == "event" then
     self.UI.setAttribute("success", "active", true)
     self.UI.setAttribute("discard", "active", false)

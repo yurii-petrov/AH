@@ -706,6 +706,17 @@ local function consumeMythosCount(p)
   return true
 end
 
+--- Re-applies the static "encounter" button label after a language switch.
+--- Needed because these buttons carry per-slot ids (INV_encounter_1..6) that
+--- don't match the "INV_encounter" msgid, so i18n.updateGlobalUiLanguage()
+--- can't refresh them on its own (see i18n.recursiveTranslate).
+function refreshInvestigatorStaticText()
+  local text = i18n.getStrById("INV_encounter")
+  for p = 1, MAX_INV do
+    self.UI.setAttribute("INV_encounter_" .. p, "text", text)
+  end
+end
+
 function investigatorEncounterClick(player, alt, id)
   local p = tonumber(id:match("INV_encounter_(%d+)"))
   if not p then return end

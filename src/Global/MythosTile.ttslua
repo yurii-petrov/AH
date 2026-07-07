@@ -70,7 +70,7 @@ function mythosTileSuccessAction(d)
   local mythosTile = MYTHOS_TILE_DATA.obj
   if not mythosTile then return end
 
-  mythosTile.call("setButtons", { type = "empty" })
+  mythosTile.call("setButtons", { type = "empty", color = d.c })
 
   local currentCardPos = mythosTile.positionToWorld(MYTHOS_TILE_DATA.activeCard)
   local y    = mythosTile.getPosition().y + mythosTile.getBounds().size.y
@@ -136,7 +136,7 @@ function mythosTileCancelAction(d)
   local mythosTile = MYTHOS_TILE_DATA.obj
   if not mythosTile then return end
 
-  mythosTile.call("setButtons", { type = "empty" })
+  mythosTile.call("setButtons", { type = "empty", color = d.c })
 
   local currentCardPos = mythosTile.positionToWorld(MYTHOS_TILE_DATA.activeCard)
   local y    = mythosTile.getPosition().y + mythosTile.getBounds().size.y
@@ -212,7 +212,7 @@ function mythosTileFailedAction(d)
   local mythosTile = MYTHOS_TILE_DATA.obj
   if not mythosTile then return end
 
-  mythosTile.call("setButtons", { type = "empty" })
+  mythosTile.call("setButtons", { type = "empty", color = d.c })
 
   local currentCardPos = mythosTile.positionToWorld(MYTHOS_TILE_DATA.activeCard)
   local y    = mythosTile.getPosition().y + mythosTile.getBounds().size.y
@@ -275,7 +275,7 @@ function drawMythos(obj, playerColor)
   local mythosTile = MYTHOS_TILE_DATA.obj
   if not mythosTile then return end
 
-  mythosTile.call("setButtons", { type = "empty" })
+  mythosTile.call("setButtons", { type = "empty", color = playerColor })
 
   local discardTokenPositions = mythosTile.positionToWorld({-0.001, 0.1, -0.462})
   local yUnderMythosMat       = mythosTile.getPosition().y + mythosTile.getBounds().size.y
@@ -459,7 +459,7 @@ function processDrawMyth(currentMyth, obj, playerColor, callBack)
     if headlineObj then
       local card = headlineObj.type == "Deck" and takeCardFromTop(headlineObj, false) or headlineObj
       if card then
-        mythosTile.call("setButtons", { type = "headline" })
+        mythosTile.call("setButtons", { type = "headline", color = playerColor })
         card.setPositionSmooth(currentCardPos:setAt("y", 3))
         callBack(); return
       end

@@ -535,7 +535,9 @@ function onClickEncounter(obj, playerColor)
 
     local card = takeCardFromTop(deck, true, skipTypes)
     if card then
-      mythosTile.call("setButtons", getUIType(parseJson(card.memo)))
+      local uiType = getUIType(parseJson(card.memo)) or { type = "empty" }
+      uiType.color = playerColor
+      mythosTile.call("setButtons", uiType)
       gameData.encounterColor = playerColor
       local cardData = parseJson(card.memo)
       if cardData then

@@ -36,6 +36,7 @@ function clickOnUK() selectLanguage("uk") end
 function updateXMLs()
   i18n.updateGlobalUiLanguage()
   i18n.updateAllObjectsUiLanguage()
+  refreshInvestigatorStaticText()
 end
 
 function updateGlobalXml(newXml)

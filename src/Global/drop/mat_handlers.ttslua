@@ -15,7 +15,8 @@ function onObjectPickUpMythos(colorName, object, mythosTile)
   local pos = mythosTile.positionToLocal(object.getPosition())
   if pos.x > activeArea.minX and pos.x < activeArea.maxX and pos.z > activeArea.minZ and pos.z < activeArea.maxZ then
     mythosTile.call("setButtons", {
-      type = "empty"
+      type = "empty",
+      color = colorName
     })
   end
 end
@@ -148,7 +149,8 @@ function onObjectDropOnMythosMat(colorName, object, objectData)
     end
     local t = cardData.type and string.lower(cardData.type) or ""
     mythosTile.call("setButtons", {
-      type = ((t == "event" or t == "encounter" or t == "anomaly" or t == "headline" or t == "terror") and t or "empty")
+      type = ((t == "event" or t == "encounter" or t == "anomaly" or t == "headline" or t == "terror") and t or "empty"),
+      color = colorName
     })
   end
 end
