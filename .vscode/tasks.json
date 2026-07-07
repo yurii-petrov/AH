@@ -119,6 +119,23 @@
     },
 
     {
+      "label": "Arkham Horror: Release",
+      "type": "shell",
+      "windows": {
+        "command": "py",
+        "args": ["${workspaceFolder}\\.vscode\\release.py", "${input:releaseVersion}"]
+      },
+      "osx": {
+        "command": "${workspaceFolder}/.venv/bin/python",
+        "args": ["${workspaceFolder}/.vscode/release.py", "${input:releaseVersion}"]
+      },
+      "options": {
+        "cwd": "${workspaceFolder}${pathSeparator}.vscode"
+      },
+      "problemMatcher": []
+    },
+
+    {
       "label": "Arkham Horror: Sync Assets to Drive",
       "type": "shell",
       "windows": {
@@ -190,6 +207,12 @@
       "description": "Switch objects/*.json asset references to this source",
       "options": ["local", "drive", "steam"],
       "default": "local"
+    },
+
+    {
+      "id": "releaseVersion",
+      "type": "promptString",
+      "description": "Release version (e.g. 3.2 or v3.2)"
     }
   ]
 }
