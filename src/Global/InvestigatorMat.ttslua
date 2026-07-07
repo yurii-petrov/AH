@@ -679,11 +679,26 @@ function removeClue()
 end
 
 function getInvestigatorDisplayName()
+  local name = Global.call("getInvestigatorNameForMatGuid", self.getGUID())
+  if name and name ~= "" then
+    return name
+  end
+
+  -- Fallback for the brief window before the HUD has recorded this mat's
+  -- investigator (e.g. right at drop time): find the Card physically above
+  -- and translate its name. Falls back to the raw (possibly already
+  -- localized) name when no translation exists, instead of returning the
+  -- untranslated lookup key.
   for _, o in ipairs(upCast(self, 3, 0, 1.5)) do
     local oData = parseJson(o.memo)
     if o.type == "Card" and oData and oData.type == "Investigator" then
-      local key = o.getName():gsub(" ", "_")
-      return Global.call("callTable", {{"i18n", "getStrById"}, key}) or o.getName()
+      local rawName = o.getName()
+      local key = rawName:gsub(" ", "_")
+      local translated = Global.call("callTable", {{"i18n", "getStrById"}, key})
+      if translated and translated ~= key then
+        return translated
+      end
+      return rawName
     end
   end
   return data.name ~= "" and data.name or "?"

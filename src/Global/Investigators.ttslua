@@ -838,6 +838,21 @@ end
 
 -- ── public API ────────────────────────────────────────────────────
 
+--- Looks up the localized display name currently assigned to the investigator
+--- mat with the given GUID. Called from Global/InvestigatorMat.ttslua so each
+--- mat's own script can broadcast its investigator's name without relying on
+--- a physics cast (which can pick up a neighboring mat's card when mats sit
+--- close together).
+---@param guid string investigator mat GUID
+---@return string? name the localized display name, or nil if not yet set
+function getInvestigatorNameForMatGuid(guid)
+  for slot, player in ipairs(TABLE_DATA.players) do
+    if player.guid == guid then
+      return INV_STATE.nameBySlot[slot]
+    end
+  end
+end
+
 --- Assign a dropped investigator to the next free row and show its name.
 --- Called from Global/ObjectDrop.ttslua -> onInvestigatorDrop at the moment
 --- the investigator is placed on its mat. `name` is the already-localized
