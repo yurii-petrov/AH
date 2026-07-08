@@ -1486,6 +1486,10 @@ msgstr "Зустріч"
 msgid "INV_mythos"
 msgstr "міт: %s"
 
+# Investigators HUD: mythos button label once the personal counter reaches 0
+msgid "INV_mythos_zero"
+msgstr "міт"
+
 msgid "INV_mythos_blocked"
 msgstr "%s зараз тягне міт (лишилось %s) — зачекайте, поки він завершить."
 

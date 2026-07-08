@@ -190,6 +190,9 @@ local function refreshPanelWidth()
 end
 
 local function mythosCountText(count)
+  if count <= 0 then
+    return i18n.getStrById("INV_mythos_zero")
+  end
   return string.format(i18n.getStrById("INV_mythos"), count)
 end
 
@@ -710,7 +713,7 @@ function setInvestigatorPhase(phase)
       self.UI.setAttribute("INV_encounter_" .. p, "textColor", TEXT_COL)
     end
 
-    local mythShow = isMythos and active and INV_STATE.mythosCount[p] > 0
+    local mythShow = isMythos and active
     self.UI.setAttribute("INV_mythos_" .. p, "active", mythShow)
     if mythShow then
       self.UI.setAttribute("INV_mythos_" .. p, "text",      mythosCountText(INV_STATE.mythosCount[p]))
@@ -727,6 +730,27 @@ local function markEncounterDone(p)
 end
 
 local function consumeMythosCount(p)
+  -- A previous draw is still resolving: reject the click before it eats the
+  -- counter (drawMythos would refuse it anyway, but only after the decrement).
+  if isDrawMythInProcess then
+    local msg = i18n.getStrById("LOG_myth_in_process")
+    if currentMythAction then msg = msg .. ": " .. currentMythAction end
+    broadcastToAll(msg, "Orange")
+    return false
+  end
+
+  -- The countdown only applies during the Mythos phase; effects in other
+  -- phases (monsters, scenario events) may ask for a token at any time.
+  if gameData.phase ~= 4 then return true end
+
+  -- A slot showing 0 is an unlimited "extra draw" button, never a lock —
+  -- self-heal a stale lock left over from a save/reload or a race so it
+  -- can't keep blocking every other player.
+  if INV_STATE.mythosActive ~= nil and (INV_STATE.mythosCount[INV_STATE.mythosActive] or 0) <= 0 then
+    INV_STATE.mythosActive = nil
+    gameData.mythosActive  = nil
+  end
+
   if INV_STATE.mythosActive ~= nil and INV_STATE.mythosActive ~= p then
     local activeSlot = INV_STATE.mythosActive
     local activeName = INV_STATE.nameBySlot[activeSlot] or defaultInvestigatorName(activeSlot)
@@ -735,17 +759,13 @@ local function consumeMythosCount(p)
   end
 
   local count = INV_STATE.mythosCount[p]
-  if count <= 0 then return false end
+  -- Quota already spent: extra draws requested by effects are still allowed.
+  if count <= 0 then return true end
   count = count - 1
   INV_STATE.mythosCount[p] = count
-  if count == 0 then
-    INV_STATE.mythosActive = nil
-    self.UI.setAttribute("INV_mythos_" .. p, "active", false)
-  else
-    INV_STATE.mythosActive = p
-    self.UI.setAttribute("INV_mythos_" .. p, "text",      mythosCountText(count))
-    self.UI.setAttribute("INV_mythos_" .. p, "textColor", TEXT_COL)
-  end
+  INV_STATE.mythosActive = (count == 0) and nil or p
+  self.UI.setAttribute("INV_mythos_" .. p, "text",      mythosCountText(count))
+  self.UI.setAttribute("INV_mythos_" .. p, "textColor", TEXT_COL)
   gameData.mythosCount = gameData.mythosCount or {}
   gameData.mythosCount[p] = INV_STATE.mythosCount[p]
   gameData.mythosActive   = INV_STATE.mythosActive
@@ -954,7 +974,7 @@ function restoreInvestigatorSessionState()
       local pNum = tonumber(pStr)
       if pNum then
         INV_STATE.mythosCount[pNum] = count
-        local show = count > 0 and pNum <= INV_STATE.count
+        local show = pNum <= INV_STATE.count
         self.UI.setAttribute("INV_mythos_" .. pNum, "active", show)
         if show then
           self.UI.setAttribute("INV_mythos_" .. pNum, "text", mythosCountText(count))

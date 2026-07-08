@@ -1418,6 +1418,10 @@ msgstr "Encounter"
 msgid "INV_mythos"
 msgstr "myth: %s"
 
+# Investigators HUD: mythos button label once the personal counter reaches 0
+msgid "INV_mythos_zero"
+msgstr "myth"
+
 msgid "INV_mythos_blocked"
 msgstr "%s is currently drawing mythos (%s left) — wait for them to finish."
 

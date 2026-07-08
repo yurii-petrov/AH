@@ -232,10 +232,6 @@ end
     mythMatEncounterClick({ c = playerColor })
   end)
   addHotkey(i18n.getStrById("HK_draw_mythos"), function(playerColor)
-    if gameData.phase ~= 4 then
-      printToColor(i18n.getStrById("HK_mythos_validate"), playerColor, {1, 0.2, 0.2})
-      return
-    end
     mythMatMythClick({ c = playerColor })
   end)
 

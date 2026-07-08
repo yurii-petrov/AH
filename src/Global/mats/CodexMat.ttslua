@@ -135,7 +135,6 @@ end
 
 local function isGateOpen(gate)
   if not gate or gate.type ~= "skillGate" then
-    print("[CodexMat DEBUG] isGateOpen: gate is nil or wrong type -> " .. tostring(gate and gate.type))
     return false
   end
   local count = 0
@@ -143,7 +142,6 @@ local function isGateOpen(gate)
     if gate.selected and gate.selected[skill.id] then count = count + 1 end
   end
   local open = count >= (gate.threshold or 3)
-  print(string.format("[CodexMat DEBUG] isGateOpen: count=%d threshold=%s open=%s", count, tostring(gate.threshold), tostring(open)))
   return open
 end
 
@@ -159,7 +157,6 @@ end
 
 function setCodexData(codexData)
   data = {codex = codexData}
-  print("[CodexMat DEBUG] setCodexData: " .. serpent.tts(codexData))
   buildCodexUI()
 end
 
@@ -167,13 +164,10 @@ function buildCodexUI()
   local xml = {}
 
   local codex = data and data.codex
-  print("[CodexMat DEBUG] buildCodexUI called, codex=" .. tostring(codex))
   if not codex then return end
 
   local hasFront = codex.front and codex.front.actions and #codex.front.actions > 0
   local hasBack = codex.back and codex.back.actions and #codex.back.actions > 0
-  print(string.format("[CodexMat DEBUG] hasFront=%s hasBack=%s backActionCount=%s",
-    tostring(hasFront), tostring(hasBack), tostring(codex.back and codex.back.actions and #codex.back.actions)))
 
   if not hasFront and not hasBack then return end
 
@@ -207,10 +201,6 @@ function buildCodexUI()
   if hasBack then
     for i, action in ipairs(codex.back.actions) do
       local gateOpen = not action.requiresGate or isGateOpen(codex.back.actions[action.requiresGate])
-      print(string.format(
-        "[CodexMat DEBUG] back action %d: type=%s requiresGate=%s gateOpen=%s position=%s",
-        i, tostring(action.type), tostring(action.requiresGate), tostring(gateOpen), tostring(backPositions[i])
-      ))
       if gateOpen then
         if action.type == "counter" then
           table.insert(xml, getCounterButton(
@@ -221,9 +211,7 @@ function buildCodexUI()
           ))
         elseif action.type == "skillGate" then
           local btns = getSkillGateButtons("back", i, action, backPositions[i], "0 180 180")
-          print("[CodexMat DEBUG] skillGate produced " .. #btns .. " buttons")
           for _, btn in ipairs(btns) do
-            print("[CodexMat DEBUG]   button id=" .. tostring(btn.attributes.id) .. " position=" .. tostring(btn.attributes.position) .. " text=" .. tostring(btn.attributes.text))
             table.insert(xml, btn)
           end
         elseif action.title then
@@ -361,14 +349,11 @@ local function parseSkillId(id)
 end
 
 function skillToggle(player, alt_click, id)
-  print("[CodexMat DEBUG] skillToggle clicked, id=" .. tostring(id))
   local side, index, skillId = parseSkillId(id)
-  print(string.format("[CodexMat DEBUG] parsed side=%s index=%s skillId=%s", tostring(side), tostring(index), tostring(skillId)))
   if not side or not index or not skillId then return end
 
   local action = getAction(side, index)
   if not action or action.type ~= "skillGate" then
-    print("[CodexMat DEBUG] skillToggle: action missing or wrong type -> " .. tostring(action and action.type))
     return
   end
 
