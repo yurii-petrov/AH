@@ -95,8 +95,6 @@ function mythosTileSuccessAction(d)
   local mythosTile = MYTHOS_TILE_DATA.obj
   if not mythosTile then return end
 
-  mythosTile.call("setButtons", { type = "empty", color = d.c })
-
   local currentCardPos = mythosTile.positionToWorld(MYTHOS_TILE_DATA.activeCard)
   local y    = mythosTile.getPosition().y + mythosTile.getBounds().size.y
   local objs = findObjsInRadius(currentCardPos:setAt("y", y))
@@ -115,9 +113,9 @@ function mythosTileSuccessAction(d)
   local eventData = parseJson(eventCard.memo)
   if not eventData or not eventData.neighborhood then return end
 
-  local eventDiscardPos = mythosTile.positionToWorld(MYTHOS_TILE_DATA.eventDiscard)
-  eventCard.setRotation(orient(eventData, false))
-  eventCard.setPositionSmooth(eventDiscardPos:setAt("y", 3))
+  -- Card stays on the tile after success; the player discards it separately
+  -- via the "discard" button (see mythosTileCancelAction).
+  mythosTile.call("setButtons", { type = "discard", color = d.c })
 
   local locationMat = getObjectFromGUID(locationMatId)
   if not locationMat then return end
@@ -171,7 +169,7 @@ function mythosTileCancelAction(d)
   local card, cardData
   for _, o in pairs(objs) do
     local oData = parseJson(o.memo)
-    if o.type == "Card" and oData and oData.type and string.lower(oData.type) ~= "event" then
+    if o.type == "Card" and oData and oData.type then
       card     = o
       cardData = oData
       break
@@ -179,7 +177,12 @@ function mythosTileCancelAction(d)
   end
   if not card or not cardData then return end
 
-  if cardData.neighborhood or cardData.type == "anomaly" then
+  if string.lower(cardData.type) == "event" then
+    local eventDiscardPos = mythosTile.positionToWorld(MYTHOS_TILE_DATA.eventDiscard)
+    card.setRotation(orient(cardData, false))
+    card.setPositionSmooth(eventDiscardPos:setAt("y", 3))
+
+  elseif cardData.neighborhood or cardData.type == "anomaly" then
     local scenarioMat = getObjectFromGUID(scenarioMatId)
     if not scenarioMat then return end
 
