@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"number\":106,\"type\":\"codex\",\"back\":{\"actions\":[{\"title\":\"Дослідження архіву\",\"description\":\"Скинь білий маркер зі своєї клітинки, щоб взяти випадкову карту з колоди дослідження і повернути її до архіву.\",\"steps\":[{\"type\":\"removeToken\",\"token\":{\"type\":\"White Marker\"},\"placement\":{\"type\":\"playerLocation\"}},{\"type\":\"takeCard\",\"card\":{\"source\":{\"board\":{\"query\":[{\"field\":\"type\",\"op\":\"eq\",\"value\":\"locationMat\"}]},\"deck\":\"codexDeck\"},\"query\":{},\"random\":true},\"placement\":{\"type\":\"deck\",\"board\":{\"query\":[{\"field\":\"type\",\"op\":\"eq\",\"value\":\"locationMat\"}]},\"deck\":\"archive\"}}]}]}}",
+  "Memo": "{\"number\":106,\"type\":\"codex\",\"back\":{\"actions\":[{\"title\":\"Дослідження архіву\",\"description\":\"Скинь білий маркер зі своєї клітинки, щоб взяти випадкову карту з колоди дослідження і повернути її до архіву.\",\"steps\":[{\"type\":\"takeCard\",\"card\":{\"source\":{\"board\":{\"query\":[{\"field\":\"type\",\"op\":\"eq\",\"value\":\"locationMat\"}]},\"deck\":\"codexDeck\"},\"query\":{},\"random\":true,\"mythosTokenOnDraw\":{\"type\":\"Blank\"}},\"placement\":{\"type\":\"deck\",\"board\":{\"query\":[{\"field\":\"type\",\"op\":\"eq\",\"value\":\"locationMat\"}]},\"deck\":\"archive\"}}]}]}}",
   "Name": "Card",
   "Nickname": "106",
   "SidewaysCard": false,

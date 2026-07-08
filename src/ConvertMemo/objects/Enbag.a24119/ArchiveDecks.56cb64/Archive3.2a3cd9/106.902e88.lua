@@ -10,15 +10,6 @@ data = {
           ["description"] = "Скинь білий маркер зі своєї клітинки, щоб взяти випадкову карту з колоди дослідження і повернути її до архіву.",
           ["steps"] = {
             {
-              ["type"] = "removeToken",
-              ["token"] = {
-                ["type"] = "White Marker"
-              },
-              ["placement"] = {
-                ["type"] = "playerLocation"
-              }
-            },
-            {
               ["type"] = "takeCard",
               ["card"] = {
                 ["source"] = {
@@ -34,7 +25,10 @@ data = {
                   ["deck"] = "codexDeck"
                 },
                 ["query"] = {},
-                ["random"] = true
+                ["random"] = true,
+                ["mythosTokenOnDraw"] = {
+                  ["type"] = "Blank"
+                }
               },
               ["placement"] = {
                 ["type"] = "deck",

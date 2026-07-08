@@ -5,6 +5,10 @@
 -- Takes a card from a source deck (random/top or by query) and places it
 -- via the shared placeCard helper. The random branch has a special case
 -- for drawing the second-to-last card of a codex deck.
+--
+-- Optional step.card.mythosTokenOnDraw = { type = "Blank" } adds one mythos
+-- token after a random draw — skipped on the last draw (the one that
+-- triggers handleLastCodexDeckCard), since the deck is spent at that point.
 
 function processStepTakeCard(step, context, onDone)
   if not step.card or not step.card.source then
@@ -27,15 +31,6 @@ function processStepTakeCard(step, context, onDone)
     return
   end
 
-  local function doTakeAndPlace(card)
-    if not card then
-      log("[takeCard] card not found")
-      return
-    end
-    placeCard(card, placement, context)
-    if onDone then onDone() end
-  end
-
   if step.card.random or not step.card.query or #step.card.query == 0 then
     local remaining = deck.type == "Deck" and deck.getQuantity() or 1
 
@@ -44,19 +39,30 @@ function processStepTakeCard(step, context, onDone)
       local card = takeCardFromTop(deck, false)
       if not card then return end
 
+      placeCard(card, placement, context)
+
       if remaining == 2 then
-        doTakeAndPlace(card)
         handleLastCodexDeckCard(deck, card, context)
+        if onDone then onDone() end
         return
       end
 
-      doTakeAndPlace(card)
+      if step.card.mythosTokenOnDraw then
+        processStepAddMythosToken({ token = step.card.mythosTokenOnDraw }, context, onDone)
+      else
+        if onDone then onDone() end
+      end
     end, 0.5)
     return
   end
 
   local card = takeCardByQuery(deck, step.card.query)
-  doTakeAndPlace(card)
+  if not card then
+    log("[takeCard] card not found")
+    return
+  end
+  placeCard(card, placement, context)
+  if onDone then onDone() end
 end
 
 -- When a codex deck is down to its last card, move that card onto the codex
