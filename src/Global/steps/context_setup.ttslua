@@ -3,8 +3,9 @@
 -- ╰──────────────────────────────────────────────╯
 --
 -- Spawns the scenario's setup tiles from the box onto the location mat,
--- after removing the spent codex card. Tiles sharing a position are
--- stacked with a small vertical offset, and each is processed once at rest.
+-- after removing the spent codex card (unless step.keepCodexMat is true).
+-- Tiles sharing a position are stacked with a small vertical offset, and
+-- each is processed once at rest.
 
 function processStepContextSetup(step, context, onDone)
   if not step.tiles then
@@ -20,8 +21,10 @@ function processStepContextSetup(step, context, onDone)
 
   local allTasks = {}
 
-  if removeCodexAttachment(context.codexMat) then
-    context.codexMat.destruct()
+  if not step.keepCodexMat then
+    if removeCodexAttachment(context.codexMat) then
+      context.codexMat.destruct()
+    end
   end
 
   local heightByPos = {}

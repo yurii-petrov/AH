@@ -2,8 +2,15 @@
 -- │        STEP: placeScenarioDecks              │
 -- ╰──────────────────────────────────────────────╯
 --
--- Pulls the scenario's decks out of the box and places each at its mapped
--- position on the scenario mat, shuffling decks once they come to rest.
+-- Pulls the scenario's decks out and places each at its mapped position on
+-- the scenario mat, shuffling decks once they come to rest. Two entry
+-- styles, mixable in the same step.decks list:
+--   * { type, name, pos } -- scans the box for a matching memo.type/name
+--     (used for the scenario's own initial event/encounter decks).
+--   * { guid, pos }       -- takes that exact object from
+--     encounterCardsBagId directly (used for reserve encounter decks that
+--     were never unpacked into the box, e.g. neighborhoods revealed
+--     mid-scenario by a codex card).
 
 function processStepPlaceScenarioDecks(step, context, onDone)
   if not step.decks or #step.decks == 0 then
@@ -29,22 +36,59 @@ function processStepPlaceScenarioDecks(step, context, onDone)
     return
   end
 
-  local lookup = {}
-  for _, d in ipairs(step.decks) do
-    local key = string.lower(d.type) .. "|" .. string.lower(d.name)
-    local posEntry = scenarioMatData.positions[d.pos]
-    if posEntry then
-      lookup[key] = scenarioMat.positionToWorld({
-        tonumber(posEntry[1]),
-        tonumber(posEntry[2]),
-        tonumber(posEntry[3])
-      }):setAt("y", 3)
-    else
-      log("[placeScenarioDecks] position index " .. tostring(d.pos) .. " not found for " .. d.name)
+  local function resolvePos(pos, label)
+    local posEntry = scenarioMatData.positions[pos]
+    if not posEntry then
+      log("[placeScenarioDecks] position index " .. tostring(pos) .. " not found for " .. tostring(label))
+      return nil
     end
+    return scenarioMat.positionToWorld({
+      tonumber(posEntry[1]),
+      tonumber(posEntry[2]),
+      tonumber(posEntry[3])
+    }):setAt("y", 3)
   end
 
   local allTasks = {}
+  local lookup = {}
+
+  for _, d in ipairs(step.decks) do
+    if d.guid then
+      local targetPos = resolvePos(d.pos, d.guid)
+      if targetPos then
+        table.insert(allTasks, function(done)
+          local encounterBag = getObjectFromGUID(encounterCardsBagId)
+          if not encounterBag then
+            log("[placeScenarioDecks] encounterCardsBagId bag not found")
+            done()
+            return
+          end
+          local spawnedObj = encounterBag.takeObject({
+            guid     = d.guid,
+            position = targetPos,
+            rotation = {0, 180, 180},
+            smooth   = true
+          })
+          if not spawnedObj then
+            log("[placeScenarioDecks] deck with guid " .. tostring(d.guid) .. " not found")
+            done()
+            return
+          end
+          runAfterRest(spawnedObj, function(o)
+            if o.type == "Deck" then o.shuffle() end
+            done()
+          end)
+        end)
+      end
+    else
+      local targetPos = resolvePos(d.pos, d.name)
+      if targetPos then
+        local key = string.lower(d.type) .. "|" .. string.lower(d.name)
+        lookup[key] = targetPos
+      end
+    end
+  end
+
   for _, obj in ipairs(box.getObjects()) do
     local memo = parseJson(obj.memo)
     if memo and memo.type and memo.name then
