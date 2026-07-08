@@ -1390,6 +1390,9 @@ msgstr "Морок (%s) - %s"
 msgid "LOG_terror_added"
 msgstr "Морок додано"
 
+msgid "LOG_reckoning_manual"
+msgstr "Розплата: перевірте аркуш сценарію та виконайте ефект вручну."
+
 # Mythos cup token types
 msgid "Read_Headline"
 msgstr "Читати Заголовок"
@@ -1486,7 +1489,6 @@ msgstr "Зустріч"
 msgid "INV_mythos"
 msgstr "міт: %s"
 
-# Investigators HUD: mythos button label once the personal counter reaches 0
 msgid "INV_mythos_zero"
 msgstr "міт"
 

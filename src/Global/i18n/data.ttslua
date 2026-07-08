@@ -698,6 +698,10 @@ I18N_DATA = {
     ["en"] = "Preparing scenario...",
     ["uk"] = "Триває підготовка сценарію...",
   },
+  ["LOG_reckoning_manual"] = {
+    ["en"] = "Reckoning: check the scenario sheet and resolve the effect manually.",
+    ["uk"] = "Розплата: перевірте аркуш сценарію та виконайте ефект вручну.",
+  },
   ["LOG_scenario_doom_added"] = {
     ["en"] = "Scenario - %s doom added",
     ["uk"] = "Сценарій - додано %s приреченості",

@@ -117,15 +117,7 @@ function restoreTerrorCardsToDeck(stashPos, targetPos)
   end
 end
 
-function processTerror(callBack)
-  local neighborhoodTarget = peekTopEventDiscardNeighborhood()
-    or (gameData.scenarioData and gameData.scenarioData.startingSpace)
-
-  if not neighborhoodTarget then
-    callBack()
-    return
-  end
-
+local function addTerrorToNeighborhood(neighborhoodTarget, callBack)
   local terrorToken, _, tileData = spawnTokenOnLocation({
     token     = "Terror Token",
     memo      = "Terror Token",
@@ -163,4 +155,79 @@ function processTerror(callBack)
   end
 
   callBack()
+end
+
+function processTerror(callBack)
+  local neighborhoodTarget = peekTopEventDiscardNeighborhood()
+    or (gameData.scenarioData and gameData.scenarioData.startingSpace)
+
+  if not neighborhoodTarget then
+    callBack()
+    return
+  end
+
+  addTerrorToNeighborhood(neighborhoodTarget, callBack)
+end
+
+-- ╭──────────────────────────────────────────────╮
+-- │                RECKONING                     │
+-- ╰──────────────────────────────────────────────╯
+
+local function neighborhoodHasMonsterType(neighborhood, monsterType)
+  for _, o in ipairs(upCast(neighborhood, 1, nil, 1)) do
+    if o.type == "Tile" and o.memo == "Monster Mat" then
+      local attachments = o.getAttachments()
+      local monsterMemo = attachments and attachments[1] and parseJson(attachments[1].memo)
+      if monsterMemo and monsterMemo.monstertype then
+        for _, t in ipairs(monsterMemo.monstertype) do
+          if t == monsterType then return true end
+        end
+      end
+    end
+  end
+  return false
+end
+
+local function neighborhoodNamesWithMonsterType(monsterType)
+  local locationMat = getObjectFromGUID(locationMatId)
+  if not locationMat then return {} end
+
+  local names = {}
+  for _, nh in ipairs(upCast(locationMat, 1, nil, 1)) do
+    local nhData = parseJson(nh.memo)
+    if nhData and nhData.type and string.lower(nhData.type) == "neighborhood" and nhData.name
+       and neighborhoodHasMonsterType(nh, monsterType) then
+      table.insert(names, nhData.name)
+    end
+  end
+  return names
+end
+
+local RECKONING_HANDLERS = {}
+
+RECKONING_HANDLERS.spreadTerrorOnMonsterType = function(params, callBack)
+  local targets = neighborhoodNamesWithMonsterType(params.monsterType)
+  if #targets == 0 then
+    callBack()
+    return
+  end
+
+  local function step(i)
+    if i > #targets then callBack(); return end
+    addTerrorToNeighborhood(targets[i], function() step(i + 1) end)
+  end
+  step(1)
+end
+
+function processReckoning(callBack)
+  local reckoning = gameData.scenarioData and gameData.scenarioData.reckoning
+  local handler    = reckoning and RECKONING_HANDLERS[reckoning.type]
+
+  if not handler then
+    broadcastToAll(i18n.getStrById("LOG_reckoning_manual"), "Orange")
+    callBack()
+    return
+  end
+
+  handler(reckoning, callBack)
 end

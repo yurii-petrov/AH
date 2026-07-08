@@ -499,6 +499,8 @@ function processDrawMyth(currentMyth, obj, playerColor, callBack)
     spawnClue(function() callBack() end); return
   elseif currentMyth.memo == MythosCup.Terror then
     processTerror(function() callBack() end); return
+  elseif currentMyth.memo == MythosCup.Reckoning then
+    processReckoning(function() callBack() end); return
   end
   callBack()
 end

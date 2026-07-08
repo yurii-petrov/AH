@@ -307,6 +307,7 @@ SCENARIO_SHEETS = {
     type          = "Scenario",
     terror        = "FF",
     startingSpace = "Gilman House",
+    reckoning     = { type = "spreadTerrorOnMonsterType", monsterType = "Deep One" },
     mythosCups    = {
       ["Blank"]         = 2,
       ["Terror"]        = 1,

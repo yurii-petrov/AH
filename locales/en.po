@@ -1322,6 +1322,9 @@ msgstr "Terror (%s) - %s"
 msgid "LOG_terror_added"
 msgstr "Terror added"
 
+msgid "LOG_reckoning_manual"
+msgstr "Reckoning: check the scenario sheet and resolve the effect manually."
+
 # Mythos cup token types
 msgid "Read_Headline"
 msgstr "Read Headline"
@@ -1418,7 +1421,6 @@ msgstr "Encounter"
 msgid "INV_mythos"
 msgstr "myth: %s"
 
-# Investigators HUD: mythos button label once the personal counter reaches 0
 msgid "INV_mythos_zero"
 msgstr "myth"
 
