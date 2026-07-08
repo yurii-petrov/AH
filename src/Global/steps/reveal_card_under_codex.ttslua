@@ -1,0 +1,72 @@
+-- ╭──────────────────────────────────────────────╮
+-- │      STEP: revealCardUnderCodex              │
+-- ╰──────────────────────────────────────────────╯
+--
+-- Finds the hidden attachment on context.codexMat whose memo.number is in
+-- step.numbers (placed earlier by attachRandomCodexUnderNumber), detaches
+-- it, flips it face-up, and adds it to the codex at the next free snap
+-- point (falls back to stacking under the current mat).
+--
+-- Example step JSON:
+--   { "type": "revealCardUnderCodex", "numbers": [131, 132, 133, 134] }
+
+function processStepRevealCardUnderCodex(step, context, onDone)
+  local numbers = step and step.numbers
+  if not numbers or #numbers == 0 then
+    log("[revealCardUnderCodex] numbers is nil/empty")
+    if onDone then onDone() end
+    return
+  end
+
+  local codexMat = context and context.codexMat
+  if not codexMat then
+    log("[revealCardUnderCodex] codexMat is nil")
+    if onDone then onDone() end
+    return
+  end
+
+  local wanted = {}
+  for _, n in ipairs(numbers) do wanted[n] = true end
+
+  local foundIndex, foundData
+  for _, att in ipairs(codexMat.getAttachments()) do
+    local data = parseJson(att.memo)
+    if data and data.number and wanted[data.number] then
+      foundIndex = att.index
+      foundData  = data
+      break
+    end
+  end
+
+  if not foundIndex then
+    log("[revealCardUnderCodex] no hidden attachment matching numbers found")
+    if onDone then onDone() end
+    return
+  end
+
+  local card = codexMat.removeAttachment(foundIndex)
+  if not card then
+    log("[revealCardUnderCodex] removeAttachment failed")
+    if onDone then onDone() end
+    return
+  end
+  card.interactable = true
+
+  local locationMat = findBoardByQuery({{
+    field = "type",
+    op    = "eq",
+    value = "locationMat"
+  }})
+
+  local rotation = orient(foundData, false)
+
+  runAfterRest(card, function(c)
+    local freePos = locationMat and findNextFreeCodexSnapPos(locationMat)
+    if freePos then
+      attachCodexCard(c, freePos, rotation)
+    else
+      attachCardUnderCodexMat(codexMat, c, rotation)
+    end
+    if onDone then onDone() end
+  end)
+end

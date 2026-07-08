@@ -1,0 +1,75 @@
+-- ╭──────────────────────────────────────────────╮
+-- │   STEP: attachRandomCodexUnderNumber         │
+-- ╰──────────────────────────────────────────────╯
+--
+-- Picks ONE random number out of step.numbers, takes that card from the
+-- archive, and hides it face-down underneath the codex mat currently
+-- holding step.targetNumber (attachCardUnderCodexMat). The other candidate
+-- numbers are left untouched in the archive. Pair with revealCardUnderCodex
+-- to later surface the hidden card.
+--
+-- Example step JSON:
+--   {
+--     "type": "attachRandomCodexUnderNumber",
+--     "targetNumber": 122,
+--     "numbers": [131, 132, 133, 134]
+--   }
+
+function processStepAttachRandomCodexUnderNumber(step, context, onDone)
+  local numbers = step and step.numbers
+  local targetNumber = step and step.targetNumber
+  if not numbers or #numbers == 0 or not targetNumber then
+    log("[attachRandomCodexUnderNumber] numbers/targetNumber is nil/empty")
+    if onDone then onDone() end
+    return
+  end
+
+  local locationMat = findBoardByQuery({{
+    field = "type",
+    op    = "eq",
+    value = "locationMat"
+  }})
+  if not locationMat then
+    log("[attachRandomCodexUnderNumber] locationMat not found")
+    if onDone then onDone() end
+    return
+  end
+
+  local archive = findDeckOnBoardByType(locationMat, "archive")
+  if not archive then
+    log("[attachRandomCodexUnderNumber] archive not found")
+    if onDone then onDone() end
+    return
+  end
+
+  local targetMat = findCodexMatByNumber(locationMat, targetNumber)
+  if not targetMat then
+    log("[attachRandomCodexUnderNumber] codex mat for number " .. tostring(targetNumber) .. " not found")
+    if onDone then onDone() end
+    return
+  end
+
+  local chosen = numbers[math.random(#numbers)]
+  local rotation = {0, 180, 180}
+
+  local card = takeCardByQuery(archive, {{
+    field = "number",
+    op    = "eq",
+    value = chosen
+  }}, {
+    position = targetMat.getPosition():setAt("y", 3),
+    rotation = rotation,
+    smooth   = true
+  })
+
+  if not card then
+    log("[attachRandomCodexUnderNumber] card with number " .. chosen .. " not found")
+    if onDone then onDone() end
+    return
+  end
+
+  runAfterRest(card, function(c)
+    attachCardUnderCodexMat(targetMat, c, rotation)
+    if onDone then onDone() end
+  end)
+end

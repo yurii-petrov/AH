@@ -1,0 +1,44 @@
+-- ╭──────────────────────────────────────────────╮
+-- │    STEP: addWhiteMarkersToMythosCup          │
+-- ╰──────────────────────────────────────────────╯
+--
+-- Takes step.count "White Marker" tiles from their bag (whiteTokenBagId)
+-- and drops them directly into the mythos cup, then reshuffles it. Distinct
+-- from addMythosToken: White Marker tiles are not part of mythosTokenBagIds
+-- (they normally live on the board), but some codex effects add them to the
+-- cup as a temporary mythos token.
+--
+-- Example step JSON:
+--   { "type": "addWhiteMarkersToMythosCup", "count": 5 }
+
+function processStepAddWhiteMarkersToMythosCup(step, context, onDone)
+  local count = (step and step.count) or 5
+
+  local bag = getObjectFromGUID(whiteTokenBagId)
+  if not bag then
+    log("[addWhiteMarkersToMythosCup] whiteTokenBagId not found")
+    if onDone then onDone() end
+    return
+  end
+
+  local cup = getObjectFromGUID(mythosBagId)
+  if not cup then
+    log("[addWhiteMarkersToMythosCup] mythosBag not found")
+    if onDone then onDone() end
+    return
+  end
+
+  for _ = 1, count do
+    local token = bag.takeObject({ index = 0 })
+    if token then
+      cup.putObject(token)
+    else
+      log("[addWhiteMarkersToMythosCup] whiteTokenBagId ran out of tokens")
+      break
+    end
+  end
+
+  cup.shuffle()
+
+  if onDone then onDone() end
+end

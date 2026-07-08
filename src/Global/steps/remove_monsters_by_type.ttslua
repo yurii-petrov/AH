@@ -3,7 +3,9 @@
 -- ╰──────────────────────────────────────────────╯
 --
 -- Removes every card with a matching monstertype from the monster deck and
--- puts them in the box (GUID boxId). The remaining deck is then shuffled.
+-- puts them in the box (GUID boxId). Also destructs any already-spawned
+-- MonsterMat on the board whose attached card matches (removing it from
+-- play entirely). The remaining deck is then shuffled.
 --
 -- Example step JSON:
 --   { "type": "removeMonstersByType", "monsterType": "O'Bannion" }
@@ -19,6 +21,18 @@ local function hasMatchingType(entryData, searchType)
   return false
 end
 
+local function removeMatchingBoardMonsters(searchType)
+  for _, obj in ipairs(getAllObjects()) do
+    if obj.memo == "Monster Mat" then
+      local atts = obj.getAttachments()
+      local data = atts and atts[1] and parseJson(atts[1].memo)
+      if data and hasMatchingType(data, searchType) then
+        obj.destruct()
+      end
+    end
+  end
+end
+
 function processStepRemoveMonstersByType(step, context, onDone)
   if not step.monsterType then
     log("[removeMonstersByType] monsterType is nil")
@@ -28,6 +42,8 @@ function processStepRemoveMonstersByType(step, context, onDone)
 
   local searchType  = string.lower(tostring(step.monsterType))
   local deckType    = (step and step.deckType) or "monster"
+
+  removeMatchingBoardMonsters(searchType)
 
   local locationMat = findBoardByQuery({{
     field = "type",

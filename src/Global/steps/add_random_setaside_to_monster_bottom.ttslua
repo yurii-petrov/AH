@@ -1,0 +1,77 @@
+-- ╭──────────────────────────────────────────────╮
+-- │  STEP: addRandomSetasideToMonsterBottom      │
+-- ╰──────────────────────────────────────────────╯
+--
+-- Takes ONE random card from the set-aside deck and slides it under the
+-- monster deck (bottom of the pile), without reshuffling. Unlike
+-- mergeOneFromSetasideIntoMonster (which always shuffles afterwards), the
+-- deliberate bottom placement here would be pointless if the deck were then
+-- reshuffled, so this step leaves the rest of the monster deck order intact.
+--
+-- Example step JSON:
+--   { "type": "addRandomSetasideToMonsterBottom" }
+-- Optional: "fromDeck" (default "setaside"), "toDeck" (default "monster")
+
+function processStepAddRandomSetasideToMonsterBottom(step, context, onDone)
+  local fromType = (step and step.fromDeck) or "setaside"
+  local toType   = (step and step.toDeck) or "monster"
+
+  local locationMat = findBoardByQuery({{
+    field = "type",
+    op    = "eq",
+    value = "locationMat"
+  }})
+  if not locationMat then
+    log("[addRandomSetasideToMonsterBottom] locationMat not found")
+    if onDone then onDone() end
+    return
+  end
+
+  local setaside = findDeckOnBoardByType(locationMat, fromType)
+  if not setaside then
+    log("[addRandomSetasideToMonsterBottom] set-aside deck not found")
+    if onDone then onDone() end
+    return
+  end
+
+  local function mergeAtBottom(card)
+    local monsterDeck = findDeckOnBoardByType(locationMat, toType)
+    if not monsterDeck then
+      log("[addRandomSetasideToMonsterBottom] monster deck not found")
+      if onDone then onDone() end
+      return
+    end
+
+    local deckPos = monsterDeck.getPosition()
+    card.setRotation(monsterDeck.getRotation())
+    card.setPosition(Vector(deckPos.x, deckPos.y - 1, deckPos.z))
+
+    Wait.frames(function()
+      local md = findDeckOnBoardByType(locationMat, toType)
+      if md then md.putObject(card) end
+      if onDone then onDone() end
+    end, 3)
+  end
+
+  if setaside.type == "Card" then
+    mergeAtBottom(setaside)
+    return
+  end
+
+  setaside.shuffle()
+  Wait.time(function()
+    local sa = findDeckOnBoardByType(locationMat, fromType)
+    if not sa then
+      if onDone then onDone() end
+      return
+    end
+    local card = sa.type == "Deck"
+      and sa.takeObject({ index = 0, smooth = false })
+      or  sa
+    if card then
+      mergeAtBottom(card)
+    else
+      if onDone then onDone() end
+    end
+  end, 0.4)
+end

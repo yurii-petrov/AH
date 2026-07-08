@@ -1,0 +1,101 @@
+-- ╭──────────────────────────────────────────────╮
+-- │    STEP: spawnRandomSetasideMonsters         │
+-- ╰──────────────────────────────────────────────╯
+--
+-- Shuffles the set-aside deck, spawns step.count random cards as standalone
+-- monsters near the codex (each on its own MonsterMat, like
+-- spawnMonsterOnLocation with no location), then merges whatever remains
+-- of the set-aside deck into the monster deck and shuffles it.
+--
+-- Example step JSON:
+--   { "type": "spawnRandomSetasideMonsters", "count": 2 }
+-- Optional: "fromDeck" (default "setaside"), "toDeck" (default "monster")
+
+function processStepSpawnRandomSetasideMonsters(step, context, onDone)
+  local count    = (step and step.count) or 1
+  local fromType = (step and step.fromDeck) or "setaside"
+  local toType   = (step and step.toDeck) or "monster"
+
+  local locationMat = findBoardByQuery({{
+    field = "type",
+    op    = "eq",
+    value = "locationMat"
+  }})
+  if not locationMat then
+    log("[spawnRandomSetasideMonsters] locationMat not found")
+    if onDone then onDone() end
+    return
+  end
+
+  local codexMat = context and context.codexMat
+  if not codexMat then
+    log("[spawnRandomSetasideMonsters] codexMat is nil")
+    if onDone then onDone() end
+    return
+  end
+
+  local setaside = findDeckOnBoardByType(locationMat, fromType)
+  if not setaside then
+    log("[spawnRandomSetasideMonsters] set-aside deck not found")
+    if onDone then onDone() end
+    return
+  end
+
+  local function mergeRemainder()
+    local remaining   = findDeckOnBoardByType(locationMat, fromType)
+    local monsterDeck = findDeckOnBoardByType(locationMat, toType)
+    if remaining and monsterDeck then
+      mergeObjIntoDeck(remaining, monsterDeck)
+      Wait.time(function()
+        local merged = findDeckOnBoardByType(locationMat, toType)
+        if merged and merged.type == "Deck" then merged.shuffle() end
+        if onDone then onDone() end
+      end, 0.3)
+    else
+      if onDone then onDone() end
+    end
+  end
+
+  local function spawnOne(i)
+    local sa = findDeckOnBoardByType(locationMat, fromType)
+    if not sa then
+      mergeRemainder()
+      return
+    end
+
+    local spawnPos = codexMat.positionToWorld({(i - 1) * 0.9, 0.5, 1.7}):setAt("y", 3)
+    local card = sa.type == "Deck"
+      and sa.takeObject({ index = 0, position = spawnPos, rotation = {0, 180, 0}, smooth = true })
+      or  sa
+
+    if not card then
+      mergeRemainder()
+      return
+    end
+
+    if sa.type ~= "Deck" then
+      card.setRotation({0, 180, 0})
+      card.setPositionSmooth(spawnPos)
+    end
+
+    runAfterRest(card, function(c)
+      local cardData = parseJson(c.memo)
+      attachMonsterCard(c, cardData, c.getPosition():setAt("y", 3))
+      if i < count then
+        spawnOne(i + 1)
+      else
+        mergeRemainder()
+      end
+    end)
+  end
+
+  if setaside.type == "Card" or count <= 1 then
+    spawnOne(1)
+    return
+  end
+
+  setaside.shuffle()
+  Wait.time(function()
+    spawnOne(1)
+  end, 0.4)
+end

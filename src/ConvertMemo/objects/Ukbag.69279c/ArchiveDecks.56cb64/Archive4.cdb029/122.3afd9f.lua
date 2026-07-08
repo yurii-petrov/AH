@@ -2,6 +2,25 @@ data = {
   ["GUID"] = "3afd9f",
   ["memo"] = {
     ["number"] = 122,
-    ["type"] = "codex"
+    ["type"] = "codex",
+    ["back"] = {
+      ["actions"] = {
+        {
+          ["title"] = "Розкрити приховану карту",
+          ["removeAfterUse"] = true,
+          ["steps"] = {
+            {
+              ["type"] = "revealCardUnderCodex",
+              ["numbers"] = {
+                131,
+                132,
+                133,
+                134
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }
