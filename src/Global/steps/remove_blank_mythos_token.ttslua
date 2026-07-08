@@ -1,3 +1,15 @@
+-- ╭──────────────────────────────────────────────╮
+-- │       STEP: removeBlankMythosToken           │
+-- ╰──────────────────────────────────────────────╯
+--
+-- Removes one "Blank" mythos token, returning it to its bag. By default it is
+-- taken from the mythos cup first, then from the mythos mat. Set
+-- `matFirst = true` to reverse the priority (take from the mat first, then the
+-- cup) — used when the token may already be sitting on the mat.
+--
+-- Example step JSON:
+--   { "type": "removeBlankMythosToken", "matFirst": true }
+
 local BLANK_TYPE   = "Blank"
 local BLANK_BAG_ID = "3a847f"
 
@@ -12,23 +24,35 @@ function processStepRemoveBlankMythosToken(step, context, onDone)
     end
   end
 
-  local cup = getObjectFromGUID(mythosBagId)
-  if cup then
-    for _, entry in ipairs(cup.getObjects()) do
-      if entry.memo == BLANK_TYPE then
-        local token = cup.takeObject({ guid = entry.guid, smooth = false })
-        if token then returnToken(token) end
-        if onDone then onDone() end
-        return
-      end
+  local function fromMat()
+    local token = findMythosTokenOnMat(BLANK_TYPE)
+    if token then
+      returnToken(token)
+      return true
     end
+    return false
   end
 
-  local token = findMythosTokenOnMat(BLANK_TYPE)
-  if token then
-    returnToken(token)
-    if onDone then onDone() end
-    return
+  local function fromCup()
+    local cup = getObjectFromGUID(mythosBagId)
+    if cup then
+      for _, entry in ipairs(cup.getObjects()) do
+        if entry.memo == BLANK_TYPE then
+          local token = cup.takeObject({ guid = entry.guid, smooth = false })
+          if token then returnToken(token) end
+          return true
+        end
+      end
+    end
+    return false
+  end
+
+  local order = (step and step.matFirst) and { fromMat, fromCup } or { fromCup, fromMat }
+  for _, fn in ipairs(order) do
+    if fn() then
+      if onDone then onDone() end
+      return
+    end
   end
 
   log("[removeBlankMythosToken] Blank token not found in cup or mat")

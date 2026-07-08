@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"number\":108,\"type\":\"codex\"}",
+  "Memo": "{\"number\":108,\"type\":\"codex\",\"back\":{\"actions\":[{\"title\":\"Обрати ватажка\",\"removeAfterUse\":true,\"steps\":[{\"type\":\"addRandomCodexFromArchive\",\"numbers\":[109,110,111,112],\"count\":1}]}]}}",
   "Name": "Card",
   "Nickname": "108",
   "SidewaysCard": false,

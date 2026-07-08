@@ -2,6 +2,22 @@ data = {
   ["GUID"] = "bcb7ec",
   ["memo"] = {
     ["number"] = 107,
-    ["type"] = "codex"
+    ["type"] = "codex",
+    ["back"] = {
+      ["actions"] = {
+        {
+          ["title"] = "Дослідження",
+          ["removeAfterUse"] = true,
+          ["steps"] = {
+            {
+              ["type"] = "addRandomResearchToCodex"
+            },
+            {
+              ["type"] = "returnResearchDeckToArchive"
+            }
+          }
+        }
+      }
+    }
   }
 }

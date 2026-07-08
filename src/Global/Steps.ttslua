@@ -70,6 +70,7 @@ require("Global/steps/take_item_from_archive")
 require("Global/steps/spawn_setaside_monster")
 require("Global/steps/spawn_doom_on_scenario_sheet")
 require("Global/steps/add_random_codex_from_archive")
+require("Global/steps/add_random_research_to_codex")
 
 -- Dispatch table: lowercased step.type -> handler.
 -- Handlers are global functions defined by the required step modules above.
@@ -122,6 +123,7 @@ local STEP_HANDLERS = {
   spawnsetasidemonster              = processStepSpawnSetasideMonster,
   spawndoomonscenariosheet          = processStepSpawnDoomOnScenarioSheet,
   addrandomcodexfromarchive         = processStepAddRandomCodexFromArchive,
+  addrandomresearchtocodex          = processStepAddRandomResearchToCodex,
 }
 
 function processSteps(data)

@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"number\":109,\"type\":\"codex\"}",
+  "Memo": "{\"number\":109,\"type\":\"codex\",\"front\":{\"actions\":[{\"title\":\"Прикликати Ктулху\",\"removeAfterUse\":true,\"steps\":[{\"type\":\"spawnMonsterOnLocation\",\"number\":40}]}]}}",
   "Name": "Card",
   "Nickname": "109",
   "SidewaysCard": false,

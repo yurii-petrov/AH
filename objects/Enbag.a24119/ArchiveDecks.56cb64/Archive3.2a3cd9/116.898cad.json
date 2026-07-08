@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"number\":116,\"type\":\"codex\"}",
+  "Memo": "{\"number\":116,\"type\":\"codex\",\"front\":{\"actions\":[{\"title\":\"Summon Mother Hydra\",\"removeAfterUse\":true,\"steps\":[{\"type\":\"spawnMonsterOnLocation\",\"number\":75}]}]}}",
   "Name": "Card",
   "Nickname": "116",
   "SidewaysCard": false,

@@ -88,7 +88,7 @@ data = {
               ["type"] = "mergeEventDeck",
               ["deck"] = {
                 ["type"] = "event",
-                ["name"] = "DoR Kingsport"
+                ["name"] = "DoR Innsmouth"
               }
             }
           }

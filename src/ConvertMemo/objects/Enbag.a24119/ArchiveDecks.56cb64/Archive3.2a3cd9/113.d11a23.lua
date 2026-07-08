@@ -2,6 +2,20 @@ data = {
   ["GUID"] = "d11a23",
   ["memo"] = {
     ["number"] = 113,
-    ["type"] = "codex"
+    ["type"] = "codex",
+    ["front"] = {
+      ["actions"] = {
+        {
+          ["title"] = "Summon the Servitor",
+          ["removeAfterUse"] = true,
+          ["steps"] = {
+            {
+              ["type"] = "spawnMonsterOnLocation",
+              ["number"] = 39
+            }
+          }
+        }
+      }
+    }
   }
 }

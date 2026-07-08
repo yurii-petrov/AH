@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"number\":113,\"type\":\"codex\"}",
+  "Memo": "{\"number\":113,\"type\":\"codex\",\"front\":{\"actions\":[{\"title\":\"Прикликати Прислужника\",\"removeAfterUse\":true,\"steps\":[{\"type\":\"spawnMonsterOnLocation\",\"number\":39}]}]}}",
   "Name": "Card",
   "Nickname": "113",
   "SidewaysCard": false,

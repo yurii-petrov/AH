@@ -1,0 +1,88 @@
+-- ╭──────────────────────────────────────────────╮
+-- │    STEP: Add Random Research To Codex        │
+-- ╰──────────────────────────────────────────────╯
+--
+-- Shuffles the research pile sitting at the locationMat's codexDeck snap
+-- (built via setAsideToCodexDeck), draws ONE random card, and attaches it to
+-- the codex at the next free codex snap point. The remaining research cards
+-- are left in place — chain `returnResearchDeckToArchive` after this step to
+-- send them back to the archive.
+--
+-- Example step JSON:
+--   { "type": "addRandomResearchToCodex" }
+
+local function findResearchPile(locationMat)
+  local boardData = parseJson(locationMat.memo)
+  if not boardData or not boardData.codexDeck then return nil end
+
+  local pos = locationMat.positionToWorld({
+    tonumber(boardData.codexDeck[1]),
+    tonumber(boardData.codexDeck[2]),
+    tonumber(boardData.codexDeck[3])
+  }):setAt("y", locationMat.getPosition().y)
+
+  for _, obj in ipairs(upCast_pos(pos, 2)) do
+    if obj.type == "Deck" or obj.type == "Card" then
+      return obj
+    end
+  end
+end
+
+function processStepAddRandomResearchToCodex(step, context, onDone)
+  local locationMat = findBoardByQuery({{
+    field = "type",
+    op    = "eq",
+    value = "locationMat"
+  }})
+  if not locationMat then
+    log("[addRandomResearchToCodex] locationMat not found")
+    if onDone then onDone() end
+    return
+  end
+
+  local codexMat = context and context.codexMat
+  if not codexMat then
+    log("[addRandomResearchToCodex] codexMat is nil")
+    if onDone then onDone() end
+    return
+  end
+
+  local pile = findResearchPile(locationMat)
+  if not pile then
+    log("[addRandomResearchToCodex] research pile is empty")
+    if onDone then onDone() end
+    return
+  end
+
+  local function drawAndAttach()
+    local card = takeTopCard(pile, false)
+    if not card then
+      log("[addRandomResearchToCodex] failed to draw from research pile")
+      if onDone then onDone() end
+      return
+    end
+
+    local cardData = parseJson(card.memo)
+    local showPos  = codexMat.positionToWorld({0, 0.5, 1.7}):setAt("y", 3)
+    card.setRotation(orient(cardData, false))
+    card.setPositionSmooth(showPos)
+
+    runAfterRest(card, function(c)
+      local rotation = orient(cardData, false)
+      local freePos  = findNextFreeCodexSnapPos(locationMat)
+      if freePos then
+        attachCodexCard(c, freePos, rotation)
+      else
+        attachCardUnderCodexMat(codexMat, c, rotation)
+      end
+      if onDone then onDone() end
+    end)
+  end
+
+  if pile.type == "Deck" then
+    pile.shuffle()
+    Wait.time(drawAndAttach, 0.4)
+  else
+    drawAndAttach()
+  end
+end
