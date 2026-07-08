@@ -6,13 +6,44 @@ data = {
     ["front"] = {
       ["actions"] = {
         {
-          ["title"] = "153",
-          ["description"] = "",
+          ["title"] = "Додати карту 157",
+          ["removeAfterUse"] = true,
           ["steps"] = {
             {
               ["type"] = "takeCodexFromArchive",
-              ["number"] = 153,
-              ["destructSelf"] = true
+              ["number"] = 157
+            }
+          }
+        },
+        {
+          ["title"] = "Додати карту 153",
+          ["removeAfterUse"] = true,
+          ["steps"] = {
+            {
+              ["type"] = "takeCodexFromArchive",
+              ["number"] = 153
+            }
+          }
+        }
+      }
+    },
+    ["back"] = {
+      ["actions"] = {
+        {
+          ["title"] = "Жетони міту",
+          ["removeAfterUse"] = true,
+          ["steps"] = {
+            {
+              ["type"] = "removeMythosToken",
+              ["token"] = {
+                ["type"] = "Spread Doom"
+              }
+            },
+            {
+              ["type"] = "addMythosToken",
+              ["token"] = {
+                ["type"] = "Blank"
+              }
             }
           }
         }

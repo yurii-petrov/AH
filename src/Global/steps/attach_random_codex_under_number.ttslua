@@ -2,11 +2,13 @@
 -- │   STEP: attachRandomCodexUnderNumber         │
 -- ╰──────────────────────────────────────────────╯
 --
--- Picks ONE random number out of step.numbers, takes that card from the
--- archive, and hides it face-down underneath the codex mat currently
--- holding step.targetNumber (attachCardUnderCodexMat). The other candidate
--- numbers are left untouched in the archive. Pair with revealCardUnderCodex
--- to later surface the hidden card.
+-- Takes a card from the archive and hides it face-down underneath the codex
+-- mat currently holding step.targetNumber (attachCardUnderCodexMat). The
+-- card is either step.number (deterministic) or, if omitted, ONE random
+-- pick out of step.numbers — the other candidates are left untouched in the
+-- archive. Optional step.scale = { x, z } resizes the hidden card (keeping
+-- its existing Y/thickness). Pair with revealCardUnderCodex to later
+-- surface a randomly-hidden card.
 --
 -- Example step JSON:
 --   {
@@ -14,12 +16,19 @@
 --     "targetNumber": 122,
 --     "numbers": [131, 132, 133, 134]
 --   }
+--   {
+--     "type": "attachRandomCodexUnderNumber",
+--     "targetNumber": 157,
+--     "number": 158,
+--     "scale": { "x": 1.0, "z": 1.0 }
+--   }
 
 function processStepAttachRandomCodexUnderNumber(step, context, onDone)
   local numbers = step and step.numbers
   local targetNumber = step and step.targetNumber
-  if not numbers or #numbers == 0 or not targetNumber then
-    log("[attachRandomCodexUnderNumber] numbers/targetNumber is nil/empty")
+  local chosen = step and step.number
+  if not targetNumber or (not chosen and (not numbers or #numbers == 0)) then
+    log("[attachRandomCodexUnderNumber] targetNumber/number(s) is nil/empty")
     if onDone then onDone() end
     return
   end
@@ -49,7 +58,7 @@ function processStepAttachRandomCodexUnderNumber(step, context, onDone)
     return
   end
 
-  local chosen = numbers[math.random(#numbers)]
+  chosen = chosen or numbers[math.random(#numbers)]
   local rotation = {0, 180, 180}
 
   local card = takeCardByQuery(archive, {{
@@ -70,6 +79,14 @@ function processStepAttachRandomCodexUnderNumber(step, context, onDone)
 
   runAfterRest(card, function(c)
     attachCardUnderCodexMat(targetMat, c, rotation)
+    if step.scale then
+      local s = c.getScale()
+      c.setScale({
+        x = step.scale.x or s.x,
+        y = s.y,
+        z = step.scale.z or s.z
+      })
+    end
     if onDone then onDone() end
   end)
 end
