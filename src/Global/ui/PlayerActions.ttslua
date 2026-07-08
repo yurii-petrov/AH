@@ -13,12 +13,13 @@ end
 
 function hideHelp(player, _)
   local vis = UI.getAttribute("help_panel", "visibility")
-  vis = vis:gsub(player.color, "")
-  local cleanVis = vis:gsub("|", "")
-  if cleanVis == "" then
-    vis = "nobody"
+  local parts = {}
+  for c in vis:gmatch("[^|]+") do
+    if c ~= player.color then
+      table.insert(parts, c)
+    end
   end
-  UI.setAttribute("help_panel", "visibility", vis)
+  UI.setAttribute("help_panel", "visibility", #parts > 0 and table.concat(parts, "|") or "nobody")
 end
 
 local PLAYER_COLORS = {"White", "Red", "Green", "Blue", "Yellow", "Purple"}
@@ -78,7 +79,7 @@ local function spawnCardMat(cardMatBag, targetPosition)
 end
 
 local function spawnMatExtras(mat, i)
-  local clueBagTemplate = getObjectFromGUID("cfa4b0")
+  local clueBagTemplate = getObjectFromGUID(cluePlayerBagId)
   if clueBagTemplate then
     local clueBag = clueBagTemplate.takeObject({
       index    = 0,
@@ -341,10 +342,9 @@ function onPlayerClickDeath(d)
     end
   end
 
+  d.mat.call("setMemo")
   for _, obj in ipairs(objs) do
-    local objData = parseJson(obj.memo)
     if d.mat.guid ~= obj.guid and tableId ~= obj.guid then
-      d.mat.call("setMemo")
       obj.setLock(false)
       box.putObject(obj)
     end
@@ -381,13 +381,6 @@ function onPlayerClickDeath(d)
     end
 
     itemsMatPosition[3] = itemsMatPosition[3] + 1.2
-  end
-
-  for _, obj in ipairs(objs) do
-    local objData = parseJson(obj.memo)
-    if d.mat.guid ~= obj.guid and tableId ~= obj.guid then
-      box.putObject(obj)
-    end
   end
 
   spawnDoomTokensOnScenarioSheet(1)
@@ -524,7 +517,7 @@ function onClickEncounter(obj, playerColor)
         }
       end
       return {
-        type = ((t == "event" or t == "encounter" or t == "anomaly" or t == "headline" or t == "terror") and t or "empty")
+        type = (MYTHOS_UI_TYPES[t] and t or "empty")
       }
     end
 
@@ -612,32 +605,13 @@ function onClickEncounter(obj, playerColor)
     return
   end
 
-  local function getSector(localPos, structureType)
-    local startAngleDeg = (structureType == 1 or structureType == "1") and 60 or 0
-    local x = localPos[1]
-    local z = localPos[3]
-
-    local angleDeg = math.deg(math.atan2(-z, x))
-    if angleDeg < 0 then
-      angleDeg = angleDeg + 360
-    end
-
-    local relativeAngle = angleDeg - startAngleDeg
-    if relativeAngle < 0 then
-      relativeAngle = relativeAngle + 360
-    end
-
-    local sector = math.floor(relativeAngle / 120) + 1
-    return sector
-  end
-
   local localPos = neighborhood.positionToLocal(figurine.getPosition())
 
   if not localPos then
     return
   end
 
-  local index = getSector(localPos, neighborhoodData.structureType)
+  local index = getLocationIndex(localPos, neighborhoodData.structureType)
 
   if not index then
     return

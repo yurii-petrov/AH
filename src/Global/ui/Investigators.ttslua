@@ -227,6 +227,7 @@ local function refreshAllActionColors()
 end
 
 local function setApplyPressed(pressed)
+  self.UI.setAttribute("INV_apply_text", "text", i18n.getStrById(pressed and "INV_apply_restore_text" or "INV_apply_text"))
   self.UI.setAttribute("INV_apply_text", "color", pressed and INV_GOLD or "clear")
   self.UI.setAttribute("INV_apply_text", "textColor", pressed and INV_DARK or INV_GOLD)
 end
@@ -268,12 +269,10 @@ local function matForSlot(slot)
 end
 
 local function colorForSlot(slot)
-  for _, obj in ipairs(getObjects()) do
-    if obj.type == "Hand" and obj.memo == "hand " .. slot then
-      local c = obj.getValue()
-      return (c and c ~= "") and c or nil
-    end
-  end
+  local hand = getHandForSlot(slot)
+  if not hand then return end
+  local c = hand.getValue()
+  return (c and c ~= "") and c or nil
 end
 
 local function slotForColor(color)
@@ -282,6 +281,20 @@ local function slotForColor(color)
       return p
     end
   end
+end
+
+-- Returns true (and messages the clicker) when the slot's investigator is
+-- owned by another seated player, so per-row controls stay owner-only.
+local function blockedByOwner(slot, player)
+  local owner = colorForSlot(slot)
+  local ownerPlayer = owner and Player[owner]
+  if ownerPlayer and ownerPlayer.seated and ownerPlayer.steam_id ~= player.steam_id then
+    local invName = INV_STATE.nameBySlot[slot] or defaultInvestigatorName(slot)
+    local ownerName = (ownerPlayer.steam_name ~= "") and ownerPlayer.steam_name or owner
+    printToColor(string.format(i18n.getStrById("INV_blocked_msg"), invName, ownerName), player.color, {1, 0.5, 0.1})
+    return true
+  end
+  return false
 end
 
 local function refreshLeaderState(slot)
@@ -604,14 +617,7 @@ function investigatorToggleAction(player, alt, id)
     return
   end
 
-  local owner = colorForSlot(p)
-  local ownerPlayer = owner and Player[owner]
-  if ownerPlayer and ownerPlayer.seated and ownerPlayer.steam_id ~= player.steam_id then
-    local invName = INV_STATE.nameBySlot[p] or ("Investigator " .. p)
-    local ownerName = (ownerPlayer.steam_name ~= "") and ownerPlayer.steam_name or owner
-    printToColor(string.format(i18n.getStrById("INV_blocked_msg"), invName, ownerName), player.color, {1, 0.5, 0.1})
-    return
-  end
+  if blockedByOwner(p, player) then return end
 
   INV_STATE.actions[p][a] = not INV_STATE.actions[p][a]
   refreshActionButton(p, a)
@@ -761,14 +767,7 @@ function investigatorEncounterClick(player, alt, id)
   local p = tonumber(id:match("INV_encounter_(%d+)"))
   if not p then return end
 
-  local owner = colorForSlot(p)
-  local ownerPlayer = owner and Player[owner]
-  if ownerPlayer and ownerPlayer.seated and ownerPlayer.steam_id ~= player.steam_id then
-    local invName   = INV_STATE.nameBySlot[p] or ("Investigator " .. p)
-    local ownerName = (ownerPlayer.steam_name ~= "") and ownerPlayer.steam_name or owner
-    printToColor(string.format(i18n.getStrById("INV_blocked_msg"), invName, ownerName), player.color, {1, 0.5, 0.1})
-    return
-  end
+  if blockedByOwner(p, player) then return end
 
   markEncounterDone(p)
   onClickEncounter(nil, player.color)
@@ -778,14 +777,7 @@ function investigatorMythosClick(player, alt, id)
   local p = tonumber(id:match("INV_mythos_(%d+)"))
   if not p then return end
 
-  local owner = colorForSlot(p)
-  local ownerPlayer = owner and Player[owner]
-  if ownerPlayer and ownerPlayer.seated and ownerPlayer.steam_id ~= player.steam_id then
-    local invName   = INV_STATE.nameBySlot[p] or ("Investigator " .. p)
-    local ownerName = (ownerPlayer.steam_name ~= "") and ownerPlayer.steam_name or owner
-    printToColor(string.format(i18n.getStrById("INV_blocked_msg"), invName, ownerName), player.color, {1, 0.5, 0.1})
-    return
-  end
+  if blockedByOwner(p, player) then return end
 
   if not consumeMythosCount(p) then return end
   onClickDrawMythos(nil, player.color)
@@ -808,14 +800,7 @@ function investigatorSeatPlayer(player, alt, id)
   local p = tonumber(id:match("INV_avatar_(%d+)"))
   if not p then return end
 
-  local hand = nil
-  for _, obj in ipairs(getObjects()) do
-    if obj.type == "Hand" and obj.memo == "hand " .. p then
-      hand = obj
-      break
-    end
-  end
-
+  local hand = getHandForSlot(p)
   if not hand then return end
 
   local targetColor = hand.getValue()
@@ -830,7 +815,7 @@ function investigatorSeatPlayer(player, alt, id)
     Wait.frames(function()
       local p2 = Player[targetColor]
       if p2 and p2.seated then
-        p2.lookAt({position = targetPos, pitch = 65, yaw = 0, distance = 30})
+        p2.lookAt({position = pos, pitch = 65, yaw = 0, distance = 30})
       end
     end, 3)
   end
@@ -866,13 +851,9 @@ end
 function getInvestigatorMatByColor(color)
   for slot = 1, MAX_INV do
     if TABLE_DATA.players[slot] then
-      for _, obj in ipairs(getObjects()) do
-        if obj.type == "Hand" and obj.memo == "hand " .. slot then
-          if obj.getValue() == color then
-            return TABLE_DATA.players[slot].obj
-          end
-          break
-        end
+      local hand = getHandForSlot(slot)
+      if hand and hand.getValue() == color then
+        return TABLE_DATA.players[slot].obj
       end
     end
   end

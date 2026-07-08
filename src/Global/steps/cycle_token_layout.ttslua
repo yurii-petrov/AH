@@ -67,7 +67,7 @@ function processStepCycleTokenLayout(step, context, onDone)
 end
 
 function applyTokenLayout(layout, onComplete)
-  local locationMatOld = getObjectFromGUID("b195b0")
+  local locationMatOld = getObjectFromGUID(locationMatOldId)
   if not locationMatOld then
     return
   end

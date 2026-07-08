@@ -267,6 +267,25 @@ msgstr "MYTHOS"
 msgid "PB_encounter_validate"
 msgstr "This button is only available during the Encounter phase"
 
+msgid "PB_host_only"
+msgstr "This button is only available to the host."
+
+msgid "phase_btn+tooltip"
+msgstr "LMB — next phase • RMB — previous phase (host only)"
+
+# Hotkeys (labels shown in the TTS hotkey menu)
+msgid "HK_next_phase"
+msgstr "Next phase (host)"
+
+msgid "HK_encounter"
+msgstr "Resolve encounter"
+
+msgid "HK_draw_mythos"
+msgstr "Draw Mythos token"
+
+msgid "HK_mythos_validate"
+msgstr "This action is only available during the Mythos phase"
+
 msgid "PB_next_phase"
 msgstr "The phase begins"
 
@@ -648,6 +667,9 @@ msgstr "token"
 
 msgid "LOG_add_clue_manually"
 msgstr "Add a clue manually"
+
+msgid "LOG_clue_deck_timeout"
+msgstr "Could not reassemble the encounter deck automatically — please stack the two encounter cards back onto the deck manually."
 
 msgid "LOG_add_doom_manually"
 msgstr "Add doom manually"
@@ -1401,6 +1423,9 @@ msgstr "%s is currently drawing mythos (%s left) — wait for them to finish."
 
 msgid "INV_apply_text"
 msgstr "Apply to all"
+
+msgid "INV_apply_restore_text"
+msgstr "↩ Restore actions"
 
 # 3D investigator figure: description shown on hover
 msgid "FIG_hotkeys_desc"

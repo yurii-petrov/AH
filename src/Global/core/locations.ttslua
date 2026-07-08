@@ -7,6 +7,27 @@
 -- spawnMonsterOnLocation) and by Setup/LocationMat. Previously these lived
 -- inside individual step files and were reached cross-file by accident.
 
+-- Maps a tile-local position to the 1-based location sector (1..3) of a
+-- Neighborhood tile. Shared by Doom token counting and encounter resolution.
+function getLocationIndex(localPos, structureType)
+  local startAngleDeg = (structureType == 1 or structureType == "1") and 60 or 0
+  local x = localPos[1]
+  local z = localPos[3]
+
+  local angleDeg = math.deg(math.atan2(-z, x))
+  if angleDeg < 0 then
+    angleDeg = angleDeg + 360
+  end
+
+  local relativeAngle = angleDeg - startAngleDeg
+  if relativeAngle < 0 then
+    relativeAngle = relativeAngle + 360
+  end
+
+  local sector = math.floor(relativeAngle / 120) + 1
+  return sector
+end
+
 -- Maps a token display type to the GUID of the bag it belongs in.
 function getTokenBagIdByType(tokenType)
   local tokenBagMap = {

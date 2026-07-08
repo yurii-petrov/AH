@@ -13,7 +13,7 @@ function processStepContextSetup(step, context, onDone)
     return
   end
 
-  local locationMat = getObjectFromGUID("b195b0")
+  local locationMat = getObjectFromGUID(locationMatOldId)
   if not locationMat then return end
 
   local box = getObjectFromGUID(boxId)

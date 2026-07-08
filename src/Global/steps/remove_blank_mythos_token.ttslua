@@ -10,11 +10,10 @@
 -- Example step JSON:
 --   { "type": "removeBlankMythosToken", "matFirst": true }
 
-local BLANK_TYPE   = "Blank"
-local BLANK_BAG_ID = "3a847f"
+local BLANK_TYPE = "Blank"
 
 function processStepRemoveBlankMythosToken(step, context, onDone)
-  local blankBag = getObjectFromGUID(BLANK_BAG_ID)
+  local blankBag = getObjectFromGUID(mythosTokenBagIds[MythosCup.Blank])
 
   local function returnToken(obj)
     if blankBag then

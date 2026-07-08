@@ -34,6 +34,15 @@ CONDITION_TYPES = {
   ["wanted"] = true,
 }
 
+-- Card types that get a dedicated mythos-tile button UI; anything else shows "empty".
+MYTHOS_UI_TYPES = {
+  event = true,
+  encounter = true,
+  anomaly = true,
+  headline = true,
+  terror = true,
+}
+
 -- ╭──────────────────────────────────────────────╮
 -- │                Phases                        │
 -- ╰──────────────────────────────────────────────╯

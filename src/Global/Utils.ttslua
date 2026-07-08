@@ -93,11 +93,13 @@ function runOnceAfterRest(o, f, f2, n)
     end
     _G["runOnceAfterRestObjectIDs"][o] = Wait.condition(function()
       _G["runOnceAfterRestObjectIDs"][o] = nil
+      _G["runOnceAfterRestTokens"][o] = nil
       safeCall(f, o)
     end, function()
       return safeResting(o)
     end, n, function()
       _G["runOnceAfterRestObjectIDs"][o] = nil
+      _G["runOnceAfterRestTokens"][o] = nil
       safeCall(f2, o)
     end)
   end, 1)
@@ -304,6 +306,45 @@ function getHandData(color)
     Value = 0,
     XmlUI = ""
   }
+end
+
+-- Runs async steps in order; each step receives a `done` callback it must
+-- call to advance to the next one.
+function runSequence(steps, i)
+  i = i or 1
+  local step = steps[i]
+  if not step then return end
+  step(function() runSequence(steps, i + 1) end)
+end
+
+-- Cache of "hand N" trigger GUIDs by slot. Hands are spawned once per game
+-- (Global/ui/PlayerActions.spawnPlayerHand) but looked up on every HUD click,
+-- so cache the GUID and lazily rescan (at most once per frame) on a miss.
+HAND_CACHE = {}
+local handCacheScannedAt = -1
+
+local function rescanHands()
+  HAND_CACHE = {}
+  handCacheScannedAt = Time.time
+  for _, obj in ipairs(getObjects()) do
+    if obj.type == "Hand" and type(obj.memo) == "string" then
+      local slot = obj.memo:match("^hand (%d+)$")
+      if slot then
+        HAND_CACHE[tonumber(slot)] = obj.getGUID()
+      end
+    end
+  end
+end
+
+function getHandForSlot(slot)
+  local guid = HAND_CACHE[slot]
+  local obj = guid and getObjectFromGUID(guid)
+  if obj then return obj end
+  if Time.time ~= handCacheScannedAt then
+    rescanHands()
+  end
+  guid = HAND_CACHE[slot]
+  return guid and getObjectFromGUID(guid)
 end
 
 function getHandsByPlayerColor(playerColor)

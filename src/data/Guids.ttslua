@@ -3,6 +3,8 @@
 -- ╰──────────────────────────────────────────────╯
 
 mythosTileId = "3dbb4d"
+locationMatOldId = "b195b0"
+randomInvestigatorCardId = "d84f21"
 scenarioMatId = "7b841f"
 shopMatId = "80c416"
 conditionMatId = "f0624c"

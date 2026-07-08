@@ -57,12 +57,6 @@ function onObjectPickUpShop(colorName, object, shopMat)
 end
 
 function onObjectPickUp(colorName, object)
-  for _, player in ipairs(Player.getPlayers()) do
-    if player.lift_height <= 0.3 then
-      player.lift_height = 0.3
-    end
-  end
-
   local objectData = parseJson(object.memo)
   if objectData and objectData.type == "blessed cursed" then
     applyBlessedCursedToRoller(object, 1)
@@ -149,7 +143,7 @@ function onObjectDropOnMythosMat(colorName, object, objectData)
     end
     local t = cardData.type and string.lower(cardData.type) or ""
     mythosTile.call("setButtons", {
-      type = ((t == "event" or t == "encounter" or t == "anomaly" or t == "headline" or t == "terror") and t or "empty"),
+      type = (MYTHOS_UI_TYPES[t] and t or "empty"),
       color = colorName
     })
   end
@@ -158,12 +152,10 @@ end
 function onObjectDropOnInvestigatorMat(colorName, object, objectData)
   local investigatorMat = nil
   local foundObjects = downCast(object, 10, nil, 1)
-  if #foundObjects == 2 then
-    for i, obj in ipairs(foundObjects) do
-      if obj.memo == "Investigator Mat" then
-        investigatorMat = obj
-        break
-      end
+  for i, obj in ipairs(foundObjects) do
+    if obj.memo == "Investigator Mat" then
+      investigatorMat = obj
+      break
     end
   end
 
@@ -376,9 +368,9 @@ function onRandomInvestigatorCardDrop(colorName, object)
   end
 
   local objectData = parseJson(object.memo)
-  local table = getObjectFromGUID(tableId)
-  if objectData and objectData.startPosition and table then
-    object.setPositionSmooth(table.positionToWorld(objectData.startPosition):setAt("y", 3))
+  local tableObj = getObjectFromGUID(tableId)
+  if objectData and objectData.startPosition and tableObj then
+    object.setPositionSmooth(tableObj.positionToWorld(objectData.startPosition):setAt("y", 3))
   else
     object.setPositionSmooth({60, 3, -8})
   end

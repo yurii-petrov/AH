@@ -5,7 +5,7 @@
 
 -- Mechanic scenario
 
-map = false
+local map = false
 function mapToggle(player, alt, id)
   self.UI.setAttribute('scenarioImage', 'active', map)
   map = not map
@@ -18,7 +18,7 @@ function changeScenario(player, alt, id)
   self.UI.setAttribute('scenarioImage', 'active', true)
   self.UI.setAttribute('scenarioMap', 'active', false)
 end
-function players(player, alt, id)
+function menuSelectPlayers(player, alt, id)
   local color = self.UI.getAttribute('players1', 'textColor')
   for i = 1, 6, 1 do
     self.UI.setAttribute('players' .. i, 'color', 'clear')
@@ -45,7 +45,7 @@ function onClickAddons(player, alt, id)
     self.UI.setAttribute('addon_panel' .. i, 'color', addon.include and '#ffffff22' or 'clear')
   end
 end
-function restore(player, alt, id)
+function menuRestore(player, alt, id)
   self.UI.setAttribute('main_menu', 'active', true)
   self.UI.setAttribute('restore', 'active', false)
 end
@@ -176,15 +176,13 @@ function proceedStartGame()
   end
 
   onClickPrepareNumberOfPlayers(function()
-    placeComponents(function()
-      resolveComponents(function()
-        shuffleComponents(function()
-          processScenarioDecks(function()
-            cleanupComponents()
-          end)
-        end)
-      end)
-    end)
+    runSequence({
+      placeComponents,
+      resolveComponents,
+      shuffleComponents,
+      processScenarioDecks,
+      function(done) cleanupComponents() done() end,
+    })
     broadcastToAll(i18n.getStrById("LOG_preparing_scenario"), "White")
   end)
 
@@ -236,18 +234,12 @@ function inProgress(player, alt, id)
   })
 end
 
-local addonScenarios = {
-  [1] = {5, 6},
-  [2] = {7, 8, 9, 10},
-  [3] = {11, 12, 13},
-}
-
 function selectAddon(player, alt, id)
   local id = tonumber(id:match("%d+"))
   currentAddon = id
   addons[currentAddon].include = not addons[currentAddon].include
 
-  local scenarios = addonScenarios[currentAddon]
+  local scenarios = addons[currentAddon].scenarios
 
   if addons[currentAddon].include then
     if scenarios then

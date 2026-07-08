@@ -29,7 +29,7 @@ local function buildPlayerButtons()
   for n = 1, 6 do
     local btnAttrs = {
       id = "players" .. n,
-      onClick = "players",
+      onClick = "menuSelectPlayers",
       text = tostring(n),
       fontSize = "46",
     }
@@ -172,7 +172,7 @@ local function phaseWindow()
       { tag = "image", attributes = { id = "phase_img", image = "phase_action_image", width = "200", preserveAspect = "true", rectAlignment = "UpperCenter" } },
       phaseText("PB_phase_text", "0 45", "12"),
       phaseText("phase_text", "0 25", "16"),
-      { tag = "button", attributes = { id = "phase_btn", onClick = "nextPhase", width = "200", height = "170", rectAlignment = "UpperCenter", color = "clear" } },
+      { tag = "button", attributes = { id = "phase_btn", onClick = "nextPhase", width = "200", height = "170", rectAlignment = "UpperCenter", color = "clear", tooltip = i18n.getStrById("phase_btn+tooltip"), tooltipPosition = "Left" } },
     },
   }
 end
@@ -424,7 +424,7 @@ local function restoreWindow()
     tag = "panel",
     attributes = { id = "restore", active = "false", offsetXY = "-30 20", rectAlignment = "LowerRight", allowDragging = "false", color = "#000000", width = "300", height = "109" },
     children = {
-      { tag = "Button", attributes = { id = "MM_open", onClick = "restore", width = "280", height = "89", color = "clear", text = "" } },
+      { tag = "Button", attributes = { id = "MM_open", onClick = "menuRestore", width = "280", height = "89", color = "clear", text = "" } },
       { tag = "image", attributes = { width = "280", height = "89", preserveAspect = "true", image = "button_medium" } },
     },
   }

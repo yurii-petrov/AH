@@ -8,7 +8,7 @@ require("Global/drop/discard")
 require("Global/drop/mat_handlers")
 
 function onObjectDrop(colorName, object)
-  if object.guid == "d84f21" then
+  if object.guid == randomInvestigatorCardId then
     onRandomInvestigatorCardDrop(colorName, object)
     return
   end
@@ -102,31 +102,43 @@ function context59ReturnBridge(obj, player_color)
   returnBridgeToBox()
 end
 
--- Shared helper: spawn an Item Mat at targetPos, attach object to it, call setData.
--- targetPos is a world position Vector. Card y = targetPos.y + 0.1.
--- Returns the spawned itemMat, or nil on failure.
-function attachItemToItemsMat(object, objectData, targetPos, bagId)
-  local itemMatBag = getObjectFromGUID(bagId)
-  if not itemMatBag then
+-- Shared core: take a mat from `bagId`, place it at targetPos and attach
+-- `object` to it face-up. targetPos is a world position Vector; the card ends
+-- up at targetPos.y + 0.1. Returns the spawned mat, or nil on failure.
+local function takeMatAndAttach(object, objectData, targetPos, bagId)
+  local matBag = getObjectFromGUID(bagId)
+  if not matBag then
     return nil
   end
 
-  local itemMat = itemMatBag.takeObject({
+  local mat = matBag.takeObject({
     index    = 0,
     position = targetPos,
     rotation = orient(objectData, false),
     smooth   = false
   })
 
-  if not itemMat then
+  if not mat then
     return nil
   end
 
   object.setLock(true)
   object.setRotation(orient(objectData, false))
-  object.setPosition(itemMat.positionToWorld({0, 0, -0.154}):setAt("y", targetPos.y + 0.1))
+  object.setPosition(mat.positionToWorld({0, 0, -0.154}):setAt("y", targetPos.y + 0.1))
 
-  itemMat.addAttachment(object)
+  mat.addAttachment(object)
+
+  return mat
+end
+
+-- Item Mat variant: also tags the mat's memo and pushes the card data into
+-- the mat script via setData (twice, to survive the attach/rest race).
+function attachItemToItemsMat(object, objectData, targetPos, bagId)
+  local itemMat = takeMatAndAttach(object, objectData, targetPos, bagId)
+  if not itemMat then
+    return nil
+  end
+
   itemMat.memo = JSON.encode({type = "Item Mat"})
 
   runAfterRest(itemMat, function(itemMat)
@@ -141,32 +153,10 @@ function attachItemToItemsMat(object, objectData, targetPos, bagId)
   return itemMat
 end
 
--- Same as attachItemToItemsMat, but for the Skill Mat (skillMatBagId): the
--- mat itself tracks +1 toggles per stat, so no setData call is needed here.
+-- Skill Mat variant (skillMatBagId): the mat itself tracks +1 toggles per
+-- stat, so no setData call is needed here.
 function attachItemToSkillMat(object, objectData, targetPos, bagId)
-  local skillMatBag = getObjectFromGUID(bagId)
-  if not skillMatBag then
-    return nil
-  end
-
-  local skillMat = skillMatBag.takeObject({
-    index    = 0,
-    position = targetPos,
-    rotation = orient(objectData, false),
-    smooth   = false
-  })
-
-  if not skillMat then
-    return nil
-  end
-
-  object.setLock(true)
-  object.setRotation(orient(objectData, false))
-  object.setPosition(skillMat.positionToWorld({0, 0, -0.154}):setAt("y", targetPos.y + 0.1))
-
-  skillMat.addAttachment(object)
-
-  return skillMat
+  return takeMatAndAttach(object, objectData, targetPos, bagId)
 end
 
 function onWantedCardFlipped(object)
@@ -321,7 +311,7 @@ function onInvestigatorDrop(colorName, object, objectData, isIgnoreRandomCard)
           return
         end
       end
-    elseif obj.guid == "d84f21" and not isIgnoreRandomCard then
+    elseif obj.guid == randomInvestigatorCardId and not isIgnoreRandomCard then
       investigatorCard = obj
       object.setRotation({0, 90, 180})
       return
@@ -345,12 +335,10 @@ function onInvestigatorDrop(colorName, object, objectData, isIgnoreRandomCard)
   for i, playerData in ipairs(TABLE_DATA.players) do
     if playerData.guid == matGuid then
       gameData.investigatorSlots[i] = { name = objectData.name, matGuid = investigatorMat.getGUID() }
-      for _, obj in ipairs(getObjects()) do
-        if obj.type == "Hand" and obj.memo == "hand " .. i then
-          local c = obj.getValue()
-          if c and c ~= "" then tintColor = c end
-          break
-        end
+      local hand = getHandForSlot(i)
+      if hand then
+        local c = hand.getValue()
+        if c and c ~= "" then tintColor = c end
       end
       break
     end
@@ -521,7 +509,7 @@ function onMonsterDrop(colorName, object, objectData)
     end
   end
 
-  if not monsterMat or not objectData.hp and (monsterMat.guid ~= self.guid) then
+  if not monsterMat or not objectData.hp then
     return
   end
 

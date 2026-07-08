@@ -342,6 +342,22 @@ I18N_DATA = {
     ["en"] = "Guardian Beast",
     ["uk"] = "Вартовий Звір",
   },
+  ["HK_draw_mythos"] = {
+    ["en"] = "Draw Mythos token",
+    ["uk"] = "Тягнути жетон міфу",
+  },
+  ["HK_encounter"] = {
+    ["en"] = "Resolve encounter",
+    ["uk"] = "Розіграти контакт",
+  },
+  ["HK_mythos_validate"] = {
+    ["en"] = "This action is only available during the Mythos phase",
+    ["uk"] = "Ця дія доступна тільки у фазі Міфів",
+  },
+  ["HK_next_phase"] = {
+    ["en"] = "Next phase (host)",
+    ["uk"] = "Наступна фаза (хост)",
+  },
   ["Hall_School"] = {
     ["en"] = "Hall School",
     ["uk"] = "Школа Голла",
@@ -466,6 +482,10 @@ I18N_DATA = {
     ["en"] = "Will",
     ["uk"] = "Воля",
   },
+  ["INV_apply_restore_text"] = {
+    ["en"] = "↩ Restore actions",
+    ["uk"] = "↩ Повернути дії",
+  },
   ["INV_apply_text"] = {
     ["en"] = "Apply to all",
     ["uk"] = "Застосувати для всіх",
@@ -577,6 +597,10 @@ I18N_DATA = {
   ["LOG_cannot_disable_addon"] = {
     ["en"] = "Cannot disable the expansion, a scenario from it is selected!",
     ["uk"] = "Неможливо вимкнути доповнення, обрано сценарій з нього!",
+  },
+  ["LOG_clue_deck_timeout"] = {
+    ["en"] = "Could not reassemble the encounter deck automatically — please stack the two encounter cards back onto the deck manually.",
+    ["uk"] = "Не вдалося автоматично зібрати колоду контактів — покладіть дві карти контактів назад у колоду вручну.",
   },
   ["LOG_clue_spawn"] = {
     ["en"] = "clue spawn",
@@ -1093,6 +1117,10 @@ I18N_DATA = {
   ["PB_encounter_validate"] = {
     ["en"] = "This button is only available during the Encounter phase",
     ["uk"] = "Ця кнопка доступна тільки у фазу зустрічей",
+  },
+  ["PB_host_only"] = {
+    ["en"] = "This button is only available to the host.",
+    ["uk"] = "Ця кнопка доступна тільки хосту.",
   },
   ["PB_next_phase"] = {
     ["en"] = "The phase begins",
@@ -1701,6 +1729,10 @@ I18N_DATA = {
   ["mythos_start"] = {
     ["en"] = "Start of Mythos Phase",
     ["uk"] = "Настає фаза Мітів",
+  },
+  ["phase_btn+tooltip"] = {
+    ["en"] = "LMB — next phase • RMB — previous phase (host only)",
+    ["uk"] = "ЛКМ — наступна фаза • ПКМ — попередня фаза (тільки хост)",
   },
   ["token"] = {
     ["en"] = "token",

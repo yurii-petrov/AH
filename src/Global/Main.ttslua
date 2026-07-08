@@ -95,6 +95,14 @@ local function restoreActiveGameUI()
   restorePhaseHud(gameData.phase)
 end
 
+-- Cards must lift high enough to clear the mats they sit on; enforced once
+-- per player here instead of on every onObjectPickUp.
+local function bumpLiftHeight(player)
+  if player.lift_height <= 0.3 then
+    player.lift_height = 0.3
+  end
+end
+
 -- Re-pushes the dynamically-built UI to a player who connects after the
 -- Global object's onload already ran (and already built/populated it for
 -- whoever was present at the time). TTS does not retroactively sync
@@ -102,6 +110,7 @@ end
 -- a player connecting mid-game never sees the Investigators HUD (or sees
 -- it frozen at its default/empty state).
 function onPlayerConnect(player)
+  bumpLiftHeight(player)
   self.UI.setXmlTable(getRootXmlTable())
   self.UI.setAttribute("languages", "active", gameData.language == nil)
   self.UI.setAttribute("main_menu", "active", gameData.language and not gameData.isStarted)
@@ -112,6 +121,10 @@ function onPlayerConnect(player)
 end
 
 function onload(savedData)
+
+  for _, player in ipairs(Player.getPlayers()) do
+    bumpLiftHeight(player)
+  end
 
   self.UI.setXmlTable(getRootXmlTable())
   -- Wait.time(function()
@@ -205,6 +218,27 @@ end
     mythosBag.addContextMenuItem("Fix button", fixDrawMythosButton)
   end
 
+  -- Hotkey labels are resolved once per load in the language restored from
+  -- the save; a language switch mid-session updates them on the next load.
+  addHotkey(i18n.getStrById("HK_next_phase"), function(playerColor)
+    local player = Player[playerColor]
+    if player then nextPhase(player, "-1") end
+  end)
+  addHotkey(i18n.getStrById("HK_encounter"), function(playerColor)
+    if gameData.phase ~= 3 then
+      printToColor(i18n.getStrById("PB_encounter_validate"), playerColor, {1, 0.2, 0.2})
+      return
+    end
+    mythMatEncounterClick({ c = playerColor })
+  end)
+  addHotkey(i18n.getStrById("HK_draw_mythos"), function(playerColor)
+    if gameData.phase ~= 4 then
+      printToColor(i18n.getStrById("HK_mythos_validate"), playerColor, {1, 0.2, 0.2})
+      return
+    end
+    mythMatMythClick({ c = playerColor })
+  end)
+
 end
 
 function mythMatMythClick(d)
@@ -270,7 +304,7 @@ end
 
 function nextPhase(player, value, id)
   if not player.host then
-    printToColor("Ця кнопка доступна тільки хосту.", player.color, {1, 0.2, 0.2})
+    printToColor(i18n.getStrById("PB_host_only"), player.color, {1, 0.2, 0.2})
     return
   end
 

@@ -36,6 +36,9 @@ function i18n.getStrById(id)
     return I18N_DATA[id].en or id
   end
   -- Fallback to the ID itself if the entry doesn't exist in I18N_DATA.
+  if isTestMode then
+    log("[i18n] missing msgid: " .. tostring(id))
+  end
   return id
 end
 

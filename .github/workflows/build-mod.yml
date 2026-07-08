@@ -16,6 +16,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Lint - no hardcoded GUIDs outside data/Guids
+        run: |
+          hits=$(grep -rn '"[a-f0-9]\{6\}"' --include='*.ttslua' src/Global src/Setup | grep -v 'data/Guids.ttslua' | grep -v 'Setup/Language.ttslua' || true)
+          if [ -n "$hits" ]; then
+            echo "Hardcoded GUID literals found - move them to src/data/Guids.ttslua:"
+            echo "$hits"
+            exit 1
+          fi
+        shell: bash
+
       - name: Download TTSModManager
         run: wget https://github.com/argonui/TTSModManager/releases/download/v1.3/TTSModManager-Linux
         shell: bash

@@ -199,7 +199,7 @@ function lockSetupScenarioComponents(obj, scenarioTiles)
   if not resolve(redTokenBagId)   then return end
   if not resolve(greenTokenBagId) then return end
 
-  local locationMatOld = resolve("b195b0")
+  local locationMatOld = resolve(locationMatOldId)
   if not locationMatOld then
     error("Мат для локацій не знайдено!")
     return

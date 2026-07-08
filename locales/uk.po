@@ -325,6 +325,25 @@ msgstr "МІТУ"
 msgid "PB_encounter_validate"
 msgstr "Ця кнопка доступна тільки у фазу зустрічей"
 
+msgid "PB_host_only"
+msgstr "Ця кнопка доступна тільки хосту."
+
+msgid "phase_btn+tooltip"
+msgstr "ЛКМ — наступна фаза • ПКМ — попередня фаза (тільки хост)"
+
+# Hotkeys (labels shown in the TTS hotkey menu)
+msgid "HK_next_phase"
+msgstr "Наступна фаза (хост)"
+
+msgid "HK_encounter"
+msgstr "Розіграти контакт"
+
+msgid "HK_draw_mythos"
+msgstr "Тягнути жетон міфу"
+
+msgid "HK_mythos_validate"
+msgstr "Ця дія доступна тільки у фазі Міфів"
+
 msgid "PB_next_phase"
 msgstr "Настає фаза"
 
@@ -704,6 +723,11 @@ msgstr "жетон"
 
 msgid "LOG_add_clue_manually"
 msgstr "Додати зачіпку вручну"
+
+msgid "LOG_clue_deck_timeout"
+msgstr ""
+"Не вдалося автоматично зібрати колоду контактів — покладіть дві карти "
+"контактів назад у колоду вручну."
 
 msgid "LOG_add_doom_manually"
 msgstr "Додати приреченість вручну"
@@ -1468,6 +1492,9 @@ msgstr "%s зараз тягне міт (лишилось %s) — зачекай
 msgid "INV_apply_text"
 msgstr "Застосувати для всіх"
 
+msgid "INV_apply_restore_text"
+msgstr "↩ Повернути дії"
+
 # 3D investigator figure: description shown on hover
 msgid "FIG_hotkeys_desc"
 msgstr "Q, E, F перемикають стан фігурки."
@@ -1527,8 +1554,8 @@ msgstr "Дослідник"
 
 msgid "RI_desc_text"
 msgstr ""
-"Якщо хочеш зіграти випадковим дослідником, обери роль нижче (не "
-"обов'язково) та поклади цю карту на планшет гравця."
+"Якщо хочеш зіграти випадковим дослідником, обери роль нижче (не обов'язково)"
+" та поклади цю карту на планшет гравця."
 
 msgid "RI_allRoles"
 msgstr "Всі ролі"

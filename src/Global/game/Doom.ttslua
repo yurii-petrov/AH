@@ -27,9 +27,9 @@ function spawnDoomTokensInMiddleOfNeighborhood(data)
     return
   end
 
-  local p1 = {"0.780", "0.150", "0.001"}
-  local p2 = {"-0.781", "0.150", "-0.001"}
-  local p3 = {"0.000", "0.150", "0.783"}
+  local p1 = {0.780, 0.150, 0.001}
+  local p2 = {-0.781, 0.150, -0.001}
+  local p3 = {0.000, 0.150, 0.783}
 
   local tokens = {}
   if data.doomCount == 1 then
@@ -186,24 +186,8 @@ function checkAndAddDoomsOnAnomaly(neighborhoodObj, doomCount)
   end
 end
 
-function getLocationIndex(localPos, structureType)
-  local startAngleDeg = (structureType == 1 or structureType == "1") and 60 or 0
-  local x = localPos[1]
-  local z = localPos[3]
-
-  local angleDeg = math.deg(math.atan2(-z, x))
-  if angleDeg < 0 then
-    angleDeg = angleDeg + 360
-  end
-
-  local relativeAngle = angleDeg - startAngleDeg
-  if relativeAngle < 0 then
-    relativeAngle = relativeAngle + 360
-  end
-
-  local sector = math.floor(relativeAngle / 120) + 1
-  return sector
-end
+-- getLocationIndex lives in Global/core/locations.ttslua (shared with
+-- the encounter resolution in Global/ui/PlayerActions.ttslua).
 
 function getNeighborhoodDoomInfo(neighborhood)
   if not neighborhood then
@@ -613,17 +597,24 @@ function spawnDoomTokenInLocation(locationName, doomCount, neighborhoodInfo)
       return
     end
 
-    for i, emptySpot in ipairs(emptySpots) do
-      if emptySpot then
-        local doomToken = doomBag.takeObject({
-          index = 0,
-          position = emptySpot:setAt("y", 3)
-        })
-        if doomToken then doomToken.highlightOn("Red", 5) end
+    local spawned = 0
+    for _, emptySpot in ipairs(emptySpots) do
+      local doomToken = doomBag.takeObject({
+        index = 0,
+        position = emptySpot:setAt("y", 3)
+      })
+      if doomToken then
+        doomToken.highlightOn("Red", 5)
+        spawned = spawned + 1
       end
+    end
 
+    if spawned > 0 then
       printToAll(i18n.getStrById(neighborhoodInfo.data.name:gsub(" ", "_")) .. " (" .. i18n.getStrById(locationName:gsub(" ", "_")) .. ") - " ..
-        doomCount .. " " .. i18n.getStrById("LOG_doom_added"), "Red")
+        spawned .. " " .. i18n.getStrById("LOG_doom_added"), "Red")
+    end
+    if spawned < doomCount then
+      printToAll(i18n.getStrById(locationName:gsub(" ", "_")) .. " - " .. (doomCount - spawned) .. " " .. i18n.getStrById("LOG_add_doom_manually"), "Red")
     end
     return
   end
@@ -644,16 +635,23 @@ function spawnDoomTokenOnTile(tileObj, doomCount)
     return
   end
 
-  for i, emptySpot in ipairs(emptySpots) do
-    if emptySpot then
-      local doomToken = doomBag.takeObject({
-        index = 0,
-        position = emptySpot:setAt("y", 3)
-      })
-      if doomToken then doomToken.highlightOn("Red", 5) end
+  local spawned = 0
+  for _, emptySpot in ipairs(emptySpots) do
+    local doomToken = doomBag.takeObject({
+      index = 0,
+      position = emptySpot:setAt("y", 3)
+    })
+    if doomToken then
+      doomToken.highlightOn("Red", 5)
+      spawned = spawned + 1
     end
+  end
 
-    printToAll(i18n.getStrById(tileData.name:gsub(" ", "_")) .. " - " .. doomCount .. " " .. i18n.getStrById("LOG_doom_added"), "Red")
+  if spawned > 0 then
+    printToAll(i18n.getStrById(tileData.name:gsub(" ", "_")) .. " - " .. spawned .. " " .. i18n.getStrById("LOG_doom_added"), "Red")
+  end
+  if spawned < doomCount then
+    printToAll(i18n.getStrById(tileData.name:gsub(" ", "_")) .. " - " .. (doomCount - spawned) .. " " .. i18n.getStrById("LOG_add_doom_manually"), "Red")
   end
 end
 
@@ -882,6 +880,7 @@ function spawnClue(callBack)
     return
   end
 
+  local encounterDeckPos = encounterDeck.getPosition()
   local stashedTerrorPos = stashTerrorCardsFromDeck(encounterDeck)
 
   local neighborhoodCards = {takeCardFromTop(encounterDeck, true), takeCardFromTop(encounterDeck, true)}
@@ -908,8 +907,8 @@ function spawnClue(callBack)
       Wait.time(function()
         foundDeck.shuffle()
         Wait.time(function()
-          foundDeck.setPositionSmooth(encounterDeck.getPosition():setAt("y", 3))
-          restoreTerrorCardsToDeck(stashedTerrorPos, encounterDeck.getPosition())
+          foundDeck.setPositionSmooth(Vector(encounterDeckPos.x, 3, encounterDeckPos.z))
+          restoreTerrorCardsToDeck(stashedTerrorPos, encounterDeckPos)
           Wait.time(function() callBack() end, 1)
         end, 0.7)
 
@@ -928,6 +927,10 @@ function spawnClue(callBack)
         end
       end
       return false
+    end, 8, function()
+      restoreTerrorCardsToDeck(stashedTerrorPos, encounterDeckPos)
+      broadcastToAll(i18n.getStrById("LOG_clue_deck_timeout"), "Orange")
+      callBack()
     end)
   end, 1.5)
 end
