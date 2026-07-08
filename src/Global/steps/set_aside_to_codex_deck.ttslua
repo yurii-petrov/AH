@@ -1,13 +1,3 @@
--- ╭──────────────────────────────────────────────╮
--- │       STEP: setAsideToCodexDeck              │
--- ╰──────────────────────────────────────────────╯
---
--- Takes specific codex cards from the archive (by number) and places them
--- face-down at the codexDeck snap point on the location mat, forming the
--- deck from which card 31's actions later draw.
---
--- Example step JSON:
---   { "type": "setAsideToCodexDeck", "numbers": [32, 33, 34, 35] }
 
 function processStepSetAsideToCodexDeck(step, context, onDone)
   local numbers = step.numbers

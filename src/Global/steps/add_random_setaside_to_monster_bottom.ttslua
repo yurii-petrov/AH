@@ -1,16 +1,3 @@
--- ╭──────────────────────────────────────────────╮
--- │  STEP: addRandomSetasideToMonsterBottom      │
--- ╰──────────────────────────────────────────────╯
---
--- Takes ONE random card from the set-aside deck and slides it under the
--- monster deck (bottom of the pile), without reshuffling. Unlike
--- mergeOneFromSetasideIntoMonster (which always shuffles afterwards), the
--- deliberate bottom placement here would be pointless if the deck were then
--- reshuffled, so this step leaves the rest of the monster deck order intact.
---
--- Example step JSON:
---   { "type": "addRandomSetasideToMonsterBottom" }
--- Optional: "fromDeck" (default "setaside"), "toDeck" (default "monster")
 
 function processStepAddRandomSetasideToMonsterBottom(step, context, onDone)
   local fromType = (step and step.fromDeck) or "setaside"

@@ -1,15 +1,3 @@
--- ╭──────────────────────────────────────────────╮
--- │        STEP: findMonsterByName               │
--- ╰──────────────────────────────────────────────╯
---
--- Reveals cards from the monster deck (bottom-up) until one matching the
--- requested monster name is found. Non-matching reveals are returned to the
--- deck; the found card is spawned as a monster below the codex.
--- Mirrors findMonsterByType but matches memo.name instead of monstertype.
---
--- Example step JSON:
---   { "type": "findMonsterByName", "monsterName": "Corben Bouchard" }
--- Optional: "deckType" (default "monster")
 
 local function nameMatches(entryData, searchName)
   local name = entryData and (entryData.name or (entryData.back and entryData.back.name))

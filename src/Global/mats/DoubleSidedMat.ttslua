@@ -60,8 +60,6 @@ function setFrontData(params)
   data = params
 end
 
--- UI
-
 function getAttributes()
   return {
     width      = "300",
@@ -108,8 +106,6 @@ function getText()
     attributes = attributes,
   }
 end
-
--- Click
 
 function clickCount(player, alt_click)
   if alt_click == "-1" then

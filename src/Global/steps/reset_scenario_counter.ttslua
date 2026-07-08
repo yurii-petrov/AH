@@ -1,13 +1,3 @@
--- ╭──────────────────────────────────────────────╮
--- │       STEP: resetScenarioCounter             │
--- ╰──────────────────────────────────────────────╯
---
--- Calls resetHp() or resetSanity() on the active scenario sheet to zero
--- out the tracking counter. The scenario sheet must expose these functions.
---
--- Example step JSON:
---   { "type": "resetScenarioCounter", "counter": "hp" }
---   { "type": "resetScenarioCounter", "counter": "sanity" }
 
 function processStepResetScenarioCounter(step, context, onDone)
   local counter = step and step.counter

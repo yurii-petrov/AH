@@ -1,6 +1,4 @@
--- ╭──────────────────────────────────────────────╮
--- │             CONDITION MAT SETUP              │
--- ╰──────────────────────────────────────────────╯
+
 function addConditionMat2()
   if gameData.addons[1] == false and gameData.addons[2] == false and gameData.addons[3] == false then
     return

@@ -1,10 +1,6 @@
--- ╭──────────────────────────────────────────────╮
--- │                Addons                        │
--- ╰──────────────────────────────────────────────╯
 
 currentAddon = 1
--- `scenarios` lists the scenario numbers each addon unlocks in the scenario
--- picker (see selectAddon in Global/ui/Menu.ttslua).
+
 addons = {{
   include = true,
   scenarios = {5, 6},

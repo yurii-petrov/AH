@@ -1,14 +1,3 @@
--- ╭──────────────────────────────────────────────╮
--- │        STEP: showScenarioCounter             │
--- ╰──────────────────────────────────────────────╯
---
--- Calls setHpVisible(true) or setSanityVisible(true) on the active scenario
--- sheet (any object whose memo.type == "Scenario"). Used by scenario-specific
--- codex cards that reveal a tracking counter on the sheet.
---
--- Example step JSON:
---   { "type": "showScenarioCounter", "counter": "hp" }
---   { "type": "showScenarioCounter", "counter": "sanity" }
 
 function processStepShowScenarioCounter(step, context, onDone)
   local counter = step and step.counter

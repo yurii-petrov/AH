@@ -1,6 +1,3 @@
--- ╭──────────────────────────────────────────────╮
--- │          DOOM / CLUE / SPAWN                 │
--- ╰──────────────────────────────────────────────╯
 
 function generateArcPositionsFromAngle(center, radius, startAngleDeg, stepAngleDeg, count, y)
   local positions = {}
@@ -185,9 +182,6 @@ function checkAndAddDoomsOnAnomaly(neighborhoodObj, doomCount)
     end
   end
 end
-
--- getLocationIndex lives in Global/core/locations.ttslua (shared with
--- the encounter resolution in Global/ui/PlayerActions.ttslua).
 
 function getNeighborhoodDoomInfo(neighborhood)
   if not neighborhood then
@@ -934,4 +928,3 @@ function spawnClue(callBack)
     end)
   end, 1.5)
 end
-

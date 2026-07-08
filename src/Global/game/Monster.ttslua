@@ -1,10 +1,4 @@
--- ╭──────────────────────────────────────────────╮
--- │          MONSTER SPAWN / ATTACH              │
--- ╰──────────────────────────────────────────────╯
 
--- Finds the investigator's figurine that is actually sitting on the
--- location mat (i.e. at a location), not just any figurine sharing the
--- same memo (an investigator can have both a standee and a 3D figurine).
 function findInvestigatorFigurineOnLocationMat(invName)
   if not invName then return nil end
   local locationMat = getObjectFromGUID(locationMatId)
@@ -172,7 +166,6 @@ function attachDoubleSidedCard(monster, objectMemo, spawnPos)
   attachDoubleSidedToMat(monster, objectMemo, doubleSidedMat)
 end
 
--- Draw Monster
 function drawMonster(spawnPos)
   local function getMonsterCard()
     local locationMat = getObjectFromGUID(locationMatId)
@@ -273,8 +266,3 @@ function onMonsterKilled(params)
   monster.setRotation(orient(monsterMemo))
   monster.setPosition(locationMat.positionToWorld(locationData.monster):setAt("y", 3))
 end
-
--- ╭──────────────────────────────────────────────╮
--- │                Mythos                        │
--- ╰──────────────────────────────────────────────╯
-

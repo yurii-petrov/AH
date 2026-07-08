@@ -1,16 +1,3 @@
--- ╭──────────────────────────────────────────────╮
--- │           STEP: addMythosToken               │
--- ╰──────────────────────────────────────────────╯
---
--- Takes one token of step.token.type from its source bag (mythosTokenBagIds)
--- and drops it into the Mythos Cup, then reshuffles the cup. Mirrors the logic
--- of prepareMythosTokens for a single token.
---
--- Example step JSON:
---   {
---     "type": "addMythosToken",
---     "token": { "type": "Spread Doom" }
---   }
 
 function processStepAddMythosToken(step, context, onDone)
   if not step.token or not step.token.type then

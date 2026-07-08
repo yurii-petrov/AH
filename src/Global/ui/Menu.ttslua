@@ -1,9 +1,3 @@
--- ╭──────────────────────────────────────────────╮
--- │                MENU / SCENARIO UI            │
--- ╰──────────────────────────────────────────────╯
-
-
--- Mechanic scenario
 
 local map = false
 function mapToggle(player, alt, id)
@@ -67,8 +61,7 @@ end
 function waitForComponentsReady(attempt)
   attempt = attempt or 0
 
-  -- safety timeout (optional)
-  if attempt > 120 then -- ~2 minutes if 1 sec interval
+  if attempt > 120 then
     broadcastToAll(i18n.getStrById("LOG_timeout_components"), "Red")
     return
   end
@@ -160,7 +153,6 @@ function proceedStartGame()
   gameData.scenarioData = scenarioData
   gameData.numberOfPlayers = currentSetup.players or 2
 
-  -- show the investigators HUD sized to the chosen player count
   setInvestigatorCount(gameData.numberOfPlayers)
 
   if gameData.scenarioData.terror then
@@ -206,7 +198,7 @@ function chooseScenario(player, alt, id)
     self.UI.setAttribute('scenario_panel' .. i, 'color', 'clear')
   end
   self.UI.setAttribute('scenario_panel' .. id:match("%d+"), 'color', '#ffffff22')
-  currentSetup.scenario = tonumber(id:match("%d+")) -- оновлюємо номер сценарію
+  currentSetup.scenario = tonumber(id:match("%d+"))
 end
 function submitScenario()
   self.UI.setAttribute('chooseScenario', 'active', false)

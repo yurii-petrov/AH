@@ -1,15 +1,3 @@
--- ╭──────────────────────────────────────────────╮
--- │    STEP: spawnRandomSetasideMonsters         │
--- ╰──────────────────────────────────────────────╯
---
--- Shuffles the set-aside deck, spawns step.count random cards as standalone
--- monsters near the codex (each on its own MonsterMat, like
--- spawnMonsterOnLocation with no location), then merges whatever remains
--- of the set-aside deck into the monster deck and shuffles it.
---
--- Example step JSON:
---   { "type": "spawnRandomSetasideMonsters", "count": 2 }
--- Optional: "fromDeck" (default "setaside"), "toDeck" (default "monster")
 
 function processStepSpawnRandomSetasideMonsters(step, context, onDone)
   local count    = (step and step.count) or 1

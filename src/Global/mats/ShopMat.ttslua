@@ -4,7 +4,6 @@ serpent = require("util/serpent")
 
 local data = {}
 
-
 function setTop(d)
 	local type_txt = ""
 	if not d.types then
@@ -12,7 +11,7 @@ function setTop(d)
 			data["market_"..d.id].types = {}
 		end
 		self.UI.setAttribute("market_txt_"..d.id, "text", "")
-		return 
+		return
 	end
 
 	for i, type in pairs(d.types) do
@@ -60,7 +59,7 @@ function onSave()
 	local saveData = JSON.encode(data)
 	return saveData
 end
--- XML має id на кнопці і тексту
+
 function market_btn(player, alt, id)
 	if alt ~= "-1" and alt ~= -1 then return end
 	local d = data[id]

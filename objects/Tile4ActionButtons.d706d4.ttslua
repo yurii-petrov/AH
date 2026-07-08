@@ -46,7 +46,7 @@ local function makeContentPanel(id, text_id, image, label, textColor, imageColor
         tag = "text",
         attributes = {
           id = text_id,
-         -- text      = label,
+
           font      = "Fonts/AdonisC",
           fontSize  = "140",
           color     = textColor,

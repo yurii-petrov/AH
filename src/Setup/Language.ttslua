@@ -1,6 +1,3 @@
--- ╭──────────────────────────────────────────────╮
--- │                SELECT LANGUAGE               │
--- ╰──────────────────────────────────────────────╯
 
 local languageReady = false
 Wait.time(function() languageReady = true end, 1.5)
@@ -28,10 +25,6 @@ end
 
 function clickOnEN() selectLanguage("en") end
 function clickOnUK() selectLanguage("uk") end
-
--- ╭──────────────────────────────────────────────╮
--- │                UPDATE XMLS                   │
--- ╰──────────────────────────────────────────────╯
 
 function updateXMLs()
   i18n.updateGlobalUiLanguage()
@@ -61,10 +54,6 @@ function updateGlobalXml(newXml)
   end
 end
 
--- ╭──────────────────────────────────────────────╮
--- │              COMPONENT BAG TYPES             │
--- ╰──────────────────────────────────────────────╯
-
 BagType = {
   ALLY_CARDS          = "Ally Cards",
   ANOMALY_CARDS       = "Anomaly Cards",
@@ -93,12 +82,8 @@ local function isComponentBag(memo)
   return bagTypeSet[memo] == true
 end
 
--- ╭──────────────────────────────────────────────╮
--- │           PREPARE LANGUAGE BAG               │
--- ╰──────────────────────────────────────────────╯
-
-local SPAWN_DOWN_OFFSET  = 1   -- Z offset for first bag (down on table)
-local SPAWN_RIGHT_OFFSET = 2.5 -- X offset per subsequent bag (right)
+local SPAWN_DOWN_OFFSET  = 1
+local SPAWN_RIGHT_OFFSET = 2.5
 
 local COMPONENT_BAG_POSITIONS = {
   [BagType.INVESTIGATOR_SHEETS] = {-0.411, 0, -0.37},
@@ -154,9 +139,6 @@ local function localizeBagNames()
     end
   end
 
-  -- These use underscore-joined msgids (e.g. "Spawn_Monster"), matching the
-  -- convention used elsewhere for the same objects (see PlayerActions.ttslua,
-  -- MythosTile.ttslua, Doom.ttslua).
   local underscoreMsgidIds = {
     activationTokenId,
     leaderActivationTokenId,

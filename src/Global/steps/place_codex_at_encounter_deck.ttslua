@@ -1,17 +1,3 @@
--- ╭──────────────────────────────────────────────╮
--- │     STEP: placeCodexAtEncounterDeck          │
--- ╰──────────────────────────────────────────────╯
---
--- Takes a codex card from the archive by number and places it face-up
--- next to the encounter deck for the named neighborhood on the scenario mat.
---
--- Two call modes:
---   Direct:  { "type": "placeCodexAtEncounterDeck", "number": 32, "neighborhood": "Rivertown" }
---   Map:     { "type": "placeCodexAtEncounterDeck",
---              "map": [ {"number":32,"neighborhood":"Rivertown"},
---                       {"number":33,"neighborhood":"Downtown"}, ... ] }
--- In map mode the first entry whose card is still in the source deck is used.
--- Optional: "sourceDeck": "codexDeck"  (default: "archive")
 
 local CARD_SIDE_OFFSET = -3.29
 
@@ -45,8 +31,7 @@ function processStepPlaceCodexAtEncounterDeck(step, context, onDone)
   local card
 
   if step.map then
-    -- Build number→neighborhood lookup, then take the top card of the
-    -- already-shuffled deck so the draw order is truly random.
+
     local lookup = {}
     for _, entry in ipairs(step.map) do
       lookup[entry.number] = entry.neighborhood

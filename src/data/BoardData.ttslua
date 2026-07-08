@@ -1,6 +1,3 @@
--- ╭──────────────────────────────────────────────╮
--- │          CORE BOARD OBJECT DATA             │
--- ╰──────────────────────────────────────────────╯
 
 MYTHOS_TILE_DATA = {
   guid         = "3dbb4d",
@@ -12,7 +9,7 @@ MYTHOS_TILE_DATA = {
 
 SCENARIO_MAT_DATA = {
   guid = "7b841f",
-  -- local positions on the mat; index used by scenario deck entries below
+
   positions = {
     [1]  = { 0.543,  0.179, -0.727 },
     [2]  = { 0.002,  0.179, -0.727 },
@@ -208,8 +205,7 @@ TABLE_DATA = {
     ["Activation Token"] = "2f7335",
     ["Leader Activation Token"] = "1a067e"
   },
-  -- Populated at game start and restored from save on onload.
-  -- [i] = { guid = string, obj = tts__Object }
+
   players = {},
   startPosition = {
     tiles = {
@@ -271,12 +267,6 @@ LOCATION_MAT_DATA = {
   decks       = {},
 }
 
--- ╭──────────────────────────────────────────────╮
--- │          SHOP MAT STATIC DATA               │
--- ╰──────────────────────────────────────────────╯
--- Local positions relative to the shopMat object.
--- Use shopMat.positionToWorld(pos) to get world coords.
-
 ShopDeckType = {
   SPECIAL  = "special",
   ALLY     = "ally",
@@ -292,7 +282,7 @@ SHOP_MAT_DATA = {
     ally               = { pos = { 0.001,  0.179, -0.795 } },
     spell              = { pos = {-0.272,  0.155, -0.795 } },
     item               = { pos = { 0.273,  0.231,  0.163 } },
-    ["starting cards"] = { pos = { 0,      0,      0      } }, -- TODO: fill in position
+    ["starting cards"] = { pos = { 0,      0,      0      } },
   },
   displaypos = {
     { 0.001,  0.113,  0.222 },
@@ -307,15 +297,6 @@ SHOP_MAT_DATA = {
     {-0.273,  0.113, -0.307 },
   },
 }
-
--- ╭──────────────────────────────────────────────╮
--- │        CONDITION MAT STATIC DATA            │
--- ╰──────────────────────────────────────────────╯
--- Local positions relative to each mat object.
--- Use mat.positionToWorld(pos) to get world coords.
---
--- [1] always present (guid = "f0624c")
--- [2] always present physically; shown (y raised) when addon set 1 or 2 is active (guid = "ecb76d")
 
 CONDITION_MAT_DATA = {
   {

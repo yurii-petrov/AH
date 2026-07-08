@@ -1,9 +1,3 @@
--- ╭──────────────────────────────────────────────╮
--- │          STEP: Return Codex To Archive       │
--- ╰──────────────────────────────────────────────╯
---
--- Detaches the codex card from the codex mat, returns it (face-down) into
--- the archive deck on the location mat, then destructs the codex mat.
 
 function processStepReturnCodexToArchive(step, context, onDone)
   local codexMat = context.codexMat

@@ -684,11 +684,6 @@ function getInvestigatorDisplayName()
     return name
   end
 
-  -- Fallback for the brief window before the HUD has recorded this mat's
-  -- investigator (e.g. right at drop time): find the Card physically above
-  -- and translate its name. Falls back to the raw (possibly already
-  -- localized) name when no translation exists, instead of returning the
-  -- untranslated lookup key.
   for _, o in ipairs(upCast(self, 3, 0, 1.5)) do
     local oData = parseJson(o.memo)
     if o.type == "Card" and oData and oData.type == "Investigator" then
@@ -769,10 +764,10 @@ end
 function upCast(obj, dist, offset, multi)
   if obj == nil then
     return
-  end -- object to cast up from
-  local dist = dist or 1 -- distance to cast in Y world units
-  local offset = offset or 0 -- distance above the surface of obj to begin the cast
-  local multi = multi or 1 -- multiplier of the X and Z world units of the object
+  end
+  local dist = dist or 1
+  local offset = offset or 0
+  local multi = multi or 1
   local oPos = obj.getPosition()
   local oBounds = obj.getBoundsNormalized()
   local oRot = obj.getRotation()
@@ -786,7 +781,7 @@ function upCast(obj, dist, offset, multi)
     size = siz,
     orientation = orient,
     max_distance = 0,
-    debug = isTestMode -- set this to false once you're happy with the result
+    debug = isTestMode
   })
   local hitObjects = {}
   for i, v in pairs(hits) do

@@ -1,14 +1,3 @@
--- ╭──────────────────────────────────────────────╮
--- │          STEP: Return Headline               │
--- ╰──────────────────────────────────────────────╯
---
--- Detaches the headline card from its (codex-style) mat, destructs the mat and
--- drops the card onto a target slot. Fully parametrised so the memo controls
--- what is returned and where:
---   attachmentType : memo.type to detach from the mat        (default "headline")
---   board          : memo.type of the board holding the slot (default "locationMat")
---   slot           : memo field on that board with a local position (default "headlinedis")
---   faceUp         : false to drop face-down, else face-up     (default true)
 
 function processStepReturnHeadline(step, context, onDone)
   local codexMat = context.codexMat

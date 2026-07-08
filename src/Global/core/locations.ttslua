@@ -1,14 +1,4 @@
--- ╭──────────────────────────────────────────────╮
--- │        CORE: Location / Token Helpers        │
--- ╰──────────────────────────────────────────────╯
---
--- Shared lookups for tokens and location tiles, used by the location/token
--- steps (placeTokens, flip/find/removeToken, clearMarkers, seedCodex,
--- spawnMonsterOnLocation) and by Setup/LocationMat. Previously these lived
--- inside individual step files and were reached cross-file by accident.
 
--- Maps a tile-local position to the 1-based location sector (1..3) of a
--- Neighborhood tile. Shared by Doom token counting and encounter resolution.
 function getLocationIndex(localPos, structureType)
   local startAngleDeg = (structureType == 1 or structureType == "1") and 60 or 0
   local x = localPos[1]
@@ -28,7 +18,6 @@ function getLocationIndex(localPos, structureType)
   return sector
 end
 
--- Maps a token display type to the GUID of the bag it belongs in.
 function getTokenBagIdByType(tokenType)
   local tokenBagMap = {
     ["White Marker"] = whiteTokenBagId,
@@ -42,8 +31,6 @@ function getTokenBagIdByType(tokenType)
   return tokenBagMap[tokenType]
 end
 
--- Returns `token` to its source bag when one exists, otherwise destructs it.
--- Returns true if it went back into a bag, false if it was destructed.
 function returnTokenToBag(token, tokenType)
   local bagId = getTokenBagIdByType(tokenType)
   local bag   = bagId and getObjectFromGUID(bagId)
@@ -55,9 +42,6 @@ function returnTokenToBag(token, tokenType)
   return false
 end
 
--- Returns the first Tile on locationMat whose memo matches name directly
--- (memo.name) or contains it in memo.locations (for Neighborhood tiles).
--- For Neighborhood tiles also returns tileData and the 1-based locationIndex.
 function findLocationTileByName(locationMat, name)
   local nameLower = string.lower(name)
   local objs = upCast(locationMat, 1, nil, 1)
@@ -80,8 +64,6 @@ function findLocationTileByName(locationMat, name)
   end
 end
 
--- Returns a world position inside the location sector of a Neighborhood tile.
--- Uses the same arc geometry as getEmptyDoomSpaces in Doom.ttslua.
 function getNeighborhoodLocationPosition(tile, locationIndex, structureType)
   local center      = { 0.049, 0.150, -0.056 }
   local radius      = 2.1
@@ -95,7 +77,7 @@ function getNeighborhoodLocationPosition(tile, locationIndex, structureType)
   if structureType == 2 or structureType == "2" then
     startAngleDeg = startAngleDeg + 60
   end
-  -- middle of the 3-slot arc for this sector
+
   local angleDeg = startAngleDeg + stepAngleDeg
   local angleRad = math.rad(angleDeg)
   local localPos  = {
@@ -106,9 +88,6 @@ function getNeighborhoodLocationPosition(tile, locationIndex, structureType)
   return tile.positionToWorld(localPos)
 end
 
--- Iterates all Generic tiles on locationMat and returns the first token of
--- tokenType found above any tile, plus that location's display name ("?" when
--- the tile memo has no name). Used by the flip / find-and-remove token steps.
 function findTokenOnAnyLocation(locationMat, tokenType)
   for _, tile in ipairs(upCast(locationMat, 1, nil, 1)) do
     if tile.type == "Generic" then

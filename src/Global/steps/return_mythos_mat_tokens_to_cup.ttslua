@@ -1,15 +1,3 @@
--- ╭──────────────────────────────────────────────╮
--- │    STEP: returnMythosMatTokensToCup          │
--- ╰──────────────────────────────────────────────╯
---
--- Scans the mythos tile's token display/discard zones for ANY resolved
--- mythos tokens (regardless of type) and drops each one back into the
--- mythos cup, then reshuffles. Unlike removeBlankMythosToken (single token,
--- returns to its own type bag), this sweeps every token on the mat straight
--- back into the shared cup.
---
--- Example step JSON:
---   { "type": "returnMythosMatTokensToCup" }
 
 local function isMythosTokenMemo(memo)
   for _, v in pairs(MythosCup) do

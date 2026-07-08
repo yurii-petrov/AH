@@ -1,15 +1,3 @@
--- ╭──────────────────────────────────────────────╮
--- │      STEP: mergeSetasideIntoMonster          │
--- ╰──────────────────────────────────────────────╯
---
--- Takes the set-aside deck sitting on the location mat and merges it into
--- the monster deck on the same mat, then shuffles. Putting a deck onto
--- another deck combines them into a single deck (TTS putObject semantics).
---
--- Example step JSON:
---   { "type": "mergeSetasideIntoMonster" }
--- Optional overrides:
---   { "type": "mergeSetasideIntoMonster", "fromDeck": "setaside", "toDeck": "monster" }
 
 function processStepMergeSetasideIntoMonster(step, context, onDone)
   local fromType = (step and step.fromDeck) or "setaside"

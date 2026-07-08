@@ -1,31 +1,5 @@
--- ╭──────────────────────────────────────────────╮
--- │            INVESTIGATORS HUD PANEL           │
--- ╰──────────────────────────────────────────────╯
--- A HUD window that lists the active investigators (2..6 players) and,
--- for each one, a row of "action" dots that can be toggled between two
--- states:
---   • gold  -> action available  (INV_GOLD, "неактивно" / not used)
---   • black -> action spent       (INV_DARK, "активно" / used)
---
--- The panel height is dynamic: every row beyond the current player count
--- is deactivated, and the surrounding layout uses contentSizeFitter so
--- the window simply shrinks/grows to fit the visible rows.
---
--- "Застосувати для всіх" (apply-to-all) is a two-press control:
---   1st press -> snapshots the current dots and flips every dot to black.
---   2nd press -> restores the snapshot, so only the dots that were gold
---                before pressing turn gold again.
---
--- The number of investigators is driven by gameData.numberOfPlayers
--- (set in Global/ui/Menu.ttslua -> proceedStartGame). Call
--- setInvestigatorCount(n) whenever it becomes known.
---
--- This is the core scaffold; visuals (round sprites, avatars, real
--- investigator names, state persistence) can be refined later.
 
 local FONT = "Fonts/AdonisC"
-
--- ── tuning ────────────────────────────────────────────────────────
 
 local MIN_INV          = 2
 local MAX_INV          = 6
@@ -52,15 +26,11 @@ local PHASE_BTN_W   = "100"
 local CHEVRON_COL   = "#666666"
 local AVATAR_PLACEHOLDER = "investigator_portrait"
 
--- Slot -> seat color, fixed order matching the hand-mat assignment in
--- Global/ui/PlayerActions.ttslua (colors = {"White","Red","Green","Blue","Yellow","Purple"}).
 local SLOT_COLORS = { "#FFFFFF", "#FF3B30", "#34C759", "#3478F6", "#FFD60A", "#AF52DE" }
 
 local function slotBorderColor(p)
   return SLOT_COLORS[p] or CHEVRON_COL
 end
-
--- ── runtime state ─────────────────────────────────────────────────
 
 INV_STATE = {
   count          = DEFAULT_COUNT,
@@ -100,28 +70,15 @@ local function defaultInvestigatorName(p)
   return string.format(i18n.getStrById("INV_default_name_text"), p)
 end
 
--- ── dynamic panel width ───────────────────────────────────────────
--- The displayed name (only the first word, see setInvestigatorName) can be
--- shorter or longer than the "Investigator N" / "Дослідник N" placeholder,
--- so the panel width is recomputed from the longest name currently shown
--- across the active rows instead of staying fixed.
---
--- PANEL_FIXED_W is the width every row needs regardless of the name: the
--- collapse chevron, INV_body's left/right padding, the avatar, the two
--- row gaps around the name, and whichever right-side block is widest
--- (the two action dots, or a single encounter/mythos button).
-
 local COLLAPSE_W     = 20
 local ROW_GAP        = 10
-local NAME_MIN_CHARS = 4  -- floor so a 1-char name doesn't collapse the row
-local NAME_CHAR_PX   = 12 -- approx glyph width at fontSize 22 in FONT
+local NAME_MIN_CHARS = 4
+local NAME_CHAR_PX   = 12
 local PANEL_W_MAX    = 460
 
 local RIGHT_BLOCK_W = math.max(2 * tonumber(ACTION_SIZE) + ROW_GAP, tonumber(PHASE_BTN_W))
 local PANEL_FIXED_W = COLLAPSE_W + tonumber(PAD) * 2 + tonumber(AVATAR_SIZE) + ROW_GAP * 2 + RIGHT_BLOCK_W
 
--- Counts Unicode codepoints rather than bytes, so Cyrillic names (2 bytes
--- per glyph in UTF-8) aren't measured as twice their visible width.
 local function utf8Length(s)
   local len = 0
   for i = 1, #s do
@@ -133,9 +90,6 @@ local function utf8Length(s)
   return len
 end
 
--- MoonSharp's %S pattern class misclassifies multi-byte UTF-8 (Cyrillic)
--- sequences, so string.match("^(%S+)") returns nil on non-ASCII names.
--- Find plain space bytes instead, which works regardless of encoding.
 local function firstWord(name)
   local spacePos = name:find(" ", 1, true)
   if spacePos then
@@ -156,10 +110,6 @@ local function lastWord(name)
   return lastSpace and name:sub(lastSpace + 1) or name
 end
 
--- Investigators whose localized name leads with a title/prefix (e.g. "Father
--- Mateo", "Отець Матео") rather than a given name, so the compact HUD label
--- should use the last word instead of the first. Keyed by the base name key
--- (spaces -> underscores, no "_alt" suffix), same as the portrait image key.
 local LAST_WORD_NAMES = {
   Father_Mateo = true,
   Ashcan_Pete = true
@@ -196,7 +146,6 @@ local function mythosCountText(count)
   return string.format(i18n.getStrById("INV_mythos"), count)
 end
 
--- TODO: leader will get its own art later; both currently point at the same images.
 local LEADER_ACTION_NO  = "action_no"
 local LEADER_ACTION_YES = "action_yes"
 local ACTION_NO         = "action_no"
@@ -213,8 +162,6 @@ end
 local function actionId(p, a)
   return "INV_action_" .. p .. "_" .. a
 end
-
--- ── small UI helpers ──────────────────────────────────────────────
 
 local function refreshActionButton(p, a)
   local isLeader = INV_STATE.isLeaderAction[p][a]
@@ -246,10 +193,6 @@ local function saveActionsToGameData()
   gameData.invApplied = INV_STATE.applied
 end
 
--- Collect the activation tokens sitting on `mat` in the same order the HUD
--- dots are laid out, so action 1 / action 2 always map to the same physical
--- token. The mat is rotated 180°, so the dot order matches descending mat-
--- local x (this fixes left-dot-flips-right-token).
 local function activationTokensOn(mat)
   local tokens = {}
   for _, o in ipairs(upCast(mat, 3, 0, 1) or {}) do
@@ -286,8 +229,6 @@ local function slotForColor(color)
   end
 end
 
--- Returns true (and messages the clicker) when the slot's investigator is
--- owned by another seated player, so per-row controls stay owner-only.
 local function blockedByOwner(slot, player)
   local owner = colorForSlot(slot)
   local ownerPlayer = owner and Player[owner]
@@ -356,8 +297,6 @@ local function locateToken(token)
     end
   end
 end
-
--- ── XML builders ──────────────────────────────────────────────────
 
 local function buildActionButton(p, a)
   return {
@@ -529,9 +468,6 @@ local function buildBody()
   }
 end
 
---- Builds the investigators HUD window as a TTS Xml table.
---- Exposed globally so RootUI.getRootXmlTable() can embed it.
----@return table
 function buildInvestigatorsWindow()
   return {
     tag = "HorizontalLayout",
@@ -544,7 +480,7 @@ function buildInvestigatorsWindow()
       offsetXY                             = "0 0",
       padding                              = "0",
       spacing                              = "0",
-      contentSizeFitter                    = "vertical", -- height hugs the visible rows
+      contentSizeFitter                    = "vertical",
       childAlignment                       = "MiddleCenter",
       childForceExpandWidth                = "false",
       childForceExpandHeight               = "true",
@@ -573,10 +509,6 @@ function buildInvestigatorsWindow()
   }
 end
 
---- Builds the small floating chevron shown when the investigators panel is
---- collapsed; clicking it re-expands buildInvestigatorsWindow().
---- Exposed globally so RootUI.getRootXmlTable() can embed it.
----@return table
 function buildInvestigatorsCollapsedPanel()
   return {
     tag = "panel",
@@ -608,10 +540,6 @@ function buildInvestigatorsCollapsedPanel()
   }
 end
 
--- ── click handlers (referenced by onClick in the XML) ─────────────
-
---- Toggle a single action dot between gold (available) and black (spent).
---- Only the investigator's own player (matching color) may toggle it.
 function investigatorToggleAction(player, alt, id)
   local p, a = id:match("INV_action_(%d+)_(%d+)")
   p, a = tonumber(p), tonumber(a)
@@ -628,10 +556,6 @@ function investigatorToggleAction(player, alt, id)
   saveActionsToGameData()
 end
 
---- Mirror a physical token flip (done on the mat) back into the HUD dot.
---- Called from Global/ObjectDrop.ttslua -> onObjectRotate. Does NOT flip the
---- token again, so HUD<->token stays a one-way reaction in each direction.
----@param token tts__Object the activation token that was flipped
 function onActivationTokenFlipped(token)
   local slot, action = locateToken(token)
   if not slot then return end
@@ -642,7 +566,6 @@ function onActivationTokenFlipped(token)
   end
 end
 
---- Two-press apply-to-all: spend every action, then restore the snapshot.
 function investigatorApplyAll(player, alt, id)
   if not player.host then return end
   if not INV_STATE.applied then
@@ -675,15 +598,12 @@ function investigatorApplyAll(player, alt, id)
   end
 end
 
---- Collapse/expand the panel: swaps the full window for the floating chevron.
 function investigatorToggleCollapse()
   local isOpen = self.UI.getAttribute("investigators", "active") == "True"
   self.UI.setAttribute("investigators", "active", not isOpen)
   self.UI.setAttribute("INV_collapse_alone", "active", isOpen)
 end
 
---- Switch per-investigator controls to match the current game phase.
---- phase 1/2 = action dots; phase 3 = encounter button; phase 4 = mythos countdown.
 function setInvestigatorPhase(phase)
   INV_STATE.phase = phase
   local isAction    = (phase == 1)
@@ -764,10 +684,6 @@ local function consumeMythosCount(p)
   return true
 end
 
---- Re-applies the static "encounter" button label after a language switch.
---- Needed because these buttons carry per-slot ids (INV_encounter_1..6) that
---- don't match the "INV_encounter" msgid, so i18n.updateGlobalUiLanguage()
---- can't refresh them on its own (see i18n.recursiveTranslate).
 function refreshInvestigatorStaticText()
   local text = i18n.getStrById("INV_encounter")
   for p = 1, MAX_INV do
@@ -806,8 +722,6 @@ function syncMythosCountForColor(color)
   return consumeMythosCount(p)
 end
 
---- Seat the clicking player at the color that owns this investigator row,
---- but only if that color is not already taken by someone else.
 function investigatorSeatPlayer(player, alt, id)
   local p = tonumber(id:match("INV_avatar_(%d+)"))
   if not p then return end
@@ -833,15 +747,6 @@ function investigatorSeatPlayer(player, alt, id)
   end
 end
 
--- ── public API ────────────────────────────────────────────────────
-
---- Looks up the localized display name currently assigned to the investigator
---- mat with the given GUID. Called from Global/mats/InvestigatorMat.ttslua so each
---- mat's own script can broadcast its investigator's name without relying on
---- a physics cast (which can pick up a neighboring mat's card when mats sit
---- close together).
----@param guid string investigator mat GUID
----@return string? name the localized display name, or nil if not yet set
 function getInvestigatorNameForMatGuid(guid)
   for slot, player in ipairs(TABLE_DATA.players) do
     if player.guid == guid then
@@ -850,16 +755,6 @@ function getInvestigatorNameForMatGuid(guid)
   end
 end
 
---- Assign a dropped investigator to the next free row and show its name.
---- Called from Global/ObjectDrop.ttslua -> onInvestigatorDrop at the moment
---- the investigator is placed on its mat. `name` is the already-localized
---- display string (the caller resolves it via i18n). `mat` links the row to
---- the player's board so the action dots can flip the physical tokens.
---- `color` is the owning player color, used to gate who may toggle this
---- investigator's action dots.
----@param name string localized investigator name to display
----@param mat? tts__Object the investigator mat the card was dropped on
----@param baseKey? string investigator base name key (spaces -> "_", no "_alt"); used for the portrait image and the short-name exception table
 function getInvestigatorMatByColor(color)
   for slot = 1, MAX_INV do
     if TABLE_DATA.players[slot] then
@@ -904,9 +799,6 @@ function setInvestigatorName(name, mat, baseKey)
   refreshPanelWidth()
 end
 
---- Reset one investigator row back to its placeholder state.
---- Called when a player's investigator dies. `mat` is the investigator mat object.
----@param mat tts__Object
 function clearInvestigatorSlot(mat)
   if not mat then return end
   local guid = mat.getGUID()
@@ -1040,9 +932,6 @@ function restoreActionForDetainedFigure(displayName)
   return false
 end
 
---- Show the panel with `n` investigator rows (clamped to 2..6) and reset
---- all action dots. Call this once gameData.numberOfPlayers is known.
----@param n number
 function setInvestigatorCount(n)
   n = tonumber(n) or MIN_INV
   if n < MIN_INV then n = MIN_INV elseif n > MAX_INV then n = MAX_INV end
@@ -1052,7 +941,6 @@ function setInvestigatorCount(n)
     self.UI.setAttribute("INV_row_" .. p, "active", p <= n)
   end
 
-  -- fresh game / fresh hand: everything available again
   for p = 1, MAX_INV do
     for a = 1, ACTIONS_PER_INV do
       INV_STATE.actions[p][a] = false
@@ -1063,7 +951,6 @@ function setInvestigatorCount(n)
   refreshAllActionColors()
   setApplyPressed(false)
 
-  -- fresh game: drop name / color / leader assignments back to placeholders
   INV_STATE.slotByName     = {}
   INV_STATE.nameBySlot     = {}
   INV_STATE.baseKeyBySlot  = {}

@@ -1,11 +1,3 @@
--- ╭──────────────────────────────────────────────╮
--- │        STEP: findMonsterByType               │
--- ╰──────────────────────────────────────────────╯
---
--- Reveals cards from the monster deck (bottom-up) until one matching the
--- requested monster type is found, fanning them out below the codex. The
--- non-matching reveals are shuffled back onto the monster deck and the
--- found card slides to the front.
 
 local function matchesMonsterTypes(entryData, searchTypes)
   local mt = entryData and (entryData.monstertype or (entryData.back and entryData.back.monstertype))

@@ -1,6 +1,3 @@
--- ╭──────────────────────────────────────────────╮
--- │                Tile ids                      │
--- ╰──────────────────────────────────────────────╯
 
 mythosTileId = "3dbb4d"
 locationMatOldId = "b195b0"
@@ -15,9 +12,6 @@ locationMatId = "9fe1d3"
 nastilo4kaId = "d75b3b"
 koFiId = "8307b8"
 
--- Prototype objects sitting on the table for image caching only: a player
--- must see them once so TTS downloads their images, then they get locked
--- and hidden from interaction (never actually used by gameplay).
 imageCacheObjectIds = {
   "6947c3",
   "2822f5",
@@ -31,10 +25,6 @@ imageCacheObjectIds = {
   "f2ba55",
   "7dc693",
 }
-
--- ╭──────────────────────────────────────────────╮
--- │                Bags                          │
--- ╰──────────────────────────────────────────────╯
 
 monstersbyScenarioUkId = "dd5297"
 monstersbyScenarioEngId = "652031"

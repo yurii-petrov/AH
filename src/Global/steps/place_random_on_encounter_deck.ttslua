@@ -1,22 +1,3 @@
--- ╭──────────────────────────────────────────────╮
--- │    STEP: placeRandomOnEncounterDeck          │
--- ╰──────────────────────────────────────────────╯
---
--- Picks ONE random number out of step.numbers whose card is still in the
--- archive, takes that card, and adds it to a named encounter deck on the
--- scenario mat. Two modes:
---   * default        -> placed on top of the encounter deck.
---   * step.seed=true -> shuffled together with the top two cards of the
---     encounter deck and returned on top (same mechanic as clue seeding,
---     see seed_codex_encounters).
---
--- Example step JSON:
---   {
---     "type": "placeRandomOnEncounterDeck",
---     "numbers": [147, 148, 149],
---     "deck": { "type": "encounter", "name": "The Underworld" },
---     "seed": true
---   }
 
 local function availableNumbers(archive, numbers)
   local present = {}

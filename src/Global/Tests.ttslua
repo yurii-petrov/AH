@@ -1,4 +1,3 @@
--- TESTS
 
 function testResolveDooms()
   local eventCase1 = {

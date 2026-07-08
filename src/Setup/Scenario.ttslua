@@ -1,6 +1,3 @@
--- ╭──────────────────────────────────────────────╮
--- │              CODEX CARD ATTACH               │
--- ╰──────────────────────────────────────────────╯
 
 function attachCodexCard(card, spawnPos, rotation, opts)
   local codexMatBag = getObjectFromGUID(codexMatBagId)
@@ -62,12 +59,6 @@ function attachCodexCard(card, spawnPos, rotation, opts)
   end
 end
 
--- ╭──────────────────────────────────────────────╮
--- │            HEADLINE CARD ATTACH              │
--- ╰──────────────────────────────────────────────╯
--- Reuses the codex mat backing for a "headline" card. No auto return action is
--- injected — the headline's own memo drives every action (including a
--- returnHeadline step configured with its target).
 function attachHeadlineCard(card, spawnPos, rotation)
   attachCodexCard(card, spawnPos, rotation, { noAutoReturn = true })
 end

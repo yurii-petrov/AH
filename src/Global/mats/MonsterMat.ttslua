@@ -1,6 +1,4 @@
--- ╔══════════════════════════════════════════════════════╗
--- ║                    MonsterMat                        ║
--- ╚══════════════════════════════════════════════════════╝
+
 local i18n = require("Global/i18n/api")
 local isTestMode = false
 
@@ -117,8 +115,6 @@ function setHPMax(params)
   end
 end
 
--- UI
-
 function getAttributes()
   return {
     width = "300",
@@ -139,9 +135,6 @@ function getButton()
   }
 end
 
--- Vertical stack of attack / evade / marker. Layout groups in TTS skip
--- inactive children, so toggling "active" on evade/marker re-centers the
--- remaining visible items automatically.
 function getFightButtonsGroup(idPrefix, pos, rot)
   return {
     tag = "VerticalLayout",
@@ -210,7 +203,6 @@ function getFightButtonsGroup(idPrefix, pos, rot)
   }
 end
 
--- External triggers: { active = true/false }
 function setMonsterEvadeAvailable(params)
   local active = tostring(params and params.active and true or false)
   self.UI.setAttribute("fight1_evade", "active", active)
@@ -324,8 +316,6 @@ function addEliteMarker(params)
   self.UI.setAttribute("killText2", "active", tostring(not isMax))
 end
 
--- Click
-
 function clickKill(player, alt_click)
   local attachments = self.getAttachments()
   if #attachments <= 0 then
@@ -387,8 +377,7 @@ function clickFight(player, alt_click)
   local isOnOwnMat = invMat and playerMat and invMat.getGUID() == playerMat.getGUID()
 
   if isOnOwnMat then
-    -- Monster is already at this player's location — fighting it doesn't
-    -- need any movement, just makes evade available afterward.
+
     setMonsterEvadeAvailable({ active = true })
   else
     if playerMat then

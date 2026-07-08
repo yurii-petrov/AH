@@ -1,27 +1,3 @@
--- ╭──────────────────────────────────────────────╮
--- │   STEP: attachRandomCodexUnderNumber         │
--- ╰──────────────────────────────────────────────╯
---
--- Takes a card from the archive and hides it face-down underneath the codex
--- mat currently holding step.targetNumber (attachCardUnderCodexMat). The
--- card is either step.number (deterministic) or, if omitted, ONE random
--- pick out of step.numbers — the other candidates are left untouched in the
--- archive. Optional step.scale = { x, z } resizes the hidden card (keeping
--- its existing Y/thickness). Pair with revealCardUnderCodex to later
--- surface a randomly-hidden card.
---
--- Example step JSON:
---   {
---     "type": "attachRandomCodexUnderNumber",
---     "targetNumber": 122,
---     "numbers": [131, 132, 133, 134]
---   }
---   {
---     "type": "attachRandomCodexUnderNumber",
---     "targetNumber": 157,
---     "number": 158,
---     "scale": { "x": 1.0, "z": 1.0 }
---   }
 
 function processStepAttachRandomCodexUnderNumber(step, context, onDone)
   local numbers = step and step.numbers

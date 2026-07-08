@@ -1,17 +1,6 @@
--- ╭──────────────────────────────────────────────╮
--- │           SCENARIO SHEET STATIC DATA         │
--- ╰──────────────────────────────────────────────╯
---
--- Keyed by scenario name abbreviation.
--- monsters entries:
---   { name = "...", dest = "...", [count = N] }          -- specific named card
---   { type = "...", dest = "...", [count = N] }          -- all cards of this type
---   dest: "deck" | "setaside" | "setaside2" | "spawn"
---   spawn additionally requires: location, pos = {x,y,z}, rot = {x,y,z}
 
 SCENARIO_SHEETS = {
 
-  -- ── Scenario 1: The Approach of Azathoth ─────────────────────────────────
   ["AoA"] = {
     guid          = "f18189",
     name          = "AoA",
@@ -62,7 +51,6 @@ SCENARIO_SHEETS = {
     },
   },
 
-  -- ── Scenario 2: Feast for Undead ─────────────────────────────────────────
   ["FfU"] = {
     name   = "FfU",
     number = 2,
@@ -113,7 +101,6 @@ SCENARIO_SHEETS = {
     },
   },
 
-  -- ── Scenario 3: The Voyage of the Theseus ────────────────────────────────
   ["VoT"] = {
     guid    = "1e1836",
     name    = "VoT",
@@ -157,7 +144,6 @@ SCENARIO_SHEETS = {
     },
   },
 
-  -- ── Scenario 4: Echoes of the Deep ───────────────────────────────────────
   ["EotD"] = {
     name    = "EotD",
     number  = 4,
@@ -201,7 +187,6 @@ SCENARIO_SHEETS = {
     },
   },
 
-  -- ── Scenario 5: Strangers in the Dark ────────────────────────────────────
   ["SitD"] = {
     guid   = "7eb83a",
     name   = "SitD",
@@ -252,7 +237,6 @@ SCENARIO_SHEETS = {
     },
   },
 
-  -- ── Scenario 6: Secrets of the Tomb ──────────────────────────────────────
   ["SoT"] = {
     guid    = "62724a",
     name    = "SoT",
@@ -299,7 +283,6 @@ SCENARIO_SHEETS = {
     },
   },
 
-  -- ── Scenario 7: Tides of Ruin ─────────────────────────────────────────────
   ["ToR"] = {
     guid          = "4bc18e",
     name          = "ToR",
@@ -359,7 +342,6 @@ SCENARIO_SHEETS = {
     },
   },
 
-  -- ── Scenario 8: The Twilight Plague ──────────────────────────────────────
   ["TPL"] = {
     guid    = "a1b2c3",
     name    = "TPL",
@@ -416,7 +398,6 @@ SCENARIO_SHEETS = {
     },
   },
 
-  -- ── Scenario 9: The Innsmouth Conspiracy ──────────────────────────────────
   ["IC"] = {
     guid   = "ff94f3",
     name   = "IC",
@@ -482,7 +463,6 @@ SCENARIO_SHEETS = {
     },
   },
 
-  -- ── Scenario 10: Dreams of Ruin ───────────────────────────────────────────
   ["DoR"] = {
     guid   = "7dcc06",
     name   = "DoR",
@@ -534,7 +514,6 @@ SCENARIO_SHEETS = {
     },
   },
 
-  -- ── Scenario 11: Blood on the Streets ────────────────────────────────────
   ["BtS"] = {
     guid    = "8a7860",
     name    = "BtS",
@@ -589,7 +568,6 @@ SCENARIO_SHEETS = {
     },
   },
 
-  -- ── Scenario 12: The Curse of the Outer Ones ─────────────────────────────
   ["TDCO"] = {
     guid   = "e024fc",
     name   = "TDCO",
@@ -655,7 +633,6 @@ SCENARIO_SHEETS = {
     },
   },
 
-  -- ── Scenario 13: The Thousand Keys and the Gate ───────────────────────────
   ["TKaTG"] = {
     guid    = "1bab21",
     name    = "TKaTG",

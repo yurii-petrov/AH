@@ -1,26 +1,10 @@
--- ╭──────────────────────────────────────────────╮
--- │           CODEX STEP ENGINE                  │
--- ╰──────────────────────────────────────────────╯
---
--- Entry point for codex action "steps". Each step type lives in its own
--- file under Global/steps/ and exposes a single processStepXxx function.
--- Shared logic lives under Global/core/. This file only wires those
--- modules together and dispatches incoming steps to the right handler.
---
--- Adding a new step:
---   1. create Global/steps/<name>.ttslua defining processStep<Name>
---   2. require it below
---   3. add one line to STEP_HANDLERS
--- No existing logic needs to change or be duplicated.
 
--- Shared helpers ------------------------------------------------------------
 require("Global/core/queries")
 require("Global/core/codex")
 require("Global/core/event_deck")
 require("Global/core/placement")
 require("Global/core/locations")
 
--- Step handlers -------------------------------------------------------------
 require("Global/steps/remove_token")
 require("Global/steps/take_card")
 require("Global/steps/cycle_token_layout")
@@ -79,8 +63,6 @@ require("Global/steps/return_mythos_mat_tokens_to_cup")
 require("Global/steps/spawn_random_setaside_monsters")
 require("Global/steps/place_random_on_encounter_deck")
 
--- Dispatch table: lowercased step.type -> handler.
--- Handlers are global functions defined by the required step modules above.
 local STEP_HANDLERS = {
   removetoken          = processStepRemoveToken,
   takecard             = processStepTakeCard,

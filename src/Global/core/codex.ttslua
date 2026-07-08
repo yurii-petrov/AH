@@ -1,14 +1,4 @@
--- ╭──────────────────────────────────────────────╮
--- │           CORE: Codex Attachments            │
--- ╰──────────────────────────────────────────────╯
---
--- The codex mat keeps the active codex card as an attachment whose memo
--- has type == "codex". Several steps need to locate or detach it; this is
--- the single source of truth for that lookup.
 
--- Returns the attachment index of the card whose memo type matches `attType`
--- (default "codex") on `codexMat`, or nil. Headline mats reuse the same codex
--- backing but keep their own attachment type, so the lookup is parametrised.
 function findCodexAttachmentIndex(codexMat, attType)
   attType = attType or "codex"
   for _, att in ipairs(codexMat.getAttachments()) do
@@ -19,18 +9,12 @@ function findCodexAttachmentIndex(codexMat, attType)
   end
 end
 
--- Detaches the codex card from `codexMat` and returns the freed object,
--- or nil if there was no codex attachment. Does NOT destruct the mat —
--- callers decide whether/when to do that, preserving their original logs.
 function removeCodexAttachment(codexMat)
   local index = findCodexAttachmentIndex(codexMat)
   if not index then return nil end
   return codexMat.removeAttachment(index)
 end
 
--- Detaches the card of type `attType` from `codexMat`, destructs the now-empty
--- mat and returns the freed (interactable) card, or nil. Used when the target
--- is a loose slot rather than a deck (e.g. headline discard on the location mat).
 function detachCardAndDestructMat(codexMat, attType)
   local index = findCodexAttachmentIndex(codexMat, attType)
   if not index then return nil end
@@ -43,8 +27,6 @@ function detachCardAndDestructMat(codexMat, attType)
   return card
 end
 
--- Detaches the codex card from `codexMat`, drops it face-down into `archive`
--- and destructs the now-empty mat. Returns true on success.
 function returnCodexMatToArchive(codexMat, archive)
   local index = findCodexAttachmentIndex(codexMat)
   if not index then return false end
@@ -59,8 +41,6 @@ function returnCodexMatToArchive(codexMat, archive)
   return true
 end
 
--- Scans locationMat's "codex_mat" snap points for the codex mat currently
--- holding the codex card whose memo.number == number, or nil.
 function findCodexMatByNumber(locationMat, number)
   for _, snp in ipairs(locationMat.getSnapPoints()) do
     if snp.tags then
@@ -84,8 +64,6 @@ function findCodexMatByNumber(locationMat, number)
   end
 end
 
--- Scans locationMat's "codex_mat" snap points for every occupied codex mat.
--- Returns a list of { mat = Tile, number = <codex card number> }.
 function findAllCodexMats(locationMat)
   local found = {}
   for _, snp in ipairs(locationMat.getSnapPoints()) do
@@ -112,9 +90,6 @@ function findAllCodexMats(locationMat)
   return found
 end
 
--- Attaches `card` underneath an already-occupied `codexMat` (stacked below its
--- current attachment(s)), interactable = false. Used when the mat's own free
--- codex snap point is unavailable / not applicable.
 function attachCardUnderCodexMat(codexMat, card, rotation)
   local CARD_OFFSET = 0.11
   local height      = codexMat.getBounds().size.y

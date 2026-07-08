@@ -1,20 +1,6 @@
--- ╭──────────────────────────────────────────────╮
--- │                GLOBAL XML UI                 │
--- ╰──────────────────────────────────────────────╯
--- The Global window UI is built here in code instead of Root.xml,
--- the same way object mats build their UI (see InvestigatorMat /
--- Tile4ActionButtons). LuaScript.ttslua calls
---   self.UI.setXmlTable(getRootXmlTable())
--- in onload, and i18n later re-reads / re-applies it for translation.
---
--- Format follows the TTS Xml-as-table spec:
---   { tag = "Panel", attributes = { ... }, children = { ... } }
 
 local FONT = "Fonts/AdonisC"
 
--- ── reusable building blocks ──────────────────────────────────────
-
--- A button sitting behind/over an image, both wrapped in a panel.
 local function imageButtonPanel(panelAttrs, button, image)
   return {
     tag = "panel",
@@ -23,7 +9,6 @@ local function imageButtonPanel(panelAttrs, button, image)
   }
 end
 
--- 1..6 player-count buttons (player count 2 is selected by default).
 local function buildPlayerButtons()
   local buttons = {}
   for n = 1, 6 do
@@ -43,7 +28,6 @@ local function buildPlayerButtons()
   return buttons
 end
 
--- The three bottom buttons of the main menu (close / expansions / start).
 local function buildMainMenuActions()
   local defs = {
     { id = "MM_close",      onClick = "closeMenu" },
@@ -61,14 +45,11 @@ local function buildMainMenuActions()
   return panels
 end
 
--- ── scenario chooser ──────────────────────────────────────────────
-
--- Scenarios laid out in rows of three (the last row has a single one).
 local SCENARIO_ROWS = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 }, { 10, 11, 12 }, { 13 } }
 
 local function buildScenarioPanel(n)
   local panelAttrs = { id = "scenario_panel" .. n }
-  if n == 1 then panelAttrs.color = "#ffffff22" end -- scenario 1 selected by default
+  if n == 1 then panelAttrs.color = "#ffffff22" end
   return {
     tag = "panel",
     attributes = panelAttrs,
@@ -96,8 +77,6 @@ local function buildScenarioRows()
   return rows
 end
 
--- ── addon chooser ─────────────────────────────────────────────────
-
 local ADDON_COUNT = 4
 
 local function buildAddonPanels()
@@ -116,8 +95,6 @@ local function buildAddonPanels()
   end
   return panels
 end
-
--- ── top-level windows ─────────────────────────────────────────────
 
 local function languagesWindow()
   return {
@@ -324,7 +301,7 @@ local function chooseAddonsWindow()
         tag = "TableLayout",
         attributes = { width = "850", height = "610", rectAlignment = "MiddleCenter", cellSpacing = "0", cellPadding = "0", columnWidths = "400 50 400" },
         children = {
-          -- Title row
+
           {
             tag = "Row",
             attributes = { preferredHeight = "80" },
@@ -338,12 +315,12 @@ local function chooseAddonsWindow()
               },
             },
           },
-          -- Content row: [left][spacer][right], 530px tall
+
           {
             tag = "Row",
             attributes = { preferredHeight = "530" },
             children = {
-              -- LEFT: image + summary on top, description fills the rest
+
               {
                 tag = "Cell",
                 attributes = { dontUseTableCellBackground = "true" },
@@ -377,9 +354,9 @@ local function chooseAddonsWindow()
                   },
                 },
               },
-              -- SPACER
+
               { tag = "Cell", attributes = { dontUseTableCellBackground = "true" } },
-              -- RIGHT: list on top, button at the bottom
+
               {
                 tag = "Cell",
                 attributes = { dontUseTableCellBackground = "true" },
@@ -430,10 +407,6 @@ local function restoreWindow()
   }
 end
 
--- ── public entry point ────────────────────────────────────────────
-
---- Builds the complete Global window UI as a TTS Xml table.
----@return table
 function getRootXmlTable()
   return {
     languagesWindow(),
@@ -444,7 +417,7 @@ function getRootXmlTable()
     chooseScenarioWindow(),
     chooseAddonsWindow(),
     restoreWindow(),
-    buildInvestigatorsCollapsedPanel(), -- src/Global/ui/Investigators.ttslua
-    buildInvestigatorsWindow(), -- src/Global/ui/Investigators.ttslua
+    buildInvestigatorsCollapsedPanel(),
+    buildInvestigatorsWindow(),
   }
 end

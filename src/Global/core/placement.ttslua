@@ -1,9 +1,3 @@
--- ╭──────────────────────────────────────────────╮
--- │            CORE: Card Placement              │
--- ╰──────────────────────────────────────────────╯
---
--- Reusable card placement dispatcher. Given a card and a placement spec,
--- routes it either into a target deck or onto the first free snap point.
 
 function placeCard(card, placement, context)
   if not placement then

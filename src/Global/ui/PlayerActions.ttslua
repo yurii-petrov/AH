@@ -1,6 +1,3 @@
--- ╭──────────────────────────────────────────────╮
--- │              BUTTON ACTIONS                  │
--- ╰──────────────────────────────────────────────╯
 
 function showHelp(player, _)
   local vis = UI.getAttribute("help_panel", "visibility")
@@ -974,8 +971,3 @@ function onClickFindItem(d)
     end
   end
 end
-
--- ╭─────────────────────────────────────────────╮
--- │                GET DATA                      │
--- ╰──────────────────────────────────────────────╯
-

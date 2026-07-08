@@ -1,15 +1,3 @@
--- ╭──────────────────────────────────────────────╮
--- │       STEP: removeMonstersByType             │
--- ╰──────────────────────────────────────────────╯
---
--- Removes every card with a matching monstertype from the monster deck and
--- puts them in the box (GUID boxId). Also destructs any already-spawned
--- MonsterMat on the board whose attached card matches (removing it from
--- play entirely). The remaining deck is then shuffled.
---
--- Example step JSON:
---   { "type": "removeMonstersByType", "monsterType": "O'Bannion" }
--- Optional: "deckType" (default "monster")
 
 local function hasMatchingType(entryData, searchType)
   local mt = entryData and (entryData.monstertype or (entryData.back and entryData.back.monstertype))

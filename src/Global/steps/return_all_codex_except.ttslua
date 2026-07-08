@@ -1,15 +1,3 @@
--- ╭──────────────────────────────────────────────╮
--- │      STEP: Return All Codex Except           │
--- ╰──────────────────────────────────────────────╯
---
--- Scans every occupied codex mat on the location mat's "codex_mat" snap
--- points and returns each one to the archive, except those whose codex
--- number is listed in step.exceptNumbers. Headline cards (memo.type ==
--- "headline") are never matched by findAllCodexMats, so they're left alone
--- automatically.
---
--- Example step JSON:
---   { "type": "returnAllCodexExcept", "exceptNumbers": [61] }
 
 function processStepReturnAllCodexExcept(step, context, onDone)
   local exceptNumbers = step.exceptNumbers or {}

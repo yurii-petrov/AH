@@ -1,8 +1,3 @@
--- ╭──────────────────────────────────────────────╮
--- │              MYTHOS TILE                     │
--- ╰──────────────────────────────────────────────╯
--- Central file for all mythos tile logic.
--- MYTHOS_TILE_DATA.obj is resolved in onload → always valid during gameplay.
 
 MYTH_LOCK_TIMEOUT = 10
 
@@ -21,10 +16,6 @@ function unlockMythProcess()
   isDrawMythInProcess = false
   currentMythAction   = nil
 end
-
--- ╭──────────────────────────────────────────────╮
--- │                 HELPERS                      │
--- ╰──────────────────────────────────────────────╯
 
 function getObjFromMythosTile(pos)
   local mythosTile = MYTHOS_TILE_DATA.obj
@@ -83,10 +74,6 @@ function findMythosTokenOnMat(tokenType)
       or castZone(discardTokenPositions:setAt("y", yUnderMythosMat), {10, 2.5, 14})
 end
 
--- ╭──────────────────────────────────────────────╮
--- │              TILE ACTIONS                    │
--- ╰──────────────────────────────────────────────╯
-
 function fixDrawMythosButton()
   unlockMythProcess()
 end
@@ -113,8 +100,6 @@ function mythosTileSuccessAction(d)
   local eventData = parseJson(eventCard.memo)
   if not eventData or not eventData.neighborhood then return end
 
-  -- Card stays on the tile after success; the player discards it separately
-  -- via the "discard" button (see mythosTileCancelAction).
   mythosTile.call("setButtons", { type = "discard", color = d.c })
 
   local locationMat = getObjectFromGUID(locationMatId)
@@ -294,10 +279,6 @@ function mythosTileFailedAction(d)
     end)
   end, 1)
 end
-
--- ╭──────────────────────────────────────────────╮
--- │      DRAW MYTHOS / GATE BURST                │
--- ╰──────────────────────────────────────────────╯
 
 function drawMythos(obj, playerColor)
   local mythosTile = MYTHOS_TILE_DATA.obj

@@ -1,13 +1,3 @@
--- ╭──────────────────────────────────────────────╮
--- │    SHARED: monster deck reveal logic         │
--- ╰──────────────────────────────────────────────╯
---
--- revealMonsterDeckEntries(params)
---   params.codexMat      -- codex mat object
---   params.locationMat   -- location mat object
---   params.monsterDeck   -- deck object (for takeObject calls)
---   params.revealList    -- array of { guid, memo, isTarget }
---   params.onDone        -- callback
 
 local MONSTER_REVEAL_DURATION = 4
 

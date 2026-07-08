@@ -1,16 +1,3 @@
--- ╭──────────────────────────────────────────────╮
--- │       STEP: removeNeighborhood               │
--- ╰──────────────────────────────────────────────╯
---
--- Removes a neighborhood tile from the board, returns its encounter deck
--- to the box, removes matching event cards from the event deck and event
--- discard (by memo.neighborhood), then reshuffles the event deck only.
---
--- Example step JSON:
---   {
---     "type": "removeNeighborhood",
---     "neighborhood": "Merchant District"
---   }
 
 local REMOVABLE_TOKENS = { ["Doom Token"] = true, ["Clue"] = true }
 

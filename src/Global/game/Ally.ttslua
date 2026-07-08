@@ -1,9 +1,3 @@
--- ╭──────────────────────────────────────────────╮
--- │                 ALLY SPAWN                   │
--- ╰──────────────────────────────────────────────╯
---
--- Scenario ally spawning. Driven from Setup.ttslua (prepareAllySpawn).
--- Not part of the codex step engine, but historically lived alongside it.
 
 require("Global/core/queries")
 

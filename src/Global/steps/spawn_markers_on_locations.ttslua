@@ -1,18 +1,3 @@
--- ╭──────────────────────────────────────────────╮
--- │    STEP: spawnMarkersOnLocations             │
--- ╰──────────────────────────────────────────────╯
---
--- Takes special marker cards from a source deck and places each face-up
--- at a named location, then attaches a monster mat (for HP tracking).
--- Marker cards must have elite/hp in their memo to display a monster mat.
---
--- Example step JSON:
---   {
---     "type": "spawnMarkersOnLocations",
---     "locations": ["Bridge1", "Bridge2", "Residential1", "Residential2"],
---     "query": [{ "field": "name", "op": "eq", "value": "White Marker" }],
---     "sourceDeck": "archive"
---   }
 
 function processStepSpawnMarkersOnLocations(step, context, onDone)
   if not step.locations or #step.locations == 0 then

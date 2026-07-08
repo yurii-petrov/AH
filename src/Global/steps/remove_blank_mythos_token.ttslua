@@ -1,14 +1,3 @@
--- ╭──────────────────────────────────────────────╮
--- │       STEP: removeBlankMythosToken           │
--- ╰──────────────────────────────────────────────╯
---
--- Removes one "Blank" mythos token, returning it to its bag. By default it is
--- taken from the mythos cup first, then from the mythos mat. Set
--- `matFirst = true` to reverse the priority (take from the mat first, then the
--- cup) — used when the token may already be sitting on the mat.
---
--- Example step JSON:
---   { "type": "removeBlankMythosToken", "matFirst": true }
 
 local BLANK_TYPE = "Blank"
 

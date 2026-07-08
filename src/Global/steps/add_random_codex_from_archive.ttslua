@@ -1,14 +1,3 @@
--- ╭──────────────────────────────────────────────╮
--- │      STEP: Add Random Codex From Archive     │
--- ╰──────────────────────────────────────────────╯
---
--- Randomly picks `count` numbers out of step.numbers and attaches each of
--- those codex cards to the codex mat (reusing takeCodexFromArchive). The
--- numbers that are not picked simply stay in the archive — i.e. they are
--- "returned to the archive" without ever having been drawn.
---
--- Example step JSON:
---   { "type": "addRandomCodexFromArchive", "numbers": [93, 94, 95], "count": 2 }
 
 function processStepAddRandomCodexFromArchive(step, context, onDone)
   local numbers = step.numbers

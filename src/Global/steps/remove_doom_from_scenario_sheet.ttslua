@@ -1,12 +1,3 @@
--- ╭──────────────────────────────────────────────╮
--- │    STEP: removeDoomFromScenarioSheet         │
--- ╰──────────────────────────────────────────────╯
---
--- Finds all doom tokens at snap points tagged "doom_scenario" on the
--- current scenario sheet and returns them to the doom bag.
---
--- Example step JSON:
---   { "type": "removeDoomFromScenarioSheet" }
 
 function processStepRemoveDoomFromScenarioSheet(step, context, onDone)
   local sheet = getObjectFromGUID(gameData.scenarioData and gameData.scenarioData.guid)

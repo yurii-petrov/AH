@@ -1,18 +1,3 @@
--- ╭──────────────────────────────────────────────╮
--- │         PLACE COMPONENTS ON GAME START       │
--- ╰──────────────────────────────────────────────╯
---
--- Called from proceedStartGame after scenario is chosen.
--- Works with gameData.components[bagType] = { {guid, name, memo}, ... }
---
--- Normal mode : guid is an object already on the table
---               → getObjectFromGUID(guid) + setPositionSmooth
--- Quick mode  : guid is an object inside a component bag
---               → bag.takeObject({ guid = guid, position = pos })
-
--- ╭──────────────────────────────────────────────╮
--- │                  HELPERS                     │
--- ╰──────────────────────────────────────────────╯
 
 local function getComponents(bagType)
   return gameData.components and gameData.components[bagType] or {}
@@ -90,7 +75,6 @@ local function spawnComponent(bagType, entry, pos, rot)
   end
 end
 
--- snapshot entries before consuming so iteration is safe
 local function collectEntries(bagType)
   local result = {}
   for i, entry in ipairs(getComponents(bagType)) do
@@ -99,12 +83,6 @@ local function collectEntries(bagType)
   return result
 end
 
-
--- ── deck model builder ────────────────────────────────────────────────────────
--- Splits array of entries into:
---   base      – no-set entry, OR smallest active-set entry if all have sets
---   additions – remaining active-set entries to merge into base
---   inactive  – disabled addon entries (cleanup handles them)
 local function buildDeckModel(entries)
   local noSet  = {}
   local bySets = {}
@@ -141,14 +119,6 @@ local function buildDeckModel(entries)
 
   return { base = base, additions = additions, inactive = inactive }
 end
-
--- ╭──────────────────────────────────────────────╮
--- │              DECK REGISTRY                   │
--- ╰──────────────────────────────────────────────╯
---
--- Place functions record target world positions here instead of doing
--- Physics.cast immediately. resolveComponents() fires after all placement,
--- finds each deck by position, sets its name, and saves GUIDs.
 
 local deckRegistry      = {}
 local shuffleList       = {}
@@ -199,11 +169,6 @@ function shuffleComponents(done)
   done()
 end
 
--- ╭──────────────────────────────────────────────╮
--- │            DECK MERGE STRATEGIES            │
--- ╰──────────────────────────────────────────────╯
-
--- Strategy 1: spawn base → putObject each addition sequentially.
 local MERGE_DELAY        = 0.1
 local STACK_SETTLE_DELAY = 0.1
 
@@ -243,11 +208,6 @@ local function mergeDeckSequential(bagType, model, pos, rot, onFinish)
   Wait.time(function() mergeNext(baseObj, 1) end, 1)
 end
 
--- Strategy 2: spawn all decks at staggered y positions (largest addon first, base last).
--- onFinish() is called with no args after all spawning is initiated.
--- Use registerDeck() in the callback; resolveComponents() finds the final object by position.
--- reverse=false (default): base at bottom, additions pile on top (largest set on top)
--- reverse=true           : largest set at bottom, base on top
 local function mergeDeckStack(bagType, model, pos, rot, onFinish, ySpacing, reverse)
   ySpacing = ySpacing or 0.2
   local basePos = Vector(pos.x, pos.y, pos.z)
@@ -261,7 +221,7 @@ local function mergeDeckStack(bagType, model, pos, rot, onFinish, ySpacing, reve
   end
 
   if not reverse then
-    -- base at basePos, additions[i] at basePos + i*ySpacing (largest on top)
+
     local function spawnBase()
       local baseObj = spawnComponent(bagType, model.base, basePos, rot)
       if not baseObj then return end
@@ -274,14 +234,13 @@ local function mergeDeckStack(bagType, model, pos, rot, onFinish, ySpacing, reve
     end
     spawnNext(n)
   else
-    -- additions[n] (largest set) at basePos, ..., additions[1] at basePos+(n-1)*ySpacing,
-    -- base at basePos + n*ySpacing (on top)
+
     local function spawnBase()
       spawnComponent(bagType, model.base, Vector(pos.x, pos.y + n * ySpacing, pos.z), rot)
       if onFinish then Wait.time(onFinish, STACK_SETTLE_DELAY) end
     end
     local function spawnNext(i)
-      -- i goes from n down to 1; additions[n] spawns at y+0, additions[1] at y+(n-1)*ySpacing
+
       if i < 1 then spawnBase() return end
       local offset = (n - i) * ySpacing
       spawnComponent(bagType, model.additions[i], Vector(pos.x, pos.y + offset, pos.z), rot)
@@ -290,10 +249,6 @@ local function mergeDeckStack(bagType, model, pos, rot, onFinish, ySpacing, reve
     spawnNext(n)
   end
 end
-
--- ╭──────────────────────────────────────────────╮
--- │           PER-TYPE PLACE FUNCTIONS           │
--- ╰──────────────────────────────────────────────╯
 
 local function placeMapTiles(done)
   local scenarioData = gameData.scenarioData
@@ -819,7 +774,6 @@ local function placeEventCards(done)
   done()
 end
 
--- wires event deck to encounter decks and runs scenario preparation; call after shuffleComponents
 function prepareEventDeck(done)
   local eventEntry = gameData.decks and gameData.decks.event
   local eventObj = eventEntry and getObjectFromGUID(eventEntry.guid)
@@ -972,14 +926,6 @@ local function placeReferenceCards(done)
     done()
   end, 0.5)
 end
-
--- ╭──────────────────────────────────────────────╮
--- │               MAIN ENTRY POINT               │
--- ╰──────────────────────────────────────────────╯
---
--- Groups run sequentially; functions within a group run in parallel.
--- Post-placement steps (resolveComponents, shuffleComponents, prepareEventDeck,
--- distributeMonsterCards, cleanupComponents) are called by the Setup flow.
 
 local function runParallel(steps, done)
   if #steps == 0 then done() return end

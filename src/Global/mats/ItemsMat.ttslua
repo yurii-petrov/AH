@@ -75,14 +75,13 @@ function setIndex(value)
 	self.UI.setAttribute("rowBtn", "active", itemData.isActive)
 end
 
-
 function upCast(obj, dist, offset, multi, add)
   if obj == nil then
     return
-  end -- object to cast up from
-  local dist = dist or 1 -- distance to cast in Y world units
-  local offset = offset or 0 -- distance above the surface of obj to begin the cast
-  local multi = multi or 1 -- multiplier of the X and Z world units of the object
+  end
+  local dist = dist or 1
+  local offset = offset or 0
+  local multi = multi or 1
   local oPos = obj.getPosition()
   local oBounds = obj.getBoundsNormalized()
   local oRot = obj.getRotation()
@@ -97,7 +96,7 @@ function upCast(obj, dist, offset, multi, add)
     size = siz,
     orientation = orient,
     max_distance = 0,
-    debug = false -- set this to false once you're happy with the result
+    debug = false
   })
   local hitObjects = {}
   for i, v in pairs(hits) do

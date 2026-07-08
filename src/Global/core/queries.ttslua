@@ -1,20 +1,8 @@
--- ╭──────────────────────────────────────────────╮
--- │        CORE: Object / Memo Queries           │
--- ╰──────────────────────────────────────────────╯
---
--- Shared predicate + lookup helpers used by every step that needs to
--- find a board, a deck on a board, or a card inside a deck by its memo.
--- Extracted from the formerly-duplicated matching loops in Steps.ttslua.
 
--- Case-insensitive equality, nil-safe on both sides.
 function iEquals(a, b)
   return string.lower(tostring(a or "")) == string.lower(tostring(b or ""))
 end
 
--- Evaluates a single { field, op, value } condition against a memo value.
--- Supported ops: "eq" (case-insensitive for strings, raw otherwise) and "neq".
--- Any unknown op is treated as a pass (matches the original behaviour where
--- unrecognised ops never set match=false).
 local function matchesCondition(actual, op, value)
   if op == "eq" then
     if type(value) == "string" then
@@ -28,7 +16,6 @@ local function matchesCondition(actual, op, value)
   return true
 end
 
--- Matches a parsed memo table against a query (array of conditions).
 function matchesQuery(data, query)
   for _, condition in ipairs(query) do
     if not matchesCondition(data[condition.field], condition.op, condition.value) then
@@ -38,9 +25,6 @@ function matchesQuery(data, query)
   return true
 end
 
--- Matches a parsed memo table against a plain { field = value } map
--- (case-insensitive). Used by board lookups that carry a memo map rather
--- than a condition list.
 function matchesMemoMap(data, map)
   for k, v in pairs(map) do
     if not iEquals(data[k], v) then
@@ -50,13 +34,6 @@ function matchesMemoMap(data, map)
   return true
 end
 
--- Returns a set { [type] = true } of every type a card "counts as":
---   * its primary `type`
---   * the doublesided `back.type` (generalises the old rawType logic)
---   * any extra types it explicitly declares via `roles` (array)
--- This lets one card be classified as more than one thing — e.g. a card that
--- is dealt from the "special" deck but should also be handled as an "ally".
--- All keys are lowercased so callers can do cardTypes(data)[someType:lower()].
 function cardTypes(data)
   local out = {}
   if not data then return out end
@@ -74,12 +51,10 @@ function cardTypes(data)
   return out
 end
 
--- Convenience: does the card count as `t` (case-insensitive)?
 function cardIsType(data, t)
   return cardTypes(data)[string.lower(tostring(t))] == true
 end
 
--- Finds the first object on the table whose memo matches the query.
 function findBoardByQuery(query)
   if not query then return end
 
@@ -91,8 +66,6 @@ function findBoardByQuery(query)
   end
 end
 
--- Finds a Deck/Card sitting on a board, identified by the board memo's
--- typed position first, then by an upcast fallback matching memo.type.
 function findDeckOnBoardByType(board, deckType)
   if not board or not deckType then return end
 
@@ -119,8 +92,6 @@ function findDeckOnBoardByType(board, deckType)
   end
 end
 
--- Takes the first card matching the query out of a deck (or returns the
--- single card if `deck` is itself a Card and it matches).
 function takeCardByQuery(deck, query, params)
   if not deck or not query then return end
 

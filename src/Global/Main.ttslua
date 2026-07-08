@@ -1,6 +1,3 @@
--- ╭────────────────────────────────────────────────╮
--- │                MAP TILES                       │
--- ╰────────────────────────────────────────────────╯
 
 local function resolveDataObj(data)
   if data and data.guid then
@@ -95,20 +92,12 @@ local function restoreActiveGameUI()
   restorePhaseHud(gameData.phase)
 end
 
--- Cards must lift high enough to clear the mats they sit on; enforced once
--- per player here instead of on every onObjectPickUp.
 local function bumpLiftHeight(player)
   if player.lift_height <= 0.3 then
     player.lift_height = 0.3
   end
 end
 
--- Re-pushes the dynamically-built UI to a player who connects after the
--- Global object's onload already ran (and already built/populated it for
--- whoever was present at the time). TTS does not retroactively sync
--- self.UI.setXmlTable/setAttribute state to late joiners, so without this
--- a player connecting mid-game never sees the Investigators HUD (or sees
--- it frozen at its default/empty state).
 function onPlayerConnect(player)
   bumpLiftHeight(player)
   self.UI.setXmlTable(getRootXmlTable())
@@ -127,10 +116,7 @@ function onload(savedData)
   end
 
   self.UI.setXmlTable(getRootXmlTable())
-  -- Wait.time(function()
-    -- print(prettyXml(self.UI.getXml()))
-    -- print("xm: " .. serpent.tts(self.UI.getXml()))
-  -- end, 5)
+
   resolveAllDataObjects()
 
   lockObj(tableId)
@@ -161,13 +147,6 @@ end
     lockObj(guid)
   end
 
-  -- A missing/empty savedData means a genuine fresh load (no save to
-  -- restore) — parsedSaveData stays nil and gameData keeps State.ttslua's
-  -- defaults. When there IS saved data, merge it onto the defaults instead
-  -- of replacing gameData outright, so any key a partial/older save doesn't
-  -- have (lockObjs, selectedInvestigators, addons, ...) still exists —
-  -- otherwise downstream code (e.g. `pairs(gameData.lockObjs)`) can crash
-  -- on a nil field.
   local parsedSaveData = parseJson(savedData)
   if parsedSaveData then
     for key, value in pairs(parsedSaveData) do
@@ -218,8 +197,6 @@ end
     mythosBag.addContextMenuItem("Fix button", fixDrawMythosButton)
   end
 
-  -- Hotkey labels are resolved once per load in the language restored from
-  -- the save; a language switch mid-session updates them on the next load.
   addHotkey(i18n.getStrById("HK_next_phase"), function(playerColor)
     local player = Player[playerColor]
     if player then nextPhase(player, "-1") end

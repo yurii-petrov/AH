@@ -1,6 +1,3 @@
--- ╭──────────────────────────────────────────────╮
--- │                 TAG DEFINITIONS              │
--- ╰──────────────────────────────────────────────╯
 
 Tag = {
   DoomToken = "Doom Token",
@@ -34,7 +31,6 @@ CONDITION_TYPES = {
   ["wanted"] = true,
 }
 
--- Card types that get a dedicated mythos-tile button UI; anything else shows "empty".
 MYTHOS_UI_TYPES = {
   event = true,
   encounter = true,
@@ -42,10 +38,6 @@ MYTHOS_UI_TYPES = {
   headline = true,
   terror = true,
 }
-
--- ╭──────────────────────────────────────────────╮
--- │                Phases                        │
--- ╰──────────────────────────────────────────────╯
 
 phases = {{
   image = "phase_action_image",
@@ -60,10 +52,6 @@ phases = {{
   image = "phase_myth_image",
   color = {1, 0.6, 0.6}
 }}
-
--- ╭──────────────────────────────────────────────╮
--- │                POSITIONS                     │
--- ╰──────────────────────────────────────────────╯
 
 scenarioSheetSetupLocation = {
   position = {

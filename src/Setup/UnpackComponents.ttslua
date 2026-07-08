@@ -1,16 +1,3 @@
--- ╭──────────────────────────────────────────────╮
--- │           UNPACK COMPONENTS                  │
--- ╰──────────────────────────────────────────────╯
---
--- Normal mode : takes objects from component bags → places on table
---               at memo.startPosition → stores {guid, name, memo}
--- Quick mode  : scans bags without moving anything → stores {guid, name, memo}
---
--- Result: gameData.components[bagType] = { {guid, name, memo}, ... }
-
--- ╭──────────────────────────────────────────────╮
--- │                  HELPERS                     │
--- ╰──────────────────────────────────────────────╯
 
 local function getComponentBag(bagType)
   local guid = gameData.componentBags and gameData.componentBags[bagType]
@@ -52,10 +39,6 @@ local ALL_BAG_TYPES = {
   BagType.STARTING_CARDS,
   BagType.RULEBOOKS,
 }
-
--- ╭──────────────────────────────────────────────╮
--- │              NORMAL MODE                     │
--- ╰──────────────────────────────────────────────╯
 
 local TAKE_DELAY = 0.05
 local BAG_DELAY  = 0.2
@@ -127,12 +110,6 @@ function stageNormalMode()
   nextBag()
 end
 
--- ╭──────────────────────────────────────────────╮
--- │               QUICK MODE                     │
--- ╰──────────────────────────────────────────────╯
-
--- Takes objects from bag and places at memo.startPosition without re-storing
--- (components already stored by stageQuickMode scan).
 local function placeFromBag(bagType, onDone)
   local bag = getComponentBag(bagType)
   if not bag then

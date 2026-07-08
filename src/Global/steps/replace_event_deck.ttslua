@@ -1,10 +1,3 @@
--- ╭──────────────────────────────────────────────╮
--- │         STEP: replaceEventDeck               │
--- ╰──────────────────────────────────────────────╯
---
--- Returns the top N cards of the current event deck to the box, draws a
--- replacement deck, shuffles and splits it in half: one half becomes the
--- new event deck (face-down), the other becomes the event discard (face-up).
 
 function processStepReplaceEventDeck(step, context, onDone)
   if not step.deck then
@@ -20,7 +13,6 @@ function processStepReplaceEventDeck(step, context, onDone)
   local eventDeckPos    = getEventDeckWorldPos()
   local eventDiscardPos = getEventDiscardWorldPos()
 
-  -- Step 1: return top N cards from current event deck → box
   local currentDeck = getEventObj()
   if currentDeck and removeCount > 0 then
     if currentDeck.type == "Deck" then
@@ -33,7 +25,6 @@ function processStepReplaceEventDeck(step, context, onDone)
     end
   end
 
-  -- Step 2: take new deck from box (with delay to let box settle)
   Wait.time(function()
     local newDeckGuid = findEventDeckInBox(step.deck.type, step.deck.name)
     if not newDeckGuid then
@@ -53,7 +44,6 @@ function processStepReplaceEventDeck(step, context, onDone)
       return
     end
 
-    -- Step 3: place new deck below box (z - 10), then split into 2 halves
     local boxPos   = box.getPosition()
     local deckPos  = Vector(boxPos.x, boxPos.y + 1, boxPos.z - 10)
     newDeck.setPositionSmooth(deckPos)
@@ -85,7 +75,6 @@ function processStepReplaceEventDeck(step, context, onDone)
           nd.setPosition(pos2)
         end
 
-        -- wait for piles to form, then place them
         Wait.time(function()
           local firstHalf = nil
           for _, o in ipairs(findObjsInRadius(pos1, 2)) do
@@ -97,7 +86,6 @@ function processStepReplaceEventDeck(step, context, onDone)
             if o.type == "Deck" or o.type == "Card" then secondHalf = o break end
           end
 
-          -- first half → event deck (face-down)
           local cur = getEventObj()
           if firstHalf and cur then
             if firstHalf.type == "Deck" then
@@ -123,7 +111,6 @@ function processStepReplaceEventDeck(step, context, onDone)
             end, 0.4)
           end
 
-          -- second half → event discard (face-up)
           if secondHalf then
             secondHalf.setRotation({0, 180, 0})
             secondHalf.setPositionSmooth(eventDiscardPos:setAt("y", 3))

@@ -1,16 +1,3 @@
--- ╭──────────────────────────────────────────────╮
--- │        STEP: placeScenarioDecks              │
--- ╰──────────────────────────────────────────────╯
---
--- Pulls the scenario's decks out and places each at its mapped position on
--- the scenario mat, shuffling decks once they come to rest. Two entry
--- styles, mixable in the same step.decks list:
---   * { type, name, pos } -- scans the box for a matching memo.type/name
---     (used for the scenario's own initial event/encounter decks).
---   * { guid, pos }       -- takes that exact object from
---     encounterCardsBagId directly (used for reserve encounter decks that
---     were never unpacked into the box, e.g. neighborhoods revealed
---     mid-scenario by a codex card).
 
 function processStepPlaceScenarioDecks(step, context, onDone)
   if not step.decks or #step.decks == 0 then

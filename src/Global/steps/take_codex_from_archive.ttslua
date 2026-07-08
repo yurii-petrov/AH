@@ -1,11 +1,3 @@
--- ╭──────────────────────────────────────────────╮
--- │            STEP: Take Codex                  │
--- ╰──────────────────────────────────────────────╯
---
--- Draws a codex card (by number) from the archive on the location mat and
--- attaches it to the codex mat at the next free codex snap point.
---
--- findCodexMatByNumber / attachCardUnderCodexMat live in Global/core/codex.ttslua.
 
 function processStepTakeCodexFromArchive(step, context, onDone)
   if not step.number then
@@ -83,7 +75,7 @@ function processStepTakeCodexFromArchive(step, context, onDone)
     return
   end
   runAfterRest(card, function(c)
-    -- log("[takeCodexFromArchive] codex "..step.number.." rotation: "..serpent.tts(c.getRotation()))
+
     if stackOnCurrent then
       attachCardUnderCodexMat(codexMat, c, rotation)
     else

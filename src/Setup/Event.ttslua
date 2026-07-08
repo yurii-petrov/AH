@@ -1,6 +1,3 @@
--- ╭──────────────────────────────────────────────╮
--- │           EVENT DECK SETUP                   │
--- ╰──────────────────────────────────────────────╯
 
 function mergeEventOnTopAtEventPos(eventCard, targetDeck, done)
   if not eventCard or not targetDeck then

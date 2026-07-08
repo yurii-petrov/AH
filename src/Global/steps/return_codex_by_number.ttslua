@@ -1,15 +1,3 @@
--- ╭──────────────────────────────────────────────╮
--- │      STEP: Return Codex By Number            │
--- ╰──────────────────────────────────────────────╯
---
--- Scans every codex mat sitting on the location mat's "codex_mat" snap
--- points. For each codex card whose number is listed in step.numbers, it
--- detaches the card, returns it face-down into the archive, and destructs
--- the now-empty codex mat. Unlike returnCodexToArchive (which acts on the
--- clicked mat via context.codexMat), this step targets arbitrary mats by
--- their codex number.
-
--- returnCodexMatToArchive / findCodexMatByNumber live in Global/core/codex.ttslua.
 
 function processStepReturnCodexByNumber(step, context, onDone)
   local numbers = step.numbers

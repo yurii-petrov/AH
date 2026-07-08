@@ -1,10 +1,6 @@
--- ╭──────────────────────────────────────────────╮
--- │           TOKENS / PLAYER SEAT ZONE          │
--- ╰──────────────────────────────────────────────╯
 
 function prepareMarkers()
 end
-
 
 function takeCardsWithMemo(deck, targetMemo, params)
   local cards = deck.getObjects()

@@ -1,8 +1,3 @@
--- ╭──────────────────────────────────────────────╮
--- │          OBJECT DROP: Discard Helpers        │
--- ╰──────────────────────────────────────────────╯
--- Discard routing for objects dropped onto / picked up around discard zones
--- (monsters, shop, conditions, cards, tiles). Required by ObjectDrop.ttslua.
 
 function discardMonster(o, objData)
   local locationMat = getObjectFromGUID(locationMatId)
@@ -320,4 +315,3 @@ function discardTile(colorName, o, objData, isHovering)
 
   return true
 end
-

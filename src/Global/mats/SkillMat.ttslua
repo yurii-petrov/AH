@@ -14,9 +14,9 @@ local DEBUFF_ICON_BY_ID = {
 
 local data = {
 	hp = 0,
-	maxHp = nil, -- вписав руками для тесту
+	maxHp = nil,
 	sp = 0,
-	maxSp = nil, -- вписав руками для тесту
+	maxSp = nil,
 	debuffValue = 0,
 	debuffId = nil,
 	showFront = false,
@@ -31,7 +31,6 @@ local function baseSkillId(id)
 	return id
 end
 
--- код для карти з дебафом
 function debuff(player, alt_click, id)
 	local baseId = baseSkillId(id)
 	local skillId = (baseId == "debuff_return") and data.debuffId or baseId
@@ -59,7 +58,6 @@ function debuff(player, alt_click, id)
 
 	refreshVisibility()
 end
--- кінець коду для карти з дебафом
 
 local DEBUFF_ICONS = {
 	{ id = "debuff_lore",         textColor = "#805d9b", position = "-440 -40 0" },
@@ -202,7 +200,6 @@ end
 	  data = sData
 	end
 
-
 	buildUI()
 	Wait.frames(refreshVisibility, 1)
   end
@@ -260,7 +257,7 @@ function refreshVisibility()
 	self.UI.setAttribute('horror2_btn', 'text', data.sp)
 end
 
-function damage(player, alt_click, id) -- обробка кліка по HP
+function damage(player, alt_click, id)
 	if alt_click == "-1" then
 		if data.maxHp and data.hp < data.maxHp then data.hp = data.hp + 1 end
 	elseif alt_click == "-2" then
@@ -269,7 +266,7 @@ function damage(player, alt_click, id) -- обробка кліка по HP
 	refreshVisibility()
 end
 
-function horror(player, alt_click, id) -- обробка кліка по SP
+function horror(player, alt_click, id)
 	if alt_click == "-1" then
 		if data.maxSp and data.sp < data.maxSp then data.sp = data.sp + 1 end
 	elseif alt_click == "-2" then
@@ -287,7 +284,7 @@ function setData(d)
 	refreshVisibility()
 end
 
-function ItemMatDestruct() -- обробка кліку по Х
+function ItemMatDestruct()
 	Global.call("onItemMatDestruct", self)
 end
 

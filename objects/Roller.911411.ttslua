@@ -1,4 +1,3 @@
---serpent = require("util/serpent")
 
 local rollerData = {
   type = 1,
@@ -10,12 +9,6 @@ local diceY = 2.6
 function onLoad()
   self.interactable = true
 
-  --   position = {
-  --   x = 3.0608136653900146,
-  --   y = 0.20000040531158447,
-  --   z = -0.29565337300300598
-  -- },
-
   local sps = self.getSnapPoints()
 
   for i, sp in pairs(sps) do
@@ -26,12 +19,6 @@ function onLoad()
 
   self.setSnapPoints(sps)
 
-  --  print(serpent.tts(self.getSnapPoints()))
-
-  --  print(serpent.tts(oData))
-  --   local clone = spawnObjectData({
-  --     data = oData
-  --   })
 end
 
 function hoverResultsEnter(_, _, _)
@@ -58,7 +45,7 @@ function dice_btn(playerColor, alt_click, id)
     if getSetSize(numberSet) ~= 0 then
       return
     end
-    
+
     rollerData.type = Global.call("getRollerType", playerColor) or 1
 
     local removeAllDices = false
@@ -73,24 +60,12 @@ function dice_btn(playerColor, alt_click, id)
 
     self.UI.setAttribute("rerolled_dices", "text", 0)
     self.UI.setAttribute("rerolled_dices", "color", "#a29c90")
-    
+
     self.UI.setAttribute("success", "text", "?")
     self.UI.setAttribute("success", "color", "#a29c90")
 
     self.UI.setAttribute("success_additional", "text", "?")
     self.UI.setAttribute("success_additional", "color", "#a29c90")
-
-    -- local sps = self.getSnapPoints()
-
-    -- local objects = upCast(self, 1, nil, 1)
-    -- for _, obj in pairs(objects) do
-    --   if obj.hasTag("Dice") then
-    --     obj.destruct()
-    --   else
-    --     local p = self.getPosition():setAt("y", 3)
-    --     obj.setPosition(p:setAt("z", p.z-self.getBoundsNormalized().size.z))
-    --   end
-    -- end
 
     local sps = self.getSnapPoints()
     local countFinishedDice = 0
@@ -221,9 +196,7 @@ function dice_btn(playerColor, alt_click, id)
 
         local color = self.UI.getAttribute("dice_" .. i, "textColor")
         if color ~= "#4d4a44" then
-          -- a29c90 -- successs
-          -- #fff5e2 - white
-          -- 4d4a44 - gray
+
           if self.UI.getAttribute("icon_dice_" .. i, "active") == "true" then
 
             local sps = self.getSnapPoints()
@@ -506,10 +479,10 @@ end
 
 function runAfterRest(o, f, f2, n)
   f = f or function()
-  end -- function to run when resting
+  end
   f2 = f2 or function()
-  end -- function to run when time-out is reached
-  n = n or 5 -- time out delay in seconds
+  end
+  n = n or 5
   Wait.frames(function()
     Wait.condition(function()
       if o ~= nil then

@@ -1,26 +1,3 @@
--- ╭──────────────────────────────────────────────╮
--- │      STEP: placeTokensOnLocations            │
--- ╰──────────────────────────────────────────────╯
---
--- Builds a pool of tokens from step.tokens (each entry: { type, count }),
--- shuffles the pool with Fisher-Yates, then places one token per location
--- from step.locations in shuffled order.
---
--- Locations are matched by name against tiles on the location mat:
---   1. tile memo.name == location name  (direct match)
---   2. tile memo.type == "Neighborhood" and location name is in memo.locations
---
--- Example step JSON:
---   {
---     "type": "placeTokensOnLocations",
---     "locations": ["Arkham Advertiser", "Black Cave", "Independence Square",
---                   "Unvisited Isle", "Velma's Diner"],
---     "tokens": [
---       { "type": "White Marker", "count": 3 },
---       { "type": "Red Marker",   "count": 1 },
---       { "type": "Blue Marker",  "count": 1 }
---     ]
---   }
 
 local function shufflePool(t)
   for i = #t, 2, -1 do
@@ -28,9 +5,6 @@ local function shufflePool(t)
     t[i], t[j] = t[j], t[i]
   end
 end
-
--- findLocationTileByName and getNeighborhoodLocationPosition live in
--- Global/core/locations.ttslua (shared with the other location steps).
 
 function processStepPlaceTokensOnLocations(step, context, onDone)
   if not step.locations or #step.locations == 0 then
@@ -52,7 +26,6 @@ function processStepPlaceTokensOnLocations(step, context, onDone)
     return
   end
 
-  -- Build flat token pool and shuffle it
   local pool = {}
   for _, entry in ipairs(step.tokens) do
     for _ = 1, (entry.count or 1) do
@@ -61,7 +34,6 @@ function processStepPlaceTokensOnLocations(step, context, onDone)
   end
   shufflePool(pool)
 
-  -- Place one token per location
   local logLines = { "\n" .. i18n.getStrById("LOG_place_tokens_header") }
   local tokenWord = i18n.getStrById("token"):gsub(" ", "_")
 

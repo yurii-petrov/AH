@@ -1,4 +1,4 @@
---serpent = require("util/serpent")
+
 local i18n = require("Global/i18n/api")
 
 local rollerData = {
@@ -6,19 +6,13 @@ local rollerData = {
   lastType = 1,
 }
 
--- Player-configurable roll feel. These only affect the cosmetic tumble of the
--- dice (the rolled value itself always comes from the physical landing), so they
--- are safe to tweak freely.
 local settings = {
-  power   = "medium", -- throw strength preset: "light" | "medium" | "strong"
-  instant = false,    -- skip the throw animation and resolve the roll immediately
+  power   = "medium",
+  instant = false,
 }
 
 local SETTINGS_DEFAULT = { power = "medium", instant = false }
 
--- Throw strength presets. The die is thrown up AND forward at once so it arcs
--- into the tray in front of the roller; height = extra upward velocity ("toss
--- height"), forward = how far it carries, spin = tumble strength.
 local PRESETS = {
   light  = { height = 1.5, forward = 6,  spin = 35 },
   medium = { height = 3.0, forward = 8,  spin = 50 },
@@ -26,11 +20,8 @@ local PRESETS = {
 }
 local POWER_ORDER = { "light", "medium", "strong" }
 
--- Base upward velocity every throw gets on top of the preset height.
 local LAUNCH_UP_VEL = 5
 
--- Rerolled dice are lifted to this height before the toss so they clear the dice
--- that stay on the roller instead of knocking them out.
 local REROLL_LIFT_Y = 3.55
 
 local function getPreset()
@@ -96,7 +87,7 @@ function buildRollerUI()
   end
 
   local instantOn = settings.instant and "true" or "false"
-  -- highlight the active power preset
+
   local function btnTxt(key) return settings.power == key and "#2b2924" or "#ffffff" end
   local function btnCol(key) return settings.power == key and "#a29c90" or "#00000055" end
 
@@ -201,9 +192,6 @@ function toggleSettings()
   self.UI.setAttribute("settings_panel", "active", active == "true" and "false" or "true")
 end
 
--- Angular velocity with a randomized direction on each axis, so the physical
--- result is well distributed (and looks more natural than always spinning the
--- same way). Magnitude comes from the active power preset.
 local function randomSpin()
   local s = getPreset().spin
   local function axis() return (math.random(0, 1) == 0 and -s or s) end
@@ -300,7 +288,7 @@ function dice_btn(playerColor, alt_click, id)
     if getSetSize(numberSet) ~= 0 then
       return
     end
-    
+
     rollerData.type = findBlessedCursedType()
 
     local removeAllDices = false
@@ -315,24 +303,12 @@ function dice_btn(playerColor, alt_click, id)
 
     self.UI.setAttribute("rerolled_dices", "text", 0)
     self.UI.setAttribute("rerolled_dices", "color", "#a29c90")
-    
+
     self.UI.setAttribute("success", "text", "?")
     self.UI.setAttribute("success", "color", "#a29c90")
 
     self.UI.setAttribute("success_additional", "text", "?")
     self.UI.setAttribute("success_additional", "color", "#a29c90")
-
-    -- local sps = self.getSnapPoints()
-
-    -- local objects = upCast(self, 1, nil, 1)
-    -- for _, obj in pairs(objects) do
-    --   if obj.hasTag("Dice") then
-    --     obj.destruct()
-    --   else
-    --     local p = self.getPosition():setAt("y", 3)
-    --     obj.setPosition(p:setAt("z", p.z-self.getBoundsNormalized().size.z))
-    --   end
-    -- end
 
     local sps = self.getSnapPoints()
     local countFinishedDice = 0
@@ -402,9 +378,7 @@ function dice_btn(playerColor, alt_click, id)
         else
         obj.interactable = false
         Wait.time(function()
-          -- Randomize the starting orientation, then physically toss the die
-          -- (arc up + forward, spinning from the moment it leaves) so it really
-          -- tumbles through the air and lands on a fair, real result (no re-roll).
+
           obj.setRotation(Vector(math.random(0, 360), math.random(0, 360), math.random(0, 360)))
           local preset = getPreset()
           obj.setVelocity(Vector(0, LAUNCH_UP_VEL + preset.height, preset.forward))
@@ -504,9 +478,7 @@ function dice_btn(playerColor, alt_click, id)
 
         local color = self.UI.getAttribute("dice_" .. i, "textColor")
         if color ~= "#4d4a44" then
-          -- a29c90 -- successs
-          -- #fff5e2 - white
-          -- 4d4a44 - gray
+
           if self.UI.getAttribute("icon_dice_" .. i, "active") == "true" then
 
             local sps = self.getSnapPoints()
@@ -556,8 +528,7 @@ function dice_btn(playerColor, alt_click, id)
             obj.interactable = false
 
             Wait.time(function()
-            -- Lift above the other dice first, then randomize orientation and
-            -- physically toss (arc up + forward) so it can't knock them out.
+
             local liftPos = obj.getPosition()
             obj.setPosition(Vector(liftPos.x, REROLL_LIFT_Y, liftPos.z))
             obj.setRotation(Vector(math.random(0, 360), math.random(0, 360), math.random(0, 360)))
@@ -710,8 +681,6 @@ function getRandomDiceRotation()
   return rotationValues[index].Rotation
 end
 
--- Resolve a single die without the throw animation: pick a random face and drop
--- it flat onto its snap point on the next frame. onResolved gets the rolled value.
 function rollDiceInstant(obj, p, onResolved)
   obj.interactable = false
   Wait.frames(function()
@@ -823,10 +792,10 @@ end
 
 function runAfterRest(o, f, f2, n)
   f = f or function()
-  end -- function to run when resting
+  end
   f2 = f2 or function()
-  end -- function to run when time-out is reached
-  n = n or 5 -- time out delay in seconds
+  end
+  n = n or 5
   Wait.frames(function()
     Wait.condition(function()
       if o ~= nil then

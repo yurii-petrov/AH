@@ -1,16 +1,3 @@
--- ╭──────────────────────────────────────────────╮
--- │   STEP: activateMarkersOnLocations           │
--- ╰──────────────────────────────────────────────╯
---
--- Scans the entire location mat via upCast and activates the wound counter
--- on every Custom_Tile marker whose memo matches tokenMemo. HP is determined
--- by token type:
---   White Marker → 1 × numberOfPlayers
---   Red Marker   → 4 × numberOfPlayers
---
--- Example step JSON:
---   { "type": "activateMarkersOnLocations", "tokenMemo": "White Marker" }
---   { "type": "activateMarkersOnLocations", "tokenMemo": "Red Marker" }
 
 local SCAN_HEIGHT = 5
 

@@ -1,16 +1,3 @@
--- ╭──────────────────────────────────────────────╮
--- │   STEP: mergeOneFromSetasideIntoMonster      │
--- ╰──────────────────────────────────────────────╯
---
--- Takes step.count (default 1) random card(s) from the set-aside deck and
--- merges them into the monster deck one at a time, then shuffles once at
--- the end. Unlike mergeSetasideIntoMonster, this step only pulls a limited
--- number of cards and is safe to repeat.
---
--- Example step JSON:
---   { "type": "mergeOneFromSetasideIntoMonster", "fromDeck": "setaside2" }
---   { "type": "mergeOneFromSetasideIntoMonster", "count": 3 }
--- Optional: "toDeck" (default "monster")
 
 function processStepMergeOneFromSetasideIntoMonster(step, context, onDone)
   local fromType = (step and step.fromDeck) or "setaside"

@@ -1,24 +1,3 @@
--- ╭──────────────────────────────────────────────╮
--- │      STEP: resolveResearchEncounter          │
--- ╰──────────────────────────────────────────────╯
---
--- Draws the top card of the pile set aside at the locationMat's codexDeck
--- position (via setAsideToCodexDeck) and reveals it below the codex. Then
--- branches on the drawn card's number:
---   * addToCodexNumbers -> attached as a normal codex card at the next free
---     codex snap point (falls back to stacking under the current codex mat).
---   * itemNumbers -> scaled down to a normal card size and tagged
---     "item_magnet" so it's picked up naturally as an item; if also listed in
---     skillNumbers, attached to the Skill Mat instead; else if also listed in
---     extraMatNumbers, forced onto the secondary/special item mat.
---
--- Example step JSON:
---   {
---     "type": "resolveResearchEncounter",
---     "addToCodexNumbers": [71],
---     "itemNumbers": [68, 69, 70],
---     "skillNumbers": [68]
---   }
 
 local function toSet(list)
   local set = {}

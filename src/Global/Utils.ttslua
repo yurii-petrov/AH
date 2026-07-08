@@ -1,6 +1,3 @@
--- ╭──────────────────────────────────────────────╮
--- │               UTILITY FUNCTIONS              │
--- ╰──────────────────────────────────────────────╯
 
 function parseJson(memo)
   if not memo or type(memo) ~= "string" then
@@ -50,7 +47,7 @@ end
 local function safeResting(o)
   if o == nil then return true end
   local ok, result = pcall(function() return o.resting end)
-  return not ok or result  -- treat destroyed object as "at rest"
+  return not ok or result
 end
 
 local function safeCall(fn, o)
@@ -77,10 +74,10 @@ _G["runOnceAfterRestObjectIDs"] = {}
 _G["runOnceAfterRestTokens"] = {}
 function runOnceAfterRest(o, f, f2, n)
   f = f or function()
-  end -- function to run when resting
+  end
   f2 = f2 or function()
-  end -- function to run when time-out is reached
-  n = n or 5 -- time out delay in seconds
+  end
+  n = n or 5
   if _G["runOnceAfterRestObjectIDs"][o] then
     Wait.stop(_G["runOnceAfterRestObjectIDs"][o])
     _G["runOnceAfterRestObjectIDs"][o] = nil
@@ -89,7 +86,7 @@ function runOnceAfterRest(o, f, f2, n)
   _G["runOnceAfterRestTokens"][o] = requestToken
   Wait.frames(function()
     if _G["runOnceAfterRestTokens"][o] ~= requestToken then
-      return -- a newer runOnceAfterRest call for this object superseded us
+      return
     end
     _G["runOnceAfterRestObjectIDs"][o] = Wait.condition(function()
       _G["runOnceAfterRestObjectIDs"][o] = nil
@@ -203,10 +200,10 @@ end
 function upCast(obj, dist, offset, multi)
   if obj == nil then
     return
-  end -- object to cast up from
-  local dist = dist or 1 -- distance to cast in Y world units
-  local offset = offset or 0 -- distance above the surface of obj to begin the cast
-  local multi = multi or 1 -- multiplier of the X and Z world units of the object
+  end
+  local dist = dist or 1
+  local offset = offset or 0
+  local multi = multi or 1
   local oPos = obj.getPosition()
   local oBounds = obj.getBoundsNormalized()
   local oRot = obj.getRotation()
@@ -220,7 +217,7 @@ function upCast(obj, dist, offset, multi)
     size = siz,
     orientation = orient,
     max_distance = 0,
-    debug = isTestMode -- set this to false once you're happy with the result
+    debug = isTestMode
   })
   local hitObjects = {}
   for i, v in pairs(hits) do
@@ -308,8 +305,6 @@ function getHandData(color)
   }
 end
 
--- Runs async steps in order; each step receives a `done` callback it must
--- call to advance to the next one.
 function runSequence(steps, i)
   i = i or 1
   local step = steps[i]
@@ -317,9 +312,6 @@ function runSequence(steps, i)
   step(function() runSequence(steps, i + 1) end)
 end
 
--- Cache of "hand N" trigger GUIDs by slot. Hands are spawned once per game
--- (Global/ui/PlayerActions.spawnPlayerHand) but looked up on every HUD click,
--- so cache the GUID and lazily rescan (at most once per frame) on a miss.
 HAND_CACHE = {}
 local handCacheScannedAt = -1
 
@@ -359,7 +351,6 @@ function getHandsByPlayerColor(playerColor)
   return out
 end
 
--- Returns the single hand trigger and locationMat for a player, or nil, nil on failure.
 function getPlayerHand(playerColor)
   if not playerColor then return nil, nil end
   local locationMat = getObjectFromGUID(locationMatId)
@@ -369,7 +360,6 @@ function getPlayerHand(playerColor)
   return hands[1], locationMat
 end
 
--- Physics.cast covering a player's zone (between their hand and the location mat).
 function castPlayerZone(hand, locationMat)
   local lP = locationMat.getPosition()
   local lB = locationMat.getBoundsNormalized()
@@ -385,8 +375,6 @@ function castPlayerZone(hand, locationMat)
   })
 end
 
--- Finds the bridge on the location mat and returns it to the box.
--- Prints LOG_bridge_returned and returns false when the bridge is absent.
 function returnBridgeToBox()
   local locationMat = getObjectFromGUID(locationMatId)
   if not locationMat then return false end
@@ -414,8 +402,6 @@ function returnBridgeToBox()
   return false
 end
 
--- Attaches `object` to `mat` face-down with its mirrored clone on the back.
--- Returns the clone object for further configuration by the caller.
 function attachCardToMat(object, mat)
   local oMemo = parseJson(object.memo)
   object.interactable = false
@@ -457,7 +443,6 @@ function waitAll(tasks, onAllDone)
   end
 end
 
--- allows calling a function inside of a table
 function callTable(params)
   local keys = params[1] or {}
   local arg = params[2] or nil

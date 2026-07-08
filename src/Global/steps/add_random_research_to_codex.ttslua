@@ -1,15 +1,3 @@
--- ╭──────────────────────────────────────────────╮
--- │    STEP: Add Random Research To Codex        │
--- ╰──────────────────────────────────────────────╯
---
--- Shuffles the research pile sitting at the locationMat's codexDeck snap
--- (built via setAsideToCodexDeck), draws ONE random card, and attaches it to
--- the codex at the next free codex snap point. The remaining research cards
--- are left in place — chain `returnResearchDeckToArchive` after this step to
--- send them back to the archive.
---
--- Example step JSON:
---   { "type": "addRandomResearchToCodex" }
 
 local function findResearchPile(locationMat)
   local boardData = parseJson(locationMat.memo)

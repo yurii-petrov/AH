@@ -1,18 +1,3 @@
--- ╭──────────────────────────────────────────────╮
--- │      STEP: flipTokenOnLocation               │
--- ╰──────────────────────────────────────────────╯
---
--- Searches all location tiles on the location mat for the first token of
--- step.token.type, flips it, and prints which location it was found in.
--- Works for both direct locations and Neighborhood sub-locations.
---
--- Example step JSON:
---   {
---     "type": "flipTokenOnLocation",
---     "token": { "type": "Blue Marker" }
---   }
-
--- findTokenOnAnyLocation lives in Global/core/locations.ttslua.
 
 function processStepFlipTokenOnLocation(step, context, onDone)
   if not step.token or not step.token.type then
@@ -41,7 +26,6 @@ function processStepFlipTokenOnLocation(step, context, onDone)
     token.highlightOn("Blue", 5)
   end
   token.setRotationSmooth({0, 180, 0})
-
 
   local tokenKey  = tokenType:gsub(" ", "_")
   local locKey    = locationName:gsub(" ", "_")

@@ -1,11 +1,4 @@
--- ╭──────────────────────────────────────────────╮
--- │          DECK / TILE HELPERS                 │
--- ╰──────────────────────────────────────────────╯
 
--- Scans the scenario mat for the first Deck/Card whose memo matches `typeName`
--- (and `name`, when given). Case-insensitive. `wantType` restricts to a TTS
--- object type ("Deck"/"Card") when set. Shared by getDeckFromScenarioMat here
--- and by getTerrorDeck.
 function findOnScenarioMat(typeName, name, wantType)
   local scenarioMat = getObjectFromGUID(scenarioMatId)
   if not scenarioMat then
@@ -191,4 +184,3 @@ function getPositionByGUID(guid)
 
   return obj.getPosition()
 end
-

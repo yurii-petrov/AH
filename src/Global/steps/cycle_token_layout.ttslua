@@ -1,13 +1,4 @@
--- ╭──────────────────────────────────────────────╮
--- │           STEP: cycleTokenLayout             │
--- ╰──────────────────────────────────────────────╯
---
--- Advances the codex token to its next layout position and a random
--- rotation, animating the move (lift the stack, slide, spin, drop). The
--- layout state is persisted back onto the codex mat between frames.
 
--- JSON object keys arrive as strings; restore numeric keys recursively so
--- that array-style layout tables index correctly.
 local function normalizeNumericKeys(t)
   if type(t) ~= "table" then return t end
   local result = {}

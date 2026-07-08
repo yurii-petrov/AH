@@ -19,7 +19,6 @@ require("Global/Tests")
 serpent = require("util/serpent")
 translationService = require("util/TranslationService")
 
--- Constants must load before Guids (mythosTokenBagIds indexes MythosCup).
 require("data/Constants")
 require("data/Guids")
 require("data/Addons")

@@ -4,7 +4,7 @@ TranslationService.supportedLanguages = {"eng", "ukr"}
 TranslationService.currentLanguage = "ukr"
 
 TranslationService.translations = {
-  -- Дослідники
+
   ["agnes baker"] = {
     ["eng"] = "Agnes Baker",
     ["ukr"] = "Агнес Бейкер"
@@ -53,7 +53,7 @@ TranslationService.translations = {
     ["eng"] = "Wendy Adams",
     ["ukr"] = "Венді Адамс"
   },
-  -- райони
+
   ["downtown"] = {
     ["eng"] = "Downtown",
     ["ukr"] = "Центр"
@@ -90,7 +90,7 @@ TranslationService.translations = {
     ["eng"] = "the street",
     ["ukr"] = "Вулиці"
   },
-  -- міфи
+
   ["doom added"] = {
     ["ukr"] = "приреченість додано"
   }

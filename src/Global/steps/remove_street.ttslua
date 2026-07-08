@@ -1,13 +1,3 @@
--- ╭──────────────────────────────────────────────╮
--- │          STEP: removeStreet                  │
--- ╰──────────────────────────────────────────────╯
---
--- Returns a single street tile (memo.type == "Street") to the box by name.
--- Same mechanics as returnBridgeToBox (Utils.ttslua), but the street name
--- is supplied by the step instead of being hardcoded to "Bridge2".
---
--- Example step JSON:
---   { "type": "removeStreet", "street": "Residential3" }
 
 function processStepRemoveStreet(step, context, onDone)
   local name = step.street

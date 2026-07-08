@@ -31,7 +31,6 @@ MusicPlayer.setCurrentAudioclip({
     title = playlist[1].title
 })
 
-
 MusicPlayer.play()
 end
 
@@ -100,7 +99,6 @@ self.createButton({
     font_size=500
   })
 
- 
   self.createButton({
     click_function = 'none',
     function_owner = self,
@@ -160,9 +158,7 @@ self.createButton({
     font_size=300
   })
 
-
 end
-
 
 function onlyonesong()
 current_clip = MusicPlayer.playlist_index
@@ -185,8 +181,6 @@ end
 end
 end
 
-
-
 function autostart()
 if string.match(self.script_state, "onesong") then
 if string.match(self.script_state, "autostart") then
@@ -206,7 +200,6 @@ self.editButton({index=7, label="play at load"})
 end
 end
 end
-
 
 function keine_funktion()
 end
@@ -234,7 +227,6 @@ pausedas = 1
     MusicPlayer.pause()
   end
 end
-
 
 function pause_track()
 MusicPlayer.pause()

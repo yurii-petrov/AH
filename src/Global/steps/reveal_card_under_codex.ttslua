@@ -1,14 +1,3 @@
--- ╭──────────────────────────────────────────────╮
--- │      STEP: revealCardUnderCodex              │
--- ╰──────────────────────────────────────────────╯
---
--- Finds the hidden attachment on context.codexMat whose memo.number is in
--- step.numbers (placed earlier by attachRandomCodexUnderNumber), detaches
--- it, flips it face-up, and adds it to the codex at the next free snap
--- point (falls back to stacking under the current mat).
---
--- Example step JSON:
---   { "type": "revealCardUnderCodex", "numbers": [131, 132, 133, 134] }
 
 function processStepRevealCardUnderCodex(step, context, onDone)
   local numbers = step and step.numbers

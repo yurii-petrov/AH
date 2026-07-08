@@ -1,11 +1,3 @@
--- ╭──────────────────────────────────────────────╮
--- │           STEP: contextSetup                 │
--- ╰──────────────────────────────────────────────╯
---
--- Spawns the scenario's setup tiles from the box onto the location mat,
--- after removing the spent codex card (unless step.keepCodexMat is true).
--- Tiles sharing a position are stacked with a small vertical offset, and
--- each is processed once at rest.
 
 function processStepContextSetup(step, context, onDone)
   if not step.tiles then

@@ -1,8 +1,3 @@
--- ╭────────────────────────────────────────╮
--- │          Marker — wound counter        │
--- ╰────────────────────────────────────────╯
--- Hidden by default. Call activateCounter({hp=N}) to show and track wounds.
--- Left click = add wound, alt/right click = heal.
 
 local data = { wounds = 0, maxHp = 0, active = false }
 
@@ -78,4 +73,3 @@ function onWoundClick(player, alt_click)
   self.UI.setAttribute("wound_text", "text",  tostring(data.wounds))
   self.UI.setAttribute("wound_text", "color", woundColor())
 end
-

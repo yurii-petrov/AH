@@ -1,9 +1,3 @@
--- ╭──────────────────────────────────────────────╮
--- │           STEP: Return Bridge                │
--- ╰──────────────────────────────────────────────╯
---
--- Returns the bridge tile to the box. Thin wrapper around the shared
--- returnBridgeToBox helper (defined in Utils).
 
 function processStepReturnBridge(step, context, onDone)
   returnBridgeToBox()

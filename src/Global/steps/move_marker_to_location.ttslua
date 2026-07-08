@@ -1,16 +1,3 @@
--- ╭──────────────────────────────────────────────╮
--- │       STEP: moveMarkerToLocation             │
--- ╰──────────────────────────────────────────────╯
---
--- Finds a marker token (by type) anywhere on the board and moves it to
--- the named location tile on the location mat.
---
--- Example step JSON:
---   {
---     "type": "moveMarkerToLocation",
---     "token": { "type": "Green Marker" },
---     "location": "Northside"
---   }
 
 function processStepMoveMarkerToLocation(step, context, onDone)
   local tokenType = (step.token and step.token.type) or "White Marker"

@@ -1,10 +1,3 @@
--- ╭──────────────────────────────────────────────╮
--- │          STEP: mergeEventDeck                │
--- ╰──────────────────────────────────────────────╯
---
--- Takes a new event deck from the box and merges it (plus the current
--- discard) into the current event deck, then shuffles. If there is no
--- current event deck, simply places the new one on the deck slot.
 
 function processStepMergeEventDeck(step, context, onDone)
   if not step.deck then
@@ -37,13 +30,12 @@ function processStepMergeEventDeck(step, context, onDone)
 
   runAfterRest(newDeck, function(nd)
     if currentDeck then
-      -- merge discard into current deck first
+
       local discard = getEventDiscardObj()
       if discard then
         mergeObjIntoDeck(discard, currentDeck)
       end
 
-      -- merge new deck into current deck
       mergeObjIntoDeck(nd, currentDeck)
 
       Wait.time(function()
@@ -54,7 +46,7 @@ function processStepMergeEventDeck(step, context, onDone)
         if onDone then onDone() end
       end, 0.3)
     else
-      -- no current deck — just place the new one
+
       nd.setPositionSmooth(eventDeckPos:setAt("y", 3))
       if onDone then onDone() end
     end
