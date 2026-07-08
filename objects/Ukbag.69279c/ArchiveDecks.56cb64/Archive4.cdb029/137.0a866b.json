@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"number\":137,\"type\":\"codex\"}",
+  "Memo": "{\"number\":137,\"type\":\"codex\",\"back\":{\"actions\":[{\"title\":\"Додати жетони\",\"removeAfterUse\":true,\"steps\":[{\"type\":\"addMythosToken\",\"token\":{\"type\":\"Spawn Monster\"}},{\"type\":\"addMythosToken\",\"token\":{\"type\":\"Blank\"}}]},{\"title\":\"Додати карту 138\",\"removeAfterUse\":true,\"steps\":[{\"type\":\"takeCodexFromArchive\",\"number\":138}]}]}}",
   "Name": "Card",
   "Nickname": "137",
   "SidewaysCard": false,

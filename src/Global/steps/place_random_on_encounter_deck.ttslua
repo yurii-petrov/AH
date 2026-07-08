@@ -1,0 +1,143 @@
+-- ╭──────────────────────────────────────────────╮
+-- │    STEP: placeRandomOnEncounterDeck          │
+-- ╰──────────────────────────────────────────────╯
+--
+-- Picks ONE random number out of step.numbers whose card is still in the
+-- archive, takes that card, and adds it to a named encounter deck on the
+-- scenario mat. Two modes:
+--   * default        -> placed on top of the encounter deck.
+--   * step.seed=true -> shuffled together with the top two cards of the
+--     encounter deck and returned on top (same mechanic as clue seeding,
+--     see seed_codex_encounters).
+--
+-- Example step JSON:
+--   {
+--     "type": "placeRandomOnEncounterDeck",
+--     "numbers": [147, 148, 149],
+--     "deck": { "type": "encounter", "name": "The Underworld" },
+--     "seed": true
+--   }
+
+local function availableNumbers(archive, numbers)
+  local present = {}
+  local objs = archive.type == "Deck" and archive.getObjects() or { { memo = archive.memo } }
+  local byNumber = {}
+  for _, entry in ipairs(objs) do
+    local data = parseJson(entry.memo)
+    if data and data.number then byNumber[data.number] = true end
+  end
+  for _, n in ipairs(numbers) do
+    if byNumber[n] then table.insert(present, n) end
+  end
+  return present
+end
+
+local function seedIntoDeck(card, deck, onDone)
+  local deckPos  = deck.getPosition()
+  local stackPos = card.getPosition()
+
+  local taken = {}
+  if deck.type == "Deck" then
+    for _ = 1, 2 do
+      local c = takeCardFromTop(deck, true)
+      if c then table.insert(taken, c) end
+    end
+  end
+
+  card.setRotation({0, 180, 180})
+  for i, c in ipairs(taken) do
+    c.setRotation({0, 180, 180})
+    c.setPosition(Vector(stackPos.x, stackPos.y + 0.3 * i, stackPos.z))
+  end
+
+  Wait.time(function()
+    local pile
+    for _, o in ipairs(findObjsInRadius(stackPos, 1)) do
+      if o.type == "Deck" then pile = o break end
+    end
+    if not pile then
+      if onDone then onDone() end
+      return
+    end
+    pile.shuffle()
+    Wait.time(function()
+      pile.setRotation({0, 180, 180})
+      pile.setPositionSmooth(deckPos:setAt("y", 3))
+      Wait.time(function() if onDone then onDone() end end, 0.5)
+    end, 0.5)
+  end, 0.8)
+end
+
+function processStepPlaceRandomOnEncounterDeck(step, context, onDone)
+  local numbers  = step and step.numbers
+  local deckSpec = step and step.deck
+  if not numbers or #numbers == 0 or not deckSpec or not deckSpec.name then
+    log("[placeRandomOnEncounterDeck] numbers/deck is nil")
+    if onDone then onDone() end
+    return
+  end
+
+  local locationMat = findBoardByQuery({{
+    field = "type",
+    op    = "eq",
+    value = "locationMat"
+  }})
+  if not locationMat then
+    log("[placeRandomOnEncounterDeck] locationMat not found")
+    if onDone then onDone() end
+    return
+  end
+
+  local archive = findDeckOnBoardByType(locationMat, "archive")
+  if not archive then
+    log("[placeRandomOnEncounterDeck] archive not found")
+    if onDone then onDone() end
+    return
+  end
+
+  local candidates = availableNumbers(archive, numbers)
+  if #candidates == 0 then
+    log("[placeRandomOnEncounterDeck] none of the candidate cards remain in the archive")
+    if onDone then onDone() end
+    return
+  end
+
+  local encounterDeck = getDeckFromScenarioMat(deckSpec.type or "encounter", deckSpec.name)
+  if not encounterDeck then
+    log("[placeRandomOnEncounterDeck] encounter deck not found for: " .. tostring(deckSpec.name))
+    if onDone then onDone() end
+    return
+  end
+
+  local chosen  = candidates[math.random(#candidates)]
+  local codexMat = context and context.codexMat
+  local spawnPos = codexMat
+    and codexMat.positionToWorld({0, 0.5, 1.7}):setAt("y", 3)
+    or  encounterDeck.getPosition():setAt("y", 3)
+
+  local card = takeCardByQuery(archive, {{
+    field = "number",
+    op    = "eq",
+    value = chosen
+  }}, {
+    position = spawnPos,
+    rotation = {0, 180, 180},
+    smooth   = true
+  })
+
+  if not card then
+    log("[placeRandomOnEncounterDeck] card " .. tostring(chosen) .. " not found in archive")
+    if onDone then onDone() end
+    return
+  end
+
+  runAfterRest(card, function(c)
+    if step.seed then
+      seedIntoDeck(c, encounterDeck, onDone)
+    else
+      c.setRotation(encounterDeck.getRotation())
+      encounterDeck.putObject(c)
+      if onDone then onDone() end
+    end
+  end)
+end

@@ -77,6 +77,7 @@ require("Global/steps/reveal_card_under_codex")
 require("Global/steps/add_white_markers_to_mythos_cup")
 require("Global/steps/return_mythos_mat_tokens_to_cup")
 require("Global/steps/spawn_random_setaside_monsters")
+require("Global/steps/place_random_on_encounter_deck")
 
 -- Dispatch table: lowercased step.type -> handler.
 -- Handlers are global functions defined by the required step modules above.
@@ -136,6 +137,7 @@ local STEP_HANDLERS = {
   addwhitemarkerstomythoscup        = processStepAddWhiteMarkersToMythosCup,
   returnmythosmattokenstocup        = processStepReturnMythosMatTokensToCup,
   spawnrandomsetasidemonsters       = processStepSpawnRandomSetasideMonsters,
+  placerandomonencounterdeck        = processStepPlaceRandomOnEncounterDeck,
 }
 
 function processSteps(data)
