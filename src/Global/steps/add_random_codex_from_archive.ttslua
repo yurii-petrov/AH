@@ -1,0 +1,49 @@
+-- ╭──────────────────────────────────────────────╮
+-- │      STEP: Add Random Codex From Archive     │
+-- ╰──────────────────────────────────────────────╯
+--
+-- Randomly picks `count` numbers out of step.numbers and attaches each of
+-- those codex cards to the codex mat (reusing takeCodexFromArchive). The
+-- numbers that are not picked simply stay in the archive — i.e. they are
+-- "returned to the archive" without ever having been drawn.
+--
+-- Example step JSON:
+--   { "type": "addRandomCodexFromArchive", "numbers": [93, 94, 95], "count": 2 }
+
+function processStepAddRandomCodexFromArchive(step, context, onDone)
+  local numbers = step.numbers
+  if not numbers or #numbers == 0 then
+    log("[addRandomCodexFromArchive] numbers is nil/empty")
+    if onDone then onDone() end
+    return
+  end
+
+  local count = step.count or 2
+
+  local pool = {}
+  for _, n in ipairs(numbers) do
+    pool[#pool + 1] = n
+  end
+
+  for i = #pool, 2, -1 do
+    local j = math.random(i)
+    pool[i], pool[j] = pool[j], pool[i]
+  end
+
+  local chosen = {}
+  for i = 1, math.min(count, #pool) do
+    chosen[i] = pool[i]
+  end
+
+  local idx = 0
+  local function nextCard()
+    idx = idx + 1
+    if idx > #chosen then
+      if onDone then onDone() end
+      return
+    end
+    processStepTakeCodexFromArchive({ number = chosen[idx] }, context, nextCard)
+  end
+
+  nextCard()
+end
