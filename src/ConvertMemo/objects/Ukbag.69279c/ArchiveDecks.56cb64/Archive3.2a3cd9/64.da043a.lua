@@ -18,6 +18,9 @@ data = {
                 69,
                 70
               },
+              ["skillNumbers"] = {
+                68
+              },
               ["extraMatNumbers"] = {
                 68
               }
@@ -25,8 +28,7 @@ data = {
           }
         },
         {
-          ["title"] = "Додати картку 65",
-          ["removeAfterUse"] = true,
+          ["title"] = "Додати карту 65",
           ["steps"] = {
             {
               ["type"] = "takeCodexFromArchive",
@@ -39,7 +41,7 @@ data = {
     ["back"] = {
       ["actions"] = {
         {
-          ["title"] = "Прибирання",
+          ["title"] = "Виконати дії",
           ["removeAfterUse"] = true,
           ["steps"] = {
             {
