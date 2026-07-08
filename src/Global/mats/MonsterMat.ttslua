@@ -1,7 +1,7 @@
 -- ╔══════════════════════════════════════════════════════╗
 -- ║                    MonsterMat                        ║
 -- ╚══════════════════════════════════════════════════════╝
-local i18n = require("Global/i18nApi")
+local i18n = require("Global/i18n/api")
 local isTestMode = false
 
 local FACE_UP   = {0, 180, 0}

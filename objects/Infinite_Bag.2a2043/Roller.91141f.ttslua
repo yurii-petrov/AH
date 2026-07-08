@@ -1,5 +1,5 @@
 --serpent = require("util/serpent")
-local i18n = require("Global/i18nApi")
+local i18n = require("Global/i18n/api")
 
 local rollerData = {
   type     = 1,

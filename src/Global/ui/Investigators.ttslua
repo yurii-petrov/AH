@@ -17,7 +17,7 @@
 --                before pressing turn gold again.
 --
 -- The number of investigators is driven by gameData.numberOfPlayers
--- (set in Global/Menu.ttslua -> proceedStartGame). Call
+-- (set in Global/ui/Menu.ttslua -> proceedStartGame). Call
 -- setInvestigatorCount(n) whenever it becomes known.
 --
 -- This is the core scaffold; visuals (round sprites, avatars, real
@@ -53,7 +53,7 @@ local CHEVRON_COL   = "#666666"
 local AVATAR_PLACEHOLDER = "investigator_portrait"
 
 -- Slot -> seat color, fixed order matching the hand-mat assignment in
--- Global/PlayerActions.ttslua (colors = {"White","Red","Green","Blue","Yellow","Purple"}).
+-- Global/ui/PlayerActions.ttslua (colors = {"White","Red","Green","Blue","Yellow","Purple"}).
 local SLOT_COLORS = { "#FFFFFF", "#FF3B30", "#34C759", "#3478F6", "#FFD60A", "#AF52DE" }
 
 local function slotBorderColor(p)
@@ -839,7 +839,7 @@ end
 -- ── public API ────────────────────────────────────────────────────
 
 --- Looks up the localized display name currently assigned to the investigator
---- mat with the given GUID. Called from Global/InvestigatorMat.ttslua so each
+--- mat with the given GUID. Called from Global/mats/InvestigatorMat.ttslua so each
 --- mat's own script can broadcast its investigator's name without relying on
 --- a physics cast (which can pick up a neighboring mat's card when mats sit
 --- close together).

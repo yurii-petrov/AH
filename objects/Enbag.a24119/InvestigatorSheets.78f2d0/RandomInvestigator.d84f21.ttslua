@@ -1,4 +1,4 @@
-require("Global/RandomInvestigator")
+require("Global/mats/RandomInvestigator")
 
 function onload()
   setupRandomInvestigatorUI()

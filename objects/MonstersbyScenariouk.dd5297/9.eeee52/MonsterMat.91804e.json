@@ -160,7 +160,7 @@
   "IgnoreFoW": false,
   "LayoutGroupSortIndex": 0,
   "Locked": false,
-  "LuaScript": "require(\"Global/MonsterMat\")",
+  "LuaScript": "require(\"Global/mats/MonsterMat\")",
   "LuaScriptState": "{\"cp\":0,\"cpHp\":0,\"hp\":0,\"maxHp\":2}",
   "MeasureMovement": false,
   "Memo": "Monster Mat",

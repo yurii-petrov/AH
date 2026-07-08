@@ -5,7 +5,7 @@ import polib
 
 # This script assumes it is located inside the 'locales' folder.
 # It will navigate up one directory and then into 'src/Global/'.
-OUTPUT_LUA_FILE = os.path.join("..", "src", "Global", "i18nData.ttslua")
+OUTPUT_LUA_FILE = os.path.join("..", "src", "Global", "i18n", "data.ttslua")
 
 
 def print_box(message):

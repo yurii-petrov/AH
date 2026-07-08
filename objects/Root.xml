@@ -1,2 +1,2 @@
-<!-- Global window UI is built in code: src/Global/RootUI.ttslua (getRootXmlTable),
+<!-- Global window UI is built in code: src/Global/ui/RootUI.ttslua (getRootXmlTable),
      applied in LuaScript.ttslua onload via self.UI.setXmlTable(getRootXmlTable()). -->

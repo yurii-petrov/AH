@@ -9,7 +9,7 @@ Inside the `locales` folder, you will find several key files:
 -   **`en.po`**: This is the master file for all translations. It is the "source of truth" and should always contain the complete, up-to-date list of all text strings in English.
 -   **`de.po`, `fr.po`, `it.po`, etc.**: These are the language files for German, French, Italian, and so on. Each file contains the translated text for that specific language.
 -   **`_sync_po_files.py`**: A Python script for the project owner to automatically update all language files when new text is added to `en.po`.
--   **`_po_to_lua_converter.py`**: A Python script that compiles all the `.po` files into a single `i18nData.ttslua` file that is used by the mod.
+-   **`_po_to_lua_converter.py`**: A Python script that compiles all the `.po` files into a single `src/Global/i18n/data.ttslua` file that is used by the mod.
 
 ---
 
@@ -80,7 +80,7 @@ After any new translations have been added or updated, the final mod file needs 
     ```bash
     python _po_to_lua_converter.py
     ```
-2.  **Check the Output**: This script will take all the information from every `.po` file and generate a single, updated `i18nData.ttslua` file in the `src/Global/` directory. This is the file the mod actually uses to display text.
+2.  **Check the Output**: This script will take all the information from every `.po` file and generate a single, updated `data.ttslua` file in the `src/Global/i18n/` directory. This is the file the mod actually uses to display text.
 
 ## Summary: When to Use Each Script
 
@@ -92,4 +92,4 @@ After any new translations have been added or updated, the final mod file needs 
 -   **`_po_to_lua_converter.py`**:
     -   **Who**: Project Owner
     -   **When**: As the final step before releasing a new version of the mod, after all translation updates have been submitted.
-    -   **Purpose**: To compile all `.po` files into the final `i18nData.ttslua` file used by the game.
+    -   **Purpose**: To compile all `.po` files into the final `src/Global/i18n/data.ttslua` file used by the game.

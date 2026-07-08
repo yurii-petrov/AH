@@ -444,7 +444,7 @@ function getRootXmlTable()
     chooseScenarioWindow(),
     chooseAddonsWindow(),
     restoreWindow(),
-    buildInvestigatorsCollapsedPanel(), -- src/Global/Investigators.ttslua
-    buildInvestigatorsWindow(), -- src/Global/Investigators.ttslua
+    buildInvestigatorsCollapsedPanel(), -- src/Global/ui/Investigators.ttslua
+    buildInvestigatorsWindow(), -- src/Global/ui/Investigators.ttslua
   }
 end
