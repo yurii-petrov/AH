@@ -127,7 +127,7 @@ def process_json(file_path: Path):
             "memo": memo
         }
 
-        lua_content = "data = " + to_lua(data)
+        lua_content = "data = " + to_lua(data) + "\n"
 
         output_file = build_output_path(file_path)
 
