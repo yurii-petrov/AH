@@ -115,6 +115,22 @@ function spawnTokenOnLocation(spawnInfo)
   return token, tile, tileData
 end
 
+local function spawnDoomOnCodex(pos, count)
+  local doomBag = getObjectFromGUID(doomBagId)
+  if not doomBag then return end
+
+  local offsets = {{-0.3, -0.3}, {0.3, -0.3}, {0, 0.3}}
+  for i = 1, count do
+    local off = offsets[i] or {0, 0}
+    doomBag.takeObject({
+      index    = 0,
+      position = { pos.x + off[1], pos.y + 1 + i * 0.2, pos.z + off[2] },
+      rotation = {0, 180, 0},
+      smooth   = false
+    })
+  end
+end
+
 function placeCodexFromArchive()
   local archiveDeck = LOCATION_MAT_DATA.decks and LOCATION_MAT_DATA.decks.archive and LOCATION_MAT_DATA.decks.archive.obj
   if not archiveDeck then return end
@@ -140,7 +156,11 @@ function placeCodexFromArchive()
       local idx = containsNumber(scenarioData.codex, codexData.number)
       if idx then
         local taken = archiveDeck.takeObject({ index = codex.index })
-        attachCodexCard(taken, locationMat.positionToWorld(LOCATION_MAT_DATA.codex[idx]):setAt("y", 3))
+        local spawnPos = locationMat.positionToWorld(LOCATION_MAT_DATA.codex[idx]):setAt("y", 3)
+        attachCodexCard(taken, spawnPos)
+        if codexData.spawnDoom and codexData.spawnDoom > 0 then
+          Wait.time(function() spawnDoomOnCodex(spawnPos, codexData.spawnDoom) end, 1.5)
+        end
       elseif scenarioData.codexDeck and containsNumber(scenarioData.codexDeck, codexData.number) then
         archiveDeck.takeObject({
           index    = codex.index,

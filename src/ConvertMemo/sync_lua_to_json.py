@@ -1,13 +1,15 @@
 import re
 import json
+import subprocess
 from pathlib import Path
 from slpp import slpp as lua
 
 
 # ---------- PATHS ----------
-PROJECT_ROOT = Path.cwd().parents[2]
-OBJECTS_DIR = PROJECT_ROOT / "AH" / "objects"
-LUA_DIR = PROJECT_ROOT / "AH" / "src" / "ConvertMemo" / "objects"
+MOD_DIR = Path(__file__).resolve().parents[2]
+OBJECTS_DIR = MOD_DIR / "objects"
+LUA_DIR = MOD_DIR / "src" / "ConvertMemo" / "objects"
+BUILD_SCRIPT = MOD_DIR / ".vscode" / "build.py"
 
 
 def print_box(message):
@@ -59,10 +61,28 @@ def update_memo_in_json(json_path: Path, lua_file: Path):
 
         json_path.write_text(updated_text, encoding="utf-8")
 
-        print(f"Updated → {json_path.name}")
-
     except Exception as e:
         print(f"FAILED {json_path.name}: {e}")
+
+
+# ---------- BUILD ----------
+def run_build():
+    if not BUILD_SCRIPT.exists():
+        print(f"❌ build.py not found at {BUILD_SCRIPT}")
+        return
+
+    result = subprocess.run(
+        ["python3", str(BUILD_SCRIPT), "--action", "build", "--moddir", str(MOD_DIR)],
+        capture_output=True,
+        text=True
+    )
+
+    if result.returncode == 0:
+        print_box("BUILD SUCCESS")
+    else:
+        print(result.stdout)
+        print(result.stderr)
+        print_box(f"BUILD FAILED (exit {result.returncode})")
 
 
 # ---------- MAIN ----------
@@ -78,16 +98,15 @@ def main():
         rel = lua_file.relative_to(LUA_DIR)
         json_file = OBJECTS_DIR / rel.with_suffix(".json")
 
-        print(f"[{lua_file.name}] -> {json_file.relative_to(OBJECTS_DIR)}")
-
         if not json_file.exists():
-            print("  ❌ No match")
+            print(f"❌ No match: [{lua_file.name}] -> {json_file.relative_to(OBJECTS_DIR)}")
             continue
 
         update_memo_in_json(json_file, lua_file)
-        print()
 
     print_box(f"LUA -> JSON SYNC SUCCESS ({len(lua_files)} FILES)")
+
+    run_build()
 
 
 if __name__ == "__main__":

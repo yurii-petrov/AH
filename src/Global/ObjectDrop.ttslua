@@ -53,32 +53,46 @@ function onObjectDrop(colorName, object)
   local isFoundlocationMat = false
   local isFoundNeighborhood = false
   local isFoundScenarioSheet = false
+  local isFoundKeepDoom = false
   if objectData.type == Tag.DoomToken or objectData.type == Tag.AnomalyToken then
     local foundObjects = downCast(object, 10, nil, 1)
     for i, obj in ipairs(foundObjects) do
-      if not isFoundNeighborhood and not isFoundScenarioSheet then
-        if obj.memo then
-          if obj.guid == locationMatId then
-            isFoundlocationMat = true
+      if not isFoundNeighborhood and not isFoundScenarioSheet and not isFoundKeepDoom then
+        if obj.guid == locationMatId then
+          isFoundlocationMat = true
+        else
+          local objMemo = obj.memo and parseJson(obj.memo)
+          if objMemo and objMemo.type and string.lower(objMemo.type) == string.lower("Neighborhood") then
+            isFoundNeighborhood = true
+            break
+          elseif objMemo and objMemo.type and string.lower(objMemo.type) == string.lower("Scenario") then
+            isFoundScenarioSheet = true
+            break
+          elseif objMemo and objMemo.type and string.lower(objMemo.type) == string.lower("Mystery") then
+            isFoundScenarioSheet = true
+            break
+          elseif objMemo and objMemo.keepDoom then
+            isFoundKeepDoom = true
+            break
           else
-            local objMemo = parseJson(obj.memo)
-            if objMemo and objMemo.type and string.lower(objMemo.type) == string.lower("Neighborhood") then
-              isFoundNeighborhood = true
-              break
-            elseif objMemo and objMemo.type and string.lower(objMemo.type) == string.lower("Scenario") then
-              isFoundScenarioSheet = true
-              break
-            elseif objMemo and objMemo.type and string.lower(objMemo.type) == string.lower("Mystery") then
-              isFoundScenarioSheet = true
-              break
+            local attachments = obj.getAttachments and obj.getAttachments()
+            if attachments then
+              for _, att in ipairs(attachments) do
+                local attMemo = parseJson(att.memo)
+                if attMemo and attMemo.keepDoom then
+                  isFoundKeepDoom = true
+                  break
+                end
+              end
             end
+            if isFoundKeepDoom then break end
           end
         end
       end
     end
   end
 
-  if isFoundlocationMat and not isFoundNeighborhood and not isFoundScenarioSheet then
+  if isFoundlocationMat and not isFoundNeighborhood and not isFoundScenarioSheet and not isFoundKeepDoom then
     object.destruct()
   end
 end

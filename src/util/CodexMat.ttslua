@@ -1,0 +1,409 @@
+local data = {}
+
+local buttonStyle = {
+  default = {
+    symbol = "○",
+    color  = "#fff5e2"
+  },
+  hover = {
+    symbol = "●",
+    color  = "#ffd8ab"
+  },
+  confirm = {
+    text  = "✔ Підтвердити",
+    color = "#22af4c"
+  }
+}
+
+local pendingConfirm = nil
+
+local backPositions = {
+	"0 56 11",
+  "0 73 11",
+  "0 90 11"
+}
+
+local frontPositions = {
+  "0 56 -21",
+  "0 73 -21",
+  "0 90 -21"
+}
+
+local function getAttributes()
+  return {
+    width = "900",
+    height = "150",
+    scale = "0.1 0.1 0.1",
+    fontSize = "100",
+    font = "Fonts/AdonisC",
+    textColor = "#fff5e2",
+    textAlignment = "MiddleLeft",
+    color = "clear"
+  }
+end
+
+local function getCodexButton(id, text, position, rotation)
+  local attributes = getAttributes()
+
+  attributes.id = id
+  attributes.onClick = "clickAction"
+  attributes.onMouseEnter = "hoverEnter"
+  attributes.onMouseExit = "hoverExit"
+  attributes.text = text
+  attributes.position = position
+  attributes.rotation = rotation
+  attributes.fontSize = "100"
+  attributes.textAlignment = "MiddleLeft"
+  attributes.color = "clear"
+
+  return {
+    tag = "Button",
+    attributes = attributes
+  }
+end
+
+local function getCounterText(action)
+  local icon = action.icon or ""
+  local value = action.value or 0
+  return icon .. " " .. tostring(value)
+end
+
+local function getCounterButton(id, action, position, rotation)
+  local attributes = getAttributes()
+
+  attributes.id = id
+  attributes.onClick = "counterClick"
+  attributes.text = getCounterText(action)
+  attributes.position = position
+  attributes.rotation = rotation
+  attributes.font = "Fonts/AHRDIcons"
+  attributes.fontSize = "100"
+  attributes.textAlignment = "MiddleLeft"
+  attributes.color = "clear"
+  attributes.textColor = "#667db6"
+
+  return {
+    tag = "Button",
+    attributes = attributes
+  }
+end
+
+local SKILL_UNSELECTED_COLOR = "#5a5a5a"
+
+local SKILLS = {
+  { id = "lore",         icon = '', color = "#805d9b" },
+  { id = "influence",    icon = '', color = "#ff6f38" },
+  { id = "observatione", icon = '', color = "#467e42" },
+  { id = "strength",     icon = '', color = "#da4d38" },
+  { id = "will",         icon = '', color = "#667db6" },
+}
+
+local SKILL_OFFSETS = { -40, -20, 0, 20, 40 }
+
+local function addOffsetX(position, dx)
+  local x, rest = position:match("^(%S+)%s+(.+)$")
+  if not x then return position end
+  return tostring(tonumber(x) + dx) .. " " .. rest
+end
+
+local function getSkillGateButtons(side, index, action, basePosition, rotation)
+  local buttons = {}
+  for i, skill in ipairs(SKILLS) do
+    local selected = action.selected and action.selected[skill.id]
+    table.insert(buttons, {
+      tag = "button",
+      attributes = {
+        id = side.."_"..index.."_"..skill.id,
+        onClick = "skillToggle",
+        width = "150",
+        height = "150",
+        scale = "0.1 0.1 0.1",
+        position = addOffsetX(basePosition, SKILL_OFFSETS[i]),
+        rotation = rotation,
+        fontSize = "100",
+        font = "Fonts/AHRDIcons",
+        textColor = selected and skill.color or SKILL_UNSELECTED_COLOR,
+        color = "clear",
+        text = skill.icon,
+      }
+    })
+  end
+  return buttons
+end
+
+local function isGateOpen(gate)
+  if not gate or gate.type ~= "skillGate" then
+    print("[CodexMat DEBUG] isGateOpen: gate is nil or wrong type -> " .. tostring(gate and gate.type))
+    return false
+  end
+  local count = 0
+  for _, skill in ipairs(SKILLS) do
+    if gate.selected and gate.selected[skill.id] then count = count + 1 end
+  end
+  local open = count >= (gate.threshold or 3)
+  print(string.format("[CodexMat DEBUG] isGateOpen: count=%d threshold=%s open=%s", count, tostring(gate.threshold), tostring(open)))
+  return open
+end
+
+function onLoad(savedData)
+  local sData = parseJson(savedData)
+  if sData then data = sData end
+  buildCodexUI()
+end
+
+function onSave()
+  return JSON.encode(data)
+end
+
+function setCodexData(codexData)
+  data = {codex = codexData}
+  print("[CodexMat DEBUG] setCodexData: " .. serpent.tts(codexData))
+  buildCodexUI()
+end
+
+function buildCodexUI()
+  local xml = {}
+
+  local codex = data and data.codex
+  print("[CodexMat DEBUG] buildCodexUI called, codex=" .. tostring(codex))
+  if not codex then return end
+
+  local hasFront = codex.front and codex.front.actions and #codex.front.actions > 0
+  local hasBack = codex.back and codex.back.actions and #codex.back.actions > 0
+  print(string.format("[CodexMat DEBUG] hasFront=%s hasBack=%s backActionCount=%s",
+    tostring(hasFront), tostring(hasBack), tostring(codex.back and codex.back.actions and #codex.back.actions)))
+
+  if not hasFront and not hasBack then return end
+
+  if hasFront then
+    for i, action in ipairs(codex.front.actions) do
+      local gateOpen = not action.requiresGate or isGateOpen(codex.front.actions[action.requiresGate])
+      if gateOpen then
+        if action.type == "counter" then
+          table.insert(xml, getCounterButton(
+            "front_"..i,
+            action,
+            frontPositions[i],
+            "0 0 180"
+          ))
+        elseif action.type == "skillGate" then
+          for _, btn in ipairs(getSkillGateButtons("front", i, action, frontPositions[i], "0 0 180")) do
+            table.insert(xml, btn)
+          end
+        elseif action.title then
+          table.insert(xml, getCodexButton(
+            "front_"..i,
+            "○ "..action.title,
+            frontPositions[i],
+            "0 0 180"
+          ))
+        end
+      end
+    end
+  end
+
+  if hasBack then
+    for i, action in ipairs(codex.back.actions) do
+      local gateOpen = not action.requiresGate or isGateOpen(codex.back.actions[action.requiresGate])
+      print(string.format(
+        "[CodexMat DEBUG] back action %d: type=%s requiresGate=%s gateOpen=%s position=%s",
+        i, tostring(action.type), tostring(action.requiresGate), tostring(gateOpen), tostring(backPositions[i])
+      ))
+      if gateOpen then
+        if action.type == "counter" then
+          table.insert(xml, getCounterButton(
+            "back_"..i,
+            action,
+            backPositions[i],
+            "0 180 180"
+          ))
+        elseif action.type == "skillGate" then
+          local btns = getSkillGateButtons("back", i, action, backPositions[i], "0 180 180")
+          print("[CodexMat DEBUG] skillGate produced " .. #btns .. " buttons")
+          for _, btn in ipairs(btns) do
+            print("[CodexMat DEBUG]   button id=" .. tostring(btn.attributes.id) .. " position=" .. tostring(btn.attributes.position) .. " text=" .. tostring(btn.attributes.text))
+            table.insert(xml, btn)
+          end
+        elseif action.title then
+          table.insert(xml, getCodexButton(
+            "back_"..i,
+            "○ "..action.title,
+            backPositions[i],
+            "0 180 180"
+          ))
+        end
+      end
+    end
+  end
+
+  self.UI.setXmlTable(xml)
+end
+
+local function parseButtonId(id)
+	id = tostring(id)
+  id = id:gsub("[%c%s]+", "")
+  local sep = id:find("_")
+  if not sep then return nil end
+  local side = id:sub(1, sep - 1)
+  local index = id:sub(sep + 1)
+  index = tonumber(index)
+  if not index then return nil end
+  return side, index
+end
+
+local function getAction(side, index)
+  if not data or not data.codex then return nil end
+  local sideData = data.codex[side]
+  if not sideData or not sideData.actions then return nil end
+  return sideData.actions[index]
+end
+
+local function getOriginalText(side, index)
+  local action = getAction(side, index)
+  if action and action.title then
+    return buttonStyle.default.symbol .. " " .. action.title
+  end
+  return ""
+end
+
+local function getHoverEnterText(side, index)
+  local action = getAction(side, index)
+  if action and action.title then
+    return buttonStyle.hover.symbol .. " " .. action.title
+  end
+  return ""
+end
+
+function hoverEnter(player, alt_click, id)
+  if pendingConfirm == id then return end
+  local side, index = parseButtonId(id)
+  if not side or not index then return end
+  self.UI.setAttribute(id, "text", getHoverEnterText(side, index))
+  self.UI.setAttribute(id, "textColor", buttonStyle.hover.color)
+end
+
+function hoverExit(player, alt_click, id)
+  if pendingConfirm == id then return end
+  local side, index = parseButtonId(id)
+  if not side or not index then return end
+  self.UI.setAttribute(id, "text", getOriginalText(side, index))
+  self.UI.setAttribute(id, "textColor", buttonStyle.default.color)
+end
+
+function clickAction(player, alt_click, id)
+  local side, index = parseButtonId(id)
+  if not side or not index then return end
+
+  local action = getAction(side, index)
+  if not action then return end
+
+  if pendingConfirm == id then
+    if action.description and action.description ~= "" then
+      print("\nопис дії: " .. action.description)
+    else
+      print("\n")
+    end
+
+    self.UI.setAttribute(id, "text", getOriginalText(side, index))
+    self.UI.setAttribute(id, "textColor", buttonStyle.hover.color)
+    pendingConfirm = nil
+
+    Global.call("processSteps", {
+      steps = action.steps,
+      context = {
+        playerColor    = player.color,
+        codexMat       = self,
+        data           = data,
+        removeAfterUse = action.removeAfterUse and { side = side, index = index, group = action.removeGroup } or nil
+      }
+    })
+  else
+    if pendingConfirm then
+      local pSide, pIndex = parseButtonId(pendingConfirm)
+      if pSide and pIndex then
+        self.UI.setAttribute(pendingConfirm, "text", getOriginalText(pSide, pIndex))
+        self.UI.setAttribute(pendingConfirm, "textColor", buttonStyle.default.color)
+      end
+    end
+
+    pendingConfirm = id
+    self.UI.setAttribute(id, "text", buttonStyle.confirm.text)
+    self.UI.setAttribute(id, "textColor", buttonStyle.confirm.color)
+  end
+end
+
+function counterClick(player, alt_click, id)
+  local side, index = parseButtonId(id)
+  if not side or not index then return end
+
+  local action = getAction(side, index)
+  if not action or action.type ~= "counter" then return end
+
+  local value = action.value or 0
+  if alt_click == "-1" then
+    value = value + 1
+  elseif alt_click == "-2" then
+    if value > 0 then value = value - 1 end
+  end
+  action.value = value
+
+  self.UI.setAttribute(id, "text", getCounterText(action))
+  self.UI.setAttribute(id, "textColor", "#667db6")
+end
+
+local function parseSkillId(id)
+  id = tostring(id)
+  local side, index, skillId = id:match("^(%a+)_(%d+)_(%a+)$")
+  if not side then return nil end
+  return side, tonumber(index), skillId
+end
+
+function skillToggle(player, alt_click, id)
+  print("[CodexMat DEBUG] skillToggle clicked, id=" .. tostring(id))
+  local side, index, skillId = parseSkillId(id)
+  print(string.format("[CodexMat DEBUG] parsed side=%s index=%s skillId=%s", tostring(side), tostring(index), tostring(skillId)))
+  if not side or not index or not skillId then return end
+
+  local action = getAction(side, index)
+  if not action or action.type ~= "skillGate" then
+    print("[CodexMat DEBUG] skillToggle: action missing or wrong type -> " .. tostring(action and action.type))
+    return
+  end
+
+  action.selected = action.selected or {}
+  action.selected[skillId] = not action.selected[skillId]
+
+  buildCodexUI()
+end
+
+function onActionSuccess(params)
+  if not params or not params.side or not params.index then return end
+  local codex = data and data.codex
+  if not codex then return end
+
+  if params.group then
+    for _, sideKey in ipairs({ "front", "back" }) do
+      local sideData = codex[sideKey]
+      if sideData and sideData.actions then
+        for i = #sideData.actions, 1, -1 do
+          if sideData.actions[i].removeGroup == params.group then
+            table.remove(sideData.actions, i)
+          end
+        end
+      end
+    end
+  else
+    local sideData = codex[params.side]
+    if not sideData or not sideData.actions then return end
+    table.remove(sideData.actions, params.index)
+  end
+
+  pendingConfirm = nil
+  buildCodexUI()
+end
+
+function parseJson(memo)
+  if not memo or type(memo) ~= "string" then return nil end
+  local success, result = pcall(function() return JSON.decode(memo) end)
+  return success and result or nil
+end
