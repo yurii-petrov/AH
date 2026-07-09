@@ -36,6 +36,7 @@ data = {
             },
             {
               ["type"] = "placeTokensOnLocations",
+              ["face_up"] = true,
               ["locations"] = {
                 "Easttown",
                 "French Hill",
