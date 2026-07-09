@@ -1,6 +1,7 @@
 data = {
   ["GUID"] = "92bde3",
   ["memo"] = {
+    ["reversed"] = true,
     ["elite"] = 3,
     ["hp"] = 4,
     ["monstertype"] = {

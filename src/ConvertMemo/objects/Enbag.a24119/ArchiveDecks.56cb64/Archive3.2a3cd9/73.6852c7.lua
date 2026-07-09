@@ -6,7 +6,7 @@ data = {
     ["front"] = {
       ["actions"] = {
         {
-          ["title"] = "Add bosses",
+          ["title"] = "Dagon and Hydra",
           ["removeAfterUse"] = true,
           ["steps"] = {
             {

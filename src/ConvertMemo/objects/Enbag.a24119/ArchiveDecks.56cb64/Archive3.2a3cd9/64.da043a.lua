@@ -42,7 +42,7 @@ data = {
     ["back"] = {
       ["actions"] = {
         {
-          ["title"] = "Cleanup",
+          ["title"] = "Actions",
           ["removeAfterUse"] = true,
           ["steps"] = {
             {

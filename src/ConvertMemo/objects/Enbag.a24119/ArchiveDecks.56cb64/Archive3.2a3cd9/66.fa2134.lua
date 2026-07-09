@@ -6,7 +6,7 @@ data = {
     ["back"] = {
       ["actions"] = {
         {
-          ["title"] = "Add boss",
+          ["title"] = "Mother Hydra",
           ["removeAfterUse"] = true,
           ["steps"] = {
             {
