@@ -44,7 +44,7 @@ function processStepPlaceCodexOnEncounterDeck(step, context, onDone)
   }}, {
     position = deckPos:setAt("y", 3),
     rotation = rotation,
-    smooth   = true
+    smooth   = false
   })
 
   if not card then
@@ -53,17 +53,9 @@ function processStepPlaceCodexOnEncounterDeck(step, context, onDone)
     return
   end
 
-  if card == archive then
-    card.setRotation(rotation)
-    card.setPositionSmooth(deckPos:setAt("y", 3))
-  end
+  card.setRotation(rotation)
+  card.setPosition(deckPos:setAt("y", 3))
+  encounterDeck.putObject(card)
 
-  local function finish(c)
-    c = c or card
-    c.setRotation(rotation)
-    encounterDeck.putObject(c)
-    if onDone then onDone() end
-  end
-
-  runAfterRest(card, finish, finish)
+  if onDone then onDone() end
 end
