@@ -38,16 +38,23 @@ function processStepAttachRandomCodexUnderNumber(step, context, onDone)
   local rotation = {0, 180, 180}
 
   if step.underCard then
-    local spawnPos = targetMat.getPosition():setAt("y", 3)
+    local dropPos = targetMat.positionToWorld({0, 0.5, 1.7}):setAt("y", 3)
+
+    for _, o in ipairs(downCast_pos(dropPos, 2)) do
+      if o.type == "Card" or o.type == "Deck" then
+        o.setPosition(targetMat.positionToWorld({0, 0.5, 2.7}):setAt("y", 3))
+        break
+      end
+    end
 
     local card = takeCardByQuery(archive, {{
       field = "number",
       op    = "eq",
       value = chosen
     }}, {
-      position = spawnPos,
+      position = dropPos,
       rotation = rotation,
-      smooth   = true
+      smooth   = false
     })
 
     if not card then
@@ -56,12 +63,12 @@ function processStepAttachRandomCodexUnderNumber(step, context, onDone)
       return
     end
 
-    runAfterRest(card, function(c)
-      attachCodexCard(c, spawnPos, rotation)
-      local targetPos = targetMat.getPosition()
-      targetMat.setPosition({ x = targetPos.x, y = targetPos.y + 1, z = targetPos.z })
-      if onDone then onDone() end
-    end)
+    card.setRotation(rotation)
+    card.setPosition(dropPos)
+    local s = card.getScale()
+    card.setScale({ x = 1, y = s.y, z = 1 })
+
+    if onDone then onDone() end
     return
   end
 
