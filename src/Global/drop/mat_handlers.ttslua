@@ -217,21 +217,21 @@ function onObjectDropOnInvestigatorMat(colorName, object, objectData)
     return true
   end
 
-  local clueArea = {
-    minX = -1.23,
-    maxX = -1,
-    minZ = 0.58,
-    maxZ = 0.88
-  }
+  -- local clueArea = {
+  --   minX = -1.23,
+  --   maxX = -1,
+  --   minZ = 0.58,
+  --   maxZ = 0.88
+  -- }
 
-  if investigatorMat then
-    local pos = investigatorMat.positionToLocal(object.getPosition())
-    if pos.x >= clueArea.minX and pos.x <= clueArea.maxX and pos.z >= clueArea.minZ and pos.z <= clueArea.maxZ then
-      object.destruct()
-      investigatorMat.call("addClue")
-      return true
-    end
-  end
+  -- if investigatorMat then
+  --   local pos = investigatorMat.positionToLocal(object.getPosition())
+  --   if pos.x >= clueArea.minX and pos.x <= clueArea.maxX and pos.z >= clueArea.minZ and pos.z <= clueArea.maxZ then
+  --     object.destruct()
+  --     investigatorMat.call("addClue")
+  --     return true
+  --   end
+  -- end
 end
 
 function tryGetItemIndex(shopMat, object, objectData)
