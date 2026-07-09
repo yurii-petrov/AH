@@ -103,6 +103,10 @@ function onObjectPickUp(colorName, object)
     onObjectPickUpMonsterMat(colorName, object)
   end
 
+  if object.hasTag("skill_mat") then
+    object.call("clearSkillMatBonus")
+  end
+
   local objectData = parseJson(object.memo)
   if objectData and objectData.type == "blessed cursed" then
     applyBlessedCursedToRoller(object, 1)

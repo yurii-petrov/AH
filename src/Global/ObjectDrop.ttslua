@@ -12,6 +12,10 @@ function onObjectDrop(colorName, object)
     return
   end
 
+  if object.hasTag("skill_mat") then
+    runOnceAfterRest(object, function(object) object.call("applySkillMatBonus") end)
+  end
+
   local objectData = parseJson(object.memo)
   if object.memo and not objectData then
     objectData = {
@@ -148,7 +152,11 @@ function attachItemToItemsMat(object, objectData, targetPos, bagId)
 end
 
 function attachItemToSkillMat(object, objectData, targetPos, bagId)
-  return takeMatAndAttach(object, objectData, targetPos, bagId)
+  local mat = takeMatAndAttach(object, objectData, targetPos, bagId)
+  if mat then
+    mat.addTag("skill_mat")
+  end
+  return mat
 end
 
 function onWantedCardFlipped(object)

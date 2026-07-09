@@ -83,6 +83,56 @@ local function isSkillSelected(skillId)
 	return data.selectedSkills and data.selectedSkills[skillId]
 end
 
+local function getSelectedSkills()
+	local active = data.mode == 4 or data.mode == 5
+	local result = {}
+	for _, def in ipairs(DEBUFF_ICONS) do
+		local skillId = skillIdFromDebuffId(def.id)
+		result[skillId] = active and isSkillSelected(skillId) or false
+	end
+	return result
+end
+
+local function downCast(obj, dist, offset, multi)
+	if obj == nil then return end
+	dist = dist or 1
+	offset = offset or 0
+	multi = multi or 1
+	local oPos = obj.getPosition()
+	local oBounds = obj.getBoundsNormalized()
+	local oRot = obj.getRotation()
+	local hits = Physics.cast({
+		origin = {oPos[1], oPos[2] - dist / 2 - oBounds.size.y / 2 - offset, oPos[3]},
+		direction = {0, 1, 0},
+		type = 3,
+		size = {oBounds.size.x * multi, dist, oBounds.size.z * multi},
+		orientation = {oRot[1], oRot[2], oRot[3]},
+		max_distance = 0,
+	})
+	local hitObjects = {}
+	for _, v in pairs(hits) do
+		if v.hit_object ~= obj then
+			table.insert(hitObjects, v.hit_object)
+		end
+	end
+	return hitObjects
+end
+
+local function downCast_pos(worldPos, dist)
+	local hits = Physics.cast({
+		origin = { worldPos.x, worldPos.y - dist / 2, worldPos.z },
+		direction = { 0, -1, 0 },
+		type = 3,
+		size = { 1, dist, 1 },
+		max_distance = 0,
+	})
+	local result = {}
+	for _, v in ipairs(hits) do
+		table.insert(result, v.hit_object)
+	end
+	return result
+end
+
 local function makeSkillToggleButton(def, suffix)
 	local skillId = skillIdFromDebuffId(def.id)
 	local selected = isSkillSelected(skillId)
@@ -369,6 +419,54 @@ function skillToggle(player, alt_click, id)
 	local color = selected and SKILL_TOGGLE_COLOR_BY_ID[skillId] or SKILL_TOGGLE_UNSELECTED_COLOR
 	self.UI.setAttribute("skill_" .. skillId .. "1", "textColor", color)
 	self.UI.setAttribute("skill_" .. skillId .. "2", "textColor", color)
+
+	applySkillMatBonus()
+end
+
+function applySkillMatBonus()
+	local foundObjects = downCast(self, 10, nil, 1)
+	local itemsMat = nil
+	for _, obj in ipairs(foundObjects) do
+		if obj.memo == "Items Mat" then
+			itemsMat = obj
+			break
+		end
+	end
+
+	local investigatorMat = nil
+	if itemsMat then
+		local p = itemsMat.getPosition():setAt("z", -44)
+		for _, obj in ipairs(downCast_pos(p, 0.1)) do
+			if obj.memo == "Investigator Mat" then
+				investigatorMat = obj
+				break
+			end
+		end
+	end
+
+	local newGuid = investigatorMat and investigatorMat.guid or nil
+
+	if data.appliedInvestigatorMatGuid and data.appliedInvestigatorMatGuid ~= newGuid then
+		local oldMat = getObjectFromGUID(data.appliedInvestigatorMatGuid)
+		if oldMat then
+			oldMat.call("setSkillMatBonus", { matGuid = self.guid, skills = {} })
+		end
+	end
+
+	if newGuid then
+		investigatorMat.call("setSkillMatBonus", { matGuid = self.guid, skills = getSelectedSkills() })
+	end
+
+	data.appliedInvestigatorMatGuid = newGuid
+end
+
+function clearSkillMatBonus()
+	if not data.appliedInvestigatorMatGuid then return end
+	local mat = getObjectFromGUID(data.appliedInvestigatorMatGuid)
+	if mat then
+		mat.call("setSkillMatBonus", { matGuid = self.guid, skills = {} })
+	end
+	data.appliedInvestigatorMatGuid = nil
 end
 
 function ItemMatDestruct()

@@ -25,7 +25,23 @@ local data = {
         observation = 0,
         strength = 0,
         will = 0
-    }
+    },
+    skillBonus = {
+        lore = 0,
+        influence = 0,
+        observation = 0,
+        strength = 0,
+        will = 0
+    },
+    skillMatBonus = {}
+}
+
+local SKILL_MAT_ID_MAP = {
+    lore = "lore",
+    influence = "influence",
+    observatione = "observation",
+    strength = "strength",
+    will = "will",
 }
 
 function getAttributes()
@@ -255,32 +271,39 @@ function onLoad(savedData)
   if sData then
     data = sData
   end
+  data.skillBonus = data.skillBonus or {lore = 0, influence = 0, observation = 0, strength = 0, will = 0}
+  data.skillMatBonus = data.skillMatBonus or {}
 
    local skills = {
     {
         onClick = "clickLore",
-        text = data.skill.lore + data.focus.lore,
+        text = data.skill.lore + data.focus.lore + data.skillBonus.lore,
         focus = data.focus.lore,
+        bonus = data.skillBonus.lore,
     },
     {
         onClick = "clickInfluence",
-        text = data.skill.influence + data.focus.influence,
+        text = data.skill.influence + data.focus.influence + data.skillBonus.influence,
         focus = data.focus.influence,
+        bonus = data.skillBonus.influence,
     },
     {
         onClick = "clickObservation",
-        text = data.skill.observation + data.focus.observation,
+        text = data.skill.observation + data.focus.observation + data.skillBonus.observation,
         focus = data.focus.observation,
+        bonus = data.skillBonus.observation,
     },
     {
         onClick = "clickStrength",
-        text = data.skill.strength + data.focus.strength,
+        text = data.skill.strength + data.focus.strength + data.skillBonus.strength,
         focus = data.focus.strength,
+        bonus = data.skillBonus.strength,
     },
     {
         onClick = "clickWill",
-        text = data.skill.will + data.focus.will,
+        text = data.skill.will + data.focus.will + data.skillBonus.will,
         focus = data.focus.will,
+        bonus = data.skillBonus.will,
     }
   }
 
@@ -290,7 +313,7 @@ function onLoad(savedData)
     button.attributes.id=skills[i].onClick
     button.attributes.onClick=skills[i].onClick
     button.attributes.text = skills[i].text
-    button.attributes.textColor = skills[i].focus > 0 and "#fff5e2" or "#a29c90"
+    button.attributes.textColor = (skills[i].focus > 0 or skills[i].bonus > 0) and "#fff5e2" or "#a29c90"
     button.attributes.position = "115 "..startPos.." -21"
     skills[i] = button
       startPos=startPos+22.5
@@ -521,70 +544,70 @@ end
 function clickLore(player, alt_click)
   local oldFocus = data.focus.lore
   data.focus.lore = alt_click == "-1" and (data.focus.lore < FOCUS_MAX and data.focus.lore+1 or data.focus.lore) or (data.focus.lore > 0 and data.focus.lore-1 or 0)
-    self.UI.setAttribute("clickLore", "text", data.skill.lore+data.focus.lore)
-    self.UI.setAttribute("clickLore", "textColor", data.focus.lore > 0 and "#fff5e2" or "#a29c90")
+    self.UI.setAttribute("clickLore", "text", data.skill.lore+data.focus.lore+data.skillBonus.lore)
+    self.UI.setAttribute("clickLore", "textColor", (data.focus.lore > 0 or data.skillBonus.lore > 0) and "#fff5e2" or "#a29c90")
 
     self.UI.setAttribute("focusLoreText", "text","+"..data.focus.lore)
     self.UI.setAttribute("focusLoreText", "textColor", "#382c52")
     self.UI.setAttribute("focusLore", "active", data.focus.lore > 0)
     if data.focus.lore ~= oldFocus then
-      broadcastStat("IM_lore", "Lore", data.skill.lore+data.focus.lore)
+      broadcastStat("IM_lore", "Lore", data.skill.lore+data.focus.lore+data.skillBonus.lore)
     end
 end
 
 function clickInfluence(player, alt_click)
     local oldFocus = data.focus.influence
     data.focus.influence = alt_click == "-1" and (data.focus.influence < FOCUS_MAX and data.focus.influence+1 or data.focus.influence) or (data.focus.influence > 0 and data.focus.influence-1 or 0)
-    self.UI.setAttribute("clickInfluence", "text", data.skill.influence+data.focus.influence)
-    self.UI.setAttribute("clickInfluence", "textColor", data.focus.influence > 0 and "#fff5e2" or "#a29c90")
+    self.UI.setAttribute("clickInfluence", "text", data.skill.influence+data.focus.influence+data.skillBonus.influence)
+    self.UI.setAttribute("clickInfluence", "textColor", (data.focus.influence > 0 or data.skillBonus.influence > 0) and "#fff5e2" or "#a29c90")
 
     self.UI.setAttribute("focusInfluenceText", "text","+"..data.focus.influence)
     self.UI.setAttribute("focusLoreText", "textColor", "#62280f")
     self.UI.setAttribute("focusInfluence", "active", data.focus.influence > 0)
     if data.focus.influence ~= oldFocus then
-      broadcastStat("IM_influence", "Influence", data.skill.influence+data.focus.influence)
+      broadcastStat("IM_influence", "Influence", data.skill.influence+data.focus.influence+data.skillBonus.influence)
     end
 end
 
 function clickObservation(player, alt_click)
     local oldFocus = data.focus.observation
     data.focus.observation = alt_click == "-1" and (data.focus.observation < FOCUS_MAX and data.focus.observation+1 or data.focus.observation) or (data.focus.observation > 0 and data.focus.observation-1 or 0)
-    self.UI.setAttribute("clickObservation", "text", data.skill.observation+data.focus.observation)
-    self.UI.setAttribute("clickObservation", "textColor", data.focus.observation > 0 and "#fff5e2" or "#a29c90")
+    self.UI.setAttribute("clickObservation", "text", data.skill.observation+data.focus.observation+data.skillBonus.observation)
+    self.UI.setAttribute("clickObservation", "textColor", (data.focus.observation > 0 or data.skillBonus.observation > 0) and "#fff5e2" or "#a29c90")
 
     self.UI.setAttribute("focusObservationText", "text","+"..data.focus.observation)
     self.UI.setAttribute("focusLoreText", "textColor", "#233c14")
     self.UI.setAttribute("focusObservation", "active", data.focus.observation > 0)
     if data.focus.observation ~= oldFocus then
-      broadcastStat("IM_observation", "Observation", data.skill.observation+data.focus.observation)
+      broadcastStat("IM_observation", "Observation", data.skill.observation+data.focus.observation+data.skillBonus.observation)
     end
 end
 
 function clickStrength(player, alt_click)
     local oldFocus = data.focus.strength
     data.focus.strength = alt_click == "-1" and (data.focus.strength < FOCUS_MAX and data.focus.strength+1 or data.focus.strength) or (data.focus.strength > 0 and data.focus.strength-1 or 0)
-    self.UI.setAttribute("clickStrength", "text", data.skill.strength+data.focus.strength)
-    self.UI.setAttribute("clickStrength", "textColor", data.focus.strength > 0 and "#fff5e2" or "#a29c90")
+    self.UI.setAttribute("clickStrength", "text", data.skill.strength+data.focus.strength+data.skillBonus.strength)
+    self.UI.setAttribute("clickStrength", "textColor", (data.focus.strength > 0 or data.skillBonus.strength > 0) and "#fff5e2" or "#a29c90")
 
     self.UI.setAttribute("focusStrengthText", "text","+"..data.focus.strength)
     self.UI.setAttribute("focusLoreText", "textColor", "#582410")
     self.UI.setAttribute("focusStrength", "active", data.focus.strength > 0)
     if data.focus.strength ~= oldFocus then
-      broadcastStat("IM_strength", "Strength", data.skill.strength+data.focus.strength)
+      broadcastStat("IM_strength", "Strength", data.skill.strength+data.focus.strength+data.skillBonus.strength)
     end
 end
 
 function clickWill(player, alt_click)
     local oldFocus = data.focus.will
     data.focus.will = alt_click == "-1" and (data.focus.will < FOCUS_MAX and data.focus.will+1 or data.focus.will) or (data.focus.will > 0 and data.focus.will-1 or 0)
-    self.UI.setAttribute("clickWill", "text", data.skill.will+data.focus.will)
-    self.UI.setAttribute("clickWill", "textColor", data.focus.will > 0 and "#fff5e2" or "#a29c90")
+    self.UI.setAttribute("clickWill", "text", data.skill.will+data.focus.will+data.skillBonus.will)
+    self.UI.setAttribute("clickWill", "textColor", (data.focus.will > 0 or data.skillBonus.will > 0) and "#fff5e2" or "#a29c90")
 
     self.UI.setAttribute("focusWillText", "text","+"..data.focus.will)
     self.UI.setAttribute("focusLoreText", "textColor", "#333c4f")
     self.UI.setAttribute("focusWill", "active", data.focus.will > 0)
     if data.focus.will ~= oldFocus then
-      broadcastStat("IM_will", "Will", data.skill.will+data.focus.will)
+      broadcastStat("IM_will", "Will", data.skill.will+data.focus.will+data.skillBonus.will)
     end
 end
 
@@ -630,6 +653,49 @@ function clickRemnant(player, alt_click)
     if data.remnant ~= oldRemnant then
       broadcastStat("IM_remnant", "Remnant", data.remnant)
     end
+end
+
+function setSkillMatBonus(params)
+  if not params or not params.matGuid then return end
+
+  data.skillMatBonus = data.skillMatBonus or {}
+
+  local mapped = {}
+  for skillId, selected in pairs(params.skills or {}) do
+    local key = SKILL_MAT_ID_MAP[skillId]
+    if key and selected then
+      mapped[key] = true
+    end
+  end
+
+  if next(mapped) then
+    data.skillMatBonus[params.matGuid] = mapped
+  else
+    data.skillMatBonus[params.matGuid] = nil
+  end
+
+  local totals = {lore = 0, influence = 0, observation = 0, strength = 0, will = 0}
+  for _, bonusSkills in pairs(data.skillMatBonus) do
+    for key in pairs(bonusSkills) do
+      totals[key] = totals[key] + 1
+    end
+  end
+  data.skillBonus = totals
+
+  self.UI.setAttribute("clickLore", "text", data.skill.lore + data.focus.lore + data.skillBonus.lore)
+  self.UI.setAttribute("clickLore", "textColor", (data.focus.lore > 0 or data.skillBonus.lore > 0) and "#fff5e2" or "#a29c90")
+
+  self.UI.setAttribute("clickInfluence", "text", data.skill.influence + data.focus.influence + data.skillBonus.influence)
+  self.UI.setAttribute("clickInfluence", "textColor", (data.focus.influence > 0 or data.skillBonus.influence > 0) and "#fff5e2" or "#a29c90")
+
+  self.UI.setAttribute("clickObservation", "text", data.skill.observation + data.focus.observation + data.skillBonus.observation)
+  self.UI.setAttribute("clickObservation", "textColor", (data.focus.observation > 0 or data.skillBonus.observation > 0) and "#fff5e2" or "#a29c90")
+
+  self.UI.setAttribute("clickStrength", "text", data.skill.strength + data.focus.strength + data.skillBonus.strength)
+  self.UI.setAttribute("clickStrength", "textColor", (data.focus.strength > 0 or data.skillBonus.strength > 0) and "#fff5e2" or "#a29c90")
+
+  self.UI.setAttribute("clickWill", "text", data.skill.will + data.focus.will + data.skillBonus.will)
+  self.UI.setAttribute("clickWill", "textColor", (data.focus.will > 0 or data.skillBonus.will > 0) and "#fff5e2" or "#a29c90")
 end
 
 function addRemnant()
