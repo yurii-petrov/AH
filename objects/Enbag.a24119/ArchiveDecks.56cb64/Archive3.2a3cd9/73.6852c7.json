@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"number\":73,\"type\":\"codex\",\"front\":{\"actions\":[{\"title\":\"Add bosses\",\"removeAfterUse\":true,\"steps\":[{\"type\":\"spawnMonsterOnLocation\",\"number\":74,\"location\":\"Devil Reef\"},{\"type\":\"spawnMonsterOnLocation\",\"number\":75,\"location\":\"Devil Reef\"}]},{\"title\":\"Return codex\",\"removeAfterUse\":true,\"steps\":[{\"type\":\"returnAllCodexExcept\",\"exceptNumbers\":[61,73]}]},{\"title\":\"Add card 72\",\"removeAfterUse\":true,\"steps\":[{\"type\":\"takeCodexFromArchive\",\"number\":72}]}]}}",
+  "Memo": "{\"number\":73,\"type\":\"codex\",\"front\":{\"actions\":[{\"title\":\"Dagon and Hydra\",\"removeAfterUse\":true,\"steps\":[{\"type\":\"spawnMonsterOnLocation\",\"number\":74,\"location\":\"Devil Reef\"},{\"type\":\"spawnMonsterOnLocation\",\"number\":75,\"location\":\"Devil Reef\"}]},{\"title\":\"Return codex\",\"removeAfterUse\":true,\"steps\":[{\"type\":\"returnAllCodexExcept\",\"exceptNumbers\":[61,73]}]},{\"title\":\"Add card 72\",\"removeAfterUse\":true,\"steps\":[{\"type\":\"takeCodexFromArchive\",\"number\":72}]}]}}",
   "Name": "Card",
   "Nickname": "73",
   "SidewaysCard": false,

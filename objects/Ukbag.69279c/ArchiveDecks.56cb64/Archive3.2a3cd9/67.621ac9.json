@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"number\":67,\"type\":\"codex\",\"back\":{\"actions\":[{\"title\":\"Додати боса\",\"removeAfterUse\":true,\"steps\":[{\"type\":\"spawnMonsterOnLocation\",\"number\":74,\"location\":\"Devil Reef\"}]}]}}",
+  "Memo": "{\"number\":67,\"type\":\"codex\",\"back\":{\"actions\":[{\"title\":\"Батько Дагон\",\"removeAfterUse\":true,\"steps\":[{\"type\":\"spawnMonsterOnLocation\",\"number\":74,\"location\":\"Devil Reef\"}]}]}}",
   "Name": "Card",
   "Nickname": "67",
   "SidewaysCard": false,

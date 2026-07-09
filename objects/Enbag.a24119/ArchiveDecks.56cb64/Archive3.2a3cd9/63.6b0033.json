@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"number\":63,\"type\":\"codex\",\"back\":{\"actions\":[{\"title\":\"Set aside research cards\",\"removeAfterUse\":true,\"steps\":[{\"type\":\"setAsideToCodexDeck\",\"numbers\":[68,69,70,71]}]},{\"title\":\"Add card 64\",\"removeAfterUse\":true,\"steps\":[{\"type\":\"takeCodexFromArchive\",\"number\":64}]}]}}",
+  "Memo": "{\"number\":63,\"type\":\"codex\",\"back\":{\"actions\":[{\"title\":\"Investigation deck\",\"removeAfterUse\":true,\"steps\":[{\"type\":\"setAsideToCodexDeck\",\"numbers\":[68,69,70,71]}]},{\"title\":\"Add card 64\",\"removeAfterUse\":true,\"steps\":[{\"type\":\"takeCodexFromArchive\",\"number\":64}]}]}}",
   "Name": "Card",
   "Nickname": "63",
   "SidewaysCard": false,

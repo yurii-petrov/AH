@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"number\":71,\"type\":\"codex\",\"front\":{\"actions\":[{\"title\":\"Find monster\",\"removeAfterUse\":true,\"steps\":[{\"type\":\"findMonsterByType\",\"monsterType\":\"Deep One\"}]}]}}",
+  "Memo": "{\"number\":71,\"type\":\"codex\",\"front\":{\"actions\":[{\"title\":\"Deep One\",\"removeAfterUse\":true,\"steps\":[{\"type\":\"findMonsterByType\",\"monsterType\":\"Deep One\"}]}]}}",
   "Name": "Card",
   "Nickname": "71",
   "SidewaysCard": false,

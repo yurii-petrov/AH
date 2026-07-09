@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"elite\":3,\"hp\":4,\"monstertype\":[\"Deep One\",\"Herald\"],\"name\":\"Mother Hydra\",\"number\":75,\"remnant\":true,\"role\":\"Monster\",\"trait\":\"Massive\",\"type\":\"codex\",\"attachUnderCodex\":67}",
+  "Memo": "{\"reversed\":true,\"elite\":3,\"hp\":4,\"monstertype\":[\"Deep One\",\"Herald\"],\"name\":\"Mother Hydra\",\"number\":75,\"remnant\":true,\"role\":\"Monster\",\"trait\":\"Massive\",\"type\":\"codex\",\"attachUnderCodex\":67}",
   "Name": "Card",
   "Nickname": "75",
   "SidewaysCard": false,

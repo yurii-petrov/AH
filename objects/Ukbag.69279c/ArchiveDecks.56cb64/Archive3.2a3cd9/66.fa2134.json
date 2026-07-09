@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"number\":66,\"type\":\"codex\",\"back\":{\"actions\":[{\"title\":\"Додати боса\",\"removeAfterUse\":true,\"steps\":[{\"type\":\"spawnMonsterOnLocation\",\"number\":75,\"location\":\"Devil Reef\"}]}]}}",
+  "Memo": "{\"number\":66,\"type\":\"codex\",\"back\":{\"actions\":[{\"title\":\"Мати Гідра\",\"removeAfterUse\":true,\"steps\":[{\"type\":\"spawnMonsterOnLocation\",\"number\":75,\"location\":\"Devil Reef\"}]}]}}",
   "Name": "Card",
   "Nickname": "66",
   "SidewaysCard": false,
