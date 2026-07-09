@@ -6,7 +6,7 @@ data = {
     ["back"] = {
       ["actions"] = {
         {
-          ["title"] = "Розкласти маркери",
+          ["title"] = "Маркери",
           ["removeAfterUse"] = true,
           ["steps"] = {
             {
@@ -32,6 +32,16 @@ data = {
                   ["count"] = 3
                 }
               }
+            }
+          }
+        },
+        {
+          ["title"] = "Додати карту 81",
+          ["removeAfterUse"] = true,
+          ["steps"] = {
+            {
+              ["type"] = "takeCodexFromArchive",
+              ["number"] = 81
             }
           }
         }

@@ -6,7 +6,7 @@ data = {
     ["back"] = {
       ["actions"] = {
         {
-          ["title"] = "Place markers",
+          ["title"] = "Markers",
           ["removeAfterUse"] = true,
           ["steps"] = {
             {
@@ -32,6 +32,16 @@ data = {
                   ["count"] = 3
                 }
               }
+            }
+          }
+        },
+        {
+          ["title"] = "Add card 81",
+          ["removeAfterUse"] = true,
+          ["steps"] = {
+            {
+              ["type"] = "takeCodexFromArchive",
+              ["number"] = 81
             }
           }
         }

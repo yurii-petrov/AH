@@ -16,7 +16,7 @@ data = {
           }
         },
         {
-          ["title"] = "Add cards 79 and 82",
+          ["title"] = "Add 79 and 82",
           ["removeAfterUse"] = true,
           ["steps"] = {
             {

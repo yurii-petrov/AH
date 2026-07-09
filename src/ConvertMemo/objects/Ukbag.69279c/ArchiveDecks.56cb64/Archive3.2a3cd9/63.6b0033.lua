@@ -6,7 +6,7 @@ data = {
     ["back"] = {
       ["actions"] = {
         {
-          ["title"] = "Колода дослідження",
+          ["title"] = "Дослідження",
           ["removeAfterUse"] = true,
           ["steps"] = {
             {

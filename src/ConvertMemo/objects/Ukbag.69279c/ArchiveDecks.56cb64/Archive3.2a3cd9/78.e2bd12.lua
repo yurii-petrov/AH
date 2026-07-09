@@ -16,7 +16,7 @@ data = {
           }
         },
         {
-          ["title"] = "Додати картки 79 і 82",
+          ["title"] = "Додати 79 і 82",
           ["removeAfterUse"] = true,
           ["steps"] = {
             {
