@@ -29,6 +29,7 @@ require("Global/steps/seed_codex_encounters")
 require("Global/steps/merge_setaside_into_monster")
 require("Global/steps/broadcast_message")
 require("Global/steps/place_codex_at_encounter_deck")
+require("Global/steps/place_codex_on_encounter_deck")
 require("Global/steps/place_token_on_scenario_mat")
 require("Global/steps/set_aside_to_codex_deck")
 require("Global/steps/merge_one_from_setaside_into_monster")
@@ -87,6 +88,7 @@ local STEP_HANDLERS = {
   mergesetasideintomonster          = processStepMergeSetasideIntoMonster,
   broadcastmessage                  = processStepBroadcastMessage,
   placecodexatencounterdeck         = processStepPlaceCodexAtEncounterDeck,
+  placecodexonencounterdeck         = processStepPlaceCodexOnEncounterDeck,
   placetokenonscenariomat           = processStepPlaceTokenOnScenarioMat,
   setasidetocodexdeck               = processStepSetAsideToCodexDeck,
   mergeonefromsetasideintomonster   = processStepMergeOneFromSetasideIntoMonster,

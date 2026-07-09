@@ -10,27 +10,27 @@ data = {
           ["removeAfterUse"] = true,
           ["steps"] = {
             {
-              ["type"] = "placeCodexAtEncounterDeck",
+              ["type"] = "placeCodexOnEncounterDeck",
               ["number"] = 161,
               ["neighborhood"] = "Easttown"
             },
             {
-              ["type"] = "placeCodexAtEncounterDeck",
+              ["type"] = "placeCodexOnEncounterDeck",
               ["number"] = 162,
               ["neighborhood"] = "French Hill"
             },
             {
-              ["type"] = "placeCodexAtEncounterDeck",
+              ["type"] = "placeCodexOnEncounterDeck",
               ["number"] = 163,
               ["neighborhood"] = "Merchant District"
             },
             {
-              ["type"] = "placeCodexAtEncounterDeck",
+              ["type"] = "placeCodexOnEncounterDeck",
               ["number"] = 164,
               ["neighborhood"] = "Rivertown"
             },
             {
-              ["type"] = "placeCodexAtEncounterDeck",
+              ["type"] = "placeCodexOnEncounterDeck",
               ["number"] = 165,
               ["neighborhood"] = "Uptown"
             },
