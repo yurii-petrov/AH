@@ -6,7 +6,7 @@ data = {
     ["back"] = {
       ["actions"] = {
         {
-          ["title"] = "Find Inuksuk",
+          ["title"] = "Inuksuk",
           ["removeAfterUse"] = true,
           ["steps"] = {
             {
@@ -34,7 +34,7 @@ data = {
           }
         },
         {
-          ["title"] = "Choose two of 93, 94, 95",
+          ["title"] = "Random cards",
           ["removeAfterUse"] = true,
           ["steps"] = {
             {

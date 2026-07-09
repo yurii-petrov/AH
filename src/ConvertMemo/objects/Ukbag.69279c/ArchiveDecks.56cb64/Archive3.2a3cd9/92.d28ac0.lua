@@ -6,7 +6,7 @@ data = {
     ["back"] = {
       ["actions"] = {
         {
-          ["title"] = "Знайти Інуксук",
+          ["title"] = "Інуксук",
           ["removeAfterUse"] = true,
           ["steps"] = {
             {
@@ -34,7 +34,7 @@ data = {
           }
         },
         {
-          ["title"] = "Обрати дві картки з 93, 94, 95",
+          ["title"] = "Випадкові карти",
           ["removeAfterUse"] = true,
           ["steps"] = {
             {

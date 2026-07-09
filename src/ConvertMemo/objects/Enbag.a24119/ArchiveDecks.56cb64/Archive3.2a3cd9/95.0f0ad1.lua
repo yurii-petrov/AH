@@ -6,7 +6,7 @@ data = {
     ["front"] = {
       ["actions"] = {
         {
-          ["title"] = "Return cards 93 and 94",
+          ["title"] = "Return cards",
           ["removeAfterUse"] = true,
           ["steps"] = {
             {
@@ -25,6 +25,7 @@ data = {
         {
           ["title"] = "Add card 101",
           ["removeAfterUse"] = true,
+          ["removeGroup"] = "95",
           ["steps"] = {
             {
               ["type"] = "takeCodexFromArchive",
@@ -35,6 +36,7 @@ data = {
         {
           ["title"] = "Add card 97",
           ["removeAfterUse"] = true,
+          ["removeGroup"] = "95",
           ["steps"] = {
             {
               ["type"] = "takeCodexFromArchive",
@@ -45,6 +47,7 @@ data = {
         {
           ["title"] = "Add card 98",
           ["removeAfterUse"] = true,
+          ["removeGroup"] = "95",
           ["steps"] = {
             {
               ["type"] = "takeCodexFromArchive",

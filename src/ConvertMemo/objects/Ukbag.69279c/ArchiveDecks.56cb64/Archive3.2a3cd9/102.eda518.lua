@@ -6,7 +6,7 @@ data = {
     ["front"] = {
       ["actions"] = {
         {
-          ["title"] = "Прикликати Ітакву",
+          ["title"] = "Ітаква",
           ["removeAfterUse"] = true,
           ["steps"] = {
             {
@@ -16,7 +16,7 @@ data = {
           }
         },
         {
-          ["title"] = "Повернути картки 93–101",
+          ["title"] = "Повернути карти",
           ["removeAfterUse"] = true,
           ["steps"] = {
             {

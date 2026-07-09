@@ -6,7 +6,7 @@ data = {
     ["front"] = {
       ["actions"] = {
         {
-          ["title"] = "Summon Ithaqua",
+          ["title"] = "Ithaqua",
           ["removeAfterUse"] = true,
           ["steps"] = {
             {
@@ -16,7 +16,7 @@ data = {
           }
         },
         {
-          ["title"] = "Return cards 93–101",
+          ["title"] = "Return cards",
           ["removeAfterUse"] = true,
           ["steps"] = {
             {

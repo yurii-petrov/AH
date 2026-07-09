@@ -6,7 +6,7 @@ data = {
     ["front"] = {
       ["actions"] = {
         {
-          ["title"] = "Повернути картки 94 та 95",
+          ["title"] = "Повернути карти",
           ["removeAfterUse"] = true,
           ["steps"] = {
             {
@@ -25,6 +25,7 @@ data = {
         {
           ["title"] = "Додати карту 99",
           ["removeAfterUse"] = true,
+          ["removeGroup"] = "93",
           ["steps"] = {
             {
               ["type"] = "takeCodexFromArchive",
@@ -35,6 +36,7 @@ data = {
         {
           ["title"] = "Додати карту 96",
           ["removeAfterUse"] = true,
+          ["removeGroup"] = "93",
           ["steps"] = {
             {
               ["type"] = "takeCodexFromArchive",
@@ -45,6 +47,7 @@ data = {
         {
           ["title"] = "Додати карту 98",
           ["removeAfterUse"] = true,
+          ["removeGroup"] = "93",
           ["steps"] = {
             {
               ["type"] = "takeCodexFromArchive",
