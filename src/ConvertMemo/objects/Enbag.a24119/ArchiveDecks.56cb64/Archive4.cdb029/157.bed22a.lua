@@ -13,10 +13,7 @@ data = {
               ["type"] = "attachRandomCodexUnderNumber",
               ["targetNumber"] = 157,
               ["number"] = 158,
-              ["scale"] = {
-                ["x"] = 1.0,
-                ["z"] = 1.0
-              }
+              ["underCard"] = true
             }
           }
         },
@@ -28,10 +25,7 @@ data = {
               ["type"] = "attachRandomCodexUnderNumber",
               ["targetNumber"] = 157,
               ["number"] = 159,
-              ["scale"] = {
-                ["x"] = 1.0,
-                ["z"] = 1.0
-              }
+              ["underCard"] = true
             }
           }
         }

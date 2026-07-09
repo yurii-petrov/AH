@@ -57,6 +57,8 @@ function attachCodexCard(card, spawnPos, rotation, opts)
     local function applyCodexData(m) m.call("setCodexData", params) end
     runAfterRest(codexMat, applyCodexData, applyCodexData)
   end
+
+  return codexMat
 end
 
 function attachHeadlineCard(card, spawnPos, rotation)

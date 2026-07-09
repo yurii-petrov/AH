@@ -37,6 +37,34 @@ function processStepAttachRandomCodexUnderNumber(step, context, onDone)
   chosen = chosen or numbers[math.random(#numbers)]
   local rotation = {0, 180, 180}
 
+  if step.underCard then
+    local spawnPos = targetMat.getPosition():setAt("y", 3)
+
+    local card = takeCardByQuery(archive, {{
+      field = "number",
+      op    = "eq",
+      value = chosen
+    }}, {
+      position = spawnPos,
+      rotation = rotation,
+      smooth   = true
+    })
+
+    if not card then
+      log("[attachRandomCodexUnderNumber] card with number " .. chosen .. " not found")
+      if onDone then onDone() end
+      return
+    end
+
+    runAfterRest(card, function(c)
+      attachCodexCard(c, spawnPos, rotation)
+      local targetPos = targetMat.getPosition()
+      targetMat.setPosition({ x = targetPos.x, y = targetPos.y + 1, z = targetPos.z })
+      if onDone then onDone() end
+    end)
+    return
+  end
+
   local card = takeCardByQuery(archive, {{
     field = "number",
     op    = "eq",

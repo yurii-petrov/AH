@@ -155,8 +155,14 @@ function findNextFreeCodexSnapPos(locationMat)
     local isOccupied = false
     for _, o in ipairs(objs) do
       if o.getGUID() ~= locationMat.getGUID() and o.type == "Tile" then
-        isOccupied = true
-        break
+        for _, att in ipairs(o.getAttachments()) do
+          local attData = parseJson(att.memo)
+          if attData and string.lower(tostring(attData.type or "")) == "codex" then
+            isOccupied = true
+            break
+          end
+        end
+        if isOccupied then break end
       end
     end
     if not isOccupied then
