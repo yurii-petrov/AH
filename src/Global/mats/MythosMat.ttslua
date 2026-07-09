@@ -139,12 +139,13 @@ end
 
 function setButtons(d)
   local eventVisibility = ""
-  if d.type == "event" and d.color then
+  if d.type ~= "empty" and d.color then
     local others = otherSeatedColors(d.color)
     if #others > 0 then
       eventVisibility = table.concat(others, "|")
     end
   end
+
   self.UI.setAttribute("success", "visibility", eventVisibility)
   self.UI.setAttribute("fail",    "visibility", eventVisibility)
   self.UI.setAttribute("discard", "visibility", eventVisibility)
