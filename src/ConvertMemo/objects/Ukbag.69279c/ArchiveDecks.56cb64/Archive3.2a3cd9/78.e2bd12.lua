@@ -11,7 +11,7 @@ data = {
           ["steps"] = {
             {
               ["type"] = "spawnSetasideMonster",
-              ["attachUnderCodex"] = 0
+              ["attachUnderCodex"] = 78
             }
           }
         },
