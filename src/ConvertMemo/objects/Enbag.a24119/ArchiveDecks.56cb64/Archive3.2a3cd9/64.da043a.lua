@@ -19,7 +19,8 @@ data = {
                 70
               },
               ["skillNumbers"] = {
-                68
+                68,
+                70
               },
               ["extraMatNumbers"] = {
                 68

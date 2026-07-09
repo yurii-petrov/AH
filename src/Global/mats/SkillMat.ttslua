@@ -67,6 +67,63 @@ local DEBUFF_ICONS = {
 	{ id = "debuff_will",         textColor = "#667db6", position = "460 -40 0"  },
 }
 
+local SKILL_TOGGLE_UNSELECTED_COLOR = "#5a5a5a"
+
+local function skillIdFromDebuffId(debuffId)
+	return debuffId:gsub("^debuff_", "")
+end
+
+local SKILL_TOGGLE_COLOR_BY_ID = {}
+for _, def in ipairs(DEBUFF_ICONS) do
+	SKILL_TOGGLE_COLOR_BY_ID[skillIdFromDebuffId(def.id)] = def.textColor
+end
+
+local function isSkillSelected(skillId)
+	if data.mode == 5 then return true end
+	return data.selectedSkills and data.selectedSkills[skillId]
+end
+
+local function makeSkillToggleButton(def, suffix)
+	local skillId = skillIdFromDebuffId(def.id)
+	local selected = isSkillSelected(skillId)
+	return {
+		tag = "button",
+		attributes = {
+			id = "skill_" .. skillId .. suffix,
+			onClick = "skillToggle",
+			width = "200",
+			height = "280",
+			position = def.position,
+			fontSize = DEBUFF_FONT_SIZE,
+			font = "Fonts/AHRDIcons",
+			textColor = selected and def.textColor or SKILL_TOGGLE_UNSELECTED_COLOR,
+			color = "clear",
+			text = DEBUFF_ICON_BY_ID[def.id],
+		}
+	}
+end
+
+local function updateSkillToggleColors()
+	for _, def in ipairs(DEBUFF_ICONS) do
+		local skillId = skillIdFromDebuffId(def.id)
+		local color = isSkillSelected(skillId) and SKILL_TOGGLE_COLOR_BY_ID[skillId] or SKILL_TOGGLE_UNSELECTED_COLOR
+		self.UI.setAttribute("skill_" .. skillId .. "1", "textColor", color)
+		self.UI.setAttribute("skill_" .. skillId .. "2", "textColor", color)
+	end
+end
+
+local function makeSkillToggleGroup(suffix, position, rotation)
+	local buttons = {}
+	for _, def in ipairs(DEBUFF_ICONS) do
+		table.insert(buttons, makeSkillToggleButton(def, suffix))
+	end
+	return {
+		tag = "panel",
+		attributes = { id = "skill_toggle_buttons" .. suffix, active = "false", width = "1200", height = "280", scale = "0.1 0.1 0", position = position, rotation = rotation },
+		children = buttons,
+	}
+end
+
 local function mirrorX(position)
 	local x, rest = position:match("^(%S+)%s+(.+)$")
 	if not x then return position end
@@ -180,6 +237,9 @@ local function buildUI()
 	for _, e in ipairs(debuffGroup1) do table.insert(xml, e) end
 	for _, e in ipairs(debuffGroup2) do table.insert(xml, e) end
 
+	table.insert(xml, makeSkillToggleGroup("1", "0 82 -15", "0 0 180"))
+	table.insert(xml, makeSkillToggleGroup("2", mirrorX("0 82 10"), "0 180 180"))
+
 	table.insert(xml, makeCounterPanel("damage1", "false", "30 85 -11", "damage", "#e9543b", "0 300 10 0", "0", "damage_txt1", "150 78 0", "ПОРАНЕННЯ", "0 0 180"))
 	table.insert(xml, makeClsPanel("damage_cls1", "30 85 -11", "0 300 10 0", "0 0 180"))
 	table.insert(xml, makeCounterPanel("horror1", "false", "-30 85 -11", "horror", "#485cb3", "300 0 10 0", "0", "horror_txt1", "-26 -93 -11", "ЖАХ", "0 0 180"))
@@ -195,13 +255,12 @@ end
 
   function onLoad(savedData)
 	local sData = parseJson(savedData)
-	print(serpent.tts(sData))
 	if sData then
 	  data = sData
 	end
 
 	buildUI()
-	Wait.frames(refreshVisibility, 1)
+	Wait.time(refreshVisibility, 0.5, -1)
   end
 
   function onSave()
@@ -218,11 +277,24 @@ function refreshVisibility()
 	data.showFront = showFront
 	data.mode = (cardData and cardData.skillMatMode) or data.mode or 1
 
-	local debuffActive = data.debuffValue and data.debuffValue ~= 0
-	self.UI.setAttribute('debuff_buttons1', 'active', tostring((not showFront) and not debuffActive))
+	local cardGuid = card and card.guid
+	if cardGuid ~= data.lastCardGuid then
+		data.lastCardGuid = cardGuid
+		data.selectedSkills = {}
+	end
+
+	local skillToggleActive = data.mode == 4 or data.mode == 5
+	local debuffActive = (not skillToggleActive) and data.debuffValue and data.debuffValue ~= 0
+	self.UI.setAttribute('debuff_buttons1', 'active', tostring((not showFront) and not debuffActive and not skillToggleActive))
 	self.UI.setAttribute('debuff_display1', 'active', tostring((not showFront) and debuffActive))
-	self.UI.setAttribute('debuff_buttons2', 'active', tostring(showFront and not debuffActive))
+	self.UI.setAttribute('debuff_buttons2', 'active', tostring(showFront and not debuffActive and not skillToggleActive))
 	self.UI.setAttribute('debuff_display2', 'active', tostring(showFront and debuffActive))
+
+	self.UI.setAttribute('skill_toggle_buttons1', 'active', tostring((not showFront) and skillToggleActive))
+	self.UI.setAttribute('skill_toggle_buttons2', 'active', tostring(showFront and skillToggleActive))
+	if skillToggleActive then
+		updateSkillToggleColors()
+	end
 
 	if debuffActive then
 		local debuff_icon = DEBUFF_ICON_BY_ID[data.debuffId]
@@ -282,6 +354,21 @@ function setData(d)
 	data.maxSp = d.sp
 	data.unbreakable = d.unbreakable
 	refreshVisibility()
+end
+
+function skillToggle(player, alt_click, id)
+	if data.mode == 5 then return end
+
+	local skillId = id:match("^skill_(%a+)%d$")
+	if not skillId then return end
+
+	data.selectedSkills = data.selectedSkills or {}
+	local selected = not data.selectedSkills[skillId]
+	data.selectedSkills[skillId] = selected
+
+	local color = selected and SKILL_TOGGLE_COLOR_BY_ID[skillId] or SKILL_TOGGLE_UNSELECTED_COLOR
+	self.UI.setAttribute("skill_" .. skillId .. "1", "textColor", color)
+	self.UI.setAttribute("skill_" .. skillId .. "2", "textColor", color)
 end
 
 function ItemMatDestruct()

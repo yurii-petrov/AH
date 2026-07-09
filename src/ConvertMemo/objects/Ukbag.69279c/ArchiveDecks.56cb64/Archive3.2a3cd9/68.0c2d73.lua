@@ -3,6 +3,6 @@ data = {
   ["memo"] = {
     ["number"] = 68,
     ["type"] = "codex",
-    ["skillMatMode"] = 3
+    ["skillMatMode"] = 4
   }
 }
