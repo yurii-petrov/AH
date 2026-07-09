@@ -58,9 +58,12 @@ function processStepPlaceCodexOnEncounterDeck(step, context, onDone)
     card.setPositionSmooth(deckPos:setAt("y", 3))
   end
 
-  runAfterRest(card, function(c)
+  local function finish(c)
+    c = c or card
     c.setRotation(rotation)
     encounterDeck.putObject(c)
     if onDone then onDone() end
-  end)
+  end
+
+  runAfterRest(card, finish, finish)
 end
