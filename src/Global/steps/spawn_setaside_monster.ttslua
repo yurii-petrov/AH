@@ -20,12 +20,28 @@ function processStepSpawnSetasideMonster(step, context, onDone)
   end
 
   local cardData = parseJson(card.memo)
+  local spawnPos = card.getPosition():setAt("y", 3)
+
   if step.attachUnderCodex and cardData then
     cardData.attachUnderCodex = step.attachUnderCodex
     card.memo = JSON.encode(cardData)
+
+    local targetMat = findCodexMatByNumber(locationMat, step.attachUnderCodex)
+    if targetMat then
+      spawnPos = targetMat.positionToWorld({0, 0.5, 1.7}):setAt("y", 3)
+
+      for _, o in ipairs(downCast_pos(spawnPos, 2)) do
+        if o.type == "Card" or o.type == "Deck" then
+          o.setPosition(targetMat.positionToWorld({0, 0.5, 2.7}):setAt("y", 3))
+          break
+        end
+      end
+
+      card.setPosition(spawnPos)
+    end
   end
 
-  attachMonsterCard(card, cardData, card.getPosition():setAt("y", 3))
+  attachMonsterCard(card, cardData, spawnPos)
 
   if onDone then onDone() end
 end
