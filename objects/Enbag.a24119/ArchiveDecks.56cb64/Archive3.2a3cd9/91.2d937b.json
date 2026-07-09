@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"number\":91,\"type\":\"codex\",\"front\":{\"actions\":[{\"title\":\"Add the Wendigo boss\",\"removeAfterUse\":true,\"steps\":[{\"type\":\"spawnMonsterOnLocation\",\"number\":104}]}]},\"back\":{\"actions\":[{\"title\":\"Add card 92\",\"removeAfterUse\":true,\"steps\":[{\"type\":\"takeCodexFromArchive\",\"number\":92}]},{\"title\":\"Add card 103\",\"removeAfterUse\":true,\"steps\":[{\"type\":\"takeCodexFromArchive\",\"number\":103}]}]}}",
+  "Memo": "{\"number\":91,\"type\":\"codex\",\"front\":{\"actions\":[{\"title\":\"Wendigo\",\"removeAfterUse\":true,\"steps\":[{\"type\":\"spawnMonsterOnLocation\",\"number\":104}]}]},\"back\":{\"actions\":[{\"title\":\"Add card 92\",\"removeAfterUse\":true,\"steps\":[{\"type\":\"takeCodexFromArchive\",\"number\":92}]},{\"title\":\"Add card 103\",\"removeAfterUse\":true,\"steps\":[{\"type\":\"takeCodexFromArchive\",\"number\":103}]}]}}",
   "Name": "Card",
   "Nickname": "91",
   "SidewaysCard": false,
