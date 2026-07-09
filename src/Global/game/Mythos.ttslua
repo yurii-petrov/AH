@@ -146,31 +146,38 @@ function processTerror(callBack)
   addTerrorToNeighborhood(neighborhoodTarget, callBack)
 end
 
-local function neighborhoodHasMonsterType(neighborhood, monsterType)
-  for _, o in ipairs(upCast(neighborhood, 1, nil, 1)) do
-    if o.type == "Tile" and o.memo == "Monster Mat" then
-      local attachments = o.getAttachments()
-      local monsterMemo = attachments and attachments[1] and parseJson(attachments[1].memo)
-      if monsterMemo and monsterMemo.monstertype then
-        for _, t in ipairs(monsterMemo.monstertype) do
-          if t == monsterType then return true end
-        end
-      end
+local function findNeighborhoodBelow(monsterMat)
+  local hits = downCast(monsterMat, 10, -2, 0.1)
+  if not hits then return end
+
+  for _, o in ipairs(hits) do
+    local data = o and parseJson(o.memo)
+    if o and o.type == "Generic" and data and data.type and data.name
+       and string.lower(data.type) == "neighborhood" then
+      return data.name
     end
   end
-  return false
 end
 
 local function neighborhoodNamesWithMonsterType(monsterType)
-  local locationMat = getObjectFromGUID(locationMatId)
-  if not locationMat then return {} end
-
-  local names = {}
-  for _, nh in ipairs(upCast(locationMat, 1, nil, 1)) do
-    local nhData = parseJson(nh.memo)
-    if nhData and nhData.type and string.lower(nhData.type) == "neighborhood" and nhData.name
-       and neighborhoodHasMonsterType(nh, monsterType) then
-      table.insert(names, nhData.name)
+  local names, seen = {}, {}
+  for _, o in ipairs(getAllObjects()) do
+    if o.memo == "Monster Mat" then
+      local attachments = o.getAttachments()
+      local monsterMemo = attachments and attachments[1] and parseJson(attachments[1].memo)
+      local matchesType = false
+      if monsterMemo and monsterMemo.monstertype then
+        for _, t in ipairs(monsterMemo.monstertype) do
+          if t == monsterType then matchesType = true; break end
+        end
+      end
+      if matchesType then
+        local name = findNeighborhoodBelow(o)
+        if name and not seen[name] then
+          seen[name] = true
+          table.insert(names, name)
+        end
+      end
     end
   end
   return names
