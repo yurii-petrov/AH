@@ -1,0 +1,26 @@
+
+LOCATION_GRAPHS = {
+
+  ["AoA"] = {
+    ["Independence Square"] = {"La Bella Luna", "Arkham Asylum", "Residential1"},
+    ["La Bella Luna"]       = {"Independence Square", "Arkham Asylum", "Residential2", "Bridge2", "Residential1"},
+    ["Arkham Asylum"]       = {"Independence Square", "La Bella Luna", "Scenic1", "Residential2"},
+
+    ["Velma's Diner"]     = {"Hibb's Roadhouse", "Police Station", "Residential1", "Bridge1"},
+    ["Hibb's Roadhouse"]  = {"Velma's Diner", "Police Station"},
+    ["Police Station"]    = {"Velma's Diner", "Hibb's Roadhouse", "Bridge1"},
+
+    ["Unvisited Isle"] = {"Tick Tock Club", "River Docks", "Scenic2", "Residential2", "Residential3"},
+    ["Tick Tock Club"] = {"Unvisited Isle", "River Docks", "Residential3"},
+    ["River Docks"]    = {"Unvisited Isle", "Tick Tock Club", "Scenic2"},
+
+    ["Arkham Advertiser"] = {"Train Station", "Curiositie Shoppe", "Scenic1"},
+    ["Train Station"]     = {"Arkham Advertiser", "Curiositie Shoppe", "Scenic1", "Scenic2"},
+    ["Curiositie Shoppe"] = {"Arkham Advertiser", "Train Station"},
+
+    ["Black Cave"]    = {"Graveyard", "General Store", "Residential3", "Bridge1", "Bridge2"},
+    ["Graveyard"]     = {"Black Cave", "General Store"},
+    ["General Store"] = {"Black Cave", "Graveyard", "Residential3"},
+  },
+
+}

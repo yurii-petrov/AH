@@ -88,6 +88,65 @@ function getNeighborhoodLocationPosition(tile, locationIndex, structureType)
   return tile.positionToWorld(localPos)
 end
 
+function findLocationNodeForPosition(worldPos)
+  for _, obj in ipairs(downCast_pos(worldPos, 3)) do
+    local data = parseJson(obj.memo)
+    if data and data.type and data.name then
+      if string.lower(data.type) == "neighborhood" and data.locations then
+        local localPos = obj.positionToLocal(worldPos)
+        local index = getLocationIndex(localPos, data.structureType)
+        if index and data.locations[index] then
+          return {key = data.locations[index]}
+        end
+      elseif data.type == "Street" then
+        return {key = data.name}
+      end
+    end
+  end
+end
+
+function buildLocationGraph()
+  local scenarioName = gameData.scenarioData and gameData.scenarioData.name
+  local adjacency = scenarioName and LOCATION_GRAPHS[scenarioName]
+  if not adjacency then return {} end
+
+  local graph = {}
+
+  local function addEdge(a, b)
+    graph[a] = graph[a] or {}
+    graph[b] = graph[b] or {}
+    graph[a][b] = true
+    graph[b][a] = true
+  end
+
+  for name, neighbors in pairs(adjacency) do
+    for _, neighbor in ipairs(neighbors) do
+      addEdge(name, neighbor)
+    end
+  end
+
+  return graph
+end
+
+function bfsCellDistances(graph, startKey)
+  if not graph[startKey] then return {} end
+
+  local dist = {[startKey] = 0}
+  local queue = {startKey}
+  local head = 1
+  while head <= #queue do
+    local current = queue[head]
+    head = head + 1
+    for neighbor in pairs(graph[current] or {}) do
+      if dist[neighbor] == nil then
+        dist[neighbor] = dist[current] + 1
+        table.insert(queue, neighbor)
+      end
+    end
+  end
+  return dist
+end
+
 function findTokenOnAnyLocation(locationMat, tokenType)
   for _, tile in ipairs(upCast(locationMat, 1, nil, 1)) do
     if tile.type == "Generic" then

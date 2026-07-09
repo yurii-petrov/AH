@@ -3,6 +3,10 @@ require("Global/drop/discard")
 require("Global/drop/mat_handlers")
 
 function onObjectDrop(colorName, object)
+  if object.memo == "Monster Mat" then
+    onMonsterMatDrop(object)
+  end
+
   if object.guid == randomInvestigatorCardId then
     onRandomInvestigatorCardDrop(colorName, object)
     return
