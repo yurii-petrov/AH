@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"number\":77,\"type\":\"codex\",\"back\":{\"actions\":[{\"title\":\"Додати картки 79 і 82\",\"removeAfterUse\":true,\"steps\":[{\"type\":\"takeCodexFromArchive\",\"number\":79},{\"type\":\"takeCodexFromArchive\",\"number\":82}]}]}}",
+  "Memo": "{\"number\":77,\"type\":\"codex\",\"back\":{\"actions\":[{\"title\":\"Додати 79 і 82\",\"removeAfterUse\":true,\"steps\":[{\"type\":\"takeCodexFromArchive\",\"number\":79},{\"type\":\"takeCodexFromArchive\",\"number\":82}]}]}}",
   "Name": "Card",
   "Nickname": "77",
   "SidewaysCard": false,

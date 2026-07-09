@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"number\":80,\"type\":\"codex\",\"back\":{\"actions\":[{\"title\":\"Place markers\",\"removeAfterUse\":true,\"steps\":[{\"type\":\"placeTokensOnLocations\",\"locations\":[\"Downtown\",\"Merchant District\",\"Uptown\",\"Central Kingsport\",\"Kingsport Harbor\"],\"tokens\":[{\"type\":\"Blue Marker\",\"count\":1},{\"type\":\"Green Marker\",\"count\":1},{\"type\":\"White Marker\",\"count\":3}]}]}]}}",
+  "Memo": "{\"number\":80,\"type\":\"codex\",\"back\":{\"actions\":[{\"title\":\"Markers\",\"removeAfterUse\":true,\"steps\":[{\"type\":\"placeTokensOnLocations\",\"locations\":[\"Downtown\",\"Merchant District\",\"Uptown\",\"Central Kingsport\",\"Kingsport Harbor\"],\"tokens\":[{\"type\":\"Blue Marker\",\"count\":1},{\"type\":\"Green Marker\",\"count\":1},{\"type\":\"White Marker\",\"count\":3}]}]},{\"title\":\"Add card 81\",\"removeAfterUse\":true,\"steps\":[{\"type\":\"takeCodexFromArchive\",\"number\":81}]}]}}",
   "Name": "Card",
   "Nickname": "80",
   "SidewaysCard": false,
