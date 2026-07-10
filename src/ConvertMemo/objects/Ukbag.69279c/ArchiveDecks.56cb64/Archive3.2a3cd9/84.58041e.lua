@@ -6,7 +6,7 @@ data = {
     ["front"] = {
       ["actions"] = {
         {
-          ["title"] = "Додати картку 80",
+          ["title"] = "Додати карту 80",
           ["removeAfterUse"] = true,
           ["steps"] = {
             {
@@ -16,7 +16,7 @@ data = {
           }
         },
         {
-          ["title"] = "Додати картку 85",
+          ["title"] = "Додати карту 85",
           ["removeAfterUse"] = true,
           ["steps"] = {
             {
@@ -30,7 +30,7 @@ data = {
     ["back"] = {
       ["actions"] = {
         {
-          ["title"] = "Додати картку 85",
+          ["title"] = "Додати карту 85",
           ["removeAfterUse"] = true,
           ["steps"] = {
             {

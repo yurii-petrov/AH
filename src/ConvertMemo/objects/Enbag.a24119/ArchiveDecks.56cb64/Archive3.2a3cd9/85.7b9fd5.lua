@@ -6,7 +6,7 @@ data = {
     ["front"] = {
       ["actions"] = {
         {
-          ["title"] = "Add doom tokens",
+          ["title"] = "Mythos tokens",
           ["removeAfterUse"] = true,
           ["steps"] = {
             {
@@ -28,7 +28,7 @@ data = {
     ["back"] = {
       ["actions"] = {
         {
-          ["title"] = "Boss",
+          ["title"] = "Actions",
           ["removeAfterUse"] = true,
           ["steps"] = {
             {

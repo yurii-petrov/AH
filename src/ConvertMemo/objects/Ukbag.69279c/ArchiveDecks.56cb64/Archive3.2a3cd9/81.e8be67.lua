@@ -24,7 +24,7 @@ data = {
     ["back"] = {
       ["actions"] = {
         {
-          ["title"] = "Додати картку 82",
+          ["title"] = "Місячний Звір",
           ["removeAfterUse"] = true,
           ["steps"] = {
             {

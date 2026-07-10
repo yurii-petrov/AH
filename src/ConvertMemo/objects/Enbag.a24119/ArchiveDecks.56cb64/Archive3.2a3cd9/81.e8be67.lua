@@ -24,7 +24,7 @@ data = {
     ["back"] = {
       ["actions"] = {
         {
-          ["title"] = "Add card 82",
+          ["title"] = "Moon-beast",
           ["removeAfterUse"] = true,
           ["steps"] = {
             {

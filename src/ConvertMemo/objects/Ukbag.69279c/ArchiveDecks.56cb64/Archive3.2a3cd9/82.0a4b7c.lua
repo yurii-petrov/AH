@@ -16,7 +16,7 @@ data = {
           }
         },
         {
-          ["title"] = "Бос",
+          ["title"] = "Виконати дії",
           ["removeAfterUse"] = true,
           ["steps"] = {
             {

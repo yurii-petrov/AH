@@ -7,7 +7,6 @@ data = {
       ["actions"] = {
         {
           ["title"] = "Reckoning",
-          ["removeAfterUse"] = true,
           ["steps"] = {
             {
               ["type"] = "spawnMonsterOnLocation",

@@ -16,7 +16,7 @@ data = {
           }
         },
         {
-          ["title"] = "Boss",
+          ["title"] = "Actions",
           ["removeAfterUse"] = true,
           ["steps"] = {
             {

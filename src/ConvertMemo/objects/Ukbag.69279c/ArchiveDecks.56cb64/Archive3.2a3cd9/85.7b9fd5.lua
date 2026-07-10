@@ -6,7 +6,7 @@ data = {
     ["front"] = {
       ["actions"] = {
         {
-          ["title"] = "Додати жетони приреченості",
+          ["title"] = "Жетони міту",
           ["removeAfterUse"] = true,
           ["steps"] = {
             {
@@ -28,7 +28,7 @@ data = {
     ["back"] = {
       ["actions"] = {
         {
-          ["title"] = "Бос",
+          ["title"] = "Виконати дії",
           ["removeAfterUse"] = true,
           ["steps"] = {
             {
