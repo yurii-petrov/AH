@@ -73,7 +73,7 @@ data = {
     ["back"] = {
       ["actions"] = {
         {
-          ["title"] = "Place markers",
+          ["title"] = "Markers",
           ["removeAfterUse"] = true,
           ["steps"] = {
             {

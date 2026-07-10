@@ -6,7 +6,7 @@ data = {
     ["front"] = {
       ["actions"] = {
         {
-          ["title"] = "Hide card 158",
+          ["title"] = "Get card 158",
           ["removeAfterUse"] = true,
           ["steps"] = {
             {
@@ -18,7 +18,7 @@ data = {
           }
         },
         {
-          ["title"] = "Hide card 159",
+          ["title"] = "Get card 159",
           ["removeAfterUse"] = true,
           ["steps"] = {
             {

@@ -73,7 +73,7 @@ data = {
     ["back"] = {
       ["actions"] = {
         {
-          ["title"] = "Розмістити маркери",
+          ["title"] = "Маркери",
           ["removeAfterUse"] = true,
           ["steps"] = {
             {

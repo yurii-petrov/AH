@@ -6,7 +6,7 @@ data = {
     ["front"] = {
       ["actions"] = {
         {
-          ["title"] = "Приховати карту 158",
+          ["title"] = "Отримати 158",
           ["removeAfterUse"] = true,
           ["steps"] = {
             {
@@ -18,7 +18,7 @@ data = {
           }
         },
         {
-          ["title"] = "Приховати карту 159",
+          ["title"] = "Отримати 159",
           ["removeAfterUse"] = true,
           ["steps"] = {
             {
@@ -36,6 +36,7 @@ data = {
         {
           ["title"] = "Додати карту 160",
           ["removeAfterUse"] = true,
+          ["removeGroup"] = "157",
           ["steps"] = {
             {
               ["type"] = "takeCodexFromArchive",
