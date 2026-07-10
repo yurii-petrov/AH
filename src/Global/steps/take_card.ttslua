@@ -32,8 +32,6 @@ function processStepTakeCard(step, context, onDone)
 
       if remaining == 2 then
         handleLastCodexDeckCard(deck, card, context)
-        if onDone then onDone() end
-        return
       end
 
       if step.card.mythosTokenOnDraw then

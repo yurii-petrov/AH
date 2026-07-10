@@ -12,6 +12,7 @@ data = {
           ["steps"] = {
             {
               ["type"] = "contextSetup",
+              ["keepCodexMat"] = true,
               ["tiles"] = {
                 ["Neighborhood"] = {
                   ["Innsmouth Village"] = {
@@ -89,6 +90,30 @@ data = {
               ["deck"] = {
                 ["type"] = "event",
                 ["name"] = "DoR Innsmouth"
+              }
+            },
+            {
+              ["type"] = "placeTokensOnLocations",
+              ["locations"] = {
+                "Esoteric Order of Dagon"
+              },
+              ["tokens"] = {
+                {
+                  ["type"] = "Doom Token",
+                  ["count"] = 1
+                }
+              }
+            },
+            {
+              ["type"] = "placeTokensOnLocations",
+              ["locations"] = {
+                "Innsmouth Village"
+              },
+              ["tokens"] = {
+                {
+                  ["type"] = "Red Marker",
+                  ["count"] = 1
+                }
               }
             }
           }
