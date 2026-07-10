@@ -6,7 +6,8 @@ data = {
     ["front"] = {
       ["actions"] = {
         {
-          ["title"] = "Покласти зверху колоди",
+          ["title"] = "Покласти зверху",
+          ["removeGroup"] = "142f",
           ["removeAfterUse"] = true,
           ["steps"] = {
             {
@@ -24,7 +25,8 @@ data = {
           }
         },
         {
-          ["title"] = "Замішати у верх колоди",
+          ["title"] = "Замішати",
+          ["removeGroup"] = "142f",
           ["removeAfterUse"] = true,
           ["steps"] = {
             {
@@ -48,6 +50,7 @@ data = {
       ["actions"] = {
         {
           ["title"] = "Додати карту 144",
+          ["removeGroup"] = "142b",
           ["removeAfterUse"] = true,
           ["steps"] = {
             {

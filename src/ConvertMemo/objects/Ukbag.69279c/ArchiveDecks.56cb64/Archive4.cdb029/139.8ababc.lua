@@ -6,7 +6,7 @@ data = {
     ["back"] = {
       ["actions"] = {
         {
-          ["title"] = "Заклятий Гуг",
+          ["title"] = "Розмістити Гуга",
           ["removeAfterUse"] = true,
           ["steps"] = {
             {
@@ -16,7 +16,7 @@ data = {
           }
         },
         {
-          ["title"] = "Розмістити маркери",
+          ["title"] = "Маркери",
           ["removeAfterUse"] = true,
           ["steps"] = {
             {

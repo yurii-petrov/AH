@@ -6,7 +6,8 @@ data = {
     ["front"] = {
       ["actions"] = {
         {
-          ["title"] = "Place on top of deck",
+          ["title"] = "Place on top",
+          ["removeGroup"] = "142f",
           ["removeAfterUse"] = true,
           ["steps"] = {
             {
@@ -24,7 +25,8 @@ data = {
           }
         },
         {
-          ["title"] = "Shuffle into deck top",
+          ["title"] = "Shuffle",
+          ["removeGroup"] = "142f",
           ["removeAfterUse"] = true,
           ["steps"] = {
             {
@@ -48,6 +50,7 @@ data = {
       ["actions"] = {
         {
           ["title"] = "Add card 144",
+          ["removeGroup"] = "142b",
           ["removeAfterUse"] = true,
           ["steps"] = {
             {

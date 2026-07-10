@@ -6,7 +6,7 @@ data = {
     ["back"] = {
       ["actions"] = {
         {
-          ["title"] = "Add tokens",
+          ["title"] = "Mythos tokens",
           ["removeAfterUse"] = true,
           ["steps"] = {
             {

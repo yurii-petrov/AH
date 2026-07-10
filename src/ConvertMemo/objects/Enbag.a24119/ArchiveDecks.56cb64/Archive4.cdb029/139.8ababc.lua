@@ -16,7 +16,7 @@ data = {
           }
         },
         {
-          ["title"] = "Place markers",
+          ["title"] = "Markers",
           ["removeAfterUse"] = true,
           ["steps"] = {
             {

@@ -6,7 +6,7 @@ data = {
     ["back"] = {
       ["actions"] = {
         {
-          ["title"] = "Додати жетони",
+          ["title"] = "Жетони міту",
           ["removeAfterUse"] = true,
           ["steps"] = {
             {

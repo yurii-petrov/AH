@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"number\":139,\"type\":\"codex\",\"back\":{\"actions\":[{\"title\":\"Mummified Gug\",\"removeAfterUse\":true,\"steps\":[{\"type\":\"spawnMonsterOnLocation\",\"number\":145}]},{\"title\":\"Place markers\",\"removeAfterUse\":true,\"steps\":[{\"type\":\"placeTokensOnLocations\",\"locations\":[\"Northside\",\"Easttown\",\"French Hill\",\"Southside\",\"Uptown\",\"Miskatonic University\"],\"tokens\":[{\"type\":\"Green Marker\",\"count\":2},{\"type\":\"Blue Marker\",\"count\":2},{\"type\":\"Red Marker\",\"count\":2}]}]},{\"title\":\"Add card 140\",\"removeAfterUse\":true,\"steps\":[{\"type\":\"takeCodexFromArchive\",\"number\":140}]}]}}",
+  "Memo": "{\"number\":139,\"type\":\"codex\",\"back\":{\"actions\":[{\"title\":\"Mummified Gug\",\"removeAfterUse\":true,\"steps\":[{\"type\":\"spawnMonsterOnLocation\",\"number\":145}]},{\"title\":\"Markers\",\"removeAfterUse\":true,\"steps\":[{\"type\":\"placeTokensOnLocations\",\"locations\":[\"Northside\",\"Easttown\",\"French Hill\",\"Southside\",\"Uptown\",\"Miskatonic University\"],\"tokens\":[{\"type\":\"Green Marker\",\"count\":2},{\"type\":\"Blue Marker\",\"count\":2},{\"type\":\"Red Marker\",\"count\":2}]}]},{\"title\":\"Add card 140\",\"removeAfterUse\":true,\"steps\":[{\"type\":\"takeCodexFromArchive\",\"number\":140}]}]}}",
   "Name": "Card",
   "Nickname": "139",
   "SidewaysCard": false,

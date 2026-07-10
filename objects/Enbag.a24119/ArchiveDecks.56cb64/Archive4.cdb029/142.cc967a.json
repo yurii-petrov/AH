@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"number\":142,\"type\":\"codex\",\"front\":{\"actions\":[{\"title\":\"Place on top of deck\",\"removeAfterUse\":true,\"steps\":[{\"type\":\"placeRandomOnEncounterDeck\",\"numbers\":[147,148,149],\"deck\":{\"type\":\"encounter\",\"name\":\"The Underworld\"}}]},{\"title\":\"Shuffle into deck top\",\"removeAfterUse\":true,\"steps\":[{\"type\":\"placeRandomOnEncounterDeck\",\"numbers\":[147,148,149],\"deck\":{\"type\":\"encounter\",\"name\":\"The Underworld\"},\"seed\":true}]}]},\"back\":{\"actions\":[{\"title\":\"Add card 144\",\"removeAfterUse\":true,\"steps\":[{\"type\":\"takeCodexFromArchive\",\"number\":144}]}]}}",
+  "Memo": "{\"number\":142,\"type\":\"codex\",\"front\":{\"actions\":[{\"title\":\"Place on top\",\"removeGroup\":\"142f\",\"removeAfterUse\":true,\"steps\":[{\"type\":\"placeRandomOnEncounterDeck\",\"numbers\":[147,148,149],\"deck\":{\"type\":\"encounter\",\"name\":\"The Underworld\"}}]},{\"title\":\"Shuffle\",\"removeGroup\":\"142f\",\"removeAfterUse\":true,\"steps\":[{\"type\":\"placeRandomOnEncounterDeck\",\"numbers\":[147,148,149],\"deck\":{\"type\":\"encounter\",\"name\":\"The Underworld\"},\"seed\":true}]}]},\"back\":{\"actions\":[{\"title\":\"Add card 144\",\"removeGroup\":\"142b\",\"removeAfterUse\":true,\"steps\":[{\"type\":\"takeCodexFromArchive\",\"number\":144}]}]}}",
   "Name": "Card",
   "Nickname": "142",
   "SidewaysCard": false,

@@ -2,6 +2,7 @@ data = {
   ["GUID"] = "04c745",
   ["memo"] = {
     ["number"] = 135,
+    ["returnToArchive"] = false,
     ["type"] = "codex",
     ["tokenLayout"] = {
       ["positions"] = {
@@ -76,7 +77,7 @@ data = {
     ["front"] = {
       ["actions"] = {
         {
-          ["title"] = "Унікальна дія",
+          ["title"] = "Переміщення",
           ["description"] = "Опис унікальної дії",
           ["steps"] = {
             {

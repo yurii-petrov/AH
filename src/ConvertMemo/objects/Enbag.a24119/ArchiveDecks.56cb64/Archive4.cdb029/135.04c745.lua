@@ -2,6 +2,7 @@ data = {
   ["GUID"] = "04c745",
   ["memo"] = {
     ["number"] = 135,
+    ["returnToArchive"] = false,
     ["type"] = "codex",
     ["tokenLayout"] = {
       ["positions"] = {
