@@ -63,7 +63,8 @@ function processStepAttachRandomCodexUnderNumber(step, context, onDone)
       return
     end
 
-    card.setRotation(rotation)
+    local cardData = parseJson(card.memo)
+    card.setRotation(orient(cardData, true))
     card.setPosition(dropPos)
     local s = card.getScale()
     card.setScale({ x = 1, y = s.y, z = 1 })

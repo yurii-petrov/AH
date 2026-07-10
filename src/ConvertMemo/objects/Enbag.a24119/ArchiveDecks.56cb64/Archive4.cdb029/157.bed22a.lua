@@ -8,6 +8,7 @@ data = {
         {
           ["title"] = "Get card 158",
           ["removeAfterUse"] = true,
+          ["removeGroup"] = "157_158_159",
           ["steps"] = {
             {
               ["type"] = "attachRandomCodexUnderNumber",
@@ -20,6 +21,7 @@ data = {
         {
           ["title"] = "Get card 159",
           ["removeAfterUse"] = true,
+          ["removeGroup"] = "157_158_159",
           ["steps"] = {
             {
               ["type"] = "attachRandomCodexUnderNumber",
