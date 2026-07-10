@@ -6,7 +6,7 @@ data = {
     ["back"] = {
       ["actions"] = {
         {
-          ["title"] = "Розставити зачіпки",
+          ["title"] = "Покласти карти",
           ["removeAfterUse"] = true,
           ["steps"] = {
             {

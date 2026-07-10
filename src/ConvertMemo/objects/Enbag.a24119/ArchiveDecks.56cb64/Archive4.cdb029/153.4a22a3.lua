@@ -6,7 +6,7 @@ data = {
     ["front"] = {
       ["actions"] = {
         {
-          ["title"] = "Action",
+          ["title"] = "Add Underworld",
           ["description"] = "Опис дії",
           ["steps"] = {
             {
