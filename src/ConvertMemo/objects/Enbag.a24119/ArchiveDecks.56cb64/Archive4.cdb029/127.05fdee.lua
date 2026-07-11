@@ -6,7 +6,7 @@ data = {
     ["front"] = {
       ["actions"] = {
         {
-          ["title"] = "Fill the mythos cup",
+          ["title"] = "Markers",
           ["removeAfterUse"] = true,
           ["steps"] = {
             {
@@ -23,7 +23,7 @@ data = {
     ["back"] = {
       ["actions"] = {
         {
-          ["title"] = "Fill the mythos cup",
+          ["title"] = "Markers",
           ["removeAfterUse"] = true,
           ["steps"] = {
             {

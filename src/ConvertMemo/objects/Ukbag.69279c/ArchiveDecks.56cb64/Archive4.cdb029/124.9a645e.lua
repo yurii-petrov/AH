@@ -6,7 +6,7 @@ data = {
     ["front"] = {
       ["actions"] = {
         {
-          ["title"] = "Розмістити маркери",
+          ["title"] = "Маркери",
           ["removeAfterUse"] = true,
           ["steps"] = {
             {

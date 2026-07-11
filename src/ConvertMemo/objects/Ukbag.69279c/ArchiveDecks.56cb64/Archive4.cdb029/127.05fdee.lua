@@ -6,7 +6,7 @@ data = {
     ["front"] = {
       ["actions"] = {
         {
-          ["title"] = "Наповнити чашу мітів",
+          ["title"] = "Маркери",
           ["removeAfterUse"] = true,
           ["steps"] = {
             {
@@ -23,7 +23,7 @@ data = {
     ["back"] = {
       ["actions"] = {
         {
-          ["title"] = "Наповнити чашу мітів",
+          ["title"] = "Маркери",
           ["removeAfterUse"] = true,
           ["steps"] = {
             {

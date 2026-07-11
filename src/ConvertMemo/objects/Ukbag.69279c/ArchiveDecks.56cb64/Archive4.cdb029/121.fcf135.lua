@@ -6,8 +6,7 @@ data = {
     ["front"] = {
       ["actions"] = {
         {
-          ["title"] = "Додати монстра",
-          ["removeAfterUse"] = true,
+          ["title"] = "Член Ложі",
           ["steps"] = {
             {
               ["type"] = "addRandomSetasideToMonsterBottom"

@@ -6,7 +6,7 @@ data = {
     ["front"] = {
       ["actions"] = {
         {
-          ["title"] = "Замішати монстрів",
+          ["title"] = "Замішати",
           ["removeAfterUse"] = true,
           ["steps"] = {
             {
@@ -25,7 +25,7 @@ data = {
           }
         },
         {
-          ["title"] = "Пробудження Нюоґти",
+          ["title"] = "Повернути кодекс",
           ["removeAfterUse"] = true,
           ["steps"] = {
             {

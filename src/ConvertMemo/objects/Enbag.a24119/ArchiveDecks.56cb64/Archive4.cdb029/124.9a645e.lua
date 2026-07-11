@@ -6,7 +6,7 @@ data = {
     ["front"] = {
       ["actions"] = {
         {
-          ["title"] = "Place markers",
+          ["title"] = "Markers",
           ["removeAfterUse"] = true,
           ["steps"] = {
             {

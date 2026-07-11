@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"number\":127,\"type\":\"codex\",\"front\":{\"actions\":[{\"title\":\"Fill the mythos cup\",\"removeAfterUse\":true,\"steps\":[{\"type\":\"addWhiteMarkersToMythosCup\",\"count\":5},{\"type\":\"returnMythosMatTokensToCup\"}]}]},\"back\":{\"actions\":[{\"title\":\"Fill the mythos cup\",\"removeAfterUse\":true,\"steps\":[{\"type\":\"addWhiteMarkersToMythosCup\",\"count\":5},{\"type\":\"returnMythosMatTokensToCup\"}]}]}}",
+  "Memo": "{\"number\":127,\"type\":\"codex\",\"front\":{\"actions\":[{\"title\":\"Markers\",\"removeAfterUse\":true,\"steps\":[{\"type\":\"addWhiteMarkersToMythosCup\",\"count\":5},{\"type\":\"returnMythosMatTokensToCup\"}]}]},\"back\":{\"actions\":[{\"title\":\"Markers\",\"removeAfterUse\":true,\"steps\":[{\"type\":\"addWhiteMarkersToMythosCup\",\"count\":5},{\"type\":\"returnMythosMatTokensToCup\"}]}]}}",
   "Name": "Card",
   "Nickname": "127",
   "SidewaysCard": false,

@@ -6,7 +6,7 @@ data = {
     ["front"] = {
       ["actions"] = {
         {
-          ["title"] = "Merge monsters",
+          ["title"] = "Shuffle",
           ["removeAfterUse"] = true,
           ["steps"] = {
             {
@@ -25,7 +25,7 @@ data = {
           }
         },
         {
-          ["title"] = "Nyogtha Awakes",
+          ["title"] = "Return codex",
           ["removeAfterUse"] = true,
           ["steps"] = {
             {
