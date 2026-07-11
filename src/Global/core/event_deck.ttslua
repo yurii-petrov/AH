@@ -10,6 +10,49 @@ function findEventDeckInBox(deckType, deckName)
   end
 end
 
+function findEventDeckContainer(box, deckType, deckName)
+  local guid = findEventDeckInBox(deckType, deckName)
+  if guid then
+    return box, guid, nil
+  end
+
+  local eventBag = getObjectFromGUID(eventCardsBagId)
+  local tookOut = false
+
+  if not eventBag then
+    local boxPos = box.getPosition()
+    eventBag = box.takeObject({
+      guid     = eventCardsBagId,
+      position = Vector(boxPos.x - 2, boxPos.y, boxPos.z + 2),
+      smooth   = false
+    })
+    tookOut = true
+  end
+
+  if not eventBag then
+    return nil
+  end
+
+  for _, obj in ipairs(eventBag.getObjects()) do
+    local memo = parseJson(obj.memo)
+    if memo and iEquals(memo.type, deckType) and iEquals(memo.name, deckName) then
+      guid = obj.guid
+      break
+    end
+  end
+
+  if not guid then
+    if tookOut then box.putObject(eventBag) end
+    return nil
+  end
+
+  local function cleanup()
+    box.putObject(eventBag)
+  end
+
+  return eventBag, guid, cleanup
+end
+
 function mergeObjIntoDeck(src, targetDeck)
   if not src then return end
   if src.type == "Deck" then

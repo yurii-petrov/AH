@@ -26,18 +26,20 @@ function processStepReplaceEventDeck(step, context, onDone)
   end
 
   Wait.time(function()
-    local newDeckGuid = findEventDeckInBox(step.deck.type, step.deck.name)
+    local container, newDeckGuid, cleanup = findEventDeckContainer(box, step.deck.type, step.deck.name)
     if not newDeckGuid then
       log("[replaceEventDeck] deck not found in box: " .. tostring(step.deck.name))
       return
     end
 
-    local newDeck = box.takeObject({
+    local newDeck = container.takeObject({
       guid     = newDeckGuid,
       position = eventDeckPos:setAt("y", 5),
       rotation = {0, 180, 180},
       smooth   = false
     })
+
+    if cleanup then cleanup() end
 
     if not newDeck then
       log("[replaceEventDeck] failed to take deck from box")

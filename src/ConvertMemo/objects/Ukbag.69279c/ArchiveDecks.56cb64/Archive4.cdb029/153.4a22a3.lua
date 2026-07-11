@@ -44,12 +44,24 @@ data = {
               }
             },
             {
+              ["type"] = "placeTokensOnLocations",
+              ["locations"] = {
+                "Vaults of Zin"
+              },
+              ["tokens"] = {
+                {
+                  ["type"] = "Doom Token",
+                  ["count"] = 1
+                }
+              }
+            },
+            {
               ["type"] = "placeScenarioDecks",
               ["decks"] = {
                 {
                   ["type"] = "encounter",
                   ["guid"] = "e1528f",
-                  ["pos"] = 11
+                  ["pos"] = 9
                 },
                 {
                   ["type"] = "encounter",

@@ -8,7 +8,7 @@ function processStepMergeEventDeck(step, context, onDone)
   local box = getObjectFromGUID(boxId)
   if not box then return end
 
-  local newDeckGuid = findEventDeckInBox(step.deck.type, step.deck.name)
+  local container, newDeckGuid, cleanup = findEventDeckContainer(box, step.deck.type, step.deck.name)
   if not newDeckGuid then
     log("[mergeEventDeck] deck not found in box: " .. tostring(step.deck.name))
     return
@@ -17,11 +17,13 @@ function processStepMergeEventDeck(step, context, onDone)
   local eventDeckPos  = getEventDeckWorldPos()
   local currentDeck   = getEventObj()
 
-  local newDeck = box.takeObject({
+  local newDeck = container.takeObject({
     guid     = newDeckGuid,
     position = eventDeckPos:setAt("y", 5),
     smooth   = false
   })
+
+  if cleanup then cleanup() end
 
   if not newDeck then
     log("[mergeEventDeck] failed to take deck from box")

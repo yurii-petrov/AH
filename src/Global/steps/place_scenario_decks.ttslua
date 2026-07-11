@@ -38,35 +38,11 @@ function processStepPlaceScenarioDecks(step, context, onDone)
 
   local allTasks = {}
   local lookup = {}
+  local guidDecks = {}
 
   for _, d in ipairs(step.decks) do
     if d.guid then
-      local targetPos = resolvePos(d.pos, d.guid)
-      if targetPos then
-        table.insert(allTasks, function(done)
-          local encounterBag = getObjectFromGUID(encounterCardsBagId)
-          if not encounterBag then
-            log("[placeScenarioDecks] encounterCardsBagId bag not found")
-            done()
-            return
-          end
-          local spawnedObj = encounterBag.takeObject({
-            guid     = d.guid,
-            position = targetPos,
-            rotation = {0, 180, 180},
-            smooth   = true
-          })
-          if not spawnedObj then
-            log("[placeScenarioDecks] deck with guid " .. tostring(d.guid) .. " not found")
-            done()
-            return
-          end
-          runAfterRest(spawnedObj, function(o)
-            if o.type == "Deck" then o.shuffle() end
-            done()
-          end)
-        end)
-      end
+      table.insert(guidDecks, d)
     else
       local targetPos = resolvePos(d.pos, d.name)
       if targetPos then
@@ -74,6 +50,56 @@ function processStepPlaceScenarioDecks(step, context, onDone)
         lookup[key] = targetPos
       end
     end
+  end
+
+  if #guidDecks > 0 then
+    table.insert(allTasks, function(done)
+      local encounterBag = getObjectFromGUID(encounterCardsBagId)
+
+      if not encounterBag then
+        local boxPos = box.getPosition()
+        encounterBag = box.takeObject({
+          guid     = encounterCardsBagId,
+          position = Vector(boxPos.x - 2, boxPos.y, boxPos.z),
+          smooth   = false
+        })
+      end
+
+      if not encounterBag then
+        log("[placeScenarioDecks] encounterCardsBagId bag not found")
+        done()
+        return
+      end
+
+      local innerTasks = {}
+      for _, d in ipairs(guidDecks) do
+        local targetPos = resolvePos(d.pos, d.guid)
+        if targetPos then
+          table.insert(innerTasks, function(innerDone)
+            local spawnedObj = encounterBag.takeObject({
+              guid     = d.guid,
+              position = targetPos,
+              rotation = {0, 180, 180},
+              smooth   = true
+            })
+            if not spawnedObj then
+              log("[placeScenarioDecks] deck with guid " .. tostring(d.guid) .. " not found")
+              innerDone()
+              return
+            end
+            runAfterRest(spawnedObj, function(o)
+              if o.type == "Deck" then o.shuffle() end
+              innerDone()
+            end)
+          end)
+        end
+      end
+
+      waitAll(innerTasks, function()
+        box.putObject(encounterBag)
+        done()
+      end)
+    end)
   end
 
   for _, obj in ipairs(box.getObjects()) do
