@@ -43,7 +43,7 @@ function processStepAddRandomResearchToCodex(step, context, onDone)
   end
 
   local function drawAndAttach()
-    local card = takeTopCard(pile, false)
+    local card = takeTopCard(pile, true)
     if not card then
       log("[addRandomResearchToCodex] failed to draw from research pile")
       if onDone then onDone() end
@@ -52,14 +52,15 @@ function processStepAddRandomResearchToCodex(step, context, onDone)
 
     local cardData = parseJson(card.memo)
     local showPos  = codexMat.positionToWorld({0, 0.5, 1.7}):setAt("y", 3)
-    card.setRotation(orient(cardData, false))
+    card.setRotation(orient(cardData, true))
     card.setPositionSmooth(showPos)
 
     runAfterRest(card, function(c)
-      local rotation = orient(cardData, false)
+      local rotation = orient(cardData, true)
       local freePos  = findNextFreeCodexSnapPos(locationMat)
       if freePos then
         attachCodexCard(c, freePos, rotation)
+        c.setRotation(rotation)
       else
         attachCardUnderCodexMat(codexMat, c, rotation)
       end
