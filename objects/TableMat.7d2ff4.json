@@ -50,7 +50,7 @@
     "rotY": 180,
     "rotZ": 0,
     "scaleX": 0,
-    "scaleY": 0,
+    "scaleY": 1,
     "scaleZ": 0
   },
   "Value": 0,

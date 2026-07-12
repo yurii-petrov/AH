@@ -597,8 +597,8 @@
   "IgnoreFoW": false,
   "LayoutGroupSortIndex": 0,
   "Locked": true,
+  "LuaScript": "require(\"Global/mats/MythosMat\")",
   "LuaScriptState": "",
-  "LuaScript_path": "MythosMat.3dbb4d.ttslua",
   "MeasureMovement": false,
   "Memo": "Mythos Mat",
   "Name": "Custom_Tile",
@@ -621,5 +621,5 @@
     "scaleZ": 13.93
   },
   "Value": 0,
-  "XmlUI_path": "MythosMat.3dbb4d.xml"
+  "XmlUI": ""
 }

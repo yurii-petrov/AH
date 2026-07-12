@@ -35,7 +35,7 @@
   "Locked": false,
   "LuaScript": "",
   "LuaScriptState": "",
-  "MeasureMovement": false, 
+  "MeasureMovement": false,
   "Memo": "{\"number\":24,\"type\":\"codex\",\"back\":{\"actions\":[{\"title\":\"Додати карту 26\",\"description\":\"\",\"removeAfterUse\":true,\"removeGroup\":\"24\",\"steps\":[{\"type\":\"takeCodexFromArchive\",\"number\":26}]},{\"title\":\"Зворот карти 26\",\"description\":\"\",\"removeAfterUse\":true,\"removeGroup\":\"24\",\"steps\":[{\"type\":\"takeCodexFromArchive\",\"number\":26,\"face_down\":true}]}]}}",
   "Name": "Card",
   "Nickname": "24",

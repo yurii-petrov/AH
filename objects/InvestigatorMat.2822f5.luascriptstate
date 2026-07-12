@@ -20,5 +20,13 @@
     "observation": 0,
     "strength": 0,
     "will": 0
-  }
+  },
+  "skillBonus": {
+    "influence": 0,
+    "lore": 0,
+    "observation": 0,
+    "strength": 0,
+    "will": 0
+  },
+  "skillMatBonus": []
 }
