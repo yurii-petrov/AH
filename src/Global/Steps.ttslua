@@ -59,6 +59,7 @@ require("Global/steps/add_random_codex_from_archive")
 require("Global/steps/add_random_research_to_codex")
 require("Global/steps/add_random_setaside_to_monster_bottom")
 require("Global/steps/attach_random_codex_under_number")
+require("Global/steps/attach_random_codex_with_mat")
 require("Global/steps/reveal_card_under_codex")
 require("Global/steps/add_white_markers_to_mythos_cup")
 require("Global/steps/return_mythos_mat_tokens_to_cup")
@@ -119,6 +120,7 @@ local STEP_HANDLERS = {
   addrandomresearchtocodex          = processStepAddRandomResearchToCodex,
   addrandomsetasidetomonsterbottom  = processStepAddRandomSetasideToMonsterBottom,
   attachrandomcodexundernumber      = processStepAttachRandomCodexUnderNumber,
+  attachrandomcodexwithmat          = processStepAttachRandomCodexWithMat,
   revealcardundercodex              = processStepRevealCardUnderCodex,
   addwhitemarkerstomythoscup        = processStepAddWhiteMarkersToMythosCup,
   returnmythosmattokenstocup        = processStepReturnMythosMatTokensToCup,

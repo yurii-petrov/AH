@@ -36,9 +36,8 @@ data = {
               ["number"] = 122
             },
             {
-              ["type"] = "attachRandomCodexUnderNumber",
+              ["type"] = "attachRandomCodexWithMat",
               ["targetNumber"] = 122,
-              ["underCard"] = true,
               ["numbers"] = {
                 131,
                 132,

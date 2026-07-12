@@ -1,0 +1,63 @@
+
+function processStepAttachRandomCodexWithMat(step, context, onDone)
+  local numbers = step and step.numbers
+  local targetNumber = step and step.targetNumber
+  local chosen = step and step.number
+  if not targetNumber or (not chosen and (not numbers or #numbers == 0)) then
+    log("[attachRandomCodexWithMat] targetNumber/number(s) is nil/empty")
+    if onDone then onDone() end
+    return
+  end
+
+  local locationMat = findBoardByQuery({{
+    field = "type",
+    op    = "eq",
+    value = "locationMat"
+  }})
+  if not locationMat then
+    log("[attachRandomCodexWithMat] locationMat not found")
+    if onDone then onDone() end
+    return
+  end
+
+  local archive = findDeckOnBoardByType(locationMat, "archive")
+  if not archive then
+    log("[attachRandomCodexWithMat] archive not found")
+    if onDone then onDone() end
+    return
+  end
+
+  local targetMat = findCodexMatByNumber(locationMat, targetNumber)
+  if not targetMat then
+    log("[attachRandomCodexWithMat] codex mat for number " .. tostring(targetNumber) .. " not found")
+    if onDone then onDone() end
+    return
+  end
+
+  chosen = chosen or numbers[math.random(#numbers)]
+  local rotation = {0, 180, 180}
+  local spawnPos = findNextFreeCodexSnapPos(locationMat) or targetMat.getPosition():setAt("y", 3)
+
+  local card = takeCardByQuery(archive, {{
+    field = "number",
+    op    = "eq",
+    value = chosen
+  }}, {
+    position = spawnPos,
+    rotation = rotation,
+    smooth   = false
+  })
+
+  if not card then
+    log("[attachRandomCodexWithMat] card with number " .. chosen .. " not found")
+    if onDone then onDone() end
+    return
+  end
+
+  local newMat = attachCodexCard(card, spawnPos, rotation)
+  if newMat then
+    placeMatUnderCodexMat(targetMat, newMat, rotation)
+  end
+
+  if onDone then onDone() end
+end

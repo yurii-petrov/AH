@@ -105,3 +105,25 @@ function attachCardUnderCodexMat(codexMat, card, rotation)
   card.interactable = false
   codexMat.addAttachment(card)
 end
+
+function placeMatUnderCodexMat(targetMat, hiddenMat, rotation)
+  local GAP    = 0.05
+  local height = targetMat.getBounds().size.y
+  local matPos = targetMat.getPosition()
+
+  local stacked = 0
+  for _, o in ipairs(downCast_pos(matPos, 5)) do
+    if o.getGUID() ~= targetMat.getGUID() and o.type == "Tile" then
+      stacked = stacked + 1
+    end
+  end
+
+  hiddenMat.setRotation(rotation)
+  hiddenMat.setPosition({
+    x = matPos.x,
+    y = matPos.y - (height + GAP) * (stacked + 1),
+    z = matPos.z
+  })
+  hiddenMat.interactable = false
+  hiddenMat.setLock(true)
+end
