@@ -39,7 +39,8 @@ data = {
                   ["type"] = "Green Marker",
                   ["count"] = 1
                 }
-              }
+              },
+              ["face_up"] = true
             },
             {
               ["type"] = "takeCodexFromArchive",
