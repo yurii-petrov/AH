@@ -1,5 +1,9 @@
 
 function processStepAttachRandomCodexWithMat(step, context, onDone)
+  log("[attachRandomCodexWithMat] ENTER targetNumber=" .. tostring(step and step.targetNumber)
+    .. " number=" .. tostring(step and step.number)
+    .. " numbers=" .. (step and step.numbers and table.concat(step.numbers, ",") or "nil"))
+
   local numbers = step and step.numbers
   local targetNumber = step and step.targetNumber
   local chosen = step and step.number
@@ -35,29 +39,45 @@ function processStepAttachRandomCodexWithMat(step, context, onDone)
   end
 
   chosen = chosen or numbers[math.random(#numbers)]
+  log("[attachRandomCodexWithMat] chosen=" .. tostring(chosen))
+
   local rotation = {0, 180, 180}
-  local spawnPos = findNextFreeCodexSnapPos(locationMat) or targetMat.getPosition():setAt("y", 3)
+  local targetPos = targetMat.getPosition()
+  log(string.format("[attachRandomCodexWithMat] targetMat guid=%s original pos=%.3f,%.3f,%.3f",
+    tostring(targetMat.getGUID()), targetPos.x, targetPos.y, targetPos.z))
 
   local card = takeCardByQuery(archive, {{
     field = "number",
     op    = "eq",
     value = chosen
   }}, {
-    position = spawnPos,
+    position = targetPos:setAt("y", 3),
     rotation = rotation,
     smooth   = false
   })
 
   if not card then
-    log("[attachRandomCodexWithMat] card with number " .. chosen .. " not found")
+    log("[attachRandomCodexWithMat] card with number " .. tostring(chosen) .. " not found in archive")
     if onDone then onDone() end
     return
   end
+  log("[attachRandomCodexWithMat] card taken guid=" .. tostring(card.getGUID()))
 
-  local newMat = attachCodexCard(card, spawnPos, rotation)
+  targetMat.setPosition({ x = targetPos.x, y = targetPos.y + 0.5, z = targetPos.z })
+  log(string.format("[attachRandomCodexWithMat] targetMat lifted to y=%.3f", targetPos.y + 0.5))
+
+  local ok, newMat = pcall(attachCodexCard, card, targetPos, rotation)
+  if not ok then
+    log("[attachRandomCodexWithMat] attachCodexCard ERROR: " .. tostring(newMat))
+    newMat = nil
+  end
   if newMat then
-    placeMatUnderCodexMat(targetMat, newMat, rotation)
+    log("[attachRandomCodexWithMat] newMat guid=" .. tostring(newMat.getGUID())
+      .. " pos=" .. tostring(newMat.getPosition().x) .. "," .. tostring(newMat.getPosition().y) .. "," .. tostring(newMat.getPosition().z))
+  else
+    log("[attachRandomCodexWithMat] newMat=nil")
   end
 
+  log("[attachRandomCodexWithMat] DONE")
   if onDone then onDone() end
 end

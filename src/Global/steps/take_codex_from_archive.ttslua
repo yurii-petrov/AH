@@ -74,7 +74,8 @@ function processStepTakeCodexFromArchive(step, context, onDone)
     log("[takeCodexFromArchive] card with number " .. step.number .. " not found")
     return
   end
-  runAfterRest(card, function(c)
+  local function finish(c)
+    c = c or card
 
     if stackOnCurrent then
       attachCardUnderCodexMat(codexMat, c, rotation)
@@ -91,5 +92,7 @@ function processStepTakeCodexFromArchive(step, context, onDone)
     Wait.time(function()
       if onDone then onDone() end
     end, 0.2)
-  end)
+  end
+
+  runAfterRest(card, finish, finish)
 end

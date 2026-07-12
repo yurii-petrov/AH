@@ -136,12 +136,14 @@ function processSteps(data)
 
   local function runStep(i)
     if i > #data.steps then
+      log("[processSteps] all " .. #data.steps .. " steps done")
       local ctx = data.context
       if ctx and ctx.removeAfterUse and ctx.codexMat then
         ctx.codexMat.call("onActionSuccess", ctx.removeAfterUse)
       end
       return
     end
+    log("[processSteps] running step " .. i .. "/" .. #data.steps .. " type=" .. tostring(data.steps[i] and data.steps[i].type))
     processStep(data.steps[i], data.context, function()
       runStep(i + 1)
     end)
