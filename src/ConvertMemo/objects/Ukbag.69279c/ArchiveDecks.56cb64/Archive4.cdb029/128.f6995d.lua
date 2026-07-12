@@ -6,7 +6,7 @@ data = {
     ["front"] = {
       ["actions"] = {
         {
-          ["title"] = "Ворожість Ложі",
+          ["title"] = "Виконати Дії",
           ["removeAfterUse"] = true,
           ["steps"] = {
             {
@@ -28,7 +28,7 @@ data = {
           }
         },
         {
-          ["title"] = "Маркери в Домі Відьми",
+          ["title"] = "Маркери",
           ["removeAfterUse"] = true,
           ["steps"] = {
             {
@@ -62,7 +62,6 @@ data = {
         },
         {
           ["title"] = "Розплата",
-          ["removeAfterUse"] = true,
           ["steps"] = {
             {
               ["type"] = "findMonsterByType",

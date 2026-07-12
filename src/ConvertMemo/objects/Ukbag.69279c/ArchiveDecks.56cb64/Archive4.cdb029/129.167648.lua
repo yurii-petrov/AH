@@ -6,7 +6,7 @@ data = {
     ["front"] = {
       ["actions"] = {
         {
-          ["title"] = "Нейтралітет Ложі",
+          ["title"] = "Виконати дії",
           ["removeAfterUse"] = true,
           ["steps"] = {
             {
@@ -16,7 +16,7 @@ data = {
           }
         },
         {
-          ["title"] = "Маркери в Домі Відьми",
+          ["title"] = "Маркери",
           ["removeAfterUse"] = true,
           ["steps"] = {
             {

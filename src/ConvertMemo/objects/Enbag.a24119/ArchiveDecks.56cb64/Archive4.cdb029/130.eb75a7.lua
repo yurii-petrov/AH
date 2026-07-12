@@ -6,7 +6,7 @@ data = {
     ["front"] = {
       ["actions"] = {
         {
-          ["title"] = "By the Order",
+          ["title"] = "Actions",
           ["removeAfterUse"] = true,
           ["steps"] = {
             {
@@ -38,7 +38,7 @@ data = {
           }
         },
         {
-          ["title"] = "Place markers",
+          ["title"] = "Markers",
           ["removeAfterUse"] = true,
           ["steps"] = {
             {

@@ -7,7 +7,6 @@ data = {
       ["actions"] = {
         {
           ["title"] = "Find a spirit",
-          ["removeAfterUse"] = true,
           ["steps"] = {
             {
               ["type"] = "findMonsterByType",

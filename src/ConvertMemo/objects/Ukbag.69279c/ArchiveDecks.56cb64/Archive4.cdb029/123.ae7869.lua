@@ -7,7 +7,6 @@ data = {
       ["actions"] = {
         {
           ["title"] = "Знайти духа",
-          ["removeAfterUse"] = true,
           ["steps"] = {
             {
               ["type"] = "findMonsterByType",

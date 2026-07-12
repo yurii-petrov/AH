@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"number\":123,\"type\":\"codex\",\"front\":{\"actions\":[{\"title\":\"Find a spirit\",\"removeAfterUse\":true,\"steps\":[{\"type\":\"findMonsterByType\",\"monsterType\":[\"Troubled Spirit\",\"Angry Spirit\",\"Hostile Spirit\"]}]}]}}",
+  "Memo": "{\"number\":123,\"type\":\"codex\",\"front\":{\"actions\":[{\"title\":\"Find a spirit\",\"steps\":[{\"type\":\"findMonsterByType\",\"monsterType\":[\"Troubled Spirit\",\"Angry Spirit\",\"Hostile Spirit\"]}]}]}}",
   "Name": "Card",
   "Nickname": "123",
   "SidewaysCard": false,

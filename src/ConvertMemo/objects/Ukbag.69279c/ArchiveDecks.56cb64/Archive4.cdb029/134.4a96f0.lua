@@ -8,6 +8,7 @@ data = {
         {
           ["title"] = "Додати карту 128",
           ["removeAfterUse"] = true,
+          ["removeGroup"] = "134",
           ["steps"] = {
             {
               ["type"] = "takeCodexFromArchive",
@@ -18,6 +19,7 @@ data = {
         {
           ["title"] = "Додати карту 129",
           ["removeAfterUse"] = true,
+          ["removeGroup"] = "134",
           ["steps"] = {
             {
               ["type"] = "takeCodexFromArchive",
@@ -26,8 +28,9 @@ data = {
           }
         },
         {
-          ["title"] = "Додати картки 130 і 25",
+          ["title"] = "Додати 130 і 25",
           ["removeAfterUse"] = true,
+          ["removeGroup"] = "134",
           ["steps"] = {
             {
               ["type"] = "takeCodexFromArchive",

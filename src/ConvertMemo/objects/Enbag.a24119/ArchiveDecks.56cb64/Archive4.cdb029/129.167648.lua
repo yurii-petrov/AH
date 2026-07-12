@@ -6,7 +6,7 @@ data = {
     ["front"] = {
       ["actions"] = {
         {
-          ["title"] = "Closed Doors",
+          ["title"] = "Actions",
           ["removeAfterUse"] = true,
           ["steps"] = {
             {
@@ -16,7 +16,7 @@ data = {
           }
         },
         {
-          ["title"] = "Markers at the Witch House",
+          ["title"] = "Markers",
           ["removeAfterUse"] = true,
           ["steps"] = {
             {

@@ -6,7 +6,7 @@ data = {
     ["front"] = {
       ["actions"] = {
         {
-          ["title"] = "Союз Ложі",
+          ["title"] = "Виконати Дії",
           ["removeAfterUse"] = true,
           ["steps"] = {
             {
@@ -38,7 +38,7 @@ data = {
           }
         },
         {
-          ["title"] = "Розмістити маркери",
+          ["title"] = "Маркери",
           ["removeAfterUse"] = true,
           ["steps"] = {
             {

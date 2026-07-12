@@ -6,7 +6,7 @@ data = {
     ["front"] = {
       ["actions"] = {
         {
-          ["title"] = "Open Hostility",
+          ["title"] = "Actions",
           ["removeAfterUse"] = true,
           ["steps"] = {
             {
@@ -28,7 +28,7 @@ data = {
           }
         },
         {
-          ["title"] = "Markers at the Witch House",
+          ["title"] = "Markers",
           ["removeAfterUse"] = true,
           ["steps"] = {
             {
@@ -62,7 +62,6 @@ data = {
         },
         {
           ["title"] = "Reckoning",
-          ["removeAfterUse"] = true,
           ["steps"] = {
             {
               ["type"] = "findMonsterByType",
