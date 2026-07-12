@@ -7,6 +7,7 @@ data = {
       ["actions"] = {
         {
           ["title"] = "Add Underworld",
+          ["removeAfterUse"] = true,
           ["description"] = "Опис дії",
           ["steps"] = {
             {
@@ -46,12 +47,14 @@ data = {
             {
               ["type"] = "placeTokensOnLocations",
               ["locations"] = {
+                "City of the Gugs",
+                "Vale of Pnath",
                 "Vaults of Zin"
               },
               ["tokens"] = {
                 {
                   ["type"] = "Doom Token",
-                  ["count"] = 1
+                  ["count"] = 3
                 }
               }
             },
