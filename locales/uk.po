@@ -718,6 +718,15 @@ msgstr "Токен '%s' успішно видалено з клітинки"
 msgid "LOG_place_tokens_header"
 msgstr "Жетони розміщено на локаціях:"
 
+msgid "LOG_markers_cleared_header"
+msgstr "Скинуті маркери:"
+
+msgid "LOG_marker_removed"
+msgstr "%s скинуто - %s"
+
+msgid "LOG_red_marker_respawned"
+msgstr "Червоний маркер повернуто на стартову клітинку"
+
 msgid "token"
 msgstr "жетон"
 

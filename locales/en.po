@@ -662,6 +662,15 @@ msgstr "Token '%s' successfully removed from cell"
 msgid "LOG_place_tokens_header"
 msgstr "Tokens placed on locations:"
 
+msgid "LOG_markers_cleared_header"
+msgstr "Discarded markers:"
+
+msgid "LOG_marker_removed"
+msgstr "%s discarded - %s"
+
+msgid "LOG_red_marker_respawned"
+msgstr "Red Marker returned to the starting space"
+
 msgid "token"
 msgstr "token"
 

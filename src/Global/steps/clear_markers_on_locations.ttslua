@@ -1,21 +1,3 @@
-local function resolveLocationName(tile, tileData, token)
-  if not tileData then return tile.memo end
-  if tileData.type and string.lower(tileData.type) == "neighborhood" and tileData.locations then
-    local tokenPos = token.getPosition()
-    local bestName, bestDist
-    for i, loc in ipairs(tileData.locations) do
-      local pos = getNeighborhoodLocationPosition(tile, i, tileData.structureType)
-      local d = (pos.x - tokenPos.x) ^ 2 + (pos.z - tokenPos.z) ^ 2
-      if not bestDist or d < bestDist then
-        bestDist = d
-        bestName = loc
-      end
-    end
-    return bestName or tileData.name
-  end
-  return tileData.name or tile.memo
-end
-
 local function localizeLocation(name)
   if not name then return "?" end
   return i18n.getStrById((name:gsub(" ", "_")))
@@ -37,22 +19,17 @@ function processStepClearMarkersOnLocations(step, context, onDone)
   local redFound = false
   local logLines = { "\n" .. i18n.getStrById("LOG_markers_cleared_header") }
 
-  local tiles = upCast(locationMat, 1, nil, 1)
-  for _, tile in ipairs(tiles) do
-    if tile.type == "Generic" then
-      local tileData = parseJson(tile.memo)
-      local tokens = upCast(tile, 1, nil, 1)
-      for _, o in ipairs(tokens) do
-        if o.type == "Tile" then
-          if o.memo == "Red Marker" then
-            redFound = true
-          elseif removeMarkers[o.memo] and (not step.onlyFaceDown or o.is_face_down) then
-            local markerType = o.memo
-            local locName = localizeLocation(resolveLocationName(tile, tileData, o))
-            returnTokenToBag(o, markerType)
-            table.insert(logLines, string.format(i18n.getStrById("LOG_marker_removed"), markerType, locName))
-          end
-        end
+  for _, o in ipairs(upCast(locationMat, 3, nil, 1)) do
+    if o.type == "Tile" then
+      if o.memo == "Red Marker" then
+        redFound = true
+      elseif removeMarkers[o.memo] and (not step.onlyFaceDown or o.is_face_down) then
+        local markerType = o.memo
+        local node = findLocationNodeForPosition(o.getPosition())
+        local locName = localizeLocation(node and node.key)
+        o.setLock(false)
+        returnTokenToBag(o, markerType)
+        table.insert(logLines, string.format(i18n.getStrById("LOG_marker_removed"), i18n.getStrById(markerType), locName))
       end
     end
   end

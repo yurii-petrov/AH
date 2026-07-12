@@ -25,6 +25,7 @@ require("Global/steps/add_mythos_token")
 require("Global/steps/clear_markers_on_locations")
 require("Global/steps/spawn_card_below_codex")
 require("Global/steps/spawn_monster_on_location")
+require("Global/steps/spawn_monster_from_deck")
 require("Global/steps/seed_codex_encounters")
 require("Global/steps/merge_setaside_into_monster")
 require("Global/steps/broadcast_message")
@@ -84,6 +85,7 @@ local STEP_HANDLERS = {
   clearmarkersonlocations           = processStepClearMarkersOnLocations,
   spawncardbelowcodex               = processStepSpawnCardBelowCodex,
   spawnmonsteronlocation            = processStepSpawnMonsterOnLocation,
+  spawnmonsterfromdeck              = processStepSpawnMonsterFromDeck,
   seedcodexencounters               = processStepSeedCodexEncounters,
   mergesetasideintomonster          = processStepMergeSetasideIntoMonster,
   broadcastmessage                  = processStepBroadcastMessage,

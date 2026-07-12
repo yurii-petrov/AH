@@ -1,0 +1,33 @@
+
+function processStepSpawnMonsterFromDeck(step, context, onDone)
+  if not step.location then
+    log("[spawnMonsterFromDeck] location is nil")
+    if onDone then onDone() end
+    return
+  end
+
+  local locationMat = getObjectFromGUID(locationMatId)
+  if not locationMat then
+    log("[spawnMonsterFromDeck] locationMat not found")
+    if onDone then onDone() end
+    return
+  end
+
+  local tile, tileData, locationIndex = findLocationTileByName(locationMat, step.location)
+  if not tile then
+    log("[spawnMonsterFromDeck] tile not found for: " .. tostring(step.location))
+    if onDone then onDone() end
+    return
+  end
+
+  local targetPos
+  if locationIndex and tileData and tileData.structureType then
+    targetPos = getNeighborhoodLocationPosition(tile, locationIndex, tileData.structureType):setAt("y", 3)
+  else
+    targetPos = tile.getPosition():setAt("y", 3)
+  end
+
+  drawMonster(targetPos)
+
+  if onDone then onDone() end
+end
