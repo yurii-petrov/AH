@@ -8,11 +8,13 @@ data = {
     ["front"] = {
       ["actions"] = {
         {
-          ["title"] = "Назва дії",
+          ["title"] = "Neighborhoods",
           ["description"] = "Опис дії",
+          ["removeAfterUse"] = true,
           ["steps"] = {
             {
               ["type"] = "contextSetup",
+              ["keepCodexMat"] = true,
               ["tiles"] = {
                 ["Neighborhood"] = {
                   ["Innsmouth Village"] = {
@@ -75,12 +77,12 @@ data = {
               ["decks"] = {
                 {
                   ["type"] = "encounter",
-                  ["name"] = "Innsmouth Village",
+                  ["guid"] = "50dd49",
                   ["pos"] = 6
                 },
                 {
                   ["type"] = "encounter",
-                  ["name"] = "Innsmouth Shore",
+                  ["guid"] = "1385db",
                   ["pos"] = 5
                 }
               }
@@ -91,6 +93,68 @@ data = {
                 ["type"] = "event",
                 ["name"] = "DoR Innsmouth"
               }
+            },
+            {
+              ["type"] = "placeTokensOnLocations",
+              ["locations"] = {
+                "Esoteric Order of Dagon"
+              },
+              ["tokens"] = {
+                {
+                  ["type"] = "Doom Token",
+                  ["count"] = 1
+                }
+              }
+            },
+            {
+              ["type"] = "placeTokensOnLocations",
+              ["locations"] = {
+                "Marsh Refinery"
+              },
+              ["tokens"] = {
+                {
+                  ["type"] = "Red Marker",
+                  ["count"] = 1
+                }
+              },
+              ["face_up"] = true
+            },
+            {
+              ["type"] = "placeTokensOnLocations",
+              ["locations"] = {
+                "Innsmouth Jail"
+              },
+              ["tokens"] = {
+                {
+                  ["type"] = "Blue Marker",
+                  ["count"] = 1
+                }
+              },
+              ["face_up"] = true
+            }
+          }
+        }
+      }
+    },
+    ["back"] = {
+      ["actions"] = {
+        {
+          ["title"] = "Add card 108",
+          ["removeAfterUse"] = true,
+          ["steps"] = {
+            {
+              ["type"] = "takeCodexFromArchive",
+              ["number"] = 108
+            }
+          }
+        },
+        {
+          ["title"] = "Add card 115",
+          ["removeAfterUse"] = true,
+          ["steps"] = {
+            {
+              ["type"] = "takeCodexFromArchive",
+              ["number"] = 115
             }
           }
         }
