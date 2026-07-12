@@ -131,6 +131,10 @@ data = {
                 }
               },
               ["face_up"] = true
+            },
+            {
+              ["type"] = "spawnMonsterFromDeck",
+              ["location"] = "Hall School"
             }
           }
         }

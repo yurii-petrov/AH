@@ -22,6 +22,7 @@ data = {
         {
           ["title"] = "Add card 77",
           ["removeAfterUse"] = true,
+          ["removeGroup"] = "76",
           ["steps"] = {
             {
               ["type"] = "takeCodexFromArchive",
@@ -37,6 +38,7 @@ data = {
         {
           ["title"] = "Add card 78",
           ["removeAfterUse"] = true,
+          ["removeGroup"] = "76",
           ["steps"] = {
             {
               ["type"] = "takeCodexFromArchive",
