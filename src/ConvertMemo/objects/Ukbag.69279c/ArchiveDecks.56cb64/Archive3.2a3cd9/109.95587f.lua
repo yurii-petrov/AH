@@ -6,7 +6,7 @@ data = {
     ["front"] = {
       ["actions"] = {
         {
-          ["title"] = "Прикликати Ктулху",
+          ["title"] = "Ктулху",
           ["removeAfterUse"] = true,
           ["steps"] = {
             {

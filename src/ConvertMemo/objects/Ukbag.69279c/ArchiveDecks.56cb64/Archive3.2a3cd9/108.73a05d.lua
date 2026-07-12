@@ -6,7 +6,7 @@ data = {
     ["back"] = {
       ["actions"] = {
         {
-          ["title"] = "Обрати ватажка",
+          ["title"] = "Випадкова карта",
           ["removeAfterUse"] = true,
           ["steps"] = {
             {

@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"number\":115,\"type\":\"codex\",\"front\":{\"actions\":[{\"title\":\"Blood Sacrament\",\"removeAfterUse\":true,\"steps\":[{\"type\":\"removeBlankMythosToken\",\"matFirst\":true},{\"type\":\"addMythosToken\",\"token\":{\"type\":\"Spawn Monster\"}}]}]}}",
+  "Memo": "{\"number\":115,\"type\":\"codex\",\"front\":{\"actions\":[{\"title\":\"Mythos Tokens\",\"removeAfterUse\":true,\"steps\":[{\"type\":\"removeBlankMythosToken\",\"matFirst\":true},{\"type\":\"addMythosToken\",\"token\":{\"type\":\"Spawn Monster\"}}]}]}}",
   "Name": "Card",
   "Nickname": "115",
   "SidewaysCard": false,

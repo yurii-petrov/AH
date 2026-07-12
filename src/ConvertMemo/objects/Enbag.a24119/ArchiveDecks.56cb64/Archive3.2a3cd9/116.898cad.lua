@@ -6,7 +6,7 @@ data = {
     ["front"] = {
       ["actions"] = {
         {
-          ["title"] = "Summon Mother Hydra",
+          ["title"] = "Hydra",
           ["removeAfterUse"] = true,
           ["steps"] = {
             {

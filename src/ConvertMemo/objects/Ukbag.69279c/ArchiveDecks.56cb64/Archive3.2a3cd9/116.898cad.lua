@@ -6,7 +6,7 @@ data = {
     ["front"] = {
       ["actions"] = {
         {
-          ["title"] = "Прикликати Матір Гідру",
+          ["title"] = "Гідра",
           ["removeAfterUse"] = true,
           ["steps"] = {
             {

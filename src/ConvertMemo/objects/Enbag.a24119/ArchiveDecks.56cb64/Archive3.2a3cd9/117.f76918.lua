@@ -4,11 +4,13 @@ data = {
     ["reversed"] = true,
     ["number"] = 117,
     ["type"] = "codex",
+    ["keepDoom"] = true,
     ["front"] = {
       ["actions"] = {
         {
-          ["title"] = "Назва дії",
+          ["title"] = "Neighborhoods",
           ["description"] = "Опис дії",
+          ["removeAfterUse"] = true,
           ["steps"] = {
             {
               ["type"] = "contextSetup",
@@ -75,12 +77,12 @@ data = {
               ["decks"] = {
                 {
                   ["type"] = "encounter",
-                  ["name"] = "Innsmouth Village",
+                  ["guid"] = "50dd49",
                   ["pos"] = 6
                 },
                 {
                   ["type"] = "encounter",
-                  ["name"] = "Innsmouth Shore",
+                  ["guid"] = "1385db",
                   ["pos"] = 5
                 }
               }
@@ -95,7 +97,7 @@ data = {
             {
               ["type"] = "placeTokensOnLocations",
               ["locations"] = {
-                "Esoteric Order of Dagon"
+                "Falcon Point"
               },
               ["tokens"] = {
                 {
@@ -107,14 +109,52 @@ data = {
             {
               ["type"] = "placeTokensOnLocations",
               ["locations"] = {
-                "Innsmouth Village"
+                "Esoteric Order of Dagon"
               },
               ["tokens"] = {
                 {
                   ["type"] = "Red Marker",
                   ["count"] = 1
                 }
-              }
+              },
+              ["face_up"] = true
+            },
+            {
+              ["type"] = "placeTokensOnLocations",
+              ["locations"] = {
+                "Gilman House"
+              },
+              ["tokens"] = {
+                {
+                  ["type"] = "Blue Marker",
+                  ["count"] = 1
+                }
+              },
+              ["face_up"] = true
+            }
+          }
+        }
+      }
+    },
+    ["back"] = {
+      ["actions"] = {
+        {
+          ["title"] = "Add card 108",
+          ["removeAfterUse"] = true,
+          ["steps"] = {
+            {
+              ["type"] = "takeCodexFromArchive",
+              ["number"] = 108
+            }
+          }
+        },
+        {
+          ["title"] = "Add card 113",
+          ["removeAfterUse"] = true,
+          ["steps"] = {
+            {
+              ["type"] = "takeCodexFromArchive",
+              ["number"] = 113
             }
           }
         }

@@ -4,6 +4,7 @@ data = {
     ["reversed"] = true,
     ["number"] = 119,
     ["type"] = "codex",
+    ["keepDoom"] = true,
     ["front"] = {
       ["actions"] = {
         {

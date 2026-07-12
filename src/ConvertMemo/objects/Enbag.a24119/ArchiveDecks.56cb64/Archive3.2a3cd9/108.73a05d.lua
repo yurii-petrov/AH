@@ -6,7 +6,7 @@ data = {
     ["back"] = {
       ["actions"] = {
         {
-          ["title"] = "Choose the leader",
+          ["title"] = "Random card",
           ["removeAfterUse"] = true,
           ["steps"] = {
             {

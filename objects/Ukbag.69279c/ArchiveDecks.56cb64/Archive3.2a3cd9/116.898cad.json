@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"number\":116,\"type\":\"codex\",\"front\":{\"actions\":[{\"title\":\"Прикликати Матір Гідру\",\"removeAfterUse\":true,\"steps\":[{\"type\":\"spawnMonsterOnLocation\",\"number\":75}]}]}}",
+  "Memo": "{\"number\":116,\"type\":\"codex\",\"front\":{\"actions\":[{\"title\":\"Гідра\",\"removeAfterUse\":true,\"steps\":[{\"type\":\"spawnMonsterOnLocation\",\"number\":75}]}]}}",
   "Name": "Card",
   "Nickname": "116",
   "SidewaysCard": false,

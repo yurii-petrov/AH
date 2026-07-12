@@ -6,7 +6,7 @@ data = {
     ["front"] = {
       ["actions"] = {
         {
-          ["title"] = "Прикликати Прислужника",
+          ["title"] = "Служитель",
           ["removeAfterUse"] = true,
           ["steps"] = {
             {
