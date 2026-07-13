@@ -1,14 +1,13 @@
 
 function processStepAttachRandomCodexWithMat(step, context, onDone)
-  log("[attachRandomCodexWithMat] ENTER targetNumber=" .. tostring(step and step.targetNumber)
+  log("[attachRandomCodexWithMat] ENTER coverNumber=" .. tostring(step and step.coverNumber)
     .. " number=" .. tostring(step and step.number)
     .. " numbers=" .. (step and step.numbers and table.concat(step.numbers, ",") or "nil"))
 
   local numbers = step and step.numbers
-  local targetNumber = step and step.targetNumber
   local chosen = step and step.number
-  if not targetNumber or (not chosen and (not numbers or #numbers == 0)) then
-    log("[attachRandomCodexWithMat] targetNumber/number(s) is nil/empty")
+  if not chosen and (not numbers or #numbers == 0) then
+    log("[attachRandomCodexWithMat] number(s) is nil/empty")
     if onDone then onDone() end
     return
   end
@@ -31,28 +30,27 @@ function processStepAttachRandomCodexWithMat(step, context, onDone)
     return
   end
 
-  local targetMat = findCodexMatByNumber(locationMat, targetNumber)
-  if not targetMat then
-    log("[attachRandomCodexWithMat] codex mat for number " .. tostring(targetNumber) .. " not found")
-    if onDone then onDone() end
-    return
-  end
-
   chosen = chosen or numbers[math.random(#numbers)]
   log("[attachRandomCodexWithMat] chosen=" .. tostring(chosen))
 
-  local rotation = {0, 180, 180}
-  local targetPos = targetMat.getPosition()
-  log(string.format("[attachRandomCodexWithMat] targetMat guid=%s original pos=%.3f,%.3f,%.3f",
-    tostring(targetMat.getGUID()), targetPos.x, targetPos.y, targetPos.z))
+  local spawnPos = findNextFreeCodexSnapPos(locationMat)
+  if not spawnPos and context and context.codexMat then
+    spawnPos = context.codexMat.getPosition()
+    log("[attachRandomCodexWithMat] no free codex snap, falling back to current codex pos")
+  end
+  if not spawnPos then
+    log("[attachRandomCodexWithMat] no spawn position found")
+    if onDone then onDone() end
+    return
+  end
+  log(string.format("[attachRandomCodexWithMat] spawnPos=%.3f,%.3f,%.3f", spawnPos.x, spawnPos.y, spawnPos.z))
 
   local card = takeCardByQuery(archive, {{
     field = "number",
     op    = "eq",
     value = chosen
   }}, {
-    position = targetPos:setAt("y", 3),
-    rotation = rotation,
+    position = spawnPos:setAt("y", 3),
     smooth   = false
   })
 
@@ -61,23 +59,81 @@ function processStepAttachRandomCodexWithMat(step, context, onDone)
     if onDone then onDone() end
     return
   end
-  log("[attachRandomCodexWithMat] card taken guid=" .. tostring(card.getGUID()))
 
-  targetMat.setPosition({ x = targetPos.x, y = targetPos.y + 0.5, z = targetPos.z })
-  log(string.format("[attachRandomCodexWithMat] targetMat lifted to y=%.3f", targetPos.y + 0.5))
+  local rotation = orient(parseJson(card.memo), true)
+  log("[attachRandomCodexWithMat] random card taken guid=" .. tostring(card.getGUID())
+    .. " rotation=" .. rotation[1] .. "," .. rotation[2] .. "," .. rotation[3])
 
-  local ok, newMat = pcall(attachCodexCard, card, targetPos, rotation)
-  if not ok then
-    log("[attachRandomCodexWithMat] attachCodexCard ERROR: " .. tostring(newMat))
-    newMat = nil
+  local function placeCover()
+    if not step.coverNumber then
+      log("[attachRandomCodexWithMat] DONE (no coverNumber)")
+      if onDone then onDone() end
+      return
+    end
+
+    Wait.time(function()
+      local coverPos = Vector(spawnPos.x, spawnPos.y + 0.5, spawnPos.z)
+
+      local coverRotation = {0, 180, 0}
+      local entries = archive.type == "Deck" and archive.getObjects() or { archive }
+      for _, entry in ipairs(entries) do
+        local entryData = parseJson(entry.memo)
+        if entryData and entryData.number == step.coverNumber then
+          coverRotation = orient(entryData, false)
+          break
+        end
+      end
+
+      local coverCard = takeCardByQuery(archive, {{
+        field = "number",
+        op    = "eq",
+        value = step.coverNumber
+      }}, {
+        position = coverPos:setAt("y", 3.5),
+        rotation = coverRotation,
+        smooth   = false
+      })
+
+      if not coverCard then
+        log("[attachRandomCodexWithMat] cover card " .. tostring(step.coverNumber) .. " not found in archive")
+        if onDone then onDone() end
+        return
+      end
+      log("[attachRandomCodexWithMat] cover card taken guid=" .. tostring(coverCard.getGUID())
+        .. " rotation=" .. coverRotation[1] .. "," .. coverRotation[2] .. "," .. coverRotation[3])
+
+      local function attachCover(cc)
+        cc = cc or coverCard
+        cc.setRotation(coverRotation)
+        local ok2, coverMat = pcall(attachCodexCard, cc, coverPos, coverRotation)
+        if not ok2 then
+          log("[attachRandomCodexWithMat] cover attachCodexCard ERROR: " .. tostring(coverMat))
+        elseif coverMat then
+          log("[attachRandomCodexWithMat] cover mat guid=" .. tostring(coverMat.getGUID())
+            .. " pos=" .. tostring(coverMat.getPosition().x) .. "," .. tostring(coverMat.getPosition().y) .. "," .. tostring(coverMat.getPosition().z))
+        end
+        log("[attachRandomCodexWithMat] DONE")
+        if onDone then onDone() end
+      end
+
+      runAfterRest(coverCard, attachCover, attachCover)
+    end, 1)
   end
-  if newMat then
-    log("[attachRandomCodexWithMat] newMat guid=" .. tostring(newMat.getGUID())
-      .. " pos=" .. tostring(newMat.getPosition().x) .. "," .. tostring(newMat.getPosition().y) .. "," .. tostring(newMat.getPosition().z))
-  else
-    log("[attachRandomCodexWithMat] newMat=nil")
+
+  local function attachRandom(c)
+    c = c or card
+    c.setRotation(rotation)
+    local ok, newMat = pcall(attachCodexCard, c, spawnPos, rotation)
+    if not ok then
+      log("[attachRandomCodexWithMat] attachCodexCard ERROR: " .. tostring(newMat))
+      newMat = nil
+    end
+    if newMat then
+      log("[attachRandomCodexWithMat] random mat guid=" .. tostring(newMat.getGUID())
+        .. " pos=" .. tostring(newMat.getPosition().x) .. "," .. tostring(newMat.getPosition().y) .. "," .. tostring(newMat.getPosition().z))
+    end
+    placeCover()
   end
 
-  log("[attachRandomCodexWithMat] DONE")
-  if onDone then onDone() end
+  runAfterRest(card, attachRandom, attachRandom)
 end

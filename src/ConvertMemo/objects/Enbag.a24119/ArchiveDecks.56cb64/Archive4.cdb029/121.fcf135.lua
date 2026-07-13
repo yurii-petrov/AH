@@ -33,12 +33,8 @@ data = {
           ["removeAfterUse"] = true,
           ["steps"] = {
             {
-              ["type"] = "takeCodexFromArchive",
-              ["number"] = 122
-            },
-            {
               ["type"] = "attachRandomCodexWithMat",
-              ["targetNumber"] = 122,
+              ["coverNumber"] = 122,
               ["numbers"] = {
                 131,
                 132,
