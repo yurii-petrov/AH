@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"number\":122,\"type\":\"codex\",\"back\":{\"actions\":[{\"title\":\"Розкрити приховану карту\",\"removeAfterUse\":true,\"steps\":[{\"type\":\"revealCardUnderCodex\",\"numbers\":[131,132,133,134]}]}]}}",
+  "Memo": "{\"number\":122,\"type\":\"codex\"}",
   "Name": "Card",
   "Nickname": "122",
   "SidewaysCard": false,
