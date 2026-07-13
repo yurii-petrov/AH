@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"hp\":3,\"monstertype\":[\"Ghoul\"],\"name\":\"Creeping Ghoul\",\"remnant\":true,\"type\":\"Monster\",\"reversed\":true}",
+  "Memo": "{\"activation\":{\"engage\":{\"order\":\"highest\",\"stat\":\"lore\"},\"kind\":\"patrol\",\"moveTo\":\"unstable\"},\"hp\":3,\"monstertype\":[\"Ghoul\"],\"name\":\"Creeping Ghoul\",\"remnant\":true,\"reversed\":true,\"spawn\":{\"at\":\"unstable\"},\"type\":\"Monster\"}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,

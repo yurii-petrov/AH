@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"hp\":3,\"monstertype\":[\"Gug\"],\"name\":\"Menacing Bulk\",\"remnant\":true,\"type\":\"Monster\",\"reversed\":true}",
+  "Memo": "{\"activation\":{\"effect\":{\"amount\":1,\"type\":\"horrorNearest\"},\"kind\":\"lurker\"},\"hp\":3,\"monstertype\":[\"Gug\"],\"name\":\"Menacing Bulk\",\"remnant\":true,\"reversed\":true,\"spawn\":{\"at\":\"streetNearestLeader\"},\"type\":\"Monster\"}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,

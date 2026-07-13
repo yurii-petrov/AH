@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"hp\":2,\"monstertype\":[\"Human\",\"Thrall\"],\"name\":\"Altered Servant\",\"remnant\":true,\"type\":\"Monster\",\"reversed\":true}",
+  "Memo": "{\"activation\":{\"engage\":{\"metric\":\"clues\",\"order\":\"most\"},\"kind\":\"patrol\",\"moveTo\":\"unstable\"},\"hp\":2,\"monstertype\":[\"Human\",\"Thrall\"],\"name\":\"Altered Servant\",\"remnant\":true,\"reversed\":true,\"spawn\":{\"at\":\"unstable\"},\"type\":\"Monster\"}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,

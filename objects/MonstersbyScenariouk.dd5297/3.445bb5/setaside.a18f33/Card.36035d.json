@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"hp\":1,\"monstertype\":[\"Lodge\",\"Human\"],\"name\":\"Lodge Enforcer\",\"remnant\":false,\"type\":\"Monster\",\"reversed\":true}",
+  "Memo": "{\"activation\":{\"engage\":{\"order\":\"highest\",\"stat\":\"lore\"},\"kind\":\"hunter\"},\"hp\":1,\"monstertype\":[\"Lodge\",\"Human\"],\"name\":\"Lodge Enforcer\",\"remnant\":false,\"reversed\":true,\"spawn\":{\"at\":\"unstable\"},\"type\":\"Monster\"}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,

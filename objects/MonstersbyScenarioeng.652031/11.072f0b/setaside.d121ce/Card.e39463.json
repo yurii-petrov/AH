@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"hp\":1,\"monstertype\":[\"Lodge\",\"Human\"],\"name\":\"Twilight Sentry\",\"remnant\":true,\"type\":\"Monster\",\"reversed\":true}",
+  "Memo": "{\"activation\":{\"effect\":{\"type\":\"delayNearest\"},\"kind\":\"lurker\",\"traits\":[\"elusive\"]},\"hp\":1,\"monstertype\":[\"Lodge\",\"Human\"],\"name\":\"Twilight Sentry\",\"remnant\":true,\"reversed\":true,\"spawn\":{\"at\":\"unstable\"},\"type\":\"Monster\"}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,

@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"reversed\":true,\"hp\":3,\"monstertype\":[\"Hound of Tindalos\"],\"name\":\"Coursing Hound\",\"remnant\":true,\"type\":\"Monster\"}",
+  "Memo": "{\"activation\":{\"directly\":true,\"engage\":{\"order\":\"highest\",\"stat\":\"strength\"},\"kind\":\"hunter\"},\"hp\":3,\"monstertype\":[\"Hound of Tindalos\"],\"name\":\"Coursing Hound\",\"remnant\":true,\"reversed\":true,\"spawn\":{\"at\":\"unstable\"},\"type\":\"Monster\"}",
   "Name": "Card",
   "Nickname": "Monster",
   "SidewaysCard": false,

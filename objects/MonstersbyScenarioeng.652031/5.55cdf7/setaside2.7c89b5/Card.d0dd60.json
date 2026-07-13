@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"hp\":4,\"monstertype\":[\"O'Bannion\",\"Human\"],\"name\":\"Hit Squad\",\"remnant\":false,\"trait\":\"Massive\",\"type\":\"Monster\",\"reversed\":true}",
+  "Memo": "{\"activation\":{\"engage\":{\"metric\":\"clues\",\"order\":\"most\"},\"kind\":\"hunter\"},\"hp\":4,\"monstertype\":[\"O'Bannion\",\"Human\"],\"name\":\"Hit Squad\",\"remnant\":false,\"reversed\":true,\"spawn\":{\"at\":\"unstable\"},\"trait\":\"Massive\",\"type\":\"Monster\"}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,
