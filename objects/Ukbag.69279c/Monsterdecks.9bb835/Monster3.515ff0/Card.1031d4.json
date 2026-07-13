@@ -24,7 +24,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"hp\":1,\"monstertype\":[\"Cultist\",\"Human\"],\"name\":\"Prowling Abductor\",\"remnant\":false,\"type\":\"Monster\"}",
+  "Memo": "{\"activation\":{\"engage\":{\"order\":\"lowest\",\"stat\":\"influence\"},\"kind\":\"hunter\",\"traits\":[\"relentless\"]},\"hp\":1,\"monstertype\":[\"Cultist\",\"Human\"],\"name\":\"Prowling Abductor\",\"remnant\":false,\"spawn\":{\"at\":\"streetNearestPrey\"},\"type\":\"Monster\"}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,

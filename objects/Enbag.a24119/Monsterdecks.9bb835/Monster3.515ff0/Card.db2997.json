@@ -24,7 +24,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"hp\":3,\"monstertype\":[\"Byakhee\"],\"name\":\"Hovering Byakhee\",\"remnant\":true,\"type\":\"Monster\"}",
+  "Memo": "{\"activation\":{\"effect\":{\"type\":\"placeDoom\",\"where\":\"self\"},\"kind\":\"lurker\",\"traits\":[\"pursuit\"]},\"hp\":3,\"monstertype\":[\"Byakhee\"],\"name\":\"Hovering Byakhee\",\"remnant\":true,\"spawn\":{\"at\":\"mostDoom\"},\"type\":\"Monster\"}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,

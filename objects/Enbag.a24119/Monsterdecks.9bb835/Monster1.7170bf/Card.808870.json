@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"hp\":3,\"monstertype\":[\"Thrall\"],\"name\":\"Avian Thrall\",\"remnant\":true,\"type\":\"Monster\"}",
+  "Memo": "{\"activation\":{\"engage\":{\"metric\":\"clues\",\"order\":\"most\"},\"kind\":\"hunter\"},\"hp\":3,\"monstertype\":[\"Thrall\"],\"name\":\"Avian Thrall\",\"remnant\":true,\"spawn\":{\"at\":\"mostDoom\"},\"type\":\"Monster\"}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,

@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"hp\":3,\"monstertype\":[\"Human\",\"Cultist\"],\"name\":\"Billy Cooper\",\"remnant\":false,\"type\":\"Monster\"}",
+  "Memo": "{\"activation\":{\"effect\":{\"location\":\"Police Station\",\"type\":\"placeDoom\",\"where\":\"location\"},\"kind\":\"lurker\"},\"hp\":3,\"monstertype\":[\"Human\",\"Cultist\"],\"name\":\"Billy Cooper\",\"remnant\":false,\"type\":\"Monster\"}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,

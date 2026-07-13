@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"hp\":4,\"monstertype\":[\"Deep One\"],\"name\":\"Shoreline Brute\",\"remnant\":true,\"type\":\"Monster\"}",
+  "Memo": "{\"activation\":{\"engage\":{\"order\":\"highest\",\"stat\":\"will\"},\"kind\":\"hunter\"},\"hp\":4,\"monstertype\":[\"Deep One\"],\"name\":\"Shoreline Brute\",\"remnant\":true,\"spawn\":{\"at\":\"unstable\"},\"type\":\"Monster\"}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,

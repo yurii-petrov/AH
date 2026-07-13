@@ -89,6 +89,15 @@ function onObjectPickUpMonsterMat(colorName, object)
     table.insert(highlightedInvestigatorFigurines, entry.figurine)
     printToAll(entry.name .. " - " .. entry.distance, "White")
   end
+
+  local hintHighlighted = showMonsterHints(object, {
+    node = monsterNode,
+    graph = graph,
+    distances = distances,
+  })
+  for _, obj in ipairs(hintHighlighted) do
+    table.insert(highlightedInvestigatorFigurines, obj)
+  end
 end
 
 function onMonsterMatDrop(object)

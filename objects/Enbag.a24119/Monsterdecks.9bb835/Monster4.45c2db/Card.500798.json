@@ -24,7 +24,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"hp\":2,\"monstertype\":[\"Ghast\"],\"name\":\"Taloned Cannibal\",\"remnant\":true,\"type\":\"Monster\"}",
+  "Memo": "{\"activation\":{\"engage\":{\"order\":\"lowest\",\"stat\":\"influence\"},\"kind\":\"hunter\"},\"hp\":2,\"monstertype\":[\"Ghast\"],\"name\":\"Taloned Cannibal\",\"remnant\":true,\"spawn\":{\"at\":\"mostDoom\"},\"type\":\"Monster\"}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,

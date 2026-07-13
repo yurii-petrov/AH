@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"hp\":2,\"monstertype\":[\"Human\",\"Thrall\"],\"name\":\"Hulking Thrall\",\"remnant\":true,\"type\":\"Monster\"}",
+  "Memo": "{\"activation\":{\"engage\":{\"order\":\"highest\",\"stat\":\"observation\"},\"kind\":\"hunter\"},\"hp\":2,\"monstertype\":[\"Human\",\"Thrall\"],\"name\":\"Hulking Thrall\",\"remnant\":true,\"spawn\":{\"at\":\"streetNearestPrey\"},\"type\":\"Monster\"}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,

@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"hp\":1,\"monstertype\":[\"Lodge\",\"Human\"],\"name\":\"Twilight Supplicant\",\"remnant\":false,\"type\":\"Monster\"}",
+  "Memo": "{\"activation\":{\"effect\":{\"type\":\"placeDoom\",\"where\":\"self\"},\"kind\":\"lurker\",\"traits\":[\"elusive\"]},\"hp\":1,\"monstertype\":[\"Lodge\",\"Human\"],\"name\":\"Twilight Supplicant\",\"remnant\":false,\"spawn\":{\"at\":\"mostDoom\"},\"type\":\"Monster\"}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,

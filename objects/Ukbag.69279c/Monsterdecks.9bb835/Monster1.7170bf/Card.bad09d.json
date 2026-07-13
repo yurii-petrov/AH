@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"elite\":1,\"hp\":2,\"monstertype\":[\"Human\",\"Cultist\"],\"name\":\"Masked Hunter\",\"remnant\":false,\"type\":\"Monster\"}",
+  "Memo": "{\"activation\":{\"engage\":{\"metric\":\"clues\",\"order\":\"most\"},\"kind\":\"hunter\"},\"elite\":1,\"hp\":2,\"monstertype\":[\"Human\",\"Cultist\"],\"name\":\"Masked Hunter\",\"remnant\":false,\"type\":\"Monster\"}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,

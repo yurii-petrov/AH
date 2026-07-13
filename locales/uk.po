@@ -1589,3 +1589,38 @@ msgstr "Загартований"
 
 msgid "RI_seeker"
 msgstr "Шукач"
+
+# Monster hints: activation keyword labels
+msgid "MH_hunter"
+msgstr "Мисливець"
+
+msgid "MH_patrol"
+msgstr "Патрульний"
+
+msgid "MH_lurker"
+msgstr "Причаєний"
+
+# Monster hints: target criteria labels
+msgid "MH_clues"
+msgstr "Зачіпки"
+
+msgid "MH_allies"
+msgstr "Союзники"
+
+msgid "MH_items"
+msgstr "Предмети"
+
+msgid "MH_spells"
+msgstr "Закляття"
+
+msgid "MH_nearest"
+msgstr "Найближчий"
+
+msgid "MH_doom"
+msgstr "Приреченість"
+
+msgid "MH_unstable"
+msgstr "Нестабільна локація"
+
+msgid "MH_no_target"
+msgstr "Цілі немає"

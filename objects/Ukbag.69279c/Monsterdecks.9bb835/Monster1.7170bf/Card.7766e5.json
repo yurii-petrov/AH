@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"hp\":4,\"monstertype\":[\"Ghoul\",\"Cultist\"],\"name\":\"Ghoul Priest\",\"remnant\":true,\"type\":\"Monster\"}",
+  "Memo": "{\"activation\":{\"effect\":{\"amount\":1,\"type\":\"damageEach\"},\"kind\":\"lurker\"},\"hp\":4,\"monstertype\":[\"Ghoul\",\"Cultist\"],\"name\":\"Ghoul Priest\",\"remnant\":true,\"spawn\":{\"at\":\"mostDoom\"},\"type\":\"Monster\"}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,

@@ -782,6 +782,50 @@ I18N_DATA = {
     ["en"] = "Lupine Thrall",
     ["uk"] = "Одержимий Вовк",
   },
+  ["MH_allies"] = {
+    ["en"] = "Allies",
+    ["uk"] = "Союзники",
+  },
+  ["MH_clues"] = {
+    ["en"] = "Clues",
+    ["uk"] = "Зачіпки",
+  },
+  ["MH_doom"] = {
+    ["en"] = "Doom",
+    ["uk"] = "Приреченість",
+  },
+  ["MH_hunter"] = {
+    ["en"] = "Hunter",
+    ["uk"] = "Мисливець",
+  },
+  ["MH_items"] = {
+    ["en"] = "Items",
+    ["uk"] = "Предмети",
+  },
+  ["MH_lurker"] = {
+    ["en"] = "Lurker",
+    ["uk"] = "Причаєний",
+  },
+  ["MH_nearest"] = {
+    ["en"] = "Nearest",
+    ["uk"] = "Найближчий",
+  },
+  ["MH_no_target"] = {
+    ["en"] = "No target",
+    ["uk"] = "Цілі немає",
+  },
+  ["MH_patrol"] = {
+    ["en"] = "Patrol",
+    ["uk"] = "Патрульний",
+  },
+  ["MH_spells"] = {
+    ["en"] = "Spells",
+    ["uk"] = "Закляття",
+  },
+  ["MH_unstable"] = {
+    ["en"] = "Unstable space",
+    ["uk"] = "Нестабільна локація",
+  },
   ["MM_addonDescription1_text"] = {
     ["en"] = "In Dead of Night, investigators explore the facets of Arkham best left unseen in the light of day. Organized crime builds a strong foothold in the city, secret cults labor for a dark master, an alien moon hangs overhead, and unknowable horrors stalk the night. This expansion includes two all-new scenarios, new encounters for every location in Arkham, new monsters and anomalies, and four new investigators to face these fresh horrors, armed with new spells, items and allies.\n• 2 scenarios\n• 4 investigators\n• 7 headline cards\n• 20 archive cards\n• 12 anomaly cards\n• 48 event cards\n• 72 encounter cards\n• 4 ally cards\n• 4 item cards\n• 4 spell cards\n• 28 special cards\n• 12 starting cards\n• 6 wanted condition cards\n• 22 monster cards\n• 15 new monsters",
     ["uk"] = "У доповненні «Нічний морок» гравці досліджують ті закутки Аркгема, куди страшно сунутися навіть удень. У місті процвітає організована злочинність, потаємні культи намагаються догодити своїм темним володарям, химерний місяць висить у небі, а десь у нічному мороці чаяться незбагненні жахіття. Це доповнення містить два нові сценарії, нові зустрічі для кожної зони Аркгема, нових монстрів і нові аномалії, а також чотирьох нових дослідників, готових протистояти жахам з новими предметами, заклинаннями та союзниками.\n• 2 сценарії\n• 4 дослідники\n• 7 карт заголовків\n• 20 карт архіву\n• 12 карт аномалій\n• 48 карт подій\n• 72 карти зустрічей\n• 4 карти союзників\n• 4 карти предметів\n• 4 карти заклинань\n• 28 спеціальних карт\n• 12 початкових карт\n• 6 карт стану розшукуваний\n• 22 карти монстрів\n• 15 нових монстрів",

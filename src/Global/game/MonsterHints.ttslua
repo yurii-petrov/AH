@@ -1,0 +1,403 @@
+
+local STAT_LABEL_KEYS = {
+  lore        = "IM_lore",
+  influence   = "IM_influence",
+  observation = "IM_observation",
+  strength    = "IM_strength",
+  will        = "IM_will",
+}
+
+local METRIC_LABEL_KEYS = {
+  clues    = "MH_clues",
+  money    = "IM_money",
+  remnants = "IM_remnant",
+  damage   = "IM_damage",
+  allies   = "MH_allies",
+  items    = "MH_items",
+  spells   = "MH_spells",
+  nearest  = "MH_nearest",
+}
+
+local UNSUPPORTED_METRICS = {
+  allies = true,
+  items  = true,
+  spells = true,
+}
+
+local KIND_LABEL_KEYS = {
+  hunter = "MH_hunter",
+  patrol = "MH_patrol",
+  lurker = "MH_lurker",
+}
+
+local function displayById(id)
+  return i18n.getStrById(id:gsub(" ", "_"))
+end
+
+local function firstSeatedColor()
+  local seated = getSeatedPlayers()
+  return seated and seated[1]
+end
+
+local function pingPosition(pos)
+  local color = firstSeatedColor()
+  if not color or not pos then return end
+  pcall(function()
+    Player[color].pingTable(pos)
+  end)
+end
+
+local function hintMessage(monsterMemo, kind, text)
+  local msg = displayById(monsterMemo.name or "?") .. " (" .. i18n.getStrById(KIND_LABEL_KEYS[kind]) .. ")"
+  if text and text ~= "" then
+    msg = msg .. " → " .. text
+  end
+  printToAll(msg, "Orange")
+end
+
+local function collectInvestigatorEntries()
+  local entries = {}
+  for _, slot in pairs(gameData.investigatorSlots or {}) do
+    if slot and slot.name and slot.matGuid then
+      local mat = getObjectFromGUID(slot.matGuid)
+      if mat then
+        local stats = mat.call("getStats")
+        if stats then
+          table.insert(entries, {
+            name = slot.name,
+            displayName = displayById(slot.name),
+            mat = mat,
+            stats = stats,
+            figurine = findInvestigatorFigurineOnLocationMat(slot.name),
+          })
+        end
+      end
+    end
+  end
+  return entries
+end
+
+local function engageValue(entry, engage, ctx)
+  if engage.stat then
+    return entry.stats.skill[engage.stat]
+  end
+  local metric = engage.metric
+  if metric == "clues" then
+    return entry.stats.clue
+  elseif metric == "money" then
+    return entry.stats.money
+  elseif metric == "remnants" then
+    return entry.stats.remnant
+  elseif metric == "damage" then
+    return (entry.stats.hpMax or 0) - (entry.stats.hp or 0)
+  elseif metric == "nearest" then
+    if not entry.figurine or not ctx.distances then return nil end
+    local node = findLocationNodeForPosition(entry.figurine.getPosition())
+    return node and ctx.distances[node.key]
+  end
+end
+
+local function pickEngageTargets(engage, ctx)
+  local wantSmallest = engage.order == "lowest" or engage.order == "least" or engage.metric == "nearest"
+  local best = nil
+  local targets = {}
+
+  for _, entry in ipairs(collectInvestigatorEntries()) do
+    local value = engageValue(entry, engage, ctx)
+    if value ~= nil then
+      if best == nil or (wantSmallest and value < best) or (not wantSmallest and value > best) then
+        best = value
+        targets = {entry}
+      elseif value == best then
+        table.insert(targets, entry)
+      end
+    end
+  end
+
+  return targets, best
+end
+
+local function engageLabel(engage)
+  local key = engage.stat and STAT_LABEL_KEYS[engage.stat] or METRIC_LABEL_KEYS[engage.metric]
+  return key and i18n.getStrById(key) or "?"
+end
+
+local function hintEngage(monsterMemo, kind, engage, ctx, highlighted)
+  if engage.metric and UNSUPPORTED_METRICS[engage.metric] then
+    hintMessage(monsterMemo, kind, engageLabel(engage) .. " (?)")
+    return
+  end
+
+  local targets, best = pickEngageTargets(engage, ctx)
+  if #targets == 0 then
+    hintMessage(monsterMemo, kind, i18n.getStrById("MH_no_target"))
+    return
+  end
+
+  for _, target in ipairs(targets) do
+    hintMessage(monsterMemo, kind, target.displayName .. " (" .. engageLabel(engage) .. " " .. tostring(best) .. ")")
+    if target.figurine then
+      target.figurine.highlightOn("Purple")
+      table.insert(highlighted, target.figurine)
+      pingPosition(target.figurine.getPosition())
+    else
+      pingPosition(target.mat.getPosition())
+    end
+  end
+end
+
+local function nodeWorldPosition(nodeName)
+  local locationMat = getObjectFromGUID(locationMatId)
+  if not locationMat then return nil end
+
+  local tile, data, index = findLocationTileByName(locationMat, nodeName)
+  if not tile then return nil end
+
+  if index and data.structureType then
+    return getNeighborhoodLocationPosition(tile, index, data.structureType)
+  end
+  return tile.getPosition()
+end
+
+local function countDoomOnTileArea(tile)
+  local count = 0
+  for _, o in ipairs(upCast(tile, 1, nil, 1) or {}) do
+    if o.memo == "Doom Token" then
+      count = count + 1
+    end
+  end
+  return count
+end
+
+local function findMostDoomNodes()
+  local locationMat = getObjectFromGUID(locationMatId)
+  if not locationMat then return {} end
+
+  local best = 0
+  local nodes = {}
+
+  for _, tile in ipairs(upCast(locationMat, 1, nil, 1) or {}) do
+    local data = parseJson(tile.memo)
+    if data and data.type and data.name then
+      local t = string.lower(data.type)
+      if t == "neighborhood" then
+        local doomInfo = getNeighborhoodDoomInfo(tile)
+        if doomInfo then
+          for locationName, count in pairs(doomInfo.locations) do
+            if count > best then
+              best = count
+              nodes = {locationName}
+            elseif count == best and count > 0 then
+              table.insert(nodes, locationName)
+            end
+          end
+        end
+      elseif t == "street" then
+        local count = countDoomOnTileArea(tile)
+        if count > best then
+          best = count
+          nodes = {data.name}
+        elseif count == best and count > 0 then
+          table.insert(nodes, data.name)
+        end
+      end
+    end
+  end
+
+  return nodes, best
+end
+
+local function findUnstableNodes()
+  local discard = getEventDiscardObj()
+  if not discard then return {} end
+
+  local cardMemo = nil
+  if discard.type == "Card" then
+    cardMemo = parseJson(discard.memo)
+  elseif discard.type == "Deck" then
+    local deckMemo = parseJson(discard.memo)
+    local objects = discard.getObjects()
+    local index = (deckMemo and deckMemo.reversed) and #objects or 1
+    cardMemo = objects[index] and parseJson(objects[index].memo)
+  end
+
+  if not cardMemo or not cardMemo.locations then return {} end
+
+  local nodes = {}
+  for locationName in pairs(cardMemo.locations) do
+    table.insert(nodes, locationName)
+  end
+  return nodes
+end
+
+local function hintNodes(monsterMemo, kind, nodes, suffix)
+  for _, nodeName in ipairs(nodes) do
+    local text = displayById(nodeName)
+    if suffix then
+      text = text .. " (" .. suffix .. ")"
+    end
+    hintMessage(monsterMemo, kind, text)
+    pingPosition(nodeWorldPosition(nodeName))
+  end
+end
+
+local function hintMoveDestination(monsterMemo, kind, moveTo)
+  if moveTo == "mostDoom" then
+    local nodes, best = findMostDoomNodes()
+    if #nodes == 0 or best == 0 then
+      hintMessage(monsterMemo, kind, i18n.getStrById("MH_doom") .. ": 0")
+      return
+    end
+    hintNodes(monsterMemo, kind, nodes, i18n.getStrById("MH_doom") .. " " .. best)
+  elseif moveTo == "unstable" then
+    local nodes = findUnstableNodes()
+    if #nodes == 0 then
+      hintMessage(monsterMemo, kind, i18n.getStrById("MH_unstable") .. ": ?")
+      return
+    end
+    hintNodes(monsterMemo, kind, nodes, i18n.getStrById("MH_unstable"))
+  end
+end
+
+local function processMonsterHintHunter(monsterMemo, activation, ctx, highlighted)
+  hintEngage(monsterMemo, "hunter", activation.engage, ctx, highlighted)
+end
+
+local function processMonsterHintPatrol(monsterMemo, activation, ctx, highlighted)
+  hintMoveDestination(monsterMemo, "patrol", activation.moveTo)
+  if activation.engage then
+    hintEngage(monsterMemo, "patrol", activation.engage, ctx, highlighted)
+  end
+end
+
+local function hintNearestInvestigators(monsterMemo, ctx, highlighted)
+  local targets, best = pickEngageTargets({metric = "nearest"}, ctx)
+  if #targets == 0 then
+    hintMessage(monsterMemo, "lurker", i18n.getStrById("MH_no_target"))
+    return
+  end
+  for _, target in ipairs(targets) do
+    hintMessage(monsterMemo, "lurker", target.displayName .. " (" .. i18n.getStrById("MH_nearest") .. " " .. tostring(best) .. ")")
+    if target.figurine then
+      target.figurine.highlightOn("Purple")
+      table.insert(highlighted, target.figurine)
+      pingPosition(target.figurine.getPosition())
+    end
+  end
+end
+
+local function processMonsterHintLurker(monsterMemo, activation, ctx, highlighted)
+  local effect = activation.effect
+  if not effect then
+    hintMessage(monsterMemo, "lurker", nil)
+    return
+  end
+
+  if effect.type == "placeDoom" then
+    local doomLabel = i18n.getStrById("MH_doom")
+    if effect.where == "self" and ctx.node then
+      hintNodes(monsterMemo, "lurker", {ctx.node.key}, doomLabel)
+    elseif effect.where == "unstable" then
+      local nodes = findUnstableNodes()
+      if #nodes > 0 then
+        hintNodes(monsterMemo, "lurker", nodes, doomLabel)
+      else
+        hintMessage(monsterMemo, "lurker", i18n.getStrById("MH_unstable") .. ": ?")
+      end
+    elseif effect.where == "location" and effect.location then
+      hintNodes(monsterMemo, "lurker", {effect.location}, doomLabel)
+    elseif effect.where == "adjacent" and ctx.node and ctx.graph then
+      local nodes = {}
+      for neighbor in pairs(ctx.graph[ctx.node.key] or {}) do
+        table.insert(nodes, neighbor)
+      end
+      hintNodes(monsterMemo, "lurker", nodes, doomLabel)
+    elseif effect.where == "adjacentMostDoom" and ctx.node and ctx.graph then
+      local best = -1
+      local nodes = {}
+      local locationMat = getObjectFromGUID(locationMatId)
+      for neighbor in pairs(ctx.graph[ctx.node.key] or {}) do
+        local tile = locationMat and findLocationTileByName(locationMat, neighbor)
+        local count = 0
+        if tile then
+          local data = parseJson(tile.memo)
+          if data and data.type and string.lower(data.type) == "neighborhood" then
+            local doomInfo = getNeighborhoodDoomInfo(tile)
+            count = doomInfo and doomInfo.locations[neighbor] or 0
+          else
+            count = countDoomOnTileArea(tile)
+          end
+        end
+        if count > best then
+          best = count
+          nodes = {neighbor}
+        elseif count == best then
+          table.insert(nodes, neighbor)
+        end
+      end
+      hintNodes(monsterMemo, "lurker", nodes, doomLabel .. " " .. best)
+    end
+    return
+  end
+
+  if effect.type == "moveDoomToScenario" then
+    hintMessage(monsterMemo, "lurker", nil)
+    local sheet = gameData.scenarioData and gameData.scenarioData.guid and getObjectFromGUID(gameData.scenarioData.guid)
+    if sheet then
+      pingPosition(sheet.getPosition())
+    end
+    return
+  end
+
+  if effect.type == "horrorNearest" or effect.type == "delayNearest" then
+    hintNearestInvestigators(monsterMemo, ctx, highlighted)
+    return
+  end
+
+  hintMessage(monsterMemo, "lurker", nil)
+end
+
+local MONSTER_HINT_HANDLERS = {
+  hunter = processMonsterHintHunter,
+  patrol = processMonsterHintPatrol,
+  lurker = processMonsterHintLurker,
+}
+
+local function resolveMonsterMemo(matObject)
+  local attachments = matObject.getAttachments()
+  if not attachments or #attachments == 0 then return nil end
+
+  local memo = parseJson(attachments[1].memo)
+  if not memo then return nil end
+
+  if memo.type == "Monster" then
+    return memo
+  end
+
+  if memo.type == "DoubleSided" then
+    for _, side in ipairs({memo.front, memo.back}) do
+      if side and side.type == "Monster" and side.activation then
+        return side
+      end
+    end
+  end
+
+  return nil
+end
+
+function showMonsterHints(matObject, ctx)
+  local monsterMemo = resolveMonsterMemo(matObject)
+  if not monsterMemo or not monsterMemo.activation then
+    return {}
+  end
+
+  local activation = monsterMemo.activation
+  local handler = MONSTER_HINT_HANDLERS[activation.kind]
+  if not handler then
+    return {}
+  end
+
+  local highlighted = {}
+  handler(monsterMemo, activation, ctx or {}, highlighted)
+  return highlighted
+end

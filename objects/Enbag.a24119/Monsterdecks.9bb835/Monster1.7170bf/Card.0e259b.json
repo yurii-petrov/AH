@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"hp\":1,\"monstertype\":[\"Aberration\"],\"name\":\"Altered Beast\",\"remnant\":true,\"type\":\"Monster\"}",
+  "Memo": "{\"activation\":{\"engage\":{\"order\":\"lowest\",\"stat\":\"will\"},\"kind\":\"patrol\",\"moveTo\":\"mostDoom\"},\"hp\":1,\"monstertype\":[\"Aberration\"],\"name\":\"Altered Beast\",\"remnant\":true,\"spawn\":{\"at\":\"mostDoom\"},\"type\":\"Monster\"}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,

@@ -1519,3 +1519,38 @@ msgstr "Survivor"
 
 msgid "RI_seeker"
 msgstr "Seeker"
+
+# Monster hints: activation keyword labels
+msgid "MH_hunter"
+msgstr "Hunter"
+
+msgid "MH_patrol"
+msgstr "Patrol"
+
+msgid "MH_lurker"
+msgstr "Lurker"
+
+# Monster hints: target criteria labels
+msgid "MH_clues"
+msgstr "Clues"
+
+msgid "MH_allies"
+msgstr "Allies"
+
+msgid "MH_items"
+msgstr "Items"
+
+msgid "MH_spells"
+msgstr "Spells"
+
+msgid "MH_nearest"
+msgstr "Nearest"
+
+msgid "MH_doom"
+msgstr "Doom"
+
+msgid "MH_unstable"
+msgstr "Unstable space"
+
+msgid "MH_no_target"
+msgstr "No target"
