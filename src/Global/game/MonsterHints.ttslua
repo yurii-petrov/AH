@@ -61,7 +61,7 @@ local function collectInvestigatorEntries()
     if slot and slot.name and slot.matGuid then
       local mat = getObjectFromGUID(slot.matGuid)
       if mat then
-        local stats = mat.call("getStats")
+        local stats = parseJson(mat.call("getStats"))
         if stats then
           table.insert(entries, {
             name = slot.name,
