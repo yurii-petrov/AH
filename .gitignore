@@ -15,3 +15,7 @@ src/tools/local_settings.json
 .claudeignore
 CLAUDE.md
 memory/
+
+# Local Codex agent configuration
+/.agents/
+/AGENTS.md
