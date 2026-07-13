@@ -39,6 +39,10 @@ local function firstSeatedColor()
   return seated and seated[1]
 end
 
+local function hintColor()
+  return firstSeatedColor() or "Purple"
+end
+
 local function pingPosition(pos)
   local color = firstSeatedColor()
   if not color or not pos then return end
@@ -122,6 +126,12 @@ local function engageLabel(engage)
   return key and i18n.getStrById(key) or "?"
 end
 
+local function targetDistance(target, ctx)
+  if not target.figurine or not ctx.distances then return nil end
+  local node = findLocationNodeForPosition(target.figurine.getPosition())
+  return node and ctx.distances[node.key]
+end
+
 local function hintEngage(monsterMemo, kind, engage, ctx, highlighted)
   if engage.metric and UNSUPPORTED_METRICS[engage.metric] then
     hintMessage(monsterMemo, kind, engageLabel(engage) .. " (?)")
@@ -135,11 +145,16 @@ local function hintEngage(monsterMemo, kind, engage, ctx, highlighted)
   end
 
   for _, target in ipairs(targets) do
-    hintMessage(monsterMemo, kind, target.displayName .. " (" .. engageLabel(engage) .. " " .. tostring(best) .. ")")
+    local details = engageLabel(engage) .. " " .. tostring(best)
+    local hops = targetDistance(target, ctx)
+    if hops then
+      details = details .. ", " .. i18n.getStrById("MH_distance") .. " " .. hops
+    end
+    hintMessage(monsterMemo, kind, target.displayName .. " (" .. details .. ")")
     if target.figurine then
-      target.figurine.highlightOn("Purple")
+      target.figurine.highlightOn(hintColor())
       table.insert(highlighted, target.figurine)
-      pingPosition(target.figurine.getPosition())
+      pingPosition(target.figurine.getPosition():setAt("y", 7))
     else
       pingPosition(target.mat.getPosition())
     end
@@ -279,9 +294,9 @@ local function hintNearestInvestigators(monsterMemo, ctx, highlighted)
   for _, target in ipairs(targets) do
     hintMessage(monsterMemo, "lurker", target.displayName .. " (" .. i18n.getStrById("MH_nearest") .. " " .. tostring(best) .. ")")
     if target.figurine then
-      target.figurine.highlightOn("Purple")
+      target.figurine.highlightOn(hintColor())
       table.insert(highlighted, target.figurine)
-      pingPosition(target.figurine.getPosition())
+      pingPosition(target.figurine.getPosition():setAt("y", 7))
     end
   end
 end

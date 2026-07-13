@@ -1554,3 +1554,6 @@ msgstr "Unstable space"
 
 msgid "MH_no_target"
 msgstr "No target"
+
+msgid "MH_distance"
+msgstr "distance"

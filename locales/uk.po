@@ -1624,3 +1624,6 @@ msgstr "Нестабільна локація"
 
 msgid "MH_no_target"
 msgstr "Цілі немає"
+
+msgid "MH_distance"
+msgstr "дистанція"

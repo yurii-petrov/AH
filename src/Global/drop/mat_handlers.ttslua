@@ -62,33 +62,9 @@ function onObjectPickUpMonsterMat(colorName, object)
   local graph = buildLocationGraph()
   local distances = bfsCellDistances(graph, monsterNode.key)
 
-  local entries = {}
-  for _, obj in ipairs(getAllObjects()) do
-    if obj.type == "Figurine" then
-      local node = findLocationNodeForPosition(obj.getPosition())
-      local hops = node and distances[node.key]
-      if hops ~= nil then
-        table.insert(entries, {
-          figurine = obj,
-          distance = hops,
-          name = obj.getName() ~= "" and obj.getName() or obj.memo
-        })
-      end
-    end
-  end
-
-  table.sort(entries, function(a, b)
-    return a.distance < b.distance
-  end)
-
   highlightedInvestigatorFigurines = {}
   object.highlightOn("Purple")
   table.insert(highlightedInvestigatorFigurines, object)
-  for _, entry in ipairs(entries) do
-    entry.figurine.highlightOn("Purple")
-    table.insert(highlightedInvestigatorFigurines, entry.figurine)
-    printToAll(entry.name .. " - " .. entry.distance, "White")
-  end
 
   local hintHighlighted = showMonsterHints(object, {
     node = monsterNode,
