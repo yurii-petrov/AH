@@ -39,11 +39,12 @@ local function firstSeatedColor()
   return seated and seated[1]
 end
 
-local function hintColor()
+function hintColor()
   return firstSeatedColor() or "Purple"
 end
 
 local function pingPosition(pos)
+  if gameData.phase ~= Phase.Monster then return end
   local color = firstSeatedColor()
   if not color or not pos then return end
   pcall(function()
@@ -101,7 +102,7 @@ local function engageValue(entry, engage, ctx)
   end
 end
 
-local function pickEngageTargets(engage, ctx)
+function pickEngageTargets(engage, ctx)
   local wantSmallest = engage.order == "lowest" or engage.order == "least" or engage.metric == "nearest"
   local best = nil
   local targets = {}
@@ -154,24 +155,13 @@ local function hintEngage(monsterMemo, kind, engage, ctx, highlighted)
     if target.figurine then
       target.figurine.highlightOn(hintColor())
       table.insert(highlighted, target.figurine)
-      pingPosition(target.figurine.getPosition():setAt("y", 7))
-    else
+      if kind ~= "patrol" then
+        pingPosition(target.figurine.getPosition():setAt("y", 7))
+      end
+    elseif kind ~= "patrol" then
       pingPosition(target.mat.getPosition())
     end
   end
-end
-
-local function nodeWorldPosition(nodeName)
-  local locationMat = getObjectFromGUID(locationMatId)
-  if not locationMat then return nil end
-
-  local tile, data, index = findLocationTileByName(locationMat, nodeName)
-  if not tile then return nil end
-
-  if index and data.structureType then
-    return getNeighborhoodLocationPosition(tile, index, data.structureType)
-  end
-  return tile.getPosition()
 end
 
 local function countDoomOnTileArea(tile)
@@ -184,7 +174,7 @@ local function countDoomOnTileArea(tile)
   return count
 end
 
-local function findMostDoomNodes()
+function findMostDoomNodes()
   local locationMat = getObjectFromGUID(locationMatId)
   if not locationMat then return {} end
 
@@ -222,7 +212,7 @@ local function findMostDoomNodes()
   return nodes, best
 end
 
-local function findUnstableNodes()
+function findUnstableNodes()
   local discard = getEventDiscardObj()
   if not discard then return {} end
 
@@ -415,4 +405,18 @@ function showMonsterHints(matObject, ctx)
   local highlighted = {}
   handler(monsterMemo, activation, ctx or {}, highlighted)
   return highlighted
+end
+
+function pingAvailableMonsterLocations()
+  local scenarioName = gameData.scenarioData and gameData.scenarioData.name
+  local adjacency = scenarioName and LOCATION_GRAPHS[scenarioName]
+  if not adjacency then return end
+
+  local streetNames = getStreetNamesInPlay()
+
+  for nodeName in pairs(adjacency) do
+    if not streetNames[nodeName] then
+      pingPosition(nodeWorldPosition(nodeName))
+    end
+  end
 end

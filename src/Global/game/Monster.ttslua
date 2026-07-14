@@ -11,16 +11,89 @@ function findInvestigatorFigurineOnLocationMat(invName)
   end
 end
 
+local function getMonsterSpawnMemo(objectMemo)
+  if objectMemo.type == "Monster" then
+    return objectMemo
+  elseif objectMemo.type == "DoubleSided" and objectMemo.front and objectMemo.front.type == "Monster" then
+    return objectMemo.front
+  end
+end
+
+local function spawnPositionForNodes(nodes)
+  if not nodes or #nodes == 0 then return nil end
+  local pos = nodeWorldPosition(nodes[1])
+  return pos and pos:setAt("y", 3)
+end
+
+local function highlightStreetOptions(streetNames)
+  local locationMat = getObjectFromGUID(locationMatId)
+  if not locationMat or #streetNames <= 1 then return end
+
+  for _, streetName in ipairs(streetNames) do
+    local tile = findLocationTileByName(locationMat, streetName)
+    if tile then
+      tile.highlightOn(hintColor(), 5)
+    end
+  end
+end
+
+local function spawnPositionNearestStreetTo(investigatorName)
+  if not investigatorName then return nil end
+  local figurine = findInvestigatorFigurineOnLocationMat(investigatorName)
+  if not figurine then return nil end
+  local node = findLocationNodeForPosition(figurine.getPosition())
+  if not node then return nil end
+  local streetNames = findNearestStreetNodes(node.key)
+  if #streetNames == 0 then return nil end
+  figurine.highlightOn(hintColor(), 5)
+  highlightStreetOptions(streetNames)
+  local pos = nodeWorldPosition(streetNames[1])
+  return pos and pos:setAt("y", 3)
+end
+
+local function findLeaderInvestigatorName()
+  for slot, actions in pairs(INV_STATE.isLeaderAction or {}) do
+    for _, isLeader in pairs(actions) do
+      if isLeader then
+        local slotData = gameData.investigatorSlots and gameData.investigatorSlots[slot]
+        if slotData then return slotData.name end
+      end
+    end
+  end
+end
+
+function resolveMonsterSpawnPosition(objectMemo)
+  local monsterMemo = getMonsterSpawnMemo(objectMemo)
+  if not monsterMemo or not monsterMemo.spawn then return nil end
+
+  local at = monsterMemo.spawn.at
+
+  if at == "unstable" then
+    return spawnPositionForNodes(findUnstableNodes())
+  elseif at == "mostDoom" then
+    local nodes = findMostDoomNodes()
+    return spawnPositionForNodes(nodes)
+  elseif at == "streetNearestPrey" then
+    if not monsterMemo.activation or not monsterMemo.activation.engage then return nil end
+    local targets = pickEngageTargets(monsterMemo.activation.engage, {})
+    return targets[1] and spawnPositionNearestStreetTo(targets[1].name)
+  elseif at == "streetNearestLeader" then
+    return spawnPositionNearestStreetTo(findLeaderInvestigatorName())
+  end
+end
+
 function spawnMonster(spawnPos, monster)
   if not monster then return end
 
   local objectMemo = parseJson(monster.memo)
   if not objectMemo or not objectMemo.type then return end
 
+  local resolvedPos = resolveMonsterSpawnPosition(objectMemo) or spawnPos
+
   if objectMemo.type == "Monster" then
-    attachMonsterCard(monster, objectMemo, spawnPos)
+    attachMonsterCard(monster, objectMemo, resolvedPos)
   elseif objectMemo.type == "DoubleSided" and objectMemo.front then
-    attachDoubleSidedCard(monster, objectMemo, spawnPos)
+    attachDoubleSidedCard(monster, objectMemo, resolvedPos)
   end
 end
 

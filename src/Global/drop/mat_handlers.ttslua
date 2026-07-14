@@ -54,8 +54,13 @@ end
 local highlightedInvestigatorFigurines = {}
 
 function onObjectPickUpMonsterMat(colorName, object)
+  if gameData.phase ~= Phase.Monster then
+    return
+  end
+
   local monsterNode = findLocationNodeForPosition(object.getPosition())
   if not monsterNode then
+    pingAvailableMonsterLocations()
     return
   end
 

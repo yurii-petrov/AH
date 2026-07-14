@@ -147,6 +147,72 @@ function bfsCellDistances(graph, startKey)
   return dist
 end
 
+function nodeWorldPosition(nodeName)
+  local locationMat = getObjectFromGUID(locationMatId)
+  if not locationMat then return nil end
+
+  local tile, data, index = findLocationTileByName(locationMat, nodeName)
+  if not tile then return nil end
+
+  if index and data.structureType then
+    return getNeighborhoodLocationPosition(tile, index, data.structureType)
+  end
+  return tile.getPosition()
+end
+
+function getStreetNamesInPlay()
+  local locationMat = getObjectFromGUID(locationMatId)
+  if not locationMat then return {} end
+
+  local names = {}
+  for _, o in ipairs(upCast(locationMat, 1, nil, 1)) do
+    local data = parseJson(o.memo)
+    if data and data.type == "Street" and data.name then
+      names[data.name] = true
+    end
+  end
+  return names
+end
+
+function findNearestStreetNodes(startNodeKey)
+  if not startNodeKey then return {} end
+
+  local graph = buildLocationGraph()
+  if not graph[startNodeKey] then return {} end
+
+  local streetNames = getStreetNamesInPlay()
+
+  local dist = {[startNodeKey] = 0}
+  local queue = {startNodeKey}
+  local head = 1
+  local foundDist = nil
+  local results = {}
+
+  while head <= #queue do
+    local current = queue[head]
+    head = head + 1
+    local d = dist[current]
+
+    if foundDist and d > foundDist then
+      break
+    end
+
+    if streetNames[current] then
+      foundDist = d
+      table.insert(results, current)
+    else
+      for neighbor in pairs(graph[current] or {}) do
+        if dist[neighbor] == nil then
+          dist[neighbor] = d + 1
+          table.insert(queue, neighbor)
+        end
+      end
+    end
+  end
+
+  return results
+end
+
 function findTokenOnAnyLocation(locationMat, tokenType)
   for _, tile in ipairs(upCast(locationMat, 1, nil, 1)) do
     if tile.type == "Generic" then
