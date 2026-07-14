@@ -100,10 +100,10 @@ local function languagesWindow()
       { tag = "button", attributes = { id = "ua", onClick = "clickOnUK", width = "350", height = "300", position = "220 0 0", padding = "0 0 230 0", textColor = "#ffffff", font = FONT, fontStyle = "Bold", fontSize = "30", color = "clear", text = "УКРАЇНСЬКА" } },
       {
         tag = "HorizontalLayout",
-        attributes = { id = "direct_setup_row", position = "0 -155 0", width = "320", height = "36", childAlignment = "MiddleCenter", spacing = "10" },
+        attributes = { id = "direct_setup_row", position = "0 -155 0", width = "220", height = "28", childAlignment = "MiddleCenter", childForceExpandWidth = "false", childForceExpandHeight = "false", spacing = "10" },
         children = {
-          { tag = "Toggle", attributes = { id = "direct_setup_toggle", onValueChanged = "onDirectSetupToggle", isOn = "false", width = "30", height = "30", toggleColor = "#ffffff" } },
-          { tag = "Text", attributes = { text = "Quick Setup", font = FONT, fontSize = "22", color = "#ffffff", width = "260", height = "36" } },
+          { tag = "Text", attributes = { text = "Quick Setup", font = FONT, fontSize = "18", color = "#ffffff", width = "160", height = "28" } },
+          { tag = "Toggle", attributes = { id = "direct_setup_toggle", onValueChanged = "onDirectSetupToggle", isOn = "false", width = "24", height = "24", color = "#ffffff", toggleColor = "#000000" } },
         },
       },
       { tag = "Text", attributes = { id = "direct_setup_note", position = "0 -192 0", width = "640", height = "40", font = FONT, fontSize = "14", color = "#ffffffaa", alignment = "MiddleCenter", text = "(use only with cache enabled, and after the mod was already opened once in normal mode)" } },
