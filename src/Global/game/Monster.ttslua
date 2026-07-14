@@ -19,7 +19,7 @@ end
 function getMonstersInPlay()
   local monsters = {}
   for _, obj in ipairs(getAllObjects()) do
-    if obj.memo == "Monster Mat" then
+    if obj.memo == "Monster Mat" or obj.memo == "Double Sided Mat" then
       local attachments = obj.getAttachments()
       if attachments and #attachments > 0 then
         local memo = parseJson(attachments[1].memo)
@@ -27,11 +27,11 @@ function getMonstersInPlay()
         if memo and memo.type == "Monster" then
           monsterMemo = memo
         elseif memo and memo.type == "DoubleSided" then
-          for _, side in ipairs({memo.front, memo.back}) do
-            if side and side.type == "Monster" then
-              monsterMemo = side
-              break
-            end
+          local isFaceDown = attachments[1].is_face_down
+          if memo.reversed then isFaceDown = not isFaceDown end
+          local side = isFaceDown and memo.back or memo.front
+          if side and side.type == "Monster" then
+            monsterMemo = side
           end
         end
         if monsterMemo and monsterMemo.name then
@@ -51,9 +51,22 @@ local function getMonsterSpawnMemo(objectMemo)
   end
 end
 
+local function pingNodes(nodeNames)
+  for _, nodeName in ipairs(nodeNames) do
+    pingPosition(nodeWorldPosition(nodeName))
+  end
+end
+
 local function spawnPositionForNodes(nodes)
   if not nodes or #nodes == 0 then return nil end
+
+  if #nodes > 1 then
+    pingNodes(nodes)
+    return nil
+  end
+
   local pos = nodeWorldPosition(nodes[1])
+  pingPosition(pos)
   return pos and pos:setAt("y", 3)
 end
 
@@ -77,9 +90,17 @@ local function spawnPositionNearestStreetTo(investigatorName)
   if not node then return nil end
   local streetNames = findNearestStreetNodes(node.key)
   if #streetNames == 0 then return nil end
+
   figurine.highlightOn(hintColor(), 5)
   highlightStreetOptions(streetNames)
+
+  if #streetNames > 1 then
+    pingNodes(streetNames)
+    return nil
+  end
+
   local pos = nodeWorldPosition(streetNames[1])
+  pingPosition(pos)
   return pos and pos:setAt("y", 3)
 end
 

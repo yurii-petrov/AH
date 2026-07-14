@@ -43,8 +43,7 @@ function hintColor()
   return firstSeatedColor() or "Purple"
 end
 
-local function pingPosition(pos)
-  if gameData.phase ~= Phase.Monster then return end
+function pingPosition(pos)
   local color = firstSeatedColor()
   if not color or not pos then return end
   pcall(function()
