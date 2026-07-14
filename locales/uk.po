@@ -28,6 +28,15 @@ msgstr "Оберіть сценарій"
 msgid "MM_select_scenario"
 msgstr "ОБРАТИ СЦЕНАРІЙ"
 
+msgid "MM_random_scenario"
+msgstr "Випадковий"
+
+msgid "MM_random_scenario_text"
+msgstr "Випадковий сценарій"
+
+msgid "MM_select_all_scenarios_text"
+msgstr "Обрати всі"
+
 # Scenario 1
 msgid "MM_scenario1_name_text"
 msgstr "Пришестя Азатота"

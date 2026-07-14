@@ -854,6 +854,14 @@ I18N_DATA = {
     ["en"] = "Player numbers:",
     ["uk"] = "Кількість гравців:",
   },
+  ["MM_random_scenario"] = {
+    ["en"] = "Random",
+    ["uk"] = "Випадковий",
+  },
+  ["MM_random_scenario_text"] = {
+    ["en"] = "Random scenario",
+    ["uk"] = "Випадковий сценарій",
+  },
   ["MM_scenario10_desc_text"] = {
     ["en"] = "An unearthly melody floats through the crisp autumn air, all but imperceptible to the waking mind. In dreams, you visit a fantastical undersea city and revel in the glory of something massive, just beyond your sight.",
     ["uk"] = "Неземна мелодія линe крізь прозоре осіннє повітря, майже непомітна для пробудженої свідомості. У снах ти відвідуєш фантастичне підводне місто й захоплено тішишся величчю чогось грандіозного — та прихованого за межею твого зору.",
@@ -957,6 +965,10 @@ I18N_DATA = {
   ["MM_scenario9_name_text"] = {
     ["en"] = "ITHAQUA'S CHILDREN",
     ["uk"] = "Діти Ітакви",
+  },
+  ["MM_select_all_scenarios_text"] = {
+    ["en"] = "Select all",
+    ["uk"] = "Обрати всі",
   },
   ["MM_select_scenario"] = {
     ["en"] = "Select Scenario",

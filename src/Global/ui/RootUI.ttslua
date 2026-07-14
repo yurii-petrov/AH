@@ -45,36 +45,23 @@ local function buildMainMenuActions()
   return panels
 end
 
-local SCENARIO_ROWS = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 }, { 10, 11, 12 }, { 13 } }
+local SCENARIO_COUNT = 13
 
-local function buildScenarioPanel(n)
-  local panelAttrs = { id = "scenario_panel" .. n }
-  if n == 1 then panelAttrs.color = "#ffffff22" end
-  return {
-    tag = "panel",
-    attributes = panelAttrs,
-    children = {
-      { tag = "button", attributes = { id = "scenario" .. n, onClick = "chooseScenario" } },
-      { tag = "image",  attributes = { id = "scenarioImage" .. n, image = "scenario" .. n, width = "180", preserveAspect = "true", rectAlignment = "UpperCenter", offsetXY = "0 -10" } },
-      { tag = "text",   attributes = { id = "MM_scenario" .. n .. "_name_text", alignment = "LowerCenter", text = "", offsetXY = "0 10" } },
-    },
-  }
-end
-
-local function buildScenarioRows()
-  local rows = {}
-  for _, ids in ipairs(SCENARIO_ROWS) do
-    local panels = {}
-    for _, n in ipairs(ids) do
-      table.insert(panels, buildScenarioPanel(n))
-    end
-    table.insert(rows, {
-      tag = "HorizontalLayout",
-      attributes = { width = "800", preferredHeight = "250", verticalOverflow = "Overflow", spacing = "30" },
-      children = panels,
+local function buildScenarioListPanels()
+  local panels = {}
+  for n = 1, SCENARIO_COUNT do
+    local panelAttrs = { id = "scenario_panel" .. n, preferredHeight = "50" }
+    if n == 1 then panelAttrs.color = "#ffffff22" end
+    table.insert(panels, {
+      tag = "panel",
+      attributes = panelAttrs,
+      children = {
+        { tag = "button", attributes = { id = "scenario" .. n, onClick = "chooseScenario", onMouseEnter = "previewScenario" } },
+        { tag = "text",   attributes = { id = "MM_scenario" .. n .. "_name_text", alignment = "MiddleCenter", text = "" } },
+      },
     })
   end
-  return rows
+  return panels
 end
 
 local ADDON_COUNT = 4
@@ -244,43 +231,115 @@ local function chooseScenarioWindow()
     children = {
       { tag = "Image", attributes = { image = "hud_1", height = "700", width = "1000" } },
       {
-        tag = "panel",
-        attributes = { width = "910", height = "610" },
+        tag = "TableLayout",
+        attributes = { width = "850", height = "610", rectAlignment = "MiddleCenter", cellSpacing = "0", cellPadding = "0", columnWidths = "400 50 400" },
         children = {
+
           {
-            tag = "VerticalLayout",
-            attributes = { contentSizeFitter = "vertical", height = "610", childAlignment = "MiddleCenter", rectAlignment = "UpperCenter" },
+            tag = "Row",
+            attributes = { preferredHeight = "80" },
             children = {
               {
-                tag = "panel",
-                attributes = { minHeight = "100" },
+                tag = "Cell",
+                attributes = { columnSpan = "3", dontUseTableCellBackground = "true" },
                 children = {
                   { tag = "text", attributes = { id = "MM_choice_scenario_text", text = "", fontSize = "46", fontStyle = "bold", alignment = "MiddleCenter" } },
                 },
               },
+            },
+          },
+
+          {
+            tag = "Row",
+            attributes = { preferredHeight = "530" },
+            children = {
+
               {
-                tag = "panel",
-                attributes = { minHeight = "410" },
+                tag = "Cell",
+                attributes = { dontUseTableCellBackground = "true" },
                 children = {
                   {
-                    tag = "VerticalScrollView",
-                    attributes = { color = "clear", height = "400", verticalScrollbarVisibility = "AutoHideAndExpandViewport", verticalScrollbarWidth = "20", raycastTarget = "true", scrollSensitivity = "30" },
+                    tag = "panel",
+                    attributes = { width = "400", height = "530" },
                     children = {
                       {
                         tag = "VerticalLayout",
-                        attributes = { contentSizeFitter = "vertical", spacing = "30" },
-                        children = buildScenarioRows(),
+                        attributes = { rectAlignment = "UpperCenter", width = "400", height = "460", spacing = "10" },
+                        children = {
+                          {
+                            tag = "panel",
+                            attributes = { width = "400", height = "150" },
+                            children = {
+                              { tag = "image", attributes = { id = "scenarioPreviewImage", image = "scenario1", width = "180", preserveAspect = "true", rectAlignment = "MiddleCenter" } },
+                            },
+                          },
+                          {
+                            tag = "VerticalScrollView",
+                            attributes = { width = "400", height = "300", color = "clear", verticalScrollbarVisibility = "AutoHideAndExpandViewport", verticalScrollbarWidth = "20", raycastTarget = "true", scrollSensitivity = "30" },
+                            children = {
+                              {
+                                tag = "VerticalLayout",
+                                attributes = { contentSizeFitter = "vertical" },
+                                children = {
+                                  { tag = "text", attributes = { id = "MM_scenarioPreviewDesc_text", fontSize = "20", fontStyle = "italic" } },
+                                },
+                              },
+                            },
+                          },
+                        },
+                      },
+                      {
+                        tag = "HorizontalLayout",
+                        attributes = { id = "scenario_random_row", rectAlignment = "LowerCenter", offsetXY = "0 36", width = "400", height = "28", childAlignment = "MiddleCenter", childForceExpandWidth = "false", childForceExpandHeight = "false", spacing = "10" },
+                        children = {
+                          { tag = "Text", attributes = { id = "MM_random_scenario_text", font = FONT, fontSize = "18", color = "#ffffff", width = "330", height = "28", text = "" } },
+                          { tag = "Toggle", attributes = { id = "scenario_random_toggle", onValueChanged = "onScenarioRandomToggle", isOn = "false", width = "24", height = "24", color = "#ffffff", toggleColor = "#000000" } },
+                        },
+                      },
+                      {
+                        tag = "HorizontalLayout",
+                        attributes = { id = "scenario_select_all_row", rectAlignment = "LowerCenter", offsetXY = "0 4", width = "400", height = "28", childAlignment = "MiddleCenter", childForceExpandWidth = "false", childForceExpandHeight = "false", spacing = "10" },
+                        children = {
+                          { tag = "Text", attributes = { id = "MM_select_all_scenarios_text", active = "false", font = FONT, fontSize = "18", color = "#ffffff", width = "330", height = "28", text = "" } },
+                          { tag = "Toggle", attributes = { id = "scenario_select_all_toggle", active = "false", onValueChanged = "onScenarioSelectAllToggle", isOn = "true", width = "24", height = "24", color = "#ffffff", toggleColor = "#000000" } },
+                        },
                       },
                     },
                   },
                 },
               },
+
+              { tag = "Cell", attributes = { dontUseTableCellBackground = "true" } },
+
               {
-                tag = "panel",
-                attributes = { minHeight = "100" },
+                tag = "Cell",
+                attributes = { dontUseTableCellBackground = "true" },
                 children = {
-                  { tag = "Button", attributes = { id = "MM_select_scenario", onClick = "submitScenario", width = "440", height = "92", color = "clear", text = "" } },
-                  { tag = "image", attributes = { width = "400", preserveAspect = "true", image = "button_large" } },
+                  {
+                    tag = "panel",
+                    attributes = { width = "400", height = "530" },
+                    children = {
+                      {
+                        tag = "VerticalScrollView",
+                        attributes = { rectAlignment = "UpperCenter", width = "400", height = "428", color = "clear", verticalScrollbarVisibility = "AutoHideAndExpandViewport", verticalScrollbarWidth = "20", raycastTarget = "true", scrollSensitivity = "30" },
+                        children = {
+                          {
+                            tag = "VerticalLayout",
+                            attributes = { contentSizeFitter = "vertical", width = "380", spacing = "10" },
+                            children = buildScenarioListPanels(),
+                          },
+                        },
+                      },
+                      {
+                        tag = "panel",
+                        attributes = { rectAlignment = "LowerCenter", width = "400", height = "92" },
+                        children = {
+                          { tag = "Button", attributes = { id = "MM_select_scenario", onClick = "submitScenario", width = "400", height = "92", color = "clear", text = "" } },
+                          { tag = "image", attributes = { width = "400", preserveAspect = "true", image = "button_large" } },
+                        },
+                      },
+                    },
+                  },
                 },
               },
             },

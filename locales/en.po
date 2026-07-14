@@ -38,6 +38,15 @@ msgstr "Choice Scenario"
 msgid "MM_select_scenario"
 msgstr "Select Scenario"
 
+msgid "MM_random_scenario"
+msgstr "Random"
+
+msgid "MM_random_scenario_text"
+msgstr "Random scenario"
+
+msgid "MM_select_all_scenarios_text"
+msgstr "Select all"
+
 # Scenario 1
 msgid "MM_scenario1_name_text"
 msgstr "APPROACH OF AZATHOTH"

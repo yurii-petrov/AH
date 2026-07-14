@@ -1,5 +1,34 @@
 
 local map = false
+local scenarioRandomMode = false
+local selectedScenarios = { [1] = true }
+
+local function setScenarioSubmitButtonText(text)
+  self.UI.setAttributes('MM_select_scenario', {
+    text = text,
+    color = 'clear',
+    textColor = '#FFFFFF',
+    font = 'Fonts/AdonisC',
+    fontStyle = 'bold',
+    fontSize = '32',
+  })
+end
+
+local function countSelectedScenarios()
+  local count = 0
+  for _ in pairs(selectedScenarios) do count = count + 1 end
+  return count
+end
+
+local function syncSelectAllToggle(total)
+  self.UI.setAttribute('scenario_select_all_toggle', 'isOn', countSelectedScenarios() == total)
+end
+
+local function setSelectAllRowVisible(visible)
+  self.UI.setAttribute('MM_select_all_scenarios_text', 'active', visible)
+  self.UI.setAttribute('scenario_select_all_toggle', 'active', visible)
+end
+
 function mapToggle(player, alt, id)
   self.UI.setAttribute('scenarioImage', 'active', map)
   map = not map
@@ -11,6 +40,16 @@ function changeScenario(player, alt, id)
   map = false
   self.UI.setAttribute('scenarioImage', 'active', true)
   self.UI.setAttribute('scenarioMap', 'active', false)
+  previewScenario(player, alt, 'scenario' .. currentSetup.scenario)
+  setScenarioSubmitButtonText(i18n.getStrById(scenarioRandomMode and "MM_random_scenario" or "MM_select_scenario"))
+  setSelectAllRowVisible(scenarioRandomMode)
+  if scenarioRandomMode then
+    local scenarioMat = getObjectFromGUID(scenarioMatId)
+    local scenarioMatData = scenarioMat and parseJson(scenarioMat.memo)
+    if scenarioMatData and scenarioMatData.scenarios then
+      syncSelectAllToggle(#scenarioMatData.scenarios)
+    end
+  end
 end
 function menuSelectPlayers(player, alt, id)
   local color = self.UI.getAttribute('players1', 'textColor')
@@ -194,19 +233,118 @@ function chooseScenario(player, alt, id)
     return
   end
 
+  local n = tonumber(id:match("%d+"))
+
+  if scenarioRandomMode then
+    if selectedScenarios[n] then
+      if countSelectedScenarios() <= 1 then
+        return
+      end
+      selectedScenarios[n] = nil
+      self.UI.setAttribute('scenario_panel' .. n, 'color', 'clear')
+    else
+      selectedScenarios[n] = true
+      self.UI.setAttribute('scenario_panel' .. n, 'color', '#ffffff22')
+    end
+    syncSelectAllToggle(#scenarioMatData.scenarios)
+    return
+  end
+
   for i = 1, #scenarioMatData.scenarios, 1 do
     self.UI.setAttribute('scenario_panel' .. i, 'color', 'clear')
   end
-  self.UI.setAttribute('scenario_panel' .. id:match("%d+"), 'color', '#ffffff22')
-  currentSetup.scenario = tonumber(id:match("%d+"))
+  self.UI.setAttribute('scenario_panel' .. n, 'color', '#ffffff22')
+  currentSetup.scenario = n
+  selectedScenarios = { [n] = true }
 end
+
+function onScenarioRandomToggle(player, value, id)
+  local scenarioMat = getObjectFromGUID(scenarioMatId)
+  if not scenarioMat then
+    return
+  end
+
+  local scenarioMatData = parseJson(scenarioMat.memo)
+  if not scenarioMatData or not scenarioMatData.scenarios then
+    return
+  end
+
+  scenarioRandomMode = value == "True"
+
+  setSelectAllRowVisible(scenarioRandomMode)
+
+  if scenarioRandomMode then
+    selectedScenarios = {}
+    for i = 1, #scenarioMatData.scenarios, 1 do
+      selectedScenarios[i] = true
+      self.UI.setAttribute('scenario_panel' .. i, 'color', '#ffffff22')
+    end
+    self.UI.setAttribute('scenario_select_all_toggle', 'isOn', true)
+    setScenarioSubmitButtonText(i18n.getStrById("MM_random_scenario"))
+  else
+    for i = 1, #scenarioMatData.scenarios, 1 do
+      self.UI.setAttribute('scenario_panel' .. i, 'color', 'clear')
+    end
+    selectedScenarios = { [1] = true }
+    currentSetup.scenario = 1
+    self.UI.setAttribute('scenario_panel1', 'color', '#ffffff22')
+    setScenarioSubmitButtonText(i18n.getStrById("MM_select_scenario"))
+  end
+end
+
+function onScenarioSelectAllToggle(player, value, id)
+  local scenarioMat = getObjectFromGUID(scenarioMatId)
+  if not scenarioMat then
+    return
+  end
+
+  local scenarioMatData = parseJson(scenarioMat.memo)
+  if not scenarioMatData or not scenarioMatData.scenarios then
+    return
+  end
+
+  local selectAll = value == "True"
+
+  if selectAll and not scenarioRandomMode then
+    scenarioRandomMode = true
+    self.UI.setAttribute('scenario_random_toggle', 'isOn', true)
+    setSelectAllRowVisible(true)
+    setScenarioSubmitButtonText(i18n.getStrById("MM_random_scenario"))
+  end
+
+  selectedScenarios = {}
+  for i = 1, #scenarioMatData.scenarios, 1 do
+    if selectAll then
+      selectedScenarios[i] = true
+    end
+    self.UI.setAttribute('scenario_panel' .. i, 'color', selectAll and '#ffffff22' or 'clear')
+  end
+end
+
 function submitScenario()
+  if scenarioRandomMode then
+    local candidates = {}
+    for i in pairs(selectedScenarios) do
+      table.insert(candidates, i)
+    end
+    if #candidates == 0 then
+      return
+    end
+    currentSetup.scenario = candidates[math.random(#candidates)]
+  end
+
   self.UI.setAttribute('chooseScenario', 'active', false)
   self.UI.setAttribute('main_menu', 'active', true)
   self.UI.setAttribute('title', 'text', i18n.getStrById("MM_scenario" .. currentSetup.scenario .. "_name_text"))
   self.UI.setAttribute('body', 'text', i18n.getStrById("MM_scenario" .. currentSetup.scenario .. "_desc_text"))
   self.UI.setAttribute('scenarioImage', 'image', 'scenario' .. currentSetup.scenario)
   self.UI.setAttribute('scenarioMap', 'image', 'scenarioMap' .. currentSetup.scenario)
+end
+
+function previewScenario(player, alt, id)
+  local id = tonumber(id:match("%d+"))
+  self.UI.setAttribute('scenarioPreviewImage', 'image', 'scenario' .. id)
+  self.UI.setAttribute('MM_scenarioPreviewDesc_text', 'text', i18n.getStrById("MM_scenario" .. id .. "_desc_text"))
 end
 
 function previewAddon(player, alt, id)
@@ -236,8 +374,7 @@ function selectAddon(player, alt, id)
   if addons[currentAddon].include then
     if scenarios then
       for _, s in ipairs(scenarios) do
-        self.UI.setAttribute('scenarioImage' .. s, 'color', 'white')
-        self.UI.setAttribute('scenarioTitle' .. s, 'color', 'white')
+        self.UI.setAttribute('MM_scenario' .. s .. '_name_text', 'color', '#ffffffff')
         self.UI.setAttribute('scenario' .. s, 'onClick', 'chooseScenario')
       end
     end
@@ -245,14 +382,13 @@ function selectAddon(player, alt, id)
   else
     if scenarios then
       for _, s in ipairs(scenarios) do
-        if currentSetup.scenario == s then
+        if selectedScenarios[s] then
           broadcastToAll(i18n.getStrById("LOG_cannot_disable_addon"), {r = 1, g = 0.5, b = 0.5})
           return
         end
       end
       for _, s in ipairs(scenarios) do
-        self.UI.setAttribute('scenarioImage' .. s, 'color', 'gray')
-        self.UI.setAttribute('scenarioTitle' .. s, 'color', 'gray')
+        self.UI.setAttribute('MM_scenario' .. s .. '_name_text', 'color', '#ffffff55')
         self.UI.setAttribute('scenario' .. s, 'onClick', '')
       end
     end
