@@ -214,23 +214,29 @@ end
 
 function findUnstableNodes()
   local discard = getEventDiscardObj()
-  if not discard then return {} end
-
   local cardMemo = nil
-  if discard.type == "Card" then
+
+  if discard and discard.type == "Card" then
     cardMemo = parseJson(discard.memo)
-  elseif discard.type == "Deck" then
-    local deckMemo = parseJson(discard.memo)
+  elseif discard and discard.type == "Deck" then
     local objects = discard.getObjects()
-    local index = (deckMemo and deckMemo.reversed) and #objects or 1
-    cardMemo = objects[index] and parseJson(objects[index].memo)
+    if objects and #objects > 0 then
+      cardMemo = parseJson(objects[#objects].memo)
+    end
   end
 
-  if not cardMemo or not cardMemo.locations then return {} end
+  if not cardMemo then
+    local startingSpace = gameData.scenarioData and gameData.scenarioData.startingSpace
+    return startingSpace and {startingSpace} or {}
+  end
+
+  if not cardMemo.locations then return {} end
 
   local nodes = {}
-  for locationName in pairs(cardMemo.locations) do
-    table.insert(nodes, locationName)
+  for locationName, entry in pairs(cardMemo.locations) do
+    if entry and entry.dooms and entry.dooms > 0 then
+      table.insert(nodes, locationName)
+    end
   end
   return nodes
 end
