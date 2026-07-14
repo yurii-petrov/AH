@@ -562,8 +562,15 @@ local function prepareMonsterDeck(done)
           local attachments = obj.getAttachments()
           local attachment = attachments and attachments[1]
           local memo = attachment and parseJson(attachment.memo)
-          local attachName = memo and string.lower(memo.name or "")
+          local monsterMemo = memo
+          if memo and memo.type == "DoubleSided" and memo.front then
+            monsterMemo = memo.front
+          end
+          local attachName = monsterMemo and string.lower(monsterMemo.name or "")
           orientMemo = memo
+          if monsterMemo and monsterMemo.name then
+            obj.setName(monsterDisplayName(monsterMemo.name))
+          end
           if attachName then
             for i, m in ipairs(monsters) do
               if string.lower(m.name or "") == attachName and m.dest == "spawn" and m.location and m.pos then

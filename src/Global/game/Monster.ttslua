@@ -1,4 +1,9 @@
 
+function monsterDisplayName(name)
+  if not name then return nil end
+  return i18n.getStrById(name:gsub(" ", "_"))
+end
+
 function findInvestigatorFigurineOnLocationMat(invName)
   if not invName then return nil end
   local locationMat = getObjectFromGUID(locationMatId)
@@ -210,6 +215,10 @@ function attachMonsterToMat(monster, objectMemo, monsterMat, wounds)
     objectMemo.hp = objectMemo.hp + gameData.numberOfPlayers * objectMemo.elite
   end
 
+  if objectMemo.name then
+    spawnedMat.setName(monsterDisplayName(objectMemo.name))
+  end
+
   runAfterRest(spawnedMat, function(spawnedMat)
     spawnedMat.call("setHPMax", {maxHp = objectMemo.hp, wounds = wounds or 0})
   end)
@@ -245,6 +254,10 @@ function attachDoubleSidedToMat(monster, objectMemo, doubleSidedMat)
   doubleSidedMat.destruct()
 
   local spawnedMat = spawnObjectData({data = matData})
+
+  if objectMemo.front and objectMemo.front.name then
+    spawnedMat.setName(monsterDisplayName(objectMemo.front.name))
+  end
 
   runAfterRest(spawnedMat, function(spawnedMat)
     spawnedMat.call("setFrontData", objectMemo.front)
