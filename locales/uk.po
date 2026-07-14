@@ -1311,6 +1311,43 @@ msgstr "Підземний Дхол"
 msgid "Twilight_Sentry"
 msgstr "Вартовий Сутінку"
 
+# Epic monsters (Archive)
+msgid "Umordhoth"
+msgstr "Умордот"
+
+msgid "Servitor_of_Yog-Sothoth"
+msgstr "Слуга Йог-Сотота"
+
+msgid "Servitor_of_R'lyeh"
+msgstr "Слуга Р'льєха"
+
+msgid "Cthulhu"
+msgstr "Ктулху"
+
+msgid "Tsathoggua"
+msgstr "Тсатгоґґуа"
+
+msgid "Father_Dagon"
+msgstr "Батько Дагон"
+
+msgid "Mother_Hydra"
+msgstr "Мати Гідра"
+
+msgid "The_Bloodless_Man"
+msgstr "Безкровний Чоловік"
+
+msgid "Wendigo"
+msgstr "Вендіго"
+
+msgid "Ithaqua"
+msgstr "Ітаква"
+
+msgid "Mummified_Gug"
+msgstr "Муміфікований Гуг"
+
+msgid "The_Seer_of_Mnar"
+msgstr "Провидець Мнару"
+
 # Monster types
 msgid "type_Human"
 msgstr "Людина"

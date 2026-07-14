@@ -1243,6 +1243,43 @@ msgstr "Tunneling Dhole"
 msgid "Twilight_Sentry"
 msgstr "Twilight Sentry"
 
+# Epic monsters (Archive)
+msgid "Umordhoth"
+msgstr "Umôrdhoth"
+
+msgid "Servitor_of_Yog-Sothoth"
+msgstr "Servitor of Yog-Sothoth"
+
+msgid "Servitor_of_R'lyeh"
+msgstr "Servitor of R'lyeh"
+
+msgid "Cthulhu"
+msgstr "Cthulhu"
+
+msgid "Tsathoggua"
+msgstr "Tsathoggua"
+
+msgid "Father_Dagon"
+msgstr "Father Dagon"
+
+msgid "Mother_Hydra"
+msgstr "Mother Hydra"
+
+msgid "The_Bloodless_Man"
+msgstr "The Bloodless Man"
+
+msgid "Wendigo"
+msgstr "Wendigo"
+
+msgid "Ithaqua"
+msgstr "Ithaqua"
+
+msgid "Mummified_Gug"
+msgstr "Mummified Gug"
+
+msgid "The_Seer_of_Mnar"
+msgstr "The Seer of Mnar"
+
 # Monster types
 msgid "type_Human"
 msgstr "Human"
