@@ -24,7 +24,7 @@ function getMonstersInPlay()
       if attachments and #attachments > 0 then
         local memo = parseJson(attachments[1].memo)
         local monsterMemo = nil
-        if memo and memo.type == "Monster" then
+        if memo and (memo.type == "Monster" or (memo.type == "codex" and memo.role == "Monster")) then
           monsterMemo = memo
         elseif memo and memo.type == "DoubleSided" then
           local isFaceDown = attachments[1].is_face_down
@@ -35,7 +35,7 @@ function getMonstersInPlay()
           end
         end
         if monsterMemo and monsterMemo.name then
-          table.insert(monsters, {name = monsterMemo.name, mat = obj})
+          table.insert(monsters, {name = monsterMemo.name, mat = obj, elite = monsterMemo.elite, epic = monsterMemo.epic})
         end
       end
     end

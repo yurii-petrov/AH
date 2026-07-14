@@ -9,6 +9,8 @@ local PAD         = "10"
 
 local PANEL_BG    = "#000000bb"
 local TEXT_COL    = "#ffffff"
+local ELITE_COL   = "#FFA500"
+local EPIC_COL    = "#FF3B30"
 local CHEVRON_COL = "#666666"
 
 local COLLAPSE_W     = 20
@@ -247,8 +249,32 @@ function monsterActionToggle(player, alt, id)
   applyMonsterHighlight(i)
 end
 
+local function monsterNameColor(monster)
+  if monster.epic then return EPIC_COL end
+  if monster.elite then return ELITE_COL end
+  return TEXT_COL
+end
+
+local function orderByRank(monsters)
+  local epic, elite, normal = {}, {}, {}
+  for _, m in ipairs(monsters) do
+    if m.epic then
+      table.insert(epic, m)
+    elseif m.elite then
+      table.insert(elite, m)
+    else
+      table.insert(normal, m)
+    end
+  end
+  local ordered = {}
+  for _, m in ipairs(epic)   do table.insert(ordered, m) end
+  for _, m in ipairs(elite)  do table.insert(ordered, m) end
+  for _, m in ipairs(normal) do table.insert(ordered, m) end
+  return ordered
+end
+
 function refreshMonsterList()
-  local monsters = getMonstersInPlay()
+  local monsters = orderByRank(getMonstersInPlay())
   for i = 1, MAX_MONSTERS do
     local monster = monsters[i]
     if monster then
@@ -257,6 +283,7 @@ function refreshMonsterList()
       monsterGuidByRow[i]  = monster.mat.getGUID()
       monsterMatByRow[i]   = monster.mat
       self.UI.setAttribute(nameId(i), "text", text)
+      self.UI.setAttribute(nameId(i), "color", monsterNameColor(monster))
       self.UI.setAttribute(rowId(i), "active", true)
       refreshActionButton(i)
       applyMonsterHighlight(i)
