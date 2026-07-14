@@ -11,6 +11,33 @@ function findInvestigatorFigurineOnLocationMat(invName)
   end
 end
 
+function getMonstersInPlay()
+  local monsters = {}
+  for _, obj in ipairs(getAllObjects()) do
+    if obj.memo == "Monster Mat" then
+      local attachments = obj.getAttachments()
+      if attachments and #attachments > 0 then
+        local memo = parseJson(attachments[1].memo)
+        local monsterMemo = nil
+        if memo and memo.type == "Monster" then
+          monsterMemo = memo
+        elseif memo and memo.type == "DoubleSided" then
+          for _, side in ipairs({memo.front, memo.back}) do
+            if side and side.type == "Monster" then
+              monsterMemo = side
+              break
+            end
+          end
+        end
+        if monsterMemo and monsterMemo.name then
+          table.insert(monsters, {name = monsterMemo.name, mat = obj})
+        end
+      end
+    end
+  end
+  return monsters
+end
+
 local function getMonsterSpawnMemo(objectMemo)
   if objectMemo.type == "Monster" then
     return objectMemo

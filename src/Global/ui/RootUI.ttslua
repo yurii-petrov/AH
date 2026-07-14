@@ -419,5 +419,6 @@ function getRootXmlTable()
     restoreWindow(),
     buildInvestigatorsCollapsedPanel(),
     buildInvestigatorsWindow(),
+    buildMonsterListWindow(),
   }
 end
