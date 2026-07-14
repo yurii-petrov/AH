@@ -601,7 +601,7 @@ msgstr "Duterte Funeral Home"
 msgid "Silver_Twilight_Lodge"
 msgstr "Silver Twilight Lodge"
 
-msgid "City-of_the_Gugs"
+msgid "City_of_the_Gugs"
 msgstr "City of the Gugs"
 
 msgid "Vale_of_Pnath"

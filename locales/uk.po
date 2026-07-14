@@ -659,7 +659,7 @@ msgstr "Похоронне Бюро Дютерт"
 msgid "Silver_Twilight_Lodge"
 msgstr "Ложа Срібного Сутінку"
 
-msgid "City-of_the_Gugs"
+msgid "City_of_the_Gugs"
 msgstr "Місто Гугів"
 
 msgid "Vale_of_Pnath"
