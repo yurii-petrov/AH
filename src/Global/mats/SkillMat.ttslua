@@ -174,6 +174,68 @@ local function makeSkillToggleGroup(suffix, position, rotation)
 	}
 end
 
+local SKILL_COUNTER_ICON_Y_OFFSET = 60
+
+local function shiftY(position, delta)
+	local x, y, z = position:match("^(%S+)%s+(%S+)%s+(%S+)$")
+	if not x then return position end
+	return x .. " " .. tostring(tonumber(y) + delta) .. " " .. z
+end
+
+local function skillCounterValue(skillId)
+	return (data.skillCounters and data.skillCounters[skillId]) or 0
+end
+
+local function makeSkillCounterButton(def, suffix)
+	local skillId = skillIdFromDebuffId(def.id)
+	return {
+		tag = "button",
+		attributes = {
+			id = "skillcnt_" .. skillId .. suffix,
+			onClick = "skillCounterClick",
+			width = "200",
+			height = "280",
+			position = shiftY(def.position, SKILL_COUNTER_ICON_Y_OFFSET),
+			fontSize = DEBUFF_FONT_SIZE,
+			font = "Fonts/AHRDIcons",
+			textColor = def.textColor,
+			color = "clear",
+			text = DEBUFF_ICON_BY_ID[def.id],
+		}
+	}
+end
+
+local SKILL_COUNTER_TEXT_Y_OFFSET = -80
+
+local function makeSkillCounterText(def, suffix)
+	local skillId = skillIdFromDebuffId(def.id)
+	return {
+		tag = "text",
+		attributes = {
+			id = "skillcnt_txt_" .. skillId .. suffix,
+			position = shiftY(def.position, SKILL_COUNTER_TEXT_Y_OFFSET),
+			fontSize = "160",
+			fontStyle = "Bold",
+			font = "Fonts/AdonisC",
+			color = "#fff5e2",
+			text = tostring(skillCounterValue(skillId)),
+		}
+	}
+end
+
+local function makeSkillCounterGroup(suffix, position, rotation)
+	local children = {}
+	for _, def in ipairs(DEBUFF_ICONS) do
+		table.insert(children, makeSkillCounterButton(def, suffix))
+		table.insert(children, makeSkillCounterText(def, suffix))
+	end
+	return {
+		tag = "panel",
+		attributes = { id = "skill_counter_buttons" .. suffix, active = "false", width = "1200", height = "360", scale = "0.1 0.1 0", position = position, rotation = rotation },
+		children = children,
+	}
+end
+
 local function mirrorX(position)
 	local x, rest = position:match("^(%S+)%s+(.+)$")
 	if not x then return position end
@@ -290,6 +352,9 @@ local function buildUI()
 	table.insert(xml, makeSkillToggleGroup("1", "0 82 -15", "0 0 180"))
 	table.insert(xml, makeSkillToggleGroup("2", mirrorX("0 82 10"), "0 180 180"))
 
+	table.insert(xml, makeSkillCounterGroup("1", "0 82 -15", "0 0 180"))
+	table.insert(xml, makeSkillCounterGroup("2", mirrorX("0 82 10"), "0 180 180"))
+
 	table.insert(xml, makeCounterPanel("damage1", "false", "30 85 -11", "damage", "#e9543b", "0 300 10 0", "0", "damage_txt1", "150 78 0", "ПОРАНЕННЯ", "0 0 180"))
 	table.insert(xml, makeClsPanel("damage_cls1", "30 85 -11", "0 300 10 0", "0 0 180"))
 	table.insert(xml, makeCounterPanel("horror1", "false", "-30 85 -11", "horror", "#485cb3", "300 0 10 0", "0", "horror_txt1", "-26 -93 -11", "ЖАХ", "0 0 180"))
@@ -331,19 +396,27 @@ function refreshVisibility()
 	if cardGuid ~= data.lastCardGuid then
 		data.lastCardGuid = cardGuid
 		data.selectedSkills = {}
+		data.skillCounters = {}
 	end
 
 	local skillToggleActive = data.mode == 4 or data.mode == 5
-	local debuffActive = (not skillToggleActive) and data.debuffValue and data.debuffValue ~= 0
-	self.UI.setAttribute('debuff_buttons1', 'active', tostring((not showFront) and not debuffActive and not skillToggleActive))
+	local skillCounterActive = data.mode == 6
+	local debuffActive = (not skillToggleActive) and (not skillCounterActive) and data.debuffValue and data.debuffValue ~= 0
+	self.UI.setAttribute('debuff_buttons1', 'active', tostring((not showFront) and not debuffActive and not skillToggleActive and not skillCounterActive))
 	self.UI.setAttribute('debuff_display1', 'active', tostring((not showFront) and debuffActive))
-	self.UI.setAttribute('debuff_buttons2', 'active', tostring(showFront and not debuffActive and not skillToggleActive))
+	self.UI.setAttribute('debuff_buttons2', 'active', tostring(showFront and not debuffActive and not skillToggleActive and not skillCounterActive))
 	self.UI.setAttribute('debuff_display2', 'active', tostring(showFront and debuffActive))
 
 	self.UI.setAttribute('skill_toggle_buttons1', 'active', tostring((not showFront) and skillToggleActive))
 	self.UI.setAttribute('skill_toggle_buttons2', 'active', tostring(showFront and skillToggleActive))
 	if skillToggleActive then
 		updateSkillToggleColors()
+	end
+
+	self.UI.setAttribute('skill_counter_buttons1', 'active', tostring((not showFront) and skillCounterActive))
+	self.UI.setAttribute('skill_counter_buttons2', 'active', tostring(showFront and skillCounterActive))
+	if skillCounterActive then
+		updateSkillCounterTexts()
 	end
 
 	if debuffActive then
@@ -421,6 +494,33 @@ function skillToggle(player, alt_click, id)
 	self.UI.setAttribute("skill_" .. skillId .. "2", "textColor", color)
 
 	applySkillMatBonus()
+end
+
+function updateSkillCounterTexts()
+	for _, def in ipairs(DEBUFF_ICONS) do
+		local skillId = skillIdFromDebuffId(def.id)
+		local text = tostring(skillCounterValue(skillId))
+		self.UI.setAttribute("skillcnt_txt_" .. skillId .. "1", "text", text)
+		self.UI.setAttribute("skillcnt_txt_" .. skillId .. "2", "text", text)
+	end
+end
+
+function skillCounterClick(player, alt_click, id)
+	local skillId = id:match("^skillcnt_(%a+)%d$")
+	if not skillId then return end
+
+	data.skillCounters = data.skillCounters or {}
+	local current = skillCounterValue(skillId)
+	if alt_click == "-1" then
+		current = current + 1
+	elseif alt_click == "-2" then
+		current = math.max(0, current - 1)
+	end
+	data.skillCounters[skillId] = current
+
+	local text = tostring(current)
+	self.UI.setAttribute("skillcnt_txt_" .. skillId .. "1", "text", text)
+	self.UI.setAttribute("skillcnt_txt_" .. skillId .. "2", "text", text)
 end
 
 function applySkillMatBonus()
