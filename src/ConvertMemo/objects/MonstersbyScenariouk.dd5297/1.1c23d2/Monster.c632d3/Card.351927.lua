@@ -1,6 +1,13 @@
 data = {
   ["GUID"] = "351927",
   ["memo"] = {
+    ["activation"] = {
+      ["engage"] = {
+        ["order"] = "lowest",
+        ["stat"] = "strength"
+      },
+      ["kind"] = "hunter"
+    },
     ["hp"] = 1,
     ["monstertype"] = {
       "Human",
@@ -8,7 +15,10 @@ data = {
     },
     ["name"] = "Hooded Stalker",
     ["remnant"] = false,
-    ["type"] = "Monster",
-    ["reversed"] = true
+    ["reversed"] = true,
+    ["spawn"] = {
+      ["at"] = "mostDoom"
+    },
+    ["type"] = "Monster"
   }
 }

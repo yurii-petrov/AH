@@ -1,6 +1,16 @@
 data = {
   ["GUID"] = "74758b",
   ["memo"] = {
+    ["activation"] = {
+      ["effect"] = {
+        ["count"] = 2,
+        ["type"] = "leaderDrawsTokens"
+      },
+      ["kind"] = "lurker",
+      ["traits"] = {
+        "elusive"
+      }
+    },
     ["hp"] = 3,
     ["monstertype"] = {
       "Human",
@@ -8,7 +18,7 @@ data = {
     },
     ["name"] = "Alma Hill",
     ["remnant"] = false,
-    ["type"] = "Monster",
-    ["reversed"] = true
+    ["reversed"] = true,
+    ["type"] = "Monster"
   }
 }

@@ -1,6 +1,13 @@
 data = {
   ["GUID"] = "42d948",
   ["memo"] = {
+    ["activation"] = {
+      ["engage"] = {
+        ["metric"] = "money",
+        ["order"] = "most"
+      },
+      ["kind"] = "hunter"
+    },
     ["hp"] = 4,
     ["monstertype"] = {
       "Sheldon",
@@ -8,7 +15,10 @@ data = {
     },
     ["name"] = "Brutal Goons",
     ["remnant"] = false,
-    ["type"] = "Monster",
-    ["reversed"] = true
+    ["reversed"] = true,
+    ["spawn"] = {
+      ["at"] = "streetNearestPrey"
+    },
+    ["type"] = "Monster"
   }
 }

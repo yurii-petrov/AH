@@ -1,6 +1,13 @@
 data = {
   ["GUID"] = "36035d",
   ["memo"] = {
+    ["activation"] = {
+      ["engage"] = {
+        ["order"] = "highest",
+        ["stat"] = "lore"
+      },
+      ["kind"] = "hunter"
+    },
     ["hp"] = 1,
     ["monstertype"] = {
       "Lodge",
@@ -8,6 +15,9 @@ data = {
     },
     ["name"] = "Lodge Enforcer",
     ["remnant"] = false,
+    ["spawn"] = {
+      ["at"] = "unstable"
+    },
     ["type"] = "Monster"
   }
 }

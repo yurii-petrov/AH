@@ -1,6 +1,13 @@
 data = {
   ["GUID"] = "26c4ac",
   ["memo"] = {
+    ["activation"] = {
+      ["effect"] = {
+        ["type"] = "placeDoom",
+        ["where"] = "unstable"
+      },
+      ["kind"] = "lurker"
+    },
     ["hp"] = 2,
     ["monstertype"] = {
       "Lodge",
@@ -8,7 +15,10 @@ data = {
     },
     ["name"] = "Lodge Seer",
     ["remnant"] = true,
-    ["type"] = "Monster",
-    ["reversed"] = true
+    ["reversed"] = true,
+    ["spawn"] = {
+      ["at"] = "streetNearestLeader"
+    },
+    ["type"] = "Monster"
   }
 }

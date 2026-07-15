@@ -1,6 +1,13 @@
 data = {
   ["GUID"] = "5eb3d2",
   ["memo"] = {
+    ["activation"] = {
+      ["effect"] = {
+        ["type"] = "placeDoom",
+        ["where"] = "self"
+      },
+      ["kind"] = "lurker"
+    },
     ["elite"] = 1,
     ["hp"] = 2,
     ["monstertype"] = {
@@ -9,6 +16,9 @@ data = {
     },
     ["name"] = "Masked Ones",
     ["remnant"] = false,
+    ["spawn"] = {
+      ["at"] = "mostDoom"
+    },
     ["type"] = "Monster"
   }
 }

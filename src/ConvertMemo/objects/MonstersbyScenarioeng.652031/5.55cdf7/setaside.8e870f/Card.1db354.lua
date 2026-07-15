@@ -1,6 +1,14 @@
 data = {
   ["GUID"] = "1db354",
   ["memo"] = {
+    ["activation"] = {
+      ["engage"] = {
+        ["order"] = "lowest",
+        ["stat"] = "strength"
+      },
+      ["kind"] = "patrol",
+      ["moveTo"] = "mostDoom"
+    },
     ["hp"] = 2,
     ["monstertype"] = {
       "Sheldon",
@@ -8,7 +16,10 @@ data = {
     },
     ["name"] = "Rough Bootlegger",
     ["remnant"] = false,
-    ["type"] = "Monster",
-    ["reversed"] = true
+    ["reversed"] = true,
+    ["spawn"] = {
+      ["at"] = "unstable"
+    },
+    ["type"] = "Monster"
   }
 }

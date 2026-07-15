@@ -1,16 +1,25 @@
 data = {
   ["GUID"] = "7e2467",
   ["memo"] = {
-    ["reversed"] = true,
-    ["type"] = "DoubleSided",
     ["back"] = {
-      ["name"] = "Raging Poltergeist",
       ["monstertype"] = {
         "Angry Spirit"
       },
+      ["name"] = "Raging Poltergeist",
       ["type"] = "Monster"
     },
     ["front"] = {
+      ["activation"] = {
+        ["engage"] = {
+          ["order"] = "lowest",
+          ["stat"] = "will"
+        },
+        ["kind"] = "patrol",
+        ["moveTo"] = "unstable",
+        ["traits"] = {
+          "shrouded"
+        }
+      },
       ["elite"] = 1,
       ["hp"] = 1,
       ["monstertype"] = {
@@ -18,7 +27,12 @@ data = {
       },
       ["name"] = "Crashing Specter",
       ["remnant"] = true,
+      ["spawn"] = {
+        ["at"] = "mostDoom"
+      },
       ["type"] = "Monster"
-    }
+    },
+    ["reversed"] = true,
+    ["type"] = "DoubleSided"
   }
 }

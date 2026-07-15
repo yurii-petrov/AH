@@ -1,6 +1,14 @@
 data = {
   ["GUID"] = "68afcf",
   ["memo"] = {
+    ["activation"] = {
+      ["engage"] = {
+        ["metric"] = "spells",
+        ["order"] = "most"
+      },
+      ["kind"] = "patrol",
+      ["moveTo"] = "mostDoom"
+    },
     ["hp"] = 1,
     ["monstertype"] = {
       "Lodge",
@@ -8,7 +16,10 @@ data = {
     },
     ["name"] = "Lodge Loyalist",
     ["remnant"] = false,
-    ["type"] = "Monster",
-    ["reversed"] = true
+    ["reversed"] = true,
+    ["spawn"] = {
+      ["at"] = "mostDoom"
+    },
+    ["type"] = "Monster"
   }
 }

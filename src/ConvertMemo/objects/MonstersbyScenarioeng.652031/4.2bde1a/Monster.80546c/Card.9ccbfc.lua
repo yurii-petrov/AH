@@ -1,6 +1,10 @@
 data = {
   ["GUID"] = "9ccbfc",
   ["memo"] = {
+    ["activation"] = {
+      ["kind"] = "patrol",
+      ["moveTo"] = "unstable"
+    },
     ["elite"] = 1,
     ["hp"] = 2,
     ["monstertype"] = {
@@ -8,7 +12,10 @@ data = {
     },
     ["name"] = "Wake Titan",
     ["remnant"] = true,
-    ["type"] = "Monster",
-    ["reversed"] = true
+    ["reversed"] = true,
+    ["spawn"] = {
+      ["at"] = "unstable"
+    },
+    ["type"] = "Monster"
   }
 }

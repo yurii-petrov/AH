@@ -1,6 +1,16 @@
 data = {
   ["GUID"] = "334a13",
   ["memo"] = {
+    ["activation"] = {
+      ["effect"] = {
+        ["type"] = "placeDoom",
+        ["where"] = "adjacent"
+      },
+      ["kind"] = "lurker",
+      ["traits"] = {
+        "elusive"
+      }
+    },
     ["hp"] = 1,
     ["monstertype"] = {
       "Human",
@@ -8,6 +18,9 @@ data = {
     },
     ["name"] = "Occult Ritualist",
     ["remnant"] = false,
+    ["spawn"] = {
+      ["at"] = "streetNearestLeader"
+    },
     ["type"] = "Monster"
   }
 }

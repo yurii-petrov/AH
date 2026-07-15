@@ -1,6 +1,13 @@
 data = {
   ["GUID"] = "72748f",
   ["memo"] = {
+    ["activation"] = {
+      ["effect"] = {
+        ["type"] = "placeDoom",
+        ["where"] = "self"
+      },
+      ["kind"] = "lurker"
+    },
     ["elite"] = 1,
     ["hp"] = 2,
     ["monstertype"] = {
@@ -9,7 +16,10 @@ data = {
     },
     ["name"] = "Brawling Riot",
     ["remnant"] = false,
-    ["type"] = "Monster",
-    ["reversed"] = true
+    ["reversed"] = true,
+    ["spawn"] = {
+      ["at"] = "unstable"
+    },
+    ["type"] = "Monster"
   }
 }

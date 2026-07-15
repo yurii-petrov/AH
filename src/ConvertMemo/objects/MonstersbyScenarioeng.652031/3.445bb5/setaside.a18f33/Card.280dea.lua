@@ -1,6 +1,16 @@
 data = {
   ["GUID"] = "280dea",
   ["memo"] = {
+    ["activation"] = {
+      ["effect"] = {
+        ["type"] = "placeDoom",
+        ["where"] = "self"
+      },
+      ["kind"] = "lurker",
+      ["traits"] = {
+        "elusive"
+      }
+    },
     ["hp"] = 1,
     ["monstertype"] = {
       "Lodge",
@@ -8,7 +18,10 @@ data = {
     },
     ["name"] = "Twilight Supplicant",
     ["remnant"] = false,
-    ["type"] = "Monster",
-    ["reversed"] = true
+    ["reversed"] = true,
+    ["spawn"] = {
+      ["at"] = "mostDoom"
+    },
+    ["type"] = "Monster"
   }
 }

@@ -1,6 +1,14 @@
 data = {
   ["GUID"] = "206557",
   ["memo"] = {
+    ["activation"] = {
+      ["engage"] = {
+        ["order"] = "highest",
+        ["stat"] = "influence"
+      },
+      ["kind"] = "patrol",
+      ["moveTo"] = "unstable"
+    },
     ["hp"] = 1,
     ["monstertype"] = {
       "Human",
@@ -8,7 +16,10 @@ data = {
     },
     ["name"] = "Robed Figure",
     ["remnant"] = false,
-    ["type"] = "Monster",
-    ["reversed"] = true
+    ["reversed"] = true,
+    ["spawn"] = {
+      ["at"] = "unstable"
+    },
+    ["type"] = "Monster"
   }
 }

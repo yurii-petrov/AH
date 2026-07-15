@@ -1,7 +1,14 @@
 data = {
   ["GUID"] = "4bf34d",
   ["memo"] = {
-    ["reversed"] = true,
+    ["activation"] = {
+      ["directly"] = true,
+      ["kind"] = "patrol",
+      ["moveTo"] = "unstable",
+      ["traits"] = {
+        "elusive"
+      }
+    },
     ["hp"] = 3,
     ["monstertype"] = {
       "Cultist",
@@ -9,6 +16,10 @@ data = {
     },
     ["name"] = "Declan Pearce",
     ["remnant"] = false,
+    ["reversed"] = true,
+    ["spawn"] = {
+      ["at"] = "unstable"
+    },
     ["type"] = "Monster"
   }
 }

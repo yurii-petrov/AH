@@ -1,6 +1,13 @@
 data = {
   ["GUID"] = "7766e5",
   ["memo"] = {
+    ["activation"] = {
+      ["effect"] = {
+        ["amount"] = 1,
+        ["type"] = "damageEach"
+      },
+      ["kind"] = "lurker"
+    },
     ["hp"] = 4,
     ["monstertype"] = {
       "Ghoul",
@@ -8,7 +15,10 @@ data = {
     },
     ["name"] = "Ghoul Priest",
     ["remnant"] = true,
-    ["type"] = "Monster",
-    ["reversed"] = true
+    ["reversed"] = true,
+    ["spawn"] = {
+      ["at"] = "mostDoom"
+    },
+    ["type"] = "Monster"
   }
 }

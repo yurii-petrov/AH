@@ -1,6 +1,13 @@
 data = {
   ["GUID"] = "33f3f7",
   ["memo"] = {
+    ["activation"] = {
+      ["effect"] = {
+        ["type"] = "placeDoom",
+        ["where"] = "self"
+      },
+      ["kind"] = "lurker"
+    },
     ["hp"] = 2,
     ["monstertype"] = {
       "Human",
@@ -8,6 +15,9 @@ data = {
     },
     ["name"] = "High Priest",
     ["remnant"] = false,
+    ["spawn"] = {
+      ["at"] = "mostDoom"
+    },
     ["type"] = "Monster"
   }
 }

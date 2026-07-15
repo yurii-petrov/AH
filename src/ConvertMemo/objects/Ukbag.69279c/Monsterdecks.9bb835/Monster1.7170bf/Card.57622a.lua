@@ -1,6 +1,13 @@
 data = {
   ["GUID"] = "57622a",
   ["memo"] = {
+    ["activation"] = {
+      ["kind"] = "patrol",
+      ["moveTo"] = "mostDoom",
+      ["traits"] = {
+        "massive"
+      }
+    },
     ["elite"] = 1,
     ["hp"] = 4,
     ["monstertype"] = {
@@ -8,6 +15,9 @@ data = {
     },
     ["name"] = "R'lyeh Guardian",
     ["remnant"] = true,
+    ["spawn"] = {
+      ["at"] = "mostDoom"
+    },
     ["trait"] = "Massive",
     ["type"] = "Monster"
   }

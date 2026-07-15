@@ -1,6 +1,12 @@
 data = {
   ["GUID"] = "71f39b",
   ["memo"] = {
+    ["activation"] = {
+      ["effect"] = {
+        ["type"] = "discardFocusEach"
+      },
+      ["kind"] = "lurker"
+    },
     ["hp"] = 3,
     ["monstertype"] = {
       "Human",
@@ -8,7 +14,7 @@ data = {
     },
     ["name"] = "Herman Collins",
     ["remnant"] = false,
-    ["type"] = "Monster",
-    ["reversed"] = true
+    ["reversed"] = true,
+    ["type"] = "Monster"
   }
 }

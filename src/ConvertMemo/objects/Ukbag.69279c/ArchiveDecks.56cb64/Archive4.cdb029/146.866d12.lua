@@ -3,6 +3,7 @@ data = {
   ["memo"] = {
     ["reversed"] = true,
     ["elite"] = 2,
+    ["epic"] = true,
     ["hp"] = 6,
     ["monstertype"] = {
       "Deathless Gug",

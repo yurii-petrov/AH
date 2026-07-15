@@ -1,6 +1,14 @@
 data = {
   ["GUID"] = "cf36aa",
   ["memo"] = {
+    ["activation"] = {
+      ["engage"] = {
+        ["metric"] = "clues",
+        ["order"] = "most"
+      },
+      ["kind"] = "patrol",
+      ["moveTo"] = "unstable"
+    },
     ["hp"] = 2,
     ["monstertype"] = {
       "Human",
@@ -8,7 +16,10 @@ data = {
     },
     ["name"] = "Altered Servant",
     ["remnant"] = true,
-    ["type"] = "Monster",
-    ["reversed"] = true
+    ["reversed"] = true,
+    ["spawn"] = {
+      ["at"] = "unstable"
+    },
+    ["type"] = "Monster"
   }
 }

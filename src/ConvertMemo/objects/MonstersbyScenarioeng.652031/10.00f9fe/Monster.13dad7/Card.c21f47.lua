@@ -1,6 +1,13 @@
 data = {
   ["GUID"] = "c21f47",
   ["memo"] = {
+    ["activation"] = {
+      ["engage"] = {
+        ["order"] = "lowest",
+        ["stat"] = "will"
+      },
+      ["kind"] = "hunter"
+    },
     ["hp"] = 2,
     ["monstertype"] = {
       "Dreaming",
@@ -8,7 +15,10 @@ data = {
     },
     ["name"] = "Enraged Dreamer",
     ["remnant"] = false,
-    ["type"] = "Monster",
-    ["reversed"] = true
+    ["reversed"] = true,
+    ["spawn"] = {
+      ["at"] = "mostDoom"
+    },
+    ["type"] = "Monster"
   }
 }

@@ -1,6 +1,15 @@
 data = {
   ["GUID"] = "e39463",
   ["memo"] = {
+    ["activation"] = {
+      ["effect"] = {
+        ["type"] = "delayNearest"
+      },
+      ["kind"] = "lurker",
+      ["traits"] = {
+        "elusive"
+      }
+    },
     ["hp"] = 1,
     ["monstertype"] = {
       "Lodge",
@@ -8,7 +17,10 @@ data = {
     },
     ["name"] = "Twilight Sentry",
     ["remnant"] = true,
-    ["type"] = "Monster",
-    ["reversed"] = true
+    ["reversed"] = true,
+    ["spawn"] = {
+      ["at"] = "unstable"
+    },
+    ["type"] = "Monster"
   }
 }

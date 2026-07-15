@@ -2,6 +2,7 @@ data = {
   ["GUID"] = "720e7f",
   ["memo"] = {
     ["elite"] = 2,
+    ["epic"] = true,
     ["hp"] = 4,
     ["monstertype"] = {
       "Spirit",

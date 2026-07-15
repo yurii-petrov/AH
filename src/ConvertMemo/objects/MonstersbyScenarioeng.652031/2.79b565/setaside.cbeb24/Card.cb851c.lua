@@ -1,6 +1,17 @@
 data = {
   ["GUID"] = "cb851c",
   ["memo"] = {
+    ["activation"] = {
+      ["effect"] = {
+        ["location"] = "Hangman's Hill",
+        ["type"] = "placeDoom",
+        ["where"] = "location"
+      },
+      ["kind"] = "lurker",
+      ["traits"] = {
+        "elusive"
+      }
+    },
     ["hp"] = 3,
     ["monstertype"] = {
       "Human",
@@ -8,7 +19,7 @@ data = {
     },
     ["name"] = "Ruth Turner",
     ["remnant"] = false,
-    ["type"] = "Monster",
-    ["reversed"] = true
+    ["reversed"] = true,
+    ["type"] = "Monster"
   }
 }

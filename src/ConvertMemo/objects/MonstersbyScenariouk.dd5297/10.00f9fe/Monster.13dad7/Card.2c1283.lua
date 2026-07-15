@@ -1,6 +1,16 @@
 data = {
   ["GUID"] = "2c1283",
   ["memo"] = {
+    ["activation"] = {
+      ["effect"] = {
+        ["count"] = 1,
+        ["type"] = "leaderDrawsTokens"
+      },
+      ["kind"] = "lurker",
+      ["traits"] = {
+        "massive"
+      }
+    },
     ["elite"] = 1,
     ["hp"] = 4,
     ["monstertype"] = {
@@ -8,7 +18,10 @@ data = {
     },
     ["name"] = "Cantor of R'lyeh",
     ["remnant"] = true,
-    ["type"] = "Monster",
-    ["reversed"] = true
+    ["reversed"] = true,
+    ["spawn"] = {
+      ["at"] = "mostDoom"
+    },
+    ["type"] = "Monster"
   }
 }
