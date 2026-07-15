@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"elite\":1,\"hp\":2,\"monstertype\":[\"Formless Spawn\"],\"name\":\"Morphic Terror\",\"remnant\":true,\"trait\":\"Massive\",\"type\":\"Monster\",\"reversed\":true}",
+  "Memo": "{\"activation\":{\"effect\":{\"type\":\"placeDoom\",\"where\":\"adjacent\"},\"kind\":\"lurker\"},\"elite\":1,\"hp\":2,\"monstertype\":[\"Formless Spawn\"],\"name\":\"Morphic Terror\",\"remnant\":true,\"reversed\":true,\"spawn\":{\"at\":\"streetNearestLeader\"},\"trait\":\"Massive\",\"type\":\"Monster\"}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,

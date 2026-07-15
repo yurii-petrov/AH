@@ -24,7 +24,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"elite\":1,\"hp\":2,\"monstertype\":[\"Shantak\",\"Servitor\"],\"name\":\"Guardian Beast\",\"remnant\":true,\"type\":\"Monster\"}",
+  "Memo": "{\"activation\":{\"engage\":{\"order\":\"highest\",\"stat\":\"strength\"},\"kind\":\"patrol\",\"moveTo\":\"unstable\"},\"elite\":1,\"hp\":2,\"monstertype\":[\"Shantak\",\"Servitor\"],\"name\":\"Guardian Beast\",\"remnant\":true,\"spawn\":{\"at\":\"mostDoom\"},\"type\":\"Monster\"}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,

@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"elite\":1,\"hp\":4,\"monstertype\":[\"Star Spawn\"],\"name\":\"Cantor of R'lyeh\",\"remnant\":true,\"type\":\"Monster\",\"reversed\":true}",
+  "Memo": "{\"activation\":{\"effect\":{\"count\":1,\"type\":\"leaderDrawsTokens\"},\"kind\":\"lurker\",\"traits\":[\"massive\"]},\"elite\":1,\"hp\":4,\"monstertype\":[\"Star Spawn\"],\"name\":\"Cantor of R'lyeh\",\"remnant\":true,\"reversed\":true,\"spawn\":{\"at\":\"mostDoom\"},\"type\":\"Monster\"}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,

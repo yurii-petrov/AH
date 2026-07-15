@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"elite\":1,\"hp\":2,\"monstertype\":[\"Deep One\"],\"name\":\"Wake Titan\",\"remnant\":true,\"type\":\"Monster\"}",
+  "Memo": "{\"activation\":{\"kind\":\"patrol\",\"moveTo\":\"unstable\"},\"elite\":1,\"hp\":2,\"monstertype\":[\"Deep One\"],\"name\":\"Wake Titan\",\"remnant\":true,\"spawn\":{\"at\":\"unstable\"},\"type\":\"Monster\"}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,

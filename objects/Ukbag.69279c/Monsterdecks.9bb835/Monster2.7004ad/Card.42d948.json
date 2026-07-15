@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"hp\":4,\"monstertype\":[\"Sheldon\",\"Human\"],\"name\":\"Brutal Goons\",\"remnant\":false,\"type\":\"Monster\"}",
+  "Memo": "{\"activation\":{\"engage\":{\"metric\":\"money\",\"order\":\"most\"},\"kind\":\"hunter\"},\"hp\":4,\"monstertype\":[\"Sheldon\",\"Human\"],\"name\":\"Brutal Goons\",\"remnant\":false,\"spawn\":{\"at\":\"streetNearestPrey\"},\"type\":\"Monster\"}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,

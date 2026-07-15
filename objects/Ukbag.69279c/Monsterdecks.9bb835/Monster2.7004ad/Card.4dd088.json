@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"elite\":1,\"hp\":2,\"monstertype\":[\"O'Bannion\",\"Servitor\"],\"name\":\"Siobhan Riley\",\"remnant\":true,\"type\":\"Monster\"}",
+  "Memo": "{\"activation\":{\"engage\":{\"order\":\"highest\",\"stat\":\"influence\"},\"kind\":\"hunter\"},\"elite\":1,\"hp\":2,\"monstertype\":[\"O'Bannion\",\"Servitor\"],\"name\":\"Siobhan Riley\",\"remnant\":true,\"spawn\":{\"at\":\"streetNearestLeader\"},\"type\":\"Monster\"}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,

@@ -448,6 +448,22 @@ function onSave()
   return saveData
 end
 
+function getStats()
+  local skills = {}
+  for _, key in ipairs({"lore", "influence", "observation", "strength", "will"}) do
+    skills[key] = (data.skill[key] or 0) + (data.focus[key] or 0) + (data.skillBonus[key] or 0)
+  end
+  return JSON.encode({
+    name = data.name,
+    clue = data.clue or 0,
+    money = data.money or 0,
+    remnant = data.remnant or 0,
+    hp = data.hp or 0,
+    hpMax = data.hpMax or 0,
+    skill = skills,
+  })
+end
+
 function setMemo(objectMemo)
   if not objectMemo then
     objectMemo = {}

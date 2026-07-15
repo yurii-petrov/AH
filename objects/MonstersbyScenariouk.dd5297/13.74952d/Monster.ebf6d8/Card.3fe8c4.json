@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"hp\":4,\"monstertype\":[\"Gug\"],\"name\":\"Bloody Titan\",\"remnant\":true,\"type\":\"Monster\",\"reversed\":true}",
+  "Memo": "{\"activation\":{\"engage\":{\"order\":\"lowest\",\"stat\":\"observation\"},\"kind\":\"hunter\",\"traits\":[\"massive\"]},\"hp\":4,\"monstertype\":[\"Gug\"],\"name\":\"Bloody Titan\",\"remnant\":true,\"reversed\":true,\"spawn\":{\"at\":\"streetNearestPrey\"},\"type\":\"Monster\"}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,

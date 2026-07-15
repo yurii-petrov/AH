@@ -24,7 +24,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"elite\":1,\"hp\":2,\"monstertype\":[\"Moon-Beast\"],\"name\":\"Feasting Master\",\"remnant\":true,\"type\":\"Monster\"}",
+  "Memo": "{\"activation\":{\"engage\":{\"metric\":\"allies\",\"order\":\"most\"},\"kind\":\"hunter\"},\"elite\":1,\"hp\":2,\"monstertype\":[\"Moon-Beast\"],\"name\":\"Feasting Master\",\"remnant\":true,\"spawn\":{\"at\":\"mostDoom\"},\"type\":\"Monster\"}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,

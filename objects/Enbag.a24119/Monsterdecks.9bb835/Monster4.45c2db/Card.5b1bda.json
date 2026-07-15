@@ -24,7 +24,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"hp\":3,\"monstertype\":[\"Aberration\"],\"name\":\"Tunneling Dhole\",\"remnant\":true,\"type\":\"Monster\"}",
+  "Memo": "{\"activation\":{\"effect\":{\"amount\":2,\"type\":\"damageNeighborhood\"},\"kind\":\"lurker\"},\"hp\":3,\"monstertype\":[\"Aberration\"],\"name\":\"Tunneling Dhole\",\"remnant\":true,\"spawn\":{\"at\":\"unstable\"},\"type\":\"Monster\"}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,

@@ -24,7 +24,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"hp\":2,\"monstertype\":[\"Dreaming\",\"Human\"],\"name\":\"Enraged Dreamer\",\"remnant\":false,\"type\":\"Monster\"}",
+  "Memo": "{\"activation\":{\"engage\":{\"order\":\"lowest\",\"stat\":\"will\"},\"kind\":\"hunter\"},\"hp\":2,\"monstertype\":[\"Dreaming\",\"Human\"],\"name\":\"Enraged Dreamer\",\"remnant\":false,\"spawn\":{\"at\":\"mostDoom\"},\"type\":\"Monster\"}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,

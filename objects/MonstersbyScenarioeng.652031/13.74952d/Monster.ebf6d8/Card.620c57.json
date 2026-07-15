@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"hp\":2,\"monstertype\":[\"Human\",\"Thrall\"],\"name\":\"Void Touched\",\"remnant\":true,\"type\":\"Monster\",\"reversed\":true}",
+  "Memo": "{\"activation\":{\"effect\":{\"amount\":1,\"type\":\"horrorEach\"},\"kind\":\"lurker\"},\"hp\":2,\"monstertype\":[\"Human\",\"Thrall\"],\"name\":\"Void Touched\",\"remnant\":true,\"reversed\":true,\"spawn\":{\"at\":\"streetNearestLeader\"},\"type\":\"Monster\"}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,

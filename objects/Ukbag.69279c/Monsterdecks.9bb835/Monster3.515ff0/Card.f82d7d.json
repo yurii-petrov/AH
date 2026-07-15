@@ -24,7 +24,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"hp\":1,\"monstertype\":[\"Dreaming\",\"Human\"],\"name\":\"Terrified Wanderer\",\"remnant\":false,\"type\":\"Monster\"}",
+  "Memo": "{\"activation\":{\"engage\":{\"order\":\"lowest\",\"stat\":\"will\"},\"kind\":\"hunter\"},\"hp\":1,\"monstertype\":[\"Dreaming\",\"Human\"],\"name\":\"Terrified Wanderer\",\"remnant\":false,\"spawn\":{\"at\":\"streetNearestLeader\"},\"type\":\"Monster\"}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,

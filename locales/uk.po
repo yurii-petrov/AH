@@ -659,7 +659,7 @@ msgstr "Похоронне Бюро Дютерт"
 msgid "Silver_Twilight_Lodge"
 msgstr "Ложа Срібного Сутінку"
 
-msgid "City-of_the_Gugs"
+msgid "City_of_the_Gugs"
 msgstr "Місто Гугів"
 
 msgid "Vale_of_Pnath"
@@ -1311,6 +1311,43 @@ msgstr "Підземний Дхол"
 msgid "Twilight_Sentry"
 msgstr "Вартовий Сутінку"
 
+# Epic monsters (Archive)
+msgid "Umordhoth"
+msgstr "Умордот"
+
+msgid "Servitor_of_Yog-Sothoth"
+msgstr "Слуга Йог-Сотота"
+
+msgid "Servitor_of_R'lyeh"
+msgstr "Слуга Р'льєха"
+
+msgid "Cthulhu"
+msgstr "Ктулху"
+
+msgid "Tsathoggua"
+msgstr "Тсатгоґґуа"
+
+msgid "Father_Dagon"
+msgstr "Батько Дагон"
+
+msgid "Mother_Hydra"
+msgstr "Мати Гідра"
+
+msgid "The_Bloodless_Man"
+msgstr "Безкровний Чоловік"
+
+msgid "Wendigo"
+msgstr "Вендіго"
+
+msgid "Ithaqua"
+msgstr "Ітаква"
+
+msgid "Mummified_Gug"
+msgstr "Муміфікований Гуг"
+
+msgid "The_Seer_of_Mnar"
+msgstr "Провидець Мнару"
+
 # Monster types
 msgid "type_Human"
 msgstr "Людина"
@@ -1589,3 +1626,41 @@ msgstr "Загартований"
 
 msgid "RI_seeker"
 msgstr "Шукач"
+
+# Monster hints: activation keyword labels
+msgid "MH_hunter"
+msgstr "Мисливець"
+
+msgid "MH_patrol"
+msgstr "Патрульний"
+
+msgid "MH_lurker"
+msgstr "Причаєний"
+
+# Monster hints: target criteria labels
+msgid "MH_clues"
+msgstr "Зачіпки"
+
+msgid "MH_allies"
+msgstr "Союзники"
+
+msgid "MH_items"
+msgstr "Предмети"
+
+msgid "MH_spells"
+msgstr "Закляття"
+
+msgid "MH_nearest"
+msgstr "Найближчий"
+
+msgid "MH_doom"
+msgstr "Приреченість"
+
+msgid "MH_unstable"
+msgstr "Нестабільна локація"
+
+msgid "MH_no_target"
+msgstr "Цілі немає"
+
+msgid "MH_distance"
+msgstr "дистанція"

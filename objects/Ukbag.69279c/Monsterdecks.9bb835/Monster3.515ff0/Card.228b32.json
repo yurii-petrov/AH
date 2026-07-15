@@ -24,7 +24,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"elite\":1,\"hp\":2,\"monstertype\":[\"Shantak\",\"Servitor\"],\"name\":\"Dread Shadow\",\"remnant\":true,\"type\":\"Monster\"}",
+  "Memo": "{\"activation\":{\"engage\":{\"order\":\"highest\",\"stat\":\"lore\"},\"kind\":\"hunter\",\"traits\":[\"pursuit\"]},\"elite\":1,\"hp\":2,\"monstertype\":[\"Shantak\",\"Servitor\"],\"name\":\"Dread Shadow\",\"remnant\":true,\"spawn\":{\"at\":\"unstable\"},\"type\":\"Monster\"}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,

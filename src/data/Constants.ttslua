@@ -4,6 +4,13 @@ Tag = {
   AnomalyToken = "Anomaly Token"
 }
 
+Phase = {
+  Action    = 1,
+  Monster   = 2,
+  Encounter = 3,
+  Mythos    = 4,
+}
+
 MythosCup = {
   SpreadDoom = "Spread Doom",
   SpawnMonster = "Spawn Monster",

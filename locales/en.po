@@ -601,7 +601,7 @@ msgstr "Duterte Funeral Home"
 msgid "Silver_Twilight_Lodge"
 msgstr "Silver Twilight Lodge"
 
-msgid "City-of_the_Gugs"
+msgid "City_of_the_Gugs"
 msgstr "City of the Gugs"
 
 msgid "Vale_of_Pnath"
@@ -1243,6 +1243,43 @@ msgstr "Tunneling Dhole"
 msgid "Twilight_Sentry"
 msgstr "Twilight Sentry"
 
+# Epic monsters (Archive)
+msgid "Umordhoth"
+msgstr "Umôrdhoth"
+
+msgid "Servitor_of_Yog-Sothoth"
+msgstr "Servitor of Yog-Sothoth"
+
+msgid "Servitor_of_R'lyeh"
+msgstr "Servitor of R'lyeh"
+
+msgid "Cthulhu"
+msgstr "Cthulhu"
+
+msgid "Tsathoggua"
+msgstr "Tsathoggua"
+
+msgid "Father_Dagon"
+msgstr "Father Dagon"
+
+msgid "Mother_Hydra"
+msgstr "Mother Hydra"
+
+msgid "The_Bloodless_Man"
+msgstr "The Bloodless Man"
+
+msgid "Wendigo"
+msgstr "Wendigo"
+
+msgid "Ithaqua"
+msgstr "Ithaqua"
+
+msgid "Mummified_Gug"
+msgstr "Mummified Gug"
+
+msgid "The_Seer_of_Mnar"
+msgstr "The Seer of Mnar"
+
 # Monster types
 msgid "type_Human"
 msgstr "Human"
@@ -1519,3 +1556,41 @@ msgstr "Survivor"
 
 msgid "RI_seeker"
 msgstr "Seeker"
+
+# Monster hints: activation keyword labels
+msgid "MH_hunter"
+msgstr "Hunter"
+
+msgid "MH_patrol"
+msgstr "Patrol"
+
+msgid "MH_lurker"
+msgstr "Lurker"
+
+# Monster hints: target criteria labels
+msgid "MH_clues"
+msgstr "Clues"
+
+msgid "MH_allies"
+msgstr "Allies"
+
+msgid "MH_items"
+msgstr "Items"
+
+msgid "MH_spells"
+msgstr "Spells"
+
+msgid "MH_nearest"
+msgstr "Nearest"
+
+msgid "MH_doom"
+msgstr "Doom"
+
+msgid "MH_unstable"
+msgstr "Unstable space"
+
+msgid "MH_no_target"
+msgstr "No target"
+
+msgid "MH_distance"
+msgstr "distance"

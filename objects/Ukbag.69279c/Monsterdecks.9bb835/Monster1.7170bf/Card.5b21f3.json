@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"elite\":1,\"hp\":3,\"monstertype\":[\"Human\",\"Cultist\"],\"name\":\"Wolf-Man Drew\",\"remnant\":false,\"type\":\"Monster\"}",
+  "Memo": "{\"activation\":{\"engage\":{\"order\":\"lowest\",\"stat\":\"strength\"},\"kind\":\"hunter\"},\"elite\":1,\"hp\":3,\"monstertype\":[\"Human\",\"Cultist\"],\"name\":\"Wolf-Man Drew\",\"remnant\":false,\"type\":\"Monster\"}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,

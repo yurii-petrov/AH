@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"hp\":2,\"monstertype\":[\"Deep One\"],\"name\":\"Ocean Scion\",\"remnant\":true,\"type\":\"Monster\",\"reversed\":true}",
+  "Memo": "{\"activation\":{\"engage\":{\"order\":\"lowest\",\"stat\":\"influence\"},\"kind\":\"patrol\",\"moveTo\":\"mostDoom\"},\"hp\":2,\"monstertype\":[\"Deep One\"],\"name\":\"Ocean Scion\",\"remnant\":true,\"reversed\":true,\"spawn\":{\"at\":\"mostDoom\"},\"type\":\"Monster\"}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,

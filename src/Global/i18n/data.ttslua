@@ -130,7 +130,7 @@ I18N_DATA = {
     ["en"] = "Charlie Kane",
     ["uk"] = "Чарлі Кейн",
   },
-  ["City-of_the_Gugs"] = {
+  ["City_of_the_Gugs"] = {
     ["en"] = "City of the Gugs",
     ["uk"] = "Місто Гугів",
   },
@@ -189,6 +189,10 @@ I18N_DATA = {
   ["Cruel_Slaver"] = {
     ["en"] = "Cruel Slaver",
     ["uk"] = "Жорстокий Поневолювач",
+  },
+  ["Cthulhu"] = {
+    ["en"] = "Cthulhu",
+    ["uk"] = "Ктулху",
   },
   ["Curiositie_Shoppe"] = {
     ["en"] = "Curiositie Shoppe",
@@ -269,6 +273,10 @@ I18N_DATA = {
   ["Falcon_Point"] = {
     ["en"] = "Falcon Point",
     ["uk"] = "Мис Сокола",
+  },
+  ["Father_Dagon"] = {
+    ["en"] = "Father Dagon",
+    ["uk"] = "Батько Дагон",
   },
   ["Father_Mateo"] = {
     ["en"] = "Father Mateo",
@@ -554,6 +562,10 @@ I18N_DATA = {
     ["en"] = "Investigators 3D",
     ["uk"] = "Дослідники 3D",
   },
+  ["Ithaqua"] = {
+    ["en"] = "Ithaqua",
+    ["uk"] = "Ітаква",
+  },
   ["Jenny_Barnes"] = {
     ["en"] = "Jenny Barnes",
     ["uk"] = "Дженні Барнс",
@@ -781,6 +793,54 @@ I18N_DATA = {
   ["Lupine_Thrall"] = {
     ["en"] = "Lupine Thrall",
     ["uk"] = "Одержимий Вовк",
+  },
+  ["MH_allies"] = {
+    ["en"] = "Allies",
+    ["uk"] = "Союзники",
+  },
+  ["MH_clues"] = {
+    ["en"] = "Clues",
+    ["uk"] = "Зачіпки",
+  },
+  ["MH_distance"] = {
+    ["en"] = "distance",
+    ["uk"] = "дистанція",
+  },
+  ["MH_doom"] = {
+    ["en"] = "Doom",
+    ["uk"] = "Приреченість",
+  },
+  ["MH_hunter"] = {
+    ["en"] = "Hunter",
+    ["uk"] = "Мисливець",
+  },
+  ["MH_items"] = {
+    ["en"] = "Items",
+    ["uk"] = "Предмети",
+  },
+  ["MH_lurker"] = {
+    ["en"] = "Lurker",
+    ["uk"] = "Причаєний",
+  },
+  ["MH_nearest"] = {
+    ["en"] = "Nearest",
+    ["uk"] = "Найближчий",
+  },
+  ["MH_no_target"] = {
+    ["en"] = "No target",
+    ["uk"] = "Цілі немає",
+  },
+  ["MH_patrol"] = {
+    ["en"] = "Patrol",
+    ["uk"] = "Патрульний",
+  },
+  ["MH_spells"] = {
+    ["en"] = "Spells",
+    ["uk"] = "Закляття",
+  },
+  ["MH_unstable"] = {
+    ["en"] = "Unstable space",
+    ["uk"] = "Нестабільна локація",
   },
   ["MM_addonDescription1_text"] = {
     ["en"] = "In Dead of Night, investigators explore the facets of Arkham best left unseen in the light of day. Organized crime builds a strong foothold in the city, secret cults labor for a dark master, an alien moon hangs overhead, and unknowable horrors stalk the night. This expansion includes two all-new scenarios, new encounters for every location in Arkham, new monsters and anomalies, and four new investigators to face these fresh horrors, armed with new spells, items and allies.\n• 2 scenarios\n• 4 investigators\n• 7 headline cards\n• 20 archive cards\n• 12 anomaly cards\n• 48 event cards\n• 72 encounter cards\n• 4 ally cards\n• 4 item cards\n• 4 spell cards\n• 28 special cards\n• 12 starting cards\n• 6 wanted condition cards\n• 22 monster cards\n• 15 new monsters",
@@ -1082,9 +1142,17 @@ I18N_DATA = {
     ["en"] = "Morphic Terror",
     ["uk"] = "Жах-Перевертень",
   },
+  ["Mother_Hydra"] = {
+    ["en"] = "Mother Hydra",
+    ["uk"] = "Мати Гідра",
+  },
   ["Mouthy_Raconteur"] = {
     ["en"] = "Mouthy Raconteur",
     ["uk"] = "Язикатий Пліткар",
+  },
+  ["Mummified_Gug"] = {
+    ["en"] = "Mummified Gug",
+    ["uk"] = "Муміфікований Гуг",
   },
   ["Mystery"] = {
     ["en"] = "Mystery",
@@ -1430,6 +1498,14 @@ I18N_DATA = {
     ["en"] = "Sea Singer",
     ["uk"] = "Голос Глибин",
   },
+  ["Servitor_of_R'lyeh"] = {
+    ["en"] = "Servitor of R'lyeh",
+    ["uk"] = "Слуга Р'льєха",
+  },
+  ["Servitor_of_Yog-Sothoth"] = {
+    ["en"] = "Servitor of Yog-Sothoth",
+    ["uk"] = "Слуга Йог-Сотота",
+  },
   ["Shallows_Predator"] = {
     ["en"] = "Shallows Predator",
     ["uk"] = "Хижак Мілководдя",
@@ -1566,9 +1642,17 @@ I18N_DATA = {
     ["en"] = "Terror Token",
     ["uk"] = "Жетон Мороку",
   },
+  ["The_Bloodless_Man"] = {
+    ["en"] = "The Bloodless Man",
+    ["uk"] = "Безкровний Чоловік",
+  },
   ["The_Rope_and_Anchor"] = {
     ["en"] = "The Rope and Anchor",
     ["uk"] = "Канат і Якір",
+  },
+  ["The_Seer_of_Mnar"] = {
+    ["en"] = "The Seer of Mnar",
+    ["uk"] = "Провидець Мнару",
   },
   ["The_Underworld"] = {
     ["en"] = "The Underworld",
@@ -1614,6 +1698,10 @@ I18N_DATA = {
     ["en"] = "Travel Route",
     ["uk"] = "Шляхи Мандрів",
   },
+  ["Tsathoggua"] = {
+    ["en"] = "Tsathoggua",
+    ["uk"] = "Тсатгоґґуа",
+  },
   ["Tunneling_Dhole"] = {
     ["en"] = "Tunneling Dhole",
     ["uk"] = "Підземний Дхол",
@@ -1625,6 +1713,10 @@ I18N_DATA = {
   ["Twilight_Supplicant"] = {
     ["en"] = "Twilight Supplicant",
     ["uk"] = "Прислужник Сутінків",
+  },
+  ["Umordhoth"] = {
+    ["en"] = "Umôrdhoth",
+    ["uk"] = "Умордот",
   },
   ["Undulating_Mass"] = {
     ["en"] = "Undulating Mass",
@@ -1669,6 +1761,10 @@ I18N_DATA = {
   ["Weeping_Haunt"] = {
     ["en"] = "Weeping Haunt",
     ["uk"] = "Плачуча Примара",
+  },
+  ["Wendigo"] = {
+    ["en"] = "Wendigo",
+    ["uk"] = "Вендіго",
   },
   ["Wendy_Adams"] = {
     ["en"] = "Wendy Adams",

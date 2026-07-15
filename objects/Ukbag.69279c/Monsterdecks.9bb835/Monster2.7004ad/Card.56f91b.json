@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"hp\":4,\"monstertype\":[\"Mi-Go\"],\"name\":\"Cerebral Extractor\",\"remnant\":true,\"type\":\"Monster\"}",
+  "Memo": "{\"activation\":{\"effect\":{\"type\":\"returnMonsterToken\"},\"kind\":\"lurker\"},\"hp\":4,\"monstertype\":[\"Mi-Go\"],\"name\":\"Cerebral Extractor\",\"remnant\":true,\"spawn\":{\"at\":\"unstable\"},\"type\":\"Monster\"}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,

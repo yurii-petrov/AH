@@ -27,6 +27,10 @@ function onObjectDrop(colorName, object)
     return
   end
 
+  if objectData.attachSkillMat then
+    runAfterRest(object, function(object) onWantedCardFlipped(object) end)
+  end
+
   if onObjectDropOnInvestigatorMat(colorName, object, objectData) then
     return
   elseif onObjectDropOnMythosMat(colorName, object, objectData) then

@@ -24,7 +24,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"hp\":2,\"monstertype\":[\"Dreaming\",\"Deep One\"],\"name\":\"Entraced Hybrid\",\"remnant\":true,\"type\":\"Monster\"}",
+  "Memo": "{\"activation\":{\"effect\":{\"type\":\"placeDoom\",\"where\":\"unstable\"},\"kind\":\"lurker\"},\"hp\":2,\"monstertype\":[\"Dreaming\",\"Deep One\"],\"name\":\"Entraced Hybrid\",\"remnant\":true,\"spawn\":{\"at\":\"unstable\"},\"type\":\"Monster\"}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,

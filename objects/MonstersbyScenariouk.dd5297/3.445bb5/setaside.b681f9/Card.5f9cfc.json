@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"hp\":2,\"monstertype\":[\"Lodge\",\"Human\"],\"name\":\"Lodge Guardian\",\"remnant\":false,\"type\":\"Monster\",\"reversed\":true}",
+  "Memo": "{\"activation\":{\"engage\":{\"metric\":\"spells\",\"order\":\"most\"},\"kind\":\"patrol\",\"moveTo\":\"mostDoom\"},\"hp\":2,\"monstertype\":[\"Lodge\",\"Human\"],\"name\":\"Lodge Guardian\",\"remnant\":false,\"reversed\":true,\"spawn\":{\"at\":\"unstable\"},\"type\":\"Monster\"}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,

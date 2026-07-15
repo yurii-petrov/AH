@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"investigator\":\"Minh Thi Phan alt\",\"type\":\"starting\"}",
+  "Memo": "{\"investigator\":\"Minh Thi Phan alt\",\"type\":\"starting\",\"attachSkillMat\":true,\"skillMatMode\":6}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,

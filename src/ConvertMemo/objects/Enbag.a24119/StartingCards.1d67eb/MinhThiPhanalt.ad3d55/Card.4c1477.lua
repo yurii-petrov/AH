@@ -2,6 +2,8 @@ data = {
   ["GUID"] = "4c1477",
   ["memo"] = {
     ["investigator"] = "Minh Thi Phan alt",
-    ["type"] = "starting"
+    ["type"] = "starting",
+    ["attachSkillMat"] = true,
+    ["skillMatMode"] = 6
   }
 }

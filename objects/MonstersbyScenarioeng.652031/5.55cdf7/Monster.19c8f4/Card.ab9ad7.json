@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"hp\":4,\"monstertype\":[\"Nightgaunt\"],\"name\":\"Abyssal Servant\",\"remnant\":true,\"type\":\"Monster\",\"reversed\":true}",
+  "Memo": "{\"activation\":{\"engage\":{\"metric\":\"clues\",\"order\":\"most\"},\"kind\":\"hunter\"},\"hp\":4,\"monstertype\":[\"Nightgaunt\"],\"name\":\"Abyssal Servant\",\"remnant\":true,\"reversed\":true,\"spawn\":{\"at\":\"streetNearestPrey\"},\"type\":\"Monster\"}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,

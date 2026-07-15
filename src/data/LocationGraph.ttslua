@@ -6,7 +6,7 @@ LOCATION_GRAPHS = {
     ["La Bella Luna"]       = {"Independence Square", "Arkham Asylum", "Residential2", "Bridge2", "Residential1"},
     ["Arkham Asylum"]       = {"Independence Square", "La Bella Luna", "Scenic1", "Residential2"},
 
-    ["Velma's Diner"]     = {"Hibb's Roadhouse", "Police Station", "Residential1", "Bridge1"},
+    ["Velma's Diner"]     = {"Hibb's Roadhouse", "Police Station", "Residential1"},
     ["Hibb's Roadhouse"]  = {"Velma's Diner", "Police Station"},
     ["Police Station"]    = {"Velma's Diner", "Hibb's Roadhouse", "Bridge1", "Residential1"},
 
@@ -19,8 +19,370 @@ LOCATION_GRAPHS = {
     ["Curiositie Shoppe"] = {"Arkham Advertiser", "Train Station"},
 
     ["Black Cave"]    = {"Graveyard", "General Store", "Residential3", "Bridge1", "Bridge2"},
-    ["Graveyard"]     = {"Black Cave", "General Store"},
+    ["Graveyard"]     = {"Black Cave", "General Store", "Bridge1"},
     ["General Store"] = {"Black Cave", "Graveyard", "Residential3"},
+  },
+
+  ["FfU"] = {
+    ["Independence Square"] = {"La Bella Luna", "Arkham Asylum", "Residential2"},
+    ["La Bella Luna"] = {"Independence Square", "Arkham Asylum", "Residential2", "Bridge1"},
+    ["Arkham Asylum"] = {"Independence Square", "La Bella Luna"},
+
+    ["Velma's Diner"] = {"Hibb's Roadhouse", "Police Station", "Residential2"},
+    ["Hibb's Roadhouse"] = {"Velma's Diner", "Police Station"},
+    ["Police Station"] = {"Velma's Diner", "Hibb's Roadhouse", "Residential2", "Bridge2"},
+
+    ["Black Cave"] = {"Graveyard", "General Store", "Bridge1", "Bridge2"},
+    ["Graveyard"] = {"Black Cave", "General Store", "Bridge2", "Residential1"},
+    ["General Store"] = {"Black Cave", "Graveyard", "Residential1", "Scenic1"},
+
+    ["Ma's Boarding House"] = {"Historical Society", "South Church", "Residential1"},
+    ["Historical Society"] = {"Ma's Boarding House", "South Church"},
+    ["South Church"] = {"Ma's Boarding House", "Historical Society", "Residential1", "Scenic2"},
+
+    ["Hangman's Hill"] = {"St. Mary's Hospital", "Ye Olde Magick Shoppe", "Scenic1"},
+    ["St. Mary's Hospital"] = {"Hangman's Hill", "Ye Olde Magick Shoppe", "Scenic1", "Scenic2"},
+    ["Ye Olde Magick Shoppe"] = {"Hangman's Hill", "St. Mary's Hospital"},
+
+    ["Bridge1"] = {},
+    ["Bridge2"] = {},
+    ["Residential1"] = {},
+    ["Residential2"] = {},
+    ["Scenic1"] = {},
+    ["Scenic2"] = {},
+  },
+
+  ["VoT"] = {
+    ["Observatory"] = {"Science Building", "Orne Library", "Scenic1"},
+    ["Science Building"] = {"Observatory", "Orne Library", "Scenic1", "Scenic2"},
+    ["Orne Library"] = {"Observatory", "Science Building"},
+
+    ["Arkham Advertiser"] = {"Train Station", "Curiositie Shoppe"},
+    ["Train Station"] = {"Arkham Advertiser", "Curiositie Shoppe", "Bridge1"},
+    ["Curiositie Shoppe"] = {"Arkham Advertiser", "Train Station"},
+
+    ["Black Cave"] = {"Graveyard", "General Store", "Bridge1", "Scenic1"},
+    ["Graveyard"] = {"Black Cave", "General Store", "Residential1"},
+    ["General Store"] = {"Black Cave", "Graveyard", "Residential1", "Scenic1"},
+
+    ["Ma's Boarding House"] = {"Historical Society", "South Church", "Residential1"},
+    ["Historical Society"] = {"Ma's Boarding House", "South Church"},
+    ["South Church"] = {"Ma's Boarding House", "Historical Society", "Residential1", "Residential2"},
+
+    ["Hangman's Hill"] = {"St. Mary's Hospital", "Ye Olde Magick Shoppe", "Scenic2"},
+    ["St. Mary's Hospital"] = {"Hangman's Hill", "Ye Olde Magick Shoppe", "Residential2"},
+    ["Ye Olde Magick Shoppe"] = {"Hangman's Hill", "St. Mary's Hospital"},
+
+    ["Bridge1"] = {},
+    ["Residential1"] = {},
+    ["Residential2"] = {},
+    ["Scenic1"] = {},
+    ["Scenic2"] = {},
+  },
+
+  ["EotD"] = {
+    ["Independence Square"] = {"La Bella Luna", "Arkham Asylum"},
+    ["La Bella Luna"] = {"Independence Square", "Arkham Asylum", "Bridge1"},
+    ["Arkham Asylum"] = {"Independence Square", "La Bella Luna", "Residential1"},
+
+    ["Unvisited Isle"] = {"Tick Tock Club", "River Docks", "Residential2", "Residential3"},
+    ["Tick Tock Club"] = {"Unvisited Isle", "River Docks", "Residential3", "Scenic2"},
+    ["River Docks"] = {"Unvisited Isle", "Tick Tock Club", "Residential2"},
+
+    ["Observatory"] = {"Science Building", "Orne Library", "Scenic1", "Scenic2"},
+    ["Science Building"] = {"Observatory", "Orne Library"},
+    ["Orne Library"] = {"Observatory", "Science Building", "Scenic2"},
+
+    ["Arkham Advertiser"] = {"Train Station", "Curiositie Shoppe", "Residential1"},
+    ["Train Station"] = {"Arkham Advertiser", "Curiositie Shoppe", "Residential1", "Residential2"},
+    ["Curiositie Shoppe"] = {"Arkham Advertiser", "Train Station"},
+
+    ["Black Cave"] = {"Graveyard", "General Store", "Residential3", "Bridge1"},
+    ["Graveyard"] = {"Black Cave", "General Store"},
+    ["General Store"] = {"Black Cave", "Graveyard", "Residential3", "Scenic1"},
+
+    ["Bridge1"] = {},
+    ["Residential1"] = {},
+    ["Residential2"] = {},
+    ["Residential3"] = {},
+    ["Scenic1"] = {},
+    ["Scenic2"] = {},
+  },
+
+  ["SitD"] = {
+    ["Independence Square"] = {"La Bella Luna", "Arkham Asylum"},
+    ["La Bella Luna"] = {"Independence Square", "Arkham Asylum"},
+    ["Arkham Asylum"] = {"Independence Square", "La Bella Luna"},
+
+    ["Velma's Diner"] = {"Hibb's Roadhouse", "Police Station"},
+    ["Hibb's Roadhouse"] = {"Velma's Diner", "Police Station"},
+    ["Police Station"] = {"Velma's Diner", "Hibb's Roadhouse"},
+
+    ["Unvisited Isle"] = {"Tick Tock Club", "River Docks"},
+    ["Tick Tock Club"] = {"Unvisited Isle", "River Docks"},
+    ["River Docks"] = {"Unvisited Isle", "Tick Tock Club"},
+
+    ["Arkham Advertiser"] = {"Train Station", "Curiositie Shoppe"},
+    ["Train Station"] = {"Arkham Advertiser", "Curiositie Shoppe"},
+    ["Curiositie Shoppe"] = {"Arkham Advertiser", "Train Station"},
+
+    ["Black Cave"] = {"Graveyard", "General Store"},
+    ["Graveyard"] = {"Black Cave", "General Store"},
+    ["General Store"] = {"Black Cave", "Graveyard"},
+
+    ["Bridge1"] = {},
+    ["Bridge2"] = {},
+    ["Residential1"] = {},
+    ["Residential2"] = {},
+    ["Scenic1"] = {},
+    ["Scenic2"] = {},
+  },
+
+  ["SoT"] = {
+    ["Unvisited Isle"] = {"Tick Tock Club", "River Docks"},
+    ["Tick Tock Club"] = {"Unvisited Isle", "River Docks"},
+    ["River Docks"] = {"Unvisited Isle", "Tick Tock Club"},
+
+    ["Observatory"] = {"Science Building", "Orne Library"},
+    ["Science Building"] = {"Observatory", "Orne Library"},
+    ["Orne Library"] = {"Observatory", "Science Building"},
+
+    ["Arkham Advertiser"] = {"Train Station", "Curiositie Shoppe"},
+    ["Train Station"] = {"Arkham Advertiser", "Curiositie Shoppe"},
+    ["Curiositie Shoppe"] = {"Arkham Advertiser", "Train Station"},
+
+    ["Black Cave"] = {"Graveyard", "General Store"},
+    ["Graveyard"] = {"Black Cave", "General Store"},
+    ["General Store"] = {"Black Cave", "Graveyard"},
+
+    ["Hangman's Hill"] = {"St. Mary's Hospital", "Ye Olde Magick Shoppe"},
+    ["St. Mary's Hospital"] = {"Hangman's Hill", "Ye Olde Magick Shoppe"},
+    ["Ye Olde Magick Shoppe"] = {"Hangman's Hill", "St. Mary's Hospital"},
+
+    ["Bridge1"] = {},
+    ["Bridge2"] = {},
+    ["Residential1"] = {},
+    ["Residential2"] = {},
+    ["Residential3"] = {},
+  },
+
+  ["ToR"] = {
+    ["Arkham Advertiser"] = {"Train Station", "Curiositie Shoppe"},
+    ["Train Station"] = {"Arkham Advertiser", "Curiositie Shoppe"},
+    ["Curiositie Shoppe"] = {"Arkham Advertiser", "Train Station"},
+
+    ["Velma's Diner"] = {"Hibb's Roadhouse", "Police Station"},
+    ["Hibb's Roadhouse"] = {"Velma's Diner", "Police Station"},
+    ["Police Station"] = {"Velma's Diner", "Hibb's Roadhouse"},
+
+    ["Ma's Boarding House"] = {"Historical Society", "South Church"},
+    ["Historical Society"] = {"Ma's Boarding House", "South Church"},
+    ["South Church"] = {"Ma's Boarding House", "Historical Society"},
+
+    ["Observatory"] = {"Science Building", "Orne Library"},
+    ["Science Building"] = {"Observatory", "Orne Library"},
+    ["Orne Library"] = {"Observatory", "Science Building"},
+
+    ["Esoteric Order of Dagon"] = {"First National Grocery", "Innsmouth Jail"},
+    ["First National Grocery"] = {"Esoteric Order of Dagon", "Innsmouth Jail"},
+    ["Innsmouth Jail"] = {"Esoteric Order of Dagon", "First National Grocery"},
+
+    ["Marsh Refinery"] = {"Falcon Point", "Gilman House"},
+    ["Falcon Point"] = {"Marsh Refinery", "Gilman House"},
+    ["Gilman House"] = {"Marsh Refinery", "Falcon Point"},
+
+    ["Scenic1"] = {},
+    ["Residential2"] = {},
+    ["Residential1"] = {},
+    ["Bridge1"] = {},
+    ["Bridge2"] = {},
+    ["Scenic2"] = {},
+  },
+
+  ["TPL"] = {
+    ["Independence Square"] = {"La Bella Luna", "Arkham Asylum"},
+    ["La Bella Luna"] = {"Independence Square", "Arkham Asylum"},
+    ["Arkham Asylum"] = {"Independence Square", "La Bella Luna"},
+
+    ["Unvisited Isle"] = {"Tick Tock Club", "River Docks"},
+    ["Tick Tock Club"] = {"Unvisited Isle", "River Docks"},
+    ["River Docks"] = {"Unvisited Isle", "Tick Tock Club"},
+
+    ["Hangman's Hill"] = {"St. Mary's Hospital", "Ye Olde Magick Shoppe"},
+    ["St. Mary's Hospital"] = {"Hangman's Hill", "Ye Olde Magick Shoppe"},
+    ["Ye Olde Magick Shoppe"] = {"Hangman's Hill", "St. Mary's Hospital"},
+
+    ["Congregational Hospital"] = {"Neil's Curiosity Shop", "Hall School"},
+    ["Neil's Curiosity Shop"] = {"Congregational Hospital", "Hall School"},
+    ["Hall School"] = {"Congregational Hospital", "Neil's Curiosity Shop"},
+
+    ["North Point Lighthouse"] = {"The Rope and Anchor", "St. Erasmus's Home"},
+    ["The Rope and Anchor"] = {"North Point Lighthouse", "St. Erasmus's Home"},
+    ["St. Erasmus's Home"] = {"North Point Lighthouse", "The Rope and Anchor"},
+
+    ["Bridge1"] = {},
+    ["Residential1"] = {},
+    ["Scenic1"] = {},
+  },
+
+  ["IC"] = {
+    ["Arkham Advertiser"] = {"Train Station", "Curiositie Shoppe"},
+    ["Train Station"] = {"Arkham Advertiser", "Curiositie Shoppe"},
+    ["Curiositie Shoppe"] = {"Arkham Advertiser", "Train Station"},
+
+    ["Black Cave"] = {"Graveyard", "General Store"},
+    ["Graveyard"] = {"Black Cave", "General Store"},
+    ["General Store"] = {"Black Cave", "Graveyard"},
+
+    ["Velma's Diner"] = {"Hibb's Roadhouse", "Police Station"},
+    ["Hibb's Roadhouse"] = {"Velma's Diner", "Police Station"},
+    ["Police Station"] = {"Velma's Diner", "Hibb's Roadhouse"},
+
+    ["Ma's Boarding House"] = {"Historical Society", "South Church"},
+    ["Historical Society"] = {"Ma's Boarding House", "South Church"},
+    ["South Church"] = {"Ma's Boarding House", "Historical Society"},
+
+    ["Independence Square"] = {"La Bella Luna", "Arkham Asylum"},
+    ["La Bella Luna"] = {"Independence Square", "Arkham Asylum"},
+    ["Arkham Asylum"] = {"Independence Square", "La Bella Luna"},
+
+    ["Congregational Hospital"] = {"Neil's Curiosity Shop", "Hall School"},
+    ["Neil's Curiosity Shop"] = {"Congregational Hospital", "Hall School"},
+    ["Hall School"] = {"Congregational Hospital", "Neil's Curiosity Shop"},
+
+    ["Marsh Refinery"] = {"Falcon Point", "Gilman House"},
+    ["Falcon Point"] = {"Marsh Refinery", "Gilman House"},
+    ["Gilman House"] = {"Marsh Refinery", "Falcon Point"},
+
+    ["Residential1"] = {},
+    ["Residential2"] = {},
+    ["Scenic1"] = {},
+    ["Scenic2"] = {},
+    ["Bridge1"] = {},
+    ["Bridge2"] = {},
+  },
+
+  ["DoR"] = {
+    ["Observatory"] = {"Science Building", "Orne Library"},
+    ["Science Building"] = {"Observatory", "Orne Library"},
+    ["Orne Library"] = {"Observatory", "Science Building"},
+
+    ["Black Cave"] = {"Graveyard", "General Store"},
+    ["Graveyard"] = {"Black Cave", "General Store"},
+    ["General Store"] = {"Black Cave", "Graveyard"},
+
+    ["Ma's Boarding House"] = {"Historical Society", "South Church"},
+    ["Historical Society"] = {"Ma's Boarding House", "South Church"},
+    ["South Church"] = {"Ma's Boarding House", "Historical Society"},
+
+    ["Hangman's Hill"] = {"St. Mary's Hospital", "Ye Olde Magick Shoppe"},
+    ["St. Mary's Hospital"] = {"Hangman's Hill", "Ye Olde Magick Shoppe"},
+    ["Ye Olde Magick Shoppe"] = {"Hangman's Hill", "St. Mary's Hospital"},
+
+    ["Residential3"] = {},
+    ["Scenic1"] = {},
+    ["Residential2"] = {},
+    ["Residential1"] = {},
+  },
+
+  ["BtS"] = {
+    ["Independence Square"] = {"La Bella Luna", "Arkham Asylum"},
+    ["La Bella Luna"] = {"Independence Square", "Arkham Asylum"},
+    ["Arkham Asylum"] = {"Independence Square", "La Bella Luna"},
+
+    ["Unvisited Isle"] = {"Tick Tock Club", "River Docks"},
+    ["Tick Tock Club"] = {"Unvisited Isle", "River Docks"},
+    ["River Docks"] = {"Unvisited Isle", "Tick Tock Club"},
+
+    ["Black Cave"] = {"Graveyard", "General Store"},
+    ["Graveyard"] = {"Black Cave", "General Store"},
+    ["General Store"] = {"Black Cave", "Graveyard"},
+
+    ["Bayfriar Gardens"] = {"Duterte Funeral Home", "Silver Twilight Lodge"},
+    ["Duterte Funeral Home"] = {"Bayfriar Gardens", "Silver Twilight Lodge"},
+    ["Silver Twilight Lodge"] = {"Bayfriar Gardens", "Duterte Funeral Home"},
+
+    ["Ma's Boarding House"] = {"Historical Society", "South Church"},
+    ["Historical Society"] = {"Ma's Boarding House", "South Church"},
+    ["South Church"] = {"Ma's Boarding House", "Historical Society"},
+
+    ["Hangman's Hill"] = {"St. Mary's Hospital", "Ye Olde Magick Shoppe"},
+    ["St. Mary's Hospital"] = {"Hangman's Hill", "Ye Olde Magick Shoppe"},
+    ["Ye Olde Magick Shoppe"] = {"Hangman's Hill", "St. Mary's Hospital"},
+
+    ["Bridge1"] = {},
+    ["Bridge2"] = {},
+    ["Residential1"] = {},
+    ["Residential2"] = {},
+    ["Residential3"] = {},
+    ["Scenic1"] = {},
+    ["Scenic2"] = {},
+  },
+
+  ["TDCO"] = {
+    ["City of the Gugs"] = {"Vaults of Zin", "Vale of Pnath"},
+    ["Vaults of Zin"] = {"City of the Gugs", "Vale of Pnath"},
+    ["Vale of Pnath"] = {"City of the Gugs", "Vaults of Zin"},
+
+    ["Bayfriar Gardens"] = {"Duterte Funeral Home", "Silver Twilight Lodge"},
+    ["Duterte Funeral Home"] = {"Bayfriar Gardens", "Silver Twilight Lodge"},
+    ["Silver Twilight Lodge"] = {"Bayfriar Gardens", "Duterte Funeral Home"},
+
+    ["Hangman's Hill"] = {"St. Mary's Hospital", "Ye Olde Magick Shoppe"},
+    ["St. Mary's Hospital"] = {"Hangman's Hill", "Ye Olde Magick Shoppe"},
+    ["Ye Olde Magick Shoppe"] = {"Hangman's Hill", "St. Mary's Hospital"},
+
+    ["Observatory"] = {"Science Building", "Orne Library"},
+    ["Science Building"] = {"Observatory", "Orne Library"},
+    ["Orne Library"] = {"Observatory", "Science Building"},
+
+    ["Ma's Boarding House"] = {"Historical Society", "South Church"},
+    ["Historical Society"] = {"Ma's Boarding House", "South Church"},
+    ["South Church"] = {"Ma's Boarding House", "Historical Society"},
+
+    ["Arkham Advertiser"] = {"Train Station", "Curiositie Shoppe"},
+    ["Train Station"] = {"Arkham Advertiser", "Curiositie Shoppe"},
+    ["Curiositie Shoppe"] = {"Arkham Advertiser", "Train Station"},
+
+    ["Velma's Diner"] = {"Hibb's Roadhouse", "Police Station"},
+    ["Hibb's Roadhouse"] = {"Velma's Diner", "Police Station"},
+    ["Police Station"] = {"Velma's Diner", "Hibb's Roadhouse"},
+
+    ["Bridge1"] = {},
+    ["Bridge2"] = {},
+    ["Residential2"] = {},
+    ["Scenic2"] = {},
+    ["Residential1"] = {},
+    ["Scenic1"] = {},
+  },
+
+  ["TKaTG"] = {
+    ["Bayfriar Gardens"] = {"Duterte Funeral Home", "Silver Twilight Lodge"},
+    ["Duterte Funeral Home"] = {"Bayfriar Gardens", "Silver Twilight Lodge"},
+    ["Silver Twilight Lodge"] = {"Bayfriar Gardens", "Duterte Funeral Home"},
+
+    ["Hangman's Hill"] = {"St. Mary's Hospital", "Ye Olde Magick Shoppe"},
+    ["St. Mary's Hospital"] = {"Hangman's Hill", "Ye Olde Magick Shoppe"},
+    ["Ye Olde Magick Shoppe"] = {"Hangman's Hill", "St. Mary's Hospital"},
+
+    ["Unvisited Isle"] = {"Tick Tock Club", "River Docks"},
+    ["Tick Tock Club"] = {"Unvisited Isle", "River Docks"},
+    ["River Docks"] = {"Unvisited Isle", "Tick Tock Club"},
+
+    ["Black Cave"] = {"Graveyard", "General Store"},
+    ["Graveyard"] = {"Black Cave", "General Store"},
+    ["General Store"] = {"Black Cave", "Graveyard"},
+
+    ["Velma's Diner"] = {"Hibb's Roadhouse", "Police Station"},
+    ["Hibb's Roadhouse"] = {"Velma's Diner", "Police Station"},
+    ["Police Station"] = {"Velma's Diner", "Hibb's Roadhouse"},
+
+    ["Scenic1"] = {},
+    ["Bridge1"] = {},
+    ["Residential1"] = {},
+    ["Scenic2"] = {},
+    ["Bridge2"] = {},
+    ["Residential2"] = {},
   },
 
 }

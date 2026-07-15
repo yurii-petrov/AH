@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"hp\":1,\"monstertype\":[\"O'Bannion\",\"Human\"],\"name\":\"Feckless Agitator\",\"remnant\":false,\"type\":\"Monster\"}",
+  "Memo": "{\"activation\":{\"effect\":{\"type\":\"placeDoom\",\"where\":\"self\"},\"kind\":\"lurker\",\"traits\":[\"elusive\"]},\"hp\":1,\"monstertype\":[\"O'Bannion\",\"Human\"],\"name\":\"Feckless Agitator\",\"remnant\":false,\"spawn\":{\"at\":\"unstable\"},\"type\":\"Monster\"}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,

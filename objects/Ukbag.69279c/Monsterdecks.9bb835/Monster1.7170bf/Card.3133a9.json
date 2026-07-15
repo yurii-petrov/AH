@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"hp\":3,\"monstertype\":[\"Deep One\"],\"name\":\"Shallows Predator\",\"remnant\":true,\"type\":\"Monster\"}",
+  "Memo": "{\"activation\":{\"engage\":{\"order\":\"highest\",\"stat\":\"observation\"},\"kind\":\"hunter\"},\"hp\":3,\"monstertype\":[\"Deep One\"],\"name\":\"Shallows Predator\",\"remnant\":true,\"spawn\":{\"at\":\"streetNearestPrey\"},\"type\":\"Monster\"}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,

@@ -24,7 +24,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"hp\":2,\"monstertype\":[\"Thrall\",\"Human\"],\"name\":\"Icebound Captive\",\"remnant\":true,\"type\":\"Monster\"}",
+  "Memo": "{\"activation\":{\"effect\":{\"amount\":1,\"type\":\"damageEach\"},\"kind\":\"lurker\"},\"hp\":2,\"monstertype\":[\"Thrall\",\"Human\"],\"name\":\"Icebound Captive\",\"remnant\":true,\"spawn\":{\"at\":\"streetNearestLeader\"},\"type\":\"Monster\"}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,

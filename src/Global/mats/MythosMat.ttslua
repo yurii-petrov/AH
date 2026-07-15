@@ -115,15 +115,24 @@ function encounter_process(player, alt_click, id)
   Global.call("mythMatEncounterClick", {c = player.color})
 end
 
+local function resetVisibility()
+  self.UI.setAttribute("success", "visibility", "")
+  self.UI.setAttribute("discard", "visibility", "")
+  self.UI.setAttribute("fail",    "visibility", "")
+end
+
 function success(player, alt, id)
+  resetVisibility()
   Global.call("mythosTileSuccessAction", {c = player.color})
 end
 
 function discard(player, alt, id)
+  resetVisibility()
   Global.call("mythosTileCancelAction", {c = player.color})
 end
 
 function fail(player, alt, id)
+  resetVisibility()
   Global.call("mythosTileFailedAction", {c = player.color})
 end
 
@@ -139,7 +148,7 @@ end
 
 function setButtons(d)
   local eventVisibility = ""
-  if d.type ~= "empty" and d.color then
+  if d.type ~= "empty" and d.type ~= "headline" and d.color then
     local others = otherSeatedColors(d.color)
     if #others > 0 then
       eventVisibility = table.concat(others, "|")

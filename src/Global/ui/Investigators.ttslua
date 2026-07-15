@@ -45,6 +45,7 @@ INV_STATE = {
   encounterDone  = {},
   mythosCount    = {},
   mythosActive   = nil,
+  collapsed      = false,
 }
 
 local ACTIVATION_MEMOS = {
@@ -598,10 +599,16 @@ function investigatorApplyAll(player, alt, id)
   end
 end
 
+function applyCollapseState()
+  local isMonster = INV_STATE.phase == Phase.Monster
+  self.UI.setAttribute("investigators", "active", not isMonster and not INV_STATE.collapsed)
+  self.UI.setAttribute("monsterList", "active", isMonster and not INV_STATE.collapsed)
+  self.UI.setAttribute("INV_collapse_alone", "active", INV_STATE.collapsed)
+end
+
 function investigatorToggleCollapse()
-  local isOpen = self.UI.getAttribute("investigators", "active") == "True"
-  self.UI.setAttribute("investigators", "active", not isOpen)
-  self.UI.setAttribute("INV_collapse_alone", "active", isOpen)
+  INV_STATE.collapsed = not INV_STATE.collapsed
+  applyCollapseState()
 end
 
 function setInvestigatorPhase(phase)
@@ -609,6 +616,12 @@ function setInvestigatorPhase(phase)
   local isAction    = (phase == 1)
   local isEncounter = (phase == 3)
   local isMythos    = (phase == 4)
+  local isMonster   = (phase == Phase.Monster)
+
+  if isMonster then
+    refreshMonsterList()
+  end
+  applyCollapseState()
 
   if isEncounter then
     for p = 1, INV_STATE.count do INV_STATE.encounterDone[p] = false end
@@ -972,6 +985,6 @@ function setInvestigatorCount(n)
   INV_STATE.mythosActive = nil
 
   refreshPanelWidth()
-  self.UI.setAttribute("INV_collapse_alone", "active", false)
-  self.UI.setAttribute("investigators", "active", true)
+  INV_STATE.collapsed = false
+  applyCollapseState()
 end

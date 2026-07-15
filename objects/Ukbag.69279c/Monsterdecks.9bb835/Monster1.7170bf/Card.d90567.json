@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"hp\":1,\"monstertype\":[\"Human\",\"Deep One\"],\"name\":\"Hybrid Thug\",\"remnant\":false,\"type\":\"Monster\"}",
+  "Memo": "{\"activation\":{\"engage\":{\"order\":\"lowest\",\"stat\":\"observation\"},\"kind\":\"patrol\",\"moveTo\":\"mostDoom\"},\"hp\":1,\"monstertype\":[\"Human\",\"Deep One\"],\"name\":\"Hybrid Thug\",\"remnant\":false,\"spawn\":{\"at\":\"unstable\"},\"type\":\"Monster\"}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,

@@ -258,6 +258,8 @@ local function applyPhaseTransitionEffects(oldPhase, newPhase)
   elseif newPhase == 4 then
     gameData.mythosCount  = nil
     gameData.mythosActive = nil
+  elseif newPhase == Phase.Monster then
+    gameData.monsterActionDone = {}
   end
 end
 

@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"elite\":1,\"hp\":2,\"monstertype\":[\"Hound of Tindalos\"],\"name\":\"Tindalos Alpha\",\"remnant\":true,\"type\":\"Monster\"}",
+  "Memo": "{\"activation\":{\"directly\":true,\"engage\":{\"order\":\"highest\",\"stat\":\"observation\"},\"kind\":\"hunter\"},\"elite\":1,\"hp\":2,\"monstertype\":[\"Hound of Tindalos\"],\"name\":\"Tindalos Alpha\",\"remnant\":true,\"spawn\":{\"at\":\"mostDoom\"},\"type\":\"Monster\"}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,

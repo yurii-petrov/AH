@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"reversed\":true,\"hp\":3,\"monstertype\":[\"Cultist\",\"Human\"],\"name\":\"Declan Pearce\",\"remnant\":false,\"type\":\"Monster\"}",
+  "Memo": "{\"activation\":{\"directly\":true,\"kind\":\"patrol\",\"moveTo\":\"unstable\",\"traits\":[\"elusive\"]},\"hp\":3,\"monstertype\":[\"Cultist\",\"Human\"],\"name\":\"Declan Pearce\",\"remnant\":false,\"reversed\":true,\"spawn\":{\"at\":\"unstable\"},\"type\":\"Monster\"}",
   "Name": "Card",
   "Nickname": "setaside",
   "SidewaysCard": false,

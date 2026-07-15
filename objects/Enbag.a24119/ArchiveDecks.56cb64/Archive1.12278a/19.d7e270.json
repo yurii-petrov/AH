@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"reversed\":true,\"elite\":4,\"hp\":8,\"monstertype\":[\"Ancient One\"],\"name\":\"Umordhoth\",\"number\":19,\"remnant\":true,\"role\":\"Monster\",\"trait\":\"Massive\",\"type\":\"codex\"}",
+  "Memo": "{\"reversed\":true,\"elite\":4,\"epic\":true,\"hp\":8,\"monstertype\":[\"Ancient One\"],\"name\":\"Umordhoth\",\"number\":19,\"remnant\":true,\"role\":\"Monster\",\"trait\":\"Massive\",\"type\":\"codex\"}",
   "Name": "Card",
   "Nickname": "19",
   "SidewaysCard": false,

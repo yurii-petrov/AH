@@ -1,0 +1,298 @@
+
+local FONT = "Fonts/AdonisC"
+
+local MAX_MONSTERS = 20
+
+local ROW_H       = "34"
+local ROW_SPACING = "6"
+local PAD         = "10"
+
+local PANEL_BG    = "#000000bb"
+local TEXT_COL    = "#ffffff"
+local ELITE_COL   = "#FFA500"
+local EPIC_COL    = "#FF3B30"
+local CHEVRON_COL = "#666666"
+
+local COLLAPSE_W     = 20
+local ROW_GAP        = 10
+local NAME_MIN_CHARS = 4
+local NAME_CHAR_PX   = 12
+local PANEL_W_MAX    = 460
+local ACTION_SIZE    = "28"
+local PANEL_FIXED_W  = COLLAPSE_W + tonumber(PAD) * 2 + ROW_GAP * 3 + tonumber(ACTION_SIZE) * 2
+
+local ACTION_YES = "action_yes"
+local ACTION_NO  = "action_no"
+
+local monsterNameById = {}
+local monsterGuidByRow = {}
+local monsterMatByRow  = {}
+
+local function utf8Length(s)
+  local len = 0
+  for i = 1, #s do
+    local b = string.byte(s, i)
+    if b < 0x80 or b >= 0xC0 then
+      len = len + 1
+    end
+  end
+  return len
+end
+
+local function displayById(id)
+  return i18n.getStrById(id:gsub(" ", "_"))
+end
+
+local function rowId(i)
+  return "MON_row_" .. i
+end
+
+local function nameId(i)
+  return "MON_name_" .. i
+end
+
+local function actionId(i)
+  return "MON_action_" .. i
+end
+
+local function hintId(i)
+  return "MON_hint_" .. i
+end
+
+local function refreshPanelWidth()
+  local maxLen = NAME_MIN_CHARS
+  for i = 1, MAX_MONSTERS do
+    local name = monsterNameById[i]
+    if name then
+      local len = utf8Length(name)
+      if len > maxLen then maxLen = len end
+    end
+  end
+  local w = PANEL_FIXED_W + maxLen * NAME_CHAR_PX
+  if w > PANEL_W_MAX then w = PANEL_W_MAX end
+  self.UI.setAttribute("monsterList", "width", w)
+end
+
+local function buildHintButton(i)
+  return {
+    tag = "Button",
+    attributes = {
+      id              = hintId(i),
+      onClick         = "monsterHintClick",
+      text            = "A",
+      color           = "#333333",
+      textColor       = TEXT_COL,
+      font            = FONT,
+      fontSize        = "18",
+      minWidth        = ACTION_SIZE,
+      preferredWidth  = ACTION_SIZE,
+      flexibleWidth   = "0",
+      minHeight       = ACTION_SIZE,
+      preferredHeight = ACTION_SIZE,
+    },
+  }
+end
+
+local function buildActionButton(i)
+  return {
+    tag = "Button",
+    attributes = {
+      id              = actionId(i),
+      onClick         = "monsterActionToggle",
+      image           = ACTION_YES,
+      color           = "#FFFFFF",
+      text            = "",
+      minWidth        = ACTION_SIZE,
+      preferredWidth  = ACTION_SIZE,
+      flexibleWidth   = "0",
+      minHeight       = ACTION_SIZE,
+      preferredHeight = ACTION_SIZE,
+    },
+  }
+end
+
+local function buildRow(i)
+  return {
+    tag = "HorizontalLayout",
+    attributes = {
+      id                     = rowId(i),
+      active                 = "false",
+      minHeight              = ROW_H,
+      preferredHeight        = ROW_H,
+      flexibleHeight         = "0",
+      spacing                = "10",
+      childAlignment         = "MiddleLeft",
+      childForceExpandWidth  = "false",
+      childForceExpandHeight = "false",
+    },
+    children = {
+      {
+        tag = "Text",
+        attributes = {
+          id             = nameId(i),
+          text           = "",
+          color          = TEXT_COL,
+          font           = FONT,
+          fontSize       = "22",
+          alignment      = "MiddleLeft",
+          flexibleWidth  = "1",
+        },
+      },
+      buildHintButton(i),
+      buildActionButton(i),
+    },
+  }
+end
+
+local function buildRows()
+  local rows = {}
+  for i = 1, MAX_MONSTERS do
+    table.insert(rows, buildRow(i))
+  end
+  return rows
+end
+
+local function buildBody()
+  return {
+    tag = "VerticalLayout",
+    attributes = {
+      id                     = "MON_body",
+      padding                = PAD,
+      spacing                = ROW_SPACING,
+      flexibleWidth          = "1",
+      childForceExpandWidth  = "true",
+      childForceExpandHeight = "false",
+    },
+    children = buildRows(),
+  }
+end
+
+function buildMonsterListWindow()
+  return {
+    tag = "HorizontalLayout",
+    attributes = {
+      id                                   = "monsterList",
+      active                               = "false",
+      width                                = "310",
+      color                                = PANEL_BG,
+      rectAlignment                        = "MiddleRight",
+      offsetXY                             = "0 0",
+      padding                              = "0",
+      spacing                              = "0",
+      contentSizeFitter                    = "vertical",
+      childAlignment                       = "MiddleCenter",
+      childForceExpandWidth                = "false",
+      childForceExpandHeight               = "true",
+      allowDragging                        = "true",
+      returnToOriginalPositionWhenReleased = "false",
+    },
+    children = {
+      {
+        tag = "Button",
+        attributes = {
+          id             = "MON_collapse",
+          onClick        = "investigatorToggleCollapse",
+          text           = "▶",
+          padding        = "0 3 0 0",
+          color          = "clear",
+          minWidth       = "20",
+          preferredWidth = "20",
+          flexibleWidth  = "0",
+          textColor      = CHEVRON_COL,
+          font           = FONT,
+          fontSize       = "22",
+        },
+      },
+      buildBody(),
+    },
+  }
+end
+
+local function refreshActionButton(i)
+  local guid = monsterGuidByRow[i]
+  local done = guid and gameData.monsterActionDone and gameData.monsterActionDone[guid]
+  self.UI.setAttribute(actionId(i), "image", done and ACTION_NO or ACTION_YES)
+end
+
+local function applyMonsterHighlight(i)
+  local mat = monsterMatByRow[i]
+  if not mat then return end
+  local guid = monsterGuidByRow[i]
+  local done = guid and gameData.monsterActionDone and gameData.monsterActionDone[guid]
+  if done then
+    mat.highlightOff()
+  else
+    mat.highlightOn(hintColor())
+  end
+end
+
+function monsterHintClick(player, alt, id)
+  local i = tonumber(id:match("MON_hint_(%d+)"))
+  if not i then return end
+
+  local mat = monsterMatByRow[i]
+  if not mat then return end
+
+  onObjectPickUpMonsterMat(player.color, mat)
+end
+
+function monsterActionToggle(player, alt, id)
+  local i = tonumber(id:match("MON_action_(%d+)"))
+  if not i then return end
+
+  local guid = monsterGuidByRow[i]
+  if not guid then return end
+
+  gameData.monsterActionDone = gameData.monsterActionDone or {}
+  gameData.monsterActionDone[guid] = not gameData.monsterActionDone[guid]
+  refreshActionButton(i)
+  applyMonsterHighlight(i)
+end
+
+local function monsterNameColor(monster)
+  if monster.epic then return EPIC_COL end
+  if monster.elite then return ELITE_COL end
+  return TEXT_COL
+end
+
+local function orderByRank(monsters)
+  local epic, elite, normal = {}, {}, {}
+  for _, m in ipairs(monsters) do
+    if m.epic then
+      table.insert(epic, m)
+    elseif m.elite then
+      table.insert(elite, m)
+    else
+      table.insert(normal, m)
+    end
+  end
+  local ordered = {}
+  for _, m in ipairs(epic)   do table.insert(ordered, m) end
+  for _, m in ipairs(elite)  do table.insert(ordered, m) end
+  for _, m in ipairs(normal) do table.insert(ordered, m) end
+  return ordered
+end
+
+function refreshMonsterList()
+  local monsters = orderByRank(getMonstersInPlay())
+  for i = 1, MAX_MONSTERS do
+    local monster = monsters[i]
+    if monster then
+      local text = displayById(monster.name)
+      monsterNameById[i]   = text
+      monsterGuidByRow[i]  = monster.mat.getGUID()
+      monsterMatByRow[i]   = monster.mat
+      self.UI.setAttribute(nameId(i), "text", text)
+      self.UI.setAttribute(nameId(i), "color", monsterNameColor(monster))
+      self.UI.setAttribute(rowId(i), "active", true)
+      refreshActionButton(i)
+      applyMonsterHighlight(i)
+    else
+      monsterNameById[i]  = nil
+      monsterGuidByRow[i] = nil
+      monsterMatByRow[i]  = nil
+      self.UI.setAttribute(rowId(i), "active", false)
+    end
+  end
+  refreshPanelWidth()
+end
