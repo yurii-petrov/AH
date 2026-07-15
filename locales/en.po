@@ -83,6 +83,33 @@ msgstr "Remove one blank token from the mythos cup.\nAdd one headline token to t
 msgid "MM_game_setup_8"
 msgstr "For each game after the seventh, place one additional doom on the scenario sheet at the end of setup."
 
+msgid "MM_fate_broadcast_header"
+msgstr "Inevitability mode:"
+
+msgid "MM_fate_broadcast_game1"
+msgstr "The first game has no additional conditions — they appear from game 2."
+
+msgid "MM_fate_done_2"
+msgstr "Doom was spread one additional time."
+
+msgid "MM_fate_done_3"
+msgstr "Mythos cup: one blank token removed, one doom token added."
+
+msgid "MM_fate_done_4"
+msgstr "One fewer clue was spawned during setup."
+
+msgid "MM_fate_done_5"
+msgstr "Mythos cup: one doom token removed, one gate burst added."
+
+msgid "MM_fate_done_6"
+msgstr "One gate burst was resolved."
+
+msgid "MM_fate_done_7"
+msgstr "Mythos cup: one blank token removed, one headline token added."
+
+msgid "MM_fate_done_8"
+msgstr "%s additional doom placed on the scenario sheet."
+
 # Scenario 1
 msgid "MM_scenario1_name_text"
 msgstr "APPROACH OF AZATHOTH"

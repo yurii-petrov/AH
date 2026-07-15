@@ -22,5 +22,7 @@ gameData = {
   lockObjs = {},
   language = nil,
   selectedInvestigators = {},
-  areAllComponentsTaken = false
+  areAllComponentsTaken = false,
+  scenarioMode = "normal",
+  fateGame = nil
 }

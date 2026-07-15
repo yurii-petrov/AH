@@ -902,6 +902,42 @@ I18N_DATA = {
     ["en"] = "EXPANSIONS",
     ["uk"] = "ДОПОВНЕННЯ",
   },
+  ["MM_fate_broadcast_game1"] = {
+    ["en"] = "The first game has no additional conditions — they appear from game 2.",
+    ["uk"] = "У першій грі немає додаткових умов — вони з'являться з гри 2.",
+  },
+  ["MM_fate_broadcast_header"] = {
+    ["en"] = "Inevitability mode:",
+    ["uk"] = "Режим неминучості:",
+  },
+  ["MM_fate_done_2"] = {
+    ["en"] = "Doom was spread one additional time.",
+    ["uk"] = "Приреченість розподілено один додатковий раз.",
+  },
+  ["MM_fate_done_3"] = {
+    ["en"] = "Mythos cup: one blank token removed, one doom token added.",
+    ["uk"] = "Чаша міфу: прибрано один порожній жетон, додано один жетон приреченості.",
+  },
+  ["MM_fate_done_4"] = {
+    ["en"] = "One fewer clue was spawned during setup.",
+    ["uk"] = "Розміщено на одну зачіпку менше під час підготовки.",
+  },
+  ["MM_fate_done_5"] = {
+    ["en"] = "Mythos cup: one doom token removed, one gate burst added.",
+    ["uk"] = "Чаша міфу: прибрано один жетон приреченості, додано один прорив воріт.",
+  },
+  ["MM_fate_done_6"] = {
+    ["en"] = "One gate burst was resolved.",
+    ["uk"] = "Розв'язано один прорив воріт.",
+  },
+  ["MM_fate_done_7"] = {
+    ["en"] = "Mythos cup: one blank token removed, one headline token added.",
+    ["uk"] = "Чаша міфу: прибрано один порожній жетон, додано один жетон заголовка.",
+  },
+  ["MM_fate_done_8"] = {
+    ["en"] = "%s additional doom placed on the scenario sheet.",
+    ["uk"] = "На аркуш сценарію розміщено додаткову приреченість: %s.",
+  },
   ["MM_game_setup_1"] = {
     ["en"] = "Standard setup.",
     ["uk"] = "Звичайне налаштування.",

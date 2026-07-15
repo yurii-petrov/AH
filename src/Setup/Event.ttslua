@@ -48,6 +48,7 @@ function prepareScenarioEventDeck(eventDeck, decks, time)
   end
 
   local clueIndexTracker = {}
+  local cluesToSkip = fateClueReduction()
 
   local function processCard(index, cards)
     if index > #cards then
@@ -70,17 +71,21 @@ function prepareScenarioEventDeck(eventDeck, decks, time)
 
           if deckMemo and deckMemo.name and string.lower(deckMemo.name) == string.lower(data.neighborhood) then
             mergeEventOnTopAtEventPos(card, deck, function()
-              local isMystery = data.neighborhoodType and string.lower(data.neighborhoodType) == "mystery"
-
-              if isMystery then
-                local mysteryTile = getNeighborhoodTile(data.neighborhood, "mystery")
-                if mysteryTile then
-                  spawnClueTokenOnTile(mysteryTile)
-                end
+              if cluesToSkip > 0 then
+                cluesToSkip = cluesToSkip - 1
               else
-                local posIndex = (clueIndexTracker[data.neighborhood] or 0) + 1
-                clueIndexTracker[data.neighborhood] = posIndex
-                spawnClueToken(data.neighborhood, posIndex)
+                local isMystery = data.neighborhoodType and string.lower(data.neighborhoodType) == "mystery"
+
+                if isMystery then
+                  local mysteryTile = getNeighborhoodTile(data.neighborhood, "mystery")
+                  if mysteryTile then
+                    spawnClueTokenOnTile(mysteryTile)
+                  end
+                else
+                  local posIndex = (clueIndexTracker[data.neighborhood] or 0) + 1
+                  clueIndexTracker[data.neighborhood] = posIndex
+                  spawnClueToken(data.neighborhood, posIndex)
+                end
               end
 
               processCard(index + 1, cards)

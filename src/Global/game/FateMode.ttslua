@@ -1,0 +1,84 @@
+FATE_MODE = "fate"
+
+function fateActiveGame()
+  if gameData.scenarioMode ~= FATE_MODE then return nil end
+  return gameData.fateGame
+end
+
+local function adjustCup(cups, key, delta)
+  cups[key] = math.max(0, (cups[key] or 0) + delta)
+end
+
+function applyFateMythosCups(cups)
+  local result = deepCopy(cups or {})
+  local game = fateActiveGame()
+  if not game then return result end
+
+  if game >= 3 then
+    adjustCup(result, MythosCup.Blank, -1)
+    adjustCup(result, MythosCup.SpreadDoom, 1)
+  end
+  if game >= 5 then
+    adjustCup(result, MythosCup.SpreadDoom, -1)
+    adjustCup(result, MythosCup.GateBurst, 1)
+  end
+  if game >= 7 then
+    adjustCup(result, MythosCup.Blank, -1)
+    adjustCup(result, MythosCup.ReadHeadline, 1)
+  end
+
+  return result
+end
+
+function fateClueReduction()
+  local game = fateActiveGame()
+  if game and game >= 4 then return 1 end
+  return 0
+end
+
+function applyFateEndOfSetup(callBack)
+  local game = fateActiveGame()
+  if not game then if callBack then callBack() end return end
+
+  local steps = {}
+  if game >= 2 then
+    table.insert(steps, function(next) eventSpawnDooms(next) end)
+  end
+  if game >= 6 then
+    table.insert(steps, function(next) processGateBurst(next) end)
+  end
+  if game >= 8 then
+    table.insert(steps, function(next) spawnDoomTokensOnScenarioSheet(game - 7); next() end)
+  end
+
+  local function run(i)
+    if i > #steps then
+      if callBack then callBack() end
+      return
+    end
+    steps[i](function() Wait.time(function() run(i + 1) end, 0.5) end)
+  end
+  run(1)
+end
+
+function broadcastFateSummary()
+  local game = fateActiveGame()
+  if not game then return end
+
+  local lines = { i18n.getStrById("MM_fate_broadcast_header") }
+
+  if game == 1 then
+    table.insert(lines, i18n.getStrById("MM_fate_broadcast_game1"))
+  else
+    for n = 2, 7 do
+      if game >= n then
+        table.insert(lines, i18n.getStrById("MM_fate_done_" .. n))
+      end
+    end
+    if game >= 8 then
+      table.insert(lines, string.format(i18n.getStrById("MM_fate_done_8"), game - 7))
+    end
+  end
+
+  broadcastToAll(table.concat(lines, "\n"), "Purple")
+end

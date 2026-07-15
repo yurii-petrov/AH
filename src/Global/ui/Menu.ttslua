@@ -201,7 +201,9 @@ function processScenarioDecks(done)
   prepareEventDeck(function()
   prepareAllySpawn(gameData.scenarioData)
       spawnDoomsByClick()
-      prepareMythosTokens(gameData.scenarioData.mythosCups)
+      local mythosCups = fateActiveGame() and applyFateMythosCups(gameData.scenarioData.mythosCups)
+        or gameData.scenarioData.mythosCups
+      prepareMythosTokens(mythosCups)
       Global.UI.setAttribute("phase", "active", true)
       self.UI.setAttribute('phase_text', "text", i18n.getStrById("PB_phase1"))
       broadcastToAll(
@@ -210,6 +212,9 @@ function processScenarioDecks(done)
       if gameData.language == "en" then
         self.UI.setAttribute('PB_phase_text', 'offsetXY', '0 15')
         self.UI.setAttribute('phase_text', 'offsetXY', '0 35')
+      end
+      if fateActiveGame() then
+        applyFateEndOfSetup(function() broadcastFateSummary() end)
       end
       done()
   end)
@@ -358,6 +363,16 @@ function submitScenario()
       return
     end
     currentSetup.scenario = candidates[math.random(#candidates)]
+  end
+
+  gameData.scenarioMode = scenarioMode
+  if scenarioMode == SCENARIO_MODE_FATE then
+    local scenarioMat = getObjectFromGUID(scenarioMatId)
+    local scenarioMatData = scenarioMat and parseJson(scenarioMat.memo)
+    local total = scenarioMatData and scenarioMatData.scenarios and #scenarioMatData.scenarios or 0
+    gameData.fateGame = total - countSelectedScenarios() + 1
+  else
+    gameData.fateGame = nil
   end
 
   self.UI.setAttribute('chooseScenario', 'active', false)
