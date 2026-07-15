@@ -902,6 +902,38 @@ I18N_DATA = {
     ["en"] = "EXPANSIONS",
     ["uk"] = "ДОПОВНЕННЯ",
   },
+  ["MM_game_setup_1"] = {
+    ["en"] = "Standard setup.",
+    ["uk"] = "Звичайне налаштування.",
+  },
+  ["MM_game_setup_2"] = {
+    ["en"] = "Spread doom one additional time during setup.",
+    ["uk"] = "Розподіліть приреченість один додатковий раз під час підготовки.",
+  },
+  ["MM_game_setup_3"] = {
+    ["en"] = "Remove one blank token from the mythos cup.\nAdd one doom token to the mythos cup.",
+    ["uk"] = "Приберіть один порожній жетон із чаші міфу.\nДодайте один жетон приреченості до чаші міфу.",
+  },
+  ["MM_game_setup_4"] = {
+    ["en"] = "Spawn one fewer clue during setup.",
+    ["uk"] = "Розмістіть на одну зачіпку менше під час підготовки.",
+  },
+  ["MM_game_setup_5"] = {
+    ["en"] = "Remove one doom token from the mythos cup.\nAdd one gate burst to the mythos cup.",
+    ["uk"] = "Приберіть один жетон приреченості з чаші міфу.\nДодайте один прорив воріт до чаші міфу.",
+  },
+  ["MM_game_setup_6"] = {
+    ["en"] = "Resolve one gate burst at the end of setup.",
+    ["uk"] = "Розв’яжіть один прорив воріт наприкінці підготовки.",
+  },
+  ["MM_game_setup_7"] = {
+    ["en"] = "Remove one blank token from the mythos cup.\nAdd one headline token to the mythos cup.",
+    ["uk"] = "Приберіть один порожній жетон із чаші міфу.\nДодайте один жетон заголовка до чаші міфу.",
+  },
+  ["MM_game_setup_8"] = {
+    ["en"] = "For each game after the seventh, place one additional doom on the scenario sheet at the end of setup.",
+    ["uk"] = "За кожну гру після сьомої розмістіть одну додаткову приреченість на аркуші сценарію наприкінці підготовки.",
+  },
   ["MM_map_text"] = {
     ["en"] = "MAP",
     ["uk"] = "МАПА",
@@ -1022,9 +1054,9 @@ I18N_DATA = {
     ["en"] = "ITHAQUA'S CHILDREN",
     ["uk"] = "Діти Ітакви",
   },
-  ["MM_scenario_level_format"] = {
-    ["en"] = "Level %s",
-    ["uk"] = "Рівень %s",
+  ["MM_scenario_game_format"] = {
+    ["en"] = "Game %s",
+    ["uk"] = "Гра %s",
   },
   ["MM_scenario_mode_fate"] = {
     ["en"] = "Inevitability",

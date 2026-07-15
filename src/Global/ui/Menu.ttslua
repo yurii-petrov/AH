@@ -28,9 +28,11 @@ local function syncSelectAllToggle(total)
   self.UI.setAttribute('scenario_select_all_toggle', 'isOn', countSelectedScenarios() == total)
 end
 
-local function updateLevelLabel(total)
-  local level = total - countSelectedScenarios() + 1
-  self.UI.setAttribute('scenario_level_text', 'text', string.format(i18n.getStrById("MM_scenario_level_format"), level))
+local function updateGameLabel(total)
+  local game = total - countSelectedScenarios() + 1
+  self.UI.setAttribute('scenario_game_text', 'text', string.format(i18n.getStrById("MM_scenario_game_format"), game))
+  local setupKey = "MM_game_setup_" .. math.min(game, 8)
+  self.UI.setAttribute('scenario_game_info', 'tooltip', i18n.getStrById(setupKey))
 end
 
 local function refreshExtraRow(total)
@@ -39,12 +41,13 @@ local function refreshExtraRow(total)
 
   self.UI.setAttribute('MM_select_all_scenarios_text', 'active', isRandom)
   self.UI.setAttribute('scenario_select_all_toggle', 'active', isRandom)
-  self.UI.setAttribute('scenario_level_text', 'active', isFate)
+  self.UI.setAttribute('scenario_game_text', 'active', isFate)
+  self.UI.setAttribute('scenario_game_info', 'active', isFate)
 
   if isRandom then
     syncSelectAllToggle(total)
   elseif isFate then
-    updateLevelLabel(total)
+    updateGameLabel(total)
   end
 end
 

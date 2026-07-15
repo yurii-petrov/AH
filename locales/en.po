@@ -56,8 +56,32 @@ msgstr "Random"
 msgid "MM_scenario_mode_fate"
 msgstr "Inevitability"
 
-msgid "MM_scenario_level_format"
-msgstr "Level %s"
+msgid "MM_scenario_game_format"
+msgstr "Game %s"
+
+msgid "MM_game_setup_1"
+msgstr "Standard setup."
+
+msgid "MM_game_setup_2"
+msgstr "Spread doom one additional time during setup."
+
+msgid "MM_game_setup_3"
+msgstr "Remove one blank token from the mythos cup.\nAdd one doom token to the mythos cup."
+
+msgid "MM_game_setup_4"
+msgstr "Spawn one fewer clue during setup."
+
+msgid "MM_game_setup_5"
+msgstr "Remove one doom token from the mythos cup.\nAdd one gate burst to the mythos cup."
+
+msgid "MM_game_setup_6"
+msgstr "Resolve one gate burst at the end of setup."
+
+msgid "MM_game_setup_7"
+msgstr "Remove one blank token from the mythos cup.\nAdd one headline token to the mythos cup."
+
+msgid "MM_game_setup_8"
+msgstr "For each game after the seventh, place one additional doom on the scenario sheet at the end of setup."
 
 # Scenario 1
 msgid "MM_scenario1_name_text"

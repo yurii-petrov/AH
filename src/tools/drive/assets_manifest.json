@@ -378,15 +378,6 @@
         }
       }
     },
-    "15078495f394fca4c0f57990f60e37472c466848601cf50d71b82736a1ead926": {
-      "driveId": "12DZJ8W0t-I8rVixFwHWfqesCIm6mYLWv",
-      "paths": {
-        "assets/other_graphics/phases_3.png": {
-          "mtime": 1754990256.0,
-          "size": 26693
-        }
-      }
-    },
     "15b9481428713ebd33c15ce52495ef16d4e12235c740808e5a17e792c82d6a18": {
       "driveId": "1s_fRF-RBR76YHdeLPAvktEluiZCxg2BL",
       "paths": {
@@ -546,6 +537,15 @@
         "assets/cards/0_base/uk/Reference 2Back.png": {
           "mtime": 1753972918.0,
           "size": 9533944
+        }
+      }
+    },
+    "1f7f2871b21d5644954ae951ee3cc396d1087ec4ca8c89a0947c0484629ccfb2": {
+      "driveId": "1CECyA0SyfqyaUm97-4B3GK35mm30VzZy",
+      "paths": {
+        "assets/icons/info.png": {
+          "mtime": 1784111722.547,
+          "size": 4026
         }
       }
     },
@@ -915,15 +915,6 @@
         "assets/icons/mythos clue.png": {
           "mtime": 1751355361.469,
           "size": 183716
-        }
-      }
-    },
-    "31bf77109820d1e2bfd9c5577a0c6a4e6638abf60c7467d28ee29bfd6ab6586b": {
-      "driveId": "1nZsNyLyhGIHDT_uTTv3Dc0lRI5tDSu7P",
-      "paths": {
-        "assets/other_graphics/phases_4.png": {
-          "mtime": 1754989619.0,
-          "size": 27309
         }
       }
     },

@@ -310,7 +310,8 @@ local function chooseScenarioWindow()
                         children = {
                           { tag = "Text", attributes = { id = "MM_select_all_scenarios_text", active = "false", font = FONT, fontSize = "18", color = "#ffffff", width = "330", height = "28", text = "" } },
                           { tag = "Toggle", attributes = { id = "scenario_select_all_toggle", active = "false", onValueChanged = "onScenarioSelectAllToggle", isOn = "true", width = "24", height = "24", color = "#ffffff", toggleColor = "#000000" } },
-                          { tag = "Text", attributes = { id = "scenario_level_text", active = "false", font = FONT, fontSize = "20", fontStyle = "bold", color = "#ffffff", width = "400", height = "28", alignment = "MiddleCenter", text = "" } },
+                          { tag = "Text", attributes = { id = "scenario_game_text", active = "false", font = FONT, fontSize = "20", fontStyle = "bold", color = "#ffffff", alignment = "MiddleRight", minWidth = "90", preferredWidth = "90", flexibleWidth = "0", minHeight = "28", preferredHeight = "28", text = "" } },
+                          { tag = "Button", attributes = { id = "scenario_game_info", active = "false", image = "info_icon", color = "#ffffff", minWidth = "24", preferredWidth = "24", flexibleWidth = "0", minHeight = "24", preferredHeight = "24", tooltip = "", tooltipPosition = "Above" } },
                         },
                       },
                     },

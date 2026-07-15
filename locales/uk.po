@@ -46,8 +46,32 @@ msgstr "Рандом"
 msgid "MM_scenario_mode_fate"
 msgstr "Неминучості"
 
-msgid "MM_scenario_level_format"
-msgstr "Рівень %s"
+msgid "MM_scenario_game_format"
+msgstr "Гра %s"
+
+msgid "MM_game_setup_1"
+msgstr "Звичайне налаштування."
+
+msgid "MM_game_setup_2"
+msgstr "Розподіліть приреченість один додатковий раз під час підготовки."
+
+msgid "MM_game_setup_3"
+msgstr "Приберіть один порожній жетон із чаші міфу.\nДодайте один жетон приреченості до чаші міфу."
+
+msgid "MM_game_setup_4"
+msgstr "Розмістіть на одну зачіпку менше під час підготовки."
+
+msgid "MM_game_setup_5"
+msgstr "Приберіть один жетон приреченості з чаші міфу.\nДодайте один прорив воріт до чаші міфу."
+
+msgid "MM_game_setup_6"
+msgstr "Розв’яжіть один прорив воріт наприкінці підготовки."
+
+msgid "MM_game_setup_7"
+msgstr "Приберіть один порожній жетон із чаші міфу.\nДодайте один жетон заголовка до чаші міфу."
+
+msgid "MM_game_setup_8"
+msgstr "За кожну гру після сьомої розмістіть одну додаткову приреченість на аркуші сценарію наприкінці підготовки."
 
 # Scenario 1
 msgid "MM_scenario1_name_text"
