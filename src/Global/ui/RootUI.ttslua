@@ -290,18 +290,27 @@ local function chooseScenarioWindow()
                       },
                       {
                         tag = "HorizontalLayout",
-                        attributes = { id = "scenario_random_row", rectAlignment = "LowerCenter", offsetXY = "0 36", width = "400", height = "28", childAlignment = "MiddleCenter", childForceExpandWidth = "false", childForceExpandHeight = "false", spacing = "10" },
+                        attributes = { id = "scenario_mode_row", rectAlignment = "LowerCenter", offsetXY = "0 40", width = "400", height = "34", childAlignment = "MiddleCenter", childForceExpandWidth = "false", childForceExpandHeight = "false", spacing = "10" },
                         children = {
-                          { tag = "Text", attributes = { id = "MM_random_scenario_text", font = FONT, fontSize = "18", color = "#ffffff", width = "330", height = "28", text = "" } },
-                          { tag = "Toggle", attributes = { id = "scenario_random_toggle", onValueChanged = "onScenarioRandomToggle", isOn = "false", width = "24", height = "24", color = "#ffffff", toggleColor = "#000000" } },
+                          { tag = "Text", attributes = { id = "MM_scenario_mode_label_text", font = FONT, fontSize = "18", color = "#ffffff", alignment = "MiddleRight", minWidth = "90", preferredWidth = "90", flexibleWidth = "0", minHeight = "34", preferredHeight = "34", text = "" } },
+                          {
+                            tag = "Dropdown",
+                            attributes = { id = "scenario_mode_dropdown", onValueChanged = "onScenarioModeChanged", minWidth = "170", preferredWidth = "170", flexibleWidth = "0", minHeight = "34", preferredHeight = "34", flexibleHeight = "0", fontSize = "16", font = FONT, color = "#333333", textColor = "#ffffff", itemHeight = "34", itemBackgroundColors = "#222222|#3a3a3a|#4a4a4a|#3a3a3a|#111111", itemTextColor = "#ffffff", checkColor = "#ffffff", arrowColor = "#ffffff" },
+                            children = {
+                              { tag = "Option", attributes = { id = "MM_scenario_mode_normal", selected = "true" }, value = i18n.getStrById("MM_scenario_mode_normal") },
+                              { tag = "Option", attributes = { id = "MM_scenario_mode_random" }, value = i18n.getStrById("MM_scenario_mode_random") },
+                              { tag = "Option", attributes = { id = "MM_scenario_mode_fate" }, value = i18n.getStrById("MM_scenario_mode_fate") },
+                            },
+                          },
                         },
                       },
                       {
                         tag = "HorizontalLayout",
-                        attributes = { id = "scenario_select_all_row", rectAlignment = "LowerCenter", offsetXY = "0 4", width = "400", height = "28", childAlignment = "MiddleCenter", childForceExpandWidth = "false", childForceExpandHeight = "false", spacing = "10" },
+                        attributes = { id = "scenario_extra_row", rectAlignment = "LowerCenter", offsetXY = "0 4", width = "400", height = "28", childAlignment = "MiddleCenter", childForceExpandWidth = "false", childForceExpandHeight = "false", spacing = "10" },
                         children = {
                           { tag = "Text", attributes = { id = "MM_select_all_scenarios_text", active = "false", font = FONT, fontSize = "18", color = "#ffffff", width = "330", height = "28", text = "" } },
                           { tag = "Toggle", attributes = { id = "scenario_select_all_toggle", active = "false", onValueChanged = "onScenarioSelectAllToggle", isOn = "true", width = "24", height = "24", color = "#ffffff", toggleColor = "#000000" } },
+                          { tag = "Text", attributes = { id = "scenario_level_text", active = "false", font = FONT, fontSize = "20", fontStyle = "bold", color = "#ffffff", width = "400", height = "28", alignment = "MiddleCenter", text = "" } },
                         },
                       },
                     },

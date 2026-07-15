@@ -1,6 +1,10 @@
 
+local SCENARIO_MODE_NORMAL = "normal"
+local SCENARIO_MODE_RANDOM = "random"
+local SCENARIO_MODE_FATE   = "fate"
+
 local map = false
-local scenarioRandomMode = false
+local scenarioMode = SCENARIO_MODE_NORMAL
 local selectedScenarios = { [1] = true }
 
 local function setScenarioSubmitButtonText(text)
@@ -24,9 +28,44 @@ local function syncSelectAllToggle(total)
   self.UI.setAttribute('scenario_select_all_toggle', 'isOn', countSelectedScenarios() == total)
 end
 
-local function setSelectAllRowVisible(visible)
-  self.UI.setAttribute('MM_select_all_scenarios_text', 'active', visible)
-  self.UI.setAttribute('scenario_select_all_toggle', 'active', visible)
+local function updateLevelLabel(total)
+  local level = total - countSelectedScenarios() + 1
+  self.UI.setAttribute('scenario_level_text', 'text', string.format(i18n.getStrById("MM_scenario_level_format"), level))
+end
+
+local function refreshExtraRow(total)
+  local isRandom = scenarioMode == SCENARIO_MODE_RANDOM
+  local isFate = scenarioMode == SCENARIO_MODE_FATE
+
+  self.UI.setAttribute('MM_select_all_scenarios_text', 'active', isRandom)
+  self.UI.setAttribute('scenario_select_all_toggle', 'active', isRandom)
+  self.UI.setAttribute('scenario_level_text', 'active', isFate)
+
+  if isRandom then
+    syncSelectAllToggle(total)
+  elseif isFate then
+    updateLevelLabel(total)
+  end
+end
+
+local function applyScenarioMode(total)
+  if scenarioMode == SCENARIO_MODE_NORMAL then
+    for i = 1, total, 1 do
+      self.UI.setAttribute('scenario_panel' .. i, 'color', 'clear')
+    end
+    selectedScenarios = { [1] = true }
+    currentSetup.scenario = 1
+    self.UI.setAttribute('scenario_panel1', 'color', '#ffffff22')
+    setScenarioSubmitButtonText(i18n.getStrById("MM_select_scenario"))
+  else
+    selectedScenarios = {}
+    for i = 1, total, 1 do
+      selectedScenarios[i] = true
+      self.UI.setAttribute('scenario_panel' .. i, 'color', '#ffffff22')
+    end
+    setScenarioSubmitButtonText(i18n.getStrById("MM_random_scenario"))
+  end
+  refreshExtraRow(total)
 end
 
 function mapToggle(player, alt, id)
@@ -41,14 +80,12 @@ function changeScenario(player, alt, id)
   self.UI.setAttribute('scenarioImage', 'active', true)
   self.UI.setAttribute('scenarioMap', 'active', false)
   previewScenario(player, alt, 'scenario' .. currentSetup.scenario)
-  setScenarioSubmitButtonText(i18n.getStrById(scenarioRandomMode and "MM_random_scenario" or "MM_select_scenario"))
-  setSelectAllRowVisible(scenarioRandomMode)
-  if scenarioRandomMode then
-    local scenarioMat = getObjectFromGUID(scenarioMatId)
-    local scenarioMatData = scenarioMat and parseJson(scenarioMat.memo)
-    if scenarioMatData and scenarioMatData.scenarios then
-      syncSelectAllToggle(#scenarioMatData.scenarios)
-    end
+  setScenarioSubmitButtonText(i18n.getStrById(scenarioMode == SCENARIO_MODE_NORMAL and "MM_select_scenario" or "MM_random_scenario"))
+
+  local scenarioMat = getObjectFromGUID(scenarioMatId)
+  local scenarioMatData = scenarioMat and parseJson(scenarioMat.memo)
+  if scenarioMatData and scenarioMatData.scenarios then
+    refreshExtraRow(#scenarioMatData.scenarios)
   end
 end
 function menuSelectPlayers(player, alt, id)
@@ -235,7 +272,7 @@ function chooseScenario(player, alt, id)
 
   local n = tonumber(id:match("%d+"))
 
-  if scenarioRandomMode then
+  if scenarioMode == SCENARIO_MODE_RANDOM or scenarioMode == SCENARIO_MODE_FATE then
     if selectedScenarios[n] then
       if countSelectedScenarios() <= 1 then
         return
@@ -246,7 +283,7 @@ function chooseScenario(player, alt, id)
       selectedScenarios[n] = true
       self.UI.setAttribute('scenario_panel' .. n, 'color', '#ffffff22')
     end
-    syncSelectAllToggle(#scenarioMatData.scenarios)
+    refreshExtraRow(#scenarioMatData.scenarios)
     return
   end
 
@@ -258,7 +295,7 @@ function chooseScenario(player, alt, id)
   selectedScenarios = { [n] = true }
 end
 
-function onScenarioRandomToggle(player, value, id)
+function onScenarioModeChanged(player, value, id)
   local scenarioMat = getObjectFromGUID(scenarioMatId)
   if not scenarioMat then
     return
@@ -269,30 +306,24 @@ function onScenarioRandomToggle(player, value, id)
     return
   end
 
-  scenarioRandomMode = value == "True"
+  local index = tonumber(value)
 
-  setSelectAllRowVisible(scenarioRandomMode)
-
-  if scenarioRandomMode then
-    selectedScenarios = {}
-    for i = 1, #scenarioMatData.scenarios, 1 do
-      selectedScenarios[i] = true
-      self.UI.setAttribute('scenario_panel' .. i, 'color', '#ffffff22')
-    end
-    self.UI.setAttribute('scenario_select_all_toggle', 'isOn', true)
-    setScenarioSubmitButtonText(i18n.getStrById("MM_random_scenario"))
+  if index == 1 or value == i18n.getStrById("MM_scenario_mode_random") then
+    scenarioMode = SCENARIO_MODE_RANDOM
+  elseif index == 2 or value == i18n.getStrById("MM_scenario_mode_fate") then
+    scenarioMode = SCENARIO_MODE_FATE
   else
-    for i = 1, #scenarioMatData.scenarios, 1 do
-      self.UI.setAttribute('scenario_panel' .. i, 'color', 'clear')
-    end
-    selectedScenarios = { [1] = true }
-    currentSetup.scenario = 1
-    self.UI.setAttribute('scenario_panel1', 'color', '#ffffff22')
-    setScenarioSubmitButtonText(i18n.getStrById("MM_select_scenario"))
+    scenarioMode = SCENARIO_MODE_NORMAL
   end
+
+  applyScenarioMode(#scenarioMatData.scenarios)
 end
 
 function onScenarioSelectAllToggle(player, value, id)
+  if scenarioMode ~= SCENARIO_MODE_RANDOM then
+    return
+  end
+
   local scenarioMat = getObjectFromGUID(scenarioMatId)
   if not scenarioMat then
     return
@@ -305,13 +336,6 @@ function onScenarioSelectAllToggle(player, value, id)
 
   local selectAll = value == "True"
 
-  if selectAll and not scenarioRandomMode then
-    scenarioRandomMode = true
-    self.UI.setAttribute('scenario_random_toggle', 'isOn', true)
-    setSelectAllRowVisible(true)
-    setScenarioSubmitButtonText(i18n.getStrById("MM_random_scenario"))
-  end
-
   selectedScenarios = {}
   for i = 1, #scenarioMatData.scenarios, 1 do
     if selectAll then
@@ -322,7 +346,7 @@ function onScenarioSelectAllToggle(player, value, id)
 end
 
 function submitScenario()
-  if scenarioRandomMode then
+  if scenarioMode == SCENARIO_MODE_RANDOM or scenarioMode == SCENARIO_MODE_FATE then
     local candidates = {}
     for i in pairs(selectedScenarios) do
       table.insert(candidates, i)
