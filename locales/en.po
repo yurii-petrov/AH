@@ -38,6 +38,27 @@ msgstr "Choice Scenario"
 msgid "MM_select_scenario"
 msgstr "Select Scenario"
 
+msgid "MM_random_scenario"
+msgstr "Random"
+
+msgid "MM_select_all_scenarios_text"
+msgstr "Select all"
+
+msgid "MM_scenario_mode_label_text"
+msgstr "Mode:"
+
+msgid "MM_scenario_mode_normal"
+msgstr "Normal"
+
+msgid "MM_scenario_mode_random"
+msgstr "Random"
+
+msgid "MM_scenario_mode_fate"
+msgstr "Inevitability"
+
+msgid "MM_scenario_level_format"
+msgstr "Level %s"
+
 # Scenario 1
 msgid "MM_scenario1_name_text"
 msgstr "APPROACH OF AZATHOTH"

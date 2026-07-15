@@ -28,6 +28,27 @@ msgstr "Оберіть сценарій"
 msgid "MM_select_scenario"
 msgstr "ОБРАТИ СЦЕНАРІЙ"
 
+msgid "MM_random_scenario"
+msgstr "Випадковий"
+
+msgid "MM_select_all_scenarios_text"
+msgstr "Обрати всі"
+
+msgid "MM_scenario_mode_label_text"
+msgstr "Режим:"
+
+msgid "MM_scenario_mode_normal"
+msgstr "Звичайний"
+
+msgid "MM_scenario_mode_random"
+msgstr "Рандом"
+
+msgid "MM_scenario_mode_fate"
+msgstr "Неминучості"
+
+msgid "MM_scenario_level_format"
+msgstr "Рівень %s"
+
 # Scenario 1
 msgid "MM_scenario1_name_text"
 msgstr "Пришестя Азатота"
