@@ -111,24 +111,24 @@ LOCATION_GRAPHS = {
 
   ["SitD"] = {
     ["Independence Square"] = {"La Bella Luna", "Arkham Asylum"},
-    ["La Bella Luna"] = {"Independence Square", "Arkham Asylum"},
-    ["Arkham Asylum"] = {"Independence Square", "La Bella Luna"},
+    ["La Bella Luna"] = {"Independence Square", "Arkham Asylum", "Residential2", "Scenic1"},
+    ["Arkham Asylum"] = {"Independence Square", "La Bella Luna", "Scenic1"},
 
-    ["Velma's Diner"] = {"Hibb's Roadhouse", "Police Station"},
-    ["Hibb's Roadhouse"] = {"Velma's Diner", "Police Station"},
-    ["Police Station"] = {"Velma's Diner", "Hibb's Roadhouse"},
+    ["Velma's Diner"] = {"Hibb's Roadhouse", "Police Station", "Residential2", "Residential1"},
+    ["Hibb's Roadhouse"] = {"Velma's Diner", "Police Station", "Bridge2"},
+    ["Police Station"] = {"Velma's Diner", "Hibb's Roadhouse", "Residential1", "Bridge1", "Bridge2"},
 
-    ["Unvisited Isle"] = {"Tick Tock Club", "River Docks"},
-    ["Tick Tock Club"] = {"Unvisited Isle", "River Docks"},
+    ["Unvisited Isle"] = {"Tick Tock Club", "River Docks", "Bridge1", "Scenic2"},
+    ["Tick Tock Club"] = {"Unvisited Isle", "River Docks", "Scenic2"},
     ["River Docks"] = {"Unvisited Isle", "Tick Tock Club"},
 
-    ["Arkham Advertiser"] = {"Train Station", "Curiositie Shoppe"},
-    ["Train Station"] = {"Arkham Advertiser", "Curiositie Shoppe"},
+    ["Arkham Advertiser"] = {"Train Station", "Curiositie Shoppe", "Scneic1", "Residential1"},
+    ["Train Station"] = {"Arkham Advertiser", "Curiositie Shoppe", "Residential1"},
     ["Curiositie Shoppe"] = {"Arkham Advertiser", "Train Station"},
 
-    ["Black Cave"] = {"Graveyard", "General Store"},
+    ["Black Cave"] = {"Graveyard", "General Store", "Scenic2", "Bridge2"},
     ["Graveyard"] = {"Black Cave", "General Store"},
-    ["General Store"] = {"Black Cave", "Graveyard"},
+    ["General Store"] = {"Black Cave", "Graveyard", "Scenic2"},
 
     ["Bridge1"] = {},
     ["Bridge2"] = {},
@@ -139,24 +139,24 @@ LOCATION_GRAPHS = {
   },
 
   ["SoT"] = {
-    ["Unvisited Isle"] = {"Tick Tock Club", "River Docks"},
-    ["Tick Tock Club"] = {"Unvisited Isle", "River Docks"},
+    ["Unvisited Isle"] = {"Tick Tock Club", "River Docks", "Residential1", "Bridge1"},
+    ["Tick Tock Club"] = {"Unvisited Isle", "River Docks", "Residential1", "Bridge2"},
     ["River Docks"] = {"Unvisited Isle", "Tick Tock Club"},
 
-    ["Observatory"] = {"Science Building", "Orne Library"},
-    ["Science Building"] = {"Observatory", "Orne Library"},
-    ["Orne Library"] = {"Observatory", "Science Building"},
+    ["Observatory"] = {"Science Building", "Orne Library", "Residential2", "Bridge2"},
+    ["Science Building"] = {"Observatory", "Orne Library", "Residential3"},
+    ["Orne Library"] = {"Observatory", "Science Building", "Residential3", "Bridge2"},
 
     ["Arkham Advertiser"] = {"Train Station", "Curiositie Shoppe"},
-    ["Train Station"] = {"Arkham Advertiser", "Curiositie Shoppe"},
+    ["Train Station"] = {"Arkham Advertiser", "Curiositie Shoppe", "Bridge1"},
     ["Curiositie Shoppe"] = {"Arkham Advertiser", "Train Station"},
 
-    ["Black Cave"] = {"Graveyard", "General Store"},
+    ["Black Cave"] = {"Graveyard", "General Store", "Residential1"},
     ["Graveyard"] = {"Black Cave", "General Store"},
-    ["General Store"] = {"Black Cave", "Graveyard"},
+    ["General Store"] = {"Black Cave", "Graveyard", "Residential2", "Residential1"},
 
-    ["Hangman's Hill"] = {"St. Mary's Hospital", "Ye Olde Magick Shoppe"},
-    ["St. Mary's Hospital"] = {"Hangman's Hill", "Ye Olde Magick Shoppe"},
+    ["Hangman's Hill"] = {"St. Mary's Hospital", "Ye Olde Magick Shoppe", "Residential3"},
+    ["St. Mary's Hospital"] = {"Hangman's Hill", "Ye Olde Magick Shoppe", "Residential3"},
     ["Ye Olde Magick Shoppe"] = {"Hangman's Hill", "St. Mary's Hospital"},
 
     ["Bridge1"] = {},
@@ -167,29 +167,29 @@ LOCATION_GRAPHS = {
   },
 
   ["ToR"] = {
-    ["Arkham Advertiser"] = {"Train Station", "Curiositie Shoppe"},
-    ["Train Station"] = {"Arkham Advertiser", "Curiositie Shoppe"},
-    ["Curiositie Shoppe"] = {"Arkham Advertiser", "Train Station"},
+    ["Arkham Advertiser"] = {"Train Station", "Curiositie Shoppe", "Residential1", "Country Road1"},
+    ["Train Station"] = {"Arkham Advertiser", "Curiositie Shoppe", "Residential1", "Bridge1"},
+    ["Curiositie Shoppe"] = {"Arkham Advertiser", "Train Station", "Country Road1"},
 
-    ["Velma's Diner"] = {"Hibb's Roadhouse", "Police Station"},
-    ["Hibb's Roadhouse"] = {"Velma's Diner", "Police Station"},
-    ["Police Station"] = {"Velma's Diner", "Hibb's Roadhouse"},
+    ["Velma's Diner"] = {"Hibb's Roadhouse", "Police Station", "Residential1", "Ferry Terminal1"},
+    ["Hibb's Roadhouse"] = {"Velma's Diner", "Police Station", "Scenic1", "Ferry Terminal1"},
+    ["Police Station"] = {"Velma's Diner", "Hibb's Roadhouse", "Residential1", "Bridge2", "Scenic1"},
 
-    ["Ma's Boarding House"] = {"Historical Society", "South Church"},
-    ["Historical Society"] = {"Ma's Boarding House", "South Church"},
-    ["South Church"] = {"Ma's Boarding House", "Historical Society"},
+    ["Ma's Boarding House"] = {"Historical Society", "South Church", "Scenic1"},
+    ["Historical Society"] = {"Ma's Boarding House", "South Church", "Country Road3"},
+    ["South Church"] = {"Ma's Boarding House", "Historical Society", "Residential2", "Scenic1"},
 
-    ["Observatory"] = {"Science Building", "Orne Library"},
-    ["Science Building"] = {"Observatory", "Orne Library"},
-    ["Orne Library"] = {"Observatory", "Science Building"},
+    ["Observatory"] = {"Science Building", "Orne Library", "Bridge1", "Bridge2", "Residential2"},
+    ["Science Building"] = {"Observatory", "Orne Library", "Residential2"},
+    ["Orne Library"] = {"Observatory", "Science Building", "Bridge1"},
 
-    ["Esoteric Order of Dagon"] = {"First National Grocery", "Innsmouth Jail"},
-    ["First National Grocery"] = {"Esoteric Order of Dagon", "Innsmouth Jail"},
-    ["Innsmouth Jail"] = {"Esoteric Order of Dagon", "First National Grocery"},
+    ["Esoteric Order of Dagon"] = {"First National Grocery", "Innsmouth Jail", "Scenic2"},
+    ["First National Grocery"] = {"Esoteric Order of Dagon", "Innsmouth Jail", "Scenic2", "Country Road2"},
+    ["Innsmouth Jail"] = {"Esoteric Order of Dagon", "First National Grocery", "Country Road2"},
 
-    ["Marsh Refinery"] = {"Falcon Point", "Gilman House"},
-    ["Falcon Point"] = {"Marsh Refinery", "Gilman House"},
-    ["Gilman House"] = {"Marsh Refinery", "Falcon Point"},
+    ["Marsh Refinery"] = {"Falcon Point", "Gilman House", "Scenic2", "Devil Reef"},
+    ["Falcon Point"] = {"Marsh Refinery", "Gilman House", "Devil Reef", "Ferry Terminal2"},
+    ["Gilman House"] = {"Marsh Refinery", "Falcon Point", "Scenic2", "Ferry Terminal2"},
 
     ["Scenic1"] = {},
     ["Residential2"] = {},
@@ -197,6 +197,12 @@ LOCATION_GRAPHS = {
     ["Bridge1"] = {},
     ["Bridge2"] = {},
     ["Scenic2"] = {},
+    ["Country Road1"] = {},
+    ["Country Road2"] = {},
+    ["Country Road3"] = {},
+    ["Ferry Terminal1"] = {},
+    ["Ferry Terminal2"] = {},
+    ["Devil Reef"] = {},
   },
 
   ["TPL"] = {
