@@ -396,6 +396,7 @@ function returnBridgeToBox()
       o.drag_selectable  = true
       o.gizmo_selectable = true
       o.highlightOn("Red", 1.5)
+      removeNodeFromLocationGraph(gameData.scenarioData and gameData.scenarioData.name, "Bridge2")
       Wait.time(function()
         local box = getObjectFromGUID(boxId)
         if box then box.putObject(o) end
