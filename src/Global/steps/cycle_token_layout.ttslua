@@ -53,8 +53,26 @@ function processStepCycleTokenLayout(step, context, onDone)
       freshMemo.tokenLayout.isAnimating = false
       codexMat.call("setCodexData", freshMemo)
     end
+    updateCycleTokenLocationGraph(layout)
     if onDone then onDone() end
   end)
+end
+
+function updateCycleTokenLocationGraph(layout)
+  local scenarioName = gameData.scenarioData and gameData.scenarioData.name
+  local tokenObj = getObjectFromGUID(layout.tokenGUID)
+  local tokenData = tokenObj and parseJson(tokenObj.memo)
+  local nodeName = tokenData and tokenData.name
+  if not scenarioName or not nodeName then return end
+
+  local neighborsByPos = CYCLE_TOKEN_NEIGHBORS[scenarioName] and CYCLE_TOKEN_NEIGHBORS[scenarioName][nodeName]
+  local neighbors = neighborsByPos and neighborsByPos[layout.posIndex]
+  if not neighbors then
+    log("[updateCycleTokenLocationGraph] no neighbors configured for " .. nodeName .. " pos " .. tostring(layout.posIndex))
+    return
+  end
+
+  setLocationGraphNodeNeighbors(scenarioName, nodeName, neighbors)
 end
 
 function applyTokenLayout(layout, onComplete)

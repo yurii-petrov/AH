@@ -438,3 +438,16 @@ LOCATION_GRAPHS = {
   },
 
 }
+
+CYCLE_TOKEN_NEIGHBORS = {
+  ["TDCO"] = {
+    ["Hidden Path"] = {
+      [1] = {},
+      [2] = {},
+      [3] = {},
+      [4] = {},
+      [5] = {},
+      [6] = {},
+    },
+  },
+}

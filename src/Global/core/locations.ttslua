@@ -142,6 +142,30 @@ function removeNodeFromLocationGraph(scenarioName, nodeName)
   end
 end
 
+function setLocationGraphNodeNeighbors(scenarioName, nodeName, neighbors)
+  local adjacency = scenarioName and LOCATION_GRAPHS[scenarioName]
+  if not adjacency or not nodeName then return end
+
+  for _, neighbor in ipairs(adjacency[nodeName] or {}) do
+    local neighborList = adjacency[neighbor]
+    if neighborList then
+      for i = #neighborList, 1, -1 do
+        if neighborList[i] == nodeName then
+          table.remove(neighborList, i)
+        end
+      end
+    end
+  end
+
+  local newList = {}
+  for _, neighbor in ipairs(neighbors or {}) do
+    table.insert(newList, neighbor)
+    adjacency[neighbor] = adjacency[neighbor] or {}
+    table.insert(adjacency[neighbor], nodeName)
+  end
+  adjacency[nodeName] = newList
+end
+
 function bfsCellDistances(graph, startKey)
   if not graph[startKey] then return {} end
 
