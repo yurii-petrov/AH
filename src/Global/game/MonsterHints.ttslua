@@ -101,6 +101,38 @@ local function engageValue(entry, engage, ctx)
   end
 end
 
+local function distanceOf(entry, ctx)
+  if not entry.figurine or not ctx.distances then return nil end
+  local node = findLocationNodeForPosition(entry.figurine.getPosition())
+  return node and ctx.distances[node.key]
+end
+
+local function nearestOnly(targets, ctx)
+  if #targets <= 1 then return targets end
+
+  local bestDist = nil
+  local withDist = {}
+  for _, entry in ipairs(targets) do
+    local dist = distanceOf(entry, ctx)
+    if dist ~= nil then
+      table.insert(withDist, {entry = entry, dist = dist})
+      if bestDist == nil or dist < bestDist then
+        bestDist = dist
+      end
+    end
+  end
+
+  if bestDist == nil then return targets end
+
+  local nearest = {}
+  for _, d in ipairs(withDist) do
+    if d.dist == bestDist then
+      table.insert(nearest, d.entry)
+    end
+  end
+  return nearest
+end
+
 function pickEngageTargets(engage, ctx)
   local wantSmallest = engage.order == "lowest" or engage.order == "least" or engage.metric == "nearest"
   local best = nil
@@ -118,18 +150,16 @@ function pickEngageTargets(engage, ctx)
     end
   end
 
+  if engage.metric ~= "nearest" then
+    targets = nearestOnly(targets, ctx)
+  end
+
   return targets, best
 end
 
 local function engageLabel(engage)
   local key = engage.stat and STAT_LABEL_KEYS[engage.stat] or METRIC_LABEL_KEYS[engage.metric]
   return key and i18n.getStrById(key) or "?"
-end
-
-local function targetDistance(target, ctx)
-  if not target.figurine or not ctx.distances then return nil end
-  local node = findLocationNodeForPosition(target.figurine.getPosition())
-  return node and ctx.distances[node.key]
 end
 
 local function hintEngage(monsterMemo, kind, engage, ctx, highlighted)
@@ -146,7 +176,7 @@ local function hintEngage(monsterMemo, kind, engage, ctx, highlighted)
 
   for _, target in ipairs(targets) do
     local details = engageLabel(engage) .. " " .. tostring(best)
-    local hops = targetDistance(target, ctx)
+    local hops = distanceOf(target, ctx)
     if hops then
       details = details .. ", " .. i18n.getStrById("MH_distance") .. " " .. hops
     end
