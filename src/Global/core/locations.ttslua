@@ -98,7 +98,7 @@ function findLocationNodeForPosition(worldPos)
         if index and data.locations[index] then
           return {key = data.locations[index]}
         end
-      elseif data.type == "Street" then
+      else
         return {key = data.name}
       end
     end
