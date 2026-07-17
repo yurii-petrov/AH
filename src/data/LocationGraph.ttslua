@@ -442,12 +442,12 @@ LOCATION_GRAPHS = {
 CYCLE_TOKEN_NEIGHBORS = {
   ["TDCO"] = {
     ["Hidden Path"] = {
-      [1] = {},
-      [2] = {},
-      [3] = {},
-      [4] = {},
-      [5] = {},
-      [6] = {},
+      [1] = {"Train Station", "Police Station", "City of the Gugs"},
+      [2] = {"Police Station", "Silver Twilight Lodge", "Vaults of Zin"},
+      [3] = {"Silver Twilight Lodge", "Vaults of Zin", "Ma's Boarding House"},
+      [4] = {"South Church", "St. Mary's Hospital", "Vale of Pnath"},
+      [5] = {"Vale of Pnath", "Hangman's Hill", "Science Building"},
+      [6] = {"City of the Gugs", "Observatory", "Train Station"},
     },
   },
 }
