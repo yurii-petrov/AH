@@ -105,6 +105,7 @@ local function spawnPositionNearestStreetTo(investigatorName)
 end
 
 local function findLeaderInvestigatorName()
+  refreshAllLeaderStates()
   for slot, actions in pairs(INV_STATE.isLeaderAction or {}) do
     for _, isLeader in pairs(actions) do
       if isLeader then
@@ -129,7 +130,17 @@ function resolveMonsterSpawnPosition(objectMemo)
   elseif at == "streetNearestPrey" then
     if not monsterMemo.activation or not monsterMemo.activation.engage then return nil end
     local targets = pickEngageTargets(monsterMemo.activation.engage, {})
-    return targets[1] and spawnPositionNearestStreetTo(targets[1].name)
+    if #targets == 0 then return nil end
+    if #targets > 1 then
+      for _, target in ipairs(targets) do
+        if target.figurine then
+          target.figurine.highlightOn(hintColor(), 5)
+          pingPosition(target.figurine.getPosition():setAt("y", 7))
+        end
+      end
+      return nil
+    end
+    return spawnPositionNearestStreetTo(targets[1].name)
   elseif at == "streetNearestLeader" then
     return spawnPositionNearestStreetTo(findLeaderInvestigatorName())
   end

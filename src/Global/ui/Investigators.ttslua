@@ -255,7 +255,7 @@ local function refreshLeaderState(slot)
   end
 end
 
-local function refreshAllLeaderStates()
+function refreshAllLeaderStates()
   for slot = 1, MAX_INV do
     if TABLE_DATA.players[slot] then
       refreshLeaderState(slot)
