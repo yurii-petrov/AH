@@ -81,7 +81,7 @@ function handleLastCodexDeckCard(remainingDeckOrCard, takenCard, context)
   end
 
   local cardData = parseJson(lastCard.memo)
-  local rotation = orient(cardData, false)
+  local rotation = orient(cardData, true)
   lastCard.setRotation(rotation)
 
   local codexMat = context.codexMat
