@@ -66,11 +66,9 @@ function handleLastCodexDeckCard(remainingDeckOrCard, takenCard, context)
   if not locationData then return end
 
   local lastCard = nil
-  print("remainingDeckOrCard: "..remainingDeckOrCard.type)
   if remainingDeckOrCard and remainingDeckOrCard.type == "Deck" then
     lastCard = remainingDeckOrCard.takeObject({
       index = 0,
-      rotation = {0, 180, 0},
       smooth = false
     })
   elseif remainingDeckOrCard and remainingDeckOrCard.type == "Card" then
@@ -82,13 +80,20 @@ function handleLastCodexDeckCard(remainingDeckOrCard, takenCard, context)
     return
   end
 
+  local cardData = parseJson(lastCard.memo)
+  local rotation = orient(cardData, false)
+  lastCard.setRotation(rotation)
+
   local codexMat = context.codexMat
 
   if removeCodexAttachment(codexMat) then
     codexMat.destruct()
   end
 
-  Wait.time(function()
-    attachCodexCard(lastCard, lastCard.getPosition():setAt("y", 3))
-  end, 1.5)
+  local function attach(c)
+    c = c or lastCard
+    attachCodexCard(c, c.getPosition():setAt("y", 3), rotation)
+  end
+
+  runAfterRest(lastCard, attach, attach)
 end
