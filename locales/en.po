@@ -474,6 +474,15 @@ msgstr "EVENT"
 msgid "MT_discard_text"
 msgstr "DISCARD"
 
+msgid "MT_success_dis+tooltip"
+msgstr "Inactive — other players can see and resolve this"
+
+msgid "MT_discard_dis+tooltip"
+msgstr "Inactive — other players can see and resolve this"
+
+msgid "MT_fail_dis+tooltip"
+msgstr "Inactive — other players can see and resolve this"
+
 # Neighborhoods
 
 msgid "Downtown"

@@ -4,6 +4,29 @@ serpent = require("util/serpent")
 
 local data = {}
 
+local BASE_TEXT_COLORS = {
+	S_show_cards_text = "#ffffff",
+	S_return_cards    = "#ffffff",
+	S_find_common     = "#ffffff",
+	S_find_curio      = "#ffffff",
+	market_1          = "#fff5e2",
+	market_2          = "#fff5e2",
+	market_3          = "#fff5e2",
+	market_4          = "#fff5e2",
+	market_5          = "#fff5e2",
+	market_6          = "#fff5e2",
+	market_7          = "#fff5e2",
+	market_8          = "#fff5e2",
+}
+
+function hoverEnter(player, alt_click, id)
+	self.UI.setAttribute(id, "textColor", "#ffd8ab")
+end
+
+function hoverExit(player, alt_click, id)
+	self.UI.setAttribute(id, "textColor", BASE_TEXT_COLORS[id] or "#ffffff")
+end
+
 function setTop(d)
 	local type_txt = ""
 	if not d.types then

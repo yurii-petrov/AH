@@ -34,32 +34,45 @@ local function makeHoverButton(def)
   }
 end
 
-local function makeIconPanel(panelId, active, pos, imgId, imgSrc, btnId, btnOnClick, padding)
+local function makeIconPanel(panelId, active, pos, imgId, imgSrc, btnId, btnOnClick, padding, disabled)
+  local imgAttrs = { id = imgId, image = imgSrc, scale = "0.8 0.8 0.8" }
+  if disabled then imgAttrs.color = "#808080" end
+
+  local btnAttrs = {
+    id        = btnId,
+    width     = "1200",
+    height    = "1400",
+    padding   = padding,
+    scale     = "0.01 0.01 1",
+    color     = "clear",
+    textColor = "#ffffff",
+    font      = "Fonts/AdonisC",
+    fontStyle = "Bold",
+    fontSize  = "170",
+    text      = "",
+  }
+  if disabled then
+    btnAttrs.onMouseEnter = "disHoverEnter"
+    btnAttrs.onMouseExit  = "disHoverExit"
+  else
+    btnAttrs.onClick      = btnOnClick
+    btnAttrs.onMouseEnter = "hoverEnter"
+    btnAttrs.onMouseExit  = "hoverExit"
+  end
+
+  local panelAttrs = { id = panelId, active = active, width = "12", height = "14", position = pos, rotation = "0 0 180" }
+
   return {
     tag = "Panel",
-    attributes = { id = panelId, active = active, width = "12", height = "14", position = pos, rotation = "0 0 180" },
+    attributes = panelAttrs,
     children = {
-      { tag = "image",  attributes = { id = imgId, image = imgSrc, scale = "0.8 0.8 0.8" } },
-      { tag = "Button", attributes = {
-          id        = btnId,
-          onClick   = btnOnClick,
-          width     = "1200",
-          height    = "1400",
-          padding   = padding,
-          scale     = "0.01 0.01 1",
-          color     = "clear",
-          textColor = "#ffffff",
-          font      = "Fonts/AdonisC",
-          fontStyle = "Bold",
-          fontSize  = "170",
-          text      = "",
-        }
-      },
+      { tag = "image",  attributes = imgAttrs },
+      { tag = "Button", attributes = btnAttrs },
     }
   }
 end
 
-local function makeText(id, pos)
+local function makeText(id, pos, color)
   return {
     tag = "text",
     attributes = {
@@ -67,7 +80,7 @@ local function makeText(id, pos)
       position  = pos,
       rotation  = "0 0 180",
       scale     = "0.01 0.01 1",
-      color     = "#ffffff",
+      color     = color or "#ffffff",
       font      = "Fonts/AdonisC",
       fontStyle = "Bold",
       fontSize  = "170",
@@ -81,6 +94,9 @@ local function buildUI()
     makeIconPanel("success", "false", "28.5 14 -11", "success_img", "success_icon", "MT_success", "success",  "0 0 1050 0"),
     makeIconPanel("discard", "false", "28.5 30 -11", "discard_img", "discard_icon", "MT_discard", "discard",  "0 0 1000 0"),
     makeIconPanel("fail",    "false", "28.5 46 -11", "fail_img",    "fail_icon",    "MT_fail",    "fail",     "0 0 1050 0"),
+    makeIconPanel("success_dis", "false", "28.5 14 -11", "success_dis_img", "success_icon", "MT_success_dis", nil, "0 0 1050 0", true),
+    makeIconPanel("discard_dis", "false", "28.5 30 -11", "discard_dis_img", "discard_icon", "MT_discard_dis", nil, "0 0 1000 0", true),
+    makeIconPanel("fail_dis",    "false", "28.5 46 -11", "fail_dis_img",    "fail_icon",    "MT_fail_dis",    nil, "0 0 1050 0", true),
     {
       tag = "image",
       attributes = { id = "myth_slots", image = "myth_slots", width = "26", height = "69", position = "1.2 72 -11", scale = "0.54 0.54 1" },
@@ -88,6 +104,7 @@ local function buildUI()
     makeText("MT_current_text", "8.5 50.25 -11"),
     makeText("MT_event_text",   "-20 50.25 -11"),
     makeText("MT_discard_text", "-20 96 -11"),
+    makeText("MT_dis_tooltip_text", "-6 10 -22", "#ffa500"),
   }
   for _, def in ipairs(HOVER_BTNS) do
     table.insert(xml, makeHoverButton(def))
@@ -107,6 +124,15 @@ function hoverExit(player, alt_click, id)
   self.UI.setAttribute(id, "textColor", "#ffffff")
 end
 
+function disHoverEnter(player, alt_click, id)
+  local text = Global.call("callTable", {{"i18n", "getStrById"}, id .. "+tooltip"})
+  self.UI.setAttribute("MT_dis_tooltip_text", "text", text)
+end
+
+function disHoverExit(player, alt_click, id)
+  self.UI.setAttribute("MT_dis_tooltip_text", "text", "")
+end
+
 function myth_process(player, alt_click, id)
   Global.call("mythMatMythClick", {c = player.color})
 end
@@ -119,6 +145,9 @@ local function resetVisibility()
   self.UI.setAttribute("success", "visibility", "")
   self.UI.setAttribute("discard", "visibility", "")
   self.UI.setAttribute("fail",    "visibility", "")
+  self.UI.setAttribute("success_dis", "visibility", "")
+  self.UI.setAttribute("discard_dis", "visibility", "")
+  self.UI.setAttribute("fail_dis",    "visibility", "")
 end
 
 function success(player, alt, id)
@@ -147,11 +176,16 @@ local function otherSeatedColors(activeColor)
 end
 
 function setButtons(d)
-  local eventVisibility = ""
+  local eventVisibility  = ""
+  local selfVisibility   = ""
+  local restrictToOthers = false
+
   if d.type ~= "empty" and d.type ~= "headline" and d.color then
     local others = otherSeatedColors(d.color)
     if #others > 0 then
-      eventVisibility = table.concat(others, "|")
+      eventVisibility  = table.concat(others, "|")
+      selfVisibility   = d.color
+      restrictToOthers = true
     end
   end
 
@@ -159,17 +193,24 @@ function setButtons(d)
   self.UI.setAttribute("fail",    "visibility", eventVisibility)
   self.UI.setAttribute("discard", "visibility", eventVisibility)
 
+  self.UI.setAttribute("success_dis", "visibility", selfVisibility)
+  self.UI.setAttribute("fail_dis",    "visibility", selfVisibility)
+  self.UI.setAttribute("discard_dis", "visibility", selfVisibility)
+
+  local successActive, discardActive, failActive
   if d.type == "event" then
-    self.UI.setAttribute("success", "active", true)
-    self.UI.setAttribute("discard", "active", false)
-    self.UI.setAttribute("fail",    "active", true)
+    successActive, discardActive, failActive = true, false, true
   elseif d.type == "empty" then
-    self.UI.setAttribute("success", "active", false)
-    self.UI.setAttribute("discard", "active", false)
-    self.UI.setAttribute("fail",    "active", false)
+    successActive, discardActive, failActive = false, false, false
   else
-    self.UI.setAttribute("success", "active", false)
-    self.UI.setAttribute("discard", "active", true)
-    self.UI.setAttribute("fail",    "active", false)
+    successActive, discardActive, failActive = false, true, false
   end
+
+  self.UI.setAttribute("success", "active", successActive)
+  self.UI.setAttribute("discard", "active", discardActive)
+  self.UI.setAttribute("fail",    "active", failActive)
+
+  self.UI.setAttribute("success_dis", "active", restrictToOthers)
+  self.UI.setAttribute("discard_dis", "active", restrictToOthers)
+  self.UI.setAttribute("fail_dis",    "active", restrictToOthers)
 end

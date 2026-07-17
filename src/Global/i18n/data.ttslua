@@ -1154,6 +1154,10 @@ I18N_DATA = {
     ["en"] = "DISCARD",
     ["uk"] = "СКИД",
   },
+  ["MT_discard_dis+tooltip"] = {
+    ["en"] = "Inactive — other players can see and resolve this",
+    ["uk"] = "Неактивно — інші гравці бачать і можуть виконати цю дію",
+  },
   ["MT_discard_text"] = {
     ["en"] = "DISCARD",
     ["uk"] = "СКИД",
@@ -1170,6 +1174,10 @@ I18N_DATA = {
     ["en"] = "FAIL",
     ["uk"] = "ПРОВАЛ",
   },
+  ["MT_fail_dis+tooltip"] = {
+    ["en"] = "Inactive — other players can see and resolve this",
+    ["uk"] = "Неактивно — інші гравці бачать і можуть виконати цю дію",
+  },
   ["MT_myth"] = {
     ["en"] = "DRAW MYTH",
     ["uk"] = "ТЯГНУТИ МІТ",
@@ -1177,6 +1185,10 @@ I18N_DATA = {
   ["MT_success"] = {
     ["en"] = "PASS",
     ["uk"] = "Успіх",
+  },
+  ["MT_success_dis+tooltip"] = {
+    ["en"] = "Inactive — other players can see and resolve this",
+    ["uk"] = "Неактивно — інші гравці бачать і можуть виконати цю дію",
   },
   ["Ma's_Boarding_House"] = {
     ["en"] = "Ma's Boarding House",

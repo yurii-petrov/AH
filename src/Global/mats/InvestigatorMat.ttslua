@@ -60,6 +60,8 @@ end
 function getButton()
     local attributes = getAttributes()
     attributes.color = "clear"
+    attributes.onMouseEnter = "hoverEnter"
+    attributes.onMouseExit  = "hoverExit"
     return {
       tag = "Button",
       attributes = attributes
@@ -195,6 +197,17 @@ function getMechanicButtons()
     tag = "button"
   }
 }
+end
+
+local hoverOriginalColors = {}
+
+function hoverEnter(player, alt_click, id)
+  hoverOriginalColors[id] = self.UI.getAttribute(id, "textColor")
+  self.UI.setAttribute(id, "textColor", "#ffd8ab")
+end
+
+function hoverExit(player, alt_click, id)
+  self.UI.setAttribute(id, "textColor", hoverOriginalColors[id] or "#a29c90")
 end
 
 function getDeathDialog()

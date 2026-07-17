@@ -1,6 +1,8 @@
 <button
 	id="S_show_cards_text"
 	onClick="show_cards"
+	onMouseEnter="hoverEnter"
+	onMouseExit="hoverExit"
 	width="4000"
 	height="850"
 	position="20.5 -54 -11"
@@ -15,6 +17,8 @@
 <button
 	id="S_return_cards"
 	onClick="return_cards"
+	onMouseEnter="hoverEnter"
+	onMouseExit="hoverExit"
 	width="4000"
 	height="850"
 	position="-20.5 -54 -11"
@@ -29,6 +33,8 @@
 <button
 	id="market_6"
 	onClick="market_btn"
+	onMouseEnter="hoverEnter"
+	onMouseExit="hoverExit"
 	width="250"
 	height="65"
 	position="27 -10 -11"
@@ -42,6 +48,8 @@
 <button
 	id="market_7"
 	onClick="market_btn"
+	onMouseEnter="hoverEnter"
+	onMouseExit="hoverExit"
 	width="250"
 	height="65"
 	position="0 -10 -11"
@@ -55,6 +63,8 @@
 <button
 	id="market_8"
 	onClick="market_btn"
+	onMouseEnter="hoverEnter"
+	onMouseExit="hoverExit"
 	width="250"
 	height="65"
 	position="-27 -10 -11"
@@ -68,6 +78,8 @@
 <button
 	id="S_find_common"
 	onClick="find_common"
+	onMouseEnter="hoverEnter"
+	onMouseExit="hoverExit"
 	width="1200"
 	height="1400"
 	padding="0 0 1150 0"
@@ -83,6 +95,8 @@
 <button
 	id="S_find_curio"
 	onClick="find_curio"
+	onMouseEnter="hoverEnter"
+	onMouseExit="hoverExit"
 	width="1200"
 	height="1400"
 	padding="0 0 1150 0"
@@ -98,6 +112,8 @@
 <button
 	id="market_1"
 	onClick="market_btn"
+	onMouseEnter="hoverEnter"
+	onMouseExit="hoverExit"
 	width="250"
 	height="65"
 	position="0 43 -11"
@@ -120,6 +136,8 @@
 <button
 	id="market_2"
 	onClick="market_btn"
+	onMouseEnter="hoverEnter"
+	onMouseExit="hoverExit"
 	width="250"
 	height="65"
 	position="-27 43 -11"
@@ -142,6 +160,8 @@
 <button
 	id="market_3"
 	onClick="market_btn"
+	onMouseEnter="hoverEnter"
+	onMouseExit="hoverExit"
 	width="250"
 	height="65"
 	position="27 93 -11"
@@ -164,6 +184,8 @@
 <button
 	id="market_4"
 	onClick="market_btn"
+	onMouseEnter="hoverEnter"
+	onMouseExit="hoverExit"
 	width="250"
 	height="65"
 	position="0 93 -11"
@@ -187,6 +209,8 @@
 <button
 	id="market_5"
 	onClick="market_btn"
+	onMouseEnter="hoverEnter"
+	onMouseExit="hoverExit"
 	width="250"
 	height="65"
 	position="-27 93 -11"
