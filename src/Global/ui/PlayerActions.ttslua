@@ -629,7 +629,8 @@ function onClickEncounter(obj, playerColor)
             gameData.scenarioData.anomaly,
           doomNumber = count
         }, gameData.scenarioData.anomaly)
-        broadcastToAll(string.format(i18n.getStrById("LOG_anomaly_count"), playerColor, count), "White")
+        broadcastToAll(string.format(i18n.getStrById("LOG_anomaly_count"),
+          i18n.getStrById(investigatorData.name:gsub(" ", "_")), count), "White")
       end
     end
     return

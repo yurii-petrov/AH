@@ -426,9 +426,8 @@ end
 function getInvestigatorName(color)
   for _, o in pairs(getObjectsInPlayerZone(color) or {}) do
     local oData = parseJson(o.memo)
-    if o.type == "Card" and oData and oData.type == "Investigator" then
-      local n = o.getName()
-      return i18n.getStrById(n:gsub(" ", "_")) or n
+    if o.type == "Card" and oData and oData.type == "Investigator" and oData.name then
+      return i18n.getStrById(oData.name:gsub(" ", "_")) or oData.name
     end
   end
   return color
