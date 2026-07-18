@@ -82,6 +82,10 @@ function onObjectPickUpMonsterMat(colorName, object)
 end
 
 function onMonsterMatDrop(object)
+  clearMonsterHintHighlights()
+end
+
+function clearMonsterHintHighlights()
   for _, obj in ipairs(highlightedInvestigatorFigurines) do
     obj.highlightOff()
   end
