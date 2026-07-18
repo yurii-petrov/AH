@@ -215,11 +215,34 @@ local function matForSlot(slot)
   return p and p.obj
 end
 
+local ENCOUNTER_IGNORED_MONSTERS = {
+  ["Eyeless Watcher"] = true,
+  ["Whippoorwill"]    = true,
+}
+
+local function monsterNameOnMat(o)
+  local attachments = o.getAttachments()
+  if not attachments or #attachments == 0 then return nil end
+  local memo = parseJson(attachments[1].memo)
+  if not memo then return nil end
+  if memo.type == "Monster" or (memo.type == "codex" and memo.role == "Monster") then
+    return memo.name
+  elseif memo.type == "DoubleSided" then
+    local isFaceDown = attachments[1].is_face_down
+    if memo.reversed then isFaceDown = not isFaceDown end
+    local side = isFaceDown and memo.back or memo.front
+    return side and side.name
+  end
+end
+
 local function hasEnemyOnMat(mat)
   if not mat then return false end
   for _, o in ipairs(upCast(mat, 5, 0, 1) or {}) do
     if o.memo == "Monster Mat" or o.memo == "Double Sided Mat" then
-      return true
+      local name = monsterNameOnMat(o)
+      if not (name and ENCOUNTER_IGNORED_MONSTERS[name]) then
+        return true
+      end
     end
   end
   return false
