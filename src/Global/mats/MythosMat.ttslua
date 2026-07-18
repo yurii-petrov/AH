@@ -180,7 +180,7 @@ function setButtons(d)
   local selfVisibility   = ""
   local restrictToOthers = false
 
-  if d.type ~= "empty" and d.type ~= "headline" and d.color then
+  if d.type ~= "empty" and d.type ~= "headline" and d.type ~= "discard" and d.color then
     local others = otherSeatedColors(d.color)
     if #others > 0 then
       eventVisibility  = table.concat(others, "|")
