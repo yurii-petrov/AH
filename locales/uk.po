@@ -1726,7 +1726,7 @@ msgid "MH_patrol"
 msgstr "Патрульний"
 
 msgid "MH_lurker"
-msgstr "Причаєний"
+msgstr "Зачаєний"
 
 # Monster hints: target criteria labels
 msgid "MH_clues"
@@ -1739,7 +1739,7 @@ msgid "MH_items"
 msgstr "Предмети"
 
 msgid "MH_spells"
-msgstr "Закляття"
+msgstr "Заклинання"
 
 msgid "MH_nearest"
 msgstr "Найближчий"
@@ -1748,7 +1748,7 @@ msgid "MH_doom"
 msgstr "Приреченість"
 
 msgid "MH_unstable"
-msgstr "Нестабільна локація"
+msgstr "Нестабільна клітинка"
 
 msgid "MH_no_target"
 msgstr "Цілі немає"
