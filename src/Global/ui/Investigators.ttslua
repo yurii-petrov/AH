@@ -215,6 +215,16 @@ local function matForSlot(slot)
   return p and p.obj
 end
 
+local function hasEnemyOnMat(mat)
+  if not mat then return false end
+  for _, o in ipairs(upCast(mat, 5, 0, 1) or {}) do
+    if o.memo == "Monster Mat" or o.memo == "Double Sided Mat" then
+      return true
+    end
+  end
+  return false
+end
+
 local function colorForSlot(slot)
   local hand = getHandForSlot(slot)
   if not hand then return end
@@ -640,7 +650,7 @@ function setInvestigatorPhase(phase)
     local active = (p <= INV_STATE.count)
     self.UI.setAttribute("INV_actions_"   .. p, "active", isAction and active)
 
-    local encShow = isEncounter and active and not INV_STATE.encounterDone[p]
+    local encShow = isEncounter and active and not INV_STATE.encounterDone[p] and not hasEnemyOnMat(matForSlot(p))
     self.UI.setAttribute("INV_encounter_" .. p, "active", encShow)
     if encShow then
       self.UI.setAttribute("INV_encounter_" .. p, "textColor", TEXT_COL)
