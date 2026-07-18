@@ -11,49 +11,90 @@ function processStepContextSetup(step, context, onDone)
   local box = getObjectFromGUID(boxId)
   if not box then return end
 
-  local allTasks = {}
-
   if not step.keepCodexMat then
     if removeCodexAttachment(context.codexMat) then
       context.codexMat.destruct()
     end
   end
 
-  local heightByPos = {}
-  for _, obj in ipairs(box.getObjects()) do
+  local expected = 0
+  for _, names in pairs(step.tiles) do
+    for _ in pairs(names) do expected = expected + 1 end
+  end
+
+  local function matchTile(obj)
     local memo = parseJson(obj.memo)
-    if memo and memo.type and memo.name then
-      local objGuid = obj.guid
-      local memoName = memo.name
-      local memoType = memo.type
+    if not (memo and memo.type and memo.name) then return nil end
+    local types = step.tiles[memo.type]
+    return types and types[memo.name]
+  end
 
-      local types = step.tiles[memoType]
-      if types then
-        local tileInfo = types[memoName]
+  local matches = {}
+  for _, obj in ipairs(box.getObjects()) do
+    local tileInfo = matchTile(obj)
+    if tileInfo then
+      table.insert(matches, { container = box, guid = obj.guid, tileInfo = tileInfo })
+    end
+  end
+
+  local mapTilesBag, tookMapTilesBagOut
+
+  if #matches < expected then
+    -- Normal setup unpacks map tiles loose into the box; quick setup leaves
+    -- them packed inside the Map Tiles bag, itself nested in the box.
+    mapTilesBag = getObjectFromGUID(mapTilesBagId)
+    if not mapTilesBag then
+      local boxPos = box.getPosition()
+      mapTilesBag = box.takeObject({
+        guid     = mapTilesBagId,
+        position = Vector(boxPos.x - 2, boxPos.y, boxPos.z + 4),
+        smooth   = false
+      })
+      tookMapTilesBagOut = true
+    end
+    if mapTilesBag then
+      for _, obj in ipairs(mapTilesBag.getObjects()) do
+        local tileInfo = matchTile(obj)
         if tileInfo then
-          local posKey = tileInfo.position.x .. "|" .. tileInfo.position.z
-          heightByPos[posKey] = (heightByPos[posKey] or 3)
-          local spawnY = heightByPos[posKey]
-          heightByPos[posKey] = heightByPos[posKey] + 0.2
-
-          table.insert(allTasks, function(done)
-            local spawnedObj = box.takeObject({
-              guid = objGuid,
-              position = locationMat.positionToWorld(tileInfo.position):setAt("y", spawnY),
-              rotation = tileInfo.rotation,
-              smooth = true
-            })
-            runAfterRest(spawnedObj, function(o)
-              processSetupTile(o, memoName, tileInfo, locationMat)
-              done()
-            end)
-          end)
+          table.insert(matches, { container = mapTilesBag, guid = obj.guid, tileInfo = tileInfo })
         end
       end
     end
   end
 
+  local heightByPos = {}
+  local allTasks = {}
+
+  for _, m in ipairs(matches) do
+    local posKey = m.tileInfo.position.x .. "|" .. m.tileInfo.position.z
+    heightByPos[posKey] = (heightByPos[posKey] or 3)
+    local spawnY = heightByPos[posKey]
+    heightByPos[posKey] = heightByPos[posKey] + 0.2
+
+    table.insert(allTasks, function(done)
+      local spawnedObj = m.container.takeObject({
+        guid     = m.guid,
+        position = locationMat.positionToWorld(m.tileInfo.position):setAt("y", spawnY),
+        rotation = m.tileInfo.rotation,
+        smooth   = true
+      })
+      if not spawnedObj then
+        log("[processStepContextSetup] tile not found for guid: " .. tostring(m.guid))
+        done()
+        return
+      end
+      local memo = parseJson(spawnedObj.memo)
+      runAfterRest(spawnedObj, function(o)
+        processSetupTile(o, memo and memo.name, m.tileInfo, locationMat)
+        done()
+      end)
+    end)
+  end
+
   waitAll(allTasks, function()
+    if tookMapTilesBagOut and mapTilesBag then
+      box.putObject(mapTilesBag)
+    end
     if onDone then onDone() end
   end)
 end
