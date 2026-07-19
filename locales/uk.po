@@ -134,8 +134,7 @@ msgstr ""
 # Scenario 3
 msgid "MM_scenario3_name_text"
 msgstr ""
-"Покров\n"
-"Сутінків"
+"Покров Сутінків"
 
 msgid "MM_scenario3_desc_text"
 msgstr ""
@@ -147,8 +146,7 @@ msgstr ""
 # Scenario 4
 msgid "MM_scenario4_name_text"
 msgstr ""
-"Відлуння\n"
-"Безодні"
+"Відлуння Безодні"
 
 msgid "MM_scenario4_desc_text"
 msgstr ""
