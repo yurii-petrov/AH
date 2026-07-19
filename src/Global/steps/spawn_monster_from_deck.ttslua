@@ -27,7 +27,7 @@ function processStepSpawnMonsterFromDeck(step, context, onDone)
     targetPos = tile.getPosition():setAt("y", 3)
   end
 
-  drawMonster(targetPos)
+  drawMonster(targetPos, true)
 
   if onDone then onDone() end
 end

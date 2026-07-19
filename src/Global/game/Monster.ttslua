@@ -146,13 +146,16 @@ function resolveMonsterSpawnPosition(objectMemo)
   end
 end
 
-function spawnMonster(spawnPos, monster)
+function spawnMonster(spawnPos, monster, forceExactPosition)
   if not monster then return end
 
   local objectMemo = parseJson(monster.memo)
   if not objectMemo or not objectMemo.type then return end
 
-  local resolvedPos = resolveMonsterSpawnPosition(objectMemo) or spawnPos
+  local resolvedPos = spawnPos
+  if not forceExactPosition then
+    resolvedPos = resolveMonsterSpawnPosition(objectMemo) or spawnPos
+  end
 
   if objectMemo.type == "Monster" then
     attachMonsterCard(monster, objectMemo, resolvedPos)
@@ -311,7 +314,7 @@ function attachDoubleSidedCard(monster, objectMemo, spawnPos)
   attachDoubleSidedToMat(monster, objectMemo, doubleSidedMat)
 end
 
-function drawMonster(spawnPos)
+function drawMonster(spawnPos, forceExactPosition)
   local function getMonsterCard()
     local locationMat = getObjectFromGUID(locationMatId)
     if not locationMat then return end
@@ -330,7 +333,7 @@ function drawMonster(spawnPos)
 
   local monster = getMonsterCard()
   if not monster then return end
-  spawnMonster(spawnPos, monster)
+  spawnMonster(spawnPos, monster, forceExactPosition)
 end
 
 function onMonsterKilled(params)
