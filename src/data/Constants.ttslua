@@ -11,6 +11,9 @@ Phase = {
   Mythos    = 4,
 }
 
+MIN_INVESTIGATORS = 1
+MAX_INVESTIGATORS = 6
+
 MythosCup = {
   SpreadDoom = "Spread Doom",
   SpawnMonster = "Spawn Monster",

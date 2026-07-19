@@ -1,3 +1,4 @@
+require("data/Constants")
 require("Global/i18n/core")
 require("Global/i18n/data")
 require("Global/ui/RootUI")
@@ -22,7 +23,6 @@ require("Global/Tests")
 serpent = require("util/serpent")
 translationService = require("util/TranslationService")
 
-require("data/Constants")
 require("data/Guids")
 require("data/Addons")
 require("data/LocationGraph")

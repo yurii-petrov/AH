@@ -1,8 +1,8 @@
 
 local FONT = "Fonts/AdonisC"
 
-local MIN_INV          = 2
-local MAX_INV          = 6
+local MIN_INV          = MIN_INVESTIGATORS
+local MAX_INV          = MAX_INVESTIGATORS
 local DEFAULT_COUNT    = 2
 local ACTIONS_PER_INV  = 2
 

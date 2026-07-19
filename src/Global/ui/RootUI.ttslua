@@ -11,7 +11,7 @@ end
 
 local function buildPlayerButtons()
   local buttons = {}
-  for n = 1, 6 do
+  for n = MIN_INVESTIGATORS, MAX_INVESTIGATORS do
     local btnAttrs = {
       id = "players" .. n,
       onClick = "menuSelectPlayers",

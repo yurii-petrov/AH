@@ -93,7 +93,7 @@ function changeScenario(player, alt, id)
 end
 function menuSelectPlayers(player, alt, id)
   local color = self.UI.getAttribute('players1', 'textColor')
-  for i = 1, 6, 1 do
+  for i = MIN_INVESTIGATORS, MAX_INVESTIGATORS, 1 do
     self.UI.setAttribute('players' .. i, 'color', 'clear')
     self.UI.setAttribute('players' .. i, 'textColor', color)
   end
