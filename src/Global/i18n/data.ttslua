@@ -820,7 +820,7 @@ I18N_DATA = {
   },
   ["MH_lurker"] = {
     ["en"] = "Lurker",
-    ["uk"] = "Причаєний",
+    ["uk"] = "Зачаєний",
   },
   ["MH_nearest"] = {
     ["en"] = "Nearest",
@@ -836,11 +836,11 @@ I18N_DATA = {
   },
   ["MH_spells"] = {
     ["en"] = "Spells",
-    ["uk"] = "Закляття",
+    ["uk"] = "Заклинання",
   },
   ["MH_unstable"] = {
     ["en"] = "Unstable space",
-    ["uk"] = "Нестабільна локація",
+    ["uk"] = "Нестабільна клітинка",
   },
   ["MM_addonDescription1_text"] = {
     ["en"] = "In Dead of Night, investigators explore the facets of Arkham best left unseen in the light of day. Organized crime builds a strong foothold in the city, secret cults labor for a dark master, an alien moon hangs overhead, and unknowable horrors stalk the night. This expansion includes two all-new scenarios, new encounters for every location in Arkham, new monsters and anomalies, and four new investigators to face these fresh horrors, armed with new spells, items and allies.\n• 2 scenarios\n• 4 investigators\n• 7 headline cards\n• 20 archive cards\n• 12 anomaly cards\n• 48 event cards\n• 72 encounter cards\n• 4 ally cards\n• 4 item cards\n• 4 spell cards\n• 28 special cards\n• 12 starting cards\n• 6 wanted condition cards\n• 22 monster cards\n• 15 new monsters",
