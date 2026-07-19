@@ -255,6 +255,7 @@ local function applyPhaseTransitionEffects(oldPhase, newPhase)
 
   if oldPhase == Phase.Monster and newPhase ~= Phase.Monster then
     clearMonsterHintHighlights()
+    clearMonsterListHighlights()
   end
 
   if newPhase == 3 then

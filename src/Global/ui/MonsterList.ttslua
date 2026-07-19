@@ -273,6 +273,15 @@ local function orderByRank(monsters)
   return ordered
 end
 
+function clearMonsterListHighlights()
+  for i = 1, MAX_MONSTERS do
+    local mat = monsterMatByRow[i]
+    if mat then
+      mat.highlightOff()
+    end
+  end
+end
+
 function refreshMonsterList()
   local monsters = orderByRank(getMonstersInPlay())
   for i = 1, MAX_MONSTERS do
