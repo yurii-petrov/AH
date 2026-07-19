@@ -93,7 +93,7 @@ local function engageValue(entry, engage, ctx)
   elseif metric == "remnants" then
     return entry.stats.remnant
   elseif metric == "damage" then
-    return (entry.stats.hpMax or 0) - (entry.stats.hp or 0)
+    return entry.stats.hp or 0
   elseif metric == "nearest" then
     if not entry.figurine or not ctx.distances then return nil end
     local node = findLocationNodeForPosition(entry.figurine.getPosition())
@@ -281,13 +281,40 @@ local function hintNodes(monsterMemo, kind, nodes, suffix)
   end
 end
 
-local function hintMoveDestination(monsterMemo, kind, moveTo)
+local function nearestNodesByDistance(nodes, ctx)
+  if not ctx or not ctx.distances or #nodes <= 1 then return nodes end
+
+  local bestDist = nil
+  local withDist = {}
+  for _, name in ipairs(nodes) do
+    local dist = ctx.distances[name]
+    if dist ~= nil then
+      table.insert(withDist, {name = name, dist = dist})
+      if bestDist == nil or dist < bestDist then
+        bestDist = dist
+      end
+    end
+  end
+
+  if bestDist == nil then return nodes end
+
+  local nearest = {}
+  for _, d in ipairs(withDist) do
+    if d.dist == bestDist then
+      table.insert(nearest, d.name)
+    end
+  end
+  return nearest
+end
+
+local function hintMoveDestination(monsterMemo, kind, moveTo, ctx)
   if moveTo == "mostDoom" then
     local nodes, best = findMostDoomNodes()
     if #nodes == 0 or best == 0 then
       hintMessage(monsterMemo, kind, i18n.getStrById("MH_doom") .. ": 0")
       return
     end
+    nodes = nearestNodesByDistance(nodes, ctx)
     hintNodes(monsterMemo, kind, nodes, i18n.getStrById("MH_doom") .. " " .. best)
   elseif moveTo == "unstable" then
     local nodes = findUnstableNodes()
@@ -304,7 +331,7 @@ local function processMonsterHintHunter(monsterMemo, activation, ctx, highlighte
 end
 
 local function processMonsterHintPatrol(monsterMemo, activation, ctx, highlighted)
-  hintMoveDestination(monsterMemo, "patrol", activation.moveTo)
+  hintMoveDestination(monsterMemo, "patrol", activation.moveTo, ctx)
   if activation.engage then
     hintEngage(monsterMemo, "patrol", activation.engage, ctx, highlighted)
   end
@@ -381,10 +408,10 @@ local function processMonsterHintLurker(monsterMemo, activation, ctx, highlighte
   end
 
   if effect.type == "moveDoomToScenario" then
-    hintMessage(monsterMemo, "lurker", nil)
-    local sheet = gameData.scenarioData and gameData.scenarioData.guid and getObjectFromGUID(gameData.scenarioData.guid)
-    if sheet then
-      pingPosition(sheet.getPosition())
+    if ctx.node then
+      hintNodes(monsterMemo, "lurker", {ctx.node.key}, i18n.getStrById("MH_doom"))
+    else
+      hintMessage(monsterMemo, "lurker", nil)
     end
     return
   end
