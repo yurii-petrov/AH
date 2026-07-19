@@ -54,24 +54,35 @@ function processStepPlaceScenarioDecks(step, context, onDone)
 
   if #guidDecks > 0 then
     table.insert(allTasks, function(done)
+      -- Normal setup already unpacked these decks loose into the box; quick
+      -- setup left them packed inside encounterCardsBagId, itself nested in
+      -- the box. box.takeObject({guid=...}) throws instead of returning nil
+      -- when the guid exists but isn't a direct child of box, so we must
+      -- confirm membership via getObjects() before ever calling takeObject.
+      local boxGuids = {}
+      for _, obj in ipairs(box.getObjects()) do
+        boxGuids[obj.guid] = true
+      end
+
       local innerTasks = {}
       local stillPacked = {}
 
-      -- Normal setup already unpacked these decks loose into the box; quick
-      -- setup left them packed inside encounterCardsBagId, itself nested in
-      -- the box. Try the loose case first, and only fall back to the bag
-      -- for whichever decks aren't direct children of the box.
       for _, d in ipairs(guidDecks) do
         local targetPos = resolvePos(d.pos, d.guid)
         if targetPos then
-          local spawnedObj = box.takeObject({
-            guid     = d.guid,
-            position = targetPos,
-            rotation = {0, 180, 180},
-            smooth   = true
-          })
-          if spawnedObj then
+          if boxGuids[d.guid] then
             table.insert(innerTasks, function(innerDone)
+              local spawnedObj = box.takeObject({
+                guid     = d.guid,
+                position = targetPos,
+                rotation = {0, 180, 180},
+                smooth   = true
+              })
+              if not spawnedObj then
+                log("[placeScenarioDecks] deck with guid " .. tostring(d.guid) .. " not found")
+                innerDone()
+                return
+              end
               runAfterRest(spawnedObj, function(o)
                 if o.type == "Deck" then o.shuffle() end
                 innerDone()
