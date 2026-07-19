@@ -60,7 +60,7 @@ data = {
             },
             {
               ["type"] = "spawnMonsterFromDeck",
-              ["location"] = "City of the Gugs" 
+              ["location"] = "City of the Gugs"
             },
             {
               ["type"] = "placeScenarioDecks",
