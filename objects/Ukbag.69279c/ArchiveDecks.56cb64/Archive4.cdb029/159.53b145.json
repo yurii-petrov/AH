@@ -14,8 +14,8 @@
   "CustomDeck": {
     "5851": {
       "BackIsHidden": true,
-      "BackURL": "https://drive.google.com/uc?export=download&id=1dVaL4QtRBIDOt4fu30po9g8ZkU0ZK6rZ",
-      "FaceURL": "https://drive.google.com/uc?export=download&id=11smsiOC33cmcrCMe6CKEOTTcGD6AwFvG",
+      "BackURL": "https://drive.google.com/uc?export=download&id=1QcnTiFH6MlJY3ScaCbSnNk0twhrTrp8b",
+      "FaceURL": "https://drive.google.com/uc?export=download&id=1jGNwvtPehPXrFIhtMtsft1aNAQNQwwzI",
       "NumHeight": 5,
       "NumWidth": 9,
       "Type": 0,
@@ -43,7 +43,8 @@
   "Snap": true,
   "Sticky": true,
   "Tags": [
-    "codex"
+    "codex",
+    "item_magnet"
   ],
   "Tooltip": true,
   "Transform": {
