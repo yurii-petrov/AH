@@ -1,3 +1,5 @@
+local i18n = require("Global/i18n/api")
+
 local DAMAGE_COLOR = "#e9543b"
 local HORROR_COLOR = "#485cb3"
 
@@ -58,7 +60,7 @@ function getXmlTable()
                         fontSize = "70", fontStyle = "Bold",
                         font = "Fonts/AdonisC",
                         color = "#fff5e2",
-                        text = "ПОРАНЕННЯ",
+                        text = string.upper(i18n.getStrById("IM_damage")),
                     },
                 },
             },
@@ -123,7 +125,7 @@ function getXmlTable()
                         fontSize = "70", fontStyle = "Bold",
                         font = "Fonts/AdonisC",
                         color = "#fff5e2",
-                        text = "ЖАХ",
+                        text = string.upper(i18n.getStrById("IM_horror")),
                     },
                 },
             },

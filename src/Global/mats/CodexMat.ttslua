@@ -1,4 +1,5 @@
 serpent = require("util/serpent")
+local i18n = require("Global/i18n/api")
 
 local data = {}
 
@@ -12,7 +13,6 @@ local buttonStyle = {
     color  = "#ffd8ab"
   },
   confirm = {
-    text  = "✔ Підтвердити",
     color = "#22af4c"
   }
 }
@@ -289,7 +289,7 @@ function clickAction(player, alt_click, id)
 
   if pendingConfirm == id then
     if action.description and action.description ~= "" then
-      print("\nопис дії: " .. action.description)
+      print("\n" .. i18n.getStrById("LOG_action_description") .. action.description)
     else
       print("\n")
     end
@@ -317,7 +317,7 @@ function clickAction(player, alt_click, id)
     end
 
     pendingConfirm = id
-    self.UI.setAttribute(id, "text", buttonStyle.confirm.text)
+    self.UI.setAttribute(id, "text", i18n.getStrById("CODEX_confirm"))
     self.UI.setAttribute(id, "textColor", buttonStyle.confirm.color)
   end
 end

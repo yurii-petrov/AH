@@ -870,6 +870,12 @@ msgstr "%s type - not found"
 msgid "CODEX_return_to_archive"
 msgstr "Return to Archive"
 
+msgid "CODEX_confirm"
+msgstr "✔ Confirm"
+
+msgid "LOG_action_description"
+msgstr "action description: "
+
 msgid "Patrice_Hathaway"
 msgstr "Patrice Hathaway"
 

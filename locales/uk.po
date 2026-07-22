@@ -946,6 +946,12 @@ msgstr "%s тип - не знайдено"
 msgid "CODEX_return_to_archive"
 msgstr "До архіву"
 
+msgid "CODEX_confirm"
+msgstr "✔ Підтвердити"
+
+msgid "LOG_action_description"
+msgstr "опис дії: "
+
 msgid "Patrice_Hathaway"
 msgstr "Патріс Гетевей"
 

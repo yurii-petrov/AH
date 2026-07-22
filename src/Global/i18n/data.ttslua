@@ -94,6 +94,10 @@ I18N_DATA = {
     ["en"] = "Brutal Goons",
     ["uk"] = "Жорстокі Головорізи",
   },
+  ["CODEX_confirm"] = {
+    ["en"] = "✔ Confirm",
+    ["uk"] = "✔ Підтвердити",
+  },
   ["CODEX_return_to_archive"] = {
     ["en"] = "Return to Archive",
     ["uk"] = "До архіву",
@@ -581,6 +585,10 @@ I18N_DATA = {
   ["Kingsport_Harbor"] = {
     ["en"] = "Kingsport Harbor",
     ["uk"] = "Гавань Кінгспорту",
+  },
+  ["LOG_action_description"] = {
+    ["en"] = "action description: ",
+    ["uk"] = "опис дії: ",
   },
   ["LOG_add_clue_manually"] = {
     ["en"] = "Add a clue manually",
