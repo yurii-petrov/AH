@@ -122,7 +122,7 @@ LOCATION_GRAPHS = {
     ["Tick Tock Club"] = {"Unvisited Isle", "River Docks", "Scenic2"},
     ["River Docks"] = {"Unvisited Isle", "Tick Tock Club"},
 
-    ["Arkham Advertiser"] = {"Train Station", "Curiositie Shoppe", "Scneic1", "Residential1"},
+    ["Arkham Advertiser"] = {"Train Station", "Curiositie Shoppe", "Scenic1", "Residential1"},
     ["Train Station"] = {"Arkham Advertiser", "Curiositie Shoppe", "Residential1"},
     ["Curiositie Shoppe"] = {"Arkham Advertiser", "Train Station"},
 
