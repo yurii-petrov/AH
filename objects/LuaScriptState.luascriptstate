@@ -5,5 +5,6 @@
   "lockObjs": [],
   "numberOfPlayers": 2,
   "phase": 1,
+  "scenarioMode": "normal",
   "selectedInvestigators": []
 }

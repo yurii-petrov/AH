@@ -56,10 +56,10 @@
     "EncounterMerchantDistrict.573f07",
     "EncounterThestreets.e0331f",
     "EncounterEasttown.388b1d",
-    "EncounterDowntown.9b9c0b",
     "EncounterSouthside.5b5753",
     "EncounterUptown.0c4379",
-    "EncounterRivertown.35d5c9"
+    "EncounterRivertown.35d5c9",
+    "EncounterDowntown.d5a5ce"
   ],
   "ContainedObjects_path": "EncounterCards.6e8d0d",
   "Description": "",
@@ -85,11 +85,11 @@
   "Sticky": true,
   "Tooltip": true,
   "Transform": {
-    "posX": -5.497,
-    "posY": 3.851,
-    "posZ": 94.741,
+    "posX": -21.751,
+    "posY": 3.793,
+    "posZ": 29.356,
     "rotX": 0,
-    "rotY": 180,
+    "rotY": 0,
     "rotZ": 0,
     "scaleX": 1,
     "scaleY": 1,
