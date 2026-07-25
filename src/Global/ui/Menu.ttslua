@@ -24,12 +24,33 @@ local function countSelectedScenarios()
   return count
 end
 
+local function isScenarioEnabled(n)
+  for _, addon in ipairs(addons) do
+    if addon.scenarios then
+      for _, s in ipairs(addon.scenarios) do
+        if s == n then
+          return addon.include
+        end
+      end
+    end
+  end
+  return true
+end
+
+local function countEnabledScenarios(total)
+  local count = 0
+  for i = 1, total, 1 do
+    if isScenarioEnabled(i) then count = count + 1 end
+  end
+  return count
+end
+
 local function syncSelectAllToggle(total)
-  self.UI.setAttribute('scenario_select_all_toggle', 'isOn', countSelectedScenarios() == total)
+  self.UI.setAttribute('scenario_select_all_toggle', 'isOn', countSelectedScenarios() == countEnabledScenarios(total))
 end
 
 local function updateGameLabel(total)
-  local game = total - countSelectedScenarios() + 1
+  local game = countEnabledScenarios(total) - countSelectedScenarios() + 1
   self.UI.setAttribute('scenario_game_text', 'text', string.format(i18n.getStrById("MM_scenario_game_format"), game))
   local setupKey = "MM_game_setup_" .. math.min(game, 8)
   self.UI.setAttribute('scenario_game_info', 'tooltip', i18n.getStrById(setupKey))
@@ -63,8 +84,12 @@ local function applyScenarioMode(total)
   else
     selectedScenarios = {}
     for i = 1, total, 1 do
-      selectedScenarios[i] = true
-      self.UI.setAttribute('scenario_panel' .. i, 'color', '#ffffff22')
+      if isScenarioEnabled(i) then
+        selectedScenarios[i] = true
+        self.UI.setAttribute('scenario_panel' .. i, 'color', '#ffffff22')
+      else
+        self.UI.setAttribute('scenario_panel' .. i, 'color', 'clear')
+      end
     end
     setScenarioSubmitButtonText(i18n.getStrById("MM_random_scenario"))
   end
@@ -280,6 +305,10 @@ function chooseScenario(player, alt, id)
 
   local n = tonumber(id:match("%d+"))
 
+  if not isScenarioEnabled(n) then
+    return
+  end
+
   if scenarioMode == SCENARIO_MODE_RANDOM or scenarioMode == SCENARIO_MODE_FATE then
     if selectedScenarios[n] then
       if countSelectedScenarios() <= 1 then
@@ -346,10 +375,12 @@ function onScenarioSelectAllToggle(player, value, id)
 
   selectedScenarios = {}
   for i = 1, #scenarioMatData.scenarios, 1 do
-    if selectAll then
+    if selectAll and isScenarioEnabled(i) then
       selectedScenarios[i] = true
+      self.UI.setAttribute('scenario_panel' .. i, 'color', '#ffffff22')
+    else
+      self.UI.setAttribute('scenario_panel' .. i, 'color', 'clear')
     end
-    self.UI.setAttribute('scenario_panel' .. i, 'color', selectAll and '#ffffff22' or 'clear')
   end
 end
 
