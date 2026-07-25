@@ -75,7 +75,7 @@
     "04de3f0e62d9073efb0d867cfd973a80e3c5ff700cf33f395473ea1e0a250d69": {
       "driveId": "1WZZ5MhYbf4H9_BEZHRQtyzdYT5KwQKjK",
       "paths": {
-        "assets/cards/0_base/uk/Downtown 2Back.png": {
+        "assets/cards/0_base/uk/encounter/Downtown 2Back.png": {
           "mtime": 1784795011.302,
           "size": 651823
         }
@@ -1515,7 +1515,7 @@
     "4a9ef5bee396f65524675526d00112ccac52499d347e08ffaf8f51ac63a04edf": {
       "driveId": "1aOjnXWh8suA6p5SbbLM5ab7Y8AnGr_xz",
       "paths": {
-        "assets/cards/0_base/uk/Downtown 1Front.png": {
+        "assets/cards/0_base/uk/encounter/Downtown 1Front.png": {
           "mtime": 1784715242.265,
           "size": 2567101
         }
