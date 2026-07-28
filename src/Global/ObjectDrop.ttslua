@@ -3,7 +3,7 @@ require("Global/drop/discard")
 require("Global/drop/mat_handlers")
 
 function onObjectDrop(colorName, object)
-  if object.memo == "Monster Mat" then
+  if object.memo == "Monster Mat" or object.memo == "Double Sided Mat" then
     onMonsterMatDrop(object)
   end
 

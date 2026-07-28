@@ -93,7 +93,7 @@ function clearMonsterHintHighlights()
 end
 
 function onObjectPickUp(colorName, object)
-  if object.memo == "Monster Mat" then
+  if object.memo == "Monster Mat" or object.memo == "Double Sided Mat" then
     onObjectPickUpMonsterMat(colorName, object)
   end
 

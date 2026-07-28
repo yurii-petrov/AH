@@ -2,6 +2,17 @@ data = {
   ["GUID"] = "8c5dd2",
   ["memo"] = {
     ["back"] = {
+      ["activation"] = {
+        ["effect"] = {
+          ["type"] = "placeDoom",
+          ["where"] = "self"
+        },
+        ["kind"] = "lurker",
+        ["traits"] = {
+          "elusive",
+          "shrouded"
+        }
+      },
       ["monstertype"] = {
         "Troubled Spirit"
       },

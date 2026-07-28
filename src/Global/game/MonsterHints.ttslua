@@ -18,10 +18,10 @@ local METRIC_LABEL_KEYS = {
   nearest  = "MH_nearest",
 }
 
-local UNSUPPORTED_METRICS = {
-  allies = true,
-  items  = true,
-  spells = true,
+local METRIC_CARD_KINDS = {
+  allies = "ally",
+  items  = "item",
+  spells = "spell",
 }
 
 local KIND_LABEL_KEYS = {
@@ -59,9 +59,52 @@ local function hintMessage(monsterMemo, kind, text)
   printToAll(msg, "Orange")
 end
 
+local function cardKind(memo)
+  if not memo or not memo.type then return nil end
+
+  local t = string.lower(tostring(memo.type))
+  if CARD_KIND_TYPES[t] then return t end
+
+  if CARD_KIND_SUBTYPE_TYPES[t] and memo.subtype then
+    local sub = string.lower(tostring(memo.subtype))
+    return CARD_KIND_TYPES[sub] and sub or nil
+  end
+end
+
+local function addCardKind(counts, memo)
+  local kind = cardKind(memo)
+  if kind then
+    counts[kind] = (counts[kind] or 0) + 1
+  end
+end
+
+function countInvestigatorCardKinds(slot)
+  local counts = {item = 0, spell = 0, ally = 0}
+  local hand = getHandForSlot(slot)
+  local locationMat = getObjectFromGUID(locationMatId)
+  if not hand or not locationMat then return counts end
+
+  for _, v in pairs(castPlayerZone(hand, locationMat)) do
+    local o = v.hit_object
+    if o and o ~= hand and o ~= locationMat then
+      if o.type == "Card" then
+        addCardKind(counts, parseJson(o.memo))
+      end
+      local ok, attachments = pcall(function() return o.getAttachments() end)
+      if ok and attachments then
+        for _, att in ipairs(attachments) do
+          addCardKind(counts, parseJson(att.memo))
+        end
+      end
+    end
+  end
+
+  return counts
+end
+
 local function collectInvestigatorEntries()
   local entries = {}
-  for _, slot in pairs(gameData.investigatorSlots or {}) do
+  for slotKey, slot in pairs(gameData.investigatorSlots or {}) do
     if slot and slot.name and slot.matGuid then
       local mat = getObjectFromGUID(slot.matGuid)
       if mat then
@@ -70,6 +113,7 @@ local function collectInvestigatorEntries()
           table.insert(entries, {
             name = slot.name,
             displayName = displayById(slot.name),
+            slot = tonumber(slotKey),
             mat = mat,
             stats = stats,
             figurine = findInvestigatorFigurineOnLocationMat(slot.name),
@@ -94,6 +138,10 @@ local function engageValue(entry, engage, ctx)
     return entry.stats.remnant
   elseif metric == "damage" then
     return entry.stats.hp or 0
+  elseif METRIC_CARD_KINDS[metric] then
+    if not entry.slot then return nil end
+    entry.cardKinds = entry.cardKinds or countInvestigatorCardKinds(entry.slot)
+    return entry.cardKinds[METRIC_CARD_KINDS[metric]] or 0
   elseif metric == "nearest" then
     if not entry.figurine or not ctx.distances then return nil end
     local node = findLocationNodeForPosition(entry.figurine.getPosition())
@@ -163,11 +211,6 @@ local function engageLabel(engage)
 end
 
 local function hintEngage(monsterMemo, kind, engage, ctx, highlighted)
-  if engage.metric and UNSUPPORTED_METRICS[engage.metric] then
-    hintMessage(monsterMemo, kind, engageLabel(engage) .. " (?)")
-    return
-  end
-
   local targets, best = pickEngageTargets(engage, ctx)
   if #targets == 0 then
     hintMessage(monsterMemo, kind, i18n.getStrById("MH_no_target"))
@@ -226,7 +269,7 @@ function findMostDoomNodes()
             end
           end
         end
-      elseif t == "street" then
+      elseif STREET_TYPES[t] then
         local count = countDoomOnTileArea(tile)
         if count > best then
           best = count
@@ -442,7 +485,9 @@ local function resolveMonsterMemo(matObject)
   end
 
   if memo.type == "DoubleSided" then
-    for _, side in ipairs({memo.front, memo.back}) do
+    local shroudedFirst = matObject.memo == "Double Sided Mat"
+    local sides = shroudedFirst and {memo.back, memo.front} or {memo.front, memo.back}
+    for _, side in ipairs(sides) do
       if side and side.type == "Monster" and side.activation then
         return side
       end
@@ -481,7 +526,7 @@ function pingAvailableMonsterLocations()
         for _, locationName in ipairs(data.locations) do
           pingPosition(nodeWorldPosition(locationName))
         end
-      elseif t == "street" then
+      elseif STREET_TYPES[t] then
         pingPosition(nodeWorldPosition(data.name))
       end
     end

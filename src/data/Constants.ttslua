@@ -33,6 +33,24 @@ STREET_LIKE_TYPES = {
   threshold = true,
 }
 
+STREET_TYPES = {
+  street = true,
+  ["travel route"] = true,
+  ["travel routes"] = true,
+  threshold = true,
+}
+
+CARD_KIND_TYPES = {
+  item  = true,
+  spell = true,
+  ally  = true,
+}
+
+CARD_KIND_SUBTYPE_TYPES = {
+  starting = true,
+  special  = true,
+}
+
 CONDITION_TYPES = {
   ["blessed cursed"] = true,
   ["dark pact"] = true,

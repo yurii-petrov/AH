@@ -2,6 +2,16 @@ data = {
   ["GUID"] = "32c18f",
   ["memo"] = {
     ["back"] = {
+      ["activation"] = {
+        ["engage"] = {
+          ["order"] = "lowest",
+          ["stat"] = "lore"
+        },
+        ["kind"] = "hunter",
+        ["traits"] = {
+          "shrouded"
+        }
+      },
       ["monstertype"] = {
         "Hostile Spirit"
       },

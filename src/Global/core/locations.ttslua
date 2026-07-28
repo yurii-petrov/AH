@@ -204,7 +204,7 @@ function getStreetNamesInPlay()
   local names = {}
   for _, o in ipairs(upCast(locationMat, 1, nil, 1)) do
     local data = parseJson(o.memo)
-    if data and data.type == "Street" and data.name then
+    if data and data.type and data.name and STREET_TYPES[string.lower(data.type)] then
       names[data.name] = true
     end
   end

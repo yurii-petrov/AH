@@ -4,6 +4,17 @@ data = {
     ["reversed"] = true,
     ["type"] = "DoubleSided",
     ["back"] = {
+      ["activation"] = {
+        ["effect"] = {
+          ["type"] = "placeDoom",
+          ["where"] = "self"
+        },
+        ["kind"] = "lurker",
+        ["traits"] = {
+          "elusive",
+          "shrouded"
+        }
+      },
       ["name"] = "Haunting Dead",
       ["monstertype"] = {
         "Troubled Spirit"

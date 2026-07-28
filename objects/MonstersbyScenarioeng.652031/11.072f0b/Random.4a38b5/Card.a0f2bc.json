@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"back\":{\"monstertype\":[\"Troubled Spirit\"],\"name\":\"Haunting Dead\",\"type\":\"Monster\"},\"front\":{\"activation\":{\"effect\":{\"type\":\"placeDoom\",\"where\":\"self\"},\"kind\":\"lurker\",\"traits\":[\"elusive\",\"shrouded\"]},\"hp\":2,\"monstertype\":[\"Troubled Spirit\"],\"name\":\"Cacophonous Haunt\",\"remnant\":false,\"spawn\":{\"at\":\"unstable\"},\"type\":\"Monster\"},\"reversed\":true,\"type\":\"DoubleSided\"}",
+  "Memo": "{\"back\":{\"activation\":{\"effect\":{\"type\":\"placeDoom\",\"where\":\"self\"},\"kind\":\"lurker\",\"traits\":[\"elusive\",\"shrouded\"]},\"monstertype\":[\"Troubled Spirit\"],\"name\":\"Haunting Dead\",\"type\":\"Monster\"},\"front\":{\"activation\":{\"effect\":{\"type\":\"placeDoom\",\"where\":\"self\"},\"kind\":\"lurker\",\"traits\":[\"elusive\",\"shrouded\"]},\"hp\":2,\"monstertype\":[\"Troubled Spirit\"],\"name\":\"Cacophonous Haunt\",\"remnant\":false,\"spawn\":{\"at\":\"unstable\"},\"type\":\"Monster\"},\"reversed\":true,\"type\":\"DoubleSided\"}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,

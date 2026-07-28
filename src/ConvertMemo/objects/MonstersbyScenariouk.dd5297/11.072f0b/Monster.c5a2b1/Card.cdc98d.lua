@@ -2,6 +2,16 @@ data = {
   ["GUID"] = "cdc98d",
   ["memo"] = {
     ["back"] = {
+      ["activation"] = {
+        ["engage"] = {
+          ["order"] = "lowest",
+          ["stat"] = "lore"
+        },
+        ["kind"] = "hunter",
+        ["traits"] = {
+          "shrouded"
+        }
+      },
       ["monstertype"] = {
         "Hostile Spirit"
       },
