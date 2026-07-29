@@ -24,7 +24,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"name\":\"Death\",\"type\":\"special\"}",
+  "Memo": "{\"name\":\"Death\",\"type\":\"special\",\"subtype\":\"item\"}",
   "Name": "Card",
   "Nickname": "Смерть",
   "SidewaysCard": false,

@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"investigator\":\"Zoey Samaras\",\"type\":\"starting\"}",
+  "Memo": "{\"investigator\":\"Zoey Samaras\",\"type\":\"starting\",\"subtype\":\"spell\"}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,

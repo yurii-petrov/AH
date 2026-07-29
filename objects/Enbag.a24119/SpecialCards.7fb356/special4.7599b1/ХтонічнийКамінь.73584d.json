@@ -24,7 +24,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"name\":\"Chthonian Stone\",\"type\":\"special\"}",
+  "Memo": "{\"name\":\"Chthonian Stone\",\"type\":\"special\",\"subtype\":\"item\"}",
   "Name": "Card",
   "Nickname": "Хтонічний Камінь",
   "SidewaysCard": false,

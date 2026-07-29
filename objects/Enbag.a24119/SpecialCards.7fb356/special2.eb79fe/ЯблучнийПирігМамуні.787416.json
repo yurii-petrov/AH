@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"sp\":3,\"name\":\"ma's apple pie\",\"type\":\"special\"}",
+  "Memo": "{\"sp\":3,\"name\":\"ma's apple pie\",\"type\":\"special\",\"subtype\":\"item\"}",
   "Name": "Card",
   "Nickname": "Яблучний Пиріг Мамуні",
   "SidewaysCard": false,

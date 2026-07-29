@@ -24,7 +24,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"name\":\"Eben Hall's Journal\",\"type\":\"special\"}",
+  "Memo": "{\"name\":\"Eben Hall's Journal\",\"type\":\"special\",\"subtype\":\"item\"}",
   "Name": "Card",
   "Nickname": "Журнал Ебена Голла",
   "SidewaysCard": false,

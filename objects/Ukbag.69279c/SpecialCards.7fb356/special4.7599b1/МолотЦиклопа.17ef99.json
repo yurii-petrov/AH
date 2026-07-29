@@ -24,7 +24,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"name\":\"Cyclopean Hammer\",\"type\":\"special\"}",
+  "Memo": "{\"name\":\"Cyclopean Hammer\",\"type\":\"special\",\"subtype\":\"item\"}",
   "Name": "Card",
   "Nickname": "Молот Циклопа",
   "SidewaysCard": false,

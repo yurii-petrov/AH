@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"hp\":3,\"name\":\"velma's cherry pie\",\"type\":\"special\"}",
+  "Memo": "{\"hp\":3,\"name\":\"velma's cherry pie\",\"type\":\"special\",\"subtype\":\"item\"}",
   "Name": "Card",
   "Nickname": "Вишневий Пиріг Велми",
   "SidewaysCard": false,

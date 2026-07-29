@@ -24,7 +24,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"name\":\"Lucky Coin\",\"type\":\"special\"}",
+  "Memo": "{\"name\":\"Lucky Coin\",\"type\":\"special\",\"subtype\":\"item\"}",
   "Name": "Card",
   "Nickname": "Щаслива Монетка",
   "SidewaysCard": false,

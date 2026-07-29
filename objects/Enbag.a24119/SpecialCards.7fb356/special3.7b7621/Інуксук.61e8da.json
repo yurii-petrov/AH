@@ -24,7 +24,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"hp\":3,\"sp\":3,\"name\":\"Inuksuk\",\"type\":\"special\"}",
+  "Memo": "{\"hp\":3,\"sp\":3,\"name\":\"Inuksuk\",\"type\":\"special\",\"subtype\":\"ally\"}",
   "Name": "Card",
   "Nickname": "Інуксук",
   "SidewaysCard": false,

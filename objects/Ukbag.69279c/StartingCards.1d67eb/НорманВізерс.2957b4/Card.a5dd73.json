@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"investigator\":\"Norman Withers\",\"type\":\"starting\"}",
+  "Memo": "{\"investigator\":\"Norman Withers\",\"type\":\"starting\",\"subtype\":\"item\"}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,

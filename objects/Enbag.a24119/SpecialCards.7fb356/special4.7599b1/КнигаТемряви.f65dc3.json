@@ -24,7 +24,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"name\":\"Book of Shadows\",\"type\":\"special\"}",
+  "Memo": "{\"name\":\"Book of Shadows\",\"type\":\"special\",\"subtype\":\"item\"}",
   "Name": "Card",
   "Nickname": "Книга Темряви",
   "SidewaysCard": false,

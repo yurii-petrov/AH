@@ -24,7 +24,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"name\":\"Unknown Liturgy\",\"type\":\"special\"}",
+  "Memo": "{\"name\":\"Unknown Liturgy\",\"type\":\"special\",\"subtype\":\"spell\"}",
   "Name": "Card",
   "Nickname": "Таємна Літургія",
   "SidewaysCard": false,

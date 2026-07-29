@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"investigator\":\"Ashcan Pete\",\"type\":\"starting\"}",
+  "Memo": "{\"investigator\":\"Ashcan Pete\",\"type\":\"starting\",\"subtype\":\"item\"}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,

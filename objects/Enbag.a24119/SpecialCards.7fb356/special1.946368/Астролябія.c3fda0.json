@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"name\":\"astrolabe\",\"type\":\"special\"}",
+  "Memo": "{\"name\":\"astrolabe\",\"type\":\"special\",\"subtype\":\"item\"}",
   "Name": "Card",
   "Nickname": "Астролябія",
   "SidewaysCard": false,

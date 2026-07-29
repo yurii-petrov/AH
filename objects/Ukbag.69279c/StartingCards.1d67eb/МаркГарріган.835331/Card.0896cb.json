@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"investigator\":\"Mark Harrigan\",\"sp\":2,\"type\":\"starting\"}",
+  "Memo": "{\"investigator\":\"Mark Harrigan\",\"sp\":2,\"type\":\"starting\",\"subtype\":\"item\"}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,

@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"guaranteed\":true,\"investigator\":\"Stella Clark\",\"type\":\"starting\"}",
+  "Memo": "{\"guaranteed\":true,\"investigator\":\"Stella Clark\",\"type\":\"starting\",\"subtype\":\"item\"}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,

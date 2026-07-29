@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"name\":\"the star\",\"type\":\"special\"}",
+  "Memo": "{\"name\":\"the star\",\"type\":\"special\",\"subtype\":\"item\"}",
   "Name": "Card",
   "Nickname": "Зірка",
   "SidewaysCard": false,

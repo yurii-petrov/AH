@@ -24,7 +24,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"sp\":2,\"name\":\"Guiding Spirit\",\"type\":\"special\"}",
+  "Memo": "{\"sp\":2,\"name\":\"Guiding Spirit\",\"type\":\"special\",\"subtype\":\"ally\"}",
   "Name": "Card",
   "Nickname": "Дух-Провідник",
   "SidewaysCard": false,

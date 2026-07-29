@@ -24,7 +24,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"name\":\"The Hierophant\",\"type\":\"special\"}",
+  "Memo": "{\"name\":\"The Hierophant\",\"type\":\"special\",\"subtype\":\"item\"}",
   "Name": "Card",
   "Nickname": "Верховний Жрець",
   "SidewaysCard": false,

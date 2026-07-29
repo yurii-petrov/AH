@@ -24,7 +24,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"name\":\"The Red clock\",\"type\":\"special\"}",
+  "Memo": "{\"name\":\"The Red clock\",\"type\":\"special\",\"subtype\":\"item\"}",
   "Name": "Card",
   "Nickname": "Червоний Годинник",
   "SidewaysCard": false,

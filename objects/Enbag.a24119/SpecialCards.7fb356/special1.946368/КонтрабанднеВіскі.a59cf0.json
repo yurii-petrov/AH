@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"name\":\"contraband whiskey\",\"sp\":3,\"type\":\"special\"}",
+  "Memo": "{\"name\":\"contraband whiskey\",\"sp\":3,\"type\":\"special\",\"subtype\":\"item\"}",
   "Name": "Card",
   "Nickname": "Контрабандне Віскі",
   "SidewaysCard": false,

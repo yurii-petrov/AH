@@ -24,7 +24,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"name\":\"Four of Cups\",\"type\":\"special\"}",
+  "Memo": "{\"name\":\"Four of Cups\",\"type\":\"special\",\"subtype\":\"item\"}",
   "Name": "Card",
   "Nickname": "Четвірка Кубків",
   "SidewaysCard": false,

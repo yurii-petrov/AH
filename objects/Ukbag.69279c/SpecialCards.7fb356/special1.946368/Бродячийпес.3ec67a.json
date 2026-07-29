@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"hp\":3,\"name\":\"stray dog\",\"sp\":1,\"type\":\"special\"}",
+  "Memo": "{\"hp\":3,\"name\":\"stray dog\",\"sp\":1,\"type\":\"special\",\"subtype\":\"ally\"}",
   "Name": "Card",
   "Nickname": "Бродячий пес",
   "SidewaysCard": false,

@@ -24,7 +24,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"name\":\"Golden Crown\",\"type\":\"special\"}",
+  "Memo": "{\"name\":\"Golden Crown\",\"type\":\"special\",\"subtype\":\"item\"}",
   "Name": "Card",
   "Nickname": "Золота Корона",
   "SidewaysCard": false,

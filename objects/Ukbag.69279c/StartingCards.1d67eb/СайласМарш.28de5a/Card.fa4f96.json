@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"guaranteed\":true,\"investigator\":\"Silas Marsh\",\"type\":\"starting\"}",
+  "Memo": "{\"guaranteed\":true,\"investigator\":\"Silas Marsh\",\"type\":\"starting\",\"subtype\":\"item\"}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,

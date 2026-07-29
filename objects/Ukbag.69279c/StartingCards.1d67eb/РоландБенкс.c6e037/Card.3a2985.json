@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"guaranteed\":true,\"investigator\":\"Roland Banks\",\"type\":\"starting\"}",
+  "Memo": "{\"guaranteed\":true,\"investigator\":\"Roland Banks\",\"type\":\"starting\",\"subtype\":\"item\"}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,

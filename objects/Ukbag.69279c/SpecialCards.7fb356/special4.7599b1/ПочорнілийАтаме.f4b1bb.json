@@ -24,7 +24,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"name\":\"Blackened Athame\",\"type\":\"special\"}",
+  "Memo": "{\"name\":\"Blackened Athame\",\"type\":\"special\",\"subtype\":\"item\"}",
   "Name": "Card",
   "Nickname": "Почорнілий Атаме",
   "SidewaysCard": false,

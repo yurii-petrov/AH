@@ -24,7 +24,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"name\":\"Harpoon\",\"type\":\"special\"}",
+  "Memo": "{\"name\":\"Harpoon\",\"type\":\"special\",\"subtype\":\"item\"}",
   "Name": "Card",
   "Nickname": "Гарпун",
   "SidewaysCard": false,

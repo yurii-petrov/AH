@@ -24,7 +24,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"name\":\"Cryptic Sketches\",\"type\":\"special\"}",
+  "Memo": "{\"name\":\"Cryptic Sketches\",\"type\":\"special\",\"subtype\":\"item\"}",
   "Name": "Card",
   "Nickname": "Химерні Ескізи",
   "SidewaysCard": false,

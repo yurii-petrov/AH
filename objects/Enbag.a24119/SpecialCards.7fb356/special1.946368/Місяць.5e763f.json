@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"name\":\"the moon\",\"sp\":3,\"type\":\"special\"}",
+  "Memo": "{\"name\":\"the moon\",\"sp\":3,\"type\":\"special\",\"subtype\":\"item\"}",
   "Name": "Card",
   "Nickname": "Місяць",
   "SidewaysCard": false,

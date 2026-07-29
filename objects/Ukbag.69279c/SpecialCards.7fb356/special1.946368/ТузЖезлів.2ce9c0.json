@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"name\":\"ace of rods\",\"type\":\"special\"}",
+  "Memo": "{\"name\":\"ace of rods\",\"type\":\"special\",\"subtype\":\"item\"}",
   "Name": "Card",
   "Nickname": "Туз Жезлів",
   "SidewaysCard": false,

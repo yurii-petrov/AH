@@ -24,7 +24,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"name\":\"Kerosene\",\"type\":\"special\"}",
+  "Memo": "{\"name\":\"Kerosene\",\"type\":\"special\",\"subtype\":\"item\"}",
   "Name": "Card",
   "Nickname": "Гас",
   "SidewaysCard": false,

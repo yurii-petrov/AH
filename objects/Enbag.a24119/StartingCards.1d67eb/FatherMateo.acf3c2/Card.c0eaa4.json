@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"investigator\":\"Father Mateo\",\"type\":\"starting\"}",
+  "Memo": "{\"investigator\":\"Father Mateo\",\"type\":\"starting\",\"subtype\":\"spell\"}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,

@@ -24,7 +24,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"name\":\"Nine of Rods\",\"type\":\"special\"}",
+  "Memo": "{\"name\":\"Nine of Rods\",\"type\":\"special\",\"subtype\":\"item\"}",
   "Name": "Card",
   "Nickname": "Дев’ятка Жезлів",
   "SidewaysCard": false,

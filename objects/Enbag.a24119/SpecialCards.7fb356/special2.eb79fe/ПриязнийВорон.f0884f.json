@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"hp\":1,\"sp\":3,\"name\":\"friendly raven\",\"type\":\"special\"}",
+  "Memo": "{\"hp\":1,\"sp\":3,\"name\":\"friendly raven\",\"type\":\"special\",\"subtype\":\"ally\"}",
   "Name": "Card",
   "Nickname": "Приязний Ворон",
   "SidewaysCard": false,

@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"name\":\"mi-go brain case\",\"type\":\"special\"}",
+  "Memo": "{\"name\":\"mi-go brain case\",\"type\":\"special\",\"subtype\":\"item\"}",
   "Name": "Card",
   "Nickname": "Мозкова Колба Мі-Го",
   "SidewaysCard": false,

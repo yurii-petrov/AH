@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"investigator\":\"Agnes Baker\",\"type\":\"starting\"}",
+  "Memo": "{\"investigator\":\"Agnes Baker\",\"type\":\"starting\",\"subtype\":\"spell\"}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,

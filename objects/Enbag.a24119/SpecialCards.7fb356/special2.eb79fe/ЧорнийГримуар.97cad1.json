@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"name\":\"black grimoire\",\"type\":\"special\"}",
+  "Memo": "{\"name\":\"black grimoire\",\"type\":\"special\",\"subtype\":\"item\"}",
   "Name": "Card",
   "Nickname": "Чорний Гримуар",
   "SidewaysCard": false,

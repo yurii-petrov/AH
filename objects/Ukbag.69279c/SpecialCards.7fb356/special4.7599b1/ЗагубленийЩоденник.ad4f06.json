@@ -24,7 +24,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"sp\":2,\"name\":\"Lost Journal\",\"type\":\"special\"}",
+  "Memo": "{\"sp\":2,\"name\":\"Lost Journal\",\"type\":\"special\",\"subtype\":\"item\"}",
   "Name": "Card",
   "Nickname": "Загублений Щоденник",
   "SidewaysCard": false,

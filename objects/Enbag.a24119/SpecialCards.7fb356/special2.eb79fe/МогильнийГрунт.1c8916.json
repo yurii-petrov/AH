@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"name\":\"grave dirt\",\"type\":\"special\"}",
+  "Memo": "{\"name\":\"grave dirt\",\"type\":\"special\",\"subtype\":\"item\"}",
   "Name": "Card",
   "Nickname": "Могильний Грунт",
   "SidewaysCard": false,

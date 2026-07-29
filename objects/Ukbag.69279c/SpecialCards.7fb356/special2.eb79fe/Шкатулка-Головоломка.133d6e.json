@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"sp\":2,\"name\":\"puzzle box\",\"type\":\"special\"}",
+  "Memo": "{\"sp\":2,\"name\":\"puzzle box\",\"type\":\"special\",\"subtype\":\"item\"}",
   "Name": "Card",
   "Nickname": "Шкатулка-Головоломка",
   "SidewaysCard": false,
