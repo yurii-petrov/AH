@@ -38,7 +38,7 @@
   "MeasureMovement": false,
   "Memo": "{\"sp\":2,\"name\":\"puzzle box\",\"type\":\"special\",\"subtype\":\"item\"}",
   "Name": "Card",
-  "Nickname": "Шкатулка-Головоломка",
+  "Nickname": "Puzzle Box",
   "SidewaysCard": false,
   "Snap": true,
   "Sticky": true,
