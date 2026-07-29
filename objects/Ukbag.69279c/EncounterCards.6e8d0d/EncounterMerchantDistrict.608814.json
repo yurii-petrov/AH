@@ -1,0 +1,79 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "ContainedObjects_order": [
+    "Card.a0a6ee",
+    "Card.9cbc14",
+    "Card.b9f17f",
+    "Card.24d97f",
+    "Card.43da44",
+    "Card.1a5c1e",
+    "Card.ad7da2",
+    "Card.6b413f"
+  ],
+  "ContainedObjects_path": "EncounterMerchantDistrict.608814",
+  "CustomDeck": {
+    "5970": {
+      "BackIsHidden": true,
+      "BackURL": "https://drive.google.com/uc?export=download&id=1cycwRSkqK4wlIBepxA17xoLSXwgv-TtH",
+      "FaceURL": "https://drive.google.com/uc?export=download&id=1g-Z-uMlvFXwDN1PBafE-4afjHiZPhXzD",
+      "NumHeight": 2,
+      "NumWidth": 4,
+      "Type": 0,
+      "UniqueBack": false
+    }
+  },
+  "DeckIDs": [
+    597000,
+    597001,
+    597002,
+    597003,
+    597004,
+    597005,
+    597006,
+    597007
+  ],
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "608814",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": true,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Memo": "{\"name\":\"Merchant District\",\"set\":1,\"startPosition\":{\"x\":0.0435451343655586,\"y\":1.05944466590881,\"z\":-0.434592723846436},\"type\":\"encounter\"}",
+  "Name": "Deck",
+  "Nickname": "Encounter Merchant District",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": -21.137,
+    "posY": 4.326,
+    "posZ": 23.602,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 178,
+    "scaleX": 1.5,
+    "scaleY": 1,
+    "scaleZ": 1.5
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

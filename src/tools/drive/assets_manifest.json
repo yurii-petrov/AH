@@ -396,6 +396,15 @@
         }
       }
     },
+    "12a72207c29ee2f4e2a6735cca9dc2dbfd32738da7e60de669e46244c70172a4": {
+      "driveId": "1dGnuI_oFAMCyx-4ZG1wKwZsEd06IQ8Ap",
+      "paths": {
+        "assets/cards/1_dead_of_night/uk/encounter/easttown 1Front.png": {
+          "mtime": 1785348460.428,
+          "size": 10587067
+        }
+      }
+    },
     "1330143b7e7e1f9d7be3357ba50d9e8d6c7abf59e43c7a87de24b8971d264bec": {
       "driveId": "1UjWVdm2vXivoi0zyVd4eEt46XDDU7dBN",
       "paths": {
@@ -951,6 +960,15 @@
         "assets/other_graphics/roller_s.png": {
           "mtime": 1782819016.0,
           "size": 236329
+        }
+      }
+    },
+    "2e21362dc1bdb28112db9d9450474b0742399a84b3543d6f69a21005ce688284": {
+      "driveId": "1XcuoVk0hUODEjpEgmtytzTb89d_CvmG6",
+      "paths": {
+        "assets/cards/1_dead_of_night/uk/encounter/southside 1Front.png": {
+          "mtime": 1785348465.158,
+          "size": 9555766
         }
       }
     },
@@ -1653,6 +1671,15 @@
         "assets/cards/2_under_dark_waves/uk/Encounter Part1 2Back.png": {
           "mtime": 1759148465.0,
           "size": 35604308
+        }
+      }
+    },
+    "4ca1e50866c6905f78d823d9a3f6788680964d2b86e1cbdb1a8ea9a8a1ab1d9e": {
+      "driveId": "17Zu8pvbyk6dVq9x7lk8dp9UKenPvrOSK",
+      "paths": {
+        "assets/cards/1_dead_of_night/uk/encounter/rivertown 1Front.png": {
+          "mtime": 1785348464.409,
+          "size": 9089082
         }
       }
     },
@@ -2592,6 +2619,15 @@
         }
       }
     },
+    "7c51446611fd8392eb1adb471e350d1c0c453c2611ce97b7bcaa33f1ccfbb8a5": {
+      "driveId": "1gZbIXcI4Gs9dSf2WNTwsje6U_NqT6i42",
+      "paths": {
+        "assets/cards/1_dead_of_night/uk/encounter/northside 1Front.png": {
+          "mtime": 1785348463.659,
+          "size": 9929995
+        }
+      }
+    },
     "7cb027918791ac2d213f4fc194303a6312c37b3277561e3a06fe91e0b676fed4": {
       "driveId": "1p9fCGbMbOtIdfTkspR2bs8JFrbEDkiPk",
       "paths": {
@@ -3033,6 +3069,15 @@
         }
       }
     },
+    "951d4788340005ce9dfe5dd04d53e49b98db1c0407d37eac01a6a1178afce567": {
+      "driveId": "1_Qgne2YHL8HLYapsVMvjyBWwnWkLfd9i",
+      "paths": {
+        "assets/cards/1_dead_of_night/uk/encounter/uptown 1Front.png": {
+          "mtime": 1785348466.034,
+          "size": 10535486
+        }
+      }
+    },
     "960840587b4dc476c1a49a6681f57fd8048b0ca41c644047d99ae6e1df083ff5": {
       "driveId": "1oSo35XNQUWy4KfL1ok9uR1hWnDu2mVHP",
       "paths": {
@@ -3402,6 +3447,15 @@
         }
       }
     },
+    "a85d0e6c6f28f50d2b80c987e9e256eb4ce3040bf7c419655cbb3050c3cacff2": {
+      "driveId": "10DbhR43kqmbJBD61INVpR0EhC82tJI12",
+      "paths": {
+        "assets/cards/1_dead_of_night/uk/encounter/Downtown 1Front.png": {
+          "mtime": 1785348459.608,
+          "size": 9327704
+        }
+      }
+    },
     "a8aefad1668da3833f7b72e9ed8e8d865eef97bfddcbbf9f57ae0d8c8cf2eaf0": {
       "driveId": "1pcj3x38EQMNak46iKYpYpcQylfRRbhMz",
       "paths": {
@@ -3687,6 +3741,15 @@
         "assets/map_tiles/uk/The Unnamable.jpg": {
           "mtime": 1779686440.213,
           "size": 215747
+        }
+      }
+    },
+    "b9b38d7dd05ad3dac2e8f88a53c9b7ab1b4f0e10bd40487e5276c5fb8a093248": {
+      "driveId": "1g-Z-uMlvFXwDN1PBafE-4afjHiZPhXzD",
+      "paths": {
+        "assets/cards/1_dead_of_night/uk/encounter/merchant district 1Front.png": {
+          "mtime": 1785348461.98,
+          "size": 9465910
         }
       }
     },
@@ -4671,12 +4734,30 @@
         }
       }
     },
+    "e5c42f2d02f381cb75ac756ff02ede32d3041885b198d92ee8332fe2d7bd6391": {
+      "driveId": "18BO9BVvIEELUeUh_W7t-2kg7BtK_3MnT",
+      "paths": {
+        "assets/cards/1_dead_of_night/uk/encounter/the streets 1Front.png": {
+          "mtime": 1785348461.23,
+          "size": 9362980
+        }
+      }
+    },
     "e6c0b02cbd5c62e3d00fad690d8c91a9f57365f09fbcf42c53807f798c05eec4": {
       "driveId": "18qQgvNq5WtFW5F36mnoUNxx3f1ESXgzb",
       "paths": {
         "assets/other_graphics/знання.png": {
           "mtime": 1750255074.645,
           "size": 6389
+        }
+      }
+    },
+    "e6f5002351af0500aed91719e9c3f6292221bce6a72978454b275369327f7098": {
+      "driveId": "16ZbpCtMVrTeqk9OlwN3R1CIIEl7EiVqx",
+      "paths": {
+        "assets/cards/1_dead_of_night/uk/encounter/miskatonic university 1Front.png": {
+          "mtime": 1785348462.719,
+          "size": 9156177
         }
       }
     },

@@ -1,0 +1,79 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "ContainedObjects_order": [
+    "Card.35b028",
+    "Card.a4d84e",
+    "Card.8e5e7a",
+    "Card.c0698a",
+    "Card.b81b36",
+    "Card.35c978",
+    "Card.71aac1",
+    "Card.9637ef"
+  ],
+  "ContainedObjects_path": "EncounterUptown.b2d1ec",
+  "CustomDeck": {
+    "5977": {
+      "BackIsHidden": true,
+      "BackURL": "https://drive.google.com/uc?export=download&id=13qxypHl1zaiz2zn_rGFawA03ZnmpLSr2",
+      "FaceURL": "https://drive.google.com/uc?export=download&id=1_Qgne2YHL8HLYapsVMvjyBWwnWkLfd9i",
+      "NumHeight": 2,
+      "NumWidth": 4,
+      "Type": 0,
+      "UniqueBack": false
+    }
+  },
+  "DeckIDs": [
+    597700,
+    597701,
+    597702,
+    597703,
+    597704,
+    597705,
+    597706,
+    597707
+  ],
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "b2d1ec",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": true,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Memo": "{\"name\":\"Uptown\",\"set\":1,\"startPosition\":{\"x\":-0.175512984395027,\"y\":1.05944466590881,\"z\":-0.434592723846436},\"type\":\"Encounter\"}",
+  "Name": "Deck",
+  "Nickname": "Encounter Uptown",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": -20.591,
+    "posY": 4.315,
+    "posZ": 24.302,
+    "rotX": 359,
+    "rotY": 180,
+    "rotZ": 181,
+    "scaleX": 1.5,
+    "scaleY": 1,
+    "scaleZ": 1.5
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

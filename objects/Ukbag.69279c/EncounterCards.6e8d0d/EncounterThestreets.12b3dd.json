@@ -1,0 +1,79 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "ContainedObjects_order": [
+    "Card.3510e8",
+    "Card.4dc23e",
+    "Card.e21e14",
+    "Card.eadae9",
+    "Card.2fbf5f",
+    "Card.1f1d7b",
+    "Card.a6786a",
+    "Card.9d95ee"
+  ],
+  "ContainedObjects_path": "EncounterThestreets.12b3dd",
+  "CustomDeck": {
+    "5976": {
+      "BackIsHidden": true,
+      "BackURL": "https://drive.google.com/uc?export=download&id=1A4EmTdsjVn2q_YQhRs6cGsh19raVrLrv",
+      "FaceURL": "https://drive.google.com/uc?export=download&id=18BO9BVvIEELUeUh_W7t-2kg7BtK_3MnT",
+      "NumHeight": 2,
+      "NumWidth": 4,
+      "Type": 0,
+      "UniqueBack": false
+    }
+  },
+  "DeckIDs": [
+    597600,
+    597601,
+    597602,
+    597603,
+    597604,
+    597605,
+    597606,
+    597607
+  ],
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "12b3dd",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": true,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Memo": "{\"name\":\"The streets\",\"set\":1,\"startPosition\":{\"x\":-0.0816309452056885,\"y\":1.05944466590881,\"z\":-0.434592723846436},\"type\":\"encounter\"}",
+  "Name": "Deck",
+  "Nickname": "Encounter The streets",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": -21.273,
+    "posY": 4.317,
+    "posZ": 23.741,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 178,
+    "scaleX": 1.5,
+    "scaleY": 1,
+    "scaleZ": 1.5
+  },
+  "Value": 0,
+  "XmlUI": ""
+}
