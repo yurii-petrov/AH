@@ -35,6 +35,13 @@
       "steamId": "14585224836311384232",
       "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14585224836311384232/88BA3A4707185180A4FC9B320A1859BFACC70166/"
     },
+    "027deae1e0bafb94ab2b553a770c0a6537d55292f26d017d72c6ecd4b2a2f8b8": {
+      "paths": {
+        "assets/cards/0_base/uk/encounter/southside 2Back.png": {}
+      },
+      "steamId": "15295599362691465056",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15295599362691465056/8BEBE609D550C4B845B18E1F9F28AE4AC568E5E8/"
+    },
     "029b1df4e18792d0155a52b33b36d0c5bc17481ba9b6e5e21a2c6fbc4b1fa5f0": {
       "paths": {
         "assets/investigators/0_base/CALVIN WRIGHT.jpeg": {}
@@ -69,6 +76,13 @@
       },
       "steamId": "17335967547084455470",
       "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17335967547084455470/A98E4C51CA54317C73FC04D3DF62F2B47A9653FD/"
+    },
+    "04de3f0e62d9073efb0d867cfd973a80e3c5ff700cf33f395473ea1e0a250d69": {
+      "paths": {
+        "assets/cards/0_base/uk/encounter/Downtown 2Back.png": {}
+      },
+      "steamId": "16638223778891142290",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16638223778891142290/1B21F957AA44CF4B36F0A6F0C485230D66851275/"
     },
     "050c8bb8f39f915a728d8b2fae32150004dac689f6c28e58b5f17b8b6accda8a": {
       "paths": {
@@ -188,6 +202,13 @@
       },
       "steamId": "18373964484514278563",
       "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18373964484514278563/F957706BF08D9555E100899399A55CC8400B84FB/"
+    },
+    "0c8ac99f2cbe2d277c838e677aad0a57b413f21c95d099cf1cff86d2b8e05ba4": {
+      "paths": {
+        "assets/cards/0_base/uk/Headline 1Front.png": {}
+      },
+      "steamId": "17397378992704856151",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17397378992704856151/3ACDF2063EB707F84DF1B8C2AAC533BCA490E1AF/"
     },
     "0c90b252acc9695f0ae2808140777fb2b740d04c4c34081a57283c9a0008314d": {
       "paths": {
@@ -441,6 +462,13 @@
       "steamId": "13408970210846355411",
       "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13408970210846355411/A5BB0558C393C220EA498A1EC4925583A79A8C6E/"
     },
+    "1f7f2871b21d5644954ae951ee3cc396d1087ec4ca8c89a0947c0484629ccfb2": {
+      "paths": {
+        "assets/icons/info.png": {}
+      },
+      "steamId": "15500849110664364140",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15500849110664364140/5DB4417CFD27236BAD5DF31C2FFA8DEE9906E687/"
+    },
     "1f8dae5f5ec641f5629c508acb6860311a664f1ffbfb24c8d3d5bdc98ec4f442": {
       "paths": {
         "assets/other_graphics/scenario5.png": {}
@@ -538,6 +566,13 @@
       },
       "steamId": "14040302790067266576",
       "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14040302790067266576/D217F9D14CAE2FFC3EF5207800153E9B48EA8FD0/"
+    },
+    "28770615c169e6cca2167b451aea7d4cac0076939840124b83d2936b3123a210": {
+      "paths": {
+        "assets/cards/0_base/uk/Monsters 2Back.png": {}
+      },
+      "steamId": "16563663596241465302",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16563663596241465302/0CAE3B8C24A4D644AEF7FF92C29BEF70086F0027/"
     },
     "287b2a0d63f37450bc036d31ac9c804b9c40bad82fccb4182747808a87e09f30": {
       "paths": {
@@ -721,6 +756,13 @@
       "steamId": "11025499118689857419",
       "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/11025499118689857419/079D27165B611A3704246FE23BCE4845EC923901/"
     },
+    "2fd53f4c4647660334071ad6514a983e74589b3827e301e2a21d176a57b30d23": {
+      "paths": {
+        "assets/cards/1_dead_of_night/uk/Encounter Part1 1Front.png": {}
+      },
+      "steamId": "17214192222155713591",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17214192222155713591/F1F6E537F63E87702F9371D43794898E784C56AA/"
+    },
     "3060f5287e5149f622824515bc60d181400b3a35951569e2450e882999ee0a42": {
       "paths": {
         "assets/models/mythos_cup_diffuse.jpg": {}
@@ -734,6 +776,13 @@
       },
       "steamId": "14983561112576305801",
       "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14983561112576305801/F69326304AD7864ACDD3501A396AA342F2F2F3B5/"
+    },
+    "3182dcd8f4de26ce5e028f0b90ebec8cf31a2276c72df0a323acdf977c81e1cb": {
+      "paths": {
+        "assets/cards/0_base/uk/Monsters 1Front.png": {}
+      },
+      "steamId": "9500005769091645500",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/9500005769091645500/8AF071C53F5862C68B1409536333009EA090950F/"
     },
     "31bf77109820d1e2bfd9c5577a0c6a4e6638abf60c7467d28ee29bfd6ab6586b": {
       "paths": {
@@ -917,6 +966,13 @@
       "steamId": "11889605732685293776",
       "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/11889605732685293776/C89D13136128CCA204AD0BE7C9B729DC280004C8/"
     },
+    "39d3fcda9de32924ebeaa30fff8b24421e55fe209be280cb5a720b60ad84ee83": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/uk/Archive 1Front.png": {}
+      },
+      "steamId": "15358887619918898753",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15358887619918898753/0B9AED2AFA7F5337327FE465CDCBE733C2177F17/"
+    },
     "3a6e11426a62eb1c2fcf888424d95d1630c8b6d66d62d8c7f78e3d8717cc24d1": {
       "paths": {
         "assets/models/arkham.obj": {}
@@ -965,6 +1021,13 @@
       },
       "steamId": "12987736360294212435",
       "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12987736360294212435/6E9A02B21622878E9973D39F6785B3535FED021B/"
+    },
+    "3bdf29e3c6bb60511595196970704f425c36a60973d9d9ad64b449e01d757794": {
+      "paths": {
+        "assets/cards/0_base/uk/encounter/miskatonic university 2Back.png": {}
+      },
+      "steamId": "16064301070066138533",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16064301070066138533/6558146D44B858BA825581AE7638FA3CAEFC100C/"
     },
     "3c02e99c8a6b13531e0f4777810ae9380809f171302f0fa3195d432ff482e371": {
       "paths": {
@@ -1028,6 +1091,13 @@
       },
       "steamId": "11370514784574767540",
       "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/11370514784574767540/D4A29CBE2C901753C8C23413FB0ACB0D9E3DD69C/"
+    },
+    "40e208a538d537f9209e959484411b36220d3774775d199f1e15c6de24a3f797": {
+      "paths": {
+        "assets/cards/0_base/uk/encounter/easttown 2Back.png": {}
+      },
+      "steamId": "14826188789714738022",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14826188789714738022/353481FECB9E060DD9BA440768C9DAFFAC64F5AB/"
     },
     "415b1f1c0356b7aea381b40317cfb9573fd39e454bb88bce8753c2e2d4e92d68": {
       "paths": {
@@ -1127,6 +1197,13 @@
       "steamId": "12966042190640645555",
       "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12966042190640645555/50285EB7E6AB14141BB6783BAC816CB0CCBBD7BB/"
     },
+    "480afdd0116c4e7292fd902467511f7a23512bf15be31c55d0a13c5b090f3711": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/en/Monsters 2Back.png": {}
+      },
+      "steamId": "18338624508819072801",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18338624508819072801/5A0AA7A525D3A35157B3A20DAB4594F008316CF2/"
+    },
     "48381f6259cda903fe594082b8c985f3ddde192031668af4be0393d82f9bb776": {
       "paths": {
         "assets/cards/3_secrets_of_the_order/en/Items 1Front.png": {}
@@ -1168,6 +1245,13 @@
       },
       "steamId": "11436088997045921262",
       "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/11436088997045921262/D371FAB5B524C2B3EA94D32AD63873BC3E9F6548/"
+    },
+    "4a9ef5bee396f65524675526d00112ccac52499d347e08ffaf8f51ac63a04edf": {
+      "paths": {
+        "assets/cards/0_base/uk/encounter/Downtown 1Front.png": {}
+      },
+      "steamId": "18132732323755706070",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18132732323755706070/12FC898541358912897D1A4F6FB7DBB61C93C8B3/"
     },
     "4abc229febd6d812baa4b17e623b833259f7b61605596c7e6a937a75c7ba1d64": {
       "paths": {
@@ -1295,6 +1379,13 @@
       "steamId": "17429130260001675691",
       "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17429130260001675691/C9A6DCF8227258E5B3685BF5F5F8DC43966F02EE/"
     },
+    "506701a19bc83df2aaf406c7bd22eda1b1491de7cb835fb4aa4199f9835e497a": {
+      "paths": {
+        "assets/cards/0_base/en/Monsters 2Back.png": {}
+      },
+      "steamId": "16776175828147494540",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16776175828147494540/A6D6EE78A4D1C8DD9790FC4701B5B51F2AB5F1E8/"
+    },
     "51279fde7b23b7eaae1dd7ea4804e6ee5cfe2ed08bdd04e1b696516916fcc04e": {
       "paths": {
         "assets/cards/2_under_dark_waves/uk/Scenario 1Front.png": {}
@@ -1322,6 +1413,13 @@
       },
       "steamId": "12418609665116858022",
       "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12418609665116858022/292EA69E35A3488B39694B263A370A25D31490F3/"
+    },
+    "532ddbe4378360e6e18b83d1830089e4188e351e0bb9f2ac32d5f60df5bdf294": {
+      "paths": {
+        "assets/cards/0_base/en/Monsters 1Front.png": {}
+      },
+      "steamId": "10444776200081329613",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10444776200081329613/6920E2884882E4AD67072EEA8C52C07499C7C2FA/"
     },
     "53719c956537a81124153b7a711a5cb6c6b92550aa4ff17a64665888a65afcf6": {
       "paths": {
@@ -1477,6 +1575,20 @@
       "steamId": "13956113112139048157",
       "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13956113112139048157/FFFDA155AA3EA9C348FAC4CF6F086ABBB05BF1E7/"
     },
+    "5dd717fb9ea9788030a48a3989953f305c7556a5b88d885c5fc6477727a7d3cc": {
+      "paths": {
+        "assets/cards/0_base/uk/encounter/merchant district 1Front.png": {}
+      },
+      "steamId": "15797682452714282911",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15797682452714282911/9A55559488C905412F6E57E4715D70418794B3C6/"
+    },
+    "5ef3cba13dd46eecf9f683f80ed2d6de0b962fb3e8763d8ede9ab2b505df7f42": {
+      "paths": {
+        "assets/cards/0_base/uk/EotD 1Front.png": {}
+      },
+      "steamId": "11742319502162033148",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/11742319502162033148/7B427456118402CB40A7682B3BB6E1284A1B3AD2/"
+    },
     "5f12fa7a16064dc0f55b39504ac574af7c32379c49e8ce36ddeb350c72f0d6f3": {
       "paths": {
         "assets/rules/en/(2) Under Dark Waves.pdf": {}
@@ -1603,6 +1715,13 @@
       "steamId": "16183076851726164440",
       "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16183076851726164440/C3197054C1E49E9ACEB462659D8A2A96327B1035/"
     },
+    "64762253f3c7f7718dc5ddec799c9a5f452454518d97738cfb5bbef1d707a21a": {
+      "paths": {
+        "assets/cards/0_base/uk/encounter/the streets 1Front.png": {}
+      },
+      "steamId": "10716513677858758494",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10716513677858758494/17125E5B60855F5AA26FCD3ED02E02A21891826D/"
+    },
     "65547d5652e1b32330f83a1721bb6a532b14f3c0e2f6d8986e95f7aa52afa25f": {
       "paths": {
         "assets/models/map_tile_hidden_path.obj": {}
@@ -1659,6 +1778,13 @@
       "steamId": "11512953069307127029",
       "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/11512953069307127029/1BF190C74DD346466DAF4B1B7C9FBBED39E0B058/"
     },
+    "6b186d07034c259370baa6c3fa5b794f622ddeec0e7308d21140bac60bac3388": {
+      "paths": {
+        "assets/cards/0_base/uk/encounter/rivertown 1Front.png": {}
+      },
+      "steamId": "15369638346101448201",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15369638346101448201/98E60571B1F7CCA1583615EFE8C5C47E52511595/"
+    },
     "6c17ec5382a64d6c909fd284a4197c34594e8dd670d16011be9ca143249ccfc9": {
       "paths": {
         "assets/other_graphics/dice_red.png": {}
@@ -1679,6 +1805,13 @@
       },
       "steamId": "12186404171709602307",
       "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12186404171709602307/F5C4357A240E51C5381658F1AF569C00949099E5/"
+    },
+    "6ce99deddd55659ac2cad39c9ef28eb9d9a651c8e06a42c935caf1053fdba0b7": {
+      "paths": {
+        "assets/cards/1_dead_of_night/uk/SitD 1Front.png": {}
+      },
+      "steamId": "13798845126499981533",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13798845126499981533/F38E32FCA88A3AD56318DF6D92AF1A3F50C0FC68/"
     },
     "6d60d438f8eaf20f369c04405db80c130d23a0a1f89e9cdb1c38d410a822299b": {
       "paths": {
@@ -2051,6 +2184,13 @@
       "steamId": "18100519951343738686",
       "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18100519951343738686/1E8E3FB1D617720772AFC6F824E3E32722BE3A7F/"
     },
+    "84c12f44f6e9637748a1bb792027f55a48bfa3b1383d19f2963765d7ae0557d4": {
+      "paths": {
+        "assets/cards/0_base/uk/encounter/uptown 1Front.png": {}
+      },
+      "steamId": "9306698467965415792",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/9306698467965415792/F14ADA22011C260091558FA6F83583499A7B5573/"
+    },
     "8551854b555855df85e4b911ab488c23a3780252906f0fa1ff570d1fa3a8b381": {
       "paths": {
         "assets/investigators/0_base/mini/dexter drake.png": {}
@@ -2261,6 +2401,13 @@
       "steamId": "11028894570704653311",
       "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/11028894570704653311/E787AF547A57988D0DAFECCFC7A980AF4F7AABB0/"
     },
+    "9505a9654f5d420a77453ceea139e055417ee20537338cd05f0fdcce9a89605e": {
+      "paths": {
+        "assets/cards/1_dead_of_night/uk/Scenario 1Front.png": {}
+      },
+      "steamId": "10304249085089497069",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10304249085089497069/2BD7AE838BA5810D9B371A3015A57BA32E4863BC/"
+    },
     "960840587b4dc476c1a49a6681f57fd8048b0ca41c644047d99ae6e1df083ff5": {
       "paths": {
         "assets/icons/Leader token.jpeg": {}
@@ -2274,6 +2421,13 @@
       },
       "steamId": "13492522111982187586",
       "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13492522111982187586/6655E2AAACDCEDD2AC2731A37E38719D27CD3DAC/"
+    },
+    "96dc3ac2792f1238a495a25919048d778134e1b459efdd0a01cfc4dc7e38003c": {
+      "paths": {
+        "assets/cards/0_base/uk/Items 1Front.png": {}
+      },
+      "steamId": "10511200944600841124",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10511200944600841124/44CF3D129C5BF8E2F40AC91779609E6525243AC6/"
     },
     "96fcca47bbcbabba3f05f126c733269305e4b6637fdf160b2e50911b1fa6dac4": {
       "paths": {
@@ -2309,6 +2463,13 @@
       },
       "steamId": "15450905380923916415",
       "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15450905380923916415/8BF25875CC0B2E0D4E68CC3BECEA9841A7890000/"
+    },
+    "98ab9812cdfd1fac09a1df3fb0399682a4f6645df618c9e774464448fd334ccf": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/uk/Monsters 1Front.png": {}
+      },
+      "steamId": "12141871102537366976",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12141871102537366976/F2026D398333A5F73A1C6E24290404B22BAB975A/"
     },
     "98d3059feff9f21d33d14ede2404bd99e8dd19a0f76068e3fb7798c7939e05a2": {
       "paths": {
@@ -2358,6 +2519,13 @@
       },
       "steamId": "16145913936668690532",
       "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16145913936668690532/2A879D89402AB2F52469E10391D07E0CA1466FC5/"
+    },
+    "9bc2e7d688baf8f34e18d46820f86edae78db45fd3385d8c838acd203dc8b5d3": {
+      "paths": {
+        "assets/cards/0_base/uk/encounter/miskatonic university 1Front.png": {}
+      },
+      "steamId": "11690775744488766008",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/11690775744488766008/7DF3B7D0E2B51044545F77F4F7511416A0EB904B/"
     },
     "9be5122f13fb0ea59365c20a01767d04327f87bb0ee0fb054289dbc5c0d6a650": {
       "paths": {
@@ -2436,12 +2604,26 @@
       "steamId": "10854949135087091736",
       "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10854949135087091736/65A2DDA209264C3ECAA3DD141221C64500A0FDA7/"
     },
+    "a15bf7b80bfbc710e28750ba23e7091b8e78d32aaa947acf05f60d9f71cd397c": {
+      "paths": {
+        "assets/cards/0_base/uk/encounter/rivertown 2Back.png": {}
+      },
+      "steamId": "13249682471191299507",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13249682471191299507/54E29DCAC469F1F123382B0C318576F905988171/"
+    },
     "a1816a3ffd5b946210548ec7690e2cc3ae82105728f977c6b0efff4d6af6b852": {
       "paths": {
         "assets/other_graphics/scenario10.png": {}
       },
       "steamId": "17379815056412629691",
       "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17379815056412629691/DF1A8797B399C588BA0355B87C3B61C7D7CD8ED5/"
+    },
+    "a1f239b7b8de63f67967a18ed6013ae2a424093e5168c08006ea118cc7f6f52c": {
+      "paths": {
+        "assets/cards/0_base/uk/encounter/easttown 1Front.png": {}
+      },
+      "steamId": "12141908426582183762",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12141908426582183762/EF7DCC33621D5C08080384705FF3D73E64CAFE9E/"
     },
     "a2959943af8d6abbdcf76356a3e148a7cfa7cfc95975396ac06c7184a63df8b1": {
       "paths": {
@@ -2506,6 +2688,13 @@
       "steamId": "14058004334831098479",
       "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14058004334831098479/A837C43B95F9386D22D58D405AB8FAC36BB8907F/"
     },
+    "a5d838e2769ff9a177928b21538be2a16aa98504a0ac04e8866ec7dbec9e9371": {
+      "paths": {
+        "assets/cards/0_base/uk/encounter/southside 1Front.png": {}
+      },
+      "steamId": "11471102337184231075",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/11471102337184231075/7F0CC1EA7B438351FC70EDA339DE9CEA76876EA5/"
+    },
     "a66a0e15fdef8399a21ed82980390ea6557e629ff2aabe7b7fa386a4ed5d54d7": {
       "paths": {
         "assets/cards/0_base/en/FfU 2Back.png": {}
@@ -2540,6 +2729,13 @@
       },
       "steamId": "9458507907055902213",
       "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/9458507907055902213/2C90416A3C0A7F72E6D15FDF0A1ADCA451B3A35F/"
+    },
+    "a85c39d7567182f10e94e10634ae8a998678105fdc038e8ebaf6e68d732e9232": {
+      "paths": {
+        "assets/cards/0_base/uk/encounter/northside 2Back.png": {}
+      },
+      "steamId": "10403906348170605912",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10403906348170605912/08B78B590D78647A4A2DC289502DEB40C7FE145D/"
     },
     "a8aefad1668da3833f7b72e9ed8e8d865eef97bfddcbbf9f57ae0d8c8cf2eaf0": {
       "paths": {
@@ -2877,6 +3073,13 @@
       "steamId": "11924607358339381677",
       "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/11924607358339381677/6EF0DCE7B11C8936EFF78952F5E5F8B00AE0DDBB/"
     },
+    "bd9fe8d746d2328405303178adf018e5ec34c368a0711638cb3a36adc07ea596": {
+      "paths": {
+        "assets/cards/0_base/uk/encounter/merchant district 2Back.png": {}
+      },
+      "steamId": "12953912703137004037",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/12953912703137004037/F7D342917BF52EF0F1B40B56F33B09DB867C12F6/"
+    },
     "be6972a5a9deed06d0294011dd8d8c616c251713fc17d6b9b4449ac9942b505d": {
       "paths": {
         "assets/other_graphics/languages.png": {}
@@ -3206,6 +3409,13 @@
       "steamId": "16036367328169106531",
       "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16036367328169106531/65696F17DBA89CA5C70041058A08C9A22D260CDE/"
     },
+    "d4613ab3e53659edd6ceee595162cdaef9a8b4252af8f4ae88e46ec42bb0e683": {
+      "paths": {
+        "assets/cards/0_base/uk/encounter/the streets 2Back.png": {}
+      },
+      "steamId": "15042397305673687847",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/15042397305673687847/570C9EF2EED47A00BC2D2AEB52B5D2FC47B2D07D/"
+    },
     "d4afc3283345e75b1d1a972fb0805494aca5905136ed6d7911fa8c8a8ae758fb": {
       "paths": {
         "assets/cards/1_dead_of_night/uk/Investigators 1Front.png": {}
@@ -3345,6 +3555,13 @@
       },
       "steamId": "18067068949703562496",
       "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/18067068949703562496/2D63812D5CB87822B2FFA385F979F6C5823C0BF2/"
+    },
+    "dbc6492dc786a678ee7a89c08ef04da32f93cf25d77f821ddfe3ecac381c5a16": {
+      "paths": {
+        "assets/cards/0_base/uk/encounter/uptown 2Back.png": {}
+      },
+      "steamId": "16469244138440426566",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/16469244138440426566/07E51C886112B4A152A48B58B6F8B9FEC5F97FEB/"
     },
     "dc0c88e9ce6b89cee9e60aaf4c7eee16ef898c8f46bf6f7ee664e4eb9cc09b00": {
       "paths": {
@@ -3584,12 +3801,26 @@
       "steamId": "10504169985205314964",
       "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/10504169985205314964/931EDC98604818CEF2A139F1CE5F6814A2185B7B/"
     },
+    "ecd667d4fa6f784af4b95c47824bb3ff8c0fdf67218c833301a4b93752eef24f": {
+      "paths": {
+        "assets/cards/0_base/uk/encounter/northside 1Front.png": {}
+      },
+      "steamId": "13546126959202559587",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13546126959202559587/54770A1FEEC6C3D56C8C4511D7F85BB3688649DF/"
+    },
     "ecf009329c3a9ceff0d3a767a3f6989a48be255f63a7bfd067c85c8c43eb3658": {
       "paths": {
         "assets/investigators/0_base/mini/daniela reyes.png": {}
       },
       "steamId": "13961724869395905869",
       "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13961724869395905869/415B732A42F60D2D6F9D3FB9E8273750A4B0CC8F/"
+    },
+    "ecf499c22e27d89e507a7a189243cf69a7b800c45872a42845c2f08d644a376b": {
+      "paths": {
+        "assets/cards/2_under_dark_waves/uk/Starting 1Front.png": {}
+      },
+      "steamId": "11300736936648357769",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/11300736936648357769/650BDF4B9C961BEEA2545054B60651DE4724085F/"
     },
     "ed0feee3e5d1f8591a026027518830fd5babc13d97bae07e580103d7a2095468": {
       "paths": {
@@ -3625,6 +3856,13 @@
       },
       "steamId": "13873989503575279025",
       "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/13873989503575279025/ECC3ACCC19223079466A78E703AECC34F142303E/"
+    },
+    "f051e936020af63400d9e8ed2525f543cda1d765cf1b628adf3f2422c00274ca": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/uk/Monsters 2Back.png": {}
+      },
+      "steamId": "14463736904305864431",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14463736904305864431/D6074AFCCAD9D6D5519A141D58D1DB3A4D21DDC7/"
     },
     "f08cb365fd64fdf2c9e297f0c7e1eb99a80087c42ec4628ff6ec5d7b7afbde75": {
       "paths": {
@@ -3723,6 +3961,13 @@
       },
       "steamId": "14158205425385607569",
       "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/14158205425385607569/05B5EAC04A8C143BC53D008452E044BF530A1701/"
+    },
+    "f93d4262a2a007ac059c3a9fb57fa8799164a55391b97a506d36f0e2e7c67942": {
+      "paths": {
+        "assets/cards/3_secrets_of_the_order/uk/Archive 2Back.png": {}
+      },
+      "steamId": "17760184158814365091",
+      "steamUrl": "https://steamusercontent-a.akamaihd.net/ugc/17760184158814365091/7919E10EACF64C6DFB0A609A5733079FF7F445DB/"
     },
     "f9c7e4eeaee50ba79501669726ced5696e8d3b4d6f08d4af2489ef970427a99d": {
       "paths": {

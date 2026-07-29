@@ -153,6 +153,23 @@
     },
 
     {
+      "label": "Arkham Horror: Resync Drive Layout",
+      "type": "shell",
+      "windows": {
+        "command": "py",
+        "args": ["${workspaceFolder}\\.vscode\\resync_drive_layout.py"]
+      },
+      "osx": {
+        "command": "${workspaceFolder}/.venv/bin/python",
+        "args": ["${workspaceFolder}/.vscode/resync_drive_layout.py"]
+      },
+      "options": {
+        "cwd": "${workspaceFolder}${pathSeparator}.vscode"
+      },
+      "problemMatcher": []
+    },
+
+    {
       "label": "Arkham Horror: Switch Assets",
       "dependsOn": ["_switch_assets", "_go_build"],
       "dependsOrder": "sequence",
