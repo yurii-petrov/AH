@@ -1,0 +1,79 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "ContainedObjects_order": [
+    "Card.e4d5bd",
+    "Card.06798f",
+    "Card.34b112",
+    "Card.c6e89d",
+    "Card.96311d",
+    "Card.fd2b0e",
+    "Card.7063ea",
+    "Card.761658"
+  ],
+  "ContainedObjects_path": "EncounterDowntown.d5a5ce",
+  "CustomDeck": {
+    "5967": {
+      "BackIsHidden": true,
+      "BackURL": "https://drive.google.com/uc?export=download&id=1WZZ5MhYbf4H9_BEZHRQtyzdYT5KwQKjK",
+      "FaceURL": "https://drive.google.com/uc?export=download&id=1aOjnXWh8suA6p5SbbLM5ab7Y8AnGr_xz",
+      "NumHeight": 2,
+      "NumWidth": 4,
+      "Type": 0,
+      "UniqueBack": false
+    }
+  },
+  "DeckIDs": [
+    596700,
+    596701,
+    596702,
+    596703,
+    596704,
+    596705,
+    596706,
+    596707
+  ],
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "d5a5ce",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": true,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Memo": "{\"name\":\"Downtown\",\"startPosition\":{\"x\":0.29380014538765,\"y\":1.05944466590881,\"z\":-0.432549923658371},\"type\":\"Encounter\"}",
+  "Name": "Deck",
+  "Nickname": "Encounter Downtown",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": -18.845,
+    "posY": 4.312,
+    "posZ": 22.602,
+    "rotX": 358,
+    "rotY": 180,
+    "rotZ": 181,
+    "scaleX": 1.5,
+    "scaleY": 1,
+    "scaleZ": 1.5
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

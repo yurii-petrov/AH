@@ -1,0 +1,79 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "ContainedObjects_order": [
+    "Card.3107f8",
+    "Card.1b5141",
+    "Card.166d95",
+    "Card.47b6b0",
+    "Card.b1a65c",
+    "Card.43c8bf",
+    "Card.01545d",
+    "Card.10c287"
+  ],
+  "ContainedObjects_path": "EncounterSouthside.3cf819",
+  "CustomDeck": {
+    "5975": {
+      "BackIsHidden": true,
+      "BackURL": "https://drive.google.com/uc?export=download&id=1DJoCgQvzpbzzEzKboeV6boi5AfJxNFl4",
+      "FaceURL": "https://drive.google.com/uc?export=download&id=1GZN2z9SlX010q6yWqfRQMpKF4eKuNrZc",
+      "NumHeight": 2,
+      "NumWidth": 4,
+      "Type": 0,
+      "UniqueBack": false
+    }
+  },
+  "DeckIDs": [
+    597500,
+    597501,
+    597502,
+    597503,
+    597504,
+    597505,
+    597506,
+    597507
+  ],
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "3cf819",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": true,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Memo": "{\"name\":\"Southside\",\"startPosition\":{\"x\":0.137330114841461,\"y\":1.05944466590881,\"z\":-0.432549953460693},\"type\":\"Encounter\"}",
+  "Name": "Deck",
+  "Nickname": "Encounter Southside",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": -3.752,
+    "posY": 4.259,
+    "posZ": 22.802,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 180,
+    "scaleX": 1.5,
+    "scaleY": 1,
+    "scaleZ": 1.5
+  },
+  "Value": 0,
+  "XmlUI": ""
+}

@@ -1,0 +1,79 @@
+{
+  "AltLookAngle": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+  },
+  "Autoraise": true,
+  "ColorDiffuse": {
+    "b": 0.71324,
+    "g": 0.71324,
+    "r": 0.71324
+  },
+  "ContainedObjects_order": [
+    "Card.74e016",
+    "Card.5e3bed",
+    "Card.c616b0",
+    "Card.dd9837",
+    "Card.6aeaa3",
+    "Card.067ca7",
+    "Card.347f63",
+    "Card.1fae39"
+  ],
+  "ContainedObjects_path": "EncounterNorthside.dc5475",
+  "CustomDeck": {
+    "5973": {
+      "BackIsHidden": true,
+      "BackURL": "https://drive.google.com/uc?export=download&id=1Ow_eMI_a15PuPc4q3KNnjXBKIzEnbEB9",
+      "FaceURL": "https://drive.google.com/uc?export=download&id=17Hhmfyl4W_cRDnhdGBF8pPzjDS0NafiK",
+      "NumHeight": 2,
+      "NumWidth": 4,
+      "Type": 0,
+      "UniqueBack": false
+    }
+  },
+  "DeckIDs": [
+    597300,
+    597301,
+    597302,
+    597303,
+    597304,
+    597305,
+    597306,
+    597307
+  ],
+  "Description": "",
+  "DragSelectable": true,
+  "GMNotes": "",
+  "GUID": "dc5475",
+  "Grid": true,
+  "GridProjection": false,
+  "Hands": false,
+  "HideWhenFaceDown": true,
+  "IgnoreFoW": false,
+  "LayoutGroupSortIndex": 0,
+  "Locked": false,
+  "LuaScript": "",
+  "LuaScriptState": "",
+  "MeasureMovement": false,
+  "Memo": "{\"name\":\"Northside\",\"startPosition\":{\"x\":0.106036119163036,\"y\":1.05944466590881,\"z\":-0.432549953460693},\"type\":\"Encounter\"}",
+  "Name": "Deck",
+  "Nickname": "Encounter Northside",
+  "SidewaysCard": false,
+  "Snap": true,
+  "Sticky": true,
+  "Tooltip": true,
+  "Transform": {
+    "posX": -7.504,
+    "posY": 4.259,
+    "posZ": 22.954,
+    "rotX": 0,
+    "rotY": 180,
+    "rotZ": 180,
+    "scaleX": 1.5,
+    "scaleY": 1,
+    "scaleZ": 1.5
+  },
+  "Value": 0,
+  "XmlUI": ""
+}
