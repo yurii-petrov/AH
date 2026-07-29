@@ -7,6 +7,7 @@ data = {
       "ally"
     },
     ["sp"] = 3,
-    ["type"] = "special"
+    ["type"] = "special",
+    ["subtype"] = "ally"
   }
 }

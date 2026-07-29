@@ -4,6 +4,7 @@ data = {
     ["hp"] = 3,
     ["sp"] = 3,
     ["name"] = "Inuksuk",
-    ["type"] = "special"
+    ["type"] = "special",
+    ["subtype"] = "ally"
   }
 }

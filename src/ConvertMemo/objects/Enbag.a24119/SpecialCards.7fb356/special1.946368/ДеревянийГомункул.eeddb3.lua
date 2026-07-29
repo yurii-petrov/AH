@@ -3,6 +3,7 @@ data = {
   ["memo"] = {
     ["hp"] = 3,
     ["name"] = "wooden homunculus",
-    ["type"] = "special"
+    ["type"] = "special",
+    ["subtype"] = "item"
   }
 }

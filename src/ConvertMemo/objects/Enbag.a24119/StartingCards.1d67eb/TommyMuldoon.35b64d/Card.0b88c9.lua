@@ -5,6 +5,7 @@ data = {
     ["type"] = "starting",
     ["guaranteed"] = true,
     ["hp"] = 2,
-    ["sp"] = 3
+    ["sp"] = 3,
+    ["subtype"] = "item"
   }
 }

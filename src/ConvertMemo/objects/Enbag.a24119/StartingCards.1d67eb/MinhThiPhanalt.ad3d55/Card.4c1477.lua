@@ -4,6 +4,7 @@ data = {
     ["investigator"] = "Minh Thi Phan alt",
     ["type"] = "starting",
     ["attachSkillMat"] = true,
-    ["skillMatMode"] = 6
+    ["skillMatMode"] = 6,
+    ["subtype"] = "item"
   }
 }

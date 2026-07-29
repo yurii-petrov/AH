@@ -3,6 +3,7 @@ data = {
   ["memo"] = {
     ["investigator"] = "Marie Lambeau",
     ["type"] = "starting",
-    ["guaranteed"] = true
+    ["guaranteed"] = true,
+    ["subtype"] = "spell"
   }
 }

@@ -5,6 +5,7 @@ data = {
     ["guaranteed"] = true,
     ["investigator"] = "Ashcan Pete",
     ["sp"] = 3,
-    ["type"] = "starting"
+    ["type"] = "starting",
+    ["subtype"] = "ally"
   }
 }

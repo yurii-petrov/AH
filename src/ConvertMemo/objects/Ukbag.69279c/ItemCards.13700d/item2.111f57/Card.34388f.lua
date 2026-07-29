@@ -3,7 +3,7 @@ data = {
   ["memo"] = {
     ["curio"] = true,
     ["common"] = true,
-    ["price"] = 2, 
+    ["price"] = 2,
     ["type"] = "item"
   }
 }

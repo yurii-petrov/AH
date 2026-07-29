@@ -5,6 +5,7 @@ data = {
     ["investigator"] = "Dexter Drake alt",
     ["sp"] = 3,
     ["type"] = "starting",
-    ["guaranteed"] = true
+    ["guaranteed"] = true,
+    ["subtype"] = "ally"
   }
 }

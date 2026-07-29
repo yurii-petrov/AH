@@ -2,6 +2,7 @@ data = {
   ["GUID"] = "91b0fb",
   ["memo"] = {
     ["name"] = "hypnotist's mirror",
-    ["type"] = "special"
+    ["type"] = "special",
+    ["subtype"] = "item"
   }
 }

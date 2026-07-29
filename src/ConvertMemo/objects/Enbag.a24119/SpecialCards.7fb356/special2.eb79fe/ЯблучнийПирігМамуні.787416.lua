@@ -3,6 +3,7 @@ data = {
   ["memo"] = {
     ["sp"] = 3,
     ["name"] = "ma's apple pie",
-    ["type"] = "special"
+    ["type"] = "special",
+    ["subtype"] = "item"
   }
 }
