@@ -1764,15 +1764,6 @@
         }
       }
     },
-    "559c9ab7572ae446a28234057dd23d1c2c4b32f6d736b158a738d6d840342637": {
-      "driveId": "1rL9EzD-UFTaHX9J7xyuGsddRMkTfPoyn",
-      "paths": {
-        "assets/cards/0_base/uk/Encounter Part1 1Front.png": {
-          "mtime": 1781359506.0,
-          "size": 40831980
-        }
-      }
-    },
     "5646692474f071c34d5d29577327efa870255348d5b3bfd95d02ec4e880a34d5": {
       "driveId": "1yv8nBHuORqPn0w_oIz84J9EfBNmwBT-7",
       "paths": {
@@ -2277,15 +2268,6 @@
         }
       }
     },
-    "6f4b1e34c675c11e59fab30b2e036cad5314e6499d41c81c85effed09f61e7d1": {
-      "driveId": "1cvkPoxRegrzV0iEAKWUz24YV6cNroo4s",
-      "paths": {
-        "assets/cards/0_base/uk/Encounter Part1 2Back.png": {
-          "mtime": 1780813958.587,
-          "size": 20646010
-        }
-      }
-    },
     "704b5a8cf955918101fdee75487e6c1ea1b6fdb3a012d6d577a1eb1e79aefec2": {
       "driveId": "1XzVjYKCJhwbSqfhQf4C6CPOZKyfoFKtZ",
       "paths": {
@@ -2346,15 +2328,6 @@
         "assets/other_graphics/dice_blue.png": {
           "mtime": 1751646214.725,
           "size": 26019
-        }
-      }
-    },
-    "729275423fcb09c0a7ca5a5f5f14f71d7e8cad64d311df12f0a8275b476cc4c4": {
-      "driveId": "10jty9dmyIDQ2VFXgOLLxudvrTarcBTjt",
-      "paths": {
-        "assets/cards/0_base/uk/Encounter Part2 2Back.png": {
-          "mtime": 1780813564.0,
-          "size": 16535593
         }
       }
     },
@@ -4776,15 +4749,6 @@
         "assets/other_graphics/phases_4.png": {
           "mtime": 1783378682.438,
           "size": 55279
-        }
-      }
-    },
-    "f7e708e5c8522b134cb69ea21d6a1f8df3022a4a85c8b128d28247b0716a19b8": {
-      "driveId": "1etC5eNUECtrc4IdMcc4t8R5cy6ledrcZ",
-      "paths": {
-        "assets/cards/0_base/uk/Encounter Part2 1Front.png": {
-          "mtime": 1780813562.0,
-          "size": 32908787
         }
       }
     },
