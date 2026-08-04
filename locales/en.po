@@ -314,6 +314,39 @@ msgstr "Secrets of the Order"
 msgid "MM_text_addon4_text"
 msgstr "Recursive Echoes"
 
+msgid "MM_addons_official_text"
+msgstr "Official expansions"
+
+msgid "MM_addons_fanmade_text"
+msgstr "Fan-made expansions"
+
+msgid "MM_text_addon5_text"
+msgstr "Option 1"
+
+msgid "MM_text_addon6_text"
+msgstr "Option 2"
+
+msgid "MM_text_addon7_text"
+msgstr "Option 3"
+
+msgid "MM_addonSummary5_text"
+msgstr "Option 1 summary"
+
+msgid "MM_addonSummary6_text"
+msgstr "Option 2 summary"
+
+msgid "MM_addonSummary7_text"
+msgstr "Option 3 summary"
+
+msgid "MM_addonDescription5_text"
+msgstr "Option 1 description"
+
+msgid "MM_addonDescription6_text"
+msgstr "Option 2 description"
+
+msgid "MM_addonDescription7_text"
+msgstr "Option 3 description"
+
 msgid "MM_toggleAddon_text"
 msgstr "Add / Remove"
 

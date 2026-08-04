@@ -64,21 +64,37 @@ local function buildScenarioListPanels()
   return panels
 end
 
-local ADDON_COUNT = 4
+local ADDON_SECTIONS = {
+  { header = "MM_addons_official_text", from = 1, to = 4 },
+  { header = "MM_addons_fanmade_text",  from = 5, to = 7 },
+}
+
+local function addonSectionHeader(id)
+  return {
+    tag = "panel",
+    attributes = { preferredHeight = "44" },
+    children = {
+      { tag = "text", attributes = { id = id, alignment = "MiddleCenter", fontSize = "26", fontStyle = "bold", color = "#ffcc66", text = "" } },
+    },
+  }
+end
 
 local function buildAddonPanels()
   local panels = {}
-  for n = 1, ADDON_COUNT do
-    local panelAttrs = { id = "addon_panel" .. n, preferredHeight = "50" }
-    if n == 1 then panelAttrs.color = "#ffffff22" end
-    table.insert(panels, {
-      tag = "panel",
-      attributes = panelAttrs,
-      children = {
-        { tag = "button", attributes = { id = "addon" .. n, onClick = "selectAddon", onMouseEnter = "previewAddon" } },
-        { tag = "text",   attributes = { id = "MM_text_addon" .. n .. "_text", alignment = "MiddleCenter", text = "" } },
-      },
-    })
+  for _, section in ipairs(ADDON_SECTIONS) do
+    table.insert(panels, addonSectionHeader(section.header))
+    for n = section.from, section.to do
+      local panelAttrs = { id = "addon_panel" .. n, preferredHeight = "50" }
+      if n == 1 then panelAttrs.color = "#ffffff22" end
+      table.insert(panels, {
+        tag = "panel",
+        attributes = panelAttrs,
+        children = {
+          { tag = "button", attributes = { id = "addon" .. n, onClick = "selectAddon", onMouseEnter = "previewAddon" } },
+          { tag = "text",   attributes = { id = "MM_text_addon" .. n .. "_text", alignment = "MiddleCenter", text = "" } },
+        },
+      })
+    end
   end
   return panels
 end

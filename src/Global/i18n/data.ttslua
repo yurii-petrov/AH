@@ -866,6 +866,18 @@ I18N_DATA = {
     ["en"] = "Recursive Echoes is a print-and-play expansion for Arkham Horror that re-imagines four familiar investigators from the board game's core set. These \"echo\" investigators have been re-designed...",
     ["uk"] = "Відлуння Минулого - це доповнення формату print-and-play, що по-новому переосмислює чотирьох знайомих дослідників із базового набору гри. Ці «відлуння» були заново переосмислені й отримали нові особливості, відкриваючи інший погляд на вже знайомих героїв…",
   },
+  ["MM_addonDescription5_text"] = {
+    ["en"] = "Option 1 description",
+    ["uk"] = "Повний опис опції 1",
+  },
+  ["MM_addonDescription6_text"] = {
+    ["en"] = "Option 2 description",
+    ["uk"] = "Повний опис опції 2",
+  },
+  ["MM_addonDescription7_text"] = {
+    ["en"] = "Option 3 description",
+    ["uk"] = "Повний опис опції 3",
+  },
   ["MM_addonDescription_text"] = {
     ["en"] = "In Dead of Night, investigators explore the facets of Arkham best left unseen in the light of day. Organized crime builds a strong foothold in the city, secret cults labor for a dark master, an alien moon hangs overhead, and unknowable horrors stalk the night. This expansion includes two all-new scenarios, new encounters for every location in Arkham, new monsters and anomalies, and four new investigators to face these fresh horrors, armed with new spells, items and allies.\n• 2 scenarios\n• 4 investigators\n• 7 headline cards\n• 20 archive cards\n• 12 anomaly cards\n• 48 event cards\n• 72 encounter cards\n• 4 ally cards\n• 4 item cards\n• 4 spell cards\n• 28 special cards\n• 12 starting cards\n• 6 wanted condition cards\n• 22 monster cards\n• 15 new monsters",
     ["uk"] = "У доповненні «Нічний морок» гравці досліджують ті закутки Аркгема, куди страшно сунутися навіть удень. У місті процвітає організована злочинність, потаємні культи намагаються догодити своїм темним володарям, химерний місяць висить у небі, а десь у нічному мороці чаяться незбагненні жахіття. Це доповнення містить два нові сценарії, нові зустрічі для кожної зони Аркгема, нових монстрів і нові аномалії, а також чотирьох нових дослідників, готових протистояти жахам з новими предметами, заклинаннями та союзниками.\n• 2 сценарії\n• 4 дослідники\n• 7 карт заголовків\n• 20 карт архіву\n• 12 карт аномалій\n• 48 карт подій\n• 72 карти зустрічей\n• 4 карти союзників\n• 4 карти предметів\n• 4 карти заклинань\n• 28 спеціальних карт\n• 12 початкових карт\n• 6 карт стану розшукуваний\n• 22 карти монстрів\n• 15 нових монстрів",
@@ -886,6 +898,18 @@ I18N_DATA = {
     ["en"] = "• 4 variations for base investigators",
     ["uk"] = "• 4 варіації для базових дослідників",
   },
+  ["MM_addonSummary5_text"] = {
+    ["en"] = "Option 1 summary",
+    ["uk"] = "Короткий опис опції 1",
+  },
+  ["MM_addonSummary6_text"] = {
+    ["en"] = "Option 2 summary",
+    ["uk"] = "Короткий опис опції 2",
+  },
+  ["MM_addonSummary7_text"] = {
+    ["en"] = "Option 3 summary",
+    ["uk"] = "Короткий опис опції 3",
+  },
   ["MM_addonSummary_text"] = {
     ["en"] = "• 2 new scenarios\n• 4 new investigators\n• 238 new cards",
     ["uk"] = "• 2 нові сценарії\n• 4 нові дослідники\n• 238 нових карт",
@@ -893,6 +917,14 @@ I18N_DATA = {
   ["MM_addonTitle_text"] = {
     ["en"] = "Choose expansion",
     ["uk"] = "Оберіть доповнення",
+  },
+  ["MM_addons_fanmade_text"] = {
+    ["en"] = "Fan-made expansions",
+    ["uk"] = "Фанатські доповнення",
+  },
+  ["MM_addons_official_text"] = {
+    ["en"] = "Official expansions",
+    ["uk"] = "Офіційні доповнення",
   },
   ["MM_change_scenario"] = {
     ["en"] = "CHANGE SCENARIO",
@@ -1149,6 +1181,18 @@ I18N_DATA = {
   ["MM_text_addon4_text"] = {
     ["en"] = "Recursive Echoes",
     ["uk"] = "Відлуння Минулого",
+  },
+  ["MM_text_addon5_text"] = {
+    ["en"] = "Option 1",
+    ["uk"] = "Опція 1",
+  },
+  ["MM_text_addon6_text"] = {
+    ["en"] = "Option 2",
+    ["uk"] = "Опція 2",
+  },
+  ["MM_text_addon7_text"] = {
+    ["en"] = "Option 3",
+    ["uk"] = "Опція 3",
   },
   ["MM_toggleAddon_text"] = {
     ["en"] = "Add / Remove",
