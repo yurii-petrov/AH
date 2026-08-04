@@ -65,16 +65,28 @@ local function buildScenarioListPanels()
 end
 
 local ADDON_SECTIONS = {
-  { header = "MM_addons_official_text", from = 1, to = 4 },
-  { header = "MM_addons_fanmade_text",  from = 5, to = 7 },
+  { header = "MM_addons_official_text", fanmade = false },
+  { header = "MM_addons_fanmade_text",  fanmade = true },
 }
 
 local function addonSectionHeader(id)
   return {
     tag = "panel",
-    attributes = { preferredHeight = "44" },
+    attributes = { preferredHeight = "36" },
     children = {
-      { tag = "text", attributes = { id = id, alignment = "MiddleCenter", fontSize = "26", fontStyle = "bold", color = "#ffcc66", text = "" } },
+      { tag = "text", attributes = { id = id, alignment = "MiddleCenter", fontSize = "24", fontStyle = "bold", color = UI_GOLD, text = "" } },
+    },
+  }
+end
+
+local function addonRow(n)
+  return {
+    tag = "panel",
+    attributes = { id = "addon_panel" .. n, preferredHeight = "44", color = ADDON_ROW_OFF },
+    children = {
+      { tag = "panel",  attributes = { id = "addon_accent" .. n, active = "false", width = "4", height = "44", rectAlignment = "MiddleLeft", color = UI_GOLD } },
+      { tag = "button", attributes = { id = "addon" .. n, onClick = "selectAddon", onMouseEnter = "previewAddon" } },
+      { tag = "text",   attributes = { id = "MM_text_addon" .. n .. "_text", alignment = "MiddleLeft", offsetXY = "18 0", fontSize = "26", color = ADDON_TEXT_DEFAULT, text = "" } },
     },
   }
 end
@@ -83,17 +95,10 @@ local function buildAddonPanels()
   local panels = {}
   for _, section in ipairs(ADDON_SECTIONS) do
     table.insert(panels, addonSectionHeader(section.header))
-    for n = section.from, section.to do
-      local panelAttrs = { id = "addon_panel" .. n, preferredHeight = "50" }
-      if n == 1 then panelAttrs.color = "#ffffff22" end
-      table.insert(panels, {
-        tag = "panel",
-        attributes = panelAttrs,
-        children = {
-          { tag = "button", attributes = { id = "addon" .. n, onClick = "selectAddon", onMouseEnter = "previewAddon" } },
-          { tag = "text",   attributes = { id = "MM_text_addon" .. n .. "_text", alignment = "MiddleCenter", text = "" } },
-        },
-      })
+    for n, addon in ipairs(addons) do
+      if (addon.fanmade or false) == section.fanmade then
+        table.insert(panels, addonRow(n))
+      end
     end
   end
   return panels
@@ -211,7 +216,7 @@ local function mainMenuWindow()
             tag = "VerticalLayout",
             attributes = { contentSizeFitter = "vertical", rectAlignment = "UpperCenter", spacing = "15" },
             children = {
-              { tag = "Text", attributes = { id = "title", fontSize = "40", fontStyle = "bold", text = "" } },
+              { tag = "Text", attributes = { id = "title", fontSize = "40", fontStyle = "bold", color = UI_GOLD, text = "" } },
               { tag = "Text", attributes = { id = "body", fontSize = "28", text = "" } },
             },
           },
@@ -259,7 +264,7 @@ local function chooseScenarioWindow()
                 tag = "Cell",
                 attributes = { columnSpan = "3", dontUseTableCellBackground = "true" },
                 children = {
-                  { tag = "text", attributes = { id = "MM_choice_scenario_text", text = "", fontSize = "46", fontStyle = "bold", alignment = "MiddleCenter" } },
+                  { tag = "text", attributes = { id = "MM_choice_scenario_text", text = "", fontSize = "46", fontStyle = "bold", color = UI_GOLD, alignment = "MiddleCenter" } },
                 },
               },
             },
@@ -279,25 +284,32 @@ local function chooseScenarioWindow()
                     attributes = { width = "400", height = "530" },
                     children = {
                       {
-                        tag = "VerticalLayout",
-                        attributes = { rectAlignment = "UpperCenter", width = "400", height = "460", spacing = "10" },
+                        tag = "HorizontalLayout",
+                        attributes = { rectAlignment = "UpperCenter", width = "400", height = "190", spacing = "20", childForceExpandWidth = "false", childAlignment = "MiddleLeft" },
                         children = {
+                          { tag = "image", attributes = { id = "scenarioPreviewImage", image = "scenario1", width = "180", preserveAspect = "true" } },
                           {
-                            tag = "panel",
-                            attributes = { width = "400", height = "150" },
+                            tag = "VerticalLayout",
+                            attributes = { id = "scenario_mode_row", width = "200", height = "190", spacing = "6", childForceExpandHeight = "false", childAlignment = "MiddleLeft" },
                             children = {
-                              { tag = "image", attributes = { id = "scenarioPreviewImage", image = "scenario1", width = "180", preserveAspect = "true", rectAlignment = "MiddleCenter" } },
-                            },
-                          },
-                          {
-                            tag = "VerticalScrollView",
-                            attributes = { width = "400", height = "300", color = "clear", verticalScrollbarVisibility = "AutoHideAndExpandViewport", verticalScrollbarWidth = "20", raycastTarget = "true", scrollSensitivity = "30" },
-                            children = {
+                              { tag = "Text", attributes = { id = "MM_scenario_mode_label_text", font = FONT, fontSize = "18", color = "#ffffff", alignment = "MiddleLeft", preferredHeight = "24", text = "" } },
                               {
-                                tag = "VerticalLayout",
-                                attributes = { contentSizeFitter = "vertical" },
+                                tag = "Dropdown",
+                                attributes = { id = "scenario_mode_dropdown", onValueChanged = "onScenarioModeChanged", minWidth = "200", preferredWidth = "200", flexibleWidth = "0", minHeight = "34", preferredHeight = "34", flexibleHeight = "0", fontSize = "16", font = FONT, color = "#333333", textColor = "#ffffff", itemHeight = "34", itemBackgroundColors = "#222222|#3a3a3a|#4a4a4a|#3a3a3a|#111111", itemTextColor = "#ffffff", checkColor = "#ffffff", arrowColor = "#ffffff" },
                                 children = {
-                                  { tag = "text", attributes = { id = "MM_scenarioPreviewDesc_text", fontSize = "20", fontStyle = "italic" } },
+                                  { tag = "Option", attributes = { id = "MM_scenario_mode_normal", selected = "true" }, value = i18n.getStrById("MM_scenario_mode_normal") },
+                                  { tag = "Option", attributes = { id = "MM_scenario_mode_random" }, value = i18n.getStrById("MM_scenario_mode_random") },
+                                  { tag = "Option", attributes = { id = "MM_scenario_mode_fate" }, value = i18n.getStrById("MM_scenario_mode_fate") },
+                                },
+                              },
+                              {
+                                tag = "HorizontalLayout",
+                                attributes = { id = "scenario_extra_row", width = "200", preferredHeight = "28", childAlignment = "MiddleLeft", childForceExpandWidth = "false", childForceExpandHeight = "false", spacing = "8" },
+                                children = {
+                                  { tag = "Text", attributes = { id = "MM_select_all_scenarios_text", active = "false", font = FONT, fontSize = "18", color = "#ffffff", minWidth = "150", preferredWidth = "150", flexibleWidth = "0", minHeight = "28", preferredHeight = "28", alignment = "MiddleLeft", text = "" } },
+                                  { tag = "Toggle", attributes = { id = "scenario_select_all_toggle", active = "false", onValueChanged = "onScenarioSelectAllToggle", isOn = "true", width = "24", height = "24", color = "#ffffff", toggleColor = "#000000" } },
+                                  { tag = "Text", attributes = { id = "scenario_game_text", active = "false", font = FONT, fontSize = "20", fontStyle = "bold", color = "#ffffff", alignment = "MiddleLeft", minWidth = "150", preferredWidth = "150", flexibleWidth = "0", minHeight = "28", preferredHeight = "28", text = "" } },
+                                  { tag = "Button", attributes = { id = "scenario_game_info", active = "false", image = "info_icon", color = "#ffffff", minWidth = "24", preferredWidth = "24", flexibleWidth = "0", minHeight = "24", preferredHeight = "24", tooltip = "", tooltipPosition = "Above" } },
                                 },
                               },
                             },
@@ -305,29 +317,16 @@ local function chooseScenarioWindow()
                         },
                       },
                       {
-                        tag = "HorizontalLayout",
-                        attributes = { id = "scenario_mode_row", rectAlignment = "LowerCenter", offsetXY = "0 40", width = "400", height = "34", childAlignment = "MiddleCenter", childForceExpandWidth = "false", childForceExpandHeight = "false", spacing = "10" },
+                        tag = "VerticalScrollView",
+                        attributes = { rectAlignment = "LowerCenter", width = "400", height = "330", color = "clear", verticalScrollbarVisibility = "AutoHideAndExpandViewport", verticalScrollbarWidth = "20", raycastTarget = "true", scrollSensitivity = "30" },
                         children = {
-                          { tag = "Text", attributes = { id = "MM_scenario_mode_label_text", font = FONT, fontSize = "18", color = "#ffffff", alignment = "MiddleRight", minWidth = "90", preferredWidth = "90", flexibleWidth = "0", minHeight = "34", preferredHeight = "34", text = "" } },
                           {
-                            tag = "Dropdown",
-                            attributes = { id = "scenario_mode_dropdown", onValueChanged = "onScenarioModeChanged", minWidth = "170", preferredWidth = "170", flexibleWidth = "0", minHeight = "34", preferredHeight = "34", flexibleHeight = "0", fontSize = "16", font = FONT, color = "#333333", textColor = "#ffffff", itemHeight = "34", itemBackgroundColors = "#222222|#3a3a3a|#4a4a4a|#3a3a3a|#111111", itemTextColor = "#ffffff", checkColor = "#ffffff", arrowColor = "#ffffff" },
+                            tag = "VerticalLayout",
+                            attributes = { contentSizeFitter = "vertical" },
                             children = {
-                              { tag = "Option", attributes = { id = "MM_scenario_mode_normal", selected = "true" }, value = i18n.getStrById("MM_scenario_mode_normal") },
-                              { tag = "Option", attributes = { id = "MM_scenario_mode_random" }, value = i18n.getStrById("MM_scenario_mode_random") },
-                              { tag = "Option", attributes = { id = "MM_scenario_mode_fate" }, value = i18n.getStrById("MM_scenario_mode_fate") },
+                              { tag = "text", attributes = { id = "MM_scenarioPreviewDesc_text", fontSize = "20", fontStyle = "italic" } },
                             },
                           },
-                        },
-                      },
-                      {
-                        tag = "HorizontalLayout",
-                        attributes = { id = "scenario_extra_row", rectAlignment = "LowerCenter", offsetXY = "0 4", width = "400", height = "28", childAlignment = "MiddleCenter", childForceExpandWidth = "false", childForceExpandHeight = "false", spacing = "10" },
-                        children = {
-                          { tag = "Text", attributes = { id = "MM_select_all_scenarios_text", active = "false", font = FONT, fontSize = "18", color = "#ffffff", width = "330", height = "28", text = "" } },
-                          { tag = "Toggle", attributes = { id = "scenario_select_all_toggle", active = "false", onValueChanged = "onScenarioSelectAllToggle", isOn = "true", width = "24", height = "24", color = "#ffffff", toggleColor = "#000000" } },
-                          { tag = "Text", attributes = { id = "scenario_game_text", active = "false", font = FONT, fontSize = "20", fontStyle = "bold", color = "#ffffff", alignment = "MiddleRight", minWidth = "90", preferredWidth = "90", flexibleWidth = "0", minHeight = "28", preferredHeight = "28", text = "" } },
-                          { tag = "Button", attributes = { id = "scenario_game_info", active = "false", image = "info_icon", color = "#ffffff", minWidth = "24", preferredWidth = "24", flexibleWidth = "0", minHeight = "24", preferredHeight = "24", tooltip = "", tooltipPosition = "Above" } },
                         },
                       },
                     },
@@ -395,7 +394,7 @@ local function chooseAddonsWindow()
                 tag = "Cell",
                 attributes = { columnSpan = "3", dontUseTableCellBackground = "true" },
                 children = {
-                  { tag = "text", attributes = { id = "MM_addonTitle_text", text = "", fontSize = "46", fontStyle = "bold", alignment = "MiddleCenter" } },
+                  { tag = "text", attributes = { id = "MM_addonTitle_text", text = "", fontSize = "46", fontStyle = "bold", color = UI_GOLD, alignment = "MiddleCenter" } },
                 },
               },
             },
@@ -415,8 +414,16 @@ local function chooseAddonsWindow()
                     attributes = { width = "400", height = "530" },
                     children = {
                       {
+                        tag = "VerticalLayout",
+                        attributes = { rectAlignment = "UpperCenter", width = "400", height = "70", spacing = "2", childForceExpandHeight = "false" },
+                        children = {
+                          { tag = "text", attributes = { id = "addonTitle", fontSize = "30", fontStyle = "bold", alignment = "MiddleLeft", preferredHeight = "38", text = "" } },
+                          { tag = "text", attributes = { id = "addonBadge", fontSize = "16", alignment = "MiddleLeft", color = UI_GOLD, preferredHeight = "22", text = "" } },
+                        },
+                      },
+                      {
                         tag = "HorizontalLayout",
-                        attributes = { rectAlignment = "UpperCenter", width = "400", height = "190", spacing = "20", childForceExpandWidth = "false", childAlignment = "MiddleLeft" },
+                        attributes = { rectAlignment = "UpperCenter", offsetXY = "0 -78", width = "400", height = "180", spacing = "20", childForceExpandWidth = "false", childAlignment = "MiddleLeft" },
                         children = {
                           { tag = "image", attributes = { id = "addonImage", image = "addon1", width = "180", preserveAspect = "true" } },
                           { tag = "text", attributes = { id = "MM_addonSummary_text", fontSize = "20", alignment = "MiddleLeft" } },
@@ -424,7 +431,7 @@ local function chooseAddonsWindow()
                       },
                       {
                         tag = "VerticalScrollView",
-                        attributes = { rectAlignment = "LowerCenter", width = "400", height = "330", color = "clear", verticalScrollbarVisibility = "AutoHideAndExpandViewport", verticalScrollbarWidth = "20", raycastTarget = "true", scrollSensitivity = "30" },
+                        attributes = { rectAlignment = "LowerCenter", width = "400", height = "262", color = "clear", verticalScrollbarVisibility = "AutoHideAndExpandViewport", verticalScrollbarWidth = "20", raycastTarget = "true", scrollSensitivity = "30" },
                         children = {
                           {
                             tag = "VerticalLayout",
@@ -456,7 +463,7 @@ local function chooseAddonsWindow()
                         children = {
                           {
                             tag = "VerticalLayout",
-                            attributes = { contentSizeFitter = "vertical", width = "380", spacing = "10" },
+                            attributes = { contentSizeFitter = "vertical", width = "380", spacing = "6" },
                             children = buildAddonPanels(),
                           },
                         },

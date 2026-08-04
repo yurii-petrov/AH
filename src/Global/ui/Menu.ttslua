@@ -139,9 +139,8 @@ function onClickAddons(player, alt, id)
   map = false
   self.UI.setAttribute('scenarioImage', 'active', true)
   self.UI.setAttribute('scenarioMap', 'active', false)
-  for i, addon in ipairs(addons) do
-    self.UI.setAttribute('addon_panel' .. i, 'color', addon.include and '#ffffff22' or 'clear')
-  end
+  refreshAddonRows()
+  previewAddon(player, nil, 'addon' .. currentAddon)
 end
 function menuRestore(player, alt, id)
   self.UI.setAttribute('main_menu', 'active', true)
@@ -420,13 +419,46 @@ function previewScenario(player, alt, id)
   self.UI.setAttribute('MM_scenarioPreviewDesc_text', 'text', i18n.getStrById("MM_scenario" .. id .. "_desc_text"))
 end
 
+function refreshAddonRows()
+  for i, addon in ipairs(addons) do
+    local current = (i == currentAddon)
+    local symbol = (current or addon.include) and ADDON_SYMBOL_ON or ADDON_SYMBOL_OFF
+    local color = ADDON_TEXT_DEFAULT
+    if current then
+      color = ADDON_TEXT_HOVER
+    elseif addon.include then
+      color = ADDON_TEXT_ON
+    end
+
+    self.UI.setAttribute('addon_panel' .. i, 'color', addon.include and ADDON_ROW_ON or ADDON_ROW_OFF)
+    self.UI.setAttribute('addon_accent' .. i, 'active', current)
+    self.UI.setAttribute('MM_text_addon' .. i .. '_text', 'color', color)
+    self.UI.setAttribute('MM_text_addon' .. i .. '_text', 'text',
+      symbol .. "  " .. i18n.getStrById("MM_text_addon" .. i .. "_text"))
+  end
+end
+
 function previewAddon(player, alt, id)
   local id = tonumber(id:match("%d+"))
+  local addon = addons[id]
+  if not addon then return end
+
   currentAddon = id
-  self.UI.setAttribute('addonTitle', 'text', addons[id].title)
-  self.UI.setAttribute('addonImage', 'image', "addon"..id)
+
+  self.UI.setAttribute('addonTitle', 'text', i18n.getStrById("MM_text_addon" .. id .. "_text"))
+  self.UI.setAttribute('addonBadge', 'text',
+    i18n.getStrById(addon.fanmade and "MM_addon_badge_fanmade_text" or "MM_addon_badge_official_text"))
+
+  local hasImage = addon.image ~= false
+  self.UI.setAttribute('addonImage', 'active', hasImage)
+  if hasImage then
+    self.UI.setAttribute('addonImage', 'image', addon.image or ("addon" .. id))
+  end
+
   self.UI.setAttribute('MM_addonSummary_text', 'text', i18n.getStrById("MM_addonSummary" .. id .. "_text"))
   self.UI.setAttribute('MM_addonDescription_text', 'text', i18n.getStrById("MM_addonDescription" .. id .. "_text"))
+
+  refreshAddonRows()
 end
 
 function inProgress(player, alt, id)
@@ -439,34 +471,33 @@ end
 
 function selectAddon(player, alt, id)
   local id = tonumber(id:match("%d+"))
+  local addon = addons[id]
+  if not addon then return end
+
   currentAddon = id
-  addons[currentAddon].include = not addons[currentAddon].include
 
-  local scenarios = addons[currentAddon].scenarios
+  local scenarios = addon.scenarios
+  local enabling = not addon.include
 
-  if addons[currentAddon].include then
-    if scenarios then
-      for _, s in ipairs(scenarios) do
-        self.UI.setAttribute('MM_scenario' .. s .. '_name_text', 'color', '#ffffffff')
-        self.UI.setAttribute('scenario' .. s, 'onClick', 'chooseScenario')
+  if not enabling and scenarios then
+    for _, s in ipairs(scenarios) do
+      if selectedScenarios[s] then
+        broadcastToAll(i18n.getStrById("LOG_cannot_disable_addon"), {r = 1, g = 0.5, b = 0.5})
+        return
       end
     end
-    self.UI.setAttribute('addon_panel' .. currentAddon, 'color', '#ffffff22')
-  else
-    if scenarios then
-      for _, s in ipairs(scenarios) do
-        if selectedScenarios[s] then
-          broadcastToAll(i18n.getStrById("LOG_cannot_disable_addon"), {r = 1, g = 0.5, b = 0.5})
-          return
-        end
-      end
-      for _, s in ipairs(scenarios) do
-        self.UI.setAttribute('MM_scenario' .. s .. '_name_text', 'color', '#ffffff55')
-        self.UI.setAttribute('scenario' .. s, 'onClick', '')
-      end
-    end
-    self.UI.setAttribute('addon_panel' .. currentAddon, 'color', 'clear')
   end
+
+  addon.include = enabling
+
+  if scenarios then
+    for _, s in ipairs(scenarios) do
+      self.UI.setAttribute('MM_scenario' .. s .. '_name_text', 'color', enabling and '#ffffffff' or '#ffffff55')
+      self.UI.setAttribute('scenario' .. s, 'onClick', enabling and 'chooseScenario' or '')
+    end
+  end
+
+  refreshAddonRows()
 end
 
 function submitAddons()

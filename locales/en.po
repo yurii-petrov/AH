@@ -347,11 +347,35 @@ msgstr "Option 2 description"
 msgid "MM_addonDescription7_text"
 msgstr "Option 3 description"
 
+msgid "MM_text_addon8_text"
+msgstr "Option 4"
+
+msgid "MM_addonSummary8_text"
+msgstr "Option 4 summary"
+
+msgid "MM_addonDescription8_text"
+msgstr "Option 4 description"
+
+msgid "MM_text_addon9_text"
+msgstr "Option 5"
+
+msgid "MM_addonSummary9_text"
+msgstr "Option 5 summary"
+
+msgid "MM_addonDescription9_text"
+msgstr "Option 5 description"
+
+msgid "MM_addon_badge_official_text"
+msgstr "Official expansion"
+
+msgid "MM_addon_badge_fanmade_text"
+msgstr "Fan-made expansion"
+
 msgid "MM_toggleAddon_text"
 msgstr "Add / Remove"
 
 msgid "MM_submitAddons_text"
-msgstr "Choose expansion"
+msgstr "Choose"
 
 msgid "MM_map_text"
 msgstr "MAP"

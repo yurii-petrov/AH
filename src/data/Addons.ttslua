@@ -27,19 +27,36 @@ addons = {{
 }, {
   include = false,
   fanmade = true,
+  image = false,
   title = "Опція 1",
   summary = "Опис опції 1",
   description = "Опис опції 1"
 }, {
   include = false,
   fanmade = true,
+  image = false,
   title = "Опція 2",
   summary = "Опис опції 2",
   description = "Опис опції 2"
 }, {
   include = false,
   fanmade = true,
+  image = false,
   title = "Опція 3",
   summary = "Опис опції 3",
   description = "Опис опції 3"
+}, {
+  include = false,
+  fanmade = true,
+  image = false,
+  title = "Опція 4",
+  summary = "Опис опції 4",
+  description = "Опис опції 4"
+}, {
+  include = false,
+  fanmade = true,
+  image = false,
+  title = "Опція 5",
+  summary = "Опис опції 5",
+  description = "Опис опції 5"
 }}

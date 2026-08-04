@@ -4,6 +4,15 @@ Tag = {
   AnomalyToken = "Anomaly Token"
 }
 
+UI_GOLD            = "#e6c477"
+ADDON_ROW_ON       = "#00000073"
+ADDON_ROW_OFF      = "#00000033"
+ADDON_TEXT_DEFAULT = "#fff5e2"
+ADDON_TEXT_HOVER   = "#ffd8ab"
+ADDON_TEXT_ON      = "#22af4c"
+ADDON_SYMBOL_OFF   = "○"
+ADDON_SYMBOL_ON    = "●"
+
 Phase = {
   Action    = 1,
   Monster   = 2,
