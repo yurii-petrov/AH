@@ -50,7 +50,7 @@ local function listRow(idPrefix, n, onClick, onMouseEnter, textId)
     tag = "panel",
     attributes = { id = idPrefix .. "_panel" .. n, preferredHeight = "44", color = LIST_ROW_OFF },
     children = {
-      { tag = "panel",  attributes = { id = idPrefix .. "_accent" .. n, active = "false", width = "4", height = "44", rectAlignment = "MiddleLeft", color = UI_GOLD } },
+      { tag = "panel",  attributes = { id = idPrefix .. "_accent" .. n, active = "false", width = "4", height = "44", rectAlignment = "MiddleLeft", color = LIST_TEXT_HOVER } },
       { tag = "button", attributes = { id = idPrefix .. n, onClick = onClick, onMouseEnter = onMouseEnter } },
       { tag = "text",   attributes = { id = textId, alignment = "MiddleLeft", offsetXY = "18 0", fontSize = "26", color = LIST_TEXT_DEFAULT, text = "" } },
     },
@@ -76,7 +76,7 @@ local function addonSectionHeader(id)
     tag = "panel",
     attributes = { preferredHeight = "36" },
     children = {
-      { tag = "text", attributes = { id = id, alignment = "MiddleCenter", fontSize = "24", fontStyle = "bold", color = UI_GOLD, text = "" } },
+      { tag = "text", attributes = { id = id, alignment = "MiddleCenter", fontSize = "24", fontStyle = "bold", text = "" } },
     },
   }
 end
@@ -207,7 +207,7 @@ local function mainMenuWindow()
             tag = "VerticalLayout",
             attributes = { contentSizeFitter = "vertical", rectAlignment = "UpperCenter", spacing = "15" },
             children = {
-              { tag = "Text", attributes = { id = "title", fontSize = "40", fontStyle = "bold", color = UI_GOLD, text = "" } },
+              { tag = "Text", attributes = { id = "title", fontSize = "40", fontStyle = "bold", text = "" } },
               { tag = "Text", attributes = { id = "body", fontSize = "28", text = "" } },
             },
           },
@@ -255,7 +255,7 @@ local function chooseScenarioWindow()
                 tag = "Cell",
                 attributes = { columnSpan = "3", dontUseTableCellBackground = "true" },
                 children = {
-                  { tag = "text", attributes = { id = "MM_choice_scenario_text", text = "", fontSize = "46", fontStyle = "bold", color = UI_GOLD, alignment = "MiddleCenter" } },
+                  { tag = "text", attributes = { id = "MM_choice_scenario_text", text = "", fontSize = "46", fontStyle = "bold", alignment = "MiddleCenter" } },
                 },
               },
             },
@@ -385,7 +385,7 @@ local function chooseAddonsWindow()
                 tag = "Cell",
                 attributes = { columnSpan = "3", dontUseTableCellBackground = "true" },
                 children = {
-                  { tag = "text", attributes = { id = "MM_addonTitle_text", text = "", fontSize = "46", fontStyle = "bold", color = UI_GOLD, alignment = "MiddleCenter" } },
+                  { tag = "text", attributes = { id = "MM_addonTitle_text", text = "", fontSize = "46", fontStyle = "bold", alignment = "MiddleCenter" } },
                 },
               },
             },
@@ -409,7 +409,7 @@ local function chooseAddonsWindow()
                         attributes = { rectAlignment = "UpperCenter", width = "400", height = "70", spacing = "2", childForceExpandHeight = "false" },
                         children = {
                           { tag = "text", attributes = { id = "addonTitle", fontSize = "30", fontStyle = "bold", alignment = "MiddleLeft", preferredHeight = "38", text = "" } },
-                          { tag = "text", attributes = { id = "addonBadge", fontSize = "16", alignment = "MiddleLeft", color = UI_GOLD, preferredHeight = "22", text = "" } },
+                          { tag = "text", attributes = { id = "addonBadge", fontSize = "16", alignment = "MiddleLeft", color = LIST_TEXT_HOVER, preferredHeight = "22", text = "" } },
                         },
                       },
                       {
