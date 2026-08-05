@@ -867,8 +867,8 @@ I18N_DATA = {
     ["uk"] = "Відлуння Минулого - це доповнення формату print-and-play, що по-новому переосмислює чотирьох знайомих дослідників із базового набору гри. Ці «відлуння» були заново переосмислені й отримали нові особливості, відкриваючи інший погляд на вже знайомих героїв…",
   },
   ["MM_addonDescription5_text"] = {
-    ["en"] = "Option 1 description",
-    ["uk"] = "Повний опис опції 1",
+    ["en"] = "Scenario 'The Return of Azathoth' took back investigators to first base scenario\n Add 4 archive cards",
+    ["uk"] = "Сценарій 'Повернення Азатота' повертає дослідників до першого базового сценарія гри\n Включає в себе 4 карти архіву",
   },
   ["MM_addonDescription6_text"] = {
     ["en"] = "Option 2 description",
@@ -907,8 +907,8 @@ I18N_DATA = {
     ["uk"] = "• 4 варіації для базових дослідників",
   },
   ["MM_addonSummary5_text"] = {
-    ["en"] = "Option 1 summary",
-    ["uk"] = "Короткий опис опції 1",
+    ["en"] = "• 1 new scenario\n• 5 new cards",
+    ["uk"] = "• 1 новий сценарій\n• 5 нових карт",
   },
   ["MM_addonSummary6_text"] = {
     ["en"] = "Option 2 summary",
@@ -1207,8 +1207,8 @@ I18N_DATA = {
     ["uk"] = "Відлуння Минулого",
   },
   ["MM_text_addon5_text"] = {
-    ["en"] = "Option 1",
-    ["uk"] = "Опція 1",
+    ["en"] = "Stand-alone scenarios",
+    ["uk"] = "Самостійні сценарії",
   },
   ["MM_text_addon6_text"] = {
     ["en"] = "Option 2",
