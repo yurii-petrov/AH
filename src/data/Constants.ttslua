@@ -4,14 +4,17 @@ Tag = {
   AnomalyToken = "Anomaly Token"
 }
 
-UI_GOLD            = "#e6c477"
-ADDON_ROW_ON       = "#00000073"
-ADDON_ROW_OFF      = "#00000033"
-ADDON_TEXT_DEFAULT = "#fff5e2"
-ADDON_TEXT_HOVER   = "#ffd8ab"
-ADDON_TEXT_ON      = "#22af4c"
-ADDON_SYMBOL_OFF   = "○"
-ADDON_SYMBOL_ON    = "●"
+UI_GOLD             = "#e6c477"
+LIST_ROW_ON         = "#00000073"
+LIST_ROW_OFF        = "#00000033"
+LIST_TEXT_DEFAULT   = "#fff5e2"
+LIST_TEXT_HOVER     = "#ffd8ab"
+LIST_TEXT_ON        = "#22af4c"
+LIST_TEXT_DISABLED  = "#ffffff55"
+LIST_SYMBOL_OFF     = "○"
+LIST_SYMBOL_ON      = "●"
+
+SCENARIO_COUNT = 13
 
 Phase = {
   Action    = 1,

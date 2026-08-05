@@ -45,21 +45,23 @@ local function buildMainMenuActions()
   return panels
 end
 
-local SCENARIO_COUNT = 13
+local function listRow(idPrefix, n, onClick, onMouseEnter, textId)
+  return {
+    tag = "panel",
+    attributes = { id = idPrefix .. "_panel" .. n, preferredHeight = "44", color = LIST_ROW_OFF },
+    children = {
+      { tag = "panel",  attributes = { id = idPrefix .. "_accent" .. n, active = "false", width = "4", height = "44", rectAlignment = "MiddleLeft", color = UI_GOLD } },
+      { tag = "button", attributes = { id = idPrefix .. n, onClick = onClick, onMouseEnter = onMouseEnter } },
+      { tag = "text",   attributes = { id = textId, alignment = "MiddleLeft", offsetXY = "18 0", fontSize = "26", color = LIST_TEXT_DEFAULT, text = "" } },
+    },
+  }
+end
 
 local function buildScenarioListPanels()
   local panels = {}
   for n = 1, SCENARIO_COUNT do
-    local panelAttrs = { id = "scenario_panel" .. n, preferredHeight = "50" }
-    if n == 1 then panelAttrs.color = "#ffffff22" end
-    table.insert(panels, {
-      tag = "panel",
-      attributes = panelAttrs,
-      children = {
-        { tag = "button", attributes = { id = "scenario" .. n, onClick = "chooseScenario", onMouseEnter = "previewScenario" } },
-        { tag = "text",   attributes = { id = "MM_scenario" .. n .. "_name_text", alignment = "MiddleCenter", text = "" } },
-      },
-    })
+    table.insert(panels, listRow("scenario", n, "chooseScenario", "previewScenario",
+      "MM_scenario" .. n .. "_name_text"))
   end
   return panels
 end
@@ -79,25 +81,14 @@ local function addonSectionHeader(id)
   }
 end
 
-local function addonRow(n)
-  return {
-    tag = "panel",
-    attributes = { id = "addon_panel" .. n, preferredHeight = "44", color = ADDON_ROW_OFF },
-    children = {
-      { tag = "panel",  attributes = { id = "addon_accent" .. n, active = "false", width = "4", height = "44", rectAlignment = "MiddleLeft", color = UI_GOLD } },
-      { tag = "button", attributes = { id = "addon" .. n, onClick = "selectAddon", onMouseEnter = "previewAddon" } },
-      { tag = "text",   attributes = { id = "MM_text_addon" .. n .. "_text", alignment = "MiddleLeft", offsetXY = "18 0", fontSize = "26", color = ADDON_TEXT_DEFAULT, text = "" } },
-    },
-  }
-end
-
 local function buildAddonPanels()
   local panels = {}
   for _, section in ipairs(ADDON_SECTIONS) do
     table.insert(panels, addonSectionHeader(section.header))
     for n, addon in ipairs(addons) do
       if (addon.fanmade or false) == section.fanmade then
-        table.insert(panels, addonRow(n))
+        table.insert(panels, listRow("addon", n, "selectAddon", "previewAddon",
+          "MM_text_addon" .. n .. "_text"))
       end
     end
   end

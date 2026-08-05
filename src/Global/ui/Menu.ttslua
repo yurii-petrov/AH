@@ -6,6 +6,7 @@ local SCENARIO_MODE_FATE   = "fate"
 local map = false
 local scenarioMode = SCENARIO_MODE_NORMAL
 local selectedScenarios = { [1] = true }
+local previewedScenario = 1
 
 local function setScenarioSubmitButtonText(text)
   self.UI.setAttributes('MM_select_scenario', {
@@ -35,6 +36,31 @@ local function isScenarioEnabled(n)
     end
   end
   return true
+end
+
+function refreshScenarioRows()
+  for n = 1, SCENARIO_COUNT do
+    local enabled  = isScenarioEnabled(n)
+    local selected = selectedScenarios[n] == true
+    local current  = (n == previewedScenario)
+    local textId   = 'MM_scenario' .. n .. '_name_text'
+
+    local color = LIST_TEXT_DEFAULT
+    if not enabled then
+      color = LIST_TEXT_DISABLED
+    elseif current then
+      color = LIST_TEXT_HOVER
+    elseif selected then
+      color = LIST_TEXT_ON
+    end
+
+    self.UI.setAttribute('scenario_panel' .. n, 'color', selected and LIST_ROW_ON or LIST_ROW_OFF)
+    self.UI.setAttribute('scenario_accent' .. n, 'active', current)
+    self.UI.setAttribute('scenario' .. n, 'onClick', enabled and 'chooseScenario' or '')
+    self.UI.setAttribute(textId, 'color', color)
+    self.UI.setAttribute(textId, 'text',
+      (selected and LIST_SYMBOL_ON or LIST_SYMBOL_OFF) .. "  " .. i18n.getStrById(textId))
+  end
 end
 
 local function countEnabledScenarios(total)
@@ -74,25 +100,19 @@ end
 
 local function applyScenarioMode(total)
   if scenarioMode == SCENARIO_MODE_NORMAL then
-    for i = 1, total, 1 do
-      self.UI.setAttribute('scenario_panel' .. i, 'color', 'clear')
-    end
     selectedScenarios = { [1] = true }
     currentSetup.scenario = 1
-    self.UI.setAttribute('scenario_panel1', 'color', '#ffffff22')
     setScenarioSubmitButtonText(i18n.getStrById("MM_select_scenario"))
   else
     selectedScenarios = {}
     for i = 1, total, 1 do
       if isScenarioEnabled(i) then
         selectedScenarios[i] = true
-        self.UI.setAttribute('scenario_panel' .. i, 'color', '#ffffff22')
-      else
-        self.UI.setAttribute('scenario_panel' .. i, 'color', 'clear')
       end
     end
     setScenarioSubmitButtonText(i18n.getStrById("MM_random_scenario"))
   end
+  refreshScenarioRows()
   refreshExtraRow(total)
 end
 
@@ -314,21 +334,17 @@ function chooseScenario(player, alt, id)
         return
       end
       selectedScenarios[n] = nil
-      self.UI.setAttribute('scenario_panel' .. n, 'color', 'clear')
     else
       selectedScenarios[n] = true
-      self.UI.setAttribute('scenario_panel' .. n, 'color', '#ffffff22')
     end
+    refreshScenarioRows()
     refreshExtraRow(#scenarioMatData.scenarios)
     return
   end
 
-  for i = 1, #scenarioMatData.scenarios, 1 do
-    self.UI.setAttribute('scenario_panel' .. i, 'color', 'clear')
-  end
-  self.UI.setAttribute('scenario_panel' .. n, 'color', '#ffffff22')
   currentSetup.scenario = n
   selectedScenarios = { [n] = true }
+  refreshScenarioRows()
 end
 
 function onScenarioModeChanged(player, value, id)
@@ -376,11 +392,9 @@ function onScenarioSelectAllToggle(player, value, id)
   for i = 1, #scenarioMatData.scenarios, 1 do
     if selectAll and isScenarioEnabled(i) then
       selectedScenarios[i] = true
-      self.UI.setAttribute('scenario_panel' .. i, 'color', '#ffffff22')
-    else
-      self.UI.setAttribute('scenario_panel' .. i, 'color', 'clear')
     end
   end
+  refreshScenarioRows()
 end
 
 function submitScenario()
@@ -415,22 +429,24 @@ end
 
 function previewScenario(player, alt, id)
   local id = tonumber(id:match("%d+"))
+  previewedScenario = id
   self.UI.setAttribute('scenarioPreviewImage', 'image', 'scenario' .. id)
   self.UI.setAttribute('MM_scenarioPreviewDesc_text', 'text', i18n.getStrById("MM_scenario" .. id .. "_desc_text"))
+  refreshScenarioRows()
 end
 
 function refreshAddonRows()
   for i, addon in ipairs(addons) do
     local current = (i == currentAddon)
-    local symbol = (current or addon.include) and ADDON_SYMBOL_ON or ADDON_SYMBOL_OFF
-    local color = ADDON_TEXT_DEFAULT
+    local symbol = addon.include and LIST_SYMBOL_ON or LIST_SYMBOL_OFF
+    local color = LIST_TEXT_DEFAULT
     if current then
-      color = ADDON_TEXT_HOVER
+      color = LIST_TEXT_HOVER
     elseif addon.include then
-      color = ADDON_TEXT_ON
+      color = LIST_TEXT_ON
     end
 
-    self.UI.setAttribute('addon_panel' .. i, 'color', addon.include and ADDON_ROW_ON or ADDON_ROW_OFF)
+    self.UI.setAttribute('addon_panel' .. i, 'color', addon.include and LIST_ROW_ON or LIST_ROW_OFF)
     self.UI.setAttribute('addon_accent' .. i, 'active', current)
     self.UI.setAttribute('MM_text_addon' .. i .. '_text', 'color', color)
     self.UI.setAttribute('MM_text_addon' .. i .. '_text', 'text',
@@ -491,10 +507,7 @@ function selectAddon(player, alt, id)
   addon.include = enabling
 
   if scenarios then
-    for _, s in ipairs(scenarios) do
-      self.UI.setAttribute('MM_scenario' .. s .. '_name_text', 'color', enabling and '#ffffffff' or '#ffffff55')
-      self.UI.setAttribute('scenario' .. s, 'onClick', enabling and 'chooseScenario' or '')
-    end
+    refreshScenarioRows()
   end
 
   refreshAddonRows()
