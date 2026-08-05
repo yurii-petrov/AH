@@ -321,7 +321,7 @@ msgid "MM_addons_fanmade_text"
 msgstr "Fan-made expansions"
 
 msgid "MM_text_addon5_text"
-msgstr "Option 1"
+msgstr "Stand-alone scenarios"
 
 msgid "MM_text_addon6_text"
 msgstr "Option 2"
@@ -330,7 +330,7 @@ msgid "MM_text_addon7_text"
 msgstr "Option 3"
 
 msgid "MM_addonSummary5_text"
-msgstr "Option 1 summary"
+msgstr "• 1 new scenario\n• 5 new cards"
 
 msgid "MM_addonSummary6_text"
 msgstr "Option 2 summary"
@@ -339,7 +339,7 @@ msgid "MM_addonSummary7_text"
 msgstr "Option 3 summary"
 
 msgid "MM_addonDescription5_text"
-msgstr "Option 1 description"
+msgstr "Scenario 'The Return of Azathoth' took back investigators to first base scenario\n Add 4 archive cards"
 
 msgid "MM_addonDescription6_text"
 msgstr "Option 2 description"

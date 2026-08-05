@@ -387,7 +387,7 @@ msgid "MM_addons_fanmade_text"
 msgstr "Фанатські доповнення"
 
 msgid "MM_text_addon5_text"
-msgstr "Опція 1"
+msgstr "Самостійні сценарії"
 
 msgid "MM_text_addon6_text"
 msgstr "Опція 2"
@@ -396,7 +396,9 @@ msgid "MM_text_addon7_text"
 msgstr "Опція 3"
 
 msgid "MM_addonSummary5_text"
-msgstr "Короткий опис опції 1"
+msgstr ""
+"• 1 новий сценарій\n"
+"• 5 нових карт"
 
 msgid "MM_addonSummary6_text"
 msgstr "Короткий опис опції 2"
@@ -405,7 +407,7 @@ msgid "MM_addonSummary7_text"
 msgstr "Короткий опис опції 3"
 
 msgid "MM_addonDescription5_text"
-msgstr "Повний опис опції 1"
+msgstr "Сценарій 'Повернення Азатота' повертає дослідників до першого базового сценарія гри\n Включає в себе 4 карти архіву"
 
 msgid "MM_addonDescription6_text"
 msgstr "Повний опис опції 2"
