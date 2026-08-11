@@ -39,16 +39,28 @@ local function firstSeatedColor()
   return seated and seated[1]
 end
 
+local function isSeatedColor(colorName)
+  for _, c in ipairs(getSeatedPlayers() or {}) do
+    if c == colorName then return true end
+  end
+  return false
+end
+
 function hintColor()
   return firstSeatedColor() or "Purple"
 end
 
-function pingPosition(pos)
-  local color = firstSeatedColor()
+function pingPosition(pos, colorName)
+  local color = (colorName and isSeatedColor(colorName) and colorName) or firstSeatedColor()
   if not color or not pos then return end
   pcall(function()
     Player[color].pingTable(pos)
   end)
+end
+
+function pingMonsterMat(matObject, colorName)
+  if not matObject then return end
+  pingPosition(matObject.getPosition():setAt("y", 3), colorName)
 end
 
 local function hintMessage(monsterMemo, kind, text)

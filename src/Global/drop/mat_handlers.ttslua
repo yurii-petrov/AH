@@ -53,17 +53,7 @@ end
 
 local highlightedInvestigatorFigurines = {}
 
-function onObjectPickUpMonsterMat(colorName, object)
-  if gameData.phase ~= Phase.Monster then
-    return
-  end
-
-  local monsterNode = findLocationNodeForPosition(object.getPosition())
-  if not monsterNode then
-    pingAvailableMonsterLocations()
-    return
-  end
-
+local function highlightMonsterHints(object, monsterNode)
   local graph = buildLocationGraph()
   local distances = bfsCellDistances(graph, monsterNode.key)
 
@@ -79,6 +69,34 @@ function onObjectPickUpMonsterMat(colorName, object)
   for _, obj in ipairs(hintHighlighted) do
     table.insert(highlightedInvestigatorFigurines, obj)
   end
+end
+
+function onObjectPickUpMonsterMat(colorName, object)
+  if gameData.phase ~= Phase.Monster then
+    return
+  end
+
+  local monsterNode = findLocationNodeForPosition(object.getPosition())
+  if not monsterNode then
+    pingAvailableMonsterLocations()
+    return
+  end
+
+  highlightMonsterHints(object, monsterNode)
+end
+
+function showMonsterMatHints(colorName, object)
+  if gameData.phase ~= Phase.Monster then
+    return
+  end
+
+  local monsterNode = findLocationNodeForPosition(object.getPosition())
+  if not monsterNode then
+    pingMonsterMat(object, colorName)
+    return
+  end
+
+  highlightMonsterHints(object, monsterNode)
 end
 
 function onMonsterMatDrop(object)

@@ -233,7 +233,7 @@ function monsterHintClick(player, alt, id)
   local mat = monsterMatByRow[i]
   if not mat then return end
 
-  onObjectPickUpMonsterMat(player.color, mat)
+  showMonsterMatHints(player.color, mat)
 end
 
 function monsterActionToggle(player, alt, id)
