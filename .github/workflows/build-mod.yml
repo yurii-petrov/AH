@@ -26,6 +26,10 @@ jobs:
           fi
         shell: bash
 
+      - name: Lint - requires resolve and step handlers are wired
+        run: python3 src/tools/lint.py
+        shell: bash
+
       - name: Download TTSModManager
         run: wget https://github.com/argonui/TTSModManager/releases/download/v1.3/TTSModManager-Linux
         shell: bash
