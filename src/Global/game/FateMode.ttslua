@@ -36,16 +36,38 @@ function fateClueReduction()
   return 0
 end
 
+local EVENT_DECK_WAIT_TIMEOUT = 5
+
+local function isEventDeckReady()
+  local mythosTile = MYTHOS_TILE_DATA.obj
+  if not mythosTile then return true end
+
+  local y = mythosTile.getPosition().y + mythosTile.getBounds().size.y
+  local objs = findObjsInRadius(mythosTile.positionToWorld(MYTHOS_TILE_DATA.eventDeck):setAt("y", y))
+
+  local hasDeck = false
+  for _, o in pairs(objs) do
+    if o.type == "Card" then return false end
+    if o.type == "Deck" then hasDeck = true end
+  end
+
+  return hasDeck
+end
+
+local function afterEventDeckReady(callBack)
+  Wait.condition(callBack, isEventDeckReady, EVENT_DECK_WAIT_TIMEOUT, callBack)
+end
+
 function applyFateEndOfSetup(callBack)
   local game = fateActiveGame()
   if not game then if callBack then callBack() end return end
 
   local steps = {}
   if game >= 2 then
-    table.insert(steps, function(next) eventSpawnDooms(next) end)
+    table.insert(steps, function(next) afterEventDeckReady(function() eventSpawnDooms(next) end) end)
   end
   if game >= 6 then
-    table.insert(steps, function(next) processGateBurst(next) end)
+    table.insert(steps, function(next) afterEventDeckReady(function() processGateBurst(next) end) end)
   end
   if game >= 8 then
     table.insert(steps, function(next) spawnDoomTokensOnScenarioSheet(game - 7); next() end)
