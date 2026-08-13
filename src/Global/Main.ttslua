@@ -246,7 +246,17 @@ local function flipActivationTokensUp()
   end
 end
 
+local function resetOncePerRoundAbilities()
+  for _, mat in ipairs(getObjectsWithTag("once_per_round")) do
+    mat.call("resetAbility")
+  end
+end
+
 local function applyPhaseTransitionEffects(oldPhase, newPhase)
+  if oldPhase == Phase.Mythos and newPhase == Phase.Action then
+    resetOncePerRoundAbilities()
+  end
+
   if oldPhase == 1 and newPhase == 2 then
     resetAllActionsAndTokens()
     flipActivationTokensUp()

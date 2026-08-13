@@ -1558,6 +1558,16 @@ msgstr "Damage"
 msgid "IM_horror"
 msgstr "Horror"
 
+# Item mat: once-per-round ability toggle
+msgid "IM_use_ability"
+msgstr "USE"
+
+msgid "IM_undo_ability"
+msgstr "UNDO"
+
+msgid "IM_ability_used"
+msgstr "USED THIS ROUND"
+
 msgid "IM_money"
 msgstr "Money"
 

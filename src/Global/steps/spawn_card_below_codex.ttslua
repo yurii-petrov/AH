@@ -4,7 +4,7 @@ local ITEM_MAT_TYPES = { item = true, spell = true, ally = true, special = true 
 
 local function shouldAttachItemMat(cardData)
   if not cardData then return false end
-  if cardData.hp == nil and cardData.sp == nil then return false end
+  if cardData.hp == nil and cardData.sp == nil and not cardData.oncePerRound then return false end
   for t in pairs(cardTypes(cardData)) do
     if ITEM_MAT_TYPES[t] then return true end
   end

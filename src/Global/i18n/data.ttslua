@@ -422,6 +422,10 @@ I18N_DATA = {
     ["en"] = "Hybrid Thug",
     ["uk"] = "Бандит-Напівкровка",
   },
+  ["IM_ability_used"] = {
+    ["en"] = "USED THIS ROUND",
+    ["uk"] = "ВИКОРИСТАНО В ЦЬОМУ РАУНДІ",
+  },
   ["IM_bio"] = {
     ["en"] = "Bio",
     ["uk"] = "Біографія",
@@ -489,6 +493,14 @@ I18N_DATA = {
   ["IM_strength"] = {
     ["en"] = "Strength",
     ["uk"] = "Сила",
+  },
+  ["IM_undo_ability"] = {
+    ["en"] = "UNDO",
+    ["uk"] = "СКАСУВАТИ",
+  },
+  ["IM_use_ability"] = {
+    ["en"] = "USE",
+    ["uk"] = "ВИКОРИСТАТИ",
   },
   ["IM_will"] = {
     ["en"] = "Will",

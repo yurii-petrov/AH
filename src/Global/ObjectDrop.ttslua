@@ -203,8 +203,11 @@ function onItemDrop(colorName, object, objectData)
   if not objectData.hp and not objectData.sp then
     if objectData.extraMat then
       attachItemToMat(object, objectData, itemMatBag2Id)
+      return
     end
-    return
+    if not objectData.oncePerRound then
+      return
+    end
   end
 
   attachItemToMat(object, objectData, itemMatBagId)

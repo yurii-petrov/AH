@@ -27,6 +27,10 @@ function i18n.getStrById(id)
   return id
 end
 
+function i18n.getLanguage()
+  return gameData.language
+end
+
 function i18n.getFont(code)
   code = code or gameData.language
   for _, tbl in ipairs(LANGUAGES) do

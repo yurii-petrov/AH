@@ -3,19 +3,53 @@ local i18n = require("Global/i18n/api")
 local DAMAGE_COLOR = "#e9543b"
 local HORROR_COLOR = "#485cb3"
 
+local ABILITY_TAG = "once_per_round"
+
+local ABILITY_BTN_COLOR      = "clear"
+local ABILITY_BTN_TEXT_COLOR = "#ffe9a8"
+local ABILITY_BTN_POSITION   = "0 -105 -11"
+local ABILITY_BTN_WIDTH      = "1400"
+local ABILITY_BTN_HEIGHT     = "220"
+local ABILITY_BTN_FONT_SIZE  = "110"
+
+local ABILITY_COVER_COLOR      = "#161310"
+local ABILITY_COVER_TEXT_COLOR = "#fff5e2"
+local ABILITY_COVER_POSITION   = "0 -10 -11"
+local ABILITY_COVER_WIDTH      = "1500"
+local ABILITY_COVER_HEIGHT     = "1400"
+local ABILITY_COVER_FONT_SIZE  = "110"
+
 local data = {
     hp = 0,
     maxHp = nil,
     sp = 0,
     maxSp = nil,
     unbreakable = false,
+    oncePerRound = false,
+    abilityUsed = false,
 }
+
+local function abilityLabel()
+    if data.abilityUsed then
+        return i18n.getStrById("IM_undo_ability")
+    end
+    return i18n.getStrById("IM_use_ability")
+end
+
+local function syncAbilityTag()
+    if data.oncePerRound then
+        self.addTag(ABILITY_TAG)
+    else
+        self.removeTag(ABILITY_TAG)
+    end
+end
 
 function onLoad(savedData)
     local sData = parseJson(savedData)
     if sData then
         data = sData
     end
+    syncAbilityTag()
     self.UI.setXmlTable(getXmlTable())
 end
 
@@ -121,7 +155,7 @@ function getXmlTable()
                     tag = "Text",
                     attributes = {
                         id = "horror_txt",
-                        position = "-26 -93 -11",
+                        position = i18n.getLanguage() == "en" and "-70 -93 -11" or "-26 -93 -11",
                         fontSize = "70", fontStyle = "Bold",
                         font = "Fonts/AdonisC",
                         color = "#fff5e2",
@@ -157,6 +191,58 @@ function getXmlTable()
                 },
             },
         },
+        {
+            tag = "Panel",
+            attributes = {
+                id = "ability_cover",
+                active = data.oncePerRound and data.abilityUsed,
+                width = ABILITY_COVER_WIDTH, height = ABILITY_COVER_HEIGHT,
+                scale = "0.1 0.1 0",
+                position = ABILITY_COVER_POSITION,
+                rotation = "0 0 180",
+                color = ABILITY_COVER_COLOR,
+            },
+            children = {
+                {
+                    tag = "Text",
+                    attributes = {
+                        id = "ability_cover_txt",
+                        fontSize = ABILITY_COVER_FONT_SIZE, fontStyle = "Bold",
+                        font = "Fonts/AdonisC",
+                        color = ABILITY_COVER_TEXT_COLOR,
+                        text = i18n.getStrById("IM_ability_used"),
+                    },
+                },
+            },
+        },
+        {
+            tag = "Panel",
+            attributes = {
+                id = "ability",
+                active = data.oncePerRound,
+                width = ABILITY_BTN_WIDTH, height = ABILITY_BTN_HEIGHT,
+                scale = "0.1 0.1 0",
+                position = ABILITY_BTN_POSITION,
+                rotation = "0 0 180",
+            },
+            children = {
+                {
+                    tag = "Button",
+                    attributes = {
+                        id = "ability_btn",
+                        onClick = "toggleAbility",
+                        onMouseEnter = "abilityHoverEnter",
+                        onMouseExit = "abilityHoverExit",
+                        width = ABILITY_BTN_WIDTH, height = ABILITY_BTN_HEIGHT,
+                        fontSize = ABILITY_BTN_FONT_SIZE, fontStyle = "Bold",
+                        font = "Fonts/AdonisC",
+                        textColor = ABILITY_BTN_TEXT_COLOR,
+                        color = ABILITY_BTN_COLOR,
+                        text = "",
+                    },
+                },
+            },
+        },
     }
 end
 
@@ -182,21 +268,53 @@ function horror(player, alt_click, id)
     updateTile()
 end
 
+function toggleAbility(player, alt_click, id)
+    if alt_click ~= "-1" then return end
+    if not data.oncePerRound then return end
+    data.abilityUsed = not data.abilityUsed
+    updateAbility()
+    self.UI.setAttribute('ability_btn', 'text', abilityLabel())
+end
+
+function abilityHoverEnter(player, alt_click, id)
+    if not data.oncePerRound then return end
+    self.UI.setAttribute('ability_btn', 'text', abilityLabel())
+end
+
+function abilityHoverExit(player, alt_click, id)
+    self.UI.setAttribute('ability_btn', 'text', "")
+end
+
+function resetAbility()
+    if not data.oncePerRound then return end
+    data.abilityUsed = false
+    updateAbility()
+    self.UI.setAttribute('ability_btn', 'text', "")
+end
+
+function updateAbility()
+    self.UI.setAttribute('ability', 'active', data.oncePerRound)
+    self.UI.setAttribute('ability_cover', 'active', data.oncePerRound and data.abilityUsed)
+end
+
 function setData(d)
     data.hp = 0
     data.sp = 0
     data.maxHp = d.hp
     data.maxSp = d.sp
     data.unbreakable = d.unbreakable or false
+    data.oncePerRound = d.oncePerRound or false
+    data.abilityUsed = false
+    syncAbilityTag()
     prepareTile()
 end
 
 function updateTile()
-    local hpAtMax = data.hp == data.maxHp and not data.unbreakable
-    local spAtMax = data.sp == data.maxSp and not data.unbreakable
-    self.UI.setAttribute('damage', 'active', not spAtMax)
+    local hpAtMax = data.maxHp ~= nil and data.hp == data.maxHp and not data.unbreakable
+    local spAtMax = data.maxSp ~= nil and data.sp == data.maxSp and not data.unbreakable
+    self.UI.setAttribute('damage', 'active', data.maxHp ~= nil and not spAtMax)
     self.UI.setAttribute('damage_cls', 'active', spAtMax)
-    self.UI.setAttribute('horror', 'active', not hpAtMax)
+    self.UI.setAttribute('horror', 'active', data.maxSp ~= nil and not hpAtMax)
     self.UI.setAttribute('horror_cls', 'active', hpAtMax)
     self.UI.setAttribute('damage_btn', 'text', data.hp)
     self.UI.setAttribute('damage_btn', 'textColor', DAMAGE_COLOR)

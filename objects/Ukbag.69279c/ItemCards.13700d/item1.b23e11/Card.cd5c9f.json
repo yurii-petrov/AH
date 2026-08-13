@@ -36,7 +36,7 @@
   "LuaScript": "",
   "LuaScriptState": "",
   "MeasureMovement": false,
-  "Memo": "{\"curio\":true,\"price\":6,\"type\":\"item\"}",
+  "Memo": "{\"curio\":true,\"oncePerRound\":true,\"price\":6,\"type\":\"item\"}",
   "Name": "Card",
   "Nickname": "",
   "SidewaysCard": false,

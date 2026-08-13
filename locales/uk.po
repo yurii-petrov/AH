@@ -133,8 +133,7 @@ msgstr ""
 
 # Scenario 3
 msgid "MM_scenario3_name_text"
-msgstr ""
-"Покров Сутінків"
+msgstr "Покров Сутінків"
 
 msgid "MM_scenario3_desc_text"
 msgstr ""
@@ -145,8 +144,7 @@ msgstr ""
 
 # Scenario 4
 msgid "MM_scenario4_name_text"
-msgstr ""
-"Відлуння Безодні"
+msgstr "Відлуння Безодні"
 
 msgid "MM_scenario4_desc_text"
 msgstr ""
@@ -407,7 +405,9 @@ msgid "MM_addonSummary7_text"
 msgstr "Короткий опис опції 3"
 
 msgid "MM_addonDescription5_text"
-msgstr "Сценарій 'Повернення Азатота' повертає дослідників до першого базового сценарія гри\n Включає в себе 4 карти архіву"
+msgstr ""
+"Сценарій 'Повернення Азатота' повертає дослідників до першого базового сценарія гри\n"
+" Включає в себе 4 карти архіву"
 
 msgid "MM_addonDescription6_text"
 msgstr "Повний опис опції 2"
@@ -1635,6 +1635,16 @@ msgstr "Поранення"
 
 msgid "IM_horror"
 msgstr "Жах"
+
+# Item mat: once-per-round ability toggle
+msgid "IM_use_ability"
+msgstr "ВИКОРИСТАТИ"
+
+msgid "IM_undo_ability"
+msgstr "СКАСУВАТИ"
+
+msgid "IM_ability_used"
+msgstr "ВИКОРИСТАНО В ЦЬОМУ РАУНДІ"
 
 msgid "IM_money"
 msgstr "Гроші"
