@@ -3,6 +3,22 @@ local i18n = require("Global/i18n/api")
 local isTestMode = false
 local FOCUS_MAX = 2
 
+local ABILITY_TAG = "once_per_round"
+
+local ABILITY_BTN_COLOR      = "clear"
+local ABILITY_BTN_TEXT_COLOR = "#ffe9a8"
+local ABILITY_BTN_POSITION   = "0 6 -25"
+local ABILITY_BTN_WIDTH      = "750"
+local ABILITY_BTN_HEIGHT     = "770"
+local ABILITY_BTN_FONT_SIZE  = "110"
+
+local ABILITY_COVER_COLOR      = "#161310"
+local ABILITY_COVER_TEXT_COLOR = "#fff5e2"
+local ABILITY_COVER_POSITION   = "78 6 -25"
+local ABILITY_COVER_WIDTH      = "640"
+local ABILITY_COVER_HEIGHT     = "770"
+local ABILITY_COVER_FONT_SIZE  = "70"
+
 local data = {
       hp = 0,
       hpMax = 0,
@@ -33,8 +49,89 @@ local data = {
         strength = 0,
         will = 0
     },
-    skillMatBonus = {}
+    skillMatBonus = {},
+    oncePerRound = false,
+    abilityUsed = false
 }
+
+local function abilityLabel()
+    if data.abilityUsed then
+        return i18n.getStrById("IM_undo_ability")
+    end
+    return i18n.getStrById("IM_use_ability")
+end
+
+local function syncAbilityTag()
+    if data.oncePerRound then
+        self.addTag(ABILITY_TAG)
+    else
+        self.removeTag(ABILITY_TAG)
+    end
+end
+
+local function getAbilityElements()
+    return {
+        {
+            tag = "Panel",
+            attributes = {
+                id = "ability_cover",
+                active = data.oncePerRound and data.abilityUsed,
+                width = ABILITY_COVER_WIDTH,
+                height = ABILITY_COVER_HEIGHT,
+                scale = "0.1 0.1 1",
+                position = ABILITY_COVER_POSITION,
+                rotation = "0 0 180",
+                color = ABILITY_COVER_COLOR,
+            },
+            children = {
+                {
+                    tag = "Text",
+                    attributes = {
+                        id = "ability_cover_txt",
+                        fontSize = ABILITY_COVER_FONT_SIZE,
+                        fontStyle = "Bold",
+                        font = "Fonts/AdonisC",
+                        color = ABILITY_COVER_TEXT_COLOR,
+                        alignment = "MiddleCenter",
+                        horizontalOverflow = "Wrap",
+                        text = i18n.getStrById("IM_ability_used"),
+                    },
+                },
+            },
+        },
+        {
+            tag = "Panel",
+            attributes = {
+                id = "ability",
+                active = data.oncePerRound,
+                width = ABILITY_BTN_WIDTH,
+                height = ABILITY_BTN_HEIGHT,
+                scale = "0.1 0.1 1",
+                position = ABILITY_BTN_POSITION,
+                rotation = "0 0 180",
+            },
+            children = {
+                {
+                    tag = "Button",
+                    attributes = {
+                        id = "ability_btn",
+                        onClick = "toggleAbility",
+                        onMouseEnter = "abilityHoverEnter",
+                        onMouseExit = "abilityHoverExit",
+                        width = ABILITY_BTN_WIDTH,
+                        height = ABILITY_BTN_HEIGHT,
+                        fontSize = ABILITY_BTN_FONT_SIZE,
+                        fontStyle = "Bold",
+                        font = "Fonts/AdonisC",
+                        textColor = ABILITY_BTN_TEXT_COLOR,
+                        color = ABILITY_BTN_COLOR,
+                        text = "",
+                    },
+                },
+            },
+        },
+    }
+end
 
 local SKILL_MAT_ID_MAP = {
     lore = "lore",
@@ -286,6 +383,8 @@ function onLoad(savedData)
   end
   data.skillBonus = data.skillBonus or {lore = 0, influence = 0, observation = 0, strength = 0, will = 0}
   data.skillMatBonus = data.skillMatBonus or {}
+  data.oncePerRound = data.oncePerRound or false
+  data.abilityUsed = data.abilityUsed or false
 
    local skills = {
     {
@@ -453,6 +552,11 @@ function onLoad(savedData)
 
   table.insert(skills, getDeathDialog())
 
+  for _, element in ipairs(getAbilityElements()) do
+    table.insert(skills, element)
+  end
+
+  syncAbilityTag()
   self.UI.setXmlTable(skills)
 end
 
@@ -511,6 +615,12 @@ function setMemo(objectMemo)
     data.guid = objectMemo.guid
   end
 
+    data.oncePerRound = objectMemo.oncePerRound or false
+    data.abilityUsed = false
+    syncAbilityTag()
+    updateAbility()
+    self.UI.setAttribute("ability_btn", "text", "")
+
     data.hpMax = objectMemo.hp
     self.UI.setAttribute("clickHP", "text", data.hp)
     self.UI.setAttribute("clickHP", "textColor", data.hp > 0 and "#fff5e2" or "#a29c90")
@@ -568,6 +678,35 @@ function setMemo(objectMemo)
     self.UI.setAttribute("focusWillText", "text","+"..data.focus.will)
     self.UI.setAttribute("focusWillText", "textColor", "#a29c90")
     self.UI.setAttribute("focusWill", "active", false)
+end
+
+function updateAbility()
+  self.UI.setAttribute("ability", "active", data.oncePerRound)
+  self.UI.setAttribute("ability_cover", "active", data.oncePerRound and data.abilityUsed)
+end
+
+function toggleAbility(player, alt_click, id)
+  if alt_click ~= "-1" then return end
+  if not data.oncePerRound then return end
+  data.abilityUsed = not data.abilityUsed
+  updateAbility()
+  self.UI.setAttribute("ability_btn", "text", abilityLabel())
+end
+
+function abilityHoverEnter(player, alt_click, id)
+  if not data.oncePerRound then return end
+  self.UI.setAttribute("ability_btn", "text", abilityLabel())
+end
+
+function abilityHoverExit(player, alt_click, id)
+  self.UI.setAttribute("ability_btn", "text", "")
+end
+
+function resetAbility()
+  if not data.oncePerRound then return end
+  data.abilityUsed = false
+  updateAbility()
+  self.UI.setAttribute("ability_btn", "text", "")
 end
 
 function clickLore(player, alt_click)

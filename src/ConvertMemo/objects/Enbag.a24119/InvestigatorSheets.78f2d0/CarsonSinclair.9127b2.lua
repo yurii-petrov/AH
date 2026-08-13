@@ -4,6 +4,7 @@ data = {
     ["hp"] = 6,
     ["money"] = 2,
     ["name"] = "Carson Sinclair",
+    ["oncePerRound"] = true,
     ["role"] = {
       "seeker",
       "survivor"
