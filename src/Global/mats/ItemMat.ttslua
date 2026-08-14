@@ -18,6 +18,13 @@ local ABILITY_COVER_POSITION   = "0 -10 -11"
 local ABILITY_COVER_WIDTH      = "1500"
 local ABILITY_COVER_HEIGHT     = "1400"
 local ABILITY_COVER_FONT_SIZE  = "110"
+local ABILITY_COVER_OPACITY    = 1
+local ABILITY_COVER_TEXT_OPACITY = 1
+
+local function withOpacity(color, opacity)
+    opacity = math.max(0, math.min(1, opacity or 1))
+    return string.format("%s%02X", color, math.floor(opacity * 255 + 0.5))
+end
 
 local data = {
     hp = 0,
@@ -200,7 +207,7 @@ function getXmlTable()
                 scale = "0.1 0.1 0",
                 position = ABILITY_COVER_POSITION,
                 rotation = "0 0 180",
-                color = ABILITY_COVER_COLOR,
+                color = withOpacity(ABILITY_COVER_COLOR, ABILITY_COVER_OPACITY),
             },
             children = {
                 {
@@ -209,7 +216,7 @@ function getXmlTable()
                         id = "ability_cover_txt",
                         fontSize = ABILITY_COVER_FONT_SIZE, fontStyle = "Bold",
                         font = "Fonts/AdonisC",
-                        color = ABILITY_COVER_TEXT_COLOR,
+                        color = withOpacity(ABILITY_COVER_TEXT_COLOR, ABILITY_COVER_TEXT_OPACITY),
                         text = i18n.getStrById("IM_ability_used"),
                     },
                 },

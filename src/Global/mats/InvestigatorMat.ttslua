@@ -18,6 +18,13 @@ local ABILITY_COVER_POSITION   = "78 6 -25"
 local ABILITY_COVER_WIDTH      = "640"
 local ABILITY_COVER_HEIGHT     = "770"
 local ABILITY_COVER_FONT_SIZE  = "70"
+local ABILITY_COVER_OPACITY    = 1
+local ABILITY_COVER_TEXT_OPACITY = 1
+
+local function withOpacity(color, opacity)
+    opacity = math.max(0, math.min(1, opacity or 1))
+    return string.format("%s%02X", color, math.floor(opacity * 255 + 0.5))
+end
 
 local data = {
       hp = 0,
@@ -81,7 +88,7 @@ local function getAbilityElements()
                 scale = "0.1 0.1 1",
                 position = ABILITY_COVER_POSITION,
                 rotation = "0 0 180",
-                color = ABILITY_COVER_COLOR,
+                color = withOpacity(ABILITY_COVER_COLOR, ABILITY_COVER_OPACITY),
             },
             children = {
                 {
@@ -91,7 +98,7 @@ local function getAbilityElements()
                         fontSize = ABILITY_COVER_FONT_SIZE,
                         fontStyle = "Bold",
                         font = "Fonts/AdonisC",
-                        color = ABILITY_COVER_TEXT_COLOR,
+                        color = withOpacity(ABILITY_COVER_TEXT_COLOR, ABILITY_COVER_TEXT_OPACITY),
                         alignment = "MiddleCenter",
                         horizontalOverflow = "Wrap",
                         text = i18n.getStrById("IM_ability_used"),
