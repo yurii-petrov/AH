@@ -281,15 +281,18 @@ function toggleAbility(player, alt_click, id)
     data.abilityUsed = not data.abilityUsed
     updateAbility()
     self.UI.setAttribute('ability_btn', 'text', abilityLabel())
+    self.UI.setAttribute('ability_btn', 'textColor', ABILITY_BTN_TEXT_COLOR)
 end
 
 function abilityHoverEnter(player, alt_click, id)
     if not data.oncePerRound then return end
     self.UI.setAttribute('ability_btn', 'text', abilityLabel())
+    self.UI.setAttribute('ability_btn', 'textColor', ABILITY_BTN_TEXT_COLOR)
 end
 
 function abilityHoverExit(player, alt_click, id)
     self.UI.setAttribute('ability_btn', 'text', "")
+    self.UI.setAttribute('ability_btn', 'textColor', ABILITY_BTN_TEXT_COLOR)
 end
 
 function resetAbility()
@@ -297,6 +300,7 @@ function resetAbility()
     data.abilityUsed = false
     updateAbility()
     self.UI.setAttribute('ability_btn', 'text', "")
+    self.UI.setAttribute('ability_btn', 'textColor', ABILITY_BTN_TEXT_COLOR)
 end
 
 function updateAbility()
