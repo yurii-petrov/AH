@@ -6,7 +6,7 @@ local FOCUS_MAX = 2
 local ABILITY_TAG = "once_per_round"
 
 local ABILITY_BTN_COLOR      = "clear"
-local ABILITY_BTN_TEXT_COLOR = "#f3cf64"
+local ABILITY_BTN_TEXT_COLOR = "#ffe9a8"
 local ABILITY_BTN_POSITION   = "7 10 -25"
 local ABILITY_BTN_WIDTH      = "670"
 local ABILITY_BTN_HEIGHT     = "430"

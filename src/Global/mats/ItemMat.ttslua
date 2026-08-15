@@ -7,18 +7,18 @@ local ABILITY_TAG = "once_per_round"
 
 local ABILITY_BTN_COLOR      = "clear"
 local ABILITY_BTN_TEXT_COLOR = "#ffe9a8"
-local ABILITY_BTN_POSITION   = "0 -105 -11"
-local ABILITY_BTN_WIDTH      = "1400"
-local ABILITY_BTN_HEIGHT     = "220"
-local ABILITY_BTN_FONT_SIZE  = "110"
+local ABILITY_BTN_POSITION   = "0 -38 -12"
+local ABILITY_BTN_WIDTH      = "1100"
+local ABILITY_BTN_HEIGHT     = "510"
+local ABILITY_BTN_FONT_SIZE  = "80"
 
 local ABILITY_COVER_COLOR      = "#161310"
 local ABILITY_COVER_TEXT_COLOR = "#fff5e2"
-local ABILITY_COVER_POSITION   = "0 -10 -11"
-local ABILITY_COVER_WIDTH      = "1500"
-local ABILITY_COVER_HEIGHT     = "1400"
-local ABILITY_COVER_FONT_SIZE  = "110"
-local ABILITY_COVER_OPACITY    = 1
+local ABILITY_COVER_POSITION   = "0 37 -12"
+local ABILITY_COVER_WIDTH      = "1100"
+local ABILITY_COVER_HEIGHT     = "600"
+local ABILITY_COVER_FONT_SIZE  = "0"
+local ABILITY_COVER_OPACITY    = 0.7
 local ABILITY_COVER_TEXT_OPACITY = 1
 
 local function withOpacity(color, opacity)
