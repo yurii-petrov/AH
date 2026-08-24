@@ -5,8 +5,11 @@ local HORROR_COLOR = "#485cb3"
 
 local ABILITY_TAG = "once_per_round"
 
-local ABILITY_BTN_COLOR      = "clear"
-local ABILITY_BTN_TEXT_COLOR = "#ffe9a8"
+local ABILITY_BTN_COLOR          = "#161310"
+local ABILITY_BTN_OPACITY        = 0
+local ABILITY_BTN_HOVER_OPACITY  = 0.45
+local ABILITY_BTN_PRESS_OPACITY  = 0.6
+local ABILITY_BTN_TEXT_COLOR     = "#ffe9a8"
 local ABILITY_BTN_POSITION   = "0 -38 -12"
 local ABILITY_BTN_WIDTH      = "1100"
 local ABILITY_BTN_HEIGHT     = "510"
@@ -24,6 +27,16 @@ local ABILITY_COVER_TEXT_OPACITY = 1
 local function withOpacity(color, opacity)
     opacity = math.max(0, math.min(1, opacity or 1))
     return string.format("%s%02X", color, math.floor(opacity * 255 + 0.5))
+end
+
+local function abilityBtnColors()
+    local normal = withOpacity(ABILITY_BTN_COLOR, ABILITY_BTN_OPACITY)
+    return table.concat({
+        normal,
+        withOpacity(ABILITY_BTN_COLOR, ABILITY_BTN_HOVER_OPACITY),
+        withOpacity(ABILITY_BTN_COLOR, ABILITY_BTN_PRESS_OPACITY),
+        normal,
+    }, "|")
 end
 
 local data = {
@@ -244,7 +257,7 @@ function getXmlTable()
                         fontSize = ABILITY_BTN_FONT_SIZE, fontStyle = "Bold",
                         font = "Fonts/AdonisC",
                         textColor = ABILITY_BTN_TEXT_COLOR,
-                        color = ABILITY_BTN_COLOR,
+                        colors = abilityBtnColors(),
                         text = "",
                     },
                 },
