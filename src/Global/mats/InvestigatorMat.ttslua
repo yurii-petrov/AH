@@ -22,20 +22,10 @@ local ABILITY_BTN_OUTLINE_OPACITY = 0
 local ABILITY_BTN_OUTLINE_SIZE    = "1 -1"
 
 local ABILITY_COVER_COLOR      = "#161310"
-local ABILITY_COVER_TEXT_COLOR = "#fff5e2"
 local ABILITY_COVER_POSITION   = "64.5 15 -24.5"
 local ABILITY_COVER_WIDTH      = "420"
 local ABILITY_COVER_HEIGHT     = "274"
-local ABILITY_COVER_FONT_SIZE  = "0"
 local ABILITY_COVER_OPACITY    = 0.7
-local ABILITY_COVER_TEXT_OPACITY = 1
-local ABILITY_COVER_SHOW_TEXT       = false
-local ABILITY_COVER_SHADOW_COLOR    = "#000000"
-local ABILITY_COVER_SHADOW_OPACITY  = 0
-local ABILITY_COVER_SHADOW_DISTANCE = "2 -2"
-local ABILITY_COVER_OUTLINE_COLOR   = "#000000"
-local ABILITY_COVER_OUTLINE_OPACITY = 0
-local ABILITY_COVER_OUTLINE_SIZE    = "1 -1"
 
 local function withOpacity(color, opacity)
     opacity = math.max(0, math.min(1, opacity or 1))
@@ -125,25 +115,6 @@ local function getAbilityElements()
                 position = ABILITY_COVER_POSITION,
                 rotation = "0 0 180",
                 color = withOpacity(ABILITY_COVER_COLOR, ABILITY_COVER_OPACITY),
-            },
-            children = {
-                {
-                    tag = "Text",
-                    attributes = {
-                        id = "ability_cover_txt",
-                        fontSize = ABILITY_COVER_FONT_SIZE,
-                        fontStyle = "Bold",
-                        font = "Fonts/AdonisC",
-                        color = withOpacity(ABILITY_COVER_TEXT_COLOR, ABILITY_COVER_TEXT_OPACITY),
-                        shadow = effectColor(ABILITY_COVER_SHADOW_COLOR, ABILITY_COVER_SHADOW_OPACITY),
-                        shadowDistance = effectSize(ABILITY_COVER_SHADOW_DISTANCE, ABILITY_COVER_SHADOW_OPACITY),
-                        outline = effectColor(ABILITY_COVER_OUTLINE_COLOR, ABILITY_COVER_OUTLINE_OPACITY),
-                        outlineSize = effectSize(ABILITY_COVER_OUTLINE_SIZE, ABILITY_COVER_OUTLINE_OPACITY),
-                        alignment = "MiddleCenter",
-                        horizontalOverflow = "Wrap",
-                        text = ABILITY_COVER_SHOW_TEXT and i18n.getStrById("IM_ability_used") or nil,
-                    },
-                },
             },
         },
         {
