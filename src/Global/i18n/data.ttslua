@@ -422,10 +422,6 @@ I18N_DATA = {
     ["en"] = "Hybrid Thug",
     ["uk"] = "Бандит-Напівкровка",
   },
-  ["IM_ability_used"] = {
-    ["en"] = "USED THIS ROUND",
-    ["uk"] = "ВИКОРИСТАНО В ЦЬОМУ РАУНДІ",
-  },
   ["IM_bio"] = {
     ["en"] = "Bio",
     ["uk"] = "Біографія",

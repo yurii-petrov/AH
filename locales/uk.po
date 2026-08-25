@@ -1643,9 +1643,6 @@ msgstr "ВИКОРИСТАТИ"
 msgid "IM_undo_ability"
 msgstr "СКАСУВАТИ"
 
-msgid "IM_ability_used"
-msgstr "ВИКОРИСТАНО В ЦЬОМУ РАУНДІ"
-
 msgid "IM_money"
 msgstr "Гроші"
 
