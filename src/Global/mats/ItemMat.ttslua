@@ -29,6 +29,7 @@ local ABILITY_COVER_HEIGHT     = "600"
 local ABILITY_COVER_FONT_SIZE  = "0"
 local ABILITY_COVER_OPACITY    = 0.7
 local ABILITY_COVER_TEXT_OPACITY = 1
+local ABILITY_COVER_SHOW_TEXT       = false
 local ABILITY_COVER_SHADOW_COLOR    = "#000000"
 local ABILITY_COVER_SHADOW_OPACITY  = 0
 local ABILITY_COVER_SHADOW_DISTANCE = "2 -2"
@@ -256,7 +257,7 @@ function getXmlTable()
                         shadowDistance = effectSize(ABILITY_COVER_SHADOW_DISTANCE, ABILITY_COVER_SHADOW_OPACITY),
                         outline = effectColor(ABILITY_COVER_OUTLINE_COLOR, ABILITY_COVER_OUTLINE_OPACITY),
                         outlineSize = effectSize(ABILITY_COVER_OUTLINE_SIZE, ABILITY_COVER_OUTLINE_OPACITY),
-                        text = i18n.getStrById("IM_ability_used"),
+                        text = ABILITY_COVER_SHOW_TEXT and i18n.getStrById("IM_ability_used") or nil,
                     },
                 },
             },
