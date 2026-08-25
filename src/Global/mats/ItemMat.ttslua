@@ -1,7 +1,40 @@
 local i18n = require("Global/i18n/api")
 
+local FONT = "Fonts/AdonisC"
+
+local UI_SCALE    = "0.1 0.1 0"
+local UI_ROTATION = "0 0 180"
+
 local DAMAGE_COLOR = "#e9543b"
 local HORROR_COLOR = "#485cb3"
+
+local COUNTER_WIDTH        = "500"
+local COUNTER_HEIGHT       = "300"
+local COUNTER_FONT_SIZE    = "290"
+local COUNTER_FONT_STYLE   = "Bold"
+local COUNTER_ALIGNMENT    = "MiddleCenter"
+local COUNTER_BTN_COLOR    = "clear"
+local COUNTER_BTN_POSITION = "0 -40 0"
+
+local DAMAGE_PANEL_POSITION = "30 85 -11"
+local DAMAGE_BTN_PADDING    = "0 300 10 0"
+
+local HORROR_PANEL_POSITION = "-30 85 -11"
+local HORROR_BTN_PADDING    = "300 0 10 0"
+
+local DESTRUCT_TEXT       = "X"
+local DESTRUCT_TEXT_COLOR = DAMAGE_COLOR
+
+local LABEL_COLOR      = "#fff5e2"
+local LABEL_FONT_SIZE  = "70"
+local LABEL_FONT_STYLE = "Bold"
+
+local DAMAGE_LABEL_ALIGNMENT = "MiddleCenter"
+local DAMAGE_LABEL_POSITION  = "150 78 0"
+
+local HORROR_LABEL_ALIGNMENT   = "MiddleCenter"
+local HORROR_LABEL_POSITION    = "-26 -93 -11"
+local HORROR_LABEL_POSITION_EN = "-70 -93 -11"
 
 local ABILITY_TAG = "once_per_round"
 
@@ -14,6 +47,8 @@ local ABILITY_BTN_POSITION   = "0 -38 -12"
 local ABILITY_BTN_WIDTH      = "1100"
 local ABILITY_BTN_HEIGHT     = "510"
 local ABILITY_BTN_FONT_SIZE  = "80"
+local ABILITY_BTN_FONT_STYLE = "Bold"
+local ABILITY_BTN_ALIGNMENT  = "MiddleCenter"
 local ABILITY_BTN_SHADOW_COLOR    = "#000000"
 local ABILITY_BTN_SHADOW_OPACITY  = 0.8
 local ABILITY_BTN_SHADOW_DISTANCE = "2 -2"
@@ -99,23 +134,24 @@ function getXmlTable()
             attributes = {
                 id = "damage",
                 active = data.maxHp ~= nil and not spAtMax,
-                width = "500", height = "300",
-                scale = "0.1 0.1 0",
-                position = "30 85 -11",
-                rotation = "0 0 180",
+                width = COUNTER_WIDTH, height = COUNTER_HEIGHT,
+                scale = UI_SCALE,
+                position = DAMAGE_PANEL_POSITION,
+                rotation = UI_ROTATION,
             },
             children = {
                 {
                     tag = "Button",
                     attributes = {
                         id = "damage_btn", onClick = "damage",
-                        width = "500", height = "300",
-                        position = "0 -40 0",
-                        padding = "0 300 10 0",
-                        fontSize = "290", fontStyle = "Bold",
-                        font = "Fonts/AdonisC",
+                        width = COUNTER_WIDTH, height = COUNTER_HEIGHT,
+                        position = COUNTER_BTN_POSITION,
+                        padding = DAMAGE_BTN_PADDING,
+                        fontSize = COUNTER_FONT_SIZE, fontStyle = COUNTER_FONT_STYLE,
+                        font = FONT,
+                        alignment = COUNTER_ALIGNMENT,
                         textColor = DAMAGE_COLOR,
-                        color = "clear",
+                        color = COUNTER_BTN_COLOR,
                         text = tostring(data.hp),
                     },
                 },
@@ -123,10 +159,11 @@ function getXmlTable()
                     tag = "Text",
                     attributes = {
                         id = "damage_txt",
-                        position = "150 78 0",
-                        fontSize = "70", fontStyle = "Bold",
-                        font = "Fonts/AdonisC",
-                        color = "#fff5e2",
+                        position = DAMAGE_LABEL_POSITION,
+                        fontSize = LABEL_FONT_SIZE, fontStyle = LABEL_FONT_STYLE,
+                        font = FONT,
+                        alignment = DAMAGE_LABEL_ALIGNMENT,
+                        color = LABEL_COLOR,
                         text = string.upper(i18n.getStrById("IM_damage")),
                     },
                 },
@@ -137,24 +174,25 @@ function getXmlTable()
             attributes = {
                 id = "damage_cls",
                 active = spAtMax,
-                width = "500", height = "300",
-                scale = "0.1 0.1 0",
-                position = "30 85 -11",
-                rotation = "0 0 180",
+                width = COUNTER_WIDTH, height = COUNTER_HEIGHT,
+                scale = UI_SCALE,
+                position = DAMAGE_PANEL_POSITION,
+                rotation = UI_ROTATION,
             },
             children = {
                 {
                     tag = "Button",
                     attributes = {
                         onClick = "ItemMatDestruct",
-                        width = "500", height = "300",
-                        position = "0 -40 0",
-                        padding = "0 300 10 0",
-                        fontSize = "290", fontStyle = "Bold",
-                        font = "Fonts/AdonisC",
-                        textColor = DAMAGE_COLOR,
-                        color = "clear",
-                        text = "X",
+                        width = COUNTER_WIDTH, height = COUNTER_HEIGHT,
+                        position = COUNTER_BTN_POSITION,
+                        padding = DAMAGE_BTN_PADDING,
+                        fontSize = COUNTER_FONT_SIZE, fontStyle = COUNTER_FONT_STYLE,
+                        font = FONT,
+                        alignment = COUNTER_ALIGNMENT,
+                        textColor = DESTRUCT_TEXT_COLOR,
+                        color = COUNTER_BTN_COLOR,
+                        text = DESTRUCT_TEXT,
                     },
                 },
             },
@@ -164,23 +202,24 @@ function getXmlTable()
             attributes = {
                 id = "horror",
                 active = data.maxSp ~= nil and not hpAtMax,
-                width = "500", height = "300",
-                scale = "0.1 0.1 0",
-                position = "-30 85 -11",
-                rotation = "0 0 180",
+                width = COUNTER_WIDTH, height = COUNTER_HEIGHT,
+                scale = UI_SCALE,
+                position = HORROR_PANEL_POSITION,
+                rotation = UI_ROTATION,
             },
             children = {
                 {
                     tag = "Button",
                     attributes = {
                         id = "horror_btn", onClick = "horror",
-                        width = "500", height = "300",
-                        position = "0 -40 0",
-                        padding = "300 0 10 0",
-                        fontSize = "290", fontStyle = "Bold",
-                        font = "Fonts/AdonisC",
+                        width = COUNTER_WIDTH, height = COUNTER_HEIGHT,
+                        position = COUNTER_BTN_POSITION,
+                        padding = HORROR_BTN_PADDING,
+                        fontSize = COUNTER_FONT_SIZE, fontStyle = COUNTER_FONT_STYLE,
+                        font = FONT,
+                        alignment = COUNTER_ALIGNMENT,
                         textColor = HORROR_COLOR,
-                        color = "clear",
+                        color = COUNTER_BTN_COLOR,
                         text = tostring(data.sp),
                     },
                 },
@@ -188,10 +227,11 @@ function getXmlTable()
                     tag = "Text",
                     attributes = {
                         id = "horror_txt",
-                        position = i18n.getLanguage() == "en" and "-70 -93 -11" or "-26 -93 -11",
-                        fontSize = "70", fontStyle = "Bold",
-                        font = "Fonts/AdonisC",
-                        color = "#fff5e2",
+                        position = i18n.getLanguage() == "en" and HORROR_LABEL_POSITION_EN or HORROR_LABEL_POSITION,
+                        fontSize = LABEL_FONT_SIZE, fontStyle = LABEL_FONT_STYLE,
+                        font = FONT,
+                        alignment = HORROR_LABEL_ALIGNMENT,
+                        color = LABEL_COLOR,
                         text = string.upper(i18n.getStrById("IM_horror")),
                     },
                 },
@@ -202,24 +242,25 @@ function getXmlTable()
             attributes = {
                 id = "horror_cls",
                 active = hpAtMax,
-                width = "500", height = "300",
-                scale = "0.1 0.1 0",
-                position = "-30 85 -11",
-                rotation = "0 0 180",
+                width = COUNTER_WIDTH, height = COUNTER_HEIGHT,
+                scale = UI_SCALE,
+                position = HORROR_PANEL_POSITION,
+                rotation = UI_ROTATION,
             },
             children = {
                 {
                     tag = "Button",
                     attributes = {
                         onClick = "ItemMatDestruct",
-                        width = "500", height = "300",
-                        position = "0 -40 0",
-                        padding = "300 0 10 0",
-                        fontSize = "290", fontStyle = "Bold",
-                        font = "Fonts/AdonisC",
-                        textColor = DAMAGE_COLOR,
-                        color = "clear",
-                        text = "X",
+                        width = COUNTER_WIDTH, height = COUNTER_HEIGHT,
+                        position = COUNTER_BTN_POSITION,
+                        padding = HORROR_BTN_PADDING,
+                        fontSize = COUNTER_FONT_SIZE, fontStyle = COUNTER_FONT_STYLE,
+                        font = FONT,
+                        alignment = COUNTER_ALIGNMENT,
+                        textColor = DESTRUCT_TEXT_COLOR,
+                        color = COUNTER_BTN_COLOR,
+                        text = DESTRUCT_TEXT,
                     },
                 },
             },
@@ -230,9 +271,9 @@ function getXmlTable()
                 id = "ability_cover",
                 active = data.oncePerRound and data.abilityUsed,
                 width = ABILITY_COVER_WIDTH, height = ABILITY_COVER_HEIGHT,
-                scale = "0.1 0.1 0",
+                scale = UI_SCALE,
                 position = ABILITY_COVER_POSITION,
-                rotation = "0 0 180",
+                rotation = UI_ROTATION,
                 color = withOpacity(ABILITY_COVER_COLOR, ABILITY_COVER_OPACITY),
             },
         },
@@ -242,9 +283,9 @@ function getXmlTable()
                 id = "ability",
                 active = data.oncePerRound,
                 width = ABILITY_BTN_WIDTH, height = ABILITY_BTN_HEIGHT,
-                scale = "0.1 0.1 0",
+                scale = UI_SCALE,
                 position = ABILITY_BTN_POSITION,
-                rotation = "0 0 180",
+                rotation = UI_ROTATION,
             },
             children = {
                 {
@@ -255,8 +296,9 @@ function getXmlTable()
                         onMouseEnter = "abilityHoverEnter",
                         onMouseExit = "abilityHoverExit",
                         width = ABILITY_BTN_WIDTH, height = ABILITY_BTN_HEIGHT,
-                        fontSize = ABILITY_BTN_FONT_SIZE, fontStyle = "Bold",
-                        font = "Fonts/AdonisC",
+                        fontSize = ABILITY_BTN_FONT_SIZE, fontStyle = ABILITY_BTN_FONT_STYLE,
+                        font = FONT,
+                        alignment = ABILITY_BTN_ALIGNMENT,
                         textColor = ABILITY_BTN_TEXT_COLOR,
                         colors = abilityBtnColors(),
                         shadow = effectColor(ABILITY_BTN_SHADOW_COLOR, ABILITY_BTN_SHADOW_OPACITY),
