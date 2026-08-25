@@ -1593,6 +1593,15 @@
         }
       }
     },
+    "488e4766d75b553ade5c872bb875d7df079359e71238d5a5d6485c41238dc84c": {
+      "driveId": "1zcan63WlHKfFQTbq80U50rpPs9LafzEj",
+      "paths": {
+        "assets/cards/1_dead_of_night/uk/Ally 1Front.png": {
+          "mtime": 1787636777.498,
+          "size": 8243733
+        }
+      }
+    },
     "48ae6241c506bf0ac555971a26143e294c3312da5a2962eed03d5b301c218a75": {
       "driveId": "1xD0eL-MRMeEgVpXRvPWqZX1URuBdXLFU",
       "paths": {
@@ -2754,6 +2763,15 @@
         }
       }
     },
+    "82bcad931e07014c7d895c3a842ca5759133df22d0aa5889998b8e5a46d0c964": {
+      "driveId": "1Vc535Jett5BkT1hGeF2zPz2Ok-19Abcc",
+      "paths": {
+        "assets/cards/2_under_dark_waves/en/Ally 1Front.png": {
+          "mtime": 1787636820.652,
+          "size": 4455312
+        }
+      }
+    },
     "832d0b1940d24afe1bc999f87f579a746f2418be254ff13ff4e3687626bd38bc": {
       "driveId": "1hv0K73xotzLsBAjXxMoRVzufJQhr0m-e",
       "paths": {
@@ -2832,15 +2850,6 @@
         "assets/cards/1_dead_of_night/uk/Spell 1Front.png": {
           "mtime": 1781360478.0,
           "size": 7353113
-        }
-      }
-    },
-    "898f336221c83bc671ba6c6b4316cfaa82480e3512d0a07fd3cebe8c8d9a5847": {
-      "driveId": "1o6eQMcRaH3xTx1hr4TKxQ7hLmfw4OMvr",
-      "paths": {
-        "assets/cards/1_dead_of_night/en/Ally 1Front.png": {
-          "mtime": 1754990813.0,
-          "size": 7246588
         }
       }
     },
@@ -2985,6 +2994,15 @@
         "assets/other_graphics/scenarioMap6.png": {
           "mtime": 1754759369.0,
           "size": 707617
+        }
+      }
+    },
+    "90837f30f3ce5d94e18ce71e4e50a9a4765afe9696565a6a4fd9b5e9ca8a1f58": {
+      "driveId": "1SXINPuv46F6Mu7zor4vFfMnmKo5FadUk",
+      "paths": {
+        "assets/cards/1_dead_of_night/en/Ally 1Front.png": {
+          "mtime": 1787636778.297,
+          "size": 8236908
         }
       }
     },
@@ -3246,15 +3264,6 @@
         "assets/cards/2_under_dark_waves/uk/Condition 2Back.png": {
           "mtime": 1759147675.0,
           "size": 12135113
-        }
-      }
-    },
-    "9f561ff420294aa2aea29e4cab36e71c249e62ff612b08fe48f5af699391686b": {
-      "driveId": "17HxDNcupTgEAyvdKqwLtkYYC86uga60o",
-      "paths": {
-        "assets/cards/1_dead_of_night/uk/Ally 1Front.png": {
-          "mtime": 1756792184.0,
-          "size": 7368055
         }
       }
     },
@@ -3708,15 +3717,6 @@
         }
       }
     },
-    "b77ae119a33441fcef68aede05a1fea3f7e39a8db9fc67ccf75c24833642edbe": {
-      "driveId": "1UBBz2AmkWK8DJMYgrjZsRdA4UemGeAFw",
-      "paths": {
-        "assets/cards/2_under_dark_waves/en/Ally 1Front.png": {
-          "mtime": 1759146920.0,
-          "size": 3740163
-        }
-      }
-    },
     "b7f7d5183fb134fbac9387addcb21b1e9ee89b3df5c5322a8c5f290aaae405d0": {
       "driveId": "1JzOPYlZk47DIPo_oclzMH_KoIfC7LLl8",
       "paths": {
@@ -3969,6 +3969,15 @@
         }
       }
     },
+    "c247f67bd425c915f0d7d5d5ddf470532bbd64da500a21653a44d75bc1739d79": {
+      "driveId": "1Bs162wdsMY71W2p66umAGY7hG5v3Bkci",
+      "paths": {
+        "assets/cards/2_under_dark_waves/uk/Ally 1Front.png": {
+          "mtime": 1787636819.937,
+          "size": 4454613
+        }
+      }
+    },
     "c2a048e1e4dbdafb06bd04bf4623565021b6f76e1e955c91720b9c48b970827a": {
       "driveId": "1lIAYWMo-tuOT42shXpnOOV_qBrmVvKma",
       "paths": {
@@ -4101,15 +4110,6 @@
         "assets/other_graphics/scenarioMap8.png": {
           "mtime": 1780479516.0,
           "size": 1597959
-        }
-      }
-    },
-    "cba0ddd80efddb28813b013c4d9b3f6fb910b218b7a94675f2a53d343ba95936": {
-      "driveId": "1j5O3tTUSKeDsoc_mhU5Vm-c8Z4yT2td_",
-      "paths": {
-        "assets/cards/2_under_dark_waves/uk/Ally 1Front.png": {
-          "mtime": 1759146919.0,
-          "size": 3796679
         }
       }
     },

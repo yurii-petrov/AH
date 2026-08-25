@@ -879,8 +879,8 @@ I18N_DATA = {
     ["uk"] = "Відлуння Минулого - це доповнення формату print-and-play, що по-новому переосмислює чотирьох знайомих дослідників із базового набору гри. Ці «відлуння» були заново переосмислені й отримали нові особливості, відкриваючи інший погляд на вже знайомих героїв…",
   },
   ["MM_addonDescription5_text"] = {
-    ["en"] = "Scenario 'The Return of Azathoth' took back investigators to first base scenario\n Add 4 archive cards",
-    ["uk"] = "Сценарій 'Повернення Азатота' повертає дослідників до першого базового сценарія гри\n Включає в себе 4 карти архіву",
+    ["en"] = "Stand-alone scenarios don't add anything to other scenarios\nScenario 'The Return of Azathoth' took back investigators to first base scenario\n Add 4 archive cards",
+    ["uk"] = "Самостійні сценарії не додають нічого до інших сценарієв\nСценарій 'Повернення Азатота' повертає дослідників до першого базового сценарія гри\n Включає в себе 4 карти архіву",
   },
   ["MM_addonDescription6_text"] = {
     ["en"] = "Option 2 description",

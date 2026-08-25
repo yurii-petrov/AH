@@ -339,7 +339,7 @@ msgid "MM_addonSummary7_text"
 msgstr "Option 3 summary"
 
 msgid "MM_addonDescription5_text"
-msgstr "Scenario 'The Return of Azathoth' took back investigators to first base scenario\n Add 4 archive cards"
+msgstr "Stand-alone scenarios don't add anything to other scenarios\nScenario 'The Return of Azathoth' took back investigators to first base scenario\n Add 4 archive cards"
 
 msgid "MM_addonDescription6_text"
 msgstr "Option 2 description"

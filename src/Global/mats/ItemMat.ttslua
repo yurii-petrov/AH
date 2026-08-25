@@ -7,8 +7,8 @@ local ABILITY_TAG = "once_per_round"
 
 local ABILITY_BTN_COLOR          = "#161310"
 local ABILITY_BTN_OPACITY        = 0
-local ABILITY_BTN_HOVER_OPACITY  = 0.45
-local ABILITY_BTN_PRESS_OPACITY  = 0.6
+local ABILITY_BTN_HOVER_OPACITY  = 0.7
+local ABILITY_BTN_PRESS_OPACITY  = 0.8
 local ABILITY_BTN_TEXT_COLOR     = "#ffe9a8"
 local ABILITY_BTN_POSITION   = "0 -38 -12"
 local ABILITY_BTN_WIDTH      = "1100"
